@@ -1,281 +1,282 @@
 import React from "react";
 
 import { Header, Footer, Overview,Azioni } from "../../shared-components";
-import { MainContent } from "../domains/Home";
+
 class Dashboard extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <div class="container-fluid mobileNav-Content">
-        <div class="row">
-            <div class="col"></div>
+        <div className="container-fluid mobileNav-Content">
+        <div className="row">
+            <div className="col"></div>
         </div>
     </div>
    {/* overview */}
-    <div class="container-fluid overview ">
+    <div className="container-fluid overview ">
       <Overview></Overview>
       <Azioni></Azioni>
 
-        <div class="panels-container">
-            <h1 class="max-width heading-tab">Aquista</h1>
-            <div class="row no-gutters max-width">
-                <div class="col-md-9 ">
+        <div className="panels-container">
+            <h1 className="max-width heading-tab">Aquista</h1>
+            <div className="row no-gutters max-width">
+                <div className="col-md-9 ">
                     {/* TAB HEAD 1 */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab1">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab1">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>Prodotti postali</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* TAB LISTS 1 */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab1">
+                    <div className="nav nav-tabs panel-content collapse" id="tab1">
                         <a data-toggle="tab" href="#service1">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>BOLLETTINI POSTALI</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service2">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>bollo auto</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service3">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>postepay</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                     </div>
                     {/* TAB HEAD 2 */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab2">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab2">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>ricariche telefoniche</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* TAB LISTS 2 */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab2">
+                    <div className="nav nav-tabs panel-content collapse" id="tab2">
                         <a data-toggle="tab" href="#service4">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>dirette</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service4">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>con codice pin</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
 
                     </div>
                     {/* TAB HEAD 3 */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab3">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab3">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>ricariche telefoniche internazionali</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* TAB LISTS 3 */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab3">
+                    <div className="nav nav-tabs panel-content collapse" id="tab3">
                         <a data-toggle="tab" href="#service5">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>phone all</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service5">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>telecom</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service5">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>best card</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service5">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>on net</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service5">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>lebora</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service5">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>idt</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
 
                     </div>
                    {/* TAB HEAD 4 */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab4">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab4">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>carte di credito</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* TAB LISTS 4 */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab4">
+                    <div className="nav nav-tabs panel-content collapse" id="tab4">
                         <a data-toggle="tab" href="#service6">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>ricarica bitkash</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service6">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>paysafe card</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service6">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>on shop</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                     </div>
                     {/* TAB HEAD 5 */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab5">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab5">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>ricariche scommesse sportive</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* <!--TAB LISTS 5--> */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab5">
+                    <div className="nav nav-tabs panel-content collapse" id="tab5">
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>BWIN GIOCO DIGITALE</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>POKER STARS</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>WILLIAM HILL</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>stanleybet</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>BET FLAG</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>STAR CASINO</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service7">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>LOTTOMATICA</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                     </div>
                     {/* <!--TAB HEAD 6--> */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab6">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab6">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>ricariche televisioni digitali</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* <!--TAB LISTS 6--> */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab6">
+                    <div className="nav nav-tabs panel-content collapse" id="tab6">
                         <a data-toggle="tab" href="#service8">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>BWIN GIOCO DIGITALE</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                         <a data-toggle="tab" href="#service8">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>POKER STARS</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                     </div>
                     {/* <!--TAB HEAD 7--> */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab7">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab7">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>gift card</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* <!--TAB LISTS 7--> */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab7">
+                    <div className="nav nav-tabs panel-content collapse" id="tab7">
                         <a data-toggle="tab" href="#service9">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>Amazon</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                     </div>
                     {/* <!--TAB HEAD 8--> */}
-                    <div class="panel-tab" data-toggle="collapse" data-target="#tab8">
-                        <i class="fas fa-dot-circle"></i>
+                    <div className="panel-tab" data-toggle="collapse" data-target="#tab8">
+                        <i className="fas fa-dot-circle"></i>
                         <h4>crypto Valute</h4>
                         <img src="img/uparrow.svg" alt=""/>
                     </div>
                     {/* <!--TAB LISTS 8--> */}
-                    <div class="nav nav-tabs panel-content collapse" id="tab8">
+                    <div className="nav nav-tabs panel-content collapse" id="tab8">
                         <a data-toggle="tab" href="#service10">
-                            <div class="panel-item">
-                                <i class="fas fa-dot-circle"></i>
+                            <div className="panel-item">
+                                <i className="fas fa-dot-circle"></i>
                                 <h4>crypto Valute</h4>
-                                <img class="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 tab-content">
+                <div className="col-md-3 tab-content">
                     {/* <!--first ITEMS  Bolletini postali services--> */}
-                    <div id="service1" class="tab-pane fade in active panel-services">
-                        <table class="bolletini bolletini1">
-                            <tr>
+                    <div id="service1" className="tab-pane fade in active panel-services">
+                        <table className="bolletini bolletini1">
+                          <tbody>
+                          <tr>
                                 <td>
                                     <img src="img/bill-dark.svg" alt=""/>
                                     <p>Bollettini Bianchi</p>
@@ -295,34 +296,42 @@ class Dashboard extends React.Component {
                                     <p>Bollettini <br/> MAV</p>
                                 </td>
                             </tr>
+                          </tbody>
+
 
                         </table>
                     </div>
                     {/* <!--first ITEMS bollo auto services--> */}
-                    <div id="service2" class="tab-pane fade in  panel-services">
-                        <table class="bolletini bolletini2">
-                            <tr>
+                    <div id="service2" className="tab-pane fade in  panel-services">
+                        <table className="bolletini bolletini2">
+                          <tbody>
+                          <tr>
                                 <td>
                                     <img src="img/Car.svg" alt=""/>
                                     <p>Bollo Auto</p>
                                 </td>
                             </tr>
+                          </tbody>
+
                         </table>
                     </div>
                     {/* <!-- first ITEMS postepay services--> */}
-                    <div id="service3" class="tab-pane fade in  panel-services">
-                        <table class="bolletini bolletini3">
+                    <div id="service3" className="tab-pane fade in  panel-services">
+                        <table className="bolletini bolletini3">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/postpayimg.svg" alt=""/>
                                     <p>post pay</p>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--SECOND ITEMS (dirette services)--> */}
-                    <div id="service4" class="tab-pane fade in  panel-services">
-                        <table class="carriers">
+                    <div id="service4" className="tab-pane fade in  panel-services">
+                        <table className="carriers">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/TIM_logo_2016.svg" alt=""/>
@@ -353,11 +362,13 @@ class Dashboard extends React.Component {
                                     <p>coop voce</p>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--THIRD ITEMS (phone,telecom,onnet libra,idt services)--> */}
-                    <div id="service5" class="tab-pane fade in  panel-services">
-                        <table class="phoneall">
+                    <div id="service5" className="tab-pane fade in  panel-services">
+                        <table className="phoneall">
+                        <tbody>
                             <tr>
                                 <td>
                                     <p>new colombus</p>
@@ -384,11 +395,13 @@ class Dashboard extends React.Component {
                                     <h3>5<sup>€</sup></h3>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--4th ITEMS (credit cards services)--> */}
-                    <div id="service6" class="tab-pane fade in  panel-services">
-                        <table class=" phoneall cardeCredite">
+                    <div id="service6" className="tab-pane fade in  panel-services">
+                        <table className=" phoneall cardeCredite">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/paysafe.svg" alt=""/>
@@ -409,11 +422,13 @@ class Dashboard extends React.Component {
                                     <h3>100<sup>€</sup></h3>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--5th ITEMS (scommesso sprotive services)--> */}
-                    <div id="service7" class="tab-pane fade in  panel-services">
-                        <table class=" phoneall cardeCredite">
+                    <div id="service7" className="tab-pane fade in  panel-services">
+                        <table className=" phoneall cardeCredite">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/Stanleybet_logo_international.svg" alt=""/>
@@ -440,11 +455,13 @@ class Dashboard extends React.Component {
                                     <h3>100<sup>€</sup></h3>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--6th ITEMS (TVs services)--> */}
-                    <div id="service8" class="tab-pane fade in  panel-services">
-                        <table class=" phoneall cardeCredite">
+                    <div id="service8" className="tab-pane fade in  panel-services">
+                        <table className=" phoneall cardeCredite">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/Sky_Italia_-_Logo_2018.svg" alt=""/>
@@ -461,11 +478,13 @@ class Dashboard extends React.Component {
                                     <h3>50<sup>€</sup></h3>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--7th ITEMS (gift card services)--> */}
-                    <div id="service9" class="tab-pane fade in  panel-services">
-                        <table class=" phoneall giftCards">
+                    <div id="service9" className="tab-pane fade in  panel-services">
+                        <table className=" phoneall giftCards">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/Amazon_logo.svg" alt=""/>
@@ -486,11 +505,13 @@ class Dashboard extends React.Component {
                                     <h3>100<sup>€</sup></h3>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     {/* <!--8th ITEMS (crypto valute services)--> */}
-                    <div id="service10" class="tab-pane fade in  panel-services">
-                        <table class=" phoneall cryptoValute">
+                    <div id="service10" className="tab-pane fade in  panel-services">
+                        <table className=" phoneall cryptoValute">
+                        <tbody>
                             <tr>
                                 <td>
                                     <img src="img/bitcoinorange.svg" alt=""/>
@@ -521,16 +542,17 @@ class Dashboard extends React.Component {
                                     <p>DASH <br/> DIGITAL CASH</p>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                    
-                    <div class="cancelMobile">
+                    <div className="cancelMobile">
                         <img src="img/cancelMob.svg" alt=""/>
                     </div>
                 </div>
                 {/* <!--rigth block where is no selection--> */}
-                <div class="col-md-3 pl-3">
-                    <div class="nothinSelected">
+                <div className="col-md-3 pl-3">
+                    <div className="nothinSelected">
                         <img src="img/click.svg" alt=""/>
                     </div>
                 </div>
@@ -540,17 +562,18 @@ class Dashboard extends React.Component {
     </div>
     <Footer />
     {/* <!--Chat icon botm right corner--> */}
-    <div class="chatSticky">
+    <div className="chatSticky">
         <img src="img/chatSticky.svg" alt=""/>
     </div>
     {/* <!--Module for boletini bianchi--> */}
-    <div class="modulePopUP modulePopUP1">
-        <div class="module container-fluid max-width_modulePopUP">
-            <div class="row">
-                <div class="col-12 leftCol_Module">
-                    <div class="row no-gutters">
-                        <div class="col-12 col-lg-6">
-                            <table class="_modulePopUP__table">
+    <div className="modulePopUP modulePopUP1">
+        <div className="module container-fluid max-width_modulePopUP">
+            <div className="row">
+                <div className="col-12 leftCol_Module">
+                    <div className="row no-gutters">
+                        <div className="col-12 col-lg-6">
+                            <table className="_modulePopUP__table">
+                            <tbody>
                                 <tr>
                                     <td>
                                         <div><img src="img/bill-dark.svg" alt=""/>
@@ -563,110 +586,113 @@ class Dashboard extends React.Component {
                                         </div>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
-                        <div class="col-12 col-lg-6">
-                            <table class="_modulePopUP__table2">
+                        <div className="col-12 col-lg-6">
+                            <table className="_modulePopUP__table2">
+                            <tbody>
                                 <tr>
                                     <td>
                                         <h3>esegui</h3>
-                                        <img src="img/check-symbol.svg"/>
+                                        <img src="img/check-symbol.svg" alt=""/>
                                     </td>
                                     <td>
                                         <h3>esegui</h3>
                                         <p>pagemento <br/> diferito</p>
                                     </td>
-                                    <td class="stampCup">
+                                    <td className="stampCup">
                                         <h3>stampa</h3>
                                         <p>pre <br/> scontrino</p>
                                     </td>
-                                    <td class="CancelModule">
+                                    <td className="CancelModule">
                                         <h3>anulla</h3>
-                                        <img src="img/close.svg"/>
+                                        <img src="img/close.svg" alt=""/>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="row no-gutters _modulePopUP__body">
-                        <div class="col-12 col-lg-9 ">
+                    <div className="row no-gutters _modulePopUP__body">
+                        <div className="col-12 col-lg-9 ">
                             <h2>CONTI CORRENTI POSTALI - Ricevuta di Accredito</h2>
                         </div>
-                        <div class="col-12 col-lg-3">
-                            <img class="bacnoPosta" src="img/bancoposta.svg" alt=""/>
+                        <div className="col-12 col-lg-3">
+                            <img className="bacnoPosta" src="img/bancoposta.svg" alt=""/>
                         </div>
-                        <div class="col-12 col-lg-7">
-                            <div class="euroboll">
+                        <div className="col-12 col-lg-7">
+                            <div className="euroboll">
                                 <img src="img/euro.svg" alt=""/> <span>sul C/C n.</span> <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-5 mt-2 mt-lg-0">
-                            <div class="euroboll">
+                        <div className="col-12 col-lg-5 mt-2 mt-lg-0">
+                            <div className="euroboll">
                                 <span>di Euro</span> <input type="text"/>
                             </div>
                         </div>
 
-                        <div class="col-3 ">
-                            <div class="euroboll">
+                        <div className="col-3 ">
+                            <div className="euroboll">
                                 <span>INTESTATO A</span>
                             </div>
                         </div>
-                        <div class="col-9 ">
-                            <div class="euroboll">
-                                <input class="py-4 pl-2 mt-2" type="text"/>
+                        <div className="col-9 ">
+                            <div className="euroboll">
+                                <input className="py-4 pl-2 mt-2" type="text"/>
                             </div>
                         </div>
 
-                        <div class="col-3 ">
-                            <div class="euroboll">
+                        <div className="col-3 ">
+                            <div className="euroboll">
                                 <span>CAUSALE</span>
                             </div>
                         </div>
-                        <div class="col-9 ">
-                            <div class="euroboll">
-                                <input class="py-4 pl-2 mt-3" type="text"/>
+                        <div className="col-9 ">
+                            <div className="euroboll">
+                                <input className="py-4 pl-2 mt-3" type="text"/>
                             </div>
                         </div>
 
-                        <div class="col-3 ">
-                            <div class="euroboll">
+                        <div className="col-3 ">
+                            <div className="euroboll">
                                 <span>ESEGUITO DA</span>
                             </div>
                         </div>
-                        <div class="col-9 ">
-                            <div class="euroboll">
-                                <input class="py-1 pl-2 mt-3" type="text"/>
+                        <div className="col-9 ">
+                            <div className="euroboll">
+                                <input className="py-1 pl-2 mt-3" type="text"/>
                             </div>
                         </div>
 
-                        <div class="col-3 ">
-                            <div class="euroboll">
+                        <div className="col-3 ">
+                            <div className="euroboll">
                                 <span>VIA-PIAZZA</span>
                             </div>
                         </div>
-                        <div class="col-9">
-                            <div class="euroboll">
-                                <input class="py-1 pl-2 mt-3 mb-3" type="text"/>
+                        <div className="col-9">
+                            <div className="euroboll">
+                                <input className="py-1 pl-2 mt-3 mb-3" type="text"/>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="euroboll">
-                                <input class="py-1 pl-2 mt-3 mb-3" type="text"/>
+                        <div className="col-12">
+                            <div className="euroboll">
+                                <input className="py-1 pl-2 mt-3 mb-3" type="text"/>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="euroboll">
-                                <input class="py-1 pl-2 mt-3 mb-3" type="text"/>
+                        <div className="col-12">
+                            <div className="euroboll">
+                                <input className="py-1 pl-2 mt-3 mb-3" type="text"/>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="euroboll">
+                        <div className="col-12">
+                            <div className="euroboll">
                                 <span>CONDIZIONI</span>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="euroboll">
-                                <div class="contitions-boll">
+                        <div className="col-12">
+                            <div className="euroboll">
+                                <div className="contitions-boll">
                                     <p>CONDIZIONI SPECIFICHE DI UTILIZZO DELLA FUNZIONE SERVIZI POSTALI
                                         PROFILI NORMATIVI</p>
                                     <p>Il pagamento dei bollettini postali è un servizio di pagamento per il cui
@@ -723,24 +749,25 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="col-5 rightCol_Module">
-                    <div class="row no-gutters">
-                        <div class="_modulePopUP__cupon">
-                            <div class="_modulePopUP__cupon--header">
+                <div className="col-5 rightCol_Module">
+                    <div className="row no-gutters">
+                        <div className="_modulePopUP__cupon">
+                            <div className="_modulePopUP__cupon--header">
                                 <img src="img/print.svg" alt=""/>
                                 <h3>Stampa dello scontrino</h3>
                             </div>
-                            <div class="_modulePopUP__cupon--body">
+                            <div className="_modulePopUP__cupon--body">
                                 <img src="img/logoGray.svg" alt=""/>
                                 <h6>OTC srl</h6>
-                                <span class="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
+                                <span className="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
                                     terme</span>
-                                <span class="__cupon--body__phone">234234234</span>
+                                <span className="__cupon--body__phone">234234234</span>
                                 <h4>SCONTRINO VERIFICA</h4>
                                 <h3>Prodotto: Bollettini Bianchi</h3>
                             </div>
-                            <div class="_modulePopUP__cupon--table">
+                            <div className="_modulePopUP__cupon--table">
                                 <table>
+                                <tbody>
                                     <tr>
                                         <td>CC:</td>
                                         <td>123123</td>
@@ -773,8 +800,10 @@ class Dashboard extends React.Component {
                                         <td>provincia:</td>
                                         <td>rn</td>
                                     </tr>
+                                    </tbody>
                                 </table>
-                                <table class="import-bottom">
+                                <table className="import-bottom">
+                                 <tbody>
                                     <tr>
                                         <td>IMPORTO: <br/>
                                             <span>
@@ -782,13 +811,14 @@ class Dashboard extends React.Component {
                                             </span>
                                         </td>
                                     </tr>
+                                 </tbody>
                                 </table>
 
                             </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary"><img src="img/check-symbol.svg"/> <br/>
+                            <div className="btn-group" role="group">
+                                <button type="button" className="btn btn-secondary"><img src="img/check-symbol.svg" alt=""/> <br/>
                                     Stampa</button>
-                                <button type="button" class="btn btn-secondary"><img src="img/close.svg"/> <br/>
+                                <button type="button" className="btn btn-secondary"><img src="img/close.svg" alt=""/> <br/>
                                     Anulla</button>
                             </div>
                         </div>
@@ -798,13 +828,14 @@ class Dashboard extends React.Component {
         </div>
     </div>
     {/* <!--Module for boletini auto--> */}
-    <div class="modulePopUP modulePopUP2">
-        <div class="module container-fluid max-width_modulePopUP">
-            <div class="row">
-                <div class="col-12 leftCol_Module">
-                    <div class="row no-gutters">
-                        <div class="col-12 col-lg-6">
-                            <table class="_modulePopUP__table">
+    <div className="modulePopUP modulePopUP2">
+        <div className="module container-fluid max-width_modulePopUP">
+            <div className="row">
+                <div className="col-12 leftCol_Module">
+                    <div className="row no-gutters">
+                        <div className="col-12 col-lg-6">
+                            <table className="_modulePopUP__table">
+                            <tbody>
                                 <tr>
                                     <td>
                                         <div><img src="img/Car.svg" alt=""/>
@@ -817,183 +848,186 @@ class Dashboard extends React.Component {
                                         </div>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
-                        <div class="col-12 col-lg-6">
-                            <table class="_modulePopUP__table2">
+                        <div className="col-12 col-lg-6">
+                            <table className="_modulePopUP__table2">
+                            <tbody>
                                 <tr>
                                     <td>
                                         <h3>esegui</h3>
-                                        <img src="img/check-symbol.svg"/>
+                                        <img src="img/check-symbol.svg" alt=""/>
                                     </td>
                                     <td>
                                         <h3>esegui</h3>
                                         <p>pagemento <br/> diferito</p>
                                     </td>
-                                    <td class="stampCup">
+                                    <td className="stampCup">
                                         <h3>stampa</h3>
                                         <p>pre <br/> scontrino</p>
                                     </td>
-                                    <td class="CancelModule">
+                                    <td className="CancelModule">
                                         <h3>anulla</h3>
-                                        <img src="img/close.svg"/>
+                                        <img src="img/close.svg" alt=""/>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="row no-gutters _modulePopUP__body">
-                        <div class="col-12 py-3">
+                    <div className="row no-gutters _modulePopUP__body">
+                        <div className="col-12 py-3">
                             <h2>PAGAMENTO ELETTRONICO BOLLO AUTOVEICOLI E MOTOVEICOLI</h2>
                         </div>
                         {/* <!--Module 2 Title ROW--> */}
-                        <div class="col-12 titleModul2">
+                        <div className="col-12 titleModul2">
                             <h4>ESTREMI PAGAMENTO</h4>
                         </div>
-                        <div class="col-2 d-none d-md-block">
-                            <img src="img/verificaEstr.svg" class="pl-3"/>
+                        <div className="col-2 d-none d-md-block">
+                            <img src="img/verificaEstr.svg" className="pl-3" alt=""/>
                         </div>
-                        <div class="col-6 col-md-5">
-                            <div class="euroboll ">
+                        <div className="col-6 col-md-5">
+                            <div className="euroboll ">
                                 <span>Conto Correte</span>
                             </div>
-                            <div class="euroboll mt-2">
+                            <div className="euroboll mt-2">
                                 <span>Intestato A</span>
                             </div>
                         </div>
-                        <div class="col-6 col-md-5">
-                            <div class="euroboll">
+                        <div className="col-6 col-md-5">
+                            <div className="euroboll">
                                 <input type="text"/>
                             </div>
-                            <div class="euroboll mt-2">
+                            <div className="euroboll mt-2">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--Module 2 Title ROW--> */}
-                        <div class="col-12 titleModul2">
+                        <div className="col-12 titleModul2">
                             <h4>DATI VEICOLO E INTESTATARIO</h4>
                         </div>
-                        <div class="col-md-4">
-                            <div class="euroboll ">
+                        <div className="col-md-4">
+                            <div className="euroboll ">
                                 <span>TARGA</span>
                                 <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-md-5 pl-2 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-5 pl-2 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>INTESTATARIO</span>
                                 <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-md-3 pl-2">
-                            <div class="euroboll ">
+                        <div className="col-md-3 pl-2">
+                            <div className="euroboll ">
                                 <span>Tipo</span>
                                 <select>
                                     <option>F</option>
                                     <option>B</option>
                                     <option>C</option>
                                 </select>
-                                <div class="helpModul2" data-toggle="tooltip" title="Select Car Type">?</div>
+                                <div className="helpModul2" data-toggle="tooltip" title="Select Car Type">?</div>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="euroboll ">
+                        <div className="col-md-6 mt-2">
+                            <div className="euroboll ">
                                 <span>CATEGORIA</span>
                                 <input type="text"/>
-                                <div class="helpModul2 py-0" data-toggle="tooltip" title="categoria">?</div>
+                                <div className="helpModul2 py-0" data-toggle="tooltip" title="categoria">?</div>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-6 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>CODICE FISCALE</span>
                                 <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="euroboll ">
+                        <div className="col-md-6 mt-2">
+                            <div className="euroboll ">
                                 <span>INDIRIZZO</span>
                                 <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-6 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>PROVINCIA</span>
                                 <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="euroboll ">
+                        <div className="col-md-6 mt-2">
+                            <div className="euroboll ">
                                 <span>LOCALITA</span>
                                 <input type="text"/>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-6 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>CAP</span>
-                                <input type="text" class="w-10"/>
+                                <input type="text" className="w-10"/>
                             </div>
                         </div>
                         {/* <!--Module 2 Title ROW--> */}
-                        <div class="col-12 titleModul2">
+                        <div className="col-12 titleModul2">
                             <h4>DATI VEICOLO E INTESTATARIO</h4>
                         </div>
-                        <div class="col-12 pl-4 undertitleMod">
+                        <div className="col-12 pl-4 undertitleMod">
                             <h6>IL VALORE DI IMPORTO VIENE CALCOLATO DALLA SOMMA DI TASSA + SANZIONI + INTERESSI</h6>
                         </div>
-                        <div class="spacerMod"></div>
-                        <div class="col-md-3">
-                            <div class="euroboll ">
+                        <div className="spacerMod"></div>
+                        <div className="col-md-3">
+                            <div className="euroboll ">
                                 <span>IMPORTO</span>
                                 <input type="text" style={{width: '30px'}} placeholder="0,00"/>
                             </div>
                         </div>
-                        <div class="col-md-3 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-3 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>TASSA</span>
                                 <input type="text" style={{width: '30px'}} placeholder="0,00"/>
                             </div>
                         </div>
-                        <div class="col-md-3 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-3 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>SANZIONI</span>
                                 <input type="text" style={{width: '30px'}} placeholder="0,00"/>
                             </div>
                         </div>
-                        <div class="col-md-3 mt-2 mt-md-0">
-                            <div class="euroboll ">
+                        <div className="col-md-3 mt-2 mt-md-0">
+                            <div className="euroboll ">
                                 <span>INTERESSI</span>
                                 <input type="text" style={{width: '30px'}} placeholder="0,00"/>
                             </div>
                         </div>
-                        <div class="spacerMod"></div>
-                        <div class="col-md-4">
-                            <div class="euroboll ">
+                        <div className="spacerMod"></div>
+                        <div className="col-md-4">
+                            <div className="euroboll ">
                                 <span>RIDUZIONE</span>
                                 <input type="text"   style={{width: '90px'}} />
-                                <div class="helpModul2" data-toggle="tooltip" title="RIDUZIONE">?</div>
+                                <div className="helpModul2" data-toggle="tooltip" title="RIDUZIONE">?</div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="euroboll ">
+                        <div className="col-md-4">
+                            <div className="euroboll ">
                                 <span>RIDUZIONE</span>
                                 <input type="text" style={{width: '40px'}} />
 
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="euroboll ">
+                        <div className="col-md-4">
+                            <div className="euroboll ">
                                 <span>RIDUZIONE</span>
                                 <input type="text"  style={{width: '50px'}} />
                             </div>
                         </div>
-                        <div class="col-12 mt-4">
-                            <div class="euroboll">
+                        <div className="col-12 mt-4">
+                            <div className="euroboll">
                                 <span>CONDIZIONI</span>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="euroboll">
-                                <div class="contitions-boll">
+                        <div className="col-12">
+                            <div className="euroboll">
+                                <div className="contitions-boll">
                                     <p>CONDIZIONI SPECIFICHE DI UTILIZZO DELLA FUNZIONE SERVIZI POSTALI
                                         PROFILI NORMATIVI</p>
                                     <p>Il pagamento dei bollettini postali è un servizio di pagamento per il cui
@@ -1050,25 +1084,25 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="col-5 rightCol_Module">
-                    <div class="row no-gutters">
-                        <div class="_modulePopUP__cupon">
-                            <div class="_modulePopUP__cupon--header">
+                <div className="col-5 rightCol_Module">
+                    <div className="row no-gutters">
+                        <div className="_modulePopUP__cupon">
+                            <div className="_modulePopUP__cupon--header">
                                 <img src="img/print.svg" alt=""/>
                                 <h3>Stampa dello scontrino</h3>
                             </div>
-                            <div class="_modulePopUP__cupon--body">
+                            <div className="_modulePopUP__cupon--body">
                                 <img src="img/logoGray.svg" alt=""/>
                                 <h6>OTC srl</h6>
-                                <span class="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
+                                <span className="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
                                     terme</span>
-                                <span class="__cupon--body__phone">234234234</span>
+                                <span className="__cupon--body__phone">234234234</span>
 
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-secondary"><img src="img/check-symbol.svg"/>
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-secondary"><img src="img/check-symbol.svg" alt=""/>
                                         <br/>
                                         Stampa</button>
-                                    <button type="button" class="btn btn-secondary"><img src="img/close.svg"/> <br/>
+                                    <button type="button" className="btn btn-secondary"><img src="img/close.svg" alt=""/> <br/>
                                         Anulla</button>
                                 </div>
                             </div>
@@ -1079,13 +1113,14 @@ class Dashboard extends React.Component {
         </div>
     </div>
     {/* <!--Module for postepay--> */}
-    <div class="modulePopUP modulePopUP3">
-        <div class="module container-fluid max-width_modulePopUP">
-            <div class="row">
-                <div class="col-12 leftCol_Module">
-                    <div class="row no-gutters">
-                        <div class="col-12 col-lg-6">
-                            <table class="_modulePopUP__table">
+    <div className="modulePopUP modulePopUP3">
+        <div className="module container-fluid max-width_modulePopUP">
+            <div className="row">
+                <div className="col-12 leftCol_Module">
+                    <div className="row no-gutters">
+                        <div className="col-12 col-lg-6">
+                            <table className="_modulePopUP__table">
+                            <tbody>
                                 <tr>
                                     <td>
                                         <div><img src="img/postpayimg.svg" alt=""/>
@@ -1097,10 +1132,12 @@ class Dashboard extends React.Component {
                                         </div>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
-                        <div class="col-12 col-lg-6">
-                            <table class="_modulePopUP__table2">
+                        <div className="col-12 col-lg-6">
+                            <table className="_modulePopUP__table2">
+                            <tbody>
                                 <tr>
                                     <td>
                                         <h3>esegui</h3>
@@ -1110,26 +1147,27 @@ class Dashboard extends React.Component {
                                         <h3>esegui</h3>
                                         <p>pagemento <br/> diferito</p>
                                     </td>
-                                    <td class="stampCup">
+                                    <td className="stampCup">
                                         <h3>stampa</h3>
                                         <p>pre <br/> scontrino</p>
                                     </td>
-                                    <td class="CancelModule">
+                                    <td className="CancelModule">
                                         <h3>anulla</h3>
                                         <img src="img/close.svg" alt="" />
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="row no-gutters _modulePopUP__body">
-                        <div class="col-12 py-3">
+                    <div className="row no-gutters _modulePopUP__body">
+                        <div className="col-12 py-3">
                             <h2>RICARICA POSTEPAY</h2>
                         </div>
 
-                        <div class="col-12 payThumb ">
-                            <img src="img/postepayBlue.svg" class="img-fluid" alt=""/>
-                            <p class="text-center">
+                        <div className="col-12 payThumb ">
+                            <img src="img/postepayBlue.svg" className="img-fluid" alt=""/>
+                            <p className="text-center">
                                 Attenzione: a causa della normativa sull`antiriciclaggio, l`importo massimo ricaricabile
                                 e di Euro 200+ commissioni.
                                 Non e possibile effettuare, in una giornata, piu di due
@@ -1137,81 +1175,81 @@ class Dashboard extends React.Component {
                             </p>
                         </div>
                         {/* <!--module 3 1 row--> */}
-                        <div class="col-5 ">
-                            <div class="euroboll ">
-                                <span class="pr-5">TARGA</span>
+                        <div className="col-5 ">
+                            <div className="euroboll ">
+                                <span className="pr-5">TARGA</span>
                             </div>
                         </div>
-                        <div class="col-7">
-                            <div class="euroboll ">
+                        <div className="col-7">
+                            <div className="euroboll ">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--module 3 1 row--> */}
-                        <div class="col-5 pt-2">
-                            <div class="euroboll ">
-                                <span class="pr-5">IMPORTO</span>
+                        <div className="col-5 pt-2">
+                            <div className="euroboll ">
+                                <span className="pr-5">IMPORTO</span>
                             </div>
                         </div>
-                        <div class="col-7 pt-2">
-                            <div class="euroboll ">
+                        <div className="col-7 pt-2">
+                            <div className="euroboll ">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--module 3 1 row--> */}
-                        <div class="col-5 pt-2">
-                            <div class="euroboll ">
-                                <span class="pr-5">INTESTATARIO</span>
+                        <div className="col-5 pt-2">
+                            <div className="euroboll ">
+                                <span className="pr-5">INTESTATARIO</span>
                             </div>
                         </div>
-                        <div class="col-7 pt-2">
-                            <div class="euroboll ">
+                        <div className="col-7 pt-2">
+                            <div className="euroboll ">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--module 3 1 row--> */}
-                        <div class="col-5 pt-2">
-                            <div class="euroboll ">
-                                <span class="pr-5">COD FISC INTESTATARIO</span>
+                        <div className="col-5 pt-2">
+                            <div className="euroboll ">
+                                <span className="pr-5">COD FISC INTESTATARIO</span>
                             </div>
                         </div>
-                        <div class="col-7 pt-2">
-                            <div class="euroboll ">
+                        <div className="col-7 pt-2">
+                            <div className="euroboll ">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--module 3 1 row--> */}
-                        <div class="col-5 pt-2">
-                            <div class="euroboll ">
-                                <span class="pr-5">ORDINANTE</span>
+                        <div className="col-5 pt-2">
+                            <div className="euroboll ">
+                                <span className="pr-5">ORDINANTE</span>
                             </div>
                         </div>
-                        <div class="col-7 pt-2">
-                            <div class="euroboll ">
+                        <div className="col-7 pt-2">
+                            <div className="euroboll ">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--module 3 1 row--> */}
-                        <div class="col-5 pt-2">
-                            <div class="euroboll ">
-                                <span class="pr-5">COD FISC ORDINANTE</span>
+                        <div className="col-5 pt-2">
+                            <div className="euroboll ">
+                                <span className="pr-5">COD FISC ORDINANTE</span>
                             </div>
                         </div>
-                        <div class="col-7 pt-2">
-                            <div class="euroboll ">
+                        <div className="col-7 pt-2">
+                            <div className="euroboll ">
                                 <input type="text"/>
                             </div>
                         </div>
                         {/* <!--module 3 1 row--> */}
 
-                        <div class="col-12 mt-4">
-                            <div class="euroboll">
+                        <div className="col-12 mt-4">
+                            <div className="euroboll">
                                 <span>CONDIZIONI</span>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="euroboll">
-                                <div class="contitions-boll">
+                        <div className="col-12">
+                            <div className="euroboll">
+                                <div className="contitions-boll">
                                     <p>CONDIZIONI SPECIFICHE DI UTILIZZO DELLA FUNZIONE SERVIZI POSTALI
                                         PROFILI NORMATIVI</p>
                                     <p>Il pagamento dei bollettini postali è un servizio di pagamento per il cui
@@ -1268,25 +1306,25 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="col-5 rightCol_Module">
-                    <div class="row no-gutters">
-                        <div class="_modulePopUP__cupon">
-                            <div class="_modulePopUP__cupon--header">
+                <div className="col-5 rightCol_Module">
+                    <div className="row no-gutters">
+                        <div className="_modulePopUP__cupon">
+                            <div className="_modulePopUP__cupon--header">
                                 <img src="img/print.svg" alt=""/>
                                 <h3>Stampa dello scontrino</h3>
                             </div>
-                            <div class="_modulePopUP__cupon--body">
+                            <div className="_modulePopUP__cupon--body">
                                 <img src="img/logoGray.svg" alt=""/>
                                 <h6>OTC srl</h6>
-                                <span class="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
+                                <span className="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
                                     terme</span>
-                                <span class="__cupon--body__phone">234234234</span>
+                                <span className="__cupon--body__phone">234234234</span>
 
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-secondary"><img src="img/check-symbol.svg"/>
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-secondary"><img src="img/check-symbol.svg" alt=""/>
                                         <br/>
                                         Stampa</button>
-                                    <button type="button" class="btn btn-secondary"><img src="img/close.svg"/> <br/>
+                                    <button type="button" className="btn btn-secondary"><img src="img/close.svg" alt=""/> <br/>
                                         Anulla</button>
                                 </div>
                             </div>
@@ -1297,77 +1335,82 @@ class Dashboard extends React.Component {
         </div>
     </div>
     {/* <!--Module for carriers (TIM)--> */}
-    <div class="modulePopUP modulePopUP4">
-        <div class="module container-fluid max-width_modulePopUP max-width_modulePopUP-carrier">
-            <div class="row">
-                <div class="col-12 leftCol_Module">
-                    <div class="row">
-                        <div class="col-2 p-0">
-                            <table class="LeftSide-BTNs" data-aos="flip-left">
-                                <tr>
-                                    <td class="carrierLogo" colspan="3"><img src="img/TIM_logo_2016.svg" alt=""/></td>
+    <div className="modulePopUP modulePopUP4">
+        <div className="module container-fluid max-width_modulePopUP max-width_modulePopUP-carrier">
+            <div className="row">
+                <div className="col-12 leftCol_Module">
+                    <div className="row">
+                        <div className="col-2 p-0">
+                            <table className="LeftSide-BTNs" data-aos="flip-left">
+                              <tbody>
+                              <tr>
+                                    <td className="carrierLogo" colSpan="3"><img src="img/TIM_logo_2016.svg" alt=""/></td>
                                 </tr>
                                 <tr>
-                                    <td class="CarrierPrice">5 <sup>+1</sup></td>
-                                    <td class="CurrencyTD ">
-                                        <p class="Currency">Euro</p>
+                                    <td className="CarrierPrice">5 <sup>+1</sup></td>
+                                    <td className="CurrencyTD ">
+                                        <p className="Currency">Euro</p>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td class="CarrierPrice">9 <sup>+1</sup></td>
-                                    <td class="CurrencyTD">
-                                        <p class="Currency">Euro</p>
+                                    <td className="CarrierPrice">9 <sup>+1</sup></td>
+                                    <td className="CurrencyTD">
+                                        <p className="Currency">Euro</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="CarrierPrice">15</td>
-                                    <td class="CurrencyTD">
-                                        <p class="Currency">Euro</p>
+                                    <td className="CarrierPrice">15</td>
+                                    <td className="CurrencyTD">
+                                        <p className="Currency">Euro</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="CarrierPrice">20 </td>
-                                    <td class="CurrencyTD">
-                                        <p class="Currency">Euro</p>
+                                    <td className="CarrierPrice">20 </td>
+                                    <td className="CurrencyTD">
+                                        <p className="Currency">Euro</p>
                                     </td>
                                 </tr>
-                                <tr class="active">
-                                    <td class="CarrierPrice">30</td>
-                                    <td class="CurrencyTD">
-                                        <p class="Currency">Euro</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="CarrierPrice">50 </td>
-                                    <td class="CurrencyTD">
-                                        <p class="Currency">Euro</p>
+                                <tr className="active">
+                                    <td className="CarrierPrice">30</td>
+                                    <td className="CurrencyTD">
+                                        <p className="Currency">Euro</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="CarrierPrice">100</td>
-                                    <td class="CurrencyTD">
-                                        <p class="Currency">Euro</p>
+                                    <td className="CarrierPrice">50 </td>
+                                    <td className="CurrencyTD">
+                                        <p className="Currency">Euro</p>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td className="CarrierPrice">100</td>
+                                    <td className="CurrencyTD">
+                                        <p className="Currency">Euro</p>
+                                    </td>
+                                </tr>
+                            
+                              </tbody>
+
                             </table>
                         </div>
-                        <div class="col-10 ">
-                            <div class="rightCarrierCOL" data-aos="flip-right">
-                                <div class="row no-gutters">
-                                    <h4>TIM <span class="changePrice">30</span> EURO</h4>
+                        <div className="col-10 ">
+                            <div className="rightCarrierCOL" data-aos="flip-right">
+                                <div className="row no-gutters">
+                                    <h4>TIM <span className="changePrice">30</span> EURO</h4>
                                 </div>
-                                <div class="row no-gutters">
+                                <div className="row no-gutters">
                                     <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
                                 </div>
-                                <div class="row no-gutters">
-                                    <input type="text" class="displayedVal text-center" placeholder="_ _ _ _ _ _ _ _ _ "
+                                <div className="row no-gutters">
+                                    <input type="text" className="displayedVal text-center" placeholder="_ _ _ _ _ _ _ _ _ "
                                         disabled/>
                                 </div>
-                                <div class="row numpadCarrier">
-                                    <div class="col-8">
+                                <div className="row numpadCarrier">
+                                    <div className="col-8">
                                         <table>
-                                            <tr>
+                                          <tbody>
+                                          <tr>
                                                 <td id="num1">1</td>
                                                 <td id="num2">2</td>
                                                 <td id="num3">3</td>
@@ -1387,10 +1430,13 @@ class Dashboard extends React.Component {
                                                 <td id="numC">C</td>
 
                                             </tr>
+                                          </tbody>
+
                                         </table>
                                     </div>
-                                    <div class="col-4" style={{'padding-right': '30px'}}>
-                                        <table class="_modulePopUP__tableCarrier">
+                                    <div className="col-4" style={{'paddingRight': '30px'}}>
+                                        <table className="_modulePopUP__tableCarrier">
+                                        <tbody>
                                             <tr>
                                                 <td>
                                                     <h3>esegui</h3>
@@ -1398,17 +1444,18 @@ class Dashboard extends React.Component {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="stampCup">
+                                                <td className="stampCup">
                                                     <h3>stampa</h3>
                                                     <p>pre <br/> scontrino</p>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="CancelModule">
+                                                <td className="CancelModule">
                                                     <h3>anulla</h3>
                                                     <img src="img/close.svg" alt=""/>
                                                 </td>
                                             </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -1416,42 +1463,46 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="col-5 rightCol_Module">
-                    <div class="row no-gutters">
-                        <div class="_modulePopUP__cupon">
-                            <div class="_modulePopUP__cupon--header">
+                <div className="col-5 rightCol_Module">
+                    <div className="row no-gutters">
+                        <div className="_modulePopUP__cupon">
+                            <div className="_modulePopUP__cupon--header">
                                 <img src="img/print.svg" alt=""/>
                                 <h3>Stampa dello scontrino</h3>
                             </div>
-                            <div class="_modulePopUP__cupon--body ">
+                            <div className="_modulePopUP__cupon--body ">
                                 <img src="img/logoGray.svg" alt=""/>
                                 <h6>OTC srl</h6>
-                                <span class="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
+                                <span className="__cupon--body__address">Via Risorgimento n.50 - castel san pietro
                                     terme</span>
-                                <span class="__cupon--body__phone">234234234</span>
+                                <span className="__cupon--body__phone">234234234</span>
                                 <h6>Scontrino Verifica</h6>
-                                <h6>Prodotto: TIM <span class='changePrice'>30</span> EURO</h6>
-                                <div class="col-12 _modulePopUP__cupon--table">
+                                <h6>Prodotto: TIM <span className='changePrice'>30</span> EURO</h6>
+                                <div className="col-12 _modulePopUP__cupon--table">
                                     <table>
+                                    <tbody>
                                         <tr>
                                             <td>Numero di telefono</td>
                                         </tr>
                                         <tr>
-                                            <td class="phoneNum">239423242</td>
+                                            <td className="phoneNum">239423242</td>
                                         </tr>
+                                        </tbody>
                                     </table>
-                                    <table class="import-bottom">
+                                    <table className="import-bottom">
+                                    <tbody>
                                         <tr>
-                                            <td>Importo: <br/>€<span class="changePrice">30</span>
+                                            <td>Importo: <br/>€<span className="changePrice">30</span>
                                             </td>
                                         </tr>
+                                        </tbody>
                                     </table>
                                 </div>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-secondary"><img src="img/check-symbol.svg"/>
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-secondary"><img src="img/check-symbol.svg" alt=""/>
                                         <br/>
                                         Stampa</button>
-                                    <button type="button" class="btn btn-secondary"><img src="img/close.svg"/> <br/>
+                                    <button type="button" className="btn btn-secondary"><img src="img/close.svg" alt=""/> <br/>
                                         Anulla</button>
                                 </div>
                             </div>
@@ -1463,7 +1514,6 @@ class Dashboard extends React.Component {
     </div>
 
 
-   
       </div>
     );
   }

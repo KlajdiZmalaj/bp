@@ -77,8 +77,8 @@ class Header extends Component {
                 aria-expanded="false"
               >
                 {" "}
-                <img className="profile-img" alt="" src={images.mario} />
-                Mario Rossi
+                <img className="profile-img" alt="" src={images.mario} /> Mario
+                Rossi
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
                 <a className="dropdown-item" href="dashboard.html">

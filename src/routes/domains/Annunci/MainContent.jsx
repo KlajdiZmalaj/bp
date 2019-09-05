@@ -9,7 +9,7 @@ class MainContent extends React.Component {
         <div className="max-width row">
           <div className="col-6 col-md-3 order-1">
             <a href="/#" className="overview-btn">
-              <i className="far fa-tachometer"></i> Overview
+              <i className="far fa-tachometer"></i> Overview{" "}
               <i className="fas fa-chevron-up"></i>
             </a>
           </div>
@@ -76,7 +76,7 @@ class MainContent extends React.Component {
             </a>
           </div>
           <div className="col-6 col-lg-2 p-0 pl-2 pl-lg-2">
-            <a href="carica-conta.html">
+            <a href="#/carica-conto">
               <div className="azioni-tab azioni-tab2">
                 <i className="fas fa-dot-circle"></i>
                 <h2>carica conto</h2>
