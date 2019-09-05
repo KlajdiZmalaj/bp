@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="103.676" height="100.94" viewBox="0 0 103.676 100.94">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-2{fill:#1e87f0}.cls-3{fill:#8ca0b3}.cls-4{fill:#f0506e}.cls-5{filter:url(#Shape-2)}.cls-6{filter:url(#Shape)}
+        </style>
+        <filter id="Shape" width="103.676" height="96.838" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur" stdDeviation="15"/>
+            <feFlood flood-color="#1e87f0" flood-opacity=".2"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Shape-2" width="95.471" height="97.521" x="6.152" y="3.419" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur-2" stdDeviation="15"/>
+            <feFlood flood-color="#f0506e" flood-opacity=".2"/>
+            <feComposite in2="blur-2" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="dashboard-half" transform="translate(40.213 32.897)">
+        <path id="Shape-3" d="M13.427 0h-2.238A11.067 11.067 0 0 0 0 10.94h24.616A11.067 11.067 0 0 0 13.427 0z" class="cls-1" data-name="Shape" transform="translate(1.368 1.368)"/>
+        <g class="cls-6" transform="translate(-40.21 -32.9)">
+            <path id="Shape-4" d="M.556 6.838A.541.541 0 0 1 .348 6.8a.574.574 0 0 1-.307-.742A9.422 9.422 0 0 1 8.808 0a9.287 9.287 0 0 1 4.58 1.211.577.577 0 0 1 .217.775.548.548 0 0 1-.756.222A8.193 8.193 0 0 0 8.808 1.14a8.315 8.315 0 0 0-7.736 5.341.556.556 0 0 1-.516.357z" class="cls-2" data-name="Shape" transform="translate(45 37)"/>
+        </g>
+        <path id="Shape-5" d="M13.334 17.778a4.44 4.44 0 0 1-4.3-3.334H1.111A1.112 1.112 0 0 1 0 13.334a13.333 13.333 0 1 1 26.667 0 1.112 1.112 0 0 1-1.111 1.111h-7.924a4.44 4.44 0 0 1-4.298 3.333zm0-15.556a11.072 11.072 0 0 0-11.056 10H24.39a11.072 11.072 0 0 0-11.056-10z" class="cls-3" data-name="Shape"/>
+        <g class="cls-5" transform="translate(-40.21 -32.9)">
+            <path id="Shape-6" d="M1 7.176A2.126 2.126 0 0 1 .352 4.2C1.008 3.208 5.47 0 5.47 0s-.788 5.544-1.445 6.54A2.212 2.212 0 0 1 1 7.176z" class="cls-4" data-name="Shape" transform="translate(51.15 40.42)"/>
+        </g>
+    </g>
+</svg>

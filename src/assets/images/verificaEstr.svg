@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="62" viewBox="0 0 100 62">
+  <g id="verificaEstr" transform="translate(-223 -291)">
+    <text id="Overview" transform="translate(239.5 318)" fill="#32424e" font-size="16" font-family="Roboto-Regular, Roboto"><tspan x="0" y="0">VERIFICA</tspan><tspan x="0" y="21">ESTREMI</tspan></text>
+    <g id="Rectangle_30" data-name="Rectangle 30" transform="translate(223 291)" fill="none" stroke="#32424e" stroke-width="1">
+      <rect width="100" height="62" rx="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="99" height="61" rx="9.5" fill="none"/>
+    </g>
+  </g>
+</svg>
