@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import images from "themes/images";
 
-import { azioni } from "config";
+import { administrazioni } from "config";
 
 class Azioni extends Component {
   render() {
@@ -11,21 +11,22 @@ class Azioni extends Component {
         <div className="row max-width mt-3">
           <div className="col pl-3 p-lg-0">
             <a href="/#" className="overview-btn">
-              <img src={images.tickets} alt="ticket" /> Azioni
+              <img src={images.admAZZ} alt="imageAdm" /> Amministrazione
             </a>
           </div>
         </div>
         <hr className="overviw-line" />
+
         <div className="row max-width mt-2 azioni">
-          {azioni.map(item => {
+          {administrazioni.map(item => {
             return (
-              <div className="col-6 col-lg-2 p-0 pl-2 pl-lg-2" key={item.id}>
+              <div className="col-6 col-lg-2 p-0 pl-lg-2">
                 <a href={"#/" + item.link}>
                   <div
                     className={
-                      "azioni-tab azioni-tab" +
+                      "azioni-tab adm-tab" +
                       item.id +
-                      (active === item.link ? " active-tab" : "")
+                      (active === item.link ? " active-tab adm" : " adm")
                     }
                   >
                     <i className="fas fa-dot-circle"></i>
@@ -36,14 +37,7 @@ class Azioni extends Component {
             );
           })}
 
-          {/* <div className="col-6 col-lg-2 p-0 pl-lg-2">
-            <a href="#/dashboard">
-              <div className="azioni-tab azioni-tab5 active-tab">
-                <i className="fas fa-dot-circle"></i>
-                <h2>acquista</h2>
-              </div>
-            </a>
-          </div> */}
+          {/* <div className="col-lg-4"></div> */}
         </div>
       </React.Fragment>
     );

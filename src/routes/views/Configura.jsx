@@ -10,7 +10,7 @@ class Configura extends React.Component {
 
         <div className="container-fluid overview ">
           <Overview></Overview>
-          <Azioni></Azioni>
+          <Azioni active="configura"></Azioni>
           <div className="panels-container">
             <div className="sort-annunci max-width">
                 <h1 className="heading-tab mr-auto">Carica Conto</h1>

@@ -10,7 +10,7 @@ class UseCode extends React.Component {
 
         <div className="container-fluid overview ">
           <Overview></Overview>
-          <Azioni></Azioni>
+          <Azioni active="use-code"></Azioni>
           <div className="panels-container">
             <div className="sort-annunci max-width border-0 mb-0">
               <h1 className="heading-tab mx-auto mt-5 mb-0">

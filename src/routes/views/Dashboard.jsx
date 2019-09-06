@@ -1,9 +1,21 @@
 import React from "react";
 
 import { Header, Footer, Overview,Azioni } from "../../shared-components";
-
+// import {Service} from "../components/Services"
+import { Service } from "routes/components";
+import { acquista } from "config";
+import images from "../../themes/images";
 class Dashboard extends React.Component {
+    state={
+        serviceSelected:""
+    }
+    changeServce=(service)=>{
+        this.setState({serviceSelected:service});
+              }
   render() {
+
+      const {serviceSelected} = this.state;
+console.log("serviceSelected",serviceSelected);
     return (
       <div>
         <Header />
@@ -15,545 +27,45 @@ class Dashboard extends React.Component {
    {/* overview */}
     <div className="container-fluid overview ">
       <Overview></Overview>
-      <Azioni></Azioni>
+      <Azioni active="dashboard"></Azioni>
 
         <div className="panels-container">
             <h1 className="max-width heading-tab">Aquista</h1>
             <div className="row no-gutters max-width">
                 <div className="col-md-9 ">
-                    {/* TAB HEAD 1 */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab1">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>Prodotti postali</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* TAB LISTS 1 */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab1">
-                        <a data-toggle="tab" href="#service1">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>BOLLETTINI POSTALI</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service2">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>bollo auto</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service3">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>postepay</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                    </div>
-                    {/* TAB HEAD 2 */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab2">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>ricariche telefoniche</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* TAB LISTS 2 */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab2">
-                        <a data-toggle="tab" href="#service4">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>dirette</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service4">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>con codice pin</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
+                        {acquista.map((item,index)=> {
+                            return (
+                                <div key={index}>
+                                    <div className="panel-tab" data-toggle="collapse" data-target={"#tab"+item.id} >
+                                    <i className="fas fa-dot-circle"></i>
+                                    <h4>{item.name}</h4>
+                                    <img src="img/uparrow.svg" alt=""/>
+                                    </div>
 
-                    </div>
-                    {/* TAB HEAD 3 */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab3">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>ricariche telefoniche internazionali</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* TAB LISTS 3 */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab3">
-                        <a data-toggle="tab" href="#service5">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>phone all</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service5">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>telecom</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service5">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>best card</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service5">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>on net</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service5">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>lebora</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service5">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>idt</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-
-                    </div>
-                   {/* TAB HEAD 4 */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab4">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>carte di credito</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* TAB LISTS 4 */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab4">
-                        <a data-toggle="tab" href="#service6">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>ricarica bitkash</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service6">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>paysafe card</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service6">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>on shop</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                    </div>
-                    {/* TAB HEAD 5 */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab5">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>ricariche scommesse sportive</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* <!--TAB LISTS 5--> */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab5">
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>BWIN GIOCO DIGITALE</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>POKER STARS</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>WILLIAM HILL</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>stanleybet</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>BET FLAG</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>STAR CASINO</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service7">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>LOTTOMATICA</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                    </div>
-                    {/* <!--TAB HEAD 6--> */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab6">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>ricariche televisioni digitali</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* <!--TAB LISTS 6--> */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab6">
-                        <a data-toggle="tab" href="#service8">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>BWIN GIOCO DIGITALE</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                        <a data-toggle="tab" href="#service8">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>POKER STARS</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                    </div>
-                    {/* <!--TAB HEAD 7--> */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab7">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>gift card</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* <!--TAB LISTS 7--> */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab7">
-                        <a data-toggle="tab" href="#service9">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>Amazon</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                    </div>
-                    {/* <!--TAB HEAD 8--> */}
-                    <div className="panel-tab" data-toggle="collapse" data-target="#tab8">
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>crypto Valute</h4>
-                        <img src="img/uparrow.svg" alt=""/>
-                    </div>
-                    {/* <!--TAB LISTS 8--> */}
-                    <div className="nav nav-tabs panel-content collapse" id="tab8">
-                        <a data-toggle="tab" href="#service10">
-                            <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>crypto Valute</h4>
-                                <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
-                            </div>
-                        </a>
-                    </div>
+                                    <div className="nav nav-tabs panel-content collapse " id={"tab"+ item.id}>
+                                        {item.details.map((subitem,index)=>{
+                                            return (
+                                                <div data-toggle="tab" key={index} onClick={()=>this.changeServce(subitem.link)}>
+                                                <div className="panel-item">
+                                                    <i className="fas fa-dot-circle"></i>
+                                                    <h4>{subitem.name} </h4>
+                                                    <img className="rightTriangle" src="img/rightTriangle.svg" alt=""/>
+                                                </div>
+                                            </div>
+                                            ) 
+                                        })}
+                                    </div>
+                                </div>
+                            )
+                        })}
                 </div>
-                <div className="col-md-3 tab-content">
-                    {/* <!--first ITEMS  Bolletini postali services--> */}
-                    <div id="service1" className="tab-pane fade in active panel-services">
-                        <table className="bolletini bolletini1">
-                          <tbody>
-                          <tr>
-                                <td>
-                                    <img src="img/bill-dark.svg" alt=""/>
-                                    <p>Bollettini Bianchi</p>
-                                </td>
-                                <td>
-                                    <img src="img/bill-blue.svg" alt=""/>
-                                    <p>Bollettini Premarcati</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/bill-orange.svg" alt=""/>
-                                    <p>Bollettini RAV</p>
-                                </td>
-                                <td>
-                                    <img src="img/bill-green.svg" alt=""/>
-                                    <p>Bollettini <br/> MAV</p>
-                                </td>
-                            </tr>
-                          </tbody>
 
+                <Service serviceSelected = {serviceSelected}></Service>
 
-                        </table>
-                    </div>
-                    {/* <!--first ITEMS bollo auto services--> */}
-                    <div id="service2" className="tab-pane fade in  panel-services">
-                        <table className="bolletini bolletini2">
-                          <tbody>
-                          <tr>
-                                <td>
-                                    <img src="img/Car.svg" alt=""/>
-                                    <p>Bollo Auto</p>
-                                </td>
-                            </tr>
-                          </tbody>
-
-                        </table>
-                    </div>
-                    {/* <!-- first ITEMS postepay services--> */}
-                    <div id="service3" className="tab-pane fade in  panel-services">
-                        <table className="bolletini bolletini3">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/postpayimg.svg" alt=""/>
-                                    <p>post pay</p>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--SECOND ITEMS (dirette services)--> */}
-                    <div id="service4" className="tab-pane fade in  panel-services">
-                        <table className="carriers">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/TIM_logo_2016.svg" alt=""/>
-                                    <p>tim</p>
-                                </td>
-                                <td>
-                                    <img src="img/vodafone.svg" alt=""/>
-                                    <p>vodafone</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/wind-logo-svg-vector.svg" alt=""/>
-                                    <p>Bollettini rav</p>
-                                </td>
-                                <td>
-                                    <img src="img/three-logo.svg" alt=""/>
-                                    <p>tre</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/posteitalia.svg" alt=""/>
-                                    <p>poste mobile</p>
-                                </td>
-                                <td>
-                                    <img src="img/coop.svg" alt=""/>
-                                    <p>coop voce</p>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--THIRD ITEMS (phone,telecom,onnet libra,idt services)--> */}
-                    <div id="service5" className="tab-pane fade in  panel-services">
-                        <table className="phoneall">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>new colombus</p>
-                                    <h3>5<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <p>new colombus</p>
-                                    <h3>12<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>easy africa</p>
-                                    <h3>5<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <p>easy east europe</p>
-                                    <h3>5<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>easy south africa</p>
-                                    <h3>5<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--4th ITEMS (credit cards services)--> */}
-                    <div id="service6" className="tab-pane fade in  panel-services">
-                        <table className=" phoneall cardeCredite">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/paysafe.svg" alt=""/>
-                                    <h3>10<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/paysafe.svg" alt=""/>
-                                    <h3>25<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/paysafe.svg" alt=""/>
-                                    <h3>50<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/paysafe.svg" alt=""/>
-                                    <h3>100<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--5th ITEMS (scommesso sprotive services)--> */}
-                    <div id="service7" className="tab-pane fade in  panel-services">
-                        <table className=" phoneall cardeCredite">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/Stanleybet_logo_international.svg" alt=""/>
-                                    <h3>5<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/Stanleybet_logo_international.svg" alt=""/>
-                                    <h3>10<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/Stanleybet_logo_international.svg" alt=""/>
-                                    <h3>25<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/Stanleybet_logo_international.svg" alt=""/>
-                                    <h3>50<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/Stanleybet_logo_international.svg" alt=""/>
-                                    <h3>100<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--6th ITEMS (TVs services)--> */}
-                    <div id="service8" className="tab-pane fade in  panel-services">
-                        <table className=" phoneall cardeCredite">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/Sky_Italia_-_Logo_2018.svg" alt=""/>
-                                    <h3>15<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/Sky_Italia_-_Logo_2018.svg" alt=""/>
-                                    <h3>25<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/Sky_Italia_-_Logo_2018.svg" alt=""/>
-                                    <h3>50<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--7th ITEMS (gift card services)--> */}
-                    <div id="service9" className="tab-pane fade in  panel-services">
-                        <table className=" phoneall giftCards">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/Amazon_logo.svg" alt=""/>
-                                    <h3>10<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/Amazon_logo.svg" alt=""/>
-                                    <h3>25<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/Amazon_logo.svg" alt=""/>
-                                    <h3>50<sup>€</sup></h3>
-                                </td>
-                                <td>
-                                    <img src="img/Amazon_logo.svg" alt=""/>
-                                    <h3>100<sup>€</sup></h3>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* <!--8th ITEMS (crypto valute services)--> */}
-                    <div id="service10" className="tab-pane fade in  panel-services">
-                        <table className=" phoneall cryptoValute">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/bitcoinorange.svg" alt=""/>
-                                    <p>Bitcoin</p>
-                                </td>
-                                <td>
-                                    <img src="img/bitcoingreen.svg" alt=""/>
-                                    <p>Bitcoin cash</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/ethereum.svg" alt=""/>
-                                    <p>etherum </p>
-                                </td>
-                                <td>
-                                    <img src="img/riple.svg" alt=""/>
-                                    <p>ripple</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/litecoin.svg" alt=""/>
-                                    <p>litecoin </p>
-                                </td>
-                                <td>
-                                    <img src="img/dashcoin.svg" alt=""/>
-                                    <p>DASH <br/> DIGITAL CASH</p>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                   
-                    <div className="cancelMobile">
-                        <img src="img/cancelMob.svg" alt=""/>
-                    </div>
-                </div>
                 {/* <!--rigth block where is no selection--> */}
                 <div className="col-md-3 pl-3">
-                    <div className="nothinSelected">
-                        <img src="img/click.svg" alt=""/>
+                    <div className={"nothinSelected  " + (serviceSelected === "" ? "" : "d-none")}>
+                        <img src={images.click} alt=""/>
                     </div>
                 </div>
             </div>

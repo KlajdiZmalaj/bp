@@ -16,7 +16,7 @@ class Header extends Component {
         >
           <i className="fal fa-bars"></i>
         </button>
-        <a className="navbar-brand" href="dashboard.html">
+        <a className="navbar-brand" href="#/dashboard">
           <img src={images.logo} alt="" />
         </a>
 
@@ -81,10 +81,10 @@ class Header extends Component {
                 Rossi
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <a className="dropdown-item" href="dashboard.html">
+                <a className="dropdown-item" href="#/dashboard">
                   AGS
                 </a>
-                <a className="dropdown-item" href="admin-acc.html">
+                <a className="dropdown-item" href="#/admin-account">
                   ADM
                 </a>
               </div>

@@ -9,7 +9,7 @@ class Annunci extends React.Component {
         <Header />
         <div className="container-fluid overview ">
           <Overview></Overview>
-          <Azioni></Azioni>
+          <Azioni active="annunci"></Azioni>
 
           <div className="panels-container">
             <div className="sort-annunci max-width">

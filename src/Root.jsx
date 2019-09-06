@@ -7,7 +7,11 @@ import {
   CaricaConto,
   Configura,
   UseCode,
-  Transazioni
+  Transazioni,
+  AdminAccount,
+  AnnunciAdmin,
+  Operazioni,
+  Impostazioni
 } from "./routes";
 
 class Root extends React.Component {
@@ -21,8 +25,13 @@ class Root extends React.Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/carica-conto" component={CaricaConto} />
             <Route exact path="/configura" component={Configura} />
-            <Route exact path="/useCode" component={UseCode} />
+            <Route exact path="/use-code" component={UseCode} />
             <Route exact path="/transazioni" component={Transazioni} />
+
+            <Route exact path="/admin-account" component={AdminAccount} />
+            <Route exact path="/annunci-admin" component={AnnunciAdmin} />
+            <Route exact path="/operazioni" component={Operazioni} />
+            <Route exact path="/impostazioni" component={Impostazioni} />
           </Switch>
         </HashRouter>
       </React.Fragment>

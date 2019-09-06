@@ -10,7 +10,7 @@ class Transazioni extends React.Component {
 
         <div className="container-fluid overview ">
           <Overview></Overview>
-          <Azioni></Azioni>
+          <Azioni active="transazioni"></Azioni>
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
