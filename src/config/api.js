@@ -1,4 +1,4 @@
-const endpoint = "https://services-api.bpoint.store/api/services";
+const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
 
 window.apiUrl = apiUrl;
@@ -6,5 +6,7 @@ window.apiUrl = apiUrl;
 export default {
   endpoint,
   baseUrl: apiUrl,
-  headers: {}
+  headers: {
+    // "Content-Type": "application/json"
+  }
 };

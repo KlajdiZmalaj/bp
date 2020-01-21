@@ -5,9 +5,15 @@ import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 
 class Overview extends Component {
+
+componentDidMount(){
+  this.props.getServices()
+}
+
   render() {
-    const { showOverview, toggleOverview } = this.props;
+    const { showOverview, toggleOverview,services } = this.props;
     console.log("props", this.props, showOverview, toggleOverview);
+    console.log("servives from api",services);
     return (
       <React.Fragment>
         <div className="max-width row">
@@ -113,7 +119,8 @@ class Overview extends Component {
 // )(Overview);
 
 const mapsStateToProps = state => ({
-  showOverview: toggleOverviewSelector(state)
+  showOverview: toggleOverviewSelector(state),
+  services:state.services
 });
 
 export default connect(mapsStateToProps, MainActions)(Overview);

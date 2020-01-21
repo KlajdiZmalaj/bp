@@ -1,6 +1,6 @@
 import request from "utils/request";
 
-export const fetchLastMinuteOdds = () =>
-  request.get("todos").catch(err => {
+  export const fetchServices = () =>
+  request.get("/services").catch(err => {
     console.log("err", err);
   });

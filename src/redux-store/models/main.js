@@ -1,26 +1,20 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-  getLastMinuteOdds: ["id"],
-  setLastMinuteOdds: ["lastMinuteOdds"],
-  toggleOverview: ["showOverview"]
+  getServices: [],
+  setServices: ["services"],
 });
 
 export const MainTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
-  lastMinuteOdds: [],
-  showOverview: true
+  services: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_LAST_MINUTE_ODDS]: (state, { lastMinuteOdds }) => ({
+  [Types.SET_SERVICES]: (state, { services }) => ({
     ...state,
-    lastMinuteOdds
-  }),
-  [Types.TOGGLE_OVERVIEW]: (state, { showOverview }) => ({
-    ...state,
-    showOverview
+    services
   })
 });
