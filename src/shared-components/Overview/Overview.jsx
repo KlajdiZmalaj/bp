@@ -21,7 +21,7 @@ componentDidMount(){
             <a
               href="/#"
               className="overview-btn"
-              onClick={() => toggleOverview(!showOverview)}
+               onClick={() => toggleOverview(!showOverview)}
             >
               <i className="far fa-tachometer"></i> Overview{" "}
               <i
@@ -104,19 +104,6 @@ componentDidMount(){
   }
 }
 
-// export default connect(
-//   null,
-//   MainActions
-// )(Overview);
-
-// const mapsStateToProps = ({ main }) => ({
-//   showOverview: main.showOverview
-// });
-
-// export default connect(
-//   mapsStateToProps,
-//   { ...MainActions }
-// )(Overview);
 
 const mapsStateToProps = state => ({
   showOverview: toggleOverviewSelector(state),
