@@ -18,7 +18,6 @@ class Dashboard extends React.Component {
 console.log("serviceSelected",serviceSelected);
     return (
       <div>
-        <Header />
         <div className="container-fluid mobileNav-Content">
         <div className="row">
             <div className="col"></div>
@@ -26,7 +25,6 @@ console.log("serviceSelected",serviceSelected);
     </div>
    {/* overview */}
     <div className="container-fluid overview ">
-      <Overview></Overview>
       <Azioni active="dashboard"></Azioni>
 
         <div className="panels-container">
@@ -72,7 +70,6 @@ console.log("serviceSelected",serviceSelected);
         </div>
    
     </div>
-    <Footer />
     {/* <!--Chat icon botm right corner--> */}
     <div className="chatSticky">
         <img src="img/chatSticky.svg" alt=""/>

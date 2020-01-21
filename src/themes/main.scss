@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@font-face {
+  font-family: fontAw-300;
+  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw.php")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: fontAw-900;
+  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw900.php")
+    format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: fallback;
+}
+//  font-family: "Roboto", sans-serif;
+//  font-family: 'Rubik', sans-serif;
+
+/*VARIABLES */
+$main: #ed4c14;
+$second: #edeef0;
+$def: #ffffff;
+$inv: rgb(0, 0, 0);
+$font1: "Roboto", "sans-serif";
+$font2: "Rubik", "sans-serif";
+
+::selection {
+  background-color: $main;
+  color: $second;
+}
+body {
+  font-family: $font1;
+  background: $second;
+  padding-top: 67px;
+  padding-bottom: 57px;
+}
+.max-width {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+button,
+input,
+select,
+button:focus,
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+::-webkit-scrollbar-thumb {
+  background: $main;
+  transition: 0.3s;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+// Overview styles
+
+@import "../shared-components/Overview/Overview.styles.scss";
+
+// Header
+
+@import "../shared-components/Header/Header.styles.scss";
+
+//plugins
+@import "../css/btnTemplate";
+
+/*Navigation styles*/
+@import "navbar";
+
+/*dsahboard styles*/
+@import "../css-dashboard/dashboard";
+
+/*annunci styles*/
+@import "../css-annunci/css-annunci";
+
+/*configura styles*/
+@import "../css-configura/configura";
+
+/*transazioni styles*/
+@import "../css-trans/css-trans";
+
+/*adm styles*/
+@import "../css-admin/css-adm";
+
+/*tabs styles*/
+@import "tabs";
+
+/*panels styles*/
+@import "../css-panels/pannels";
+
+/*modules*/
+@import "../css-modules/modules";
+
+/*footer*/
+@import "footer";
+
+/*Media queries last*/
+@import "media";
+@import "media-footer";
+@import "../css-panels/media-panels";
+@import "../css-modules/media-modules";
+@import "../css-trans/media-trans";

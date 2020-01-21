@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Header, Footer, Overview, Azioni } from "../../shared-components";
+import { Azioni } from "../../shared-components";
 import images from "themes/images";
 class Annunci extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Azioni active="annunci"></Azioni>
 
           <div className="panels-container">
@@ -123,7 +121,6 @@ class Annunci extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

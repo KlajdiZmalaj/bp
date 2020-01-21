@@ -6,6 +6,7 @@ import { azioni } from "config";
 class Azioni extends Component {
   render() {
     const { active } = this.props;
+    
     return (
       <React.Fragment>
         <div className="row max-width mt-3">

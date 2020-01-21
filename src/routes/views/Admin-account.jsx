@@ -1,21 +1,14 @@
 import React from "react";
-
-import {
-  Header,
-  Footer,
-  Overview,
-  Amministrazione
-} from "../../shared-components";
 import images from "themes/images";
+import Amministrazione from '../../shared-components/Amministrazione/Amministrazione.jsx';
+
+
 class AdminAccount extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Amministrazione active="admin-account"></Amministrazione>
-
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
               <h1 className="heading-tab ">Gestione Account</h1>
@@ -66,7 +59,6 @@ class AdminAccount extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

@@ -1,19 +1,12 @@
 import React from "react";
 
-import {
-  Header,
-  Footer,
-  Overview,
-  Amministrazione
-} from "../../shared-components";
+import Amministrazione from '../../shared-components/Amministrazione/Amministrazione.jsx';
 import images from "themes/images";
 class AnnunciAdmin extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Amministrazione active="annunci-admin"></Amministrazione>
 
           <div className="panels-container">
@@ -128,7 +121,6 @@ class AnnunciAdmin extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

@@ -6,10 +6,8 @@ class Transazioni extends React.Component {
   render() {
     return (
       <div>
-        <Header />
 
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Azioni active="transazioni"></Azioni>
 
           <div className="panels-container">
@@ -72,7 +70,6 @@ class Transazioni extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
         {/* <!--Chat icon botm right corner--> */}
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />

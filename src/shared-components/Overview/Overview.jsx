@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 import { toggleOverviewSelector } from "selectors/main";
+import "./Overview.styles.scss";
 
 class Overview extends Component {
   render() {
@@ -17,17 +18,31 @@ class Overview extends Component {
               onClick={() => toggleOverview(!showOverview)}
             >
               <i className="far fa-tachometer"></i> Overview{" "}
-              <i className="fas fa-chevron-up"></i>
+              <i
+                className={
+                  "fas fa-chevron-up " + (showOverview ? "" : "rotating")
+                }
+              ></i>
             </a>
           </div>
-          <div className="col-12 col-md-6 order-3 order-md-2 p-0 px-md-3 overview-list">
+          <div
+            className={
+              "col-12 col-md-6 order-3 order-md-2 p-0 px-md-3 overview-list " +
+              (showOverview ? "" : "hideWig")
+            }
+          >
             <ul>
               <li> Today</li>
               <li> Month</li>
               <li> year</li>
             </ul>
           </div>
-          <div className="col-6 col-md-3 order-2 order-md-3 download-overview">
+          <div
+            className={
+              "col-6 col-md-3 order-2 order-md-3 download-overview " +
+              (showOverview ? "" : "hideWig")
+            }
+          >
             <div className="col p-0">
               <button>
                 <i className="fal fa-download"></i>
@@ -101,7 +116,4 @@ const mapsStateToProps = state => ({
   showOverview: toggleOverviewSelector(state)
 });
 
-export default connect(
-  mapsStateToProps,
-  MainActions
-)(Overview);
+export default connect(mapsStateToProps, MainActions)(Overview);

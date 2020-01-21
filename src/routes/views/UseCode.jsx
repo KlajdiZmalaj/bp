@@ -6,10 +6,7 @@ class UseCode extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Azioni active="use-code"></Azioni>
           <div className="panels-container">
             <div className="sort-annunci max-width border-0 mb-0">
@@ -41,7 +38,6 @@ class UseCode extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
         {/* <!--Chat icon botm right corner--> */}
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />

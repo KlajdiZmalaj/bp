@@ -1,9 +1,6 @@
 import React from "react";
 
 import {
-  Header,
-  Footer,
-  Overview,
   Amministrazione
 } from "../../shared-components";
 import images from "themes/images";
@@ -11,9 +8,7 @@ class Operazioni extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Amministrazione active="operazioni"></Amministrazione>
 
           <div className="panels-container">
@@ -38,7 +33,6 @@ class Operazioni extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

@@ -1,15 +1,13 @@
 import React from "react";
 
-import { Header, Footer, Overview, Azioni } from "../../shared-components";
+import { Azioni } from "../../shared-components";
 
 class Configura extends React.Component {
   render() {
     return (
       <div>
-        <Header />
 
         <div className="container-fluid overview ">
-          <Overview></Overview>
           <Azioni active="configura"></Azioni>
           <div className="panels-container">
             <div className="sort-annunci max-width">
@@ -157,7 +155,6 @@ class Configura extends React.Component {
             </div>
         </div>
         </div>
-        <Footer />
         {/* <!--Chat icon botm right corner--> */}
     <div className="chatSticky">
         <img src="img/chatSticky.svg" alt=""/>

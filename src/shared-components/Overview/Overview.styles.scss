@@ -1,0 +1,24 @@
+.rotating {
+    transform: rotate(180deg)!important;
+    transition: 0.5s ease-in-out;
+}
+
+.overview-btn i:nth-child(2){
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out
+}
+
+.hideWig {
+    transition: 0.5s ease-in-out;
+}
+
+.panel-tab[aria-expanded=true] {
+    img {
+        transform: rotate(0deg);
+        transition: 0.5s ease-in-out;
+    }
+}
+
+.max-width{
+    margin: 20px auto 0;
+}

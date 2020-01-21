@@ -1,4 +1,4 @@
-const endpoint = "https://jsonplaceholder.typicode.com";
+const endpoint = "https://services-api.bpoint.store/api/services";
 const apiUrl = `${endpoint}`;
 
 window.apiUrl = apiUrl;

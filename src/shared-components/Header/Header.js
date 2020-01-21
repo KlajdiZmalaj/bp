@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import images from "themes/images";
+import './Header.styles.scss';
 
 class Header extends Component {
   render() {
@@ -61,7 +62,7 @@ class Header extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#">
+              <a className="nav-link" href="#/admin-account">
                 <i className="fas fa-cog"></i>
               </a>
             </li>
