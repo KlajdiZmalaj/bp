@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
                             <div
                               data-toggle="tab"
                               key={indexx}
-                              onClick={() => this.changeServce(subitem)}
+                              onClick={() => this.changeServce(service)}
                             >
                               <div className="panel-item">
                                 <i className="fas fa-dot-circle"></i>
