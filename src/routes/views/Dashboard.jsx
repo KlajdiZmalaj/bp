@@ -18,11 +18,10 @@ class Dashboard extends React.Component {
     this.setState({ serviceSelected: service });
   };
   render() {
-
     const { serviceSelected } = this.state;
     const { services } = this.props;
     console.log("serviceSelected", serviceSelected);
-    
+
     console.log("services", services);
 
     return (
@@ -40,6 +39,28 @@ class Dashboard extends React.Component {
             <h1 className="max-width heading-tab">Aquista</h1>
             <div className="row no-gutters max-width">
               <div className="col-md-9 ">
+                {Object.keys(services).map((item, index) => {
+                  const serv = services[item];
+                  return (
+                    <div key={index}>
+                     <label className="panel-item">{item}</label> 
+                      {Object.keys(serv).map((service, indexx) => {
+                        return (<div key={indexx}>
+                            {service}
+                            <ul>
+                                {
+                                    serv[service].map((subitem,indexItem)=>{
+                                        return (
+                                        <li key={indexItem}>{subitem.name}</li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                            </div>);
+                      })}
+                    </div>
+                  );
+                })}
                 {acquista.map((item, index) => {
                   return (
                     <div key={index}>
