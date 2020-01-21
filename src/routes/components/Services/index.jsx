@@ -14,6 +14,13 @@ const arrayServices = servicesItems[serviceSelected] // beji map arrayServices
         }
       >
         {/* <!--first ITEMS  Bolletini postali services--> */}
+        {
+          arrayServices && arrayServices.map((item,index)=>{
+            return (
+            <div>{item.name}</div>
+            )
+          })
+        }
         <div
           id="service1"
           className={
