@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Header, Footer, Overview,Azioni } from "../../shared-components";
-// import {Service} from "../components/Services"
+// import {Service} from "../components/Services";
 import { Service } from "routes/components";
 import { acquista } from "config";
 import images from "../../themes/images";
@@ -12,10 +12,10 @@ class Dashboard extends React.Component {
     changeServce=(service)=>{
         this.setState({serviceSelected:service});
               }
+              
   render() {
-
-      const {serviceSelected} = this.state;
-console.log("serviceSelected",serviceSelected);
+        const {serviceSelected} = this.state;
+        console.log("serviceSelected",serviceSelected);
     return (
       <div>
         <div className="container-fluid mobileNav-Content">
@@ -82,43 +82,43 @@ console.log("serviceSelected",serviceSelected);
                     <div className="row no-gutters">
                         <div className="col-12 col-lg-6">
                             <table className="_modulePopUP__table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div><img src="img/bill-dark.svg" alt=""/>
-                                            <p>Bollettini <br/> Bianchi</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            Servizio attivo tutti i giorni <br/>ferali dalle 8,30 alle 19,30
-                                        </div>
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div><img src="img/bill-dark.svg" alt=""/>
+                                                <p>Bollettini <br/> Bianchi</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                Servizio attivo tutti i giorni <br/>ferali dalle 8,30 alle 19,30
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div className="col-12 col-lg-6">
                             <table className="_modulePopUP__table2">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h3>esegui</h3>
-                                        <img src="img/check-symbol.svg" alt=""/>
-                                    </td>
-                                    <td>
-                                        <h3>esegui</h3>
-                                        <p>pagemento <br/> diferito</p>
-                                    </td>
-                                    <td className="stampCup">
-                                        <h3>stampa</h3>
-                                        <p>pre <br/> scontrino</p>
-                                    </td>
-                                    <td className="CancelModule">
-                                        <h3>anulla</h3>
-                                        <img src="img/close.svg" alt=""/>
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h3>esegui</h3>
+                                            <img src="img/check-symbol.svg" alt=""/>
+                                        </td>
+                                        <td>
+                                            <h3>esegui</h3>
+                                            <p>pagemento <br/> diferito</p>
+                                        </td>
+                                        <td className="stampCup">
+                                            <h3>stampa</h3>
+                                            <p>pre <br/> scontrino</p>
+                                        </td>
+                                        <td className="CancelModule">
+                                            <h3>anulla</h3>
+                                            <img src="img/close.svg" alt=""/>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -520,7 +520,6 @@ console.log("serviceSelected",serviceSelected);
                             <div className="euroboll ">
                                 <span>RIDUZIONE</span>
                                 <input type="text" style={{width: '40px'}} />
-
                             </div>
                         </div>
                         <div className="col-md-4">
