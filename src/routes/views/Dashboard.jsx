@@ -43,49 +43,30 @@ class Dashboard extends React.Component {
                   const serv = services[item];
                   return (
                     <div key={index}>
-                      <label className="panel-item">{item}</label>
-                      {Object.keys(serv).map((service, indexx) => {
-                        return (
-                          <div key={indexx}>
-                            {service}
-                            <ul>
-                              {serv[service].map((subitem, indexItem) => {
-                                return <li key={indexItem}>{subitem.name}</li>;
-                              })}
-                            </ul>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-                {acquista.map((item, index) => {
-                  return (
-                    <div key={index}>
                       <div
                         className="panel-tab"
                         data-toggle="collapse"
-                        data-target={"#tab" + item.id}
+                        data-target={"#tab" + item}
                       >
                         <i className="fas fa-dot-circle"></i>
-                        <h4>{item.name}</h4>
+                        <h4>{item}</h4>
                         <img src="img/uparrow.svg" alt="" />
                       </div>
 
                       <div
                         className="nav nav-tabs panel-content collapse "
-                        id={"tab" + item.id}
+                        id={"tab" + item}
                       >
-                        {item.details.map((subitem, index) => {
+                        {Object.keys(serv).map((service, indexx) => {
                           return (
                             <div
                               data-toggle="tab"
-                              key={index}
-                              onClick={() => this.changeServce(subitem.link)}
+                              key={indexx}
+                              onClick={() => this.changeServce(subitem)}
                             >
                               <div className="panel-item">
                                 <i className="fas fa-dot-circle"></i>
-                                <h4>{subitem.name} </h4>
+                                <h4>{service}</h4>
                                 <img
                                   className="rightTriangle"
                                   src="img/rightTriangle.svg"
