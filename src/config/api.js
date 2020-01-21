@@ -7,7 +7,7 @@ export default {
   endpoint,
   baseUrl: apiUrl,
   headers: {
-    "Content-Type": "application/json",
+    //  "Content-Type": "application/json",
     // "Access-Control-Allow-Origin": "*"
   }
 };

@@ -6,9 +6,6 @@ import "./Overview.styles.scss";
 
 class Overview extends Component {
 
-componentDidMount(){
-  this.props.getServices()
-}
 
   render() {
     const { showOverview, toggleOverview,services } = this.props;
