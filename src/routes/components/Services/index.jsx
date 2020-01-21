@@ -6,7 +6,7 @@ class Service extends React.Component {
     const { serviceSelected, servicesItems } = this.props;
 console.log("servicesItems",servicesItems[serviceSelected]);
 const arrayServices = servicesItems[serviceSelected] // beji map arrayServices
-//beji map 
+
     return (
       <div
         className={
