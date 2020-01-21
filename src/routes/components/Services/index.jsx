@@ -4,9 +4,9 @@ import images from "themes/images";
 class Service extends React.Component {
   render() {
     const { serviceSelected, servicesItems } = this.props;
-console.log("servicesItems",servicesItems[serviceSelected]);
-const arrayServices = servicesItems[serviceSelected] // beji map arrayServices
-//beji map 
+    console.log("servicesItems", servicesItems[serviceSelected]);
+    const arrayServices = servicesItems[serviceSelected];
+    //beji map
     return (
       <div
         className={
@@ -14,40 +14,45 @@ const arrayServices = servicesItems[serviceSelected] // beji map arrayServices
         }
       >
         {/* <!--first ITEMS  Bolletini postali services--> */}
-        <div
-          id="service1"
-          className={
-            "tab-pane fade in panel-services " +
-            (serviceSelected === "#service1" ? "active show" : "")
-          }
-        >
-          <table className="bolletini bolletini1">
-            <tbody>
-              <tr>
-                <td>
-                  <img src={images.billDark} alt="" />
-                  <p>Bollettini Bianchi</p>
-                </td>
-                <td>
-                  <img src={images.billBlue} alt="" />
-                  <p>Bollettini Premarcati</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={images.billOrange} alt="" />
-                  <p>Bollettini RAV</p>
-                </td>
-                <td>
-                  <img src={images.billGreen} alt="" />
-                  <p>
-                    Bollettini <br /> MAV
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {arrayServices.map((item, index) => {
+          return (
+            <div
+              key={index}
+              id={item}
+              className={
+                "tab-pane fade in panel-services " +
+                (serviceSelected === { item } ? "active show" : "")
+              }
+            >
+              <table className="bolletini bolletini1">
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src={images.billDark} alt="" />
+                      <p>Bollettini Bianchi</p>
+                    </td>
+                    <td>
+                      <img src={images.billBlue} alt="" />
+                      <p>Bollettini Premarcati</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src={images.billOrange} alt="" />
+                      <p>Bollettini RAV</p>
+                    </td>
+                    <td>
+                      <img src={images.billGreen} alt="" />
+                      <p>
+                        Bollettini <br /> MAV
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
         {/* <!--first ITEMS bollo auto services--> */}
         <div
           id="service2"

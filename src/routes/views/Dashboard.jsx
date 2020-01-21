@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
                         className="panel-tab"
                         data-toggle="collapse"
                         data-target={"#tab" + item}
-                        onClick={()=>this.changeKeyService(item)}
+                        onClick={() => this.changeKeyService(item)}
                       >
                         <i className="fas fa-dot-circle"></i>
                         <h4>{item}</h4>
@@ -90,12 +90,13 @@ class Dashboard extends React.Component {
                 })}
               </div>
               {/* serviceSelected, keyService  */}
-              {
-                  serviceSelected !=="" && (
-                    <Service serviceSelected={serviceSelected} servicesItems={services[keyService]}></Service>
-                  )
-              }
-             
+              {serviceSelected !== "" && (
+                <Service
+                  serviceSelected={serviceSelected}
+                  servicesItems={services[keyService]}
+                ></Service>
+              )}
+
               {/* <!--rigth block where is no selection--> */}
               <div className="col-md-3 pl-3">
                 <div
