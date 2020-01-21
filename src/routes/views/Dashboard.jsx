@@ -12,17 +12,24 @@ class Dashboard extends React.Component {
   }
 
   state = {
-    serviceSelected: ""
+    serviceSelected: "",
+    keyService: ""
   };
+
   changeServce = service => {
     this.setState({ serviceSelected: service });
   };
-  render() {
-    const { serviceSelected } = this.state;
-    const { services } = this.props;
-    console.log("serviceSelected", serviceSelected);
 
-    console.log("services", services);
+  changeKeyService = service => {
+    this.setState({ keyService: service });
+  };
+
+  render() {
+    const { serviceSelected, keyService } = this.state;
+    const { services } = this.props;
+    console.log("serviceSelected", keyService, serviceSelected);
+
+    // console.log("services", services);
 
     return (
       <div>
@@ -47,6 +54,7 @@ class Dashboard extends React.Component {
                         className="panel-tab"
                         data-toggle="collapse"
                         data-target={"#tab" + item}
+                        onClick={()=>this.changeKeyService(item)}
                       >
                         <i className="fas fa-dot-circle"></i>
                         <h4>{item}</h4>
@@ -62,7 +70,7 @@ class Dashboard extends React.Component {
                             <div
                               data-toggle="tab"
                               key={indexx}
-                              onClick={() => this.changeServce(subitem)}
+                              onClick={() => this.changeServce(service)}
                             >
                               <div className="panel-item">
                                 <i className="fas fa-dot-circle"></i>
@@ -81,9 +89,13 @@ class Dashboard extends React.Component {
                   );
                 })}
               </div>
-
-              <Service serviceSelected={serviceSelected}></Service>
-
+              {/* serviceSelected, keyService  */}
+              {
+                  serviceSelected !=="" && (
+                    <Service serviceSelected={serviceSelected} servicesItems={services[keyService]}></Service>
+                  )
+              }
+             
               {/* <!--rigth block where is no selection--> */}
               <div className="col-md-3 pl-3">
                 <div
