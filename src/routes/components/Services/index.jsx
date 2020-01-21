@@ -3,8 +3,10 @@ import React from "react";
 import images from "themes/images";
 class Service extends React.Component {
   render() {
-    const { serviceSelected } = this.props;
-
+    const { serviceSelected, servicesItems } = this.props;
+console.log("servicesItems",servicesItems[serviceSelected]);
+const arrayServices = servicesItems[serviceSelected] // beji map arrayServices
+//beji map 
     return (
       <div
         className={
