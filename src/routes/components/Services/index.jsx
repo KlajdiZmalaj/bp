@@ -5,8 +5,8 @@ class Service extends React.Component {
   render() {
     const { serviceSelected, servicesItems } = this.props;
     console.log("servicesItems", servicesItems[serviceSelected]);
-    const arrayServices = servicesItems[serviceSelected];
-    //beji map
+    const arrayServices = servicesItems[serviceSelected]; // beji map arrayServices
+
     return (
       <div
         className={
@@ -14,45 +14,30 @@ class Service extends React.Component {
         }
       >
         {/* <!--first ITEMS  Bolletini postali services--> */}
-        {arrayServices.map((item, index) => {
-          return (
-            <div
-              key={index}
-              id={item}
-              className={
-                "tab-pane fade in panel-services " +
-                (serviceSelected === { item } ? "active show" : "")
-              }
-            >
-              <table className="bolletini bolletini1">
-                <tbody>
-                  <tr>
-                    <td>
-                      <img src={images.billDark} alt="" />
-                      <p>Bollettini Bianchi</p>
-                    </td>
-                    <td>
-                      <img src={images.billBlue} alt="" />
-                      <p>Bollettini Premarcati</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src={images.billOrange} alt="" />
-                      <p>Bollettini RAV</p>
-                    </td>
-                    <td>
-                      <img src={images.billGreen} alt="" />
-                      <p>
-                        Bollettini <br /> MAV
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          );
-        })}
+        {arrayServices &&
+          arrayServices.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className={
+                  "tab-pane fade in panel-services " +
+                  (serviceSelected !== "#service1" ? "active show" : "")
+                }
+              >
+                <table className="bolletini bolletini1">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img src={images.billDark} alt="" />
+                        <p>{item.name}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            );
+          })}
+
         {/* <!--first ITEMS bollo auto services--> */}
         <div
           id="service2"

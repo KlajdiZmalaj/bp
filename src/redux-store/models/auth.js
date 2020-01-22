@@ -3,7 +3,8 @@ import { createActions, createReducer } from "reduxsauce";
 const { Types, Creators } = createActions({
   signInByEmail: ["email", "password"],
   authSuccess: ["user"],
-  authFailure: ["error"]
+  authFailure: ["error"],
+  logOut: []
 });
 
 export const AuthTypes = Types;
