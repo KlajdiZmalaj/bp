@@ -9,6 +9,6 @@ export const fetchLogin = (email, password) =>
     .catch(error => ({ error }));
 
 export const logoutApi = () =>
-  request.post(`/backend/api/user/logout`).catch(err => {
+  request.post(`/users/logout`).catch(err => {
     console.log("err", err);
   });

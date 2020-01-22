@@ -27,6 +27,7 @@ class Header extends Component {
     let isLogged = false;
     const { accountInfo } = this.props;
     console.log("accountInfo", accountInfo);
+    console.log("this.props",this.props)
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }
@@ -86,7 +87,7 @@ class Header extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#">
+              <a className="nav-link" href="#/messages">
                 <i className="fas fa-envelope"></i>
               </a>
             </li>
@@ -144,7 +145,7 @@ class Header extends Component {
                   <a className="dropdown-item" href="#/admin-account">
                     ADM
                   </a>
-                  <button className="dropdown-item" onClick={() => this.logOut}>
+                  <button className="dropdown-item" onClick={ this.props.logOut}>
                     LogOut
                   </button>
                 </div>

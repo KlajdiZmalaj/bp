@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
+import AuthActions from "redux-store/models/auth";
 import { Header, Footer, Overview, Azioni } from "../../shared-components";
 import { Service } from "routes/components";
 import { acquista } from "config";
@@ -879,7 +880,8 @@ class Dashboard extends React.Component {
 }
 
 const mapsStateToProps = state => ({
-  services: state.main.services
+  services: state.main.services,
+  accountInfo:state.auth.accountInfo
 });
 
-export default connect(mapsStateToProps, MainActions)(Dashboard);
+export default connect(mapsStateToProps, {...MainActions, ...AuthActions})(Dashboard);

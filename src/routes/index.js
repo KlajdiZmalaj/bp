@@ -4,6 +4,8 @@ export { default as CaricaConto } from "./views/Carica-conto";
 export { default as Configura } from "./views/Configura";
 export { default as UseCode } from "./views/UseCode";
 export { default as Transazioni } from "./views/Transazioni";
+export { default as Messages } from "./views/Messages";
+
 
 /*** as Admin ***/
 

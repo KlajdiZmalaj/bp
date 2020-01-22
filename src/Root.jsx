@@ -17,7 +17,8 @@ import {
   AdminAccount,
   AnnunciAdmin,
   Operazioni,
-  Impostazioni
+  Impostazioni,
+  Messages
 } from "./routes";
 
 class Root extends React.Component {
@@ -40,6 +41,7 @@ class Root extends React.Component {
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/annunci" />} />
             <Route exact path="/annunci" component={Annunci} />
+            <Route exact path="/messages" component={Messages} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/carica-conto" component={CaricaConto} />
             <Route exact path="/configura" component={Configura} />

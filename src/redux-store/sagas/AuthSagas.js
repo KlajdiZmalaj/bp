@@ -1,9 +1,6 @@
 import { put, call } from "redux-saga/effects";
-
 import AuthActions from "../models/auth";
-
-import { fetchLogin,fetchAccountInfo } from "services/auth";
-
+import { fetchLogin,logoutApi,fetchAccountInfo } from "services/auth";
 
 
 export function* signInByEmail(credencials) {
@@ -28,8 +25,9 @@ export function* getAccountInfo() {
 }
 
 export function* logOut() {
-  // const response = yield call(logoutApi);
-  // console.log("response", response);
-  // localStorage.setItem("accountData", null);
-  // yield put(AuthActions.setAccountInfo({}));
+  console.log("logoutttttttt")
+   const response = yield call(logoutApi);
+   console.log("response", response);
+   localStorage.setItem("accountData", null);
+   yield put(AuthActions.setAccountInfo({}));
 }
