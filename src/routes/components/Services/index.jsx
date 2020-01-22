@@ -23,6 +23,17 @@ class Service extends React.Component {
     });
   };
 
+  state = {
+    numero_conto_corrente: "",
+    importo: "",
+    intestato_a: "",
+    causale: "",
+    eseguito_da: "",
+    via_piazza: "",
+    citta: "",
+    provincia: ""
+  };
+
   render() {
     const { serviceSelected, servicesItems } = this.props;
     console.log("servicesItems", servicesItems[serviceSelected]);
@@ -481,12 +492,13 @@ class Service extends React.Component {
                     <div className="col-12 col-lg-7">
                       <div className="euroboll">
                         <img src="img/euro.svg" alt="" />{" "}
-                        <span>sul C/C n.</span> <input type="text" />
+                        <span>sul C/C n.</span>{" "}
+                        <input type="text" id="numero_conto_corrente" />
                       </div>
                     </div>
                     <div className="col-12 col-lg-5 mt-2 mt-lg-0">
                       <div className="euroboll">
-                        <span>di Euro</span> <input type="text" />
+                        <span>di Euro</span> <input type="text" id="importo" />
                       </div>
                     </div>
 
@@ -497,7 +509,11 @@ class Service extends React.Component {
                     </div>
                     <div className="col-9 ">
                       <div className="euroboll">
-                        <input className="py-4 pl-2 mt-2" type="text" />
+                        <input
+                          className="py-4 pl-2 mt-2"
+                          type="text"
+                          id="intestato_a"
+                        />
                       </div>
                     </div>
 
@@ -508,7 +524,11 @@ class Service extends React.Component {
                     </div>
                     <div className="col-9 ">
                       <div className="euroboll">
-                        <input className="py-4 pl-2 mt-3" type="text" />
+                        <input
+                          className="py-4 pl-2 mt-3"
+                          type="text"
+                          id="causale"
+                        />
                       </div>
                     </div>
 
@@ -519,7 +539,11 @@ class Service extends React.Component {
                     </div>
                     <div className="col-9 ">
                       <div className="euroboll">
-                        <input className="py-1 pl-2 mt-3" type="text" />
+                        <input
+                          className="py-1 pl-2 mt-3"
+                          type="text"
+                          id="eseguito_da"
+                        />
                       </div>
                     </div>
 
@@ -530,17 +554,29 @@ class Service extends React.Component {
                     </div>
                     <div className="col-9">
                       <div className="euroboll">
-                        <input className="py-1 pl-2 mt-3 mb-3" type="text" />
+                        <input
+                          className="py-1 pl-2 mt-3 mb-3"
+                          type="text"
+                          id="via_piazza"
+                        />
                       </div>
                     </div>
                     <div className="col-12">
                       <div className="euroboll">
-                        <input className="py-1 pl-2 mt-3 mb-3" type="text" />
+                        <input
+                          className="py-1 pl-2 mt-3 mb-3"
+                          type="text"
+                          id="citta"
+                        />
                       </div>
                     </div>
                     <div className="col-12">
                       <div className="euroboll">
-                        <input className="py-1 pl-2 mt-3 mb-3" type="text" />
+                        <input
+                          className="py-1 pl-2 mt-3 mb-3"
+                          type="text"
+                          id="provincia"
+                        />
                       </div>
                     </div>
                     <div className="col-12">
