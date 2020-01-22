@@ -3,7 +3,7 @@ import request from "utils/request";
 export const fetchLogin = (email, password) =>
   request
     .post(`/users/login`, {
-      ...{ email: email },
+      ...{ username: email },
       ...{ password: password }
     })
     .catch(error => ({ error }));

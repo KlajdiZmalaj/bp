@@ -1,4 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import {
+  AuthActions,
+  MainActions
+} from "redux-store/models";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import {
@@ -15,6 +21,18 @@ import {
 } from "./routes";
 
 class Root extends React.Component {
+  componentDidMount() {
+    this.getStoredData();
+  }
+
+  getStoredData = () => {
+    const accountData = localStorage.getItem("accountData");
+    const data = JSON.parse(accountData);
+    if (data) {
+      this.props.setAccountInfo(data);
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -39,4 +57,14 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+
+
+
+const mapsStateToProps = state => ({
+  accountInfo: state.auth.accountInfo
+});
+
+export default connect(mapsStateToProps, {
+  ...AuthActions,
+  ...MainActions,
+})(Root);

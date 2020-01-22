@@ -24,7 +24,12 @@ class Header extends Component {
   };
 
   render() {
-    const isLogged = false;
+    let isLogged = false;
+    const { accountInfo } = this.props;
+    console.log("accountInfo", accountInfo);
+    if (Object.keys(accountInfo).length > 0) {
+      isLogged = true;
+    }
     return (
       <nav className="navbar navbar-expand-md fixed-top navbar-light">
         <button
@@ -44,11 +49,14 @@ class Header extends Component {
 
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li className="nav-item ">
-              <a className="nav-link credito-nav" href="/#">
-                Credito <span>2,400$</span>
-              </a>
-            </li>
+            {isLogged && (
+              <li className="nav-item ">
+                <a className="nav-link credito-nav" href="/#">
+                  Credito <span>{accountInfo.profile.wallet}$</span>
+                </a>
+              </li>
+            )}
+
             <li className="nav-item active">
               <form action="#">
                 <input
@@ -126,8 +134,8 @@ class Header extends Component {
                   aria-expanded="false"
                 >
                   {" "}
-                  <img className="profile-img" alt="" src={images.mario} />{" "}
-                  Mario Rossi
+                  <img className="profile-img" alt="" src={images.mario} />
+                  {accountInfo.profile.name}
                 </a>
                 <div className="dropdown-menu" aria-labelledby="dropdownId">
                   <a className="dropdown-item" href="#/dashboard">
@@ -136,7 +144,9 @@ class Header extends Component {
                   <a className="dropdown-item" href="#/admin-account">
                     ADM
                   </a>
-                  <button className="dropdown-item">LogOut</button>
+                  <button className="dropdown-item" onClick={() => this.logOut}>
+                    LogOut
+                  </button>
                 </div>
               </li>
             </ul>
@@ -152,6 +162,8 @@ class Header extends Component {
   }
 }
 
-const mapsStateToProps = state => ({});
+const mapsStateToProps = state => ({
+  accountInfo: state.auth.accountInfo
+});
 
 export default connect(mapsStateToProps, AuthActions)(Header);
