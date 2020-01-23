@@ -24,10 +24,8 @@ export function* signInByEmail(credencials) {
 export function* getAccountInfo() {}
 
 export function* logOut() {
-  // console.log("logoutttttttt");
-
   const response = yield call(logoutApi);
-  console.log("response", response, response.data);
+
   if (response) {
     localStorage.setItem("accountData", null);
     yield put(AuthActions.setAccountInfo({}));
@@ -52,8 +50,14 @@ export function* getBolletiniBianchi(params) {
     params.provincia
   );
   if (response) {
+    console.log("response", response);
     if (response.data) {
       yield put(AuthActions.setBolletiniBianchi(response.data));
+    } else if (response.error) {
+      console.log("errorrrrrrrrrr", response.error.response.data);
+      yield put(AuthActions.setBolletiniBianchi(response.error.response.data));
+      // yield delay(3000);
+      // yield put(AuthActions.setInfo({}));
     }
   }
 }

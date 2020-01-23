@@ -26,8 +26,7 @@ class Header extends Component {
   render() {
     let isLogged = false;
     const { accountInfo } = this.props;
-    console.log("accountInfo", accountInfo);
-    console.log("this.props", this.props);
+
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }

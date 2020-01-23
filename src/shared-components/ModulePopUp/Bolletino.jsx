@@ -40,6 +40,7 @@ class Bolletino extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { bolletiniBianchi } = this.props;
 
     const formItemLayout = {
       labelCol: {
@@ -51,6 +52,8 @@ class Bolletino extends React.Component {
         sm: { span: 16 }
       }
     };
+
+    console.log("bolletiniBianchi", bolletiniBianchi);
 
     return (
       <div className="bolletino">
@@ -366,7 +369,9 @@ class Bolletino extends React.Component {
 
 const CenterAccountMenuu = Form.create({ name: "bolletino" })(Bolletino);
 
-const mapsStateToProps = ({ auth }) => ({});
+const mapsStateToProps = state => ({
+  bolletiniBianchi: state.auth.bolletiniBianchi
+});
 
 export default connect(mapsStateToProps, { ...AuthActions })(
   CenterAccountMenuu

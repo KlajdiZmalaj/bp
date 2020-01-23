@@ -31,7 +31,7 @@ const INITIAL_STATE = {
   loading: false,
   error: null,
   accountInfo: {},
-  bolletiniBianchi: null,
+  bolletiniBianchi: {},
   service_id: null
 };
 
