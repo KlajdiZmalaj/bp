@@ -18,14 +18,13 @@ class Service extends React.Component {
   };
 
   selectService = id => {
-    console.log("service_id", id);
     this.props.setServiceId(id);
     this.props.togglePopUp(true);
   };
 
   render() {
     const { serviceSelected, servicesItems } = this.props;
-    console.log("servicesItems", servicesItems[serviceSelected], servicesItems);
+
     const arrayServices = servicesItems[serviceSelected];
 
     return (
