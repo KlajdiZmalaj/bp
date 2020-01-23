@@ -1,0 +1,64 @@
+.accountInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.leftMenuAcc {
+  position: relative;
+  background-color: #d4d4d4;
+  width: 100%;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  border-bottom: 1px solid #adadad;
+}
+
+.leftMenuAcc > div {
+  border-right: 1px solid #adadad;
+  padding: 15px;
+}
+
+.contentAcc {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background: #edeef0;
+  padding: 15px;
+  -webkit-box-shadow: inset -2px 13px 60px -31px black;
+          box-shadow: inset -2px 13px 60px -31px black;
+}
+
+.contentAcc .changePassword {
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.contentAcc .changePassword h2 {
+  color: #ed4c14;
+  font-weight: 300;
+  text-align: center;
+}
+
+.ant-col {
+  text-align: left;
+  color: #222;
+}
+
+.ant-form-item-control input {
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */

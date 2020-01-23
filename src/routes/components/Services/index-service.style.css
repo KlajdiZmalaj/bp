@@ -1,0 +1,15 @@
+.modulePopUP1 {
+  background-color: #edeef0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: 10000;
+}
+
+.modulePopUP1 .leftCol_Module {
+  background-color: #fff;
+  padding: 15px;
+}
+/*# sourceMappingURL=index-service.style.css.map */

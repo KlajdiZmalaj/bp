@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  AuthActions,
-  MainActions
-} from "redux-store/models";
+import { AuthActions, MainActions } from "redux-store/models";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import {
@@ -18,7 +15,8 @@ import {
   AnnunciAdmin,
   Operazioni,
   Impostazioni,
-  Messages
+  Messages,
+  AccountInfo
 } from "./routes";
 
 class Root extends React.Component {
@@ -40,6 +38,7 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/annunci" />} />
+            <Route exact path="/account-info" component={AccountInfo} />
             <Route exact path="/annunci" component={Annunci} />
             <Route exact path="/messages" component={Messages} />
             <Route exact path="/dashboard" component={Dashboard} />
@@ -59,14 +58,11 @@ class Root extends React.Component {
   }
 }
 
-
-
-
 const mapsStateToProps = state => ({
   accountInfo: state.auth.accountInfo
 });
 
 export default connect(mapsStateToProps, {
   ...AuthActions,
-  ...MainActions,
+  ...MainActions
 })(Root);
