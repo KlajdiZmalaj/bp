@@ -1,7 +1,7 @@
 import React from "react";
 // import "./index-service.style.scss";
 import { connect } from "react-redux";
-import MainActions from "redux-store/models/main";
+import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
 
 class ModulePopUp extends React.Component {
@@ -62,8 +62,10 @@ class ModulePopUp extends React.Component {
       citta,
       provincia
     } = this.state;
+    const { service_id } = this.props;
     console.log(
       " numero_conto_corrente,importo,intestato_a, causale,   eseguito_da,  via_piazza,cap, citta,provincia",
+      service_id,
       numero_conto_corrente,
       importo,
       intestato_a,
@@ -74,15 +76,19 @@ class ModulePopUp extends React.Component {
       citta,
       provincia
     );
-    // this.props.signInByEmail(
-    //   intestato_a,
-    //   causale,
-    //   eseguito_da,
-    //   via_piazza,
-    //   cap,
-    //   citta,
-    //   provincia
-    // );
+    console.log("this.proops", this.props);
+    this.props.getBolletiniBianchi(
+      service_id,
+      numero_conto_corrente,
+      importo,
+      intestato_a,
+      causale,
+      eseguito_da,
+      via_piazza,
+      cap,
+      citta,
+      provincia
+    );
   };
 
   render() {
@@ -435,7 +441,10 @@ class ModulePopUp extends React.Component {
 }
 
 const mapsStateToProps = state => ({
-  isShowing: state.main.isShowing
+  isShowing: state.main.isShowing,
+  service_id: state.auth.service_id
 });
 
-export default connect(mapsStateToProps, MainActions)(ModulePopUp);
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  ModulePopUp
+);

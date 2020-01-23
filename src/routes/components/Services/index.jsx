@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import MainActions from "redux-store/models/main";
+import { MainActions, AuthActions } from "redux-store/models";
 
 import "./index-service.style.scss";
 import images from "themes/images";
@@ -15,6 +15,12 @@ class Service extends React.Component {
     via_piazza: "",
     citta: "",
     provincia: ""
+  };
+
+  selectService = id => {
+    console.log("service_id", id);
+    this.props.setServiceId(id);
+    this.props.togglePopUp(true);
   };
 
   render() {
@@ -44,7 +50,7 @@ class Service extends React.Component {
                     arrayServices.map((item, index) => {
                       return (
                         <td
-                          onClick={() => this.props.togglePopUp(true)}
+                          onClick={() => this.selectService(item.service_id)}
                           key={index}
                         >
                           <img src={images.billDark} alt="" />
@@ -716,4 +722,6 @@ const mapsStateToProps = state => ({
   isShowing: state.main.isShowing
 });
 
-export default connect(mapsStateToProps, MainActions)(Service);
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  Service
+);

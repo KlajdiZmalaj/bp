@@ -6,7 +6,21 @@ const { Types, Creators } = createActions({
   authFailure: ["error"],
   logOut: [],
   getAccountInfo: [],
-  setAccountInfo: ["accountInfo"]
+  setAccountInfo: ["accountInfo"],
+  getBolletiniBianchi: [
+    "service_id",
+    "numero_conto_corrente",
+    "importo",
+    "intestato_a",
+    "causale",
+    "eseguito_da",
+    "via_piazza",
+    "cap",
+    "citta",
+    "provincia"
+  ],
+  setBolletiniBianchi: ["bolletiniBianchi"],
+  setServiceId: ["service_id"]
 });
 
 export const AuthTypes = Types;
@@ -16,7 +30,9 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  accountInfo: {}
+  accountInfo: {},
+  bolletiniBianchi: null,
+  service_id: null
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -35,5 +51,13 @@ export const reducer = createReducer(INITIAL_STATE, {
     error,
     loading: false
   }),
-  [Types.LOG_OUT]: () => ({ ...INITIAL_STATE })
+  [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
+  [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
+    ...state,
+    bolletiniBianchi
+  }),
+  [Types.SET_SERVICE_ID]: (state, { service_id }) => ({
+    ...state,
+    service_id
+  })
 });
