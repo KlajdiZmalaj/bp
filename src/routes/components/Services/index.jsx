@@ -1,28 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import MainActions from "redux-store/models/main";
+
 import "./index-service.style.scss";
-
 import images from "themes/images";
+
 class Service extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isShowing: false
-    };
-  }
-
-  openModalHandler = () => {
-    this.setState({
-      isShowing: true
-    });
-  };
-
-  closeModalHandler = () => {
-    this.setState({
-      isShowing: false
-    });
-  };
-
   state = {
     numero_conto_corrente: "",
     importo: "",
@@ -36,40 +19,43 @@ class Service extends React.Component {
 
   render() {
     const { serviceSelected, servicesItems } = this.props;
-    console.log("servicesItems", servicesItems[serviceSelected]);
+    console.log("servicesItems", servicesItems[serviceSelected], servicesItems);
     const arrayServices = servicesItems[serviceSelected];
 
     return (
-      <div>
+      <React.Fragment>
         <div
           className={
             "col-md-3 tab-content " + (serviceSelected === "" ? "" : "d-block")
           }
         >
           {/* <!--first ITEMS  Bolletini postali services--> */}
-          {arrayServices &&
-            arrayServices.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className={
-                    "tab-pane fade in panel-services " +
-                    (serviceSelected !== "#service1" ? "active show" : "")
-                  }
-                >
-                  <table className="bolletini bolletini1">
-                    <tbody>
-                      <tr>
-                        <td onClick={this.openModalHandler}>
+
+          <div
+            className={
+              "tab-pane fade in panel-services " +
+              (serviceSelected !== "#service1" ? "active show" : "")
+            }
+          >
+            <table className="bolletini bolletini1">
+              <tbody>
+                <tr>
+                  {arrayServices &&
+                    arrayServices.map((item, index) => {
+                      return (
+                        <td
+                          onClick={() => this.props.togglePopUp(true)}
+                          key={index}
+                        >
                           <img src={images.billDark} alt="" />
                           <p>{item.name}</p>
                         </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              );
-            })}
+                      );
+                    })}
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           {/* <!--first ITEMS bollo auto services--> */}
           <div
@@ -721,9 +707,13 @@ class Service extends React.Component {
             </div>
           </div>
         ) : null}
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default Service;
+const mapsStateToProps = state => ({
+  isShowing: state.main.isShowing
+});
+
+export default connect(mapsStateToProps, MainActions)(Service);

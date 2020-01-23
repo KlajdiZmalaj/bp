@@ -6,7 +6,7 @@ const { Types, Creators } = createActions({
   authFailure: ["error"],
   logOut: [],
   getAccountInfo: [],
-  setAccountInfo: ["accountInfo"],
+  setAccountInfo: ["accountInfo"]
 });
 
 export const AuthTypes = Types;
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  accountInfo:{}
+  accountInfo: {}
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -35,5 +35,5 @@ export const reducer = createReducer(INITIAL_STATE, {
     error,
     loading: false
   }),
-  [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
+  [Types.LOG_OUT]: () => ({ ...INITIAL_STATE })
 });

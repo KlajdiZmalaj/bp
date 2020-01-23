@@ -5,12 +5,8 @@ import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 
 class Overview extends Component {
-
-
   render() {
-    const { showOverview, toggleOverview,services } = this.props;
-    console.log("props", this.props, showOverview, toggleOverview);
-    console.log("servives from api",services);
+    const { showOverview, toggleOverview, services } = this.props;
     return (
       <React.Fragment>
         <div className="max-width row">
@@ -18,7 +14,7 @@ class Overview extends Component {
             <a
               href="/#"
               className="overview-btn"
-               onClick={() => toggleOverview(!showOverview)}
+              onClick={() => toggleOverview(!showOverview)}
             >
               <i className="far fa-tachometer"></i> Overview{" "}
               <i
@@ -101,10 +97,9 @@ class Overview extends Component {
   }
 }
 
-
 const mapsStateToProps = state => ({
   showOverview: toggleOverviewSelector(state),
-  services:state.services
+  services: state.services
 });
 
 export default connect(mapsStateToProps, MainActions)(Overview);

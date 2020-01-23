@@ -3,7 +3,8 @@ import { createActions, createReducer } from "reduxsauce";
 const { Types, Creators } = createActions({
   getServices: [],
   setServices: ["services"],
-  toggleOverview: ["showOverview"]
+  toggleOverview: ["showOverview"],
+  togglePopUp: ["isShowing"]
 });
 
 export const MainTypes = Types;
@@ -11,11 +12,11 @@ export default Creators;
 
 const INITIAL_STATE = {
   services: {},
-  showOverview: true
+  showOverview: true,
+  isShowing: false
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-
   [Types.TOGGLE_OVERVIEW]: (state, { showOverview }) => ({
     ...state,
     showOverview
@@ -23,6 +24,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SERVICES]: (state, { services }) => ({
     ...state,
     services
+  }),
+  [Types.TOGGLE_POP_UP]: (state, { isShowing }) => ({
+    ...state,
+    isShowing
   })
 });
-

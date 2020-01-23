@@ -116,7 +116,7 @@ class Dashboard extends React.Component {
         </div>
         {/* <!--Module for boletini bianchi--> */}
         {/* <!--Module for boletini auto--> */}
-        <div className="modulePopUP modulePopUP2">
+        {/* <div className="modulePopUP modulePopUP2">
           <div className="module container-fluid max-width_modulePopUP">
             <div className="row">
               <div className="col-12 leftCol_Module">
@@ -178,7 +178,7 @@ class Dashboard extends React.Component {
                       PAGAMENTO ELETTRONICO BOLLO AUTOVEICOLI E MOTOVEICOLI
                     </h2>
                   </div>
-                  {/* <!--Module 2 Title ROW--> */}
+
                   <div className="col-12 titleModul2">
                     <h4>ESTREMI PAGAMENTO</h4>
                   </div>
@@ -201,7 +201,7 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--Module 2 Title ROW--> */}
+
                   <div className="col-12 titleModul2">
                     <h4>DATI VEICOLO E INTESTATARIO</h4>
                   </div>
@@ -277,7 +277,7 @@ class Dashboard extends React.Component {
                       <input type="text" className="w-10" />
                     </div>
                   </div>
-                  {/* <!--Module 2 Title ROW--> */}
+
                   <div className="col-12 titleModul2">
                     <h4>DATI VEICOLO E INTESTATARIO</h4>
                   </div>
@@ -444,9 +444,9 @@ class Dashboard extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <!--Module for postepay--> */}
-        <div className="modulePopUP modulePopUP3">
+        {/* <div className="modulePopUP modulePopUP3">
           <div className="module container-fluid max-width_modulePopUP">
             <div className="row">
               <div className="col-12 leftCol_Module">
@@ -517,7 +517,7 @@ class Dashboard extends React.Component {
                       ricariche verso la stessa carte Postepay.
                     </p>
                   </div>
-                  {/* <!--module 3 1 row--> */}
+
                   <div className="col-5 ">
                     <div className="euroboll ">
                       <span className="pr-5">TARGA</span>
@@ -528,7 +528,7 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--module 3 1 row--> */}
+
                   <div className="col-5 pt-2">
                     <div className="euroboll ">
                       <span className="pr-5">IMPORTO</span>
@@ -539,7 +539,7 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--module 3 1 row--> */}
+
                   <div className="col-5 pt-2">
                     <div className="euroboll ">
                       <span className="pr-5">INTESTATARIO</span>
@@ -550,7 +550,7 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--module 3 1 row--> */}
+
                   <div className="col-5 pt-2">
                     <div className="euroboll ">
                       <span className="pr-5">COD FISC INTESTATARIO</span>
@@ -561,7 +561,7 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--module 3 1 row--> */}
+
                   <div className="col-5 pt-2">
                     <div className="euroboll ">
                       <span className="pr-5">ORDINANTE</span>
@@ -572,7 +572,7 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--module 3 1 row--> */}
+
                   <div className="col-5 pt-2">
                     <div className="euroboll ">
                       <span className="pr-5">COD FISC ORDINANTE</span>
@@ -583,7 +583,6 @@ class Dashboard extends React.Component {
                       <input type="text" />
                     </div>
                   </div>
-                  {/* <!--module 3 1 row--> */}
 
                   <div className="col-12 mt-4">
                     <div className="euroboll">
@@ -675,9 +674,9 @@ class Dashboard extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <!--Module for carriers (TIM)--> */}
-        <div className="modulePopUP modulePopUP4">
+        {/* <div className="modulePopUP modulePopUP4">
           <div className="module container-fluid max-width_modulePopUP max-width_modulePopUP-carrier">
             <div className="row">
               <div className="col-12 leftCol_Module">
@@ -873,7 +872,7 @@ class Dashboard extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -881,7 +880,9 @@ class Dashboard extends React.Component {
 
 const mapsStateToProps = state => ({
   services: state.main.services,
-  accountInfo:state.auth.accountInfo
+  accountInfo: state.auth.accountInfo
 });
 
-export default connect(mapsStateToProps, {...MainActions, ...AuthActions})(Dashboard);
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  Dashboard
+);
