@@ -55,7 +55,13 @@ export const administrazioni = [
     link: "impostazioni"
   }
 ];
-
+export const profileLinks = [
+  {
+    id: 1,
+    name: "Profile"
+  },
+  { id: 2, name: "Link" }
+];
 export const acquista = [
   {
     id: 1,

@@ -27,7 +27,7 @@ class Header extends Component {
     let isLogged = false;
     const { accountInfo } = this.props;
     console.log("accountInfo", accountInfo);
-    console.log("this.props",this.props)
+    console.log("this.props", this.props);
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }
@@ -134,18 +134,20 @@ class Header extends Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  {" "}
                   <img className="profile-img" alt="" src={images.mario} />
                   {accountInfo.profile.name}
                 </a>
                 <div className="dropdown-menu" aria-labelledby="dropdownId">
+                  <a href="#/account-info" className="dropdown-item">
+                    Account Info
+                  </a>
                   <a className="dropdown-item" href="#/dashboard">
                     AGS
                   </a>
                   <a className="dropdown-item" href="#/admin-account">
                     ADM
                   </a>
-                  <button className="dropdown-item" onClick={ this.props.logOut}>
+                  <button className="dropdown-item" onClick={this.props.logOut}>
                     LogOut
                   </button>
                 </div>
