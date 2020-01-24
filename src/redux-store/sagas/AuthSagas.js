@@ -15,7 +15,7 @@ export function* signInByEmail(credencials) {
   );
   if (response) {
     if (response.data) {
-      localStorage.setItem("accountData", JSON.stringify(response.data));
+      localStorage.setItem("accountDataB", JSON.stringify(response.data));
       yield put(AuthActions.setAccountInfo(response.data));
     }
   }
@@ -27,10 +27,10 @@ export function* logOut() {
   const response = yield call(logoutApi);
 
   if (response) {
-    localStorage.setItem("accountData", null);
+    localStorage.setItem("accountDataB", null);
     yield put(AuthActions.setAccountInfo({}));
   }
-  // localStorage.setItem("accountData", null);
+  // localStorage.setItem("accountDataB", null);
   // yield put(AuthActions.setAccountInfo({}));
 }
 

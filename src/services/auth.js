@@ -2,7 +2,7 @@ import request from "utils/request";
 import axios from "axios";
 import api from "config/api";
 
-// const accountData = localStorage.getItem("accountData");
+// const accountData = localStorage.getItem("accountDataB");
 // const data = JSON.parse(accountData);
 // let req;
 // if (data) {
@@ -32,7 +32,7 @@ export const logoutApi = () =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountData")).token
+          JSON.parse(localStorage.getItem("accountDataB")).token
         }`
       }
     })
@@ -70,7 +70,7 @@ export const fetchBolletiniBianchi = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountData")).token
+          JSON.parse(localStorage.getItem("accountDataB")).token
         }`
       }
     })

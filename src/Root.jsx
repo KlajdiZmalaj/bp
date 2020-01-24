@@ -25,7 +25,7 @@ class Root extends React.Component {
   }
 
   getStoredData = () => {
-    const accountData = localStorage.getItem("accountData");
+    const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
     if (data) {
       this.props.setAccountInfo(data);

@@ -30,6 +30,7 @@ class Header extends Component {
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }
+    console.log("accountInfo", accountInfo);
     return (
       <nav className="navbar navbar-expand-md fixed-top navbar-light">
         <button
