@@ -87,3 +87,20 @@ export const fetchBolletiniBianchi = (
       ...{ provincia: provincia }
     })
     .catch(error => ({ error }));
+
+export const fetchPayments = (username, from, to) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/payments`, {
+      ...(username ? { username: username } : {}),
+      ...{ from: from },
+      ...{ to: to }
+    })
+    .catch(error => ({ error }));

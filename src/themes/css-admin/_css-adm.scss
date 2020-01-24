@@ -1,0 +1,16 @@
+.creatutente {
+  position: relative;
+  top: 8px;
+  color: #000;
+  font-family: $font1;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: auto;
+  img {
+    position: relative;
+    bottom: 2px;
+  }
+}
+.creatutente:hover {
+  color: #000;
+}

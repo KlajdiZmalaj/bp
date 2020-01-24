@@ -1,10 +1,8 @@
-/*HERE START MAIN CSS*/
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 @font-face {
   font-family: fontAw-300;
-  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw.php")
-    format("woff");
+  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw.php") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -12,8 +10,7 @@
 
 @font-face {
   font-family: fontAw-900;
-  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw900.php")
-    format("woff");
+  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw900.php") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: fallback;
@@ -39,7 +36,7 @@ body {
 .max-width {
   width: 100%;
   max-width: 1200px;
-  margin: 20px auto 0;
+  margin: 0 auto;
 }
 
 button,
@@ -50,7 +47,7 @@ input:focus,
 select:focus {
   outline: none !important;
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 a,
@@ -78,6 +75,73 @@ a:hover {
   background: #555;
 }
 
+.filterBtn {
+  background: #edeef0;
+  border: 0;
+  text-align: center;
+  color: #333434;
+  margin-left: 4px;
+  padding: 8px 9px;
+  border-bottom: 2px solid #ed4c14;
+}
+
+.rotating {
+  -webkit-transform: rotate(180deg) !important;
+          transform: rotate(180deg) !important;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.overview-btn i:nth-child(2) {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.hideWig {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.panel-tab[aria-expanded=true] img {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.max-width {
+  margin: 20px auto 0;
+}
+
+.login-logout li input {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 0;
+  background: #edeef0;
+  border-radius: 4px;
+}
+
+.login-logout li button {
+  background: #edeef0;
+  border: 0;
+  text-align: center;
+  color: #8ca0b3;
+  margin-left: 4px;
+  padding: 4px 9px;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  border-radius: 4px;
+}
+
+.login-logout li button:hover {
+  background: #ed4c14;
+  color: #fff;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
 /* ~~~~~~~ INIT. btnEFF ~~~~~~~ */
 .btnEFF {
   position: relative;
@@ -87,9 +151,9 @@ a:hover {
   transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   padding: 3px;
 }
 
@@ -105,18 +169,18 @@ a:hover {
 .btnEFF:hover {
   color: #ffffff;
   -webkit-transition-delay: 0.6s;
-  transition-delay: 0.6s;
+          transition-delay: 0.6s;
 }
 
 .btnEFF:hover:before {
   -webkit-transition-delay: 0s;
-  transition-delay: 0s;
+          transition-delay: 0s;
 }
 
 .btnEFF:hover:after {
   background: black;
   -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s;
+          transition-delay: 0.4s;
 }
 
 /* From Top */
@@ -405,9 +469,9 @@ a:hover {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   -webkit-box-shadow: 0 8px 30px 0 rgba(30, 135, 240, 0.2);
-  box-shadow: 0 8px 30px 0 rgba(30, 135, 240, 0.2);
+          box-shadow: 0 8px 30px 0 rgba(30, 135, 240, 0.2);
   -webkit-filter: grayscale(0%);
-  filter: grayscale(0%);
+          filter: grayscale(0%);
   cursor: pointer;
 }
 
@@ -452,12 +516,12 @@ a:hover {
 
 .rotateARR {
   -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .wig:hover {
   -webkit-filter: grayscale(50%);
-  filter: grayscale(50%);
+          filter: grayscale(50%);
 }
 
 .wig1 {
@@ -474,7 +538,7 @@ a:hover {
 
 .wig3 i {
   -webkit-transform: rotatez(222deg);
-  transform: rotatez(222deg);
+          transform: rotatez(222deg);
 }
 
 /*annunci styles*/
@@ -484,8 +548,8 @@ a:hover {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   padding-top: 20px;
   border-bottom: 1px solid #edeef0;
   padding-bottom: 10px;
@@ -502,8 +566,8 @@ a:hover {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .sort-annunci li.active {
@@ -517,8 +581,8 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .sort-annunci li a {
@@ -605,11 +669,11 @@ a:hover {
   color: #00b850;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
@@ -617,8 +681,8 @@ a:hover {
 
 .carica-conto .input-group-text i {
   -webkit-box-ordinal-group: 3;
-  -ms-flex-order: 2;
-  order: 2;
+      -ms-flex-order: 2;
+          order: 2;
   font-size: 30px;
 }
 
@@ -634,13 +698,13 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
   padding: 10px 15px;
   margin-top: 20px;
 }
@@ -766,8 +830,8 @@ a:hover {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .datepics label {
@@ -823,6 +887,24 @@ a:hover {
   border-left: 2px solid #fff;
 }
 
+.ant-form.ant-form-horizontal.filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.datepics .ant-form-item {
+  margin-bottom: 0;
+}
+
+.datepics input {
+  width: 100%;
+}
+
+.datepics i {
+  display: none;
+}
+
 /*adm styles*/
 .creatutente {
   position: relative;
@@ -845,172 +927,62 @@ a:hover {
 
 /*tabs styles*/
 .azioni-tab1 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/chat.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/chat.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/chat.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/chat.svg);
   background-position-x: 110px;
 }
 
 .azioni-tab2 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/receipt.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/receipt.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/receipt.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/receipt.svg);
   background-position-x: 130px;
 }
 
 .azioni-tab3 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/gears.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/gears.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/gears.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/gears.svg);
   background-position-x: 130px;
 }
 
 .azioni-tab4 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/barcode.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/barcode.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/barcode.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/barcode.svg);
   background-position-x: 130px;
 }
 
 .azioni-tab5 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/shop.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/shop.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/shop.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/shop.svg);
   background-position-x: 135px;
 }
 
 .azioni-tab6 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/bill.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/bill.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/bill.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/bill.svg);
   background-position-x: 130px;
 }
 
 .adm-tab1 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.83)),
-      to(rgba(255, 255, 255, 0.88))
-    ),
-    url(../assets/images/employee.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.83),
-      rgba(255, 255, 255, 0.88)
-    ),
-    url(../assets/images/employee.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.83)), to(rgba(255, 255, 255, 0.88))), url(../assets/images/employee.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.83), rgba(255, 255, 255, 0.88)), url(../assets/images/employee.svg);
   background-position-x: 150px;
 }
 
 .adm-tab2 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/receipt.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/receipt.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/receipt.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/receipt.svg);
   background-position-x: 130px;
 }
 
 .adm-tab3 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.89)),
-      to(rgba(255, 255, 255, 0.91))
-    ),
-    url(../assets/images/analysis.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.89),
-      rgba(255, 255, 255, 0.91)
-    ),
-    url(../assets/images/analysis.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.89)), to(rgba(255, 255, 255, 0.91))), url(../assets/images/analysis.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.89), rgba(255, 255, 255, 0.91)), url(../assets/images/analysis.svg);
   background-position-x: 121px;
 }
 
 .adm-tab4 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.671)),
-      to(rgba(255, 255, 255, 0.74))
-    ),
-    url(../assets/images/gears.svg);
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.671),
-      rgba(255, 255, 255, 0.74)
-    ),
-    url(../assets/images/gears.svg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/gears.svg);
+  background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/gears.svg);
   background-position-x: 130px;
 }
 
@@ -1027,12 +999,12 @@ a:hover {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
+          box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
   border: 2px solid #fff;
 }
 
@@ -1123,7 +1095,7 @@ a:hover {
   background: #fff !important;
   margin-top: 34px;
   -webkit-box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
-  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
+          box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
   padding-bottom: 60px;
 }
 
@@ -1134,14 +1106,14 @@ a:hover {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-left: 20px;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -1174,7 +1146,7 @@ a:hover {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   -webkit-transform: rotateZ(180deg);
-  transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
 }
 
 .panel-tab i {
@@ -1200,14 +1172,14 @@ a:hover {
   border-right: 1px solid #edeef0;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-left: 20px;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -1249,7 +1221,7 @@ a:hover {
 
 .rotateARR2 {
   -webkit-transform: rotate(360deg) !important;
-  transform: rotate(360deg) !important;
+          transform: rotate(360deg) !important;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -1263,7 +1235,7 @@ a:hover {
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
+          box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
   position: relative;
   z-index: 1;
   -webkit-transition: 0.2s;
@@ -1358,10 +1330,10 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
 }
 
 /*modules*/
@@ -1373,7 +1345,6 @@ a:hover {
   z-index: 2;
   width: 100%;
   height: 100%;
-  /* display: none; */
 }
 
 .modulePopUP3 .payThumb {
@@ -1406,8 +1377,8 @@ a:hover {
 ._modulePopUP__table tr:nth-child(1) td:nth-child(1) {
   text-align: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 ._modulePopUP__table tr:nth-child(1) td:nth-child(1) div {
@@ -1416,18 +1387,18 @@ a:hover {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   font-family: "Roboto", "sans-serif";
   font-size: 16px;
   font-weight: normal;
   line-height: 1.31;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 ._modulePopUP__table tr:nth-child(1) td:nth-child(1) div p {
@@ -1442,8 +1413,8 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-family: "Roboto", "sans-serif";
   font-size: 15px;
   font-weight: normal;
@@ -1531,12 +1502,12 @@ a:hover {
 
 ._modulePopUP__body {
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 1px solid #dadde2;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #edeef0;
   margin-top: 15px;
 }
 
@@ -1581,11 +1552,11 @@ a:hover {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .euroboll select {
@@ -1606,12 +1577,12 @@ a:hover {
 
 .euroboll input {
   border: 0;
-  border: 1px solid #dadde2;
+  border: 1px solid #edeef0;
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -ms-flex-negative: 1;
-  flex-shrink: 1;
+      flex-shrink: 1;
   font-family: "Roboto", "sans-serif";
   font-size: 14px;
   font-weight: bold;
@@ -1627,10 +1598,6 @@ a:hover {
   font-family: "Roboto", "sans-serif";
   font-size: 12px;
   font-weight: normal;
-}
-
-.rightCol_Module {
-  display: none;
 }
 
 ._modulePopUP__cupon {
@@ -1650,7 +1617,7 @@ a:hover {
   border-top: 1px solid #edeef0;
   color: #32424e;
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 ._modulePopUP__cupon .btn-group button:nth-child(2) {
@@ -1660,26 +1627,26 @@ a:hover {
 ._modulePopUP__cupon .btn-group button:focus {
   background: transparent;
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 ._modulePopUP__cupon--header {
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-top: 20px;
   border-bottom: 1px solid #edeef0;
   padding-bottom: 10px;
@@ -1697,15 +1664,15 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
   padding-top: 70px;
   font-family: "Roboto", "sans-serif";
@@ -1869,7 +1836,7 @@ a:hover {
 .CurrencyTD .Currency {
   position: relative;
   -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+          transform: rotate(-90deg);
   padding: 0;
   width: 10%;
   top: 15px;
@@ -1880,7 +1847,7 @@ a:hover {
 .displayedVal {
   height: 75px;
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16) !important;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16) !important;
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16) !important;
   border: solid 2px #ffffff;
   background-color: #ffffff;
   width: 100%;
@@ -1991,6 +1958,7 @@ a:hover {
 }
 
 /*footer*/
+/*Media queries last*/
 footer {
   background: #edeef0;
   border-bottom: 4px solid #ed4c14;
@@ -2064,141 +2032,6 @@ footer h6 {
   width: 80%;
 }
 
-/*Media queries last*/
-@media (max-width: 1453px) {
-  .search-nav {
-    width: 100%;
-  }
-}
-
-@media (max-width: 1150px) {
-  body {
-    padding-top: 130px;
-  }
-  .wig {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 984px) {
-  .chatSticky {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .profile-img {
-    position: fixed;
-    z-index: 4;
-    right: 10px;
-    top: 13px;
-  }
-  body {
-    padding-top: 67px;
-  }
-  .navbar-brand {
-    margin: 0 auto;
-  }
-  .navbar-toggler {
-    float: left;
-    border: 0;
-  }
-  .wig {
-    max-width: 300px;
-    background-size: cover;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-  .credito-nav {
-    text-align: center;
-  }
-  .search-nav {
-    margin: 0;
-    max-width: 100%;
-  }
-  .menus-nav {
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-  }
-  .icons-nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-  }
-  .profile-nav {
-    text-align: center;
-  }
-  .overviw-line {
-    display: none;
-  }
-  .overview-list ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 0;
-    margin-top: 0px;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
-    margin-bottom: 10px;
-  }
-  .overview-list ul li {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    margin: 0;
-  }
-}
-
-@media (max-width: 425px) {
-  .wig {
-    max-width: 100%;
-    background-size: cover;
-    margin: 0 auto;
-    margin-top: 20px;
-    height: 230px;
-  }
-}
-
-@media (max-width: 378px) {
-  .overview-btn {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-  .overview-btn i {
-    position: relative;
-    top: 2px;
-  }
-  .download-overview div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: stretch;
-    -ms-flex-pack: stretch;
-    justify-content: stretch;
-  }
-}
-
 @media (max-width: 984px) {
   .panels-container {
     padding-bottom: 1px;
@@ -2232,13 +2065,13 @@ footer h6 {
   }
   ._modulePopUP__body div:nth-child(2) {
     -webkit-box-ordinal-group: 0;
-    -ms-flex-order: -1;
-    order: -1;
+        -ms-flex-order: -1;
+            order: -1;
   }
   .modulePopUP3 ._modulePopUP__body div:nth-child(2) {
     -webkit-box-ordinal-group: 1;
-    -ms-flex-order: 0;
-    order: 0;
+        -ms-flex-order: 0;
+            order: 0;
   }
   .bacnoPosta {
     float: none;
@@ -2281,8 +2114,8 @@ footer h6 {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .sort-trasazioni ul {
     text-align: center;
@@ -2301,8 +2134,8 @@ footer h6 {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=main.css.map */

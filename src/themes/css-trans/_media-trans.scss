@@ -1,0 +1,35 @@
+@media (max-width: 1453px) {
+}
+@media (max-width: 1150px) {
+}
+@media (max-width: 1197px) {
+}
+@media (max-width: 984px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 525px) {
+  .sort-trasazioni {
+    display: flex;
+    flex-direction: column;
+    ul {
+      text-align: center;
+      margin-top: 20px !important;
+      padding-left: 10px !important;
+      a {
+        font-size: 13px;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  .transTable {
+    tr {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+@media (max-width: 425px) {
+}

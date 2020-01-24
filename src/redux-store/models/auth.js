@@ -20,7 +20,10 @@ const { Types, Creators } = createActions({
     "provincia"
   ],
   setBolletiniBianchi: ["bolletiniBianchi"],
-  setServiceId: ["service_id"]
+  setServiceId: ["service_id"],
+
+  getPayments: ["username", "from", "to"],
+  setPayments: ["payments"]
 });
 
 export const AuthTypes = Types;
@@ -32,7 +35,8 @@ const INITIAL_STATE = {
   error: null,
   accountInfo: {},
   bolletiniBianchi: {},
-  service_id: null
+  service_id: null,
+  payments: []
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -59,5 +63,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SERVICE_ID]: (state, { service_id }) => ({
     ...state,
     service_id
+  }),
+  [Types.SET_PAYMENTS]: (state, { payments }) => ({
+    ...state,
+    payments
   })
 });

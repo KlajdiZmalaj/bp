@@ -1,0 +1,48 @@
+@media (max-width: 1453px) {
+}
+@media (max-width: 1150px) {
+}
+@media (max-width: 1197px) {
+}
+@media (max-width: 984px) {
+  ._modulePopUP__table2 {
+    position: fixed;
+    bottom: 2px;
+  }
+  ._modulePopUP__body div:nth-child(2) {
+    order: -1;
+  }
+  .modulePopUP3 ._modulePopUP__body div:nth-child(2) {
+    order: 0;
+  }
+  .bacnoPosta {
+    float: none;
+    margin: 0 auto;
+    display: block;
+  }
+  ._modulePopUP__table2 td:nth-child(1) {
+    border-left: 1px solid $second;
+  }
+  .modulePopUP {
+    margin-top: 30px;
+    padding-bottom: 134px;
+  }
+}
+@media (max-width: 768px) {
+  .rightCol_Module {
+    height: 100%;
+    display: none;
+    position: absolute;
+    background: #fff;
+    z-index: 10;
+    width: 100% !important;
+  }
+}
+@media (max-width: 425px) {
+  .azioni-tab {
+    background-position-x: 88px;
+    h2 {
+      font-size: 16px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.navbar {
+  border-top: 3px solid $main;
+  background: #fff;
+  .nav-link {
+    font-family: $font1;
+    font-size: 16px;
+    font-weight: 500;
+    color: #8ca0b3 !important;
+    span {
+      color: $main;
+    }
+  }
+  .active a {
+    color: $main !important;
+  }
+}
+.search-nav {
+  border: 0;
+  background: $second;
+  border-radius: 4px;
+  padding: 10px;
+  width: 500px;
+  max-width: 500px;
+  margin-left: 70px;
+}
+.credito-nav {
+  position: relative;
+  top: 4px;
+}
+.menus-nav {
+  margin-left: 14%;
+}

@@ -1,0 +1,180 @@
+.azioni-tab1 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/chat.svg);
+  background-position-x: 110px;
+}
+.azioni-tab2 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/receipt.svg);
+  background-position-x: 130px;
+}
+.azioni-tab3 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/gears.svg);
+  background-position-x: 130px;
+}
+.azioni-tab4 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/barcode.svg);
+  background-position-x: 130px;
+}
+.azioni-tab5 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/shop.svg);
+  background-position-x: 135px;
+}
+.azioni-tab6 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/bill.svg);
+  background-position-x: 130px;
+}
+.adm-tab1 {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(255, 255, 255, 0.671)),
+      to(rgba(255, 255, 255, 0.74))
+    ),
+    url(../assets/images/employee.svg);
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.83),
+      rgba(255, 255, 255, 0.88)
+    ),
+    url(../assets/images/employee.svg);
+  background-position-x: 150px;
+}
+.adm-tab2 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/receipt.svg);
+  background-position-x: 130px;
+}
+.adm-tab3 {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(255, 255, 255, 0.671)),
+      to(rgba(255, 255, 255, 0.74))
+    ),
+    url(../assets/images/analysis.svg);
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.89),
+      rgba(255, 255, 255, 0.91)
+    ),
+    url(../assets/images/analysis.svg);
+  background-position-x: 121px;
+}
+.adm-tab4 {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.671),
+      rgba(255, 255, 255, 0.74)
+    ),
+    url(../assets/images/gears.svg);
+  background-position-x: 130px;
+}
+.azioni-tab {
+  background-color: #fff;
+  width: 100%;
+  height: 101px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position-y: -5px;
+  display: flex;
+  transition: 0.3s;
+  align-items: flex-end;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
+  border: 2px solid #fff;
+  h2 {
+    text-transform: uppercase;
+    font-family: $font1;
+    font-size: 20px;
+    color: #8ca0b3;
+    text-align: center;
+    padding-left: 10px;
+    list-style-type: disc;
+  }
+  i {
+    position: relative;
+    color: $main;
+    bottom: 15px;
+    left: 5px;
+    margin: 0;
+    font-size: 9px;
+  }
+}
+.active-tab {
+  border-bottom: 2px solid $main;
+}
+.azioni-tab:hover {
+  border: 2px solid $main;
+}
+.active-tab:after {
+  content: " ";
+  position: absolute;
+  top: 116px;
+  left: 50%;
+  border-width: 10px !important;
+  border-style: solid !important;
+  border-color: transparent transparent #ffffff transparent !important;
+  width: 1px;
+}
+.active-tab.adm:after {
+  content: " ";
+  position: absolute;
+  top: 139px;
+  left: 50%;
+  border-width: 10px !important;
+  border-style: solid !important;
+  border-color: transparent transparent #ffffff transparent !important;
+  width: 1px;
+}
+.cancelMobile {
+  display: none;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  margin-left: -26px;
+  cursor: pointer;
+}
+@media (max-width: 984px) {
+  .cancelMobile {
+    display: block;
+  }
+  .tab-content {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding-top: 100px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 2;
+    .tab-pane table {
+      margin: 0 auto;
+    }
+  }
+}

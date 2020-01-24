@@ -1,0 +1,155 @@
+.overview {
+  margin-top: 20px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.overview-btn {
+  font-family: $font1;
+  font-size: 24px;
+  color: #32424e;
+  .fa-tachometer {
+    color: #043f5c;
+    font-size: 20px;
+    position: relative;
+    top: -1px;
+    padding-right: 10px;
+  }
+  i {
+    font-size: 14px;
+    position: relative;
+    left: 5px;
+    bottom: 3px;
+  }
+}
+.overview-btn:hover {
+  text-decoration: none;
+  color: #2d3e4b;
+}
+.overview-list {
+  ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    li {
+      list-style-type: none;
+      display: inline-block;
+      margin-left: 10px;
+      width: 88px;
+      border-bottom: 2.5px solid;
+      text-align: center;
+      text-transform: capitalize;
+      font-family: $font1;
+      font-size: 14px;
+      color: #8ca0b3;
+    }
+    li:nth-child(1) {
+      border-color: #1e87f0;
+    }
+    li:nth-child(2) {
+      border-color: #faa05a;
+    }
+    li:nth-child(3) {
+      border-color: #32d296;
+    }
+  }
+}
+.download-overview {
+  text-align: right;
+  button:nth-child(1) {
+    background: #fff;
+    border: 0;
+    text-align: center;
+    color: #8ca0b3;
+    padding: 4px 9px;
+  }
+  button:nth-child(2) {
+    background: #fff;
+    border: 0;
+    text-align: center;
+    color: #8ca0b3;
+    margin-left: 4px;
+    padding: 4px 9px;
+  }
+  button {
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  button:hover {
+    background: $main;
+    color: #fff;
+  }
+}
+.overviw-line {
+  margin: 0;
+  margin-top: 10px;
+}
+.wigs-overview {
+  margin-top: 10px;
+}
+.wig {
+  border-radius: 4px;
+  width: 100%;
+  max-width: 370px;
+  height: 176px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  transition: 0.3s;
+  box-shadow: 0 8px 30px 0 rgba(30, 135, 240, 0.2);
+  filter: grayscale(0%);
+  cursor: pointer;
+  a {
+    color: #fff;
+    font-family: $font1;
+    font-size: 16px;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  h2 {
+    color: #fff;
+    padding-top: 80px;
+    padding-left: 20px;
+    font-family: $font1;
+    font-size: 20px;
+  }
+  h3 {
+    color: #fff;
+    font-family: $font1;
+    font-size: 40px;
+    padding-left: 20px;
+    font-weight: 300;
+  }
+  i {
+    color: #fff;
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+  }
+}
+.hideWig {
+  display: none;
+}
+.rotateARR {
+  transform: rotate(180deg);
+}
+.wig:hover {
+  filter: grayscale(50%);
+}
+.wig1 {
+  background: url(../assets/images/blueWig.png);
+}
+.wig2 {
+  background: url(../assets/images/orangeWig.png);
+}
+.wig3 {
+  background: url(../assets/images/greenWig.png);
+  i {
+    transform: rotatez(222deg);
+  }
+}

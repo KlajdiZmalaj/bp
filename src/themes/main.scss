@@ -75,6 +75,16 @@ a:hover {
   background: #555;
 }
 
+.filterBtn {
+  background: #edeef0;
+  border: 0;
+  text-align: center;
+  color: #333434;
+  margin-left: 4px;
+  padding: 8px 9px;
+  border-bottom: 2px solid #ed4c14;
+}
+
 // Overview styles
 
 @import "../shared-components/Overview/Overview.styles.scss";
@@ -84,41 +94,43 @@ a:hover {
 @import "../shared-components/Header/Header.styles.scss";
 
 //plugins
-@import "../css/btnTemplate";
+@import "./css/btnTemplate";
 
 /*Navigation styles*/
-@import "navbar";
+@import "./css/navbar";
 
 /*dsahboard styles*/
-@import "../css-dashboard/dashboard";
+@import "./css-dashboard/dashboard";
 
 /*annunci styles*/
-@import "../css-annunci/css-annunci";
+@import "./css-annunci/css-annunci";
 
 /*configura styles*/
-@import "../css-configura/configura";
+@import "./css-configura/configura";
 
 /*transazioni styles*/
-@import "../css-trans/css-trans";
+@import "./css-trans/css-trans";
 
 /*adm styles*/
-@import "../css-admin/css-adm";
+@import "./css-admin/css-adm";
 
 /*tabs styles*/
-@import "tabs";
+//  @import "tabs";
+@import "./css/tabs";
 
 /*panels styles*/
-@import "../css-panels/pannels";
+@import "./css-panels/pannels";
 
 /*modules*/
-@import "../css-modules/modules";
+@import "./css-modules/modules";
 
 /*footer*/
-@import "footer";
+// @import "footer";
 
 /*Media queries last*/
-@import "media";
-@import "media-footer";
-@import "../css-panels/media-panels";
-@import "../css-modules/media-modules";
-@import "../css-trans/media-trans";
+
+@import "./css/footer";
+@import "./css//media-footer";
+@import "./css-panels/media-panels";
+@import "./css-modules/media-modules";
+@import "./css-trans/media-trans";

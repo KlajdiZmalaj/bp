@@ -1,0 +1,117 @@
+.titleConf {
+  background: $second;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding: 10px 15px;
+  margin-top: 20px;
+  i {
+    font-size: 10px;
+    color: $main;
+    padding-right: 5px;
+  }
+  h5 {
+    position: relative;
+    top: 4px;
+    font-family: $font1;
+    font-weight: normal;
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+}
+.inputsConf {
+  padding-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  label {
+    width: 40%;
+    text-transform: uppercase;
+    font-family: $font1;
+    font-size: 16;
+    font-weight: normal;
+  }
+  input {
+    width: 55%;
+    max-width: 60%;
+    border: 1px solid $second;
+  }
+}
+
+/*checkbox custom*/
+
+/* The container */
+.containerCheck {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.containerCheck label {
+  text-align: left;
+  font-size: 10px;
+}
+/* Hide the browser's default checkbox */
+.containerCheck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  float: right;
+  width: 25px;
+  background-color: #fff;
+  border: 1px solid $second;
+}
+
+/* On mouse-over, add a grey background color */
+.containerCheck:hover input ~ .checkmark {
+  background-color: #fff;
+  border: 1px solid $second;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerCheck input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containerCheck input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerCheck .checkmark:after {
+  left: 9px;
+  top: 4px;
+  width: 7px;
+  height: 14px;
+  border: solid rgb(9, 179, 66);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*checkbox custom end*/

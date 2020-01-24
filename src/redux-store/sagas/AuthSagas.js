@@ -4,7 +4,8 @@ import {
   fetchLogin,
   logoutApi,
   fetchAccountInfo,
-  fetchBolletiniBianchi
+  fetchBolletiniBianchi,
+  fetchPayments
 } from "services/auth";
 
 export function* signInByEmail(credencials) {
@@ -67,5 +68,31 @@ export function* getBolletiniBianchi(params) {
       // yield delay(3000);
       // yield put(AuthActions.setBolletiniBianchi({}));
     }
+  }
+}
+
+export function* getPayments(params) {
+  console.log("params", params);
+  const response = yield call(
+    fetchPayments,
+    params.username,
+    params.from,
+    params.to
+  );
+  if (response) {
+    if (response.data) {
+      yield put(AuthActions.setPayments(response.data.transactions));
+    }
+    //  else if (response.error) {
+    //   console.log("errorrrrrrrrrr", response.error.response.data);
+    //   if (response.error.response.status === 444) {
+    //     const error = { errors: { notCorrect: ["data are not corrected."] } };
+    //     yield put(AuthActions.setBolletiniBianchi(error));
+    //   } else {
+    //     yield put(
+    //       AuthActions.setBolletiniBianchi(response.error.response.data)
+    //     );
+    //   }
+    // }
   }
 }

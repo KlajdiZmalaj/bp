@@ -1,0 +1,62 @@
+footer {
+  background: $second;
+  border-bottom: 4px solid $main;
+  padding: 10px;
+  position: fixed;
+  z-index: 1;
+  padding-top: 5px;
+  bottom: 0;
+  width: 100%;
+  h6 {
+    font-family: $font1;
+    font-size: 14px;
+    font-weight: normal;
+    color: #8ca0b3;
+    position: relative;
+    top: 6px;
+  }
+}
+.fcb {
+  padding: 0px 7px;
+  background-color: #8ca0b3;
+  border-radius: 19px;
+  i {
+    color: #fff;
+    font-size: 14px;
+  }
+}
+.insg {
+  padding: 0px 4px;
+  background-color: #8ca0b3;
+  border-radius: 19px;
+  i {
+    color: #fff;
+  }
+}
+.linkin {
+  padding: 0px 4px;
+  background-color: #8ca0b3;
+  border-radius: 19px;
+  i {
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    bottom: 1px;
+  }
+}
+.fcb:hover,
+.linkin:hover,
+.insg:hover {
+  background: #32424e;
+}
+.chatSticky {
+  position: fixed;
+  z-index: 10;
+  right: 3px;
+  bottom: 47px;
+  img {
+    cursor: pointer;
+    width: 80%;
+  }
+}

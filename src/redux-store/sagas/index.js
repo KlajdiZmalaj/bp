@@ -8,7 +8,8 @@ import {
   signInByEmail,
   getAccountInfo,
   logOut,
-  getBolletiniBianchi
+  getBolletiniBianchi,
+  getPayments
 } from "./AuthSagas";
 import { getServices } from "./MainSagas";
 
@@ -19,6 +20,7 @@ export default function* root() {
     takeLatest(AuthTypes.GET_ACCOUNT_INFO, getAccountInfo),
     takeLatest(AuthTypes.LOG_OUT, logOut),
     takeLatest(AuthTypes.GET_BOLLETINI_BIANCHI, getBolletiniBianchi),
+    takeLatest(AuthTypes.GET_PAYMENTS, getPayments),
 
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices)

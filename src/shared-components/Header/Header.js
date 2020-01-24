@@ -53,7 +53,7 @@ class Header extends Component {
             {isLogged && (
               <li className="nav-item ">
                 <a className="nav-link credito-nav" href="/#">
-                  Credito <span>{accountInfo.profile.wallet}$</span>
+                  Credito <span>{accountInfo.profile.wallet}€</span>
                 </a>
               </li>
             )}

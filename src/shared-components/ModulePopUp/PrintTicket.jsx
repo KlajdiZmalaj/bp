@@ -4,17 +4,28 @@ import { MainActions, AuthActions } from "redux-store/models";
 
 class PrintTicket extends React.Component {
   render() {
+    const { arr } = this.props;
     return (
       <div className="col-5 rightCol_Module">
         <div className="row no-gutters">
           <div className="_modulePopUP__cupon">
             <div className="_modulePopUP__cupon--header">
               <img src="img/print.svg" alt="" />
-              <h3>Stampa dello scontrino</h3>
+              <h3>Stampa dello scontrino {arr[0].barcode}</h3>
             </div>
             <div className="_modulePopUP__cupon--body">
               <img src="img/logoGray.svg" alt="" />
               <h6>OTC srl</h6>
+
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: arr[0].receipt
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/\t/g, "\u00a0")
+                    .replace(/\n/g, "<br/>")
+                }}
+              />
               <span className="__cupon--body__address">
                 Via Risorgimento n.50 - castel san pietro terme
               </span>

@@ -1,12 +1,61 @@
 import React from "react";
-
-import { Header, Footer, Overview, Azioni } from "../../shared-components";
+import { connect } from "react-redux";
+import { MainActions, AuthActions } from "redux-store/models";
+import { Form, Button, DatePicker } from "antd";
+import "antd/dist/antd.css";
+import moment from "moment";
+import { Azioni } from "../../shared-components";
+import images from "themes/images";
 
 class Transazioni extends React.Component {
+  state = {
+    selectedFilter: 2
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log("Received values of form: ", values);
+        // const from = moment(values.from).format();
+        // const to = moment(values.to).format();
+        // this.props.getTransactionHistoryAg(from, to);
+        this.props.getPayments("", values.from, values.to);
+      }
+    });
+  };
+
+  changeSelected = filter => {
+    this.setState({ selectedFilter: filter });
+    if (filter === 0) {
+      this.props.getPayments("", moment(), moment());
+    }
+    if (filter === 1) {
+      this.props.getPayments("", moment().subtract(1, "days"), moment());
+    }
+  };
+  componentDidMount() {
+    this.props.getPayments();
+  }
   render() {
+    const { getFieldDecorator } = this.props.form;
+
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 }
+      }
+    };
+    const { payments } = this.props;
+    const { selectedFilter } = this.state;
+    const filters = ["oggi", "ieri", "questa sett.", "questo messe"];
+    console.log("payments", payments);
     return (
       <div>
-
         <div className="container-fluid overview ">
           <Azioni active="transazioni"></Azioni>
 
@@ -14,56 +63,109 @@ class Transazioni extends React.Component {
             <div className="sort-annunci sort-trasazioni max-width border-0">
               <h1 className="heading-tab ">Transazioni</h1>
               <div className="datepics ml-auto mr-2">
-                <div className="dal">
+                <Form
+                  {...formItemLayout}
+                  onSubmit={this.handleSubmit}
+                  className="filters"
+                >
+                  <div className="dal">
+                    {
+                      <Form.Item>
+                        {getFieldDecorator(
+                          "from",
+                          {}
+                        )(
+                          <DatePicker
+                            format={("DD/MM/YYYY", "DD/MM/YYYY")}
+                            placeholder="Dal"
+                          />
+                        )}
+                      </Form.Item>
+                    }
+                  </div>
+                  <div className="al">
+                    {
+                      <Form.Item>
+                        {getFieldDecorator("to", {
+                          rules: [{ type: "object" }]
+                        })(
+                          <DatePicker
+                            format={("DD/MM/YYYY", "DD/MM/YYYY")}
+                            placeholder="Al"
+                          />
+                        )}
+                      </Form.Item>
+                    }
+                  </div>
+
+                  <div>
+                    <button className="filterBtn" htmlType="submit">
+                      Filter
+                    </button>
+                  </div>
+                </Form>
+
+                {/* <div className="dal">
                   <label htmlFor="dpic1">
                     <img src="img/calendar (1).svg" alt="" />
                   </label>
                   <input type="text" id="dpic1" placeholder="DAL" />
                   <i className="fas fa-chevron-down ml-auto"></i>
-                </div>
-                <div className="al">
+                </div> */}
+                {/* <div className="al">
                   <input type="text" id="dpic2" placeholder="AL" />
                   <i className="fas fa-chevron-down ml-auto"></i>
-                </div>
+                </div> */}
+
                 <div className="codice"></div>
               </div>
               <ul className="m-0 p-0">
-                <li>
-                  <a href="javascript:void(0)">
-                    <i className="fas fa-dot-circle"></i>oggi
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <i className="fas fa-dot-circle"></i>ieri
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <i className="fas fa-dot-circle"></i>questa sett.
-                  </a>
-                </li>
-                <li className="active">
-                  <a href="javascript:void(0)">
-                    <i className="fas fa-dot-circle"></i>questo messe
-                  </a>
-                </li>
+                {filters.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={index === selectedFilter && "active"}
+                      onClick={() => this.changeSelected(index)}
+                    >
+                      <i className="fas fa-dot-circle"></i>
+                      {item}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
                 <table className="transTable">
-                  <tbody>
+                  <thead>
                     <tr>
-                      <td>DATA</td>
-                      <td>DESCRIZIONE</td>
-                      <td>Valore</td>
-                      <td>comissione</td>
-                      <td>GUADAGNO</td>
-                      <td>telefono</td>
-                      <td>VPTPlus Code</td>
+                      <td>Date / Ora</td>
+                      <td>Barcode</td>
+                      <td>Service</td>
+                      <td>Valore (€)</td>
+                      <td>Comissione (€)</td>
+                      <td>Guadagno</td>
+                      <td>Telefono</td>
                     </tr>
-                    <tr></tr>
+                  </thead>
+                  <tbody>
+                    {payments.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{item.executed_date}</td>
+                          <td>{item.barcode}</td>
+                          <td>{item.service_name}</td>
+                          <td>{item.price1000 / 1000} </td>
+                          <td>{item.commissione ? item.commissione : "-"}</td>
+                          <td>{item.percentage > 0 ? item.percentage : "-"}</td>
+                          <td>
+                            {typeof item.user_data === "string"
+                              ? item.user_data
+                              : "-"}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -79,4 +181,14 @@ class Transazioni extends React.Component {
   }
 }
 
-export default Transazioni;
+const TransazioniF = Form.create({ name: "Transazioni" })(Transazioni);
+
+const mapsStateToProps = state => ({
+  isShowing: state.main.isShowing,
+  service_id: state.auth.service_id,
+  payments: state.auth.payments
+});
+
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  TransazioniF
+);
