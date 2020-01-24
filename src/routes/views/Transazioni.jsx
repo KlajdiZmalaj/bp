@@ -124,7 +124,7 @@ class Transazioni extends React.Component {
                   </div>
 
                   <div>
-                    <button className="filterBtn" htmlType="submit">
+                    <button className="filterBtn" htmltype="submit">
                       Filter
                     </button>
                   </div>

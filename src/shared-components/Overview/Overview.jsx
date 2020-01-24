@@ -6,7 +6,12 @@ import "./Overview.styles.scss";
 
 class Overview extends Component {
   componentDidMount() {
-    this.props.getPayments();
+    const accountData = localStorage.getItem("accountDataB");
+    const data = JSON.parse(accountData);
+
+    if (data) {
+      this.props.getPayments();
+    }
   }
 
   render() {
@@ -17,7 +22,6 @@ class Overview extends Component {
       payments,
       accountInfo
     } = this.props;
-    console.log("payments", payments);
 
     let provT = 0;
     if (payments && payments.length > 0) {

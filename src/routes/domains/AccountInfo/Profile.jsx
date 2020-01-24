@@ -80,7 +80,7 @@ class Profile extends Component {
               ]
             })(<Input.Password onBlur={this.handleConfirmBlur} />)}
           </Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmltype="submit">
             Change PW
           </Button>
         </Form>

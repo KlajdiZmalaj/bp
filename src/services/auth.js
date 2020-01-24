@@ -88,19 +88,23 @@ export const fetchBolletiniBianchi = (
     })
     .catch(error => ({ error }));
 
-export const fetchPayments = (username, from, to) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
-    })
-    .post(`/users/payments`, {
-      ...(username ? { username: username } : {}),
-      ...{ from: from },
-      ...{ to: to }
-    })
-    .catch(error => ({ error }));
+export let fetchPayments;
+
+if (JSON.parse(localStorage.getItem("accountDataB"))) {
+  fetchPayments = (username, from, to) =>
+    axios
+      .create({
+        baseURL: "https://services-api.bpoint.store/api",
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("accountDataB")).token
+          }`
+        }
+      })
+      .post(`/users/payments`, {
+        ...(username ? { username: username } : {}),
+        ...{ from: from },
+        ...{ to: to }
+      })
+      .catch(error => ({ error }));
+}

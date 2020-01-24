@@ -36,7 +36,6 @@ export function* logOut() {
 }
 
 export function* getBolletiniBianchi(params) {
-  console.log("params", params);
   const response = yield call(
     fetchBolletiniBianchi,
     params.service_id,
@@ -72,13 +71,13 @@ export function* getBolletiniBianchi(params) {
 }
 
 export function* getPayments(params) {
-  console.log("params", params);
   const response = yield call(
     fetchPayments,
     params.username,
     params.from,
     params.to
   );
+
   if (response) {
     if (response.data) {
       yield put(AuthActions.setPayments(response.data.transactions));
