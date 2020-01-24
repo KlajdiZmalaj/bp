@@ -1,12 +1,38 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import MainActions from "redux-store/models/main";
+import { MainActions, AuthActions } from "redux-store/models";
 import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 
 class Overview extends Component {
+  componentDidMount() {
+    this.props.getPayments();
+  }
+
   render() {
-    const { showOverview, toggleOverview, services } = this.props;
+    const {
+      showOverview,
+      toggleOverview,
+      services,
+      payments,
+      accountInfo
+    } = this.props;
+    console.log("payments", payments);
+
+    let provT = 0;
+    if (payments && payments.length > 0) {
+      provT = (payments || [])
+        .map(item => parseFloat(item.percentage))
+        .reduce((prev, next) => prev + next);
+    }
+
+    // let commT = 0;
+    // if (payments && payments.length > 0) {
+    //   commT = (payments || [])
+    //     .map(item => item.commissione)
+    //     .reduce((prev, next) => prev + next);
+    // }
+
     return (
       <React.Fragment>
         <div className="max-width row">
@@ -66,16 +92,22 @@ class Overview extends Component {
           >
             <div className="wig wig1">
               <a href="/#">View Details</a>
-              <h2>Overall Sale</h2>
-              <h3>1234$</h3>
+              <h2>Saldo</h2>
+              <h3>
+                {accountInfo.profile &&
+                  accountInfo.profile.wallet &&
+                  accountInfo.profile.wallet}
+                €
+              </h3>
               <i className="fas fa-tag"></i>
             </div>
           </div>
           <div className="col-md-4" data-aos="flip-up" data-aos-duration="800">
             <div className="wig wig2">
               <a href="/#">View Details</a>
-              <h2>Overall Visited</h2>
-              <h3>1446</h3>
+              {/* <h2>Commissioni</h2> */}
+              <h2>Proviggioni</h2>
+              <h3>{provT} €</h3>
               <i className="fas fa-user-alt"></i>
             </div>
           </div>
@@ -86,8 +118,8 @@ class Overview extends Component {
           >
             <div className="wig wig3">
               <a href="/#">View Details</a>
-              <h2>Overall Growth</h2>
-              <h3>65%</h3>
+              <h2>Proviggioni</h2>
+              <h3>{provT}</h3>
               <i className="fal fa-arrow-down"></i>
             </div>
           </div>
@@ -99,7 +131,11 @@ class Overview extends Component {
 
 const mapsStateToProps = state => ({
   showOverview: toggleOverviewSelector(state),
-  services: state.services
+  services: state.services,
+  payments: state.auth.payments,
+  accountInfo: state.auth.accountInfo
 });
 
-export default connect(mapsStateToProps, MainActions)(Overview);
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  Overview
+);

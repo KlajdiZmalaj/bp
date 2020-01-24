@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import { Form, Button, DatePicker } from "antd";
+
+import { Form, DatePicker, Modal } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { Azioni } from "../../shared-components";
@@ -9,7 +10,31 @@ import images from "themes/images";
 
 class Transazioni extends React.Component {
   state = {
-    selectedFilter: 2
+    selectedFilter: 3,
+    visible: false,
+    indexT: null
+  };
+  showModal = index => {
+    this.setState({
+      visible: true
+    });
+    this.setState({
+      indexT: index
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
   };
 
   handleSubmit = e => {
@@ -51,7 +76,7 @@ class Transazioni extends React.Component {
       }
     };
     const { payments } = this.props;
-    const { selectedFilter } = this.state;
+    const { selectedFilter, indexT } = this.state;
     const filters = ["oggi", "ieri", "questa sett.", "questo messe"];
     console.log("payments", payments);
     return (
@@ -105,18 +130,6 @@ class Transazioni extends React.Component {
                   </div>
                 </Form>
 
-                {/* <div className="dal">
-                  <label htmlFor="dpic1">
-                    <img src="img/calendar (1).svg" alt="" />
-                  </label>
-                  <input type="text" id="dpic1" placeholder="DAL" />
-                  <i className="fas fa-chevron-down ml-auto"></i>
-                </div> */}
-                {/* <div className="al">
-                  <input type="text" id="dpic2" placeholder="AL" />
-                  <i className="fas fa-chevron-down ml-auto"></i>
-                </div> */}
-
                 <div className="codice"></div>
               </div>
               <ul className="m-0 p-0">
@@ -142,27 +155,25 @@ class Transazioni extends React.Component {
                       <td>Date / Ora</td>
                       <td>Barcode</td>
                       <td>Service</td>
-                      <td>Valore (€)</td>
-                      <td>Comissione (€)</td>
-                      <td>Guadagno</td>
-                      <td>Telefono</td>
+                      <td>Importo</td>
+                      <td>Commissione</td>
+                      <td>Proviggione</td>
                     </tr>
                   </thead>
                   <tbody>
                     {payments.map((item, index) => {
                       return (
-                        <tr key={index}>
-                          <td>{item.executed_date}</td>
+                        <tr key={index} onClick={() => this.showModal(index)}>
+                          <td>
+                            {moment(item.executed_date).format(
+                              "DD/MM/YYYY  HH:MM:ss"
+                            )}
+                          </td>
                           <td>{item.barcode}</td>
                           <td>{item.service_name}</td>
                           <td>{item.price1000 / 1000} </td>
                           <td>{item.commissione ? item.commissione : "-"}</td>
                           <td>{item.percentage > 0 ? item.percentage : "-"}</td>
-                          <td>
-                            {typeof item.user_data === "string"
-                              ? item.user_data
-                              : "-"}
-                          </td>
                         </tr>
                       );
                     })}
@@ -171,6 +182,27 @@ class Transazioni extends React.Component {
               </div>
             </div>
           </div>
+          <Modal
+            title={null}
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            footer={null}
+          >
+            {indexT !== null && payments[indexT] && (
+              <div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: payments[indexT].receipt
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/\t/g, "\u00a0")
+                      .replace(/\n/g, "<br/>")
+                  }}
+                />
+              </div>
+            )}
+          </Modal>
         </div>
         {/* <!--Chat icon botm right corner--> */}
         <div className="chatSticky">
