@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 @font-face {
   font-family: fontAw-300;
-  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw.php") format("woff");
+  src: url("../themes/fontsAw.php") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: fontAw-900;
-  src: url("http://static.pcluster.info/skins/betop/fonts/fontsAw900.php") format("woff");
+  src: url("../themes/fontsAw900.php") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: fallback;
