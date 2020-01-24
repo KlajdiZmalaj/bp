@@ -55,9 +55,17 @@ export function* getBolletiniBianchi(params) {
       yield put(AuthActions.setBolletiniBianchi(response.data));
     } else if (response.error) {
       console.log("errorrrrrrrrrr", response.error.response.data);
-      yield put(AuthActions.setBolletiniBianchi(response.error.response.data));
+      if (response.error.response.status === 444) {
+        const error = { errors: { notCorrect: ["data are not corrected."] } };
+        yield put(AuthActions.setBolletiniBianchi(error));
+      } else {
+        yield put(
+          AuthActions.setBolletiniBianchi(response.error.response.data)
+        );
+      }
+
       // yield delay(3000);
-      // yield put(AuthActions.setInfo({}));
+      // yield put(AuthActions.setBolletiniBianchi({}));
     }
   }
 }

@@ -25,5 +25,8 @@ export default {
   riple: require("../assets/images/riple.svg"),
   litecoin: require("../assets/images/litecoin.svg"),
   dashcoin: require("../assets/images/dashcoin.svg"),
-  cancelMob: require("../assets/images/cancelMob.svg")
+  cancelMob: require("../assets/images/cancelMob.svg"),
+  close: require("../assets/images/close.svg"),
+  euro: require("../assets/images/euro.svg"),
+  checkSymbol: require("../assets/images/check-symbol.svg")
 };

@@ -421,7 +421,7 @@ class Service extends React.Component {
                           <tr>
                             <td>
                               <div>
-                                <img src="img/bill-dark.svg" alt="" />
+                                <img src={images.billDark} alt="" />
                                 <p>
                                   Bollettini <br /> Bianchi
                                 </p>

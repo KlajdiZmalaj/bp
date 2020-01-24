@@ -1366,7 +1366,7 @@ a:hover {
 
 /*modules*/
 .modulePopUP {
-  background: #fff;
+  background: #edeef0;
   overflow-y: scroll;
   position: fixed;
   top: 0;
@@ -1536,7 +1536,7 @@ a:hover {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border: 1px solid #edeef0;
+  border: 1px solid #dadde2;
   margin-top: 15px;
 }
 
@@ -1606,7 +1606,7 @@ a:hover {
 
 .euroboll input {
   border: 0;
-  border: 1px solid #edeef0;
+  border: 1px solid #dadde2;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;

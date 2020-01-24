@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import AuthActions from "redux-store/models/auth";
+import { AuthActions, MainActions } from "redux-store/models";
 import { Form, Input } from "antd";
 import Condizioni from "./Condizioni";
+import images from "themes/images";
 
 class Bolletino extends React.Component {
   state = {
@@ -11,7 +12,6 @@ class Bolletino extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
-      console.log("valuesvalues", values);
       if (!err) {
         this.props.getBolletiniBianchi(
           this.props.service_id,
@@ -35,7 +35,7 @@ class Bolletino extends React.Component {
   };
 
   hideAlert = () => {
-    this.props.setChangePass([]);
+    this.props.setBolletiniBianchi({});
   };
 
   render() {
@@ -53,8 +53,6 @@ class Bolletino extends React.Component {
       }
     };
 
-    console.log("bolletiniBianchi", bolletiniBianchi);
-
     return (
       <div className="bolletino">
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -66,7 +64,7 @@ class Bolletino extends React.Component {
                     <tr>
                       <td>
                         <div>
-                          <img src="img/bill-dark.svg" alt="" />
+                          <img src={images.billDark} alt="" />
                           <p>
                             Bollettini <br /> Bianchi
                           </p>
@@ -88,7 +86,7 @@ class Bolletino extends React.Component {
                     <tr>
                       <td onClick={this.handleSubmit} htmltype="submit">
                         <h3>esegui</h3>
-                        <img src="img/check-symbol.svg" alt="" />
+                        <img src={images.checkSymbol} alt="" />
                       </td>
                       <td>
                         <h3>esegui</h3>
@@ -107,7 +105,7 @@ class Bolletino extends React.Component {
                         onClick={() => this.props.togglePopUp(false)}
                       >
                         <h3>anulla</h3>
-                        <img src="img/close.svg" alt="" />
+                        <img src={images.close} alt="" />
                       </td>
                     </tr>
                   </tbody>
@@ -123,7 +121,7 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-12 col-lg-7">
                 <div className="euroboll">
-                  <img src="img/euro.svg" alt="" />
+                  <img src={images.euro} alt="" />
                   <span>sul C/C n.</span>{" "}
                   <Form.Item>
                     {getFieldDecorator("numero_conto_corrente", {
@@ -141,12 +139,6 @@ class Bolletino extends React.Component {
               <div className="col-12 col-lg-5 mt-2 mt-lg-0">
                 <div className="euroboll">
                   <span>di Euro</span>{" "}
-                  {/* <input
-                    type="number"
-                    id="importo"
-                    name="importo"
-                    onChange={this.handleChangeimporto}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("importo", {
                       rules: [
@@ -168,13 +160,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9 ">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-4 pl-2 mt-2"
-                    type="text"
-                    id="intestato_a"
-                    name="intestato_a"
-                    onChange={this.handleChangeintestato_a}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("intestato_a", {
                       rules: [
@@ -196,13 +181,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9 ">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-4 pl-2 mt-3"
-                    type="text"
-                    id="causale"
-                    namr="causale"
-                    onChange={this.handleChangecausale}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("causale", {
                       rules: [
@@ -224,13 +202,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9 ">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-1 pl-2 mt-3"
-                    type="text"
-                    id="eseguito_da"
-                    name="eseguito_da"
-                    onChange={this.handleChangeeseguito_da}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("eseguito_da", {
                       rules: [
@@ -252,13 +223,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-1 pl-2 mt-3 mb-3"
-                    type="text"
-                    id="via_piazza"
-                    name="via_piazza"
-                    onChange={this.handleChangevia_piazza}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("via_piazza", {
                       rules: [
@@ -279,13 +243,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-1 pl-2 mt-3 mb-3"
-                    type="text"
-                    id="cap"
-                    name="cap"
-                    onChange={this.handleChangecap}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("cap", {
                       rules: [
@@ -306,12 +263,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-1 pl-2 mt-3 mb-3"
-                    type="text"
-                    id="citta"
-                    onChange={this.handleChangecitta}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("citta", {
                       rules: [
@@ -332,13 +283,6 @@ class Bolletino extends React.Component {
               </div>
               <div className="col-9">
                 <div className="euroboll">
-                  {/* <input
-                    className="py-1 pl-2 mt-3 mb-3"
-                    type="text"
-                    id="provincia"
-                    name="provincia"
-                    onChange={this.handleChangeprovincia}
-                  /> */}
                   <Form.Item>
                     {getFieldDecorator("provincia", {
                       rules: [
@@ -360,6 +304,17 @@ class Bolletino extends React.Component {
               </div>
               <Condizioni></Condizioni>
             </div>
+            {bolletiniBianchi.errors &&
+              Object.keys(bolletiniBianchi.errors).map(item => {
+                return (
+                  <div className="error">
+                    <span className="closeAlert" onClick={this.hideAlert}>
+                      X
+                    </span>
+                    {bolletiniBianchi.errors[item]}
+                  </div>
+                );
+              })}
           </div>
         </Form>
       </div>
@@ -373,6 +328,6 @@ const mapsStateToProps = state => ({
   bolletiniBianchi: state.auth.bolletiniBianchi
 });
 
-export default connect(mapsStateToProps, { ...AuthActions })(
+export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
   CenterAccountMenuu
 );

@@ -1,5 +1,4 @@
 import React from "react";
-// import "./index-service.style.scss";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
