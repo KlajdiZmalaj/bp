@@ -52,7 +52,7 @@ class Bolletino extends React.Component {
         sm: { span: 16 }
       }
     };
-
+    console.log("bolletiniBianchi", bolletiniBianchi);
     return (
       <div className="bolletino">
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>

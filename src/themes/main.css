@@ -905,6 +905,19 @@ a:hover {
   display: none;
 }
 
+.ant-select-selection--single {
+  width: 200px;
+  border: none;
+}
+
+.ant-select-selection--single .ant-select-no-arrow .ant-select-selection__rendered {
+  border: none;
+}
+
+.ant-select-selection--single .ant-select-selection {
+  border: none;
+}
+
 /*adm styles*/
 .creatutente {
   position: relative;

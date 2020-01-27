@@ -2,18 +2,38 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
-import { Form, DatePicker, Modal } from "antd";
+import { Form, DatePicker, Modal, Select } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { Azioni, Overview } from "shared-components";
 import { slicedAmount } from "utils";
 
+const { Option } = Select;
+
 class Transazioni extends React.Component {
   state = {
     selectedFilter: 3,
     visible: false,
-    indexT: null
+    indexT: null,
+    username: "",
+    usernames: null
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let { usernames } = prevState;
+
+    if (
+      usernames === null &&
+      nextProps.usernames &&
+      nextProps.usernames.length > 0
+    ) {
+      usernames = nextProps.usernames;
+      return { ...prevState, usernames };
+    }
+
+    return null;
+  }
+
   showModal = index => {
     this.setState({
       visible: true
@@ -24,14 +44,12 @@ class Transazioni extends React.Component {
   };
 
   handleOk = e => {
-    console.log(e);
     this.setState({
       visible: false
     });
   };
 
   handleCancel = e => {
-    console.log(e);
     this.setState({
       visible: false
     });
@@ -42,7 +60,7 @@ class Transazioni extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
-        this.props.getPayments("", values.from, values.to);
+        this.props.getPayments(this.state.username, values.from, values.to);
       }
     });
   };
@@ -69,6 +87,19 @@ class Transazioni extends React.Component {
     }
   };
 
+  handleSearch = value => {
+    if (value && this.props.usernames) {
+      let res = this.props.usernames.filter(user => user.includes(value));
+      this.setState({ usernames: res });
+    } else {
+      this.setState({ usernames: [] });
+    }
+  };
+
+  handleChange = value => {
+    this.setState({ username: value });
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
 
@@ -82,10 +113,16 @@ class Transazioni extends React.Component {
         sm: { span: 16 }
       }
     };
-    const { payments } = this.props;
-    const { selectedFilter, indexT } = this.state;
+    const { payments, accountInfo } = this.props;
+    const { selectedFilter, indexT, usernames } = this.state;
+
     const filters = ["oggi", "ieri", "questa sett", "questo messe"];
 
+    let options = [];
+    console.log("usernamesusernames", usernames);
+    if (usernames && usernames.length > 0) {
+      options = usernames.map(user => <Option key={user}>{user}</Option>);
+    }
     return (
       <div>
         <Overview></Overview>
@@ -101,6 +138,45 @@ class Transazioni extends React.Component {
                   onSubmit={this.handleSubmit}
                   className="filters"
                 >
+                  {accountInfo.profile &&
+                    parseInt(accountInfo.profile.role.id) === 1 && (
+                      <div className="dal">
+                        {
+                          <Form.Item>
+                            {getFieldDecorator(
+                              "username",
+                              {}
+                            )(
+                              // <Select
+                              //   value={this.state.username}
+                              //   onChange={this.handleCurrencyChange}
+                              // >
+                              //   <Option value="rmb">RMB</Option>
+                              //   <Option value="dollar">Dollar</Option>
+                              // </Select>
+
+                              <Select
+                                showSearch
+                                defaultActiveFirstOption={false}
+                                showArrow={false}
+                                filterOption={false}
+                                onSearch={this.handleSearch}
+                                onChange={this.handleChange}
+                                // notFoundContent={null}
+                                placeholder={
+                                  this.props.usernames.length > 0
+                                    ? this.props.usernames[0]
+                                    : "Select"
+                                }
+                              >
+                                {options}
+                              </Select>
+                            )}
+                          </Form.Item>
+                        }
+                      </div>
+                    )}
+
                   <div className="dal">
                     {
                       <Form.Item>
@@ -230,7 +306,9 @@ const TransazioniF = Form.create({ name: "Transazioni" })(Transazioni);
 const mapsStateToProps = state => ({
   isShowing: state.main.isShowing,
   service_id: state.auth.service_id,
-  payments: state.auth.payments
+  payments: state.auth.payments,
+  usernames: state.auth.usernames,
+  accountInfo: state.auth.accountInfo
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

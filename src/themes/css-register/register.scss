@@ -2,13 +2,10 @@
 .infoUser.generalInfo.row {
   max-width: 1154px;
   margin: 0 auto;
-  border-top: 3px solid #00e2b6;
   background: #fff;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   position: relative;
-  // animation: fadeIn 0.6s ease-in-out;
-  // animation-iteration-count: 1;
 
   .anticon-eye-invisible,
   .anticon-eye,
@@ -24,7 +21,7 @@
     left: 0;
   }
   .col1Form {
-    border-right: 1px solid #8ca0b3;
+    border-right: 1px solid #dfe4ef;
   }
   .col2Form {
     padding-bottom: 20px;
@@ -35,10 +32,10 @@
     .secondcol {
       width: 50%;
       padding: 10px 30px;
-      border-bottom: 1px solid #8ca0b3;
+      border-bottom: 1px solid #dfe4ef;
     }
     .firstcol {
-      border-right: 1px solid #8ca0b3;
+      border-right: 1px solid #dfe4ef;
     }
   }
   .rowdown {
@@ -61,16 +58,18 @@
     }
   }
   .titleReg {
-    color: #212529;
+    color: #ed4c14;
     text-transform: uppercase;
     text-align: left;
     font-size: 18px;
     white-space: nowrap;
     padding-bottom: 50px;
     padding-top: 20px;
+    font-weight: 500;
   }
   .ant-col-sm-16 {
     width: 100%;
+    border: 1px solid #dfe4ef;
   }
   .ant-form-item {
     margin: 0;
@@ -83,7 +82,7 @@
     border: 0;
     background-color: none;
     padding: 0;
-    border-right: 2px solid #8ca0b3;
+    border-right: 2px solid #dfe4ef;
   }
   .ant-select-selection.ant-select-selection--single {
     // margin-bottom: 3px;
@@ -103,8 +102,8 @@
     color: #2d3137;
   }
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #00e2b6;
-    border-color: #8ca0b3;
+    background-color: #ed4c14;
+    border-color: #dfe4ef;
   }
   .firstcol #infoUser_sesso {
     // margin-top: 2px;
@@ -129,7 +128,7 @@
   input,
   .ant-select-selection,
   select {
-    background: #edeef0;
+    background: #fff;
     border: 0;
     border-radius: 0;
     color: #212529;
@@ -151,24 +150,24 @@
     color: #212529;
   }
   .sendBTN button {
-    background: #2d3137;
-    border: 0;
+    background: transparent;
+    border: 1px solid #ed4c14;
     border-radius: 0;
     width: 100%;
     height: 60px;
-    color: #00e2b6;
+    color: #ed4c14;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 4px;
     transition: 0.3s ease-in-out;
     &:hover {
-      background: #00e2b6;
-      color: #2d3137;
+      background: #ed4c14;
+      color: #fff;
     }
   }
   .closeTHIS {
     background: #383d45;
-    border: 2px solid #8ca0b3;
+    border: 2px solid #dfe4ef;
     border-radius: 20px;
     padding: 0px 4px;
     position: absolute;
@@ -184,7 +183,7 @@
     animation-iteration-count: 1;
   }
   .Select-control {
-    background-color: #edeef0;
+    border: 1px solid #dfe4ef;
     border: 0;
     border-radius: 0;
     // margin-bottom: 3px;
@@ -196,7 +195,7 @@
 .backTORegister {
   background-color: #383d45;
   max-width: 1154px;
-  border-top: 3px solid #00e2b6;
+  border-top: 3px solid #ed4c14;
   margin: 0 auto;
   margin-top: 100px;
   margin-bottom: 200px;
@@ -213,7 +212,7 @@
   a {
     background: #2d3137;
     border: 0;
-    color: #00e2b6;
+    color: #ed4c14;
     padding: 10px 30px;
     transition: 0.3s ease-in-out;
     border: 1px solid transparent;
@@ -226,8 +225,8 @@
       top: 1px;
     }
     &:hover {
-      border: 1px solid #00e2b6;
-      color: #00e2b6;
+      border: 1px solid #ed4c14;
+      color: #ed4c14;
       background-color: #24272c;
     }
   }
@@ -249,7 +248,7 @@
   }
   .counter {
     position: absolute;
-    color: #00e2b6;
+    color: #ed4c14;
     font-size: 16px;
     right: 33px;
     top: 30px;
@@ -264,7 +263,7 @@
       border-radius: 0;
       width: 100%;
       height: 60px;
-      color: #00e2b6;
+      color: #ed4c14;
       text-transform: uppercase;
       font-size: 20px;
       margin-top: 4px;
@@ -272,10 +271,10 @@
       flex-grow: 1;
       overflow: hidden;
       &:first-child {
-        border-right: 1px solid #8ca0b3;
+        border-right: 1px solid #dfe4ef;
       }
       &:hover {
-        background: #00e2b6;
+        background: #ed4c14;
         color: #2d3137;
       }
     }
@@ -334,4 +333,42 @@
   .infoUser.generalInfo.row .firstcol {
     width: 100%;
   }
+}
+
+.Select-control {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #333;
+  cursor: default;
+  display: table;
+  border-spacing: 0;
+  border-collapse: separate;
+  height: 36px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.Select--single > .Select-control .Select-value,
+.Select-placeholder {
+  bottom: 0;
+  color: #aaa;
+  left: 0;
+  line-height: 34px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.Select-input {
+  height: 34px;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
 }

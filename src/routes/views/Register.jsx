@@ -515,7 +515,7 @@ class Register extends React.Component {
                 </Form.Item>
               </div>
             </div>
-            {/* <div className="rowdown">
+            <div className="rowdown">
               <Form.Item>
                 {getFieldDecorator("contract", {
                   initialValue: false,
@@ -530,7 +530,6 @@ class Register extends React.Component {
                 })(
                   <Checkbox>
                     Dichiaro di essere maggiorenne e di accettare il Contratto
-                    di Gioco
                   </Checkbox>
                 )}
               </Form.Item>
@@ -561,7 +560,7 @@ class Register extends React.Component {
                 })(
                   <Checkbox>
                     Ho preso visione e acconsento al Trattamento Dati Personali
-                    ai sensi del regolamento UE 679/2016
+                    {/* ai sensi del regolamento UE 679/2016 */}
                   </Checkbox>
                 )}
               </Form.Item>
@@ -570,11 +569,11 @@ class Register extends React.Component {
                   initialValue: false
                 })(<Checkbox>Voglio iscrivermi alla Newsletter</Checkbox>)}
               </Form.Item>
-            </div> */}
+            </div>
           </div>
           <div className="col col-md-4 col2Form">
             <div className="firstcol">
-              <div className="titleReg">Documenti e gioco responsabile</div>
+              <div className="titleReg">Documenti</div>
 
               <Form.Item>
                 {getFieldDecorator("identity_type", {
@@ -694,29 +693,6 @@ class Register extends React.Component {
               </Form.Item>
 
               <Form.Item>
-                {getFieldDecorator("self_limit_period", {
-                  rules: [
-                    {
-                      required: true,
-                      message: "Please select deposito limit!"
-                    }
-                  ]
-                })(
-                  <Select placeholder="Limito di deposito settimanale*">
-                    <Option value="10000">10.000</Option>
-                    <Option value="5000">5.000</Option>
-                    <Option value="3000">3.000</Option>
-                    <Option value="1000">1.000</Option>
-                    <Option value="500">500</Option>
-                    <Option value="300">300</Option>
-                    <Option value="100">100</Option>
-                    <Option value="50">50</Option>
-                    <Option value="10">10</Option>
-                  </Select>
-                )}
-              </Form.Item>
-
-              <Form.Item>
                 {getFieldDecorator("question", {
                   rules: [
                     {
@@ -758,7 +734,7 @@ class Register extends React.Component {
                 })(<Input placeholder="Risposta secreta*" />)}
               </Form.Item>
 
-              <Form.Item>
+              {/* <Form.Item>
                 {getFieldDecorator(
                   "promo",
                   {}
@@ -770,7 +746,7 @@ class Register extends React.Component {
                   "parent",
                   {}
                 )(<Input placeholder="Codice punto vendita(PVR)" />)}
-              </Form.Item>
+              </Form.Item> */}
 
               {/* {Object.keys(register).length > 0 && register.message && (
                 <div className="error">

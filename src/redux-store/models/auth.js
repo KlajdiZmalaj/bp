@@ -25,6 +25,7 @@ const { Types, Creators } = createActions({
 
   getPayments: ["username", "from", "to"],
   setPayments: ["payments"],
+  setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
   setRechargeMobile: ["rechargeMobile"],
   setServiceType: ["serviceType"]
@@ -41,6 +42,7 @@ const INITIAL_STATE = {
   bolletiniBianchi: {},
   service_id: null,
   payments: [],
+  usernames: [],
   service_s: [],
   rechargeMobile: {}
 };
@@ -77,6 +79,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_PAYMENTS]: (state, { payments }) => ({
     ...state,
     payments
+  }),
+  [Types.SET_USERNAMES]: (state, { usernames }) => ({
+    ...state,
+    usernames
   }),
   [Types.SET_RECHARGE_MOBILE]: (state, { rechargeMobile }) => ({
     ...state,
