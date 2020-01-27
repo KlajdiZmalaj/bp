@@ -24,6 +24,11 @@ class Root extends React.Component {
     this.getStoredData();
   }
 
+  componentDidUpdate(prevProps) {
+    const { accountInfo } = this.props;
+    console.log("accountInfo, isLoggedIn, queueTicketId", accountInfo);
+  }
+
   getStoredData = () => {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);

@@ -6,7 +6,7 @@ import { Form, DatePicker, Modal } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { Azioni } from "../../shared-components";
-import images from "themes/images";
+import { slicedAmount } from "utils";
 
 class Transazioni extends React.Component {
   state = {
@@ -42,9 +42,6 @@ class Transazioni extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
-        // const from = moment(values.from).format();
-        // const to = moment(values.to).format();
-        // this.props.getTransactionHistoryAg(from, to);
         this.props.getPayments("", values.from, values.to);
       }
     });
@@ -57,6 +54,18 @@ class Transazioni extends React.Component {
     }
     if (filter === 1) {
       this.props.getPayments("", moment().subtract(1, "days"), moment());
+    }
+    if (filter === 2) {
+      const time7daysAgo = moment()
+        .subtract(7, "days")
+        .startOf("day");
+      this.props.getPayments("", time7daysAgo, moment());
+    }
+    if (filter === 3) {
+      const time30daysAgo = moment()
+        .subtract(30, "days")
+        .startOf("day");
+      this.props.getPayments("", time30daysAgo, moment());
     }
   };
   componentDidMount() {
@@ -78,7 +87,7 @@ class Transazioni extends React.Component {
     const { payments } = this.props;
     const { selectedFilter, indexT } = this.state;
     const filters = ["oggi", "ieri", "questa sett.", "questo messe"];
-    console.log("payments", payments);
+
     return (
       <div>
         <div className="container-fluid overview ">
@@ -171,8 +180,12 @@ class Transazioni extends React.Component {
                           </td>
                           <td>{item.barcode}</td>
                           <td>{item.service_name}</td>
-                          <td>{item.price1000 / 1000} </td>
-                          <td>{item.commissione ? item.commissione : "-"}</td>
+                          <td>
+                            {item.price1000
+                              ? slicedAmount(item.price1000 / 1000)
+                              : "-"}
+                          </td>
+                          <td>{item.commissione ? item.commissione : "-"} </td>
                           <td>{item.percentage > 0 ? item.percentage : "-"}</td>
                         </tr>
                       );
