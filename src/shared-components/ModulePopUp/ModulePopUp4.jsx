@@ -27,9 +27,16 @@ class ModulePopUp4 extends React.Component {
     this.props.getRechargeMobile(service_id, tel_no);
   }
 
-  render() {
-    const { service_s, rechargeMobile } = this.props;
+  addNr = nr => {
+    this.setState({ tel_no: this.state.tel_no.concat(nr) });
+  };
+  clear = () => {
+    this.setState({ tel_no: "" });
+  };
 
+  render() {
+    const { service_s, rechargeMobile, serviceType } = this.props;
+    console.log("serviceType.toString()", serviceType.toString());
     const { serviceMobile, tel_no } = this.state;
 
     const arr = {
@@ -93,45 +100,75 @@ class ModulePopUp4 extends React.Component {
                     <div className="row no-gutters">
                       <h4>{serviceMobile.name}</h4>
                     </div>
-                    <div className="row no-gutters">
-                      <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
-                    </div>
-                    <div className="row no-gutters">
-                      <input
-                        type="text"
-                        className="displayedVal text-center"
-                        value={this.state.tel_no}
-                        onChange={this.handleChange}
-                        placeholder="_ _ _ _ _ _ _ _ _ "
-                        // disabled
-                      />
-                    </div>
-                    <div className="row numpadCarrier">
-                      <div className="col-8">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <td id="num1">1</td>
-                              <td id="num2">2</td>
-                              <td id="num3">3</td>
-                            </tr>
-                            <tr>
-                              <td id="num4">4</td>
-                              <td id="num5">5</td>
-                              <td id="num6">6</td>
-                            </tr>
-                            <tr>
-                              <td id="num7">7</td>
-                              <td id="num8">8</td>
-                              <td id="num9">9</td>
-                            </tr>
-                            <tr>
-                              <td id="num0">0</td>
-                              <td id="numC">C</td>
-                            </tr>
-                          </tbody>
-                        </table>
+
+                    {serviceType.toString() === "RTELD" && (
+                      <div className="row no-gutters">
+                        <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
                       </div>
+                    )}
+                    {serviceType.toString() === "RTELD" && (
+                      <div className="row no-gutters">
+                        <input
+                          type="text"
+                          className="displayedVal text-center"
+                          value={this.state.tel_no}
+                          onChange={this.handleChange}
+                          placeholder="_ _ _ _ _ _ _ _ _ "
+                          // disabled
+                        />
+                      </div>
+                    )}
+                    <div className="row numpadCarrier">
+                      {serviceType.toString() === "RTELD" && (
+                        <div className="col-8">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td id="num1" onClick={() => this.addNr(1)}>
+                                  1
+                                </td>
+                                <td id="num2" onClick={() => this.addNr(2)}>
+                                  2
+                                </td>
+                                <td id="num3" onClick={() => this.addNr(3)}>
+                                  3
+                                </td>
+                              </tr>
+                              <tr>
+                                <td id="num4" onClick={() => this.addNr(4)}>
+                                  4
+                                </td>
+                                <td id="num5" onClick={() => this.addNr(5)}>
+                                  5
+                                </td>
+                                <td id="num6" onClick={() => this.addNr(6)}>
+                                  6
+                                </td>
+                              </tr>
+                              <tr>
+                                <td id="num7" onClick={() => this.addNr(7)}>
+                                  7
+                                </td>
+                                <td id="num8" onClick={() => this.addNr(8)}>
+                                  8
+                                </td>
+                                <td id="num9" onClick={() => this.addNr(9)}>
+                                  9
+                                </td>
+                              </tr>
+                              <tr>
+                                <td id="num0" onClick={() => this.addNr(0)}>
+                                  0
+                                </td>
+                                <td id="numC" onClick={this.clear}>
+                                  C
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+
                       <div className="col-4" style={{ paddingRight: "30px" }}>
                         <table className="_modulePopUP__tableCarrier">
                           <tbody>

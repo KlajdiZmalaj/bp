@@ -119,7 +119,7 @@ class Transazioni extends React.Component {
     const filters = ["oggi", "ieri", "questa sett", "questo messe"];
 
     let options = [];
-    console.log("usernamesusernames", usernames);
+
     if (usernames && usernames.length > 0) {
       options = usernames.map(user => <Option key={user}>{user}</Option>);
     }

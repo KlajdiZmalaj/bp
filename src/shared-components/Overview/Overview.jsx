@@ -8,7 +8,7 @@ class Overview extends Component {
   componentDidMount() {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
-
+    console.log("datadata", data);
     if (data) {
       this.props.getPayments();
     }

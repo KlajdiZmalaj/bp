@@ -31,11 +31,13 @@ class ModulePopUp extends React.Component {
           ></ModulePopUp1>
         )}
 
-        {serviceType.toString() === "RTELD" && (
+        {(serviceType.toString() === "RTELD" ||
+          serviceType.toString() === "RTELC") && (
           <ModulePopUp4
             service_id={service_id}
             bolletiniBianchi={bolletiniBianchi}
             serviceSelected={service}
+            serviceType={serviceType}
           ></ModulePopUp4>
         )}
       </Fragment>
