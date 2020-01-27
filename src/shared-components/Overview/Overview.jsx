@@ -111,7 +111,7 @@ class Overview extends Component {
               <a href="/#">View Details</a>
               {/* <h2>Commissioni</h2> */}
               <h2>Proviggioni</h2>
-              <h3>{provT} €</h3>
+              <h3>{provT.toFixed(2)} €</h3>
               <i className="fas fa-user-alt"></i>
             </div>
           </div>
@@ -123,7 +123,7 @@ class Overview extends Component {
             <div className="wig wig3">
               <a href="/#">View Details</a>
               <h2>Proviggioni</h2>
-              <h3>{provT}</h3>
+              <h3>{provT.toFixed(2)}</h3>
               <i className="fal fa-arrow-down"></i>
             </div>
           </div>
