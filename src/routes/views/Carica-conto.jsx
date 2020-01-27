@@ -1,6 +1,6 @@
 import React from "react";
 
-import Azioni from "../../shared-components/Azioni/Azioni.jsx";
+import Azioni from "shared-components/Azioni/Azioni.jsx";
 
 class CaricaConto extends React.Component {
   render() {

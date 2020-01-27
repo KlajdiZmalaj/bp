@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Header, Footer, Overview, Azioni } from "../../shared-components";
+import { Overview, Azioni } from "shared-components";
 
 class UseCode extends React.Component {
   render() {
     return (
       <div>
+        <Overview></Overview>
         <div className="container-fluid overview ">
           <Azioni active="use-code"></Azioni>
           <div className="panels-container">

@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 
-import { Azioni } from "../../shared-components";
+import { Azioni } from "shared-components";
 import Messag from "../domains/Messages";
-import images from "themes/images";
+
 class Messages extends React.Component {
   render() {
     const { accountInfo } = this.props;

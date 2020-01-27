@@ -22,7 +22,7 @@ class App extends React.Component {
       <div>
         <Provider store={store}>
           <Header />
-          <Overview />
+          {/* <Overview /> */}
           <Root />
           <Footer />
           <ModulePopUp></ModulePopUp>

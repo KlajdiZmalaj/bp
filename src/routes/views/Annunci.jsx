@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Azioni } from "../../shared-components";
+import { Azioni, Overview } from "shared-components";
 import images from "themes/images";
 class Annunci extends React.Component {
   render() {
     return (
       <div>
+        <Overview></Overview>
         <div className="container-fluid overview ">
           <Azioni active="annunci"></Azioni>
 

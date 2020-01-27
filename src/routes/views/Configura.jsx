@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Azioni } from "../../shared-components";
+import { Azioni } from "shared-components";
 
 class Configura extends React.Component {
   render() {

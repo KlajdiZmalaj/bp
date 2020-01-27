@@ -16,7 +16,8 @@ import {
   Operazioni,
   Impostazioni,
   Messages,
-  AccountInfo
+  AccountInfo,
+  Register
 } from "./routes";
 
 class Root extends React.Component {
@@ -56,6 +57,7 @@ class Root extends React.Component {
             <Route exact path="/annunci-admin" component={AnnunciAdmin} />
             <Route exact path="/operazioni" component={Operazioni} />
             <Route exact path="/impostazioni" component={Impostazioni} />
+            <Route exact path="/register" component={Register} />
           </Switch>
         </HashRouter>
       </React.Fragment>

@@ -1,9 +1,7 @@
 import React from "react";
 
-import {
-  Amministrazione
-} from "../../shared-components";
-import images from "themes/images";
+import { Amministrazione } from "shared-components";
+
 class Operazioni extends React.Component {
   render() {
     return (

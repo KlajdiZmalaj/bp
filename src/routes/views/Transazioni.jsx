@@ -5,7 +5,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { Form, DatePicker, Modal } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
-import { Azioni } from "../../shared-components";
+import { Azioni, Overview } from "shared-components";
 import { slicedAmount } from "utils";
 
 class Transazioni extends React.Component {
@@ -90,6 +90,7 @@ class Transazioni extends React.Component {
 
     return (
       <div>
+        <Overview></Overview>
         <div className="container-fluid overview ">
           <Azioni active="transazioni"></Azioni>
 

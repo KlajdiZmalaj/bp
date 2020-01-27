@@ -1,12 +1,12 @@
 import React from "react";
-import images from "themes/images";
-import Amministrazione from '../../shared-components/Amministrazione/Amministrazione.jsx';
-
+import { Overview } from "shared-components";
+import Amministrazione from "../../shared-components/Amministrazione/Amministrazione.jsx";
 
 class AdminAccount extends React.Component {
   render() {
     return (
       <div>
+        <Overview></Overview>
         <div className="container-fluid overview ">
           <Amministrazione active="admin-account"></Amministrazione>
           <div className="panels-container">

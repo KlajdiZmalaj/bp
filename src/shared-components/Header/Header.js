@@ -79,6 +79,13 @@ class Header extends Component {
                 Menu1
               </a>
             </li>
+            {!isLogged && (
+              <li className="nav-item active">
+                <a className="nav-link" href="#/register">
+                  Register
+                </a>
+              </li>
+            )}
           </ul>
           <ul className="navbar-nav mt-2 mt-lg-0 mr-2 icons-nav">
             <li className="nav-item ">
