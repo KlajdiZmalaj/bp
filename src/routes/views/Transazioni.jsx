@@ -86,7 +86,7 @@ class Transazioni extends React.Component {
     };
     const { payments } = this.props;
     const { selectedFilter, indexT } = this.state;
-    const filters = ["oggi", "ieri", "questa sett.", "questo messe"];
+    const filters = ["oggi", "ieri", "questa sett", "questo messe"];
 
     return (
       <div>
