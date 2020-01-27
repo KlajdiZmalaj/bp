@@ -68,9 +68,7 @@ class Transazioni extends React.Component {
       this.props.getPayments("", time30daysAgo, moment());
     }
   };
-  componentDidMount() {
-    this.props.getPayments();
-  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
 
@@ -147,7 +145,7 @@ class Transazioni extends React.Component {
                   return (
                     <li
                       key={index}
-                      className={index === selectedFilter && "active"}
+                      className={index === selectedFilter ? "active" : ""}
                       onClick={() => this.changeSelected(index)}
                     >
                       <i className="fas fa-dot-circle"></i>
