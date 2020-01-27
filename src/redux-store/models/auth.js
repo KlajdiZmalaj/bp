@@ -21,9 +21,13 @@ const { Types, Creators } = createActions({
   ],
   setBolletiniBianchi: ["bolletiniBianchi"],
   setServiceId: ["service_id"],
+  setServiceS: ["service_s"],
 
   getPayments: ["username", "from", "to"],
-  setPayments: ["payments"]
+  setPayments: ["payments"],
+  getRechargeMobile: ["service_id", "tel_no"],
+  setRechargeMobile: ["rechargeMobile"],
+  setServiceType: ["serviceType"]
 });
 
 export const AuthTypes = Types;
@@ -36,7 +40,9 @@ const INITIAL_STATE = {
   accountInfo: {},
   bolletiniBianchi: {},
   service_id: null,
-  payments: []
+  payments: [],
+  service_s: [],
+  rechargeMobile: {}
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -64,8 +70,20 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     service_id
   }),
+  [Types.SET_SERVICE_S]: (state, { service_s }) => ({
+    ...state,
+    service_s
+  }),
   [Types.SET_PAYMENTS]: (state, { payments }) => ({
     ...state,
     payments
+  }),
+  [Types.SET_RECHARGE_MOBILE]: (state, { rechargeMobile }) => ({
+    ...state,
+    rechargeMobile
+  }),
+  [Types.SET_SERVICE_TYPE]: (state, { serviceType }) => ({
+    ...state,
+    serviceType
   })
 });

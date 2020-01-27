@@ -20,6 +20,10 @@ class Service extends React.Component {
   selectService = id => {
     this.props.setServiceId(id);
     this.props.togglePopUp(true);
+    console.log("this.props.serviceSelected", this.props.serviceSelected);
+    this.props.setServiceS(
+      this.props.servicesItems[this.props.serviceSelected]
+    );
   };
 
   render() {
@@ -49,7 +53,7 @@ class Service extends React.Component {
                     arrayServices.map((item, index) => {
                       return (
                         <td
-                          onClick={() => this.selectService(item.service_id)}
+                          onClick={() => this.selectService(item)}
                           key={index}
                         >
                           <img src={images.billDark} alt="" />

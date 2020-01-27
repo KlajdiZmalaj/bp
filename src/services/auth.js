@@ -108,3 +108,19 @@ if (JSON.parse(localStorage.getItem("accountDataB"))) {
       })
       .catch(error => ({ error }));
 }
+
+export const fetchRechargeMobile = (service_id, tel_no) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/test/recharge`, {
+      ...{ service_id: service_id },
+      ...{ tel_no: tel_no }
+    })
+    .catch(error => ({ error }));

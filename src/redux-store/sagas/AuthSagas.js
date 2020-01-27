@@ -5,7 +5,8 @@ import {
   logoutApi,
   fetchAccountInfo,
   fetchBolletiniBianchi,
-  fetchPayments
+  fetchPayments,
+  fetchRechargeMobile
 } from "services/auth";
 
 export function* signInByEmail(credencials) {
@@ -93,5 +94,25 @@ export function* getPayments(params) {
     //     );
     //   }
     // }
+  }
+}
+export function* getRechargeMobile(params) {
+  const response = yield call(
+    fetchRechargeMobile,
+    params.service_id,
+    params.tel_no
+  );
+  if (response) {
+    console.log("response", response);
+    if (response.data) {
+      yield put(AuthActions.setRechargeMobile(response.data));
+    } else if (response.error) {
+      if (response.error.response.status === 444) {
+        const error = { errors: { notCorrect: ["dati non sono correti."] } };
+        yield put(AuthActions.setRechargeMobile(error));
+      } else {
+        yield put(AuthActions.setRechargeMobile(response.error.response.data));
+      }
+    }
   }
 }

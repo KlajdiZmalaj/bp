@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
 
   changeKeyService = service => {
     this.setState({ keyService: service });
+    this.props.setServiceType(service);
   };
 
   render() {

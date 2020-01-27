@@ -9,7 +9,8 @@ import {
   getAccountInfo,
   logOut,
   getBolletiniBianchi,
-  getPayments
+  getPayments,
+  getRechargeMobile
 } from "./AuthSagas";
 import { getServices } from "./MainSagas";
 
@@ -21,6 +22,7 @@ export default function* root() {
     takeLatest(AuthTypes.LOG_OUT, logOut),
     takeLatest(AuthTypes.GET_BOLLETINI_BIANCHI, getBolletiniBianchi),
     takeLatest(AuthTypes.GET_PAYMENTS, getPayments),
+    takeLatest(AuthTypes.GET_RECHARGE_MOBILE, getRechargeMobile),
 
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices)

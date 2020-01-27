@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-
-import PrintTicket from "./PrintTicket";
-import Bolletino from "./Bolletino";
+import ModulePopUp1 from "./ModulePopUp1";
+import ModulePopUp4 from "./ModulePopUp4";
 import "./style.css";
 
 class ModulePopUp extends React.Component {
   render() {
-    const { isShowing, service_id, bolletiniBianchi } = this.props;
+    const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
+    const service_id = service && service.service_id;
+
     const arr = [
       {
         message: "User transactions fetched successfully",
@@ -18,26 +19,35 @@ class ModulePopUp extends React.Component {
         barcode: "0000073770107"
       }
     ];
-    console.log("arr", arr);
+
+    const module1 = ["BOL001"];
+
     return isShowing ? (
-      <div className="modulePopUP modulePopUP1">
-        <div className="module container-fluid max-width_modulePopUP">
-          <div className="row">
-            <Bolletino service_id={service_id}></Bolletino>
-            {bolletiniBianchi[0] && bolletiniBianchi[0].receipt && (
-              <PrintTicket arr={bolletiniBianchi}></PrintTicket>
-            )}
-          </div>
-        </div>
-      </div>
+      <Fragment>
+        {module1.includes(service_id) && (
+          <ModulePopUp1
+            service_id={service_id}
+            bolletiniBianchi={bolletiniBianchi}
+          ></ModulePopUp1>
+        )}
+
+        {serviceType.toString() === "RTELD" && (
+          <ModulePopUp4
+            service_id={service_id}
+            bolletiniBianchi={bolletiniBianchi}
+            serviceSelected={service}
+          ></ModulePopUp4>
+        )}
+      </Fragment>
     ) : null;
   }
 }
 
 const mapsStateToProps = state => ({
   isShowing: state.main.isShowing,
-  service_id: state.auth.service_id,
-  bolletiniBianchi: state.auth.bolletiniBianchi
+  service: state.auth.service_id,
+  bolletiniBianchi: state.auth.bolletiniBianchi,
+  serviceType: state.auth.serviceType
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
