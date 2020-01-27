@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.c1533625.chunk.css",
-    "main.js": "/static/js/main.a30fb4c2.chunk.js",
-    "main.js.map": "/static/js/main.a30fb4c2.chunk.js.map",
+    "main.css": "/static/css/main.dfc7d174.chunk.css",
+    "main.js": "/static/js/main.bdeb224f.chunk.js",
+    "main.js.map": "/static/js/main.bdeb224f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.61c2a4d8.js",
     "runtime-main.js.map": "/static/js/runtime-main.61c2a4d8.js.map",
-    "static/css/2.f688fb52.chunk.css": "/static/css/2.f688fb52.chunk.css",
-    "static/js/2.67be045f.chunk.js": "/static/js/2.67be045f.chunk.js",
-    "static/js/2.67be045f.chunk.js.map": "/static/js/2.67be045f.chunk.js.map",
+    "static/css/2.76d6cc30.chunk.css": "/static/css/2.76d6cc30.chunk.css",
+    "static/js/2.e77fdebf.chunk.js": "/static/js/2.e77fdebf.chunk.js",
+    "static/js/2.e77fdebf.chunk.js.map": "/static/js/2.e77fdebf.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.1534685ac73de86168d76cf3a4d460c9.js": "/precache-manifest.1534685ac73de86168d76cf3a4d460c9.js",
+    "precache-manifest.9083f7b2fa67303b0e2e1aea88710dee.js": "/precache-manifest.9083f7b2fa67303b0e2e1aea88710dee.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.f688fb52.chunk.css.map": "/static/css/2.f688fb52.chunk.css.map",
-    "static/css/main.c1533625.chunk.css.map": "/static/css/main.c1533625.chunk.css.map",
-    "static/js/2.67be045f.chunk.js.LICENSE": "/static/js/2.67be045f.chunk.js.LICENSE",
+    "static/css/2.76d6cc30.chunk.css.map": "/static/css/2.76d6cc30.chunk.css.map",
+    "static/css/main.dfc7d174.chunk.css.map": "/static/css/main.dfc7d174.chunk.css.map",
+    "static/js/2.e77fdebf.chunk.js.LICENSE": "/static/js/2.e77fdebf.chunk.js.LICENSE",
     "static/media/Car.svg": "/static/media/Car.c4274b99.svg",
     "static/media/Sky_Italia_-_Logo_2018.svg": "/static/media/Sky_Italia_-_Logo_2018.f43a5811.svg",
     "static/media/Stanleybet_logo_international.svg": "/static/media/Stanleybet_logo_international.043a876d.svg",
@@ -47,9 +47,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.61c2a4d8.js",
-    "static/css/2.f688fb52.chunk.css",
-    "static/js/2.67be045f.chunk.js",
-    "static/css/main.c1533625.chunk.css",
-    "static/js/main.a30fb4c2.chunk.js"
+    "static/css/2.76d6cc30.chunk.css",
+    "static/js/2.e77fdebf.chunk.js",
+    "static/css/main.dfc7d174.chunk.css",
+    "static/js/main.bdeb224f.chunk.js"
   ]
 }
