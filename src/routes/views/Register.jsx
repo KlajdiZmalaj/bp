@@ -529,7 +529,7 @@ class Register extends React.Component {
                   ]
                 })(
                   <Checkbox>
-                    Dichiaro di essere maggiorenne e di accettare il Contratto
+                    Ho letto ed accetato il Contratto di Gioco
                   </Checkbox>
                 )}
               </Form.Item>
@@ -544,7 +544,12 @@ class Register extends React.Component {
                       message: "Please agree with terms!"
                     }
                   ]
-                })(<Checkbox>Accetto i Termini e le Condizioni</Checkbox>)}
+                })(
+                  <Checkbox>
+                    Accetto l`informativa sul trattamento dei dati personali e
+                    sulla Privacy
+                  </Checkbox>
+                )}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("privacy", {
@@ -559,22 +564,49 @@ class Register extends React.Component {
                   ]
                 })(
                   <Checkbox>
-                    Ho preso visione e acconsento al Trattamento Dati Personali
-                    {/* ai sensi del regolamento UE 679/2016 */}
+                    Dichiaro di avere piu` di 18 anni e di accettare I Termini e
+                    Condizioni
                   </Checkbox>
                 )}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("newsletter", {
                   initialValue: false
-                })(<Checkbox>Voglio iscrivermi alla Newsletter</Checkbox>)}
+                })(
+                  <Checkbox>
+                    Desidero ricevere email promozionali, si bonus, promozioni e
+                    giochi
+                  </Checkbox>
+                )}
               </Form.Item>
             </div>
           </div>
           <div className="col col-md-4 col2Form">
             <div className="firstcol">
-              <div className="titleReg">Documenti</div>
+              <div className="titleReg">
+                Registrati al consessionario di gioco
+              </div>
 
+              <Form.Item>
+                {getFieldDecorator("consessionario", {
+                  rules: [
+                    {
+                      message: "Please select consessionario!"
+                    }
+                  ]
+                })(
+                  <Select
+                    placeholder="consessionario"
+                    // onChange={this.onChangeIdentity}
+                  >
+                    <Option value="1">Bbet</Option>
+                    <Option value="2">Bbet</Option>
+                    <Option value="3">Bbet</Option>
+                  </Select>
+                )}
+              </Form.Item>
+
+              <div className="titleReg">Documenti e gioco responsabile</div>
               <Form.Item>
                 {getFieldDecorator("identity_type", {
                   rules: [

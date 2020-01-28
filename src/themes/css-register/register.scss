@@ -15,7 +15,7 @@
   .hr {
     position: absolute;
     height: 1px;
-    background: #484d53;
+    background: #dfe4ef;
     width: 100%;
     top: 75px;
     left: 0;
@@ -61,13 +61,14 @@
     color: #ed4c14;
     text-transform: uppercase;
     text-align: left;
-    font-size: 18px;
+    font-size: 17px;
     white-space: nowrap;
     padding-bottom: 50px;
     padding-top: 20px;
     font-weight: 500;
   }
-  .ant-col-sm-16 {
+  .rowUp .ant-col-sm-16,
+  .firstcol .ant-col-sm-16 {
     width: 100%;
     border: 1px solid #dfe4ef;
   }
