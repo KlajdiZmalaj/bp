@@ -17,7 +17,8 @@ import {
   Impostazioni,
   Messages,
   AccountInfo,
-  Register
+  Register,
+  Login
 } from "./routes";
 
 class Root extends React.Component {
@@ -44,6 +45,7 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/annunci" />} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/account-info" component={AccountInfo} />
             <Route exact path="/annunci" component={Annunci} />
             <Route exact path="/messages" component={Messages} />
