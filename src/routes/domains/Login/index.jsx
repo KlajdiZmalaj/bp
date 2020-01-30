@@ -6,11 +6,30 @@ import AuthActions from "redux-store/models/auth";
 import "./login.css";
 
 class Login extends React.Component {
+  state = {
+    userName: "",
+    password: ""
+  };
+
+  handleChangeUsername = event => {
+    this.setState({ userName: event.target.value });
+  };
+
+  handleChangePassword = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { userName, password } = this.state;
+    this.props.signInByEmail(userName, password);
+  };
+
   render() {
     return (
       <div className="login">
         <div className="title">
-          <i class="fal fa-user-circle"></i>
+          <i className="fal fa-user-circle"></i>
           <div>Login</div>
         </div>
         <ul>
@@ -47,9 +66,6 @@ class Login extends React.Component {
   }
 }
 
-const mapsStateToProps = ({ auth }) => ({
-  personalInfo: auth.personalInfo,
-  register: auth.register
-});
+const mapsStateToProps = state => ({});
 
 export default connect(mapsStateToProps, { ...AuthActions })(Login);

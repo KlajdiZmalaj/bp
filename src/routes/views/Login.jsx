@@ -11,9 +11,6 @@ class Login extends React.Component {
   }
 }
 
-const mapsStateToProps = ({ auth }) => ({
-  personalInfo: auth.personalInfo,
-  register: auth.register
-});
+const mapsStateToProps = ({ auth }) => ({});
 
 export default connect(mapsStateToProps, { ...AuthActions })(Login);

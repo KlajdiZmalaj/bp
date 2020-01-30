@@ -1,13 +1,14 @@
 import React from "react";
 
 import Amministrazione from "shared-components/Amministrazione/Amministrazione.jsx";
-import { Overview } from "shared-components";
+import { Overview, Header } from "shared-components";
 import images from "themes/images";
 
 class AnnunciAdmin extends React.Component {
   render() {
     return (
       <div>
+        <Header></Header>
         <Overview></Overview>
         <div className="container-fluid overview ">
           <Amministrazione active="annunci-admin"></Amministrazione>

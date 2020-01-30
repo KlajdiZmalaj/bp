@@ -8,20 +8,14 @@ class Overview extends Component {
   componentDidMount() {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
-    console.log("datadata", data);
+
     if (data) {
       this.props.getPayments();
     }
   }
 
   render() {
-    const {
-      showOverview,
-      toggleOverview,
-      services,
-      payments,
-      accountInfo
-    } = this.props;
+    const { showOverview, toggleOverview, payments, accountInfo } = this.props;
 
     let provT = 0;
     if (payments && payments.length > 0) {

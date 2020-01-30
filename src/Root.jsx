@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { AuthActions, MainActions } from "redux-store/models";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 import {
   Annunci,
@@ -26,11 +28,6 @@ class Root extends React.Component {
     this.getStoredData();
   }
 
-  componentDidUpdate(prevProps) {
-    const { accountInfo } = this.props;
-    console.log("accountInfo, isLoggedIn, queueTicketId", accountInfo);
-  }
-
   getStoredData = () => {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
@@ -40,26 +37,97 @@ class Root extends React.Component {
   };
 
   render() {
+    let { isLoggedin } = false;
+    const accountData = localStorage.getItem("accountDataB");
+    const data = JSON.parse(accountData);
+    if (data) {
+      isLoggedin = true;
+    }
     return (
       <React.Fragment>
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/annunci" />} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/account-info" component={AccountInfo} />
-            <Route exact path="/annunci" component={Annunci} />
-            <Route exact path="/messages" component={Messages} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/carica-conto" component={CaricaConto} />
-            <Route exact path="/configura" component={Configura} />
-            <Route exact path="/use-code" component={UseCode} />
-            <Route exact path="/transazioni" component={Transazioni} />
-
-            <Route exact path="/admin-account" component={AdminAccount} />
-            <Route exact path="/annunci-admin" component={AnnunciAdmin} />
-            <Route exact path="/operazioni" component={Operazioni} />
-            <Route exact path="/impostazioni" component={Impostazioni} />
+            {/* <Route exact path="/login" component={Login} /> */}
+            {/* <Route exact path="/account-info" component={AccountInfo} /> */}
+            {/* <Route exact path="/annunci" component={Annunci} /> */}
+            {/* <Route exact path="/messages" component={Messages} /> */}
+            {/* <Route exact path="/dashboard" component={Dashboard} /> */}
+            {/* <Route exact path="/carica-conto" component={CaricaConto} /> */}
+            {/* <Route exact path="/configura" component={Configura} /> */}
+            {/* <Route exact path="/use-code" component={UseCode} /> */}
+            {/* <Route exact path="/transazioni" component={Transazioni} /> */}
+            {/* 
+            <Route exact path="/admin-account" component={AdminAccount} /> */}
+            {/* <Route exact path="/annunci-admin" component={AnnunciAdmin} /> */}
+            {/* <Route exact path="/operazioni" component={Operazioni} /> */}
+            {/* <Route exact path="/impostazioni" component={Impostazioni} /> */}
             <Route exact path="/register" component={Register} />
+            <PublicRoute
+              path="/login"
+              component={Login}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/account-info"
+              component={AccountInfo}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/annunci"
+              component={Annunci}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/use-code"
+              component={UseCode}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/admin-account"
+              component={AdminAccount}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/annunci-admin"
+              component={AnnunciAdmin}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/transazioni"
+              component={Transazioni}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/dashboard"
+              component={Dashboard}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/configura"
+              component={Configura}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/messages"
+              component={Messages}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/carica-conto"
+              component={CaricaConto}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/operazioni"
+              component={Operazioni}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/impostazioni"
+              component={Impostazioni}
+              isLoggedin={isLoggedin}
+            />
           </Switch>
         </HashRouter>
       </React.Fragment>

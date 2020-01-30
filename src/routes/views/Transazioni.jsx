@@ -5,7 +5,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { Form, DatePicker, Modal, Select } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
-import { Azioni, Overview } from "shared-components";
+import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 
 const { Option } = Select;
@@ -123,8 +123,10 @@ class Transazioni extends React.Component {
     if (usernames && usernames.length > 0) {
       options = usernames.map(user => <Option key={user}>{user}</Option>);
     }
+    console.log("payments[indexT].receipt", payments);
     return (
       <div>
+        <Header></Header>
         <Overview></Overview>
         <div className="container-fluid overview ">
           <Azioni active="transazioni"></Azioni>

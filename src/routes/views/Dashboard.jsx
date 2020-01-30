@@ -2,13 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
-import { Overview, Azioni } from "../../shared-components";
+import { Overview, Azioni, Header } from "shared-components";
 import { Service } from "routes/components";
-import { acquista } from "config";
 import images from "../../themes/images";
 
 class Dashboard extends React.Component {
   componentDidMount() {
+    // const accountInfo = this.props.accountInfo;
+    // if (Object.keys(accountInfo).length > 0) {
+
+    // }
     this.props.getServices();
   }
 
@@ -29,10 +32,10 @@ class Dashboard extends React.Component {
   render() {
     const { serviceSelected, keyService } = this.state;
     const { services } = this.props;
-    // console.log("serviceSelected", keyService, serviceSelected);
-    // console.log("services", services);
+
     return (
       <div>
+        <Header></Header>
         <Overview></Overview>
         <div className="container-fluid mobileNav-Content">
           <div className="row">

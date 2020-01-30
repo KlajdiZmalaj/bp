@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import images from "themes/images";
 import "./Header.styles.scss";
+import { withRouter } from "react-router-dom";
 
 class Header extends Component {
   state = {
@@ -30,7 +31,7 @@ class Header extends Component {
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }
-    console.log("accountInfo", accountInfo);
+
     return (
       <nav className="navbar navbar-expand-md fixed-top navbar-light">
         <button
@@ -104,33 +105,7 @@ class Header extends Component {
               </a>
             </li>
           </ul>
-          {!isLogged ? (
-            <ul className="navbar-nav mt-2 mt-lg-0 login-logout">
-              <li>
-                <input
-                  type="text"
-                  placeholder="username"
-                  name="userName"
-                  onChange={this.handleChangeUsername}
-                  id="login-name"
-                />
-              </li>
-              <li>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  id="password"
-                  onChange={this.handleChangePassword}
-                />
-              </li>
-              <li>
-                <button type="button" onClick={this.handleSubmit}>
-                  Login
-                </button>
-              </li>
-            </ul>
-          ) : (
+          {isLogged && (
             <ul className="navbar-nav mt-2 mt-lg-0 profile-nav">
               <li className="nav-item dropdown">
                 <a
@@ -176,4 +151,6 @@ const mapsStateToProps = state => ({
   accountInfo: state.auth.accountInfo
 });
 
-export default connect(mapsStateToProps, AuthActions)(Header);
+export default withRouter(
+  connect(mapsStateToProps, { ...AuthActions })(Header)
+);
