@@ -14,6 +14,7 @@ import axios from "axios";
 //   });
 // }
 
+
 export const fetchLogin = (email, password) =>
   request
     .post(`/users/login`, {
@@ -124,3 +125,14 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
       ...{ tel_no: tel_no }
     })
     .catch(error => ({ error }));
+
+
+  export const fetchAds = () => axios.create({
+    baseURL: "https://services-api.bpoint.store/api",
+    headers: {
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem("accountDataB")).token
+      }`
+    }
+  }).get('/messages')
+  .catch(error => ({error}))

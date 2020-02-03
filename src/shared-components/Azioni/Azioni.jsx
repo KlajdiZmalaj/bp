@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import images from "themes/images";
 
 import { azioni } from "config";
@@ -6,7 +7,6 @@ import { azioni } from "config";
 class Azioni extends Component {
   render() {
     const { active } = this.props;
-    
     return (
       <React.Fragment>
         <div className="row max-width mt-3">
@@ -51,4 +51,5 @@ class Azioni extends Component {
   }
 }
 
-export default Azioni;
+
+export default Azioni

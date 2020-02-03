@@ -7,6 +7,7 @@
   margin-bottom: 10px;
   .heading-tab {
     padding-top: 0;
+    cursor: default;
   }
   ul {
     display: flex;
@@ -20,9 +21,10 @@
     margin-right: 10px;
     display: flex;
     align-items: center;
-    a {
+    span {
       color: #7d858b;
       text-transform: uppercase;
+      cursor: pointer;
     }
     i {
       font-size: 10px;

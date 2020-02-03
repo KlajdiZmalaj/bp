@@ -6,7 +6,8 @@ import {
   fetchAccountInfo,
   fetchBolletiniBianchi,
   fetchPayments,
-  fetchRechargeMobile
+  fetchRechargeMobile,
+  fetchAds
 } from "services/auth";
 
 export function* signInByEmail(credencials) {
@@ -121,5 +122,11 @@ export function* getRechargeMobile(params) {
         yield put(AuthActions.setRechargeMobile(response.error.response.data));
       }
     }
+  }
+}
+export function* getAds(){
+  const response = yield call(fetchAds)
+  if(response.status === 200){
+    yield put(AuthActions.setAds(response.data));
   }
 }

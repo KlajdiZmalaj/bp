@@ -28,7 +28,10 @@ const { Types, Creators } = createActions({
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
   setRechargeMobile: ["rechargeMobile"],
-  setServiceType: ["serviceType"]
+  setServiceType: ["serviceType"],
+
+  getAds: [],
+  setAds: ['ads']
 });
 
 export const AuthTypes = Types;
@@ -44,7 +47,8 @@ const INITIAL_STATE = {
   payments: [],
   usernames: [],
   service_s: [],
-  rechargeMobile: {}
+  rechargeMobile: {},
+  ads: {}
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -91,5 +95,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SERVICE_TYPE]: (state, { serviceType }) => ({
     ...state,
     serviceType
+  }),
+  [Types.SET_ADS]: (state, {ads})=> ({
+    ...state,
+    ads
   })
 });
