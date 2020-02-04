@@ -2,15 +2,27 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
-import { Azioni, Overview, Header } from "shared-components";
+import { Azioni, Overview, Header, Loader, Modal } from "shared-components";
 import images from "themes/images";
 class Annunci extends React.Component {
   constructor(){
     super()
     this.state = {
       tabFilter: '',
-      expanded: []
+      expanded: [],
+      modal: false
     }
+    this.hideModal = this.hideModal.bind(this);
+    this.showModal = this.showModal.bind(this)
+  }
+
+  hideModal(){
+    this.state.modal = false
+    this.setState({})
+  }
+  showModal(){
+    this.state.modal = true
+    this.setState({})
   }
 
   componentDidMount(){
@@ -34,7 +46,7 @@ class Annunci extends React.Component {
   }
 
   render() {
-    const {ads} = this.props;
+    const {ads, ads_loading} = this.props;
     let adsFiltered = this.state.tabFilter === "" ? ads : ads.filter(m => m.importance === this.state.tabFilter);
     return (
       <div>
@@ -75,7 +87,8 @@ class Annunci extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                {adsFiltered.length === 0 && <div>Nessuna pubblicità per questa scheda</div>}
+                {ads_loading ?  <Loader /> : 
+                adsFiltered.length === 0 ? <div>Nessuna annunci per questa scheda</div> : null}
                 {adsFiltered.map(m => <div key={m.id}> 
                     <div onClick={()=>this.tabExpand(m.id)}
                       className="panel-tab"
@@ -100,6 +113,12 @@ class Annunci extends React.Component {
                 ) }
 
               </div>
+              <button onClick={this.showModal}>Show Modal</button>
+                   
+              {this.state.modal && <Modal show={this.state.modal}>
+                  <AddAds hideModal={this.hideModal} />
+                </Modal>
+              }
             </div>
           </div>
         </div>
@@ -108,9 +127,21 @@ class Annunci extends React.Component {
   }
 }
 
+class AddAds extends React.Component {
+  render(){
+    return <form className="addAds">
+      <input type="text" />
+      <textarea>
+      </textarea>
+      <button>Crea</button><button onClick={this.props.hideModal}>Annulla</button>
+    </form>
+  }
+}
+
 
 const mapStateToProps = state => ({
-  ads: state.auth.ads
+  ads: state.auth.ads,
+  ads_loading:  state.auth.ads_loading
 })
 
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(
