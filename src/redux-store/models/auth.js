@@ -48,7 +48,7 @@ const INITIAL_STATE = {
   usernames: [],
   service_s: [],
   rechargeMobile: {},
-  ads: {}
+  ads: []
 };
 
 export const reducer = createReducer(INITIAL_STATE, {

@@ -590,6 +590,9 @@ a:hover {
   color: #7d858b;
   text-transform: uppercase;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sort-annunci li i {
@@ -636,6 +639,26 @@ a:hover {
 }
 
 .sort-annunci li:nth-child(5) i {
+  color: #00b850;
+}
+
+.sort-annunci .panel-tab i.fas.fa-dot-circle.tuti {
+  color: #000 !important;
+}
+
+.sort-annunci .panel-tab i.fas.fa-dot-circle.privata {
+  color: #0092ff;
+}
+
+.sort-annunci .panel-tab i.fas.fa-dot-circle.cancelazione {
+  color: #ff0000;
+}
+
+.sort-annunci .panel-tab i.fas.fa-dot-circle.informazione {
+  color: #ff6f00;
+}
+
+.sort-annunci .panel-tab i.fas.fa-dot-circle.nuovo {
   color: #00b850;
 }
 
@@ -691,6 +714,35 @@ a:hover {
 .carica-conto .input-group-text:hover {
   background: #00b850;
   color: #fff;
+}
+
+i#new {
+  color: #00b850;
+}
+
+i#info {
+  color: #ff6f00;
+}
+
+i#canceled {
+  color: #ff0000;
+}
+
+i#private {
+  color: #0092ff;
+}
+
+@media only screen and (max-width: 826px) {
+  .sort-annunci {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 20px;
+  }
+  .sort-annunci li {
+    width: 20%;
+  }
 }
 
 /*configura styles*/
@@ -1176,6 +1228,7 @@ a:hover {
 .panel-content-annunci {
   border-left: 2px solid #edeef0;
   border-right: 2px solid #edeef0;
+  padding: 5px 43px;
 }
 
 .panel-item {

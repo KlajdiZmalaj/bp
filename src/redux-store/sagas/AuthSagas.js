@@ -127,6 +127,6 @@ export function* getRechargeMobile(params) {
 export function* getAds(){
   const response = yield call(fetchAds)
   if(response.status === 200){
-    yield put(AuthActions.setAds(response.data));
+    yield put(AuthActions.setAds(response.data.messages));
   }
 }

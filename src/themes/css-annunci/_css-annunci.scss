@@ -1,4 +1,5 @@
 .sort-annunci {
+
   display: flex;
   flex-direction: row;
   padding-top: 20px;
@@ -25,6 +26,9 @@
       color: #7d858b;
       text-transform: uppercase;
       cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     i {
       font-size: 10px;
@@ -33,6 +37,8 @@
       padding-right: 5px;
     }
   }
+
+
   li:first-child {
     border-color: #000;
     i {
@@ -62,6 +68,22 @@
     i {
       color: #00b850;
     }
+  }
+  .panel-tab i.fas.fa-dot-circle.tuti {
+    color: #000 !important;
+  }
+  .panel-tab i.fas.fa-dot-circle.privata {
+    color: #0092ff;
+  }
+  .panel-tab i.fas.fa-dot-circle.cancelazione {
+    color: #ff0000;
+  }
+  .panel-tab i.fas.fa-dot-circle.informazione {
+   
+    color: #ff6f00;
+  }
+  .panel-tab i.fas.fa-dot-circle.nuovo {
+    color: #00b850;
   }
 }
 .carica-conto {
@@ -102,5 +124,28 @@
   .input-group-text:hover {
     background: #00b850;
     color: #fff;
+  }
+}
+
+i#new {
+  color: #00b850;
+}
+i#info {
+  color: #ff6f00;
+}
+i#canceled {
+  color: #ff0000;
+}
+i#private {
+  color: #0092ff;
+}
+
+@media only screen and (max-width: 826px) {
+  .sort-annunci {
+    flex-direction: column;
+    padding: 0 20px;
+    li {
+      width: 20%;
+    }
   }
 }
