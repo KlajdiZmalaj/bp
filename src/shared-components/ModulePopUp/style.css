@@ -56,25 +56,81 @@
   max-width: 1030px;
 }
 
-.universalModal {
-  position: absolute;
-  background: #ffffffb3;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1030;
-}
-
 .universalModal .content {
   background: #e4e4e4;
   position: relative;
-  top: 30%;
+  top: -80%;
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-shadow: 0px 0px 20px 4px #313131;
+          box-shadow: 0px 0px 20px 4px #313131;
+  z-index: 1;
+}
+
+.modalbackdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.universalModal {
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+  width: 100%;
+  z-index: 1000;
+  background: #0a0a0a5c;
+}
+
+.universalModal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.universalModal--header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: white;
+  border-bottom: 2px solid #d2d2d2;
+}
+
+.universalModal--title {
+  width: 100%;
+  padding: 5px 20px;
+}
+
+.universalModal--title > h3 {
+  font-family: "Roboto", "sans-serif";
+  font-size: 24px;
+  font-weight: normal;
+  color: #32424e;
+  cursor: default;
+  margin: 0;
+}
+
+.universalModal--header > button {
+  border: none;
+  background: transparent;
+  color: red;
+}
+
+.universalModal--main {
+  background: white;
+  padding: 10px;
 }
 /*# sourceMappingURL=style.css.map */

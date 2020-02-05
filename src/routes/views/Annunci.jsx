@@ -2,8 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
+import 'antd/dist/antd.css';
+import { Form, Input, Button, Radio } from 'antd';
 import { Azioni, Overview, Header, Loader, Modal } from "shared-components";
 import images from "themes/images";
+
+const { TextArea } = Input;
+
 class Annunci extends React.Component {
   constructor(){
     super()
@@ -17,10 +22,12 @@ class Annunci extends React.Component {
   }
 
   hideModal(){
+    document.body.style.overflow = ""
     this.state.modal = false
     this.setState({})
   }
   showModal(){
+    document.body.style.overflow = "hidden"
     this.state.modal = true
     this.setState({})
   }
@@ -47,7 +54,10 @@ class Annunci extends React.Component {
 
   render() {
     const {ads, ads_loading} = this.props;
-    let adsFiltered = this.state.tabFilter === "" ? ads : ads.filter(m => m.importance === this.state.tabFilter);
+    console.log("Annunci ads", ads )
+
+    let adsFiltered = this.state.tabFilter === "" ? Object.values(ads) : Object.values(ads).filter(m => m.importance === this.state.tabFilter);
+    console.log("adsFiltered ",adsFiltered)
     return (
       <div>
         <Header></Header>
@@ -115,10 +125,10 @@ class Annunci extends React.Component {
               </div>
               <button onClick={this.showModal}>Show Modal</button>
                    
-              {this.state.modal && <Modal show={this.state.modal}>
-                  <AddAds hideModal={this.hideModal} />
-                </Modal>
-              }
+              <Modal tittle="Crea un annunci" show={this.state.modal} hide={this.hideModal}>
+                  <AddAdsForm createAds={this.props.createAds}  hideModal={this.hideModal} />
+              </Modal>
+
             </div>
           </div>
         </div>
@@ -128,16 +138,71 @@ class Annunci extends React.Component {
 }
 
 class AddAds extends React.Component {
-  render(){
-    return <form className="addAds">
-      <input type="text" />
-      <textarea>
-      </textarea>
-      <button>Crea</button><button onClick={this.props.hideModal}>Annulla</button>
-    </form>
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        this.props.createAds(values)
+      }
+    });
+  };
+
+  render() {
+    console.log('AddAds props ', this.props)
+    const { getFieldDecorator } = this.props.form;
+    return (
+      <div>
+      <Form  onSubmit={this.handleSubmit}>
+        <Form.Item label="Anunnci tipo">
+          {getFieldDecorator('importance', {
+            rules: [
+              {
+                required: true,
+                message: 'Please select ads type',
+              },
+            ],
+          })(
+            <Radio.Group>
+              <Radio value={3}>Cancellazione prodotto</Radio>
+              <Radio value={2}>Informazione</Radio>
+              <Radio value={1}>Nuovo Prodotto</Radio>
+              </Radio.Group>,
+          )}         
+        </Form.Item>
+        <Form.Item label="Title">
+          {getFieldDecorator('title', {
+            rules: [
+              {
+                required: true,
+                message: 'Please input ad title',
+              },
+            ],
+          })(<Input placeholder="Please input ad title" />)}
+        </Form.Item>
+        <Form.Item label="Text">
+          {getFieldDecorator('text', {
+            rules: [
+              {
+                required: true,
+                message: 'Please input ad text',
+              },
+            ],
+          })(<TextArea rows={4} />)}
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+        </Form>
+      </div>
+    );
   }
 }
 
+
+const AddAdsForm = Form.create({ name: 'addAnnunci' })(AddAds);
 
 const mapStateToProps = state => ({
   ads: state.auth.ads,

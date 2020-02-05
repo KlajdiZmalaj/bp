@@ -7,7 +7,8 @@ import {
   fetchBolletiniBianchi,
   fetchPayments,
   fetchRechargeMobile,
-  fetchAds
+  fetchAds,
+  sendCreatedAds
 } from "services/auth";
 
 export function* signInByEmail(credencials) {
@@ -129,4 +130,11 @@ export function* getAds(){
       yield put(AuthActions.setAds(response.data.messages));
     }
   }
+}
+
+export function* createAds({data}){
+  let {importance, title, text} = data
+  console.log('function* createAds ',data)
+  const response = yield call(sendCreatedAds, importance, title, text)
+  console.log("createAds " ,response)
 }
