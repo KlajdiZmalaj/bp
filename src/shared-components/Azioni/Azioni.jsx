@@ -36,6 +36,15 @@ class Azioni extends Component {
               </div>
             );
           })}
+
+          {/* <div className="col-6 col-lg-2 p-0 pl-lg-2">
+            <a href="#/dashboard">
+              <div className="azioni-tab azioni-tab5 active-tab">
+                <i className="fas fa-dot-circle"></i>
+                <h2>acquista</h2>
+              </div>
+            </a>
+          </div> */}
         </div>
       </React.Fragment>
     );

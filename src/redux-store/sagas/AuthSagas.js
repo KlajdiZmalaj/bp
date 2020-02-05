@@ -102,7 +102,6 @@ export function* getPayments(params) {
   }
 }
 
-
 export function* getRechargeMobile(params) {
   const response = yield call(
     fetchRechargeMobile,
@@ -110,6 +109,7 @@ export function* getRechargeMobile(params) {
     params.tel_no
   );
   if (response) {
+    console.log("response", response);
     if (response.data) {
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
@@ -123,12 +123,9 @@ export function* getRechargeMobile(params) {
   }
 }
 export function* getAds(){
-  yield put(AuthActions.setAdsLoading());
   const response = yield call(fetchAds)
-  if(response){
-    if(response.status === 200){
-      yield put(AuthActions.setAds(response.data.messages));
-    }
+  if(response.status === 200){
+    yield put(AuthActions.setAds(response.data.messages));
   }
 }
 

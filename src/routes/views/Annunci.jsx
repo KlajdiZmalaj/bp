@@ -121,7 +121,6 @@ class Annunci extends React.Component {
                     </div>
                   </div>
                 ) }
-
               </div>
               <button onClick={this.showModal}>Show Modal</button>
                    

@@ -32,3 +32,4 @@ export default function* root() {
     takeLatest(MainTypes.GET_SERVICES, getServices)
   ]);
 }
+
