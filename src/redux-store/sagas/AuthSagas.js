@@ -83,25 +83,27 @@ export function* getPayments(params) {
     params.from,
     params.to
   );
-  if(response){
-    if(response.status === 200){
-      if (response.data) {
-        yield put(AuthActions.setPayments(response.data.transactions));
-        if (response.data.usernames) {
-          yield put(AuthActions.setUsernames(response.data.usernames));
-        }
-      }
-    }else if (response.error) {
-      if(response.error.response.status === 401){
-        yield put(AuthActions.setUnauthorization())
-      }else{
-        yield put(AuthActions.setPayments(response.error.response.data));
+
+  if (response) {
+    if (response.data) {
+      yield put(AuthActions.setPayments(response.data.transactions));
+      if (response.data.usernames) {
+        yield put(AuthActions.setUsernames(response.data.usernames));
       }
     }
+    //  else if (response.error) {
+    //   console.log("errorrrrrrrrrr", response.error.response.data);
+    //   if (response.error.response.status === 444) {
+    //     const error = { errors: { notCorrect: ["data are not corrected."] } };
+    //     yield put(AuthActions.setBolletiniBianchi(error));
+    //   } else {
+    //     yield put(
+    //       AuthActions.setBolletiniBianchi(response.error.response.data)
+    //     );
+    //   }
+    // }
   }
 }
-
-
 export function* getRechargeMobile(params) {
   const response = yield call(
     fetchRechargeMobile,
@@ -109,6 +111,7 @@ export function* getRechargeMobile(params) {
     params.tel_no
   );
   if (response) {
+    console.log("response", response);
     if (response.data) {
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
@@ -122,11 +125,8 @@ export function* getRechargeMobile(params) {
   }
 }
 export function* getAds(){
-  yield put(AuthActions.setAdsLoading());
   const response = yield call(fetchAds)
-  if(response){
-    if(response.status === 200){
-      yield put(AuthActions.setAds(response.data.messages));
-    }
+  if(response.status === 200){
+    yield put(AuthActions.setAds(response.data.messages));
   }
 }

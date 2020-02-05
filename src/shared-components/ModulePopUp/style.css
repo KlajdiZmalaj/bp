@@ -55,26 +55,4 @@
 .telRechanrge .max-width_modulePopUP-carrier {
   max-width: 1030px;
 }
-
-.universalModal {
-  position: absolute;
-  background: #ffffffb3;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1030;
-}
-
-.universalModal .content {
-  background: #e4e4e4;
-  position: relative;
-  top: 30%;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
 /*# sourceMappingURL=style.css.map */

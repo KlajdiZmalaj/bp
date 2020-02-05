@@ -11,8 +11,7 @@ import {
   getBolletiniBianchi,
   getPayments,
   getRechargeMobile,
-  getAds,
-  isUnauthorized
+  getAds
 } from "./AuthSagas";
 import { getServices } from "./MainSagas";
 

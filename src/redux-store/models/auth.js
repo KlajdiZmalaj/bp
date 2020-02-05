@@ -31,9 +31,7 @@ const { Types, Creators } = createActions({
   setServiceType: ["serviceType"],
 
   getAds: [],
-  setAdsLoading: [],
-  setAds: ['ads'],
-  setUnauthorization: []
+  setAds: ['ads']
 });
 
 export const AuthTypes = Types;
@@ -43,7 +41,6 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  unauthorized: true,
   accountInfo: {},
   bolletiniBianchi: {},
   service_id: null,
@@ -51,16 +48,14 @@ const INITIAL_STATE = {
   usernames: [],
   service_s: [],
   rechargeMobile: {},
-  ads: [],
-  ads_loading: false
+  ads: []
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SIGN_IN_BY_EMAIL]: state => ({ ...state, loading: true }),
   [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
     ...state,
-    accountInfo,
-    unauthorized: false
+    accountInfo
   }),
   [Types.AUTH_SUCCESS]: (state, { user }) => ({
     ...state,
@@ -101,18 +96,8 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     serviceType
   }),
-  [Types.SET_ADS_LOADING]: (state) => ({
-    ...state,
-    ads_loading: true
-  })
-  ,
   [Types.SET_ADS]: (state, {ads})=> ({
     ...state,
-    ads,
-    ads_loading: false
-  }),
-  [Types.SET_UNAUTHORIZATION]: state => ({
-    ...state,
-    unauthorized: true
+    ads
   })
 });
