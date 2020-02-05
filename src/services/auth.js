@@ -136,3 +136,16 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
     }
   }).get('/messages')
   .catch(error => ({error}))
+
+  export const sendCreatedAds = (importance, title, text) => axios.create({
+    baseURL: "https://services-api.bpoint.store/api",
+    headers: {
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem("accountDataB")).token
+      }`
+    }
+  }).post(`/messages`, {
+    ...{ importance: importance },
+    ...{ title: title },
+    ...{ text: text }
+  }).catch(error => ({error}))

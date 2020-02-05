@@ -31,7 +31,8 @@ const { Types, Creators } = createActions({
   setServiceType: ["serviceType"],
 
   getAds: [],
-  setAds: ['ads']
+  setAds: ['ads'],
+  createAds: ['data']
 });
 
 export const AuthTypes = Types;

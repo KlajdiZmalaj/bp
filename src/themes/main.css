@@ -588,7 +588,6 @@ a:hover {
 
 .sort-annunci li span {
   color: #7d858b;
-  text-transform: uppercase;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -730,6 +729,59 @@ i#canceled {
 
 i#private {
   color: #0092ff;
+}
+
+.addAds .addAds--title input, .addAds .addAds--title textarea, .addAds .addAds--message input, .addAds .addAds--message textarea {
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  border: none;
+  background: #ececec;
+  border-radius: 5px;
+}
+
+.addAds .addAds--checkbox label {
+  margin: 0 10px;
+  width: auto;
+  direction: ltr;
+}
+
+.addAds > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+}
+
+.addAds > div label {
+  margin: 0 10px;
+  width: 100px;
+  direction: rtl;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addAds > div button {
+  border: none;
+  background: transparent;
+  width: 100%;
+}
+
+.addAds > div button.success {
+  border: 1px solid #00b850;
+  border-radius: 5px;
+  color: #00b850;
+}
+
+.addAds > div button[disabled] {
+  opacity: 0.5;
+}
+
+.addAds > div button.cancel {
+  border: 1px solid red;
+  border-radius: 5px;
+  color: red;
 }
 
 @media only screen and (max-width: 826px) {
