@@ -7,6 +7,8 @@ const { Types, Creators } = createActions({
   logOut: [],
   getAccountInfo: [],
   setAccountInfo: ["accountInfo"],
+
+  setUnauthorization: [],
   getBolletiniBianchi: [
     "service_id",
     "numero_conto_corrente",
@@ -32,7 +34,8 @@ const { Types, Creators } = createActions({
 
   getAds: [],
   setAds: ['ads'],
-  createAds: ['data']
+  createAds: ['data'],
+  
 });
 
 export const AuthTypes = Types;
@@ -44,6 +47,7 @@ const INITIAL_STATE = {
   error: null,
   accountInfo: {},
   bolletiniBianchi: {},
+  unauthorizated: true,
   service_id: null,
   payments: [],
   usernames: [],
@@ -100,5 +104,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_ADS]: (state, {ads})=> ({
     ...state,
     ads
-  })
+  }),
+  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
 });

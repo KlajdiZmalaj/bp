@@ -37,9 +37,9 @@ class Root extends React.Component {
   };
 
   render() {
-    let { isLoggedin } = false;
+    let  isLoggedin  = false;
     const accountData = localStorage.getItem("accountDataB");
-    const data = JSON.parse(accountData);
+    const data = !this.props.unauthorized && JSON.parse(accountData);
     if (data) {
       isLoggedin = true;
     }
@@ -136,7 +136,8 @@ class Root extends React.Component {
 }
 
 const mapsStateToProps = state => ({
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  unauthorized: state.auth.unauthorized
 });
 
 export default connect(mapsStateToProps, {
