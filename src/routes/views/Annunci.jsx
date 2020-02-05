@@ -53,8 +53,9 @@ class Annunci extends React.Component {
   }
 
   render() {
-    const {ads, ads_loading} = this.props;
-    console.log("Annunci ads", ads )
+    const {ads, ads_loading, accountInfo} = this.props;
+    let role = accountInfo.profile && accountInfo.profile.role.name
+    console.log("Annunci this.props", this.props )
 
     let adsFiltered = this.state.tabFilter === "" ? Object.values(ads) : Object.values(ads).filter(m => m.importance === this.state.tabFilter);
     console.log("adsFiltered ",adsFiltered)
@@ -93,6 +94,13 @@ class Annunci extends React.Component {
                     <i className="fas fa-dot-circle"></i>Nuovo prodotto
                   </span>
                 </li>
+                {role && role === "super_admin" && 
+                  <li>
+                    <button onClick={this.showModal} >
+                      Crea Annunci
+                    </button>
+                  </li>
+                }
               </ul>
             </div>
             <div className="row no-gutters max-width">
@@ -122,12 +130,10 @@ class Annunci extends React.Component {
                   </div>
                 ) }
               </div>
-              <button onClick={this.showModal}>Show Modal</button>
                    
               <Modal tittle="Crea un annunci" show={this.state.modal} hide={this.hideModal}>
                   <AddAdsForm createAds={this.props.createAds}  hideModal={this.hideModal} />
               </Modal>
-
             </div>
           </div>
         </div>
@@ -205,7 +211,8 @@ const AddAdsForm = Form.create({ name: 'addAnnunci' })(AddAds);
 
 const mapStateToProps = state => ({
   ads: state.auth.ads,
-  ads_loading:  state.auth.ads_loading
+  ads_loading:  state.auth.ads_loading,
+  accountInfo: state.auth.accountInfo
 })
 
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(

@@ -1215,6 +1215,7 @@ i#private {
   margin-top: 34px;
   -webkit-box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
           box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
+  padding-bottom: 60px;
 }
 
 .panel-tab {
@@ -2088,6 +2089,7 @@ footer {
   padding-top: 5px;
   bottom: 0;
   width: 100%;
+  position: fixed;
 }
 
 footer h6 {
