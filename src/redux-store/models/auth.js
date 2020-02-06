@@ -33,9 +33,31 @@ const { Types, Creators } = createActions({
   setServiceType: ["serviceType"],
 
   getAds: [],
-  setAds: ['ads'],
-  createAds: ['data'],
-  
+  setAds: ["ads"],
+  createAds: ["data"],
+
+  getRegister: [
+    "first_name",
+    "last_name",
+    "nickname", // for username
+    "email",
+    "gender",
+    "personal_number",
+    "birthday",
+    "nazione",
+    "province_of_birth",
+    "city_of_birth",
+    "nazioneDiResidenca",
+    "residence_province",
+    "residence_city",
+    "address",
+    "cap",
+    "identity_id",
+    "identity_type",
+    "number_prefix",
+    "number"
+  ],
+  setRegister: ["register"]
 });
 
 export const AuthTypes = Types;
@@ -53,7 +75,8 @@ const INITIAL_STATE = {
   usernames: [],
   service_s: [],
   rechargeMobile: {},
-  ads: []
+  ads: [],
+  register: {}
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -101,9 +124,14 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     serviceType
   }),
-  [Types.SET_ADS]: (state, {ads})=> ({
+  [Types.SET_ADS]: (state, { ads }) => ({
     ...state,
     ads
   }),
   [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
+
+  [Types.SET_REGISTER]: (state, { register }) => ({
+    ...state,
+    register
+  })
 });

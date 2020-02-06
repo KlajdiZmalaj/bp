@@ -1,4 +1,4 @@
-import { put, call } from "redux-saga/effects";
+import { put, call, delay } from "redux-saga/effects";
 import AuthActions from "../models/auth";
 import {
   fetchLogin,
@@ -8,7 +8,8 @@ import {
   fetchPayments,
   fetchRechargeMobile,
   fetchAds,
-  sendCreatedAds
+  sendCreatedAds,
+  fetchRegisterAllInfo
 } from "services/auth";
 
 export function* signInByEmail(credencials) {
@@ -84,18 +85,18 @@ export function* getPayments(params) {
     params.from,
     params.to
   );
-  if(response){
-    if(response.status === 200){
+  if (response) {
+    if (response.status === 200) {
       if (response.data) {
         yield put(AuthActions.setPayments(response.data.transactions));
         if (response.data.usernames) {
           yield put(AuthActions.setUsernames(response.data.usernames));
         }
       }
-    }else if (response.error) {
-      if(response.error.response.status === 401){
-        yield put(AuthActions.setUnauthorization())
-      }else{
+    } else if (response.error) {
+      if (response.error.response.status === 401) {
+        yield put(AuthActions.setUnauthorization());
+      } else {
         yield put(AuthActions.setPayments(response.error.response.data));
       }
     }
@@ -122,16 +123,49 @@ export function* getRechargeMobile(params) {
     }
   }
 }
-export function* getAds(){
-  const response = yield call(fetchAds)
-  if(response.status === 200){
+export function* getAds() {
+  const response = yield call(fetchAds);
+  if (response.status === 200) {
     yield put(AuthActions.setAds(response.data.messages));
   }
 }
 
-export function* createAds({data}){
-  let {importance, title, text} = data
-  console.log('function* createAds ',data)
-  const response = yield call(sendCreatedAds, importance, title, text)
-  console.log("createAds " ,response)
+export function* createAds({ data }) {
+  let { importance, title, text } = data;
+  console.log("function* createAds ", data);
+  const response = yield call(sendCreatedAds, importance, title, text);
+  console.log("createAds ", response);
+}
+
+export function* getRegister(params) {
+  const response = yield call(
+    fetchRegisterAllInfo,
+    params.first_name,
+    params.last_name,
+    params.nickname, // for username
+    params.email,
+    params.gender,
+    params.personal_number,
+    params.birthday,
+    params.nazione,
+    params.province_of_birth,
+    params.city_of_birth,
+    params.nazioneDiResidenca,
+    params.residence_province,
+    params.residence_city,
+    params.address,
+    params.cap,
+    params.identity_id,
+    params.identity_type,
+    params.number_prefix,
+    params.number
+  );
+
+  if (response.data) {
+    yield put(AuthActions.setRegister(response.data));
+    yield delay(3000);
+    yield put(AuthActions.setRegister({}));
+  } else if (response.error) {
+    yield put(AuthActions.setRegister(response.error.response.data));
+  }
 }

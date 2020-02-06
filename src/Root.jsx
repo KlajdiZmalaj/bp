@@ -20,6 +20,7 @@ import {
   Messages,
   AccountInfo,
   Register,
+  RegisterEndUser,
   Login
 } from "./routes";
 
@@ -37,7 +38,7 @@ class Root extends React.Component {
   };
 
   render() {
-    let  isLoggedin  = false;
+    let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = !this.props.unauthorized && JSON.parse(accountData);
     if (data) {
@@ -126,6 +127,11 @@ class Root extends React.Component {
             <PrivateRoute
               path="/impostazioni"
               component={Impostazioni}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/registerUser"
+              component={RegisterEndUser}
               isLoggedin={isLoggedin}
             />
           </Switch>

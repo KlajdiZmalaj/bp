@@ -71,8 +71,8 @@ class Header extends Component {
           </ul>
           <ul className="navbar-nav mt-2 mt-lg-0 mr-2 menus-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="#/">
-                Menu2
+              <a className="nav-link" href="#/registerUser">
+                Register user
               </a>
             </li>
             <li className="nav-item">
