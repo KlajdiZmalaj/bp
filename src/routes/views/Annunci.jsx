@@ -49,16 +49,12 @@ class Annunci extends React.Component {
       this.state.expanded.push(tab)
        this.setState({})
     }
-    console.log(this.state.expanded)
   }
 
   render() {
     const {ads, ads_loading, accountInfo} = this.props;
     let role = accountInfo.profile && accountInfo.profile.role.name
-    console.log("Annunci this.props", this.props )
-
     let adsFiltered = this.state.tabFilter === "" ? Object.values(ads).sort((a,b)=> b.id-a.id) : Object.values(ads).filter(m => m.importance === this.state.tabFilter).sort((a,b)=> b.id-a.id);
-    console.log("adsFiltered ",adsFiltered)
     return (
       <div>
         <Header></Header>
