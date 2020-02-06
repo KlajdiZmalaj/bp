@@ -31,12 +31,14 @@ class Acquista extends React.Component {
     }
   }
 
-  subTabSelected = tab => {
+  subTabSelected = (tab, data) => {
     this.state.subServiceActive = tab;
+    this.state.subServiceActiveData = data;
     this.setState({})
   }
   render() {
     const { services } = this.props;
+    console.log('stateee', this.state)
     return (
       <div>
         <Header></Header>
@@ -54,21 +56,19 @@ class Acquista extends React.Component {
             <h1 className="max-width heading-tab">Aquista</h1>
             <div className="row no-gutters max-width">
                 <div className="col-md-9 ">
-                    {console.log('SERVICES ', services)}
                     {services && Object.entries(services).map(s => {
-                        console.log("s",s)
                         const shortName = s[0];
                         const {name} = s[1];
-                        s = s[1]
-                        console.log('S splicet',s)
-                        console.log('S shortName',shortName)
-                        console.log('S shortName',shortName)
+                        const subServices = {}
+                        for (let [key, value] of Object.entries(s[1])) {
+                            if(typeof value === 'object') subServices[key] = value
+                          }
                             return (
                                 <Services
                                     key={shortName}
                                     shortName={shortName}
                                     name={name}
-                                    subServices = {s}
+                                    subServices = {subServices}
                                     state={this.state}
                                     tabExpand = {this.tabExpand}
                                     subTabSelected={this.subTabSelected}
@@ -103,14 +103,20 @@ const Services = (props) => <>
         <img src="img/uparrow.svg" alt="" className="rotateARR2" />
     </div>
     <div className={`nav nav-tabs panel-content collapse ${props.state.expanded.find(tab => tab === props.shortName) != null ? "show" : ""}`} >
-        {/* {props.subServices[0].map(subService =><div 
-            onClick={() => props.subTabSelected(subService.service_id)} key={subService.service_id} 
-            className={`panel-item ${props.state.subServiceActive === subService.service_id ? "clickedItem": ""}`}>
-                <i className="fas fa-dot-circle"></i>
-                <h4>{subService.name}</h4>
-                <img className="rightTriangle" src={images.rightTriangle} alt=""/>
-            </div>
-        )} */}
+        {Object.entries(props.subServices).map(subService =>{
+            const name = subService[0];
+            const data = [subService[1]]
+                return(
+                    <div 
+                        onClick={() => props.subTabSelected(name, data)} key={name} 
+                        className={`panel-item ${props.state.subServiceActive === name ? "clickedItem": ""}`}>
+                            <i className="fas fa-dot-circle"></i>
+                            <h4>{name}</h4>
+                            <img className="rightTriangle" src={images.rightTriangle} alt=""/>
+                    </div>
+                )
+            }
+        )}
     </div>
 </>;
 
