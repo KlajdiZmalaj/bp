@@ -8,7 +8,7 @@ import PublicRoute from "./PublicRoute";
 
 import {
   Annunci,
-  Dashboard,
+  Acquista,
   CaricaConto,
   Configura,
   UseCode,
@@ -100,8 +100,8 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
             />
             <PrivateRoute
-              path="/dashboard"
-              component={Dashboard}
+              path="/acquista"
+              component={Acquista}
               isLoggedin={isLoggedin}
             />
             <PrivateRoute

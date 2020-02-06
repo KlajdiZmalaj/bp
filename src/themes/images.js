@@ -28,5 +28,8 @@ export default {
   cancelMob: require("../assets/images/cancelMob.svg"),
   close: require("../assets/images/close.svg"),
   euro: require("../assets/images/euro.svg"),
-  checkSymbol: require("../assets/images/check-symbol.svg")
+  checkSymbol: require("../assets/images/check-symbol.svg"),
+  chat: require("../assets/images/chatSticky.svg"),
+  rightTriangle: require("../assets/images/rightTriangle.svg")
 };
+

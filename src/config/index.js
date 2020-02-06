@@ -24,7 +24,7 @@ export const azioni = [
   {
     id: 5,
     name: "acquista",
-    link: "dashboard"
+    link: "acquista"
   },
   {
     id: 6,

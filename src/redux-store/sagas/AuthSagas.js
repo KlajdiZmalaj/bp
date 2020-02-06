@@ -13,7 +13,6 @@ import {
   fetchServices
 } from "services/auth";
 
-// const delay = ms => new Promise(res => setTimeout(res, ms));
 
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -38,8 +37,6 @@ export function* logOut() {
     localStorage.setItem("accountDataB", null);
     yield put(AuthActions.setAccountInfo({}));
   }
-  // localStorage.setItem("accountDataB", null);
-  // yield put(AuthActions.setAccountInfo({}));
 }
 
 export function* getBolletiniBianchi(params) {
