@@ -35,7 +35,7 @@ const { Types, Creators } = createActions({
   getAds: [],
   setAds: ['ads'],
   createAds: ['data'],
-  
+  createAdsResponse: ['adsCreationgLoading',"adsCreationgMess"]
 });
 
 export const AuthTypes = Types;
@@ -72,6 +72,7 @@ export const reducer = createReducer(INITIAL_STATE, {
     error,
     loading: false
   }),
+  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
   [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
@@ -105,5 +106,9 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     ads
   }),
-  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
+  [Types.CREATE_ADS_RESPONSE]: (state, {adsCreationgLoading ,adsCreationgMess}) => ({
+    ...state, 
+    adsCreationgLoading,
+    adsCreationgMess
+  })
 });

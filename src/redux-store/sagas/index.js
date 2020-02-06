@@ -12,7 +12,7 @@ import {
   getPayments,
   getRechargeMobile,
   getAds,
-  createAds
+  createAds,
 } from "./AuthSagas";
 import { getServices } from "./MainSagas";
 
