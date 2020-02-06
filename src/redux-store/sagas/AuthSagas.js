@@ -9,7 +9,8 @@ import {
   fetchRechargeMobile,
   fetchAds,
   sendCreatedAds,
-  fetchRegisterAllInfo
+  fetchRegisterAllInfo,
+  fetchServices
 } from "services/auth";
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -95,10 +96,11 @@ export function* getPayments(params) {
           yield put(AuthActions.setUsernames(response.data.usernames));
         }
       }
-    } else if (response.error) {
-      if (response.error.response.status === 401) {
-        yield put(AuthActions.setUnauthorization());
-      } else {
+    }else if (response.error) {
+      if(response.error.response.status === 401){
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }else{
         yield put(AuthActions.setPayments(response.error.response.data));
       }
     }
@@ -181,5 +183,12 @@ export function* createAds({ data }) {
       yield delay(3000);
       yield put(AuthActions.createAdsResponse(false, null));
     }
+  }
+}
+
+export function* getServices() {
+  const response = yield call(fetchServices);
+  if (response.data) {
+    yield put(AuthActions.setServices(response.data.all_services));
   }
 }

@@ -5,7 +5,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import "./index-service.style.scss";
 import images from "themes/images";
 
-class Service extends React.Component {
+class Services extends React.Component {
   state = {
     numero_conto_corrente: "",
     importo: "",
@@ -726,5 +726,5 @@ const mapsStateToProps = state => ({
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
-  Service
+  Services
 );

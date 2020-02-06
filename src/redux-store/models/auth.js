@@ -7,8 +7,6 @@ const { Types, Creators } = createActions({
   logOut: [],
   getAccountInfo: [],
   setAccountInfo: ["accountInfo"],
-
-  setUnauthorization: [],
   getBolletiniBianchi: [
     "service_id",
     "numero_conto_corrente",
@@ -24,6 +22,9 @@ const { Types, Creators } = createActions({
   setBolletiniBianchi: ["bolletiniBianchi"],
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
+
+  getServices: [],
+  setServices: ["services"],
 
   getPayments: ["username", "from", "to"],
   setPayments: ["payments"],
@@ -72,7 +73,6 @@ const INITIAL_STATE = {
   error: null,
   accountInfo: {},
   bolletiniBianchi: {},
-  unauthorizated: true,
   service_id: null,
   payments: [],
   usernames: [],
@@ -83,11 +83,7 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SIGN_IN_BY_EMAIL]: state => ({
-    ...state,
-    loading: true,
-    unauthorizated: false
-  }),
+  [Types.SIGN_IN_BY_EMAIL]: (state) => ({ ...state }),
   [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
     ...state,
     accountInfo
@@ -102,7 +98,6 @@ export const reducer = createReducer(INITIAL_STATE, {
     error,
     loading: false
   }),
-  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
   [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
@@ -120,6 +115,10 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     payments
   }),
+  [Types.SET_SERVICES]: (state, { services }) => ({
+    ...state,
+    services
+  }),
   [Types.SET_USERNAMES]: (state, { usernames }) => ({
     ...state,
     usernames
@@ -136,8 +135,6 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     ads
   }),
-  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
-
   [Types.SET_REGISTER]: (state, { register }) => ({
     ...state,
     register

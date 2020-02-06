@@ -13,9 +13,9 @@ import {
   getRechargeMobile,
   getAds,
   createAds,
-  getRegister
+  getRegister,
+  getServices
 } from "./AuthSagas";
-import { getServices } from "./MainSagas";
 
 export default function* root() {
   yield all([
@@ -29,8 +29,6 @@ export default function* root() {
     takeLatest(AuthTypes.GET_ADS, getAds),
     takeLatest(AuthTypes.CREATE_ADS, createAds),
     takeLatest(AuthTypes.GET_REGISTER, getRegister),
-
-    // MAIN
-    takeLatest(MainTypes.GET_SERVICES, getServices)
+    takeLatest(AuthTypes.GET_SERVICES, getServices)
   ]);
 }

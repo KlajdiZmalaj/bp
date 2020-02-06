@@ -5,15 +5,3 @@ import axios from "axios";
 //   console.log("err", err);
 // });
 
-export const fetchServices = () =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
-    })
-    .get(`/services`)
-    .catch(error => ({ error }));

@@ -126,18 +126,17 @@ class Annunci extends React.Component {
                   </div>
                 ) }
               </div>
-                   
-              <Modal tittle="Crea un annunci" show={this.state.modal} hide={this.hideModal}>
-                  <AddAdsForm 
-                    adsCreationgLoading={this.props.adsCreationgLoading} 
-                    adsCreationgMess={this.props.adsCreationgMess} 
-                    getAds ={ this.props.getAds}
-                    createAds={this.props.createAds}  
-                    hideModal={this.hideModal} />
-              </Modal>
             </div>
           </div>
-        </div>
+        </div>      
+        <Modal tittle="Crea un annunci" show={this.state.modal} hide={this.hideModal}>
+            <AddAdsForm 
+              adsCreationgLoading={this.props.adsCreationgLoading} 
+              adsCreationgMess={this.props.adsCreationgMess} 
+              getAds ={ this.props.getAds}
+              createAds={this.props.createAds}  
+              hideModal={this.hideModal} />
+        </Modal>
       </div>
     );
   }
