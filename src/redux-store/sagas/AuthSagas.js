@@ -12,6 +12,8 @@ import {
   fetchRegisterAllInfo
 } from "services/auth";
 
+// const delay = ms => new Promise(res => setTimeout(res, ms));
+
 export function* signInByEmail(credencials) {
   const response = yield call(
     fetchLogin,
@@ -130,13 +132,6 @@ export function* getAds() {
   }
 }
 
-export function* createAds({ data }) {
-  let { importance, title, text } = data;
-  console.log("function* createAds ", data);
-  const response = yield call(sendCreatedAds, importance, title, text);
-  console.log("createAds ", response);
-}
-
 export function* getRegister(params) {
   const response = yield call(
     fetchRegisterAllInfo,
@@ -167,5 +162,24 @@ export function* getRegister(params) {
     yield put(AuthActions.setRegister({}));
   } else if (response.error) {
     yield put(AuthActions.setRegister(response.error.response.data));
+  }
+}
+
+export function* createAds({ data }) {
+  let { importance, title, text } = data;
+  yield put(AuthActions.createAdsResponse(true, null));
+  const response = yield call(sendCreatedAds, importance, title, text);
+  if (response) {
+    if (response.status === 200) {
+      yield put(AuthActions.createAdsResponse(false, response.data));
+      yield delay(3000);
+      yield put(AuthActions.createAdsResponse(false, null));
+    } else {
+      yield put(
+        AuthActions.createAdsResponse(false, response.error.response.data)
+      );
+      yield delay(3000);
+      yield put(AuthActions.createAdsResponse(false, null));
+    }
   }
 }

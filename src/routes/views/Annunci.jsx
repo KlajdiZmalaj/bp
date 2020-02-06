@@ -49,16 +49,12 @@ class Annunci extends React.Component {
       this.state.expanded.push(tab)
        this.setState({})
     }
-    console.log(this.state.expanded)
   }
 
   render() {
     const {ads, ads_loading, accountInfo} = this.props;
     let role = accountInfo.profile && accountInfo.profile.role.name
-    console.log("Annunci this.props", this.props )
-
-    let adsFiltered = this.state.tabFilter === "" ? Object.values(ads) : Object.values(ads).filter(m => m.importance === this.state.tabFilter);
-    console.log("adsFiltered ",adsFiltered)
+    let adsFiltered = this.state.tabFilter === "" ? Object.values(ads).sort((a,b)=> b.id-a.id) : Object.values(ads).filter(m => m.importance === this.state.tabFilter).sort((a,b)=> b.id-a.id);
     return (
       <div>
         <Header></Header>
@@ -97,7 +93,7 @@ class Annunci extends React.Component {
                 {role && role === "super_admin" && 
                   <li>
                     <button onClick={this.showModal} >
-                      Crea Annunci
+                      Crea Annuncio
                     </button>
                   </li>
                 }
@@ -132,7 +128,12 @@ class Annunci extends React.Component {
               </div>
                    
               <Modal tittle="Crea un annunci" show={this.state.modal} hide={this.hideModal}>
-                  <AddAdsForm createAds={this.props.createAds}  hideModal={this.hideModal} />
+                  <AddAdsForm 
+                    adsCreationgLoading={this.props.adsCreationgLoading} 
+                    adsCreationgMess={this.props.adsCreationgMess} 
+                    getAds ={ this.props.getAds}
+                    createAds={this.props.createAds}  
+                    hideModal={this.hideModal} />
               </Modal>
             </div>
           </div>
@@ -148,17 +149,25 @@ class AddAds extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.createAds(values)
+        this.props.createAds(values);
+        setTimeout(()=>{
+          if(this.props.adsCreationgMess.errors){
+            this.props.form.resetFields()
+          }else{
+            this.props.getAds()
+            this.props.hideModal()
+          }
+        } , 3000);
       }
     });
   };
 
   render() {
-    console.log('AddAds props ', this.props)
+    let {adsCreationgLoading, adsCreationgMess} = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
-      <Form  onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Item label="Anunnci tipo">
           {getFieldDecorator('importance', {
             rules: [
@@ -196,7 +205,10 @@ class AddAds extends React.Component {
           })(<TextArea rows={4} />)}
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+        {adsCreationgLoading && <Loader />}
+        {adsCreationgMess && adsCreationgMess.errors ? <div className="alert alert-danger text-center" role="alert">{adsCreationgMess.message}</div> :
+         adsCreationgMess && adsCreationgMess.message ? <div className="alert alert-success text-center" role="alert">{adsCreationgMess.message}</div> : null}
+          <Button disabled={adsCreationgLoading} type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
@@ -212,7 +224,9 @@ const AddAdsForm = Form.create({ name: 'addAnnunci' })(AddAds);
 const mapStateToProps = state => ({
   ads: state.auth.ads,
   ads_loading:  state.auth.ads_loading,
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  adsCreationgLoading: state.auth.adsCreationgLoading,
+  adsCreationgMess: state.auth.adsCreationgMess
 })
 
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(

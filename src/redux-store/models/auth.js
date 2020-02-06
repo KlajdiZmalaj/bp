@@ -57,7 +57,10 @@ const { Types, Creators } = createActions({
     "number_prefix",
     "number"
   ],
-  setRegister: ["register"]
+  setRegister: ["register"],
+  setAds: ["ads"],
+  createAds: ["data"],
+  createAdsResponse: ["adsCreationgLoading", "adsCreationgMess"]
 });
 
 export const AuthTypes = Types;
@@ -80,7 +83,11 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SIGN_IN_BY_EMAIL]: state => ({ ...state, loading: true }),
+  [Types.SIGN_IN_BY_EMAIL]: state => ({
+    ...state,
+    loading: true,
+    unauthorizated: false
+  }),
   [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
     ...state,
     accountInfo
@@ -95,6 +102,7 @@ export const reducer = createReducer(INITIAL_STATE, {
     error,
     loading: false
   }),
+  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
   [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
@@ -133,5 +141,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_REGISTER]: (state, { register }) => ({
     ...state,
     register
+  }),
+  [Types.CREATE_ADS_RESPONSE]: (
+    state,
+    { adsCreationgLoading, adsCreationgMess }
+  ) => ({
+    ...state,
+    adsCreationgLoading,
+    adsCreationgMess
   })
 });
