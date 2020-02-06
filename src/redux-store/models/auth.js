@@ -57,7 +57,7 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SIGN_IN_BY_EMAIL]: state => ({ ...state, loading: true }),
+  [Types.SIGN_IN_BY_EMAIL]: state => ({ ...state, loading: true, unauthorizated: false }),
   [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
     ...state,
     accountInfo
@@ -65,7 +65,7 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.AUTH_SUCCESS]: (state, { user }) => ({
     ...state,
     user,
-    loading: false
+    loading: false,
   }),
   [Types.AUTH_FAILURE]: (state, { error }) => ({
     ...state,
