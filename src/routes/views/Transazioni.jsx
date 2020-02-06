@@ -235,6 +235,7 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
+                {payments.message && <div className="alert alert-danger text-center">{payments.message}</div> }
                 <table className="transTable">
                   <thead>
                     <tr>
@@ -247,7 +248,7 @@ class Transazioni extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {payments.map((item, index) => {
+                  {!payments.message && payments.map((item, index) => {
                       return (
                         <tr key={index} onClick={() => this.showModal(index)}>
                           <td>
