@@ -116,7 +116,7 @@ class Transazioni extends React.Component {
     const { payments, accountInfo } = this.props;
     const { selectedFilter, indexT, usernames } = this.state;
 
-    const filters = ["oggi", "ieri", "questa sett", "questo messe"];
+    const filters = ["oggi", "ieri", "questa sett", "questo mese"];
 
     let options = [];
 
@@ -235,7 +235,11 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                {payments.message && <div className="alert alert-danger text-center">{payments.message}</div> }
+                {payments.message && (
+                  <div className="alert alert-danger text-center">
+                    {payments.message}
+                  </div>
+                )}
                 <table className="transTable">
                   <thead>
                     <tr>
@@ -248,26 +252,31 @@ class Transazioni extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                  {!payments.message && payments.map((item, index) => {
-                      return (
-                        <tr key={index} onClick={() => this.showModal(index)}>
-                          <td>
-                            {moment(item.executed_date).format(
-                              "DD/MM/YYYY  HH:MM:ss"
-                            )}
-                          </td>
-                          <td>{item.barcode}</td>
-                          <td>{item.service_name}</td>
-                          <td>
-                            {item.price1000
-                              ? slicedAmount(item.price1000 / 1000)
-                              : "-"}
-                          </td>
-                          <td>{item.commissione ? item.commissione : "-"} </td>
-                          <td>{item.percentage > 0 ? item.percentage : "-"}</td>
-                        </tr>
-                      );
-                    })}
+                    {!payments.message &&
+                      payments.map((item, index) => {
+                        return (
+                          <tr key={index} onClick={() => this.showModal(index)}>
+                            <td>
+                              {moment(item.executed_date).format(
+                                "DD/MM/YYYY  HH:MM:ss"
+                              )}
+                            </td>
+                            <td>{item.barcode}</td>
+                            <td>{item.service_name}</td>
+                            <td>
+                              {item.price1000
+                                ? slicedAmount(item.price1000 / 1000)
+                                : "-"}
+                            </td>
+                            <td>
+                              {item.commissione ? item.commissione : "-"}{" "}
+                            </td>
+                            <td>
+                              {item.percentage > 0 ? item.percentage : "-"}
+                            </td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>

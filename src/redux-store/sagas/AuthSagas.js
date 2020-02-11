@@ -98,6 +98,12 @@ export function* getPayments(params) {
     } else if (response.error) {
       if (response.error.response.status === 401) {
         yield put(AuthActions.setUnauthorization());
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
       } else {
         yield put(AuthActions.setPayments(response.error.response.data));
       }
