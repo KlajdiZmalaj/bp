@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-
 import "./index-service.style.scss";
 import images from "themes/images";
 
@@ -20,7 +19,6 @@ class Service extends React.Component {
   selectService = id => {
     this.props.setServiceId(id);
     this.props.togglePopUp(true);
-    console.log("this.props.serviceSelected", this.props.serviceSelected);
     this.props.setServiceS(
       this.props.servicesItems[this.props.serviceSelected]
     );
@@ -28,7 +26,6 @@ class Service extends React.Component {
 
   render() {
     const { serviceSelected, servicesItems } = this.props;
-
     const arrayServices = servicesItems[serviceSelected];
 
     return (
