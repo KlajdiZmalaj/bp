@@ -121,7 +121,7 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
     })
     .post(`/test/recharge`, {
       ...{ service_id: service_id },
-      ...{ tel_no: tel_no }
+      ...(tel_no ? { tel_no: tel_no } : {})
     })
     .catch(error => ({ error }));
 

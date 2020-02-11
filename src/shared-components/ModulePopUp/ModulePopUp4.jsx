@@ -36,7 +36,8 @@ class ModulePopUp4 extends React.Component {
   };
 
   render() {
-    const { service_s, rechargeMobile, serviceType } = this.props;
+    const { service_s, rechargeMobile, serviceType, service } = this.props;
+    console.log("rechargeMobile", rechargeMobile.wallet);
 
     const { serviceMobile, tel_no } = this.state;
 
@@ -44,7 +45,8 @@ class ModulePopUp4 extends React.Component {
       message: "User transactions fetched successfully",
       receipt:
         " \n RICARICA VODAFONE\n \nTerminalID:             IT016546\n Date:                 17.01.2020\nTime:                   12:20:03\n Trace-Nr.:                103503\nReceipt-Nr.:                5343\n\n--------------------------------\n Codice Transazione\n 97732011\n\nHai acquistato Giga Ricarica 5.\nhai 3 Giga validi per un mese e\ndi ricarica.\nCon Giga Ricarica 10, a 10 euro\nGiga validi per un mese e 9 euro\nricarica.\nI 3 Giga sono validi\nper un mese e si disattivano\nin automatico.\nRiceverai un SMS\n di conferma dell'acquisto e\nsuccessivamente l'SMS di con\nferm dell'attivazione dei 3 Gi\n ga.    I 3 Giga non sono cumulab\nili   con eventuali Giga residui\ndi unGiga Ricarica acquistata e\nntro igiorno precedente. Per inf\n ormazi  vai su voda.it/gigaricar\n ica       Scontrino non fiscale.\n \n NUMERO DI TELEFONO\n - 3406148006 -\n Importo 10 Euro\n \nLA RICARICA VERRA'\n ACCREDITATA ENTRO 24 OR\n E.     Per assistenza chiama il\n190         o vai su www.190.it\nIVA ASSOLTA AI SENSI DELL\n 'EX   ART.74 co.1,lett.d> DPR 63\n 3/72     da Vodafone Italia S.p.\n A            P.Iva 08539010010\n Operazione eseguita da Eur\n onet   Pay ' Transaction service\nsrl         P.Iva 05445540965\n\nTRANSAZIONE ESEGUITA\n\r\n\r\n",
-      barcode: "0000073721475"
+      barcode: "0000073721475",
+      wallet: "983.00"
     };
     return (
       <div className="modulePopUP modulePopUP1 telRechanrge">
@@ -102,12 +104,12 @@ class ModulePopUp4 extends React.Component {
                       <h4>{serviceMobile.name}</h4>
                     </div>
 
-                    {serviceType.toString() === "RTELD" && (
+                    {service.type.toString() === "1" && (
                       <div className="row no-gutters">
                         <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
                       </div>
                     )}
-                    {serviceType.toString() === "RTELD" && (
+                    {service.type.toString() === "1" && (
                       <div className="row no-gutters">
                         <input
                           type="text"
@@ -120,7 +122,7 @@ class ModulePopUp4 extends React.Component {
                       </div>
                     )}
                     <div className="row numpadCarrier">
-                      {serviceType.toString() === "RTELD" && (
+                      {service.type.toString() === "1" && (
                         <div className="col-8">
                           <table>
                             <tbody>
@@ -170,7 +172,13 @@ class ModulePopUp4 extends React.Component {
                         </div>
                       )}
 
-                      <div className="col-4" style={{ paddingRight: "30px" }}>
+                      <div
+                        className={
+                          "col-4 " +
+                          (service.type.toString() === "1" ? "" : "notNumbers")
+                        }
+                        style={{ paddingRight: "30px" }}
+                      >
                         <table className="_modulePopUP__tableCarrier">
                           <tbody>
                             <tr>

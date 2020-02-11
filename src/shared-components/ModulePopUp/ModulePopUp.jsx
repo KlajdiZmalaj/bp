@@ -10,7 +10,7 @@ class ModulePopUp extends React.Component {
   render() {
     const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
     const service_id = service && service.service_id;
-
+    console.log("this.props", this.props.service);
     const arr = [
       {
         message: "User transactions fetched successfully",
@@ -32,14 +32,21 @@ class ModulePopUp extends React.Component {
         )}
 
         {(serviceType.toString() === "RTELD" ||
-          serviceType.toString() === "RTELC") && (
-          <ModulePopUp4
-            service_id={service_id}
-            bolletiniBianchi={bolletiniBianchi}
-            serviceSelected={service}
-            serviceType={serviceType}
-          ></ModulePopUp4>
-        )}
+          serviceType.toString() === "RTELI" ||
+          serviceType.toString() === "SCMS" ||
+          serviceType.toString() === "RTVD" ||
+          serviceType.toString() === "GIFT" ||
+          serviceType.toString() === "RTELC") &&
+          (service.type.toString() === "1" ||
+            service.type.toString() === "0") && (
+            <ModulePopUp4
+              service_id={service_id}
+              bolletiniBianchi={bolletiniBianchi}
+              serviceSelected={service}
+              serviceType={serviceType}
+              service={service}
+            ></ModulePopUp4>
+          )}
       </Fragment>
     ) : null;
   }

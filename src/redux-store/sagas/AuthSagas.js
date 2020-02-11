@@ -114,11 +114,21 @@ export function* getRechargeMobile(params) {
   if (response) {
     console.log("response", response);
     if (response.data) {
+      console.log("wallet", response.data.wallet);
+      if (response.data.wallet) {
+      }
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["dati non sono correti."] } };
         yield put(AuthActions.setRechargeMobile(error));
+      } else if (response.error.response.status === 401) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
       } else {
         yield put(AuthActions.setRechargeMobile(response.error.response.data));
       }
