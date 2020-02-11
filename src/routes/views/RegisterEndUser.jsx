@@ -138,7 +138,7 @@ class RegisterEndUser extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
 
-    const { comuniSelected, nazione, nazioneDiResidenca } = this.state;
+    const { comuniSelected, nazione, nazioneDiResidenca, sesso } = this.state;
 
     const allNazione = uniqBy(countriesArray, "nazione");
 
@@ -248,7 +248,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Inserisci il tuo codice fiscale!"
+                          message: "Please input your fiscal code!"
                         }
                       ]
                     })(
@@ -263,7 +263,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Per favore inserisci il tuo nome!",
+                          message: "Please input your name!",
                           whitespace: true
                         }
                       ]
@@ -274,7 +274,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Per favore inserisci il tuo cognome!",
+                          message: "Please input your last name!",
                           whitespace: true
                         }
                       ]
@@ -287,7 +287,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Seleziona il tuo genere!"
+                          message: "Please select your gender!"
                         }
                       ]
                     })(
@@ -303,7 +303,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Inserisci il tuo nickname!"
+                          message: "Please input your fiscal code!"
                         }
                       ]
                     })(<Input placeholder="nickname*" />)}
@@ -317,7 +317,7 @@ class RegisterEndUser extends React.Component {
                         },
                         {
                           required: true,
-                          message: "Inserisci la tua e-mail!"
+                          message: "Please input your E-mail!"
                         }
                       ]
                     })(<Input placeholder="email*" />)}
@@ -328,7 +328,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Inserisci il tuo numero di telefono!"
+                          message: "Please input your phone number!"
                         }
                       ]
                     })(
@@ -378,7 +378,7 @@ class RegisterEndUser extends React.Component {
                       placeholder={
                         comuniSelected.sigla
                           ? comuniSelected.sigla
-                          : "Provinica di nascita*"
+                          : "Provinca di nascita*"
                       }
                     />
                   </Form.Item>
@@ -407,7 +407,7 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.nazioneDiResidenca}
                       maxHeight={100}
-                      placeholder="Nazione di residenza*"
+                      placeholder="Nazione di residenca*"
                     />
                   </Form.Item>
 
@@ -422,7 +422,7 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.residence_province}
                       maxHeight={100}
-                      placeholder="Provincia di residenza* "
+                      placeholder="Provinca di residenca* "
                     />
                   </Form.Item>
 
@@ -436,7 +436,7 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.residence_city}
                       maxHeight={100}
-                      placeholder="Comuna di residenza*"
+                      placeholder="Comuna di residenca*"
                     />
                   </Form.Item>
 
@@ -449,14 +449,14 @@ class RegisterEndUser extends React.Component {
                           whitespace: true
                         }
                       ]
-                    })(<Input placeholder="Inserisci il tuo indirizzo*" />)}
+                    })(<Input placeholder="Indirizio di residenca*" />)}
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator("cap", {
                       rules: [
                         {
                           required: true,
-                          message: "Inserisci il tuo cap!",
+                          message: "Please input postcode!",
                           whitespace: true
                         }
                       ]
