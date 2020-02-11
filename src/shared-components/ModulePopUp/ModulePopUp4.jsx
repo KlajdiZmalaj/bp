@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import PrintTicket from "./PrintTicket";
 import Bolletino from "./Bolletino";
+import images from "../../themes/images";
 
 class ModulePopUp4 extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class ModulePopUp4 extends React.Component {
 
   render() {
     const { service_s, rechargeMobile, serviceType } = this.props;
-    console.log("serviceType.toString()", serviceType.toString());
+
     const { serviceMobile, tel_no } = this.state;
 
     const arr = {
@@ -182,7 +183,7 @@ class ModulePopUp4 extends React.Component {
                                 }
                               >
                                 <h3>esegui</h3>
-                                <img src="img/check-symbol.svg" alt="" />
+                                <img src={images.checkSymbol} alt="" />
                               </td>
                             </tr>
                             <tr>
@@ -199,7 +200,7 @@ class ModulePopUp4 extends React.Component {
                                 onClick={() => this.props.togglePopUp(false)}
                               >
                                 <h3>anulla</h3>
-                                <img src="img/close.svg" alt="" />
+                                <img src={images.close} alt="" />
                               </td>
                             </tr>
                           </tbody>
@@ -263,12 +264,12 @@ class ModulePopUp4 extends React.Component {
                           </div> */}
                       <div className="btn-group" role="group">
                         <button type="button" className="btn btn-secondary">
-                          <img src="img/check-symbol.svg" alt="" />
+                          <img src={images.checkSymbol} alt="" />
                           <br />
                           Stampa
                         </button>
                         <button type="button" className="btn btn-secondary">
-                          <img src="img/close.svg" alt="" /> <br />
+                          <img src={images.close} alt="" /> <br />
                           Anulla
                         </button>
                       </div>

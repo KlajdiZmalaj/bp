@@ -40,10 +40,12 @@ class Root extends React.Component {
   render() {
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
-    const data = !this.props.unauthorizated && JSON.parse(accountData);
+    // const data = !this.props.unauthorizated && JSON.parse(accountData);
+    const data = JSON.parse(accountData);
     if (data) {
       isLoggedin = true;
     }
+
     return (
       <React.Fragment>
         <HashRouter>

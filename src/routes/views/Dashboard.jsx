@@ -20,8 +20,10 @@ class Dashboard extends React.Component {
     keyService: ""
   };
 
-  changeServce = service => {
+  changeServce = (service, item) => {
     this.setState({ serviceSelected: service });
+    this.setState({ keyService: item });
+    this.props.setServiceType(item);
   };
 
   changeKeyService = service => {
@@ -61,7 +63,7 @@ class Dashboard extends React.Component {
                         onClick={() => this.changeKeyService(item)}
                       >
                         <i className="fas fa-dot-circle"></i>
-                        <h4>{serv['name']}</h4>
+                        <h4>{serv["name"]}</h4>
                         <img src="img/uparrow.svg" alt="" />
                       </div>
 
@@ -70,12 +72,12 @@ class Dashboard extends React.Component {
                         id={"tab" + item}
                       >
                         {Object.keys(serv).map((service, indexx) => {
-                          if(service !== 'name'){
+                          if (service !== "name") {
                             return (
                               <div
                                 data-toggle="tab"
                                 key={indexx}
-                                onClick={() => this.changeServce(service)}
+                                onClick={() => this.changeServce(service, item)}
                               >
                                 <div className="panel-item">
                                   <i className="fas fa-dot-circle"></i>

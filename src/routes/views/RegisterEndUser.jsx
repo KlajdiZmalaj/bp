@@ -378,7 +378,7 @@ class RegisterEndUser extends React.Component {
                       placeholder={
                         comuniSelected.sigla
                           ? comuniSelected.sigla
-                          : "Provinca di nascita*"
+                          : "provincia di nascita*"
                       }
                     />
                   </Form.Item>
@@ -407,7 +407,7 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.nazioneDiResidenca}
                       maxHeight={100}
-                      placeholder="Nazione di residenca*"
+                      placeholder="Nazione di residenza*"
                     />
                   </Form.Item>
 
@@ -422,7 +422,7 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.residence_province}
                       maxHeight={100}
-                      placeholder="Provinca di residenca* "
+                      placeholder="provincia di residenza* "
                     />
                   </Form.Item>
 
@@ -436,7 +436,7 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.residence_city}
                       maxHeight={100}
-                      placeholder="Comuna di residenca*"
+                      placeholder="comune di residenza*"
                     />
                   </Form.Item>
 
@@ -449,7 +449,7 @@ class RegisterEndUser extends React.Component {
                           whitespace: true
                         }
                       ]
-                    })(<Input placeholder="Indirizio di residenca*" />)}
+                    })(<Input placeholder="indirizzo di residenza*" />)}
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator("cap", {

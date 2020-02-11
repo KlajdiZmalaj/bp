@@ -27,7 +27,12 @@ class Service extends React.Component {
   render() {
     const { serviceSelected, servicesItems } = this.props;
     const arrayServices = servicesItems[serviceSelected];
-
+    console.log(
+      "serviceSelected",
+      serviceSelected,
+      arrayServices,
+      this.props.servicesItems
+    );
     return (
       <React.Fragment>
         <div
