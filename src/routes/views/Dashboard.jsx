@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
                         onClick={() => this.changeKeyService(item)}
                       >
                         <i className="fas fa-dot-circle"></i>
-                        <h4>{item}</h4>
+                        <h4>{serv['name']}</h4>
                         <img src="img/uparrow.svg" alt="" />
                       </div>
 
@@ -70,23 +70,25 @@ class Dashboard extends React.Component {
                         id={"tab" + item}
                       >
                         {Object.keys(serv).map((service, indexx) => {
-                          return (
-                            <div
-                              data-toggle="tab"
-                              key={indexx}
-                              onClick={() => this.changeServce(service)}
-                            >
-                              <div className="panel-item">
-                                <i className="fas fa-dot-circle"></i>
-                                <h4>{service}</h4>
-                                <img
-                                  className="rightTriangle"
-                                  src="img/rightTriangle.svg"
-                                  alt=""
-                                />
+                          if(service !== 'name'){
+                            return (
+                              <div
+                                data-toggle="tab"
+                                key={indexx}
+                                onClick={() => this.changeServce(service)}
+                              >
+                                <div className="panel-item">
+                                  <i className="fas fa-dot-circle"></i>
+                                  <h4>{service}</h4>
+                                  <img
+                                    className="rightTriangle"
+                                    src="img/rightTriangle.svg"
+                                    alt=""
+                                  />
+                                </div>
                               </div>
-                            </div>
-                          );
+                            );
+                          }
                         })}
                       </div>
                     </div>
