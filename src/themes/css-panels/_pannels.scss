@@ -212,9 +212,15 @@
   margin: 0 auto;
   margin-top: 50px;
 }
+.afterprint {
+  // background-color: red;
+  color-adjust: exact;
+  width: 4cm;
+}
+
 .afterprint .printModal {
   margin: 0 auto;
-  max-width: 650px;
+  max-width: 100%;
   padding: 20px;
   border: 2px solid #222;
 }
