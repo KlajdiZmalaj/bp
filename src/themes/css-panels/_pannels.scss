@@ -197,19 +197,22 @@
   align-content: center;
 }
 .headerModal {
-  display: flex;
-  flex-flow: column;
   font-size: 20px;
   line-height: 20px;
   margin-bottom: 20px;
   font-weight: bold;
-  text-align: center;
+  // text-align: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  > span {
+    margin: 0 auto;
+    white-space: nowrap;
+  }
 }
-
+@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 .barcodeModal {
   height: 80px;
-  display: block;
-  margin: 0 auto;
   margin-top: 50px;
 }
 .afterprint {
@@ -219,21 +222,29 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  font-family: "PixelarRegularW01-Regular";
 }
 
 .afterprint .printModal {
   margin: 0 auto;
   max-width: 100%;
   padding: 20px;
-  border: 2px solid #222;
+}
+
+.afterprint .headerModal {
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-width: 50%;
+}
+.afterprint br {
+  display: none;
 }
 .printBtn {
-  display: block;
   max-width: 200px;
   padding: 10px;
   background: #dedede;
   margin: 0 auto;
-  text-align: center;
+  // text-align: center;
   margin-top: 40px;
   cursor: pointer;
 }
