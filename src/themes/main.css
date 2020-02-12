@@ -1488,8 +1488,14 @@ i#private {
 
 .afterprint {
   color-adjust: exact;
-  height: auto;
-  margin: 0 0;
+  width: 4cm;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .afterprint .printModal {
