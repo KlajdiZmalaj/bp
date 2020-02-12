@@ -216,6 +216,9 @@
   // background-color: red;
   color-adjust: exact;
   width: 4cm;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .afterprint .printModal {
