@@ -219,6 +219,7 @@
   //text-align: center;
 }
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .barcodeModal {
   height: 80px;
   margin: 0 auto;
@@ -236,16 +237,14 @@
   // display: flex;
   // justify-content: center;
   // font-family: Arial, Helvetica, sans-serif;
-  font-family: "printFont";
+  // font-family: "printFont";
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
 }
 .afterprint .printModal {
   margin: 0 auto;
   width: 100%;
   padding: 10px;
-  * {
-    font-family: unset !important;
-  }
 }
 .printBtn {
   max-width: 200px;
@@ -273,7 +272,7 @@
   }
 }
 
-@font-face {
-  font-family: "printFont";
-  src: url("./font.ttf") format("truetype"); /* Safari, Android, iOS */
-}
+// @font-face {
+//   font-family: "printFont";
+//   src: url("./font.ttf") format("truetype"); /* Safari, Android, iOS */
+// }
