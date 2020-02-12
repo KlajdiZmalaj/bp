@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 @font-face {
   font-family: fontAw-300;
   src: url("../themes/fontsAw.php") format("woff");
@@ -1247,7 +1248,6 @@ i#private {
 }
 
 .panel-tab h4 {
-  font-family: "Roboto", "sans-serif";
   font-size: 20px;
   color: #7e8f9f;
   text-transform: uppercase;
@@ -1262,7 +1262,6 @@ i#private {
   position: relative;
   right: 40px;
   font-weight: 500;
-  font-family: "Roboto", "sans-serif";
   color: #32424e;
 }
 
@@ -1316,7 +1315,6 @@ i#private {
 }
 
 .panel-item h4 {
-  font-family: "Roboto", "sans-serif";
   font-size: 20px;
   color: #32424e;
   text-transform: uppercase;
@@ -1338,7 +1336,6 @@ i#private {
 }
 
 .heading-tab {
-  font-family: "Roboto", "sans-serif";
   font-size: 24px;
   font-weight: normal;
   color: #32424e;
@@ -1405,7 +1402,6 @@ i#private {
 .panel-services td p {
   position: relative;
   margin: 0;
-  font-family: "Roboto", "sans-serif";
   font-size: 16px;
   font-weight: normal;
   margin-top: 13px;
@@ -1446,7 +1442,6 @@ i#private {
 .phoneall h3 {
   color: #ed4c14;
   margin-top: 14px;
-  font-family: "Roboto", "sans-serif";
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -1470,45 +1465,41 @@ i#private {
   line-height: 20px;
   margin-bottom: 20px;
   font-weight: bold;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 60mm;
 }
 
-.headerModal > span {
-  margin: 0 auto;
-  white-space: nowrap;
+.headerModal + div,
+.headerModal span {
+  display: block;
+  word-wrap: break-word;
+  -webkit-column-break-inside: auto;
+          break-inside: auto;
+  /* width: auto; */
+  max-width: 60mm;
 }
 
 .barcodeModal {
   height: 80px;
+  margin: 0 auto;
   margin-top: 50px;
 }
 
 .afterprint {
   color-adjust: exact;
-  width: 4cm;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-family: "PixelarRegularW01-Regular";
+  max-width: 60mm;
 }
 
 .afterprint .printModal {
   margin: 0 auto;
-  max-width: 100%;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
 }
 
-.afterprint .headerModal {
-  white-space: pre-wrap;
-  word-break: break-all;
-  max-width: 50%;
-}
-
-.afterprint br {
-  display: none;
+.afterprint .printModal * {
+  font-family: unset !important;
 }
 
 .printBtn {
@@ -1522,6 +1513,12 @@ i#private {
 
 .afterprint .printBtn {
   display: none;
+}
+
+@media print {
+  @page {
+    margin: 0 auto;
+  }
 }
 
 /*modules*/
