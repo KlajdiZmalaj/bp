@@ -988,6 +988,12 @@ i#private {
   padding-left: 10px;
 }
 
+.transTable th.right,
+.transTable td.right {
+  text-align: right;
+  padding-right: 5px;
+}
+
 .transTable tr:nth-child(1) td {
   background: #f5f5f5;
   border-left: 2px solid #fff;

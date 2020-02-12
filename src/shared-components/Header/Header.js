@@ -77,7 +77,7 @@ class Header extends Component {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/#">
-                Menu1
+                Menu
               </a>
             </li>
             {!isLogged && (

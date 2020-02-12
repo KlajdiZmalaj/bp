@@ -10,7 +10,7 @@ class ModulePopUp extends React.Component {
   render() {
     const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
     const service_id = service && service.service_id;
-    console.log("this.props", this.props.service);
+
     const arr = [
       {
         message: "User transactions fetched successfully",

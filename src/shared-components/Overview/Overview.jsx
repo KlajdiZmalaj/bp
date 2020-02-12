@@ -4,6 +4,8 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 
+import sumBy from "lodash/sumBy";
+
 class Overview extends Component {
   componentDidMount() {
     const accountData = localStorage.getItem("accountDataB");
@@ -18,18 +20,18 @@ class Overview extends Component {
     const { showOverview, toggleOverview, payments, accountInfo } = this.props;
 
     let provT = 0;
+    let commT = 0;
     if (payments && payments.length > 0) {
-      provT = (payments || [])
-        .map(item => parseFloat(item.percentage))
-        .reduce((prev, next) => prev + next);
+      // provT = (payments || [])
+      //   .map(item => parseFloat(item.percentage.replace(/,/g, "")))
+      //   .reduce((prev, next) => prev + next);
+      provT = sumBy(payments, function(o) {
+        return parseFloat(o.percentage.replace(/,/g, "."));
+      });
+      commT = sumBy(payments, function(o) {
+        return parseFloat(o.commissione.replace(/,/g, "."));
+      });
     }
-
-    // let commT = 0;
-    // if (payments && payments.length > 0) {
-    //   commT = (payments || [])
-    //     .map(item => item.commissione)
-    //     .reduce((prev, next) => prev + next);
-    // }
 
     return (
       <React.Fragment>
@@ -104,8 +106,11 @@ class Overview extends Component {
             <div className="wig wig2">
               <a href="/#">View Details</a>
               {/* <h2>Commissioni</h2> */}
-              <h2>Proviggioni</h2>
-              <h3>{provT.toFixed(2)} €</h3>
+              <h2>Commisione</h2>
+              <h3>
+                {commT.toLocaleString("it-IT", { minimumFractionDigits: 2 })} €
+              </h3>
+
               <i className="fas fa-user-alt"></i>
             </div>
           </div>
@@ -117,7 +122,9 @@ class Overview extends Component {
             <div className="wig wig3">
               <a href="/#">View Details</a>
               <h2>Proviggioni</h2>
-              <h3>{provT.toFixed(2)}</h3>
+              <h3>
+                {provT.toLocaleString("it-IT", { minimumFractionDigits: 2 })} €
+              </h3>
               <i className="fal fa-arrow-down"></i>
             </div>
           </div>

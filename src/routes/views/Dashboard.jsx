@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
     // if (Object.keys(accountInfo).length > 0) {
 
     // }
+
     this.props.getServices();
   }
 
@@ -49,7 +50,7 @@ class Dashboard extends React.Component {
           <Azioni active="dashboard"></Azioni>
 
           <div className="panels-container">
-            <h1 className="max-width heading-tab">Aquista</h1>
+            <h1 className="max-width heading-tab">Acquista</h1>
             <div className="row no-gutters max-width">
               <div className="col-md-9 ">
                 {Object.keys(services).map((item, index) => {

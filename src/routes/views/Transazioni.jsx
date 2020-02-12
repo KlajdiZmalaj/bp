@@ -71,7 +71,15 @@ class Transazioni extends React.Component {
       this.props.getPayments("", moment(), moment());
     }
     if (filter === 1) {
-      this.props.getPayments("", moment().subtract(1, "days"), moment());
+      this.props.getPayments(
+        "",
+        moment()
+          .subtract(1, "days")
+          .format("YYYY-MM-DD"),
+        moment()
+          .subtract(1, "days")
+          .format("YYYY-MM-DD")
+      );
     }
     if (filter === 2) {
       const time7daysAgo = moment()
@@ -83,7 +91,8 @@ class Transazioni extends React.Component {
       const time30daysAgo = moment()
         .subtract(30, "days")
         .startOf("day");
-      this.props.getPayments("", time30daysAgo, moment());
+      // this.props.getPayments("", time30daysAgo, moment());
+      this.props.getPayments();
     }
   };
 
@@ -246,9 +255,9 @@ class Transazioni extends React.Component {
                       <td>Date / Ora</td>
                       <td>Barcode</td>
                       <td>Service</td>
-                      <td>Importo</td>
-                      <td>Commissione</td>
-                      <td>Proviggione</td>
+                      <td className="right">Importo</td>
+                      <td className="right">Commissione</td>
+                      <td className="right">Proviggione</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -258,21 +267,25 @@ class Transazioni extends React.Component {
                           <tr key={index} onClick={() => this.showModal(index)}>
                             <td>
                               {moment(item.executed_date).format(
-                                "DD/MM/YYYY  HH:MM:ss"
+                                "DD/MM/YYYY HH:mm:ss"
                               )}
                             </td>
                             <td>{item.barcode}</td>
                             <td>{item.service_name}</td>
-                            <td>
+                            <td className="right">
                               {item.price1000
                                 ? slicedAmount(item.price1000 / 1000)
                                 : "-"}
                             </td>
-                            <td>
-                              {item.commissione ? item.commissione : "-"}{" "}
+                            <td className="right">
+                              {item.commissione}
+                              {/* {item.commissione ? item.commissione : "-"}{" "} */}
                             </td>
-                            <td>
-                              {item.percentage > 0 ? item.percentage : "-"}
+                            <td className="right">
+                              {item.percentage}
+                              {/* {parseInt(item.percentage) > 0
+                                ? item.percentage
+                                : "-"} */}
                             </td>
                           </tr>
                         );
