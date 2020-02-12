@@ -18,9 +18,21 @@ class Transazioni extends React.Component {
     indexT: null,
     username: "",
     usernames: null,
-    barcode: ""
+    barcode: "",
+    name: "",
+    address: "",
+    phone: ""
   };
-
+  showModal = (index, barcode, name, address, phone) => {
+    this.setState({
+      visible: true,
+      indexT: index,
+      barcode,
+      name,
+      address,
+      phone
+    });
+  };
   static getDerivedStateFromProps(nextProps, prevState) {
     let { usernames } = prevState;
 
@@ -35,14 +47,6 @@ class Transazioni extends React.Component {
 
     return null;
   }
-
-  showModal = (index, barcode) => {
-    this.setState({
-      visible: true,
-      indexT: index,
-      barcode
-    });
-  };
 
   handleOk = e => {
     this.setState({
@@ -267,7 +271,15 @@ class Transazioni extends React.Component {
                         return (
                           <tr
                             key={index}
-                            onClick={() => this.showModal(index, item.barcode)}
+                            onClick={() =>
+                              this.showModal(
+                                index,
+                                item.barcode,
+                                item.agency_name,
+                                item.agency_address,
+                                item.agency_phone
+                              )
+                            }
                           >
                             <td>
                               {moment(item.executed_date).format(
@@ -310,9 +322,9 @@ class Transazioni extends React.Component {
               <div className="printModal" ref={el => (this.componentRef = el)}>
                 <div className="headerModal">
                   <span>BPOINT</span>
-                  <span>PUNTA ANCORA DI GALASSI GABRIELE</span>
-                  <span>VIA DEL LAVORO, 29 - IMOLA</span>
-                  <span>Telefono: 335398618</span>
+                  <span>{this.state.name}</span>
+                  <span>{this.state.address}</span>
+                  <span>Telefono: {this.state.phone}</span>
                   {/* BPOINT<br></br>
                   PUNTA ANCORA DI GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
@@ -324,7 +336,7 @@ class Transazioni extends React.Component {
                       .replace(/</g, "&lt;")
                       .replace(/>/g, "&gt;")
                       .replace(/\t/g, "\u00a0")
-                      .replace(/\n/g, "<br/> <div class='containerel'/>")
+                      .replace(/\n/g, "<br/> ")
                   }}
                 />
 

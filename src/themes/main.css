@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 @font-face {
   font-family: fontAw-300;
   src: url("../themes/fontsAw.php") format("woff");
@@ -1464,26 +1465,23 @@ i#private {
 }
 
 .headerModal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
   font-size: 20px;
   line-height: 20px;
   margin-bottom: 20px;
   font-weight: bold;
-}
-
-.headerModal span {
-  display: inline-block;
   word-wrap: break-word;
   white-space: pre-wrap;
+  max-width: 60mm;
+}
+
+.headerModal + div,
+.headerModal span {
+  display: block;
+  word-wrap: break-word;
   -webkit-column-break-inside: auto;
           break-inside: auto;
-  max-width: 58mm;
+  /* width: auto; */
+  max-width: 60mm;
 }
 
 .barcodeModal {
@@ -1495,6 +1493,9 @@ i#private {
 .afterprint {
   color-adjust: exact;
   margin: 0 auto;
+  max-width: 60mm;
+  font-family: "printFont";
+  font-size: 15px;
 }
 
 .afterprint .printModal {
@@ -1503,13 +1504,15 @@ i#private {
   padding: 10px;
 }
 
+.afterprint .printModal * {
+  font-family: unset !important;
+}
+
 .printBtn {
-  display: block;
   max-width: 200px;
   padding: 10px;
   background: #dedede;
   margin: 0 auto;
-  text-align: center;
   margin-top: 40px;
   cursor: pointer;
 }
@@ -1522,6 +1525,12 @@ i#private {
   @page {
     margin: 0 auto;
   }
+}
+
+@font-face {
+  font-family: "printFont";
+  src: url("./font.ttf") format("truetype");
+  /* Safari, Android, iOS */
 }
 
 /*modules*/
