@@ -196,3 +196,38 @@
   justify-content: center;
   align-content: center;
 }
+.headerModal {
+  display: flex;
+  flex-flow: column;
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.barcodeModal {
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.afterprint .printModal {
+  margin: 0 auto;
+  max-width: 650px;
+  padding: 20px;
+  border: 2px solid #222;
+}
+.printBtn {
+  display: block;
+  max-width: 200px;
+  padding: 10px;
+  background: #dedede;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.afterprint .printBtn {
+  display: none;
+}

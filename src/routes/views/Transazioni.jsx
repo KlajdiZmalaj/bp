@@ -7,6 +7,7 @@ import "antd/dist/antd.css";
 import moment from "moment";
 import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
+import ReactToPrint from "react-to-print";
 
 const { Option } = Select;
 
@@ -16,7 +17,8 @@ class Transazioni extends React.Component {
     visible: false,
     indexT: null,
     username: "",
-    usernames: null
+    usernames: null,
+    barcode: ""
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -34,12 +36,11 @@ class Transazioni extends React.Component {
     return null;
   }
 
-  showModal = index => {
+  showModal = (index, barcode) => {
     this.setState({
-      visible: true
-    });
-    this.setState({
-      indexT: index
+      visible: true,
+      indexT: index,
+      barcode
     });
   };
 
@@ -102,7 +103,7 @@ class Transazioni extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-
+    const { barcode } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -255,7 +256,10 @@ class Transazioni extends React.Component {
                     {!payments.message &&
                       payments.map((item, index) => {
                         return (
-                          <tr key={index} onClick={() => this.showModal(index)}>
+                          <tr
+                            key={index}
+                            onClick={() => this.showModal(index, item.barcode)}
+                          >
                             <td>
                               {moment(item.executed_date).format(
                                 "DD/MM/YYYY  HH:MM:ss"
@@ -290,15 +294,31 @@ class Transazioni extends React.Component {
             footer={null}
           >
             {indexT !== null && payments[indexT] && (
-              <div>
+              <div className="printModal" ref={el => (this.componentRef = el)}>
+                <div className="headerModal">
+                  <span>BPOINT</span>
+                  <span>PUNTA ANCORA DI GALASSI GABRIELE</span>
+                  <span>VIA DEL LAVORO, 29 - IMOLA</span>
+                  <span>Telefono: 335398618</span>
+                </div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: payments[indexT].receipt
                       .replace(/</g, "&lt;")
                       .replace(/>/g, "&gt;")
                       .replace(/\t/g, "\u00a0")
-                      .replace(/\n/g, "<br/>")
+                      .replace(/\n/g, "<br/> <div class='containerel'/>")
                   }}
+                />
+                <img
+                  className="barcodeModal"
+                  src={`https://barcode.tec-it.com/barcode.ashx?data=${barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
+                  alt=""
+                />
+                <ReactToPrint
+                  trigger={() => <div className="printBtn">Print</div>}
+                  content={() => this.componentRef}
+                  bodyClass="afterprint"
                 />
               </div>
             )}
