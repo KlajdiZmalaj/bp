@@ -1487,18 +1487,16 @@ i#private {
 }
 
 .afterprint {
-  margin: 0;
-  width: 100%;
-  padding: 0;
-  height: auto;
   color-adjust: exact;
+  height: auto;
+  margin: 0 0;
 }
 
 .afterprint .printModal {
   margin: 0 auto;
-  width: 100%;
-  height: auto;
-  padding: 10px;
+  max-width: 100%;
+  padding: 20px;
+  border: 2px solid #222;
 }
 
 .printBtn {
