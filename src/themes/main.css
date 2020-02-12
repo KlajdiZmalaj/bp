@@ -1490,6 +1490,8 @@ i#private {
   color-adjust: exact;
   margin: 0 auto;
   max-width: 60mm;
+  font-family: "printFont";
+  font-size: 15px;
 }
 
 .afterprint .printModal {
@@ -1519,6 +1521,12 @@ i#private {
   @page {
     margin: 0 auto;
   }
+}
+
+@font-face {
+  font-family: "printFont";
+  src: url("./font.ttf") format("truetype");
+  /* Safari, Android, iOS */
 }
 
 /*modules*/
