@@ -212,11 +212,20 @@
   margin: 0 auto;
   margin-top: 50px;
 }
+
+.afterprint {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  height: auto;
+  color-adjust: exact;
+}
 .afterprint .printModal {
   margin: 0 auto;
-  max-width: 650px;
-  padding: 20px;
-  border: 2px solid #222;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  // border: 2px solid #222;
 }
 .printBtn {
   display: block;
@@ -231,3 +240,9 @@
 .afterprint .printBtn {
   display: none;
 }
+
+// @media print {
+//   @page {
+//     size: landscape;
+//   }
+// }

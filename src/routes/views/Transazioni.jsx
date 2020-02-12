@@ -332,6 +332,7 @@ class Transazioni extends React.Component {
                   trigger={() => <div className="printBtn">Print</div>}
                   content={() => this.componentRef}
                   bodyClass="afterprint"
+                  // copyStyles="false"
                 />
               </div>
             )}
