@@ -585,6 +585,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-transform: capitalize;
 }
 
 .sort-annunci li span {
@@ -732,7 +733,10 @@ i#private {
   color: #0092ff;
 }
 
-.addAds .addAds--title input, .addAds .addAds--title textarea, .addAds .addAds--message input, .addAds .addAds--message textarea {
+.addAds .addAds--title input,
+.addAds .addAds--title textarea,
+.addAds .addAds--message input,
+.addAds .addAds--message textarea {
   min-width: 300px;
   max-width: 400px;
   width: 100%;
@@ -1471,8 +1475,6 @@ i#private {
   line-height: 20px;
   margin-bottom: 20px;
   font-weight: bold;
-  word-wrap: break-word;
-  white-space: pre-wrap;
 }
 
 .headerModal span {
@@ -1481,7 +1483,7 @@ i#private {
   white-space: pre-wrap;
   -webkit-column-break-inside: auto;
           break-inside: auto;
-  width: auto;
+  max-width: 58mm;
 }
 
 .barcodeModal {

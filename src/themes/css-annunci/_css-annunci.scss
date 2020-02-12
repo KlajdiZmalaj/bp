@@ -1,5 +1,4 @@
 .sort-annunci {
-
   display: flex;
   flex-direction: row;
   padding-top: 20px;
@@ -22,6 +21,7 @@
     margin-right: 10px;
     display: flex;
     align-items: center;
+    text-transform: capitalize;
     span {
       color: #7d858b;
       cursor: pointer;
@@ -36,7 +36,6 @@
       padding-right: 5px;
     }
   }
-
 
   li:first-child {
     border-color: #000;
@@ -78,7 +77,6 @@
     color: #ff0000;
   }
   .panel-tab i.fas.fa-dot-circle.informazione {
-   
     color: #ff6f00;
   }
   .panel-tab i.fas.fa-dot-circle.nuovo {
@@ -140,8 +138,10 @@ i#private {
 }
 
 .addAds {
-  .addAds--title, .addAds--message {
-    input, textarea {
+  .addAds--title,
+  .addAds--message {
+    input,
+    textarea {
       min-width: 300px;
       max-width: 400px;
       width: 100%;
@@ -150,7 +150,7 @@ i#private {
       border-radius: 5px;
     }
   }
-  .addAds--checkbox{
+  .addAds--checkbox {
     label {
       margin: 0 10px;
       width: auto;
@@ -172,18 +172,18 @@ i#private {
       width: 100%;
     }
     button.success {
-      border: 1px solid #00b850 ;
+      border: 1px solid #00b850;
       border-radius: 5px;
       color: #00b850;
     }
     button[disabled] {
       opacity: 0.5;
     }
-    
+
     button.cancel {
-        border: 1px solid red ;
-        border-radius: 5px;
-        color: red;
+      border: 1px solid red;
+      border-radius: 5px;
+      color: red;
     }
   }
 }

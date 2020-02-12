@@ -205,14 +205,12 @@
   line-height: 20px;
   margin-bottom: 20px;
   font-weight: bold;
-  word-wrap: break-word;
-  white-space: pre-wrap;
   span {
     display: inline-block;
     word-wrap: break-word;
     white-space: pre-wrap;
     break-inside: auto;
-    width: auto;
+    max-width: 58mm;
   }
 
   //text-align: center;
