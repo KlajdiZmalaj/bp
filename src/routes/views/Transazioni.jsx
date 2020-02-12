@@ -313,6 +313,10 @@ class Transazioni extends React.Component {
                   <span>PUNTA ANCORA DI GALASSI GABRIELE</span>
                   <span>VIA DEL LAVORO, 29 - IMOLA</span>
                   <span>Telefono: 335398618</span>
+                  {/* BPOINT<br></br>
+                  PUNTA ANCORA DI GALASSI GABRIELE<br></br>
+                  VIA DEL LAVORO, 29 - IMOLA<br></br>
+                  Telefono: 335398618<br></br> */}
                 </div>
                 <div
                   dangerouslySetInnerHTML={{
@@ -323,6 +327,7 @@ class Transazioni extends React.Component {
                       .replace(/\n/g, "<br/> <div class='containerel'/>")
                   }}
                 />
+
                 <img
                   className="barcodeModal"
                   src={`https://barcode.tec-it.com/barcode.ashx?data=${barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
