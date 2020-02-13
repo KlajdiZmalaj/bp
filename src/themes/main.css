@@ -1488,6 +1488,61 @@ i#private {
 
 .headerModal + div {
   font-weight: 500;
+  text-align: left;
+  position: relative;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.afterprint .logo {
+  -webkit-filter: grayscale(1) brightness(0.3);
+          filter: grayscale(1) brightness(0.3);
+}
+
+span.superSmall.tel {
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.printModal .text-bold {
+  font-weight: 600 !important;
+}
+
+.userCel {
+  font-size: 18px !important;
+}
+
+span.superSmall {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.userCel {
+  font-weight: 400 !important;
+}
+
+.userCel b {
+  font-weight: 600 !important;
+}
+
+.fontSmall {
+  text-transform: capitalize;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+}
+
+.marginC {
+  clear: both;
+  float: right;
+  width: 100%;
+  text-align: right;
+  position: absolute;
+  border-bottom: 1px solid #222;
+  margin-top: -22px;
 }
 
 @font-face {
@@ -1511,8 +1566,13 @@ i#private {
 
 .afterprint .printModal {
   width: 100%;
-  max-width: 70mm;
-  padding-left: 10mm;
+  max-width: 80mm;
+  margin-left: 11mm;
+}
+
+.printModal {
+  width: 100%;
+  display: block;
 }
 
 .printModal * {
@@ -1525,6 +1585,11 @@ i#private {
           font-kerning: auto;
   font-optical-sizing: auto;
   font-variant-caps: normal;
+}
+
+.marginB {
+  display: inline-block;
+  margin-right: 10%;
 }
 
 .printBtn {
