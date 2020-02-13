@@ -205,15 +205,14 @@
   font-weight: bold;
   word-wrap: break-word;
   white-space: pre-wrap;
-  max-width: 60mm;
   + div,
   span {
     display: block;
     word-wrap: break-word;
     page-break-inside: auto;
     break-inside: auto;
+    text-align: center;
     /* width: auto; */
-    max-width: 60mm;
   }
 
   //text-align: center;
@@ -221,36 +220,26 @@
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 .barcodeModal {
   height: 80px;
+  display: block;
   margin: 0 auto;
   margin-top: 50px;
 }
 .afterprint {
-  // background-color: red;
   color-adjust: exact;
-  // width: 4cm;
-  margin: 0 auto;
-  max-width: 60mm;
-  //   display: flex;
-  //   justify-content: center;
-  // }
-  // display: flex;
-  // justify-content: center;
-  // font-family: Arial, Helvetica, sans-serif;
-  // font-family: "printFont";
   font-family: "Roboto", sans-serif;
   font-size: 15px;
 }
 .afterprint .printModal {
-  margin: 0 auto;
   width: 100%;
-  padding: 10px;
+  max-width: 58mm;
+  padding-left: 10mm;
 }
 .printBtn {
   max-width: 200px;
   padding: 10px;
   background: #dedede;
   margin: 0 auto;
-  // text-align: center;
+  text-align: center;
   margin-top: 40px;
   cursor: pointer;
 }
@@ -258,20 +247,8 @@
   display: none;
 }
 
-// @media print {
-//   @page {
-//     size: landscape;
-//   }
-// }
-
 @media print {
   @page {
-    // font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
   }
 }
-
-// @font-face {
-//   font-family: "printFont";
-//   src: url("./font.ttf") format("truetype"); /* Safari, Android, iOS */
-// }
