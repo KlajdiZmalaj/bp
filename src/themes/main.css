@@ -1483,6 +1483,11 @@ i#private {
   /* width: auto; */
 }
 
+@font-face {
+  font-family: fontPrint;
+  src: url(./font.ttf);
+}
+
 .barcodeModal {
   height: 80px;
   display: block;
@@ -1492,7 +1497,7 @@ i#private {
 
 .afterprint {
   color-adjust: exact;
-  font-family: "Roboto", sans-serif;
+  font-family: fontPrint;
   font-size: 15px;
 }
 

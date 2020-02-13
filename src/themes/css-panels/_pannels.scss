@@ -90,6 +90,7 @@
     font-size: 9px;
   }
 }
+
 .heading-tab {
   // font-family: $font1;
   font-size: 24px;
@@ -217,6 +218,10 @@
 
   //text-align: center;
 }
+@font-face {
+  font-family: fontPrint;
+  src: url(./font.ttf);
+}
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 .barcodeModal {
   height: 80px;
@@ -226,7 +231,8 @@
 }
 .afterprint {
   color-adjust: exact;
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
+  font-family: fontPrint;
   font-size: 15px;
 }
 .afterprint .printModal {
