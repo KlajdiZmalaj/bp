@@ -59,6 +59,7 @@ class RegisterEndUser extends React.Component {
     fileType: 0,
     cardView: 0,
     sesso: "",
+    imageUrl: "",
     imageUrl2: "",
     loading: false
   };
@@ -180,7 +181,6 @@ class RegisterEndUser extends React.Component {
   onChange = value => {
     console.log(`selected ${value}`);
   };
-
   onChangeIdentity = value => {
     console.log(`selected ${value}`);
     this.setState({ tipoDocumento: value });
@@ -592,7 +592,7 @@ class RegisterEndUser extends React.Component {
                     >
                       <Option value="0">Carta di identita(image)</Option>
                       <Option value="1">Credit Card (image)</Option>
-                      <Option value="2">Contract (image)</Option>
+                      <Option value="2">Patenta (image)</Option>
                     </Select>
                   )}
                 </Form.Item>

@@ -1481,6 +1481,13 @@ i#private {
           break-inside: auto;
   text-align: center;
   /* width: auto; */
+  font-weight: 800;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+.headerModal + div {
+  font-weight: 500;
 }
 
 @font-face {
@@ -1504,8 +1511,20 @@ i#private {
 
 .afterprint .printModal {
   width: 100%;
-  max-width: 58mm;
+  max-width: 70mm;
   padding-left: 10mm;
+}
+
+.printModal * {
+  font-family: "Roboto", sans-serif;
+  font-style: normal !important;
+  font-synthesis: weight;
+  font-variant: normal;
+  font-display: normal;
+  -webkit-font-kerning: auto;
+          font-kerning: auto;
+  font-optical-sizing: auto;
+  font-variant-caps: normal;
 }
 
 .printBtn {

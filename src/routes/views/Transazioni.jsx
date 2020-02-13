@@ -336,7 +336,9 @@ class Transazioni extends React.Component {
                       .replace(/</g, "&lt;")
                       .replace(/>/g, "&gt;")
                       .replace(/\t/g, "\u00a0")
+                      .replace("+", " ")
                       .replace(/\n/g, "<br/> ")
+                      .replace("+", " ")
                   }}
                 />
 
