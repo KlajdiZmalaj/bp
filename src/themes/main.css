@@ -1497,7 +1497,8 @@ i#private {
 
 .afterprint {
   color-adjust: exact;
-  font-family: fontPrint;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
   font-size: 15px;
 }
 
