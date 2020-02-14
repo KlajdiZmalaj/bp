@@ -2,17 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
-import { Overview, Azioni, Header } from "shared-components";
+import { Azioni, Header } from "shared-components";
 import { Service } from "routes/components";
 import images from "../../themes/images";
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    // const accountInfo = this.props.accountInfo;
-    // if (Object.keys(accountInfo).length > 0) {
-
-    // }
-
     this.props.getServices();
   }
 
@@ -39,7 +34,7 @@ class Dashboard extends React.Component {
     return (
       <div>
         <Header></Header>
-        <Overview></Overview>
+        {/* <Overview></Overview> */}
         <div className="container-fluid mobileNav-Content">
           <div className="row">
             <div className="col"></div>

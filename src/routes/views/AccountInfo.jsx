@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import LeftMenu from "../domains/AccountInfo/LeftMenu";
 import Content from "../domains/AccountInfo/Content";
-import { Overview, Header, Azioni } from "shared-components";
+import { Header, Azioni } from "shared-components";
 
 class AccountInfo extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class AccountInfo extends Component {
     return (
       <Fragment>
         <Header />
-        <Overview />
+        {/* <Overview /> */}
         <Azioni active="account-info" />
         <div className="accountInfo">
           <LeftMenu />
