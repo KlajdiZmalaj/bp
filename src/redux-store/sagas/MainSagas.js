@@ -23,7 +23,7 @@ export function* getServices() {
 }
 export function* getUsers() {
   const response = yield call(fetchUsers);
-  console.log("getUsers called", response);
+  // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsers(response.data.users));
   }

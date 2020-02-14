@@ -84,7 +84,7 @@ class UserDoc extends Component {
   render() {
     const { user } = this.props;
     const { isPopUpOpen, imageUrl, imageUrl2 } = this.state;
-    console.log("ca jan img", imageUrl, imageUrl2);
+    // console.log("ca jan img", imageUrl, imageUrl2);
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />

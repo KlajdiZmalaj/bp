@@ -13,6 +13,26 @@
   .swiper-container {
     padding-bottom: 20px;
   }
+  .swiper-slide {
+    padding-left: 0 !important;
+  }
+  .swiper-button-prev {
+    left: 0;
+    background: #ed4c1433;
+    height: 101px;
+    top: 22px;
+    width: 60px;
+    color: #7e8f9f;
+  }
+  .swiper-button-next {
+    right: 0;
+    left: auto;
+    background: #ed4c1433;
+    height: 101px;
+    top: 22px;
+    width: 60px;
+    color: #7e8f9f;
+  }
 }
 .panels-container {
   background: #fff !important;

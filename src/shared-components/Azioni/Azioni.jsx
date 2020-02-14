@@ -12,9 +12,9 @@ class Azioni extends Component {
     const params = {
       spaceBetween: 10,
       slidesPerView: 5,
-      scrollbar: {
-        el: ".swiper-scrollbar",
-        draggable: true
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
       }
     };
     return (

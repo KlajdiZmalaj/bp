@@ -13,7 +13,7 @@ class LeftMenu extends Component {
     return (
       <div className="leftMenuAcc">
         {profileLinks.map(item => {
-          console.log("item.id", item.id);
+          // console.log("item.id", item.id);
 
           return (
             <div
