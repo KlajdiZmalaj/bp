@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
-@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
-@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @font-face {
   font-family: fontAw-300;
   src: url("../themes/fontsAw.php") format("woff");
@@ -1483,11 +1482,6 @@ i#private {
   /* width: auto; */
 }
 
-@font-face {
-  font-family: fontPrint;
-  src: url(./font.ttf);
-}
-
 .barcodeModal {
   height: 80px;
   display: block;
@@ -1497,13 +1491,13 @@ i#private {
 
 .afterprint {
   color-adjust: exact;
-  font-family: fontPrint;
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
 }
 
 .afterprint .printModal {
   width: 100%;
-  max-width: 58mm;
+  max-width: 80mm;
   padding-left: 10mm;
 }
 
