@@ -31,7 +31,6 @@ function getBase64(img, callback) {
 }
 
 function beforeUpload(file) {
-  console.log("ca ka fron back", file);
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
   if (!isJpgOrPng) {
     message.error("You can only upload JPG/PNG file!");
@@ -59,12 +58,12 @@ class RegisterEndUser extends React.Component {
     fileType: 0,
     cardView: 0,
     sesso: "",
+    nascita: "",
     imageUrl: "",
     imageUrl2: "",
     loading: false
   };
   handleChangeBack = info => {
-    console.log("ca ka back", info);
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
       return;
@@ -81,7 +80,6 @@ class RegisterEndUser extends React.Component {
   };
 
   handleChangeFront = info => {
-    console.log("ca ka front", info);
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
       return;
@@ -164,11 +162,47 @@ class RegisterEndUser extends React.Component {
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
     const sexKey = str.substring(9, 11);
 
+    const yearBKey = str.substring(6, 8);
+    const monthBKey = str.substring(8, 9);
+
+    let month = "";
+    let year = 1900 + parseInt(yearBKey);
+    let day = sexKey % 40;
+
+    if (monthBKey.toUpperCase() === "A") {
+      month = "01";
+    } else if (monthBKey.toUpperCase() === "B") {
+      month = "02";
+    } else if (monthBKey.toUpperCase() === "C") {
+      month = 3;
+    } else if (monthBKey.toUpperCase() === "D") {
+      month = 4;
+    } else if (monthBKey.toUpperCase() === "E") {
+      month = 5;
+    } else if (monthBKey.toUpperCase() === "H") {
+      month = 6;
+    } else if (monthBKey.toUpperCase() === "L") {
+      month = 7;
+    } else if (monthBKey.toUpperCase() === "M") {
+      month = 8;
+    } else if (monthBKey.toUpperCase() === "P") {
+      month = 9;
+    } else if (monthBKey.toUpperCase() === "R") {
+      month = 10;
+    } else if (monthBKey.toUpperCase() === "S") {
+      month = 11;
+    } else if (monthBKey.toUpperCase() === "T") {
+      month = 12;
+    }
+
     if (sexKey > 40) {
       this.setState({ sesso: "F" });
     } else {
       this.setState({ sesso: "M" });
     }
+
+    this.setState({ nascita: `${day}-${parseInt(month)}-${year}` });
+
     countriesArray
       .filter(comune => comune.codeKey.toString() === fiscalCodeKey.toString())
       .map(comune => {
@@ -215,7 +249,7 @@ class RegisterEndUser extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
     const { imageUrl, cardView, imageUrl2 } = this.state;
-    console.log("imageUrl", imageUrl2);
+
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -310,7 +344,7 @@ class RegisterEndUser extends React.Component {
           };
         });
     }
-
+    const dateFormat = "DD/MM/YYYY";
     const number_prefix = getFieldDecorator("number_prefix", {
       initialValue: "0039"
     })(<Input style={{ width: 70 }}></Input>);
@@ -428,6 +462,9 @@ class RegisterEndUser extends React.Component {
                   <div className="titleReg">Data anagrafici</div>
                   <Form.Item>
                     {getFieldDecorator("birthday", {
+                      initialValue:
+                        this.state.nascita !== "" &&
+                        moment(this.state.nascita, dateFormat),
                       rules: [{ required: true }]
                     })(
                       <DatePicker
