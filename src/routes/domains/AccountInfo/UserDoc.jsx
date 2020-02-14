@@ -39,20 +39,24 @@ class UserDoc extends Component {
               }}
             ></i>
             <div className="title">Images</div>
-            <img
-              src={
-                "https://services-api.bpoint.store/storage/" +
-                user.document_front
-              }
-              alt={user.document_front}
-            />
-            <img
-              src={
-                "https://services-api.bpoint.store/storage/" +
-                user.document_back
-              }
-              alt={user.document_back}
-            />
+            {user.document_front && (
+              <img
+                src={
+                  "https://services-api.bpoint.store/storage/" +
+                  user.document_front
+                }
+                alt={user.document_front}
+              />
+            )}
+            {user.document_back && (
+              <img
+                src={
+                  "https://services-api.bpoint.store/storage/" +
+                  user.document_back
+                }
+                alt={user.document_back}
+              />
+            )}
           </div>
         )}
         {isPopUpOpen && (
