@@ -30,6 +30,11 @@ export const azioni = [
     id: 6,
     name: "transazioni",
     link: "transazioni"
+  },
+  {
+    id: 7,
+    name: "account info",
+    link: "account-info"
   }
 ];
 

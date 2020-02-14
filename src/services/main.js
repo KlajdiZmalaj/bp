@@ -1,10 +1,4 @@
-// import request from "utils/request";
 import axios from "axios";
-// export const fetchServices = () =>
-// request.get("/services").catch(err => {
-//   console.log("err", err);
-// });
-
 export const fetchServices = () =>
   axios
     .create({
@@ -18,8 +12,7 @@ export const fetchServices = () =>
     .get(`/services`)
     .catch(error => ({ error }));
 
-export const fetchUsers = () => {
-  // console.log("fetch users called");
+export const fetchUsers = () =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -30,8 +23,7 @@ export const fetchUsers = () => {
       }
     })
     .post(`/users/list`)
-    .then(data => {
-      console.log("fetch users called", data);
-    })
+    // .then(data => {
+    //   console.log("fetch users called", data,);
+    // })
     .catch(error => ({ error }));
-};

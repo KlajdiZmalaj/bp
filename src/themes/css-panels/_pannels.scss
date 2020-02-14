@@ -3,6 +3,13 @@
 .azioni {
   padding-left: 15px;
   padding-right: 15px;
+  &::-webkit-scrollbar-thumb {
+    background-color: #7e8f9f;
+  }
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 4px;
+  }
 }
 .panels-container {
   background: #fff !important;

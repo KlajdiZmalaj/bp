@@ -14,22 +14,42 @@ class UsersList extends Component {
   }
 
   render() {
-    const x = new Array(3).fill("user");
+    const { userList } = this.props;
+    const userWithPhoto = userList.photo;
+    const userNoPhoto = userList.no_photo;
+    console.log("userList", userWithPhoto, userNoPhoto);
+
     return (
       <div className="userList">
-        <div className="userList--noDoc">
-          {x.map(user => {
-            return <UserDoc name={user} />;
-          })}
-        </div>
         <div className="userList--Doc">
-          {x.map(user => {
-            return <UserNoDoc name={user} />;
-          })}
+          <div className="title">Users con doc</div>
+          {userWithPhoto && userWithPhoto.length > 0 ? (
+            userWithPhoto.map(user => {
+              return <UserDoc key={user.id} user={user} />;
+            })
+          ) : (
+            <div className="noUsers">
+              No users with photo <i className="fal fa-check"></i>
+            </div>
+          )}
+        </div>
+        <div className="userList--noDoc">
+          <div className="title">No doc users</div>
+          {userNoPhoto && userNoPhoto.length > 0 ? (
+            userNoPhoto.map(user => {
+              return <UserNoDoc key={user.id} user={user} />;
+            })
+          ) : (
+            <div className="noUsers">
+              No users without photo <i className="fal fa-check"></i>
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
-
-export default connect(null, { ...MainActions })(UsersList);
+const mapStateToProps = state => ({
+  userList: state.main.userList
+});
+export default connect(mapStateToProps, { ...MainActions })(UsersList);

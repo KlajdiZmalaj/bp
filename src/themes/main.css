@@ -1222,6 +1222,15 @@ i#private {
   padding-right: 15px;
 }
 
+.azioni::-webkit-scrollbar-thumb {
+  background-color: #7e8f9f;
+}
+
+.azioni::-webkit-scrollbar {
+  width: 0;
+  height: 4px;
+}
+
 .panels-container {
   background: #fff !important;
   margin-top: 34px;

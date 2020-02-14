@@ -8,6 +8,7 @@ import { logoutApi } from "services/auth";
 
 export function* getServices() {
   const response = yield call(fetchServices);
+  console.log("response services", response);
   if (response.data) {
     yield put(MainActions.setServices(response.data.all_services));
   } else if (response.error) {
@@ -22,6 +23,8 @@ export function* getServices() {
 }
 export function* getUsers() {
   const response = yield call(fetchUsers);
-  console.log("get users called response", response);
-  yield put(MainActions.setUsers(response));
+  console.log("getUsers called", response);
+  if (response.data) {
+    yield put(MainActions.setUsers(response.data.users));
+  }
 }
