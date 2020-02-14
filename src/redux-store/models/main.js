@@ -5,7 +5,9 @@ const { Types, Creators } = createActions({
   setServices: ["services"],
   toggleOverview: ["showOverview"],
   togglePopUp: ["isShowing"],
-  setAccount: ["activeAccount"]
+  setAccount: ["activeAccount"],
+  setUsers: ["userList"],
+  getUsers: []
 });
 
 export const MainTypes = Types;
@@ -15,7 +17,8 @@ const INITIAL_STATE = {
   services: {},
   showOverview: true,
   isShowing: false,
-  activeAccount: "Profile"
+  activeAccount: 1,
+  userList: []
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -30,6 +33,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SERVICES]: (state, { services }) => ({
     ...state,
     services
+  }),
+  [Types.SET_USERS]: (state, { userList }) => ({
+    ...state,
+    userList
   }),
   [Types.TOGGLE_POP_UP]: (state, { isShowing }) => ({
     ...state,

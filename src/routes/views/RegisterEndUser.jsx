@@ -131,9 +131,10 @@ class RegisterEndUser extends React.Component {
           values.cap,
           values.identity_id,
           values.identity_type,
-          values.file_type,
           values.number_prefix,
-          values.number
+          values.number,
+          this.state.imageUrl,
+          this.state.imageUrl2
           //   values.self_limit_period,
           //   values.promo,
           //   values.parent,
@@ -577,25 +578,7 @@ class RegisterEndUser extends React.Component {
                   })(<Input placeholder="Numero documento*" />)}
                 </Form.Item>
                 <div className="titleReg">Upload Doc</div>
-                <Form.Item>
-                  {getFieldDecorator("file_type", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Please select your document type!"
-                      }
-                    ]
-                  })(
-                    <Select
-                      placeholder="Tipo di file"
-                      onChange={this.onChangeFileType}
-                    >
-                      <Option value="0">Carta di identita(image)</Option>
-                      <Option value="1">Credit Card (image)</Option>
-                      <Option value="2">Patenta (image)</Option>
-                    </Select>
-                  )}
-                </Form.Item>
+
                 <Form.Item>
                   {getFieldDecorator("cart_view", {
                     rules: [

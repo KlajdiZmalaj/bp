@@ -1471,6 +1471,19 @@ i#private {
   font-weight: bold;
   word-wrap: break-word;
   white-space: pre-wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 .headerModal + div,
@@ -1495,6 +1508,7 @@ i#private {
 .logo {
   display: block;
   margin: 0 auto;
+  height: 37px;
 }
 
 .afterprint .logo {
@@ -1506,10 +1520,20 @@ span.superSmall.tel {
   border-bottom: 1px solid #000;
   padding-bottom: 4px;
   margin-bottom: 4px;
+  width: 100% !important;
 }
 
 .printModal .text-bold {
   font-weight: 600 !important;
+}
+
+.printModal .text-bold > span {
+  font-size: 12px !important;
+  display: inline-block;
+}
+
+.printModal .text-bold + .superSmall {
+  white-space: nowrap;
 }
 
 .userCel {

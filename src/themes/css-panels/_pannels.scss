@@ -206,7 +206,10 @@
   font-weight: bold;
   word-wrap: break-word;
   white-space: pre-wrap;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
   + div,
   span {
     display: block;
@@ -229,6 +232,7 @@
 .logo {
   display: block;
   margin: 0 auto;
+  height: 37px;
 }
 .afterprint {
   .logo {
@@ -239,9 +243,17 @@ span.superSmall.tel {
   border-bottom: 1px solid #000;
   padding-bottom: 4px;
   margin-bottom: 4px;
+  width: 100% !important;
 }
 .printModal .text-bold {
   font-weight: 600 !important;
+  > span {
+    font-size: 12px !important;
+    display: inline-block;
+  }
+  + .superSmall {
+    white-space: nowrap;
+  }
 }
 .userCel {
   font-size: 18px !important;

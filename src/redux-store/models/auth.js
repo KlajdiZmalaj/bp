@@ -55,7 +55,9 @@ const { Types, Creators } = createActions({
     "identity_id",
     "identity_type",
     "number_prefix",
-    "number"
+    "number",
+    "frontImg",
+    "backImg"
   ],
   setRegister: ["register"],
   setAds: ["ads"],

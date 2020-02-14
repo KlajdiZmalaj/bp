@@ -323,10 +323,10 @@ class Transazioni extends React.Component {
                 <div className="headerModal">
                   <img className="logo" src={images.logo} alt="" />
                   <span className="superSmall text-bold">
-                    MAPE di Hristova Mariya Hristova e C.s.a.s.
+                    MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                   </span>
                   <span className="superSmall">
-                    Viale XXIII Settembre 1845 n. 67 Rimini (RN) Italia
+                    V.le XXIII Settembre 1845 n. 67 Rimini (RN) Italia
                   </span>
                   <span className="superSmall link">
                     www.bpoint.store - info@bpoint.store

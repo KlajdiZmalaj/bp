@@ -2,7 +2,7 @@ import { put, call } from "redux-saga/effects";
 import MainActions from "../models/main";
 import AuthActions from "../models/auth";
 
-import { fetchServices } from "services/main";
+import { fetchServices, fetchUsers } from "services/main";
 
 import { logoutApi } from "services/auth";
 
@@ -19,4 +19,9 @@ export function* getServices() {
       }
     }
   }
+}
+export function* getUsers() {
+  const response = yield call(fetchUsers);
+  console.log("get users called response", response);
+  yield put(MainActions.setUsers(response));
 }

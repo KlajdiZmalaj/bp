@@ -13,6 +13,12 @@
   > div {
     border-right: 1px solid #adadad;
     padding: 15px;
+    cursor: pointer;
+    border-bottom: 2px solid #d4d4d4;
+    &:hover,
+    &.active {
+      border-bottom: 2px solid #ed4c14;
+    }
   }
 }
 .contentAcc {
