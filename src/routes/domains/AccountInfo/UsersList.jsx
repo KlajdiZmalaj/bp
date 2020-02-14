@@ -23,6 +23,17 @@ class UsersList extends Component {
       <div className="userList">
         <div className="userList--Doc">
           <div className="title">Users con doc</div>
+          {userWithPhoto && userWithPhoto.length > 0 && (
+            <div className="header">
+              <span>Id</span>
+              <span>Name</span>
+              <span>codice fiscale</span>
+              <span>creato da</span>
+              <span>city</span>
+              <span>comune code</span>
+            </div>
+          )}
+
           {userWithPhoto && userWithPhoto.length > 0 ? (
             userWithPhoto.map(user => {
               return <UserDoc key={user.id} user={user} />;
@@ -35,6 +46,17 @@ class UsersList extends Component {
         </div>
         <div className="userList--noDoc">
           <div className="title">No doc users</div>
+          {userNoPhoto && userNoPhoto.length > 0 && (
+            <div className="header">
+              <span>Id</span>
+              <span>Name</span>
+              <span>codice fiscale</span>
+              <span>creato da</span>
+              <span>city</span>
+              <span>comune code</span>
+            </div>
+          )}
+
           {userNoPhoto && userNoPhoto.length > 0 ? (
             userNoPhoto.map(user => {
               return <UserNoDoc key={user.id} user={user} />;
