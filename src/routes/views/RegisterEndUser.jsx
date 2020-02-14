@@ -153,6 +153,12 @@ class RegisterEndUser extends React.Component {
     });
   };
 
+  inputlength = e => {
+    if (e.target.value.length === 16) {
+      this.validateCodiceFiscale(e);
+    }
+  };
+
   validateCodiceFiscale = e => {
     const str = e.target.value;
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
@@ -333,6 +339,7 @@ class RegisterEndUser extends React.Component {
                       <Input
                         placeholder="codice fiscale*"
                         onBlur={this.validateCodiceFiscale}
+                        onInput={e => this.inputlength(e)}
                       />
                     )}
                   </Form.Item>
