@@ -11,7 +11,11 @@ class Azioni extends Component {
     const { active } = this.props;
     const params = {
       spaceBetween: 10,
-      slidesPerView: 3
+      slidesPerView: 5,
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true
+      }
     };
     return (
       <React.Fragment>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Upload, Icon, message } from "antd";
-
+import axios from "axios";
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
@@ -29,6 +29,25 @@ class UserDoc extends Component {
       imageUrl2: ""
     };
   }
+  postImages = (user_id, imgFront, imgBack, type) =>
+    axios
+      .create({
+        baseURL: "https://services-api.bpoint.store/api",
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("accountDataB")).token
+          }`
+        }
+      })
+      .post(`/users/updateDocument`, {
+        ...{ user_id: user_id },
+        ...(type === 1 ||
+          type === 2 ||
+          (type === 3 && { document_front: imgFront })),
+        ...(type === 1 || (type === 2 && { document_back: imgBack }))
+      })
+      .catch(error => ({ error }));
+
   handleChangeFront = info => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
@@ -65,6 +84,7 @@ class UserDoc extends Component {
   render() {
     const { user } = this.props;
     const { isPopUpOpen, imageUrl, imageUrl2 } = this.state;
+    console.log("ca jan img", imageUrl, imageUrl2);
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -80,14 +100,6 @@ class UserDoc extends Component {
             this.setPopUp();
           }}
         >
-          <div className="header">
-            <span>Id</span>
-            <span>Name</span>
-            <span>codice fiscale</span>
-            <span>creato da</span>
-            <span>city</span>
-            <span>comune code</span>
-          </div>
           <div className="body">
             <span>{user.id}</span>
             <span>{user.name}</span>
@@ -157,7 +169,17 @@ class UserDoc extends Component {
                 this.setPopUp();
               }}
             ></i>
-            <button className="uploadSendBtn">
+            <button
+              className="uploadSendBtn"
+              onClick={() => {
+                this.postImages(
+                  parseInt(user.id),
+                  imageUrl,
+                  imageUrl2,
+                  user.document_type
+                );
+              }}
+            >
               Upload <i class="fas fa-upload"></i>
             </button>
           </div>

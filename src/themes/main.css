@@ -1239,6 +1239,10 @@ i#private {
   height: 4px;
 }
 
+.azioni .swiper-container {
+  padding-bottom: 20px;
+}
+
 .panels-container {
   background: #fff !important;
   margin-top: 34px;

@@ -21,14 +21,6 @@ class UserDoc extends Component {
             this.setPopUp();
           }}
         >
-          <div className="header">
-            <span>Id</span>
-            <span>Name</span>
-            <span>codice fiscale</span>
-            <span>creato da</span>
-            <span>city</span>
-            <span>comune code</span>
-          </div>
           <div className="body">
             <span>{user.id}</span>
             <span>{user.name}</span>
