@@ -8,7 +8,7 @@ import moment from "moment";
 import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
-
+import images from "themes/images";
 const { Option } = Select;
 
 class Transazioni extends React.Component {
@@ -321,10 +321,33 @@ class Transazioni extends React.Component {
             {indexT !== null && payments[indexT] && (
               <div className="printModal" ref={el => (this.componentRef = el)}>
                 <div className="headerModal">
-                  <span>BPOINT</span>
-                  <span>{this.state.name}</span>
-                  <span>{this.state.address}</span>
-                  <span>Telefono: {this.state.phone}</span>
+                  <img className="logo" src={images.logo} alt="" />
+                  <span className="superSmall text-bold">
+                    MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
+                  </span>
+                  <span className="superSmall">
+                    V.le XXIII Settembre 1845 n. 67 Rimini (RN) Italia
+                  </span>
+                  <span className="superSmall link">
+                    www.bpoint.store - info@bpoint.store
+                  </span>
+                  <span className="superSmall ">Tel: +39 0541 087890</span>
+                  <span className="superSmall tel">P.IVA 03852290406</span>
+
+                  {/* <span>BPOINT</span> */}
+
+                  <span className="fontSmall text-bold">
+                    {this.state.name.charAt(0).toUpperCase() +
+                      this.state.name.slice(1).toLocaleLowerCase()}
+                  </span>
+                  <span className="fontSmall address">
+                    {this.state.address.charAt(0).toUpperCase() +
+                      this.state.address.slice(1).toLocaleLowerCase()}
+                  </span>
+                  <span className="userCel">
+                    {" "}
+                    Telefono: <b>{this.state.phone}</b>{" "}
+                  </span>
                   {/* BPOINT<br></br>
                   PUNTA ANCORA DI GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
@@ -333,10 +356,17 @@ class Transazioni extends React.Component {
                 <div
                   dangerouslySetInnerHTML={{
                     __html: payments[indexT].receipt
+
                       .replace(/</g, "&lt;")
                       .replace(/>/g, "&gt;")
                       .replace(/\t/g, "\u00a0")
                       .replace(/\n/g, "<br/> ")
+                      .replace(/\+/g, " ")
+                      .replace(/: /g, ":<div class='marginB'></div>")
+                      .replace(
+                        /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                        "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                      )
                   }}
                 />
 

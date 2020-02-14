@@ -174,7 +174,9 @@ export const fetchRegisterAllInfo = (
   identity_id,
   identity_type,
   number_prefix,
-  number
+  number,
+  frontImg,
+  backImg
 ) =>
   axios
     .create({
@@ -204,6 +206,7 @@ export const fetchRegisterAllInfo = (
       ...{ document_number: identity_id },
       ...{ document_type: identity_type },
       ...{ phone: number_prefix + number },
-      ...{ role: "user" }
+      ...{ frontImg: frontImg },
+      ...{ backImg: backImg }
     })
     .catch(error => ({ data: error.response.data }));

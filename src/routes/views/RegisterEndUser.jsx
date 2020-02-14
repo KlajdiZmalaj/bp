@@ -1,6 +1,16 @@
 import React, { Fragment } from "react";
 
-import { Form, Input, Button, DatePicker, Select, Checkbox } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  DatePicker,
+  Select,
+  Checkbox,
+  Upload,
+  Icon,
+  message
+} from "antd";
 import moment from "moment";
 import uniqBy from "lodash/uniqBy";
 import { connect } from "react-redux";
@@ -14,7 +24,24 @@ import VirtualizedSelect from "react-virtualized-select";
 import { Header } from "shared-components";
 
 const { Option } = Select;
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
 
+function beforeUpload(file) {
+  console.log("ca ka fron back", file);
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  if (!isJpgOrPng) {
+    message.error("You can only upload JPG/PNG file!");
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error("Image must smaller than 2MB!");
+  }
+  return isJpgOrPng && isLt2M;
+}
 class RegisterEndUser extends React.Component {
   state = {
     visible: true,
@@ -29,9 +56,46 @@ class RegisterEndUser extends React.Component {
     residence_city: "",
 
     tipoDocumento: "",
-    sesso: ""
+    fileType: 0,
+    cardView: 0,
+    sesso: "",
+    imageUrl: "",
+    imageUrl2: "",
+    loading: false
+  };
+  handleChangeBack = info => {
+    console.log("ca ka back", info);
+    if (info.file.status === "uploading") {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, imageUrl2 =>
+        this.setState({
+          imageUrl2,
+          loading: false
+        })
+      );
+    }
   };
 
+  handleChangeFront = info => {
+    console.log("ca ka front", info);
+    if (info.file.status === "uploading") {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false
+        })
+      );
+    }
+  };
   handleClose = () => {
     this.setState({ visible: false });
   };
@@ -68,7 +132,9 @@ class RegisterEndUser extends React.Component {
           values.identity_id,
           values.identity_type,
           values.number_prefix,
-          values.number
+          values.number,
+          this.state.imageUrl,
+          this.state.imageUrl2
           //   values.self_limit_period,
           //   values.promo,
           //   values.parent,
@@ -116,12 +182,17 @@ class RegisterEndUser extends React.Component {
   onChange = value => {
     console.log(`selected ${value}`);
   };
-
   onChangeIdentity = value => {
     console.log(`selected ${value}`);
     this.setState({ tipoDocumento: value });
   };
-
+  onChangeFileType = value => {
+    this.setState({ fileType: value });
+  };
+  onChangeCardView = value => {
+    console.log(`selected ${value}`);
+    this.setState({ cardView: value });
+  };
   onBlur = () => {
     console.log("blur");
   };
@@ -137,7 +208,14 @@ class RegisterEndUser extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
-
+    const { imageUrl, cardView, imageUrl2 } = this.state;
+    console.log("imageUrl", imageUrl2);
+    const uploadButton = (
+      <div>
+        <Icon type={this.state.loading ? "loading" : "plus"} />
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    );
     const { comuniSelected, nazione, nazioneDiResidenca, sesso } = this.state;
 
     const allNazione = uniqBy(countriesArray, "nazione");
@@ -499,7 +577,26 @@ class RegisterEndUser extends React.Component {
                     ]
                   })(<Input placeholder="Numero documento*" />)}
                 </Form.Item>
+                <div className="titleReg">Upload Doc</div>
 
+                <Form.Item>
+                  {getFieldDecorator("cart_view", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Select card view"
+                      }
+                    ]
+                  })(
+                    <Select
+                      placeholder="Document View*"
+                      onChange={this.onChangeCardView}
+                    >
+                      <Option value="1">Front</Option>
+                      <Option value="2">Back</Option>
+                    </Select>
+                  )}
+                </Form.Item>
                 {Object.keys(register).length > 0 &&
                   register.user &&
                   register.message && (
@@ -518,7 +615,48 @@ class RegisterEndUser extends React.Component {
                       {register.message}
                     </div>
                   )}
-
+                {parseInt(cardView) === 1 && (
+                  <Upload
+                    name="front"
+                    listType="picture-card"
+                    className="avatar-uploader"
+                    showUploadList={false}
+                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    beforeUpload={beforeUpload}
+                    onChange={this.handleChangeFront}
+                  >
+                    {imageUrl ? (
+                      <img
+                        src={imageUrl}
+                        alt="avatar"
+                        style={{ width: "100%" }}
+                      />
+                    ) : (
+                      uploadButton
+                    )}
+                  </Upload>
+                )}
+                {parseInt(cardView) === 2 && (
+                  <Upload
+                    name="back"
+                    listType="picture-card"
+                    className="avatar-uploader"
+                    showUploadList={false}
+                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    beforeUpload={beforeUpload}
+                    onChange={this.handleChangeBack}
+                  >
+                    {imageUrl2 ? (
+                      <img
+                        src={imageUrl2}
+                        alt="avatar"
+                        style={{ width: "100%" }}
+                      />
+                    ) : (
+                      uploadButton
+                    )}
+                  </Upload>
+                )}
                 <div className="ui-panel-bottomtitlebar ui-widget-footer ui-helper-clearfix ui-corner-all sendBTN">
                   <Button type="primary" htmlType="submit">
                     Registrati

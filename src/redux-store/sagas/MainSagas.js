@@ -2,12 +2,13 @@ import { put, call } from "redux-saga/effects";
 import MainActions from "../models/main";
 import AuthActions from "../models/auth";
 
-import { fetchServices } from "services/main";
+import { fetchServices, fetchUsers } from "services/main";
 
 import { logoutApi } from "services/auth";
 
 export function* getServices() {
   const response = yield call(fetchServices);
+  console.log("response services", response);
   if (response.data) {
     yield put(MainActions.setServices(response.data.all_services));
   } else if (response.error) {
@@ -18,5 +19,12 @@ export function* getServices() {
         yield put(AuthActions.setAccountInfo({}));
       }
     }
+  }
+}
+export function* getUsers() {
+  const response = yield call(fetchUsers);
+  console.log("getUsers called", response);
+  if (response.data) {
+    yield put(MainActions.setUsers(response.data.users));
   }
 }

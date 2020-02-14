@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import LeftMenu from "../domains/AccountInfo/LeftMenu";
 import Content from "../domains/AccountInfo/Content";
-import { Overview } from "shared-components";
+import { Overview, Header, Azioni } from "shared-components";
 
 class AccountInfo extends Component {
   constructor(props) {
@@ -11,7 +11,9 @@ class AccountInfo extends Component {
   render() {
     return (
       <Fragment>
+        <Header />
         <Overview />
+        <Azioni active="account-info" />
         <div className="accountInfo">
           <LeftMenu />
           <Content />

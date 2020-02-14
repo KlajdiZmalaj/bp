@@ -6,6 +6,8 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  margin-top: 65px;
+  padding-bottom: 65px;
 }
 
 .leftMenuAcc {
@@ -26,6 +28,12 @@
 .leftMenuAcc > div {
   border-right: 1px solid #adadad;
   padding: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid #d4d4d4;
+}
+
+.leftMenuAcc > div:hover, .leftMenuAcc > div.active {
+  border-bottom: 2px solid #ed4c14;
 }
 
 .contentAcc {
@@ -60,5 +68,146 @@
 
 .ant-form-item-control input {
   width: 100%;
+}
+
+.userList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding-bottom: 30px;
+}
+
+.userList .title {
+  font-size: 20px;
+  color: #ed4c14;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.userList .noUsers i {
+  color: #51c751;
+  font-size: 20px;
+}
+
+.userList--noDoc__user, .userList--Doc__user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  text-align: left;
+  background-color: #fff;
+}
+
+.userList--noDoc__user .header, .userList--Doc__user .header {
+  background-color: #f5f5f5;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+}
+
+.userList--noDoc__user .header span, .userList--Doc__user .header span {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  padding: 10px;
+}
+
+.userList--noDoc__user .body, .userList--Doc__user .body {
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  cursor: pointer;
+}
+
+.userList--noDoc__user .body span, .userList--Doc__user .body span {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  padding: 10px;
+}
+
+.userList .popUp {
+  position: fixed;
+  top: 19%;
+  height: 460px;
+  width: 410px;
+  background-color: #fff;
+  z-index: 3;
+  border-radius: 10px;
+  left: 50%;
+  margin-left: -230px;
+  text-align: center;
+}
+
+.userList .popUp .uploadSendBtn {
+  position: relative;
+  position: relative;
+  background: #e6e6e6;
+  border: 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.userList .popUp .uploadSendBtn:hover {
+  background-color: #ed4c14;
+  color: #fff;
+}
+
+.userList .popUp .uploadSendBtn i {
+  position: relative;
+}
+
+.userList .popUp .avatar-uploader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.userList .popUp > i {
+  color: #ed4c14;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.userList .popUp .title {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.backDrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.349);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 /*# sourceMappingURL=style.css.map */

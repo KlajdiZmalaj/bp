@@ -169,7 +169,9 @@ export function* getRegister(params) {
     params.identity_id,
     params.identity_type,
     params.number_prefix,
-    params.number
+    params.number,
+    params.frontImg,
+    params.backImg
   );
 
   if (response.data) {

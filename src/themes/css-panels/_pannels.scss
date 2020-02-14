@@ -4,6 +4,13 @@
 .azioni {
   padding-left: 15px;
   padding-right: 15px;
+  &::-webkit-scrollbar-thumb {
+    background-color: #7e8f9f;
+  }
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 4px;
+  }
 }
 .panels-container {
   background: #fff !important;
@@ -207,6 +214,10 @@
   font-weight: bold;
   word-wrap: break-word;
   white-space: pre-wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
   + div,
   span {
     display: block;
@@ -215,15 +226,75 @@
     break-inside: auto;
     text-align: center;
     /* width: auto; */
+    font-weight: 800;
+    color: #000;
+    letter-spacing: 1px;
   }
-
+  + div {
+    font-weight: 500;
+    text-align: left;
+    position: relative;
+  }
   //text-align: center;
 }
-// @font-face {
-//   font-family: fontPrint;
-//   src: url(./font.ttf);
-// }
-// @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+.logo {
+  display: block;
+  margin: 0 auto;
+  height: 37px;
+}
+.afterprint {
+  .logo {
+    filter: grayscale(1) brightness(0.3);
+  }
+}
+span.superSmall.tel {
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  width: 100% !important;
+}
+.printModal .text-bold {
+  font-weight: 600 !important;
+  > span {
+    font-size: 12px !important;
+    display: inline-block;
+  }
+  + .superSmall {
+    white-space: nowrap;
+  }
+}
+.userCel {
+  font-size: 18px !important;
+}
+span.superSmall {
+  font-weight: 400;
+  font-size: 15px;
+}
+.userCel {
+  font-weight: 400 !important;
+  b {
+    font-weight: 600 !important;
+  }
+}
+.fontSmall {
+  text-transform: capitalize;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+}
+.marginC {
+  clear: both;
+  float: right;
+  width: 100%;
+  text-align: right;
+  position: absolute;
+  border-bottom: 1px solid #222;
+  margin-top: -22px;
+}
+@font-face {
+  font-family: fontPrint;
+  src: url(./font.ttf);
+}
+@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 .barcodeModal {
   height: 80px;
   display: block;
@@ -233,13 +304,33 @@
 .afterprint {
   color-adjust: exact;
   font-family: "Roboto", sans-serif;
-  // font-family: fontPrint;
+  font-weight: normal;
   font-size: 15px;
 }
 .afterprint .printModal {
   width: 100%;
   max-width: 80mm;
-  padding-left: 10mm;
+  margin-left: 11mm;
+}
+.printModal {
+  // filter: blur(0.4px);
+  width: 100%;
+  display: block;
+  * {
+    font-family: "Roboto", sans-serif;
+    // font-family: normal !important;
+    font-style: normal !important;
+    font-synthesis: weight;
+    font-variant: normal;
+    font-display: normal;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-variant-caps: normal;
+  }
+}
+.marginB {
+  display: inline-block;
+  margin-right: 10%;
 }
 .printBtn {
   max-width: 200px;

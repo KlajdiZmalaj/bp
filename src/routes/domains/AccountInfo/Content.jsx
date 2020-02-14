@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
-import Link from "./Link";
+import UsersList from "./UsersList";
 import { connect } from "react-redux";
 import "./style.css";
 class Content extends Component {
@@ -13,8 +13,8 @@ class Content extends Component {
 
     return (
       <div className="contentAcc">
-        {activeAccount === "Profile" && <Profile />}
-        {activeAccount === "Link" && <Link />}
+        {activeAccount === 1 && <Profile />}
+        {activeAccount === 2 && <UsersList />}
       </div>
     );
   }
