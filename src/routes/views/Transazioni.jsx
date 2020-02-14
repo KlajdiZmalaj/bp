@@ -5,6 +5,8 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { Form, DatePicker, Modal, Select } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
+import orderBy from "lodash/orderBy";
+import sortBy from "lodash/sortBy";
 import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
@@ -137,7 +139,11 @@ class Transazioni extends React.Component {
     if (usernames && usernames.length > 0) {
       options = usernames.map(user => <Option key={user}>{user}</Option>);
     }
-    console.log("payments[indexT].receipt", payments);
+
+    const paymentsO = payments.sort(function(a, b) {
+      return new Date(b.executed_date) - new Date(a.executed_date);
+    });
+
     return (
       <div>
         <Header></Header>
@@ -267,7 +273,7 @@ class Transazioni extends React.Component {
                   </thead>
                   <tbody>
                     {!payments.message &&
-                      payments.map((item, index) => {
+                      (paymentsO || []).map((item, index) => {
                         return (
                           <tr
                             key={index}
