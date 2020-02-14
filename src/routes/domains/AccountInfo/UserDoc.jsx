@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 class UserDoc extends Component {
   constructor(props) {
     super(props);
@@ -7,6 +7,24 @@ class UserDoc extends Component {
       isPopUpOpen: false
     };
   }
+  // deleteImages = (user_id, imgFront, imgBack, type) => {
+  //   axios.delete(
+  //     'https://services-api.bpoint.store/api/users/updateDocument"',
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${
+  //           JSON.parse(localStorage.getItem("accountDataB")).token
+  //         }`
+  //       },
+  //       data: {
+  //         ...{ user_id: user_id },
+  //         ...{ document_front: imgFront },
+  //         ...{ document_back: imgBack }
+  //       }
+  //     }
+  //   );
+  // };
+
   setPopUp = () => {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
   };
@@ -57,6 +75,12 @@ class UserDoc extends Component {
                 alt={user.document_back}
               />
             )}
+            <i
+              class="fas fa-trash-alt"
+              onClick={() => {
+                this.deleteImages();
+              }}
+            ></i>
           </div>
         )}
         {isPopUpOpen && (
