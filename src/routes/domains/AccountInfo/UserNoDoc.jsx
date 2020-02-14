@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import MainActions from "redux-store/models/main";
 import { Upload, Icon, message } from "antd";
 import axios from "axios";
 function getBase64(img, callback) {
@@ -29,7 +31,7 @@ class UserDoc extends Component {
       imageUrl2: ""
     };
   }
-  postImages = (user_id, imgFront, imgBack, type) =>
+  postImages = (user_id, imgFront, imgBack, type) => {
     axios
       .create({
         baseURL: "https://services-api.bpoint.store/api",
@@ -44,7 +46,14 @@ class UserDoc extends Component {
         ...{ document_front: imgFront },
         ...{ document_back: imgBack }
       })
+      .then(response => {
+        console.log("response", response);
+        if (response) {
+          this.props.getUsers();
+        }
+      })
       .catch(error => ({ error }));
+  };
 
   handleChangeFront = info => {
     if (info.file.status === "uploading") {
@@ -168,7 +177,15 @@ class UserDoc extends Component {
               }}
             ></i>
             <button
-              className="uploadSendBtn"
+              className={
+                "uploadSendBtn" +
+                ((parseInt(user.document_type) === 3 && imageUrl.length > 0) ||
+                ((parseInt(user.document_type) === 1 ||
+                  parseInt(user.document_type) === 2) &&
+                  imageUrl2.length > 0)
+                  ? ""
+                  : " disabled")
+              }
               onClick={() => {
                 this.postImages(
                   parseInt(user.id),
@@ -176,6 +193,9 @@ class UserDoc extends Component {
                   imageUrl2,
                   user.document_type
                 );
+                setTimeout(() => {
+                  this.setPopUp();
+                }, 500);
               }}
             >
               Upload <i class="fas fa-upload"></i>
@@ -195,4 +215,4 @@ class UserDoc extends Component {
   }
 }
 
-export default UserDoc;
+export default connect(null, { ...MainActions })(UserDoc);

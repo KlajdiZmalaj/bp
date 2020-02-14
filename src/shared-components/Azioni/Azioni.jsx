@@ -22,7 +22,7 @@ class Azioni extends Component {
         <div className="row max-width mt-3">
           <div className="col pl-3 p-lg-0">
             <a href="/#" className="overview-btn">
-              <img src={images.tickets} alt="ticket" /> Azioni
+              <img src={images.tickets} alt="ticket" /> Menu
             </a>
           </div>
         </div>

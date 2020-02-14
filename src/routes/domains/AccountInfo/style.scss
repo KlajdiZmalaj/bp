@@ -109,6 +109,9 @@
     left: 50%;
     margin-left: -230px;
     text-align: center;
+    img {
+      width: 100%;
+    }
     .uploadSendBtn {
       position: relative;
       position: relative;
@@ -117,6 +120,11 @@
       padding: 10px 20px;
       text-transform: uppercase;
       transition: 0.4s;
+      &.disabled {
+        color: #ccc;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
       &:hover {
         background-color: #ed4c14;
         color: #fff;

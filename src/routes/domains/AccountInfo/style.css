@@ -158,6 +158,10 @@
   text-align: center;
 }
 
+.userList .popUp img {
+  width: 100%;
+}
+
 .userList .popUp .uploadSendBtn {
   position: relative;
   position: relative;
@@ -167,6 +171,12 @@
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+}
+
+.userList .popUp .uploadSendBtn.disabled {
+  color: #ccc;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .userList .popUp .uploadSendBtn:hover {

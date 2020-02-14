@@ -30,8 +30,39 @@ class UserDoc extends Component {
             <span>{user.comune_code}</span>
           </div>
         </div>
-        {isPopUpOpen && <div className="popUp"></div>}
-        {isPopUpOpen && <div className="backDrop"></div>}
+        {isPopUpOpen && (
+          <div className="popUp">
+            <i
+              class="fal fa-times"
+              onClick={() => {
+                this.setPopUp();
+              }}
+            ></i>
+            <div className="title">Images</div>
+            <img
+              src={
+                "https://services-api.bpoint.store/storage/" +
+                user.document_front
+              }
+              alt={user.document_front}
+            />
+            <img
+              src={
+                "https://services-api.bpoint.store/storage/" +
+                user.document_back
+              }
+              alt={user.document_back}
+            />
+          </div>
+        )}
+        {isPopUpOpen && (
+          <div
+            className="backDrop"
+            onClick={() => {
+              this.setPopUp();
+            }}
+          ></div>
+        )}
       </React.Fragment>
     );
   }
