@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
-@import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 @font-face {
   font-family: fontAw-300;
@@ -1003,6 +1003,14 @@ i#private {
 .transTable tr:nth-child(1) td {
   background: #f5f5f5;
   border-left: 2px solid #fff;
+}
+
+.transTable tr:nth-child(1) td:nth-child(1), .transTable tr:nth-child(1) td:nth-child(2) {
+  width: 210px;
+}
+
+.transTable tr:nth-child(1) td.right {
+  width: 150px;
 }
 
 .ant-form.ant-form-horizontal.filters {

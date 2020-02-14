@@ -41,10 +41,8 @@ class UserDoc extends Component {
       })
       .post(`/users/updateDocument`, {
         ...{ user_id: user_id },
-        ...(type === 1 ||
-          type === 2 ||
-          (type === 3 && { document_front: imgFront })),
-        ...(type === 1 || (type === 2 && { document_back: imgBack }))
+        ...{ document_front: imgFront },
+        ...{ document_back: imgBack }
       })
       .catch(error => ({ error }));
 
