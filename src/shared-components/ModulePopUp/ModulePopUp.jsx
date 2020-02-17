@@ -33,7 +33,7 @@ class ModulePopUp extends React.Component {
         )}
 
         {service.service_id.toString() === "RPP001" && (
-          <ModulePopUp3></ModulePopUp3>
+          <ModulePopUp3 service_id={service_id}></ModulePopUp3>
         )}
 
         {(serviceType.toString() === "RTELD" ||

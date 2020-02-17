@@ -141,6 +141,7 @@ export function* getRechargeMobile(params) {
     }
   }
 }
+
 export function* getAds() {
   const response = yield call(fetchAds);
   if (response.status === 200) {

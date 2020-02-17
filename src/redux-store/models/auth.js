@@ -30,6 +30,19 @@ const { Types, Creators } = createActions({
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
   setRechargeMobile: ["rechargeMobile"],
+
+  getPostePay: [
+    "service_id",
+    "importo",
+    "user_id",
+    "intestazione",
+    "codice_fiscale_intestatario",
+    "ordinante",
+    "codice_fiscale_ordinante",
+    "numero_postepay"
+  ],
+  setPostePay: ["postePay"],
+
   setServiceType: ["serviceType"],
 
   getAds: [],
@@ -80,6 +93,7 @@ const INITIAL_STATE = {
   usernames: [],
   service_s: [],
   rechargeMobile: {},
+  postePay: {},
   ads: [],
   register: {}
 };
@@ -129,6 +143,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_RECHARGE_MOBILE]: (state, { rechargeMobile }) => ({
     ...state,
     rechargeMobile
+  }),
+  [Types.SET_POSTE_PAY]: (state, { postePay }) => ({
+    ...state,
+    postePay
   }),
   [Types.SET_SERVICE_TYPE]: (state, { serviceType }) => ({
     ...state,
