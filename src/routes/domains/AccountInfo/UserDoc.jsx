@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
+import { deleteImages } from "services/main.js";
 class UserDoc extends Component {
   constructor(props) {
     super(props);
@@ -9,27 +9,10 @@ class UserDoc extends Component {
       isPopUpOpen: false
     };
   }
-  deleteImages = user_id => {
-    axios
-      .create({
-        baseURL: "https://services-api.bpoint.store/api/",
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("accountDataB")).token
-          }`
-        }
-      })
-      .post(`/users/deleteDocument`, {
-        ...{ user_id: user_id }
-      })
-      .then(response => {
-        console.log("response", response);
-        if (response) {
-          this.props.getUsers();
-        }
-      });
-  };
 
+  callBack = () => {
+    this.props.getUsers();
+  };
   setPopUp = () => {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
   };
@@ -68,11 +51,25 @@ class UserDoc extends Component {
                   "https://services-api.bpoint.store/storage/" +
                   user.document_front
                 }
+                onClick={() => {
+                  window.open(
+                    "https://services-api.bpoint.store/storage/" +
+                      user.document_front,
+                    "_blank"
+                  );
+                }}
                 alt={user.document_front}
               />
             )}
             {user.document_back && (
               <img
+                onClick={() => {
+                  window.open(
+                    "https://services-api.bpoint.store/storage/" +
+                      user.document_back,
+                    "_blank"
+                  );
+                }}
                 src={
                   "https://services-api.bpoint.store/storage/" +
                   user.document_back
@@ -83,7 +80,9 @@ class UserDoc extends Component {
             <div
               className="deleteDiv"
               onClick={() => {
-                this.deleteImages(parseInt(user.id));
+                deleteImages(parseInt(user.id), () => {
+                  this.callBack();
+                });
               }}
             >
               Remove uploaded images <i class="far fa-trash-alt"></i>

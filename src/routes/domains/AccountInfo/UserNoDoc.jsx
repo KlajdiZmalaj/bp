@@ -1,25 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
-import { Upload, Icon, message } from "antd";
-import axios from "axios";
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  if (!isJpgOrPng) {
-    message.error("You can only upload JPG/PNG file!");
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
-  }
-  return isJpgOrPng && isLt2M;
-}
+import { Upload, Icon } from "antd";
+import { postImages } from "services/main.js";
+import { getBase64, beforeUpload } from "utils";
 
 class UserDoc extends Component {
   constructor(props) {
@@ -31,29 +15,6 @@ class UserDoc extends Component {
       imageUrl2: ""
     };
   }
-  postImages = (user_id, imgFront, imgBack, type) => {
-    axios
-      .create({
-        baseURL: "https://services-api.bpoint.store/api",
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("accountDataB")).token
-          }`
-        }
-      })
-      .post(`/users/updateDocument`, {
-        ...{ user_id: user_id },
-        ...{ document_front: imgFront },
-        ...{ document_back: imgBack }
-      })
-      .then(response => {
-        console.log("response", response);
-        if (response) {
-          this.props.getUsers();
-        }
-      })
-      .catch(error => ({ error }));
-  };
 
   handleChangeFront = info => {
     if (info.file.status === "uploading") {
@@ -61,7 +22,6 @@ class UserDoc extends Component {
       return;
     }
     if (info.file.status === "done") {
-      // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl =>
         this.setState({
           imageUrl,
@@ -76,7 +36,6 @@ class UserDoc extends Component {
       return;
     }
     if (info.file.status === "done") {
-      // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl2 =>
         this.setState({
           imageUrl2,
@@ -87,6 +46,9 @@ class UserDoc extends Component {
   };
   setPopUp = () => {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
+  };
+  callBack = () => {
+    this.props.getUsers();
   };
   render() {
     const { user } = this.props;
@@ -187,12 +149,9 @@ class UserDoc extends Component {
                   : " disabled")
               }
               onClick={() => {
-                this.postImages(
-                  parseInt(user.id),
-                  imageUrl,
-                  imageUrl2,
-                  user.document_type
-                );
+                postImages(parseInt(user.id), imageUrl, imageUrl2, () => {
+                  this.callBack();
+                });
                 setTimeout(() => {
                   this.setPopUp();
                 }, 500);
