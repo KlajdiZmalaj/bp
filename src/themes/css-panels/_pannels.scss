@@ -4,6 +4,9 @@
 .azioni {
   padding-left: 15px;
   padding-right: 15px;
+  &.max-width {
+    max-width: 1400px !important;
+  }
   &::-webkit-scrollbar-thumb {
     background-color: #7e8f9f;
   }
@@ -13,14 +16,16 @@
   }
   .swiper-container {
     padding-bottom: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
   }
   .swiper-slide {
     padding-left: 0 !important;
   }
   .swiper-button-prev {
     left: 0;
-    background: #ed4c1433;
-    height: 101px;
+    background: #edeef0;
+    height: 111px;
     top: 22px;
     width: 60px;
     color: #7e8f9f;
@@ -28,8 +33,8 @@
   .swiper-button-next {
     right: 0;
     left: auto;
-    background: #ed4c1433;
-    height: 101px;
+    background: #edeef0;
+    height: 111px;
     top: 22px;
     width: 60px;
     color: #7e8f9f;

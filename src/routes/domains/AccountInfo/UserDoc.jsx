@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import MainActions from "redux-store/models/main";
 class UserDoc extends Component {
   constructor(props) {
     super(props);
@@ -7,23 +9,26 @@ class UserDoc extends Component {
       isPopUpOpen: false
     };
   }
-  // deleteImages = (user_id, imgFront, imgBack, type) => {
-  //   axios.delete(
-  //     'https://services-api.bpoint.store/api/users/updateDocument"',
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer ${
-  //           JSON.parse(localStorage.getItem("accountDataB")).token
-  //         }`
-  //       },
-  //       data: {
-  //         ...{ user_id: user_id },
-  //         ...{ document_front: imgFront },
-  //         ...{ document_back: imgBack }
-  //       }
-  //     }
-  //   );
-  // };
+  deleteImages = user_id => {
+    axios
+      .create({
+        baseURL: "https://services-api.bpoint.store/api/",
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("accountDataB")).token
+          }`
+        }
+      })
+      .post(`/users/deleteDocument`, {
+        ...{ user_id: user_id }
+      })
+      .then(response => {
+        console.log("response", response);
+        if (response) {
+          this.props.getUsers();
+        }
+      });
+  };
 
   setPopUp = () => {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
@@ -75,12 +80,14 @@ class UserDoc extends Component {
                 alt={user.document_back}
               />
             )}
-            <i
-              class="fas fa-trash-alt"
+            <div
+              className="deleteDiv"
               onClick={() => {
-                this.deleteImages();
+                this.deleteImages(parseInt(user.id));
               }}
-            ></i>
+            >
+              Remove uploaded images <i class="far fa-trash-alt"></i>
+            </div>
           </div>
         )}
         {isPopUpOpen && (
@@ -96,4 +103,4 @@ class UserDoc extends Component {
   }
 }
 
-export default UserDoc;
+export default connect(null, { ...MainActions })(UserDoc);
