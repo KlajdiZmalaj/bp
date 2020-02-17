@@ -72,3 +72,18 @@ export const deleteImages = (user_id, callback) => {
       }
     });
 };
+
+export const updatateOverviewWidget = period =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api/",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/balance`, {
+      ...{ period: period }
+    })
+    .catch(error => ({ error }));

@@ -3,10 +3,33 @@ import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
-
 import sumBy from "lodash/sumBy";
-
+import { updatateOverviewWidget } from "services/main.js";
+import { get } from "lodash";
 class Overview extends Component {
+  state = {
+    overviewDashboard: {},
+    activeFilter: 1,
+    dashboardFromFilterTop: true,
+    payments: this.props.payments
+  };
+  fromFilterTop = val => {
+    this.setState({ dashboardFromFilterTop: val });
+  };
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let { payments } = prevState;
+    let { dashboardFromFilterTop } = prevState;
+    console.log("abc", nextProps.payments, prevState.payments);
+    if (nextProps.payments !== prevState.payments) {
+      payments = nextProps.payments;
+      dashboardFromFilterTop = false;
+      return { ...prevState, payments, dashboardFromFilterTop };
+    } else {
+      dashboardFromFilterTop = true;
+      return { ...prevState, dashboardFromFilterTop };
+    }
+  }
+
   componentDidMount() {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
@@ -14,11 +37,21 @@ class Overview extends Component {
     if (data) {
       this.props.getPayments();
     }
+    this.props.getOverviewDashboard(1);
   }
-
+  setDashboard = id => {
+    this.setState({ activeFilter: id });
+  };
   render() {
-    const { showOverview, toggleOverview, payments, accountInfo } = this.props;
-
+    const { activeFilter, dashboardFromFilterTop } = this.state;
+    const {
+      showOverview,
+      toggleOverview,
+      payments,
+      accountInfo,
+      dashboardData
+    } = this.props;
+    console.log("accountInfo", dashboardData, dashboardFromFilterTop);
     let provT = 0;
     let commT = 0;
     if (payments && payments.length > 0) {
@@ -32,7 +65,6 @@ class Overview extends Component {
         return parseFloat(o.commissione.replace(/,/g, "."));
       });
     }
-
     return (
       <React.Fragment>
         <div className="max-width row">
@@ -57,9 +89,36 @@ class Overview extends Component {
             }
           >
             <ul>
-              <li> Today</li>
-              <li> Month</li>
-              <li> year</li>
+              <li
+                className={activeFilter === 1 ? " activeFilter" : ""}
+                onClick={() => {
+                  this.setDashboard(1);
+                  this.props.getOverviewDashboard(1);
+                  this.fromFilterTop(true);
+                }}
+              >
+                Today
+              </li>
+              <li
+                className={activeFilter === 2 ? " activeFilter" : ""}
+                onClick={() => {
+                  this.setDashboard(2);
+                  this.props.getOverviewDashboard(2);
+                  this.fromFilterTop(true);
+                }}
+              >
+                Month
+              </li>
+              <li
+                className={activeFilter === 3 ? " activeFilter" : ""}
+                onClick={() => {
+                  this.setDashboard(3);
+                  this.props.getOverviewDashboard(3);
+                  this.fromFilterTop(true);
+                }}
+              >
+                year
+              </li>
             </ul>
           </div>
           <div
@@ -94,9 +153,11 @@ class Overview extends Component {
               <a href="/#">View Details</a>
               <h2>Saldo</h2>
               <h3>
-                {accountInfo.profile &&
-                  accountInfo.profile.wallet &&
-                  accountInfo.profile.wallet}
+                {dashboardFromFilterTop
+                  ? get(dashboardData, "saldo")
+                  : accountInfo.profile &&
+                    accountInfo.profile.wallet &&
+                    accountInfo.profile.wallet}
                 €
               </h3>
               <i className="fas fa-tag"></i>
@@ -108,7 +169,10 @@ class Overview extends Component {
               {/* <h2>Commissioni</h2> */}
               <h2>Commisione</h2>
               <h3>
-                {commT.toLocaleString("it-IT", { minimumFractionDigits: 2 })} €
+                {dashboardFromFilterTop
+                  ? get(dashboardData, "commissione")
+                  : commT.toLocaleString("it-IT", { minimumFractionDigits: 2 })}
+                €
               </h3>
 
               <i className="fas fa-user-alt"></i>
@@ -123,7 +187,10 @@ class Overview extends Component {
               <a href="/#">View Details</a>
               <h2>Proviggioni</h2>
               <h3>
-                {provT.toLocaleString("it-IT", { minimumFractionDigits: 2 })} €
+                {dashboardFromFilterTop
+                  ? get(dashboardData, "proviggioni")
+                  : provT.toLocaleString("it-IT", { minimumFractionDigits: 2 })}
+                €
               </h3>
               <i className="fal fa-arrow-down"></i>
             </div>
@@ -138,7 +205,8 @@ const mapsStateToProps = state => ({
   showOverview: toggleOverviewSelector(state),
   services: state.services,
   payments: state.auth.payments,
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  dashboardData: state.main.dashboardData
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

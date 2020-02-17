@@ -1,24 +1,37 @@
 .rotating {
-    transform: rotate(180deg)!important;
-    transition: 0.5s ease-in-out;
+  transform: rotate(180deg) !important;
+  transition: 0.5s ease-in-out;
 }
 
-.overview-btn i:nth-child(2){
-    transform: rotate(0deg);
-    transition: 0.5s ease-in-out
+.overview-btn i:nth-child(2) {
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
 }
 
 .hideWig {
+  transition: 0.5s ease-in-out;
+}
+
+.panel-tab[aria-expanded="true"] {
+  img {
+    transform: rotate(0deg);
     transition: 0.5s ease-in-out;
+  }
 }
 
-.panel-tab[aria-expanded=true] {
-    img {
-        transform: rotate(0deg);
-        transition: 0.5s ease-in-out;
-    }
+.max-width {
+  margin: 20px auto 0;
 }
-
-.max-width{
-    margin: 20px auto 0;
+.activeFilter {
+  border-color: #1e87f0;
+  background: #c2dcf7;
+  color: #1e87f0;
+  &:nth-child(2) {
+    background-color: #fbe2ce;
+    color: #ef7449;
+  }
+  &:nth-child(3) {
+    background-color: #c9f1e1;
+    color: #32d296;
+  }
 }

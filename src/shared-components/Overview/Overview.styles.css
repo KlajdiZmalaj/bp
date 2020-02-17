@@ -17,7 +17,7 @@
   transition: 0.5s ease-in-out;
 }
 
-.panel-tab[aria-expanded=true] img {
+.panel-tab[aria-expanded="true"] img {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
   -webkit-transition: 0.5s ease-in-out;
@@ -26,5 +26,21 @@
 
 .max-width {
   margin: 20px auto 0;
+}
+
+.activeFilter {
+  border-color: #1e87f0;
+  background: #c2dcf7;
+  color: #1e87f0;
+}
+
+.activeFilter:nth-child(2) {
+  background-color: #fbe2ce;
+  color: #ef7449;
+}
+
+.activeFilter:nth-child(3) {
+  background-color: #c9f1e1;
+  color: #32d296;
 }
 /*# sourceMappingURL=Overview.styles.css.map */

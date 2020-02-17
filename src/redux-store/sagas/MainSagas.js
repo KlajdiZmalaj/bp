@@ -2,7 +2,11 @@ import { put, call } from "redux-saga/effects";
 import MainActions from "../models/main";
 import AuthActions from "../models/auth";
 
-import { fetchServices, fetchUsers } from "services/main";
+import {
+  fetchServices,
+  fetchUsers,
+  updatateOverviewWidget
+} from "services/main";
 
 import { logoutApi } from "services/auth";
 
@@ -21,10 +25,17 @@ export function* getServices() {
     }
   }
 }
+
 export function* getUsers() {
   const response = yield call(fetchUsers);
   // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsers(response.data.users));
+  }
+}
+export function* getOverviewDashboard(data) {
+  const response = yield call(updatateOverviewWidget, data.period);
+  if (response.data) {
+    yield put(MainActions.setOverviewDashboard(response.data.balance));
   }
 }
