@@ -15,7 +15,7 @@ import {
   createAds,
   getRegister
 } from "./AuthSagas";
-import { getServices, getUsers } from "./MainSagas";
+import { getServices, getUsers, getOverviewDashboard } from "./MainSagas";
 
 export default function* root() {
   yield all([
@@ -32,6 +32,7 @@ export default function* root() {
 
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices),
-    takeLatest(MainTypes.GET_USERS, getUsers)
+    takeLatest(MainTypes.GET_USERS, getUsers),
+    takeLatest(MainTypes.GET_OVERVIEW_DASHBOARD, getOverviewDashboard)
   ]);
 }

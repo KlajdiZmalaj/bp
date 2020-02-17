@@ -106,7 +106,7 @@ a:hover {
   transition: 0.5s ease-in-out;
 }
 
-.panel-tab[aria-expanded=true] img {
+.panel-tab[aria-expanded="true"] img {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
   -webkit-transition: 0.5s ease-in-out;
@@ -115,6 +115,23 @@ a:hover {
 
 .max-width {
   margin: 20px auto 0;
+}
+
+.activeFilter {
+  border-color: #1e87f0;
+  background: #c2dcf7;
+  cursor: pointer;
+  color: #1e87f0;
+}
+
+.activeFilter:nth-child(2) {
+  background-color: #ffd8b9;
+  color: #ef7449;
+}
+
+.activeFilter:nth-child(3) {
+  background-color: #c9f1e1;
+  color: #32d296;
 }
 
 .login-logout li input {
@@ -394,6 +411,7 @@ a:hover {
 }
 
 .overview-list ul li {
+  cursor: pointer;
   list-style-type: none;
   display: inline-block;
   margin-left: 10px;

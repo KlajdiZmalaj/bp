@@ -7,7 +7,9 @@ const { Types, Creators } = createActions({
   togglePopUp: ["isShowing"],
   setAccount: ["activeAccount"],
   setUsers: ["userList"],
-  getUsers: []
+  getUsers: [],
+  getOverviewDashboard: ["period"],
+  setOverviewDashboard: ["dashboardData"]
 });
 
 export const MainTypes = Types;
@@ -18,10 +20,15 @@ const INITIAL_STATE = {
   showOverview: true,
   isShowing: false,
   activeAccount: 1,
-  userList: []
+  userList: [],
+  dashboardData: {}
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_OVERVIEW_DASHBOARD]: (state, { dashboardData }) => ({
+    ...state,
+    dashboardData
+  }),
   [Types.TOGGLE_OVERVIEW]: (state, { showOverview }) => ({
     ...state,
     showOverview
