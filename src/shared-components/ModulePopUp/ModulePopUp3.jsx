@@ -1,13 +1,98 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import PrintTicket from "./PrintTicket";
-import Bolletino from "./Bolletino";
-import images from "../../themes/images";
+import images from "themes/images";
 
 class ModulePopUp3 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      importo: "",
+      user_id: "",
+      intestazione: "",
+      codice_fiscale_intestatario: "",
+      ordinante: "",
+      codice_fiscale_ordinante: "",
+      numero_postepay: ""
+    };
+
+    this.handleChangeImporto = this.handleChangeImporto.bind(this);
+    this.handleChangeUser_id = this.handleChangeUser_id.bind(this);
+    this.handleChangeIntestazione = this.handleChangeIntestazione.bind(this);
+    this.handleChangeCfIntestazione = this.handleChangeCfIntestazione.bind(
+      this
+    );
+    this.handleChangeOrdinante = this.handleChangeOrdinante.bind(this);
+    this.handleChangeCfOrdinante = this.handleChangeCfOrdinante.bind(this);
+    this.handleChangeNrPostepay = this.handleChangeNrPostepay.bind(this);
+  }
+
+  handleChangeImporto(event) {
+    this.setState({ importo: event.target.value });
+  }
+  handleChangeUser_id(event) {
+    this.setState({ user_id: event.target.value });
+  }
+  handleChangeIntestazione(event) {
+    this.setState({ intestazione: event.target.value });
+  }
+  handleChangeCfIntestazione(event) {
+    this.setState({ codice_fiscale_intestatario: event.target.value });
+  }
+  handleChangeOrdinante(event) {
+    this.setState({ ordinante: event.target.value });
+  }
+  handleChangeCfOrdinante(event) {
+    this.setState({ codice_fiscale_ordinante: event.target.value });
+  }
+  handleChangeNrPostepay(event) {
+    this.setState({ numero_postepay: event.target.value });
+  }
+  handleSubmit = service_id => {
+    const {
+      importo,
+      user_id,
+      intestazione,
+      codice_fiscale_intestatario,
+      ordinante,
+      codice_fiscale_ordinante,
+      numero_postepay
+    } = this.state;
+
+    console.log(
+      " service_id,",
+      service_id,
+      importo,
+      user_id,
+      intestazione,
+      codice_fiscale_intestatario,
+      ordinante,
+      codice_fiscale_ordinante,
+      numero_postepay
+    );
+    // this.props.getPostePay(
+    //   service_id,
+    //   importo,
+    //   user_id,
+    //   intestazione,
+    //   codice_fiscale_intestatario,
+    //   ordinante,
+    //   codice_fiscale_ordinante,
+    //   numero_postepay
+    // );
+  };
   render() {
-    const { service_s, rechargeMobile, serviceType, service } = this.props;
+    const { service_id } = this.props;
+
+    const {
+      importo,
+      user_id,
+      intestazione,
+      codice_fiscale_intestatario,
+      ordinante,
+      codice_fiscale_ordinante,
+      numero_postepay
+    } = this.state;
 
     return (
       <div className="modulePopUP modulePopUP3">
@@ -38,7 +123,7 @@ class ModulePopUp3 extends React.Component {
                   <table className="_modulePopUP__table2">
                     <tbody>
                       <tr>
-                        <td>
+                        <td onClick={() => this.handleSubmit(service_id)}>
                           <h3>esegui</h3>
                           <img src={images.checkSymbol} alt="" />
                         </td>
@@ -84,12 +169,16 @@ class ModulePopUp3 extends React.Component {
 
                 <div className="col-5 ">
                   <div className="euroboll ">
-                    <span className="pr-5">TARGA</span>
+                    <span className="pr-5">User</span>
                   </div>
                 </div>
                 <div className="col-7">
                   <div className="euroboll ">
-                    <input type="text" />
+                    <input
+                      type="text"
+                      value={user_id}
+                      onChange={this.handleChangeUser_id}
+                    />
                   </div>
                 </div>
 
@@ -100,7 +189,11 @@ class ModulePopUp3 extends React.Component {
                 </div>
                 <div className="col-7 pt-2">
                   <div className="euroboll ">
-                    <input type="text" />
+                    <input
+                      type="text"
+                      value={importo}
+                      onChange={this.handleChangeImporto}
+                    />
                   </div>
                 </div>
 
@@ -111,7 +204,11 @@ class ModulePopUp3 extends React.Component {
                 </div>
                 <div className="col-7 pt-2">
                   <div className="euroboll ">
-                    <input type="text" />
+                    <input
+                      type="text"
+                      value={intestazione}
+                      onChange={this.handleChangeIntestazione}
+                    />
                   </div>
                 </div>
 
@@ -122,7 +219,11 @@ class ModulePopUp3 extends React.Component {
                 </div>
                 <div className="col-7 pt-2">
                   <div className="euroboll ">
-                    <input type="text" />
+                    <input
+                      type="text"
+                      value={codice_fiscale_intestatario}
+                      onChange={this.handleChangeCfIntestazione}
+                    />
                   </div>
                 </div>
 
@@ -133,7 +234,11 @@ class ModulePopUp3 extends React.Component {
                 </div>
                 <div className="col-7 pt-2">
                   <div className="euroboll ">
-                    <input type="text" />
+                    <input
+                      type="text"
+                      value={ordinante}
+                      onChange={this.handleChangeOrdinante}
+                    />
                   </div>
                 </div>
 
@@ -144,7 +249,25 @@ class ModulePopUp3 extends React.Component {
                 </div>
                 <div className="col-7 pt-2">
                   <div className="euroboll ">
-                    <input type="text" />
+                    <input
+                      type="text"
+                      value={codice_fiscale_ordinante}
+                      onChange={this.handleChangeCfOrdinante}
+                    />
+                  </div>
+                </div>
+                <div className="col-5 pt-2">
+                  <div className="euroboll ">
+                    <span className="pr-5">Numero Postepay</span>
+                  </div>
+                </div>
+                <div className="col-7 pt-2">
+                  <div className="euroboll ">
+                    <input
+                      type="text"
+                      value={numero_postepay}
+                      onChange={this.handleChangeNrPostepay}
+                    />
                   </div>
                 </div>
 
