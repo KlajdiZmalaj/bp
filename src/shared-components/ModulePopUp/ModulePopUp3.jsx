@@ -329,7 +329,7 @@ class ModulePopUp3 extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-5 rightCol_Module">
+            {/* <div className="col-5 rightCol_Module">
               <div className="row no-gutters">
                 <div className="_modulePopUP__cupon">
                   <div className="_modulePopUP__cupon--header">
@@ -358,7 +358,7 @@ class ModulePopUp3 extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

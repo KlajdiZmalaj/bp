@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
                               >
                                 <div className="panel-item">
                                   <i className="fas fa-dot-circle"></i>
-                                  <h4>{service}</h4>
+                                  <h4>{serv[service].name} </h4>
                                   <img
                                     className="rightTriangle"
                                     src="img/rightTriangle.svg"
