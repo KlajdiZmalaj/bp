@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import ModulePopUp1 from "./ModulePopUp1";
+import ModulePopUp3 from "./ModulePopUp3";
 import ModulePopUp4 from "./ModulePopUp4";
 import "./style.css";
 
@@ -21,7 +22,7 @@ class ModulePopUp extends React.Component {
     ];
 
     const module1 = ["BOL001"];
-
+    console.log("serviceType", serviceType);
     return isShowing ? (
       <Fragment>
         {module1.includes(service_id) && (
@@ -29,6 +30,10 @@ class ModulePopUp extends React.Component {
             service_id={service_id}
             bolletiniBianchi={bolletiniBianchi}
           ></ModulePopUp1>
+        )}
+
+        {service.service_id.toString() === "RPP001" && (
+          <ModulePopUp3></ModulePopUp3>
         )}
 
         {(serviceType.toString() === "RTELD" ||

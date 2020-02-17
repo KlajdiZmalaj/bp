@@ -1,4 +1,5 @@
-.modulePopUP1 {
+.modulePopUP1,
+.modulePopUP3 {
   background-color: #edeef0;
   position: absolute;
   left: 0;
@@ -8,7 +9,8 @@
   z-index: 10000;
 }
 
-.modulePopUP1 .leftCol_Module {
+.modulePopUP1 .leftCol_Module,
+.modulePopUP3 .leftCol_Module {
   background-color: #fff;
   padding: 15px;
 }
