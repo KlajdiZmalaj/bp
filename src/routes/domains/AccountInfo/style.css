@@ -158,6 +158,10 @@
   text-align: center;
   padding-bottom: 20px;
   overflow: scroll;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-animation: fromDown 0.5s ease-out forwards;
+          animation: fromDown 0.5s ease-out forwards;
 }
 
 .userList .popUp::-webkit-scrollbar {
@@ -239,5 +243,27 @@
   width: 100%;
   height: 100%;
   z-index: 2;
+}
+
+@-webkit-keyframes fromDown {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@keyframes fromDown {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
 }
 /*# sourceMappingURL=style.css.map */

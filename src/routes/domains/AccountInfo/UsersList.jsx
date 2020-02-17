@@ -22,7 +22,7 @@ class UsersList extends Component {
     return (
       <div className="userList">
         <div className="userList--Doc">
-          <div className="title">Users con doc</div>
+          <div className="title">Utenti con documenti</div>
           {userWithPhoto && userWithPhoto.length > 0 && (
             <div className="header">
               <span>Id</span>
@@ -40,12 +40,13 @@ class UsersList extends Component {
             })
           ) : (
             <div className="noUsers">
-              No users with photo <i className="fal fa-check"></i>
+              Tutti gli utenti non hanno documenti
+              <i className="fal fa-times text-danger ml-1"></i>
             </div>
           )}
         </div>
         <div className="userList--noDoc">
-          <div className="title">No doc users</div>
+          <div className="title"> Tutti gli utenti senza documenti</div>
           {userNoPhoto && userNoPhoto.length > 0 && (
             <div className="header">
               <span>Id</span>
@@ -63,7 +64,8 @@ class UsersList extends Component {
             })
           ) : (
             <div className="noUsers">
-              No users without photo <i className="fal fa-check"></i>
+              Tutti gli utenti hanno documenti
+              <i className="fal fa-check ml-1"></i>
             </div>
           )}
         </div>

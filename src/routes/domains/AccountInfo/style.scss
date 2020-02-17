@@ -111,6 +111,8 @@
     text-align: center;
     padding-bottom: 20px;
     overflow: scroll;
+    transition: 0.3s;
+    animation: fromDown 0.5s ease-out forwards;
     &::-webkit-scrollbar {
       width: 0;
     }
@@ -187,4 +189,13 @@
   width: 100%;
   height: 100%;
   z-index: 2;
+}
+
+@keyframes fromDown {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
