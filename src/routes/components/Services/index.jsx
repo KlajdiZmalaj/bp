@@ -22,6 +22,7 @@ class Service extends React.Component {
     this.props.setServiceS(
       this.props.servicesItems[this.props.serviceSelected]
     );
+    console.log("ididid", id, this.props.serviceSelected);
   };
 
   render() {

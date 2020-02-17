@@ -624,16 +624,12 @@ class RegisterEndUser extends React.Component {
                 <div className="titleReg">Upload Doc</div>
 
                 <Form.Item>
-                  {getFieldDecorator("cart_view", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Select card view"
-                      }
-                    ]
-                  })(
+                  {getFieldDecorator(
+                    "cart_view",
+                    {}
+                  )(
                     <Select
-                      placeholder="Document View*"
+                      placeholder="Document View"
                       onChange={this.onChangeCardView}
                     >
                       <Option value="1">Front</Option>
