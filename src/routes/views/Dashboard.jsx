@@ -7,18 +7,16 @@ import { Service } from "routes/components";
 import images from "../../themes/images";
 
 class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.getServices();
-  }
-
   state = {
     serviceSelected: "",
     keyService: ""
   };
-
+  componentDidMount() {
+    this.props.getServices();
+  }
   changeServce = (service, item) => {
-    this.setState({ serviceSelected: service });
-    this.setState({ keyService: item });
+    this.setState({ serviceSelected: service, keyService: item });
+    // this.setState({ keyService: item });
     this.props.setServiceType(item);
   };
 
@@ -30,7 +28,7 @@ class Dashboard extends React.Component {
   render() {
     const { serviceSelected, keyService } = this.state;
     const { services } = this.props;
-
+    console.log("serviceSelected", serviceSelected, keyService);
     return (
       <div>
         <Header></Header>

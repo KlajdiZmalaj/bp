@@ -1478,6 +1478,12 @@ i#private {
   font-weight: normal;
 }
 
+@media (max-width: 1024px) {
+  .panel-item h4 {
+    font-size: 13px;
+  }
+}
+
 .panel-item img {
   margin-left: auto;
   position: relative;
@@ -1709,6 +1715,10 @@ span.superSmall {
   font-size: 16px !important;
 }
 
+.rightCol_Module .marginC {
+  margin-top: -25px;
+}
+
 .marginC {
   clear: both;
   float: right;
@@ -1745,6 +1755,7 @@ span.superSmall {
 }
 
 .printModal {
+  background-color: #fff;
   width: 100%;
   display: block;
 }
@@ -1776,8 +1787,27 @@ span.superSmall {
   cursor: pointer;
 }
 
-.afterprint .printBtn {
+.afterprint .printBtn,
+.afterprint .btn-group {
   display: none;
+}
+
+.printModal .btn-group {
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.stampBtn {
+  border: 0;
+  color: #000;
+  border: 1px solid #3dad3d;
+}
+
+.anullaBtn {
+  color: #000;
+  border: 1px solid #ad3d3d;
 }
 
 @media print {
@@ -1806,6 +1836,15 @@ span.superSmall {
   max-width: 700px;
   margin: 0 auto;
   padding-top: 7%;
+}
+
+.max-width_modulePopUP > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .max-width_modulePopUP-carrier {
@@ -2504,8 +2543,15 @@ footer h6 {
 }
 
 @media (max-width: 425px) {
+  .panel-tab .date-pane {
+    font-size: 12px;
+  }
   .panel-tab h4 {
-    max-width: 300px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
   }
 }
 
@@ -2555,6 +2601,9 @@ footer h6 {
   }
   .azioni-tab h2 {
     font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 

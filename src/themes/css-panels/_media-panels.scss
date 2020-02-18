@@ -27,7 +27,14 @@
 @media (max-width: 768px) {
 }
 @media (max-width: 425px) {
+  .panel-tab .date-pane {
+    font-size: 12px;
+  }
   .panel-tab h4 {
-    max-width: 300px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
   }
 }

@@ -115,6 +115,9 @@
     top: 4px;
     left: 10px;
     font-weight: normal;
+    @media (max-width: 1024px) {
+      font-size: 13px;
+    }
   }
   img {
     margin-left: auto;
@@ -309,6 +312,11 @@ span.superSmall {
   font-weight: 400 !important;
   font-size: 16px !important;
 }
+.rightCol_Module {
+  .marginC {
+    margin-top: -25px;
+  }
+}
 .marginC {
   clear: both;
   float: right;
@@ -341,6 +349,7 @@ span.superSmall {
   margin-left: 11mm;
 }
 .printModal {
+  background-color: #fff;
   // filter: blur(0.4px);
   width: 100%;
   display: block;
@@ -369,10 +378,23 @@ span.superSmall {
   margin-top: 40px;
   cursor: pointer;
 }
-.afterprint .printBtn {
+.afterprint .printBtn,
+.afterprint .btn-group {
   display: none;
 }
-
+.printModal .btn-group {
+  width: 100%;
+  justify-content: space-evenly;
+}
+.stampBtn {
+  border: 0;
+  color: #000;
+  border: 1px solid #3dad3d;
+}
+.anullaBtn {
+  color: #000;
+  border: 1px solid #ad3d3d;
+}
 @media print {
   @page {
     margin: 0 auto;

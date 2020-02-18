@@ -17,6 +17,10 @@
   max-width: 700px;
   margin: 0 auto;
   padding-top: 7%;
+  > .row {
+    display: flex;
+    justify-content: center;
+  }
 }
 .max-width_modulePopUP-carrier {
   max-width: 500px;
