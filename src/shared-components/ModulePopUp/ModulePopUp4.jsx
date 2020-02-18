@@ -257,10 +257,10 @@ class ModulePopUp4 extends React.Component {
                         <span className="fontSmall address">
                           {rechargeMobile.agency_address}
                         </span>
-                        <span className="userCel">
+                        {/* <span className="userCel">
                           {" "}
                           Telefono: <b>{rechargeMobile.agency_phone}</b>{" "}
-                        </span>
+                        </span> */}
                         {/* <span>BPOINT</span> */}
                       </div>
                       {console.log("rechargeMobile.receipt", rechargeMobile)}

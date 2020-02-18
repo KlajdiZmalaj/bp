@@ -355,10 +355,10 @@ class Transazioni extends React.Component {
                     {this.state.address.charAt(0).toUpperCase() +
                       this.state.address.slice(1).toLocaleLowerCase()}
                   </span>
-                  <span className="userCel">
+                  {/* <span className="userCel">
                     {" "}
                     Telefono: <b>{this.state.phone}</b>{" "}
-                  </span>
+                  </span> */}
                   {/* BPOINT<br></br>
                   PUNTA ANCORA DI GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
