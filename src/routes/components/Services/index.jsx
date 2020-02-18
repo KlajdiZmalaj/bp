@@ -28,6 +28,7 @@ class Service extends React.Component {
   render() {
     const { serviceSelected, servicesItems } = this.props;
     const arrayServices = servicesItems[serviceSelected];
+
     return (
       <React.Fragment>
         <div
@@ -47,7 +48,7 @@ class Service extends React.Component {
               <tbody>
                 <tr>
                   {arrayServices &&
-                    arrayServices.map((item, index) => {
+                    (arrayServices.services || []).map((item, index) => {
                       return (
                         <td
                           onClick={() => this.selectService(item)}
