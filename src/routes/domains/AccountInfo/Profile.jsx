@@ -5,12 +5,16 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmDirty: false
+      confirmDirty: false,
+      passwordToReset: ""
     };
   }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
+      if (err) {
+        console.log("Received values of form: ", err);
+      }
       if (!err) {
         console.log("Received values of form: ", values);
       }
@@ -22,6 +26,7 @@ class Profile extends Component {
   };
   validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
+    console.log("ca ka val next", value, rule);
     if (value && this.state.confirmDirty) {
       form.validateFields(["confirm"], { force: true });
     }
@@ -30,15 +35,17 @@ class Profile extends Component {
 
   compareToFirstPassword = (rule, value, callback) => {
     const { form } = this.props;
+    console.log("ca ka compare", value, form.getFieldValue("newPassword"));
     if (value && value !== form.getFieldValue("newPassword")) {
-      callback("Two passwords that you enter is inconsistent!");
+      callback("Passowrds different");
     } else {
       callback();
     }
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-
+    const { passwordToReset } = this.state;
+    console.log("passwordToReset", passwordToReset);
     return (
       <div className="changePassword">
         <h2> Change Password</h2>
@@ -80,7 +87,7 @@ class Profile extends Component {
               ]
             })(<Input.Password onBlur={this.handleConfirmBlur} />)}
           </Form.Item>
-          <Button type="primary" htmltype="submit">
+          <Button type="primary" htmltype="submit" onClick={this.handleSubmit}>
             Change PW
           </Button>
         </Form>
@@ -88,5 +95,5 @@ class Profile extends Component {
     );
   }
 }
-const Profilee = Form.create()(Profile);
+const Profilee = Form.create({ name: "changePassword" })(Profile);
 export default Profilee;
