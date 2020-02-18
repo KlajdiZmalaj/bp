@@ -125,6 +125,37 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
     })
     .catch(error => ({ error }));
 
+export const fetchPostePay = (
+  service_id,
+  importo,
+  user_id,
+  intestazione,
+  codice_fiscale_intestatario,
+  ordinante,
+  codice_fiscale_ordinante,
+  numero_postepay
+) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/test/recharge`, {
+      ...{ service_id: service_id },
+      ...{ importo: importo },
+      ...{ user_id: user_id },
+      ...{ intestazione: intestazione },
+      ...{ codice_fiscale_intestatario: codice_fiscale_intestatario },
+      ...{ ordinante: ordinante },
+      ...{ codice_fiscale_ordinante: codice_fiscale_ordinante },
+      ...{ numero_postepay: numero_postepay }
+    })
+    .catch(error => ({ error }));
+
 export const fetchAds = () =>
   axios
     .create({

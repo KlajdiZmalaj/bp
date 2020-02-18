@@ -7,6 +7,7 @@ import {
   fetchBolletiniBianchi,
   fetchPayments,
   fetchRechargeMobile,
+  fetchPostePay,
   fetchAds,
   sendCreatedAds,
   fetchRegisterAllInfo
@@ -80,6 +81,24 @@ export function* getBolletiniBianchi(params) {
   }
 }
 
+function* modifyAccountData(wallet) {
+  const accountData = localStorage.getItem("accountDataB");
+  const data = JSON.parse(accountData);
+
+  const d = {
+    ...data,
+    profile: {
+      ...data.profile,
+      wallet: wallet
+    }
+  };
+
+  localStorage.setItem("accountDataB", JSON.stringify(d));
+  yield put(AuthActions.setAccountInfo(d));
+
+  console.log("data", data, d);
+}
+
 export function* getPayments(params) {
   const response = yield call(
     fetchPayments,
@@ -122,6 +141,19 @@ export function* getRechargeMobile(params) {
     if (response.data) {
       console.log("wallet", response.data.wallet);
       if (response.data.wallet) {
+        const accountData = localStorage.getItem("accountDataB");
+        const data = JSON.parse(accountData);
+
+        const d = {
+          ...data,
+          profile: {
+            ...data.profile,
+            wallet: response.data.wallet
+          }
+        };
+
+        localStorage.setItem("accountDataB", JSON.stringify(d));
+        yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
@@ -137,6 +169,42 @@ export function* getRechargeMobile(params) {
         }
       } else {
         yield put(AuthActions.setRechargeMobile(response.error.response.data));
+      }
+    }
+  }
+}
+
+export function* getPostePay(params) {
+  const response = yield call(
+    fetchPostePay,
+    params.service_id,
+    params.importo,
+    params.user_id,
+    params.intestazione,
+    params.codice_fiscale_intestatario,
+    params.ordinante,
+    params.codice_fiscale_ordinante,
+    params.numero_postepay
+  );
+  if (response) {
+    console.log("response", response);
+    if (response.data) {
+      console.log("wallet", response.data.wallet);
+      if (response.data.wallet) {
+      }
+      yield put(AuthActions.setPostePay(response.data));
+    } else if (response.error) {
+      if (response.error.response.status === 444) {
+        const error = { errors: { notCorrect: ["dati non sono correti."] } };
+        yield put(AuthActions.setPostePay(error));
+      } else if (response.error.response.status === 401) {
+        const response = yield call(logoutApi);
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      } else {
+        yield put(AuthActions.setPostePay(response.error.response.data));
       }
     }
   }

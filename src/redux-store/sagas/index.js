@@ -11,10 +11,12 @@ import {
   getBolletiniBianchi,
   getPayments,
   getRechargeMobile,
+  getPostePay,
   getAds,
   createAds,
   getRegister
 } from "./AuthSagas";
+
 import { getServices, getUsers, getOverviewDashboard } from "./MainSagas";
 
 export default function* root() {
@@ -26,6 +28,7 @@ export default function* root() {
     takeLatest(AuthTypes.GET_BOLLETINI_BIANCHI, getBolletiniBianchi),
     takeLatest(AuthTypes.GET_PAYMENTS, getPayments),
     takeLatest(AuthTypes.GET_RECHARGE_MOBILE, getRechargeMobile),
+    takeLatest(AuthTypes.GET_POSTE_PAY, getPostePay),
     takeLatest(AuthTypes.GET_ADS, getAds),
     takeLatest(AuthTypes.CREATE_ADS, createAds),
     takeLatest(AuthTypes.GET_REGISTER, getRegister),

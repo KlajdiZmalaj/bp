@@ -30,24 +30,31 @@ class ModulePopUp3 extends React.Component {
   handleChangeImporto(event) {
     this.setState({ importo: event.target.value });
   }
+
   handleChangeUser_id(event) {
     this.setState({ user_id: event.target.value });
   }
+
   handleChangeIntestazione(event) {
     this.setState({ intestazione: event.target.value });
   }
+
   handleChangeCfIntestazione(event) {
     this.setState({ codice_fiscale_intestatario: event.target.value });
   }
+
   handleChangeOrdinante(event) {
     this.setState({ ordinante: event.target.value });
   }
+
   handleChangeCfOrdinante(event) {
     this.setState({ codice_fiscale_ordinante: event.target.value });
   }
+
   handleChangeNrPostepay(event) {
     this.setState({ numero_postepay: event.target.value });
   }
+
   handleSubmit = service_id => {
     const {
       importo,

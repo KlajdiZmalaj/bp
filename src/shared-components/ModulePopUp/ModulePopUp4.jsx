@@ -37,7 +37,7 @@ class ModulePopUp4 extends React.Component {
 
   render() {
     const { service_s, rechargeMobile, serviceType, service } = this.props;
-    console.log("rechargeMobile", rechargeMobile.wallet);
+    console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
     const { serviceMobile, tel_no } = this.state;
 
@@ -73,7 +73,7 @@ class ModulePopUp4 extends React.Component {
                           <img src="img/TIM_logo_2016.svg" alt="" />
                         </td>
                       </tr>
-                      {service_s.map((item, index) => {
+                      {(service_s.services || []).map((item, index) => {
                         return (
                           <tr
                             key={index}
