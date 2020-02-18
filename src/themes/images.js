@@ -13,7 +13,7 @@ export default {
   TIM_logo_2016: require("../assets/images/TIM_logo_2016.svg"),
   wind_logo_svg_vector: require("../assets/images/wind-logo-svg-vector.svg"),
   three_logo: require("../assets/images/three-logo.svg"),
-
+  rightTriangle: require("../assets/images/rightTriangle.svg"),
   posteitalia: require("../assets/images/posteitalia.svg"),
   coop: require("../assets/images/coop.svg"),
   paysafe: require("../assets/images/paysafe.svg"),

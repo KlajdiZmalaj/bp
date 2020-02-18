@@ -5,6 +5,8 @@ import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 import sumBy from "lodash/sumBy";
 import { get } from "lodash";
+import "./anim.css";
+
 class Overview extends Component {
   state = {
     overviewDashboard: {},
@@ -157,12 +159,8 @@ class Overview extends Component {
             (showOverview ? "" : "hideWig")
           }
         >
-          <div
-            className=" col-md-4"
-            data-aos="flip-down"
-            data-aos-duration="1200"
-          >
-            <div className="wig wig1">
+          <div className=" col-md-4 ">
+            <div className="wig wig1 animated fadeInUp">
               <a href="/#">View Details</a>
               <h2>Saldo</h2>
               <h3>
@@ -176,8 +174,8 @@ class Overview extends Component {
               <i className="fas fa-tag"></i>
             </div>
           </div>
-          <div className="col-md-4" data-aos="flip-up" data-aos-duration="800">
-            <div className="wig wig2">
+          <div className="col-md-4">
+            <div className="wig wig2  animated fadeInDown">
               <a href="/#">View Details</a>
               {/* <h2>Commissioni</h2> */}
               <h2>Commisione</h2>
@@ -191,12 +189,8 @@ class Overview extends Component {
               <i className="fas fa-user-alt"></i>
             </div>
           </div>
-          <div
-            className="col-md-4"
-            data-aos="flip-down"
-            data-aos-duration="1200"
-          >
-            <div className="wig wig3">
+          <div className="col-md-4 ">
+            <div className="wig wig3 animated fadeInUp">
               <a href="/#">View Details</a>
               <h2>Proviggioni</h2>
               <h3>

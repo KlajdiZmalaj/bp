@@ -1177,7 +1177,8 @@ i#private {
   background-position-x: 130px;
 }
 
-.azioni-tab3 {
+.azioni-tab3,
+.azioni-tab7 {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.671)), to(rgba(255, 255, 255, 0.74))), url(../assets/images/gears.svg);
   background: linear-gradient(rgba(255, 255, 255, 0.671), rgba(255, 255, 255, 0.74)), url(../assets/images/gears.svg);
   background-position-x: 130px;

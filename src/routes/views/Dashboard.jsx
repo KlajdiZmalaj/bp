@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
                         >
                           <i className="fas fa-dot-circle"></i>
                           <h4>{serv["name"]}</h4>
-                          <img src="img/uparrow.svg" alt="" />
+                          <img src={images.uparrow} alt="" />
                         </div>
 
                         <div
@@ -79,12 +79,19 @@ class Dashboard extends React.Component {
                                     this.changeServce(service, item)
                                   }
                                 >
-                                  <div className="panel-item">
+                                  <div
+                                    className={
+                                      "panel-item" +
+                                      (serviceSelected === service
+                                        ? " clickedItem"
+                                        : "")
+                                    }
+                                  >
                                     <i className="fas fa-dot-circle"></i>
                                     <h4>{serv[service].name} </h4>
                                     <img
                                       className="rightTriangle"
-                                      src="img/rightTriangle.svg"
+                                      src={images.rightTriangle}
                                       alt=""
                                     />
                                   </div>
