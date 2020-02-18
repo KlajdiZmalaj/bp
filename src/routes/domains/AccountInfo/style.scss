@@ -3,20 +3,21 @@
   flex-flow: column;
   margin-top: 65px;
   padding-bottom: 65px;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 .leftMenuAcc {
   position: relative;
-  background-color: #d4d4d4;
+  background-color: #fff;
   width: 100%;
   text-transform: uppercase;
   display: flex;
   flex-flow: row;
-  border-bottom: 1px solid #adadad;
   > div {
     border-right: 1px solid #adadad;
     padding: 15px;
     cursor: pointer;
-    border-bottom: 2px solid #d4d4d4;
     &:hover,
     &.active {
       border-bottom: 2px solid #ed4c14;
@@ -26,9 +27,13 @@
 .contentAcc {
   flex-grow: 1;
   background: #edeef0;
-  padding: 15px;
-  box-shadow: inset -2px 13px 60px -31px black;
-
+  padding-top: 25px;
+  .ant-btn {
+    border-radius: 0;
+    background: #ed4c14;
+    border: 0;
+    padding: 0 40px;
+  }
   .changePassword {
     background-color: #fff;
     width: 100%;
@@ -36,6 +41,15 @@
     margin: 0 auto;
     text-align: center;
     padding: 20px;
+    .ant-form-item {
+      display: flex;
+    }
+    .ant-form-item-label {
+      width: 40%;
+    }
+    .ant-form-item-control-wrapper {
+      width: 60%;
+    }
     h2 {
       color: #ed4c14;
       font-weight: 300;
@@ -94,6 +108,9 @@
           flex-grow: 1;
           width: 100%;
           padding: 10px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }

@@ -120,12 +120,11 @@ a:hover {
 .activeFilter {
   border-color: #1e87f0;
   background: #c2dcf7;
-  cursor: pointer;
   color: #1e87f0;
 }
 
 .activeFilter:nth-child(2) {
-  background-color: #ffd8b9;
+  background-color: #fbe2ce;
   color: #ef7449;
 }
 
@@ -340,14 +339,52 @@ a:hover {
   font-size: 16px;
   font-weight: 500;
   color: #8ca0b3 !important;
+  white-space: nowrap;
 }
 
 .navbar .nav-link span {
   color: #ed4c14;
 }
 
+.navbar .icons-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 16px;
+}
+
+.navbar .nav-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .navbar .active a {
   color: #ed4c14 !important;
+}
+
+.navbar .navWrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .search-nav {
@@ -355,14 +392,9 @@ a:hover {
   background: #edeef0;
   border-radius: 4px;
   padding: 10px;
-  width: 500px;
+  width: 250px;
   max-width: 500px;
   margin-left: 70px;
-}
-
-.credito-nav {
-  position: relative;
-  top: 4px;
 }
 
 .menus-nav {

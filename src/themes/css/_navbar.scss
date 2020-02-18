@@ -6,27 +6,45 @@
     font-size: 16px;
     font-weight: 500;
     color: #8ca0b3 !important;
+    white-space: nowrap;
     span {
       color: $main;
     }
   }
+  .icons-nav {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 16px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+  }
   .active a {
     color: $main !important;
   }
+  .navWrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+  }
 }
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
 .search-nav {
   border: 0;
   background: $second;
   border-radius: 4px;
   padding: 10px;
-  width: 500px;
+  width: 250px;
   max-width: 500px;
   margin-left: 70px;
 }
-.credito-nav {
-  position: relative;
-  top: 4px;
-}
+
 .menus-nav {
   margin-left: 14%;
 }

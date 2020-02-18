@@ -4,12 +4,11 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 import sumBy from "lodash/sumBy";
-import { updatateOverviewWidget } from "services/main.js";
 import { get } from "lodash";
 class Overview extends Component {
   state = {
     overviewDashboard: {},
-    activeFilter: 1,
+    activeFilter: 2,
     dashboardFromFilterTop: true,
     payments: this.props.payments
   };
@@ -19,8 +18,8 @@ class Overview extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     let { payments } = prevState;
     let { dashboardFromFilterTop } = prevState;
-    console.log("abc", nextProps.payments, prevState.payments);
-    if (nextProps.payments !== prevState.payments) {
+    // console.log("abc", nextProps.payments, prevState.payments);
+    if (nextProps.payments !== prevState.payments && dashboardFromFilterTop) {
       payments = nextProps.payments;
       dashboardFromFilterTop = false;
       return { ...prevState, payments, dashboardFromFilterTop };
@@ -37,7 +36,9 @@ class Overview extends Component {
     if (data) {
       this.props.getPayments();
     }
-    this.props.getOverviewDashboard(1);
+    setTimeout(() => {
+      this.props.getOverviewDashboard(2);
+    }, 500);
   }
   setDashboard = id => {
     this.setState({ activeFilter: id });
@@ -90,7 +91,11 @@ class Overview extends Component {
           >
             <ul>
               <li
-                className={activeFilter === 1 ? " activeFilter" : ""}
+                className={
+                  activeFilter === 1 && dashboardFromFilterTop
+                    ? " activeFilter"
+                    : ""
+                }
                 onClick={() => {
                   this.setDashboard(1);
                   this.props.getOverviewDashboard(1);
@@ -100,7 +105,11 @@ class Overview extends Component {
                 Today
               </li>
               <li
-                className={activeFilter === 2 ? " activeFilter" : ""}
+                className={
+                  activeFilter === 2 && dashboardFromFilterTop
+                    ? " activeFilter"
+                    : ""
+                }
                 onClick={() => {
                   this.setDashboard(2);
                   this.props.getOverviewDashboard(2);
@@ -110,7 +119,11 @@ class Overview extends Component {
                 Month
               </li>
               <li
-                className={activeFilter === 3 ? " activeFilter" : ""}
+                className={
+                  activeFilter === 3 && dashboardFromFilterTop
+                    ? " activeFilter"
+                    : ""
+                }
                 onClick={() => {
                   this.setDashboard(3);
                   this.props.getOverviewDashboard(3);
