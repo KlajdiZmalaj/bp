@@ -9,7 +9,8 @@ const { Types, Creators } = createActions({
   setUsers: ["userList"],
   getUsers: [],
   getOverviewDashboard: ["period"],
-  setOverviewDashboard: ["dashboardData"]
+  setOverviewDashboard: ["dashboardData"],
+  setNavbarSearch: ["navbarSearch"]
 });
 
 export const MainTypes = Types;
@@ -21,10 +22,15 @@ const INITIAL_STATE = {
   isShowing: false,
   activeAccount: 1,
   userList: [],
-  dashboardData: {}
+  dashboardData: {},
+  navbarSearch: ""
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_NAVBAR_SEARCH]: (state, { navbarSearch }) => ({
+    ...state,
+    navbarSearch
+  }),
   [Types.SET_OVERVIEW_DASHBOARD]: (state, { dashboardData }) => ({
     ...state,
     dashboardData

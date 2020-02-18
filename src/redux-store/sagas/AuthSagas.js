@@ -10,7 +10,8 @@ import {
   fetchPostePay,
   fetchAds,
   sendCreatedAds,
-  fetchRegisterAllInfo
+  fetchRegisterAllInfo,
+  sendChangedPassword
 } from "services/auth";
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -269,4 +270,13 @@ export function* createAds({ data }) {
       yield put(AuthActions.createAdsResponse(false, null));
     }
   }
+}
+export function* getChangedPassword(data) {
+  const response = yield call(
+    sendChangedPassword,
+    data.oldPassword,
+    data.newPassword
+  );
+
+  // console.log("ca ka responseeeee", data, response);
 }

@@ -75,7 +75,8 @@ const { Types, Creators } = createActions({
   setRegister: ["register"],
   setAds: ["ads"],
   createAds: ["data"],
-  createAdsResponse: ["adsCreationgLoading", "adsCreationgMess"]
+  createAdsResponse: ["adsCreationgLoading", "adsCreationgMess"],
+  getChangedPassword: ["oldPassword", "newPassword"]
 });
 
 export const AuthTypes = Types;

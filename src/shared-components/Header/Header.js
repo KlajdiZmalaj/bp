@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
+import MainActions from "redux-store/models/main";
+
 import images from "themes/images";
 import "./Header.styles.scss";
 import { withRouter } from "react-router-dom";
@@ -10,7 +12,9 @@ class Header extends Component {
     userName: "",
     password: ""
   };
-
+  inpHandler = e => {
+    this.props.setNavbarSearch(e.target.value);
+  };
   handleChangeUsername = event => {
     this.setState({ userName: event.target.value });
   };
@@ -26,12 +30,11 @@ class Header extends Component {
 
   render() {
     let isLogged = false;
-    const { accountInfo } = this.props;
+    const { accountInfo, navbarSearch } = this.props;
 
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }
-
     return (
       <nav className="navbar navbar-expand-md fixed-top navbar-light">
         <div className="navWrapper">
@@ -57,7 +60,16 @@ class Header extends Component {
                   <input
                     type="text"
                     className="search-nav"
-                    placeholder="Search here..."
+                    placeholder={`${
+                      window.location.href.includes("transazioni")
+                        ? "Cerca transazioni service"
+                        : window.location.href.includes("dashboard")
+                        ? "Cerca dashboard prodotti"
+                        : "Cerca"
+                    }`}
+                    onChange={e => {
+                      this.inpHandler(e);
+                    }}
                   />
                 </form>
               </li>
@@ -153,9 +165,10 @@ class Header extends Component {
 }
 
 const mapsStateToProps = state => ({
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  navbarSearch: state.main.navbarSearch
 });
 
 export default withRouter(
-  connect(mapsStateToProps, { ...AuthActions })(Header)
+  connect(mapsStateToProps, { ...AuthActions, ...MainActions })(Header)
 );

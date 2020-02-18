@@ -241,3 +241,20 @@ export const fetchRegisterAllInfo = (
       ...{ backImg: backImg }
     })
     .catch(error => ({ data: error.response.data }));
+
+export const sendChangedPassword = (oldPassword, newPassword) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/changePassword`, {
+      ...{ old_password: oldPassword },
+      ...{ password: newPassword },
+      ...{ confirm_password: newPassword }
+    })
+    .catch(error => ({ error }));

@@ -14,7 +14,8 @@ import {
   getPostePay,
   getAds,
   createAds,
-  getRegister
+  getRegister,
+  getChangedPassword
 } from "./AuthSagas";
 
 import { getServices, getUsers, getOverviewDashboard } from "./MainSagas";
@@ -32,6 +33,7 @@ export default function* root() {
     takeLatest(AuthTypes.GET_ADS, getAds),
     takeLatest(AuthTypes.CREATE_ADS, createAds),
     takeLatest(AuthTypes.GET_REGISTER, getRegister),
+    takeLatest(AuthTypes.GET_CHANGED_PASSWORD, getChangedPassword),
 
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices),

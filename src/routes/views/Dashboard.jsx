@@ -50,46 +50,53 @@ class Dashboard extends React.Component {
               <div className="col-md-9 ">
                 {Object.keys(services).map((item, index) => {
                   const serv = services[item];
-                  return (
-                    <div key={index}>
-                      <div
-                        className="panel-tab"
-                        data-toggle="collapse"
-                        data-target={"#tab" + item}
-                        onClick={() => this.changeKeyService(item)}
-                      >
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>{serv["name"]}</h4>
-                        <img src="img/uparrow.svg" alt="" />
-                      </div>
 
-                      <div
-                        className="nav nav-tabs panel-content collapse "
-                        id={"tab" + item}
-                      >
-                        {Object.keys(serv).map((service, indexx) => {
-                          if (service !== "name") {
-                            return (
-                              <div
-                                data-toggle="tab"
-                                key={indexx}
-                                onClick={() => this.changeServce(service, item)}
-                              >
-                                <div className="panel-item">
-                                  <i className="fas fa-dot-circle"></i>
-                                  <h4>{serv[service].name} </h4>
-                                  <img
-                                    className="rightTriangle"
-                                    src="img/rightTriangle.svg"
-                                    alt=""
-                                  />
+                  return (
+                    (serv["name"] && serv["name"].toLowerCase()).includes(
+                      this.props.navbarSearch.toLowerCase()
+                    ) && (
+                      <div key={index}>
+                        <div
+                          className="panel-tab"
+                          data-toggle="collapse"
+                          data-target={"#tab" + item}
+                          onClick={() => this.changeKeyService(item)}
+                        >
+                          <i className="fas fa-dot-circle"></i>
+                          <h4>{serv["name"]}</h4>
+                          <img src="img/uparrow.svg" alt="" />
+                        </div>
+
+                        <div
+                          className="nav nav-tabs panel-content collapse "
+                          id={"tab" + item}
+                        >
+                          {Object.keys(serv).map((service, indexx) => {
+                            if (service !== "name") {
+                              return (
+                                <div
+                                  data-toggle="tab"
+                                  key={indexx}
+                                  onClick={() =>
+                                    this.changeServce(service, item)
+                                  }
+                                >
+                                  <div className="panel-item">
+                                    <i className="fas fa-dot-circle"></i>
+                                    <h4>{serv[service].name} </h4>
+                                    <img
+                                      className="rightTriangle"
+                                      src="img/rightTriangle.svg"
+                                      alt=""
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            );
-                          }
-                        })}
+                              );
+                            }
+                          })}
+                        </div>
                       </div>
-                    </div>
+                    )
                   );
                 })}
               </div>
@@ -885,7 +892,8 @@ class Dashboard extends React.Component {
 
 const mapsStateToProps = state => ({
   services: state.main.services,
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  navbarSearch: state.main.navbarSearch
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { Form, Button, Input } from "antd";
-
+import { connect } from "react-redux";
+import { MainActions, AuthActions } from "redux-store/models";
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmDirty: false,
-      passwordToReset: ""
+      confirmDirty: false
     };
   }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (err) {
-        console.log("Received values of form: ", err);
+        console.log("error ", err);
       }
       if (!err) {
-        console.log("Received values of form: ", values);
+        console.log("vals ", values);
+        this.props.getChangedPassword(values.oldPassword, values.newPassword);
       }
     });
   };
@@ -26,7 +27,7 @@ class Profile extends Component {
   };
   validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
-    console.log("ca ka val next", value, rule);
+    // console.log("ca ka val next", value, rule);
     if (value && this.state.confirmDirty) {
       form.validateFields(["confirm"], { force: true });
     }
@@ -35,7 +36,7 @@ class Profile extends Component {
 
   compareToFirstPassword = (rule, value, callback) => {
     const { form } = this.props;
-    console.log("ca ka compare", value, form.getFieldValue("newPassword"));
+    // console.log("ca ka compare", value, form.getFieldValue("newPassword"));
     if (value && value !== form.getFieldValue("newPassword")) {
       callback("Passowrds different");
     } else {
@@ -45,12 +46,11 @@ class Profile extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { passwordToReset } = this.state;
-    console.log("passwordToReset", passwordToReset);
     return (
       <div className="changePassword">
-        <h2> Change Password</h2>
+        <h2>Cambia la password</h2>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Item label="Old password" hasFeedback>
+          <Form.Item label="Vecchia password" hasFeedback>
             {getFieldDecorator("oldPassword", {
               rules: [
                 {
@@ -61,7 +61,7 @@ class Profile extends Component {
             })(<Input.Password />)}
           </Form.Item>
 
-          <Form.Item label="New password" hasFeedback>
+          <Form.Item label="Nuova password" hasFeedback>
             {getFieldDecorator("newPassword", {
               rules: [
                 {
@@ -74,7 +74,7 @@ class Profile extends Component {
               ]
             })(<Input.Password />)}
           </Form.Item>
-          <Form.Item label="Confirm new password" hasFeedback>
+          <Form.Item label="Conferma la nuova pw" hasFeedback>
             {getFieldDecorator("confirm", {
               rules: [
                 {
@@ -88,7 +88,7 @@ class Profile extends Component {
             })(<Input.Password onBlur={this.handleConfirmBlur} />)}
           </Form.Item>
           <Button type="primary" htmltype="submit" onClick={this.handleSubmit}>
-            Change PW
+            Cambia
           </Button>
         </Form>
       </div>
@@ -96,4 +96,9 @@ class Profile extends Component {
   }
 }
 const Profilee = Form.create({ name: "changePassword" })(Profile);
-export default Profilee;
+
+const mapsStateToProps = state => ({});
+
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  Profilee
+);
