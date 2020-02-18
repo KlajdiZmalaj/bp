@@ -63,9 +63,9 @@ export const administrazioni = [
 export const profileLinks = [
   {
     id: 1,
-    name: "Profile"
+    name: "Cambia Password"
   },
-  { id: 2, name: "Users List" }
+  { id: 2, name: "Tutti Utenti" }
 ];
 export const acquista = [
   {

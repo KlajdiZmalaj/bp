@@ -20,7 +20,7 @@ const INITIAL_STATE = {
   services: {},
   showOverview: true,
   isShowing: false,
-  activeAccount: 1,
+  activeAccount: 2,
   userList: [],
   dashboardData: {},
   navbarSearch: ""
