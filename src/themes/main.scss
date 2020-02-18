@@ -25,7 +25,10 @@ $def: #ffffff;
 $inv: rgb(0, 0, 0);
 $font1: "Roboto", "sans-serif";
 $font2: "Rubik", "sans-serif";
+footer {
+      box-shadow: 0 -9px 30px -19px #0000004d;
 
+}
 ::selection {
   background-color: $main;
   color: $second;

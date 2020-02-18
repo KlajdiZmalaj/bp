@@ -102,7 +102,7 @@ class Configura extends React.Component {
                     <input type="text" />
                   </div>
                 </div>
-                <div className="titleConf">
+                {/* <div className="titleConf">
                   <i className="fas fa-dot-circle"></i>
                   <h5>cambio password</h5>
                 </div>
@@ -152,6 +152,7 @@ class Configura extends React.Component {
                     </label>
                   </div>
                 </div>
+            */}
               </div>
             </div>
           </div>

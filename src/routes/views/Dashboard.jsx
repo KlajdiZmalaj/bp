@@ -28,7 +28,6 @@ class Dashboard extends React.Component {
   render() {
     const { serviceSelected, keyService } = this.state;
     const { services } = this.props;
-    console.log("serviceSelected", serviceSelected, keyService);
     return (
       <div>
         <Header></Header>
@@ -53,7 +52,7 @@ class Dashboard extends React.Component {
                     (serv["name"] && serv["name"].toLowerCase()).includes(
                       this.props.navbarSearch.toLowerCase()
                     ) && (
-                      <div key={index}>
+                      <div key={index + item}>
                         <div
                           className="panel-tab"
                           data-toggle="collapse"
@@ -72,14 +71,11 @@ class Dashboard extends React.Component {
                           {Object.keys(serv).map((service, indexx) => {
                             if (service !== "name") {
                               return (
-                                <div
-                                  data-toggle="tab"
-                                  key={indexx}
-                                  onClick={() =>
-                                    this.changeServce(service, item)
-                                  }
-                                >
+                                <div data-toggle="tab" key={indexx + service}>
                                   <div
+                                    onClick={() =>
+                                      this.changeServce(service, item)
+                                    }
                                     className={
                                       "panel-item" +
                                       (serviceSelected === service
@@ -112,7 +108,7 @@ class Dashboard extends React.Component {
                   servicesItems={services[keyService]}
                 ></Service>
               )}
-
+              {console.log("serviceSelected", serviceSelected)}
               {/* <!--rigth block where is no selection--> */}
               <div className="col-md-3 pl-3">
                 <div

@@ -48,9 +48,9 @@ class Profile extends Component {
     const { passwordToReset } = this.state;
     return (
       <div className="changePassword">
-        <h2>Cambia la password</h2>
+        <h2>Cambio password</h2>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Item label="Vecchia password" hasFeedback>
+          <Form.Item label="Password attuale" hasFeedback>
             {getFieldDecorator("oldPassword", {
               rules: [
                 {
@@ -74,7 +74,7 @@ class Profile extends Component {
               ]
             })(<Input.Password />)}
           </Form.Item>
-          <Form.Item label="Conferma la nuova pw" hasFeedback>
+          <Form.Item label="Conferma password" hasFeedback>
             {getFieldDecorator("confirm", {
               rules: [
                 {

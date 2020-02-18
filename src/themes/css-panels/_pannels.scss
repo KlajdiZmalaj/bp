@@ -44,7 +44,7 @@
   background: #fff !important;
   margin-top: 34px;
   box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
-  padding-bottom: 60px;
+  padding-bottom: 150px;
 }
 .panel-tab {
   background: $second;
@@ -168,18 +168,28 @@
   margin: 0;
   padding: 5px;
   background: #fff;
+  table {
+    width: 100%;
+  }
   .table,
   td {
     border-collapse: collapse;
   }
+  tr {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+  }
   td {
-    border: 2px solid #edeef0;
+    border: 1px solid #edeef0;
     text-align: left;
     padding: 10px;
     padding-bottom: 0;
     cursor: pointer;
     width: 50%;
     display: inline-block;
+    margin-top: -1px;
+    margin-left: -1px;
     p {
       position: relative;
       margin: 0;
