@@ -153,11 +153,6 @@ class Header extends Component {
               </ul>
             )}
           </div>
-          <img
-            className="profile-img d-block d-md-none"
-            alt=""
-            src={images.mario}
-          />
         </div>
       </nav>
     );

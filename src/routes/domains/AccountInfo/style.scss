@@ -68,6 +68,9 @@
   display: flex;
   flex-flow: column;
   padding-bottom: 30px;
+  @media (max-width: 1024px) {
+    padding: 30px 10px;
+  }
   .title {
     font-size: 20px;
     color: #ed4c14;
@@ -89,6 +92,11 @@
       flex-grow: 1;
       width: 100%;
       padding: 10px;
+      @media (max-width: 1024px) {
+        text-transform: capitalize;
+        font-size: 12px;
+        padding: 2px;
+      }
     }
   }
   &--noDoc,
@@ -111,6 +119,11 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          @media (max-width: 1024px) {
+            text-transform: capitalize;
+            font-size: 12px;
+            padding: 2px;
+          }
         }
       }
     }

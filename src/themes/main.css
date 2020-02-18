@@ -160,6 +160,10 @@ a:hover {
   transition: 0.5s ease-in-out;
 }
 
+#root {
+  overflow: hidden;
+}
+
 /* ~~~~~~~ INIT. btnEFF ~~~~~~~ */
 .btnEFF {
   position: relative;
@@ -363,6 +367,9 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .navbar .active a {
@@ -376,6 +383,19 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .navbar-toggler {
+    width: 50px;
+  }
 }
 
 .navbar-brand {
@@ -385,6 +405,12 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .navbar-brand {
+    width: 64%;
+  }
 }
 
 .search-nav {
@@ -440,6 +466,12 @@ a:hover {
   text-align: center;
   position: relative;
   top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .overview-list ul {
+    top: 10px;
+  }
 }
 
 .overview-list ul li {
@@ -507,6 +539,18 @@ a:hover {
 
 .wigs-overview {
   margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  .wigs-overview > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 .wig {
@@ -2440,7 +2484,7 @@ footer h6 {
 
 @media (max-width: 984px) {
   .panels-container {
-    padding-bottom: 1px;
+    padding-bottom: 100px;
   }
   .heading-tab {
     padding-top: 8px;
@@ -2534,15 +2578,6 @@ footer h6 {
   }
   .sort-trasazioni ul i {
     padding: 0;
-  }
-  .transTable tr {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
   }
 }
 /*# sourceMappingURL=main.css.map */

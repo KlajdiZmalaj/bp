@@ -12,6 +12,20 @@ class Azioni extends Component {
     const params = {
       spaceBetween: 10,
       slidesPerView: 5,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2
+        },
+        // when window width is >= 480px
+        480: {
+          slidesPerView: 4
+        },
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 5
+        }
+      },
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"

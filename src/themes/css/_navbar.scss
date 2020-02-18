@@ -19,6 +19,7 @@
   .nav-item {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
   .active a {
     color: $main !important;
@@ -28,11 +29,21 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}
+.navbar-toggler {
+  @media (max-width: 1024px) {
+    width: 50px;
   }
 }
 .navbar-brand {
   display: flex;
   align-items: center;
+  @media (max-width: 1024px) {
+    width: 64%;
+  }
 }
 
 .search-nav {

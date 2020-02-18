@@ -101,6 +101,12 @@
   padding-bottom: 30px;
 }
 
+@media (max-width: 1024px) {
+  .userList {
+    padding: 30px 10px;
+  }
+}
+
 .userList .title {
   font-size: 20px;
   color: #ed4c14;
@@ -131,6 +137,14 @@
           flex-grow: 1;
   width: 100%;
   padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .userList .header span {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px;
+  }
 }
 
 .userList--noDoc__user, .userList--Doc__user {
@@ -166,6 +180,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .userList--noDoc__user .body span, .userList--Doc__user .body span {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px;
+  }
 }
 
 .userList .popUp {
