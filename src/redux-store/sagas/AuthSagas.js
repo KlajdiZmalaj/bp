@@ -11,7 +11,9 @@ import {
   fetchAds,
   sendCreatedAds,
   fetchRegisterAllInfo,
-  sendChangedPassword
+  sendChangedPassword,
+  fetchConfigura,
+  fetchCodice
 } from "services/auth";
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -279,4 +281,22 @@ export function* getChangedPassword(data) {
   );
 
   // console.log("ca ka responseeeee", data, response);
+}
+export function* getConfigura(data) {
+  const response = yield call(fetchConfigura, data.id);
+  if (response.status === 200) {
+    yield put(AuthActions.setConfiguraData(response.data.user));
+  } else {
+    yield put(AuthActions.setConfiguraData({}));
+  }
+  console.log("ca ka responseeeee configura", response);
+}
+export function* getCodiceTicket(data) {
+  const response = yield call(fetchCodice, data.barcode);
+  if (response.status === 200) {
+    yield put(AuthActions.setPaymentsFromCode(response.data.payment));
+  } else {
+    yield put(AuthActions.setPaymentsFromCode({}));
+  }
+  // console.log("ca ka responseeeee codice", response);
 }

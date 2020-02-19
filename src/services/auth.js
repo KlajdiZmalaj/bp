@@ -258,3 +258,61 @@ export const sendChangedPassword = (oldPassword, newPassword) =>
       ...{ confirm_password: newPassword }
     })
     .catch(error => ({ error }));
+export const fetchConfigura = id =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .get(
+      `/users/${id}`
+      // , {
+      //   params: {
+      //     a_ragione_sociale: "RAG. SOC.",
+      //     a_insegna: "INSEGNA",
+      //     email: "EMAIL",
+      //     a_p_iva: "P. IVA",
+      //     a_codice_fiscale: "COD. FISC.",
+      //     a_address: "INDIRIZZO",
+      //     a_comune_code: "PROVINCIA",
+      //     a_cap: "CAP",
+      //     a_city: "LOCALITA",
+      //     a_phone: "TELEFONO",
+      //     first_name: "NOME",
+      //     last_name: "COGNOME",
+      //     personal_number: "COD. FISC.",
+      //     document_type: "TIPO DOC. ",
+      //     document_number: "N. DOCUMENTO",
+      //     address: "INDIRIZZO",
+      //     comune_code: "PROVINCIA",
+      //     cap: "CAP",
+      //     city: "LOCALITA",
+      //     phone: "TELEFONO",
+      //     birth_place: "CITTA` NASCITA ",
+      //     birth_comune_code: "PROVINCIA",
+      //     birthday: "DATA"
+      //   }
+      // }
+    )
+    .catch(error => ({ error }));
+
+export const fetchCodice = barcode =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .get("/payment", {
+      params: {
+        barcode: barcode
+      }
+    })
+    .catch(error => ({ error }));
