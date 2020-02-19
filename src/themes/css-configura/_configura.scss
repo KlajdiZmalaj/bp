@@ -35,6 +35,12 @@
     width: 55%;
     max-width: 60%;
     border: 1px solid $second;
+    &[disabled] {
+      text-transform: lowercase;
+      color: #656565;
+      background: #fff;
+      padding: 4px;
+    }
   }
 }
 
@@ -113,5 +119,43 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-
+.popUpPrint {
+  width: 100%;
+  max-width: 450px;
+  height: 80%;
+  background: #fff;
+  position: fixed;
+  top: 10%;
+  z-index: 3;
+  overflow-y: auto;
+  left: 50%;
+  margin-left: -240px;
+  border-radius: 20px;
+  padding: 10px;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  .closeP {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: rgb(219, 39, 39);
+    cursor: pointer;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 25px;
+    margin-top: 50px;
+  }
+  .warning {
+    text-align: center;
+    color: #da981e;
+    font-size: 120px;
+    font-weight: 300;
+    display: block;
+    margin-top: 50px;
+  }
+}
 /*checkbox custom end*/

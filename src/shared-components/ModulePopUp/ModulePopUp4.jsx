@@ -4,18 +4,23 @@ import { MainActions, AuthActions } from "redux-store/models";
 import PrintTicket from "./PrintTicket";
 import Bolletino from "./Bolletino";
 import images from "../../themes/images";
+import ReactToPrint from "react-to-print";
 
 class ModulePopUp4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       serviceMobile: this.props.serviceSelected,
-      tel_no: ""
+      tel_no: "",
+      barcode: "21312",
+      toPrint: false
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
-
+  setPrint = val => {
+    this.setState({ toPrint: val });
+  };
   handleChange(event) {
     this.setState({ tel_no: event.target.value });
   }
@@ -39,7 +44,7 @@ class ModulePopUp4 extends React.Component {
     const { service_s, rechargeMobile, serviceType, service } = this.props;
     console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
-    const { serviceMobile, tel_no } = this.state;
+    const { serviceMobile, tel_no, toPrint } = this.state;
 
     const arr = {
       message: "User transactions fetched successfully",
@@ -183,12 +188,13 @@ class ModulePopUp4 extends React.Component {
                           <tbody>
                             <tr>
                               <td
-                                onClick={() =>
+                                onClick={() => {
                                   this.handleSubmit(
                                     serviceMobile.service_id,
                                     tel_no
-                                  )
-                                }
+                                  );
+                                  this.setPrint(true);
+                                }}
                               >
                                 <h3>esegui</h3>
                                 <img src={images.checkSymbol} alt="" />
@@ -219,25 +225,64 @@ class ModulePopUp4 extends React.Component {
                 </div>
               </div>
             </div>
-            {rechargeMobile.receipt && (
+            {rechargeMobile.receipt && toPrint && (
               <div className="col-5 rightCol_Module">
                 <div className="row no-gutters">
-                  <div className="_modulePopUP__cupon">
-                    <div className="_modulePopUP__cupon--header">
-                      <img src="img/print.svg" alt="" />
-                      <h3>Stampa dello scontrino</h3>
-                    </div>
-                    <div className="_modulePopUP__cupon--body ">
-                      <img src="img/logoGray.svg" alt="" />
-
+                  <div className="">
+                    <div
+                      className="printModal p-2"
+                      ref={el => (this.printT = el)}
+                    >
+                      <div className="headerModal">
+                        <img className="logo" src={images.logo} alt="" />
+                        <span className="superSmall text-bold">
+                          MAPE{" "}
+                          <span>di Hristova Mariya Hristova e C.s.a.s.</span>
+                        </span>
+                        <span className="superSmall">
+                          V.le XXIII Settembre 1845 n. 67 Rimini (RN) Italia
+                        </span>
+                        <span className="superSmall link">
+                          www.bpoint.store - info@bpoint.store
+                        </span>
+                        <span className="superSmall ">
+                          Tel: +39 0541 087890
+                        </span>
+                        <span className="superSmall tel">
+                          P.IVA 03852290406
+                        </span>
+                        <span className="fontSmall text-bold">
+                          {rechargeMobile.agency_name}
+                        </span>
+                        <span className="fontSmall address">
+                          {rechargeMobile.agency_address}
+                        </span>
+                        {/* <span className="userCel">
+                          {" "}
+                          Telefono: <b>{rechargeMobile.agency_phone}</b>{" "}
+                        </span> */}
+                        {/* <span>BPOINT</span> */}
+                      </div>
+                      {console.log("rechargeMobile.receipt", rechargeMobile)}
                       <div
                         dangerouslySetInnerHTML={{
                           __html: rechargeMobile.receipt
                             .replace(/</g, "&lt;")
                             .replace(/>/g, "&gt;")
                             .replace(/\t/g, "\u00a0")
-                            .replace(/\n/g, "<br/>")
+                            .replace(/\n/g, "<br/> ")
+                            .replace(/\+/g, " ")
+                            .replace(/: /g, ":<div class='marginB'></div>")
+                            .replace(
+                              /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                              "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                            )
                         }}
+                      />
+                      <img
+                        className="barcodeModal"
+                        src={`https://barcode.tec-it.com/barcode.ashx?data=${rechargeMobile.barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
+                        alt=""
                       />
                       {/* <h6>OTC srl</h6>
                           <span className="__cupon--body__address">
@@ -271,12 +316,26 @@ class ModulePopUp4 extends React.Component {
                             </table>
                           </div> */}
                       <div className="btn-group" role="group">
-                        <button type="button" className="btn btn-secondary">
-                          <img src={images.checkSymbol} alt="" />
-                          <br />
-                          Stampa
-                        </button>
-                        <button type="button" className="btn btn-secondary">
+                        <ReactToPrint
+                          trigger={() => (
+                            <button type="button" className="stampBtn">
+                              <img src={images.checkSymbol} alt="" />
+                              <br />
+                              Stampa
+                            </button>
+                          )}
+                          content={() => this.printT}
+                          bodyClass="afterprint"
+                          // copyStyles="false"
+                        />
+
+                        <button
+                          type="button"
+                          className="anullaBtn"
+                          onClick={() => {
+                            this.setPrint(false);
+                          }}
+                        >
                           <img src={images.close} alt="" /> <br />
                           Anulla
                         </button>

@@ -275,41 +275,46 @@ class Transazioni extends React.Component {
                     {!payments.message &&
                       (paymentsO || []).map((item, index) => {
                         return (
-                          <tr
-                            key={index}
-                            onClick={() =>
-                              this.showModal(
-                                index,
-                                item.barcode,
-                                item.agency_name,
-                                item.agency_address,
-                                item.agency_phone
-                              )
-                            }
-                          >
-                            <td>
-                              {moment(item.executed_date).format(
-                                "DD/MM/YYYY HH:mm:ss"
-                              )}
-                            </td>
-                            <td>{item.barcode}</td>
-                            <td>{item.service_name}</td>
-                            <td className="right">
-                              {item.price1000
-                                ? slicedAmount(item.price1000 / 1000)
-                                : "-"}
-                            </td>
-                            <td className="right">
-                              {item.commissione}
-                              {/* {item.commissione ? item.commissione : "-"}{" "} */}
-                            </td>
-                            <td className="right">
-                              {item.percentage}
-                              {/* {parseInt(item.percentage) > 0
+                          (
+                            item.service_name &&
+                            item.service_name.toString().toLowerCase()
+                          ).includes(this.props.navbarSearch.toLowerCase()) && (
+                            <tr
+                              key={index}
+                              onClick={() =>
+                                this.showModal(
+                                  index,
+                                  item.barcode,
+                                  item.agency_name,
+                                  item.agency_address,
+                                  item.agency_phone
+                                )
+                              }
+                            >
+                              <td>
+                                {moment(item.executed_date).format(
+                                  "DD/MM/YYYY HH:mm:ss"
+                                )}
+                              </td>
+                              <td>{item.barcode}</td>
+                              <td>{item.service_name}</td>
+                              <td className="right">
+                                {item.price1000
+                                  ? slicedAmount(item.price1000 / 1000)
+                                  : "-"}
+                              </td>
+                              <td className="right">
+                                {item.commissione}
+                                {/* {item.commissione ? item.commissione : "-"}{" "} */}
+                              </td>
+                              <td className="right">
+                                {item.percentage}
+                                {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
-                            </td>
-                          </tr>
+                              </td>
+                            </tr>
+                          )
                         );
                       })}
                   </tbody>
@@ -350,10 +355,10 @@ class Transazioni extends React.Component {
                     {this.state.address.charAt(0).toUpperCase() +
                       this.state.address.slice(1).toLocaleLowerCase()}
                   </span>
-                  <span className="userCel">
+                  {/* <span className="userCel">
                     {" "}
                     Telefono: <b>{this.state.phone}</b>{" "}
-                  </span>
+                  </span> */}
                   {/* BPOINT<br></br>
                   PUNTA ANCORA DI GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
@@ -407,7 +412,8 @@ const mapsStateToProps = state => ({
   service_id: state.auth.service_id,
   payments: state.auth.payments,
   usernames: state.auth.usernames,
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  navbarSearch: state.main.navbarSearch
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

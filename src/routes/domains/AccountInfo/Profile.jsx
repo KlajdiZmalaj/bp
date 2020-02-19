@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Input } from "antd";
-
+import { connect } from "react-redux";
+import { MainActions, AuthActions } from "redux-store/models";
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +12,12 @@ class Profile extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
+      if (err) {
+        console.log("error ", err);
+      }
       if (!err) {
-        console.log("Received values of form: ", values);
+        console.log("vals ", values);
+        this.props.getChangedPassword(values.oldPassword, values.newPassword);
       }
     });
   };
@@ -22,6 +27,7 @@ class Profile extends Component {
   };
   validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
+    // console.log("ca ka val next", value, rule);
     if (value && this.state.confirmDirty) {
       form.validateFields(["confirm"], { force: true });
     }
@@ -30,20 +36,21 @@ class Profile extends Component {
 
   compareToFirstPassword = (rule, value, callback) => {
     const { form } = this.props;
+    // console.log("ca ka compare", value, form.getFieldValue("newPassword"));
     if (value && value !== form.getFieldValue("newPassword")) {
-      callback("Two passwords that you enter is inconsistent!");
+      callback("Passowrds different");
     } else {
       callback();
     }
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-
+    const { passwordToReset } = this.state;
     return (
       <div className="changePassword">
-        <h2> Change Password</h2>
+        <h2>Cambio password</h2>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Item label="Old password" hasFeedback>
+          <Form.Item label="Password attuale" hasFeedback>
             {getFieldDecorator("oldPassword", {
               rules: [
                 {
@@ -54,7 +61,7 @@ class Profile extends Component {
             })(<Input.Password />)}
           </Form.Item>
 
-          <Form.Item label="New password" hasFeedback>
+          <Form.Item label="Nuova password" hasFeedback>
             {getFieldDecorator("newPassword", {
               rules: [
                 {
@@ -67,7 +74,7 @@ class Profile extends Component {
               ]
             })(<Input.Password />)}
           </Form.Item>
-          <Form.Item label="Confirm new password" hasFeedback>
+          <Form.Item label="Conferma password" hasFeedback>
             {getFieldDecorator("confirm", {
               rules: [
                 {
@@ -80,13 +87,18 @@ class Profile extends Component {
               ]
             })(<Input.Password onBlur={this.handleConfirmBlur} />)}
           </Form.Item>
-          <Button type="primary" htmltype="submit">
-            Change PW
+          <Button type="primary" htmltype="submit" onClick={this.handleSubmit}>
+            Cambia
           </Button>
         </Form>
       </div>
     );
   }
 }
-const Profilee = Form.create()(Profile);
-export default Profilee;
+const Profilee = Form.create({ name: "changePassword" })(Profile);
+
+const mapsStateToProps = state => ({});
+
+export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
+  Profilee
+);

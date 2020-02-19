@@ -7,18 +7,16 @@ import { Service } from "routes/components";
 import images from "../../themes/images";
 
 class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.getServices();
-  }
-
   state = {
     serviceSelected: "",
     keyService: ""
   };
-
+  componentDidMount() {
+    this.props.getServices();
+  }
   changeServce = (service, item) => {
-    this.setState({ serviceSelected: service });
-    this.setState({ keyService: item });
+    this.setState({ serviceSelected: service, keyService: item });
+    // this.setState({ keyService: item });
     this.props.setServiceType(item);
   };
 
@@ -30,7 +28,6 @@ class Dashboard extends React.Component {
   render() {
     const { serviceSelected, keyService } = this.state;
     const { services } = this.props;
-
     return (
       <div>
         <Header></Header>
@@ -50,49 +47,61 @@ class Dashboard extends React.Component {
               <div className="col-md-9 ">
                 {Object.keys(services).map((item, index) => {
                   const serv = services[item];
-                  return (
-                    <div key={index}>
-                      <div
-                        className="panel-tab"
-                        data-toggle="collapse"
-                        data-target={"#tab" + item}
-                        onClick={() => this.changeKeyService(item)}
-                      >
-                        <i className="fas fa-dot-circle"></i>
-                        <h4>{serv["name"]}</h4>
-                        <img src="img/uparrow.svg" alt="" />
-                      </div>
 
-                      <div
-                        className="nav nav-tabs panel-content collapse "
-                        id={"tab" + item}
-                      >
-                        {Object.keys(serv).map((service, indexx) => {
-                          if (service !== "name") {
-                            return (
-                              <div
-                                data-toggle="tab"
-                                key={indexx}
-                                onClick={() => this.changeServce(service, item)}
-                              >
-                                <div className="panel-item">
-                                  <i className="fas fa-dot-circle"></i>
-                                  <h4>{serv[service].name} </h4>
-                                  <img
-                                    className="rightTriangle"
-                                    src="img/rightTriangle.svg"
-                                    alt=""
-                                  />
+                  return (
+                    (serv["name"] && serv["name"].toLowerCase()).includes(
+                      this.props.navbarSearch.toLowerCase()
+                    ) && (
+                      <div key={index + item}>
+                        <div
+                          className="panel-tab"
+                          data-toggle="collapse"
+                          data-target={"#tab" + item}
+                          onClick={() => this.changeKeyService(item)}
+                        >
+                          <i className="fas fa-dot-circle"></i>
+                          <h4>{serv["name"]}</h4>
+                          <img src={images.uparrow} alt="" />
+                        </div>
+
+                        <div
+                          className="nav nav-tabs panel-content collapse "
+                          id={"tab" + item}
+                        >
+                          {Object.keys(serv).map((service, indexx) => {
+                            if (service !== "name") {
+                              return (
+                                <div data-toggle="tab" key={indexx + service}>
+                                  <div
+                                    onClick={() =>
+                                      this.changeServce(service, item)
+                                    }
+                                    className={
+                                      "panel-item" +
+                                      (serviceSelected === service
+                                        ? " clickedItem"
+                                        : "")
+                                    }
+                                  >
+                                    <i className="fas fa-dot-circle"></i>
+                                    <h4>{serv[service].name} </h4>
+                                    <img
+                                      className="rightTriangle"
+                                      src={images.rightTriangle}
+                                      alt=""
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            );
-                          }
-                        })}
+                              );
+                            }
+                          })}
+                        </div>
                       </div>
-                    </div>
+                    )
                   );
                 })}
               </div>
+              {console.log("serviceSelected", serviceSelected)}
               {/* serviceSelected, keyService  */}
               {serviceSelected !== "" && (
                 <Service
@@ -100,7 +109,7 @@ class Dashboard extends React.Component {
                   servicesItems={services[keyService]}
                 ></Service>
               )}
-
+              {console.log("serviceSelected", serviceSelected)}
               {/* <!--rigth block where is no selection--> */}
               <div className="col-md-3 pl-3">
                 <div
@@ -885,7 +894,8 @@ class Dashboard extends React.Component {
 
 const mapsStateToProps = state => ({
   services: state.main.services,
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
+  navbarSearch: state.main.navbarSearch
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

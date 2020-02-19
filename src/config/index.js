@@ -1,5 +1,18 @@
 // import images from "themes/images";
-
+export const docType = [
+  {
+    id:1,
+    name:'Carta di identita'
+  },
+  {
+    id:2,
+    name:'Patenta di guida'
+  },
+  {
+    id:3,
+    name:'Passporto'
+  }
+]
 export const azioni = [
   {
     id: 1,
@@ -63,9 +76,9 @@ export const administrazioni = [
 export const profileLinks = [
   {
     id: 1,
-    name: "Profile"
+    name: "Cambia Password"
   },
-  { id: 2, name: "Users List" }
+  { id: 2, name: "Tutti Utenti" }
 ];
 export const acquista = [
   {
@@ -50915,3 +50928,5 @@ export const countriesArray = [
     nazione: "SUD SUDAN"
   }
 ];
+
+

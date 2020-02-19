@@ -6,6 +6,7 @@ export default {
   admAZZ: require("../assets/images/admAZZ.svg"),
   click: require("../assets/images/click.svg"),
   billDark: require("../assets/images/bill-dark.svg"),
+
   billBlue: require("../assets/images/bill-blue.svg"),
   billOrange: require("../assets/images/bill-orange.svg"),
   Car: require("../assets/images/Car.svg"),
@@ -13,7 +14,7 @@ export default {
   TIM_logo_2016: require("../assets/images/TIM_logo_2016.svg"),
   wind_logo_svg_vector: require("../assets/images/wind-logo-svg-vector.svg"),
   three_logo: require("../assets/images/three-logo.svg"),
-
+  rightTriangle: require("../assets/images/rightTriangle.svg"),
   posteitalia: require("../assets/images/posteitalia.svg"),
   coop: require("../assets/images/coop.svg"),
   paysafe: require("../assets/images/paysafe.svg"),
@@ -31,5 +32,32 @@ export default {
   checkSymbol: require("../assets/images/check-symbol.svg"),
   print: require("../assets/images/print.svg"),
   logoGray: require("../assets/images/logoGray.svg"),
-  postepayBlue: require("../assets/images/postepayBlue.svg")
+  postepayBlue: require("../assets/images/postepayBlue.svg"),
+
+  BOLL: require("../assets/images/bill-dark.svg"),
+  RCPP: require("../assets/images/postpayimg.svg"),
+  TIM: require("../assets/images/TIM_logo_2016.svg"),
+  TIMO: require("../assets/images/TIM_logo_2016.svg"),
+
+  VODA: require("../assets/images/vodafone.svg"),
+  VODO: require("../assets/images/vodafone.svg"),
+
+  WIND: require("../assets/images/wind-logo-svg-vector.svg"),
+  WINO: require("../assets/images/wind-logo-svg-vector.svg"),
+
+  TRE: require("../assets/images/three-logo.svg"),
+  TREO: require("../assets/images/three-logo.svg"),
+  SKY: require("../assets/images/Sky_Italia_-_Logo_2018.svg"),
+  PMOB: require("../assets/images/posteitalia.svg"),
+  CRP00B: require("../assets/images/bitcoinorange.svg"),
+  CRP0BC: require("../assets/images/bitcoingreen.svg"),
+  CRP00E: require("../assets/images/ethereum.svg"),
+  CRP00R: require("../assets/images/riple.svg"),
+  CRP00L: require("../assets/images/litecoin.svg"),
+  CRP00D: require("../assets/images/dashcoin.svg")
+  // COOPV: require("../assets/images/bill-dark.svg"),
+  // DKENA: require("../assets/images/bill-dark.svg"),
+  // HOX: require("../assets/images/bill-dark.svg"),
+  // FSTW: require("../assets/images/bill-dark.svg"),
+  // ILIO: require("../assets/images/bill-dark.svg")
 };

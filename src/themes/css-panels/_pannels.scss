@@ -44,7 +44,7 @@
   background: #fff !important;
   margin-top: 34px;
   box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
-  padding-bottom: 60px;
+  padding-bottom: 150px;
 }
 .panel-tab {
   background: $second;
@@ -115,6 +115,9 @@
     top: 4px;
     left: 10px;
     font-weight: normal;
+    @media (max-width: 1024px) {
+      font-size: 13px;
+    }
   }
   img {
     margin-left: auto;
@@ -165,18 +168,28 @@
   margin: 0;
   padding: 5px;
   background: #fff;
+  table {
+    width: 100%;
+  }
   .table,
   td {
     border-collapse: collapse;
   }
+  tr {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+  }
   td {
-    border: 2px solid #edeef0;
+    border: 1px solid #edeef0;
     text-align: left;
     padding: 10px;
     padding-bottom: 0;
     cursor: pointer;
     width: 50%;
     display: inline-block;
+    margin-top: -1px;
+    margin-left: -1px;
     p {
       position: relative;
       margin: 0;
@@ -309,6 +322,11 @@ span.superSmall {
   font-weight: 400 !important;
   font-size: 16px !important;
 }
+.rightCol_Module {
+  .marginC {
+    margin-top: -25px;
+  }
+}
 .marginC {
   clear: both;
   float: right;
@@ -341,6 +359,7 @@ span.superSmall {
   margin-left: 11mm;
 }
 .printModal {
+  background-color: #fff;
   // filter: blur(0.4px);
   width: 100%;
   display: block;
@@ -369,10 +388,23 @@ span.superSmall {
   margin-top: 40px;
   cursor: pointer;
 }
-.afterprint .printBtn {
+.afterprint .printBtn,
+.afterprint .btn-group {
   display: none;
 }
-
+.printModal .btn-group {
+  width: 100%;
+  justify-content: space-evenly;
+}
+.stampBtn {
+  border: 0;
+  color: #000;
+  border: 1px solid #3dad3d;
+}
+.anullaBtn {
+  color: #000;
+  border: 1px solid #ad3d3d;
+}
 @media print {
   @page {
     margin: 0 auto;

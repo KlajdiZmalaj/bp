@@ -75,7 +75,12 @@ const { Types, Creators } = createActions({
   setRegister: ["register"],
   setAds: ["ads"],
   createAds: ["data"],
-  createAdsResponse: ["adsCreationgLoading", "adsCreationgMess"]
+  createAdsResponse: ["adsCreationgLoading", "adsCreationgMess"],
+  getChangedPassword: ["oldPassword", "newPassword"],
+  getConfigura: ["id"],
+  getCodiceTicket: ["barcode"],
+  setPaymentsFromCode: ["paymentsFromCode"],
+  setConfiguraData: ["usersConfigura"]
 });
 
 export const AuthTypes = Types;
@@ -95,7 +100,9 @@ const INITIAL_STATE = {
   rechargeMobile: {},
   postePay: {},
   ads: [],
-  register: {}
+  register: {},
+  paymentsFromCode: {},
+  usersConfigura: {}
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -103,6 +110,14 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     loading: true,
     unauthorizated: false
+  }),
+  [Types.SET_PAYMENTS_FROM_CODE]: (state, { paymentsFromCode }) => ({
+    ...state,
+    paymentsFromCode
+  }),
+  [Types.SET_CONFIGURA_DATA]: (state, { usersConfigura }) => ({
+    ...state,
+    usersConfigura
   }),
   [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
     ...state,

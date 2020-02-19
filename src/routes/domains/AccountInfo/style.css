@@ -8,11 +8,14 @@
           flex-flow: column;
   margin-top: 65px;
   padding-bottom: 65px;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 
 .leftMenuAcc {
   position: relative;
-  background-color: #d4d4d4;
+  background-color: #fff;
   width: 100%;
   text-transform: uppercase;
   display: -webkit-box;
@@ -22,14 +25,12 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row;
           flex-flow: row;
-  border-bottom: 1px solid #adadad;
 }
 
 .leftMenuAcc > div {
   border-right: 1px solid #adadad;
   padding: 15px;
   cursor: pointer;
-  border-bottom: 2px solid #d4d4d4;
 }
 
 .leftMenuAcc > div:hover, .leftMenuAcc > div.active {
@@ -41,9 +42,14 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
   background: #edeef0;
-  padding: 15px;
-  -webkit-box-shadow: inset -2px 13px 60px -31px black;
-          box-shadow: inset -2px 13px 60px -31px black;
+  padding-top: 25px;
+}
+
+.contentAcc .ant-btn {
+  border-radius: 0;
+  background: #ed4c14;
+  border: 0;
+  padding: 0 40px;
 }
 
 .contentAcc .changePassword {
@@ -53,6 +59,20 @@
   margin: 0 auto;
   text-align: center;
   padding: 20px;
+}
+
+.contentAcc .changePassword .ant-form-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contentAcc .changePassword .ant-form-item-label {
+  width: 40%;
+}
+
+.contentAcc .changePassword .ant-form-item-control-wrapper {
+  width: 60%;
 }
 
 .contentAcc .changePassword h2 {
@@ -79,6 +99,12 @@
       -ms-flex-flow: column;
           flex-flow: column;
   padding-bottom: 30px;
+}
+
+@media (max-width: 1024px) {
+  .userList {
+    padding: 30px 10px;
+  }
 }
 
 .userList .title {
@@ -113,6 +139,14 @@
   padding: 10px;
 }
 
+@media (max-width: 1024px) {
+  .userList .header span {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px;
+  }
+}
+
 .userList--noDoc__user, .userList--Doc__user {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -143,6 +177,17 @@
           flex-grow: 1;
   width: 100%;
   padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .userList--noDoc__user .body span, .userList--Doc__user .body span {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px;
+  }
 }
 
 .userList .popUp {
@@ -154,7 +199,7 @@
   z-index: 3;
   border-radius: 10px;
   left: 50%;
-  margin-left: -230px;
+  margin-left: -205px;
   text-align: center;
   padding-bottom: 20px;
   overflow: scroll;

@@ -23,7 +23,13 @@ class PrintTicket extends React.Component {
                     .replace(/</g, "&lt;")
                     .replace(/>/g, "&gt;")
                     .replace(/\t/g, "\u00a0")
-                    .replace(/\n/g, "<br/>")
+                    .replace(/\n/g, "<br/> ")
+                    .replace(/\+/g, " ")
+                    .replace(/: /g, ":<div class='marginB'></div>")
+                    .replace(
+                      /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                      "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                    )
                 }}
               />
               <span className="__cupon--body__address">

@@ -24,4 +24,8 @@
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
 }
+
+#root {
+  overflow: hidden;
+}
 /*# sourceMappingURL=Header.styles.css.map */
