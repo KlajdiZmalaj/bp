@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
+import { Select } from "antd";
+
+const { Option } = Select;
 
 class ModulePopUp3 extends React.Component {
   constructor(props) {
@@ -13,7 +16,9 @@ class ModulePopUp3 extends React.Component {
       codice_fiscale_intestatario: "",
       ordinante: "",
       codice_fiscale_ordinante: "",
-      numero_postepay: ""
+      numero_postepay: "",
+      userList: [],
+      showUpload: false
     };
 
     this.handleChangeImporto = this.handleChangeImporto.bind(this);
@@ -25,14 +30,12 @@ class ModulePopUp3 extends React.Component {
     this.handleChangeOrdinante = this.handleChangeOrdinante.bind(this);
     this.handleChangeCfOrdinante = this.handleChangeCfOrdinante.bind(this);
     this.handleChangeNrPostepay = this.handleChangeNrPostepay.bind(this);
+
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   handleChangeImporto(event) {
     this.setState({ importo: event.target.value });
-  }
-
-  handleChangeUser_id(event) {
-    this.setState({ user_id: event.target.value });
   }
 
   handleChangeIntestazione(event) {
@@ -55,6 +58,26 @@ class ModulePopUp3 extends React.Component {
     this.setState({ numero_postepay: event.target.value });
   }
 
+  handleSearch = value => {
+    if (value.length > 2) {
+      this.props.getUsers(value);
+    }
+  };
+
+  handleChangeUser_id(event) {
+    const ev = JSON.parse(event);
+    console.log("eventttt", ev);
+    const user = Object.values(ev)[0];
+    if (Object.keys(ev)[0] === "no_photo") {
+      this.setState({ showUpload: true });
+    }
+    this.setState({ ordinante: `${user.first_name} ${user.last_name}` });
+    this.setState({
+      codice_fiscale_ordinante: user.codice_fiscale_ordinante
+    });
+    this.setState({ user_id: user.id });
+  }
+
   handleSubmit = service_id => {
     const {
       importo,
@@ -66,17 +89,6 @@ class ModulePopUp3 extends React.Component {
       numero_postepay
     } = this.state;
 
-    console.log(
-      " service_id,",
-      service_id,
-      importo,
-      user_id,
-      intestazione,
-      codice_fiscale_intestatario,
-      ordinante,
-      codice_fiscale_ordinante,
-      numero_postepay
-    );
     // this.props.getPostePay(
     //   service_id,
     //   importo,
@@ -88,8 +100,9 @@ class ModulePopUp3 extends React.Component {
     //   numero_postepay
     // );
   };
+
   render() {
-    const { service_id } = this.props;
+    const { service_id, userList } = this.props;
 
     const {
       importo,
@@ -98,8 +111,25 @@ class ModulePopUp3 extends React.Component {
       codice_fiscale_intestatario,
       ordinante,
       codice_fiscale_ordinante,
-      numero_postepay
+      numero_postepay,
+      showUpload
     } = this.state;
+
+    let options = [];
+
+    if (userList && Object.keys(userList).length > 0) {
+      Object.keys(userList).map(item => {
+        const b = userList[item] && userList[item].length > 0 && userList[item];
+        options = (b || []).map(i => {
+          return (
+            <Option key={JSON.stringify({ [item]: i })}>
+              {i.first_name} {i.last_name}
+            </Option>
+          );
+        });
+        return options;
+      });
+    }
 
     return (
       <div className="modulePopUP modulePopUP3">
@@ -181,14 +211,23 @@ class ModulePopUp3 extends React.Component {
                 </div>
                 <div className="col-7">
                   <div className="euroboll ">
-                    <input
-                      type="text"
+                    <Select
+                      showSearch
                       value={user_id}
+                      defaultActiveFirstOption={false}
+                      showArrow={false}
+                      filterOption={false}
+                      onSearch={this.handleSearch}
                       onChange={this.handleChangeUser_id}
-                    />
+                      placeholder="select"
+                    >
+                      {options}
+                    </Select>
                   </div>
                 </div>
-
+                <div className="col-12 pt-2">
+                  {showUpload && <div>Upload </div>}
+                </div>
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">IMPORTO</span>
@@ -376,7 +415,8 @@ class ModulePopUp3 extends React.Component {
 const mapsStateToProps = state => ({
   isShowing: state.main.isShowing,
   service_s: state.auth.service_s,
-  rechargeMobile: state.auth.rechargeMobile
+  rechargeMobile: state.auth.rechargeMobile,
+  userList: state.main.userList
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
