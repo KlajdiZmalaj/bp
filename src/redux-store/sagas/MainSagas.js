@@ -26,8 +26,8 @@ export function* getServices() {
   }
 }
 
-export function* getUsers() {
-  const response = yield call(fetchUsers);
+export function* getUsers(params) {
+  const response = yield call(fetchUsers, params.search_user);
   // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsers(response.data.users));

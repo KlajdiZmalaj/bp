@@ -7,7 +7,7 @@ const { Types, Creators } = createActions({
   togglePopUp: ["isShowing"],
   setAccount: ["activeAccount"],
   setUsers: ["userList"],
-  getUsers: [],
+  getUsers: ["search_user"],
   getOverviewDashboard: ["period"],
   setOverviewDashboard: ["dashboardData"]
 });

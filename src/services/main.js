@@ -12,7 +12,7 @@ export const fetchServices = () =>
     .get(`/services`)
     .catch(error => ({ error }));
 
-export const fetchUsers = () =>
+export const fetchUsers = search_user =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -22,7 +22,9 @@ export const fetchUsers = () =>
         }`
       }
     })
-    .post(`/users/list`)
+    .post(`/users/findUser`, {
+      ...(search_user ? { search_user: search_user } : {})
+    })
     // .then(data => {
     //   console.log("fetch users called", data,);
     // })

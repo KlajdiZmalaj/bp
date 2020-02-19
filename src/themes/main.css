@@ -120,12 +120,11 @@ a:hover {
 .activeFilter {
   border-color: #1e87f0;
   background: #c2dcf7;
-  cursor: pointer;
   color: #1e87f0;
 }
 
 .activeFilter:nth-child(2) {
-  background-color: #ffd8b9;
+  background-color: #fbe2ce;
   color: #ef7449;
 }
 

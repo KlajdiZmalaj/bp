@@ -152,4 +152,16 @@
   height: 80px;
   display: block;
 }
+
+.euroboll .ant-select.ant-select-enabled.ant-select-no-arrow {
+  border: 1px solid #edeef0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  font-family: "Roboto", "sans-serif";
+  font-size: 14px;
+  font-weight: bold;
+}
 /*# sourceMappingURL=style.css.map */
