@@ -54,7 +54,16 @@ class Service extends React.Component {
                           onClick={() => this.selectService(item)}
                           key={index}
                         >
-                          <img src={images.billDark} alt="" />
+                          <img
+                            src={
+                              images[item.service_id]
+                                ? images[item.service_id]
+                                : images[serviceSelected]
+                                ? images[serviceSelected]
+                                : images["BOLL"]
+                            }
+                            alt={serviceSelected + "||||" + item.service_id}
+                          />
                           <p>{item.name}</p>
                         </td>
                       );

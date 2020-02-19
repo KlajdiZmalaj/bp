@@ -1,5 +1,18 @@
 // import images from "themes/images";
-
+export const docType = [
+  {
+    id:1,
+    name:'Carta di identita'
+  },
+  {
+    id:2,
+    name:'Patenta di guida'
+  },
+  {
+    id:3,
+    name:'Passporto'
+  }
+]
 export const azioni = [
   {
     id: 1,
@@ -50915,3 +50928,5 @@ export const countriesArray = [
     nazione: "SUD SUDAN"
   }
 ];
+
+

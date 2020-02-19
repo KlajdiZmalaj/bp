@@ -4,6 +4,7 @@ import { Azioni, Header } from "shared-components";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import { get } from "lodash";
+import { docType } from "config";
 class Configura extends React.Component {
   componentDidMount() {}
   render() {
@@ -15,6 +16,12 @@ class Configura extends React.Component {
     ) {
       this.props.getConfigura(accountInfo.profile.id);
     }
+    let name = "";
+    docType.forEach(el => {
+      if (el.id === parseInt(usersConfigura.document_type)) {
+        name = el.name;
+      }
+    });
     return (
       <div>
         <Header />
@@ -103,11 +110,7 @@ class Configura extends React.Component {
                     />
                     <br />
                     <label>tipo doc.</label>
-                    <input
-                      type="text"
-                      value={usersConfigura.document_type}
-                      disabled
-                    />
+                    <input type="text" value={name} disabled />
                     <br />
                     <label>provincia</label>
                     <input

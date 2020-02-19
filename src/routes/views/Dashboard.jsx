@@ -101,6 +101,7 @@ class Dashboard extends React.Component {
                   );
                 })}
               </div>
+              {console.log("serviceSelected", serviceSelected)}
               {/* serviceSelected, keyService  */}
               {serviceSelected !== "" && (
                 <Service
