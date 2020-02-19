@@ -67,7 +67,7 @@
 .userList {
   display: flex;
   flex-flow: column;
-  padding-bottom: 30px;
+  padding-bottom: 100px;
   @media (max-width: 1024px) {
     padding: 30px 10px;
   }
@@ -91,7 +91,10 @@
     span {
       flex-grow: 1;
       width: 100%;
-      padding: 10px;
+      padding: 5px 10px;
+      border-left: 1px solid #fff;
+      font-weight: 500;
+      color: #32424e;
       @media (max-width: 1024px) {
         text-transform: capitalize;
         font-size: 12px;
@@ -106,19 +109,38 @@
       flex-flow: column;
       text-align: left;
       background-color: #fff;
-
+      border-bottom: 1px solid #dadada;
+      &:last-child {
+        border-bottom: 0;
+      }
       .body {
         text-transform: uppercase;
         display: flex;
         flex-flow: row;
         cursor: pointer;
+        position: relative;
+        .label {
+          height: 32px;
+          position: absolute;
+          right: 10px;
+          top: 0;
+          display: flex;
+          align-items: center;
+          border-left: 1px solid #dadada;
+          padding-left: 20px;
+          i {
+            margin-left: 10px;
+          }
+        }
         span {
           flex-grow: 1;
           width: 100%;
-          padding: 10px;
+          padding: 4px 10px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          display: flex;
+          justify-content: space-between;
           @media (max-width: 1024px) {
             text-transform: capitalize;
             font-size: 12px;
@@ -128,7 +150,31 @@
       }
     }
   }
-
+  .ddItems {
+    position: absolute;
+    flex-flow: column;
+    display: none;
+    z-index: 1;
+    right: 0;
+    color: #000;
+    background: #fff;
+    box-shadow: 0 0 15px -7px black;
+    border-radius: 10px;
+    top: 102%;
+    right: -10px;
+    > span {
+      border-bottom: 1px solid #adadad;
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+    &.viz {
+      display: flex;
+    }
+  }
+  .active {
+    color: #ed4c14;
+  }
   .popUp {
     position: fixed;
     top: 19%;
@@ -144,6 +190,32 @@
     overflow: scroll;
     transition: 0.3s;
     animation: fromDown 0.5s ease-out forwards;
+
+    .sendInput {
+      clear: both;
+      width: 110px;
+      margin: 0 30%;
+      margin-top: 30px;
+      border: 0;
+      border: 1px solid #26943f;
+      background: #fff;
+      color: #41902d;
+      transition: 0.3s;
+      font-weight: 500;
+      &:hover {
+        background: #41902d;
+        color: #fff;
+      }
+    }
+    input {
+      background: transparent;
+      border: 0;
+      padding: 20px;
+      border: 1px solid #d9d9d9;
+      text-align: center;
+      padding: 20px 0;
+      -webkit-appearance: none;
+    }
     &::-webkit-scrollbar {
       width: 0;
     }
@@ -209,6 +281,7 @@
     .title {
       text-align: center;
       padding-top: 10px;
+      text-transform: uppercase;
     }
   }
 }

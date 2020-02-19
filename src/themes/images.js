@@ -54,7 +54,8 @@ export default {
   CRP00E: require("../assets/images/ethereum.svg"),
   CRP00R: require("../assets/images/riple.svg"),
   CRP00L: require("../assets/images/litecoin.svg"),
-  CRP00D: require("../assets/images/dashcoin.svg")
+  CRP00D: require("../assets/images/dashcoin.svg"),
+  PAYS: require("../assets/images/paysafe.svg")
   // COOPV: require("../assets/images/bill-dark.svg"),
   // DKENA: require("../assets/images/bill-dark.svg"),
   // HOX: require("../assets/images/bill-dark.svg"),

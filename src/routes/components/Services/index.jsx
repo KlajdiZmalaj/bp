@@ -44,7 +44,10 @@ class Service extends React.Component {
               (serviceSelected !== "#service1" ? "active show" : "")
             }
           >
-            <table className="bolletini bolletini1">
+            <table
+            // className="
+            // bolletini bolletini1"
+            >
               <tbody>
                 <tr>
                   {arrayServices &&

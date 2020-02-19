@@ -158,4 +158,16 @@
     margin-top: 50px;
   }
 }
+.vaiBtn {
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  background: #ffffff;
+  border: 1px solid #edeef0;
+  transition: 0.3s;
+  &:hover {
+    background-color: $main;
+    color: #fff;
+  }
+}
 /*checkbox custom end*/

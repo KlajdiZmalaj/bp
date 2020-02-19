@@ -98,7 +98,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding-bottom: 30px;
+  padding-bottom: 100px;
 }
 
 @media (max-width: 1024px) {
@@ -136,7 +136,10 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
   width: 100%;
-  padding: 10px;
+  padding: 5px 10px;
+  border-left: 1px solid #fff;
+  font-weight: 500;
+  color: #32424e;
 }
 
 @media (max-width: 1024px) {
@@ -157,6 +160,11 @@
           flex-flow: column;
   text-align: left;
   background-color: #fff;
+  border-bottom: 1px solid #dadada;
+}
+
+.userList--noDoc__user:last-child, .userList--Doc__user:last-child {
+  border-bottom: 0;
 }
 
 .userList--noDoc__user .body, .userList--Doc__user .body {
@@ -169,6 +177,26 @@
       -ms-flex-flow: row;
           flex-flow: row;
   cursor: pointer;
+  position: relative;
+}
+
+.userList--noDoc__user .body .label, .userList--Doc__user .body .label {
+  height: 32px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-left: 1px solid #dadada;
+  padding-left: 20px;
+}
+
+.userList--noDoc__user .body .label i, .userList--Doc__user .body .label i {
+  margin-left: 10px;
 }
 
 .userList--noDoc__user .body span, .userList--Doc__user .body span {
@@ -176,10 +204,16 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
   width: 100%;
-  padding: 10px;
+  padding: 4px 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 @media (max-width: 1024px) {
@@ -188,6 +222,42 @@
     font-size: 12px;
     padding: 2px;
   }
+}
+
+.userList .ddItems {
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  display: none;
+  z-index: 1;
+  right: 0;
+  color: #000;
+  background: #fff;
+  -webkit-box-shadow: 0 0 15px -7px black;
+          box-shadow: 0 0 15px -7px black;
+  border-radius: 10px;
+  top: 102%;
+  right: -10px;
+}
+
+.userList .ddItems > span {
+  border-bottom: 1px solid #adadad;
+}
+
+.userList .ddItems > span:last-child {
+  border-bottom: 0;
+}
+
+.userList .ddItems.viz {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userList .active {
+  color: #ed4c14;
 }
 
 .userList .popUp {
@@ -207,6 +277,35 @@
   transition: 0.3s;
   -webkit-animation: fromDown 0.5s ease-out forwards;
           animation: fromDown 0.5s ease-out forwards;
+}
+
+.userList .popUp .sendInput {
+  clear: both;
+  width: 110px;
+  margin: 0 30%;
+  margin-top: 30px;
+  border: 0;
+  border: 1px solid #26943f;
+  background: #fff;
+  color: #41902d;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.userList .popUp .sendInput:hover {
+  background: #41902d;
+  color: #fff;
+}
+
+.userList .popUp input {
+  background: transparent;
+  border: 0;
+  padding: 20px;
+  border: 1px solid #d9d9d9;
+  text-align: center;
+  padding: 20px 0;
+  -webkit-appearance: none;
 }
 
 .userList .popUp::-webkit-scrollbar {
@@ -278,6 +377,7 @@
 .userList .popUp .title {
   text-align: center;
   padding-top: 10px;
+  text-transform: uppercase;
 }
 
 .backDrop {
