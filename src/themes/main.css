@@ -1228,6 +1228,12 @@ i#private {
   display: flex;
 }
 
+.ant-form.ant-form-horizontal.filters .ant-calendar-picker:hover
+.ant-calendar-picker-input:not(.ant-input-disabled),
+.ant-form.ant-form-horizontal.filters .ant-input {
+  border: 0 !important;
+}
+
 .datepics .ant-form-item {
   margin-bottom: 0;
 }
@@ -1238,6 +1244,11 @@ i#private {
 
 .datepics i {
   display: none;
+}
+
+.filterBtn {
+  border-bottom: 0 !important;
+  height: 100%;
 }
 
 .ant-select-selection--single {
