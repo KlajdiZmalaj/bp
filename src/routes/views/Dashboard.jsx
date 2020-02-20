@@ -9,7 +9,11 @@ import images from "../../themes/images";
 class Dashboard extends React.Component {
   state = {
     serviceSelected: "",
-    keyService: ""
+    keyService: "",
+    toDisplay: false
+  };
+  togglePopUp = val => {
+    this.setState({ toDisplay: val });
   };
   componentDidMount() {
     this.props.getServices();
@@ -73,9 +77,10 @@ class Dashboard extends React.Component {
                               return (
                                 <div data-toggle="tab" key={indexx + service}>
                                   <div
-                                    onClick={() =>
-                                      this.changeServce(service, item)
-                                    }
+                                    onClick={() => {
+                                      this.changeServce(service, item);
+                                      this.togglePopUp(true);
+                                    }}
                                     className={
                                       "panel-item" +
                                       (serviceSelected === service
@@ -105,6 +110,8 @@ class Dashboard extends React.Component {
               {/* serviceSelected, keyService  */}
               {serviceSelected !== "" && (
                 <Service
+                  toDisplay={this.state.toDisplay}
+                  togglePopUpP={this.togglePopUp}
                   serviceSelected={serviceSelected}
                   servicesItems={services[keyService]}
                 ></Service>
