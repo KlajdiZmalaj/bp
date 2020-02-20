@@ -73,3 +73,14 @@
     }
   }
 }
+.verifyAcc {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.hasError {
+  text-align: center;
+  font-size: 15px;
+}

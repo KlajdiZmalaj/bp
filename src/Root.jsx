@@ -21,7 +21,8 @@ import {
   AccountInfo,
   Register,
   RegisterEndUser,
-  Login
+  Login,
+  Verify
 } from "./routes";
 
 class Root extends React.Component {
@@ -69,6 +70,16 @@ class Root extends React.Component {
             <PublicRoute
               path="/login"
               component={Login}
+              isLoggedin={isLoggedin}
+            />
+            <PublicRoute
+              path="/verify?token="
+              component={Verify}
+              isLoggedin={isLoggedin}
+            />
+            <PublicRoute
+              path="/verify"
+              component={Verify}
               isLoggedin={isLoggedin}
             />
             <PrivateRoute

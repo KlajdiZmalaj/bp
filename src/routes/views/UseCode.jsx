@@ -15,6 +15,16 @@ class UseCode extends React.Component {
   inputHandler = e => {
     this.setState({ inputVal: e.target.value });
   };
+  handleKeyPress = event => {
+    if (event.key === "Enter") {
+      let btn = document.querySelector(".input-group-append");
+      btn.click();
+    }
+  };
+  componentDidMount() {
+    let input = document.querySelector(".form-control");
+    input.focus();
+  }
   render() {
     const { inputVal, popUpViz } = this.state;
     const { paymentsFromCode } = this.props;
@@ -42,6 +52,7 @@ class UseCode extends React.Component {
                     onChange={e => {
                       this.inputHandler(e);
                     }}
+                    onKeyPress={this.handleKeyPress}
                     className="form-control"
                   />
                   <div

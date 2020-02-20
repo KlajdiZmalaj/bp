@@ -54,7 +54,7 @@ class Overview extends Component {
       accountInfo,
       dashboardData
     } = this.props;
-    console.log("accountInfo", dashboardData, dashboardFromFilterTop);
+    console.log("accountInfo", accountInfo);
     let provT = 0;
     let commT = 0;
     if (payments && payments.length > 0) {
@@ -164,11 +164,12 @@ class Overview extends Component {
               <a href="/#">View Details</a>
               <h2>Saldo</h2>
               <h3>
-                {dashboardFromFilterTop
+                {get(accountInfo, "profile.wallet")}
+                {/* {dashboardFromFilterTop
                   ? get(dashboardData, "saldo")
                   : accountInfo.profile &&
                     accountInfo.profile.wallet &&
-                    accountInfo.profile.wallet}
+                    accountInfo.profile.wallet} */}
                 €
               </h3>
               <i className="fas fa-tag"></i>

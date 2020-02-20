@@ -6,9 +6,34 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { get } from "lodash";
 import { docType } from "config";
 class Configura extends React.Component {
-  componentDidMount() {}
+  state = {
+    pw1: "",
+    pw2: "",
+    pw3: "",
+    hasError: false
+  };
+  pw1 = e => {
+    this.setState({ pw1: e.target.value });
+  };
+  pw2 = e => {
+    this.setState({ pw2: e.target.value });
+  };
+  pw3 = e => {
+    this.setState({ pw3: e.target.value });
+  };
+  handleSubmit = () => {
+    const { pw1, pw2, pw3, hasError } = this.state;
+    if (pw2 === pw3) {
+      this.props.getChangedPassword(pw1, pw3);
+      this.setState({ hasError: "ok" });
+    } else {
+      this.setState({ hasError: true });
+    }
+    console.log("handlesumbit", pw1, pw2, pw3, hasError);
+  };
   render() {
     const { accountInfo, usersConfigura } = this.props;
+
     console.log("usersConfigura", usersConfigura);
     if (
       get(accountInfo, "profile.id") &&
@@ -174,25 +199,59 @@ class Configura extends React.Component {
                     />
                   </div>
                 </div>
-                {/* <div className="titleConf">
+                <div className="titleConf">
                   <i className="fas fa-dot-circle"></i>
                   <h5>cambio password</h5>
                 </div>
                 <div className="row no-gutters inputsConf">
                   <div className="col-md-4">
                     <label>password attuale</label>
-                    <input type="text" />
+                    <input
+                      type="password"
+                      onChange={e => {
+                        this.pw1(e);
+                      }}
+                    />
                   </div>
                   <div className="col-md-4">
                     <label>nuova password</label>
-                    <input type="text" />
+                    <input
+                      type="password"
+                      onChange={e => {
+                        this.pw2(e);
+                      }}
+                    />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <label>conferma</label>
-                    <input type="text" />
+                    <input
+                      type="password"
+                      onChange={e => {
+                        this.pw3(e);
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-1">
+                    <button
+                      className="vaiBtn"
+                      onClick={() => {
+                        this.handleSubmit();
+                      }}
+                    >
+                      Vai
+                    </button>
+                    {this.state.hasError === true ? (
+                      <div className="hasError text-danger">
+                        Something went Worng!
+                      </div>
+                    ) : this.state.hasError === "ok" ? (
+                      <div className="hasError text-success">
+                        Passowrd cambiato succesful!
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-                <div className="titleConf">
+                {/* <div className="titleConf">
                   <i className="fas fa-dot-circle"></i>
                   <h5>Stampante in Uso</h5>
                 </div>
@@ -223,8 +282,7 @@ class Configura extends React.Component {
                       <span className="checkmark"></span>
                     </label>
                   </div>
-                </div>
-            */}
+                </div> */}
               </div>
             </div>
           </div>

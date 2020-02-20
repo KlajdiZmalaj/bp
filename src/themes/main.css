@@ -1084,6 +1084,21 @@ i#private {
   margin-top: 50px;
 }
 
+.vaiBtn {
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  background: #ffffff;
+  border: 1px solid #edeef0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.vaiBtn:hover {
+  background-color: #ed4c14;
+  color: #fff;
+}
+
 /*checkbox custom end*/
 /*transazioni styles*/
 .datepics {

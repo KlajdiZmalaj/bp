@@ -22,7 +22,7 @@ export const fetchUsers = search_user =>
         }`
       }
     })
-    .post(`/users/findUser`, {
+    .post(`/users/list`, {
       ...(search_user ? { search_user: search_user } : {})
     })
     // .then(data => {
