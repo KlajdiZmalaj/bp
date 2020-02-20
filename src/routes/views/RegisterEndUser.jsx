@@ -362,6 +362,7 @@ class RegisterEndUser extends React.Component {
               <div className="rowUp">
                 <div className="firstcol">
                   <div className="titleReg">Registrazione</div>
+                  <span className="inpLabel">codice fiscale</span>
                   <Form.Item>
                     {getFieldDecorator("personal_number", {
                       rules: [
@@ -372,12 +373,14 @@ class RegisterEndUser extends React.Component {
                       ]
                     })(
                       <Input
-                        placeholder="codice fiscale*"
+                        // placeholder="codice fiscale*"
                         onBlur={this.validateCodiceFiscale}
                         onInput={e => this.inputlength(e)}
                       />
                     )}
                   </Form.Item>
+                  <span className="inpLabel">Nome</span>
+
                   <Form.Item>
                     {getFieldDecorator("first_name", {
                       rules: [
@@ -387,8 +390,10 @@ class RegisterEndUser extends React.Component {
                           whitespace: true
                         }
                       ]
-                    })(<Input placeholder="Nome*" />)}
+                    })(<Input />)}
                   </Form.Item>
+                  <span className="inpLabel">Cognome</span>
+
                   <Form.Item>
                     {getFieldDecorator("last_name", {
                       rules: [
@@ -398,12 +403,13 @@ class RegisterEndUser extends React.Component {
                           whitespace: true
                         }
                       ]
-                    })(<Input placeholder="Cognome*" />)}
+                    })(<Input />)}
                   </Form.Item>
+                  <span className="inpLabel">Sesso</span>
+
                   <Form.Item>
                     {getFieldDecorator("gender", {
-                      initialValue:
-                        this.state.sesso !== "" ? this.state.sesso : "Sesso*",
+                      initialValue: "",
                       rules: [
                         {
                           required: true,
@@ -417,6 +423,7 @@ class RegisterEndUser extends React.Component {
                       </Select>
                     )}
                   </Form.Item>
+                  <span className="inpLabel">Nickname</span>
 
                   <Form.Item>
                     {getFieldDecorator("nickname", {
@@ -426,8 +433,9 @@ class RegisterEndUser extends React.Component {
                           message: "Please input your fiscal code!"
                         }
                       ]
-                    })(<Input placeholder="nickname*" />)}
+                    })(<Input />)}
                   </Form.Item>
+                  <span className="inpLabel">email</span>
                   <Form.Item>
                     {getFieldDecorator("email", {
                       rules: [
@@ -440,8 +448,9 @@ class RegisterEndUser extends React.Component {
                           message: "Please input your E-mail!"
                         }
                       ]
-                    })(<Input placeholder="email*" />)}
+                    })(<Input />)}
                   </Form.Item>
+                  <span className="inpLabel">Telefono</span>
 
                   <Form.Item>
                     {getFieldDecorator("number", {
@@ -451,16 +460,13 @@ class RegisterEndUser extends React.Component {
                           message: "Please input your phone number!"
                         }
                       ]
-                    })(
-                      <Input
-                        addonBefore={number_prefix}
-                        placeholder="Numero di telefono*"
-                      />
-                    )}
+                    })(<Input addonBefore={number_prefix} />)}
                   </Form.Item>
                 </div>
                 <div className="secondcol">
                   <div className="titleReg">Data anagrafici</div>
+                  <span className="inpLabel">Data di nascita</span>
+
                   <Form.Item>
                     {getFieldDecorator("birthday", {
                       initialValue:
@@ -469,25 +475,21 @@ class RegisterEndUser extends React.Component {
                       rules: [{ required: true }]
                     })(
                       <DatePicker
-                        placeholder="Data di nascita*"
+                        // placeholder="Data di nascita*"
                         format={("DD/MM/YYYY", "DD/MM/YYYY")}
                       />
                     )}
                   </Form.Item>
-
+                  <span className="inpLabel">Nazione di nascita</span>
                   <Form.Item>
-                    {nazione === "" && (
-                      <Select placeholder="Nazione di nascita*">
-                        {nazioneList}
-                      </Select>
-                    )}
+                    {nazione === "" && <Select>{nazioneList}</Select>}
                     {nazione !== "" && (
                       <Select defaultValue={this.state.nazione}>
                         {nazioneList}
                       </Select>
                     )}
                   </Form.Item>
-
+                  <span className="inpLabel">provincia di nascita</span>
                   <Form.Item>
                     <VirtualizedSelect
                       options={province_of_birthOptions}
@@ -498,13 +500,14 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.province_of_birth}
                       maxHeight={100}
-                      placeholder={
-                        comuniSelected.sigla
-                          ? comuniSelected.sigla
-                          : "provincia di nascita*"
-                      }
+                      // placeholder={
+                      //   comuniSelected.sigla
+                      //     ? comuniSelected.sigla
+                      //     : "provincia di nascita*"
+                      // }
                     />
                   </Form.Item>
+                  <span className="inpLabel">Comune di nascita</span>
 
                   <Form.Item>
                     <VirtualizedSelect
@@ -514,13 +517,9 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.city_of_birth}
                       maxHeight={100}
-                      placeholder={
-                        comuniSelected.provincia
-                          ? comuniSelected.provincia
-                          : "Comune di nascita*"
-                      }
                     />
                   </Form.Item>
+                  <span className="inpLabel">Nazione di residenza</span>
 
                   <Form.Item>
                     <VirtualizedSelect
@@ -530,10 +529,9 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.nazioneDiResidenca}
                       maxHeight={100}
-                      placeholder="Nazione di residenza*"
                     />
                   </Form.Item>
-
+                  <span className="inpLabel">provincia di residenza</span>
                   <Form.Item>
                     <VirtualizedSelect
                       options={provincaDiResidencaProvinciaOptions}
@@ -545,9 +543,9 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.residence_province}
                       maxHeight={100}
-                      placeholder="provincia di residenza* "
                     />
                   </Form.Item>
+                  <span className="inpLabel">comune di residenza</span>
 
                   <Form.Item>
                     <VirtualizedSelect
@@ -559,9 +557,10 @@ class RegisterEndUser extends React.Component {
                       }
                       value={this.state.residence_city}
                       maxHeight={100}
-                      placeholder="comune di residenza*"
+                      // placeholder="comune di residenza*"
                     />
                   </Form.Item>
+                  <span className="inpLabel">indirizzo di residenza</span>
 
                   <Form.Item>
                     {getFieldDecorator("address", {
@@ -572,8 +571,10 @@ class RegisterEndUser extends React.Component {
                           whitespace: true
                         }
                       ]
-                    })(<Input placeholder="indirizzo di residenza*" />)}
+                    })(<Input />)}
                   </Form.Item>
+                  <span className="inpLabel">CAP</span>
+
                   <Form.Item>
                     {getFieldDecorator("cap", {
                       rules: [
@@ -583,14 +584,16 @@ class RegisterEndUser extends React.Component {
                           whitespace: true
                         }
                       ]
-                    })(<Input placeholder="CAP*" />)}
+                    })(<Input />)}
                   </Form.Item>
                 </div>
               </div>
             </div>
             <div className="col col-md-4 col2Form">
               <div className="firstcol">
-                <div className="titleReg">Documenti e gioco responsabile</div>
+                <div className="titleReg">Documenti per servizi aggiuntivi</div>
+                <span className="inpLabel">Tipo documento</span>
+
                 <Form.Item>
                   {getFieldDecorator("identity_type", {
                     rules: [
@@ -601,7 +604,7 @@ class RegisterEndUser extends React.Component {
                     ]
                   })(
                     <Select
-                      placeholder="Tipo documento*"
+                      // placeholder="Tipo documento*"
                       onChange={this.onChangeIdentity}
                     >
                       <Option value="1">Carta di identita</Option>
@@ -610,6 +613,7 @@ class RegisterEndUser extends React.Component {
                     </Select>
                   )}
                 </Form.Item>
+                <span className="inpLabel">Numero documento</span>
 
                 <Form.Item>
                   {getFieldDecorator("identity_id", {
@@ -620,19 +624,17 @@ class RegisterEndUser extends React.Component {
                         whitespace: true
                       }
                     ]
-                  })(<Input placeholder="Numero documento*" />)}
+                  })(<Input />)}
                 </Form.Item>
-                <div className="titleReg">Upload Doc</div>
+                <div className="titleReg">Carica Documento</div>
+                <span className="inpLabel">Document View</span>
 
                 <Form.Item>
                   {getFieldDecorator(
                     "cart_view",
                     {}
                   )(
-                    <Select
-                      placeholder="Document View"
-                      onChange={this.onChangeCardView}
-                    >
+                    <Select onChange={this.onChangeCardView}>
                       <Option value="1">Front</Option>
                       <Option value="2">Back</Option>
                     </Select>

@@ -293,8 +293,14 @@ export function* getChangedPassword(data) {
     data.oldPassword,
     data.newPassword
   );
-
-  // console.log("ca ka responseeeee", data, response);
+  if (response.message) {
+    AuthActions.setChangePasswordError(response.message);
+  } else {
+    yield put(
+      AuthActions.setChangePasswordError(response.error.response.data.errors)
+    );
+  }
+  // console.log("ca ka responseeeee", response, response.message);
 }
 export function* getConfigura(data) {
   const response = yield call(fetchConfigura, data.id);
@@ -303,7 +309,7 @@ export function* getConfigura(data) {
   } else {
     yield put(AuthActions.setConfiguraData({}));
   }
-  console.log("ca ka responseeeee configura", response);
+  // console.log("ca ka responseeeee configura", response);
 }
 export function* getCodiceTicket(data) {
   const response = yield call(fetchCodice, data.barcode);

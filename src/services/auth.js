@@ -244,8 +244,9 @@ export const fetchRegisterAllInfo = (
       ...{ document_number: identity_id },
       ...{ document_type: identity_type },
       ...{ phone: number_prefix + number },
-      ...{ frontImg: frontImg },
-      ...{ backImg: backImg }
+      ...{ document_front: frontImg },
+      ...{ document_back: backImg },
+      ...{ role: "user" }
     })
     .catch(error => ({ data: error.response.data }));
 

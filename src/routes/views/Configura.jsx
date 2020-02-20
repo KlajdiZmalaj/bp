@@ -3,7 +3,7 @@ import React from "react";
 import { Azioni, Header } from "shared-components";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import { get } from "lodash";
+import { get, isObject } from "lodash";
 import { docType } from "config";
 class Configura extends React.Component {
   state = {
@@ -32,9 +32,9 @@ class Configura extends React.Component {
     console.log("handlesumbit", pw1, pw2, pw3, hasError);
   };
   render() {
-    const { accountInfo, usersConfigura } = this.props;
+    const { accountInfo, usersConfigura, pwError } = this.props;
 
-    console.log("usersConfigura", usersConfigura);
+    console.log("pwError", pwError);
     if (
       get(accountInfo, "profile.id") &&
       Object.keys(usersConfigura).length < 1
@@ -240,15 +240,24 @@ class Configura extends React.Component {
                     >
                       Vai
                     </button>
-                    {this.state.hasError === true ? (
-                      <div className="hasError text-danger">
-                        Something went Worng!
-                      </div>
-                    ) : this.state.hasError === "ok" ? (
-                      <div className="hasError text-success">
-                        Passowrd cambiato succesful!
-                      </div>
-                    ) : null}
+
+                    <div className="hasError">
+                      {isObject(this.props.pwError) ? (
+                        <React.Fragment>
+                          {Object.values(this.props.pwError).map(
+                            (error, ind) => {
+                              return (
+                                <span>
+                                  {ind + 1}.{error}
+                                </span>
+                              );
+                            }
+                          )}
+                        </React.Fragment>
+                      ) : (
+                        <span>{this.props.pwError}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
                 {/* <div className="titleConf">
@@ -298,7 +307,8 @@ class Configura extends React.Component {
 
 const mapsStateToProps = state => ({
   accountInfo: state.auth.accountInfo,
-  usersConfigura: state.auth.usersConfigura
+  usersConfigura: state.auth.usersConfigura,
+  pwError: state.auth.pwError
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

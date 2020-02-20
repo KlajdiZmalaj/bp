@@ -378,6 +378,33 @@ a:hover {
           justify-content: flex-end;
 }
 
+@media (max-width: 800px) {
+  .navbar .nav-item.dropdown.show {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .navbar .nav-item.dropdown.show .navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+}
+
 .navbar .active a {
   color: #ed4c14 !important;
 }
@@ -1041,7 +1068,7 @@ i#private {
 }
 
 .popUpPrint {
-  width: 100%;
+  width: 90%;
   max-width: 450px;
   height: 80%;
   background: #fff;
@@ -1050,7 +1077,7 @@ i#private {
   z-index: 3;
   overflow-y: auto;
   left: 50%;
-  margin-left: -240px;
+  margin-left: -181px;
   border-radius: 20px;
   padding: 10px;
 }
@@ -1084,6 +1111,12 @@ i#private {
   margin-top: 50px;
 }
 
+@media (max-width: 800px) {
+  .configura {
+    padding: 0 20px !important;
+  }
+}
+
 .vaiBtn {
   width: 100%;
   border: 0;
@@ -1100,6 +1133,10 @@ i#private {
 }
 
 /*checkbox custom end*/
+.carica-conto {
+  padding: 10px 20px !important;
+}
+
 /*transazioni styles*/
 .datepics {
   border: 2px solid #edeef0;
@@ -1191,6 +1228,12 @@ i#private {
   display: flex;
 }
 
+.ant-form.ant-form-horizontal.filters .ant-calendar-picker:hover
+.ant-calendar-picker-input:not(.ant-input-disabled),
+.ant-form.ant-form-horizontal.filters .ant-input {
+  border: 0 !important;
+}
+
 .datepics .ant-form-item {
   margin-bottom: 0;
 }
@@ -1201,6 +1244,11 @@ i#private {
 
 .datepics i {
   display: none;
+}
+
+.filterBtn {
+  border-bottom: 0 !important;
+  height: 100%;
 }
 
 .ant-select-selection--single {
@@ -1422,6 +1470,13 @@ i#private {
   padding-right: 60px;
 }
 
+@media (max-width: 600px) {
+  .azioni .swiper-container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 .azioni .swiper-slide {
   padding-left: 0 !important;
 }
@@ -1435,6 +1490,12 @@ i#private {
   color: #7e8f9f;
 }
 
+@media (max-width: 1024px) {
+  .azioni .swiper-button-prev {
+    width: 30px;
+  }
+}
+
 .azioni .swiper-button-next {
   right: 0;
   left: auto;
@@ -1443,6 +1504,12 @@ i#private {
   top: 22px;
   width: 60px;
   color: #7e8f9f;
+}
+
+@media (max-width: 1024px) {
+  .azioni .swiper-button-next {
+    width: 30px;
+  }
 }
 
 .panels-container {

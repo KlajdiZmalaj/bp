@@ -26,15 +26,19 @@ class Service extends React.Component {
   };
 
   render() {
-    const { serviceSelected, servicesItems } = this.props;
+    const {
+      serviceSelected,
+      servicesItems,
+      toDisplay,
+      togglePopUpP
+    } = this.props;
     const arrayServices = servicesItems[serviceSelected];
+    console.log("serviceSelected", serviceSelected, toDisplay);
 
     return (
       <React.Fragment>
         <div
-          className={
-            "col-md-3 tab-content " + (serviceSelected === "" ? "" : "d-block")
-          }
+          className={"col-md-3 tab-content " + (!toDisplay ? "" : "d-block")}
         >
           {/* <!--first ITEMS  Bolletini postali services--> */}
 
@@ -76,7 +80,12 @@ class Service extends React.Component {
             </table>
           </div>
 
-          <div className="cancelMobile">
+          <div
+            className="cancelMobile"
+            onClick={() => {
+              this.props.togglePopUpP(false);
+            }}
+          >
             <img src={images.cancelMob} alt="" />
           </div>
         </div>
