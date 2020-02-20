@@ -20,6 +20,18 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    @media (max-width: 800px) {
+      &.dropdown.show {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+        .navbar-nav {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-evenly;
+        }
+      }
+    }
   }
   .active a {
     color: $main !important;
