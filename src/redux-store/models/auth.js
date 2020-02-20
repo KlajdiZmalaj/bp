@@ -77,6 +77,7 @@ const { Types, Creators } = createActions({
   createAds: ["data"],
   createAdsResponse: ["adsCreationgLoading", "adsCreationgMess"],
   getChangedPassword: ["oldPassword", "newPassword"],
+  setChangePasswordError: ["pwError"],
   getConfigura: ["id"],
   getCodiceTicket: ["barcode"],
   setPaymentsFromCode: ["paymentsFromCode"],
@@ -87,6 +88,7 @@ export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  pwError: "",
   user: null,
   loading: false,
   error: null,
@@ -114,6 +116,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_PAYMENTS_FROM_CODE]: (state, { paymentsFromCode }) => ({
     ...state,
     paymentsFromCode
+  }),
+  [Types.SET_CHANGE_PASSWORD_ERROR]: (state, { pwError }) => ({
+    ...state,
+    pwError
   }),
   [Types.SET_CONFIGURA_DATA]: (state, { usersConfigura }) => ({
     ...state,

@@ -4,9 +4,11 @@
   margin: 0 auto;
   background: #fff;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
   position: relative;
-
+  .inpLabel {
+    text-transform: capitalize;
+  }
   .anticon-eye-invisible,
   .anticon-eye,
   .ant-calendar-picker-icon {
@@ -91,6 +93,9 @@
       padding-bottom: 0;
     }
   }
+  .ant-form-item + .titleReg {
+    padding-bottom: 10px;
+  }
   .titleReg {
     color: #ed4c14;
     text-transform: uppercase;
@@ -168,7 +173,7 @@
     border-radius: 0;
     color: #212529;
     width: 100%;
-    height: 35px;
+    height: 29px;
     .anticon {
       color: #212529;
     }
@@ -183,6 +188,13 @@
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #5f656d inset !important;
     color: #212529;
+  }
+  .sendBTN {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+    left: 0;
+    left: 5%;
   }
   .sendBTN button {
     background: transparent;
