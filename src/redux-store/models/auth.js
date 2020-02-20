@@ -41,8 +41,8 @@ const { Types, Creators } = createActions({
     "codice_fiscale_ordinante",
     "numero_postepay",
     "document_type",
-    "document_front",
-    "document_back"
+    "imageUrl",
+    "imageUrl2"
   ],
   setPostePay: ["postePay"],
 

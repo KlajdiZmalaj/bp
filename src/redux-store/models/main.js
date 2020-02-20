@@ -9,7 +9,7 @@ const { Types, Creators } = createActions({
   setUsers: ["userList"],
   getUsers: ["search_user"],
 
-  getUsersBySearch: ["search_userBySearch"],
+  getUsersBySearch: ["search_user"],
   setUsersBySearch: ["userListBySearch"],
   getOverviewDashboard: ["period"],
   setOverviewDashboard: ["dashboardData"],

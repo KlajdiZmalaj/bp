@@ -52,6 +52,27 @@
   color: #fff;
 }
 
+.confirmedMessage {
+  padding: 5px;
+  text-transform: uppercase;
+  border: 1px solid #c6cdda;
+  color: green;
+  position: relative;
+  font-size: 11px;
+}
+
+.confirmedMessage .closeAlert {
+  position: absolute;
+  background: #ff3400;
+  padding: 0 5px;
+  border-radius: 60px;
+  font-size: 10px;
+  right: -8px;
+  top: -8px;
+  cursor: pointer;
+  color: #fff;
+}
+
 .telRechanrge .max-width_modulePopUP-carrier {
   max-width: 1030px;
 }
@@ -163,5 +184,35 @@
   font-family: "Roboto", "sans-serif";
   font-size: 14px;
   font-weight: bold;
+}
+
+.col-12.document {
+  margin-left: 30px;
+  margin-top: 7px;
+}
+
+.col-12.document .ant-form-item:nth-child(1) {
+  margin-bottom: 0px;
+  width: 41.5%;
+  display: inline-block;
+}
+
+.col-12.document .ant-form-item:nth-child(2) {
+  margin-bottom: 0px;
+  width: 58.5%;
+  display: inline-block;
+}
+
+.col-12.document .ant-select-selection--single {
+  border: 1px solid #edeef0;
+  width: 100%;
+}
+
+.col-12.document .ant-select-selection__placeholder,
+.col-12.document .ant-select-selection-selected-value {
+  font-family: "Roboto", "sans-serif";
+  font-size: 16px;
+  font-weight: normal;
+  color: #212529;
 }
 /*# sourceMappingURL=style.css.map */

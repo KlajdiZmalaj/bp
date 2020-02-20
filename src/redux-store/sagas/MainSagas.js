@@ -37,7 +37,6 @@ export function* getUsers(params) {
 
 export function* getUsersBySearch(params) {
   const response = yield call(fetchUsersBySearch, params.search_user);
-  // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsersBySearch(response.data.users));
   }

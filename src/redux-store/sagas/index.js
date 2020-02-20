@@ -47,7 +47,7 @@ export default function* root() {
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices),
     takeLatest(MainTypes.GET_USERS, getUsers),
-    takeLatest(MainTypes.GET_USERS, getUsersBySearch),
+    takeLatest(MainTypes.GET_USERS_BY_SEARCH, getUsersBySearch),
     takeLatest(MainTypes.GET_OVERVIEW_DASHBOARD, getOverviewDashboard)
   ]);
 }
