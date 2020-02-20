@@ -16,6 +16,7 @@ class UserDoc extends Component {
   setPopUp = () => {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
   };
+
   render() {
     const { user } = this.props;
     const { isPopUpOpen } = this.state;

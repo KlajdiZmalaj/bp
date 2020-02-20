@@ -8,6 +8,9 @@ const { Types, Creators } = createActions({
   setAccount: ["activeAccount"],
   setUsers: ["userList"],
   getUsers: ["search_user"],
+
+  getUsersBySearch: ["search_userBySearch"],
+  setUsersBySearch: ["userListBySearch"],
   getOverviewDashboard: ["period"],
   setOverviewDashboard: ["dashboardData"],
   setNavbarSearch: ["navbarSearch"]
@@ -22,6 +25,7 @@ const INITIAL_STATE = {
   isShowing: false,
   activeAccount: 2,
   userList: [],
+  userListBySearch: [],
   dashboardData: {},
   navbarSearch: ""
 };
@@ -50,6 +54,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_USERS]: (state, { userList }) => ({
     ...state,
     userList
+  }),
+  [Types.SET_USERS_BY_SEARCH]: (state, { userListBySearch }) => ({
+    ...state,
+    userListBySearch
   }),
   [Types.TOGGLE_POP_UP]: (state, { isShowing }) => ({
     ...state,

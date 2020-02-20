@@ -194,6 +194,19 @@ export function* getPostePay(params) {
     if (response.data) {
       console.log("wallet", response.data.wallet);
       if (response.data.wallet) {
+        const accountData = localStorage.getItem("accountDataB");
+        const data = JSON.parse(accountData);
+
+        const d = {
+          ...data,
+          profile: {
+            ...data.profile,
+            wallet: response.data.wallet
+          }
+        };
+
+        localStorage.setItem("accountDataB", JSON.stringify(d));
+        yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setPostePay(response.data));
     } else if (response.error) {

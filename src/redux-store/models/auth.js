@@ -39,7 +39,10 @@ const { Types, Creators } = createActions({
     "codice_fiscale_intestatario",
     "ordinante",
     "codice_fiscale_ordinante",
-    "numero_postepay"
+    "numero_postepay",
+    "document_type",
+    "document_front",
+    "document_back"
   ],
   setPostePay: ["postePay"],
 

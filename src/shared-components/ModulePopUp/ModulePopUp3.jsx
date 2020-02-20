@@ -2,37 +2,79 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
-import { Select } from "antd";
+import { Form, Select, Upload, Icon, message } from "antd";
 
 const { Option } = Select;
 
-class ModulePopUp3 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      importo: "",
-      user_id: "",
-      intestazione: "",
-      codice_fiscale_intestatario: "",
-      ordinante: "",
-      codice_fiscale_ordinante: "",
-      numero_postepay: "",
-      userList: [],
-      showUpload: false
-    };
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
 
-    this.handleChangeImporto = this.handleChangeImporto.bind(this);
-    this.handleChangeUser_id = this.handleChangeUser_id.bind(this);
-    this.handleChangeIntestazione = this.handleChangeIntestazione.bind(this);
-    this.handleChangeCfIntestazione = this.handleChangeCfIntestazione.bind(
-      this
-    );
-    this.handleChangeOrdinante = this.handleChangeOrdinante.bind(this);
-    this.handleChangeCfOrdinante = this.handleChangeCfOrdinante.bind(this);
-    this.handleChangeNrPostepay = this.handleChangeNrPostepay.bind(this);
-
-    // this.handleChange = this.handleChange.bind(this);
+function beforeUpload(file) {
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  if (!isJpgOrPng) {
+    message.error("You can only upload JPG/PNG file!");
   }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error("Image must smaller than 2MB!");
+  }
+  return isJpgOrPng && isLt2M;
+}
+
+class ModulePopUp3 extends React.Component {
+  state = {
+    importo: "",
+    user_id: "",
+    intestazione: "",
+    codice_fiscale_intestatario: "",
+    ordinante: "",
+    codice_fiscale_ordinante: "",
+    numero_postepay: "",
+    userList: [],
+    showUpload: false,
+
+    cardView: 0,
+    imageUrl: "",
+    imageUrl2: "",
+    loading: false
+  };
+
+  onChangeCardView = value => {
+    this.setState({ cardView: value });
+  };
+
+  handleChangeBack = info => {
+    if (info.file.status === "uploading") {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, imageUrl2 =>
+        this.setState({
+          imageUrl2,
+          loading: false
+        })
+      );
+    }
+  };
+
+  handleChangeFront = info => {
+    if (info.file.status === "uploading") {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false
+        })
+      );
+    }
+  };
 
   handleChangeImporto(event) {
     this.setState({ importo: event.target.value });
@@ -60,7 +102,7 @@ class ModulePopUp3 extends React.Component {
 
   handleSearch = value => {
     if (value.length > 2) {
-      this.props.getUsers(value);
+      this.props.getUsersBySearch(value);
     }
   };
 
@@ -86,22 +128,43 @@ class ModulePopUp3 extends React.Component {
       codice_fiscale_intestatario,
       ordinante,
       codice_fiscale_ordinante,
-      numero_postepay
+      numero_postepay,
+      imageUrl,
+      imageUrl2
     } = this.state;
 
-    // this.props.getPostePay(
-    //   service_id,
-    //   importo,
-    //   user_id,
-    //   intestazione,
-    //   codice_fiscale_intestatario,
-    //   ordinante,
-    //   codice_fiscale_ordinante,
-    //   numero_postepay
-    // );
+    console.log(
+      "service_iddddddddddd",
+      user_id,
+      ordinante,
+      codice_fiscale_ordinante,
+      imageUrl
+    );
+
+    this.props.getPostePay(
+      service_id,
+      importo,
+      user_id,
+      intestazione,
+      codice_fiscale_intestatario,
+      ordinante,
+      codice_fiscale_ordinante,
+      numero_postepay
+    );
   };
 
   render() {
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 }
+      }
+    };
+    const { getFieldDecorator } = this.props.form;
     const { service_id, userList } = this.props;
 
     const {
@@ -112,8 +175,18 @@ class ModulePopUp3 extends React.Component {
       ordinante,
       codice_fiscale_ordinante,
       numero_postepay,
-      showUpload
+      showUpload,
+      imageUrl,
+      cardView,
+      imageUrl2
     } = this.state;
+
+    const uploadButton = (
+      <div>
+        <Icon type={this.state.loading ? "loading" : "plus"} />
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    );
 
     let options = [];
 
@@ -218,7 +291,7 @@ class ModulePopUp3 extends React.Component {
                       showArrow={false}
                       filterOption={false}
                       onSearch={this.handleSearch}
-                      onChange={this.handleChangeUser_id}
+                      onChange={this.handleChangeUser_id.bind(this)}
                       placeholder="select"
                     >
                       {options}
@@ -226,7 +299,66 @@ class ModulePopUp3 extends React.Component {
                   </div>
                 </div>
                 <div className="col-12 pt-2">
-                  {showUpload && <div>Upload </div>}
+                  {showUpload && (
+                    <Form {...formItemLayout}>
+                      <Form.Item>
+                        {getFieldDecorator(
+                          "cart_view",
+                          {}
+                        )(
+                          <Select
+                            placeholder="Document View"
+                            onChange={this.onChangeCardView}
+                          >
+                            <Option value="1">Front</Option>
+                            <Option value="2">Back</Option>
+                          </Select>
+                        )}
+                      </Form.Item>
+                      {parseInt(cardView) === 1 && (
+                        <Upload
+                          name="front"
+                          listType="picture-card"
+                          className="avatar-uploader"
+                          showUploadList={false}
+                          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                          beforeUpload={beforeUpload}
+                          onChange={this.handleChangeFront}
+                        >
+                          {imageUrl ? (
+                            <img
+                              src={imageUrl}
+                              alt="avatar"
+                              style={{ width: "100%" }}
+                            />
+                          ) : (
+                            uploadButton
+                          )}
+                        </Upload>
+                      )}
+                      {parseInt(cardView) === 2 && (
+                        <Upload
+                          name="back"
+                          listType="picture-card"
+                          className="avatar-uploader"
+                          showUploadList={false}
+                          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                          beforeUpload={beforeUpload}
+                          onChange={this.handleChangeBack}
+                        >
+                          {imageUrl2 ? (
+                            <img
+                              src={imageUrl2}
+                              alt="avatar"
+                              style={{ width: "100%" }}
+                            />
+                          ) : (
+                            uploadButton
+                          )}
+                        </Upload>
+                      )}
+                    </Form>
+                  )}
                 </div>
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
@@ -412,13 +544,15 @@ class ModulePopUp3 extends React.Component {
   }
 }
 
+const InfoUser = Form.create({ name: "infoUser" })(ModulePopUp3);
+
 const mapsStateToProps = state => ({
   isShowing: state.main.isShowing,
   service_s: state.auth.service_s,
   rechargeMobile: state.auth.rechargeMobile,
-  userList: state.main.userList
+  userList: state.main.userListBySearch
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
-  ModulePopUp3
+  InfoUser
 );
