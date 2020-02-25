@@ -5,6 +5,7 @@ import AuthActions from "../models/auth";
 import {
   fetchServices,
   fetchUsers,
+  fetchUsersBySearch,
   updatateOverviewWidget
 } from "services/main";
 
@@ -33,6 +34,14 @@ export function* getUsers(params) {
     yield put(MainActions.setUsers(response.data.users));
   }
 }
+
+export function* getUsersBySearch(params) {
+  const response = yield call(fetchUsersBySearch, params.search_user);
+  if (response.data) {
+    yield put(MainActions.setUsersBySearch(response.data.users));
+  }
+}
+
 export function* getOverviewDashboard(data) {
   const response = yield call(updatateOverviewWidget, data.period);
   if (response.data) {

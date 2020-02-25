@@ -63,6 +63,7 @@ class RegisterEndUser extends React.Component {
     imageUrl2: "",
     loading: false
   };
+
   handleChangeBack = info => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });

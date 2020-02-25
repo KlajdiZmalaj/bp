@@ -30,6 +30,24 @@ export const fetchUsers = search_user =>
     // })
     .catch(error => ({ error }));
 
+export const fetchUsersBySearch = search_user =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/findUser`, {
+      ...(search_user ? { search_user: search_user } : {})
+    })
+    // .then(data => {
+    //   console.log("fetch users called", data,);
+    // })
+    .catch(error => ({ error }));
+
 export const postImages = (user_id, imgFront, imgBack, callback) => {
   axios
     .create({

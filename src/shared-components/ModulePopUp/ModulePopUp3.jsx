@@ -2,37 +2,83 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
-import { Select } from "antd";
+import { Form, Select, Upload, Icon, message } from "antd";
 
 const { Option } = Select;
 
-class ModulePopUp3 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      importo: "",
-      user_id: "",
-      intestazione: "",
-      codice_fiscale_intestatario: "",
-      ordinante: "",
-      codice_fiscale_ordinante: "",
-      numero_postepay: "",
-      userList: [],
-      showUpload: false
-    };
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
 
-    this.handleChangeImporto = this.handleChangeImporto.bind(this);
-    this.handleChangeUser_id = this.handleChangeUser_id.bind(this);
-    this.handleChangeIntestazione = this.handleChangeIntestazione.bind(this);
-    this.handleChangeCfIntestazione = this.handleChangeCfIntestazione.bind(
-      this
-    );
-    this.handleChangeOrdinante = this.handleChangeOrdinante.bind(this);
-    this.handleChangeCfOrdinante = this.handleChangeCfOrdinante.bind(this);
-    this.handleChangeNrPostepay = this.handleChangeNrPostepay.bind(this);
-
-    // this.handleChange = this.handleChange.bind(this);
+function beforeUpload(file) {
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  if (!isJpgOrPng) {
+    message.error("You can only upload JPG/PNG file!");
   }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error("Image must smaller than 2MB!");
+  }
+  return isJpgOrPng && isLt2M;
+}
+
+class ModulePopUp3 extends React.Component {
+  state = {
+    importo: "",
+    user_id: "",
+    intestazione: "",
+    codice_fiscale_intestatario: "",
+    ordinante: "",
+    codice_fiscale_ordinante: "",
+    numero_postepay: "",
+    showUpload: false,
+
+    cardView: 0,
+    imageUrl: "",
+    imageUrl2: "",
+    loading: false,
+    document_type: 0
+  };
+
+  onChangeCardView = value => {
+    this.setState({ cardView: value });
+  };
+
+  onChangeTypeView = value => {
+    this.setState({ document_type: value });
+  };
+
+  handleChangeBack = info => {
+    if (info.file.status === "uploading") {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, imageUrl2 =>
+        this.setState({
+          imageUrl2,
+          loading: false
+        })
+      );
+    }
+  };
+
+  handleChangeFront = info => {
+    if (info.file.status === "uploading") {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false
+        })
+      );
+    }
+  };
 
   handleChangeImporto(event) {
     this.setState({ importo: event.target.value });
@@ -58,22 +104,42 @@ class ModulePopUp3 extends React.Component {
     this.setState({ numero_postepay: event.target.value });
   }
 
+  hideAlert = () => {
+    this.props.setPostePay({});
+  };
+
   handleSearch = value => {
     if (value.length > 2) {
-      this.props.getUsers(value);
+      this.props.getUsersBySearch(value);
+
+      if (
+        this.props.userList["photo"] &&
+        this.props.userList["photo"].length < 1 &&
+        this.props.userList["no_photo"] &&
+        this.props.userList["no_photo"].length < 1
+      ) {
+        this.setState({ showUpload: true });
+        this.setState({ intestazione: value });
+        this.setState({ user_id: "" });
+      } else {
+        this.setState({ showUpload: false });
+      }
     }
   };
 
   handleChangeUser_id(event) {
     const ev = JSON.parse(event);
-    console.log("eventttt", ev);
     const user = Object.values(ev)[0];
+
     if (Object.keys(ev)[0] === "no_photo") {
       this.setState({ showUpload: true });
     }
-    this.setState({ ordinante: `${user.first_name} ${user.last_name}` });
+    if (Object.keys(ev)[0] === "photo") {
+      this.setState({ showUpload: false });
+    }
+    this.setState({ intestazione: `${user.first_name} ${user.last_name}` });
     this.setState({
-      codice_fiscale_ordinante: user.codice_fiscale_ordinante
+      codice_fiscale_intestatario: user.codice_fiscale_ordinante
     });
     this.setState({ user_id: user.id });
   }
@@ -86,25 +152,14 @@ class ModulePopUp3 extends React.Component {
       codice_fiscale_intestatario,
       ordinante,
       codice_fiscale_ordinante,
-      numero_postepay
+      numero_postepay,
+      document_type,
+      imageUrl,
+      imageUrl2
     } = this.state;
 
-    // this.props.getPostePay(
-    //   service_id,
-    //   importo,
-    //   user_id,
-    //   intestazione,
-    //   codice_fiscale_intestatario,
-    //   ordinante,
-    //   codice_fiscale_ordinante,
-    //   numero_postepay
-    // );
-  };
-
-  render() {
-    const { service_id, userList } = this.props;
-
-    const {
+    this.props.getPostePay(
+      service_id,
       importo,
       user_id,
       intestazione,
@@ -112,28 +167,93 @@ class ModulePopUp3 extends React.Component {
       ordinante,
       codice_fiscale_ordinante,
       numero_postepay,
-      showUpload
+      document_type,
+      imageUrl,
+      imageUrl2
+    );
+  };
+
+  render() {
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 }
+      }
+    };
+    const { getFieldDecorator } = this.props.form;
+    const { service_id, userList, postePay } = this.props;
+
+    const {
+      importo,
+      intestazione,
+      codice_fiscale_intestatario,
+      ordinante,
+      codice_fiscale_ordinante,
+      numero_postepay,
+      showUpload,
+      imageUrl,
+      cardView,
+      imageUrl2
     } = this.state;
 
+    const uploadButton = (
+      <div>
+        <Icon type={this.state.loading ? "loading" : "plus"} />
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    );
+
     let options = [];
+    let b = [];
+    let c = [];
+    if (userList && Object.keys(userList).length > 0) {
+      c.concat({ photo: userList["photo"] });
+      c.concat({ no_photo: userList["no_photo"] });
+    }
 
     if (userList && Object.keys(userList).length > 0) {
       Object.keys(userList).map(item => {
-        const b = userList[item] && userList[item].length > 0 && userList[item];
-        options = (b || []).map(i => {
-          return (
-            <Option key={JSON.stringify({ [item]: i })}>
-              {i.first_name} {i.last_name}
-            </Option>
-          );
-        });
-        return options;
+        if (userList[item] && userList[item].length > 0) {
+          b = b.concat(userList[item]);
+
+          options = (b || []).map(i => {
+            return (
+              <Option key={JSON.stringify({ [item]: i })}>
+                {i.first_name} {i.last_name}
+              </Option>
+            );
+          });
+          return options;
+        }
       });
     }
 
     return (
       <div className="modulePopUP modulePopUP3">
         <div className="module container-fluid max-width_modulePopUP">
+          {postePay.errors &&
+            Object.keys(postePay.errors).map((item, index) => {
+              return (
+                <div className="error alertError" key={index}>
+                  <span className="closeAlert" onClick={this.hideAlert}>
+                    X
+                  </span>
+                  {postePay.errors[item]}
+                </div>
+              );
+            })}
+
+          {!postePay.errors && postePay.message && (
+            <div className="confirmedMessage">
+              <span className="closeAlert">X</span>
+              {postePay.message}
+            </div>
+          )}
+
           <div className="row">
             <div className="col-12 leftCol_Module">
               <div className="row no-gutters">
@@ -206,28 +326,105 @@ class ModulePopUp3 extends React.Component {
 
                 <div className="col-5 ">
                   <div className="euroboll ">
-                    <span className="pr-5">User</span>
+                    <span className="pr-5">INTESTATARIO</span>
                   </div>
                 </div>
                 <div className="col-7">
                   <div className="euroboll ">
                     <Select
                       showSearch
-                      value={user_id}
+                      value={intestazione}
                       defaultActiveFirstOption={false}
                       showArrow={false}
                       filterOption={false}
                       onSearch={this.handleSearch}
-                      onChange={this.handleChangeUser_id}
+                      onChange={this.handleChangeUser_id.bind(this)}
                       placeholder="select"
                     >
                       {options}
                     </Select>
                   </div>
                 </div>
-                <div className="col-12 pt-2">
-                  {showUpload && <div>Upload </div>}
-                </div>
+                {showUpload && (
+                  <div className="col-12 document">
+                    {
+                      <Form {...formItemLayout}>
+                        <Form.Item>
+                          {getFieldDecorator(
+                            "cart_view",
+                            {}
+                          )(
+                            <Select
+                              placeholder="Document View"
+                              onChange={this.onChangeCardView}
+                            >
+                              <Option value="1">Front</Option>
+                              <Option value="2">Back</Option>
+                            </Select>
+                          )}
+                        </Form.Item>
+                        <Form.Item>
+                          {getFieldDecorator(
+                            "type_view",
+                            {}
+                          )(
+                            <Select
+                              placeholder="Document Type"
+                              onChange={this.onChangeTypeView.bind(this)}
+                            >
+                              <Option value="1">Carta di identita</Option>
+                              <Option value="2">Patenta di guida</Option>
+                              <Option value="3">Passporto</Option>
+                            </Select>
+                          )}
+                        </Form.Item>
+                        {parseInt(cardView) === 1 && (
+                          <Upload
+                            name="front"
+                            listType="picture-card"
+                            className="avatar-uploader"
+                            showUploadList={false}
+                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                            beforeUpload={beforeUpload}
+                            onChange={this.handleChangeFront}
+                          >
+                            {imageUrl ? (
+                              <img
+                                src={imageUrl}
+                                alt="avatar"
+                                style={{ width: "100%" }}
+                              />
+                            ) : (
+                              uploadButton
+                            )}
+                          </Upload>
+                        )}
+                        {parseInt(cardView) === 2 && (
+                          <Upload
+                            name="back"
+                            listType="picture-card"
+                            className="avatar-uploader"
+                            showUploadList={false}
+                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                            beforeUpload={beforeUpload}
+                            onChange={this.handleChangeBack}
+                          >
+                            {imageUrl2 ? (
+                              <img
+                                src={imageUrl2}
+                                alt="avatar"
+                                style={{ width: "100%" }}
+                              />
+                            ) : (
+                              uploadButton
+                            )}
+                          </Upload>
+                        )}
+                      </Form>
+                    }
+                  </div>
+                )}
+
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">IMPORTO</span>
@@ -238,12 +435,12 @@ class ModulePopUp3 extends React.Component {
                     <input
                       type="text"
                       value={importo}
-                      onChange={this.handleChangeImporto}
+                      onChange={this.handleChangeImporto.bind(this)}
                     />
                   </div>
                 </div>
 
-                <div className="col-5 pt-2">
+                {/* <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">INTESTATARIO</span>
                   </div>
@@ -253,10 +450,10 @@ class ModulePopUp3 extends React.Component {
                     <input
                       type="text"
                       value={intestazione}
-                      onChange={this.handleChangeIntestazione}
+                      onChange={this.handleChangeIntestazione.bind(this)}
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
@@ -268,7 +465,7 @@ class ModulePopUp3 extends React.Component {
                     <input
                       type="text"
                       value={codice_fiscale_intestatario}
-                      onChange={this.handleChangeCfIntestazione}
+                      onChange={this.handleChangeCfIntestazione.bind(this)}
                     />
                   </div>
                 </div>
@@ -283,7 +480,7 @@ class ModulePopUp3 extends React.Component {
                     <input
                       type="text"
                       value={ordinante}
-                      onChange={this.handleChangeOrdinante}
+                      onChange={this.handleChangeOrdinante.bind(this)}
                     />
                   </div>
                 </div>
@@ -298,7 +495,7 @@ class ModulePopUp3 extends React.Component {
                     <input
                       type="text"
                       value={codice_fiscale_ordinante}
-                      onChange={this.handleChangeCfOrdinante}
+                      onChange={this.handleChangeCfOrdinante.bind(this)}
                     />
                   </div>
                 </div>
@@ -312,7 +509,7 @@ class ModulePopUp3 extends React.Component {
                     <input
                       type="text"
                       value={numero_postepay}
-                      onChange={this.handleChangeNrPostepay}
+                      onChange={this.handleChangeNrPostepay.bind(this)}
                     />
                   </div>
                 </div>
@@ -412,13 +609,16 @@ class ModulePopUp3 extends React.Component {
   }
 }
 
+const InfoUser = Form.create({ name: "infoUser" })(ModulePopUp3);
+
 const mapsStateToProps = state => ({
   isShowing: state.main.isShowing,
   service_s: state.auth.service_s,
   rechargeMobile: state.auth.rechargeMobile,
-  userList: state.main.userList
+  userList: state.main.userListBySearch,
+  postePay: state.auth.postePay
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
-  ModulePopUp3
+  InfoUser
 );

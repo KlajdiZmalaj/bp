@@ -187,13 +187,27 @@ export function* getPostePay(params) {
     params.codice_fiscale_intestatario,
     params.ordinante,
     params.codice_fiscale_ordinante,
-    params.numero_postepay
+    params.numero_postepay,
+    params.document_type,
+    params.imageUrl,
+    params.imageUrl2
   );
   if (response) {
-    console.log("response", response);
     if (response.data) {
-      console.log("wallet", response.data.wallet);
       if (response.data.wallet) {
+        const accountData = localStorage.getItem("accountDataB");
+        const data = JSON.parse(accountData);
+
+        const d = {
+          ...data,
+          profile: {
+            ...data.profile,
+            wallet: response.data.wallet
+          }
+        };
+
+        localStorage.setItem("accountDataB", JSON.stringify(d));
+        yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setPostePay(response.data));
     } else if (response.error) {

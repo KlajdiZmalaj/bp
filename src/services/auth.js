@@ -133,7 +133,10 @@ export const fetchPostePay = (
   codice_fiscale_intestatario,
   ordinante,
   codice_fiscale_ordinante,
-  numero_postepay
+  numero_postepay,
+  document_type,
+  imageUrl,
+  imageUrl2
 ) =>
   axios
     .create({
@@ -144,15 +147,19 @@ export const fetchPostePay = (
         }`
       }
     })
-    .post(`/test/recharge`, {
+    .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
       ...{ importo: importo },
-      ...{ user_id: user_id },
+      ...(user_id ? { user_id: user_id } : {}),
       ...{ intestazione: intestazione },
       ...{ codice_fiscale_intestatario: codice_fiscale_intestatario },
       ...{ ordinante: ordinante },
       ...{ codice_fiscale_ordinante: codice_fiscale_ordinante },
-      ...{ numero_postepay: numero_postepay }
+      ...{ numero_postepay: numero_postepay },
+
+      ...(document_type ? { document_type: document_type } : {}),
+      ...(imageUrl ? { document_front: imageUrl } : {}),
+      ...(imageUrl2 ? { document_back: imageUrl2 } : {})
     })
     .catch(error => ({ error }));
 
