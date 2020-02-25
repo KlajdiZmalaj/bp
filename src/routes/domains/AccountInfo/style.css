@@ -6,11 +6,13 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  margin-top: 65px;
+  margin-top: 20px;
   padding-bottom: 65px;
   width: 100%;
-  max-width: 1250px;
-  margin: 0 auto;
+  -webkit-box-shadow: 0px -3px 20px -15px black;
+          box-shadow: 0px -3px 20px -15px black;
+  background-color: #fff;
+  font-family: Roboto;
 }
 
 .leftMenuAcc {
@@ -18,6 +20,8 @@
   background-color: #fff;
   width: 100%;
   text-transform: uppercase;
+  max-width: 1250px;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -41,8 +45,10 @@
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  background: #edeef0;
-  padding-top: 25px;
+  background: #fff;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 
 .contentAcc .ant-btn {
@@ -108,10 +114,13 @@
 }
 
 .userList .title {
-  font-size: 20px;
-  color: #ed4c14;
+  font-size: 24px;
+  color: #32424e;
   font-weight: 500;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #c2cad1;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .userList .noUsers i {
@@ -140,6 +149,7 @@
   border-left: 1px solid #fff;
   font-weight: 500;
   color: #32424e;
+  background-color: #f5f5f5;
 }
 
 @media (max-width: 1024px) {
@@ -168,6 +178,8 @@
 }
 
 .userList--noDoc__user .body, .userList--Doc__user .body {
+  border-left: 1px solid #f5f5f5;
+  border-right: 1px solid #f5f5f5;
   text-transform: uppercase;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -267,7 +279,7 @@
   width: 410px;
   background-color: #fff;
   z-index: 3;
-  border-radius: 10px;
+  border-radius: 0px;
   left: 50%;
   margin-left: -205px;
   text-align: center;
@@ -279,32 +291,109 @@
           animation: fromDown 0.5s ease-out forwards;
 }
 
+.userList .popUp .inpgr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 42px;
+  border: 1px solid #dadada;
+  width: 100%;
+  max-width: 70%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.userList .popUp .inpgr .inplabel {
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 14px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-left: 20px;
+  border-right: 1px solid #dadada;
+}
+
+.userList .popUp .inpgr input {
+  border: 0;
+  height: 100%;
+  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.userList .popUp .inpgr input::-webkit-input-placeholder {
+  text-align: right;
+  padding-right: 5px;
+}
+
+.userList .popUp .inpgr input:-ms-input-placeholder {
+  text-align: right;
+  padding-right: 5px;
+}
+
+.userList .popUp .inpgr input::-ms-input-placeholder {
+  text-align: right;
+  padding-right: 5px;
+}
+
+.userList .popUp .inpgr input::placeholder {
+  text-align: right;
+  padding-right: 5px;
+}
+
 .userList .popUp .sendInput {
   clear: both;
   width: 110px;
-  margin: 0 30%;
+  margin: 0 20px;
   margin-top: 30px;
   border: 0;
-  border: 1px solid #26943f;
+  border: 2px solid #00b850;
   background: #fff;
-  color: #41902d;
+  color: #00b850;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   font-weight: 500;
+  height: 42px;
 }
 
 .userList .popUp .sendInput:hover {
-  background: #41902d;
+  background: #00b850;
+  color: #fff;
+}
+
+.userList .popUp .sendInput.cancelInput {
+  color: #7e7e7e;
+  border-color: #7e7e7e;
+}
+
+.userList .popUp .sendInput.cancelInput:hover {
+  background: #7e7e7e;
   color: #fff;
 }
 
 .userList .popUp input {
   background: transparent;
   border: 0;
-  padding: 20px;
   border: 1px solid #d9d9d9;
   text-align: center;
-  padding: 20px 0;
   -webkit-appearance: none;
 }
 
@@ -375,9 +464,20 @@
 }
 
 .userList .popUp .title {
-  text-align: center;
+  text-align: left;
   padding-top: 10px;
   text-transform: uppercase;
+  padding: 15px;
+  padding-bottom: 0;
+}
+
+.userList .popUp .title + p {
+  text-align: left;
+  padding: 0 15px;
+  line-height: 0;
+  font-size: 13px;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 20px;
 }
 
 .backDrop {

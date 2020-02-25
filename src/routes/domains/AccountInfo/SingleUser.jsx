@@ -61,8 +61,11 @@ class SingleUser extends Component {
         <div className="userList--noDoc__user singleUser">
           {" "}
           <div className="body">
-            <span>{user.id}</span>
-            <span>{user.username}</span>
+            <span>#{user.id}</span>
+            <span className="text-left justify-content-start">
+              <i className="fal fa-user-alt text-success pr-2 d-flex align-items-center"></i>{" "}
+              {user.username}
+            </span>
             <span>{user.city}</span>
             <span>{user.comune_code}</span>
             <span>
@@ -100,19 +103,36 @@ class SingleUser extends Component {
             {" "}
             <div className="popUp">
               <div className="title">{val}</div>
-              <input
-                type="number"
-                onChange={e => {
-                  this.inpHandler(e);
-                }}
-              />
+              <p>
+                The amount will be {val == "deposit" ? "added" : "substracted"}{" "}
+                to the current balance.
+              </p>
+              <div className="inpgr">
+                <div className="inplabel">Amount</div>
+                <input
+                  type="number"
+                  placeholder="0.00€"
+                  onChange={e => {
+                    this.inpHandler(e);
+                  }}
+                />
+              </div>
+
               <button
                 className="sendInput"
                 onClick={() => {
                   this.transferMoney();
                 }}
               >
-                Conferma <i class="fa fa-check"></i>
+                <i class="fa fa-check"></i> Conferma
+              </button>
+              <button
+                className="sendInput cancelInput"
+                onClick={() => {
+                  this.setPopUpFalse();
+                }}
+              >
+                <i class="fa fa-times"></i> Cancel
               </button>
             </div>
             <div

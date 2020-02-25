@@ -14,18 +14,17 @@ class LeftMenu extends Component {
       <div className="leftMenuAcc">
         {profileLinks.map(item => {
           // console.log("item.id", item.id);
-
-          return (
-            <div
-              className={item.id === this.props.activeAccount ? "active" : ""}
-              onClick={() => {
-                this.props.setAccount(item.id);
-              }}
-              key={item.id}
-            >
-              {item.name}
-            </div>
-          );
+          // return (
+          //   <div
+          //     className={item.id === this.props.activeAccount ? "active" : ""}
+          //     onClick={() => {
+          //       this.props.setAccount(item.id);
+          //     }}
+          //     key={item.id}
+          //   >
+          //     {item.name}
+          //   </div>
+          // );
         })}
       </div>
     );
