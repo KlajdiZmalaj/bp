@@ -5,6 +5,7 @@ import AuthActions from "redux-store/models/auth";
 import UserDoc from "./UserDoc";
 import UserNoDoc from "./UserNoDoc";
 import SingleUser from "./SingleUser";
+import FastCarica from "./FastCarica";
 import { get, isArray } from "lodash";
 class UsersList extends Component {
   constructor(props) {
@@ -76,10 +77,14 @@ class UsersList extends Component {
           </React.Fragment>
         ) : (
           <div className="userList--AllUsers">
-            <div className="title">Agenzie</div>
+            <div className="title">
+              Agenzie
+              <FastCarica users={userList} />
+            </div>
             <div className="header">
               <span>Id</span>
               <span>Nome</span>
+              <span>Cognome</span>
               <span>Citta</span>
               <span>Comune code</span>
               <span>Credito</span>

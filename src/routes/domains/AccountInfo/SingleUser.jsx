@@ -12,6 +12,32 @@ class SingleUser extends Component {
     isOpen: false,
     valueInput: ""
   };
+  switchUserStatus = status => {
+    axios
+      .create({
+        baseURL: "https://services-api.bpoint.store/api",
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("accountDataB")).token
+          }`
+        }
+      })
+      .post(`/users/${this.props.user.id}/changeStatus`, {
+        ...{ status }
+      })
+      .then(
+        data => {
+          if (data.status === 200) {
+            this.setState({ isPopUpActive: false });
+            this.props.getUsers();
+          }
+          console.log("succData", data);
+        },
+        data => {
+          console.log("err data", data);
+        }
+      );
+  };
   transferMoney = () => {
     axios
       .create({
@@ -63,9 +89,15 @@ class SingleUser extends Component {
           <div className="body">
             <span>#{user.id}</span>
             <span className="text-left justify-content-start">
-              <i className="fal fa-user-alt text-success pr-2 d-flex align-items-center"></i>{" "}
-              {user.username}
+              <i
+                className={
+                  "fas fa-user-alt pr-2 d-flex align-items-center" +
+                  (user.status === 1 ? " text-success" : " text-danger")
+                }
+              ></i>{" "}
+              {user.first_name}
             </span>
+            <span> {user.last_name}</span>
             <span>{user.city}</span>
             <span>{user.comune_code}</span>
             <span>
@@ -92,6 +124,13 @@ class SingleUser extends Component {
                     }}
                   >
                     Withdraw
+                  </span>
+                  <span
+                    onClick={() => {
+                      this.switchUserStatus(user.status == 1 ? 2 : 1);
+                    }}
+                  >
+                    {user.status === 1 ? "Block User" : "Activate User"}
                   </span>
                 </div>
               </div>

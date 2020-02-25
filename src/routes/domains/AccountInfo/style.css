@@ -121,6 +121,9 @@
   margin-bottom: 20px;
   padding-bottom: 5px;
   padding-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .userList .noUsers i {
@@ -510,5 +513,186 @@
     -webkit-transform: translateY(0%);
             transform: translateY(0%);
   }
+}
+
+.fastCarica {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  font-size: 15px;
+}
+
+.fastCarica .addFounds {
+  background-color: transparent;
+  border: 0;
+  margin-left: auto;
+  color: #ed4c14;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 2px solid #dadada;
+  border-radius: 4px;
+}
+
+.fastCarica .addFounds:hover {
+  border-color: #ed4c14;
+}
+
+.fastCarica .amountGr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 180px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 15px;
+  border: 2px solid #dadada;
+  margin-left: 15px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.fastCarica .amountGr .label {
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 10px;
+  border-right: 2px solid #dadada;
+}
+
+.fastCarica .amountGr input {
+  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border: 0;
+  background-color: transparent;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.fastCarica .searchUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 240px;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 15px;
+  border: 2px solid #dadada;
+  margin-left: 15px;
+  border-radius: 4px;
+}
+
+.fastCarica .searchUser input {
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+}
+
+.fastCarica .searchUser i {
+  position: absolute;
+  right: 8px;
+  top: 9px;
+}
+
+.fastCarica .switchGr {
+  border: 2px solid #dadada;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  position: relative;
+  height: 36px;
+  overflow: hidden;
+}
+
+.fastCarica .switchGr > span {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-transform: capitalize;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.fastCarica .switchGr > span.active {
+  background-color: #ed4c14;
+  color: #fff;
+}
+
+.fastCarica .switchGr > span:first-child {
+  border-right: 2px solid #dadada;
+}
+
+.fastCarica .switchGr > span.or {
+  position: absolute;
+  left: 50%;
+  width: 27px;
+  margin-left: -14px;
+  cursor: default;
+  top: 3px;
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid #dadada;
+  height: 27px;
+}
+
+.ddUsers {
+  position: absolute;
+  top: 35px;
+  z-index: 2;
+  background: #fff;
+  padding: 15px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 400px;
+  overflow: scroll;
+}
+
+.ddUsers > span {
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.ddUsers > span:hover {
+  color: #ed4c14;
 }
 /*# sourceMappingURL=style.css.map */

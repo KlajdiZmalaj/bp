@@ -84,6 +84,7 @@
     margin-bottom: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
+    display: flex;
   }
   .noUsers {
     i {
@@ -368,5 +369,132 @@
   }
   100% {
     transform: translateY(0%);
+  }
+}
+.fastCarica {
+  flex-grow: 1;
+  padding-left: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 15px;
+  .addFounds {
+    background-color: transparent;
+    border: 0;
+    margin-left: auto;
+    color: #ed4c14;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 2px solid #dadada;
+    border-radius: 4px;
+    &:hover {
+      border-color: #ed4c14;
+    }
+  }
+  .amountGr {
+    display: flex;
+    width: 100%;
+    max-width: 180px;
+    align-items: center;
+    padding-left: 15px;
+    border: 2px solid #dadada;
+    margin-left: 15px;
+    border-radius: 4px;
+    position: relative;
+    .label {
+      height: 100%;
+      align-items: center;
+      display: flex;
+      padding-right: 10px;
+      border-right: 2px solid #dadada;
+    }
+    input {
+      width: 50%;
+      flex-grow: 1;
+      border: 0;
+      background-color: transparent;
+      text-align: right;
+      padding-right: 15px;
+    }
+  }
+  .searchUser {
+    display: flex;
+    width: 100%;
+    max-width: 240px;
+    position: relative;
+    align-items: center;
+    padding-left: 15px;
+    border: 2px solid #dadada;
+    margin-left: 15px;
+    border-radius: 4px;
+    input {
+      width: 100%;
+      border: 0;
+      background-color: transparent;
+    }
+    i {
+      position: absolute;
+      right: 8px;
+      top: 9px;
+    }
+  }
+  .switchGr {
+    border: 2px solid #dadada;
+    width: 100%;
+    max-width: 240px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    position: relative;
+    height: 36px;
+    overflow: hidden;
+    > span {
+      flex-grow: 1;
+      width: 100%;
+      text-transform: capitalize;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      &.active {
+        background-color: #ed4c14;
+        color: #fff;
+      }
+      &:first-child {
+        border-right: 2px solid #dadada;
+      }
+      &.or {
+        position: absolute;
+        left: 50%;
+        width: 27px;
+        margin-left: -14px;
+        cursor: default;
+        top: 3px;
+        background: #fff;
+        border-radius: 20px;
+        border: 2px solid #dadada;
+        height: 27px;
+      }
+    }
+  }
+}
+.ddUsers {
+  position: absolute;
+  top: 35px;
+  z-index: 2;
+  background: #fff;
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  overflow: scroll;
+  > span {
+    padding: 3px 0;
+    cursor: pointer;
+    &:hover {
+      color: #ed4c14;
+    }
   }
 }
