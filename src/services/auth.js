@@ -324,3 +324,57 @@ export const fetchCodice = barcode =>
       }
     })
     .catch(error => ({ error }));
+
+export const switchUserStatus = (id, status, callback) => {
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/${id}/changeStatus`, {
+      ...{ status }
+    })
+    .then(
+      data => {
+        if (data.status === 200) {
+          callback();
+        }
+        console.log("succData", data);
+      },
+      data => {
+        console.log("err data", data);
+      }
+    );
+};
+export const transferMoney = (id, amount, type, callback) => {
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/${id}/transfer`, {
+      ...{ amount },
+      ...{ type }
+    })
+    .then(
+      data => {
+        if (data.status === 200) {
+          callback();
+          // this.setState({ isPopUpActive: false });
+          // this.props.getUsers();
+        }
+        console.log("succData", data);
+      },
+      data => {
+        console.log("err data", data);
+      }
+    );
+};

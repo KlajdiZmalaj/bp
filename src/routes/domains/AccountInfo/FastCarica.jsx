@@ -3,6 +3,8 @@ import axios from "axios";
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
+import { transferMoney } from "services/auth";
+
 class FastCarica extends Component {
   state = {
     type: "deposit",
@@ -12,34 +14,11 @@ class FastCarica extends Component {
     userName: "",
     amountVal: 0
   };
-
-  transferMoney = () => {
-    axios
-      .create({
-        baseURL: "https://services-api.bpoint.store/api",
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("accountDataB")).token
-          }`
-        }
-      })
-      .post(`/users/${this.state.userId}/transfer`, {
-        ...{ amount: this.state.amountVal },
-        ...{ type: this.state.type }
-      })
-      .then(
-        data => {
-          if (data.status === 200) {
-            this.setState({ isPopUpActive: false });
-            this.props.getUsers();
-          }
-          console.log("succData", data);
-        },
-        data => {
-          console.log("err data", data);
-        }
-      );
+  transferCallback = () => {
+    this.setState({ isPopUpActive: false });
+    this.props.getUsers();
   };
+
   setUser = (userId, userName) => {
     this.setState({ userId, userName });
   };
@@ -110,6 +89,7 @@ class FastCarica extends Component {
                     .toLowerCase()
                     .includes(valSearched.toLowerCase()) && (
                     <span
+                      key={user.id}
                       onClick={() => {
                         this.setUser(user.id, user.first_name);
                         this.closeUsersDialog();
@@ -136,7 +116,7 @@ class FastCarica extends Component {
         <button
           className="addFounds"
           onClick={() => {
-            this.transferMoney();
+            transferMoney(userId, amountVal, type, this.transferCallback);
           }}
         >
           {type == "deposit" ? "Add Founds" : "Substract Founds"}

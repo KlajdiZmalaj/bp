@@ -135,12 +135,15 @@
         .label {
           height: 32px;
           position: absolute;
-          right: 10px;
+          right: 0;
           top: 0;
           display: flex;
           align-items: center;
           border-left: 1px solid #dadada;
           padding-left: 20px;
+          width: 115px;
+          text-align: right;
+          justify-content: flex-end;
           i {
             margin-left: 10px;
           }

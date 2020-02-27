@@ -91,7 +91,7 @@ class UsersList extends Component {
             </div>
             {isArray(userList) &&
               (userList || []).map(user => {
-                return <SingleUser user={user} />;
+                return <SingleUser key={user.id} user={user} />;
               })}
           </div>
         )}

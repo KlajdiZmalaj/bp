@@ -1,70 +1,25 @@
 import React, { Component } from "react";
-import axios from "axios";
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
-
+import { switchUserStatus, transferMoney } from "services/auth";
 class SingleUser extends Component {
   state = {
-    label: "Azioni",
+    label: "deposit",
     val: "",
     isPopUpActive: false,
     isOpen: false,
     valueInput: ""
   };
-  switchUserStatus = status => {
-    axios
-      .create({
-        baseURL: "https://services-api.bpoint.store/api",
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("accountDataB")).token
-          }`
-        }
-      })
-      .post(`/users/${this.props.user.id}/changeStatus`, {
-        ...{ status }
-      })
-      .then(
-        data => {
-          if (data.status === 200) {
-            this.setState({ isPopUpActive: false });
-            this.props.getUsers();
-          }
-          console.log("succData", data);
-        },
-        data => {
-          console.log("err data", data);
-        }
-      );
+  transferCallback = () => {
+    this.setState({ isPopUpActive: false });
+    this.props.getUsers();
   };
-  transferMoney = () => {
-    axios
-      .create({
-        baseURL: "https://services-api.bpoint.store/api",
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("accountDataB")).token
-          }`
-        }
-      })
-      .post(`/users/${this.props.user.id}/transfer`, {
-        ...{ amount: this.state.valueInput },
-        ...{ type: this.state.val }
-      })
-      .then(
-        data => {
-          if (data.status === 200) {
-            this.setState({ isPopUpActive: false });
-            this.props.getUsers();
-          }
-          console.log("succData", data);
-        },
-        data => {
-          console.log("err data", data);
-        }
-      );
+  switchCallBack = () => {
+    this.setState({ isPopUpActive: false });
+    this.props.getUsers();
   };
+
   inpHandler = e => {
     this.setState({ valueInput: e.target.value });
   };
@@ -108,7 +63,7 @@ class SingleUser extends Component {
                   this.switchLabel();
                 }}
               >
-                {label}{" "}
+                {val || label}{" "}
                 <i className={"fas fa-chevron-" + (isOpen ? "up" : "down")}></i>
                 <div className={"ddItems" + (isOpen ? " viz" : "")}>
                   <span
@@ -127,7 +82,11 @@ class SingleUser extends Component {
                   </span>
                   <span
                     onClick={() => {
-                      this.switchUserStatus(user.status == 1 ? 2 : 1);
+                      switchUserStatus(
+                        user.id,
+                        user.status == 1 ? 2 : 1,
+                        this.switchCallBack
+                      );
                     }}
                   >
                     {user.status === 1 ? "Block User" : "Activate User"}
@@ -160,7 +119,12 @@ class SingleUser extends Component {
               <button
                 className="sendInput"
                 onClick={() => {
-                  this.transferMoney();
+                  transferMoney(
+                    user.id,
+                    valueInput,
+                    val,
+                    this.transferCallback
+                  );
                 }}
               >
                 <i class="fa fa-check"></i> Conferma
