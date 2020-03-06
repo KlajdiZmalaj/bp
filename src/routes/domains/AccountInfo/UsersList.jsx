@@ -85,8 +85,10 @@ class UsersList extends Component {
               <span>Id</span>
               <span>Nome</span>
               <span>Cognome</span>
+              <span>Rag.Sociale</span>
               <span>Citta</span>
-              <span>Comune code</span>
+              <span>Comune</span>
+              <span>Ultimo Deposit</span>
               <span>Credito</span>
             </div>
             {isArray(userList) &&

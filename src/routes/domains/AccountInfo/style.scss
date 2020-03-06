@@ -105,6 +105,12 @@
       font-weight: 500;
       color: #32424e;
       background-color: #f5f5f5;
+      &:nth-child(1) {
+        width: 40%;
+      }
+      &:nth-child(6) {
+        width: 50%;
+      }
       @media (max-width: 1024px) {
         text-transform: capitalize;
         font-size: 12px;
@@ -157,6 +163,12 @@
           text-overflow: ellipsis;
           display: flex;
           justify-content: space-between;
+          &:nth-child(1) {
+            width: 40%;
+          }
+          &:nth-child(6) {
+            width: 50%;
+          }
           @media (max-width: 1024px) {
             text-transform: capitalize;
             font-size: 12px;

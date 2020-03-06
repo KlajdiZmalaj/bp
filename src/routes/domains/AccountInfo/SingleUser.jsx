@@ -53,8 +53,10 @@ class SingleUser extends Component {
               {user.first_name}
             </span>
             <span> {user.last_name}</span>
+            <span>{user.rag_soc}</span>
             <span>{user.city}</span>
             <span>{user.comune_code}</span>
+            <span>{user.last_deposit}</span>
             <span>
               {user.wallet}
               <div
@@ -80,6 +82,7 @@ class SingleUser extends Component {
                   >
                     Withdraw
                   </span>
+
                   <span
                     onClick={() => {
                       switchUserStatus(
