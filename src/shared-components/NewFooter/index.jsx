@@ -19,7 +19,7 @@ class Footer extends Component {
                 <div className="mid">
                     <div className="maxWFooter">
                         <div className="colf">
-                            <img src={images.logo} alt="" />
+                            <img src={images.logoFooter} alt="" />
                         </div>
                         <div className="colf">
                             <h3>contact us</h3>
@@ -39,7 +39,7 @@ class Footer extends Component {
                 </div>
                 <div className="bottom">
                     <div className="maxWFooter"> <p>© Design by Altechsolutions - 2020</p>
-                        <img src="ad" alt="" />
+                        <img src={images.footerBottom} alt="" />
                         <div className="socials">
                             <i className="fab fa-instagram"></i>
                             <i className="fab fa-pinterest"></i>

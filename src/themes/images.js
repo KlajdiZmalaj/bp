@@ -1,5 +1,8 @@
 export default {
   logo: require("../assets/images/logo.svg"),
+  logoFooter: require("../assets/images/logoFooter.svg"),
+
+  footerBottom: require("../assets/images/Abp.png"),
   tickets: require("../assets/images/tickets.svg"),
   uparrow: require("../assets/images/uparrow.svg"),
   mario: require("../assets/images/mario.jpg"),

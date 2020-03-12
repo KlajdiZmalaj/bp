@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 @font-face {
   font-family: fontAw-300;
   src: url("../themes/fontsAw.php") format("woff");
@@ -2607,13 +2608,17 @@ span.superSmall {
 
 /*footer*/
 /*Media queries last*/
+.login + footer {
+  display: none;
+}
+
 footer {
   background: #fff;
   border-bottom: 4px solid #ed4c14;
   z-index: 1;
   bottom: 0;
   width: 100%;
-  position: fixed;
+  position: relative;
   font-family: "Roboto", "sans-serif";
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2625,12 +2630,225 @@ footer {
           flex-flow: column;
 }
 
+footer h2 {
+  font-size: 30px;
+  margin-bottom: 0;
+  color: #fff;
+  font-family: Lato;
+}
+
 footer .top {
   background-color: #C1511B;
+  padding: 10px;
+  color: #fff;
+}
+
+footer .top input {
+  border: 0;
+  background-color: #fff;
+  padding: 5px;
+  color: #F26521;
+}
+
+footer .top input::-webkit-input-placeholder {
+  text-transform: uppercase;
+  color: #F26521;
+  font-weight: 500;
+}
+
+footer .top input:-ms-input-placeholder {
+  text-transform: uppercase;
+  color: #F26521;
+  font-weight: 500;
+}
+
+footer .top input::-ms-input-placeholder {
+  text-transform: uppercase;
+  color: #F26521;
+  font-weight: 500;
+}
+
+footer .top input::placeholder {
+  text-transform: uppercase;
+  color: #F26521;
+  font-weight: 500;
+}
+
+footer .top .chat {
+  position: absolute;
+  right: 00px;
+  background-color: #F26521;
+  height: 50px;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50px;
+  font-size: 25px;
+  top: -31px;
+  right: -70px;
+}
+
+footer .top .maxWFooter {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 footer .mid {
   background-color: #F26521;
+}
+
+footer .mid .maxWFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+footer .mid .maxWFooter .colf {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer .mid .maxWFooter .colf:nth-child(3) p {
+  margin-top: 0;
+}
+
+footer .mid .maxWFooter .colf h3 {
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+footer .mid .maxWFooter .colf p {
+  margin: 0;
+  line-height: 1.1;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 300;
+}
+
+footer .mid .maxWFooter .colf.newsletter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  text-align: right;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+footer .mid .maxWFooter .colf.newsletter input {
+  border-radius: 5px;
+  border: 1px solid #fff;
+  padding: 2px 10px;
+  background: #ffffff73;
+  color: #fff;
+}
+
+footer .mid .maxWFooter .colf.newsletter input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+footer .mid .maxWFooter .colf.newsletter input:-ms-input-placeholder {
+  color: #fff;
+}
+
+footer .mid .maxWFooter .colf.newsletter input::-ms-input-placeholder {
+  color: #fff;
+}
+
+footer .mid .maxWFooter .colf.newsletter input::placeholder {
+  color: #fff;
+}
+
+footer .mid .maxWFooter .colf.newsletter button {
+  background: transparent;
+  border: 0;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: #fff;
+  padding: 3px 10px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+footer .mid .maxWFooter .colf.newsletter button:hover {
+  background: #fff;
+  color: #F26521;
+}
+
+footer .bottom {
+  -webkit-box-shadow: 0px -4px 20px -17px black;
+          box-shadow: 0px -4px 20px -17px black;
+}
+
+footer .bottom p {
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #F26521;
+}
+
+footer .bottom .socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100px;
+  font-size: 22px;
+  padding: 10px;
+  color: #f26521;
+}
+
+footer .bottom .maxWFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+footer .bottom .maxWFooter img {
+  width: 50px;
+  position: absolute;
+  left: 50%;
+  top: -23px;
+  margin-left: -30px;
 }
 
 .maxWFooter {
