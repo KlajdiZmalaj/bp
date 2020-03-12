@@ -46,9 +46,10 @@ class Header extends Component {
                   <i onClick={this.toggleAds} className="fas fa-bell"></i>
                   <span>{ads && ads.length}</span>
                   <div className={"ads" + (this.state.ads ? " viz" : "")}>
-                    {ads.map(add => {
+                    {ads.slice(0, 10).map(add => {
                       return (
                         <div
+                          key={add.id}
                           onClick={() => {
                             this.toggleAds();
                             this.props.history.push("/annunci");
