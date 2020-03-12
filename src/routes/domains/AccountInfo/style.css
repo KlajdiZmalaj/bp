@@ -292,6 +292,10 @@
   display: flex;
 }
 
+.userList .ddItems > span {
+  width: 100% !important;
+}
+
 .userList .active {
   color: #ed4c14;
 }

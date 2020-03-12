@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
-.login+footer {
+.login + footer {
   display: none;
 }
 
@@ -24,7 +24,7 @@ footer {
   }
 
   .top {
-    background-color: #C1511B;
+    background-color: #c1511b;
     padding: 10px;
     color: #fff;
 
@@ -32,11 +32,11 @@ footer {
       border: 0;
       background-color: #fff;
       padding: 5px;
-      color: #F26521;
+      color: #f26521;
 
       &::placeholder {
         text-transform: uppercase;
-        color: #F26521;
+        color: #f26521;
         font-weight: 500;
       }
     }
@@ -44,7 +44,7 @@ footer {
     .chat {
       position: absolute;
       right: 00px;
-      background-color: #F26521;
+      background-color: #f26521;
       height: 50px;
       width: 50px;
       display: flex;
@@ -65,7 +65,7 @@ footer {
   }
 
   .mid {
-    background-color: #F26521;
+    background-color: #f26521;
 
     .maxWFooter {
       display: flex;
@@ -129,11 +129,11 @@ footer {
             margin-top: 5px;
             color: #fff;
             padding: 3px 10px;
-            transition: .3s;
+            transition: 0.3s;
 
             &:hover {
               background: #fff;
-              color: #F26521;
+              color: #f26521;
             }
           }
         }
@@ -147,7 +147,7 @@ footer {
     p {
       margin-bottom: 0;
       font-size: 12px;
-      color: #F26521;
+      color: #f26521;
     }
 
     .socials {
@@ -182,4 +182,35 @@ footer {
   display: flex;
   margin: 0 auto;
   align-items: center;
+}
+@media (max-width: 860px) {
+  footer {
+    .top {
+      .maxWFooter {
+        display: flex;
+        flex-flow: column;
+        text-align: center;
+        h2 {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .mid {
+      .maxWFooter {
+        flex-flow: column;
+        > .newsletter {
+          align-items: center !important;
+          text-align: center;
+          padding-bottom: 50px;
+        }
+        > div {
+          text-align: center;
+        }
+        img {
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+  }
 }

@@ -257,7 +257,17 @@ export function* getRegister(params) {
     params.number_prefix,
     params.number,
     params.frontImg,
-    params.backImg
+    params.backImg,
+    params.role,
+    params.aRagSoc,
+    params.aInsegna,
+    params.aPhone,
+    params.aAdress,
+    params.aCity,
+    params.aComcode,
+    params.aCap,
+    params.aPiva,
+    params.aFcode
   );
 
   if (response.data) {

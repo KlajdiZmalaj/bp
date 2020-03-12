@@ -199,6 +199,9 @@
     &.viz {
       display: flex;
     }
+    > span {
+      width: 100% !important;
+    }
   }
   .active {
     color: #ed4c14;

@@ -529,4 +529,96 @@
   padding-right: 10px;
   vertical-align: middle;
 }
+
+.stepForm {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 20px;
+  min-height: 500px;
+  position: relative;
+}
+
+.stepForm .step {
+  display: none;
+}
+
+.stepForm .step.isActive {
+  display: block;
+}
+
+.stepForm .ant-input-group-addon {
+  border: 0;
+  padding: 0;
+}
+
+.stepForm .ant-select-selection,
+.stepForm .Select-control {
+  border: 1px solid #d9d9d9;
+  border-radius: 0;
+}
+
+.stepForm .Select-input input {
+  border: 0;
+}
+
+.stepForm #infoUser_number_prefix {
+  border-right: 0;
+}
+
+.stepForm .ant-form-item-control input {
+  border-radius: 0;
+}
+
+.stepForm .ant-form-item-control input:hover {
+  border-color: #f26521;
+}
+
+.stepForm .ant-select-selection--single,
+.stepForm .ant-calendar-picker {
+  width: 100%;
+}
+
+.stepForm .inpLabel {
+  text-transform: capitalize;
+}
+
+.stepForm .stepBtn {
+  text-align: center;
+  background-color: #f26521;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-top: 20px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  height: 60px;
+}
+
+.stepForm .ant-row {
+  margin: 0;
+}
+
+.stepForm .titleReg {
+  color: #ed4c14;
+  text-align: center;
+  font-size: 20px;
+}
 /*# sourceMappingURL=register.css.map */

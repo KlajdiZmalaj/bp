@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 
-import  Message  from "./Message";
+import Message from "./Message";
 import images from "themes/images";
 class Messages extends React.Component {
   render() {
@@ -10,10 +10,7 @@ class Messages extends React.Component {
     return (
       <div className="row no-gutters max-width">
         {messages.map((msg, index) => {
-          return (
-              <Message key={index} msg={msg}></Message>
-
-          );
+          return <Message key={index} msg={msg}></Message>;
         })}
         {/* <div className="col-md-12">
           <div className="panel-tab" data-toggle="collapse" data-target="#tab1">

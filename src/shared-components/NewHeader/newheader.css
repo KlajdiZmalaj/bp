@@ -67,6 +67,18 @@ header.header .topNav {
           justify-content: space-between;
 }
 
+header.header .topNav .register {
+  border: 1px solid #fff;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+header.header .topNav .register:hover {
+  background: #fff;
+  color: #F36520;
+}
+
 header.header .topNav .left,
 header.header .topNav .right {
   display: -webkit-box;
@@ -87,6 +99,12 @@ header.header .topNav .userinfo {
 header.header .topNav .userinfo > div {
   padding: 0 10px;
   text-transform: capitalize;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header.header .topNav .userinfo .money {

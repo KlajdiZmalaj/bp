@@ -21,6 +21,7 @@ import {
   AccountInfo,
   Register,
   RegisterEndUser,
+  RegisterAgency,
   Login,
   Verify
 } from "./routes";
@@ -28,10 +29,9 @@ import {
 class Root extends React.Component {
   componentDidMount() {
     this.getStoredData();
-    window.addEventListener('resize', () => {
-      this.props.setScreenW(window.innerWidth)
+    window.addEventListener("resize", () => {
+      this.props.setScreenW(window.innerWidth);
     });
-
   }
 
   getStoredData = () => {
@@ -50,7 +50,7 @@ class Root extends React.Component {
     if (data) {
       isLoggedin = true;
     }
-    console.log('screenWidth', this.props.screenWidth)
+    console.log("screenWidth", this.props.screenWidth);
     return (
       <React.Fragment>
         <HashRouter>
@@ -149,6 +149,11 @@ class Root extends React.Component {
             <PrivateRoute
               path="/registerUser"
               component={RegisterEndUser}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/registerAgency"
+              component={RegisterAgency}
               isLoggedin={isLoggedin}
             />
           </Switch>

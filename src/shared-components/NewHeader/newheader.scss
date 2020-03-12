@@ -45,6 +45,18 @@ header.header {
         display: flex;
         justify-content: space-between;
 
+        .register {
+            border: 1px solid #fff;
+            cursor: pointer;
+            transition: .3s;
+
+            &:hover {
+                background: #fff;
+                color: #F36520;
+
+            }
+        }
+
         .left,
         .right {
             display: flex;
@@ -58,6 +70,8 @@ header.header {
             >div {
                 padding: 0 10px;
                 text-transform: capitalize;
+                display: flex;
+                align-items: center;
             }
 
             .money {

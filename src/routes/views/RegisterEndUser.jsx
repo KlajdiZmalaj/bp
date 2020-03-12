@@ -133,7 +133,8 @@ class RegisterEndUser extends React.Component {
           values.number_prefix,
           values.number,
           this.state.imageUrl,
-          this.state.imageUrl2
+          this.state.imageUrl2,
+          this.props.accountInfo.profile.role.id
           //   values.self_limit_period,
           //   values.promo,
           //   values.parent,
@@ -718,7 +719,8 @@ const InfoUser = Form.create({ name: "infoUser" })(RegisterEndUser);
 
 const mapsStateToProps = ({ auth }) => ({
   personalInfo: auth.personalInfo,
-  register: auth.register
+  register: auth.register,
+  accountInfo: auth.accountInfo
 });
 
 export default withRouter(

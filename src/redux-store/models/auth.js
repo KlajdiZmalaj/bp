@@ -73,7 +73,17 @@ const { Types, Creators } = createActions({
     "number_prefix",
     "number",
     "frontImg",
-    "backImg"
+    "backImg",
+    "role",
+    "aRagSoc",
+    "aInsegna",
+    "aPhone",
+    "aAdress",
+    "aCity",
+    "aComcode",
+    "aCap",
+    "aPiva",
+    "aFcode"
   ],
   setRegister: ["register"],
   setAds: ["ads"],

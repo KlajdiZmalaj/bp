@@ -214,7 +214,17 @@ export const fetchRegisterAllInfo = (
   number_prefix,
   number,
   frontImg,
-  backImg
+  backImg,
+  role,
+  aRagSoc,
+  aInsegna,
+  aPhone,
+  aAdress,
+  aCity,
+  aComcode,
+  aCap,
+  aPiva,
+  aFcode
 ) =>
   axios
     .create({
@@ -246,7 +256,16 @@ export const fetchRegisterAllInfo = (
       ...{ phone: number_prefix + number },
       ...{ document_front: frontImg },
       ...{ document_back: backImg },
-      ...{ role: "user" }
+      ...(role != 1 ? { role: "user" } : { role: "agency" }),
+      ...{ a_ragione_sociale: aRagSoc },
+      ...{ a_insegna: aInsegna },
+      ...{ a_phone: aPhone },
+      ...{ a_address: aAdress },
+      ...{ a_city: aCity },
+      ...{ a_comune_code: aComcode },
+      ...{ a_cap: aCap },
+      ...{ a_p_iva: aPiva },
+      ...{ a_codice_fiscale: aFcode }
     })
     .catch(error => ({ data: error.response.data }));
 
@@ -276,36 +295,7 @@ export const fetchConfigura = id =>
         }`
       }
     })
-    .get(
-      `/users/${id}`
-      // , {
-      //   params: {
-      //     a_ragione_sociale: "RAG. SOC.",
-      //     a_insegna: "INSEGNA",
-      //     email: "EMAIL",
-      //     a_p_iva: "P. IVA",
-      //     a_codice_fiscale: "COD. FISC.",
-      //     a_address: "INDIRIZZO",
-      //     a_comune_code: "PROVINCIA",
-      //     a_cap: "CAP",
-      //     a_city: "LOCALITA",
-      //     a_phone: "TELEFONO",
-      //     first_name: "NOME",
-      //     last_name: "COGNOME",
-      //     personal_number: "COD. FISC.",
-      //     document_type: "TIPO DOC. ",
-      //     document_number: "N. DOCUMENTO",
-      //     address: "INDIRIZZO",
-      //     comune_code: "PROVINCIA",
-      //     cap: "CAP",
-      //     city: "LOCALITA",
-      //     phone: "TELEFONO",
-      //     birth_place: "CITTA` NASCITA ",
-      //     birth_comune_code: "PROVINCIA",
-      //     birthday: "DATA"
-      //   }
-      // }
-    )
+    .get(`/users/${id}`)
     .catch(error => ({ error }));
 
 export const fetchCodice = barcode =>
