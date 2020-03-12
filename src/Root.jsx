@@ -28,6 +28,10 @@ import {
 class Root extends React.Component {
   componentDidMount() {
     this.getStoredData();
+    window.addEventListener('resize', () => {
+      this.props.setScreenW(window.innerWidth)
+    });
+
   }
 
   getStoredData = () => {
@@ -46,7 +50,7 @@ class Root extends React.Component {
     if (data) {
       isLoggedin = true;
     }
-
+    console.log('screenWidth', this.props.screenWidth)
     return (
       <React.Fragment>
         <HashRouter>
@@ -156,7 +160,8 @@ class Root extends React.Component {
 
 const mapsStateToProps = state => ({
   accountInfo: state.auth.accountInfo,
-  unauthorizated: state.auth.unauthorizated
+  unauthorizated: state.auth.unauthorizated,
+  screenWidth: state.main.screenWidth
 });
 
 export default connect(mapsStateToProps, {

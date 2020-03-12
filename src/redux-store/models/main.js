@@ -13,7 +13,8 @@ const { Types, Creators } = createActions({
   setUsersBySearch: ["userListBySearch"],
   getOverviewDashboard: ["period"],
   setOverviewDashboard: ["dashboardData"],
-  setNavbarSearch: ["navbarSearch"]
+  setNavbarSearch: ["navbarSearch"],
+  setScreenW: ['screenWidth']
 });
 
 export const MainTypes = Types;
@@ -27,13 +28,18 @@ const INITIAL_STATE = {
   userList: [],
   userListBySearch: [],
   dashboardData: {},
-  navbarSearch: ""
+  navbarSearch: "",
+  screenWidth: window.innerWidth
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_NAVBAR_SEARCH]: (state, { navbarSearch }) => ({
     ...state,
     navbarSearch
+  }),
+  [Types.SET_SCREEN_W]: (state, { screenWidth }) => ({
+    ...state,
+    screenWidth
   }),
   [Types.SET_OVERVIEW_DASHBOARD]: (state, { dashboardData }) => ({
     ...state,
