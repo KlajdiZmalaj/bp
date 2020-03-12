@@ -10,15 +10,23 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobMenu: false
+      isMobMenu: false,
+      ads: false
     };
   }
+  toggleAds = () => {
+    this.setState({ ads: !this.state.ads });
+  };
   toggleMobileMeu = () => {
     this.setState({ isMobMenu: !this.state.isMobMenu });
   };
+  componentDidMount() {
+    this.props.getAds();
+  }
   render() {
-    const { accountInfo, screenWidth, user } = this.props;
+    const { accountInfo, screenWidth, user, ads } = this.props;
     const { isMobMenu } = this.state;
+    console.log("ads", ads);
     console.log("accountInfo", accountInfo);
     return screenWidth > 860 ? (
       <header className="header">
@@ -35,12 +43,25 @@ class Header extends Component {
             <div className="right">
               <div className="icons">
                 <div>
-                  <i className="fas fa-bell"></i>
-                  <span>2</span>
+                  <i onClick={this.toggleAds} className="fas fa-bell"></i>
+                  <span>{ads && ads.length}</span>
+                  <div className={"ads" + (this.state.ads ? " viz" : "")}>
+                    {ads.map(add => {
+                      return (
+                        <div
+                          onClick={() => {
+                            this.toggleAds();
+                            this.props.history.push("/annunci");
+                          }}
+                        >
+                          {add.title}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
                 <div>
                   <i className="fas fa-envelope"></i>
-                  <span>2</span>
                 </div>
                 <div>
                   <i className="fas fa-cog"></i>
@@ -115,7 +136,7 @@ class Header extends Component {
           <div className="icons">
             <div>
               <i className="fas fa-bell"></i>
-              <span>2</span>
+              <span>{ads && ads.length}</span>
             </div>
             <div>
               <i className="fas fa-envelope"></i>
@@ -131,13 +152,14 @@ class Header extends Component {
   }
 }
 const mstp = state => {
-  const { accountInfo, user } = state.auth;
+  const { accountInfo, user, ads } = state.auth;
   const { screenWidth, navbarSearch } = state.main;
   return {
     accountInfo,
     user,
     navbarSearch,
-    screenWidth
+    screenWidth,
+    ads
   };
 };
 export default withRouter(

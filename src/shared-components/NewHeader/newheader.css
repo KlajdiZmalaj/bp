@@ -35,13 +35,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .logoutBtn:hover {
   background-color: #fff;
-  color: #F36520;
+  color: #f36520;
 }
 
 header.header {
@@ -52,7 +52,7 @@ header.header {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background-color: #F36520;
+  background-color: #f36520;
   width: 100%;
 }
 
@@ -70,13 +70,13 @@ header.header .topNav {
 header.header .topNav .register {
   border: 1px solid #fff;
   cursor: pointer;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 header.header .topNav .register:hover {
   background: #fff;
-  color: #F36520;
+  color: #f36520;
 }
 
 header.header .topNav .left,
@@ -136,6 +136,36 @@ header.header .topNav .icons {
   display: flex;
 }
 
+header.header .topNav .icons .ads {
+  position: absolute;
+  background: #f36520;
+  z-index: 3;
+  top: 26px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  left: -10px;
+  max-height: 0px;
+  overflow: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+header.header .topNav .icons .ads.viz {
+  max-height: 999px;
+}
+
+header.header .topNav .icons .ads > div {
+  cursor: pointer;
+  padding-bottom: 20px;
+  padding: 2px 18px;
+}
+
 header.header .topNav .icons > div {
   position: relative;
   width: 30px;
@@ -155,7 +185,7 @@ header.header .topNav .icons span {
   width: 16px;
   height: 15px;
   border-radius: 20px;
-  background-color: #3C4349;
+  background-color: #3c4349;
   font-size: 12px;
   position: absolute;
   z-index: 1;
@@ -184,7 +214,7 @@ header.header nav {
           align-items: center;
   background-color: #fff;
   padding: 10px;
-  border-bottom: 2px solid #F36520;
+  border-bottom: 2px solid #f36520;
   -webkit-box-shadow: 1px 18px 20px -22px black;
           box-shadow: 1px 18px 20px -22px black;
 }
@@ -205,7 +235,7 @@ header.header .navLinks {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 header.header .navLinks .item {
@@ -223,7 +253,7 @@ header.header .navLinks .item {
 }
 
 header.header .navLinks .item:last-child {
-  background-color: #F36520;
+  background-color: #f36520;
   color: #fff;
   padding: 3px 16px;
   border-radius: 20px;
@@ -234,7 +264,7 @@ header.header .navLinks .item:last-child:hover {
 }
 
 header.header .navLinks .item:hover {
-  color: #F36520;
+  color: #f36520;
 }
 
 .mobHeader {
@@ -261,7 +291,7 @@ header.header .navLinks .item:hover {
           align-items: center;
   padding: 2px 15px;
   background-color: #fff;
-  border-bottom: 2px solid #F36520;
+  border-bottom: 2px solid #f36520;
 }
 
 .mobHeader .top .logo {
@@ -273,7 +303,7 @@ header.header .navLinks .item:hover {
 .mobHeader .top button {
   background-color: transparent;
   border: 0;
-  color: #3C4349;
+  color: #3c4349;
   font-size: 20px;
 }
 
@@ -281,8 +311,8 @@ header.header .navLinks .item:hover {
   background-color: #fff;
   overflow: hidden;
   max-height: 0px;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -327,7 +357,7 @@ header.header .navLinks .item:hover {
   width: 16px;
   height: 15px;
   border-radius: 20px;
-  background-color: #F36520;
+  background-color: #f36520;
   color: #fff;
   font-size: 12px;
   position: absolute;
