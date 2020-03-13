@@ -252,11 +252,21 @@ header.header .navLinks .item {
   cursor: pointer;
 }
 
+header.header .navLinks .item a {
+  color: #222;
+  -webkit-text-emphasis: none;
+          text-emphasis: none;
+}
+
 header.header .navLinks .item:last-child {
   background-color: #f36520;
   color: #fff;
   padding: 3px 16px;
   border-radius: 20px;
+}
+
+header.header .navLinks .item:last-child a {
+  color: #fff;
 }
 
 header.header .navLinks .item:last-child:hover {

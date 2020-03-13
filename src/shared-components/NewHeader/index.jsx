@@ -103,11 +103,25 @@ class Header extends Component {
               <img src={images.logo} alt="" />
             </div>
             <div className="navLinks">
-              <div className="item">azienda</div>
-              <div className="item">servizi</div>
-              <div className="item">area riservata</div>
-              <div className="item">contatti</div>
-              <div className="item">affilia la tua attivita</div>
+              <div className="item">
+                <a href="https://bpoint.store/index.php/chi-siamo/">azienda</a>
+              </div>
+              <div className="item">
+                <a href="https://bpoint.store/servizi/">servizi</a>
+              </div>
+              <div className="item">
+                <a href="https://bpoint.store/">area riservata</a>
+              </div>
+              <div className="item">
+                {" "}
+                <a href="https://bpoint.store/contatti/">contatti</a>{" "}
+              </div>
+              <div className="item">
+                {" "}
+                <a href="https://bpoint.store/affiliazioni/">
+                  affilia la tua attivita
+                </a>{" "}
+              </div>
             </div>
           </div>
         </nav>

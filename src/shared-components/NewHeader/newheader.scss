@@ -173,13 +173,18 @@ header.header {
       font-weight: 400;
       display: flex;
       align-items: center;
-
+      a {
+        color: #222;
+        text-emphasis: none;
+      }
       &:last-child {
         background-color: #f36520;
         color: #fff;
         padding: 3px 16px;
         border-radius: 20px;
-
+        a {
+          color: #fff;
+        }
         &:hover {
           color: #fff;
         }
