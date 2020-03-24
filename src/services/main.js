@@ -4,12 +4,24 @@ export const fetchServices = () =>
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
+        // Authorization: `Bearer ${
+        //   JSON.parse(localStorage.getItem("accountDataB")).token
+        // }`
+      }
+    })
+    .get(`/services`)
+    .catch(error => ({ error }));
+export const fetchFavorites = () =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
         }`
       }
     })
-    .get(`/services`)
+    .post(`/users/favorites`)
     .catch(error => ({ error }));
 
 export const fetchUsers = search_user =>
@@ -105,5 +117,20 @@ export const updatateOverviewWidget = period =>
     })
     .post(`/users/balance`, {
       ...{ period: period }
+    })
+    .catch(error => ({ error }));
+
+export const setOnFav = (id, type) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api/",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`
+      }
+    })
+    .post(`/users/${type === "set" ? "addFavorite" : "removeFavorite"}`, {
+      ...{ company_id: id }
     })
     .catch(error => ({ error }));

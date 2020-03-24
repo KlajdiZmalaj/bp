@@ -14,13 +14,17 @@ const { Types, Creators } = createActions({
   getOverviewDashboard: ["period"],
   setOverviewDashboard: ["dashboardData"],
   setNavbarSearch: ["navbarSearch"],
-  setScreenW: ['screenWidth']
+  setScreenW: ["screenWidth"],
+  setFavorites: ["favorites"],
+  getFavorites: [],
+  toggleFavorite: ["id", "sType"]
 });
 
 export const MainTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  favorites: [],
   services: {},
   showOverview: true,
   isShowing: false,
@@ -33,6 +37,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_FAVORITES]: (state, { favorites }) => ({
+    ...state,
+    favorites
+  }),
   [Types.SET_NAVBAR_SEARCH]: (state, { navbarSearch }) => ({
     ...state,
     navbarSearch

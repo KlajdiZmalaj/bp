@@ -5,7 +5,7 @@ import AuthActions from "redux-store/models/auth";
 import { Azioni, Header } from "shared-components";
 import { Service } from "routes/components";
 import images from "../../themes/images";
-
+import { includes } from "lodash";
 class Dashboard extends React.Component {
   state = {
     serviceSelected: "",
@@ -17,6 +17,7 @@ class Dashboard extends React.Component {
   };
   componentDidMount() {
     this.props.getServices();
+    this.props.getFavorites();
   }
   changeServce = (service, item) => {
     this.setState({ serviceSelected: service, keyService: item });
@@ -31,7 +32,15 @@ class Dashboard extends React.Component {
 
   render() {
     const { serviceSelected, keyService } = this.state;
-    const { services } = this.props;
+    const { services, favorites } = this.props;
+    let allFavServices = [];
+    Object.keys(favorites).forEach(item => {
+      Object.keys(favorites[item]).forEach(subitem => {
+        allFavServices.push(subitem);
+      });
+    });
+    console.log("favorites", favorites);
+    const scrollView = document.getElementsByClassName("panels-container")[0];
     return (
       <div>
         <Header></Header>
@@ -73,6 +82,7 @@ class Dashboard extends React.Component {
                           id={"tab" + item}
                         >
                           {Object.keys(serv).map((service, indexx) => {
+                            // console.log("service", service);
                             if (service !== "name") {
                               return (
                                 <div data-toggle="tab" key={indexx + service}>
@@ -95,6 +105,34 @@ class Dashboard extends React.Component {
                                       src={images.rightTriangle}
                                       alt=""
                                     />
+
+                                    <div
+                                      className={
+                                        "star" +
+                                        (includes(allFavServices, service)
+                                          ? " isFav"
+                                          : "")
+                                      }
+                                      onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        if (includes(allFavServices, service)) {
+                                          this.props.toggleFavorite(
+                                            service,
+                                            "remove"
+                                          );
+                                          this.props.getFavorites();
+                                        } else {
+                                          this.props.toggleFavorite(
+                                            service,
+                                            "set"
+                                          );
+                                          this.props.getFavorites();
+                                        }
+                                      }}
+                                    >
+                                      <i className="fal fa-star"></i>
+                                    </div>
                                   </div>
                                 </div>
                               );
@@ -127,6 +165,43 @@ class Dashboard extends React.Component {
                 >
                   <img src={images.click} alt="" />
                 </div>
+              </div>
+            </div>
+            <div className="favorites">
+              <div className="max-width">
+                {Object.keys(favorites).map(gr => {
+                  return (
+                    <div className="favorites--row" key={gr}>
+                      <div className="title">
+                        Preferiti {favorites[gr].name}
+                      </div>
+                      <div className="items">
+                        {Object.keys(favorites[gr]).map(item => {
+                          // console.log("itemaaaa", item);
+                          return (
+                            item !== "name" && (
+                              <div
+                                className="item"
+                                key={item}
+                                onClick={() => {
+                                  this.togglePopUp(true);
+                                  this.changeServce(item, gr);
+                                  scrollView.scrollIntoView();
+                                }}
+                              >
+                                <img
+                                  src={`http://www.perdemo.it/ricaricheSPS/${item}.png`}
+                                  alt=""
+                                />
+                                <span>{favorites[gr][item].name}</span>
+                              </div>
+                            )
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -901,6 +976,7 @@ class Dashboard extends React.Component {
 
 const mapsStateToProps = state => ({
   services: state.main.services,
+  favorites: state.main.favorites,
   accountInfo: state.auth.accountInfo,
   navbarSearch: state.main.navbarSearch
 });

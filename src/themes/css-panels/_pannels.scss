@@ -103,6 +103,22 @@
   border-right: 2px solid $second;
   padding: 5px 43px;
 }
+.star {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  transition: unset;
+  i {
+    transition: unset;
+    font-size: 16px !important;
+  }
+  &.isFav {
+    i {
+      font-weight: 600;
+      color: #ed4c14;
+    }
+  }
+}
 .panel-item {
   background: #fff;
   display: flex;
@@ -115,7 +131,9 @@
   padding-top: 6px;
   padding-bottom: 6px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: unset;
+  position: relative;
+  border-right: 4px solid #fff;
   h4 {
     // font-family: $font1;
     font-size: 20px;
@@ -158,8 +176,6 @@
 }
 .clickedItem {
   border-right: 4px solid $main;
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
   position: relative;
   z-index: 1;
@@ -420,5 +436,73 @@ span.superSmall {
 @media print {
   @page {
     margin: 0 auto;
+  }
+}
+.favorites {
+  background-color: #ebeced;
+  padding: 20px 0;
+  margin-top: 40px;
+  display: flex;
+  flex-flow: column;
+  .title {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #5a5e61;
+    margin-bottom: 10px;
+  }
+  .items {
+    display: flex;
+    flex-flow: row;
+    overflow: auto;
+    padding-bottom: 5px;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 4px;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column;
+      background-color: #fff;
+      padding: 10px;
+      margin-left: 10px;
+      width: 140px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 40px;
+      > span {
+        background-color: #3c4349;
+        color: #fff;
+        width: calc(100%);
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        transition: 0.3s;
+      }
+      img {
+        transition: 0.3s;
+        filter: grayscale(0.9) brightness(1.2);
+      }
+      &:hover {
+        > span {
+          background-color: #ed4c14;
+          color: #fff;
+        }
+        img {
+          filter: grayscale(0) brightness(1);
+        }
+      }
+      cursor: pointer;
+      &:nth-child(1) {
+        margin-left: 0;
+      }
+    }
+  }
+  &--row {
+    margin-top: 30px;
+    padding: 0 15px;
   }
 }

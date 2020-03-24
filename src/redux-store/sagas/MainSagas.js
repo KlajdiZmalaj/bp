@@ -6,7 +6,9 @@ import {
   fetchServices,
   fetchUsers,
   fetchUsersBySearch,
-  updatateOverviewWidget
+  updatateOverviewWidget,
+  setOnFav,
+  fetchFavorites
 } from "services/main";
 
 import { logoutApi } from "services/auth";
@@ -26,7 +28,22 @@ export function* getServices() {
     }
   }
 }
-
+export function* getFavorites() {
+  const response = yield call(fetchFavorites);
+  if (response.data) {
+    yield put(MainActions.setFavorites(response.data.favorites));
+  }
+}
+export function* toggleFavorite(params) {
+  const response = yield call(setOnFav, params.id, params.sType);
+  console.log("responseeee", response);
+  if (response.status === 200) {
+    const response = yield call(fetchFavorites);
+    if (response.data) {
+      yield put(MainActions.setFavorites(response.data.favorites));
+    }
+  }
+}
 export function* getUsers(params) {
   const response = yield call(fetchUsers, params.search_user);
   // console.log("getUsers called", response);

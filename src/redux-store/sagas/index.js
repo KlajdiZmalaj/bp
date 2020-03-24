@@ -24,7 +24,9 @@ import {
   getServices,
   getUsers,
   getUsersBySearch,
-  getOverviewDashboard
+  getOverviewDashboard,
+  toggleFavorite,
+  getFavorites
 } from "./MainSagas";
 
 export default function* root() {
@@ -48,6 +50,8 @@ export default function* root() {
     takeLatest(MainTypes.GET_SERVICES, getServices),
     takeLatest(MainTypes.GET_USERS, getUsers),
     takeLatest(MainTypes.GET_USERS_BY_SEARCH, getUsersBySearch),
-    takeLatest(MainTypes.GET_OVERVIEW_DASHBOARD, getOverviewDashboard)
+    takeLatest(MainTypes.GET_OVERVIEW_DASHBOARD, getOverviewDashboard),
+    takeLatest(MainTypes.TOGGLE_FAVORITE, toggleFavorite),
+    takeLatest(MainTypes.GET_FAVORITES, getFavorites)
   ]);
 }
