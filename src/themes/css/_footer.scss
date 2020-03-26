@@ -28,17 +28,14 @@ footer {
     padding: 10px;
     color: #fff;
 
-    input {
+    button {
       border: 0;
       background-color: #fff;
       padding: 5px;
       color: #f26521;
-
-      &::placeholder {
-        text-transform: uppercase;
-        color: #f26521;
-        font-weight: 500;
-      }
+      text-transform: uppercase;
+      font-weight: 500;
+      border: 0;
     }
 
     .chat {

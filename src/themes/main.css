@@ -2762,35 +2762,14 @@ footer .top {
   color: #fff;
 }
 
-footer .top input {
+footer .top button {
   border: 0;
   background-color: #fff;
   padding: 5px;
   color: #f26521;
-}
-
-footer .top input::-webkit-input-placeholder {
   text-transform: uppercase;
-  color: #f26521;
   font-weight: 500;
-}
-
-footer .top input:-ms-input-placeholder {
-  text-transform: uppercase;
-  color: #f26521;
-  font-weight: 500;
-}
-
-footer .top input::-ms-input-placeholder {
-  text-transform: uppercase;
-  color: #f26521;
-  font-weight: 500;
-}
-
-footer .top input::placeholder {
-  text-transform: uppercase;
-  color: #f26521;
-  font-weight: 500;
+  border: 0;
 }
 
 footer .top .chat {
