@@ -2,12 +2,14 @@ export default {
   logo: require("../assets/images/logo.svg"),
   logoFooter: require("../assets/images/logoFooter.svg"),
 
-  footerBottom: require("../assets/images/Abp.png"),
+  footerBottom: require("../assets/images/footerb.svg"),
   tickets: require("../assets/images/tickets.svg"),
   uparrow: require("../assets/images/uparrow.svg"),
   mario: require("../assets/images/mario.jpg"),
   admAZZ: require("../assets/images/admAZZ.svg"),
   click: require("../assets/images/click.svg"),
+  girl: require("../assets/images/girl.png"),
+
   billDark: require("../assets/images/bill-dark.svg"),
 
   billBlue: require("../assets/images/bill-blue.svg"),
@@ -58,7 +60,7 @@ export default {
   CRP00R: require("../assets/images/riple.svg"),
   CRP00L: require("../assets/images/litecoin.svg"),
   CRP00D: require("../assets/images/dashcoin.svg"),
-  PAYS: require("../assets/images/paysafe.svg")
+  PAYS: require("../assets/images/paysafe.svg"),
   // COOPV: require("../assets/images/bill-dark.svg"),
   // DKENA: require("../assets/images/bill-dark.svg"),
   // HOX: require("../assets/images/bill-dark.svg"),

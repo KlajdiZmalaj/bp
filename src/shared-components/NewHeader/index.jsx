@@ -11,7 +11,7 @@ class Header extends Component {
     super(props);
     this.state = {
       isMobMenu: false,
-      ads: false
+      ads: false,
     };
   }
   toggleAds = () => {
@@ -27,7 +27,13 @@ class Header extends Component {
     const { accountInfo, screenWidth, user, ads } = this.props;
     const { isMobMenu } = this.state;
     console.log("ads", ads);
-    console.log("accountInfo", accountInfo);
+    let isLoggedin = false;
+    const accountData = localStorage.getItem("accountDataB");
+    const data = JSON.parse(accountData);
+    if (data) {
+      isLoggedin = true;
+    }
+    console.log("isLoggedin", isLoggedin);
     return screenWidth > 860 ? (
       <header className="header">
         <div className="headermaxW">
@@ -46,7 +52,7 @@ class Header extends Component {
                   <i onClick={this.toggleAds} className="fas fa-bell"></i>
                   <span>{ads && ads.length}</span>
                   <div className={"ads" + (this.state.ads ? " viz" : "")}>
-                    {ads.slice(0, 10).map(add => {
+                    {ads.slice(0, 10).map((add) => {
                       return (
                         <div
                           key={add.id}
@@ -82,12 +88,23 @@ class Header extends Component {
                     : "Register User"}
                 </div>
                 <div className="name">{get(accountInfo, "profile.name")}</div>
-                <div className="money">
-                  {get(accountInfo, "profile.wallet")}€
-                </div>
+                {isLoggedin && (
+                  <div className="money">
+                    {get(accountInfo, "profile.wallet")}€
+                  </div>
+                )}
               </div>
-              <button className="logoutBtn" onClick={this.props.logOut}>
-                LOGOUT
+              <button
+                className="logoutBtn"
+                onClick={() => {
+                  if (isLoggedin) {
+                    this.props.logOut();
+                  } else {
+                    this.props.history.push("/login");
+                  }
+                }}
+              >
+                {isLoggedin ? "LOGOUT" : "LOGIN"}
               </button>
             </div>
           </div>
@@ -166,7 +183,7 @@ class Header extends Component {
     );
   }
 }
-const mstp = state => {
+const mstp = (state) => {
   const { accountInfo, user, ads } = state.auth;
   const { screenWidth, navbarSearch } = state.main;
   return {
@@ -174,7 +191,7 @@ const mstp = state => {
     user,
     navbarSearch,
     screenWidth,
-    ads
+    ads,
   };
 };
 export default withRouter(

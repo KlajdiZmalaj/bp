@@ -3,62 +3,58 @@ export const fetchServices = () =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        // Authorization: `Bearer ${
-        //   JSON.parse(localStorage.getItem("accountDataB")).token
-        // }`
-      }
     })
     .get(`/services`)
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));
 export const fetchFavorites = () =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")) &&
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/favorites`)
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));
 
-export const fetchUsers = search_user =>
+export const fetchUsers = (search_user) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/list`, {
-      ...(search_user ? { search_user: search_user } : {})
+      ...(search_user ? { search_user: search_user } : {}),
     })
     // .then(data => {
     //   console.log("fetch users called", data,);
     // })
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));
 
-export const fetchUsersBySearch = search_user =>
+export const fetchUsersBySearch = (search_user) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/findUser`, {
-      ...(search_user ? { search_user: search_user } : {})
+      ...(search_user ? { search_user: search_user } : {}),
     })
     // .then(data => {
     //   console.log("fetch users called", data,);
     // })
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));
 
 export const postImages = (user_id, imgFront, imgBack, callback) => {
   axios
@@ -67,21 +63,21 @@ export const postImages = (user_id, imgFront, imgBack, callback) => {
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/updateDocument`, {
       ...{ user_id: user_id },
       ...{ document_front: imgFront },
-      ...{ document_back: imgBack }
+      ...{ document_back: imgBack },
     })
-    .then(response => {
+    .then((response) => {
       console.log("response", response);
       if (response.status === 200) {
         callback();
       }
     })
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));
 };
 
 export const deleteImages = (user_id, callback) => {
@@ -91,13 +87,13 @@ export const deleteImages = (user_id, callback) => {
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/deleteDocument`, {
-      ...{ user_id: user_id }
+      ...{ user_id: user_id },
     })
-    .then(response => {
+    .then((response) => {
       console.log("response", response);
       if (response.status === 200) {
         callback();
@@ -105,20 +101,20 @@ export const deleteImages = (user_id, callback) => {
     });
 };
 
-export const updatateOverviewWidget = period =>
+export const updatateOverviewWidget = (period) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api/",
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/balance`, {
-      ...{ period: period }
+      ...{ period: period },
     })
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));
 
 export const setOnFav = (id, type) =>
   axios
@@ -127,10 +123,10 @@ export const setOnFav = (id, type) =>
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")).token
-        }`
-      }
+        }`,
+      },
     })
     .post(`/users/${type === "set" ? "addFavorite" : "removeFavorite"}`, {
-      ...{ company_id: id }
+      ...{ company_id: id },
     })
-    .catch(error => ({ error }));
+    .catch((error) => ({ error }));

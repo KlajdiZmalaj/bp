@@ -5,14 +5,14 @@ import AuthActions from "redux-store/models/auth";
 import { Azioni, Header } from "shared-components";
 import { Service } from "routes/components";
 import images from "../../themes/images";
-import { includes } from "lodash";
+import { includes, capitalize } from "lodash";
 class Dashboard extends React.Component {
   state = {
     serviceSelected: "",
     keyService: "",
-    toDisplay: false
+    toDisplay: false,
   };
-  togglePopUp = val => {
+  togglePopUp = (val) => {
     this.setState({ toDisplay: val });
   };
   componentDidMount() {
@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
     this.props.setServiceType(item);
   };
 
-  changeKeyService = service => {
+  changeKeyService = (service) => {
     this.setState({ keyService: service });
     this.props.setServiceType(service);
   };
@@ -33,9 +33,10 @@ class Dashboard extends React.Component {
   render() {
     const { serviceSelected, keyService } = this.state;
     const { services, favorites } = this.props;
+
     let allFavServices = [];
-    Object.keys(favorites).forEach(item => {
-      Object.keys(favorites[item]).forEach(subitem => {
+    Object.keys(favorites).forEach((item) => {
+      Object.keys(favorites[item]).forEach((subitem) => {
         allFavServices.push(subitem);
       });
     });
@@ -57,7 +58,11 @@ class Dashboard extends React.Component {
           <div className="panels-container">
             <h1 className="max-width heading-tab">Acquista</h1>
             <div className="row no-gutters max-width">
-              <div className="col-md-9 ">
+              <div
+                className={`col-md-${
+                  serviceSelected ? "9" : "4"
+                } servicesContainer`}
+              >
                 {Object.keys(services).map((item, index) => {
                   const serv = services[item];
 
@@ -73,7 +78,7 @@ class Dashboard extends React.Component {
                           onClick={() => this.changeKeyService(item)}
                         >
                           <i className="fas fa-dot-circle"></i>
-                          <h4>{serv["name"]}</h4>
+                          <h4>{capitalize(serv["name"])}</h4>
                           <img src={images.uparrow} alt="" />
                         </div>
 
@@ -113,7 +118,7 @@ class Dashboard extends React.Component {
                                           ? " isFav"
                                           : "")
                                       }
-                                      onClick={e => {
+                                      onClick={(e) => {
                                         e.preventDefault();
                                         e.stopPropagation();
                                         if (includes(allFavServices, service)) {
@@ -156,27 +161,51 @@ class Dashboard extends React.Component {
               )}
               {console.log("serviceSelected", serviceSelected)}
               {/* <!--rigth block where is no selection--> */}
-              <div className="col-md-3 pl-3">
+              <div className="col-md-8 pl-3">
                 <div
                   className={
                     "nothinSelected  " +
                     (serviceSelected === "" ? "" : "d-none")
                   }
                 >
-                  <img src={images.click} alt="" />
+                  <div className="infos">
+                    <h2>
+                      Ricaricati <br /> nel modo più veloce
+                    </h2>
+                    <h3>
+                      Ricarica il tuo cellulare nel Bpoint.store, <br /> oppure
+                      direttamente Online. Clicca l’immagine <br />{" "}
+                      dell’operatore che vuoi ricaricare o sul <br /> nome
+                      nell’elenco a sinistra e scopri <br />
+                      quanto è veloce e sicuro ricaricare così!
+                    </h3>
+                    <button
+                      onClick={() => {
+                        const celi = document.querySelector(
+                          `[data-target="#tabRTELD"]`
+                        );
+                        if (celi) {
+                          celi.click();
+                        }
+                      }}
+                    >
+                      RICARICHE TELEFONICHE
+                    </button>
+                  </div>
+                  <img src={images.girl} alt="" />
                 </div>
               </div>
             </div>
             <div className="favorites">
               <div className="max-width">
-                {Object.keys(favorites).map(gr => {
+                {Object.keys(favorites).map((gr) => {
                   return (
                     <div className="favorites--row" key={gr}>
                       <div className="title">
                         Preferiti {favorites[gr].name}
                       </div>
                       <div className="items">
-                        {Object.keys(favorites[gr]).map(item => {
+                        {Object.keys(favorites[gr]).map((item) => {
                           // console.log("itemaaaa", item);
                           return (
                             item !== "name" && (
@@ -974,11 +1003,11 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   services: state.main.services,
   favorites: state.main.favorites,
   accountInfo: state.auth.accountInfo,
-  navbarSearch: state.main.navbarSearch
+  navbarSearch: state.main.navbarSearch,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

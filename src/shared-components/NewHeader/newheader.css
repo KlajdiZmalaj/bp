@@ -225,6 +225,10 @@ header.header nav .logo {
   height: auto;
 }
 
+header.header .chatSticky {
+  background-color: #fff;
+}
+
 header.header .navLinks {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -242,7 +246,7 @@ header.header .navLinks .item {
   text-transform: uppercase;
   margin: 0 20px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

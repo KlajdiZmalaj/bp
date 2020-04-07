@@ -10,19 +10,19 @@ import { withRouter } from "react-router-dom";
 class Header extends Component {
   state = {
     userName: "",
-    password: ""
+    password: "",
   };
-  inpHandler = e => {
+  inpHandler = (e) => {
     this.props.setNavbarSearch(e.target.value);
   };
-  handleChangeUsername = event => {
+  handleChangeUsername = (event) => {
     this.setState({ userName: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { userName, password } = this.state;
     this.props.signInByEmail(userName, password);
@@ -32,6 +32,13 @@ class Header extends Component {
     let isLogged = false;
     const { accountInfo, navbarSearch } = this.props;
 
+    let isLoggedin = false;
+    const accountData = localStorage.getItem("accountDataB");
+    const data = JSON.parse(accountData);
+    if (data) {
+      isLoggedin = true;
+    }
+    console.log("isLoggedin", isLoggedin);
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }
@@ -67,7 +74,7 @@ class Header extends Component {
                         ? "Cerca dashboard prodotti"
                         : "Cerca"
                     }`}
-                    onChange={e => {
+                    onChange={(e) => {
                       this.inpHandler(e);
                     }}
                   />
@@ -146,7 +153,8 @@ class Header extends Component {
                       className="dropdown-item"
                       onClick={this.props.logOut}
                     >
-                      LogOut
+                      {}
+                      {isLoggedin ? "Login " : "LogOut"}
                     </button>
                   </div>
                 </li>
@@ -159,9 +167,9 @@ class Header extends Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
-  navbarSearch: state.main.navbarSearch
+  navbarSearch: state.main.navbarSearch,
 });
 
 export default withRouter(

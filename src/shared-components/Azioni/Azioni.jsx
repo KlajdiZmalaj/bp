@@ -15,35 +15,35 @@ class Azioni extends Component {
       breakpoints: {
         // when window width is >= 320px
         320: {
-          slidesPerView: 2
+          slidesPerView: 2,
         },
         // when window width is >= 480px
         480: {
-          slidesPerView: 4
+          slidesPerView: 4,
         },
         // when window width is >= 640px
         640: {
-          slidesPerView: 5
-        }
+          slidesPerView: 5,
+        },
       },
       navigation: {
         nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      }
+        prevEl: ".swiper-button-prev",
+      },
     };
     return (
       <React.Fragment>
-        <div className="row max-width mt-3">
+        {/* <div className="row max-width">
           <div className="col pl-3 p-lg-0">
             <a href="/#" className="overview-btn">
               <img src={images.tickets} alt="ticket" /> Menu
             </a>
           </div>
-        </div>
+        </div> */}
         <hr className="overviw-line" />
         <div className="row max-width mt-2 azioni">
           <Swiper {...params}>
-            {azioni.map(item => {
+            {azioni.map((item) => {
               return (
                 <div className="col-6 col-lg-2 p-0 pl-2 pl-lg-2" key={item.id}>
                   <a href={"#/" + item.link}>

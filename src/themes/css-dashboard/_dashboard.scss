@@ -1,12 +1,13 @@
 .overview {
-  margin-top: 20px;
   padding-left: 0;
   padding-right: 0;
+  background: #3c4349;
 }
 .overview-btn {
   font-family: $font1;
   font-size: 24px;
-  color: #32424e;
+  color: #fff;
+  display: none;
   .fa-tachometer {
     color: #043f5c;
     font-size: 20px;
@@ -23,7 +24,7 @@
 }
 .overview-btn:hover {
   text-decoration: none;
-  color: #2d3e4b;
+  color: #fff;
 }
 .overview-list {
   ul {
@@ -87,7 +88,6 @@
 }
 .overviw-line {
   margin: 0;
-  margin-top: 10px;
 }
 .wigs-overview {
   margin-top: 10px;

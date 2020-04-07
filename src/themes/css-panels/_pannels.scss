@@ -15,9 +15,10 @@
     height: 4px;
   }
   .swiper-container {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     padding-left: 60px;
     padding-right: 60px;
+    padding-top: 20px;
     @media (max-width: 600px) {
       padding-left: 30px;
       padding-right: 30px;
@@ -29,8 +30,8 @@
   .swiper-button-prev {
     left: 0;
     background: #edeef0;
-    height: 111px;
-    top: 22px;
+    height: 101px;
+    top: 42px;
     width: 60px;
     color: #7e8f9f;
     @media (max-width: 1024px) {
@@ -41,8 +42,8 @@
     right: 0;
     left: auto;
     background: #edeef0;
-    height: 111px;
-    top: 22px;
+    height: 101px;
+    top: 42px;
     width: 60px;
     color: #7e8f9f;
     @media (max-width: 1024px) {
@@ -51,13 +52,23 @@
   }
 }
 .panels-container {
-  background: #fff !important;
-  margin-top: 34px;
+  background: #ececed !important;
   box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
   padding-bottom: 150px;
+  padding-top: 40px;
+}
+.servicesContainer {
+  height: 515px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+.tab-content > .tab-pane {
+  height: 100%;
 }
 .panel-tab {
-  background: $second;
+  background: #fff;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -66,11 +77,15 @@
   padding-top: 6px;
   padding-bottom: 6px;
   cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: #f5f6f6;
+  }
   h4 {
     // font-family: $font1;
-    font-size: 20px;
-    color: #7e8f9f;
-    text-transform: uppercase;
+    font-size: 18px;
+    color: #3c4349;
+    text-transform: capitalize;
     position: relative;
     top: 4px;
     left: 10px;
@@ -105,7 +120,7 @@
 }
 .star {
   position: absolute;
-  right: 12px;
+  right: 16px;
   top: 11px;
   transition: unset;
   i {
@@ -122,8 +137,6 @@
 .panel-item {
   background: #fff;
   display: flex;
-  border-left: 2px solid $second;
-  border-right: 1px solid $second;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -134,9 +147,13 @@
   transition: unset;
   position: relative;
   border-right: 4px solid #fff;
+  transition: 0.3s;
+  &:hover {
+    background-color: #f5f6f6;
+  }
   h4 {
     // font-family: $font1;
-    font-size: 20px;
+    font-size: 16px;
     color: #32424e;
     text-transform: uppercase;
     position: relative;
@@ -166,6 +183,7 @@
   padding-top: 30px;
   padding-bottom: 8px;
   cursor: default;
+  display: none;
 }
 .rotateARR2 {
   transform: rotate(360deg) !important;
@@ -266,13 +284,52 @@
     text-transform: uppercase;
   }
 }
+.nav-tabs {
+  border-bottom: 0;
+}
 .nothinSelected {
-  background: $second;
+  background: #fff;
   position: relative;
-  height: 100%;
+  height: auto;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  .infos {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    button {
+      border: 0;
+      border: 1px solid #ed4c14;
+      color: #ed4c14;
+      background-color: transparent;
+      padding: 10px;
+      margin-top: auto;
+      align-self: flex-start;
+      transition: 0.3s;
+      &:hover {
+        background-color: #ed4c14;
+        color: #fff;
+      }
+    }
+    h2 {
+      color: $main;
+      font-size: 27px;
+    }
+    h3 {
+      font-size: 17px;
+      color: #3c4349;
+      line-height: 31px;
+    }
+  }
+  img {
+    width: 71%;
+  }
 }
 .headerModal {
   font-size: 20px;
@@ -441,7 +498,8 @@ span.superSmall {
 .favorites {
   background-color: #ebeced;
   padding: 20px 0;
-  margin-top: 40px;
+  padding-top: 0;
+  margin-top: 0;
   display: flex;
   flex-flow: column;
   .title {
