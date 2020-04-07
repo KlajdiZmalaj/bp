@@ -56,7 +56,6 @@ class Dashboard extends React.Component {
           <Azioni active="dashboard"></Azioni>
 
           <div className="panels-container">
-            <h1 className="max-width heading-tab">Acquista</h1>
             <div className="row no-gutters max-width">
               <div
                 className={`col-md-${

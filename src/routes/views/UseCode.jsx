@@ -7,15 +7,15 @@ import images from "themes/images";
 class UseCode extends React.Component {
   state = {
     inputVal: "",
-    popUpViz: false
+    popUpViz: false,
   };
-  togglePopUp = popUpViz => {
+  togglePopUp = (popUpViz) => {
     this.setState({ popUpViz });
   };
-  inputHandler = e => {
+  inputHandler = (e) => {
     this.setState({ inputVal: e.target.value });
   };
-  handleKeyPress = event => {
+  handleKeyPress = (event) => {
     if (event.key === "Enter") {
       let btn = document.querySelector(".input-group-append");
       btn.click();
@@ -37,7 +37,7 @@ class UseCode extends React.Component {
           <Azioni active="use-code"></Azioni>
           <div className="panels-container">
             <div className="sort-annunci max-width border-0 mb-0">
-              <h1 className="heading-tab mx-auto mt-5 mb-0">
+              <h1 className="heading-tab mx-auto mb-0">
                 Utilizza codice VPTPlus
               </h1>
             </div>
@@ -49,7 +49,7 @@ class UseCode extends React.Component {
                 <div className="input-group mb-3">
                   <input
                     type="text"
-                    onChange={e => {
+                    onChange={(e) => {
                       this.inputHandler(e);
                     }}
                     onKeyPress={this.handleKeyPress}
@@ -96,7 +96,7 @@ class UseCode extends React.Component {
                 ) : (
                   <div
                     className="printModal"
-                    ref={el => (this.componentRef = el)}
+                    ref={(el) => (this.componentRef = el)}
                   >
                     <div className="headerModal">
                       <img className="logo" src={images.logo} alt="" />
@@ -142,7 +142,7 @@ class UseCode extends React.Component {
                           .replace(
                             /<div class='marginB'><\/div>([^>]+)<br\/>/g,
                             "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                          )
+                          ),
                       }}
                     />
 
@@ -178,8 +178,8 @@ class UseCode extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
-  paymentsFromCode: state.auth.paymentsFromCode
+const mapsStateToProps = (state) => ({
+  paymentsFromCode: state.auth.paymentsFromCode,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
