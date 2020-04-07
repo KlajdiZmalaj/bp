@@ -10,15 +10,15 @@ class Configura extends React.Component {
     pw1: "",
     pw2: "",
     pw3: "",
-    hasError: false
+    hasError: false,
   };
-  pw1 = e => {
+  pw1 = (e) => {
     this.setState({ pw1: e.target.value });
   };
-  pw2 = e => {
+  pw2 = (e) => {
     this.setState({ pw2: e.target.value });
   };
-  pw3 = e => {
+  pw3 = (e) => {
     this.setState({ pw3: e.target.value });
   };
   handleSubmit = () => {
@@ -42,7 +42,7 @@ class Configura extends React.Component {
       this.props.getConfigura(accountInfo.profile.id);
     }
     let name = "";
-    docType.forEach(el => {
+    docType.forEach((el) => {
       if (el.id === parseInt(usersConfigura.document_type)) {
         name = el.name;
       }
@@ -53,9 +53,6 @@ class Configura extends React.Component {
         <div className="container-fluid overview ">
           <Azioni active="configura"></Azioni>
           <div className="panels-container">
-            <div className="sort-annunci max-width">
-              <h1 className="heading-tab mr-auto">Carica Conto</h1>
-            </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12 configura">
                 <div className="titleConf">
@@ -208,7 +205,7 @@ class Configura extends React.Component {
                     <label>password attuale</label>
                     <input
                       type="password"
-                      onChange={e => {
+                      onChange={(e) => {
                         this.pw1(e);
                       }}
                     />
@@ -217,7 +214,7 @@ class Configura extends React.Component {
                     <label>nuova password</label>
                     <input
                       type="password"
-                      onChange={e => {
+                      onChange={(e) => {
                         this.pw2(e);
                       }}
                     />
@@ -226,7 +223,7 @@ class Configura extends React.Component {
                     <label>conferma</label>
                     <input
                       type="password"
-                      onChange={e => {
+                      onChange={(e) => {
                         this.pw3(e);
                       }}
                     />
@@ -305,10 +302,10 @@ class Configura extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
   usersConfigura: state.auth.usersConfigura,
-  pwError: state.auth.pwError
+  pwError: state.auth.pwError,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

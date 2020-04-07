@@ -1715,7 +1715,7 @@ i#private {
   padding-top: 30px;
   padding-bottom: 8px;
   cursor: default;
-  display: none;
+  padding-left: 10px;
 }
 
 .rotateARR2 {
