@@ -12,9 +12,9 @@ class Overview extends Component {
     overviewDashboard: {},
     activeFilter: 2,
     dashboardFromFilterTop: true,
-    payments: this.props.payments
+    payments: this.props.payments,
   };
-  fromFilterTop = val => {
+  fromFilterTop = (val) => {
     this.setState({ dashboardFromFilterTop: val });
   };
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -42,7 +42,7 @@ class Overview extends Component {
       this.props.getOverviewDashboard(2);
     }, 500);
   }
-  setDashboard = id => {
+  setDashboard = (id) => {
     this.setState({ activeFilter: id });
   };
   render() {
@@ -52,7 +52,7 @@ class Overview extends Component {
       toggleOverview,
       payments,
       accountInfo,
-      dashboardData
+      dashboardData,
     } = this.props;
     console.log("accountInfo", accountInfo);
     let provT = 0;
@@ -61,10 +61,10 @@ class Overview extends Component {
       // provT = (payments || [])
       //   .map(item => parseFloat(item.percentage.replace(/,/g, "")))
       //   .reduce((prev, next) => prev + next);
-      provT = sumBy(payments, function(o) {
+      provT = sumBy(payments, function (o) {
         return parseFloat(o.percentage.replace(/,/g, "."));
       });
-      commT = sumBy(payments, function(o) {
+      commT = sumBy(payments, function (o) {
         return parseFloat(o.commissione.replace(/,/g, "."));
       });
     }
@@ -152,7 +152,7 @@ class Overview extends Component {
             </div>
           </div>
         </div>
-        <hr className="overviw-line" />
+        {/* <hr className="overviw-line" /> */}
         <div
           className={
             " row max-width no-gutters p-2 pl-md-4 wigs-overview " +
@@ -209,12 +209,12 @@ class Overview extends Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   showOverview: toggleOverviewSelector(state),
   services: state.services,
   payments: state.auth.payments,
   accountInfo: state.auth.accountInfo,
-  dashboardData: state.main.dashboardData
+  dashboardData: state.main.dashboardData,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

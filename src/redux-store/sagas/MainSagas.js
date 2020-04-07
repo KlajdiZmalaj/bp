@@ -8,12 +8,13 @@ import {
   fetchUsersBySearch,
   updatateOverviewWidget,
   setOnFav,
-  fetchFavorites
+  fetchFavorites,
 } from "services/main";
 
 import { logoutApi } from "services/auth";
 
 export function* getServices() {
+  console.log("funx callllled");
   const response = yield call(fetchServices);
   console.log("response services", response);
   if (response.data) {

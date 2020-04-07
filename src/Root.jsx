@@ -23,7 +23,7 @@ import {
   RegisterEndUser,
   RegisterAgency,
   Login,
-  Verify
+  Verify,
 } from "./routes";
 
 class Root extends React.Component {
@@ -55,7 +55,7 @@ class Root extends React.Component {
       <React.Fragment>
         <HashRouter>
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/annunci" />} />
+            <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
             {/* <Route exact path="/login" component={Login} /> */}
             {/* <Route exact path="/account-info" component={AccountInfo} /> */}
             {/* <Route exact path="/annunci" component={Annunci} /> */}
@@ -116,7 +116,7 @@ class Root extends React.Component {
               component={Transazioni}
               isLoggedin={isLoggedin}
             />
-            <PrivateRoute
+            <Route
               path="/dashboard"
               component={Dashboard}
               isLoggedin={isLoggedin}
@@ -163,13 +163,13 @@ class Root extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
   unauthorizated: state.auth.unauthorizated,
-  screenWidth: state.main.screenWidth
+  screenWidth: state.main.screenWidth,
 });
 
 export default connect(mapsStateToProps, {
   ...AuthActions,
-  ...MainActions
+  ...MainActions,
 })(Root);

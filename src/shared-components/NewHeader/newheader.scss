@@ -159,7 +159,9 @@ header.header {
       height: auto;
     }
   }
-
+  .chatSticky {
+    background-color: #fff;
+  }
   .navLinks {
     display: flex;
     align-items: center;
@@ -170,7 +172,7 @@ header.header {
       text-transform: uppercase;
       margin: 0 20px;
       font-size: 14px;
-      font-weight: 400;
+      font-weight: 500;
       display: flex;
       align-items: center;
       a {

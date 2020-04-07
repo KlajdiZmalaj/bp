@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import "./index-service.style.scss";
 import images from "themes/images";
-
+import { withRouter } from "react-router-dom";
 class Service extends React.Component {
   state = {
     numero_conto_corrente: "",
@@ -13,10 +13,10 @@ class Service extends React.Component {
     eseguito_da: "",
     via_piazza: "",
     citta: "",
-    provincia: ""
+    provincia: "",
   };
 
-  selectService = id => {
+  selectService = (id) => {
     this.props.setServiceId(id);
     this.props.togglePopUp(true);
     this.props.setServiceS(
@@ -30,11 +30,18 @@ class Service extends React.Component {
       serviceSelected,
       servicesItems,
       toDisplay,
-      togglePopUpP
+      togglePopUpP,
     } = this.props;
     const arrayServices = servicesItems[serviceSelected];
     console.log("serviceSelected", serviceSelected, toDisplay);
 
+    let isLoggedin = false;
+    const accountData = localStorage.getItem("accountDataB");
+    const data = JSON.parse(accountData);
+    if (data) {
+      isLoggedin = true;
+    }
+    console.log("isLoggedin", isLoggedin);
     return (
       <React.Fragment>
         <div
@@ -58,7 +65,13 @@ class Service extends React.Component {
                     (arrayServices.services || []).map((item, index) => {
                       return (
                         <td
-                          onClick={() => this.selectService(item)}
+                          onClick={() => {
+                            if (!isLoggedin) {
+                              this.props.history.push("/login");
+                            } else {
+                              this.selectService(item);
+                            }
+                          }}
                           key={index}
                         >
                           <img
@@ -398,10 +411,10 @@ class Service extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
-  isShowing: state.main.isShowing
+const mapsStateToProps = (state) => ({
+  isShowing: state.main.isShowing,
 });
 
-export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
-  Service
+export default withRouter(
+  connect(mapsStateToProps, { ...MainActions, ...AuthActions })(Service)
 );
