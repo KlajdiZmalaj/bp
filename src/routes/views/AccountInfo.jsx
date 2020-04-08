@@ -13,7 +13,9 @@ class AccountInfo extends Component {
       <Fragment>
         <Header />
         {/* <Overview /> */}
-        <Azioni active="account-info" />
+        <div className="azcont">
+          <Azioni active="account-info" />
+        </div>
         <div className="accountInfo">
           <LeftMenu />
           <Content />

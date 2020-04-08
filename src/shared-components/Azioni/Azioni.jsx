@@ -50,12 +50,13 @@ class Azioni extends Component {
                     <div
                       className={
                         "azioni-tab azioni-tab" +
-                        item.id +
                         (active === item.link ? " active-tab" : "")
                       }
                     >
                       <i className="fas fa-dot-circle"></i>
+
                       <h2>{item.name}</h2>
+                      <i className={`icon ${item.i}`}></i>
                     </div>
                   </a>
                 </div>

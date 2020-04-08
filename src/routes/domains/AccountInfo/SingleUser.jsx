@@ -9,7 +9,7 @@ class SingleUser extends Component {
     val: "",
     isPopUpActive: false,
     isOpen: false,
-    valueInput: ""
+    valueInput: "",
   };
   transferCallback = () => {
     this.setState({ isPopUpActive: false });
@@ -20,13 +20,13 @@ class SingleUser extends Component {
     this.props.getUsers();
   };
 
-  inpHandler = e => {
+  inpHandler = (e) => {
     this.setState({ valueInput: e.target.value });
   };
   switchLabel = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
-  setTransferItem = val => {
+  setTransferItem = (val) => {
     this.setState({ val, isPopUpActive: true });
   };
   setPopUpFalse = () => {
@@ -50,52 +50,46 @@ class SingleUser extends Component {
                   (user.status === 1 ? " text-success" : " text-danger")
                 }
               ></i>{" "}
-              {user.first_name}
+              {user.username}
             </span>
-            <span> {user.last_name}</span>
             <span>{user.rag_soc}</span>
-            <span>{user.city}</span>
-            <span>{user.comune_code}</span>
+            <span className="text-right justify-content-end">
+              {user.wallet}€
+            </span>
+            <span className="text-right justify-content-start">
+              {user.city}
+            </span>
             <span>{user.last_deposit}</span>
+            <span>{user.last_login_time}</span>
+
             <span>
-              {user.wallet}
-              <div
-                className={"label" + (isOpen ? " active" : "")}
+              <button
                 onClick={() => {
-                  this.switchLabel();
+                  this.setTransferItem("deposit");
                 }}
               >
-                {val || label}{" "}
-                <i className={"fas fa-chevron-" + (isOpen ? "up" : "down")}></i>
-                <div className={"ddItems" + (isOpen ? " viz" : "")}>
-                  <span
-                    onClick={() => {
-                      this.setTransferItem("deposit");
-                    }}
-                  >
-                    Deposit
-                  </span>
-                  <span
-                    onClick={() => {
-                      this.setTransferItem("withdraw");
-                    }}
-                  >
-                    Withdraw
-                  </span>
-
-                  <span
-                    onClick={() => {
-                      switchUserStatus(
-                        user.id,
-                        user.status == 1 ? 2 : 1,
-                        this.switchCallBack
-                      );
-                    }}
-                  >
-                    {user.status === 1 ? "Block User" : "Activate User"}
-                  </span>
-                </div>
-              </div>
+                Credito
+              </button>
+              <button
+                onClick={() => {
+                  this.setTransferItem("withdraw");
+                }}
+              >
+                Debito
+              </button>
+              <i
+                className="fal fa-lock"
+                onClick={() => {
+                  switchUserStatus(user.id, 2, this.switchCallBack);
+                }}
+              ></i>
+              <i
+                className="fal fa-eye"
+                onClick={() => {
+                  switchUserStatus(user.id, 1, this.switchCallBack);
+                }}
+                aria-hidden="true"
+              ></i>
             </span>
           </div>
         </div>
@@ -113,7 +107,7 @@ class SingleUser extends Component {
                 <input
                   type="number"
                   placeholder="0.00€"
-                  onChange={e => {
+                  onChange={(e) => {
                     this.inpHandler(e);
                   }}
                 />
@@ -140,6 +134,11 @@ class SingleUser extends Component {
               >
                 <i class="fa fa-times"></i> Cancel
               </button>
+              {user.status === 2 && (
+                <p className="info">
+                  <i className="fad fa-info-circle"></i> User is locked
+                </p>
+              )}
             </div>
             <div
               className="backDrop"

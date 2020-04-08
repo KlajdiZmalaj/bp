@@ -934,6 +934,11 @@ i#private {
 }
 
 /*configura styles*/
+.configura {
+  background: #f7f7f7;
+  padding: 20px !important;
+}
+
 .titleConf {
   background: #edeef0;
   display: -webkit-box;
@@ -1349,7 +1354,7 @@ i#private {
 }
 
 .azioni-tab {
-  background-color: #fff;
+  background-color: #e3e4e5;
   width: 100%;
   height: 101px;
   overflow: hidden;
@@ -1367,14 +1372,15 @@ i#private {
   backdrop-filter: blur(30px);
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
           box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
-  border: 2px solid #fff;
+  border: 0;
+  border-radius: 5px;
 }
 
 .azioni-tab h2 {
   text-transform: uppercase;
   font-family: "Roboto", "sans-serif";
   font-size: 20px;
-  color: #8ca0b3;
+  color: #8092a4;
   text-align: center;
   padding-left: 10px;
   list-style-type: disc;
@@ -1394,24 +1400,32 @@ i#private {
 }
 
 .azioni-tab:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+  z-index: 2;
+}
+
+.azioni-tab.active-tab {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+  z-index: 3;
+}
+
+.azioni-tab:hover, .azioni-tab.active-tab {
   position: relative;
-  z-index: 13;
   background: #f36520;
 }
 
-.azioni-tab:hover i {
-  bottom: 20px;
-}
-
-.azioni-tab:hover h2 {
-  position: relative;
-  bottom: 4px;
+.azioni-tab:hover .icon, .azioni-tab.active-tab .icon {
+  color: #c94010;
+  top: -13px;
+  right: -110px;
+  opacity: 0.7;
 }
 
 .azioni-tab:hover h2,
-.azioni-tab:hover i {
+.azioni-tab:hover i, .azioni-tab.active-tab h2,
+.azioni-tab.active-tab i {
   color: #fff;
 }
 
@@ -1494,7 +1508,7 @@ i#private {
 
 .azioni .swiper-container {
   padding-bottom: 30px;
-  padding-left: 60px;
+  padding-left: 28px;
   padding-right: 60px;
   padding-top: 20px;
 }
@@ -1508,11 +1522,11 @@ i#private {
 
 .azioni .swiper-slide {
   padding-left: 0 !important;
+  margin-right: 5px !important;
 }
 
 .azioni .swiper-button-prev {
   left: 0;
-  background: #edeef0;
   height: 101px;
   top: 42px;
   width: 60px;
@@ -1528,7 +1542,6 @@ i#private {
 .azioni .swiper-button-next {
   right: 0;
   left: auto;
-  background: #edeef0;
   height: 101px;
   top: 42px;
   width: 60px;
@@ -1541,6 +1554,29 @@ i#private {
   }
 }
 
+.azioni .icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  font-size: 60px;
+  right: -128px;
+  top: -42px;
+  font-weight: 300;
+  color: #c5cbd1;
+}
+
 .panels-container {
   background: #ececed !important;
   -webkit-box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
@@ -1550,8 +1586,9 @@ i#private {
 }
 
 .servicesContainer {
-  height: 515px;
+  height: 461px;
   overflow: auto;
+  border-right: 2px solid #f9f9f9;
 }
 
 .servicesContainer::-webkit-scrollbar {
@@ -1564,6 +1601,7 @@ i#private {
 
 .panel-tab {
   background: #fff;
+  border-bottom: 2px solid #f9f9f9;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2117,7 +2155,7 @@ span.superSmall {
 .favorites .title {
   text-transform: uppercase;
   font-weight: 500;
-  color: #5a5e61;
+  color: #3c4349;
   margin-bottom: 10px;
 }
 
@@ -2898,6 +2936,7 @@ footer .top .chat {
   font-size: 25px;
   top: -31px;
   right: -70px;
+  display: none;
 }
 
 footer .top .maxWFooter {
@@ -3058,7 +3097,7 @@ footer .bottom .maxWFooter img {
 
 .maxWFooter {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1371px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
