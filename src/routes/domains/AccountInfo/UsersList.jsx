@@ -40,7 +40,7 @@ class UsersList extends Component {
               )}
 
               {userWithPhoto && userWithPhoto.length > 0 ? (
-                userWithPhoto.map(user => {
+                userWithPhoto.map((user) => {
                   return <UserDoc key={user.id} user={user} />;
                 })
               ) : (
@@ -64,7 +64,7 @@ class UsersList extends Component {
               )}
 
               {userNoPhoto && userNoPhoto.length > 0 ? (
-                userNoPhoto.map(user => {
+                userNoPhoto.map((user) => {
                   return <UserNoDoc key={user.id} user={user} />;
                 })
               ) : (
@@ -82,17 +82,17 @@ class UsersList extends Component {
               <FastCarica users={userList} />
             </div>
             <div className="header">
-              <span>Id</span>
-              <span>Nome</span>
-              <span>Cognome</span>
+              <span>User Id</span>
+              <span>Username</span>
               <span>Rag.Sociale</span>
-              <span>Citta</span>
-              <span>Comune</span>
+              <span className="text-right">Credito</span>
+              <span className="text-left">City</span>
               <span>Ultimo Deposit</span>
-              <span>Credito</span>
+              <span>Ultimo Login</span>
+              <span>Azioni</span>
             </div>
             {isArray(userList) &&
-              (userList || []).map(user => {
+              (userList || []).map((user) => {
                 return <SingleUser key={user.id} user={user} />;
               })}
           </div>
@@ -101,9 +101,9 @@ class UsersList extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userList: state.main.userList,
-  accountInfo: state.auth.accountInfo
+  accountInfo: state.auth.accountInfo,
 });
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(
   UsersList

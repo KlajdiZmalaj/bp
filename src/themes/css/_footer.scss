@@ -51,6 +51,7 @@ footer {
       font-size: 25px;
       top: -31px;
       right: -70px;
+      display: none;
     }
 
     .maxWFooter {
@@ -175,7 +176,7 @@ footer {
 
 .maxWFooter {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1371px;
   display: flex;
   margin: 0 auto;
   align-items: center;

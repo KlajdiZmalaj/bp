@@ -12,7 +12,11 @@ class FastCarica extends Component {
     valSearched: "",
     userId: "",
     userName: "",
-    amountVal: 0
+    amountVal: 0,
+    notifyUser: true,
+  };
+  toggleNotify = () => {
+    this.setState({ notifyUser: !this.state.notifyUser });
   };
   transferCallback = () => {
     this.setState({ isPopUpActive: false });
@@ -22,16 +26,16 @@ class FastCarica extends Component {
   setUser = (userId, userName) => {
     this.setState({ userId, userName });
   };
-  setType = type => {
+  setType = (type) => {
     this.setState({ type });
   };
   closeUsersDialog = () => {
     this.setState({ toDisplayUserDD: false });
   };
-  amountHandler = e => {
+  amountHandler = (e) => {
     this.setState({ amountVal: e.target.value });
   };
-  inpHandler = e => {
+  inpHandler = (e) => {
     this.setState({ valSearched: e.target.value, userName: e.target.value });
     if (this.state.userName) {
       this.setState({ toDisplayUserDD: true });
@@ -46,7 +50,7 @@ class FastCarica extends Component {
       userName,
       userId,
       amountVal,
-      toDisplayUserDD
+      toDisplayUserDD,
     } = this.state;
     const { users } = this.props;
     console.log("users", userName, userId, amountVal);
@@ -59,7 +63,7 @@ class FastCarica extends Component {
             }}
             className={`${type === "deposit" ? "active" : ""}`}
           >
-            Add credit
+            Accredita
           </span>
           <span className="or">Or</span>
           <span
@@ -68,14 +72,14 @@ class FastCarica extends Component {
             }}
             className={`${type === "withdraw" ? "active" : ""}`}
           >
-            withdraw
+            Preleva
           </span>
         </div>
         <div className="searchUser">
           <input
             type="text"
             placeholder="Search Username"
-            onChange={e => {
+            onChange={(e) => {
               this.inpHandler(e);
             }}
             value={userName}
@@ -83,7 +87,7 @@ class FastCarica extends Component {
           <i className="fal fa-search"></i>
           {toDisplayUserDD && (
             <div className="ddUsers">
-              {(users || []).map(user => {
+              {(users || []).map((user) => {
                 return (
                   user.first_name
                     .toLowerCase()
@@ -104,14 +108,25 @@ class FastCarica extends Component {
           )}
         </div>
         <div className="amountGr">
-          <div className="label">Amount</div>
+          <div className="label">Somma</div>
           <input
             type="text"
             placeholder="0.00€"
-            onChange={e => {
+            onChange={(e) => {
               this.amountHandler(e);
             }}
           />
+        </div>
+        <div className="amountGr" onClick={this.toggleNotify}>
+          <div className="label">Notifica all’user</div>
+          <div>
+            <i
+              className={
+                "fal fa-" + (this.state.notifyUser ? "check" : "times")
+              }
+              aria-hidden="true"
+            ></i>
+          </div>
         </div>
         <button
           className="addFounds"
@@ -119,7 +134,7 @@ class FastCarica extends Component {
             transferMoney(userId, amountVal, type, this.transferCallback);
           }}
         >
-          {type == "deposit" ? "Add Founds" : "Substract Founds"}
+          {type == "deposit" ? "Accredita" : "Preleva"}
         </button>
       </div>
     );

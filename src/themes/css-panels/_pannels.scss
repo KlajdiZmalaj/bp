@@ -16,7 +16,7 @@
   }
   .swiper-container {
     padding-bottom: 30px;
-    padding-left: 60px;
+    padding-left: 28px;
     padding-right: 60px;
     padding-top: 20px;
     @media (max-width: 600px) {
@@ -26,10 +26,10 @@
   }
   .swiper-slide {
     padding-left: 0 !important;
+    margin-right: 5px !important;
   }
   .swiper-button-prev {
     left: 0;
-    background: #edeef0;
     height: 101px;
     top: 42px;
     width: 60px;
@@ -41,7 +41,6 @@
   .swiper-button-next {
     right: 0;
     left: auto;
-    background: #edeef0;
     height: 101px;
     top: 42px;
     width: 60px;
@@ -49,6 +48,22 @@
     @media (max-width: 1024px) {
       width: 30px;
     }
+  }
+  .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 60px;
+    right: -128px;
+    top: -42px;
+    font-weight: 300;
+    color: #c5cbd1;
   }
 }
 .panels-container {
@@ -58,8 +73,10 @@
   padding-top: 40px;
 }
 .servicesContainer {
-  height: 515px;
+  height: 461px;
   overflow: auto;
+  border-right: 2px solid #f9f9f9;
+
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -69,6 +86,7 @@
 }
 .panel-tab {
   background: #fff;
+  border-bottom: 2px solid #f9f9f9;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -505,7 +523,7 @@ span.superSmall {
   .title {
     text-transform: uppercase;
     font-weight: 500;
-    color: #5a5e61;
+    color: #3c4349;
     margin-bottom: 10px;
   }
   .items {

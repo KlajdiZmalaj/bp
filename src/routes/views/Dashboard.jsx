@@ -160,40 +160,42 @@ class Dashboard extends React.Component {
               )}
               {console.log("serviceSelected", serviceSelected)}
               {/* <!--rigth block where is no selection--> */}
-              <div className="col-md-8 pl-3">
-                <div
-                  className={
-                    "nothinSelected  " +
-                    (serviceSelected === "" ? "" : "d-none")
-                  }
-                >
-                  <div className="infos">
-                    <h2>
-                      Ricaricati <br /> nel modo più veloce
-                    </h2>
-                    <h3>
-                      Ricarica il tuo cellulare nel Bpoint.store, <br /> oppure
-                      direttamente Online. Clicca l’immagine <br />{" "}
-                      dell’operatore che vuoi ricaricare o sul <br /> nome
-                      nell’elenco a sinistra e scopri <br />
-                      quanto è veloce e sicuro ricaricare così!
-                    </h3>
-                    <button
-                      onClick={() => {
-                        const celi = document.querySelector(
-                          `[data-target="#tabRTELD"]`
-                        );
-                        if (celi) {
-                          celi.click();
-                        }
-                      }}
-                    >
-                      RICARICHE TELEFONICHE
-                    </button>
+              {Object.keys(services)[0] && (
+                <div className="col-md-8">
+                  <div
+                    className={
+                      "nothinSelected  " +
+                      (serviceSelected === "" ? "" : "d-none")
+                    }
+                  >
+                    <div className="infos">
+                      <h2>
+                        Ricaricati <br /> nel modo più veloce
+                      </h2>
+                      <h3>
+                        Ricarica il tuo cellulare nel Bpoint.store, <br />{" "}
+                        oppure direttamente Online. Clicca l’immagine <br />{" "}
+                        dell’operatore che vuoi ricaricare o sul <br /> nome
+                        nell’elenco a sinistra e scopri <br />
+                        quanto è veloce e sicuro ricaricare così!
+                      </h3>
+                      <button
+                        onClick={() => {
+                          const celi = document.querySelector(
+                            `[data-target="#tabRTELD"]`
+                          );
+                          if (celi) {
+                            celi.click();
+                          }
+                        }}
+                      >
+                        RICARICHE TELEFONICHE
+                      </button>
+                    </div>
+                    <img src={images.girl} alt="" />
                   </div>
-                  <img src={images.girl} alt="" />
                 </div>
-              </div>
+              )}
             </div>
             <div className="favorites">
               <div className="max-width">
