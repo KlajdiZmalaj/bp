@@ -70,23 +70,30 @@ class Header extends Component {
                 <div>
                   <i className="fas fa-envelope"></i>
                 </div>
-                <div>
+                <div
+                  onClick={() => {
+                    this.props.history.push("/configura");
+                  }}
+                >
                   <i className="fas fa-cog"></i>
                 </div>
               </div>
               <div className="userinfo">
-                <div
-                  className="register"
-                  onClick={() => {
-                    get(accountInfo, "profile.role.id") == 1
-                      ? this.props.history.push("/registerAgency")
-                      : this.props.history.push("/registerUser");
-                  }}
-                >
-                  {get(accountInfo, "profile.role.id") == 1
-                    ? "Registra Agenzia"
-                    : "Register User"}
-                </div>
+                {get(accountInfo, "profile.role.name") && (
+                  <div
+                    className="register"
+                    onClick={() => {
+                      get(accountInfo, "profile.role.name") === "super_admin"
+                        ? this.props.history.push("/registerAgency")
+                        : this.props.history.push("/registerUser");
+                    }}
+                  >
+                    {get(accountInfo, "profile.role.name") === "super_admin"
+                      ? "Registra Agenzia"
+                      : "Register User"}
+                  </div>
+                )}
+
                 <div className="name">{get(accountInfo, "profile.name")}</div>
                 {isLoggedin && (
                   <div className="money">
@@ -175,7 +182,12 @@ class Header extends Component {
               <span>2</span>
             </div>
             <div>
-              <i className="fas fa-cog"></i>
+              <i
+                onClick={() => {
+                  this.props.history.push("/configura");
+                }}
+                className="fas fa-cog"
+              ></i>
             </div>
           </div>
         </div>
