@@ -23,7 +23,7 @@ class Transazioni extends React.Component {
     barcode: "",
     name: "",
     address: "",
-    phone: ""
+    phone: "",
   };
   showModal = (index, barcode, name, address, phone) => {
     this.setState({
@@ -32,7 +32,7 @@ class Transazioni extends React.Component {
       barcode,
       name,
       address,
-      phone
+      phone,
     });
   };
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -50,19 +50,19 @@ class Transazioni extends React.Component {
     return null;
   }
 
-  handleOk = e => {
+  handleOk = (e) => {
     this.setState({
-      visible: false
+      visible: false,
     });
   };
 
-  handleCancel = e => {
+  handleCancel = (e) => {
     this.setState({
-      visible: false
+      visible: false,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -72,7 +72,7 @@ class Transazioni extends React.Component {
     });
   };
 
-  changeSelected = filter => {
+  changeSelected = (filter) => {
     this.setState({ selectedFilter: filter });
     if (filter === 0) {
       this.props.getPayments("", moment(), moment());
@@ -80,39 +80,31 @@ class Transazioni extends React.Component {
     if (filter === 1) {
       this.props.getPayments(
         "",
-        moment()
-          .subtract(1, "days")
-          .format("YYYY-MM-DD"),
-        moment()
-          .subtract(1, "days")
-          .format("YYYY-MM-DD")
+        moment().subtract(1, "days").format("YYYY-MM-DD"),
+        moment().subtract(1, "days").format("YYYY-MM-DD")
       );
     }
     if (filter === 2) {
-      const time7daysAgo = moment()
-        .subtract(7, "days")
-        .startOf("day");
+      const time7daysAgo = moment().subtract(7, "days").startOf("day");
       this.props.getPayments("", time7daysAgo, moment());
     }
     if (filter === 3) {
-      const time30daysAgo = moment()
-        .subtract(30, "days")
-        .startOf("day");
+      const time30daysAgo = moment().subtract(30, "days").startOf("day");
       // this.props.getPayments("", time30daysAgo, moment());
       this.props.getPayments();
     }
   };
 
-  handleSearch = value => {
+  handleSearch = (value) => {
     if (value && this.props.usernames) {
-      let res = this.props.usernames.filter(user => user.includes(value));
+      let res = this.props.usernames.filter((user) => user.includes(value));
       this.setState({ usernames: res });
     } else {
       this.setState({ usernames: [] });
     }
   };
 
-  handleChange = value => {
+  handleChange = (value) => {
     this.setState({ username: value });
   };
 
@@ -122,12 +114,12 @@ class Transazioni extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 }
+        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 }
-      }
+        sm: { span: 16 },
+      },
     };
     const { payments, accountInfo } = this.props;
     const { selectedFilter, indexT, usernames } = this.state;
@@ -137,10 +129,10 @@ class Transazioni extends React.Component {
     let options = [];
 
     if (usernames && usernames.length > 0) {
-      options = usernames.map(user => <Option key={user}>{user}</Option>);
+      options = usernames.map((user) => <Option key={user}>{user}</Option>);
     }
 
-    const paymentsO = payments.sort(function(a, b) {
+    const paymentsO = payments.sort(function (a, b) {
       return new Date(b.executed_date) - new Date(a.executed_date);
     });
 
@@ -161,7 +153,8 @@ class Transazioni extends React.Component {
                   className="filters"
                 >
                   {accountInfo.profile &&
-                    parseInt(accountInfo.profile.role.id) === 1 && (
+                    parseInt(accountInfo.profile.role.name) ===
+                      "super_admin" && (
                       <div className="dal">
                         {
                           <Form.Item>
@@ -218,7 +211,7 @@ class Transazioni extends React.Component {
                     {
                       <Form.Item>
                         {getFieldDecorator("to", {
-                          rules: [{ type: "object" }]
+                          rules: [{ type: "object" }],
                         })(
                           <DatePicker
                             format={("DD/MM/YYYY", "DD/MM/YYYY")}
@@ -330,7 +323,10 @@ class Transazioni extends React.Component {
             footer={null}
           >
             {indexT !== null && payments[indexT] && (
-              <div className="printModal" ref={el => (this.componentRef = el)}>
+              <div
+                className="printModal"
+                ref={(el) => (this.componentRef = el)}
+              >
                 <div className="headerModal">
                   <img className="logo" src={images.logo} alt="" />
                   <span className="superSmall text-bold">
@@ -377,7 +373,7 @@ class Transazioni extends React.Component {
                       .replace(
                         /<div class='marginB'><\/div>([^>]+)<br\/>/g,
                         "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                      )
+                      ),
                   }}
                 />
 
@@ -407,13 +403,13 @@ class Transazioni extends React.Component {
 
 const TransazioniF = Form.create({ name: "Transazioni" })(Transazioni);
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
   service_id: state.auth.service_id,
   payments: state.auth.payments,
   usernames: state.auth.usernames,
   accountInfo: state.auth.accountInfo,
-  navbarSearch: state.main.navbarSearch
+  navbarSearch: state.main.navbarSearch,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
