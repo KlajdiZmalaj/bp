@@ -257,7 +257,7 @@ export const fetchRegisterAllInfo = (
       ...{ phone: number_prefix + number },
       ...{ document_front: frontImg },
       ...{ document_back: backImg },
-      ...(role != 1 ? { role: "user" } : { role: "agency" }),
+      ...(role != "super_admin" ? { role: "user" } : { role: "agency" }),
       ...{ a_ragione_sociale: aRagSoc },
       ...{ a_insegna: aInsegna },
       ...{ a_phone: aPhone },
