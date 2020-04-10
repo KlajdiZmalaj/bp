@@ -18,43 +18,57 @@ export const azioni = [
     id: 1,
     name: "annunci",
     link: "annunci",
-    i: 'fal fa-comment-alt-lines',
+    i: "fal fa-comment-alt-lines",
+    displayRole: ["super_admin", "agency"],
   },
   {
     id: 2,
-    name: "carica conto",
-    link: "carica-conto",
-    i:'fal fa-receipt'
+    name: "account",
+    link: "account-info",
+    i: "fal fa-user-friends",
+    displayRole: ["super_admin", "agency"],
+  },
+  {
+    id: 8,
+    name: "portafoglio",
+    link: "wallet",
+    i: "fal fa-wallet",
+    displayRole: ["agency"],
   },
   {
     id: 3,
-    name: "configura",
-    link: "configura",
-    i:'fal fa-cogs'
+    name: "transazioni",
+    link: "transazioni",
+    i: "fal fa-file-invoice-dollar",
+    displayRole: ["super_admin", "agency"],
   },
   {
     id: 4,
-    name: "usa Codice",
+    name: "voucher",
     link: "use-code",
-    i:'fal fa-barcode-read'
+    i: "fal fa-barcode-read",
+    displayRole: ["super_admin", "agency"],
   },
   {
     id: 5,
     name: "acquista",
     link: "dashboard",
-    i:'fal fa-shopping-cart'
+    i: "fal fa-shopping-cart",
+    displayRole: ["super_admin", "agency"],
   },
   {
     id: 6,
-    name: "transazioni",
-    link: "transazioni",
-    i:'fal fa-file-invoice-dollar'
+    name: "configura",
+    link: "configura",
+    i: "fal fa-cogs",
+    displayRole: ["super_admin", "agency"],
   },
   {
     id: 7,
-    name: "account info",
-    link: "account-info",
-    i:'fal fa-user-friends'
+    name: "carica conto",
+    link: "carica-conto",
+    i: "fal fa-receipt",
+    displayRole: ["super_admin", "agency"],
   },
 ];
 

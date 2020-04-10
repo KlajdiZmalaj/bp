@@ -5,6 +5,7 @@ import AuthActions from "../models/auth";
 import {
   fetchServices,
   fetchUsers,
+  fetchUsersSimple,
   fetchUsersBySearch,
   updatateOverviewWidget,
   setOnFav,
@@ -52,7 +53,13 @@ export function* getUsers(params) {
     yield put(MainActions.setUsers(response.data.users));
   }
 }
-
+export function* getUsersSimple() {
+  const response = yield call(fetchUsersSimple);
+  console.log("getUsers called", response);
+  if (response.data) {
+    yield put(MainActions.setUsersSimple(response.data.users));
+  }
+}
 export function* getUsersBySearch(params) {
   const response = yield call(fetchUsersBySearch, params.search_user);
   if (response.data) {

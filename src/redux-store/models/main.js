@@ -7,8 +7,9 @@ const { Types, Creators } = createActions({
   togglePopUp: ["isShowing"],
   setAccount: ["activeAccount"],
   setUsers: ["userList"],
+  setUsersSimple: ["userListSimple"],
   getUsers: ["search_user"],
-
+  getUsersSimple: [],
   getUsersBySearch: ["search_user"],
   setUsersBySearch: ["userListBySearch"],
   getOverviewDashboard: ["period"],
@@ -17,7 +18,7 @@ const { Types, Creators } = createActions({
   setScreenW: ["screenWidth"],
   setFavorites: ["favorites"],
   getFavorites: [],
-  toggleFavorite: ["id", "sType"]
+  toggleFavorite: ["id", "sType"],
 });
 
 export const MainTypes = Types;
@@ -30,51 +31,56 @@ const INITIAL_STATE = {
   isShowing: false,
   activeAccount: 2,
   userList: [],
+  userListSimple: [],
   userListBySearch: [],
   dashboardData: {},
   navbarSearch: "",
-  screenWidth: window.innerWidth
+  screenWidth: window.innerWidth,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_FAVORITES]: (state, { favorites }) => ({
     ...state,
-    favorites
+    favorites,
   }),
   [Types.SET_NAVBAR_SEARCH]: (state, { navbarSearch }) => ({
     ...state,
-    navbarSearch
+    navbarSearch,
   }),
   [Types.SET_SCREEN_W]: (state, { screenWidth }) => ({
     ...state,
-    screenWidth
+    screenWidth,
   }),
   [Types.SET_OVERVIEW_DASHBOARD]: (state, { dashboardData }) => ({
     ...state,
-    dashboardData
+    dashboardData,
   }),
   [Types.TOGGLE_OVERVIEW]: (state, { showOverview }) => ({
     ...state,
-    showOverview
+    showOverview,
   }),
   [Types.SET_ACCOUNT]: (state, { activeAccount }) => ({
     ...state,
-    activeAccount
+    activeAccount,
   }),
   [Types.SET_SERVICES]: (state, { services }) => ({
     ...state,
-    services
+    services,
   }),
   [Types.SET_USERS]: (state, { userList }) => ({
     ...state,
-    userList
+    userList,
+  }),
+  [Types.SET_USERS_SIMPLE]: (state, { userListSimple }) => ({
+    ...state,
+    userListSimple,
   }),
   [Types.SET_USERS_BY_SEARCH]: (state, { userListBySearch }) => ({
     ...state,
-    userListBySearch
+    userListBySearch,
   }),
   [Types.TOGGLE_POP_UP]: (state, { isShowing }) => ({
     ...state,
-    isShowing
-  })
+    isShowing,
+  }),
 });
