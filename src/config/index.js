@@ -51,7 +51,7 @@ export const azioni = [
   },
   {
     id: 5,
-    name: "acquista",
+    name: "servizi",
     link: "dashboard",
     i: "fal fa-shopping-cart",
     displayRole: ["super_admin", "agency"],
