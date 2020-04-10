@@ -34,16 +34,11 @@ class Azioni extends Component {
     };
     return (
       <React.Fragment>
-        {/* <div className="row max-width">
-          <div className="col pl-3 p-lg-0">
-            <a href="/#" className="overview-btn">
-              <img src={images.tickets} alt="ticket" /> Menu
-            </a>
-          </div>
-        </div> */}
         <hr className="overviw-line" />
-        <div className="row max-width mt-2 azioni">
-          {get(accountInfo, "profile.role.name") && (
+        {}
+
+        {get(accountInfo, "profile.role.name") ? (
+          <div className="row max-width mt-2 azioni">
             <Swiper {...params}>
               {azioni.map((item) => {
                 return includes(
@@ -73,17 +68,48 @@ class Azioni extends Component {
                 );
               })}
             </Swiper>
-          )}
+          </div>
+        ) : (
+          <div
+            className="row max-width mt-2 azioni py-4"
+            style={{ paddingLeft: "30px" }}
+          >
+            {/* <div className="col-6 col-lg-2 p-0 pl-2 pl-lg-2" key={0}>
+              <a href={"#/login"}>
+                <div className={"azioni-tab azioni-tab"}>
+                  <i className="fas fa-dot-circle"></i>
 
-          {/* <div className="col-6 col-lg-2 p-0 pl-lg-2">
-            <a href="#/dashboard">
-              <div className="azioni-tab azioni-tab5 active-tab">
-                <i className="fas fa-dot-circle"></i>
-                <h2>acquista</h2>
-              </div>
-            </a>
-          </div> */}
-        </div>
+                  <h2>Login</h2>
+                  <i className="icon fal fa-sign-in"></i>
+                </div>
+              </a>
+            </div> */}
+            {azioni.map((item) => {
+              return (
+                item.id === 5 && (
+                  <div
+                    className="col-6 col-lg-2 p-0 pl-2 pl-lg-2"
+                    key={item.id}
+                  >
+                    <a href={"#/" + item.link}>
+                      <div
+                        className={
+                          "azioni-tab azioni-tab" +
+                          (active === item.link ? " active-tab" : "")
+                        }
+                      >
+                        <i className="fas fa-dot-circle"></i>
+
+                        <h2>{item.name}</h2>
+                        <i className={`icon ${item.i}`}></i>
+                      </div>
+                    </a>
+                  </div>
+                )
+              );
+            })}
+          </div>
+        )}
       </React.Fragment>
     );
   }
