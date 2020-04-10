@@ -5,8 +5,8 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { Form, DatePicker, Modal, Select } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
-import orderBy from "lodash/orderBy";
-import sortBy from "lodash/sortBy";
+import { get } from "lodash";
+// import sortBy from "lodash/sortBy";
 import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
@@ -152,45 +152,43 @@ class Transazioni extends React.Component {
                   onSubmit={this.handleSubmit}
                   className="filters"
                 >
-                  {accountInfo.profile &&
-                    parseInt(accountInfo.profile.role.name) ===
-                      "super_admin" && (
-                      <div className="dal">
-                        {
-                          <Form.Item>
-                            {getFieldDecorator(
-                              "username",
-                              {}
-                            )(
-                              // <Select
-                              //   value={this.state.username}
-                              //   onChange={this.handleCurrencyChange}
-                              // >
-                              //   <Option value="rmb">RMB</Option>
-                              //   <Option value="dollar">Dollar</Option>
-                              // </Select>
+                  {get(accountInfo, "profile.role.name") === "super_admin" && (
+                    <div className="dal">
+                      {
+                        <Form.Item>
+                          {getFieldDecorator(
+                            "username",
+                            {}
+                          )(
+                            // <Select
+                            //   value={this.state.username}
+                            //   onChange={this.handleCurrencyChange}
+                            // >
+                            //   <Option value="rmb">RMB</Option>
+                            //   <Option value="dollar">Dollar</Option>
+                            // </Select>
 
-                              <Select
-                                showSearch
-                                defaultActiveFirstOption={false}
-                                showArrow={false}
-                                filterOption={false}
-                                onSearch={this.handleSearch}
-                                onChange={this.handleChange}
-                                // notFoundContent={null}
-                                placeholder={
-                                  this.props.usernames.length > 0
-                                    ? this.props.usernames[0]
-                                    : "Select"
-                                }
-                              >
-                                {options}
-                              </Select>
-                            )}
-                          </Form.Item>
-                        }
-                      </div>
-                    )}
+                            <Select
+                              showSearch
+                              defaultActiveFirstOption={false}
+                              showArrow={false}
+                              filterOption={false}
+                              onSearch={this.handleSearch}
+                              onChange={this.handleChange}
+                              // notFoundContent={null}
+                              placeholder={
+                                this.props.usernames.length > 0
+                                  ? this.props.usernames[0]
+                                  : "Select"
+                              }
+                            >
+                              {options}
+                            </Select>
+                          )}
+                        </Form.Item>
+                      }
+                    </div>
+                  )}
 
                   <div className="dal">
                     {

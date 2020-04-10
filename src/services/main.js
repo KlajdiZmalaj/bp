@@ -33,9 +33,19 @@ export const fetchUsers = (search_user) =>
     .post(`/users/list`, {
       ...(search_user ? { search_user: search_user } : {}),
     })
-    // .then(data => {
-    //   console.log("fetch users called", data,);
-    // })
+    .catch((error) => ({ error }));
+
+export const fetchUsersSimple = () =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/users/simple`)
     .catch((error) => ({ error }));
 
 export const fetchUsersBySearch = (search_user) =>

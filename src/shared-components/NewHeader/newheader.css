@@ -235,6 +235,7 @@ header.header nav .logo {
 
 header.header .chatSticky {
   background-color: #fff;
+  display: none;
 }
 
 header.header .navLinks {

@@ -13,10 +13,10 @@ import {
   Configura,
   UseCode,
   Transazioni,
-  AdminAccount,
-  AnnunciAdmin,
-  Operazioni,
-  Impostazioni,
+  // AdminAccount,
+  // AnnunciAdmin,
+  // Operazioni,
+  // Impostazioni,
   Messages,
   AccountInfo,
   Register,
@@ -24,6 +24,7 @@ import {
   RegisterAgency,
   Login,
   Verify,
+  Wallet,
 } from "./routes";
 
 class Root extends React.Component {
@@ -101,14 +102,19 @@ class Root extends React.Component {
               component={UseCode}
               isLoggedin={isLoggedin}
             />
-            <PrivateRoute
+            {/* <PrivateRoute
               path="/admin-account"
               component={AdminAccount}
               isLoggedin={isLoggedin}
-            />
-            <PrivateRoute
+            /> */}
+            {/* <PrivateRoute
               path="/annunci-admin"
               component={AnnunciAdmin}
+              isLoggedin={isLoggedin}
+            /> */}
+            <PrivateRoute
+              path="/wallet"
+              component={Wallet}
               isLoggedin={isLoggedin}
             />
             <PrivateRoute
@@ -136,16 +142,16 @@ class Root extends React.Component {
               component={CaricaConto}
               isLoggedin={isLoggedin}
             />
-            <PrivateRoute
+            {/* <PrivateRoute
               path="/operazioni"
               component={Operazioni}
               isLoggedin={isLoggedin}
-            />
-            <PrivateRoute
+            /> */}
+            {/* <PrivateRoute
               path="/impostazioni"
               component={Impostazioni}
               isLoggedin={isLoggedin}
-            />
+            /> */}
             <PrivateRoute
               path="/registerUser"
               component={RegisterEndUser}
