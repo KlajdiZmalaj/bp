@@ -132,6 +132,9 @@ class SingleUser extends Component {
                 <li>
                   Comune Code: <span> {user.comune_code}</span>
                 </li>
+                <li>
+                  Credito: <span> {user.wallet} €</span>
+                </li>
               </ul>
             </div>
             <div

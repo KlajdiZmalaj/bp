@@ -30,7 +30,12 @@ class index extends Component {
                 <span>Azioni</span>
               </div>
               {userListSimple.map((user) => {
-                return <SingleUser user={user} />;
+                return (
+                  <SingleUser
+                    getUsers={this.props.getUsersSimple}
+                    user={user}
+                  />
+                );
               })}
             </div>
           </div>
