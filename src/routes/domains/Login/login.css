@@ -4,8 +4,8 @@
   position: fixed;
   top: 45%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
   margin: auto;
 }
 
@@ -108,5 +108,16 @@
 .hasError > span {
   font-size: 12px;
   margin-top: 4px;
+}
+
+.leftLogin {
+  background-image: url("../../../assets/images/login.png");
+  height: 100vh;
+  width: 700px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-position: center;
+  background-size: contain;
 }
 /*# sourceMappingURL=login.css.map */

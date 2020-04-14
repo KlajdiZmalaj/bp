@@ -40,7 +40,12 @@ class Dashboard extends React.Component {
         allFavServices.push(subitem);
       });
     });
-    console.log("favorites", favorites);
+    let isLoggedin = false;
+    const accountData = localStorage.getItem("accountDataB");
+    const data = JSON.parse(accountData);
+    if (data) {
+      isLoggedin = true;
+    }
     const scrollView = document.getElementsByClassName("panels-container")[0];
     return (
       <div>
@@ -199,39 +204,40 @@ class Dashboard extends React.Component {
             </div>
             <div className="favorites">
               <div className="max-width">
-                {Object.keys(favorites).map((gr) => {
-                  return (
-                    <div className="favorites--row" key={gr}>
-                      <div className="title">
-                        Preferiti {favorites[gr].name}
+                {isLoggedin &&
+                  Object.keys(favorites).map((gr) => {
+                    return (
+                      <div className="favorites--row" key={gr}>
+                        <div className="title">
+                          Preferiti {favorites[gr].name}
+                        </div>
+                        <div className="items">
+                          {Object.keys(favorites[gr]).map((item) => {
+                            // console.log("itemaaaa", item);
+                            return (
+                              item !== "name" && (
+                                <div
+                                  className="item"
+                                  key={item}
+                                  onClick={() => {
+                                    this.togglePopUp(true);
+                                    this.changeServce(item, gr);
+                                    scrollView.scrollIntoView();
+                                  }}
+                                >
+                                  <img
+                                    src={`http://www.perdemo.it/ricaricheSPS/${item}.png`}
+                                    alt=""
+                                  />
+                                  <span>{favorites[gr][item].name}</span>
+                                </div>
+                              )
+                            );
+                          })}
+                        </div>
                       </div>
-                      <div className="items">
-                        {Object.keys(favorites[gr]).map((item) => {
-                          // console.log("itemaaaa", item);
-                          return (
-                            item !== "name" && (
-                              <div
-                                className="item"
-                                key={item}
-                                onClick={() => {
-                                  this.togglePopUp(true);
-                                  this.changeServce(item, gr);
-                                  scrollView.scrollIntoView();
-                                }}
-                              >
-                                <img
-                                  src={`http://www.perdemo.it/ricaricheSPS/${item}.png`}
-                                  alt=""
-                                />
-                                <span>{favorites[gr][item].name}</span>
-                              </div>
-                            )
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
           </div>
