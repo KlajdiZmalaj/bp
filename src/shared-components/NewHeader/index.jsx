@@ -40,7 +40,7 @@ class Header extends Component {
           <div className="topNav">
             <div className="left">
               <div>
-                <i className="fal fa-phone"></i> +39 1231313
+                <i className="fal fa-phone"></i> +39 0541 082543
               </div>
               <div>
                 <i className="fal fa-envelope"></i>info@bpoint.store

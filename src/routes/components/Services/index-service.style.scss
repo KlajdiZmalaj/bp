@@ -7,9 +7,18 @@
   top: 0;
   height: 100%;
   z-index: 10000;
-
+  .ant-form-item {
+    margin-bottom: 0;
+    input {
+      width: 100%;
+      padding: 0;
+      height: 30px;
+      border-radius: 0;
+    }
+  }
   .leftCol_Module {
     background-color: #fff;
     padding: 15px;
+    margin-bottom: 60px;
   }
 }

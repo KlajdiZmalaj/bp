@@ -9,9 +9,23 @@
   z-index: 10000;
 }
 
+.modulePopUP1 .ant-form-item,
+.modulePopUP3 .ant-form-item {
+  margin-bottom: 0;
+}
+
+.modulePopUP1 .ant-form-item input,
+.modulePopUP3 .ant-form-item input {
+  width: 100%;
+  padding: 0;
+  height: 30px;
+  border-radius: 0;
+}
+
 .modulePopUP1 .leftCol_Module,
 .modulePopUP3 .leftCol_Module {
   background-color: #fff;
   padding: 15px;
+  margin-bottom: 60px;
 }
 /*# sourceMappingURL=index-service.style.css.map */
