@@ -3095,6 +3095,7 @@ footer .bottom .maxWFooter img {
   left: 50%;
   top: -23px;
   margin-left: -30px;
+  pointer-events: none;
 }
 
 .maxWFooter {

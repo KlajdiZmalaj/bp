@@ -99,4 +99,19 @@
   top: 0;
   background-position: center;
   background-size: contain;
+  pointer-events: none;
+}
+@media (max-width: 1150px) {
+  .leftLogin {
+    width: 532px;
+    background-repeat: no-repeat;
+  }
+}
+@media (max-width: 950px) {
+  .leftLogin {
+    display: none;
+  }
+  .login {
+    transform: translate(-50%, -50%);
+  }
 }

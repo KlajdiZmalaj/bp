@@ -582,3 +582,43 @@
 .azcont {
   background-color: #3c4349;
 }
+
+@media (max-width: 1024px) {
+  .userList .title,
+  .fastCarica {
+    display: flex;
+    flex-flow: column;
+  }
+  .fastCarica {
+    padding-left: 0;
+  }
+  .switchGr,
+  .searchUser,
+  .amountGr,
+  .addFounds {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 10px !important;
+  }
+  .fastCarica .searchUser,
+  .fastCarica .amountGr {
+    margin-left: 0;
+  }
+  .addFounds {
+    height: 40px;
+  }
+  .userList .header,
+  .singleUser {
+    span:nth-child(3),
+    span:nth-child(5),
+    span:nth-child(6),
+    span:nth-child(7) {
+      display: none;
+    }
+  }
+  .userList--noDoc__user .body span:last-child,
+  .userList--Doc__user .body span:last-child,
+  .userList .header span:last-child {
+    width: 220%;
+  }
+}
