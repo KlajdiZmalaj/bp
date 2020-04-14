@@ -37,6 +37,12 @@
 }
 .transTable {
   width: 100%;
+  background: #fff;
+  border-collapse: collapse;
+
+  thead tr {
+    background: #f5f5f5;
+  }
   th,
   td {
     border: 1px solid $second;
@@ -51,9 +57,11 @@
     color: #ed4c14;
     cursor: pointer;
   }
-  tr:nth-child(1) td {
+  tr:nth-child(even) {
     background: #f5f5f5;
-    border-left: 2px solid #fff;
+  }
+  tr:nth-child(1) td {
+    border-left: 1px solid #fff;
 
     &:nth-child(1),
     &:nth-child(2) {
