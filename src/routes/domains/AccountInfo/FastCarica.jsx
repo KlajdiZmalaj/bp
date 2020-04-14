@@ -89,17 +89,17 @@ class FastCarica extends Component {
             <div className="ddUsers">
               {(users || []).map((user) => {
                 return (
-                  user.first_name
+                  user.username
                     .toLowerCase()
                     .includes(valSearched.toLowerCase()) && (
                     <span
                       key={user.id}
                       onClick={() => {
-                        this.setUser(user.id, user.first_name);
+                        this.setUser(user.id, user.username);
                         this.closeUsersDialog();
                       }}
                     >
-                      {user.first_name}
+                      {user.username}
                     </span>
                   )
                 );

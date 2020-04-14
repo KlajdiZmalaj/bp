@@ -11,7 +11,10 @@ class ModulePopUp1 extends React.Component {
       <div className="modulePopUP modulePopUP1">
         <div className="module container-fluid max-width_modulePopUP">
           <div className="row">
-            <Bolletino service_id={service.service_id}></Bolletino>
+            <Bolletino
+              service={service}
+              service_id={service.service_id}
+            ></Bolletino>
             {bolletiniBianchi[0] && bolletiniBianchi[0].receipt && (
               <PrintTicket arr={bolletiniBianchi}></PrintTicket>
             )}
@@ -22,9 +25,9 @@ class ModulePopUp1 extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
-  service: state.auth.service_id
+  service: state.auth.service_id,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

@@ -26,21 +26,19 @@ class Header extends Component {
   render() {
     const { accountInfo, screenWidth, user, ads } = this.props;
     const { isMobMenu } = this.state;
-    console.log("ads", ads);
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
     if (data) {
       isLoggedin = true;
     }
-    console.log("isLoggedin", isLoggedin);
     return screenWidth > 860 ? (
       <header className="header">
         <div className="headermaxW">
           <div className="topNav">
             <div className="left">
               <div>
-                <i className="fal fa-phone"></i> +39 1231313
+                <i className="fal fa-phone"></i> +39 0541 082543
               </div>
               <div>
                 <i className="fal fa-envelope"></i>info@bpoint.store
@@ -106,6 +104,7 @@ class Header extends Component {
                 onClick={() => {
                   if (isLoggedin) {
                     this.props.logOut();
+                    localStorage.clear();
                   } else {
                     this.props.history.push("/login");
                   }

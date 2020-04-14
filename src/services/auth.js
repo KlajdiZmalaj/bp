@@ -82,7 +82,7 @@ export const fetchBolletiniBianchi = (
       ...{ causale: causale },
       ...{ eseguito_da: eseguito_da },
       ...{ via_piazza: via_piazza },
-      ...{ cap: parseInt(cap) },
+      ...{ cap: cap },
       ...{ citta: citta },
       ...{ provincia: provincia },
     })

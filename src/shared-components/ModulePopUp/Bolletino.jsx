@@ -7,9 +7,9 @@ import images from "themes/images";
 
 class Bolletino extends React.Component {
   state = {
-    confirmDirty: false
+    confirmDirty: false,
   };
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -29,7 +29,7 @@ class Bolletino extends React.Component {
     });
   };
 
-  handleConfirmBlur = e => {
+  handleConfirmBlur = (e) => {
     const { value } = e.target;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
@@ -40,22 +40,12 @@ class Bolletino extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { bolletiniBianchi } = this.props;
+    const { bolletiniBianchi, service } = this.props;
 
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 }
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 }
-      }
-    };
     console.log("bolletiniBianchi", bolletiniBianchi);
     return (
       <div className="bolletino">
-        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <div className="col-12 leftCol_Module">
             <div className="row no-gutters">
               <div className="col-12 col-lg-6">
@@ -65,9 +55,7 @@ class Bolletino extends React.Component {
                       <td>
                         <div>
                           <img src={images.billDark} alt="" />
-                          <p>
-                            Bollettini <br /> Bianchi
-                          </p>
+                          <p>{service.name}</p>
                         </div>
                       </td>
                       <td>
@@ -129,9 +117,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input your numero_conto_corrente!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input />)}
                   </Form.Item>
                 </div>
@@ -145,9 +133,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input your importo!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input />)}
                   </Form.Item>
                 </div>
@@ -166,9 +154,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input your intestato_a!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input className="py-4 pl-2 mt-2" />)}
                   </Form.Item>
                 </div>
@@ -187,9 +175,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input  causale!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input className="py-4 pl-2 mt-3" />)}
                   </Form.Item>
                 </div>
@@ -208,9 +196,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input eseguito_da!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input className="py-1 pl-2 mt-3" />)}
                   </Form.Item>
                 </div>
@@ -229,9 +217,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input via_piazza!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
                   </Form.Item>
                 </div>
@@ -249,9 +237,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input cap!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
                   </Form.Item>
                 </div>
@@ -269,9 +257,9 @@ class Bolletino extends React.Component {
                         {
                           required: true,
                           message: "Please input citta!",
-                          whitespace: true
-                        }
-                      ]
+                          whitespace: true,
+                        },
+                      ],
                     })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
                   </Form.Item>
                 </div>
@@ -290,9 +278,9 @@ class Bolletino extends React.Component {
                           required: true,
                           message: "Please input provincia!",
                           whitespace: true,
-                          maxLength: 2
-                        }
-                      ]
+                          maxLength: 2,
+                        },
+                      ],
                     })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
                   </Form.Item>
                 </div>
@@ -305,7 +293,7 @@ class Bolletino extends React.Component {
               <Condizioni></Condizioni>
             </div>
             {bolletiniBianchi.errors &&
-              Object.keys(bolletiniBianchi.errors).map(item => {
+              Object.keys(bolletiniBianchi.errors).map((item) => {
                 return (
                   <div className="error">
                     <span className="closeAlert" onClick={this.hideAlert}>
@@ -324,8 +312,8 @@ class Bolletino extends React.Component {
 
 const CenterAccountMenuu = Form.create({ name: "bolletino" })(Bolletino);
 
-const mapsStateToProps = state => ({
-  bolletiniBianchi: state.auth.bolletiniBianchi
+const mapsStateToProps = (state) => ({
+  bolletiniBianchi: state.auth.bolletiniBianchi,
 });
 
 export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
