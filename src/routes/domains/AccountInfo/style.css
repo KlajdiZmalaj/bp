@@ -182,6 +182,10 @@
   width: 40%;
 }
 
+.userList .header span:nth-child(2) {
+  width: 70%;
+}
+
 .userList .header span:nth-child(3) {
   width: 150%;
 }
@@ -281,6 +285,10 @@
   width: 40%;
 }
 
+.userList--noDoc__user .body span:nth-child(2), .userList--Doc__user .body span:nth-child(2) {
+  width: 70%;
+}
+
 .userList--noDoc__user .body span:nth-child(3), .userList--Doc__user .body span:nth-child(3) {
   width: 150%;
 }
@@ -293,6 +301,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.userList--noDoc__user .body span:last-child i, .userList--Doc__user .body span:last-child i {
+  width: 15px;
 }
 
 .userList--noDoc__user .body span:last-child button, .userList--Doc__user .body span:last-child button {
@@ -308,16 +320,6 @@
 .userList--noDoc__user .body span:last-child button:hover, .userList--Doc__user .body span:last-child button:hover {
   background-color: #32424e;
   color: #fff;
-}
-
-.userList--noDoc__user .body span:last-child .fa-lock:hover, .userList--Doc__user .body span:last-child .fa-lock:hover {
-  color: #f5222d;
-  font-weight: 600;
-}
-
-.userList--noDoc__user .body span:last-child .fa-eye:hover, .userList--Doc__user .body span:last-child .fa-eye:hover {
-  color: #00b850;
-  font-weight: 600;
 }
 
 @media (max-width: 1024px) {
@@ -574,6 +576,22 @@
   font-size: 13px;
   border-bottom: 1px solid #dbdbdb;
   padding-bottom: 20px;
+}
+
+.userList .popUp ul {
+  padding: 15px;
+}
+
+.userList .popUp ul li {
+  list-style-type: none;
+  text-align: left;
+  border-bottom: 1px solid #c2cad1;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.userList .popUp ul li span {
+  font-weight: 600;
 }
 
 .backDrop {

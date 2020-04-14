@@ -3,6 +3,7 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { switchUserStatus, transferMoney } from "services/auth";
+import { capitalize } from "lodash";
 class SingleUser extends Component {
   state = {
     label: "deposit",
@@ -10,6 +11,10 @@ class SingleUser extends Component {
     isPopUpActive: false,
     isOpen: false,
     valueInput: "",
+    moreInfo: false,
+  };
+  setInfos = () => {
+    this.setState({ moreInfo: !this.state.moreInfo });
   };
   transferCallback = () => {
     this.setState({ isPopUpActive: false });
@@ -35,7 +40,14 @@ class SingleUser extends Component {
   componentDidMount() {}
   render() {
     const { user } = this.props;
-    const { label, val, isOpen, isPopUpActive, valueInput } = this.state;
+    const {
+      label,
+      val,
+      isOpen,
+      isPopUpActive,
+      valueInput,
+      moreInfo,
+    } = this.state;
     console.log("valueInput", valueInput);
     return (
       <React.Fragment>
@@ -52,7 +64,7 @@ class SingleUser extends Component {
               ></i>{" "}
               {user.username}
             </span>
-            <span>{user.rag_soc}</span>
+            <span>{capitalize(user.rag_soc)}</span>
             <span className="text-right justify-content-end">
               {user.wallet}€
             </span>
@@ -77,22 +89,63 @@ class SingleUser extends Component {
               >
                 Debito
               </button>
-              <i
-                className="fal fa-lock"
-                onClick={() => {
-                  switchUserStatus(user.id, 2, this.switchCallBack);
-                }}
-              ></i>
+              {user.status == 1 ? (
+                <i
+                  className="fal fa-lock"
+                  onClick={() => {
+                    switchUserStatus(user.id, 2, this.switchCallBack);
+                  }}
+                ></i>
+              ) : (
+                <i
+                  className="fal fa-lock-open"
+                  onClick={() => {
+                    switchUserStatus(user.id, 1, this.switchCallBack);
+                  }}
+                ></i>
+              )}
+
               <i
                 className="fal fa-eye"
                 onClick={() => {
-                  switchUserStatus(user.id, 1, this.switchCallBack);
+                  this.setInfos();
                 }}
                 aria-hidden="true"
               ></i>
             </span>
           </div>
         </div>
+        {moreInfo && (
+          <React.Fragment>
+            <div className="popUp">
+              <div className="title">More Info</div>
+              <ul>
+                <li>
+                  User ID : <span>{user.id}</span>{" "}
+                </li>
+                <li>
+                  Nome: <span>{user.first_name}</span>{" "}
+                </li>
+                <li>
+                  CogNome: <span>{user.last_name}</span>{" "}
+                </li>
+                <li>
+                  Comune Code: <span> {user.comune_code}</span>
+                </li>
+                <li>
+                  Credito: <span> {user.wallet} €</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              className="backDrop"
+              onClick={() => {
+                this.setInfos();
+              }}
+            ></div>
+          </React.Fragment>
+        )}
+
         {isPopUpActive ? (
           <React.Fragment>
             {" "}
