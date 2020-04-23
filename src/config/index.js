@@ -16,7 +16,7 @@ export const docType = [
 export const azioni = [
   {
     id: 1,
-    name: "messagi",
+    name: "messaggi",
     link: "annunci",
     i: "fal fa-comment-alt-lines",
     displayRole: ["super_admin", "agency"],
@@ -44,7 +44,7 @@ export const azioni = [
   },
   {
     id: 4,
-    name: "ricerca movi...",
+    name: "ricerca movimenti",
     link: "use-code",
     i: "fal fa-barcode-read",
     displayRole: ["super_admin", "agency"],
