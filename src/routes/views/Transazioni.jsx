@@ -107,6 +107,13 @@ class Transazioni extends React.Component {
   handleChange = (value) => {
     this.setState({ username: value });
   };
+  componentDidMount() {
+    this.props.getPayments(
+      "",
+      moment().subtract(1, "days").format("YYYY-MM-DD"),
+      moment().subtract(1, "days").format("YYYY-MM-DD")
+    );
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;

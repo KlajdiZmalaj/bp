@@ -371,15 +371,16 @@
 }
 
 .userList .popUp {
+  width: 100%;
   position: fixed;
   top: 19%;
   height: 460px;
-  width: 410px;
+  max-width: 410px;
   background-color: #fff;
   z-index: 3;
   border-radius: 0px;
   left: 50%;
-  margin-left: -205px;
+  margin-left: -188px;
   text-align: center;
   padding-bottom: 20px;
   overflow: scroll;

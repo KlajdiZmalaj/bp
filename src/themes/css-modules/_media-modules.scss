@@ -39,6 +39,14 @@
   }
 }
 @media (max-width: 425px) {
+  .azioni .icon {
+    right: -48px;
+    top: -22px;
+  }
+  .azioni-tab:hover .icon,
+  .azioni-tab.active-tab .icon {
+    right: -50px;
+  }
   .azioni-tab {
     background-position-x: 88px;
     h2 {

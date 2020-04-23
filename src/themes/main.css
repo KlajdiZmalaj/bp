@@ -1518,9 +1518,9 @@ i#private {
 
 .azioni .swiper-container {
   padding-bottom: 30px;
-  padding-left: 28px;
-  padding-right: 60px;
+  width: calc(100% + 40px);
   padding-top: 20px;
+  padding-left: 40px;
 }
 
 @media (max-width: 600px) {
@@ -1603,6 +1603,10 @@ i#private {
 
 .servicesContainer::-webkit-scrollbar {
   width: 0;
+}
+
+.servicesContainer:hover::-webkit-scrollbar {
+  width: 5px;
 }
 
 .tab-content > .tab-pane {
@@ -3181,7 +3185,7 @@ footer .bottom .maxWFooter img {
     font-size: 12px;
   }
   .panel-tab h4 {
-    max-width: 90%;
+    max-width: 46%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3230,6 +3234,14 @@ footer .bottom .maxWFooter img {
 }
 
 @media (max-width: 425px) {
+  .azioni .icon {
+    right: -48px;
+    top: -22px;
+  }
+  .azioni-tab:hover .icon,
+  .azioni-tab.active-tab .icon {
+    right: -50px;
+  }
   .azioni-tab {
     background-position-x: 88px;
   }

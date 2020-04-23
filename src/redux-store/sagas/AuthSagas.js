@@ -13,7 +13,7 @@ import {
   fetchRegisterAllInfo,
   sendChangedPassword,
   fetchConfigura,
-  fetchCodice
+  fetchCodice,
 } from "services/auth";
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -92,8 +92,8 @@ function* modifyAccountData(wallet) {
     ...data,
     profile: {
       ...data.profile,
-      wallet: wallet
-    }
+      wallet: wallet,
+    },
   };
 
   localStorage.setItem("accountDataB", JSON.stringify(d));
@@ -103,6 +103,7 @@ function* modifyAccountData(wallet) {
 }
 
 export function* getPayments(params) {
+  console.log("called saga", params);
   const response = yield call(
     fetchPayments,
     params.username,
@@ -151,8 +152,8 @@ export function* getRechargeMobile(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet
-          }
+            wallet: response.data.wallet,
+          },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));
@@ -202,8 +203,8 @@ export function* getPostePay(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet
-          }
+            wallet: response.data.wallet,
+          },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));
