@@ -5,6 +5,7 @@ import {
   logoutApi,
   fetchAccountInfo,
   fetchBolletiniBianchi,
+  fetchBolletiniPremercati,
   fetchPayments,
   fetchRechargeMobile,
   fetchPostePay,
@@ -75,6 +76,45 @@ export function* getBolletiniBianchi(params) {
       } else {
         yield put(
           AuthActions.setBolletiniBianchi(response.error.response.data)
+        );
+      }
+
+      // yield delay(3000);
+      // yield put(AuthActions.setBolletiniBianchi({}));
+    }
+  }
+}
+
+export function* getBolletiniPremercati(params) {
+  const response = yield call(
+    fetchBolletiniPremercati,
+    params.service_id,
+    params.numero_conto_corrente,
+    params.importo,
+    params.codice_identificativo,
+    params.tipologia,
+    params.eseguito_da,
+    params.via_piazza,
+    params.cap,
+    params.citta,
+    params.provincia
+  );
+  if (response) {
+    console.log("response", response);
+    if (response.data) {
+      yield put(AuthActions.setBolletiniPremercati(response.data));
+    } else if (response.error) {
+      console.log(
+        "errorrrrrrrrrr",
+        response.error.response.status,
+        response.error.response.data
+      );
+      if (response.error.response.status === 444) {
+        const error = { errors: { notCorrect: ["data are not corrected."] } };
+        yield put(AuthActions.setBolletiniPremercati(error));
+      } else {
+        yield put(
+          AuthActions.setBolletiniPremercati(response.error.response.data)
         );
       }
 

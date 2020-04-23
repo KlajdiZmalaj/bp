@@ -81,7 +81,10 @@
   }
   &:hover {
     &::-webkit-scrollbar {
-      width: 5px;
+      width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-left: 2px solid #fff;
     }
   }
 }

@@ -4,7 +4,9 @@ import { AuthActions, MainActions } from "redux-store/models";
 import { Form, Input } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
-
+import { Select } from "antd";
+import { get } from "lodash";
+const { Option } = Select;
 class Bolletino extends React.Component {
   state = {
     confirmDirty: false,
@@ -13,19 +15,36 @@ class Bolletino extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        this.props.getBolletiniBianchi(
-          this.props.service_id,
-          values.numero_conto_corrente,
-          values.importo,
-          values.intestato_a,
-          values.causale,
-          values.eseguito_da,
-          values.via_piazza,
-          values.cap,
-          values.citta,
-          values.provincia
-        );
+        if (this.props.service_id === "BOL001") {
+          this.props.getBolletiniBianchi(
+            this.props.service_id,
+            values.numero_conto_corrente,
+            values.importo,
+            values.intestato_a,
+            values.causale,
+            values.eseguito_da,
+            values.via_piazza,
+            values.cap,
+            values.citta,
+            values.provincia
+          );
+        }
+        if (this.props.service_id === "BOL002") {
+          this.props.getBolletiniPremercati(
+            this.props.service_id,
+            values.numero_conto_corrente,
+            values.importo,
+            values.codice_identificativo,
+            parseInt(values.tipologia),
+            values.eseguito_da,
+            values.via_piazza,
+            values.cap,
+            values.citta,
+            values.provincia
+          );
+        }
       }
+      console.log("faturaaaa", this.props.service_id, values);
     });
   };
 
@@ -36,13 +55,14 @@ class Bolletino extends React.Component {
 
   hideAlert = () => {
     this.props.setBolletiniBianchi({});
+    this.props.setBolletiniPremercati({});
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { bolletiniBianchi, service } = this.props;
+    const { bolletiniBianchi, bolletiniPremercati, service } = this.props;
 
-    console.log("bolletiniBianchi", bolletiniBianchi);
+    console.log("bolletiniBianchi", this.props.service_id);
     return (
       <div className="bolletino">
         <Form onSubmit={this.handleSubmit}>
@@ -143,43 +163,83 @@ class Bolletino extends React.Component {
 
               <div className="col-3 ">
                 <div className="euroboll">
-                  <span>INTESTATO A</span>
+                  {this.props.service_id === "BOL001" ? (
+                    <span>INTESTATO A</span>
+                  ) : (
+                    <span>CODICE identificativo!</span>
+                  )}
                 </div>
               </div>
               <div className="col-9 ">
                 <div className="euroboll">
-                  <Form.Item>
-                    {getFieldDecorator("intestato_a", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your intestato_a!",
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input className="py-4 pl-2 mt-2" />)}
-                  </Form.Item>
+                  {this.props.service_id === "BOL001" ? (
+                    <Form.Item>
+                      {getFieldDecorator("intestato_a", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Please input your intestato_a!",
+                            whitespace: true,
+                          },
+                        ],
+                      })(<Input className="py-4 pl-2 mt-2" />)}
+                    </Form.Item>
+                  ) : (
+                    <Form.Item>
+                      {getFieldDecorator("codice_identificativo", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Please input your codice identificativo!",
+                            whitespace: true,
+                          },
+                        ],
+                      })(<Input className="py-4 pl-2 mt-2" />)}
+                    </Form.Item>
+                  )}
                 </div>
               </div>
 
               <div className="col-3 ">
                 <div className="euroboll">
-                  <span>CAUSALE</span>
+                  {this.props.service_id === "BOL001" ? (
+                    <span>CASUALE</span>
+                  ) : (
+                    <span>TIPOLOGIA</span>
+                  )}
                 </div>
               </div>
               <div className="col-9 ">
                 <div className="euroboll">
-                  <Form.Item>
-                    {getFieldDecorator("causale", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input  causale!",
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input className="py-4 pl-2 mt-3" />)}
-                  </Form.Item>
+                  {this.props.service_id === "BOL001" ? (
+                    <Form.Item>
+                      {getFieldDecorator("causale", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Please input  causale!",
+                            whitespace: true,
+                          },
+                        ],
+                      })(<Input className="py-4 pl-2 mt-3" />)}
+                    </Form.Item>
+                  ) : (
+                    <Form.Item>
+                      {getFieldDecorator("tipologia", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Per favore seleziona tipologia!",
+                          },
+                        ],
+                      })(
+                        <Select>
+                          <Option value="896">896</Option>
+                          <Option value="674">674</Option>
+                        </Select>
+                      )}
+                    </Form.Item>
+                  )}
                 </div>
               </div>
 
@@ -303,6 +363,33 @@ class Bolletino extends React.Component {
                   </div>
                 );
               })}
+            {get(bolletiniBianchi, "message") && (
+              <div className="success">
+                <span className="closeAlert" onClick={this.hideAlert}>
+                  X
+                </span>
+                {get(bolletiniBianchi, "message")}
+              </div>
+            )}
+            {bolletiniPremercati.errors &&
+              Object.keys(bolletiniPremercati.errors).map((item) => {
+                return (
+                  <div className="error">
+                    <span className="closeAlert" onClick={this.hideAlert}>
+                      X
+                    </span>
+                    {bolletiniPremercati.errors[item]}
+                  </div>
+                );
+              })}
+            {get(bolletiniPremercati, "message") && (
+              <div className="success">
+                <span className="closeAlert" onClick={this.hideAlert}>
+                  X
+                </span>
+                {get(bolletiniPremercati, "message")}
+              </div>
+            )}
           </div>
         </Form>
       </div>
@@ -314,6 +401,7 @@ const CenterAccountMenuu = Form.create({ name: "bolletino" })(Bolletino);
 
 const mapsStateToProps = (state) => ({
   bolletiniBianchi: state.auth.bolletiniBianchi,
+  bolletiniPremercati: state.auth.bolletiniPremercati,
 });
 
 export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(

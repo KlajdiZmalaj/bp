@@ -188,7 +188,8 @@
     padding-right: 10px;
     white-space: nowrap;
   }
-  input {
+  input,
+  .ant-select-selection--single {
     border: 0;
     border: 1px solid $second;
     flex-grow: 1;
@@ -196,6 +197,7 @@
     font-family: $font1;
     font-size: 14px;
     font-weight: bold;
+    border-radius: 0;
   }
 }
 .contitions-boll {

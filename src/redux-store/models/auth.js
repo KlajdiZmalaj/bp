@@ -19,9 +19,22 @@ const { Types, Creators } = createActions({
     "via_piazza",
     "cap",
     "citta",
-    "provincia"
+    "provincia",
+  ],
+  getBolletiniPremercati: [
+    "service_id",
+    "numero_conto_corrente",
+    "importo",
+    "codice_identificativo",
+    "tipologia",
+    "eseguito_da",
+    "via_piazza",
+    "cap",
+    "citta",
+    "provincia",
   ],
   setBolletiniBianchi: ["bolletiniBianchi"],
+  setBolletiniPremercati: ["bolletiniPremercati"],
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
@@ -42,7 +55,7 @@ const { Types, Creators } = createActions({
     "numero_postepay",
     "document_type",
     "imageUrl",
-    "imageUrl2"
+    "imageUrl2",
   ],
   setPostePay: ["postePay"],
 
@@ -83,7 +96,7 @@ const { Types, Creators } = createActions({
     "aComcode",
     "aCap",
     "aPiva",
-    "aFcode"
+    "aFcode",
   ],
   setRegister: ["register"],
   setAds: ["ads"],
@@ -94,7 +107,7 @@ const { Types, Creators } = createActions({
   getConfigura: ["id"],
   getCodiceTicket: ["barcode"],
   setPaymentsFromCode: ["paymentsFromCode"],
-  setConfiguraData: ["usersConfigura"]
+  setConfiguraData: ["usersConfigura"],
 });
 
 export const AuthTypes = Types;
@@ -107,6 +120,7 @@ const INITIAL_STATE = {
   error: null,
   accountInfo: {},
   bolletiniBianchi: {},
+  bolletiniPremercati: {},
   unauthorizated: true,
   service_id: null,
   payments: [],
@@ -117,84 +131,88 @@ const INITIAL_STATE = {
   ads: [],
   register: {},
   paymentsFromCode: {},
-  usersConfigura: {}
+  usersConfigura: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SIGN_IN_BY_EMAIL]: state => ({
+  [Types.SIGN_IN_BY_EMAIL]: (state) => ({
     ...state,
     loading: true,
-    unauthorizated: false
+    unauthorizated: false,
   }),
   [Types.SET_PAYMENTS_FROM_CODE]: (state, { paymentsFromCode }) => ({
     ...state,
-    paymentsFromCode
+    paymentsFromCode,
   }),
   [Types.SET_CHANGE_PASSWORD_ERROR]: (state, { pwError }) => ({
     ...state,
-    pwError
+    pwError,
   }),
   [Types.SET_CONFIGURA_DATA]: (state, { usersConfigura }) => ({
     ...state,
-    usersConfigura
+    usersConfigura,
   }),
   [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
     ...state,
-    accountInfo
+    accountInfo,
   }),
   [Types.AUTH_SUCCESS]: (state, { user }) => ({
     ...state,
     user,
-    loading: false
+    loading: false,
   }),
   [Types.AUTH_FAILURE]: (state, { error }) => ({
     ...state,
     error,
-    loading: false
+    loading: false,
   }),
   [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
   [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
-    bolletiniBianchi
+    bolletiniBianchi,
+  }),
+  [Types.SET_BOLLETINI_PREMERCATI]: (state, { bolletiniPremercati }) => ({
+    ...state,
+    bolletiniPremercati,
   }),
   [Types.SET_SERVICE_ID]: (state, { service_id }) => ({
     ...state,
-    service_id
+    service_id,
   }),
   [Types.SET_SERVICE_S]: (state, { service_s }) => ({
     ...state,
-    service_s
+    service_s,
   }),
   [Types.SET_PAYMENTS]: (state, { payments }) => ({
     ...state,
-    payments
+    payments,
   }),
   [Types.SET_USERNAMES]: (state, { usernames }) => ({
     ...state,
-    usernames
+    usernames,
   }),
   [Types.SET_RECHARGE_MOBILE]: (state, { rechargeMobile }) => ({
     ...state,
-    rechargeMobile
+    rechargeMobile,
   }),
   [Types.SET_POSTE_PAY]: (state, { postePay }) => ({
     ...state,
-    postePay
+    postePay,
   }),
   [Types.SET_SERVICE_TYPE]: (state, { serviceType }) => ({
     ...state,
-    serviceType
+    serviceType,
   }),
   [Types.SET_ADS]: (state, { ads }) => ({
     ...state,
-    ads
+    ads,
   }),
   [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
 
   [Types.SET_REGISTER]: (state, { register }) => ({
     ...state,
-    register
+    register,
   }),
   [Types.CREATE_ADS_RESPONSE]: (
     state,
@@ -202,6 +220,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   ) => ({
     ...state,
     adsCreationgLoading,
-    adsCreationgMess
-  })
+    adsCreationgMess,
+  }),
 });

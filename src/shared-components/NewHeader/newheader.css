@@ -320,8 +320,6 @@ header.header .navLinks .item:hover {
 
 .mobHeader .top .logo {
   margin-top: 6px;
-  position: relative;
-  left: -20px;
 }
 
 .mobHeader .top button {
@@ -403,6 +401,23 @@ header.header .navLinks .item:hover {
   margin-top: 30px;
   text-transform: uppercase;
   text-align: center;
+}
+
+.mobHeader .bottom .navLinks button {
+  background-color: #f36520;
+  color: #fff;
+  border: 0;
+  padding: 5px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mobHeader .bottom .navLinks .item {
+  padding: 6px;
+}
+
+.mobHeader .bottom .navLinks .item a {
+  color: #222;
 }
 
 .mobHeader .bottom .navLinks .item:nth-child(even) {

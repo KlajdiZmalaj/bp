@@ -1606,7 +1606,11 @@ i#private {
 }
 
 .servicesContainer:hover::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
+}
+
+.servicesContainer:hover::-webkit-scrollbar-thumb {
+  border-left: 2px solid #fff;
 }
 
 .tab-content > .tab-pane {
@@ -2503,7 +2507,8 @@ span.superSmall {
   white-space: nowrap;
 }
 
-.euroboll input {
+.euroboll input,
+.euroboll .ant-select-selection--single {
   border: 0;
   border: 1px solid #edeef0;
   -webkit-box-flex: 1;
@@ -2514,6 +2519,7 @@ span.superSmall {
   font-family: "Roboto", "sans-serif";
   font-size: 14px;
   font-weight: bold;
+  border-radius: 0;
 }
 
 .contitions-boll {

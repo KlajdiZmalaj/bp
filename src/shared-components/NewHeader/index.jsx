@@ -158,6 +158,13 @@ class Header extends Component {
           <div className="logo">
             <img src={images.logo} alt="" />
           </div>
+          <button
+            onClick={() => {
+              this.props.history.push("/configura");
+            }}
+          >
+            <i class="fal fa-user-circle" aria-hidden="true"></i>
+          </button>
         </div>
         <div className={"bottom" + (isMobMenu ? " opened" : "")}>
           <div className="userinfo">
@@ -165,20 +172,49 @@ class Header extends Component {
             <div className="money">{get(accountInfo, "profile.wallet")}€</div>
           </div>
           <div className="navLinks">
-            <div className="item">azienda</div>
-            <div className="item">servizi</div>
-            <div className="item">area riservata</div>
-            <div className="item">contatti</div>
-            <div className="item">affilia la tua attivita</div>
+            <div className="item">
+              <a href="https://bpoint.store/index.php/chi-siamo/">azienda</a>
+            </div>
+            <div className="item">
+              <a href="https://bpoint.store/servizi/">servizi</a>
+            </div>
+            <div className="item">
+              <a href="https://bpoint.store/">area riservata</a>
+            </div>
+            <div className="item">
+              {" "}
+              <a href="https://bpoint.store/contatti/">contatti</a>{" "}
+            </div>
+            <div className="item">
+              {" "}
+              <a href="https://bpoint.store/affiliazioni/">
+                affilia la tua attivita
+              </a>{" "}
+            </div>
+            <button
+              onClick={() => {
+                this.props.logOut();
+                localStorage.clear();
+                if (!isLoggedin) {
+                  this.props.history.push("/login");
+                }
+              }}
+            >
+              {isLoggedin ? "LOGOUT" : "LOGIN"}
+            </button>
           </div>
           <div className="icons">
             <div>
-              <i className="fas fa-bell"></i>
+              <i
+                onClick={() => {
+                  this.props.history.push("/annunci");
+                }}
+                className="fas fa-bell"
+              ></i>
               <span>{ads && ads.length}</span>
             </div>
             <div>
               <i className="fas fa-envelope"></i>
-              <span>2</span>
             </div>
             <div>
               <i
