@@ -27,7 +27,7 @@ class index extends Component {
                 <span>Totale speso</span>
                 <span>Ultimo Deposit</span>
                 <span>Ultimo Login</span>
-                <span>Azioni</span>
+                <span style={{ width: "100%" }}>Azioni</span>
               </div>
               {userListSimple.map((user) => {
                 return (
