@@ -89,7 +89,7 @@ class UsersList extends Component {
               <span className="text-left">City</span>
               <span>Ultimo Deposit</span>
               <span>Ultimo Login</span>
-              <span>Azioni</span>
+              <span style={{ width: "100%" }}>Azioni</span>
             </div>
             {isArray(userList) &&
               (userList || []).map((user) => {

@@ -61,15 +61,15 @@ class SingleUser extends Component {
                 this.setTransferItem("deposit");
               }}
             >
-              Credito
+              Ricarica conto
             </button>
-            <button
+            {/* <button
               onClick={() => {
                 this.setTransferItem("withdraw");
               }}
             >
               Debito
-            </button>
+            </button> */}
 
             {user.status == 1 ? (
               <i
