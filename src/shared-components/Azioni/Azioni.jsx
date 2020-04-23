@@ -12,19 +12,18 @@ class Azioni extends Component {
     const { active, accountInfo } = this.props;
     const params = {
       spaceBetween: 10,
-      slidesPerView: 5,
+      loop: true,
+      slidesPerView: 6,
+      freeMode: true,
       breakpoints: {
         // when window width is >= 320px
         320: {
-          slidesPerView: 2,
+          slidesPerView: 1,
         },
-        // when window width is >= 480px
-        480: {
-          slidesPerView: 4,
-        },
+
         // when window width is >= 640px
         640: {
-          slidesPerView: 5,
+          slidesPerView: 6,
         },
       },
       navigation: {
@@ -32,6 +31,30 @@ class Azioni extends Component {
         prevEl: ".swiper-button-prev",
       },
     };
+    const slides = azioni.map((item) => {
+      return includes(
+        item.displayRole,
+        get(accountInfo, "profile.role.name")
+      ) ? (
+        <div key={item.id}>
+          <a href={"#/" + item.link}>
+            <div
+              className={
+                "azioni-tab azioni-tab" +
+                (active === item.link ? " active-tab" : "")
+              }
+            >
+              <i className="fas fa-dot-circle"></i>
+
+              <h2>{item.name}</h2>
+              <i className={`icon ${item.i}`}></i>
+            </div>
+          </a>
+        </div>
+      ) : (
+        <div key={item.id} className="d-none" />
+      );
+    });
     return (
       <React.Fragment>
         <hr className="overviw-line" />
@@ -41,37 +64,11 @@ class Azioni extends Component {
           <div className="row max-width mt-2 azioni">
             <Swiper
               {...params}
-              activeSlideKey={`${
-                active === "carica-conto" || active === "configura" ? "3" : "0"
-              }`}
+              // activeSlideKey={`${
+              //   active === "carica-conto" || active === "configura" ? "3" : "0"
+              // }`}
             >
-              {azioni.map((item) => {
-                return includes(
-                  item.displayRole,
-                  get(accountInfo, "profile.role.name")
-                ) ? (
-                  <div
-                    className="col-6 col-lg-2 p-0 pl-2 pl-lg-2"
-                    key={item.id}
-                  >
-                    <a href={"#/" + item.link}>
-                      <div
-                        className={
-                          "azioni-tab azioni-tab" +
-                          (active === item.link ? " active-tab" : "")
-                        }
-                      >
-                        <i className="fas fa-dot-circle"></i>
-
-                        <h2>{item.name}</h2>
-                        <i className={`icon ${item.i}`}></i>
-                      </div>
-                    </a>
-                  </div>
-                ) : (
-                  <div key={item.id} className="d-none" />
-                );
-              })}
+              {slides}
             </Swiper>
           </div>
         ) : (

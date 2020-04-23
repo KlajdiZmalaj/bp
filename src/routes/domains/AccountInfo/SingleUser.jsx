@@ -74,21 +74,21 @@ class SingleUser extends Component {
             <span>{user.last_deposit}</span>
             <span>{user.last_login_time}</span>
 
-            <span>
+            <span style={{ width: "100%" }}>
               <button
                 onClick={() => {
                   this.setTransferItem("deposit");
                 }}
               >
-                Credito
+                Ricarica conto
               </button>
-              <button
+              {/* <button
                 onClick={() => {
                   this.setTransferItem("withdraw");
                 }}
               >
                 Debito
-              </button>
+              </button> */}
               {user.status == 1 ? (
                 <i
                   className="fal fa-lock"

@@ -1,6 +1,10 @@
 import React from "react";
 import ReactToPrint from "react-to-print";
-import { Header, Overview, Azioni } from "shared-components";
+import {
+  Header,
+  //  Overview,
+  Azioni,
+} from "shared-components";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
@@ -32,7 +36,7 @@ class UseCode extends React.Component {
     return (
       <div>
         <Header></Header>
-        <Overview></Overview>
+        {/* <Overview></Overview> */}
         <div className="container-fluid overview ">
           <Azioni active="use-code"></Azioni>
           <div className="panels-container">
