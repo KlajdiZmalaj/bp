@@ -5,6 +5,7 @@ import {
   logoutApi,
   fetchAccountInfo,
   fetchBolletiniBianchi,
+  fetchBolletiniPremercati,
   fetchPayments,
   fetchRechargeMobile,
   fetchPostePay,
@@ -13,7 +14,7 @@ import {
   fetchRegisterAllInfo,
   sendChangedPassword,
   fetchConfigura,
-  fetchCodice
+  fetchCodice,
 } from "services/auth";
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -84,6 +85,45 @@ export function* getBolletiniBianchi(params) {
   }
 }
 
+export function* getBolletiniPremercati(params) {
+  const response = yield call(
+    fetchBolletiniPremercati,
+    params.service_id,
+    params.numero_conto_corrente,
+    params.importo,
+    params.codice_identificativo,
+    params.tipologia,
+    params.eseguito_da,
+    params.via_piazza,
+    params.cap,
+    params.citta,
+    params.provincia
+  );
+  if (response) {
+    console.log("response", response);
+    if (response.data) {
+      yield put(AuthActions.setBolletiniPremercati(response.data));
+    } else if (response.error) {
+      console.log(
+        "errorrrrrrrrrr",
+        response.error.response.status,
+        response.error.response.data
+      );
+      if (response.error.response.status === 444) {
+        const error = { errors: { notCorrect: ["data are not corrected."] } };
+        yield put(AuthActions.setBolletiniPremercati(error));
+      } else {
+        yield put(
+          AuthActions.setBolletiniPremercati(response.error.response.data)
+        );
+      }
+
+      // yield delay(3000);
+      // yield put(AuthActions.setBolletiniBianchi({}));
+    }
+  }
+}
+
 function* modifyAccountData(wallet) {
   const accountData = localStorage.getItem("accountDataB");
   const data = JSON.parse(accountData);
@@ -92,8 +132,8 @@ function* modifyAccountData(wallet) {
     ...data,
     profile: {
       ...data.profile,
-      wallet: wallet
-    }
+      wallet: wallet,
+    },
   };
 
   localStorage.setItem("accountDataB", JSON.stringify(d));
@@ -103,6 +143,7 @@ function* modifyAccountData(wallet) {
 }
 
 export function* getPayments(params) {
+  console.log("called saga", params);
   const response = yield call(
     fetchPayments,
     params.username,
@@ -151,8 +192,8 @@ export function* getRechargeMobile(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet
-          }
+            wallet: response.data.wallet,
+          },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));
@@ -202,8 +243,8 @@ export function* getPostePay(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet
-          }
+            wallet: response.data.wallet,
+          },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));

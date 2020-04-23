@@ -39,6 +39,40 @@ export const logoutApi = () =>
     .post(`/users/logout`)
     .catch((error) => ({ error }));
 
+export const fetchBolletiniPremercati = (
+  service_id,
+  numero_conto_corrente,
+  importo,
+  codice_identificativo,
+  tipologia,
+  eseguito_da,
+  via_piazza,
+  cap,
+  citta,
+  provincia
+) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/test/rechargeBOL`, {
+      ...{ service_id: service_id },
+      ...{ numero_conto_corrente: numero_conto_corrente },
+      ...{ importo: parseFloat(importo) },
+      ...{ codice_identificativo: codice_identificativo },
+      ...{ tipologia: tipologia },
+      ...{ eseguito_da: eseguito_da },
+      ...{ via_piazza: via_piazza },
+      ...{ cap: cap },
+      ...{ citta: citta },
+      ...{ provincia: provincia },
+    })
+    .catch((error) => ({ error }));
 export const fetchBolletiniBianchi = (
   service_id,
   numero_conto_corrente,
@@ -51,20 +85,6 @@ export const fetchBolletiniBianchi = (
   citta,
   provincia
 ) =>
-  // req
-  //   .post(`/test/rechargeBOL`, {
-  //     ...{ service_id: service_id },
-  //     ...{ numero_conto_corrente: numero_conto_corrente },
-  //     ...{ importo: parseFloat(importo) },
-  //     ...{ intestato_a: intestato_a },
-  //     ...{ causale: causale },
-  //     ...{ eseguito_da: eseguito_da },
-  //     ...{ via_piazza: via_piazza },
-  //     ...{ cap: parseInt(cap) },
-  //     ...{ citta: citta },
-  //     ...{ provincia: provincia }
-  //   })
-  //   .catch(error => ({ error }));
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",

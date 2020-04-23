@@ -1518,9 +1518,9 @@ i#private {
 
 .azioni .swiper-container {
   padding-bottom: 30px;
-  padding-left: 28px;
-  padding-right: 60px;
+  width: calc(100% + 40px);
   padding-top: 20px;
+  padding-left: 40px;
 }
 
 @media (max-width: 600px) {
@@ -1603,6 +1603,14 @@ i#private {
 
 .servicesContainer::-webkit-scrollbar {
   width: 0;
+}
+
+.servicesContainer:hover::-webkit-scrollbar {
+  width: 7px;
+}
+
+.servicesContainer:hover::-webkit-scrollbar-thumb {
+  border-left: 2px solid #fff;
 }
 
 .tab-content > .tab-pane {
@@ -2499,7 +2507,8 @@ span.superSmall {
   white-space: nowrap;
 }
 
-.euroboll input {
+.euroboll input,
+.euroboll .ant-select-selection--single {
   border: 0;
   border: 1px solid #edeef0;
   -webkit-box-flex: 1;
@@ -2510,6 +2519,7 @@ span.superSmall {
   font-family: "Roboto", "sans-serif";
   font-size: 14px;
   font-weight: bold;
+  border-radius: 0;
 }
 
 .contitions-boll {
@@ -3181,7 +3191,7 @@ footer .bottom .maxWFooter img {
     font-size: 12px;
   }
   .panel-tab h4 {
-    max-width: 90%;
+    max-width: 46%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3230,6 +3240,14 @@ footer .bottom .maxWFooter img {
 }
 
 @media (max-width: 425px) {
+  .azioni .icon {
+    right: -48px;
+    top: -22px;
+  }
+  .azioni-tab:hover .icon,
+  .azioni-tab.active-tab .icon {
+    right: -50px;
+  }
   .azioni-tab {
     background-position-x: 88px;
   }

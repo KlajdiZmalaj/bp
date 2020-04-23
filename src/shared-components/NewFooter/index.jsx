@@ -43,7 +43,8 @@ class Footer extends Component {
             </div>
             <div className="colf">
               <p>
-                <b>Phone:</b> <br /> +39 0541 082543
+                <b>Phone:</b> <br />
+                +39 0541 087890
               </p>
             </div>
             <div className="colf newsletter">

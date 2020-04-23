@@ -39,7 +39,12 @@ class Azioni extends Component {
 
         {get(accountInfo, "profile.role.name") ? (
           <div className="row max-width mt-2 azioni">
-            <Swiper {...params}>
+            <Swiper
+              {...params}
+              activeSlideKey={`${
+                active === "carica-conto" || active === "configura" ? "3" : "0"
+              }`}
+            >
               {azioni.map((item) => {
                 return includes(
                   item.displayRole,
@@ -64,7 +69,7 @@ class Azioni extends Component {
                     </a>
                   </div>
                 ) : (
-                  <div className="d-none" />
+                  <div key={item.id} className="d-none" />
                 );
               })}
             </Swiper>

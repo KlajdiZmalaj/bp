@@ -9,6 +9,7 @@ import {
   getAccountInfo,
   logOut,
   getBolletiniBianchi,
+  getBolletiniPremercati,
   getPayments,
   getRechargeMobile,
   getPostePay,
@@ -37,6 +38,8 @@ export default function* root() {
     takeLatest(AuthTypes.GET_ACCOUNT_INFO, getAccountInfo),
     takeLatest(AuthTypes.LOG_OUT, logOut),
     takeLatest(AuthTypes.GET_BOLLETINI_BIANCHI, getBolletiniBianchi),
+    takeLatest(AuthTypes.GET_BOLLETINI_PREMERCATI, getBolletiniPremercati),
+
     takeLatest(AuthTypes.GET_PAYMENTS, getPayments),
     takeLatest(AuthTypes.GET_RECHARGE_MOBILE, getRechargeMobile),
     takeLatest(AuthTypes.GET_POSTE_PAY, getPostePay),

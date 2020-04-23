@@ -16,9 +16,9 @@
   }
   .swiper-container {
     padding-bottom: 30px;
-    padding-left: 28px;
-    padding-right: 60px;
+    width: calc(100% + 40px);
     padding-top: 20px;
+    padding-left: 40px;
     @media (max-width: 600px) {
       padding-left: 30px;
       padding-right: 30px;
@@ -76,9 +76,16 @@
   height: 461px;
   overflow: auto;
   border-right: 2px solid #f9f9f9;
-
   &::-webkit-scrollbar {
     width: 0;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-left: 2px solid #fff;
+    }
   }
 }
 .tab-content > .tab-pane {

@@ -6,7 +6,7 @@ import "./Overview.styles.scss";
 import sumBy from "lodash/sumBy";
 import { get } from "lodash";
 import "./anim.css";
-
+import moment from "moment";
 class Overview extends Component {
   state = {
     overviewDashboard: {},
@@ -35,9 +35,12 @@ class Overview extends Component {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
 
-    if (data) {
-      this.props.getPayments();
-    }
+    this.props.getPayments(
+      "",
+      moment().subtract(1, "days").format("YYYY-MM-DD"),
+      moment().subtract(1, "days").format("YYYY-MM-DD")
+    );
+
     setTimeout(() => {
       this.props.getOverviewDashboard(2);
     }, 500);

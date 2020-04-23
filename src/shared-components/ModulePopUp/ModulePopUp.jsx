@@ -22,7 +22,7 @@ class ModulePopUp extends React.Component {
     ];
 
     const module1 = ["BOL001", "BOL002"];
-    console.log("bolletiniBianchi", serviceType, bolletiniBianchi);
+    console.log("serviceType", service && service.type, serviceType);
     return isShowing ? (
       <Fragment>
         {module1.includes(service_id) && (
@@ -39,6 +39,8 @@ class ModulePopUp extends React.Component {
         {(serviceType.toString() === "RTELD" ||
           serviceType.toString() === "RTELI" ||
           serviceType.toString() === "SCMS" ||
+          serviceType.toString() === "SND000" ||
+          serviceType.toString() === "CCARD" ||
           serviceType.toString() === "RTVD" ||
           serviceType.toString() === "GIFT" ||
           serviceType.toString() === "RTELC") &&
