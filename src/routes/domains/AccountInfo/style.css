@@ -191,7 +191,7 @@
 }
 
 .userList .header span:last-child {
-  width: 100%;
+  width: 120%;
 }
 
 @media (max-width: 1024px) {
@@ -294,7 +294,7 @@
 }
 
 .userList--noDoc__user .body span:last-child, .userList--Doc__user .body span:last-child {
-  width: 100%;
+  width: 120%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

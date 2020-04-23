@@ -55,7 +55,7 @@ class SingleUser extends Component {
           <span>{user.totale_speso}</span>
           <span>{user.last_deposit}</span>
           <span>{user.last_login}</span>
-          <span>
+          <span style={{ width: "100%" }}>
             <button
               onClick={() => {
                 this.setTransferItem("deposit");
