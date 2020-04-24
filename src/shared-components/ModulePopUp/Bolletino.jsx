@@ -48,7 +48,7 @@ class Bolletino extends React.Component {
         if (this.props.service_id === "BOL001") {
           this.props.getBolletiniBianchi(
             this.props.service_id,
-            values.numero_conto_corrente,
+            values.numero_conto_corrente.toString(),
             values.importo,
             values.intestato_a,
             values.causale,
@@ -62,9 +62,9 @@ class Bolletino extends React.Component {
         if (this.props.service_id === "BOL002") {
           this.props.getBolletiniPremercati(
             this.props.service_id,
-            values.numero_conto_corrente,
+            values.numero_conto_corrente.toString(),
             values.importo,
-            values.codice_identificativo,
+            values.codice_identificativo.toString(),
             parseInt(values.tipologia),
             values.eseguito_da,
             values.via_piazza,
@@ -187,13 +187,6 @@ class Bolletino extends React.Component {
                   <span>sul C/C n.</span>{" "}
                   <Form.Item>
                     {getFieldDecorator("numero_conto_corrente", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your numero_conto_corrente!",
-                          whitespace: true,
-                        },
-                      ],
                       initialValue:
                         get(barcodeData, "data.numero_conto_corrente") || "",
                     })(<Input />)}
@@ -244,13 +237,6 @@ class Bolletino extends React.Component {
                   ) : (
                     <Form.Item>
                       {getFieldDecorator("codice_identificativo", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "Please input your codice identificativo!",
-                            whitespace: true,
-                          },
-                        ],
                         initialValue:
                           get(barcodeData, "data.codice_identificativo") || "",
                       })(<Input className="py-4 pl-2 mt-2" />)}
