@@ -19,6 +19,7 @@ import {
   getChangedPassword,
   getConfigura,
   getCodiceTicket,
+  getBarcodeData,
 } from "./AuthSagas";
 
 import {
@@ -39,7 +40,7 @@ export default function* root() {
     takeLatest(AuthTypes.LOG_OUT, logOut),
     takeLatest(AuthTypes.GET_BOLLETINI_BIANCHI, getBolletiniBianchi),
     takeLatest(AuthTypes.GET_BOLLETINI_PREMERCATI, getBolletiniPremercati),
-
+    takeLatest(AuthTypes.GET_BARCODE_DATA, getBarcodeData),
     takeLatest(AuthTypes.GET_PAYMENTS, getPayments),
     takeLatest(AuthTypes.GET_RECHARGE_MOBILE, getRechargeMobile),
     takeLatest(AuthTypes.GET_POSTE_PAY, getPostePay),

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
 import { Select } from "antd";
@@ -10,6 +10,36 @@ const { Option } = Select;
 class Bolletino extends React.Component {
   state = {
     confirmDirty: false,
+    barcodeInput: false,
+    BinpVal: "",
+    codInd: "",
+    data: {},
+  };
+  setbarcodeInp = (e) => {
+    this.setState({ barcodeInput: e });
+    document.getElementById("barcodeInp").focus();
+  };
+  callback = (data) => {
+    this.setState({ data });
+    console.log("callback", data);
+    message.success(data.message);
+    setTimeout(() => {
+      console.log("timeout called");
+
+      this.props.form.setFieldsValue({
+        codice_identificativo: data.data.codice_identificativo,
+        importo: data.data.importo,
+        numero_conto_corrente: data.data.numero_conto_corrente,
+        tipologia: data.data.tipologia,
+      });
+    }, 10);
+  };
+  BinputHandler = (e) => {
+    this.setState({ BinpVal: e.target.value });
+    if (this.state.BinpVal.length >= 40) {
+      this.props.getBarcodeData(this.state.BinpVal, this.callback);
+      // "18000023200682255466120000420832041000000031603896"
+    }
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +48,7 @@ class Bolletino extends React.Component {
         if (this.props.service_id === "BOL001") {
           this.props.getBolletiniBianchi(
             this.props.service_id,
-            values.numero_conto_corrente,
+            values.numero_conto_corrente.toString(),
             values.importo,
             values.intestato_a,
             values.causale,
@@ -32,9 +62,9 @@ class Bolletino extends React.Component {
         if (this.props.service_id === "BOL002") {
           this.props.getBolletiniPremercati(
             this.props.service_id,
-            values.numero_conto_corrente,
+            values.numero_conto_corrente.toString(),
             values.importo,
-            values.codice_identificativo,
+            values.codice_identificativo.toString(),
             parseInt(values.tipologia),
             values.eseguito_da,
             values.via_piazza,
@@ -57,12 +87,18 @@ class Bolletino extends React.Component {
     this.props.setBolletiniBianchi({});
     this.props.setBolletiniPremercati({});
   };
-
+  componentDidMount() {}
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { bolletiniBianchi, bolletiniPremercati, service } = this.props;
-
-    console.log("bolletiniBianchi", this.props.service_id);
+    const {
+      bolletiniBianchi,
+      bolletiniPremercati,
+      service,
+      barcodeData,
+      data,
+    } = this.props;
+    const { barcodeInput } = this.state;
+    console.log("barcodeData", barcodeData);
     return (
       <div className="bolletino">
         <Form onSubmit={this.handleSubmit}>
@@ -96,8 +132,16 @@ class Bolletino extends React.Component {
                         <h3>esegui</h3>
                         <img src={images.checkSymbol} alt="" />
                       </td>
-                      <td>
-                        <h3>esegui</h3>
+                      <td
+                        onClick={() => {
+                          if (barcodeInput) {
+                            this.setbarcodeInp(false);
+                          } else {
+                            this.setbarcodeInp(true);
+                          }
+                        }}
+                      >
+                        <h3>barcode</h3>
                         <p>
                           pagemento <br /> diferito
                         </p>
@@ -121,6 +165,16 @@ class Bolletino extends React.Component {
               </div>
             </div>
             <div className="row no-gutters _modulePopUP__body">
+              <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
+                <input
+                  onChange={(e) => {
+                    this.BinputHandler(e);
+                  }}
+                  type="text"
+                  id="barcodeInp"
+                  placeholder="barcode"
+                />
+              </div>
               <div className="col-12 col-lg-9 ">
                 <h2>CONTI CORRENTI POSTALI - Ricevuta di Accredito</h2>
               </div>
@@ -133,13 +187,8 @@ class Bolletino extends React.Component {
                   <span>sul C/C n.</span>{" "}
                   <Form.Item>
                     {getFieldDecorator("numero_conto_corrente", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your numero_conto_corrente!",
-                          whitespace: true,
-                        },
-                      ],
+                      initialValue:
+                        get(barcodeData, "data.numero_conto_corrente") || "",
                     })(<Input />)}
                   </Form.Item>
                 </div>
@@ -156,6 +205,7 @@ class Bolletino extends React.Component {
                           whitespace: true,
                         },
                       ],
+                      initialValue: get(barcodeData, "data.importo") || "",
                     })(<Input />)}
                   </Form.Item>
                 </div>
@@ -187,13 +237,8 @@ class Bolletino extends React.Component {
                   ) : (
                     <Form.Item>
                       {getFieldDecorator("codice_identificativo", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "Please input your codice identificativo!",
-                            whitespace: true,
-                          },
-                        ],
+                        initialValue:
+                          get(barcodeData, "data.codice_identificativo") || "",
                       })(<Input className="py-4 pl-2 mt-2" />)}
                     </Form.Item>
                   )}
@@ -232,6 +277,7 @@ class Bolletino extends React.Component {
                             message: "Per favore seleziona tipologia!",
                           },
                         ],
+                        initialValue: get(barcodeData, "data.tipologia") || "",
                       })(
                         <Select>
                           <Option value="896">896</Option>
@@ -401,6 +447,7 @@ const CenterAccountMenuu = Form.create({ name: "bolletino" })(Bolletino);
 
 const mapsStateToProps = (state) => ({
   bolletiniBianchi: state.auth.bolletiniBianchi,
+  barcodeData: state.auth.barcodeData,
   bolletiniPremercati: state.auth.bolletiniPremercati,
 });
 
