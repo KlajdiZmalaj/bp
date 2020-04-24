@@ -15,6 +15,7 @@ import {
   sendChangedPassword,
   fetchConfigura,
   fetchCodice,
+  fetchBarcodeData,
 } from "services/auth";
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -370,4 +371,15 @@ export function* getCodiceTicket(data) {
     yield put(AuthActions.setPaymentsFromCode({}));
   }
   // console.log("ca ka responseeeee codice", response);
+}
+export function* getBarcodeData(e) {
+  const response = yield call(fetchBarcodeData, e.barcode);
+  if (response.status === 200) {
+    yield put(AuthActions.setBarcodeData(response.data));
+    e.callback(response.data);
+  } else {
+    yield put(AuthActions.setBarcodeData(response.message));
+    e.callback(response.data);
+  }
+  console.log("ca ka responseeeee codice", response);
 }

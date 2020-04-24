@@ -108,6 +108,8 @@ const { Types, Creators } = createActions({
   getCodiceTicket: ["barcode"],
   setPaymentsFromCode: ["paymentsFromCode"],
   setConfiguraData: ["usersConfigura"],
+  getBarcodeData: ["barcode", "callback"],
+  setBarcodeData: ["barcodeData"],
 });
 
 export const AuthTypes = Types;
@@ -132,6 +134,7 @@ const INITIAL_STATE = {
   register: {},
   paymentsFromCode: {},
   usersConfigura: {},
+  barcodeData: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -139,6 +142,10 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     loading: true,
     unauthorizated: false,
+  }),
+  [Types.SET_BARCODE_DATA]: (state, { barcodeData }) => ({
+    ...state,
+    barcodeData,
   }),
   [Types.SET_PAYMENTS_FROM_CODE]: (state, { paymentsFromCode }) => ({
     ...state,

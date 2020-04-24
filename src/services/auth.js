@@ -318,7 +318,23 @@ export const fetchConfigura = (id) =>
     })
     .get(`/users/${id}`)
     .catch((error) => ({ error }));
-
+export const fetchBarcodeData = (barcode) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/bollettino", {
+      params: {
+        barcode,
+      },
+    })
+    .catch((error) => ({ error }));
+};
 export const fetchCodice = (barcode) =>
   axios
     .create({
