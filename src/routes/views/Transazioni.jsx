@@ -90,8 +90,8 @@ class Transazioni extends React.Component {
     }
     if (filter === 3) {
       const time30daysAgo = moment().subtract(30, "days").startOf("day");
-      // this.props.getPayments("", time30daysAgo, moment());
-      this.props.getPayments();
+      this.props.getPayments("", time30daysAgo, moment());
+      // this.props.getPayments();
     }
   };
 
@@ -108,10 +108,22 @@ class Transazioni extends React.Component {
     this.setState({ username: value });
   };
   componentDidMount() {
+    // console.log(
+    //   "moment",
+    //   moment().format("D"),
+    //   moment().format(),
+    //   ">>>",
+    //   moment()
+    //     .subtract(parseInt(moment().format("D")), "days")
+    //     .format()
+    // );
     this.props.getPayments(
       "",
-      moment().subtract(1, "days").format("YYYY-MM-DD"),
-      moment().subtract(1, "days").format("YYYY-MM-DD")
+
+      moment()
+        .subtract(parseInt(moment().format("D")), "days")
+        .format(),
+      moment().format()
     );
   }
 
@@ -131,7 +143,7 @@ class Transazioni extends React.Component {
     const { payments, accountInfo } = this.props;
     const { selectedFilter, indexT, usernames } = this.state;
 
-    const filters = ["oggi", "ieri", "questa sett", "questo mese"];
+    const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 
     let options = [];
 
@@ -139,9 +151,11 @@ class Transazioni extends React.Component {
       options = usernames.map((user) => <Option key={user}>{user}</Option>);
     }
 
-    const paymentsO = payments.sort(function (a, b) {
-      return new Date(b.executed_date) - new Date(a.executed_date);
-    });
+    const paymentsO =
+      payments &&
+      payments.sort(function (a, b) {
+        return new Date(b.executed_date) - new Date(a.executed_date);
+      });
 
     return (
       <div>
@@ -152,7 +166,7 @@ class Transazioni extends React.Component {
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
-              <h1 className="heading-tab ">Transazioni</h1>
+              <h1 className="heading-tab ">Lista Movimenti</h1>
               <div className="datepics ml-auto mr-2">
                 <Form
                   {...formItemLayout}
