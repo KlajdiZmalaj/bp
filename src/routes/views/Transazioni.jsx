@@ -15,7 +15,7 @@ const { Option } = Select;
 
 class Transazioni extends React.Component {
   state = {
-    selectedFilter: 0,
+    selectedFilter: 3,
     visible: false,
     indexT: null,
     username: "",
