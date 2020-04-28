@@ -39,48 +39,49 @@ class ModulePopUp3 extends React.Component {
     imageUrl: "",
     imageUrl2: "",
     loading: false,
-    document_type: 0
+    document_type: 0,
   };
 
-  onChangeCardView = value => {
+  onChangeCardView = (value) => {
     this.setState({ cardView: value });
   };
 
-  onChangeTypeView = value => {
+  onChangeTypeView = (value) => {
     this.setState({ document_type: value });
   };
 
-  handleChangeBack = info => {
+  handleChangeBack = (info) => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
       return;
     }
     if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, imageUrl2 =>
+      getBase64(info.file.originFileObj, (imageUrl2) =>
         this.setState({
           imageUrl2,
-          loading: false
+          loading: false,
         })
       );
     }
   };
 
-  handleChangeFront = info => {
+  handleChangeFront = (info) => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
       return;
     }
     if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, imageUrl =>
+      getBase64(info.file.originFileObj, (imageUrl) =>
         this.setState({
           imageUrl,
-          loading: false
+          loading: false,
         })
       );
     }
   };
 
   handleChangeImporto(event) {
+    console.log("evvev", event.target.value);
     this.setState({ importo: event.target.value });
   }
 
@@ -108,7 +109,7 @@ class ModulePopUp3 extends React.Component {
     this.props.setPostePay({});
   };
 
-  handleSearch = value => {
+  handleSearch = (value) => {
     if (value.length > 2) {
       this.props.getUsersBySearch(value);
 
@@ -139,12 +140,12 @@ class ModulePopUp3 extends React.Component {
     }
     this.setState({ intestazione: `${user.first_name} ${user.last_name}` });
     this.setState({
-      codice_fiscale_intestatario: user.codice_fiscale_ordinante
+      codice_fiscale_intestatario: user.codice_fiscale_ordinante,
     });
     this.setState({ user_id: user.id });
   }
 
-  handleSubmit = service_id => {
+  handleSubmit = (service_id) => {
     const {
       importo,
       user_id,
@@ -155,7 +156,7 @@ class ModulePopUp3 extends React.Component {
       numero_postepay,
       document_type,
       imageUrl,
-      imageUrl2
+      imageUrl2,
     } = this.state;
 
     this.props.getPostePay(
@@ -177,12 +178,12 @@ class ModulePopUp3 extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 }
+        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 }
-      }
+        sm: { span: 16 },
+      },
     };
     const { getFieldDecorator } = this.props.form;
     const { service_id, userList, postePay } = this.props;
@@ -197,7 +198,7 @@ class ModulePopUp3 extends React.Component {
       showUpload,
       imageUrl,
       cardView,
-      imageUrl2
+      imageUrl2,
     } = this.state;
 
     const uploadButton = (
@@ -216,11 +217,11 @@ class ModulePopUp3 extends React.Component {
     }
 
     if (userList && Object.keys(userList).length > 0) {
-      Object.keys(userList).map(item => {
+      Object.keys(userList).map((item) => {
         if (userList[item] && userList[item].length > 0) {
           b = b.concat(userList[item]);
 
-          options = (b || []).map(i => {
+          options = (b || []).map((i) => {
             return (
               <Option key={JSON.stringify({ [item]: i })}>
                 {i.first_name} {i.last_name}
@@ -611,12 +612,12 @@ class ModulePopUp3 extends React.Component {
 
 const InfoUser = Form.create({ name: "infoUser" })(ModulePopUp3);
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
   service_s: state.auth.service_s,
   rechargeMobile: state.auth.rechargeMobile,
   userList: state.main.userListBySearch,
-  postePay: state.auth.postePay
+  postePay: state.auth.postePay,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

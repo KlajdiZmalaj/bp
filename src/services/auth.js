@@ -63,7 +63,7 @@ export const fetchBolletiniPremercati = (
     .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
       ...{ numero_conto_corrente: numero_conto_corrente },
-      ...{ importo: parseFloat(importo) },
+      ...{ importo: importo.toString() },
       ...{ codice_identificativo: codice_identificativo },
       ...{ tipologia: tipologia },
       ...{ eseguito_da: eseguito_da },
@@ -97,7 +97,7 @@ export const fetchBolletiniBianchi = (
     .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
       ...{ numero_conto_corrente: numero_conto_corrente },
-      ...{ importo: parseFloat(importo) },
+      ...{ importo: importo.toString() },
       ...{ intestato_a: intestato_a },
       ...{ causale: causale },
       ...{ eseguito_da: eseguito_da },
@@ -169,7 +169,7 @@ export const fetchPostePay = (
     })
     .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
-      ...{ importo: importo },
+      ...{ importo: importo.toString() },
       ...(user_id ? { user_id: user_id } : {}),
       ...{ intestazione: intestazione },
       ...{ codice_fiscale_intestatario: codice_fiscale_intestatario },
