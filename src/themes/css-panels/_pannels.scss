@@ -206,9 +206,11 @@
   font-weight: normal;
   color: #32424e;
   padding-top: 30px;
-  padding-bottom: 8px;
+  padding-bottom: 0;
   cursor: default;
   padding-left: 10px;
+  display: flex;
+  align-items: center;
 }
 .rotateARR2 {
   transform: rotate(360deg) !important;

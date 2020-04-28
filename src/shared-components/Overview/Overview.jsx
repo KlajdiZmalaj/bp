@@ -35,12 +35,6 @@ class Overview extends Component {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
 
-    this.props.getPayments(
-      "",
-      moment().subtract(1, "days").format("YYYY-MM-DD"),
-      moment().subtract(1, "days").format("YYYY-MM-DD")
-    );
-
     setTimeout(() => {
       this.props.getOverviewDashboard(2);
     }, 500);
