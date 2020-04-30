@@ -361,7 +361,7 @@ class Transazioni extends React.Component {
                   )}
 
                   <div
-                    className="dal"
+                    className="dal calendar"
                     type="text"
                     onClick={() => {
                       this.setCalendar(true);

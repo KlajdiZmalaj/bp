@@ -716,12 +716,13 @@ a:hover {
   padding: 0 20px;
 }
 
-.sort-annunci .dal:nth-child(2) {
-  cursor: pointer;
+.sort-annunci .dal:nth-child(1) {
+  border-left: 0 !important;
 }
 
-.sort-annunci .dal:nth-child(1) {
-  border-right: 2px solid #edeef0;
+.sort-annunci .dal.calendar {
+  cursor: pointer;
+  border-left: 2px solid #edeef0;
 }
 
 .sort-annunci .rdrInputRange span {
