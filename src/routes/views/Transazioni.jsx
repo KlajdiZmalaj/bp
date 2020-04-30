@@ -34,6 +34,7 @@ class CustomStaticRangeLabelContent extends React.Component {
 const { Option } = Select;
 class Transazioni extends React.Component {
   state = {
+    dashboardFromFilterTop: true,
     selectedFilter: 3,
     visible: false,
     indexT: null,
@@ -54,6 +55,9 @@ class Transazioni extends React.Component {
       },
     ],
     isCalendarOpen: false,
+  };
+  fromFilterTop = (val) => {
+    this.setState({ dashboardFromFilterTop: val });
   };
   setCalendar = (val) => {
     this.setState({ isCalendarOpen: val });
@@ -197,7 +201,10 @@ class Transazioni extends React.Component {
     return (
       <div>
         <Header></Header>
-        <Overview></Overview>
+        <Overview
+          fromFilterTop={this.fromFilterTop}
+          dashboardFromFilterTop={this.state.dashboardFromFilterTop}
+        ></Overview>
         <div className="container-fluid overview ">
           <Azioni active="transazioni"></Azioni>
 
@@ -386,7 +393,10 @@ class Transazioni extends React.Component {
                     <li
                       key={index}
                       className={index === selectedFilter ? "active" : ""}
-                      onClick={() => this.changeSelected(index)}
+                      onClick={() => {
+                        this.changeSelected(index);
+                        this.fromFilterTop(false);
+                      }}
                     >
                       <i className="fas fa-dot-circle"></i>
                       {item}

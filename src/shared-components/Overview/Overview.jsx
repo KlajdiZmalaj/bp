@@ -11,25 +11,22 @@ class Overview extends Component {
   state = {
     overviewDashboard: {},
     activeFilter: 2,
-    dashboardFromFilterTop: true,
     payments: this.props.payments,
   };
-  fromFilterTop = (val) => {
-    this.setState({ dashboardFromFilterTop: val });
-  };
-  static getDerivedStateFromProps(nextProps, prevState) {
-    let { payments } = prevState;
-    let { dashboardFromFilterTop } = prevState;
-    // console.log("abc", nextProps.payments, prevState.payments);
-    if (nextProps.payments !== prevState.payments && dashboardFromFilterTop) {
-      payments = nextProps.payments;
-      dashboardFromFilterTop = false;
-      return { ...prevState, payments, dashboardFromFilterTop };
-    } else {
-      dashboardFromFilterTop = true;
-      return { ...prevState, dashboardFromFilterTop };
-    }
-  }
+
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   let { payments } = prevState;
+  //   let { dashboardFromFilterTop } = prevState;
+  //   // console.log("abc", nextProps.payments, prevState.payments);
+  //   if (nextProps.payments !== prevState.payments && dashboardFromFilterTop) {
+  //     payments = nextProps.payments;
+  //     dashboardFromFilterTop = false;
+  //     return { ...prevState, payments, dashboardFromFilterTop };
+  //   } else {
+  //     dashboardFromFilterTop = true;
+  //     return { ...prevState, dashboardFromFilterTop };
+  //   }
+  // }
 
   componentDidMount() {
     const accountData = localStorage.getItem("accountDataB");
@@ -43,13 +40,15 @@ class Overview extends Component {
     this.setState({ activeFilter: id });
   };
   render() {
-    const { activeFilter, dashboardFromFilterTop } = this.state;
+    const { activeFilter } = this.state;
     const {
       showOverview,
       toggleOverview,
       payments,
       accountInfo,
       dashboardData,
+      fromFilterTop,
+      dashboardFromFilterTop,
     } = this.props;
     console.log("accountInfo", accountInfo);
     let provT = 0;
@@ -98,7 +97,7 @@ class Overview extends Component {
                 onClick={() => {
                   this.setDashboard(1);
                   this.props.getOverviewDashboard(1);
-                  this.fromFilterTop(true);
+                  fromFilterTop(true);
                 }}
               >
                 Today
@@ -112,7 +111,7 @@ class Overview extends Component {
                 onClick={() => {
                   this.setDashboard(2);
                   this.props.getOverviewDashboard(2);
-                  this.fromFilterTop(true);
+                  fromFilterTop(true);
                 }}
               >
                 Month
@@ -126,7 +125,7 @@ class Overview extends Component {
                 onClick={() => {
                   this.setDashboard(3);
                   this.props.getOverviewDashboard(3);
-                  this.fromFilterTop(true);
+                  fromFilterTop(true);
                 }}
               >
                 year
