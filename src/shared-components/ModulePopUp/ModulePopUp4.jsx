@@ -13,19 +13,22 @@ class ModulePopUp4 extends React.Component {
       serviceMobile: this.props.serviceSelected,
       tel_no: "",
       barcode: "21312",
-      toPrint: false
+      toPrint: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
-  setPrint = val => {
+  hideAlert = () => {
+    this.props.setRechargeMobile({});
+  };
+  setPrint = (val) => {
     this.setState({ toPrint: val });
   };
   handleChange(event) {
     this.setState({ tel_no: event.target.value });
   }
 
-  changeService = service => {
+  changeService = (service) => {
     this.setState({ serviceMobile: service });
   };
 
@@ -33,7 +36,7 @@ class ModulePopUp4 extends React.Component {
     this.props.getRechargeMobile(service_id, tel_no);
   }
 
-  addNr = nr => {
+  addNr = (nr) => {
     this.setState({ tel_no: this.state.tel_no.concat(nr) });
   };
   clear = () => {
@@ -51,22 +54,11 @@ class ModulePopUp4 extends React.Component {
       receipt:
         " \n RICARICA VODAFONE\n \nTerminalID:             IT016546\n Date:                 17.01.2020\nTime:                   12:20:03\n Trace-Nr.:                103503\nReceipt-Nr.:                5343\n\n--------------------------------\n Codice Transazione\n 97732011\n\nHai acquistato Giga Ricarica 5.\nhai 3 Giga validi per un mese e\ndi ricarica.\nCon Giga Ricarica 10, a 10 euro\nGiga validi per un mese e 9 euro\nricarica.\nI 3 Giga sono validi\nper un mese e si disattivano\nin automatico.\nRiceverai un SMS\n di conferma dell'acquisto e\nsuccessivamente l'SMS di con\nferm dell'attivazione dei 3 Gi\n ga.    I 3 Giga non sono cumulab\nili   con eventuali Giga residui\ndi unGiga Ricarica acquistata e\nntro igiorno precedente. Per inf\n ormazi  vai su voda.it/gigaricar\n ica       Scontrino non fiscale.\n \n NUMERO DI TELEFONO\n - 3406148006 -\n Importo 10 Euro\n \nLA RICARICA VERRA'\n ACCREDITATA ENTRO 24 OR\n E.     Per assistenza chiama il\n190         o vai su www.190.it\nIVA ASSOLTA AI SENSI DELL\n 'EX   ART.74 co.1,lett.d> DPR 63\n 3/72     da Vodafone Italia S.p.\n A            P.Iva 08539010010\n Operazione eseguita da Eur\n onet   Pay ' Transaction service\nsrl         P.Iva 05445540965\n\nTRANSAZIONE ESEGUITA\n\r\n\r\n",
       barcode: "0000073721475",
-      wallet: "983.00"
+      wallet: "983.00",
     };
     return (
       <div className="modulePopUP modulePopUP1 telRechanrge">
         <div className="module container-fluid max-width_modulePopUP max-width_modulePopUP-carrier">
-          {rechargeMobile.errors &&
-            Object.keys(rechargeMobile.errors).map(item => {
-              return (
-                <div className="error alertError">
-                  <span className="closeAlert" onClick={this.hideAlert}>
-                    X
-                  </span>
-                  {rechargeMobile.errors[item]}
-                </div>
-              );
-            })}
           <div className="row">
             <div className="col-7 leftCol_Module">
               <div className="row">
@@ -223,6 +215,29 @@ class ModulePopUp4 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {(rechargeMobile.errors || rechargeMobile.message) && (
+                  <div className="messages">
+                    <div className="closeM" onClick={this.hideAlert}>
+                      chiudi messaggi
+                    </div>
+                    {rechargeMobile.errors &&
+                      Object.keys(rechargeMobile.errors).map((item, index) => {
+                        return (
+                          <div className="errorM" key={index}>
+                            <i className="fad fa-exclamation text-danger"></i>
+                            {rechargeMobile.errors[item]}
+                          </div>
+                        );
+                      })}
+
+                    {rechargeMobile.message && (
+                      <div className="infoM">
+                        <i className="fad fa-info text-info"></i>{" "}
+                        {rechargeMobile.message}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
             {rechargeMobile.receipt && toPrint && (
@@ -231,7 +246,7 @@ class ModulePopUp4 extends React.Component {
                   <div className="">
                     <div
                       className="printModal p-2"
-                      ref={el => (this.printT = el)}
+                      ref={(el) => (this.printT = el)}
                     >
                       <div className="headerModal">
                         <img className="logo" src={images.logo} alt="" />
@@ -276,7 +291,7 @@ class ModulePopUp4 extends React.Component {
                             .replace(
                               /<div class='marginB'><\/div>([^>]+)<br\/>/g,
                               "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                            )
+                            ),
                         }}
                       />
                       <img
@@ -352,10 +367,10 @@ class ModulePopUp4 extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
   service_s: state.auth.service_s,
-  rechargeMobile: state.auth.rechargeMobile
+  rechargeMobile: state.auth.rechargeMobile,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

@@ -144,7 +144,20 @@ class ModulePopUp3 extends React.Component {
     });
     this.setState({ user_id: user.id });
   }
-
+  clearFields = () => {
+    this.setState({
+      importo: "",
+      user_id: "",
+      intestazione: "",
+      codice_fiscale_intestatario: "",
+      ordinante: "",
+      codice_fiscale_ordinante: "",
+      numero_postepay: "",
+      document_type: "",
+      imageUrl: "",
+      imageUrl2: "",
+    });
+  };
   handleSubmit = (service_id) => {
     const {
       importo,
@@ -170,7 +183,8 @@ class ModulePopUp3 extends React.Component {
       numero_postepay,
       document_type,
       imageUrl,
-      imageUrl2
+      imageUrl2,
+      this.clearFields
     );
   };
 
@@ -236,25 +250,6 @@ class ModulePopUp3 extends React.Component {
     return (
       <div className="modulePopUP modulePopUP3">
         <div className="module container-fluid max-width_modulePopUP">
-          {postePay.errors &&
-            Object.keys(postePay.errors).map((item, index) => {
-              return (
-                <div className="error alertError" key={index}>
-                  <span className="closeAlert" onClick={this.hideAlert}>
-                    X
-                  </span>
-                  {postePay.errors[item]}
-                </div>
-              );
-            })}
-
-          {!postePay.errors && postePay.message && (
-            <div className="confirmedMessage">
-              <span className="closeAlert">X</span>
-              {postePay.message}
-            </div>
-          )}
-
           <div className="row">
             <div className="col-12 leftCol_Module">
               <div className="row no-gutters">
@@ -571,6 +566,29 @@ class ModulePopUp3 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {(postePay.errors || postePay.message) && (
+                  <div className="messages">
+                    <div className="closeM" onClick={this.hideAlert}>
+                      chiudi messaggi
+                    </div>
+                    {postePay.errors &&
+                      Object.keys(postePay.errors).map((item, index) => {
+                        return (
+                          <div className="errorM" key={index}>
+                            <i className="fad fa-exclamation text-danger"></i>
+                            {postePay.errors[item]}
+                          </div>
+                        );
+                      })}
+
+                    {postePay.message && (
+                      <div className="infoM">
+                        <i className="fad fa-info text-info"></i>{" "}
+                        {postePay.message}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
             {/* <div className="col-5 rightCol_Module">

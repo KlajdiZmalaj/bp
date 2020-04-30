@@ -12,6 +12,11 @@
   .payThumb {
     background: #ffff00;
   }
+  .alertError,
+  .confirmedMessage {
+    width: 90%;
+    margin-top: 3px;
+  }
 }
 .max-width_modulePopUP {
   width: 100%;
@@ -202,7 +207,8 @@
   }
 }
 .contitions-boll {
-  height: 85px;
+  // height: 85px;
+  overflow: auto;
   padding: 20px;
   margin-bottom: 20px;
   border: 1px solid $second;
@@ -502,5 +508,47 @@
     font-size: 12px;
     font-weight: normal;
     text-align: center;
+  }
+}
+.messages {
+  position: absolute;
+  z-index: 1;
+  background: #ffffff8f;
+  width: 70%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(11px);
+  border: 6px solid #0000000f;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .errorM,
+  .infoM {
+    text-transform: capitalize;
+    width: 90%;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .closeM {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ad2c2c;
+    padding: 4px 20px;
+    text-transform: capitalize;
+    border-radius: 22px;
+    cursor: pointer;
+    color: #860000;
+    background: #c3262636;
+    transition: 0.3s;
+    &:hover {
+      background-color: #ad2c2c;
+      color: #fff;
+    }
   }
 }
