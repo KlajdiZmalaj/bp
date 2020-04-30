@@ -106,8 +106,8 @@ class Transazioni extends React.Component {
         console.log("Received values of form: ", values);
         this.props.getPayments(
           this.state.username,
-          this.state.from,
-          this.state.to
+          this.state.from || moment().subtract(30, "days").format("YYYY-MM-DD"),
+          this.state.to || moment().format("YYYY-MM-DD")
         );
       }
     });
