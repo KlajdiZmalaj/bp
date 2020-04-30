@@ -65,6 +65,7 @@ export function* getBolletiniBianchi(params) {
     console.log("response", response);
     if (response.data) {
       yield put(AuthActions.setBolletiniBianchi(response.data));
+      params.clearFields();
     } else if (response.error) {
       console.log(
         "errorrrrrrrrrr",
@@ -84,6 +85,10 @@ export function* getBolletiniBianchi(params) {
       // yield put(AuthActions.setBolletiniBianchi({}));
     }
   }
+  if (response.error.response.status === 401) {
+    localStorage.clear();
+    const response = yield call(logoutApi);
+  }
 }
 
 export function* getBolletiniPremercati(params) {
@@ -100,16 +105,19 @@ export function* getBolletiniPremercati(params) {
     params.citta,
     params.provincia
   );
+  console.log("response", response);
+
   if (response) {
-    console.log("response", response);
     if (response.data) {
       yield put(AuthActions.setBolletiniPremercati(response.data));
+      params.clearFields();
     } else if (response.error) {
       console.log(
         "errorrrrrrrrrr",
         response.error.response.status,
         response.error.response.data
       );
+
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniPremercati(error));
@@ -122,6 +130,10 @@ export function* getBolletiniPremercati(params) {
       // yield delay(3000);
       // yield put(AuthActions.setBolletiniBianchi({}));
     }
+  }
+  if (response.error.response.status === 401) {
+    localStorage.clear();
+    const response = yield call(logoutApi);
   }
 }
 
@@ -217,6 +229,10 @@ export function* getRechargeMobile(params) {
       }
     }
   }
+  if (response.error.response.status === 401) {
+    localStorage.clear();
+    const response = yield call(logoutApi);
+  }
 }
 
 export function* getPostePay(params) {
@@ -252,6 +268,7 @@ export function* getPostePay(params) {
         yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setPostePay(response.data));
+      params.clearFields();
     } else if (response.error) {
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["dati non sono correti."] } };
@@ -266,6 +283,10 @@ export function* getPostePay(params) {
         yield put(AuthActions.setPostePay(response.error.response.data));
       }
     }
+  }
+  if (response.error.response.status === 401) {
+    localStorage.clear();
+    const response = yield call(logoutApi);
   }
 }
 

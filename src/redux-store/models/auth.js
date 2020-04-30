@@ -20,6 +20,7 @@ const { Types, Creators } = createActions({
     "cap",
     "citta",
     "provincia",
+    "clearFields",
   ],
   getBolletiniPremercati: [
     "service_id",
@@ -32,6 +33,7 @@ const { Types, Creators } = createActions({
     "cap",
     "citta",
     "provincia",
+    "clearFields",
   ],
   setBolletiniBianchi: ["bolletiniBianchi"],
   setBolletiniPremercati: ["bolletiniPremercati"],
@@ -56,6 +58,7 @@ const { Types, Creators } = createActions({
     "document_type",
     "imageUrl",
     "imageUrl2",
+    "clearFields",
   ],
   setPostePay: ["postePay"],
 

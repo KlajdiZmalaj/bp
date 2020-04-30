@@ -6,6 +6,73 @@
   padding-bottom: 10px;
   margin-bottom: 10px;
   background-color: #fff;
+  position: relative;
+  .rdrDefinedRangesWrapper,
+  .rdrStaticRange {
+    background: #eaeaea;
+  }
+  .rdrCalendarWrapper * {
+    text-transform: capitalize;
+  }
+  .rdrMonth {
+    padding: 0 0.833em 1.666em 0.833em;
+    background: #f7f7f7;
+  }
+  .dal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #989898;
+    padding: 0 20px;
+    &:nth-child(1) {
+      border-left: 0 !important;
+    }
+    &.calendar {
+      cursor: pointer;
+      border-left: 2px solid #edeef0;
+    }
+  }
+  .rdrInputRange span {
+    color: transparent;
+    &::before {
+      content: "Giorni da oggi";
+      color: #222;
+      position: relative;
+      top: 10px;
+    }
+  }
+  .rdrInputRange:nth-child(2) {
+    display: none;
+  }
+  .calendarWrapper {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 74px;
+    box-shadow: 0 12px 20px 1px #0000008c;
+    .buttons {
+      background-color: #fff;
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        border: 0;
+        background-color: transparent;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        &:nth-child(2) {
+          background-color: #00b850;
+          color: #fff;
+        }
+        &:nth-child(1) {
+          background-color: #c53f3f;
+          color: #fff;
+        }
+      }
+    }
+  }
   .heading-tab {
     padding-top: 0;
     cursor: default;

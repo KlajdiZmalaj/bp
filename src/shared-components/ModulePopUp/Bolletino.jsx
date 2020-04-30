@@ -41,6 +41,21 @@ class Bolletino extends React.Component {
       // "18000023200682255466120000420832041000000031603896"
     }
   };
+  clearFields = () => {
+    this.props.form.setFieldsValue({
+      numero_conto_corrente: "",
+      importo: "",
+      codice_identificativo: "",
+      intestato_a: "",
+      eseguito_da: "",
+      causale: "",
+      via_piazza: "",
+      cap: "",
+      citta: "",
+      provincia: "",
+      tipologia: "",
+    });
+  };
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -56,7 +71,8 @@ class Bolletino extends React.Component {
             values.via_piazza,
             values.cap,
             values.citta,
-            values.provincia
+            values.provincia,
+            this.clearFields
           );
         }
         if (this.props.service_id === "BOL002") {
@@ -70,7 +86,8 @@ class Bolletino extends React.Component {
             values.via_piazza,
             values.cap,
             values.citta,
-            values.provincia
+            values.provincia,
+            this.clearFields
           );
         }
       }
@@ -98,7 +115,8 @@ class Bolletino extends React.Component {
       data,
     } = this.props;
     const { barcodeInput } = this.state;
-    console.log("barcodeData", barcodeData);
+
+    // console.log("barcodeData", barcodeData);
     return (
       <div className="bolletino">
         <Form onSubmit={this.handleSubmit}>
@@ -200,7 +218,7 @@ class Bolletino extends React.Component {
                     {getFieldDecorator("importo", {
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: "Please input your importo!",
                           whitespace: true,
                         },
@@ -227,7 +245,7 @@ class Bolletino extends React.Component {
                       {getFieldDecorator("intestato_a", {
                         rules: [
                           {
-                            required: true,
+                            required: false,
                             message: "Please input your intestato_a!",
                             whitespace: true,
                           },
@@ -261,7 +279,7 @@ class Bolletino extends React.Component {
                       {getFieldDecorator("causale", {
                         rules: [
                           {
-                            required: true,
+                            required: false,
                             message: "Please input  causale!",
                             whitespace: true,
                           },
@@ -273,7 +291,7 @@ class Bolletino extends React.Component {
                       {getFieldDecorator("tipologia", {
                         rules: [
                           {
-                            required: true,
+                            required: false,
                             message: "Per favore seleziona tipologia!",
                           },
                         ],
@@ -300,7 +318,7 @@ class Bolletino extends React.Component {
                     {getFieldDecorator("eseguito_da", {
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: "Please input eseguito_da!",
                           whitespace: true,
                         },
@@ -321,7 +339,7 @@ class Bolletino extends React.Component {
                     {getFieldDecorator("via_piazza", {
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: "Please input via_piazza!",
                           whitespace: true,
                         },
@@ -341,7 +359,7 @@ class Bolletino extends React.Component {
                     {getFieldDecorator("cap", {
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: "Please input cap!",
                           whitespace: true,
                         },
@@ -361,7 +379,7 @@ class Bolletino extends React.Component {
                     {getFieldDecorator("citta", {
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: "Please input citta!",
                           whitespace: true,
                         },
@@ -381,7 +399,7 @@ class Bolletino extends React.Component {
                     {getFieldDecorator("provincia", {
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: "Please input provincia!",
                           whitespace: true,
                           maxLength: 2,
@@ -398,42 +416,51 @@ class Bolletino extends React.Component {
               </div>
               <Condizioni></Condizioni>
             </div>
-            {bolletiniBianchi.errors &&
-              Object.keys(bolletiniBianchi.errors).map((item) => {
-                return (
-                  <div className="error">
-                    <span className="closeAlert" onClick={this.hideAlert}>
-                      X
-                    </span>
-                    {bolletiniBianchi.errors[item]}
+            {(bolletiniBianchi.errors || bolletiniBianchi.message) && (
+              <div className="messages">
+                <div className="closeM" onClick={this.hideAlert}>
+                  chiudi messaggi
+                </div>
+                {bolletiniBianchi.errors &&
+                  Object.keys(bolletiniBianchi.errors).map((item, index) => {
+                    return (
+                      <div className="errorM" key={index}>
+                        <i className="fad fa-exclamation text-danger"></i>
+                        {bolletiniBianchi.errors[item]}
+                      </div>
+                    );
+                  })}
+
+                {bolletiniBianchi.message && (
+                  <div className="infoM">
+                    <i className="fad fa-info text-info"></i>{" "}
+                    {bolletiniBianchi.message}
                   </div>
-                );
-              })}
-            {get(bolletiniBianchi, "message") && (
-              <div className="success">
-                <span className="closeAlert" onClick={this.hideAlert}>
-                  X
-                </span>
-                {get(bolletiniBianchi, "message")}
+                )}
               </div>
             )}
-            {bolletiniPremercati.errors &&
-              Object.keys(bolletiniPremercati.errors).map((item) => {
-                return (
-                  <div className="error">
-                    <span className="closeAlert" onClick={this.hideAlert}>
-                      X
-                    </span>
-                    {bolletiniPremercati.errors[item]}
+
+            {(bolletiniPremercati.errors || bolletiniPremercati.message) && (
+              <div className="messages">
+                <div className="closeM" onClick={this.hideAlert}>
+                  chiudi messaggi
+                </div>
+                {bolletiniPremercati.errors &&
+                  Object.keys(bolletiniPremercati.errors).map((item, index) => {
+                    return (
+                      <div className="errorM" key={index}>
+                        <i className="fad fa-exclamation text-danger"></i>
+                        {bolletiniPremercati.errors[item]}
+                      </div>
+                    );
+                  })}
+
+                {bolletiniPremercati.message && (
+                  <div className="infoM">
+                    <i className="fad fa-info text-info"></i>{" "}
+                    {bolletiniPremercati.message}
                   </div>
-                );
-              })}
-            {get(bolletiniPremercati, "message") && (
-              <div className="success">
-                <span className="closeAlert" onClick={this.hideAlert}>
-                  X
-                </span>
-                {get(bolletiniPremercati, "message")}
+                )}
               </div>
             )}
           </div>
