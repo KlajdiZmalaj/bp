@@ -17,7 +17,7 @@ import { subDays, format } from "date-fns";
 import * as locales from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
-
+import { isArray } from "lodash";
 const renderStaticRangeLabel = (e) => (
   <CustomStaticRangeLabelContent text={e} />
 );
@@ -191,9 +191,10 @@ class Transazioni extends React.Component {
     if (usernames && usernames.length > 0) {
       options = usernames.map((user) => <Option key={user}>{user}</Option>);
     }
-
+    console.log("payments", payments);
     const paymentsO =
       payments &&
+      isArray(payments) &&
       payments.sort(function (a, b) {
         return new Date(b.executed_date) - new Date(a.executed_date);
       });
