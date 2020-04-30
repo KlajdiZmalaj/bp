@@ -11,8 +11,27 @@ import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
-const { Option } = Select;
 
+import { DateRangePicker } from "react-date-range";
+import { subDays, format } from "date-fns";
+import * as locales from "react-date-range/dist/locale";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css";
+
+const renderStaticRangeLabel = (e) => (
+  <CustomStaticRangeLabelContent text={e} />
+);
+class CustomStaticRangeLabelContent extends React.Component {
+  render() {
+    const { text } = this.props;
+    return (
+      <span>
+        <i>{text}</i>
+      </span>
+    );
+  }
+}
+const { Option } = Select;
 class Transazioni extends React.Component {
   state = {
     selectedFilter: 3,
@@ -24,6 +43,20 @@ class Transazioni extends React.Component {
     name: "",
     address: "",
     phone: "",
+    from: "",
+    to: "",
+    picker: [
+      {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: "selection",
+        color: "#ed4c14",
+      },
+    ],
+    isCalendarOpen: false,
+  };
+  setCalendar = (val) => {
+    this.setState({ isCalendarOpen: val });
   };
   showModal = (index, barcode, name, address, phone) => {
     this.setState({
@@ -67,7 +100,11 @@ class Transazioni extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
-        this.props.getPayments(this.state.username, values.from, values.to);
+        this.props.getPayments(
+          this.state.username,
+          this.state.from,
+          this.state.to
+        );
       }
     });
   };
@@ -166,6 +203,118 @@ class Transazioni extends React.Component {
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
+              {this.state.isCalendarOpen && (
+                <div className="calendarWrapper">
+                  <DateRangePicker
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onChange={(item) => {
+                      console.log(
+                        "itemm",
+                        item,
+                        item.selection.startDate,
+                        format(item.selection.startDate, "yyyy-MM-dd")
+                      );
+                      this.setState({
+                        picker: [item.selection],
+                        from: format(item.selection.startDate, "yyyy-MM-dd"),
+                        to: format(item.selection.endDate, "yyyy-MM-dd"),
+                      });
+                    }}
+                    locale={locales["it"]}
+                    color="#00e2b6"
+                    showSelectionPreview={true}
+                    moveRangeOnFirstSelection={false}
+                    months={2}
+                    ranges={this.state.picker}
+                    direction="horizontal"
+                    renderStaticRangeLabel={(e) => {
+                      return renderStaticRangeLabel(e.label);
+                    }}
+                    staticRanges={[
+                      {
+                        label: "Oggi",
+                        hasCustomRendering: true,
+                        range: () => ({
+                          endDate: new Date(),
+                          startDate: new Date(),
+                        }),
+                        isSelected() {
+                          return false;
+                        },
+                      },
+                      {
+                        label: "Ultima settimana",
+                        hasCustomRendering: true,
+                        range: () => ({
+                          endDate: new Date(),
+                          startDate: subDays(new Date(), 6),
+                        }),
+                        isSelected() {
+                          return false;
+                        },
+                      },
+                      {
+                        label: "Ultimo mese",
+                        hasCustomRendering: true,
+                        range: () => ({
+                          endDate: new Date(),
+                          startDate: subDays(new Date(), 29),
+                        }),
+                        isSelected() {
+                          return false;
+                        },
+                      },
+                      {
+                        label: "Ultima 3 mesi",
+                        hasCustomRendering: true,
+                        range: () => ({
+                          endDate: new Date(),
+                          startDate: subDays(new Date(), 89),
+                        }),
+                        isSelected() {
+                          return false;
+                        },
+                      },
+                    ]}
+                    // scroll={{ enabled: true }}
+                  />
+                  <div
+                    className="blurCalendar"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      this.setCalendar(false);
+                    }}
+                  ></div>
+                  {
+                    <div className="buttons">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          this.setCalendar(false);
+                          this.setState({ from: "", to: "" });
+                        }}
+                      >
+                        Cancella
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          this.setCalendar(false);
+                          this.handleSubmit(e);
+                        }}
+                      >
+                        Esegui
+                      </button>
+                    </div>
+                  }
+                </div>
+              )}
               <h1 className="heading-tab ">Lista Movimenti</h1>
               <div className="datepics ml-auto mr-2">
                 <Form
@@ -211,36 +360,17 @@ class Transazioni extends React.Component {
                     </div>
                   )}
 
-                  <div className="dal">
-                    {
-                      <Form.Item>
-                        {getFieldDecorator(
-                          "from",
-                          {}
-                        )(
-                          <DatePicker
-                            format={("DD/MM/YYYY", "DD/MM/YYYY")}
-                            placeholder="Dal"
-                          />
-                        )}
-                      </Form.Item>
-                    }
+                  <div
+                    className="dal"
+                    type="text"
+                    onClick={() => {
+                      this.setCalendar(true);
+                    }}
+                  >
+                    {this.state.from
+                      ? `${this.state.from} - ${this.state.to}`
+                      : "Seleziona la data"}
                   </div>
-                  <div className="al">
-                    {
-                      <Form.Item>
-                        {getFieldDecorator("to", {
-                          rules: [{ type: "object" }],
-                        })(
-                          <DatePicker
-                            format={("DD/MM/YYYY", "DD/MM/YYYY")}
-                            placeholder="Al"
-                          />
-                        )}
-                      </Form.Item>
-                    }
-                  </div>
-
                   <div>
                     <button className="filterBtn" htmltype="submit">
                       Filter

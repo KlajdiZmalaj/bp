@@ -685,6 +685,100 @@ a:hover {
   padding-bottom: 10px;
   margin-bottom: 10px;
   background-color: #fff;
+  position: relative;
+}
+
+.sort-annunci .rdrDefinedRangesWrapper,
+.sort-annunci .rdrStaticRange {
+  background: #eaeaea;
+}
+
+.sort-annunci .rdrCalendarWrapper * {
+  text-transform: capitalize;
+}
+
+.sort-annunci .rdrMonth {
+  padding: 0 0.833em 1.666em 0.833em;
+  background: #f7f7f7;
+}
+
+.sort-annunci .dal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #989898;
+  padding: 0 20px;
+}
+
+.sort-annunci .dal:nth-child(2) {
+  cursor: pointer;
+}
+
+.sort-annunci .dal:nth-child(1) {
+  border-right: 2px solid #edeef0;
+}
+
+.sort-annunci .rdrInputRange span {
+  color: transparent;
+}
+
+.sort-annunci .rdrInputRange span::before {
+  content: "Giorni da oggi";
+  color: #222;
+  position: relative;
+  top: 10px;
+}
+
+.sort-annunci .rdrInputRange:nth-child(2) {
+  display: none;
+}
+
+.sort-annunci .calendarWrapper {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 74px;
+  -webkit-box-shadow: 0 12px 20px 1px #0000008c;
+          box-shadow: 0 12px 20px 1px #0000008c;
+}
+
+.sort-annunci .calendarWrapper .buttons {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sort-annunci .calendarWrapper .buttons button {
+  border: 0;
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: 5px 10px;
+}
+
+.sort-annunci .calendarWrapper .buttons button:nth-child(2) {
+  background-color: #00b850;
+  color: #fff;
+}
+
+.sort-annunci .calendarWrapper .buttons button:nth-child(1) {
+  background-color: #c53f3f;
+  color: #fff;
 }
 
 .sort-annunci .heading-tab {
