@@ -370,7 +370,7 @@ class RegisterEndUser extends React.Component {
       initialValue: "0039",
     })(<Input style={{ width: 70 }}></Input>);
     const { step } = this.state;
-
+    console.log("ca ka form", this.props.form);
     return (
       <Fragment>
         <Header></Header>
@@ -478,7 +478,16 @@ class RegisterEndUser extends React.Component {
                 ],
               })(<Input addonBefore={number_prefix} />)}
             </Form.Item>
-            <div className="stepBtn" onClick={this.nextStep}>
+            <div
+              className="stepBtn"
+              onClick={() => {
+                this.props.form.validateFields(["email"], (err, val) => {
+                  if (!err) {
+                    this.nextStep();
+                  }
+                });
+              }}
+            >
               Next Step 2/4
             </div>
           </div>
