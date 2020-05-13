@@ -490,3 +490,38 @@
     font-size: 20px;
   }
 }
+.messagePopUp {
+  position: fixed;
+  width: 100%;
+  max-width: 300px;
+  background: #e0e0e0;
+  height: 300px;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  text-align: center;
+  .fa-exclamation {
+    color: rgb(230, 57, 57);
+  }
+  .fa-user-check {
+    color: rgb(57, 230, 95);
+  }
+  .heading {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  i.fa.fa-times-circle {
+    position: absolute;
+    right: -10px;
+    top: -11px;
+    opacity: 1;
+    color: red;
+    cursor: pointer;
+    font-weight: 300;
+    background: #ccc;
+    border-radius: 20px;
+  }
+}

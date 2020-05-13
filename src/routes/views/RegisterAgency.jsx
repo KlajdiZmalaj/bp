@@ -370,6 +370,7 @@ class RegisterEndUser extends React.Component {
       initialValue: "0039",
     })(<Input style={{ width: 70 }}></Input>);
     const { step } = this.state;
+
     return (
       <Fragment>
         <Header></Header>
@@ -774,6 +775,28 @@ class RegisterEndUser extends React.Component {
             </Button>
           </div>
         </Form>
+        {register.message && (
+          <div className="messagePopUp">
+            <div className="close">
+              <i onClick={this.hideAlert} className="fa fa-times-circle"></i>
+            </div>
+            {register.role ? (
+              <React.Fragment>
+                <div className="heading">
+                  congratulazioni <i className="fal fa-user-check"></i>
+                </div>
+                <div className="errors">{register.message}</div>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <div className="heading">
+                  Attenzione <i className="fad fa-exclamation"></i>
+                </div>
+                <div className="errors">{register.message}</div>
+              </React.Fragment>
+            )}
+          </div>
+        )}
       </Fragment>
     );
   }

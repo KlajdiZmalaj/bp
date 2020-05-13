@@ -335,7 +335,7 @@ export function* getRegister(params) {
 
   if (response.data) {
     yield put(AuthActions.setRegister(response.data));
-    yield delay(3000);
+    yield delay(6000);
     yield put(AuthActions.setRegister({}));
   } else if (response.error) {
     yield put(AuthActions.setRegister(response.error.response.data));
