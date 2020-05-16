@@ -22,6 +22,8 @@ import { countriesArray } from "config";
 
 import VirtualizedSelect from "react-virtualized-select";
 import { Header } from "shared-components";
+import "react-select/dist/react-select.css";
+import "react-virtualized-select/styles.css";
 
 const { Option } = Select;
 function getBase64(img, callback) {
@@ -44,7 +46,7 @@ function beforeUpload(file) {
 class RegisterEndUser extends React.Component {
   state = {
     visible: true,
-
+    locationData: {},
     comuniSelected: {},
     nazione: "",
     province_of_birth: "",
@@ -64,6 +66,16 @@ class RegisterEndUser extends React.Component {
     loading: false,
     step: 1,
   };
+  componentDidMount() {
+    fetch("https://ipapi.co/json")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({ locationData: data });
+        this.props.form.setFieldsValue({
+          cordinate: `${data.latitude},${data.longitude}`,
+        });
+      });
+  }
   nextStep = () => {
     let { step } = this.state;
     step += 1;
@@ -227,8 +239,14 @@ class RegisterEndUser extends React.Component {
 
     if (sexKey > 40) {
       this.setState({ sesso: "F" });
+      this.props.form.setFieldsValue({
+        gender: "F",
+      });
     } else {
       this.setState({ sesso: "M" });
+      this.props.form.setFieldsValue({
+        gender: "M",
+      });
     }
 
     this.setState({ nascita: `${day}-${parseInt(month)}-${year}` });
@@ -375,437 +393,805 @@ class RegisterEndUser extends React.Component {
       <Fragment>
         <Header></Header>
 
-        <Form className="stepForm" onSubmit={this.handleSubmit}>
-          <div className={"step step1" + (step === 1 ? " isActive" : "")}>
-            <div className="titleReg">Registrazione</div>
-            <span className="inpLabel">codice fiscale</span>
-            <Form.Item>
-              {getFieldDecorator("personal_number", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your fiscal code!",
-                  },
-                ],
-              })(
-                <Input
-                  // placeholder="codice fiscale*"
-                  onBlur={this.validateCodiceFiscale}
-                  onInput={(e) => this.inputlength(e)}
-                />
-              )}
-            </Form.Item>
-            <span className="inpLabel">Nome</span>
+        <Form className="newReg" onSubmit={this.handleSubmit}>
+          <div className="newReg--header">Register Agenzia</div>
+          <div className="newReg--row">
+            <div className="newReg--row__col">
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Codice Fiscale <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("personal_number", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your fiscal code!",
+                      },
+                    ],
+                  })(
+                    <Input
+                      // placeholder="codice fiscale*"
+                      onBlur={this.validateCodiceFiscale}
+                      onInput={(e) => this.inputlength(e)}
+                    />
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Nome <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("first_name", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your name!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  CogNome <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("last_name", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your last name!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Sesso <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("gender", {
+                    initialValue: "",
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please select your gender!",
+                      },
+                    ],
+                  })(
+                    <Select>
+                      <Option value="M">Maschile</Option>
+                      <Option value="F">Feminile</Option>
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Email <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("email", {
+                    rules: [
+                      {
+                        type: "email",
+                        message: "The input is not valid E-mail!",
+                      },
+                      {
+                        required: true,
+                        message: "Please input your E-mail!",
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Data di nascita <span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("birthday", {
+                    initialValue:
+                      this.state.nascita !== "" &&
+                      moment(this.state.nascita, dateFormat),
+                    rules: [{ required: true }],
+                  })(
+                    <DatePicker
+                      // disabledDate={(current) => {
+                      //   return current && current > moment().add(-18, "years");
+                      // }}
+                      placeholder=""
+                      format={("DD/MM/YYYY", "DD/MM/YYYY")}
+                    />
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Comuna di nascita <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  <VirtualizedSelect
+                    options={city_of_birth}
+                    onChange={(city_of_birth) =>
+                      this.setState({ city_of_birth: city_of_birth.value })
+                    }
+                    value={this.state.city_of_birth}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Provincia <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  <VirtualizedSelect
+                    options={province_of_birthOptions}
+                    onChange={(province_of_birth) =>
+                      this.setState({
+                        province_of_birth: province_of_birth.value,
+                      })
+                    }
+                    value={this.state.province_of_birth}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Nazione <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {nazione === "" && <Select>{nazioneList}</Select>}
+                  {nazione !== "" && (
+                    <Select defaultValue={this.state.nazione}>
+                      {nazioneList}
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Indirizo <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("address", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your name!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Nazione di Residenza <span>*</span>
+                </div>
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={nazioneDiResidencaOptions}
+                    onChange={(selectValue) =>
+                      this.changeNazioneDiResidenca(selectValue)
+                    }
+                    value={this.state.nazioneDiResidenca}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
 
-            <Form.Item>
-              {getFieldDecorator("first_name", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your name!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Cognome</span>
-
-            <Form.Item>
-              {getFieldDecorator("last_name", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your last name!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Sesso</span>
-
-            <Form.Item>
-              {getFieldDecorator("gender", {
-                initialValue: "",
-                rules: [
-                  {
-                    required: true,
-                    message: "Please select your gender!",
-                  },
-                ],
-              })(
-                <Select>
-                  <Option value="M">Maschile</Option>
-                  <Option value="F">Feminile</Option>
-                </Select>
-              )}
-            </Form.Item>
-            <span className="inpLabel">Nickname</span>
-
-            <Form.Item>
-              {getFieldDecorator("nickname", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your fiscal code!",
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">email</span>
-            <Form.Item>
-              {getFieldDecorator("email", {
-                rules: [
-                  {
-                    type: "email",
-                    message: "The input is not valid E-mail!",
-                  },
-                  {
-                    required: true,
-                    message: "Please input your E-mail!",
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Telefono</span>
-
-            <Form.Item>
-              {getFieldDecorator("number", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your phone number!",
-                  },
-                ],
-              })(<Input addonBefore={number_prefix} />)}
-            </Form.Item>
-            <div
-              className="stepBtn"
-              onClick={() => {
-                this.props.form.validateFields(["email"], (err, val) => {
-                  if (!err) {
-                    this.nextStep();
-                  }
-                });
-              }}
-            >
-              Next Step 2/4
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Cap di Residenza{" "}
+                  <span
+                    onMouseOver={() => {
+                      this.setState({ capHelper: true });
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({ capHelper: false });
+                    }}
+                  >
+                    * (?)
+                    {this.state.capHelper && (
+                      <div className="helper">Il cap deve avere 5 numeri</div>
+                    )}
+                  </span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("cap", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input postcode!",
+                        whitespace: true,
+                      },
+                      {
+                        validator: (a, b, c) => {
+                          const { form } = this.props;
+                          const numbers = /[0-9]/g;
+                          if (
+                            form.getFieldValue("cap").match(numbers) &&
+                            form.getFieldValue("cap").length === 5
+                          ) {
+                            c();
+                          } else {
+                            c("Cap sbagliato!");
+                          }
+                        },
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Provincia di Residenza <span>*</span>
+                </div>
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={provincaDiResidencaProvinciaOptions}
+                    onChange={(provincaDiResidencaProvinciaOptions) =>
+                      this.setState({
+                        residence_province:
+                          provincaDiResidencaProvinciaOptions.value,
+                      })
+                    }
+                    value={this.state.residence_province}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Comune di Residenza <span>*</span>
+                </div>
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={residence_cityOptions}
+                    onChange={(residence_city) =>
+                      this.setState({
+                        residence_city: residence_city.value,
+                      })
+                    }
+                    value={this.state.residence_city}
+                    maxHeight={100}
+                    // placeholder="comune di residenza*"
+                  />
+                </Form.Item>
+              </div>
+            </div>
+            <div className="newReg--row__col">
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Ragione Sociale <span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("aRagSoc", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input rag sociale!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Insegna <span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("aInsegna", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input insegna!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Cordinate
+                  <span
+                    onMouseOver={() => {
+                      this.setState({ cordHelp: true });
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({ cordHelp: false });
+                    }}
+                  >
+                    * (?)
+                    {this.state.cordHelp && (
+                      <div className="helper">
+                        La tua posizione latitudine, longitudine
+                      </div>
+                    )}
+                  </span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("cordinate", {
+                    rules: [
+                      {
+                        required: false,
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Telefono Agenzia <span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("aPhone", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input phone number",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input addonBefore={number_prefix} />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Sede Operativa<span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aAdress", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input adress",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Codice Fiscale Agenzia<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("aFcode", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input codice",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Comune<span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aCity", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input City",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Cap Agenzia{" "}
+                  <span
+                    onMouseOver={() => {
+                      this.setState({ aCapHelp: true });
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({ aCapHelp: false });
+                    }}
+                  >
+                    * (?)
+                    {this.state.aCapHelp && (
+                      <div className="helper">Il cap deve avere 5 numeri</div>
+                    )}
+                  </span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aCap", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input cap",
+                        whitespace: true,
+                      },
+                      {
+                        validator: (a, b, c) => {
+                          const { form } = this.props;
+                          const numbers = /[0-9]/g;
+                          if (
+                            form.getFieldValue("aCap").match(numbers) &&
+                            form.getFieldValue("aCap").length === 5
+                          ) {
+                            c();
+                          } else {
+                            c("Cap sbagliato!");
+                          }
+                        },
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Provincia di Residenza Agenzia<span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aComcode", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire Comune",
+                        whitespace: true,
+                      },
+                      {
+                        validator: (a, b, c) => {
+                          const { form } = this.props;
+                          if (form.getFieldValue("aComcode").length === 2) {
+                            c();
+                          } else {
+                            c("Comune deve essere 2 characteri! (ex:MI)");
+                          }
+                        },
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Nazione di residenza Agenzia<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("aCountry", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input Country",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  P.Iva<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("aPiva", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input p.Iva",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi piva">
+                <div className="inputLabel">
+                  Verifica P.iva<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("pivaVerifica", {
+                    rules: [
+                      {
+                        required: false,
+                        whitespace: true,
+                      },
+                    ],
+                  })(
+                    <div>
+                      <Select>
+                        <Option value="a">Validato</Option>
+                        <Option value="b">Non Validato</Option>
+                      </Select>
+                    </div>
+                  )}
+                  <i className="fas fa-file-check"></i>
+                  <a
+                    target="_blank"
+                    href="https://telematici.agenziaentrate.gov.it/VerificaPIVA/Scegli.do?parameter=verificaPiva"
+                  >
+                    <i className="fas fa-link"></i>
+                  </a>
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Pagamento Mensile<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("pagmensile", {
+                      rules: [
+                        {
+                          required: false,
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Costo Anuale<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("costoAnuale", {
+                      rules: [
+                        {
+                          required: false,
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+            </div>
+            <div className="newReg--row__col">
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Nickname
+                  <span
+                    onMouseOver={() => {
+                      this.setState({ nicknameHelp: true });
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({ nicknameHelp: false });
+                    }}
+                  >
+                    * (?)
+                    {this.state.nicknameHelp && (
+                      <div className="helper">
+                        Il nickname deve contenere più di 7 caratteri
+                      </div>
+                    )}
+                  </span>
+                  <Form.Item hasFeedback>
+                    {getFieldDecorator("nickname", {
+                      rules: [
+                        {
+                          required: true,
+                          message: "Please input your nickname!",
+                        },
+                        {
+                          validator: (a, b, c) => {
+                            const { form } = this.props;
+                            if (form.getFieldValue("nickname").length >= 8) {
+                              c();
+                            } else {
+                              c("Nickname corto!");
+                            }
+                          },
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Password<span>*</span>
+                  <Form.Item hasFeedback>
+                    {getFieldDecorator("password", {
+                      rules: [
+                        {
+                          required: true,
+                          message: "Please input your password!",
+                        },
+                      ],
+                    })(<Input.Password type="password" />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Conferma Password<span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("conpassword", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your password!",
+                      },
+                      {
+                        validator: (a, b, c) => {
+                          const { form } = this.props;
+                          if (
+                            form.getFieldValue("password") ===
+                            form.getFieldValue("conpassword")
+                          ) {
+                            c();
+                          } else {
+                            c("Conferma password errata!");
+                          }
+                        },
+                      },
+                    ],
+                  })(<Input.Password />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  CELLULARE<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("number", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your phone number!",
+                      },
+                    ],
+                  })(<Input addonBefore={number_prefix} />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Tipo Documento<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("identity_type", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please select your document type!",
+                      },
+                    ],
+                  })(
+                    <Select onChange={this.onChangeIdentity}>
+                      <Option value="1">Carta di identita</Option>
+                      <Option value="2">Patenta di guida</Option>
+                      <Option value="3">Passaporto</Option>
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Numero Documento<span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("identity_id", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your doc!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Rilasciato da<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("rilda", {
+                      rules: [
+                        {
+                          required: true,
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Luogo di rilascio<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("luril", {
+                      rules: [
+                        {
+                          required: true,
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Data di rilascio<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("dateril", {
+                      initialValue: moment(this.state.nascita, dateFormat),
+                      rules: [{ required: true }],
+                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Data di scadenza<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("datescad", {
+                      initialValue: moment(this.state.nascita, dateFormat),
+                      rules: [{ required: true }],
+                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol full">
+                {register.message && (
+                  <React.Fragment>
+                    {register.role ? (
+                      <React.Fragment>
+                        <div className="Nmessage S">
+                          <i
+                            className="fas fa-check-circle"
+                            aria-hidden="true"
+                          ></i>
+                          {register.message}
+                        </div>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <div className="Nmessage E">
+                          <i
+                            className="fas fa-times-circle"
+                            aria-hidden="true"
+                          ></i>
+                          {register.message}
+                        </div>
+                      </React.Fragment>
+                    )}
+                  </React.Fragment>
+                )}
+              </div>
             </div>
           </div>
-
-          <div className={"step step2" + (step === 2 ? " isActive" : "")}>
-            <div className="titleReg">Data anagrafici</div>
-            <span className="inpLabel">Data di nascita</span>
-
-            <Form.Item>
-              {getFieldDecorator("birthday", {
-                initialValue:
-                  this.state.nascita !== "" &&
-                  moment(this.state.nascita, dateFormat),
-                rules: [{ required: true }],
-              })(
-                <DatePicker
-                  // placeholder="Data di nascita*"
-                  format={("DD/MM/YYYY", "DD/MM/YYYY")}
-                />
-              )}
-            </Form.Item>
-            <span className="inpLabel">Nazione di nascita</span>
-            <Form.Item>
-              {nazione === "" && <Select>{nazioneList}</Select>}
-              {nazione !== "" && (
-                <Select defaultValue={this.state.nazione}>{nazioneList}</Select>
-              )}
-            </Form.Item>
-            <span className="inpLabel">provincia di nascita</span>
-            <Form.Item>
-              <VirtualizedSelect
-                options={province_of_birthOptions}
-                onChange={(province_of_birth) =>
-                  this.setState({
-                    province_of_birth: province_of_birth.value,
-                  })
-                }
-                value={this.state.province_of_birth}
-                maxHeight={100}
-                // placeholder={
-                //   comuniSelected.sigla
-                //     ? comuniSelected.sigla
-                //     : "provincia di nascita*"
-                // }
-              />
-            </Form.Item>
-            <span className="inpLabel">Comune di nascita</span>
-
-            <Form.Item>
-              <VirtualizedSelect
-                options={city_of_birth}
-                onChange={(city_of_birth) =>
-                  this.setState({ city_of_birth: city_of_birth.value })
-                }
-                value={this.state.city_of_birth}
-                maxHeight={100}
-              />
-            </Form.Item>
-            <span className="inpLabel">Nazione di residenza</span>
-
-            <Form.Item>
-              <VirtualizedSelect
-                options={nazioneDiResidencaOptions}
-                onChange={(selectValue) =>
-                  this.changeNazioneDiResidenca(selectValue)
-                }
-                value={this.state.nazioneDiResidenca}
-                maxHeight={100}
-              />
-            </Form.Item>
-            <span className="inpLabel">provincia di residenza</span>
-            <Form.Item>
-              <VirtualizedSelect
-                options={provincaDiResidencaProvinciaOptions}
-                onChange={(provincaDiResidencaProvinciaOptions) =>
-                  this.setState({
-                    residence_province:
-                      provincaDiResidencaProvinciaOptions.value,
-                  })
-                }
-                value={this.state.residence_province}
-                maxHeight={100}
-              />
-            </Form.Item>
-            <span className="inpLabel">comune di residenza</span>
-
-            <Form.Item>
-              <VirtualizedSelect
-                options={residence_cityOptions}
-                onChange={(residence_city) =>
-                  this.setState({
-                    residence_city: residence_city.value,
-                  })
-                }
-                value={this.state.residence_city}
-                maxHeight={100}
-                // placeholder="comune di residenza*"
-              />
-            </Form.Item>
-            <span className="inpLabel">indirizzo di residenza</span>
-
-            <Form.Item>
-              {getFieldDecorator("address", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your name!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">CAP</span>
-
-            <Form.Item>
-              {getFieldDecorator("cap", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input postcode!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <div className="stepBtn" onClick={this.prevStep}>
-              Prev Step 1/4
+          <div className="newReg--row">
+            <div className="newReg--row__col">
+              <Checkbox onChange={() => {}}>
+                Accetto l`informativa sul trattamento dei dati personali e sulla
+                Privacy Policy
+              </Checkbox>
             </div>
-            <div className="stepBtn" onClick={this.nextStep}>
-              Next Step 3/4
+            <div className="newReg--row__col">
+              <Checkbox onChange={() => {}}>
+                Desidero ricevere e-mail promozionali, e info di servizi o altro
+              </Checkbox>
             </div>
-          </div>
-
-          <div className={"step step3" + (step === 3 ? " isActive" : "")}>
-            <div className="titleReg">Documenti per servizi aggiuntivi</div>
-            <span className="inpLabel">Tipo documento</span>
-
-            <Form.Item>
-              {getFieldDecorator("identity_type", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please select your document type!",
-                  },
-                ],
-              })(
-                <Select
-                  // placeholder="Tipo documento*"
-                  onChange={this.onChangeIdentity}
-                >
-                  <Option value="1">Carta di identita</Option>
-                  <Option value="2">Patenta di guida</Option>
-                  <Option value="3">Passaporto</Option>
-                </Select>
-              )}
-            </Form.Item>
-            <span className="inpLabel">Numero documento</span>
-
-            <Form.Item>
-              {getFieldDecorator("identity_id", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input your doc!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-
-            <div className="stepBtn" onClick={() => this.prevStep()}>
-              Prev Step 2/4
+            <div className="newReg--row__col submitcol">
+              <Button type="primary" className="SubmitButton" htmlType="submit">
+                Registrati
+              </Button>
             </div>
-            <div className="stepBtn" onClick={() => this.nextStep()}>
-              Next Step 4/4
-            </div>
-          </div>
-
-          <div className={"step step4" + (step === 4 ? " isActive" : "")}>
-            <div className="titleReg"> DATI PUNTO VENDITA</div>
-            <span className="inpLabel">Ragione Sociale</span>
-            <Form.Item>
-              {getFieldDecorator("aRagSoc", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input rag sociale!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Insegna</span>
-            <Form.Item>
-              {getFieldDecorator("aInsegna", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input insegna!",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Agensy Phone</span>
-            <Form.Item>
-              {getFieldDecorator("aPhone", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input phone number",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Adress</span>
-            <Form.Item>
-              {getFieldDecorator("aAdress", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input adress",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Agency City</span>
-            <Form.Item>
-              {getFieldDecorator("aCity", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input City",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Comune Code</span>
-            <Form.Item>
-              {getFieldDecorator("aComcode", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input City",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Agency Cap</span>
-            <Form.Item>
-              {getFieldDecorator("aCap", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input cap",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">p.Iva</span>
-            <Form.Item>
-              {getFieldDecorator("aPiva", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input p.Iva",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <span className="inpLabel">Agency Codice Fiscale</span>
-            <Form.Item>
-              {getFieldDecorator("aFcode", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input codice",
-                    whitespace: true,
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <div className="stepBtn" onClick={this.prevStep}>
-              Prev Step 3/4
-            </div>
-            <Button type="primary" className="stepBtn" htmlType="submit">
-              Registrati
-            </Button>
           </div>
         </Form>
-        {register.message && (
-          <div className="messagePopUp">
-            <div className="close">
-              <i onClick={this.hideAlert} className="fa fa-times-circle"></i>
-            </div>
-            {register.role ? (
-              <React.Fragment>
-                <div className="heading">
-                  congratulazioni <i className="fal fa-user-check"></i>
-                </div>
-                <div className="errors">{register.message}</div>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <div className="heading">
-                  Attenzione <i className="fad fa-exclamation"></i>
-                </div>
-                <div className="errors">{register.message}</div>
-              </React.Fragment>
-            )}
-          </div>
-        )}
       </Fragment>
     );
   }

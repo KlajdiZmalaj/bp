@@ -525,3 +525,172 @@
     border-radius: 20px;
   }
 }
+
+.newReg {
+  display: flex;
+  flex-flow: column;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #fff;
+  &--header {
+    background-color: #f26521;
+    color: #212529;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &--row {
+    display: flex;
+    flex-flow: row;
+    @media (max-width: 1024px) {
+      flex-flow: column;
+    }
+    &__col {
+      width: calc(100% / 3);
+      @media (max-width: 1024px) {
+        width: calc(100%);
+      }
+      border-right: 1px solid #b8bbc0;
+      padding: 20px 5px;
+      display: flex;
+      flex-flow: row wrap;
+
+      &:last-child {
+        border-right: 0;
+      }
+      .itemCol {
+        padding: 5px;
+        &.full {
+          width: 100%;
+        }
+        &.semi {
+          width: 50%;
+        }
+      }
+      &.submitcol {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 30px;
+      }
+    }
+  }
+  .ant-select-selection--single,
+  .ant-calendar-picker {
+    width: 100%;
+  }
+  .inputLabel {
+    color: #b8bbc0;
+    > span {
+      color: var(--red);
+      position: relative;
+      cursor: pointer;
+    }
+  }
+  .SubmitButton {
+    background-color: #f26521;
+    color: #25282e;
+    border: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+    height: 40px;
+  }
+  .ant-row {
+    margin: 0;
+    padding: 0;
+  }
+  .ant-checkbox-wrapper {
+    white-space: pre-wrap;
+    font-size: 12px;
+    padding-left: 14px;
+  }
+  .ant-input,
+  .ant-select-selection,
+  .ant-checkbox,
+  .Select-control {
+    border: 0;
+    border-radius: 0;
+    background-color: #dce1e6;
+    border: 1px solid #dce1e6;
+  }
+  .piva .ant-form-item-children {
+    display: flex;
+    background: #dce1e6;
+    justify-content: space-between;
+    align-items: center;
+    .fa-file-check {
+      color: #14a137;
+      position: relative;
+      right: 5px;
+    }
+    .fa-link {
+      color: #166ca5;
+      position: relative;
+      right: 7px;
+      cursor: pointer;
+    }
+  }
+
+  .Select-clear-zone {
+    display: none;
+  }
+  .ant-input-group-addon {
+    padding: 0 !important;
+  }
+  div#infoUser_pivaVerifica {
+    width: 80%;
+  }
+  input#infoUser_number_prefix {
+    height: 30px;
+    border-radius: 0;
+  }
+  .Select-input,
+  .Select-control {
+    height: 30px;
+  }
+  .ant-form-item-control {
+    line-height: unset;
+  }
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+  .ant-checkbox:hover .ant-checkbox-inner,
+  .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: #f26521;
+  }
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #f26521;
+    border-color: #f26521;
+  }
+  .helper {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    white-space: nowrap;
+    top: 0;
+    transform: translate(101%, -19px);
+    background: #ccc;
+    color: #222;
+    padding: 2px 7px;
+    border-radius: 6px;
+  }
+}
+.Nmessage {
+  background-color: #ce3232;
+  color: #fff;
+  text-align: center;
+  padding: 7px;
+  border-radius: 2px;
+  text-transform: capitalize;
+  &.S {
+    background-color: #01cc67;
+    color: #222;
+  }
+  i {
+    margin-right: 3px;
+  }
+}
