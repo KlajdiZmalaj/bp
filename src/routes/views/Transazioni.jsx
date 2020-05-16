@@ -422,6 +422,7 @@ class Transazioni extends React.Component {
                       <td className="right">Importo</td>
                       <td className="right">Commissione</td>
                       <td className="right">Proviggione</td>
+                      <td className="right">Saldo</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -465,6 +466,10 @@ class Transazioni extends React.Component {
                                 {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
+                              </td>
+                              <td className="right">
+                                {" "}
+                                {item.saldo !== "-" ? "€" + item.saldo : "-"}
                               </td>
                             </tr>
                           )

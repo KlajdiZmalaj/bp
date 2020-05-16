@@ -662,4 +662,248 @@
   background: #ccc;
   border-radius: 20px;
 }
+
+.newReg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #fff;
+}
+
+.newReg--header {
+  background-color: #f26521;
+  color: #212529;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 18px;
+  letter-spacing: 5px;
+}
+
+.newReg--row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+}
+
+@media (max-width: 1024px) {
+  .newReg--row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+  }
+}
+
+.newReg--row__col {
+  width: calc(100% / 3);
+  border-right: 1px solid #b8bbc0;
+  padding: 20px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+@media (max-width: 1024px) {
+  .newReg--row__col {
+    width: calc(100%);
+  }
+}
+
+.newReg--row__col:last-child {
+  border-right: 0;
+}
+
+.newReg--row__col .itemCol {
+  padding: 5px;
+}
+
+.newReg--row__col .itemCol.full {
+  width: 100%;
+}
+
+.newReg--row__col .itemCol.semi {
+  width: 50%;
+}
+
+.newReg--row__col.submitcol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.newReg .ant-select-selection--single,
+.newReg .ant-calendar-picker {
+  width: 100%;
+}
+
+.newReg .inputLabel {
+  color: #5c5c5c;
+}
+
+.newReg .inputLabel > span {
+  color: var(--red);
+  position: relative;
+  cursor: pointer;
+}
+
+.newReg .SubmitButton {
+  background-color: #f26521;
+  color: #25282e;
+  border: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+  height: 40px;
+}
+
+.newReg .ant-row {
+  margin: 0;
+  padding: 0;
+}
+
+.newReg .ant-checkbox-wrapper {
+  white-space: pre-wrap;
+  font-size: 12px;
+  padding-left: 14px;
+}
+
+.newReg .ant-input,
+.newReg .ant-select-selection,
+.newReg .Select-control {
+  border: 0;
+  border-radius: 0;
+  background-color: #dce1e6;
+  border: 1px solid #dce1e6;
+  color: #5c5c5c;
+  height: 35px;
+}
+
+.newReg .piva .ant-form-item-children {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #dce1e6;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.newReg .piva .ant-form-item-children .fa-file-check {
+  color: #14a137;
+  position: relative;
+  right: 5px;
+}
+
+.newReg .piva .ant-form-item-children .fa-link {
+  color: #166ca5;
+  position: relative;
+  right: 7px;
+  cursor: pointer;
+}
+
+.newReg .Select-clear-zone {
+  display: none;
+}
+
+.newReg .ant-input-group-addon {
+  padding: 0 !important;
+  border-radius: 0;
+}
+
+.newReg div#infoUser_pivaVerifica {
+  width: 80%;
+}
+
+.newReg input#infoUser_number_prefix {
+  height: 33px;
+  border-radius: 0;
+}
+
+.newReg .Select-input,
+.newReg .Select-control {
+  height: 35px;
+}
+
+.newReg .ant-form-item-control {
+  line-height: unset;
+}
+
+.newReg .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.newReg .ant-checkbox:hover .ant-checkbox-inner,
+.newReg .ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: #f26521;
+}
+
+.newReg .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #f26521;
+  border-color: #f26521;
+}
+
+.newReg .helper {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  white-space: nowrap;
+  top: 0;
+  -webkit-transform: translate(101%, -19px);
+          transform: translate(101%, -19px);
+  background: #ccc;
+  color: #222;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.Nmessage {
+  background-color: #ce3232;
+  color: #fff;
+  text-align: center;
+  padding: 7px;
+  border-radius: 2px;
+  text-transform: capitalize;
+}
+
+.Nmessage.S {
+  background-color: #01cc67;
+  color: #222;
+}
+
+.Nmessage i {
+  margin-right: 3px;
+}
 /*# sourceMappingURL=register.css.map */
