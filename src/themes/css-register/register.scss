@@ -544,6 +544,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
+    letter-spacing: 5px;
   }
   &--row {
     display: flex;
@@ -586,7 +588,7 @@
     width: 100%;
   }
   .inputLabel {
-    color: #b8bbc0;
+    color: #5c5c5c;
     > span {
       color: var(--red);
       position: relative;
@@ -612,12 +614,13 @@
   }
   .ant-input,
   .ant-select-selection,
-  .ant-checkbox,
   .Select-control {
     border: 0;
     border-radius: 0;
     background-color: #dce1e6;
     border: 1px solid #dce1e6;
+    color: #5c5c5c;
+    height: 35px;
   }
   .piva .ant-form-item-children {
     display: flex;
@@ -642,17 +645,18 @@
   }
   .ant-input-group-addon {
     padding: 0 !important;
+    border-radius: 0;
   }
   div#infoUser_pivaVerifica {
     width: 80%;
   }
   input#infoUser_number_prefix {
-    height: 30px;
+    height: 33px;
     border-radius: 0;
   }
   .Select-input,
   .Select-control {
-    height: 30px;
+    height: 35px;
   }
   .ant-form-item-control {
     line-height: unset;
