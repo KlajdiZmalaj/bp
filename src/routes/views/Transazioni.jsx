@@ -416,9 +416,10 @@ class Transazioni extends React.Component {
                 <table className="transTable">
                   <thead>
                     <tr>
-                      <td>Date / Ora</td>
+                      <td className="wsNwp">Date / Ora</td>
                       <td>Barcode</td>
-                      <td>Service</td>
+                      <td className="wsNwp">User</td>
+                      <td className="wsNwp">Service</td>
                       <td className="right">Importo</td>
                       <td className="right">Commissione</td>
                       <td className="right">Proviggione</td>
@@ -445,31 +446,43 @@ class Transazioni extends React.Component {
                                 )
                               }
                             >
-                              <td>
+                              <td className="wsNwp">
                                 {moment(item.executed_date).format(
                                   "DD/MM/YYYY HH:mm:ss"
                                 )}
                               </td>
-                              <td>{item.barcode}</td>
-                              <td>{item.service_name}</td>
+                              <td>
+                                <div className="bc">{item.barcode}</div>
+                              </td>
+                              <td className="wsNwp">
+                                {" "}
+                                <i
+                                  className="fal fa-user-circle"
+                                  aria-hidden="true"
+                                ></i>{" "}
+                                {item.agency_name}
+                              </td>
+                              <td className="wsNwp">{item.service_name}</td>
+
                               <td className="right">
                                 {item.price1000
                                   ? slicedAmount(item.price1000 / 1000)
                                   : "-"}
+                                €
                               </td>
                               <td className="right">
-                                {item.commissione}
+                                {item.commissione}€
                                 {/* {item.commissione ? item.commissione : "-"}{" "} */}
                               </td>
                               <td className="right">
-                                {item.percentage}
+                                {item.percentage}€
                                 {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
                               </td>
                               <td className="right">
                                 {" "}
-                                {item.saldo !== "-" ? "€" + item.saldo : "-"}
+                                {item.saldo !== "-" ? item.saldo + "€" : "-"}
                               </td>
                             </tr>
                           )
