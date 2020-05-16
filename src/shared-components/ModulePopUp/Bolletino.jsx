@@ -34,13 +34,13 @@ class Bolletino extends React.Component {
       });
     }, 10);
   };
-  BinputHandler = (e) => {
-    this.setState({ BinpVal: e.target.value });
-    if (this.state.BinpVal.length >= 40) {
-      this.props.getBarcodeData(this.state.BinpVal, this.callback);
-      // "18000023200682255466120000420832041000000031603896"
-    }
-  };
+  // BinputHandler = (e) => {
+  //   this.setState({ BinpVal: e.target.value });
+  //   if (this.state.BinpVal.length >= 40) {
+  //     this.props.getBarcodeData(this.state.BinpVal, this.callback);
+  //     // "18000023200682255466120000420832041000000031603896"
+  //   }
+  // };
   clearFields = () => {
     this.props.form.setFieldsValue({
       numero_conto_corrente: "",
@@ -185,8 +185,47 @@ class Bolletino extends React.Component {
             <div className="row no-gutters _modulePopUP__body">
               <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
                 <input
-                  onChange={(e) => {
-                    this.BinputHandler(e);
+                  onBlur={(e) => {
+                    // this.BinputHandler(e);
+                    let bartcode = e.target.value;
+
+                    const counter1 = bartcode.substring(0, 2); //2shifror
+                    const codiceIdf = bartcode.substring(
+                      2,
+                      2 + parseInt(counter1)
+                    );
+
+                    const counter2 = bartcode.substring(20, 22); //2shifror
+                    const sulCC = bartcode.substring(
+                      22,
+                      22 + parseInt(counter2)
+                    );
+
+                    const counter3 = bartcode.substring(34, 36); //2shifror
+                    const shuma = bartcode.substring(
+                      36,
+                      36 + parseInt(counter3)
+                    );
+
+                    const counter4 = bartcode.substring(46, 47); //1shifror
+                    const tipologia = bartcode.substring(
+                      47,
+                      47 + parseInt(counter4)
+                    );
+                    this.props.form.setFieldsValue({
+                      codice_identificativo: codiceIdf,
+                      importo: parseFloat(shuma.toString()) / 100,
+                      numero_conto_corrente: sulCC,
+                      tipologia: tipologia,
+                    });
+                    // console.log(
+                    //   "ca ka barcode",
+                    //   bartcode,
+                    //   codiceIdf,
+                    //   sulCC,
+                    //   shuma,
+                    //   tipologia
+                    // );
                   }}
                   type="text"
                   id="barcodeInp"
