@@ -534,6 +534,8 @@
   margin-top: 50px;
   margin-bottom: 50px;
   background-color: #fff;
+  max-width: 1371px;
+
   &--header {
     background-color: #f26521;
     color: #212529;
@@ -696,5 +698,42 @@
   }
   i {
     margin-right: 3px;
+  }
+}
+.checkField {
+  background-color: #dce1e6;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row;
+  &--check {
+    width: 14px;
+    margin: 0 10px;
+    border-radius: 50px;
+    border: 2px solid #5c5c5c;
+    height: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      border-color: #01cc67;
+      &:before {
+        content: " ";
+        content: " ";
+        width: 4px;
+        height: 6px;
+        background-color: #01cc67;
+        border-radius: 10px;
+        display: block;
+      }
+    }
+  }
+  input {
+    border: 0;
+    height: 100%;
+    flex-grow: 1;
+    background-color: transparent;
   }
 }
