@@ -14,6 +14,7 @@ class ModulePopUp4 extends React.Component {
       tel_no: "",
       barcode: "21312",
       toPrint: false,
+      confermaMsg: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -47,7 +48,7 @@ class ModulePopUp4 extends React.Component {
     const { service_s, rechargeMobile, serviceType, service } = this.props;
     console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
-    const { serviceMobile, tel_no, toPrint } = this.state;
+    const { serviceMobile, tel_no, toPrint, confermaMsg } = this.state;
 
     const arr = {
       message: "User transactions fetched successfully",
@@ -97,6 +98,35 @@ class ModulePopUp4 extends React.Component {
                 </div>
                 <div className="col-9 ">
                   <div className="rightCarrierCOL" data-aos="flip-right">
+                    {this.state.confermaMsg && (
+                      <div className="confermaMsg animated bounce">
+                        <div className="info">
+                          Stai eseguiendo una ricarica da €
+                          {serviceMobile.cost.toString()}. <br /> Confermi?
+                        </div>
+                        <div className="buttons">
+                          <button
+                            onClick={() => {
+                              this.handleSubmit(
+                                serviceMobile.service_id,
+                                tel_no
+                              );
+                              this.setPrint(true);
+                              this.setState({ confermaMsg: false });
+                            }}
+                          >
+                            Si
+                          </button>
+                          <button
+                            onClick={() => {
+                              this.setState({ confermaMsg: false });
+                            }}
+                          >
+                            No
+                          </button>
+                        </div>
+                      </div>
+                    )}
                     <div className="row no-gutters">
                       <h4>{serviceMobile.name}</h4>
                     </div>
@@ -181,11 +211,7 @@ class ModulePopUp4 extends React.Component {
                             <tr>
                               <td
                                 onClick={() => {
-                                  this.handleSubmit(
-                                    serviceMobile.service_id,
-                                    tel_no
-                                  );
-                                  this.setPrint(true);
+                                  this.setState({ confermaMsg: true });
                                 }}
                               >
                                 <h3>esegui</h3>
