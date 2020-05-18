@@ -2923,6 +2923,7 @@ span.superSmall {
 .rightCarrierCOL {
   border: 1px solid #edeef0;
   position: relative;
+  overflow: hidden;
   height: 100%;
 }
 

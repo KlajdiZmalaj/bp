@@ -422,6 +422,7 @@
 .rightCarrierCOL {
   border: 1px solid $second;
   position: relative;
+  overflow: hidden;
   height: 100%;
   h4 {
     font-family: $font1;

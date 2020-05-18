@@ -329,4 +329,50 @@
   background-color: #ad2c2c;
   color: #fff;
 }
+
+.confermaMsg {
+  position: absolute;
+  background: #f3f3f3db;
+  z-index: 1;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 10px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  height: 100%;
+  text-align: center;
+}
+
+.confermaMsg .info {
+  text-transform: unset;
+}
+
+.confermaMsg .buttons button {
+  border: 0;
+  background-color: transparent;
+  padding: 3px 10px;
+  margin: 3px;
+}
+
+.confermaMsg .buttons button:nth-child(1) {
+  background-color: #379737;
+  color: #fff;
+}
+
+.confermaMsg .buttons button:nth-child(2) {
+  background-color: #c22e2e;
+  color: #fff;
+}
 /*# sourceMappingURL=style.css.map */
