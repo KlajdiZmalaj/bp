@@ -65,6 +65,8 @@ class RegisterEndUser extends React.Component {
     imageUrl2: "",
     loading: false,
     step: 1,
+    pagamensileInp: "",
+    costoanualeInp: "",
   };
   componentDidMount() {
     fetch("https://ipapi.co/json")
@@ -406,7 +408,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your fiscal code!",
+                        message: "Inserisci fiscal code!",
                       },
                     ],
                   })(
@@ -427,7 +429,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your name!",
+                        message: "Inserire nome!",
                         whitespace: true,
                       },
                     ],
@@ -443,7 +445,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your last name!",
+                        message: "Inserire cognome!",
                         whitespace: true,
                       },
                     ],
@@ -460,7 +462,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please select your gender!",
+                        message: "Inserire sesso!",
                       },
                     ],
                   })(
@@ -480,11 +482,11 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         type: "email",
-                        message: "The input is not valid E-mail!",
+                        message: "L'input non è valido E-mail!",
                       },
                       {
                         required: true,
-                        message: "Please input your E-mail!",
+                        message: "Inserisci la tua e-mail!",
                       },
                     ],
                   })(<Input />)}
@@ -558,14 +560,14 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Indirizo <span>*</span>
+                  Indirizzo <span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   {getFieldDecorator("address", {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your name!",
+                        message: "Inserire nome!",
                         whitespace: true,
                       },
                     ],
@@ -610,7 +612,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input postcode!",
+                        message: "Inserire postcode!",
                         whitespace: true,
                       },
                       {
@@ -678,7 +680,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input rag sociale!",
+                        message: "Inserire rag sociale!",
                         whitespace: true,
                       },
                     ],
@@ -694,7 +696,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input insegna!",
+                        message: "Inserire insegna!",
                         whitespace: true,
                       },
                     ],
@@ -740,7 +742,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input phone number",
+                        message: "Inserire telefono",
                         whitespace: true,
                       },
                     ],
@@ -756,7 +758,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input adress",
+                        message: "Inserire adress",
                         whitespace: true,
                       },
                     ],
@@ -772,7 +774,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input codice",
+                        message: "Inserire codice",
                         whitespace: true,
                       },
                     ],
@@ -788,7 +790,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input City",
+                        message: "Inserire City",
                         whitespace: true,
                       },
                     ],
@@ -817,7 +819,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input cap",
+                        message: "Inserire cap",
                         whitespace: true,
                       },
                       {
@@ -873,7 +875,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input Country",
+                        message: "Inserire Nazione",
                         whitespace: true,
                       },
                     ],
@@ -889,7 +891,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input p.Iva",
+                        message: "Inserire p.Iva",
                         whitespace: true,
                       },
                     ],
@@ -925,34 +927,71 @@ class RegisterEndUser extends React.Component {
                   </a>
                 </Form.Item>
               </div>
+
+              {/* pagamensileInp : '',
+              costoanualeInp : '' */}
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Pagamento Mensile<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("pagmensile", {
-                      rules: [
-                        {
-                          required: false,
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
+                  <div className="checkField">
+                    <div
+                      onClick={() => {
+                        this.setState({
+                          costoanualeInp: "",
+                          mensilePag: true,
+                          anualePag: false,
+                        });
+                        setTimeout(() => {
+                          document.getElementById("inpMens").focus();
+                        }, 100);
+                      }}
+                      className={
+                        "checkField--check" +
+                        (this.state.mensilePag ? " active" : "")
+                      }
+                    ></div>
+                    <input
+                      disabled={this.state.mensilePag ? false : true}
+                      value={this.state.pagamensileInp}
+                      onChange={(e) => {
+                        this.setState({ pagamensileInp: e.target.value });
+                      }}
+                      id="inpMens"
+                      type="text"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Costo Anuale<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("costoAnuale", {
-                      rules: [
-                        {
-                          required: false,
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
+                  <div className="checkField">
+                    <div
+                      onClick={() => {
+                        this.setState({
+                          pagamensileInp: "",
+                          mensilePag: false,
+                          anualePag: true,
+                        });
+                        setTimeout(() => {
+                          document.getElementById("inpAnl").focus();
+                        }, 100);
+                      }}
+                      className={
+                        "checkField--check" +
+                        (this.state.anualePag ? " active" : "")
+                      }
+                    ></div>
+                    <input
+                      disabled={this.state.anualePag ? false : true}
+                      type="text"
+                      value={this.state.costoanualeInp}
+                      onChange={(e) => {
+                        this.setState({ costoanualeInp: e.target.value });
+                      }}
+                      id="inpAnl"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -980,7 +1019,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Please input your nickname!",
+                          message: "Inserire nickname!",
                         },
                         {
                           validator: (a, b, c) => {
@@ -1005,7 +1044,7 @@ class RegisterEndUser extends React.Component {
                       rules: [
                         {
                           required: true,
-                          message: "Please input your password!",
+                          message: "Inserire password!",
                         },
                       ],
                     })(<Input.Password type="password" />)}
@@ -1021,7 +1060,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your password!",
+                        message: "Inserire password!",
                       },
                       {
                         validator: (a, b, c) => {
@@ -1049,7 +1088,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your phone number!",
+                        message: "Inserire phone number!",
                       },
                     ],
                   })(<Input addonBefore={number_prefix} />)}
@@ -1064,7 +1103,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please select your document type!",
+                        message: "Inserire tipo di documenti!",
                       },
                     ],
                   })(
@@ -1085,7 +1124,7 @@ class RegisterEndUser extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your doc!",
+                        message: "Inserire document id!",
                         whitespace: true,
                       },
                     ],

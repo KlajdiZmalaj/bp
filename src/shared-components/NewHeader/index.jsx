@@ -163,7 +163,7 @@ class Header extends Component {
               this.props.history.push("/configura");
             }}
           >
-            <i class="fal fa-user-circle" aria-hidden="true"></i>
+            <i className="fal fa-user-circle" aria-hidden="true"></i>
           </button>
         </div>
         <div className={"bottom" + (isMobMenu ? " opened" : "")}>
