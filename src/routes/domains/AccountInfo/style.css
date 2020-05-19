@@ -58,7 +58,7 @@
 }
 
 .leftMenuAcc > div:hover, .leftMenuAcc > div.active {
-  border-bottom: 2px solid #ed4c14;
+  border-bottom: 2px solid var(--accent-bg);
 }
 
 .contentAcc {
@@ -73,7 +73,7 @@
 
 .contentAcc .ant-btn {
   border-radius: 0;
-  background: #ed4c14;
+  background: var(--accent-bg);
   border: 0;
   padding: 0 40px;
 }
@@ -102,7 +102,7 @@
 }
 
 .contentAcc .changePassword h2 {
-  color: #ed4c14;
+  color: var(--accent-bg);
   font-weight: 300;
   text-align: center;
 }
@@ -367,7 +367,7 @@
 }
 
 .userList .active {
-  color: #ed4c14;
+  color: var(--accent-bg);
 }
 
 .userList .popUp {
@@ -535,7 +535,7 @@
 }
 
 .userList .popUp .uploadSendBtn:hover {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #fff;
 }
 
@@ -554,7 +554,7 @@
 }
 
 .userList .popUp > i {
-  color: #ed4c14;
+  color: var(--accent-bg);
   font-size: 20px;
   position: absolute;
   right: 10px;
@@ -650,12 +650,12 @@
   font-weight: 500;
   font-size: 14px;
   text-transform: capitalize;
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   border-radius: 4px;
 }
 
 .fastCarica .addFounds:hover {
-  border-color: #ed4c14;
+  border-color: var(--accent-bg);
 }
 
 .fastCarica .amountGr {
@@ -785,7 +785,7 @@
 }
 
 .fastCarica .switchGr > span.active {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #fff;
 }
 
@@ -830,7 +830,7 @@
 }
 
 .ddUsers > span:hover {
-  color: #ed4c14;
+  color: var(--accent-bg);
 }
 
 .azcont {

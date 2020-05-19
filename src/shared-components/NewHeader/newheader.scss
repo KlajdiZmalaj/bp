@@ -28,14 +28,14 @@ body {
 
   &:hover {
     background-color: #fff;
-    color: #f36520;
+    color: var(--accent-bg);
   }
 }
 
 header.header {
   display: flex;
   flex-flow: column;
-  background-color: #f36520;
+  background-color: var(--accent-bg);
 
   width: 100%;
 
@@ -52,7 +52,7 @@ header.header {
 
       &:hover {
         background: #fff;
-        color: #f36520;
+        color: var(--accent-bg);
       }
     }
 
@@ -102,7 +102,7 @@ header.header {
       display: flex;
       .ads {
         position: absolute;
-        background: #f36520;
+        background: var(--accent-bg);
         z-index: 3;
         top: 26px;
         white-space: nowrap;
@@ -153,9 +153,10 @@ header.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--header-bg);
+    color: var(--header-txt);
     padding: 10px;
-    border-bottom: 2px solid #f36520;
+    border-bottom: 2px solid var(--accent-bg);
     box-shadow: 1px 18px 20px -22px black;
 
     .logo {
@@ -183,26 +184,26 @@ header.header {
       align-items: center;
       margin-right: 0;
       a {
-        color: #222;
         text-emphasis: none;
+        color: var(--header-txt);
       }
       &:last-child {
-        background-color: #f36520;
-        color: #fff;
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
         padding: 3px 16px;
         border-radius: 20px;
         a {
-          color: #fff;
+          color: var(--accent-txt);
         }
         &:hover {
-          color: #fff;
+          color: var(--accent-txt);
         }
       }
 
       cursor: pointer;
 
       &:hover {
-        color: #f36520;
+        color: var(--accent-bg);
       }
     }
   }
@@ -220,7 +221,7 @@ header.header {
     align-items: center;
     padding: 2px 15px;
     background-color: #fff;
-    border-bottom: 2px solid #f36520;
+    border-bottom: 2px solid var(--accent-bg);
 
     .logo {
       margin-top: 6px;
@@ -266,7 +267,7 @@ header.header {
         width: 16px;
         height: 15px;
         border-radius: 20px;
-        background-color: #f36520;
+        background-color: var(--accent-bg);
         color: #fff;
         font-size: 12px;
         position: absolute;
@@ -284,7 +285,7 @@ header.header {
       text-transform: uppercase;
       text-align: center;
       button {
-        background-color: #f36520;
+        background-color: var(--accent-bg);
         color: #fff;
         border: 0;
         padding: 5px 20px;

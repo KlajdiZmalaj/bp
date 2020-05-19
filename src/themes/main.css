@@ -26,12 +26,12 @@ footer {
 }
 
 ::-moz-selection {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #edeef0;
 }
 
 ::selection {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #edeef0;
 }
 
@@ -65,7 +65,7 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ed4c14;
+  background: var(--accent-bg);
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -91,7 +91,7 @@ a:hover {
   color: #333434;
   margin-left: 4px;
   padding: 8px 9px;
-  border-bottom: 2px solid #ed4c14;
+  border-bottom: 2px solid var(--accent-bg);
 }
 
 .rotating {
@@ -161,7 +161,7 @@ a:hover {
 }
 
 .login-logout li button:hover {
-  background: #ed4c14;
+  background: var(--accent-bg);
   color: #fff;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
@@ -341,7 +341,7 @@ a:hover {
 
 /*Navigation styles*/
 .navbar {
-  border-top: 3px solid #ed4c14;
+  border-top: 3px solid var(--accent-bg);
   background: #fff;
 }
 
@@ -354,7 +354,7 @@ a:hover {
 }
 
 .navbar .nav-link span {
-  color: #ed4c14;
+  color: var(--accent-bg);
 }
 
 .navbar .icons-nav {
@@ -407,7 +407,7 @@ a:hover {
 }
 
 .navbar .active a {
-  color: #ed4c14 !important;
+  color: var(--accent-bg) !important;
 }
 
 .navbar .navWrapper {
@@ -563,7 +563,7 @@ a:hover {
 }
 
 .download-overview button:hover {
-  background: #ed4c14;
+  background: var(--accent-bg);
   color: #fff;
 }
 
@@ -712,7 +712,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #f36520;
+  color: var(--accent-bg);
   padding: 0 20px;
   font-weight: 600;
   padding: 0 20px;
@@ -1055,7 +1055,7 @@ i#private {
 
 .titleConf i {
   font-size: 10px;
-  color: #ed4c14;
+  color: var(--accent-bg);
   padding-right: 5px;
 }
 
@@ -1232,7 +1232,7 @@ i#private {
 }
 
 .vaiBtn:hover {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #fff;
 }
 
@@ -1333,7 +1333,7 @@ i#private {
 }
 
 .transTable tbody tr:hover {
-  color: #ed4c14;
+  color: var(--accent-bg);
   cursor: pointer;
 }
 
@@ -1519,7 +1519,7 @@ i#private {
 
 .azioni-tab i {
   position: relative;
-  color: #ed4c14;
+  color: var(--accent-bg);
   bottom: 15px;
   left: 5px;
   margin: 0;
@@ -1542,11 +1542,11 @@ i#private {
 
 .azioni-tab:hover, .azioni-tab.active-tab {
   position: relative;
-  background: #f36520;
+  background: var(--accent-bg);
 }
 
 .azioni-tab:hover .icon, .azioni-tab.active-tab .icon {
-  color: #c94010;
+  color: #fff;
   top: -13px;
   right: -110px;
   opacity: 0.7;
@@ -1559,11 +1559,11 @@ i#private {
 }
 
 .active-tab {
-  border-bottom: 2px solid #ed4c14;
+  border-bottom: 2px solid var(--accent-bg);
 }
 
 .azioni-tab:hover {
-  border: 2px solid #ed4c14;
+  border: 2px solid var(--accent-bg);
 }
 
 .active-tab:after {
@@ -1792,7 +1792,7 @@ i#private {
 }
 
 .panel-tab i {
-  color: #ed4c14;
+  color: var(--accent-bg);
   font-size: 9px;
 }
 
@@ -1822,7 +1822,7 @@ i#private {
 
 .star.isFav i {
   font-weight: 600;
-  color: #ed4c14;
+  color: var(--accent-bg);
 }
 
 .panel-item {
@@ -1911,7 +1911,7 @@ i#private {
 }
 
 .clickedItem {
-  border-right: 4px solid #ed4c14;
+  border-right: 4px solid var(--accent-bg);
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
           box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
   position: relative;
@@ -1921,7 +1921,7 @@ i#private {
 }
 
 .clickedItem h4 {
-  color: #ed4c14;
+  color: var(--accent-bg);
   font-weight: 600;
 }
 
@@ -1991,7 +1991,7 @@ i#private {
 }
 
 .bolletini tr:nth-child(2) td:nth-child(1) {
-  color: #ed4c14;
+  color: var(--accent-bg);
 }
 
 .bolletini tr:nth-child(2) td:nth-child(2) {
@@ -2012,7 +2012,7 @@ i#private {
 }
 
 .phoneall h3 {
-  color: #ed4c14;
+  color: var(--accent-bg);
   margin-top: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -2055,8 +2055,8 @@ i#private {
 
 .nothinSelected .infos button {
   border: 0;
-  border: 1px solid #ed4c14;
-  color: #ed4c14;
+  border: 1px solid var(--accent-bg);
+  color: var(--accent-bg);
   background-color: transparent;
   padding: 10px;
   margin-top: auto;
@@ -2067,12 +2067,12 @@ i#private {
 }
 
 .nothinSelected .infos button:hover {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #fff;
 }
 
 .nothinSelected .infos h2 {
-  color: #ed4c14;
+  color: var(--accent-bg);
   font-size: 27px;
 }
 
@@ -2365,7 +2365,7 @@ span.superSmall {
 }
 
 .favorites .items .item:hover > span {
-  background-color: #ed4c14;
+  background-color: var(--accent-bg);
   color: #fff;
 }
 
@@ -2854,12 +2854,12 @@ span.superSmall {
 }
 
 .LeftSide-BTNs tr:hover td {
-  background: #ed4c14;
+  background: var(--accent-bg);
   color: #fff;
 }
 
 .LeftSide-BTNs tr.active td {
-  background: #ed4c14;
+  background: var(--accent-bg);
   color: #fff;
 }
 
@@ -3091,7 +3091,7 @@ span.superSmall {
 
 footer {
   background: #fff;
-  border-bottom: 4px solid #ed4c14;
+  border-bottom: 4px solid var(--accent-bg);
   z-index: 1;
   bottom: 0;
   width: 100%;
@@ -3115,7 +3115,7 @@ footer h2 {
 }
 
 footer .top {
-  background-color: #c1511b;
+  background-color: var(--footerTop-bg);
   padding: 10px;
   color: #fff;
 }
@@ -3124,7 +3124,7 @@ footer .top button {
   border: 0;
   background-color: #fff;
   padding: 5px;
-  color: #f26521;
+  color: var(--accent-bg);
   text-transform: uppercase;
   font-weight: 500;
   border: 0;
@@ -3133,7 +3133,7 @@ footer .top button {
 footer .top .chat {
   position: absolute;
   right: 00px;
-  background-color: #f26521;
+  background-color: var(--accent-bg);
   height: 50px;
   width: 50px;
   display: -webkit-box;
@@ -3166,7 +3166,7 @@ footer .top .maxWFooter {
 }
 
 footer .mid {
-  background-color: #f26521;
+  background-color: var(--accent-bg);
 }
 
 footer .mid .maxWFooter {
@@ -3260,7 +3260,7 @@ footer .mid .maxWFooter .colf.newsletter button {
 
 footer .mid .maxWFooter .colf.newsletter button:hover {
   background: #fff;
-  color: #f26521;
+  color: var(--accent-bg);
 }
 
 footer .bottom {
@@ -3271,7 +3271,7 @@ footer .bottom {
 footer .bottom p {
   margin-bottom: 0;
   font-size: 12px;
-  color: #f26521;
+  color: var(--accent-bg);
 }
 
 footer .bottom .socials {
@@ -3284,7 +3284,7 @@ footer .bottom .socials {
   width: 100px;
   font-size: 22px;
   padding: 10px;
-  color: #f26521;
+  color: var(--accent-bg);
 }
 
 footer .bottom .maxWFooter {

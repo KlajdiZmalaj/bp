@@ -67,12 +67,17 @@ class RegisterEndUser extends React.Component {
     step: 1,
     pagamensileInp: "",
     costoanualeInp: "",
+    recieve_emails: false,
+    privacy_policy: false,
   };
   componentDidMount() {
     fetch("https://ipapi.co/json")
       .then((res) => res.json())
       .then((data) => {
-        this.setState({ locationData: data });
+        this.setState({
+          locationData: data,
+          cordinateReq: `${data.latitude},${data.longitude}`,
+        });
         this.props.form.setFieldsValue({
           cordinate: `${data.latitude},${data.longitude}`,
         });
@@ -176,7 +181,18 @@ class RegisterEndUser extends React.Component {
           values.aComcode,
           values.aCap,
           values.aPiva,
-          values.aFcode
+          values.aFcode,
+          values.confirm_password,
+          values.password,
+          values.rilasciato_da,
+          values.luogo_di_rilascio,
+          values.data_di_rilascio,
+          values.data_di_scadenza,
+          this.state.cordinateReq,
+          values.a_contry,
+          this.state.pagmens,
+          this.state.privacy_policy,
+          this.state.recieve_emails
           //   values.self_limit_period,
           //   values.promo,
           //   values.parent,
@@ -871,7 +887,7 @@ class RegisterEndUser extends React.Component {
                   Nazione di residenza Agenzia<span>*</span>
                 </div>
                 <Form.Item>
-                  {getFieldDecorator("aCountry", {
+                  {getFieldDecorator("a_contry", {
                     rules: [
                       {
                         required: true,
@@ -930,69 +946,22 @@ class RegisterEndUser extends React.Component {
 
               {/* pagamensileInp : '',
               costoanualeInp : '' */}
-              <div className="itemCol semi">
+              <div className="itemCol full">
                 <div className="inputLabel">
                   Pagamento Mensile<span>*</span>
-                  <div className="checkField">
-                    <div
-                      onClick={() => {
-                        this.setState({
-                          costoanualeInp: "",
-                          mensilePag: true,
-                          anualePag: false,
-                        });
-                        setTimeout(() => {
-                          document.getElementById("inpMens").focus();
-                        }, 100);
-                      }}
-                      className={
-                        "checkField--check" +
-                        (this.state.mensilePag ? " active" : "")
-                      }
-                    ></div>
-                    <input
-                      disabled={this.state.mensilePag ? false : true}
-                      value={this.state.pagamensileInp}
-                      onChange={(e) => {
-                        this.setState({ pagamensileInp: e.target.value });
-                      }}
-                      id="inpMens"
-                      type="text"
-                    />
-                  </div>
                 </div>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Costo Anuale<span>*</span>
-                  <div className="checkField">
-                    <div
-                      onClick={() => {
-                        this.setState({
-                          pagamensileInp: "",
-                          mensilePag: false,
-                          anualePag: true,
-                        });
-                        setTimeout(() => {
-                          document.getElementById("inpAnl").focus();
-                        }, 100);
-                      }}
-                      className={
-                        "checkField--check" +
-                        (this.state.anualePag ? " active" : "")
-                      }
-                    ></div>
-                    <input
-                      disabled={this.state.anualePag ? false : true}
-                      type="text"
-                      value={this.state.costoanualeInp}
-                      onChange={(e) => {
-                        this.setState({ costoanualeInp: e.target.value });
-                      }}
-                      id="inpAnl"
-                    />
-                  </div>
-                </div>
+
+                <Form.Item>
+                  {getFieldDecorator("pagmens", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire Pagamento Mensile",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input type="number" />)}
+                </Form.Item>
               </div>
             </div>
             <div className="newReg--row__col">
@@ -1056,7 +1025,7 @@ class RegisterEndUser extends React.Component {
                   Conferma Password<span>*</span>
                 </div>
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("conpassword", {
+                  {getFieldDecorator("confirm_password", {
                     rules: [
                       {
                         required: true,
@@ -1067,7 +1036,7 @@ class RegisterEndUser extends React.Component {
                           const { form } = this.props;
                           if (
                             form.getFieldValue("password") ===
-                            form.getFieldValue("conpassword")
+                            form.getFieldValue("confirm_password")
                           ) {
                             c();
                           } else {
@@ -1135,14 +1104,23 @@ class RegisterEndUser extends React.Component {
                 <div className="inputLabel">
                   Rilasciato da<span>*</span>
                   <Form.Item>
-                    {getFieldDecorator("rilda", {
+                    {getFieldDecorator("rilasciato_da", {
                       rules: [
                         {
                           required: true,
                           whitespace: true,
                         },
                       ],
-                    })(<Input />)}
+                    })(
+                      <Select>
+                        <Option value="1">Comune</Option>
+                        <Option value="10">Motorizzazione</Option>
+                        <Option value="13">Questura</Option>
+                        <Option value="14">Polizia</Option>
+                        <Option value="16">Commissariato</Option>
+                        <Option value="19">Altro</Option>
+                      </Select>
+                    )}
                   </Form.Item>
                 </div>
               </div>
@@ -1150,7 +1128,7 @@ class RegisterEndUser extends React.Component {
                 <div className="inputLabel">
                   Luogo di rilascio<span>*</span>
                   <Form.Item>
-                    {getFieldDecorator("luril", {
+                    {getFieldDecorator("luogo_di_rilascio", {
                       rules: [
                         {
                           required: true,
@@ -1165,7 +1143,7 @@ class RegisterEndUser extends React.Component {
                 <div className="inputLabel">
                   Data di rilascio<span>*</span>
                   <Form.Item>
-                    {getFieldDecorator("dateril", {
+                    {getFieldDecorator("data_di_rilascio", {
                       initialValue: moment(this.state.nascita, dateFormat),
                       rules: [{ required: true }],
                     })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
@@ -1176,7 +1154,7 @@ class RegisterEndUser extends React.Component {
                 <div className="inputLabel">
                   Data di scadenza<span>*</span>
                   <Form.Item>
-                    {getFieldDecorator("datescad", {
+                    {getFieldDecorator("data_di_scadenza", {
                       initialValue: moment(this.state.nascita, dateFormat),
                       rules: [{ required: true }],
                     })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
@@ -1214,13 +1192,21 @@ class RegisterEndUser extends React.Component {
           </div>
           <div className="newReg--row">
             <div className="newReg--row__col">
-              <Checkbox onChange={() => {}}>
+              <Checkbox
+                onChange={(e) => {
+                  this.setState({ privacy_policy: e.target.checked });
+                }}
+              >
                 Accetto l`informativa sul trattamento dei dati personali e sulla
                 Privacy Policy
               </Checkbox>
             </div>
             <div className="newReg--row__col">
-              <Checkbox onChange={() => {}}>
+              <Checkbox
+                onChange={(e) => {
+                  this.setState({ recieve_emails: e.target.checked });
+                }}
+              >
                 Desidero ricevere e-mail promozionali, e info di servizi o altro
               </Checkbox>
             </div>

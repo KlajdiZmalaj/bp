@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-
+import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import "./login.css";
 
@@ -28,7 +28,12 @@ class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="leftLogin"></div>
+        <div
+          className="leftLogin"
+          style={{
+            backgroundImage: `url(${images.leftLogin})`,
+          }}
+        ></div>
         <div className="login">
           <div className="title">
             <i className="fal fa-user-circle"></i>

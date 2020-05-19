@@ -19,15 +19,14 @@
 //  font-family: 'Rubik', sans-serif;
 
 /*VARIABLES */
-$main: #ed4c14;
+$main: var(--accent-bg);
 $second: #edeef0;
 $def: #ffffff;
 $inv: rgb(0, 0, 0);
 $font1: "Roboto", "sans-serif";
 $font2: "Rubik", "sans-serif";
 footer {
-      box-shadow: 0 -9px 30px -19px #0000004d;
-
+  box-shadow: 0 -9px 30px -19px #0000004d;
 }
 ::selection {
   background-color: $main;
@@ -83,7 +82,7 @@ a:hover {
   color: #333434;
   margin-left: 4px;
   padding: 8px 9px;
-  border-bottom: 2px solid #ed4c14;
+  border-bottom: 2px solid var(--accent-bg);
 }
 
 // Overview styles

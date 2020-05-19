@@ -41,7 +41,7 @@ body {
 
 .logoutBtn:hover {
   background-color: #fff;
-  color: #f36520;
+  color: var(--accent-bg);
 }
 
 header.header {
@@ -52,7 +52,7 @@ header.header {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background-color: #f36520;
+  background-color: var(--accent-bg);
   width: 100%;
 }
 
@@ -76,7 +76,7 @@ header.header .topNav .register {
 
 header.header .topNav .register:hover {
   background: #fff;
-  color: #f36520;
+  color: var(--accent-bg);
 }
 
 header.header .topNav .left,
@@ -146,7 +146,7 @@ header.header .topNav .icons {
 
 header.header .topNav .icons .ads {
   position: absolute;
-  background: #f36520;
+  background: var(--accent-bg);
   z-index: 3;
   top: 26px;
   white-space: nowrap;
@@ -220,9 +220,10 @@ header.header nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #fff;
+  background-color: var(--header-bg);
+  color: var(--header-txt);
   padding: 10px;
-  border-bottom: 2px solid #f36520;
+  border-bottom: 2px solid var(--accent-bg);
   -webkit-box-shadow: 1px 18px 20px -22px black;
           box-shadow: 1px 18px 20px -22px black;
 }
@@ -267,28 +268,28 @@ header.header .navLinks .item {
 }
 
 header.header .navLinks .item a {
-  color: #222;
   -webkit-text-emphasis: none;
           text-emphasis: none;
+  color: var(--header-txt);
 }
 
 header.header .navLinks .item:last-child {
-  background-color: #f36520;
-  color: #fff;
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
   padding: 3px 16px;
   border-radius: 20px;
 }
 
 header.header .navLinks .item:last-child a {
-  color: #fff;
+  color: var(--accent-txt);
 }
 
 header.header .navLinks .item:last-child:hover {
-  color: #fff;
+  color: var(--accent-txt);
 }
 
 header.header .navLinks .item:hover {
-  color: #f36520;
+  color: var(--accent-bg);
 }
 
 .mobHeader {
@@ -315,7 +316,7 @@ header.header .navLinks .item:hover {
           align-items: center;
   padding: 2px 15px;
   background-color: #fff;
-  border-bottom: 2px solid #f36520;
+  border-bottom: 2px solid var(--accent-bg);
 }
 
 .mobHeader .top .logo {
@@ -379,7 +380,7 @@ header.header .navLinks .item:hover {
   width: 16px;
   height: 15px;
   border-radius: 20px;
-  background-color: #f36520;
+  background-color: var(--accent-bg);
   color: #fff;
   font-size: 12px;
   position: absolute;
@@ -404,7 +405,7 @@ header.header .navLinks .item:hover {
 }
 
 .mobHeader .bottom .navLinks button {
-  background-color: #f36520;
+  background-color: var(--accent-bg);
   color: #fff;
   border: 0;
   padding: 5px 20px;

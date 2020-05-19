@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="298" viewBox="0 0 460 298">
+    <defs>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:#32d296}.cls-4{fill:url(#linear-gradient-3)}.cls-5{fill:url(#linear-gradient-5)}.cls-6{fill:none;stroke:#fff;stroke-linecap:round;stroke-miterlimit:10}.cls-7{fill:#fff}.cls-8{filter:url(#Path_9)}.cls-9{filter:url(#Oval_6_Copy_3)}.cls-10{filter:url(#Oval_6)}.cls-11{filter:url(#Oval_6_Copy)}.cls-12{filter:url(#Mask-2)}.cls-13{filter:url(#Mask)}
+        </style>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#40bcf9"/>
+            <stop offset="1" stop-color="#1e87f0"/>
+        </linearGradient>
+        <filter id="Mask" width="460" height="298" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur" stdDeviation="15"/>
+            <feFlood flood-color="#1e87f0" flood-opacity=".2"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Mask-2" width="460" height="298" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur-2" stdDeviation="15"/>
+            <feFlood flood-color="#1e87f0" flood-opacity=".2"/>
+            <feComposite in2="blur-2" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <clipPath id="clip-path"/>
+        <filter id="Oval_6_Copy" width="110.887" height="110.215" x="279.43" y="234.788" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur-3" stdDeviation="15"/>
+            <feFlood flood-color="#32d296" flood-opacity=".2"/>
+            <feComposite in2="blur-3" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient-3" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#40bcf9"/>
+            <stop offset="1" stop-color="#1e87f0" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="Oval_6" width="439.201" height="439.201" x="175.615" y="49.854" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur-4" stdDeviation="15"/>
+            <feFlood flood-color="#1e87f0" flood-opacity=".2"/>
+            <feComposite in2="blur-4" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Oval_6_Copy_3" width="439.201" height="439.201" x="87.873" y="-117.709" filterUnits="userSpaceOnUse">
+            <feOffset dy="8"/>
+            <feGaussianBlur result="blur-5" stdDeviation="15"/>
+            <feFlood flood-color="#1e87f0" flood-opacity=".2"/>
+            <feComposite in2="blur-5" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient-5" x1=".014" x2=".014" y1=".906" y2="-.879" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#40bcf9" stop-opacity="0"/>
+            <stop offset="1"/>
+        </linearGradient>
+        <filter id="Path_9" width="148.625" height="38.631" x="77" y="58" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur result="blur-6" stdDeviation="2"/>
+            <feFlood flood-opacity=".2"/>
+            <feComposite in2="blur-6" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="Group_300" data-name="Group 300" transform="translate(-409.5 -119.5)">
+        <g id="Group_6" data-name="Group 6">
+            <g class="cls-12" transform="translate(409.5 119.5)">
+                <rect id="Mask-4" width="370" height="208" class="cls-1" data-name="Mask" rx="4" transform="translate(45 37)"/>
+            </g>
+            <g id="Triangle_Pattern" class="cls-2" data-name="Triangle Pattern" transform="translate(454.5 156.5)">
+                <g id="Triangle_Pattern-2" data-name="Triangle Pattern">
+                    <g class="cls-11" transform="matrix(1 0 0 1 -45.003 -37.001)">
+                        <ellipse id="Oval_6_Copy-2" cx="8.977" cy="8.552" class="cls-3" data-name="Oval 6 Copy" rx="8.977" ry="8.552" transform="rotate(-11 1591.298 -1547.062)"/>
+                    </g>
+                    <g class="cls-10" transform="matrix(1 0 0 1 -45.003 -37.001)">
+                        <circle id="Oval_6-2" cx="125" cy="125" r="125" class="cls-4" data-name="Oval 6" transform="rotate(-35.9 468.136 -223.16)"/>
+                    </g>
+                    <g class="cls-9" transform="matrix(1 0 0 1 -45.003 -37.001)">
+                        <circle id="Oval_6_Copy_3-2" cx="125" cy="125" r="125" class="cls-4" data-name="Oval 6 Copy 3" transform="rotate(-35.9 167.43 -171.285)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Group_9" data-name="Group 9" transform="translate(493 182)">
+            <path id="Path_9_Copy" d="M0 12.816c3.658 0 4.521-6.408 9.042-6.408s4.521 9.612 9.042 9.612 4.516-9.612 9.041-9.612 4.521 12.816 9.042 12.816 4.521 6.408 9.042 6.408 4.521-12.175 9.042-12.175 4.521 5.767 9.042 5.767 4.521-6.408 9.042-6.408S76.854 0 81.375 0s4.525 12.816 9.042 12.816 4.521-10.253 9.041-10.253 4.521 12.816 9.042 12.816 4.521 3.845 9.042 3.845 4.521-2.563 9.042-2.563 4.521-3.845 9.042-3.845v29.476H0z" class="cls-5" data-name="Path 9 Copy"/>
+            <g class="cls-8" transform="translate(-83.5 -62.5)">
+                <path id="Path_9-2" d="M0 12.816c3.658 0 4.521-6.408 9.042-6.408s4.521 9.612 9.042 9.612 4.516-9.612 9.041-9.612 4.521 12.816 9.042 12.816 4.521 6.408 9.042 6.408 4.521-12.175 9.042-12.175 4.521 5.767 9.042 5.767 4.521-6.408 9.042-6.408S76.854 0 81.375 0s4.525 12.816 9.042 12.816 4.521-10.253 9.041-10.253 4.521 12.816 9.042 12.816 4.521 3.845 9.042 3.845 4.521-2.563 9.042-2.563 4.521-6.408 9.042-6.408" class="cls-6" data-name="Path 9" transform="translate(83.5 62.5)"/>
+            </g>
+            <circle id="Oval_8" cx="5.104" cy="5.104" r="5.104" class="cls-7" data-name="Oval 8" transform="translate(129.792 7.292)"/>
+        </g>
+    </g>
+</svg>

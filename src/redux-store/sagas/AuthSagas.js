@@ -330,7 +330,18 @@ export function* getRegister(params) {
     params.aComcode,
     params.aCap,
     params.aPiva,
-    params.aFcode
+    params.aFcode,
+    params.confirm_password,
+    params.password,
+    params.rilasciato_da,
+    params.luogo_di_rilascio,
+    params.data_di_rilascio,
+    params.data_di_scadenza,
+    params.a_cordinate,
+    params.a_contry,
+    params.rent,
+    params.privacy_policy,
+    params.recieve_emails
   );
 
   if (response.data) {
