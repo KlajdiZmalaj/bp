@@ -42,7 +42,7 @@
       font-weight: 100px;
     }
     i {
-      color: #ed4c14;
+      color: var(--accent-bg);
       font-size: 38px;
     }
   }
@@ -60,11 +60,11 @@
       }
       .loginBtn {
         background: transparent;
-        border: 1px solid #ed4c14;
+        border: 1px solid var(--accent-bg);
         border-radius: 0;
         width: 100%;
         height: 55px;
-        color: #ed4c14;
+        color: var(--accent-bg);
         text-transform: uppercase;
         font-size: 20px;
         margin-top: 4px;
@@ -91,7 +91,6 @@
   }
 }
 .leftLogin {
-  background-image: url("../../../assets/images/login.png");
   height: 100vh;
   width: 700px;
   position: absolute;

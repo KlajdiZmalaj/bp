@@ -24,7 +24,7 @@ footer {
   }
 
   .top {
-    background-color: #c1511b;
+    background-color: var(--footerTop-bg);
     padding: 10px;
     color: #fff;
 
@@ -32,7 +32,7 @@ footer {
       border: 0;
       background-color: #fff;
       padding: 5px;
-      color: #f26521;
+      color: var(--accent-bg);
       text-transform: uppercase;
       font-weight: 500;
       border: 0;
@@ -41,7 +41,7 @@ footer {
     .chat {
       position: absolute;
       right: 00px;
-      background-color: #f26521;
+      background-color: var(--accent-bg);
       height: 50px;
       width: 50px;
       display: flex;
@@ -63,7 +63,7 @@ footer {
   }
 
   .mid {
-    background-color: #f26521;
+    background-color: var(--accent-bg);
 
     .maxWFooter {
       display: flex;
@@ -131,7 +131,7 @@ footer {
 
             &:hover {
               background: #fff;
-              color: #f26521;
+              color: var(--accent-bg);
             }
           }
         }
@@ -145,7 +145,7 @@ footer {
     p {
       margin-bottom: 0;
       font-size: 12px;
-      color: #f26521;
+      color: var(--accent-bg);
     }
 
     .socials {
@@ -154,7 +154,7 @@ footer {
       width: 100px;
       font-size: 22px;
       padding: 10px;
-      color: #f26521;
+      color: var(--accent-bg);
     }
 
     .maxWFooter {

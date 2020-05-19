@@ -19,7 +19,7 @@
 }
 
 .login-logout li button:hover {
-  background: #ed4c14;
+  background: var(--accent-bg);
   color: #fff;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;

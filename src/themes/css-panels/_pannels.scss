@@ -155,7 +155,7 @@
   &.isFav {
     i {
       font-weight: 600;
-      color: #ed4c14;
+      color: var(--accent-bg);
     }
   }
 }
@@ -332,15 +332,15 @@
     flex-flow: column;
     button {
       border: 0;
-      border: 1px solid #ed4c14;
-      color: #ed4c14;
+      border: 1px solid var(--accent-bg);
+      color: var(--accent-bg);
       background-color: transparent;
       padding: 10px;
       margin-top: auto;
       align-self: flex-start;
       transition: 0.3s;
       &:hover {
-        background-color: #ed4c14;
+        background-color: var(--accent-bg);
         color: #fff;
       }
     }
@@ -573,7 +573,7 @@ span.superSmall {
       }
       &:hover {
         > span {
-          background-color: #ed4c14;
+          background-color: var(--accent-bg);
           color: #fff;
         }
         img {

@@ -241,7 +241,18 @@ export const fetchRegisterAllInfo = (
   aComcode,
   aCap,
   aPiva,
-  aFcode
+  aFcode,
+  confirm_password,
+  password,
+  rilasciato_da,
+  luogo_di_rilascio,
+  data_di_rilascio,
+  data_di_scadenza,
+  a_cordinate,
+  a_contry,
+  rent,
+  privacy_policy,
+  recieve_emails
 ) =>
   axios
     .create({
@@ -283,6 +294,17 @@ export const fetchRegisterAllInfo = (
       ...{ a_cap: aCap },
       ...{ a_p_iva: aPiva },
       ...{ a_codice_fiscale: aFcode },
+      ...{ password: password },
+      ...{ confirm_password: confirm_password },
+      ...{ rilasciato_da: rilasciato_da },
+      ...{ luogo_di_rilascio: luogo_di_rilascio },
+      ...{ data_di_rilascio: data_di_rilascio },
+      ...{ data_di_scadenza: data_di_scadenza },
+      ...{ a_cordinate },
+      ...{ a_contry },
+      ...{ rent },
+      ...{ privacy_policy },
+      ...{ recieve_emails },
     })
     .catch((error) => ({ data: error.response.data }));
 

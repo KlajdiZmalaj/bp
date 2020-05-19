@@ -35,7 +35,7 @@
     cursor: pointer;
     &:hover,
     &.active {
-      border-bottom: 2px solid #ed4c14;
+      border-bottom: 2px solid var(--accent-bg);
     }
   }
 }
@@ -47,7 +47,7 @@
   margin: 0 auto;
   .ant-btn {
     border-radius: 0;
-    background: #ed4c14;
+    background: var(--accent-bg);
     border: 0;
     padding: 0 40px;
   }
@@ -68,7 +68,7 @@
       width: 60%;
     }
     h2 {
-      color: #ed4c14;
+      color: var(--accent-bg);
       font-weight: 300;
       text-align: center;
     }
@@ -254,7 +254,7 @@
     }
   }
   .active {
-    color: #ed4c14;
+    color: var(--accent-bg);
   }
   .popUp {
     width: 100%;
@@ -384,7 +384,7 @@
         cursor: not-allowed;
       }
       &:hover {
-        background-color: #ed4c14;
+        background-color: var(--accent-bg);
         color: #fff;
       }
       i {
@@ -397,7 +397,7 @@
       padding-top: 20px;
     }
     > i {
-      color: #ed4c14;
+      color: var(--accent-bg);
       font-size: 20px;
       position: absolute;
       right: 10px;
@@ -468,10 +468,10 @@
     font-weight: 500;
     font-size: 14px;
     text-transform: capitalize;
-    background-color: #ed4c14;
+    background-color: var(--accent-bg);
     border-radius: 4px;
     &:hover {
-      border-color: #ed4c14;
+      border-color: var(--accent-bg);
     }
   }
   .amountGr {
@@ -556,7 +556,7 @@
       justify-content: center;
       transition: 0.3s;
       &.active {
-        background-color: #ed4c14;
+        background-color: var(--accent-bg);
         color: #fff;
       }
       &:first-child {
@@ -592,7 +592,7 @@
     padding: 3px 0;
     cursor: pointer;
     &:hover {
-      color: #ed4c14;
+      color: var(--accent-bg);
     }
   }
 }

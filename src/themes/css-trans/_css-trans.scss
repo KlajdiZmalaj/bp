@@ -68,7 +68,7 @@
     }
   }
   tbody tr:hover {
-    color: #ed4c14;
+    color: var(--accent-bg);
     cursor: pointer;
   }
   tr:nth-child(even) {

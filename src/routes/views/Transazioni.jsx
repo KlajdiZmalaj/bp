@@ -51,7 +51,7 @@ class Transazioni extends React.Component {
         startDate: new Date(),
         endDate: new Date(),
         key: "selection",
-        color: "#ed4c14",
+        color: "var(--accent-bg)",
       },
     ],
     isCalendarOpen: false,
