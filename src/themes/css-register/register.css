@@ -707,6 +707,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row;
           flex-flow: row;
+  border-bottom: 1px solid #b8bbc0;
 }
 
 @media (max-width: 1024px) {
@@ -720,7 +721,6 @@
 
 .newReg--row__col {
   width: calc(100% / 3);
-  border-right: 1px solid #b8bbc0;
   padding: 20px 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -729,6 +729,13 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  height: 100%;
 }
 
 @media (max-width: 1024px) {

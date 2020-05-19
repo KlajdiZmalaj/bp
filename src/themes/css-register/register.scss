@@ -552,6 +552,8 @@
   &--row {
     display: flex;
     flex-flow: row;
+    border-bottom: 1px solid #b8bbc0;
+
     @media (max-width: 1024px) {
       flex-flow: column;
     }
@@ -560,11 +562,12 @@
       @media (max-width: 1024px) {
         width: calc(100%);
       }
-      border-right: 1px solid #b8bbc0;
       padding: 20px 5px;
       display: flex;
       flex-flow: row wrap;
-
+      align-items: end;
+      justify-content: end;
+      height: 100%;
       &:last-child {
         border-right: 0;
       }
