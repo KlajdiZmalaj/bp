@@ -1,7 +1,7 @@
 let skin = "";
 
 if (
-  window.location.href.includes("bpoint")
+  window.location.href.includes("fghfgh")
   // ||
   // window.location.href.includes("localhost")
 ) {
