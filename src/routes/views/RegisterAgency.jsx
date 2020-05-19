@@ -190,7 +190,7 @@ class RegisterEndUser extends React.Component {
           values.data_di_scadenza,
           this.state.cordinateReq,
           values.a_contry,
-          this.state.pagmens,
+          values.pagmens,
           this.state.privacy_policy,
           this.state.recieve_emails
           //   values.self_limit_period,
@@ -1161,6 +1161,7 @@ class RegisterEndUser extends React.Component {
                   </Form.Item>
                 </div>
               </div>
+
               <div className="itemCol full">
                 {register.message && (
                   <React.Fragment>

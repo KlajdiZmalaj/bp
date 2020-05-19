@@ -62,6 +62,8 @@ class RegisterEndUser extends React.Component {
     imageUrl: "",
     imageUrl2: "",
     loading: false,
+    privacy_policy: false,
+    recieve_emails: false,
   };
 
   handleChangeBack = (info) => {
@@ -111,6 +113,7 @@ class RegisterEndUser extends React.Component {
     e.preventDefault();
 
     this.props.form.validateFieldsAndScroll((err, values) => {
+      console.log("values", values);
       if (!err) {
         this.props.getRegister(
           values.first_name,
@@ -134,7 +137,27 @@ class RegisterEndUser extends React.Component {
           values.number,
           this.state.imageUrl,
           this.state.imageUrl2,
-          this.props.accountInfo.profile.role.name
+          this.props.accountInfo.profile.role.name,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          values.confirm_password,
+          values.password,
+          values.rilasciato_da,
+          values.luogo_di_rilascio,
+          values.data_di_rilascio,
+          values.data_di_scadenza,
+          "",
+          "",
+          "",
+          this.state.privacy_policy,
+          this.state.recieve_emails
           //   values.self_limit_period,
           //   values.promo,
           //   values.parent,
@@ -357,252 +380,319 @@ class RegisterEndUser extends React.Component {
       <Fragment>
         <Header></Header>
 
-        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-          <div className="infoUser generalInfo row no-gutters">
-            <div className="hr"></div>
+        <Form className="newReg" onSubmit={this.handleSubmit}>
+          <div className="newReg--header">Register User</div>
 
-            <div className="col col-md-8 col1Form">
-              <div className="rowUp">
-                <div className="firstcol">
-                  <div className="titleReg">Registrazione</div>
-                  <span className="inpLabel">codice fiscale</span>
-                  <Form.Item>
-                    {getFieldDecorator("personal_number", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your fiscal code!",
-                        },
-                      ],
-                    })(
-                      <Input
-                        // placeholder="codice fiscale*"
-                        onBlur={this.validateCodiceFiscale}
-                        onInput={(e) => this.inputlength(e)}
-                      />
-                    )}
-                  </Form.Item>
-                  <span className="inpLabel">Nome</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("first_name", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your name!",
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
-                  <span className="inpLabel">Cognome</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("last_name", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your last name!",
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
-                  <span className="inpLabel">Sesso</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("gender", {
-                      initialValue: "",
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please select your gender!",
-                        },
-                      ],
-                    })(
-                      <Select>
-                        <Option value="M">Maschile</Option>
-                        <Option value="F">Feminile</Option>
-                      </Select>
-                    )}
-                  </Form.Item>
-                  <span className="inpLabel">Nickname</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("nickname", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your fiscal code!",
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
-                  <span className="inpLabel">email</span>
-                  <Form.Item>
-                    {getFieldDecorator("email", {
-                      rules: [
-                        {
-                          type: "email",
-                          message: "The input is not valid E-mail!",
-                        },
-                        {
-                          required: true,
-                          message: "Please input your E-mail!",
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
-                  <span className="inpLabel">Telefono</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("number", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your phone number!",
-                        },
-                      ],
-                    })(<Input addonBefore={number_prefix} />)}
-                  </Form.Item>
+          <div className="newReg--row">
+            <div className="newReg--row__col">
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Codice Fiscale <span>*</span>
                 </div>
-                <div className="secondcol">
-                  <div className="titleReg">Data anagrafici</div>
-                  <span className="inpLabel">Data di nascita</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("birthday", {
-                      initialValue:
-                        this.state.nascita !== "" &&
-                        moment(this.state.nascita, dateFormat),
-                      rules: [{ required: true }],
-                    })(
-                      <DatePicker
-                        // placeholder="Data di nascita*"
-                        format={("DD/MM/YYYY", "DD/MM/YYYY")}
-                      />
-                    )}
-                  </Form.Item>
-                  <span className="inpLabel">Nazione di nascita</span>
-                  <Form.Item>
-                    {nazione === "" && <Select>{nazioneList}</Select>}
-                    {nazione !== "" && (
-                      <Select defaultValue={this.state.nazione}>
-                        {nazioneList}
-                      </Select>
-                    )}
-                  </Form.Item>
-                  <span className="inpLabel">provincia di nascita</span>
-                  <Form.Item>
-                    <VirtualizedSelect
-                      options={province_of_birthOptions}
-                      onChange={(province_of_birth) =>
-                        this.setState({
-                          province_of_birth: province_of_birth.value,
-                        })
-                      }
-                      value={this.state.province_of_birth}
-                      maxHeight={100}
-                      // placeholder={
-                      //   comuniSelected.sigla
-                      //     ? comuniSelected.sigla
-                      //     : "provincia di nascita*"
-                      // }
+                <Form.Item>
+                  {getFieldDecorator("personal_number", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire codice fiscale!",
+                      },
+                    ],
+                  })(
+                    <Input
+                      // placeholder="codice fiscale*"
+                      onBlur={this.validateCodiceFiscale}
+                      onInput={(e) => this.inputlength(e)}
                     />
-                  </Form.Item>
-                  <span className="inpLabel">Comune di nascita</span>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <Form.Item>
+                  <div className="inputLabel">
+                    Nome <span>*</span>
+                  </div>
+                  {getFieldDecorator("first_name", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire nome!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Cognome <span>*</span>
+                </div>
+                <Form.Item>
+                  {getFieldDecorator("last_name", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire cognome!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <span className="inputLabel">Sesso</span>
 
-                  <Form.Item>
-                    <VirtualizedSelect
-                      options={city_of_birth}
-                      onChange={(city_of_birth) =>
-                        this.setState({ city_of_birth: city_of_birth.value })
-                      }
-                      value={this.state.city_of_birth}
-                      maxHeight={100}
-                    />
-                  </Form.Item>
-                  <span className="inpLabel">Nazione di residenza</span>
+                <Form.Item>
+                  {getFieldDecorator("gender", {
+                    initialValue: "",
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire sesso!",
+                      },
+                    ],
+                  })(
+                    <Select>
+                      <Option value="M">Maschile</Option>
+                      <Option value="F">Feminile</Option>
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <span className="inputLabel">Nickname</span>
 
-                  <Form.Item>
-                    <VirtualizedSelect
-                      options={nazioneDiResidencaOptions}
-                      onChange={(selectValue) =>
-                        this.changeNazioneDiResidenca(selectValue)
-                      }
-                      value={this.state.nazioneDiResidenca}
-                      maxHeight={100}
-                    />
-                  </Form.Item>
-                  <span className="inpLabel">provincia di residenza</span>
-                  <Form.Item>
-                    <VirtualizedSelect
-                      options={provincaDiResidencaProvinciaOptions}
-                      onChange={(provincaDiResidencaProvinciaOptions) =>
-                        this.setState({
-                          residence_province:
-                            provincaDiResidencaProvinciaOptions.value,
-                        })
-                      }
-                      value={this.state.residence_province}
-                      maxHeight={100}
-                    />
-                  </Form.Item>
-                  <span className="inpLabel">comune di residenza</span>
-
-                  <Form.Item>
-                    <VirtualizedSelect
-                      options={residence_cityOptions}
-                      onChange={(residence_city) =>
-                        this.setState({
-                          residence_city: residence_city.value,
-                        })
-                      }
-                      value={this.state.residence_city}
-                      maxHeight={100}
-                      // placeholder="comune di residenza*"
-                    />
-                  </Form.Item>
-                  <span className="inpLabel">indirizzo di residenza</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("address", {
+                <Form.Item>
+                  {getFieldDecorator("nickname", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire fiscal code!",
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">email</span>
+                <Form.Item>
+                  {getFieldDecorator("email", {
+                    rules: [
+                      {
+                        type: "email",
+                        message: "Non valido E-mail!",
+                      },
+                      {
+                        required: true,
+                        message: "Inserire E-mail!",
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Password<span>*</span>
+                  <Form.Item hasFeedback>
+                    {getFieldDecorator("password", {
                       rules: [
                         {
                           required: true,
-                          message: "Please input your name!",
-                          whitespace: true,
+                          message: "Inserire password!",
                         },
                       ],
-                    })(<Input />)}
-                  </Form.Item>
-                  <span className="inpLabel">CAP</span>
-
-                  <Form.Item>
-                    {getFieldDecorator("cap", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input postcode!",
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
+                    })(<Input.Password type="password" />)}
                   </Form.Item>
                 </div>
               </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Conferma Password<span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("confirm_password", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire password!",
+                      },
+                      {
+                        validator: (a, b, c) => {
+                          const { form } = this.props;
+                          if (
+                            form.getFieldValue("password") ===
+                            form.getFieldValue("confirm_password")
+                          ) {
+                            c();
+                          } else {
+                            c("Conferma password errata!");
+                          }
+                        },
+                      },
+                    ],
+                  })(<Input.Password />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">Telefono</span>
+
+                <Form.Item>
+                  {getFieldDecorator("number", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire numero telefono!",
+                      },
+                    ],
+                  })(<Input addonBefore={number_prefix} />)}
+                </Form.Item>
+              </div>
             </div>
-            <div className="col col-md-4 col2Form">
-              <div className="firstcol">
-                <div className="titleReg">Documenti per servizi aggiuntivi</div>
-                <span className="inpLabel">Tipo documento</span>
+            <div className="newReg--row__col">
+              <div className="itemCol semi">
+                <span className="inputLabel">Data di nascita</span>
+
+                <Form.Item>
+                  {getFieldDecorator("birthday", {
+                    initialValue:
+                      this.state.nascita !== "" &&
+                      moment(this.state.nascita, dateFormat),
+                    rules: [{ required: true }],
+                  })(
+                    <DatePicker
+                      // placeholder="Data di nascita*"
+                      format={("DD/MM/YYYY", "DD/MM/YYYY")}
+                    />
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <span className="inputLabel">Nazione di nascita</span>
+                <Form.Item>
+                  {nazione === "" && <Select>{nazioneList}</Select>}
+                  {nazione !== "" && (
+                    <Select defaultValue={this.state.nazione}>
+                      {nazioneList}
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">provincia di nascita</span>
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={province_of_birthOptions}
+                    onChange={(province_of_birth) =>
+                      this.setState({
+                        province_of_birth: province_of_birth.value,
+                      })
+                    }
+                    value={this.state.province_of_birth}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">Comune di nascita</span>
+
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={city_of_birth}
+                    onChange={(city_of_birth) =>
+                      this.setState({ city_of_birth: city_of_birth.value })
+                    }
+                    value={this.state.city_of_birth}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">Nazione di residenza</span>
+
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={nazioneDiResidencaOptions}
+                    onChange={(selectValue) =>
+                      this.changeNazioneDiResidenca(selectValue)
+                    }
+                    value={this.state.nazioneDiResidenca}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">provincia di residenza</span>
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={provincaDiResidencaProvinciaOptions}
+                    onChange={(provincaDiResidencaProvinciaOptions) =>
+                      this.setState({
+                        residence_province:
+                          provincaDiResidencaProvinciaOptions.value,
+                      })
+                    }
+                    value={this.state.residence_province}
+                    maxHeight={100}
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">comune di residenza</span>
+
+                <Form.Item>
+                  <VirtualizedSelect
+                    options={residence_cityOptions}
+                    onChange={(residence_city) =>
+                      this.setState({
+                        residence_city: residence_city.value,
+                      })
+                    }
+                    value={this.state.residence_city}
+                    maxHeight={100}
+                    // placeholder="comune di residenza*"
+                  />
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">indirizzo di residenza</span>
+
+                <Form.Item>
+                  {getFieldDecorator("address", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your name!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">CAP</span>
+
+                <Form.Item>
+                  {getFieldDecorator("cap", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input postcode!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+            </div>
+            <div className="newReg--row__col">
+              <div className="itemCol full">
+                <span className="inputLabel">Tipo documento</span>
 
                 <Form.Item>
                   {getFieldDecorator("identity_type", {
                     rules: [
                       {
                         required: true,
-                        message: "Please select your document type!",
+                        message: "Inserire tipo documenti!",
                       },
                     ],
                   })(
@@ -616,21 +706,24 @@ class RegisterEndUser extends React.Component {
                     </Select>
                   )}
                 </Form.Item>
-                <span className="inpLabel">Numero documento</span>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">Numero documento</span>
 
                 <Form.Item>
                   {getFieldDecorator("identity_id", {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your doc!",
+                        message: "Inserire doc!",
                         whitespace: true,
                       },
                     ],
                   })(<Input />)}
                 </Form.Item>
-                <div className="titleReg">Carica Documento</div>
-                <span className="inpLabel">Document View</span>
+              </div>
+              <div className="itemCol full">
+                <span className="inputLabel">Document View</span>
 
                 <Form.Item>
                   {getFieldDecorator(
@@ -643,24 +736,7 @@ class RegisterEndUser extends React.Component {
                     </Select>
                   )}
                 </Form.Item>
-                {Object.keys(register).length > 0 &&
-                  register.user &&
-                  register.message && (
-                    <div className="confirmedMessage">
-                      <span className="closeAlert">X</span>
-                      {register.message}
-                    </div>
-                  )}
-                {Object.keys(register).length > 0 &&
-                  register.message &&
-                  !register.user && (
-                    <div className="error">
-                      <span className="closeAlert" onClick={this.hideAlert}>
-                        X
-                      </span>
-                      {register.message}
-                    </div>
-                  )}
+
                 {parseInt(cardView) === 1 && (
                   <Upload
                     name="front"
@@ -703,12 +779,122 @@ class RegisterEndUser extends React.Component {
                     )}
                   </Upload>
                 )}
-                <div className="ui-panel-bottomtitlebar ui-widget-footer ui-helper-clearfix ui-corner-all sendBTN">
-                  <Button type="primary" htmlType="submit">
-                    Registrati
-                  </Button>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Rilasciato da<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("rilasciato_da", {
+                      rules: [
+                        {
+                          required: true,
+                          whitespace: true,
+                        },
+                      ],
+                    })(
+                      <Select>
+                        <Option value="1">Comune</Option>
+                        <Option value="10">Motorizzazione</Option>
+                        <Option value="13">Questura</Option>
+                        <Option value="14">Polizia</Option>
+                        <Option value="16">Commissariato</Option>
+                        <Option value="19">Altro</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
                 </div>
               </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Luogo di rilascio<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("luogo_di_rilascio", {
+                      rules: [
+                        {
+                          required: true,
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Data di rilascio<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("data_di_rilascio", {
+                      initialValue: moment(this.state.nascita, dateFormat),
+                      rules: [{ required: true }],
+                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Data di scadenza<span>*</span>
+                  <Form.Item>
+                    {getFieldDecorator("data_di_scadenza", {
+                      initialValue: moment(this.state.nascita, dateFormat),
+                      rules: [{ required: true }],
+                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                  </Form.Item>
+                </div>
+              </div>
+
+              <div className="itemCol full">
+                {register.message && (
+                  <React.Fragment>
+                    {register.role ? (
+                      <React.Fragment>
+                        <div className="Nmessage S">
+                          <i
+                            className="fas fa-check-circle"
+                            aria-hidden="true"
+                          ></i>
+                          {register.message}
+                        </div>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <div className="Nmessage E">
+                          <i
+                            className="fas fa-times-circle"
+                            aria-hidden="true"
+                          ></i>
+                          {register.message}
+                        </div>
+                      </React.Fragment>
+                    )}
+                  </React.Fragment>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="newReg--row">
+            <div className="newReg--row__col">
+              <Checkbox
+                onChange={(e) => {
+                  this.setState({ privacy_policy: e.target.checked });
+                }}
+              >
+                Accetto l`informativa sul trattamento dei dati personali e sulla
+                Privacy Policy
+              </Checkbox>
+            </div>
+            <div className="newReg--row__col">
+              <Checkbox
+                onChange={(e) => {
+                  this.setState({ recieve_emails: e.target.checked });
+                }}
+              >
+                Desidero ricevere e-mail promozionali, e info di servizi o altro
+              </Checkbox>
+            </div>
+            <div className="newReg--row__col submitcol">
+              <Button type="primary" className="SubmitButton" htmlType="submit">
+                Registrati
+              </Button>
             </div>
           </div>
         </Form>
