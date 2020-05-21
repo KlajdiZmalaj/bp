@@ -17,6 +17,16 @@ if (
     ...skin,
     skin_id: 3,
   };
+} else if (window.location.href.includes("planet")) {
+  skin = {
+    ...skin,
+    skin_id: 4,
+  };
+} else if (window.location.href.includes("bwin")) {
+  skin = {
+    ...skin,
+    skin_id: 5,
+  };
 }
 
 export default {
