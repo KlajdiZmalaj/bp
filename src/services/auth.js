@@ -20,6 +20,7 @@ export const fetchLogin = (email, password) =>
     .post(`/users/login`, {
       ...{ username: email },
       ...{ password: password },
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -37,7 +38,9 @@ export const logoutApi = () =>
         }`,
       },
     })
-    .post(`/users/logout`)
+    .post(`/users/logout`, {
+      ...skin,
+    })
     .catch((error) => ({ error }));
 
 export const fetchBolletiniPremercati = (
@@ -72,6 +75,7 @@ export const fetchBolletiniPremercati = (
       ...{ cap: cap },
       ...{ citta: citta },
       ...{ provincia: provincia },
+      ...skin,
     })
     .catch((error) => ({ error }));
 export const fetchBolletiniBianchi = (
@@ -106,6 +110,7 @@ export const fetchBolletiniBianchi = (
       ...{ cap: cap },
       ...{ citta: citta },
       ...{ provincia: provincia },
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -123,6 +128,7 @@ export const fetchPayments = (username, from, to) =>
       ...(username ? { username: username } : {}),
       ...{ from: from },
       ...{ to: to },
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -139,6 +145,7 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
     .post(`/test/recharge`, {
       ...{ service_id: service_id },
       ...(tel_no ? { tel_no: tel_no } : {}),
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -177,6 +184,7 @@ export const fetchPostePay = (
       ...(document_type ? { document_type: document_type } : {}),
       ...(imageUrl ? { document_front: imageUrl } : {}),
       ...(imageUrl2 ? { document_back: imageUrl2 } : {}),
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -191,7 +199,9 @@ export const fetchAds = () =>
         }`,
       },
     })
-    .get("/messages")
+    .get("/messages", {
+      ...skin,
+    })
     .catch((error) => ({ error }));
 
 export const sendCreatedAds = (importance, title, text) =>
@@ -208,6 +218,7 @@ export const sendCreatedAds = (importance, title, text) =>
       ...{ importance: importance },
       ...{ title: title },
       ...{ text: text },
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -306,6 +317,7 @@ export const fetchRegisterAllInfo = (
       ...{ rent },
       ...{ privacy_policy },
       ...{ recieve_emails },
+      ...skin,
     })
     .catch((error) => ({ data: error.response.data }));
 
@@ -323,6 +335,7 @@ export const sendChangedPassword = (oldPassword, newPassword) =>
       ...{ old_password: oldPassword },
       ...{ password: newPassword },
       ...{ confirm_password: newPassword },
+      ...skin,
     })
     .catch((error) => ({ error }));
 export const fetchConfigura = (id) =>
@@ -335,7 +348,9 @@ export const fetchConfigura = (id) =>
         }`,
       },
     })
-    .get(`/users/${id}`)
+    .get(`/users/${id}`, {
+      ...skin,
+    })
     .catch((error) => ({ error }));
 export const fetchBarcodeData = (barcode) => {
   return axios
@@ -350,6 +365,7 @@ export const fetchBarcodeData = (barcode) => {
     .get("/bollettino", {
       params: {
         barcode,
+        ...skin,
       },
     })
     .catch((error) => ({ error }));
@@ -367,6 +383,7 @@ export const fetchCodice = (barcode) =>
     .get("/payment", {
       params: {
         barcode: barcode,
+        ...skin,
       },
     })
     .catch((error) => ({ error }));
@@ -383,17 +400,15 @@ export const switchUserStatus = (id, status, callback) => {
     })
     .post(`/users/${id}/changeStatus`, {
       ...{ status },
+      ...skin,
     })
     .then(
       (data) => {
         if (data.status === 200) {
           callback();
         }
-        console.log("succData", data);
       },
-      (data) => {
-        console.log("err data", data);
-      }
+      (data) => {}
     );
 };
 export const transferMoney = (id, amount, type, callback) => {
@@ -409,6 +424,7 @@ export const transferMoney = (id, amount, type, callback) => {
     .post(`/users/${id}/transfer`, {
       ...{ amount },
       ...{ type },
+      ...skin,
     })
     .then(
       (data) => {

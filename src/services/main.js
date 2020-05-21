@@ -1,4 +1,6 @@
 import axios from "axios";
+import { skin } from "config/api";
+
 export const fetchServices = () =>
   axios
     .create({
@@ -17,7 +19,9 @@ export const fetchFavorites = () =>
         }`,
       },
     })
-    .post(`/users/favorites`)
+    .post(`/users/favorites`, {
+      ...skin,
+    })
     .catch((error) => ({ error }));
 
 export const fetchUsers = (search_user) =>
@@ -32,6 +36,7 @@ export const fetchUsers = (search_user) =>
     })
     .post(`/users/list`, {
       ...(search_user ? { search_user: search_user } : {}),
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -45,7 +50,9 @@ export const fetchUsersSimple = () =>
         }`,
       },
     })
-    .get(`/users/simple`)
+    .get(`/users/simple`, {
+      ...skin,
+    })
     .catch((error) => ({ error }));
 
 export const fetchUsersBySearch = (search_user) =>
@@ -60,6 +67,7 @@ export const fetchUsersBySearch = (search_user) =>
     })
     .post(`/users/findUser`, {
       ...(search_user ? { search_user: search_user } : {}),
+      ...skin,
     })
     // .then(data => {
     //   console.log("fetch users called", data,);
@@ -80,6 +88,7 @@ export const postImages = (user_id, imgFront, imgBack, callback) => {
       ...{ user_id: user_id },
       ...{ document_front: imgFront },
       ...{ document_back: imgBack },
+      ...skin,
     })
     .then((response) => {
       console.log("response", response);
@@ -102,6 +111,7 @@ export const deleteImages = (user_id, callback) => {
     })
     .post(`/users/deleteDocument`, {
       ...{ user_id: user_id },
+      ...skin,
     })
     .then((response) => {
       console.log("response", response);
@@ -123,6 +133,7 @@ export const updatateOverviewWidget = (period) =>
     })
     .post(`/users/balance`, {
       ...{ period: period },
+      ...skin,
     })
     .catch((error) => ({ error }));
 
@@ -138,5 +149,6 @@ export const setOnFav = (id, type) =>
     })
     .post(`/users/${type === "set" ? "addFavorite" : "removeFavorite"}`, {
       ...{ company_id: id },
+      ...skin,
     })
     .catch((error) => ({ error }));

@@ -138,7 +138,9 @@ class Transazioni extends React.Component {
 
   handleSearch = (value) => {
     if (value && this.props.usernames) {
-      let res = this.props.usernames.filter((user) => user.includes(value));
+      let res = this.props.usernames.filter((user) =>
+        user.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+      );
       this.setState({ usernames: res });
     } else {
       this.setState({ usernames: [] });
