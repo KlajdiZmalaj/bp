@@ -6,7 +6,11 @@ export const fetchServices = () =>
     .create({
       baseURL: "https://services-api.bpoint.store/api",
     })
-    .get(`/services`)
+    .get(`/services`, {
+      params: {
+        ...skin,
+      },
+    })
     .catch((error) => ({ error }));
 export const fetchFavorites = () =>
   axios
@@ -51,7 +55,9 @@ export const fetchUsersSimple = () =>
       },
     })
     .get(`/users/simple`, {
-      ...skin,
+      params: {
+        ...skin,
+      },
     })
     .catch((error) => ({ error }));
 

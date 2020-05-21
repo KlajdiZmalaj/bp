@@ -200,7 +200,9 @@ export const fetchAds = () =>
       },
     })
     .get("/messages", {
-      ...skin,
+      params: {
+        ...skin,
+      },
     })
     .catch((error) => ({ error }));
 
@@ -349,7 +351,9 @@ export const fetchConfigura = (id) =>
       },
     })
     .get(`/users/${id}`, {
-      ...skin,
+      params: {
+        ...skin,
+      },
     })
     .catch((error) => ({ error }));
 export const fetchBarcodeData = (barcode) => {
