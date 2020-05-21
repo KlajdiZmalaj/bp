@@ -121,7 +121,7 @@ export const deleteImages = (user_id, callback) => {
     })
     .then((response) => {
       console.log("response", response);
-      if (response.status === 200) {
+      if (response && response && response.status === 200) {
         callback();
       }
     });
