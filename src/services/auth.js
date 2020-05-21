@@ -408,7 +408,7 @@ export const switchUserStatus = (id, status, callback) => {
     })
     .then(
       (data) => {
-        if (data.status === 200) {
+        if (data && data.status === 200) {
           callback();
         }
       },
@@ -432,7 +432,7 @@ export const transferMoney = (id, amount, type, callback) => {
     })
     .then(
       (data) => {
-        if (data.status === 200) {
+        if (data && data.status === 200) {
           callback();
           // this.setState({ isPopUpActive: false });
           // this.props.getUsers();
