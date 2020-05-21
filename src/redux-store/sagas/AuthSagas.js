@@ -295,6 +295,13 @@ export function* getAds() {
   if (response.status === 200) {
     yield put(AuthActions.setAds(response.data.messages));
   }
+  if (response.error && response.error.response.status === 401) {
+    const response = yield call(logoutApi);
+    if (response) {
+      localStorage.setItem("accountDataB", null);
+      yield put(AuthActions.setAccountInfo({}));
+    }
+  }
 }
 
 export function* getRegister(params) {
