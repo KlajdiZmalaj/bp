@@ -1,5 +1,6 @@
 import request from "utils/request";
 import axios from "axios";
+import { skin } from "config/api";
 //import api from "config/api";
 
 // const accountData = localStorage.getItem("accountDataB");
