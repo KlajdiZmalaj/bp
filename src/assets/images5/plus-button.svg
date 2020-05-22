@@ -1,0 +1,11 @@
+<svg id="plus-button" xmlns="http://www.w3.org/2000/svg" width="19.059" height="19.059" viewBox="0 0 19.059 19.059">
+  <g id="Group_290" data-name="Group 290">
+    <path id="Path_228" data-name="Path 228" d="M9.529,19.059a9.53,9.53,0,1,1,9.529-9.53A9.54,9.54,0,0,1,9.529,19.059Zm0-17.97a8.44,8.44,0,1,0,8.44,8.441A8.45,8.45,0,0,0,9.529,1.089Z" fill="var(--accent-bg)" />
+  </g>
+  <g id="Group_291" data-name="Group 291" transform="translate(5.227 8.984)">
+    <path id="Path_229" data-name="Path 229" d="M16.578,15.73H9.063a.545.545,0,1,1,0-1.089h7.515a.545.545,0,0,1,0,1.089Z" transform="translate(-8.518 -14.641)" fill="var(--accent-bg)" />
+  </g>
+  <g id="Group_292" data-name="Group 292" transform="translate(8.984 5.227)">
+    <path id="Path_230" data-name="Path 230" d="M15.186,17.122a.545.545,0,0,1-.545-.544V9.063a.545.545,0,1,1,1.089,0v7.515A.543.543,0,0,1,15.186,17.122Z" transform="translate(-14.641 -8.518)" fill="var(--accent-bg)" />
+  </g>
+</svg>

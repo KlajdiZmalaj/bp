@@ -3,9 +3,14 @@ let skin = "";
 if (
   window.location.href.includes("bpoint")
   // ||
-  // window.location.href.includes("localhost")
+  // window.location. href.includes("localhost")
 ) {
   skin = 1;
+} else if (
+  window.location.href.includes("gfb") ||
+  window.location.href.includes("localhost")
+) {
+  skin = 5;
 } else {
   skin = 3;
 }

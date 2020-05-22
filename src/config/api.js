@@ -22,7 +22,7 @@ if (
     ...skin,
     skin_id: 4,
   };
-} else if (window.location.href.includes("bwin")) {
+} else if (window.location.href.includes("gfb")) {
   skin = {
     ...skin,
     skin_id: 5,

@@ -22,7 +22,7 @@ body {
   background: transparent;
   border: 0;
   font-size: 13px;
-  border: 1px solid #fff;
+  border: 1px solid var(--accent-txt);
   border-radius: 20px;
   padding: 0 15px;
   height: 24px;
@@ -41,7 +41,7 @@ body {
 
 .logoutBtn:hover {
   background-color: #fff;
-  color: var(--accent-bg);
+  color: #222;
 }
 
 header.header {
@@ -58,7 +58,7 @@ header.header {
 
 header.header .topNav {
   width: 100%;
-  color: #fff;
+  color: var(--accent-txt);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,15 +68,15 @@ header.header .topNav {
 }
 
 header.header .topNav .register {
-  border: 1px solid #fff;
+  border: 1px solid var(--accent-txt);
   cursor: pointer;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 header.header .topNav .register:hover {
-  background: #fff;
-  color: var(--accent-bg);
+  background: var(--accent-bg);
+  color: var(--accent-txt);
 }
 
 header.header .topNav .left,
@@ -194,6 +194,7 @@ header.header .topNav .icons span {
   height: 15px;
   border-radius: 20px;
   background-color: #3c4349;
+  color: #fff;
   font-size: 12px;
   position: absolute;
   z-index: 1;
