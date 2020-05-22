@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <g id="euro" transform="translate(-471 -278)">
+    <g id="Rectangle_30" data-name="Rectangle 30" transform="translate(471 278)" fill="none" stroke="#32424e" stroke-width="1">
+      <rect width="35" height="35" rx="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="none"/>
+    </g>
+    <g id="euro-2" data-name="euro" transform="translate(448.653 287)">
+      <g id="Group_85" data-name="Group 85" transform="translate(33.236)">
+        <g id="Group_84" data-name="Group 84" transform="translate(0)">
+          <path id="Path_129" data-name="Path 129" d="M102.232,16.018a.564.564,0,0,0-.769-.2,7.875,7.875,0,1,1,0-13.628.562.562,0,1,0,.564-.973,9,9,0,1,0,0,15.574A.562.562,0,0,0,102.232,16.018Z" transform="translate(-88.518)" fill="#32424e"/>
+        </g>
+      </g>
+      <g id="Group_87" data-name="Group 87" transform="translate(31.222 6.75)">
+        <g id="Group_86" data-name="Group 86" transform="translate(0)">
+          <path id="Path_130" data-name="Path 130" d="M41.347,192H31.784a.563.563,0,0,0,0,1.125h9.563a.563.563,0,0,0,0-1.125Z" transform="translate(-31.222 -192)" fill="#32424e"/>
+        </g>
+      </g>
+      <g id="Group_89" data-name="Group 89" transform="translate(31.222 10.125)">
+        <g id="Group_88" data-name="Group 88" transform="translate(0)">
+          <path id="Path_131" data-name="Path 131" d="M41.347,288H31.784a.563.563,0,0,0,0,1.125h9.563a.563.563,0,0,0,0-1.125Z" transform="translate(-31.222 -288)" fill="#32424e"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

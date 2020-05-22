@@ -29,7 +29,10 @@
 
     if (window.location.href.includes("bpoint")) {
       document.getElementById("lnk").setAttribute("href", `var1.css`);
-    } else {
+    } else if (window.location.href.includes("gfb") || window.location.href.includes("local")) {
+      document.getElementById("lnk").setAttribute("href", "./var5.css");
+    }
+    else if (window.location.href.includes("derby")) {
       document.getElementById("lnk").setAttribute("href", "./var3.css");
     }
     document.title = window.location.host.split('.')[1] + ' - Tutto con un click!'
