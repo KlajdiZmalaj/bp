@@ -22,7 +22,6 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>BPOINT STORE – Tutto con un click!</title>
   <link id="lnk" rel="stylesheet" href="" />
   <script>
     var root = document.getElementsByTagName("html")[0];
@@ -33,6 +32,8 @@
     } else {
       document.getElementById("lnk").setAttribute("href", "./var3.css");
     }
+    document.title = window.location.host.split('.')[1] + ' - Tutto con un click!'
+
   </script>
 </head>
 

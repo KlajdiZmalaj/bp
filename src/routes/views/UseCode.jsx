@@ -8,6 +8,8 @@ import {
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
+import { skinTexts, skinID } from "config/skinTexts";
+
 class UseCode extends React.Component {
   state = {
     inputVal: "",
@@ -108,12 +110,14 @@ class UseCode extends React.Component {
                         MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                       </span>
                       <span className="superSmall">
-                        V.le XXIII Settembre 1845 n. 67 Rimini (RN) Italia
+                        {skinTexts[skinID].address}
                       </span>
                       <span className="superSmall link">
-                        www.bpoint.store - info@bpoint.store
+                        {skinTexts[skinID].mail}
                       </span>
-                      <span className="superSmall ">Tel: +39 0541 087890</span>
+                      <span className="superSmall ">
+                        Tel: {skinTexts[skinID].cel}
+                      </span>
                       <span className="superSmall tel">P.IVA 03852290406</span>
 
                       {/* <span>BPOINT</span> */}
