@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import images from "themes/images";
-
+import { skinTexts, skinID } from "config/skinTexts";
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class Footer extends Component {
       <footer>
         <div className="top">
           <div className="maxWFooter">
-            <h2>Vuoi diventare un Punto BPoint?</h2>
+            <h2>Vuoi diventare un Punto {skinTexts[skinID].name}?</h2>
             <button
               onClick={() => {
                 window.location.href = "https://bpoint.store/contatti/";
@@ -32,19 +32,16 @@ class Footer extends Component {
             </div>
             <div className="colf">
               <h3>contact us</h3>
-              <p>
-                Viale XXIII Settembre 1845 n. 67 <br />
-                Rimini (RN) Italia
-              </p>
+              <p>{skinTexts[skinID].address}</p>
               <p>
                 <b>E-mail:</b> <br />
-                info@bpoint.store
+                {skinTexts[skinID].mail}
               </p>
             </div>
             <div className="colf">
               <p>
                 <b>Phone:</b> <br />
-                +39 0541 087890
+                {skinTexts[skinID].cel}
               </p>
             </div>
             <div className="colf newsletter">

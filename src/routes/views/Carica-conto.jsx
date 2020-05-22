@@ -1,6 +1,6 @@
 import React from "react";
-
 import { Azioni, Header } from "shared-components";
+import { skinTexts, skinID } from "config/skinTexts";
 
 class CaricaConto extends React.Component {
   render() {
@@ -45,7 +45,7 @@ class CaricaConto extends React.Component {
                   Una volta effettuato il bonifico si prega di inviare la
                   distinta al nostro indirizzo e-mail:
                 </p>
-                <address>info@bpoint.store</address>
+                <address> {skinTexts[skinID].mail}</address>
               </div>
             </div>
           </div>

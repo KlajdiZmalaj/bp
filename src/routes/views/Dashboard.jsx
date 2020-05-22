@@ -6,6 +6,8 @@ import { Azioni, Header } from "shared-components";
 import { Service } from "routes/components";
 import images from "../../themes/images";
 import { includes, capitalize } from "lodash";
+import { skinTexts, skinID } from "config/skinTexts";
+
 class Dashboard extends React.Component {
   state = {
     serviceSelected: "",
@@ -178,10 +180,10 @@ class Dashboard extends React.Component {
                         Ricaricati <br /> nel modo più veloce
                       </h2>
                       <h3>
-                        Ricarica il tuo cellulare nel Bpoint.store, <br />{" "}
-                        oppure direttamente Online. Clicca l’immagine <br />{" "}
-                        dell’operatore che vuoi ricaricare o sul <br /> nome
-                        nell’elenco a sinistra e scopri <br />
+                        Ricarica il tuo cellulare nel {skinTexts[skinID].name}{" "}
+                        <br /> oppure direttamente Online. Clicca l’immagine{" "}
+                        <br /> dell’operatore che vuoi ricaricare o sul <br />{" "}
+                        nome nell’elenco a sinistra e scopri <br />
                         quanto è veloce e sicuro ricaricare così!
                       </h3>
                       <button

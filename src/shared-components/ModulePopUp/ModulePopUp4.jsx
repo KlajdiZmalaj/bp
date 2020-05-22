@@ -5,6 +5,7 @@ import PrintTicket from "./PrintTicket";
 import Bolletino from "./Bolletino";
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
+import { skinTexts, skinID } from "config/skinTexts";
 
 class ModulePopUp4 extends React.Component {
   constructor(props) {
@@ -281,13 +282,13 @@ class ModulePopUp4 extends React.Component {
                           <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                         </span>
                         <span className="superSmall">
-                          V.le XXIII Settembre 1845 n. 67 Rimini (RN) Italia
+                          {skinTexts[skinID].address}
                         </span>
                         <span className="superSmall link">
-                          www.bpoint.store - info@bpoint.store
+                          {skinTexts[skinID].mail}
                         </span>
                         <span className="superSmall ">
-                          Tel: +39 0541 087890
+                          Tel: {skinTexts[skinID].cel}
                         </span>
                         <span className="superSmall tel">
                           P.IVA 03852290406
