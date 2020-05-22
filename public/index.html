@@ -31,11 +31,17 @@
       document.getElementById("lnk").setAttribute("href", `var1.css`);
     } else if (window.location.href.includes("gfb") || window.location.href.includes("local")) {
       document.getElementById("lnk").setAttribute("href", "./var5.css");
+    } else if (window.location.href.includes("planet")) {
+      document.getElementById("lnk").setAttribute("href", "./var4.css");
     }
     else if (window.location.href.includes("derby")) {
       document.getElementById("lnk").setAttribute("href", "./var3.css");
     }
-    document.title = window.location.host.split('.')[1] + ' - Tutto con un click!'
+    if (window.location.host.split('.')[1]) {
+      document.title = window.location.host.split('.')[1].toUpperCase() + ' - Tutto con un click!'
+    } else {
+      document.title = window.location.host + ' - Tutto con un click!'
+    }
 
   </script>
 </head>
