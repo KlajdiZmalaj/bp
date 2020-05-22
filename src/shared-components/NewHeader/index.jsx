@@ -130,21 +130,21 @@ class Header extends Component {
             </div>
             <div className="navLinks">
               <div className="item">
-                <a href="https://bpoint.store/index.php/chi-siamo/">azienda</a>
+                <a href={skinTexts[skinID].link1}>azienda</a>
               </div>
               <div className="item">
-                <a href="https://bpoint.store/servizi/">servizi</a>
+                <a href={skinTexts[skinID].link2}>servizi</a>
               </div>
               <div className="item">
-                <a href="https://bpoint.store/">area riservata</a>
-              </div>
-              <div className="item">
-                {" "}
-                <a href="https://bpoint.store/contatti/">contatti</a>{" "}
+                <a href={skinTexts[skinID].link3}>area riservata</a>
               </div>
               <div className="item">
                 {" "}
-                <a href="https://bpoint.store/affiliazioni/">
+                <a href={skinTexts[skinID].link4}>contatti</a>{" "}
+              </div>
+              <div className="item">
+                {" "}
+                <a href={skinTexts[skinID].link5}>
                   affilia la tua attivita
                 </a>{" "}
               </div>
@@ -176,23 +176,21 @@ class Header extends Component {
           </div>
           <div className="navLinks">
             <div className="item">
-              <a href="https://bpoint.store/index.php/chi-siamo/">azienda</a>
+              <a href={skinTexts[skinID].link1}>azienda</a>
             </div>
             <div className="item">
-              <a href="https://bpoint.store/servizi/">servizi</a>
+              <a href={skinTexts[skinID].link2}>servizi</a>
             </div>
             <div className="item">
-              <a href="https://bpoint.store/">area riservata</a>
-            </div>
-            <div className="item">
-              {" "}
-              <a href="https://bpoint.store/contatti/">contatti</a>{" "}
+              <a href={skinTexts[skinID].link3}>area riservata</a>
             </div>
             <div className="item">
               {" "}
-              <a href="https://bpoint.store/affiliazioni/">
-                affilia la tua attivita
-              </a>{" "}
+              <a href={skinTexts[skinID].link4}>contatti</a>{" "}
+            </div>
+            <div className="item">
+              {" "}
+              <a href={skinTexts[skinID].link5}>affilia la tua attivita</a>{" "}
             </div>
             <button
               onClick={() => {

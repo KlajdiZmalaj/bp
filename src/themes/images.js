@@ -11,10 +11,11 @@ if (
   window.location.href.includes("localhost")
 ) {
   skin = 5;
-} else {
+} else if (window.location.href.includes("derby")) {
   skin = 3;
+} else if (window.location.href.includes("planet")) {
+  skin = 4;
 }
-
 export default {
   logo: require(`../assets/images${skin}/logo.svg`),
   logoFooter: require(`../assets/images${skin}/logoFooter.svg`),
