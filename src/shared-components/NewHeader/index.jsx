@@ -14,6 +14,7 @@ class Header extends Component {
     this.state = {
       isMobMenu: false,
       ads: false,
+      regType: 1,
     };
   }
   toggleAds = () => {
@@ -34,6 +35,7 @@ class Header extends Component {
     if (data) {
       isLoggedin = true;
     }
+    console.log("propps", this.props);
     return screenWidth > 860 ? (
       <header className="header">
         <div className="headermaxW">
@@ -80,23 +82,33 @@ class Header extends Component {
                 </div>
               </div>
               <div className="userinfo">
-                {get(accountInfo, "profile.role.name") &&
-                  get(accountInfo, "profile.role.name") !== "super_admin" && (
-                    <div
-                      className="register"
-                      onClick={() => {
-                        this.props.history.push("/registerUser");
-                      }}
-                    >
-                      Register User
-                    </div>
-                  )}
+                {get(accountInfo, "profile.role.name") === "agent" && (
+                  <div
+                    className="register"
+                    onClick={() => {
+                      this.props.history.push("/registerAgency");
+                    }}
+                  >
+                    Register Agency
+                  </div>
+                )}
+                {get(accountInfo, "profile.role.name") === "agency" && (
+                  <div
+                    className="register"
+                    onClick={() => {
+                      this.props.history.push("/registerUser");
+                    }}
+                  >
+                    Register User
+                  </div>
+                )}
                 {get(accountInfo, "profile.role.name") === "super_admin" && (
                   <div
                     onClick={() => {
                       if (this.state.regType === 1) {
                         this.props.history.push("/registerAgency");
-                      } else if (this.state.regType === 2) {
+                      }
+                      if (this.state.regType === 2) {
                         this.props.history.push("/registerAgent");
                       }
                     }}
