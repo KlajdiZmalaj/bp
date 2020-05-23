@@ -1,13 +1,20 @@
 import React from "react";
-
+import { azioni } from "config";
 import { Redirect, Route } from "react-router-dom";
+import { includes } from "lodash";
 
-const PrivateRoute = ({ component: Component, isLoggedin, ...rest }) => {
+const PrivateRoute = ({
+  component: Component,
+  isLoggedin,
+  role,
+  allowedRoles,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
-      render={props =>
-        isLoggedin ? (
+      render={(props) =>
+        isLoggedin && includes(allowedRoles, role) ? (
           <Component {...props} />
         ) : (
           <Redirect

@@ -5,7 +5,7 @@ import { AuthActions, MainActions } from "redux-store/models";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
-
+import { get } from "lodash";
 import {
   Annunci,
   Dashboard,
@@ -44,10 +44,11 @@ class Root extends React.Component {
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
+    const role = get(this.props.accountInfo, "profile.role.name");
     if (data) {
       isLoggedin = true;
     }
-    console.log("screenWidth", this.props.screenWidth);
+    console.log("accountInfo", role);
     return (
       <React.Fragment>
         <HashRouter>
@@ -73,63 +74,87 @@ class Root extends React.Component {
               path="/account-info"
               component={AccountInfo}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency", "agent"]}
             />
             <PrivateRoute
               path="/annunci"
               component={Annunci}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency"]}
             />
             <PrivateRoute
               path="/use-code"
               component={UseCode}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency"]}
             />
 
             <PrivateRoute
               path="/wallet"
               component={Wallet}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["agency"]}
             />
             <PrivateRoute
               path="/transazioni"
               component={Transazioni}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency", "agent"]}
             />
             <Route
               path="/dashboard"
               component={Dashboard}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency", "agent"]}
             />
             <PrivateRoute
               path="/configura"
               component={Configura}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency", "agent"]}
             />
             <PrivateRoute
               path="/messages"
               component={Messages}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency"]}
             />
             <PrivateRoute
               path="/carica-conto"
               component={CaricaConto}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency"]}
             />
 
             <PrivateRoute
               path="/registerUser"
               component={RegisterEndUser}
               isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["agency"]}
             />
             <PrivateRoute
               path="/registerAgency"
               component={RegisterAgency}
+              role={role}
               isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "agent"]}
             />
             <PrivateRoute
               path="/registerAgent"
               component={RegisterAgent}
               isLoggedin={isLoggedin}
+              allowedRoles={["super_admin"]}
+              role={role}
             />
           </Switch>
         </HashRouter>
