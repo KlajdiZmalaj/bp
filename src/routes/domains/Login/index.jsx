@@ -26,6 +26,8 @@ class Login extends React.Component {
   };
 
   render() {
+    const { loginMsg } = this.props;
+    console.log("loginMsg", loginMsg);
     return (
       <React.Fragment>
         <div className="leftLogin">
@@ -67,12 +69,18 @@ class Login extends React.Component {
               </button>
             </li>
           </ul>
+
+          {loginMsg && <div className="loginMsg">{loginMsg}</div>}
         </div>
       </React.Fragment>
     );
   }
 }
 
-const mapsStateToProps = (state) => ({});
+const mapsStateToProps = (state) => {
+  return {
+    loginMsg: state.auth.loginMsg,
+  };
+};
 
 export default connect(mapsStateToProps, { ...AuthActions })(Login);

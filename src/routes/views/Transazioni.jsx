@@ -334,7 +334,8 @@ class Transazioni extends React.Component {
                   onSubmit={this.handleSubmit}
                   className="filters"
                 >
-                  {get(accountInfo, "profile.role.name") === "super_admin" && (
+                  {(get(accountInfo, "profile.role.name") === "super_admin" ||
+                    get(accountInfo, "profile.role.name") === "agent") && (
                     <div className="dal">
                       {
                         <Form.Item>

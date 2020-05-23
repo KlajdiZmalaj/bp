@@ -125,6 +125,7 @@ const { Types, Creators } = createActions({
   setConfiguraData: ["usersConfigura"],
   getBarcodeData: ["barcode", "callback"],
   setBarcodeData: ["barcodeData"],
+  setLoginMsg: ["loginMsg"],
 });
 
 export const AuthTypes = Types;
@@ -132,6 +133,7 @@ export default Creators;
 
 const INITIAL_STATE = {
   pwError: "",
+  loginMsg: "",
   user: null,
   loading: false,
   error: null,
@@ -153,6 +155,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_LOGIN_MSG]: (state, { loginMsg }) => ({
+    ...state,
+    loginMsg,
+  }),
   [Types.SIGN_IN_BY_EMAIL]: (state) => ({
     ...state,
     loading: true,

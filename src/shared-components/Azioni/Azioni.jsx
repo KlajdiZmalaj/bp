@@ -12,9 +12,9 @@ class Azioni extends Component {
     const { active, accountInfo } = this.props;
     const params = {
       spaceBetween: 10,
-      loop: true,
+      loop: false,
       slidesPerView: 6,
-      freeMode: true,
+      freeMode: false,
       breakpoints: {
         // when window width is >= 320px
         320: {
