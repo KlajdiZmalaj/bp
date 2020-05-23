@@ -2108,6 +2108,10 @@ i#private {
           flex-flow: column;
 }
 
+.headerModal img {
+  width: 150px;
+}
+
 .headerModal + div,
 .headerModal span {
   display: block;

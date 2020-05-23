@@ -26,10 +26,16 @@ export function* signInByEmail(credencials) {
     credencials.email,
     credencials.password
   );
+  console.log("response123", response);
   if (response) {
     if (response.data) {
       localStorage.setItem("accountDataB", JSON.stringify(response.data));
       yield put(AuthActions.setAccountInfo(response.data));
+    }
+    if (response.error) {
+      yield put(AuthActions.setLoginMsg(response.error.response.data.message));
+      yield delay(4000);
+      yield put(AuthActions.setLoginMsg(""));
     }
   }
 }

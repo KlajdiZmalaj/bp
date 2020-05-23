@@ -369,6 +369,9 @@
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  img {
+    width: 150px;
+  }
   + div,
   span {
     display: block;
