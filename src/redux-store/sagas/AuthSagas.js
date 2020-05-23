@@ -351,7 +351,8 @@ export function* getRegister(params) {
     params.a_contry,
     params.rent,
     params.privacy_policy,
-    params.recieve_emails
+    params.recieve_emails,
+    params.percentage
   );
 
   if (response.data) {

@@ -13,15 +13,12 @@ import {
   Configura,
   UseCode,
   Transazioni,
-  // AdminAccount,
-  // AnnunciAdmin,
-  // Operazioni,
-  // Impostazioni,
   Messages,
   AccountInfo,
   Register,
   RegisterEndUser,
   RegisterAgency,
+  RegisterAgent,
   Login,
   Verify,
   Wallet,
@@ -46,7 +43,6 @@ class Root extends React.Component {
   render() {
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
-    // const data = !this.props.unauthorizated && JSON.parse(accountData);
     const data = JSON.parse(accountData);
     if (data) {
       isLoggedin = true;
@@ -57,20 +53,6 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
-            {/* <Route exact path="/login" component={Login} /> */}
-            {/* <Route exact path="/account-info" component={AccountInfo} /> */}
-            {/* <Route exact path="/annunci" component={Annunci} /> */}
-            {/* <Route exact path="/messages" component={Messages} /> */}
-            {/* <Route exact path="/dashboard" component={Dashboard} /> */}
-            {/* <Route exact path="/carica-conto" component={CaricaConto} /> */}
-            {/* <Route exact path="/configura" component={Configura} /> */}
-            {/* <Route exact path="/use-code" component={UseCode} /> */}
-            {/* <Route exact path="/transazioni" component={Transazioni} /> */}
-            {/* 
-            <Route exact path="/admin-account" component={AdminAccount} /> */}
-            {/* <Route exact path="/annunci-admin" component={AnnunciAdmin} /> */}
-            {/* <Route exact path="/operazioni" component={Operazioni} /> */}
-            {/* <Route exact path="/impostazioni" component={Impostazioni} /> */}
             <Route exact path="/register" component={Register} />
             <PublicRoute
               path="/login"
@@ -102,16 +84,7 @@ class Root extends React.Component {
               component={UseCode}
               isLoggedin={isLoggedin}
             />
-            {/* <PrivateRoute
-              path="/admin-account"
-              component={AdminAccount}
-              isLoggedin={isLoggedin}
-            /> */}
-            {/* <PrivateRoute
-              path="/annunci-admin"
-              component={AnnunciAdmin}
-              isLoggedin={isLoggedin}
-            /> */}
+
             <PrivateRoute
               path="/wallet"
               component={Wallet}
@@ -142,16 +115,7 @@ class Root extends React.Component {
               component={CaricaConto}
               isLoggedin={isLoggedin}
             />
-            {/* <PrivateRoute
-              path="/operazioni"
-              component={Operazioni}
-              isLoggedin={isLoggedin}
-            /> */}
-            {/* <PrivateRoute
-              path="/impostazioni"
-              component={Impostazioni}
-              isLoggedin={isLoggedin}
-            /> */}
+
             <PrivateRoute
               path="/registerUser"
               component={RegisterEndUser}
@@ -160,6 +124,11 @@ class Root extends React.Component {
             <PrivateRoute
               path="/registerAgency"
               component={RegisterAgency}
+              isLoggedin={isLoggedin}
+            />
+            <PrivateRoute
+              path="/registerAgent"
+              component={RegisterAgent}
               isLoggedin={isLoggedin}
             />
           </Switch>

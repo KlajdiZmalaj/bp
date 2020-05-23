@@ -267,7 +267,7 @@ export const fetchRegisterAllInfo = (
   a_contry,
   rent,
   privacy_policy,
-  recieve_emails
+  recieve_emails,percentage
 ) =>
   axios
     .create({
@@ -299,7 +299,7 @@ export const fetchRegisterAllInfo = (
       ...{ phone: number_prefix + number },
       ...{ document_front: frontImg },
       ...{ document_back: backImg },
-      ...(role != "super_admin" ? { role: "user" } : { role: "agency" }),
+      ...{ role: role },
       ...{ a_ragione_sociale: aRagSoc },
       ...{ a_insegna: aInsegna },
       ...{ a_phone: aPhone },
@@ -320,6 +320,7 @@ export const fetchRegisterAllInfo = (
       ...{ rent },
       ...{ privacy_policy },
       ...{ recieve_emails },
+      ...{percentage},
       ...skin,
     })
     .catch((error) => ({ data: error.response.data }));

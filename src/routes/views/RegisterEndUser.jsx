@@ -137,7 +137,7 @@ class RegisterEndUser extends React.Component {
           values.number,
           this.state.imageUrl,
           this.state.imageUrl2,
-          this.props.accountInfo.profile.role.name,
+          "user",
           "",
           "",
           "",
