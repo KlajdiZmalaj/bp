@@ -3121,7 +3121,7 @@ footer .top button {
   border: 0;
   background-color: #fff;
   padding: 5px;
-  color: var(--accent-bg);
+  color: #222;
   text-transform: uppercase;
   font-weight: 500;
   border: 0;
@@ -3164,6 +3164,10 @@ footer .top .maxWFooter {
 
 footer .mid {
   background-color: var(--accent-bg);
+}
+
+footer .mid img {
+  width: 160px;
 }
 
 footer .mid .maxWFooter {
@@ -3220,13 +3224,15 @@ footer .mid .maxWFooter .colf.newsletter {
 footer .mid .maxWFooter .colf.newsletter input {
   border-radius: 5px;
   padding: 2px 10px;
-  background: #ffffff73;
+  background: transparent;
+  border: 0;
+  border: 1px solid var(--accent-txt);
 }
 
 footer .mid .maxWFooter .colf.newsletter button {
   background: transparent;
   border: 0;
-  border: 1px solid #fff;
+  border: 1px solid var(--accent-txt);
   border-radius: 5px;
   margin-top: 5px;
   padding: 3px 10px;
@@ -3235,7 +3241,7 @@ footer .mid .maxWFooter .colf.newsletter button {
 }
 
 footer .mid .maxWFooter .colf.newsletter button:hover {
-  background: #fff;
+  background: var(--accent-txt);
   color: var(--accent-bg);
 }
 

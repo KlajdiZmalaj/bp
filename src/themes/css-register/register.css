@@ -780,6 +780,7 @@
 
 .newReg .inputLabel {
   color: #5c5c5c;
+  text-transform: capitalize;
 }
 
 .newReg .inputLabel > span {

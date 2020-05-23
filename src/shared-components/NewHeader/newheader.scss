@@ -27,8 +27,8 @@ body {
   transition: 0.3s;
 
   &:hover {
-    background-color: #fff;
-    color: #222;
+    background-color: var(--accent-txt);
+    color: var(--accent-bg);
   }
 }
 
@@ -51,8 +51,8 @@ header.header {
       transition: 0.3s;
 
       &:hover {
-        background: var(--accent-bg);
-        color: var(--accent-txt);
+        background-color: var(--accent-txt);
+        color: var(--accent-bg);
       }
     }
 
@@ -129,6 +129,7 @@ header.header {
 
         i {
           cursor: pointer;
+          opacity: 0.7;
         }
       }
 

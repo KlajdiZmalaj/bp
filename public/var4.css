@@ -2,12 +2,12 @@ html {
   --accent-bg: #f9c425;
   --accent-txt: #504b40;
 
-  --header-bg: #242424;
-  --header-txt: #fff;
+  --header-bg: #fff;
+  --header-txt: #222;
 
-  --footerTop-bg: #f9c425;
+  --footerTop-bg: #e2b52f;
   --footerTop-txt: #222;
 }
 .logo img {
-  width: 140px;
+  width: 70px;
 }
