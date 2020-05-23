@@ -15,6 +15,7 @@ export { default as AccountInfo } from "./views/AccountInfo";
 export { default as Register } from "./views/Register";
 export { default as RegisterEndUser } from "./views/RegisterEndUser";
 export { default as RegisterAgency } from "./views/RegisterAgency";
+export { default as RegisterAgent } from "./views/RegisterAgent";
 
 export { default as Login } from "./views/Login";
 export { default as Verify } from "./views/Verify";

@@ -79,6 +79,29 @@ header.header .topNav .register:hover {
   color: var(--accent-bg);
 }
 
+header.header .topNav .registerDropDown {
+  position: relative;
+  z-index: 33;
+}
+
+header.header .topNav .registerDropDown i {
+  cursor: pointer;
+}
+
+header.header .topNav .registerDropDown--item {
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+header.header .topNav .registerDropDown .wrapperReg {
+  position: absolute;
+  top: 30px;
+  background: var(--light);
+  color: var(--dark);
+  padding: 15px;
+  left: -30px;
+}
+
 header.header .topNav .left,
 header.header .topNav .right {
   display: -webkit-box;

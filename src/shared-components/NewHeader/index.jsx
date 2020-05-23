@@ -27,7 +27,7 @@ class Header extends Component {
   }
   render() {
     const { accountInfo, screenWidth, user, ads } = this.props;
-    const { isMobMenu } = this.state;
+    const { isMobMenu, isDDopem } = this.state;
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
@@ -80,21 +80,64 @@ class Header extends Component {
                 </div>
               </div>
               <div className="userinfo">
-                {get(accountInfo, "profile.role.name") && (
+                {get(accountInfo, "profile.role.name") &&
+                  get(accountInfo, "profile.role.name") !== "super_admin" && (
+                    <div
+                      className="register"
+                      onClick={() => {
+                        this.props.history.push("/registerUser");
+                      }}
+                    >
+                      Register User
+                    </div>
+                  )}
+                {get(accountInfo, "profile.role.name") === "super_admin" && (
                   <div
-                    className="register"
                     onClick={() => {
-                      get(accountInfo, "profile.role.name") === "super_admin"
-                        ? this.props.history.push("/registerAgency")
-                        : this.props.history.push("/registerUser");
+                      if (this.state.regType === 1) {
+                        this.props.history.push("/registerAgency");
+                      } else if (this.state.regType === 2) {
+                        this.props.history.push("/registerAgent");
+                      }
                     }}
+                    className="register"
                   >
-                    {get(accountInfo, "profile.role.name") === "super_admin"
-                      ? "Registra Agenzia"
-                      : "Register User"}
+                    {this.state.regType === 1
+                      ? "Register Agency"
+                      : "Register Agent"}
                   </div>
                 )}
-
+                {get(accountInfo, "profile.role.name") === "super_admin" && (
+                  <div className="registerDropDown">
+                    <i
+                      onClick={() => {
+                        this.setState({ isDDopem: !this.state.isDDopem });
+                      }}
+                      className={`fal fa-chevron-${isDDopem ? "up" : "down"}`}
+                      aria-hidden="true"
+                    ></i>
+                    {isDDopem && (
+                      <div className="wrapperReg animated bounceIn">
+                        <div
+                          className="registerDropDown--item"
+                          onClick={() => {
+                            this.setState({ regType: 1, isDDopem: false });
+                          }}
+                        >
+                          Agenzia
+                        </div>
+                        <div
+                          className="registerDropDown--item"
+                          onClick={() => {
+                            this.setState({ regType: 2, isDDopem: false });
+                          }}
+                        >
+                          Agente
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
                 <div className="name">{get(accountInfo, "profile.name")}</div>
                 {isLoggedin && (
                   <div className="money">

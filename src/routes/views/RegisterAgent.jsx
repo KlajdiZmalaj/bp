@@ -172,7 +172,7 @@ class RegisterEndUser extends React.Component {
           values.number,
           this.state.imageUrl,
           this.state.imageUrl2,
-          "agency",
+          "agent",
           values.aRagSoc,
           values.aInsegna,
           values.aPhone,
@@ -192,14 +192,8 @@ class RegisterEndUser extends React.Component {
           values.a_contry,
           values.pagmens,
           this.state.privacy_policy,
-          this.state.recieve_emails
-          //   values.self_limit_period,
-          //   values.promo,
-          //   values.parent,
-          //   values.contract,
-          //   values.terms,
-          //   values.privacy,
-          //   values.newsletter
+          this.state.recieve_emails,
+          values.percentage
         );
 
         var that = this;
@@ -412,7 +406,7 @@ class RegisterEndUser extends React.Component {
         <Header></Header>
 
         <Form className="newReg" onSubmit={this.handleSubmit}>
-          <div className="newReg--header">Register Agenzia</div>
+          <div className="newReg--header">Register Agente</div>
           <div className="newReg--row">
             <div className="newReg--row__col">
               <div className="itemCol full">
@@ -703,201 +697,7 @@ class RegisterEndUser extends React.Component {
                   })(<Input />)}
                 </Form.Item>
               </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Insegna <span>*</span>
-                </div>
-                <Form.Item>
-                  {getFieldDecorator("aInsegna", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire insegna!",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Cordinate
-                  <span
-                    onMouseOver={() => {
-                      this.setState({ cordHelp: true });
-                    }}
-                    onMouseLeave={() => {
-                      this.setState({ cordHelp: false });
-                    }}
-                  >
-                    * (?)
-                    {this.state.cordHelp && (
-                      <div className="helper">
-                        La tua posizione latitudine, longitudine
-                      </div>
-                    )}
-                  </span>
-                </div>
-                <Form.Item>
-                  {getFieldDecorator("cordinate", {
-                    rules: [
-                      {
-                        required: false,
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol full">
-                <div className="inputLabel">
-                  Telefono Agenzia <span>*</span>
-                </div>
-                <Form.Item>
-                  {getFieldDecorator("aPhone", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire telefono",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input addonBefore={number_prefix} />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Sede Operativa<span>*</span>
-                </div>
-                <Form.Item hasFeedback>
-                  {getFieldDecorator("aAdress", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire adress",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Codice Fiscale Agenzia<span>*</span>
-                </div>
-                <Form.Item>
-                  {getFieldDecorator("aFcode", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire codice",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Comune<span>*</span>
-                </div>
-                <Form.Item hasFeedback>
-                  {getFieldDecorator("aCity", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire City",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Cap Agenzia{" "}
-                  <span
-                    onMouseOver={() => {
-                      this.setState({ aCapHelp: true });
-                    }}
-                    onMouseLeave={() => {
-                      this.setState({ aCapHelp: false });
-                    }}
-                  >
-                    * (?)
-                    {this.state.aCapHelp && (
-                      <div className="helper">Il cap deve avere 5 numeri</div>
-                    )}
-                  </span>
-                </div>
-                <Form.Item hasFeedback>
-                  {getFieldDecorator("aCap", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire cap",
-                        whitespace: true,
-                      },
-                      {
-                        validator: (a, b, c) => {
-                          const { form } = this.props;
-                          const numbers = /[0-9]/g;
-                          if (
-                            form.getFieldValue("aCap").match(numbers) &&
-                            form.getFieldValue("aCap").length === 5
-                          ) {
-                            c();
-                          } else {
-                            c("Cap sbagliato!");
-                          }
-                        },
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Provincia di Residenza Agenzia<span>*</span>
-                </div>
-                <Form.Item hasFeedback>
-                  {getFieldDecorator("aComcode", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire Comune",
-                        whitespace: true,
-                      },
-                      {
-                        validator: (a, b, c) => {
-                          const { form } = this.props;
-                          if (form.getFieldValue("aComcode").length === 2) {
-                            c();
-                          } else {
-                            c("Comune deve essere 2 characteri! (ex:MI)");
-                          }
-                        },
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Nazione di residenza Agenzia<span>*</span>
-                </div>
-                <Form.Item>
-                  {getFieldDecorator("a_contry", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire Nazione",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input />)}
-                </Form.Item>
-              </div>
+
               <div className="itemCol semi">
                 <div className="inputLabel">
                   P.Iva<span>*</span>
@@ -948,15 +748,15 @@ class RegisterEndUser extends React.Component {
               costoanualeInp : '' */}
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Pagamento Mensile<span>*</span>
+                  Percentage%<span>*</span>
                 </div>
 
                 <Form.Item>
-                  {getFieldDecorator("pagmens", {
+                  {getFieldDecorator("percentage", {
                     rules: [
                       {
                         required: true,
-                        message: "Inserire Pagamento Mensile",
+                        message: "Inserire percentage",
                         whitespace: true,
                       },
                     ],

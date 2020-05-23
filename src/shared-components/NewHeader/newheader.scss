@@ -55,7 +55,25 @@ header.header {
         color: var(--accent-bg);
       }
     }
-
+    .registerDropDown {
+      position: relative;
+      z-index: 33;
+      i {
+        cursor: pointer;
+      }
+      &--item {
+        cursor: pointer;
+        padding: 4px 0;
+      }
+      .wrapperReg {
+        position: absolute;
+        top: 30px;
+        background: var(--light);
+        color: var(--dark);
+        padding: 15px;
+        left: -30px;
+      }
+    }
     .left,
     .right {
       display: flex;
