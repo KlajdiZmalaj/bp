@@ -6,14 +6,14 @@ if (
   // window.location. href.includes("localhost")
 ) {
   skin = 1;
-} else if (
-  window.location.href.includes("gfb") ||
-  window.location.href.includes("localhost")
-) {
+} else if (window.location.href.includes("gfb")) {
   skin = 5;
 } else if (window.location.href.includes("derby")) {
   skin = 3;
-} else if (window.location.href.includes("planet")) {
+} else if (
+  window.location.href.includes("planet") ||
+  window.location.href.includes("localhost")
+) {
   skin = 4;
 }
 export default {

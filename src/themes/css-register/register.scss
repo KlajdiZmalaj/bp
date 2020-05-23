@@ -594,6 +594,7 @@
   }
   .inputLabel {
     color: #5c5c5c;
+    text-transform: capitalize;
     > span {
       color: var(--red);
       position: relative;

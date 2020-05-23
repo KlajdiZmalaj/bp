@@ -28,12 +28,11 @@ class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div
-          className="leftLogin"
-          style={{
-            backgroundImage: `url(${images.leftLogin})`,
-          }}
-        ></div>
+        <div className="leftLogin">
+          <div className="logoLogin">
+            <img src={images.logoFooter} alt="" />
+          </div>
+        </div>
         <div className="login">
           <div className="title">
             <i className="fal fa-user-circle"></i>
