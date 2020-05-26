@@ -8,12 +8,12 @@ if (
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;
-} else if (window.location.href.includes("derby")) {
-  skin = 3;
 } else if (
-  window.location.href.includes("planet") ||
+  window.location.href.includes("derby") ||
   window.location.href.includes("localhost")
 ) {
+  skin = 3;
+} else if (window.location.href.includes("planet")) {
   skin = 4;
 }
 export default {

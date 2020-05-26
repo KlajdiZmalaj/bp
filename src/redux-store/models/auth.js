@@ -126,6 +126,28 @@ const { Types, Creators } = createActions({
   getBarcodeData: ["barcode", "callback"],
   setBarcodeData: ["barcodeData"],
   setLoginMsg: ["loginMsg"],
+  getUserDetail: ["id"],
+  setUserDetail: ["userDetail"],
+  updateUserDetail: [
+    "user_id",
+    "phone",
+    "document_type",
+    "document_number",
+    "rilasciato_da",
+    "luogo_di_rilascio",
+    "data_di_rilascio",
+    "data_di_scadenza",
+    "a_insegna",
+    "a_cordinate",
+    "a_phone",
+    "a_address",
+    "a_city",
+    "a_comune_code",
+    "a_cap",
+    "a_country",
+    "a_rent",
+  ],
+  updateUserDetailMsg: ["updateMsg"],
 });
 
 export const AuthTypes = Types;
@@ -152,9 +174,19 @@ const INITIAL_STATE = {
   paymentsFromCode: {},
   usersConfigura: {},
   barcodeData: {},
+  userDetail: {},
+  updateMsg: "",
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.UPDATE_USER_DETAIL_MSG]: (state, { updateMsg }) => ({
+    ...state,
+    updateMsg,
+  }),
+  [Types.SET_USER_DETAIL]: (state, { userDetail }) => ({
+    ...state,
+    userDetail,
+  }),
   [Types.SET_LOGIN_MSG]: (state, { loginMsg }) => ({
     ...state,
     loginMsg,

@@ -20,6 +20,8 @@ import {
   getConfigura,
   getCodiceTicket,
   getBarcodeData,
+  getUserDetail,
+  updateUserDetail,
 } from "./AuthSagas";
 
 import {
@@ -50,6 +52,8 @@ export default function* root() {
     takeLatest(AuthTypes.GET_CHANGED_PASSWORD, getChangedPassword),
     takeLatest(AuthTypes.GET_CONFIGURA, getConfigura),
     takeLatest(AuthTypes.GET_CODICE_TICKET, getCodiceTicket),
+    takeLatest(AuthTypes.GET_USER_DETAIL, getUserDetail),
+    takeLatest(AuthTypes.UPDATE_USER_DETAIL, updateUserDetail),
 
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices),

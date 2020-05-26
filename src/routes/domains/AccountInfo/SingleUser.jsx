@@ -109,42 +109,13 @@ class SingleUser extends Component {
                 className="fal fa-eye"
                 onClick={() => {
                   this.setInfos();
+                  this.props.getUserDetail(user.id);
                 }}
                 aria-hidden="true"
               ></i>
             </span>
           </div>
         </div>
-        {moreInfo && (
-          <React.Fragment>
-            <div className="popUp">
-              <div className="title">More Info</div>
-              <ul>
-                <li>
-                  User ID : <span>{user.id}</span>{" "}
-                </li>
-                <li>
-                  Nome: <span>{user.first_name}</span>{" "}
-                </li>
-                <li>
-                  CogNome: <span>{user.last_name}</span>{" "}
-                </li>
-                <li>
-                  Comune Code: <span> {user.comune_code}</span>
-                </li>
-                <li>
-                  Credito: <span> {user.wallet} €</span>
-                </li>
-              </ul>
-            </div>
-            <div
-              className="backDrop"
-              onClick={() => {
-                this.setInfos();
-              }}
-            ></div>
-          </React.Fragment>
-        )}
 
         {isPopUpActive ? (
           <React.Fragment>

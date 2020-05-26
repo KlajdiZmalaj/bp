@@ -882,4 +882,52 @@
     width: 220%;
   }
 }
+
+body .userDetailPopup {
+  position: fixed;
+  width: 100vw;
+  height: auto;
+  top: 20%;
+  left: 50%;
+  background-color: #fff;
+  max-width: 770px;
+  margin-left: -380px;
+  z-index: 3;
+}
+
+body .userDetailPopup .closeBtn {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+body .userDetailPopup .closeBtn:hover {
+  color: var(--red);
+}
+
+body .userDetailPopup .newReg--header {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+  position: relative;
+}
+
+body .userDetailPopup .inputLabel {
+  font-size: 12px;
+}
+
+body .userDetailPopup input[readonly] {
+  color: #9b9ea0;
+}
+
+body .userDetailPopup .ant-select {
+  width: 100%;
+}
+
+body .userDetailPopup .SubmitButton {
+  padding: 4px 30px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 /*# sourceMappingURL=style.css.map */
