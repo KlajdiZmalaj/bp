@@ -3252,12 +3252,13 @@ footer .mid .maxWFooter .colf.newsletter button:hover {
 footer .bottom {
   -webkit-box-shadow: 0px -4px 20px -17px black;
           box-shadow: 0px -4px 20px -17px black;
+  background-color: #fff;
 }
 
 footer .bottom p {
   margin-bottom: 0;
   font-size: 12px;
-  color: var(--accent-bg);
+  color: #222;
 }
 
 footer .bottom .socials {
@@ -3270,7 +3271,7 @@ footer .bottom .socials {
   width: 100px;
   font-size: 22px;
   padding: 10px;
-  color: var(--accent-bg);
+  color: #222;
 }
 
 footer .bottom .maxWFooter {
