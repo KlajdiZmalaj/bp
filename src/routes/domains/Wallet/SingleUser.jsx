@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { switchUserStatus, transferMoney } from "services/auth.js";
+import { message } from "antd";
+
 class SingleUser extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +78,9 @@ class SingleUser extends Component {
                 className="fal fa-lock"
                 onClick={() => {
                   switchUserStatus(user.id, 2, this.switchCallBack);
+                  message.error(
+                    "lo stato dell`utente è cambiato : `DISATTIVATO`"
+                  );
                 }}
               ></i>
             ) : (
@@ -83,6 +88,9 @@ class SingleUser extends Component {
                 className="fal fa-lock-open"
                 onClick={() => {
                   switchUserStatus(user.id, 1, this.switchCallBack);
+                  message.success(
+                    "lo stato dell`utente è cambiato : `ATTIVATO`"
+                  );
                 }}
               ></i>
             )}
