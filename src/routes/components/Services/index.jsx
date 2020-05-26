@@ -124,7 +124,7 @@ class Service extends React.Component {
                             <td>
                               <div>
                                 Servizio attivo tutti i giorni <br />
-                                ferali dalle 8,30 alle 19,30
+                                feriali dalle 8,30 alle 19,30
                               </div>
                             </td>
                           </tr>
@@ -142,7 +142,7 @@ class Service extends React.Component {
                             <td>
                               <h3>esegui</h3>
                               <p>
-                                pagemento <br /> diferito
+                                pagemento <br /> differito
                               </p>
                             </td>
                             <td className="stampCup">

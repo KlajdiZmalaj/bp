@@ -135,7 +135,7 @@ class Bolletino extends React.Component {
                       <td>
                         <div>
                           Servizio attivo tutti i giorni <br />
-                          ferali dalle 8,30 alle 19,30
+                          feriali dalle 8,30 alle 19,30
                         </div>
                       </td>
                     </tr>
@@ -161,7 +161,7 @@ class Bolletino extends React.Component {
                       >
                         <h3>barcode</h3>
                         <p>
-                          pagemento <br /> diferito
+                          pagemento <br /> differito
                         </p>
                       </td>
                       <td className="stampCup">

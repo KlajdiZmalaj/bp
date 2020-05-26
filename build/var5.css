@@ -1,0 +1,13 @@
+html {
+  --accent-bg: #fdaf18;
+  --accent-txt: #504b40;
+
+  --header-bg: #242424;
+  --header-txt: #fff;
+
+  --footerTop-bg: #e4a321;
+  --footerTop-txt: #222;
+}
+.logo img {
+  width: 140px;
+}

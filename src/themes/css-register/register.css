@@ -696,7 +696,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   font-size: 18px;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
 }
 
 .newReg--row {
@@ -791,7 +791,7 @@
 
 .newReg .SubmitButton {
   background-color: var(--accent-bg);
-  color: #25282e;
+  color: var(--accent-txt);
   border: 0;
   border-radius: 0;
   text-transform: uppercase;
@@ -896,6 +896,10 @@
   color: #222;
   padding: 2px 7px;
   border-radius: 6px;
+}
+
+.newReg.userDetailPopup .newReg--row__col {
+  width: calc(100% / 2);
 }
 
 .Nmessage {

@@ -267,7 +267,8 @@ export const fetchRegisterAllInfo = (
   a_contry,
   rent,
   privacy_policy,
-  recieve_emails,percentage
+  recieve_emails,
+  percentage
 ) =>
   axios
     .create({
@@ -320,7 +321,7 @@ export const fetchRegisterAllInfo = (
       ...{ rent },
       ...{ privacy_policy },
       ...{ recieve_emails },
-      ...{percentage},
+      ...{ percentage },
       ...skin,
     })
     .catch((error) => ({ data: error.response.data }));
@@ -445,4 +446,71 @@ export const transferMoney = (id, amount, type, callback) => {
         console.log("err data", data);
       }
     );
+};
+export const fetchUserDetails = (user_id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`agency/${user_id}`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const updateUsers = (
+  user_id,
+  phone,
+  document_type,
+  document_number,
+  rilasciato_da,
+  luogo_di_rilascio,
+  data_di_rilascio,
+  data_di_scadenza,
+  a_insegna,
+  a_cordinate,
+  a_phone,
+  a_address,
+  a_city,
+  a_comune_code,
+  a_cap,
+  a_country,
+  a_rent
+) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/users/update`, {
+      user_id,
+      phone,
+      document_type,
+      document_number,
+      rilasciato_da,
+      luogo_di_rilascio,
+      data_di_rilascio,
+      data_di_scadenza,
+      a_insegna,
+      a_cordinate,
+      a_phone,
+      a_address,
+      a_city,
+      a_comune_code,
+      a_cap,
+      a_country,
+      a_rent,
+      ...skin,
+    })
+    .catch((error) => ({ error }));
 };

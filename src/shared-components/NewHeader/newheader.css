@@ -465,4 +465,8 @@ header.header .navLinks .item:hover {
           box-shadow: inset 3px 20px 20px -23px black;
   padding-top: 30px;
 }
+
+.ant-message .anticon {
+  top: -3px !important;
+}
 /*# sourceMappingURL=newheader.css.map */

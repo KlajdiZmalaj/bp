@@ -1,5 +1,6 @@
 import { put, call, delay } from "redux-saga/effects";
 import AuthActions from "../models/auth";
+import MainActions from "../models/main";
 import {
   fetchLogin,
   logoutApi,
@@ -16,10 +17,11 @@ import {
   fetchConfigura,
   fetchCodice,
   fetchBarcodeData,
+  fetchUserDetails,
+  updateUsers,
 } from "services/auth";
-
+import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
-
 export function* signInByEmail(credencials) {
   const response = yield call(
     fetchLogin,
@@ -220,10 +222,7 @@ export function* getRechargeMobile(params) {
       }
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
-      if (response.error.response.status === 444) {
-        const error = { errors: { notCorrect: ["dati non sono correti."] } };
-        yield put(AuthActions.setRechargeMobile(error));
-      } else if (response.error.response.status === 401) {
+      if (response.error.response.status === 401) {
         const response = yield call(logoutApi);
 
         if (response) {
@@ -424,5 +423,47 @@ export function* getBarcodeData(e) {
     yield put(AuthActions.setBarcodeData(response.message));
     e.callback(response.data);
   }
-  console.log("ca ka responseeeee codice", response);
+}
+export function* getUserDetail(data) {
+  const response = yield call(fetchUserDetails, data.id);
+  if (response) {
+    if (response.status === 200) {
+      yield put(AuthActions.setUserDetail(response.data.user));
+    }
+  }
+  console.log("response get users details", data, response);
+}
+export function* updateUserDetail(data) {
+  const response = yield call(
+    updateUsers,
+    data.user_id,
+    data.phone,
+    data.document_type,
+    data.document_number,
+    data.rilasciato_da,
+    data.luogo_di_rilascio,
+    data.data_di_rilascio,
+    data.data_di_scadenza,
+    data.a_insegna,
+    data.a_cordinate,
+    data.a_phone,
+    data.a_address,
+    data.a_city,
+    data.a_comune_code,
+    data.a_cap,
+    data.a_country,
+    data.a_rent
+  );
+  if (response) {
+    console.log("responseresponseresponse", response);
+    if (response.status === 200) {
+      yield put(AuthActions.updateUserDetailMsg(response.data.message));
+      const ress = yield call(fetchUsers);
+      if (ress.data) {
+        yield put(MainActions.setUsers(ress.data.users));
+      }
+      yield delay(4000);
+      yield put(AuthActions.updateUserDetailMsg(""));
+    }
+  }
 }

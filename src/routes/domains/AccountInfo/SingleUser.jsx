@@ -4,6 +4,7 @@ import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { switchUserStatus, transferMoney } from "services/auth";
 import { capitalize } from "lodash";
+import { message } from "antd";
 class SingleUser extends Component {
   state = {
     label: "deposit",
@@ -94,6 +95,9 @@ class SingleUser extends Component {
                   className="fal fa-lock"
                   onClick={() => {
                     switchUserStatus(user.id, 2, this.switchCallBack);
+                    message.error(
+                      "lo stato dell`utente è cambiato : `DISATTIVATO`"
+                    );
                   }}
                 ></i>
               ) : (
@@ -101,6 +105,9 @@ class SingleUser extends Component {
                   className="fal fa-lock-open"
                   onClick={() => {
                     switchUserStatus(user.id, 1, this.switchCallBack);
+                    message.success(
+                      "lo stato dell`utente è cambiato : `ATTIVATO`"
+                    );
                   }}
                 ></i>
               )}
@@ -109,42 +116,13 @@ class SingleUser extends Component {
                 className="fal fa-eye"
                 onClick={() => {
                   this.setInfos();
+                  this.props.getUserDetail(user.id);
                 }}
                 aria-hidden="true"
               ></i>
             </span>
           </div>
         </div>
-        {moreInfo && (
-          <React.Fragment>
-            <div className="popUp">
-              <div className="title">More Info</div>
-              <ul>
-                <li>
-                  User ID : <span>{user.id}</span>{" "}
-                </li>
-                <li>
-                  Nome: <span>{user.first_name}</span>{" "}
-                </li>
-                <li>
-                  CogNome: <span>{user.last_name}</span>{" "}
-                </li>
-                <li>
-                  Comune Code: <span> {user.comune_code}</span>
-                </li>
-                <li>
-                  Credito: <span> {user.wallet} €</span>
-                </li>
-              </ul>
-            </div>
-            <div
-              className="backDrop"
-              onClick={() => {
-                this.setInfos();
-              }}
-            ></div>
-          </React.Fragment>
-        )}
 
         {isPopUpActive ? (
           <React.Fragment>
