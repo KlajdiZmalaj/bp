@@ -15,7 +15,7 @@ class Footer extends Component {
             <h2>Vuoi diventare un Punto {skinTexts[skinID].name}?</h2>
             <button
               onClick={() => {
-                window.location.href = "https://bpoint.store/contatti/";
+                window.location.href = skinTexts[skinID].link4;
               }}
             >
               conttataci subito

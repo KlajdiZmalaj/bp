@@ -11,3 +11,9 @@ html {
 .logo img {
   width: 70px;
 }
+footer .bottom {
+  background-color: #fff;
+}
+footer .mid img {
+  width: 110px !important;
+}

@@ -276,13 +276,7 @@ export function* getPostePay(params) {
       yield put(AuthActions.setPostePay(response.data));
       params.clearFields();
     } else if (response.error) {
-      if (response.error.response && response.error.response.status === 444) {
-        const error = { errors: { notCorrect: ["dati non sono correti."] } };
-        yield put(AuthActions.setPostePay(error));
-      } else if (
-        response.error.response &&
-        response.error.response.status === 401
-      ) {
+      if (response.error.response && response.error.response.status === 401) {
         const response = yield call(logoutApi);
         if (response) {
           localStorage.setItem("accountDataB", null);
