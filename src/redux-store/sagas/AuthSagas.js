@@ -139,7 +139,7 @@ export function* getBolletiniPremercati(params) {
       // yield put(AuthActions.setBolletiniBianchi({}));
     }
   }
-  if (response.error.response.status === 401) {
+  if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
     const response = yield call(logoutApi);
   }
@@ -234,7 +234,7 @@ export function* getRechargeMobile(params) {
       }
     }
   }
-  if (response.error.response.status === 401) {
+  if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
     const response = yield call(logoutApi);
   }
@@ -286,7 +286,7 @@ export function* getPostePay(params) {
       }
     }
   }
-  if (response.error.response.status === 401) {
+  if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
     const response = yield call(logoutApi);
   }
