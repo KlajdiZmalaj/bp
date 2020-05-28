@@ -214,7 +214,9 @@ class Bolletino extends React.Component {
                     );
                     this.props.form.setFieldsValue({
                       codice_identificativo: codiceIdf,
-                      importo: parseFloat(shuma.toString()) / 100,
+                      importo: (parseFloat(shuma.toString()) / 100)
+                        .toString()
+                        .replace(".", ","),
                       numero_conto_corrente: sulCC,
                       tipologia: tipologia,
                     });
