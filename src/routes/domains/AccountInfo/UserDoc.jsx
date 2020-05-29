@@ -6,7 +6,7 @@ class UserDoc extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPopUpOpen: false
+      isPopUpOpen: false,
     };
   }
 
@@ -49,12 +49,12 @@ class UserDoc extends Component {
             {user.document_front && (
               <img
                 src={
-                  "https://services-api.bpoint.store/storage/" +
+                  "https://services-api.bpoint.store/storage/users/" +
                   user.document_front
                 }
                 onClick={() => {
                   window.open(
-                    "https://services-api.bpoint.store/storage/" +
+                    "https://services-api.bpoint.store/storage/users/" +
                       user.document_front,
                     "_blank"
                   );
@@ -66,13 +66,13 @@ class UserDoc extends Component {
               <img
                 onClick={() => {
                   window.open(
-                    "https://services-api.bpoint.store/storage/" +
+                    "https://services-api.bpoint.store/storage/users/" +
                       user.document_back,
                     "_blank"
                   );
                 }}
                 src={
-                  "https://services-api.bpoint.store/storage/" +
+                  "https://services-api.bpoint.store/storage/users/" +
                   user.document_back
                 }
                 alt={user.document_back}
