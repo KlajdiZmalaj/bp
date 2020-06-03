@@ -75,7 +75,7 @@ class Root extends React.Component {
               component={AccountInfo}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "main_admin"]}
             />
             <PrivateRoute
               path="/annunci"
