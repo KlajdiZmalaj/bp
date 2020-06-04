@@ -3135,6 +3135,9 @@ footer .top .chat {
   position: absolute;
   right: 00px;
   background-color: var(--accent-bg);
+  color: var(--accent-txt);
+  border: 1px solid var(--accent-txt);
+  border-radius: 100px;
   height: 50px;
   width: 50px;
   display: -webkit-box;
@@ -3150,7 +3153,7 @@ footer .top .chat {
   font-size: 25px;
   top: -31px;
   right: -70px;
-  display: none;
+  cursor: pointer;
 }
 
 footer .top .maxWFooter {
@@ -3342,6 +3345,10 @@ footer .bottom .maxWFooter img {
     margin: 0 auto;
     display: block;
   }
+}
+
+iframe#launcher {
+  display: none;
 }
 
 @media (max-width: 984px) {

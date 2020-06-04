@@ -50,6 +50,32 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <script src="./fa.js"></script>
+  <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=1ac6da84-14c8-47dc-8148-1b636d8b4926"> </script>
+  <script>
+    var xyz = window.location.host;
+
+
+    window.zESettings = {
+      analytics: true,
+      webWidget: {
+        color: {
+          theme: '#ccc',
+          launcher: '#555',
+          launcherText: '#fff',
+          button: '#ccc',
+          resultLists: '#222',
+          header: xyz.includes('local') || xyz.includes('derby') ? '#0b880d' : xyz.includes('bpoint') ? '#F26521' : xyz.includes('gfb') ? '#F4C100' : xyz.includes('planet') ? '#F8C424' : '#ccc',
+          articleLinks: '#333'
+        },
+        offset: { horizontal: '10px', vertical: '10px' },
+        contactForm: {
+          attachments: true
+        }
+      }
+    };
+    window.zE('webWidget', 'prefill', { name: { value: `User from: ${window.location.host.split('.')[false | false]}`, readOnly: true | false } })
+  </script>
 </body>
 
 </html>
