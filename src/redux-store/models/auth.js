@@ -148,12 +148,14 @@ const { Types, Creators } = createActions({
     "a_rent",
   ],
   updateUserDetailMsg: ["updateMsg"],
+  setPrivateMsg: ["privMsg"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  privMsg: [],
   pwError: "",
   loginMsg: "",
   user: null,
@@ -179,6 +181,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_PRIVATE_MSG]: (state, { privMsg }) => ({
+    ...state,
+    privMsg,
+  }),
   [Types.UPDATE_USER_DETAIL_MSG]: (state, { updateMsg }) => ({
     ...state,
     updateMsg,
