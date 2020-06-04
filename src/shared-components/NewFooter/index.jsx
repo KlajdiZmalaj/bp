@@ -18,7 +18,7 @@ class Footer extends Component {
                 window.location.href = skinTexts[skinID].link4;
               }}
             >
-              conttataci subito
+              contattaci subito
             </button>
             <div
               className="chat"
