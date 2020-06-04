@@ -296,6 +296,7 @@ export function* getAds() {
   const response = yield call(fetchAds);
   if (response.status === 200) {
     yield put(AuthActions.setAds(response.data.messages));
+    yield put(AuthActions.setPrivateMsg(response.data.private_messages));
   }
   if (response.error && response.error.response.status === 401) {
     const response = yield call(logoutApi);

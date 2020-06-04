@@ -15,8 +15,12 @@ class Header extends Component {
       isMobMenu: false,
       ads: false,
       regType: 1,
+      msg: false,
     };
   }
+  toggleprivMsgs = () => {
+    this.setState({ msg: !this.state.msg });
+  };
   toggleAds = () => {
     this.setState({ ads: !this.state.ads });
   };
@@ -27,15 +31,15 @@ class Header extends Component {
     this.props.getAds();
   }
   render() {
-    const { accountInfo, screenWidth, user, ads } = this.props;
-    const { isMobMenu, isDDopem } = this.state;
+    const { accountInfo, screenWidth, user, ads, privMsg } = this.props;
+    const { isMobMenu, isDDopem, msg } = this.state;
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
     if (data) {
       isLoggedin = true;
     }
-    console.log("propps", this.props);
+    console.log("privMsg", privMsg);
     return screenWidth > 860 ? (
       <header className="header">
         <div className="headermaxW">
@@ -71,7 +75,31 @@ class Header extends Component {
                   </div>
                 </div>
                 <div>
-                  <i className="fas fa-envelope"></i>
+                  <i
+                    onClick={this.toggleprivMsgs}
+                    className="fas fa-envelope"
+                  ></i>
+                  <span
+                    className={`${
+                      privMsg && privMsg.length > 0 ? "pulse" : ""
+                    }`}
+                  >
+                    {privMsg && privMsg.length}
+                  </span>
+                  <div className={"ads" + (this.state.msg ? " viz" : "")}>
+                    {privMsg.slice(0, 10).map((add) => {
+                      return (
+                        <div
+                          key={add.id}
+                          onClick={() => {
+                            this.toggleprivMsgs();
+                          }}
+                        >
+                          {add.title}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
                 <div
                   onClick={() => {
@@ -287,7 +315,7 @@ class Header extends Component {
   }
 }
 const mstp = (state) => {
-  const { accountInfo, user, ads } = state.auth;
+  const { accountInfo, user, ads, privMsg } = state.auth;
   const { screenWidth, navbarSearch } = state.main;
   return {
     accountInfo,
@@ -295,6 +323,7 @@ const mstp = (state) => {
     navbarSearch,
     screenWidth,
     ads,
+    privMsg,
   };
 };
 export default withRouter(
