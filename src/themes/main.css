@@ -2136,6 +2136,10 @@ i#private {
   margin: 0 auto;
 }
 
+.logo img {
+  width: 170px;
+}
+
 .afterprint .logo {
   -webkit-filter: grayscale(1) brightness(0.3);
           filter: grayscale(1) brightness(0.3);
