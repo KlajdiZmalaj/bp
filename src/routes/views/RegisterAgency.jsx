@@ -442,7 +442,7 @@ class RegisterEndUser extends React.Component {
     }
     const dateFormat = "DD/MM/YYYY";
     const number_prefix = getFieldDecorator("number_prefix", {
-      initialValue: "0039",
+      initialValue: "+39",
     })(<Input style={{ width: 70 }}></Input>);
     const { step } = this.state;
     return (
@@ -450,12 +450,12 @@ class RegisterEndUser extends React.Component {
         <Header></Header>
 
         <Form className="newReg" onSubmit={this.handleSubmit}>
-          <div className="newReg--header">Register Agenzia</div>
+          <div className="newReg--header">Registra Agenzia</div>
           <div className="newReg--row">
             <div className="newReg--row__col">
               <div className="itemCol full codeFisc">
                 <div className="inputLabel">
-                  Codice Fiscale <span>*</span>
+                  Codice fiscale <span>*</span>
                 </div>
                 <div className={"inpssWrapper"}>
                   {[...new Array(16)].map((input, key) => {
@@ -565,7 +565,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  CogNome <span>*</span>
+                  Cognome <span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   {getFieldDecorator("last_name", {
@@ -651,7 +651,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Comuna di nascita <span>*</span>
+                  Comune di nascita <span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   <VirtualizedSelect
@@ -712,7 +712,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Nazione di Residenza <span>*</span>
+                  Nazione di residenza <span>*</span>
                 </div>
                 <Form.Item>
                   <VirtualizedSelect
@@ -728,7 +728,7 @@ class RegisterEndUser extends React.Component {
 
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Cap di Residenza{" "}
+                  Cap di residenza{" "}
                   <span
                     onMouseOver={() => {
                       this.setState({ capHelper: true });
@@ -771,7 +771,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Provincia di Residenza <span>*</span>
+                  Provincia di residenza <span>*</span>
                 </div>
                 <Form.Item>
                   <VirtualizedSelect
@@ -789,7 +789,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Comune di Residenza <span>*</span>
+                  Comune di residenza <span>*</span>
                 </div>
                 <Form.Item>
                   <VirtualizedSelect
@@ -809,7 +809,7 @@ class RegisterEndUser extends React.Component {
             <div className="newReg--row__col">
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Ragione Sociale <span>*</span>
+                  Ragione sociale <span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("aRagSoc", {
@@ -871,7 +871,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Telefono Agenzia <span>*</span>
+                  Telefono agenzia <span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("aPhone", {
@@ -887,7 +887,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Sede Operativa<span>*</span>
+                  Sede operativa<span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   {getFieldDecorator("aAdress", {
@@ -903,7 +903,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi ">
                 <div className="inputLabel">
-                  Codice Fiscale Agenzia<span>*</span>
+                  Codice fiscale agenzia<span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("aFcode", {
@@ -935,7 +935,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Cap Agenzia{" "}
+                  Cap agenzia{" "}
                   <span
                     onMouseOver={() => {
                       this.setState({ aCapHelp: true });
@@ -978,7 +978,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Provincia di Residenza Agenzia<span>*</span>
+                  Provincia di residenza agenzia<span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   {getFieldDecorator("aComcode", {
@@ -1004,7 +1004,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Nazione di residenza Agenzia<span>*</span>
+                  Nazione di residenza agenzia<span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("a_contry", {
@@ -1040,6 +1040,7 @@ class RegisterEndUser extends React.Component {
                 </div>
                 <Form.Item>
                   {getFieldDecorator("pivaVerifica", {
+                    initialValue: "b",
                     rules: [
                       {
                         required: false,
@@ -1047,12 +1048,10 @@ class RegisterEndUser extends React.Component {
                       },
                     ],
                   })(
-                    <div>
-                      <Select>
-                        <Option value="a">Validato</Option>
-                        <Option value="b">Non Validato</Option>
-                      </Select>
-                    </div>
+                    <Select initialValue="b">
+                      <Option value="a">Validato</Option>
+                      <Option value="b">Non Validato</Option>
+                    </Select>
                   )}
                   <i className="fas fa-file-check"></i>
                   <a
@@ -1068,7 +1067,7 @@ class RegisterEndUser extends React.Component {
               costoanualeInp : '' */}
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Pagamento Mensile<span>*</span>
+                  Pagamento mensile<span>*</span>
                 </div>
 
                 <Form.Item>
@@ -1087,7 +1086,7 @@ class RegisterEndUser extends React.Component {
             <div className="newReg--row__col">
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Nickname
+                  Username
                   <span
                     onMouseOver={() => {
                       this.setState({ nicknameHelp: true });
@@ -1099,7 +1098,7 @@ class RegisterEndUser extends React.Component {
                     * (?)
                     {this.state.nicknameHelp && (
                       <div className="helper">
-                        Il nickname deve contenere più di 7 caratteri
+                        L'username deve contenere più di 7 caratteri
                       </div>
                     )}
                   </span>
@@ -1142,7 +1141,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
-                  Conferma Password<span>*</span>
+                  Conferma password<span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   {getFieldDecorator("confirm_password", {
@@ -1170,7 +1169,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol full">
                 <div className="inputLabel">
-                  CELLULARE<span>*</span>
+                  Cellulare<span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("number", {
@@ -1185,7 +1184,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Tipo Documento<span>*</span>
+                  Tipo documento<span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("identity_type", {
@@ -1206,7 +1205,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Numero Documento<span>*</span>
+                  Numero documento<span>*</span>
                 </div>
                 <Form.Item>
                   {getFieldDecorator("identity_id", {

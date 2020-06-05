@@ -587,6 +587,18 @@
         padding-right: 30px;
       }
     }
+    &:nth-child(3) {
+      display: flex;
+      .newReg--row__col {
+        &:nth-child(1),
+        &:nth-child(2) {
+          width: 40%;
+        }
+        &:nth-child(3) {
+          width: 20%;
+        }
+      }
+    }
   }
   .ant-select-selection--single,
   .ant-calendar-picker {
@@ -594,7 +606,7 @@
   }
   .inputLabel {
     color: #5c5c5c;
-    text-transform: capitalize;
+    // text-transform: capitalize;
     > span {
       color: var(--red);
       position: relative;
@@ -662,7 +674,7 @@
   }
   .Select-input,
   .Select-control {
-    height: 35px;
+    height: 33px;
   }
   .ant-form-item-control {
     line-height: unset;
@@ -782,7 +794,6 @@
   display: flex;
   align-items: center;
   padding: 6px;
-  margin-bottom: 10px;
   padding-right: 50px;
   position: relative;
   > i {
