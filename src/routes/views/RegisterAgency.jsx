@@ -69,6 +69,8 @@ class RegisterEndUser extends React.Component {
     costoanualeInp: "",
     recieve_emails: false,
     privacy_policy: false,
+    codFisInps: "",
+    valuess2: "",
   };
   componentDidMount() {
     fetch("https://ipapi.co/json")
@@ -156,7 +158,7 @@ class RegisterEndUser extends React.Component {
           values.nickname, // for username
           values.email,
           values.gender,
-          values.personal_number,
+          this.state.codFisInps,
           moment(values.birthday).format("YYYY-MM-DD"),
           this.state.nazione,
           this.state.province_of_birth,
@@ -217,8 +219,76 @@ class RegisterEndUser extends React.Component {
     }
   };
 
-  validateCodiceFiscale = (e) => {
-    const str = e.target.value;
+  validateCodiceFiscale = (e) => {};
+
+  handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
+  onChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+  onChangeIdentity = (value) => {
+    console.log(`selected ${value}`);
+    this.setState({ tipoDocumento: value });
+  };
+  onChangeFileType = (value) => {
+    this.setState({ fileType: value });
+  };
+  onChangeCardView = (value) => {
+    console.log(`selected ${value}`);
+    this.setState({ cardView: value });
+  };
+  onBlur = () => {
+    console.log("blur");
+  };
+
+  onFocus = () => {
+    console.log("focus");
+  };
+
+  onSearch = (val) => {
+    console.log("search:", val);
+  };
+  getValues = () => {
+    const inp0 = document.getElementById("inp0");
+    const inp1 = document.getElementById("inp1");
+    const inp2 = document.getElementById("inp2");
+    const inp3 = document.getElementById("inp3");
+    const inp4 = document.getElementById("inp4");
+    const inp5 = document.getElementById("inp5");
+    const inp6 = document.getElementById("inp6");
+    const inp7 = document.getElementById("inp7");
+    const inp8 = document.getElementById("inp8");
+    const inp9 = document.getElementById("inp9");
+    const inp10 = document.getElementById("inp10");
+    const inp11 = document.getElementById("inp11");
+    const inp12 = document.getElementById("inp12");
+    const inp13 = document.getElementById("inp13");
+    const inp14 = document.getElementById("inp14");
+    const inp15 = document.getElementById("inp15");
+    const codFisInps =
+      ((inp0 && inp0.value) || " ") +
+      ((inp1 && inp1.value) || " ") +
+      ((inp2 && inp2.value) || " ") +
+      ((inp3 && inp3.value) || " ") +
+      ((inp4 && inp4.value) || " ") +
+      ((inp5 && inp5.value) || " ") +
+      ((inp6 && inp6.value) || " ") +
+      ((inp7 && inp7.value) || " ") +
+      ((inp8 && inp8.value) || " ") +
+      ((inp9 && inp9.value) || " ") +
+      ((inp10 && inp10.value) || " ") +
+      ((inp11 && inp11.value) || " ") +
+      ((inp12 && inp12.value) || " ") +
+      ((inp13 && inp13.value) || " ") +
+      ((inp14 && inp14.value) || " ") +
+      ((inp15 && inp15.value) || " ");
+    this.setState({
+      codFisInps,
+    });
+
+    const str = codFisInps;
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
     const sexKey = str.substring(9, 11);
 
@@ -282,42 +352,11 @@ class RegisterEndUser extends React.Component {
         return comune;
       });
   };
-
-  handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-
-  onChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-  onChangeIdentity = (value) => {
-    console.log(`selected ${value}`);
-    this.setState({ tipoDocumento: value });
-  };
-  onChangeFileType = (value) => {
-    this.setState({ fileType: value });
-  };
-  onChangeCardView = (value) => {
-    console.log(`selected ${value}`);
-    this.setState({ cardView: value });
-  };
-  onBlur = () => {
-    console.log("blur");
-  };
-
-  onFocus = () => {
-    console.log("focus");
-  };
-
-  onSearch = (val) => {
-    console.log("search:", val);
-  };
-
   render() {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
-    const { imageUrl, cardView, imageUrl2 } = this.state;
-
+    const { imageUrl, cardView, imageUrl2, codFisInps, valuess2 } = this.state;
+    // console.log("codFisInps", codFisInps, valuess2);
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -406,7 +445,6 @@ class RegisterEndUser extends React.Component {
       initialValue: "0039",
     })(<Input style={{ width: 70 }}></Input>);
     const { step } = this.state;
-    console.log("ca ka form", this.props.form);
     return (
       <Fragment>
         <Header></Header>
@@ -415,11 +453,84 @@ class RegisterEndUser extends React.Component {
           <div className="newReg--header">Register Agenzia</div>
           <div className="newReg--row">
             <div className="newReg--row__col">
-              <div className="itemCol full">
+              <div className="itemCol full codeFisc">
                 <div className="inputLabel">
                   Codice Fiscale <span>*</span>
                 </div>
-                <Form.Item hasFeedback>
+                <div className={"inpssWrapper"}>
+                  {[...new Array(16)].map((input, key) => {
+                    return (
+                      <input
+                        maxLength="1"
+                        id={`inp${key}`}
+                        type="text"
+                        onKeyDown={(e) => {
+                          // console.log("keydown", e.keyCode || e.charCode);
+                          const previnp = document.getElementById(
+                            `inp${key - 1}`
+                          );
+                          const inp = document.getElementById(`inp${key}`);
+                          const nextinp = document.getElementById(
+                            `inp${key + 1}`
+                          );
+                          var keyy = e.keyCode || e.charCode;
+                          if (keyy !== 8 && keyy !== 9) {
+                            inp.value = String.fromCharCode(keyy);
+
+                            if (nextinp && !nextinp.value) {
+                              nextinp.focus();
+                            }
+                            if (previnp && !previnp.value) {
+                              inp.value = "";
+                              previnp.focus();
+                            } else {
+                              if (inp.value && inp.value.length > 0) {
+                                nextinp && nextinp.focus();
+                              }
+                            }
+                          }
+                          if (keyy === 8) {
+                            inp.value = "";
+                            if (previnp) {
+                              previnp.focus();
+                            }
+                          }
+                          this.getValues();
+                        }}
+                        className={`inputCodice`}
+                        value={this.state.codFisInps.split("")[key]}
+                      />
+                    );
+                  })}
+                  <i
+                    onClick={() => {
+                      navigator.clipboard
+                        .readText()
+                        .then((text) => {
+                          this.setState({ codFisInps: text });
+                          this.getValues();
+                        })
+                        .catch((err) => {
+                          console.error(
+                            "Failed to read clipboard contents: ",
+                            err
+                          );
+                        });
+                    }}
+                    className="fal fa-paste"
+                  ></i>
+                  {codFisInps.length > 0 &&
+                    codFisInps.length === 16 &&
+                    !codFisInps.includes(" ") && (
+                      <i className="fas fa-check-circle"></i>
+                    )}
+                  {((codFisInps.length > 0 && codFisInps.length < 16) ||
+                    codFisInps.includes(" ")) && (
+                    <i className="fas fa-times-circle"></i>
+                  )}
+                </div>
+
+                {/* <Form.Item hasFeedback>
                   {getFieldDecorator("personal_number", {
                     rules: [
                       {
@@ -434,7 +545,7 @@ class RegisterEndUser extends React.Component {
                       onInput={(e) => this.inputlength(e)}
                     />
                   )}
-                </Form.Item>
+                </Form.Item> */}
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
@@ -493,7 +604,7 @@ class RegisterEndUser extends React.Component {
                 <div className="inputLabel">
                   Email <span>*</span>
                 </div>
-                <Form.Item hasFeedback>
+                <Form.Item hasFeedback name="emaaail">
                   {getFieldDecorator("email", {
                     rules: [
                       {
@@ -505,7 +616,16 @@ class RegisterEndUser extends React.Component {
                         message: "Inserisci la tua e-mail!",
                       },
                     ],
-                  })(<Input />)}
+                  })(
+                    <Input
+                      onMouseEnter={() => {
+                        document
+                          .getElementById("infoUser_email")
+                          .removeAttribute("readonly");
+                      }}
+                      readOnly
+                    />
+                  )}
                 </Form.Item>
               </div>
               <div className="itemCol semi">
@@ -781,7 +901,7 @@ class RegisterEndUser extends React.Component {
                   })(<Input />)}
                 </Form.Item>
               </div>
-              <div className="itemCol semi">
+              <div className="itemCol semi ">
                 <div className="inputLabel">
                   Codice Fiscale Agenzia<span>*</span>
                 </div>

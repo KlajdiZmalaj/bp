@@ -395,7 +395,7 @@ export const fetchCodice = (barcode) =>
     })
     .catch((error) => ({ error }));
 
-export const switchUserStatus = (id, status, callback) => {
+export const switchUserStatus = (id, status, c, role) => {
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -405,20 +405,25 @@ export const switchUserStatus = (id, status, callback) => {
         }`,
       },
     })
-    .post(`/users/${id}/changeStatus`, {
-      ...{ status },
-      ...skin,
-    })
+    .post(
+      role === "main_admin"
+        ? `/skins/${id}/changeStatus`
+        : `/users/${id}/changeStatus`,
+      {
+        ...{ status },
+        ...skin,
+      }
+    )
     .then(
       (data) => {
         if (data && data.status === 200) {
-          callback();
+          c();
         }
       },
       (data) => {}
     );
 };
-export const transferMoney = (id, amount, type, callback) => {
+export const transferMoney = (id, amount, type, c, role) => {
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -428,15 +433,21 @@ export const transferMoney = (id, amount, type, callback) => {
         }`,
       },
     })
-    .post(`/users/${id}/transfer`, {
-      ...{ amount },
-      ...{ type },
-      ...skin,
-    })
+    .post(
+      role === "main_admin"
+        ? `/skin/transferMoney/${id}`
+        : `/users/${id}/transfer`,
+      {
+        ...{ amount },
+        ...{ type },
+        ...skin,
+      }
+    )
     .then(
       (data) => {
         if (data && data.status === 200) {
-          callback();
+          c();
+          // /skin/transferMoney/{skin_id}
           // this.setState({ isPopUpActive: false });
           // this.props.getUsers();
         }
