@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-
+import { skin } from "config/api";
 import AuthActions from "redux-store/models/auth";
 import axios from "axios";
 class Verify extends Component {
@@ -9,12 +9,12 @@ class Verify extends Component {
     password: "",
     password2: "",
     hasError: 0,
-    redirect: false
+    redirect: false,
   };
-  pw1Handler = e => {
+  pw1Handler = (e) => {
     this.setState({ password: e.target.value });
   };
-  pw2Handler = e => {
+  pw2Handler = (e) => {
     this.setState({ password2: e.target.value });
   };
   submitVals = () => {
@@ -24,15 +24,16 @@ class Verify extends Component {
     if (password === password2) {
       axios
         .create({
-          baseURL: "https://services-api.bpoint.store/api"
+          baseURL: "https://services-api.bpoint.store/api",
         })
         .post(`/users/verify`, {
           token,
           password,
-          confirm_password: password2
+          confirm_password: password2,
+          ...skin,
         })
         .then(
-          response => {
+          (response) => {
             // console.log("response", response);
             this.setState({ hasError: false, redirect: true });
             setTimeout(() => {
@@ -44,7 +45,7 @@ class Verify extends Component {
               history.push("/dashboard");
             }, 2000);
           },
-          error => {
+          (error) => {
             // console.log("response", error);
             this.setState({ hasError: true });
           }
@@ -77,7 +78,7 @@ class Verify extends Component {
                 placeholder="Password"
                 name="password"
                 id="login-name"
-                onChange={e => {
+                onChange={(e) => {
                   this.pw1Handler(e);
                 }}
               />
@@ -88,7 +89,7 @@ class Verify extends Component {
                 placeholder="Confirm password"
                 name="password2"
                 id="password"
-                onChange={e => {
+                onChange={(e) => {
                   this.pw2Handler(e);
                 }}
               />

@@ -3,7 +3,7 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { switchUserStatus, transferMoney } from "services/auth";
-import { capitalize } from "lodash";
+import { capitalize, get } from "lodash";
 import { message } from "antd";
 class SingleUser extends Component {
   state = {
@@ -49,7 +49,8 @@ class SingleUser extends Component {
       valueInput,
       moreInfo,
     } = this.state;
-    console.log("valueInput", valueInput);
+    const role = get(this.props.accountInfo, "profile.role.name");
+    console.log("role", role);
     return (
       <React.Fragment>
         <div className="userList--noDoc__user singleUser">
@@ -88,13 +89,13 @@ class SingleUser extends Component {
                   this.setTransferItem("withdraw");
                 }}
               >
-                Debito
+                Addebito
               </button>
               {user.status == 1 ? (
                 <i
                   className="fal fa-lock"
                   onClick={() => {
-                    switchUserStatus(user.id, 2, this.switchCallBack);
+                    switchUserStatus(user.id, 2, this.switchCallBack, role);
                     message.error(
                       "lo stato dell`utente è cambiato : `DISATTIVATO`"
                     );
@@ -104,22 +105,25 @@ class SingleUser extends Component {
                 <i
                   className="fal fa-lock-open"
                   onClick={() => {
-                    switchUserStatus(user.id, 1, this.switchCallBack);
+                    switchUserStatus(user.id, 1, this.switchCallBack, role);
                     message.success(
                       "lo stato dell`utente è cambiato : `ATTIVATO`"
                     );
                   }}
                 ></i>
               )}
-
-              <i
-                className="fal fa-eye"
-                onClick={() => {
-                  this.setInfos();
-                  this.props.getUserDetail(user.id);
-                }}
-                aria-hidden="true"
-              ></i>
+              {role === "main_admin" ? (
+                ""
+              ) : (
+                <i
+                  className="fal fa-eye"
+                  onClick={() => {
+                    this.setInfos();
+                    this.props.getUserDetail(user.id);
+                  }}
+                  aria-hidden="true"
+                ></i>
+              )}
             </span>
           </div>
         </div>
@@ -151,7 +155,8 @@ class SingleUser extends Component {
                     user.id,
                     valueInput,
                     val,
-                    this.transferCallback
+                    this.transferCallback,
+                    role
                   );
                 }}
               >
@@ -183,5 +188,9 @@ class SingleUser extends Component {
     );
   }
 }
-
-export default connect(null, { ...MainActions, ...AuthActions })(SingleUser);
+const mstp = (state) => {
+  return {
+    accountInfo: state.auth.accountInfo,
+  };
+};
+export default connect(mstp, { ...MainActions, ...AuthActions })(SingleUser);

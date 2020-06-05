@@ -26,7 +26,7 @@ export const azioni = [
     name: "lista utenti",
     link: "account-info",
     i: "fal fa-user-friends",
-    displayRole: ["super_admin", "agency", "agent"],
+    displayRole: ["super_admin", "agency", "agent",'main_admin'],
   },
   {
     id: 8,

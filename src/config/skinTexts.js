@@ -72,9 +72,9 @@ export const skinTexts = {
   },
   4: {
     cel: "+39 0774 503745",
-    mail: "amministrazione@planetservizi.com",
-    address: `Via Rapagnano 90/92
-    00138 Roma (RM) Italia`,
+    mail: "servizi@planetservizi.com",
+    address: `Via Montenero 21,
+    00012 Colle Verde (RM) Italia`,
     name: "Planetservizi",
     link1: "https://planetservizi.it/azienda/",
     link2: "https://planetservizi.it/servizi/",
