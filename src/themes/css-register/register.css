@@ -773,6 +773,20 @@
   padding-right: 30px;
 }
 
+.newReg--row:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.newReg--row:nth-child(3) .newReg--row__col:nth-child(1), .newReg--row:nth-child(3) .newReg--row__col:nth-child(2) {
+  width: 40%;
+}
+
+.newReg--row:nth-child(3) .newReg--row__col:nth-child(3) {
+  width: 20%;
+}
+
 .newReg .ant-select-selection--single,
 .newReg .ant-calendar-picker {
   width: 100%;
@@ -780,7 +794,6 @@
 
 .newReg .inputLabel {
   color: #5c5c5c;
-  text-transform: capitalize;
 }
 
 .newReg .inputLabel > span {
@@ -866,7 +879,7 @@
 
 .newReg .Select-input,
 .newReg .Select-control {
-  height: 35px;
+  height: 33px;
 }
 
 .newReg .ant-form-item-control {
@@ -1005,7 +1018,6 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 6px;
-  margin-bottom: 10px;
   padding-right: 50px;
   position: relative;
 }
