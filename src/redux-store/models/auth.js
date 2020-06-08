@@ -146,6 +146,8 @@ const { Types, Creators } = createActions({
     "a_cap",
     "a_country",
     "a_rent",
+    "password",
+    "confirm_password",
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],

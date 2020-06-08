@@ -492,7 +492,9 @@ export const updateUsers = (
   a_comune_code,
   a_cap,
   a_country,
-  a_rent
+  a_rent,
+  password,
+  confirm_password
 ) => {
   return axios
     .create({
@@ -521,6 +523,8 @@ export const updateUsers = (
       a_cap,
       a_country,
       a_rent,
+      password,
+      confirm_password,
       ...skin,
     })
     .catch((error) => ({ error }));
