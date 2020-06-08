@@ -453,7 +453,9 @@ export function* updateUserDetail(data) {
     data.a_comune_code,
     data.a_cap,
     data.a_country,
-    data.a_rent
+    data.a_rent,
+    data.password,
+    data.confirm_password
   );
   if (response) {
     console.log("responseresponseresponse", response);
@@ -463,6 +465,16 @@ export function* updateUserDetail(data) {
       if (ress.data) {
         yield put(MainActions.setUsers(ress.data.users));
       }
+      yield delay(4000);
+      yield put(AuthActions.updateUserDetailMsg(""));
+    }
+    if (response.error) {
+      yield put(
+        AuthActions.updateUserDetailMsg({
+          errorMsg: response.error.response.data.message,
+          errors: response.error.response.data.errors,
+        })
+      );
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
     }

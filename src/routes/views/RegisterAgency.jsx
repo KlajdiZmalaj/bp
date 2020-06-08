@@ -251,39 +251,14 @@ class RegisterEndUser extends React.Component {
     console.log("search:", val);
   };
   getValues = () => {
-    const inp0 = document.getElementById("inp0");
-    const inp1 = document.getElementById("inp1");
-    const inp2 = document.getElementById("inp2");
-    const inp3 = document.getElementById("inp3");
-    const inp4 = document.getElementById("inp4");
-    const inp5 = document.getElementById("inp5");
-    const inp6 = document.getElementById("inp6");
-    const inp7 = document.getElementById("inp7");
-    const inp8 = document.getElementById("inp8");
-    const inp9 = document.getElementById("inp9");
-    const inp10 = document.getElementById("inp10");
-    const inp11 = document.getElementById("inp11");
-    const inp12 = document.getElementById("inp12");
-    const inp13 = document.getElementById("inp13");
-    const inp14 = document.getElementById("inp14");
-    const inp15 = document.getElementById("inp15");
-    const codFisInps =
-      ((inp0 && inp0.value) || " ") +
-      ((inp1 && inp1.value) || " ") +
-      ((inp2 && inp2.value) || " ") +
-      ((inp3 && inp3.value) || " ") +
-      ((inp4 && inp4.value) || " ") +
-      ((inp5 && inp5.value) || " ") +
-      ((inp6 && inp6.value) || " ") +
-      ((inp7 && inp7.value) || " ") +
-      ((inp8 && inp8.value) || " ") +
-      ((inp9 && inp9.value) || " ") +
-      ((inp10 && inp10.value) || " ") +
-      ((inp11 && inp11.value) || " ") +
-      ((inp12 && inp12.value) || " ") +
-      ((inp13 && inp13.value) || " ") +
-      ((inp14 && inp14.value) || " ") +
-      ((inp15 && inp15.value) || " ");
+    const inpArr = [...new Array(16)].map((inp, k) => {
+      return document.getElementById("inp" + k);
+    });
+    let codFisInps = "";
+    inpArr.forEach((inp) => {
+      codFisInps += inp.value || " ";
+    });
+    console.log("inpArr", inpArr);
     this.setState({
       codFisInps,
     });
@@ -498,6 +473,19 @@ class RegisterEndUser extends React.Component {
                           this.getValues();
                         }}
                         className={`inputCodice`}
+                        onPaste={() => {
+                          navigator.clipboard
+                            .readText()
+                            .then((codFisInps) => {
+                              this.setState({ codFisInps });
+                            })
+                            .catch((err) => {
+                              console.error(
+                                "Failed to read clipboard contents: ",
+                                err
+                              );
+                            });
+                        }}
                         value={this.state.codFisInps.split("")[key]}
                       />
                     );
@@ -506,8 +494,8 @@ class RegisterEndUser extends React.Component {
                     onClick={() => {
                       navigator.clipboard
                         .readText()
-                        .then((text) => {
-                          this.setState({ codFisInps: text });
+                        .then((codFisInps) => {
+                          this.setState({ codFisInps });
                           this.getValues();
                         })
                         .catch((err) => {

@@ -6,7 +6,7 @@ import UserDoc from "./UserDoc";
 import UserNoDoc from "./UserNoDoc";
 import SingleUser from "./SingleUser";
 import FastCarica from "./FastCarica";
-import { get, isArray } from "lodash";
+import { get, isArray, isString } from "lodash";
 import moment from "moment";
 import { Select, DatePicker } from "antd";
 const { Option } = Select;
@@ -14,7 +14,10 @@ const { Option } = Select;
 class UsersList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      password: "",
+      confirm_password: "",
+    };
   }
   componentDidMount() {
     this.props.getUsers();
@@ -41,7 +44,9 @@ class UsersList extends Component {
       this.state.changedcap || this.props.userDetail.cap,
       this.state.changednazione || this.props.userDetail.nazione,
       this.state.changedpagamento_mensile ||
-        this.props.userDetail.pagamento_mensile
+        this.props.userDetail.pagamento_mensile,
+      this.state.password,
+      this.state.confirm_password
     );
   };
   render() {
@@ -308,6 +313,28 @@ class UsersList extends Component {
                     />
                   </div>
                   <div className="itemCol full">
+                    <div className="inputLabel">Password</div>
+                    <input
+                      className="ant-input"
+                      onChange={(e) => {
+                        this.setState({ password: e.target.value });
+                      }}
+                      type="text"
+                      password
+                    />
+                  </div>
+                  <div className="itemCol full">
+                    <div className="inputLabel">Conferma password</div>
+                    <input
+                      className="ant-input"
+                      type="text"
+                      onChange={(e) => {
+                        this.setState({ confirm_password: e.target.value });
+                      }}
+                      password
+                    />
+                  </div>
+                  <div className="itemCol full">
                     <div className="inputLabel">Cellulare</div>
                     <input
                       onChange={(e) => {
@@ -423,13 +450,22 @@ class UsersList extends Component {
                     />
                   </div>
                   <div className="itemCol full">
-                    {updateMsg && <div className="Nmessage S">{updateMsg}</div>}
+                    {isString(updateMsg) && updateMsg && (
+                      <div className="Nmessage S">{updateMsg}</div>
+                    )}
+                    {updateMsg.errorMsg && (
+                      <div className="Nmessage E">{updateMsg.errorMsg}</div>
+                    )}
+                    {updateMsg.errors &&
+                      Object.values(updateMsg.errors).map((error) => (
+                        <div className="Nmessage E">{error}</div>
+                      ))}
                   </div>
                 </div>
               </div>
               <div className="newReg--row">
                 <div className="newReg--row__col"></div>
-                <div className="newReg--row__col submitcol">
+                <div className="newReg--row__col submitcol ml-auto">
                   <button
                     onClick={() => {
                       this.updateUser();
