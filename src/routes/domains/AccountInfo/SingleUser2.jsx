@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { switchUserStatus, transferMoney } from "services/auth";
 import { capitalize, get } from "lodash";
 import { message } from "antd";
-import SingleUser2 from "./SingleUser2";
-class SingleUser extends Component {
+import SingleUser from "./SingleUser";
+class SingleUser2 extends Component {
   state = {
     label: "deposit",
     val: "",
@@ -61,7 +61,7 @@ class SingleUser extends Component {
               this.setState({ displayChildren: !this.state.displayChildren });
           }}
           className={
-            "userList--noDoc__user singleUser level1" +
+            "userList--noDoc__user singleUser" +
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
             (this.state.displayChildren ? " isopenrow" : "")
           }
@@ -170,9 +170,9 @@ class SingleUser extends Component {
         {this.state.displayChildren &&
           user.children &&
           user.children.length > 0 && (
-            <div className="level2">
+            <div className="level3">
               {user.children.map((user) => {
-                return <SingleUser2 user={user} />;
+                return <SingleUser user={user} />;
               })}
             </div>
           )}
@@ -242,4 +242,4 @@ const mstp = (state) => {
     accountInfo: state.auth.accountInfo,
   };
 };
-export default connect(mstp, { ...MainActions, ...AuthActions })(SingleUser);
+export default connect(mstp, { ...MainActions, ...AuthActions })(SingleUser2);

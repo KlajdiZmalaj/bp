@@ -7,7 +7,8 @@
 @media (max-width: 984px) {
   ._modulePopUP__table2 {
     position: fixed;
-    bottom: 2px;
+    bottom: 0px;
+    left: 0;
   }
   ._modulePopUP__body div:nth-child(2) {
     order: -1;
@@ -24,8 +25,22 @@
     border-left: 1px solid $second;
   }
   .modulePopUP {
-    margin-top: 30px;
-    padding-bottom: 134px;
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+    }
+  }
+  .max-width_modulePopUP {
+    padding-top: 0 !important;
+    height: 100vh;
+    overflow: scroll;
+  }
+  .euroboll span {
+    font-size: 14px;
+    text-transform: lowercase;
   }
 }
 @media (max-width: 768px) {
@@ -36,6 +51,7 @@
     background: #fff;
     z-index: 10;
     width: 100% !important;
+    padding-top: 0 !important;
   }
 }
 @media (max-width: 425px) {

@@ -22,3 +22,10 @@
     margin-bottom: 60px;
   }
 }
+@media (max-width: 990px) {
+  .leftCol_Module {
+    width: 100%;
+    max-width: 100%;
+    flex: auto;
+  }
+}
