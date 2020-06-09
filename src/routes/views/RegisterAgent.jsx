@@ -876,6 +876,10 @@ class RegisterEndUser extends React.Component {
                       +
                     </span>
                   </div>
+                  <span>
+                    Percentuale del utile calcolato sulle provigioni maturate
+                    dalle agenzie aperte
+                  </span>
                 </div>
                 {/* <Form.Item>
                   {getFieldDecorator("percentage", {

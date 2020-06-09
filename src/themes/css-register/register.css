@@ -1082,6 +1082,14 @@
   padding: 2px;
 }
 
+.percentageInp--wrapper + span {
+  white-space: nowrap;
+  font-size: 12px;
+  position: relative;
+  top: 6px;
+  left: -3px;
+}
+
 .percentageInp--wrapper span {
   border: 1px solid #5c5c5c;
   width: 17px;

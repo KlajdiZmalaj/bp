@@ -834,6 +834,13 @@
     border-radius: 20px;
     justify-content: space-between;
     padding: 2px;
+    + span {
+      white-space: nowrap;
+      font-size: 12px;
+      position: relative;
+      top: 6px;
+      left: -3px;
+    }
     span {
       border: 1px solid #5c5c5c;
       width: 17px;
