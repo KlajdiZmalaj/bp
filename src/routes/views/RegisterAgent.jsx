@@ -16,7 +16,7 @@ import uniqBy from "lodash/uniqBy";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import AuthActions from "redux-store/models/auth";
-
+import { capitalize } from "lodash";
 import "../../themes/css-register/register.css";
 import { countriesArray } from "config";
 
@@ -661,7 +661,7 @@ class RegisterEndUser extends React.Component {
               </div>
               <div className="itemCol full">
                 <div className="inputLabel">
-                  Indirizzo <span>*</span>
+                  Indirizzo di residenza<span>*</span>
                 </div>
                 <Form.Item hasFeedback>
                   {getFieldDecorator("address", {
@@ -893,6 +893,86 @@ class RegisterEndUser extends React.Component {
                   })(<Input type="number" />)}
                 </Form.Item> */}
               </div>
+              <div className="itemCol full">
+                <div className="inputLabel">
+                  Indirizzo <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aAdress", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire sede operativa!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Cita <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aCity", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire sede operativa!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Nazione <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("a_contry", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire Nazione!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Comune code <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aComcode", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire Comune!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Cap <span>*</span>
+                </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("aCap", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire cap!",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
+              </div>
             </div>
             <div className="newReg--row__col">
               <div className="itemCol full">
@@ -1102,7 +1182,7 @@ class RegisterEndUser extends React.Component {
                             className="fas fa-check-circle"
                             aria-hidden="true"
                           ></i>
-                          {register.message}
+                          {capitalize(register.message)}
                         </div>
                       </React.Fragment>
                     ) : (
@@ -1112,7 +1192,7 @@ class RegisterEndUser extends React.Component {
                             className="fas fa-times-circle"
                             aria-hidden="true"
                           ></i>
-                          {register.message}
+                          {capitalize(register.message)}
                         </div>
                       </React.Fragment>
                     )}
