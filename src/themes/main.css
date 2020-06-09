@@ -3137,7 +3137,7 @@ footer .top button {
 
 footer .top .chat {
   position: absolute;
-  right: 00px;
+  right: 0px;
   background-color: var(--accent-bg);
   color: var(--accent-txt);
   border: 1px solid var(--accent-txt);
@@ -3155,8 +3155,8 @@ footer .top .chat {
           justify-content: center;
   border-radius: 50px;
   font-size: 25px;
-  top: -31px;
-  right: -70px;
+  top: -7px;
+  right: 180px;
   cursor: pointer;
 }
 
@@ -3238,12 +3238,30 @@ footer .mid .maxWFooter .colf.newsletter input {
   background: transparent;
   border: 0;
   border: 1px solid var(--accent-txt);
+  text-align: right;
+}
+
+footer .mid .maxWFooter .colf.newsletter input::-webkit-input-placeholder {
+  color: var(--accent-txt);
+}
+
+footer .mid .maxWFooter .colf.newsletter input:-ms-input-placeholder {
+  color: var(--accent-txt);
+}
+
+footer .mid .maxWFooter .colf.newsletter input::-ms-input-placeholder {
+  color: var(--accent-txt);
+}
+
+footer .mid .maxWFooter .colf.newsletter input::placeholder {
+  color: var(--accent-txt);
 }
 
 footer .mid .maxWFooter .colf.newsletter button {
   background: transparent;
   border: 0;
   border: 1px solid var(--accent-txt);
+  color: var(--accent-txt);
   border-radius: 5px;
   margin-top: 5px;
   padding: 3px 10px;

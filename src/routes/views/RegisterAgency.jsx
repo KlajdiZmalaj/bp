@@ -436,6 +436,7 @@ class RegisterEndUser extends React.Component {
                   {[...new Array(16)].map((input, key) => {
                     return (
                       <input
+                        key={key}
                         maxLength="1"
                         id={`inp${key}`}
                         type="text"

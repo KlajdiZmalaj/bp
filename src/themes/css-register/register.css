@@ -1039,4 +1039,74 @@
 .inpssWrapper .fa-check-circle {
   color: #52c41a;
 }
+
+.percentageInp {
+  background-color: #dce1e6;
+  height: 35px;
+  padding: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.percentageInp * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.percentageInp input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  text-align: center;
+}
+
+.percentageInp--wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  border: 1px solid #5c5c5c;
+  border-radius: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2px;
+}
+
+.percentageInp--wrapper + span {
+  white-space: nowrap;
+  font-size: 12px;
+  position: relative;
+  top: 6px;
+  left: -3px;
+}
+
+.percentageInp--wrapper span {
+  border: 1px solid #5c5c5c;
+  width: 17px;
+  height: 17px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border-radius: 20px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
 /*# sourceMappingURL=register.css.map */

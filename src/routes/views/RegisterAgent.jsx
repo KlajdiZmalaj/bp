@@ -51,7 +51,7 @@ class RegisterEndUser extends React.Component {
     nazione: "",
     province_of_birth: "",
     city_of_birth: "",
-
+    percentageInp: "",
     nazioneDiResidenca: "",
     residence_province: "",
     residence_city: "",
@@ -429,6 +429,7 @@ class RegisterEndUser extends React.Component {
                   {[...new Array(16)].map((input, key) => {
                     return (
                       <input
+                        key={key}
                         maxLength="1"
                         id={`inp${key}`}
                         type="text"
@@ -836,12 +837,51 @@ class RegisterEndUser extends React.Component {
 
               {/* pagamensileInp : '',
               costoanualeInp : '' */}
-              <div className="itemCol full">
+              <div className="itemCol semi">
                 <div className="inputLabel">
-                  Percentage%<span>*</span>
+                  Calcolo utile agente:<span>*</span>
                 </div>
 
-                <Form.Item>
+                <div className="percentageInp">
+                  <div className="percentageInp--wrapper">
+                    <span
+                      onClick={() => {
+                        this.setState({
+                          percentageInp:
+                            (parseInt(this.state.percentageInp) || 0) - 10,
+                        });
+                      }}
+                    >
+                      -
+                    </span>
+                    <input
+                      type="text"
+                      value={
+                        isNaN(this.state.percentageInp)
+                          ? 0
+                          : this.state.percentageInp
+                      }
+                      onChange={(e) => {
+                        this.setState({ percentageInp: e.target.value });
+                      }}
+                    />
+                    <span
+                      onClick={() => {
+                        this.setState({
+                          percentageInp:
+                            (parseInt(this.state.percentageInp) || 0) + 10,
+                        });
+                      }}
+                    >
+                      +
+                    </span>
+                  </div>
+                  <span>
+                    Percentuale del utile calcolato sulle provigioni maturate
+                    dalle agenzie aperte
+                  </span>
+                </div>
+                {/* <Form.Item>
                   {getFieldDecorator("percentage", {
                     rules: [
                       {
@@ -851,7 +891,7 @@ class RegisterEndUser extends React.Component {
                       },
                     ],
                   })(<Input type="number" />)}
-                </Form.Item>
+                </Form.Item> */}
               </div>
             </div>
             <div className="newReg--row__col">
