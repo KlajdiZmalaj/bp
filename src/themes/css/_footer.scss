@@ -113,12 +113,17 @@ footer {
             background: transparent;
             border: 0;
             border: 1px solid var(--accent-txt);
+            text-align: right;
+            &::placeholder {
+              color: var(--accent-txt);
+            }
           }
 
           button {
             background: transparent;
             border: 0;
             border: 1px solid var(--accent-txt);
+            color: var(--accent-txt);
             border-radius: 5px;
             margin-top: 5px;
             padding: 3px 10px;

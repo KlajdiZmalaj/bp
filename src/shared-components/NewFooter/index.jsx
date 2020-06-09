@@ -51,7 +51,7 @@ class Footer extends Component {
             </div>
             <div className="colf newsletter">
               <h3>ISCRIVITI ALLA NEWSLETTER</h3>
-              <input type="text" placeholder="EMAIL" />
+              <input type="text" placeholder="Vostro Email" />
               <button>ISCRIVITI</button>
             </div>
           </div>

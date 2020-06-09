@@ -3238,12 +3238,30 @@ footer .mid .maxWFooter .colf.newsletter input {
   background: transparent;
   border: 0;
   border: 1px solid var(--accent-txt);
+  text-align: right;
+}
+
+footer .mid .maxWFooter .colf.newsletter input::-webkit-input-placeholder {
+  color: var(--accent-txt);
+}
+
+footer .mid .maxWFooter .colf.newsletter input:-ms-input-placeholder {
+  color: var(--accent-txt);
+}
+
+footer .mid .maxWFooter .colf.newsletter input::-ms-input-placeholder {
+  color: var(--accent-txt);
+}
+
+footer .mid .maxWFooter .colf.newsletter input::placeholder {
+  color: var(--accent-txt);
 }
 
 footer .mid .maxWFooter .colf.newsletter button {
   background: transparent;
   border: 0;
   border: 1px solid var(--accent-txt);
+  color: var(--accent-txt);
   border-radius: 5px;
   margin-top: 5px;
   padding: 3px 10px;
