@@ -811,3 +811,40 @@
     color: #52c41a;
   }
 }
+.percentageInp {
+  background-color: #dce1e6;
+  height: 35px;
+  padding: 5px;
+  user-select: none;
+  * {
+    user-select: none;
+  }
+  input {
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    flex-shrink: 1;
+    text-align: center;
+  }
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border: 1px solid #5c5c5c;
+    border-radius: 20px;
+    justify-content: space-between;
+    padding: 2px;
+    span {
+      border: 1px solid #5c5c5c;
+      width: 17px;
+      height: 17px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+  }
+}
