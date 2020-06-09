@@ -193,7 +193,7 @@ class RegisterEndUser extends React.Component {
           values.pagmens,
           this.state.privacy_policy,
           this.state.recieve_emails,
-          values.percentage
+          this.state.percentageInp
         );
 
         var that = this;
