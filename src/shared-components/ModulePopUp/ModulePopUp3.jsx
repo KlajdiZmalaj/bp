@@ -21,9 +21,9 @@ function beforeUpload(file) {
   if (!isJpgOrPng) {
     message.error("Solo JPG/PNG/PDF file!");
   }
-  const isLt2M = file.size / 1024 / 1024 < 2;
+  const isLt2M = file.size / 1024 / 1024 < 10;
   if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
+    message.error("Image must smaller than 10MB!");
   }
   console.log("filee", file, file.size, isLt2M);
   return isJpgOrPng && isLt2M;
@@ -56,11 +56,7 @@ class ModulePopUp3 extends React.Component {
   };
 
   handleChangeBack = (info) => {
-    if (info.file.status === "uploading") {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === "done") {
+    if (info.file.status) {
       getBase64(info.file.originFileObj, (imageUrl2) =>
         this.setState({
           imageUrl2,
@@ -71,11 +67,8 @@ class ModulePopUp3 extends React.Component {
   };
 
   handleChangeFront = (info) => {
-    if (info.file.status === "uploading") {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === "done") {
+    console.log("info", info);
+    if (info.file.status) {
       getBase64(info.file.originFileObj, (imageUrl) =>
         this.setState({
           imageUrl,
