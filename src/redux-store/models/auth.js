@@ -1,13 +1,15 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+  changeAgent: ["id", "id2"],
   signInByEmail: ["email", "password"],
   authSuccess: ["user"],
   authFailure: ["error"],
   logOut: [],
   getAccountInfo: [],
   setAccountInfo: ["accountInfo"],
-
+  getAgents: [""],
+  setAgents: ["agents"],
   setUnauthorization: [],
   getBolletiniBianchi: [
     "service_id",
@@ -158,6 +160,7 @@ export default Creators;
 
 const INITIAL_STATE = {
   privMsg: [],
+  agents: [],
   pwError: "",
   loginMsg: "",
   user: null,
@@ -183,6 +186,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_AGENTS]: (state, { agents }) => ({
+    ...state,
+    agents,
+  }),
   [Types.SET_PRIVATE_MSG]: (state, { privMsg }) => ({
     ...state,
     privMsg,

@@ -19,6 +19,8 @@ import {
   fetchBarcodeData,
   fetchUserDetails,
   updateUsers,
+  changeAgentReq,
+  fetchAgents,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -39,6 +41,13 @@ export function* signInByEmail(credencials) {
       yield delay(4000);
       yield put(AuthActions.setLoginMsg(""));
     }
+  }
+}
+export function* getAgents() {
+  const response = yield call(fetchAgents);
+  console.log("agents res", response);
+  if (response) {
+    yield put(AuthActions.setAgents(response.data.agents));
   }
 }
 
@@ -424,6 +433,19 @@ export function* getBarcodeData(e) {
     yield put(AuthActions.setBarcodeData(response.message));
     e.callback(response.data);
   }
+}
+export function* changeAgent(data) {
+  const response = yield call(changeAgentReq, data.id, data.id2);
+  if (response) {
+    if (response.status === 200) {
+      yield put(AuthActions.setUserDetail(response.data.user));
+      const ress = yield call(fetchUsers);
+      if (ress.data) {
+        yield put(MainActions.setUsers(ress.data.users));
+      }
+    }
+  }
+  console.log("response changeAgent", data, response);
 }
 export function* getUserDetail(data) {
   const response = yield call(fetchUserDetails, data.id);

@@ -377,6 +377,22 @@ export const fetchBarcodeData = (barcode) => {
     })
     .catch((error) => ({ error }));
 };
+export const changeAgentReq = (aaa, agent_id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/agency/${agent_id}/changeAgent`, {
+      agent_id: aaa,
+      ...skin,
+    })
+    .catch((error) => ({ error }));
+};
 export const fetchCodice = (barcode) =>
   axios
     .create({
@@ -390,6 +406,22 @@ export const fetchCodice = (barcode) =>
     .get("/payment", {
       params: {
         barcode: barcode,
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+export const fetchAgents = () =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/agents", {
+      params: {
         ...skin,
       },
     })
