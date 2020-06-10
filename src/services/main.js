@@ -54,7 +54,7 @@ export const fetchUsersSimple = () =>
         }`,
       },
     })
-    .get(`/users/simple`, {
+    .get(`/simpleUsers`, {
       params: {
         ...skin,
       },
