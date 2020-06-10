@@ -144,7 +144,7 @@ class Configura extends React.Component {
                     <label>Telefono</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_comune_code}
+                      value={usersConfigura.a_phone}
                       disabled
                     />
                     <br />
