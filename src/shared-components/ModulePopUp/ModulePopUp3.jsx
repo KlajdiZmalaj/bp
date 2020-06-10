@@ -56,21 +56,26 @@ class ModulePopUp3 extends React.Component {
   };
 
   handleChangeBack = (info) => {
-    getBase64(info.file.originFileObj, (imageUrl2) =>
-      this.setState({
-        imageUrl2,
-        loading: false,
-      })
-    );
+    if (info.file.status) {
+      getBase64(info.file.originFileObj, (imageUrl2) =>
+        this.setState({
+          imageUrl2,
+          loading: false,
+        })
+      );
+    }
   };
 
   handleChangeFront = (info) => {
-    getBase64(info.file.originFileObj, (imageUrl) =>
-      this.setState({
-        imageUrl,
-        loading: false,
-      })
-    );
+    console.log("info", info);
+    if (info.file.status) {
+      getBase64(info.file.originFileObj, (imageUrl) =>
+        this.setState({
+          imageUrl,
+          loading: false,
+        })
+      );
+    }
   };
 
   handleChangeImporto(event) {
