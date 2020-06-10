@@ -130,7 +130,7 @@ class UsersList extends Component {
               })}
           </div>
         )}
-        {userDetail.username && (
+        {userDetail && userDetail.username && (
           <React.Fragment>
             <div
               className={
@@ -153,6 +153,38 @@ class UsersList extends Component {
                   }}
                 >
                   <i className="fal fa-times" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div className="newReg--row">
+                <div className="newReg--row__col">Cambia Agente</div>
+                <div className="newReg--row__col">
+                  {this.props.agents && (
+                    <Select
+                      defaultValue={userDetail.agent_id}
+                      onChange={(e) => {
+                        this.setState({ agentSelected: e });
+                      }}
+                    >
+                      {(this.props.agents || []).map((agent) => (
+                        <Option value={agent.id}>
+                          {agent.first_name} {agent.last_name}
+                        </Option>
+                      ))}
+                    </Select>
+                  )}
+                </div>
+                <div className="newReg--row__col justify-content-end">
+                  <button
+                    onClick={() => {
+                      this.props.changeAgent(
+                        this.state.agentSelected,
+                        userDetail.id
+                      );
+                    }}
+                    className="SubmitButton"
+                  >
+                    Salva
+                  </button>
                 </div>
               </div>
               <div className="newReg--row">
@@ -499,6 +531,7 @@ const mapStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
   userDetail: state.auth.userDetail,
   updateMsg: state.auth.updateMsg,
+  agents: state.auth.agents,
 });
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(
   UsersList

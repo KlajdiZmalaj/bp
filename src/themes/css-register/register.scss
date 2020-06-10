@@ -701,8 +701,13 @@
     border-radius: 6px;
   }
   &.userDetailPopup {
+    .newReg--row {
+      max-height: 360px;
+      overflow-y: scroll;
+    }
     .newReg--row__col {
       width: calc(100% / 2);
+      flex-grow: 1;
     }
   }
 }
