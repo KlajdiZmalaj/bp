@@ -72,9 +72,9 @@ export const skinTexts = {
   },
   4: {
     cel: "+39 0774 503745",
-    mail: "servizi@planetservizi.com",
+    mail: "service@planetservizi.com",
     address: `Via Montenero 21,
-    00012 Colle Verde (RM) Italia`,
+    00012 Colleverde (RM) Italia`,
     name: "Planetservizi",
     link1: "https://planetservizi.it/azienda/",
     link2: "https://planetservizi.it/servizi/",

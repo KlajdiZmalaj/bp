@@ -155,38 +155,7 @@ class UsersList extends Component {
                   <i className="fal fa-times" aria-hidden="true"></i>
                 </div>
               </div>
-              <div className="newReg--row">
-                <div className="newReg--row__col">Cambia Agente</div>
-                <div className="newReg--row__col">
-                  {this.props.agents && (
-                    <Select
-                      defaultValue={userDetail.agent_id}
-                      onChange={(e) => {
-                        this.setState({ agentSelected: e });
-                      }}
-                    >
-                      {(this.props.agents || []).map((agent) => (
-                        <Option value={agent.id}>
-                          {agent.first_name} {agent.last_name}
-                        </Option>
-                      ))}
-                    </Select>
-                  )}
-                </div>
-                <div className="newReg--row__col justify-content-end">
-                  <button
-                    onClick={() => {
-                      this.props.changeAgent(
-                        this.state.agentSelected,
-                        userDetail.id
-                      );
-                    }}
-                    className="SubmitButton"
-                  >
-                    Salva
-                  </button>
-                </div>
-              </div>
+
               <div className="newReg--row">
                 <div className="newReg--row__col">
                   <div className="itemCol full">
@@ -216,7 +185,9 @@ class UsersList extends Component {
                         this.setState({ changedCordinate: e.target.value });
                       }}
                       value={
-                        this.state.changedCordinate || userDetail.cordinate
+                        this.state.changedCordinate ||
+                        userDetail.cordinate ||
+                        "0"
                       }
                       className="ant-input"
                       type="text"
@@ -298,7 +269,9 @@ class UsersList extends Component {
                           changednazione: e.target.value,
                         });
                       }}
-                      value={this.state.changednazione || userDetail.nazione}
+                      value={
+                        this.state.changednazione || userDetail.nazione || " "
+                      }
                       className="ant-input"
                       type="text"
                     />
@@ -351,19 +324,17 @@ class UsersList extends Component {
                       onChange={(e) => {
                         this.setState({ password: e.target.value });
                       }}
-                      type="text"
-                      password
+                      type="password"
                     />
                   </div>
                   <div className="itemCol full">
                     <div className="inputLabel">Conferma password</div>
                     <input
                       className="ant-input"
-                      type="text"
+                      type="password"
                       onChange={(e) => {
                         this.setState({ confirm_password: e.target.value });
                       }}
-                      password
                     />
                   </div>
                   <div className="itemCol full">
@@ -449,7 +420,8 @@ class UsersList extends Component {
                       }}
                       value={
                         this.state.luogo_di_rilascio ||
-                        userDetail.luogo_di_rilascio
+                        userDetail.luogo_di_rilascio ||
+                        ""
                       }
                       className="ant-input"
                       type="text"
@@ -462,7 +434,7 @@ class UsersList extends Component {
                         this.setState({ data_di_rilascio });
                       }}
                       defaultValue={
-                        this.state.data_di_rilascio ||
+                        moment(this.state.data_di_rilascio) ||
                         moment(userDetail.data_di_rilascio)
                       }
                       format={("DD/MM/YYYY", "DD/MM/YYYY")}
@@ -475,7 +447,7 @@ class UsersList extends Component {
                         this.setState({ data_di_scadenza });
                       }}
                       defaultValue={
-                        this.state.data_di_scadenza ||
+                        moment(this.state.data_di_scadenza) ||
                         moment(userDetail.data_di_scadenza)
                       }
                       format={("DD/MM/YYYY", "DD/MM/YYYY")}
@@ -496,7 +468,35 @@ class UsersList extends Component {
                 </div>
               </div>
               <div className="newReg--row">
-                <div className="newReg--row__col"></div>
+                <div className="newReg--row__col">Cambia Agente</div>
+                <div className="newReg--row__col checkCol">
+                  {this.props.agents && (
+                    <React.Fragment>
+                      <Select
+                        defaultValue={userDetail.agent_id}
+                        onChange={(e) => {
+                          this.setState({ agentSelected: e });
+                        }}
+                      >
+                        {(this.props.agents || []).map((agent, id) => (
+                          <Option key={id} value={agent.id}>
+                            {agent.first_name} {agent.last_name}
+                          </Option>
+                        ))}
+                      </Select>
+                      <button
+                        onClick={() => {
+                          this.props.changeAgent(
+                            this.state.agentSelected,
+                            userDetail.id
+                          );
+                        }}
+                      >
+                        <i className="fal fa-check" aria-hidden="true"></i>
+                      </button>{" "}
+                    </React.Fragment>
+                  )}
+                </div>
                 <div className="newReg--row__col submitcol ml-auto">
                   <button
                     onClick={() => {
