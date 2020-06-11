@@ -46,7 +46,7 @@ export function* signInByEmail(credencials) {
 export function* getAgents() {
   const response = yield call(fetchAgents);
   console.log("agents res", response);
-  if (response) {
+  if (response.data) {
     yield put(AuthActions.setAgents(response.data.agents));
   }
 }
