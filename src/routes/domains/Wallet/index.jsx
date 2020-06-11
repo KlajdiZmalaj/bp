@@ -19,7 +19,7 @@ class index extends Component {
           <div className="userList">
             <div className="userList--AllUsers">
               <div className="title">Users</div>
-              <div class="header">
+              <div className="header">
                 <span>User Id</span>
                 <span>Username</span>
                 <span>Nome</span>
@@ -29,9 +29,10 @@ class index extends Component {
                 <span>Ultimo Login</span>
                 <span style={{ width: "100%" }}>Azioni</span>
               </div>
-              {userListSimple.map((user) => {
+              {userListSimple.map((user, key) => {
                 return (
                   <SingleUser
+                    key={key}
                     getUsers={this.props.getUsersSimple}
                     user={user}
                   />

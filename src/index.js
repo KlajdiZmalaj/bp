@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "jquery-ui";
 
-import "./assets/fonts/css/all.min.css";
 import "./themes/index.css";
 import "./themes/main.css";
 
