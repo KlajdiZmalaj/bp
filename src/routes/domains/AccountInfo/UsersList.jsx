@@ -467,7 +467,7 @@ class UsersList extends Component {
                   </div>
                 </div>
               </div>
-              <div className="newReg--row">
+              <div className="newReg--row lastRow">
                 <div className="newReg--row__col">Cambia Agente</div>
                 <div className="newReg--row__col checkCol">
                   {this.props.agents && (
@@ -480,7 +480,8 @@ class UsersList extends Component {
                       >
                         {(this.props.agents || []).map((agent, id) => (
                           <Option key={id} value={agent.id}>
-                            {agent.first_name} {agent.last_name}
+                            {agent.first_name} {agent.last_name} [
+                            {`${agent.username}`}]
                           </Option>
                         ))}
                       </Select>

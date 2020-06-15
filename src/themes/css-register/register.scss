@@ -599,6 +599,15 @@
         }
       }
     }
+    &.lastRow {
+      .newReg--row__col:nth-child(1) {
+        width: 11% !important;
+        display: flex;
+        align-items: center;
+        padding-top: 25px;
+        padding-left: 27px;
+      }
+    }
   }
   .ant-select-selection--single,
   .ant-calendar-picker {
@@ -861,4 +870,33 @@
 }
 .newReg--row__col.checkCol {
   display: flex;
+}
+@media (max-width: 800px) {
+  body .userDetailPopup {
+    width: 100vw;
+    top: 0;
+    left: 0;
+    height: 90vh;
+    margin-left: 0;
+  }
+  .newReg--row {
+    display: flex;
+    flex-flow: column;
+  }
+  .newReg--row__col {
+    width: 100% !important;
+    height: auto;
+  }
+}
+.checkCol {
+  display: flex;
+  flex-flow: row !important;
+  align-items: stretch;
+  button {
+    border: 0;
+    background-color: transparent;
+    height: auto;
+    background-color: var(--accent-bg);
+    color: var(--accent-txt);
+  }
 }

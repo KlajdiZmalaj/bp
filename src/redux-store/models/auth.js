@@ -153,6 +153,8 @@ const { Types, Creators } = createActions({
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
+  getSkinExtras: [""],
+  setSkinExtras: ["skinExtras"],
 });
 
 export const AuthTypes = Types;
@@ -183,9 +185,14 @@ const INITIAL_STATE = {
   barcodeData: {},
   userDetail: {},
   updateMsg: "",
+  skinExtras: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_SKIN_EXTRAS]: (state, { skinExtras }) => ({
+    ...state,
+    skinExtras,
+  }),
   [Types.SET_AGENTS]: (state, { agents }) => ({
     ...state,
     agents,
