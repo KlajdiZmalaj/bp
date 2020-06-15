@@ -787,6 +787,18 @@
   width: 20%;
 }
 
+.newReg--row.lastRow .newReg--row__col:nth-child(1) {
+  width: 11% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 25px;
+  padding-left: 27px;
+}
+
 .newReg .ant-select-selection--single,
 .newReg .ant-calendar-picker {
   width: 100%;
@@ -1115,5 +1127,55 @@
   border-radius: 20px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+.newReg--row__col.checkCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 800px) {
+  body .userDetailPopup {
+    width: 100vw;
+    top: 0;
+    left: 0;
+    height: 90vh;
+    margin-left: 0;
+  }
+  .newReg--row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+  }
+  .newReg--row__col {
+    width: 100% !important;
+    height: auto;
+  }
+}
+
+.checkCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-flow: row !important;
+          flex-flow: row !important;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.checkCol button {
+  border: 0;
+  background-color: transparent;
+  height: auto;
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
 }
 /*# sourceMappingURL=register.css.map */

@@ -9,8 +9,8 @@
     padding-bottom: 100px;
   }
   .panel-services tr {
-    max-height: 60vh;
-    overflow-y: scroll;
+    max-height: 75vh;
+    overflow-y: auto;
     &::-webkit-scrollbar {
       height: 0;
     }

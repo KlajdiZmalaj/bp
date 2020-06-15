@@ -21,6 +21,7 @@ import {
   updateUsers,
   changeAgentReq,
   fetchAgents,
+  fetchSkinExtras,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -479,7 +480,7 @@ export function* updateUserDetail(data) {
     data.password,
     data.confirm_password
   );
-  if (response) {
+  if (response.data) {
     console.log("responseresponseresponse", response);
     if (response.status === 200) {
       yield put(AuthActions.updateUserDetailMsg(response.data.message));
@@ -501,4 +502,13 @@ export function* updateUserDetail(data) {
       yield put(AuthActions.updateUserDetailMsg(""));
     }
   }
+}
+export function* getSkinExtras() {
+  const response = yield call(fetchSkinExtras);
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setSkinExtras(response.data.skin));
+    }
+  }
+  console.log("response skin extras", response);
 }

@@ -24,6 +24,7 @@ import {
   updateUserDetail,
   changeAgent,
   getAgents,
+  getSkinExtras,
 } from "./AuthSagas";
 
 import {
@@ -58,6 +59,7 @@ export default function* root() {
     takeLatest(AuthTypes.UPDATE_USER_DETAIL, updateUserDetail),
     takeLatest(AuthTypes.CHANGE_AGENT, changeAgent),
     takeLatest(AuthTypes.GET_AGENTS, getAgents),
+    takeLatest(AuthTypes.GET_SKIN_EXTRAS, getSkinExtras),
 
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices),

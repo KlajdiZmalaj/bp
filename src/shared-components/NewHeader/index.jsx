@@ -241,7 +241,12 @@ class Header extends Component {
           <button onClick={this.toggleMobileMeu}>
             <i className="fal fa-bars"></i>
           </button>
-          <div className="logo">
+          <div
+            className="logo"
+            onClick={() => {
+              this.props.history.push("/dashboard");
+            }}
+          >
             <img src={images.logo} alt="" />
           </div>
           <button

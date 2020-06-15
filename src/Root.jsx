@@ -30,6 +30,7 @@ class Root extends React.Component {
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
     });
+    this.props.getSkinExtras();
   }
 
   getStoredData = () => {
