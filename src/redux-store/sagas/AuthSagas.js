@@ -31,7 +31,7 @@ export function* signInByEmail(credencials) {
     credencials.email,
     credencials.password
   );
-  console.log("response123", response);
+  // console.log("response123", response);
   if (response) {
     if (response.data) {
       localStorage.setItem("accountDataB", JSON.stringify(response.data));

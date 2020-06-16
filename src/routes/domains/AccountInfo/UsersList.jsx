@@ -53,7 +53,7 @@ class UsersList extends Component {
     const { userList, accountInfo, userDetail, updateMsg } = this.props;
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
-    console.log("userDetail", userDetail);
+    // console.log("userDetail", userDetail);
 
     return (
       <div className="userList">

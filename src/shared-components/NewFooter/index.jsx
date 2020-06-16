@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import images from "themes/images";
 import { skinTexts, skinID } from "config/skinTexts";
+import { connect } from "react-redux";
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -8,14 +9,16 @@ class Footer extends Component {
   }
   //
   render() {
+    const { skinExtras } = this.props;
+    console.log("skinExtras", skinExtras);
     return (
       <footer>
         <div className="top">
           <div className="maxWFooter">
-            <h2>Vuoi diventare un Punto {skinTexts[skinID].name}?</h2>
+            <h2>Vuoi diventare un Punto {skinExtras.name}?</h2>
             <button
               onClick={() => {
-                window.location.href = skinTexts[skinID].link4;
+                window.location.href = skinExtras.link4;
               }}
             >
               contattaci subito
@@ -37,16 +40,16 @@ class Footer extends Component {
             </div>
             <div className="colf">
               <h3>contact us</h3>
-              <p>{skinTexts[skinID].address}</p>
+              <p>{skinExtras.address}</p>
               <p>
                 <b>E-mail:</b> <br />
-                {skinTexts[skinID].mail}
+                {skinExtras.mail}
               </p>
             </div>
             <div className="colf">
               <p>
                 <b>Phone:</b> <br />
-                {skinTexts[skinID].cel}
+                {skinExtras.cel}
               </p>
             </div>
             <div className="colf newsletter">
@@ -73,4 +76,9 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+const m = ({ auth }) => {
+  return {
+    skinExtras: auth.skinExtras,
+  };
+};
+export default connect(m, null)(Footer);

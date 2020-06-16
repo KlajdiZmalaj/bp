@@ -27,7 +27,7 @@ class Login extends React.Component {
 
   render() {
     const { loginMsg } = this.props;
-    console.log("loginMsg", loginMsg);
+    // console.log("loginMsg", loginMsg);
     return (
       <React.Fragment>
         <div className="leftLogin">

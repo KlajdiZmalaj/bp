@@ -178,10 +178,11 @@ class Dashboard extends React.Component {
                         Ricaricati <br /> nel modo più veloce
                       </h2>
                       <h3>
-                        Ricarica il tuo cellulare nel {skinTexts[skinID].name}{" "}
-                        <br /> oppure direttamente Online. Clicca l’immagine{" "}
-                        <br /> dell’operatore che vuoi ricaricare o sul <br />{" "}
-                        nome nell’elenco a sinistra e scopri <br />
+                        Ricarica il tuo cellulare nel{" "}
+                        {this.props.skinExtras.name} <br /> oppure direttamente
+                        Online. Clicca l’immagine <br /> dell’operatore che vuoi
+                        ricaricare o sul <br /> nome nell’elenco a sinistra e
+                        scopri <br />
                         quanto è veloce e sicuro ricaricare così!
                       </h3>
                       <button
@@ -1015,6 +1016,7 @@ const mapsStateToProps = (state) => ({
   favorites: state.main.favorites,
   accountInfo: state.auth.accountInfo,
   navbarSearch: state.main.navbarSearch,
+  skinExtras: state.auth.skinExtras,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

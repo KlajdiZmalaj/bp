@@ -1,9 +1,9 @@
 import React from "react";
 import { Azioni, Header } from "shared-components";
-import { skinTexts, skinID } from "config/skinTexts";
-
+import { connect } from "react-redux";
 class CaricaConto extends React.Component {
   render() {
+    const { skinExtras } = this.props;
     return (
       <div>
         <Header />
@@ -45,7 +45,7 @@ class CaricaConto extends React.Component {
                   Una volta effettuato il bonifico si prega di inviare la
                   distinta al nostro indirizzo e-mail:
                 </p>
-                <address> {skinTexts[skinID].mail}</address>
+                <address> {skinExtras.mail}</address>
               </div>
             </div>
           </div>
@@ -58,5 +58,9 @@ class CaricaConto extends React.Component {
     );
   }
 }
-
-export default CaricaConto;
+const a = (s) => {
+  return {
+    skinExtras: s.auth.skinExtras,
+  };
+};
+export default connect(a, null)(CaricaConto);

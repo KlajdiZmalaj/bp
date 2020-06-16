@@ -53,7 +53,7 @@ class FastCarica extends Component {
       toDisplayUserDD,
     } = this.state;
     const { users } = this.props;
-    console.log("users", userName, userId, amountVal);
+    // console.log("users", userName, userId, amountVal);
     return (
       <div className="fastCarica">
         <div className="switchGr">

@@ -18,7 +18,6 @@ import * as locales from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
-import { skinTexts, skinID } from "config/skinTexts";
 
 const renderStaticRangeLabel = (e) => (
   <CustomStaticRangeLabelContent text={e} />
@@ -195,7 +194,7 @@ class Transazioni extends React.Component {
     if (usernames && usernames.length > 0) {
       options = usernames.map((user) => <Option key={user}>{user}</Option>);
     }
-    console.log("payments", payments);
+    console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
       payments &&
       isArray(payments) &&
@@ -516,13 +515,13 @@ class Transazioni extends React.Component {
                     MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                   </span>
                   <span className="superSmall">
-                    {skinTexts[skinID].address}
+                    {this.props.skinExtras.address}
                   </span>
                   <span className="superSmall link">
-                    {skinTexts[skinID].email}
+                    {this.props.skinExtras.email}
                   </span>
                   <span className="superSmall ">
-                    Tel: {skinTexts[skinID].cel}
+                    Tel: {this.props.skinExtras.cel}
                   </span>
                   <span className="superSmall tel">P.IVA 03852290406</span>
 
@@ -595,6 +594,7 @@ const mapsStateToProps = (state) => ({
   usernames: state.auth.usernames,
   accountInfo: state.auth.accountInfo,
   navbarSearch: state.main.navbarSearch,
+  skinExtras: state.auth.skinExtras,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
