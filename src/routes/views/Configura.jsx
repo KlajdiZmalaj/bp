@@ -29,7 +29,7 @@ class Configura extends React.Component {
     } else {
       this.setState({ hasError: true });
     }
-    console.log("handlesumbit", pw1, pw2, pw3, hasError);
+    // console.log("handlesumbit", pw1, pw2, pw3, hasError);
   };
   render() {
     const { accountInfo, usersConfigura, pwError } = this.props;

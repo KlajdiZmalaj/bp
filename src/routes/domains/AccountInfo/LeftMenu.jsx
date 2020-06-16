@@ -9,10 +9,9 @@ class LeftMenu extends Component {
     this.state = {};
   }
   render() {
-    console.log("props", this.props);
     return (
       <div className="leftMenuAcc">
-        {profileLinks.map(item => {
+        {profileLinks.map((item) => {
           // console.log("item.id", item.id);
           // return (
           //   <div
@@ -30,7 +29,7 @@ class LeftMenu extends Component {
     );
   }
 }
-const mstp = state => ({
-  activeAccount: state.main.activeAccount
+const mstp = (state) => ({
+  activeAccount: state.main.activeAccount,
 });
 export default connect(mstp, { ...MainActions })(LeftMenu);

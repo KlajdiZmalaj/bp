@@ -129,7 +129,6 @@ class RegisterEndUser extends React.Component {
     e.preventDefault();
 
     this.props.form.validateFieldsAndScroll((err, values) => {
-      console.log("values", values);
       if (!err) {
         this.props.getRegister(
           values.first_name,
@@ -200,35 +199,6 @@ class RegisterEndUser extends React.Component {
 
   validateCodiceFiscale = (e) => {};
 
-  handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-
-  onChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-  onChangeIdentity = (value) => {
-    console.log(`selected ${value}`);
-    this.setState({ tipoDocumento: value });
-  };
-  onChangeFileType = (value) => {
-    this.setState({ fileType: value });
-  };
-  onChangeCardView = (value) => {
-    console.log(`selected ${value}`);
-    this.setState({ cardView: value });
-  };
-  onBlur = () => {
-    console.log("blur");
-  };
-
-  onFocus = () => {
-    console.log("focus");
-  };
-
-  onSearch = (val) => {
-    console.log("search:", val);
-  };
   getValues = () => {
     const inpArr = [...new Array(16)].map((inp, k) => {
       return document.getElementById("inp" + k);
@@ -237,7 +207,6 @@ class RegisterEndUser extends React.Component {
     inpArr.forEach((inp) => {
       codFisInps += inp.value || " ";
     });
-    console.log("inpArr", inpArr);
     this.setState({
       codFisInps,
     });

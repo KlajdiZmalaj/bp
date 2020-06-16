@@ -194,7 +194,7 @@ class Transazioni extends React.Component {
     if (usernames && usernames.length > 0) {
       options = usernames.map((user) => <Option key={user}>{user}</Option>);
     }
-    console.log("skinExtrasskinExtras", this.props.skinExtras);
+    // console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
       payments &&
       isArray(payments) &&

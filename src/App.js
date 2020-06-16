@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 
 import configureStore from "./redux-store/store";
 import rootSaga from "./redux-store/sagas";
-import { Header, Footer, Azioni, ModulePopUp } from "./shared-components";
+import { Footer, ModulePopUp } from "./shared-components";
 
 import Root from "./Root";
 

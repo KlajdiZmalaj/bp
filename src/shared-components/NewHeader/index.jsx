@@ -6,7 +6,6 @@ import AuthActions from "redux-store/models/auth";
 import MainActions from "redux-store/models/main";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-import { skinTexts, skinID } from "config/skinTexts";
 
 class Header extends Component {
   constructor(props) {
@@ -31,15 +30,8 @@ class Header extends Component {
     this.props.getAds();
   }
   render() {
-    const {
-      accountInfo,
-      screenWidth,
-      user,
-      ads,
-      privMsg,
-      skinExtras,
-    } = this.props;
-    const { isMobMenu, isDDopem, msg } = this.state;
+    const { accountInfo, screenWidth, ads, privMsg, skinExtras } = this.props;
+    const { isMobMenu, isDDopem } = this.state;
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);

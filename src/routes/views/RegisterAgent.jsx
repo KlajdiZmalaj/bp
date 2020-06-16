@@ -147,7 +147,6 @@ class RegisterEndUser extends React.Component {
     e.preventDefault();
 
     this.props.form.validateFieldsAndScroll((err, values) => {
-      console.log("values", values);
       if (!err) {
         this.props.getRegister(
           values.first_name,
@@ -218,7 +217,6 @@ class RegisterEndUser extends React.Component {
     inpArr.forEach((inp) => {
       codFisInps += inp.value || " ";
     });
-    console.log("inpArr", inpArr);
     this.setState({
       codFisInps,
     });
@@ -288,35 +286,9 @@ class RegisterEndUser extends React.Component {
       });
   };
 
-  handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
 
-  onChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-  onChangeIdentity = (value) => {
-    console.log(`selected ${value}`);
-    this.setState({ tipoDocumento: value });
-  };
-  onChangeFileType = (value) => {
-    this.setState({ fileType: value });
-  };
-  onChangeCardView = (value) => {
-    console.log(`selected ${value}`);
-    this.setState({ cardView: value });
-  };
-  onBlur = () => {
-    console.log("blur");
-  };
 
-  onFocus = () => {
-    console.log("focus");
-  };
 
-  onSearch = (val) => {
-    console.log("search:", val);
-  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -885,7 +857,7 @@ class RegisterEndUser extends React.Component {
                   })(<Input type="number" />)}
                 </Form.Item> */}
               </div>
-              <div className="itemCol full">
+              <div className="itemCol full  mt-2">
                 <div className="inputLabel">
                   Indirizzo <span>*</span>
                 </div>
