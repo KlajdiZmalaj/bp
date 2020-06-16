@@ -1,16 +1,6 @@
 import React, { Fragment } from "react";
 
-import {
-  Form,
-  Input,
-  Button,
-  DatePicker,
-  Select,
-  Checkbox,
-  Upload,
-  Icon,
-  message,
-} from "antd";
+import { Form, Input, Button, DatePicker, Select, Checkbox } from "antd";
 import moment from "moment";
 import uniqBy from "lodash/uniqBy";
 import { connect } from "react-redux";
@@ -32,17 +22,6 @@ function getBase64(img, callback) {
   reader.readAsDataURL(img);
 }
 
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  if (!isJpgOrPng) {
-    message.error("You can only upload JPG/PNG file!");
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
-  }
-  return isJpgOrPng && isLt2M;
-}
 class RegisterEndUser extends React.Component {
   state = {
     visible: true,
@@ -330,15 +309,9 @@ class RegisterEndUser extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
-    const { imageUrl, cardView, imageUrl2, codFisInps, valuess2 } = this.state;
-    // console.log("codFisInps", codFisInps, valuess2);
-    const uploadButton = (
-      <div>
-        <Icon type={this.state.loading ? "loading" : "plus"} />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
-    const { comuniSelected, nazione, nazioneDiResidenca, sesso } = this.state;
+    const { codFisInps } = this.state;
+
+    const { nazione, nazioneDiResidenca, sesso } = this.state;
 
     const allNazione = uniqBy(countriesArray, "nazione");
 

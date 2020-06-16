@@ -7,7 +7,6 @@ import {
   DatePicker,
   Select,
   Checkbox,
-  Upload,
   Icon,
   message,
 } from "antd";
@@ -322,15 +321,10 @@ class RegisterEndUser extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
-    const { imageUrl, cardView, imageUrl2, codFisInps } = this.state;
+    const { codFisInps } = this.state;
 
-    const uploadButton = (
-      <div>
-        <Icon type={this.state.loading ? "loading" : "plus"} />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
-    const { comuniSelected, nazione, nazioneDiResidenca, sesso } = this.state;
+
+    const {  nazione, nazioneDiResidenca,  } = this.state;
 
     const allNazione = uniqBy(countriesArray, "nazione");
 
@@ -411,8 +405,6 @@ class RegisterEndUser extends React.Component {
     const number_prefix = getFieldDecorator("number_prefix", {
       initialValue: "+39",
     })(<Input style={{ width: 70 }}></Input>);
-    const { step } = this.state;
-    console.log("ca ka form", this.props.form);
     return (
       <Fragment>
         <Header></Header>

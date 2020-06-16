@@ -155,7 +155,6 @@ class Dashboard extends React.Component {
                   );
                 })}
               </div>
-              {console.log("serviceSelected", serviceSelected)}
               {/* serviceSelected, keyService  */}
               {serviceSelected !== "" && (
                 <Service
@@ -165,7 +164,6 @@ class Dashboard extends React.Component {
                   servicesItems={services[keyService]}
                 ></Service>
               )}
-              {console.log("serviceSelected", serviceSelected)}
               {/* <!--rigth block where is no selection--> */}
               {Object.keys(services)[0] && (
                 <div className="col-md-8">

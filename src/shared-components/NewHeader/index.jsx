@@ -39,7 +39,6 @@ class Header extends Component {
     if (data) {
       isLoggedin = true;
     }
-    console.log("privMsg", privMsg);
     return screenWidth > 860 ? (
       <header className="header">
         <div className="headermaxW">
