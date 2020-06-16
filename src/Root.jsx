@@ -49,7 +49,6 @@ class Root extends React.Component {
     if (data) {
       isLoggedin = true;
     }
-    console.log("accountInfo", role);
     return (
       <React.Fragment>
         <HashRouter>

@@ -15,9 +15,9 @@ import {
 import { logoutApi } from "services/auth";
 
 export function* getServices() {
-  console.log("funx callllled");
+  // console.log("funx callllled");
   const response = yield call(fetchServices);
-  console.log("response services", response);
+  // console.log("response services", response);
   if (response.data) {
     yield put(MainActions.setServices(response.data.all_services));
   } else if (response.error) {

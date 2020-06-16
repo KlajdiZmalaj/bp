@@ -112,7 +112,6 @@ class Bolletino extends React.Component {
       bolletiniPremercati,
       service,
       barcodeData,
-      data,
     } = this.props;
     const { barcodeInput } = this.state;
 

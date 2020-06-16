@@ -510,5 +510,5 @@ export function* getSkinExtras() {
       yield put(AuthActions.setSkinExtras(response.data.skin));
     }
   }
-  console.log("response skin extras", response);
+  // console.log("response skin extras", response);
 }

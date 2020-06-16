@@ -22,7 +22,6 @@ class ModulePopUp extends React.Component {
     ];
 
     const module1 = ["BOL001", "BOL002"];
-    console.log("serviceType", service && service.type, serviceType);
     return isShowing ? (
       <Fragment>
         {module1.includes(service_id) && (

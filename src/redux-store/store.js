@@ -6,19 +6,19 @@ import { reducer as MainReducer } from "./models/main";
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
-  main: MainReducer
+  main: MainReducer,
 });
 
 export default function configureStore() {
-  const loggerMiddleware = store => next => action => {
+  const loggerMiddleware = (store) => (next) => (action) => {
     const returnValue = next(action);
 
-    if (console.group) {
-      console.group(action.type);
-      console.log("%c action", "color: #03A9F4", action);
-      console.log("%c newState", "color: #03A9F4", store.getState());
-      console.groupEnd();
-    }
+    // if (console.group) {
+    //   console.group(action.type);
+    //   console.log("%c action", "color: #03A9F4", action);
+    //   console.log("%c newState", "color: #03A9F4", store.getState());
+    //   console.groupEnd();
+    // }
 
     return returnValue;
   };
@@ -28,6 +28,6 @@ export default function configureStore() {
 
   return {
     ...createStore(rootReducer, applyMiddleware(...middlewares)),
-    runSaga: sagaMiddleware.run
+    runSaga: sagaMiddleware.run,
   };
 }
