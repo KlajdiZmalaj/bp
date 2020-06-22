@@ -20,7 +20,7 @@ export default {
   logo: require(`../assets/images${skin}/logo.svg`),
   logoFooter: require(`../assets/images${skin}/logoFooter.svg`),
   leftLogin: require(`../assets/images${skin}/login.png`),
-
+  customFav: require(`../assets/images${skin}/favicon-32x32.png`),
   footerBottom: require(`../assets/images${skin}/footerb.svg`),
   tickets: require(`../assets/images${skin}/tickets.svg`),
   uparrow: require(`../assets/images${skin}/uparrow.svg`),
@@ -28,9 +28,7 @@ export default {
   admAZZ: require(`../assets/images${skin}/admAZZ.svg`),
   click: require(`../assets/images${skin}/click.svg`),
   girl: require(`../assets/images${skin}/girl.png`),
-
   billDark: require(`../assets/images${skin}/bill-dark.svg`),
-
   billBlue: require(`../assets/images${skin}/bill-blue.svg`),
   billOrange: require(`../assets/images${skin}/bill-orange.svg`),
   Car: require(`../assets/images${skin}/Car.svg`),
