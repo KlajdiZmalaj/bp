@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import PrintTicket from "./PrintTicket";
-import Bolletino from "./Bolletino";
+
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
-import { skinTexts, skinID } from "config/skinTexts";
 
 class ModulePopUp4 extends React.Component {
   constructor(props) {
@@ -282,13 +280,13 @@ class ModulePopUp4 extends React.Component {
                           <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                         </span>
                         <span className="superSmall">
-                          {skinTexts[skinID].address}
+                          {this.props.skinExtras.address}
                         </span>
                         <span className="superSmall link">
-                          {skinTexts[skinID].mail}
+                          {this.props.skinExtras.mail}
                         </span>
                         <span className="superSmall ">
-                          Tel: {skinTexts[skinID].cel}
+                          Tel: {this.props.skinExtras.cel}
                         </span>
                         <span className="superSmall tel">
                           P.IVA 03852290406
@@ -398,6 +396,7 @@ const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
   service_s: state.auth.service_s,
   rechargeMobile: state.auth.rechargeMobile,
+  skinExtras: state.auth.skinExtras,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

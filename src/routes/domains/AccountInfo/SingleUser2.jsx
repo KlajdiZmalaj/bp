@@ -40,19 +40,10 @@ class SingleUser2 extends Component {
   setPopUpFalse = () => {
     this.setState({ isPopUpActive: false });
   };
-  componentDidMount() {}
   render() {
     const { user } = this.props;
-    const {
-      label,
-      val,
-      isOpen,
-      isPopUpActive,
-      valueInput,
-      moreInfo,
-    } = this.state;
+    const { val, isPopUpActive, valueInput } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
-    console.log("role", role);
     return (
       <React.Fragment>
         <div

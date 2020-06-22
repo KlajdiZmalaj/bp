@@ -8,7 +8,6 @@ import {
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
-import { skinTexts, skinID } from "config/skinTexts";
 
 class UseCode extends React.Component {
   state = {
@@ -110,13 +109,13 @@ class UseCode extends React.Component {
                         MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                       </span>
                       <span className="superSmall">
-                        {skinTexts[skinID].address}
+                        {this.props.skinExtras.address}
                       </span>
                       <span className="superSmall link">
-                        {skinTexts[skinID].mail}
+                        {this.props.skinExtras.mail}
                       </span>
                       <span className="superSmall ">
-                        Tel: {skinTexts[skinID].cel}
+                        Tel: {this.props.skinExtras.cel}
                       </span>
                       <span className="superSmall tel">P.IVA 03852290406</span>
 
@@ -188,6 +187,7 @@ class UseCode extends React.Component {
 
 const mapsStateToProps = (state) => ({
   paymentsFromCode: state.auth.paymentsFromCode,
+  skinExtras: state.auth.skinExtras,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

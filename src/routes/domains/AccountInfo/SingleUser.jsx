@@ -52,7 +52,7 @@ class SingleUser extends Component {
       moreInfo,
     } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
-    console.log("role", role);
+    // console.log("role", role);
     return (
       <React.Fragment>
         <div

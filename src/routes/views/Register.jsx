@@ -34,20 +34,20 @@ class Register extends React.Component {
     residence_city: "",
 
     tipoDocumento: "",
-    sesso: ""
+    sesso: "",
   };
 
   handleClose = () => {
     this.setState({ visible: false });
   };
 
-  changeNazioneDiResidenca = nazioneDiResidencaOptions => {
+  changeNazioneDiResidenca = (nazioneDiResidencaOptions) => {
     this.setState({ nazioneDiResidenca: nazioneDiResidencaOptions.value });
   };
 
   hideAlert = () => {};
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     // this.props.getRegister();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -90,14 +90,14 @@ class Register extends React.Component {
 
         var that = this;
 
-        setTimeout(function() {
+        setTimeout(function () {
           that.setState({ visible: true });
         }, 1000);
       }
     });
   };
 
-  validateCodiceFiscale = e => {
+  validateCodiceFiscale = (e) => {
     const str = e.target.value;
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
     const sexKey = str.substring(9, 11);
@@ -108,9 +108,10 @@ class Register extends React.Component {
       this.setState({ sesso: "M" });
     }
     countriesArray
-      .filter(comune => comune.codeKey.toString() === fiscalCodeKey.toString())
-      .map(comune => {
-        console.log("comunecomunecomune", comune);
+      .filter(
+        (comune) => comune.codeKey.toString() === fiscalCodeKey.toString()
+      )
+      .map((comune) => {
         this.setState({ comuniSelected: comune });
         this.setState({ nazione: comune.nazione });
         this.setState({ province_of_birth: comune.sigla });
@@ -118,31 +119,6 @@ class Register extends React.Component {
 
         return comune;
       });
-  };
-
-  handleChange = value => {
-    console.log(`selected ${value}`);
-  };
-
-  onChange = value => {
-    console.log(`selected ${value}`);
-  };
-
-  onChangeIdentity = value => {
-    console.log(`selected ${value}`);
-    this.setState({ tipoDocumento: value });
-  };
-
-  onBlur = () => {
-    console.log("blur");
-  };
-
-  onFocus = () => {
-    console.log("focus");
-  };
-
-  onSearch = val => {
-    console.log("search:", val);
   };
 
   render() {
@@ -157,12 +133,12 @@ class Register extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 }
+        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 }
-      }
+        sm: { span: 16 },
+      },
     };
 
     const nazioneList = [];
@@ -179,11 +155,11 @@ class Register extends React.Component {
     let city_of_birth = [];
     if (countriesArray) {
       city_of_birth = countriesArray
-        .filter(items => items.nazione === nazione.toUpperCase())
-        .map(items => {
+        .filter((items) => items.nazione === nazione.toUpperCase())
+        .map((items) => {
           return {
             label: items.provincia,
-            value: items.provincia
+            value: items.provincia,
           };
         });
     }
@@ -191,11 +167,11 @@ class Register extends React.Component {
     let province_of_birthOptions = [];
     if (countriesArray) {
       province_of_birthOptions = countriesArray
-        .filter(items => items.nazione === nazione.toUpperCase())
-        .map(items => {
+        .filter((items) => items.nazione === nazione.toUpperCase())
+        .map((items) => {
           return {
             label: items.sigla,
-            value: items.sigla
+            value: items.sigla,
           };
         });
     }
@@ -205,10 +181,10 @@ class Register extends React.Component {
     let nazioneDiResidencaOptions = [];
 
     if (allNazione && allNazione.length > 0) {
-      nazioneDiResidencaOptions = allNazione.map(items => {
+      nazioneDiResidencaOptions = allNazione.map((items) => {
         return {
           label: items.nazione,
-          value: items.nazione
+          value: items.nazione,
         };
       });
     }
@@ -217,11 +193,11 @@ class Register extends React.Component {
 
     if (countriesArray) {
       residence_cityOptions = countriesArray
-        .filter(items => items.nazione === nazioneDiResidenca.toUpperCase())
-        .map(items => {
+        .filter((items) => items.nazione === nazioneDiResidenca.toUpperCase())
+        .map((items) => {
           return {
             label: items.provincia,
-            value: items.provincia
+            value: items.provincia,
           };
         });
     }
@@ -230,11 +206,11 @@ class Register extends React.Component {
 
     if (countriesArray) {
       provincaDiResidencaProvinciaOptions = countriesArray
-        .filter(items => items.nazione === nazioneDiResidenca.toUpperCase())
-        .map(items => {
+        .filter((items) => items.nazione === nazioneDiResidenca.toUpperCase())
+        .map((items) => {
           return {
             label: items.sigla,
-            value: items.sigla
+            value: items.sigla,
           };
         });
     }
@@ -243,7 +219,7 @@ class Register extends React.Component {
     //const countriesArrayUniq = uniqBy(countriesArray, "nazione");
 
     const number_prefix = getFieldDecorator("number_prefix", {
-      initialValue: "0039"
+      initialValue: "0039",
     })(<Input style={{ width: 70 }}></Input>);
 
     return (
@@ -271,9 +247,9 @@ class Register extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your fiscal code!"
-                      }
-                    ]
+                        message: "Please input your fiscal code!",
+                      },
+                    ],
                   })(
                     <Input
                       placeholder="codice fiscale*"
@@ -287,9 +263,9 @@ class Register extends React.Component {
                       {
                         required: true,
                         message: "Please input your name!",
-                        whitespace: true
-                      }
-                    ]
+                        whitespace: true,
+                      },
+                    ],
                   })(<Input placeholder="Nome*" />)}
                 </Form.Item>
                 <Form.Item>
@@ -298,9 +274,9 @@ class Register extends React.Component {
                       {
                         required: true,
                         message: "Please input your last name!",
-                        whitespace: true
-                      }
-                    ]
+                        whitespace: true,
+                      },
+                    ],
                   })(<Input placeholder="Cognome*" />)}
                 </Form.Item>
                 <Form.Item>
@@ -308,8 +284,8 @@ class Register extends React.Component {
                     initialValue:
                       this.state.sesso !== "" ? this.state.sesso : "Sesso*",
                     rules: [
-                      { required: true, message: "Please select your sex!" }
-                    ]
+                      { required: true, message: "Please select your sex!" },
+                    ],
                   })(
                     <Select>
                       <Option value="M">Maschile</Option>
@@ -323,9 +299,9 @@ class Register extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your fiscal code!"
-                      }
-                    ]
+                        message: "Please input your fiscal code!",
+                      },
+                    ],
                   })(<Input placeholder="nickname*" />)}
                 </Form.Item>
                 <Form.Item>
@@ -333,13 +309,13 @@ class Register extends React.Component {
                     rules: [
                       {
                         type: "email",
-                        message: "The input is not valid E-mail!"
+                        message: "The input is not valid E-mail!",
                       },
                       {
                         required: true,
-                        message: "Please input your E-mail!"
-                      }
-                    ]
+                        message: "Please input your E-mail!",
+                      },
+                    ],
                   })(<Input placeholder="email*" />)}
                 </Form.Item>
                 <Form.Item>
@@ -347,12 +323,12 @@ class Register extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your password!"
+                        message: "Please input your password!",
                       },
                       {
-                        validator: this.validateToNextPassword
-                      }
-                    ]
+                        validator: this.validateToNextPassword,
+                      },
+                    ],
                   })(<Input.Password placeholder="password*" />)}
                 </Form.Item>
                 <Form.Item hasFeedback>
@@ -360,12 +336,12 @@ class Register extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please confirm your password!"
+                        message: "Please confirm your password!",
                       },
                       {
-                        validator: this.compareToFirstPassword
-                      }
-                    ]
+                        validator: this.compareToFirstPassword,
+                      },
+                    ],
                   })(
                     <Input.Password
                       onBlur={this.handleConfirmBlur}
@@ -379,9 +355,9 @@ class Register extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Please input your phone number!"
-                      }
-                    ]
+                        message: "Please input your phone number!",
+                      },
+                    ],
                   })(
                     <Input
                       addonBefore={number_prefix}
@@ -394,7 +370,7 @@ class Register extends React.Component {
                 <div className="titleReg">Data anagrafici</div>
                 <Form.Item>
                   {getFieldDecorator("birthday", {
-                    rules: [{ required: true }]
+                    rules: [{ required: true }],
                   })(
                     <DatePicker
                       placeholder="Data di nascita*"
@@ -419,9 +395,9 @@ class Register extends React.Component {
                 <Form.Item>
                   <VirtualizedSelect
                     options={province_of_birthOptions}
-                    onChange={province_of_birth =>
+                    onChange={(province_of_birth) =>
                       this.setState({
-                        province_of_birth: province_of_birth.value
+                        province_of_birth: province_of_birth.value,
                       })
                     }
                     value={this.state.province_of_birth}
@@ -437,7 +413,7 @@ class Register extends React.Component {
                 <Form.Item>
                   <VirtualizedSelect
                     options={city_of_birth}
-                    onChange={city_of_birth =>
+                    onChange={(city_of_birth) =>
                       this.setState({ city_of_birth: city_of_birth.value })
                     }
                     value={this.state.city_of_birth}
@@ -453,7 +429,7 @@ class Register extends React.Component {
                 <Form.Item>
                   <VirtualizedSelect
                     options={nazioneDiResidencaOptions}
-                    onChange={selectValue =>
+                    onChange={(selectValue) =>
                       this.changeNazioneDiResidenca(selectValue)
                     }
                     value={this.state.nazioneDiResidenca}
@@ -465,10 +441,10 @@ class Register extends React.Component {
                 <Form.Item>
                   <VirtualizedSelect
                     options={provincaDiResidencaProvinciaOptions}
-                    onChange={provincaDiResidencaProvinciaOptions =>
+                    onChange={(provincaDiResidencaProvinciaOptions) =>
                       this.setState({
                         residence_province:
-                          provincaDiResidencaProvinciaOptions.value
+                          provincaDiResidencaProvinciaOptions.value,
                       })
                     }
                     value={this.state.residence_province}
@@ -480,9 +456,9 @@ class Register extends React.Component {
                 <Form.Item>
                   <VirtualizedSelect
                     options={residence_cityOptions}
-                    onChange={residence_city =>
+                    onChange={(residence_city) =>
                       this.setState({
-                        residence_city: residence_city.value
+                        residence_city: residence_city.value,
                       })
                     }
                     value={this.state.residence_city}
@@ -497,9 +473,9 @@ class Register extends React.Component {
                       {
                         required: true,
                         message: "Please input your name!",
-                        whitespace: true
-                      }
-                    ]
+                        whitespace: true,
+                      },
+                    ],
                   })(<Input placeholder="indirizzo di residenza*" />)}
                 </Form.Item>
                 <Form.Item>
@@ -508,9 +484,9 @@ class Register extends React.Component {
                       {
                         required: true,
                         message: "Please input your name!",
-                        whitespace: true
-                      }
-                    ]
+                        whitespace: true,
+                      },
+                    ],
                   })(<Input placeholder="CAP*" />)}
                 </Form.Item>
               </div>
@@ -522,11 +498,11 @@ class Register extends React.Component {
                   rules: [
                     {
                       required: true,
-                      transform: value => value || undefined,
+                      transform: (value) => value || undefined,
                       type: "boolean",
-                      message: "Please agree with contract!"
-                    }
-                  ]
+                      message: "Please agree with contract!",
+                    },
+                  ],
                 })(
                   <Checkbox>
                     Ho letto ed accetato il Contratto di Gioco
@@ -539,11 +515,11 @@ class Register extends React.Component {
                   rules: [
                     {
                       required: true,
-                      transform: value => value || undefined,
+                      transform: (value) => value || undefined,
                       type: "boolean",
-                      message: "Please agree with terms!"
-                    }
-                  ]
+                      message: "Please agree with terms!",
+                    },
+                  ],
                 })(
                   <Checkbox>
                     Accetto l`informativa sul trattamento dei dati personali e
@@ -557,11 +533,11 @@ class Register extends React.Component {
                   rules: [
                     {
                       required: true,
-                      transform: value => value || undefined,
+                      transform: (value) => value || undefined,
                       type: "boolean",
-                      message: "Please agree with privacy!"
-                    }
-                  ]
+                      message: "Please agree with privacy!",
+                    },
+                  ],
                 })(
                   <Checkbox>
                     Dichiaro di avere piu` di 18 anni e di accettare I Termini e
@@ -571,7 +547,7 @@ class Register extends React.Component {
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("newsletter", {
-                  initialValue: false
+                  initialValue: false,
                 })(
                   <Checkbox>
                     Desidero ricevere email promozionali, si bonus, promozioni e
@@ -591,9 +567,9 @@ class Register extends React.Component {
                 {getFieldDecorator("consessionario", {
                   rules: [
                     {
-                      message: "Please select consessionario!"
-                    }
-                  ]
+                      message: "Please select consessionario!",
+                    },
+                  ],
                 })(
                   <Select
                     placeholder="consessionario"
@@ -612,9 +588,9 @@ class Register extends React.Component {
                   rules: [
                     {
                       required: true,
-                      message: "Please select your document type!"
-                    }
-                  ]
+                      message: "Please select your document type!",
+                    },
+                  ],
                 })(
                   <Select
                     placeholder="Tipo documento*"
@@ -633,9 +609,9 @@ class Register extends React.Component {
                     {
                       required: true,
                       message: "Please input your doc!",
-                      whitespace: true
-                    }
-                  ]
+                      whitespace: true,
+                    },
+                  ],
                 })(<Input placeholder="Numero documento*" />)}
               </Form.Item>
 
@@ -644,9 +620,9 @@ class Register extends React.Component {
                   rules: [
                     {
                       required: true,
-                      message: "Please select rilasciato!"
-                    }
-                  ]
+                      message: "Please select rilasciato!",
+                    },
+                  ],
                 })(
                   (() => {
                     switch (this.state.tipoDocumento.toString()) {
@@ -696,15 +672,15 @@ class Register extends React.Component {
                     {
                       required: true,
                       message: "Please input luogo!",
-                      whitespace: true
-                    }
-                  ]
+                      whitespace: true,
+                    },
+                  ],
                 })(<Input placeholder="Luogo di rilascio*" />)}
               </Form.Item>
 
               <Form.Item>
                 {getFieldDecorator("identity_issue_date", {
-                  rules: [{ required: true }]
+                  rules: [{ required: true }],
                 })(
                   <DatePicker
                     placeholder="Valido dal*"
@@ -715,7 +691,7 @@ class Register extends React.Component {
 
               <Form.Item>
                 {getFieldDecorator("identity_expiry", {
-                  rules: [{ required: true }]
+                  rules: [{ required: true }],
                 })(
                   <DatePicker
                     placeholder="Valido fino al*"
@@ -729,9 +705,9 @@ class Register extends React.Component {
                   rules: [
                     {
                       required: true,
-                      message: "Please select secret question!"
-                    }
-                  ]
+                      message: "Please select secret question!",
+                    },
+                  ],
                 })(
                   <Select placeholder="Domanda secreta*">
                     <Option value="Cognome di mia madre">
@@ -760,9 +736,9 @@ class Register extends React.Component {
                     {
                       required: true,
                       message: "Please input your answer!",
-                      whitespace: true
-                    }
-                  ]
+                      whitespace: true,
+                    },
+                  ],
                 })(<Input placeholder="Risposta secreta*" />)}
               </Form.Item>
 
@@ -813,7 +789,7 @@ const InfoUser = Form.create({ name: "infoUser" })(Register);
 
 const mapsStateToProps = ({ auth }) => ({
   personalInfo: auth.personalInfo,
-  register: auth.register
+  register: auth.register,
 });
 
 export default withRouter(

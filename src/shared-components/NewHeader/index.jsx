@@ -6,7 +6,6 @@ import AuthActions from "redux-store/models/auth";
 import MainActions from "redux-store/models/main";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-import { skinTexts, skinID } from "config/skinTexts";
 
 class Header extends Component {
   constructor(props) {
@@ -31,8 +30,8 @@ class Header extends Component {
     this.props.getAds();
   }
   render() {
-    const { accountInfo, screenWidth, user, ads, privMsg } = this.props;
-    const { isMobMenu, isDDopem, msg } = this.state;
+    const { accountInfo, screenWidth, ads, privMsg, skinExtras } = this.props;
+    const { isMobMenu, isDDopem } = this.state;
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
@@ -45,11 +44,11 @@ class Header extends Component {
           <div className="topNav">
             <div className="left">
               <div>
-                <i className="fal fa-phone"></i> {skinTexts[skinID].cel}
+                <i className="fal fa-phone"></i> {skinExtras.cel}
               </div>
               <div>
                 <i className="fal fa-envelope"></i>
-                {skinTexts[skinID].mail}
+                {skinExtras.mail}
               </div>
             </div>
             <div className="right">
@@ -212,23 +211,21 @@ class Header extends Component {
             </div>
             <div className="navLinks">
               <div className="item">
-                <a href={skinTexts[skinID].link1}>azienda</a>
+                <a href={skinExtras.link1}>azienda</a>
               </div>
               <div className="item">
-                <a href={skinTexts[skinID].link2}>servizi</a>
+                <a href={skinExtras.link2}>servizi</a>
               </div>
               <div className="item">
-                <a href={skinTexts[skinID].link3}>area riservata</a>
-              </div>
-              <div className="item">
-                {" "}
-                <a href={skinTexts[skinID].link4}>contatti</a>{" "}
+                <a href={skinExtras.link3}>area riservata</a>
               </div>
               <div className="item">
                 {" "}
-                <a href={skinTexts[skinID].link5}>
-                  affilia la tua attivita
-                </a>{" "}
+                <a href={skinExtras.link4}>contatti</a>{" "}
+              </div>
+              <div className="item">
+                {" "}
+                <a href={skinExtras.link5}>affilia la tua attivita</a>{" "}
               </div>
             </div>
           </div>
@@ -263,21 +260,21 @@ class Header extends Component {
           </div>
           <div className="navLinks">
             <div className="item">
-              <a href={skinTexts[skinID].link1}>azienda</a>
+              <a href={skinExtras.link1}>azienda</a>
             </div>
             <div className="item">
-              <a href={skinTexts[skinID].link2}>servizi</a>
+              <a href={skinExtras.link2}>servizi</a>
             </div>
             <div className="item">
-              <a href={skinTexts[skinID].link3}>area riservata</a>
-            </div>
-            <div className="item">
-              {" "}
-              <a href={skinTexts[skinID].link4}>contatti</a>{" "}
+              <a href={skinExtras.link3}>area riservata</a>
             </div>
             <div className="item">
               {" "}
-              <a href={skinTexts[skinID].link5}>affilia la tua attivita</a>{" "}
+              <a href={skinExtras.link4}>contatti</a>{" "}
+            </div>
+            <div className="item">
+              {" "}
+              <a href={skinExtras.link5}>affilia la tua attivita</a>{" "}
             </div>
             <button
               onClick={() => {
@@ -319,7 +316,7 @@ class Header extends Component {
   }
 }
 const mstp = (state) => {
-  const { accountInfo, user, ads, privMsg } = state.auth;
+  const { accountInfo, user, ads, privMsg, skinExtras } = state.auth;
   const { screenWidth, navbarSearch } = state.main;
   return {
     accountInfo,
@@ -328,6 +325,7 @@ const mstp = (state) => {
     screenWidth,
     ads,
     privMsg,
+    skinExtras,
   };
 };
 export default withRouter(

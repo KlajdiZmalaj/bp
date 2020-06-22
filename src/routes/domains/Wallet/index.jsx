@@ -12,7 +12,7 @@ class index extends Component {
   }
   render() {
     const { userListSimple } = this.props;
-    console.log("userListSimple", userListSimple);
+    // console.log("userListSimple", userListSimple);
     return (
       <div className="accountInfo">
         <div className="contentAcc">

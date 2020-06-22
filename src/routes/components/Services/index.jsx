@@ -22,7 +22,6 @@ class Service extends React.Component {
     this.props.setServiceS(
       this.props.servicesItems[this.props.serviceSelected]
     );
-    console.log("ididid", id, this.props.serviceSelected);
   };
 
   render() {
@@ -33,7 +32,6 @@ class Service extends React.Component {
       togglePopUpP,
     } = this.props;
     const arrayServices = servicesItems[serviceSelected];
-    console.log("serviceSelected", serviceSelected, toDisplay);
 
     let isLoggedin = false;
     const accountData = localStorage.getItem("accountDataB");
@@ -41,7 +39,6 @@ class Service extends React.Component {
     if (data) {
       isLoggedin = true;
     }
-    console.log("isLoggedin", isLoggedin);
     return (
       <React.Fragment>
         <div
