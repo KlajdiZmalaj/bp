@@ -256,8 +256,11 @@ export const reducer = createReducer(INITIAL_STATE, {
     error,
     loading: false,
   }),
-  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
-  [Types.LOG_OUT]: () => ({ ...INITIAL_STATE }),
+  [Types.SET_UNAUTHORIZATION]: ({ skinExtras }) => ({
+    ...INITIAL_STATE,
+    skinExtras,
+  }),
+  [Types.LOG_OUT]: ({ skinExtras }) => ({ ...INITIAL_STATE, skinExtras }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
     bolletiniBianchi,
