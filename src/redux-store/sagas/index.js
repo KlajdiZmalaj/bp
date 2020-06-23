@@ -25,6 +25,8 @@ import {
   changeAgent,
   getAgents,
   getSkinExtras,
+  getErrors,
+  deleteError,
 } from "./AuthSagas";
 
 import {
@@ -60,7 +62,8 @@ export default function* root() {
     takeLatest(AuthTypes.CHANGE_AGENT, changeAgent),
     takeLatest(AuthTypes.GET_AGENTS, getAgents),
     takeLatest(AuthTypes.GET_SKIN_EXTRAS, getSkinExtras),
-
+    takeLatest(AuthTypes.GET_ERRORS, getErrors),
+    takeLatest(AuthTypes.DELETE_ERROR, deleteError),
     // MAIN
     takeLatest(MainTypes.GET_SERVICES, getServices),
     takeLatest(MainTypes.GET_USERS, getUsers),

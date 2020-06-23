@@ -70,6 +70,13 @@ export const azioni = [
     i: "fal fa-receipt",
     displayRole: ["super_admin", "agency"],
   },
+  {
+    id: 8,
+    name: "Support",
+    link: "support",
+    i: "fal fa-user-headset",
+    displayRole: ["support"],
+  },
 ];
 
 export const administrazioni = [

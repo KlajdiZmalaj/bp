@@ -22,6 +22,8 @@ import {
   changeAgentReq,
   fetchAgents,
   fetchSkinExtras,
+  fetchErrors,
+  deleteErrorReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -511,4 +513,28 @@ export function* getSkinExtras() {
     }
   }
   // console.log("response skin extras", response);
+}
+export function* getErrors() {
+  const response = yield call(fetchErrors);
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setErrors(response.data?.errors));
+    }
+  }
+  // console.log("fetchErrors", response);
+}
+export function* deleteError(data) {
+  const response = yield call(deleteErrorReq, data.id);
+  if (response.data) {
+    if (response.status === 200) {
+      const response = yield call(fetchErrors);
+      if (response.data) {
+        if (response.status === 200) {
+          yield put(AuthActions.setErrors(response.data?.errors));
+          data.c();
+        }
+      }
+    }
+  }
+  console.log("deleteErrorReq", response);
 }
