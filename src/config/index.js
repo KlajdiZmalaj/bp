@@ -77,6 +77,13 @@ export const azioni = [
     i: "fal fa-user-headset",
     displayRole: ["support"],
   },
+  {
+    id: 9,
+    name: "Forms",
+    link: "forms",
+    i: "fas fa-user-headset",
+    displayRole: ["support"],
+  },
 ];
 
 export const administrazioni = [

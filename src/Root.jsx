@@ -24,6 +24,7 @@ import {
   Wallet,
 } from "./routes";
 import Support from "./routes/views/Support";
+import Forms from "./routes/views/Forms";
 class Root extends React.Component {
   componentDidMount() {
     this.getStoredData();
@@ -159,6 +160,13 @@ class Root extends React.Component {
             <PrivateRoute
               path="/support"
               component={Support}
+              isLoggedin={isLoggedin}
+              allowedRoles={["support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/forms"
+              component={Forms}
               isLoggedin={isLoggedin}
               allowedRoles={["support"]}
               role={role}
