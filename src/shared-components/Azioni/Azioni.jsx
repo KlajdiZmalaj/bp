@@ -31,12 +31,12 @@ class Azioni extends Component {
         prevEl: ".swiper-button-prev",
       },
     };
-    const slides = azioni.map((item) => {
+    const slides = azioni.map((item, ind) => {
       return includes(
         item.displayRole,
         get(accountInfo, "profile.role.name")
       ) ? (
-        <div key={item.id}>
+        <div key={item.id + ind}>
           <a href={"#/" + item.link}>
             <div
               className={
