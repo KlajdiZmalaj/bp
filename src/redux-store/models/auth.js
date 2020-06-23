@@ -155,6 +155,9 @@ const { Types, Creators } = createActions({
   setPrivateMsg: ["privMsg"],
   getSkinExtras: [""],
   setSkinExtras: ["skinExtras"],
+  getErrors: [""],
+  setErrors: ["errors"],
+  deleteError: ["id", "c"],
 });
 
 export const AuthTypes = Types;
@@ -186,9 +189,14 @@ const INITIAL_STATE = {
   userDetail: {},
   updateMsg: "",
   skinExtras: {},
+  errors: [],
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_ERRORS]: (state, { errors }) => ({
+    ...state,
+    errors,
+  }),
   [Types.SET_SKIN_EXTRAS]: (state, { skinExtras }) => ({
     ...state,
     skinExtras,

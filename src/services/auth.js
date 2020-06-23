@@ -573,3 +573,36 @@ export const fetchSkinExtras = () => {
     })
     .catch((error) => ({ error }));
 };
+export const fetchErrors = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/errors`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+
+export const deleteErrorReq = (id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/error/${id}/delete`, {
+      ...skin,
+    })
+    .catch((error) => ({ error }));
+};

@@ -1,0 +1,43 @@
+.supportContent .description {
+  display: block !important;
+  cursor: pointer;
+}
+
+.supportContent .deleteError {
+  width: 170px !important;
+}
+
+.supportContent .confirmationDelete {
+  padding: 20px;
+}
+
+.supportContent .confirmationDelete h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.supportContent .confirmationDelete > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.supportContent .confirmationDelete > div button {
+  background-color: transparent;
+  border: 0;
+  background-color: #1b831b;
+  color: #fff;
+  padding: 5px 30px;
+}
+
+.supportContent .confirmationDelete > div button:nth-child(2) {
+  background-color: #c52e2e;
+}
+
+body .confirmationDelete {
+  top: 30%;
+}
+/*# sourceMappingURL=style.css.map */

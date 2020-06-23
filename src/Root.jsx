@@ -23,7 +23,7 @@ import {
   Verify,
   Wallet,
 } from "./routes";
-
+import Support from "./routes/views/Support";
 class Root extends React.Component {
   componentDidMount() {
     this.getStoredData();
@@ -154,6 +154,13 @@ class Root extends React.Component {
               component={RegisterAgent}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/support"
+              component={Support}
+              isLoggedin={isLoggedin}
+              allowedRoles={["support"]}
               role={role}
             />
           </Switch>
