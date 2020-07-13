@@ -606,3 +606,31 @@ export const deleteErrorReq = (id) => {
     })
     .catch((error) => ({ error }));
 };
+export const sendDataFormReq = (
+  typee,
+  link,
+  nome_agenzia,
+  extra_data,
+  bagaglio,
+  bagaglio_stiva
+) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/buy/ticket`, {
+      ...skin,
+      type: typee,
+      link,
+      nome_agenzia,
+      extra_data,
+      bagaglio,
+      bagaglio_stiva,
+    })
+    .catch((error) => ({ error }));
+};

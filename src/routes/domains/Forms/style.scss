@@ -1,0 +1,100 @@
+.formsContainer {
+  display: flex;
+  flex-flow: column;
+  &--tabs {
+    display: flex;
+    justify-content: center;
+    &__item {
+      padding: 10px;
+      cursor: pointer;
+      &.active {
+        color: var(--accent-bg);
+      }
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+  &--body {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    align-items: center;
+    max-width: 1371px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    &__item {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin-top: 10px;
+      button {
+        width: 100%;
+        background: var(--accent-bg);
+        color: var(--accent-txt);
+        border: 0;
+        padding: 15px;
+        margin: 15px 0;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+      input {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        border: 1px solid #ccc;
+        height: 40px;
+        padding: 0 15px;
+      }
+
+      .radioGr {
+        display: flex;
+        align-items: center;
+        flex-flow: row-reverse;
+        margin-right: 10px;
+        > span {
+          margin-left: 5px;
+        }
+        input {
+          display: none;
+        }
+        input + .customRadio {
+          width: 20px;
+          height: 20px;
+          border: 1px solid #ccc;
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          margin: 0;
+        }
+        input:checked {
+          + .customRadio {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            span {
+              width: 10px;
+              height: 10px;
+              background-color: #ccc;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+    .radioWrapper {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  }
+}

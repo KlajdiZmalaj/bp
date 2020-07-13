@@ -79,10 +79,10 @@ export const azioni = [
   },
   {
     id: 9,
-    name: "Forms",
+    name: "Biglietaria",
     link: "forms",
-    i: "fas fa-user-headset",
-    displayRole: ["support"],
+    i: "fab fa-wpforms",
+    displayRole: ["support",'super_admin','user'],
   },
 ];
 

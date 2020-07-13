@@ -158,6 +158,15 @@ const { Types, Creators } = createActions({
   getErrors: [""],
   setErrors: ["errors"],
   deleteError: ["id", "c"],
+  sendDataForm: [
+    "typee",
+    "link",
+    "nome_agenzia",
+    "extra_data",
+    "bagaglio",
+    "bagaglio_stiva",
+    "callBack",
+  ],
 });
 
 export const AuthTypes = Types;

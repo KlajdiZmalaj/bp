@@ -1,0 +1,157 @@
+.formsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.formsContainer--tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.formsContainer--tabs__item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.formsContainer--tabs__item.active {
+  color: var(--accent-bg);
+}
+
+.formsContainer--tabs__item i {
+  margin-right: 5px;
+}
+
+.formsContainer--body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1371px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.formsContainer--body__item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10px;
+}
+
+.formsContainer--body__item button {
+  width: 100%;
+  background: var(--accent-bg);
+  color: var(--accent-txt);
+  border: 0;
+  padding: 15px;
+  margin: 15px 0;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.formsContainer--body__item input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  border: 1px solid #ccc;
+  height: 40px;
+  padding: 0 15px;
+}
+
+.formsContainer--body__item .radioGr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+  margin-right: 10px;
+}
+
+.formsContainer--body__item .radioGr > span {
+  margin-left: 5px;
+}
+
+.formsContainer--body__item .radioGr input {
+  display: none;
+}
+
+.formsContainer--body__item .radioGr input + .customRadio {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+.formsContainer--body__item .radioGr input:checked + .customRadio {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.formsContainer--body__item .radioGr input:checked + .customRadio span {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.formsContainer--body .radioWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+/*# sourceMappingURL=style.css.map */
