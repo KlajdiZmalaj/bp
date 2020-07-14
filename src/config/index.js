@@ -26,7 +26,7 @@ export const azioni = [
     name: "lista utenti",
     link: "account-info",
     i: "fal fa-user-friends",
-    displayRole: ["super_admin", "agency", "agent",'main_admin'],
+    displayRole: ["super_admin", "agency", "agent", "main_admin"],
   },
   {
     id: 8,
@@ -82,7 +82,7 @@ export const azioni = [
     name: "Biglietaria",
     link: "forms",
     i: "fab fa-wpforms",
-    displayRole: ["support",'super_admin','user'],
+    displayRole: ["support", "super_admin", "user", "agency"],
   },
 ];
 

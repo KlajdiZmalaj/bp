@@ -168,7 +168,13 @@ class Root extends React.Component {
               path="/forms"
               component={Forms}
               isLoggedin={isLoggedin}
-              allowedRoles={["support", "super_admin", "user", "admin"]}
+              allowedRoles={[
+                "support",
+                "super_admin",
+                "user",
+                "admin",
+                "agency",
+              ]}
               role={role}
             />
           </Switch>

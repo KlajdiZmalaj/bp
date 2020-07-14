@@ -52,6 +52,37 @@
   margin-bottom: 20px;
 }
 
+.formsContainer--body .formsItemTogether {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.formsContainer--body .formsItemTogetherStart {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .formsContainer--body__item {
   width: 100%;
   display: -webkit-box;
@@ -70,13 +101,38 @@
   margin-top: 10px;
 }
 
+.formsContainer--body__item .ant-btn.ant-dropdown-trigger {
+  min-width: 95%;
+  min-height: 61%;
+  margin: 0 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.formsContainer--body__item .ant-btn.ant-dropdown-trigger.dropdownMenu {
+  top: 10px;
+}
+
 .formsContainer--body__item.w-50 {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.formsContainer--body__item button {
+.formsContainer--body__item.w-40 {
+  width: 40%;
+}
+
+.formsContainer--body__item.submit button {
   width: 100%;
   background: var(--accent-bg);
   color: var(--accent-txt);
@@ -164,5 +220,10 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+}
+
+.ant-dropdown-menu-item {
+  text-align: center;
+  font-size: 1.1em;
 }
 /*# sourceMappingURL=style.css.map */

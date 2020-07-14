@@ -15,6 +15,7 @@
       }
     }
   }
+
   &--body {
     display: flex;
     justify-content: flex-start;
@@ -26,6 +27,21 @@
     background: #fff;
     padding: 20px;
     margin-bottom: 20px;
+    .formsItemTogether {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
+      &Start {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-around;
+      }
+    }
+
     &__item {
       width: 100%;
       display: flex;
@@ -33,19 +49,41 @@
       align-items: flex-start;
       justify-content: center;
       margin-top: 10px;
+
+      .ant-btn.ant-dropdown-trigger {
+        min-width: 95%;
+        min-height: 61%;
+        margin: 0 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.1em;
+      }
+
+      .ant-btn.ant-dropdown-trigger.dropdownMenu {
+        top: 10px;
+      }
+
       &.w-50 {
         flex-grow: 1;
       }
-      button {
-        width: 100%;
-        background: var(--accent-bg);
-        color: var(--accent-txt);
-        border: 0;
-        padding: 15px;
-        margin: 15px 0;
-        text-transform: uppercase;
-        font-size: 14px;
+      &.w-40 {
+        width: 40%;
       }
+      &.submit {
+        button {
+          width: 100%;
+          background: var(--accent-bg);
+          color: var(--accent-txt);
+          border: 0;
+          padding: 15px;
+          margin: 15px 0;
+          text-transform: uppercase;
+          font-size: 14px;
+        }
+      }
+
       input {
         width: 100%;
         border: 0;
@@ -103,4 +141,8 @@
       justify-content: space-evenly;
     }
   }
+}
+.ant-dropdown-menu-item {
+  text-align: center;
+  font-size: 1.1em;
 }

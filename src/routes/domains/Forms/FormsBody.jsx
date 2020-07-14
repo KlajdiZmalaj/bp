@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import Voli from "./Voli";
 import Treni from "./Treni";
+import Eventi from "./Eventi";
 
 import "./style.css";
 const Tab = ({ name, icon, active, clickHandler }) => (
@@ -52,6 +53,9 @@ export class FormsBody extends Component {
           )}
           {typee === 2 && (
             <Treni typee={typee} sendDataForm={this.props.sendDataForm} />
+          )}
+          {typee === 3 && (
+            <Eventi typee={typee} sendDataForm={this.props.sendDataForm} />
           )}
         </div>
       </div>
