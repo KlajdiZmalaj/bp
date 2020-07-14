@@ -20,6 +20,7 @@
     justify-content: flex-start;
     flex-flow: row wrap;
     align-items: center;
+    width: 100%;
     max-width: 1371px;
     margin: 0 auto;
     background: #fff;
@@ -32,6 +33,9 @@
       align-items: flex-start;
       justify-content: center;
       margin-top: 10px;
+      &.w-50 {
+        flex-grow: 1;
+      }
       button {
         width: 100%;
         background: var(--accent-bg);
@@ -95,6 +99,8 @@
       height: 40px;
       padding: 10px;
       border: 1px solid #ccc;
+      width: 90%;
+      justify-content: space-evenly;
     }
   }
 }

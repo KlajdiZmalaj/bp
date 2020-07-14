@@ -682,6 +682,12 @@ a:hover {
   position: relative;
 }
 
+.sort-annunci button {
+  background: var(--accent-txt);
+  color: var(--accent-bg);
+  border: 1px solid var(--accent-bg);
+}
+
 .sort-annunci .rdrDefinedRangesWrapper,
 .sort-annunci .rdrStaticRange {
   background: #eaeaea;

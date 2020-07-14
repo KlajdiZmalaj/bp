@@ -7,6 +7,11 @@
   margin-bottom: 10px;
   background-color: #fff;
   position: relative;
+  button {
+    background: var(--accent-txt);
+    color: var(--accent-bg);
+    border: 1px solid var(--accent-bg);
+  }
   .rdrDefinedRangesWrapper,
   .rdrStaticRange {
     background: #eaeaea;
