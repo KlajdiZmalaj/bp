@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Menu, Dropdown, Button, notification } from "antd";
-import { DownOutlined } from "@ant-design/icons";
 import TextArea from "antd/lib/input/TextArea";
 class Eventi extends Component {
   state = {
@@ -135,7 +134,7 @@ class Eventi extends Component {
             >
               <Button>
                 {this.state.categoryArray[this.state.categoria]}{" "}
-                <DownOutlined />
+                <i className="fal fa-chevron-down" aria-hidden="true"></i>
               </Button>
             </Dropdown>
           </div>
@@ -182,10 +181,10 @@ class Eventi extends Component {
               }
             >
               <Button>
-                {this.state.quantityArray[this.state.quantity]} <DownOutlined />
+                {this.state.quantityArray[this.state.quantity]}{" "}
+                <i className="fal fa-chevron-down" aria-hidden="true"></i>
               </Button>
             </Dropdown>
-            ,
           </div>
         </div>
         <div className="formsItemTogetherStart">
