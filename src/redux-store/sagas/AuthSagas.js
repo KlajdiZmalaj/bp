@@ -49,7 +49,7 @@ export function* signInByEmail(credencials) {
 }
 export function* getAgents() {
   const response = yield call(fetchAgents);
-  console.log("agents res", response);
+  // console.log("agents res", response);
   if (response.data) {
     yield put(AuthActions.setAgents(response.data.agents));
   }
@@ -83,16 +83,16 @@ export function* getBolletiniBianchi(params) {
     params.provincia
   );
   if (response) {
-    console.log("response", response);
+    // console.log("response", response);
     if (response.data) {
       yield put(AuthActions.setBolletiniBianchi(response.data));
       params.clearFields();
     } else if (response.error) {
-      console.log(
-        "errorrrrrrrrrr",
-        response.error.response.status,
-        response.error.response.data
-      );
+      // console.log(
+      //   "errorrrrrrrrrr",
+      //   response.error.response.status,
+      //   response.error.response.data
+      // );
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniBianchi(error));
@@ -126,18 +126,18 @@ export function* getBolletiniPremercati(params) {
     params.citta,
     params.provincia
   );
-  console.log("response", response);
+  // console.log("response", response);
 
   if (response) {
     if (response.data) {
       yield put(AuthActions.setBolletiniPremercati(response.data));
       params.clearFields();
     } else if (response.error) {
-      console.log(
-        "errorrrrrrrrrr",
-        response.error.response.status,
-        response.error.response.data
-      );
+      // console.log(
+      //   "errorrrrrrrrrr",
+      //   response.error.response.status,
+      //   response.error.response.data
+      // );
 
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
@@ -173,7 +173,7 @@ function* modifyAccountData(wallet) {
   localStorage.setItem("accountDataB", JSON.stringify(d));
   yield put(AuthActions.setAccountInfo(d));
 
-  console.log("data", data, d);
+  // console.log("data", data, d);
 }
 
 export function* getPayments(params) {
@@ -207,7 +207,7 @@ export function* getPayments(params) {
     }
     yield put(AuthActions.setPaymentsLoading(false));
   }
-  console.log("response payments", response);
+  // console.log("response payments", response);
 }
 
 export function* getRechargeMobile(params) {
@@ -217,9 +217,9 @@ export function* getRechargeMobile(params) {
     params.tel_no
   );
   if (response) {
-    console.log("response", response);
+    // console.log("response", response);
     if (response.data) {
-      console.log("wallet", response.data.wallet);
+      // console.log("wallet", response.data.wallet);
       if (response.data.wallet) {
         const accountData = localStorage.getItem("accountDataB");
         const data = JSON.parse(accountData);
@@ -422,7 +422,7 @@ export function* getConfigura(data) {
   // console.log("ca ka responseeeee configura", response);
 }
 export function* getCodiceTicket(data) {
-  const response = yield call(fetchCodice, data.barcode);
+  const response = yield call(fetchCodice, data.barcode, data.service);
   if (response.status === 200) {
     yield put(AuthActions.setPaymentsFromCode(response.data.payment));
   } else {
@@ -451,7 +451,7 @@ export function* changeAgent(data) {
       }
     }
   }
-  console.log("response changeAgent", data, response);
+  // console.log("response changeAgent", data, response);
 }
 export function* getUserDetail(data) {
   const response = yield call(fetchUserDetails, data.id);
@@ -460,7 +460,7 @@ export function* getUserDetail(data) {
       yield put(AuthActions.setUserDetail(response.data.user));
     }
   }
-  console.log("response get users details", data, response);
+  // console.log("response get users details", data, response);
 }
 export function* updateUserDetail(data) {
   const response = yield call(
@@ -486,7 +486,7 @@ export function* updateUserDetail(data) {
     data.confirm_password
   );
   if (response.data) {
-    console.log("responseresponseresponse", response);
+    // console.log("responseresponseresponse", response);
     if (response.status === 200) {
       yield put(AuthActions.updateUserDetailMsg(response.data.message));
       const ress = yield call(fetchUsers);
@@ -515,7 +515,7 @@ export function* getSkinExtras() {
       yield put(AuthActions.setSkinExtras(response.data.skin));
     }
   }
-  console.log("response skin extras", response);
+  // console.log("response skin extras", response);
 }
 export function* getErrors() {
   const response = yield call(fetchErrors);
@@ -539,7 +539,7 @@ export function* deleteError(data) {
       }
     }
   }
-  console.log("deleteErrorReq", response);
+  // console.log("deleteErrorReq", response);
 }
 
 export function* sendDataForm(data) {
@@ -585,5 +585,5 @@ export function* sendDataForm(data) {
       ],
     });
   }
-  console.log("ca ka response", data, response);
+  // console.log("ca ka response", data, response);
 }

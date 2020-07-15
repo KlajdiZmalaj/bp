@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
-import { Form, Spin, Modal, Select, Tooltip } from "antd";
+import { Form, Modal, Select, Tooltip } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
@@ -18,7 +18,6 @@ import * as locales from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
-
 const renderStaticRangeLabel = (e) => (
   <CustomStaticRangeLabelContent text={e} />
 );
@@ -95,6 +94,7 @@ class Transazioni extends React.Component {
   };
 
   handleCancel = (e) => {
+    this.props.setPaymentsFromCode({});
     this.setState({
       visible: false,
     });
@@ -183,7 +183,7 @@ class Transazioni extends React.Component {
       loadingPayments,
       paymentsFromCode,
     } = this.props;
-    console.log("loadingPayments", loadingPayments);
+    // console.log("loadingPayments", loadingPayments);
     const { selectedFilter, indexT, usernames } = this.state;
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
@@ -416,7 +416,9 @@ class Transazioni extends React.Component {
                     {payments.message}
                   </div>
                 )}
-                {loadingPayments && <Spin />}
+                {loadingPayments && (
+                  <img className="loader" src={images.loader}></img>
+                )}
                 {!loadingPayments && (
                   <table className="transTable">
                     <thead>
@@ -451,7 +453,10 @@ class Transazioni extends React.Component {
                                     item.agency_address,
                                     item.agency_phone
                                   );
-                                  this.props.getCodiceTicket(item.barcode);
+                                  this.props.getCodiceTicket(
+                                    item.barcode,
+                                    item.service_name
+                                  );
                                 }}
                               >
                                 <td className="wsNwp">
