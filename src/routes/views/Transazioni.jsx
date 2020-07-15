@@ -183,7 +183,7 @@ class Transazioni extends React.Component {
       loadingPayments,
       paymentsFromCode,
     } = this.props;
-    console.log("loadingPayments", loadingPayments);
+    // console.log("loadingPayments", loadingPayments);
     const { selectedFilter, indexT, usernames } = this.state;
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
