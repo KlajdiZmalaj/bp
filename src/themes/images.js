@@ -17,6 +17,7 @@ if (
   skin = 4;
 }
 export default {
+  loader: require(`../assets/images/loader.gif`),
   logo: require(`../assets/images${skin}/logo.svg`),
   logoFooter: require(`../assets/images${skin}/logoFooter.svg`),
   leftLogin: require(`../assets/images${skin}/login.png`),

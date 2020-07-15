@@ -63,7 +63,7 @@ class UseCode extends React.Component {
                   <div
                     className="input-group-append"
                     onClick={() => {
-                      this.props.getCodiceTicket(inputVal);
+                      this.props.getCodiceTicket(inputVal, "omeLale");
                       this.togglePopUp(true);
                     }}
                   >

@@ -27,12 +27,24 @@ import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
 class Root extends React.Component {
+  state = { top: false };
   componentDidMount() {
     this.getStoredData();
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
     });
     this.props.getSkinExtras();
+    window.addEventListener("scroll", () => {
+      if (!this.state.top) {
+        if (window.scrollY > 1000) {
+          this.setState({ top: true });
+        }
+      } else {
+        if (window.scrollY < 1000) {
+          this.setState({ top: false });
+        }
+      }
+    });
   }
 
   getStoredData = () => {
@@ -187,6 +199,20 @@ class Root extends React.Component {
             />
           </Switch>
         </HashRouter>
+        {this.state.top && (
+          <div
+            className="backTopTop animated slideInUp"
+            style={{ animationDuration: "0.3s" }}
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            <i className="fal fa-chevron-up"></i>
+          </div>
+        )}
       </React.Fragment>
     );
   }

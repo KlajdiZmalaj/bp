@@ -95,7 +95,7 @@ class Voli extends Component {
                 value="1"
                 id="bagaglio1"
               />
-              <label for="bagaglio1" className="customRadio">
+              <label htmlFor="bagaglio1" className="customRadio">
                 <span></span>
               </label>
             </div>
@@ -113,7 +113,7 @@ class Voli extends Component {
                 id="bagaglio2"
                 checked={this.state.bagaglio == 2}
               />
-              <label for="bagaglio2" className="customRadio">
+              <label htmlFor="bagaglio2" className="customRadio">
                 <span></span>
               </label>
             </div>

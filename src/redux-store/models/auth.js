@@ -122,7 +122,7 @@ const { Types, Creators } = createActions({
   getChangedPassword: ["oldPassword", "newPassword"],
   setChangePasswordError: ["pwError"],
   getConfigura: ["id"],
-  getCodiceTicket: ["barcode"],
+  getCodiceTicket: ["barcode", "service"],
   setPaymentsFromCode: ["paymentsFromCode"],
   setConfiguraData: ["usersConfigura"],
   getBarcodeData: ["barcode", "callback"],
@@ -183,16 +183,21 @@ const { Types, Creators } = createActions({
     "email",
     "telefono",
   ],
+<<<<<<< HEAD
   getDataFormDetails: [""],
   setDataFormDetails: ["formDetails"],
   getTicketByTicketId: ["ticket_id"],
   setTicketByTicketId: ["TicketByTcketId"],
+=======
+  setPaymentsLoading: ["loadingPayments"],
+>>>>>>> 5c4dcd27fe3c1099df14f9ac1555047cb3a3d501
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  loadingPayments: true,
   privMsg: [],
   agents: [],
   pwError: "",
@@ -224,6 +229,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_PAYMENTS_LOADING]: (state, { loadingPayments }) => ({
+    ...state,
+    loadingPayments,
+  }),
   [Types.SET_ERRORS]: (state, { errors }) => ({
     ...state,
     errors,

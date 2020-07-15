@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Select, notification } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+=======
+import { Menu, Dropdown, Button, notification } from "antd";
+>>>>>>> 5c4dcd27fe3c1099df14f9ac1555047cb3a3d501
 import TextArea from "antd/lib/input/TextArea";
 const { Option } = Select;
 
@@ -125,6 +129,7 @@ class Eventi extends Component {
               }}
               defaultValue={"Selezionare Evento"}
             >
+<<<<<<< HEAD
               <Option value="0">Selezionare Evento</Option>
               <Option value="1">Concerti</Option>
               <Option value="2">Sport</Option>
@@ -132,6 +137,13 @@ class Eventi extends Component {
               <Option value="4">Teatro</Option>
               <Option value="5">Altro</Option>
             </Select>
+=======
+              <Button>
+                {this.state.categoryArray[this.state.categoria]}{" "}
+                <i className="fal fa-chevron-down" aria-hidden="true"></i>
+              </Button>
+            </Dropdown>
+>>>>>>> 5c4dcd27fe3c1099df14f9ac1555047cb3a3d501
           </div>
         </div>
         <div className="formsItemTogether">
@@ -163,6 +175,7 @@ class Eventi extends Component {
               }}
               defaultValue={"Selezionare un numero"}
             >
+<<<<<<< HEAD
               <Option value="0">Selezionare un numero</Option>
               <Option value="1">1</Option>
               <Option value="2">2</Option>
@@ -171,6 +184,13 @@ class Eventi extends Component {
               <Option value="5">5</Option>
               <Option value="6">6+(specificare su note)</Option>
             </Select>
+=======
+              <Button>
+                {this.state.quantityArray[this.state.quantity]}{" "}
+                <i className="fal fa-chevron-down" aria-hidden="true"></i>
+              </Button>
+            </Dropdown>
+>>>>>>> 5c4dcd27fe3c1099df14f9ac1555047cb3a3d501
           </div>
         </div>
         <div className="formsItemTogetherStart">
