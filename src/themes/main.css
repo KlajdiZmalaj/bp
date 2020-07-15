@@ -1424,6 +1424,33 @@ i#private {
   white-space: nowrap;
 }
 
+body .ant-spin-dot {
+  width: 80px;
+  height: 80px;
+}
+
+body .ant-spin-dot-item {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-bg);
+}
+
+body .max-width {
+  position: relative;
+}
+
+body .ant-spin-spinning {
+  position: absolute;
+  display: inline-block;
+  opacity: 1;
+  margin: 0 auto;
+  display: block;
+  -webkit-transform: scale(1) translateX(-50%);
+          transform: scale(1) translateX(-50%);
+  left: 50%;
+  top: 1%;
+}
+
 /*adm styles*/
 .creatutente {
   position: relative;

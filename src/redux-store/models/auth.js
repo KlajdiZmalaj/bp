@@ -183,12 +183,14 @@ const { Types, Creators } = createActions({
     "email",
     "telefono",
   ],
+  setPaymentsLoading: ["loadingPayments"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  loadingPayments: true,
   privMsg: [],
   agents: [],
   pwError: "",
@@ -218,6 +220,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_PAYMENTS_LOADING]: (state, { loadingPayments }) => ({
+    ...state,
+    loadingPayments,
+  }),
   [Types.SET_ERRORS]: (state, { errors }) => ({
     ...state,
     errors,
