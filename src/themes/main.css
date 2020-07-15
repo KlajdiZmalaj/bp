@@ -589,6 +589,13 @@ a:hover {
   cursor: pointer;
 }
 
+.wig > span {
+  position: absolute;
+  color: #fff;
+  right: 30px;
+  top: 20px;
+}
+
 .wig a {
   color: #fff;
   font-family: "Roboto", "sans-serif";
@@ -663,6 +670,16 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+}
+
+.details {
+  position: fixed;
+  z-index: 3;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 /*annunci styles*/

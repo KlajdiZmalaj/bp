@@ -6,6 +6,7 @@ import "./Overview.styles.scss";
 import sumBy from "lodash/sumBy";
 import { get } from "lodash";
 import "./anim.css";
+import Details from "./Details";
 class Overview extends Component {
   state = {
     overviewDashboard: {},
@@ -156,7 +157,7 @@ class Overview extends Component {
         >
           <div className=" col-md-4 ">
             <div className="wig wig1 animated fadeIn">
-              <a href="/#">View Details</a>
+              <span>View Details</span>
               <h2>Saldo</h2>
               <h3>
                 {get(accountInfo, "profile.wallet")}
@@ -172,7 +173,7 @@ class Overview extends Component {
           </div>
           <div className="col-md-4">
             <div className="wig wig2  animated fadeIn">
-              <a href="/#">View Details</a>
+              <span>View Details</span>
               {/* <h2>Commissioni</h2> */}
               <h2>Commisione</h2>
               <h3>
@@ -187,7 +188,7 @@ class Overview extends Component {
           </div>
           <div className="col-md-4 ">
             <div className="wig wig3 animated fadeIn">
-              <a href="/#">View Details</a>
+              <span>View Details</span>
               <h2>Proviggioni</h2>
               <h3>
                 {dashboardFromFilterTop
@@ -199,6 +200,7 @@ class Overview extends Component {
             </div>
           </div>
         </div>
+        {/* <Details /> */}
       </React.Fragment>
     );
   }
