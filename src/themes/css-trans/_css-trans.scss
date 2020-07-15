@@ -35,11 +35,31 @@
     border-left: 2px solid $second;
   }
 }
+.ant-tooltip {
+  pointer-events: none;
+}
 .transTable {
   width: 100%;
   background: #fff;
   border-collapse: collapse;
-
+  .nomeTd {
+    width: auto;
+    display: block;
+    white-space: nowrap;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 380px;
+    padding-left: 30px;
+    text-align: center;
+  }
+  .wsNwp {
+    position: relative;
+    i {
+      position: absolute;
+      top: 11px;
+    }
+  }
   thead tr {
     background: #f5f5f5;
     td {

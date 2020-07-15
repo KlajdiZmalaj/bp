@@ -155,7 +155,7 @@ class Overview extends Component {
           }
         >
           <div className=" col-md-4 ">
-            <div className="wig wig1 animated fadeInUp">
+            <div className="wig wig1 animated fadeIn">
               <a href="/#">View Details</a>
               <h2>Saldo</h2>
               <h3>
@@ -171,7 +171,7 @@ class Overview extends Component {
             </div>
           </div>
           <div className="col-md-4">
-            <div className="wig wig2  animated fadeInDown">
+            <div className="wig wig2  animated fadeIn">
               <a href="/#">View Details</a>
               {/* <h2>Commissioni</h2> */}
               <h2>Commisione</h2>
@@ -186,7 +186,7 @@ class Overview extends Component {
             </div>
           </div>
           <div className="col-md-4 ">
-            <div className="wig wig3 animated fadeInUp">
+            <div className="wig wig3 animated fadeIn">
               <a href="/#">View Details</a>
               <h2>Proviggioni</h2>
               <h3>

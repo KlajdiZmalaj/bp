@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
-import { Form, DatePicker, Modal, Select } from "antd";
+import { Form, DatePicker, Modal, Select, Tooltip } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
@@ -161,14 +161,7 @@ class Transazioni extends React.Component {
     //     .subtract(parseInt(moment().format("D")), "days")
     //     .format()
     // );
-    this.props.getPayments(
-      "",
-
-      moment()
-        .subtract(parseInt(moment().format("D")), "days")
-        .format(),
-      moment().format()
-    );
+    this.props.getPayments("");
   }
 
   render() {
@@ -464,7 +457,11 @@ class Transazioni extends React.Component {
                                   className="fal fa-user-circle"
                                   aria-hidden="true"
                                 ></i>{" "}
-                                {item.agency_name}
+                                <Tooltip title={item.agency_name}>
+                                  <span className="nomeTd">
+                                    {item.agency_name}
+                                  </span>
+                                </Tooltip>
                               </td>
                               <td className="wsNwp">{item.service_name}</td>
 
