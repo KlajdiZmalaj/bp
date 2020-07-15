@@ -452,7 +452,10 @@ class Transazioni extends React.Component {
                                     item.agency_address,
                                     item.agency_phone
                                   );
-                                  this.props.getCodiceTicket(item.barcode);
+                                  this.props.getCodiceTicket(
+                                    item.barcode,
+                                    item.service_name
+                                  );
                                 }}
                               >
                                 <td className="wsNwp">

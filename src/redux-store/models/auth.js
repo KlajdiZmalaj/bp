@@ -122,7 +122,7 @@ const { Types, Creators } = createActions({
   getChangedPassword: ["oldPassword", "newPassword"],
   setChangePasswordError: ["pwError"],
   getConfigura: ["id"],
-  getCodiceTicket: ["barcode"],
+  getCodiceTicket: ["barcode", "service"],
   setPaymentsFromCode: ["paymentsFromCode"],
   setConfiguraData: ["usersConfigura"],
   getBarcodeData: ["barcode", "callback"],

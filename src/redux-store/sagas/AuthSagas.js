@@ -422,7 +422,7 @@ export function* getConfigura(data) {
   // console.log("ca ka responseeeee configura", response);
 }
 export function* getCodiceTicket(data) {
-  const response = yield call(fetchCodice, data.barcode);
+  const response = yield call(fetchCodice, data.barcode, data.service);
   if (response.status === 200) {
     yield put(AuthActions.setPaymentsFromCode(response.data.payment));
   } else {

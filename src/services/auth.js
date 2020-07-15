@@ -393,7 +393,7 @@ export const changeAgentReq = (aaa, agent_id) => {
     })
     .catch((error) => ({ error }));
 };
-export const fetchCodice = (barcode) =>
+export const fetchCodice = (barcode, service) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -406,6 +406,7 @@ export const fetchCodice = (barcode) =>
     .get("/payment", {
       params: {
         barcode: barcode,
+        type: service,
         ...skin,
       },
     })
