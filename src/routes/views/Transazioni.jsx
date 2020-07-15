@@ -94,6 +94,7 @@ class Transazioni extends React.Component {
   };
 
   handleCancel = (e) => {
+    this.props.setPaymentsFromCode({});
     this.setState({
       visible: false,
     });
