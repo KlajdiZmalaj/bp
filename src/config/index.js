@@ -57,6 +57,13 @@ export const azioni = [
     displayRole: ["super_admin", "agency", "agent"],
   },
   {
+    id: 9,
+    name: "Prenotazioni",
+    link: "forms",
+    i: "fab fa-wpforms",
+    displayRole: ["support", "super_admin", "user", "agency"],
+  },
+  {
     id: 6,
     name: "configura",
     link: "configura",
@@ -77,13 +84,7 @@ export const azioni = [
     i: "fal fa-user-headset",
     displayRole: ["support"],
   },
-  {
-    id: 9,
-    name: "Biglietaria",
-    link: "forms",
-    i: "fab fa-wpforms",
-    displayRole: ["support", "super_admin", "user", "agency"],
-  },
+  
 ];
 
 export const administrazioni = [
