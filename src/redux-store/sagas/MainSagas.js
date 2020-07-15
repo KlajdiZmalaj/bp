@@ -38,7 +38,7 @@ export function* getFavorites() {
 }
 export function* toggleFavorite(params) {
   const response = yield call(setOnFav, params.id, params.sType);
-  console.log("responseeee", response);
+  // console.log("responseeee", response);
   if (response.status === 200) {
     const response = yield call(fetchFavorites);
     if (response.data) {
@@ -55,7 +55,7 @@ export function* getUsers(params) {
 }
 export function* getUsersSimple() {
   const response = yield call(fetchUsersSimple);
-  console.log("getUsers called", response);
+  // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsersSimple(response.data.users));
   }

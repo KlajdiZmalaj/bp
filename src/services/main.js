@@ -97,7 +97,7 @@ export const postImages = (user_id, imgFront, imgBack, callback) => {
       ...skin,
     })
     .then((response) => {
-      console.log("response", response);
+      // console.log("response", response);
       if (response.status === 200) {
         callback();
       }
@@ -120,7 +120,7 @@ export const deleteImages = (user_id, callback) => {
       ...skin,
     })
     .then((response) => {
-      console.log("response", response);
+      // console.log("response", response);
       if (response && response && response.status === 200) {
         callback();
       }
