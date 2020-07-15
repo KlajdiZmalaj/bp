@@ -78,13 +78,12 @@ export const azioni = [
     displayRole: ["super_admin", "agency"],
   },
   {
-    id: 8,
+    id: 10,
     name: "Support",
     link: "support",
     i: "fal fa-user-headset",
     displayRole: ["support"],
   },
-  
 ];
 
 export const administrazioni = [

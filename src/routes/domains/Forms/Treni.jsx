@@ -191,7 +191,7 @@ class Treni extends Component {
                 value="1"
                 id="bagaglio1"
               />
-              <label for="bagaglio1" className="customRadio">
+              <label htmlFor="bagaglio1" className="customRadio">
                 <span></span>
               </label>
             </div>
@@ -209,7 +209,7 @@ class Treni extends Component {
                 id="bagaglio2"
                 checked={this.state.tipologia_biglietto == 2}
               />
-              <label for="bagaglio2" className="customRadio">
+              <label htmlFor="bagaglio2" className="customRadio">
                 <span></span>
               </label>
             </div>
@@ -233,7 +233,7 @@ class Treni extends Component {
                 value="1"
                 id="c1"
               />
-              <label for="c1" className="customRadio">
+              <label htmlFor="c1" className="customRadio">
                 <span></span>
               </label>
             </div>
@@ -251,7 +251,7 @@ class Treni extends Component {
                 id="c2"
                 checked={this.state.compagnie == "italio"}
               />
-              <label for="c2" className="customRadio">
+              <label htmlFor="c2" className="customRadio">
                 <span></span>
               </label>
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
-import { Form, DatePicker, Modal, Select } from "antd";
+import { Form, Spin, Modal, Select, Tooltip } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
@@ -161,14 +161,7 @@ class Transazioni extends React.Component {
     //     .subtract(parseInt(moment().format("D")), "days")
     //     .format()
     // );
-    this.props.getPayments(
-      "",
-
-      moment()
-        .subtract(parseInt(moment().format("D")), "days")
-        .format(),
-      moment().format()
-    );
+    this.props.getPayments("");
   }
 
   render() {
@@ -184,7 +177,13 @@ class Transazioni extends React.Component {
         sm: { span: 16 },
       },
     };
-    const { payments, accountInfo } = this.props;
+    const {
+      payments,
+      accountInfo,
+      loadingPayments,
+      paymentsFromCode,
+    } = this.props;
+    console.log("loadingPayments", loadingPayments);
     const { selectedFilter, indexT, usernames } = this.state;
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
@@ -417,83 +416,93 @@ class Transazioni extends React.Component {
                     {payments.message}
                   </div>
                 )}
-                <table className="transTable">
-                  <thead>
-                    <tr>
-                      <td className="wsNwp">Date / Ora</td>
-                      <td>Barcode</td>
-                      <td className="wsNwp">User</td>
-                      <td className="wsNwp">Service</td>
-                      <td className="right">Importo</td>
-                      <td className="right">Commissione</td>
-                      <td className="right">Proviggione</td>
-                      <td className="right">Saldo</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {!payments.message &&
-                      (paymentsO || []).map((item, index) => {
-                        return (
-                          (
-                            item.service_name &&
-                            item.service_name.toString().toLowerCase()
-                          ).includes(this.props.navbarSearch.toLowerCase()) && (
-                            <tr
-                              key={index}
-                              onClick={() =>
-                                this.showModal(
-                                  index,
-                                  item.barcode,
-                                  item.agency_name,
-                                  item.agency_address,
-                                  item.agency_phone
-                                )
-                              }
-                            >
-                              <td className="wsNwp">
-                                {moment(item.executed_date).format(
-                                  "DD/MM/YYYY HH:mm:ss"
-                                )}
-                              </td>
-                              <td>
-                                <div className="bc">{item.barcode}</div>
-                              </td>
-                              <td className="wsNwp">
-                                {" "}
-                                <i
-                                  className="fal fa-user-circle"
-                                  aria-hidden="true"
-                                ></i>{" "}
-                                {item.agency_name}
-                              </td>
-                              <td className="wsNwp">{item.service_name}</td>
+                {loadingPayments && <Spin />}
+                {!loadingPayments && (
+                  <table className="transTable">
+                    <thead>
+                      <tr>
+                        <td className="wsNwp">Date / Ora</td>
+                        <td>Barcode</td>
+                        <td className="wsNwp">User</td>
+                        <td className="wsNwp">Service</td>
+                        <td className="right">Importo</td>
+                        <td className="right">Commissione</td>
+                        <td className="right">Proviggione</td>
+                        <td className="right">Saldo</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {!payments.message &&
+                        (paymentsO || []).map((item, index) => {
+                          return (
+                            (
+                              item.service_name &&
+                              item.service_name.toString().toLowerCase()
+                            ).includes(
+                              this.props.navbarSearch.toLowerCase()
+                            ) && (
+                              <tr
+                                key={index}
+                                onClick={() => {
+                                  this.showModal(
+                                    index,
+                                    item.barcode,
+                                    item.agency_name,
+                                    item.agency_address,
+                                    item.agency_phone
+                                  );
+                                  this.props.getCodiceTicket(item.barcode);
+                                }}
+                              >
+                                <td className="wsNwp">
+                                  {moment(item.executed_date).format(
+                                    "DD/MM/YYYY HH:mm:ss"
+                                  )}
+                                </td>
+                                <td>
+                                  <div className="bc">{item.barcode}</div>
+                                </td>
+                                <td className="wsNwp">
+                                  {" "}
+                                  <i
+                                    className="fal fa-user-circle"
+                                    aria-hidden="true"
+                                  ></i>{" "}
+                                  <Tooltip title={item.agency_name}>
+                                    <span className="nomeTd">
+                                      {item.agency_name}
+                                    </span>
+                                  </Tooltip>
+                                </td>
+                                <td className="wsNwp">{item.service_name}</td>
 
-                              <td className="right">
-                                {item.price1000
-                                  ? slicedAmount(item.price1000 / 1000)
-                                  : "-"}
-                                €
-                              </td>
-                              <td className="right">
-                                {item.commissione}€
-                                {/* {item.commissione ? item.commissione : "-"}{" "} */}
-                              </td>
-                              <td className="right">
-                                {item.percentage}€
-                                {/* {parseInt(item.percentage) > 0
+                                <td className="right">
+                                  {item.price1000
+                                    ? slicedAmount(item.price1000 / 1000)
+                                    : "-"}
+                                  €
+                                </td>
+                                <td className="right">
+                                  {item.commissione}€
+                                  {/* {item.commissione ? item.commissione : "-"}{" "} */}
+                                </td>
+                                <td className="right">
+                                  {item.percentage}€
+                                  {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
-                              </td>
-                              <td className="right">
-                                {" "}
-                                {item.saldo !== "-" ? item.saldo + "€" : "-"}
-                              </td>
-                            </tr>
-                          )
-                        );
-                      })}
-                  </tbody>
-                </table>
+                                </td>
+                                <td className="right">
+                                  {" "}
+                                  {item.saldo !== "-" ? item.saldo + "€" : "-"}
+                                </td>
+                              </tr>
+                            )
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           </div>
@@ -546,18 +555,20 @@ class Transazioni extends React.Component {
                 </div>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: payments[indexT].receipt
-
-                      .replace(/</g, "&lt;")
-                      .replace(/>/g, "&gt;")
-                      .replace(/\t/g, "\u00a0")
-                      .replace(/\n/g, "<br/> ")
-                      .replace(/\+/g, " ")
-                      .replace(/: /g, ":<div class='marginB'></div>")
-                      .replace(
-                        /<div class='marginB'><\/div>([^>]+)<br\/>/g,
-                        "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                      ),
+                    __html:
+                      paymentsFromCode &&
+                      paymentsFromCode.receipt &&
+                      paymentsFromCode.receipt
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/\t/g, "\u00a0")
+                        .replace(/\n/g, "<br/> ")
+                        .replace(/\+/g, " ")
+                        .replace(/: /g, ":<div class='marginB'></div>")
+                        .replace(
+                          /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                          "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                        ),
                   }}
                 />
 
@@ -591,10 +602,12 @@ const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
   service_id: state.auth.service_id,
   payments: state.auth.payments,
+  loadingPayments: state.auth.loadingPayments,
   usernames: state.auth.usernames,
   accountInfo: state.auth.accountInfo,
   navbarSearch: state.main.navbarSearch,
   skinExtras: state.auth.skinExtras,
+  paymentsFromCode: state.auth.paymentsFromCode,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

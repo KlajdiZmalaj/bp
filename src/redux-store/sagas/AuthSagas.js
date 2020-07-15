@@ -177,7 +177,7 @@ function* modifyAccountData(wallet) {
 }
 
 export function* getPayments(params) {
-  console.log("called saga", params);
+  yield put(AuthActions.setPaymentsLoading(true));
   const response = yield call(
     fetchPayments,
     params.username,
@@ -205,7 +205,9 @@ export function* getPayments(params) {
         yield put(AuthActions.setPayments(response.error.response.data));
       }
     }
+    yield put(AuthActions.setPaymentsLoading(false));
   }
+  console.log("response payments", response);
 }
 
 export function* getRechargeMobile(params) {

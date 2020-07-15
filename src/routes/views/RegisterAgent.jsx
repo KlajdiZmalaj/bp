@@ -7,7 +7,6 @@ import {
   DatePicker,
   Select,
   Checkbox,
-  Icon,
   message,
 } from "antd";
 import moment from "moment";
@@ -31,17 +30,6 @@ function getBase64(img, callback) {
   reader.readAsDataURL(img);
 }
 
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  if (!isJpgOrPng) {
-    message.error("You can only upload JPG/PNG file!");
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
-  }
-  return isJpgOrPng && isLt2M;
-}
 class RegisterEndUser extends React.Component {
   state = {
     visible: true,
@@ -286,17 +274,12 @@ class RegisterEndUser extends React.Component {
       });
   };
 
-
-
-
-
   render() {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
     const { codFisInps } = this.state;
 
-
-    const {  nazione, nazioneDiResidenca,  } = this.state;
+    const { nazione, nazioneDiResidenca } = this.state;
 
     const allNazione = uniqBy(countriesArray, "nazione");
 
@@ -792,6 +775,7 @@ class RegisterEndUser extends React.Component {
                   <i className="fas fa-file-check"></i>
                   <a
                     target="_blank"
+                    rel="noopener"
                     href="https://telematici.agenziaentrate.gov.it/VerificaPIVA/Scegli.do?parameter=verificaPiva"
                   >
                     <i className="fas fa-link"></i>

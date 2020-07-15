@@ -36,7 +36,7 @@ class Azioni extends Component {
         item.displayRole,
         get(accountInfo, "profile.role.name")
       ) ? (
-        <div key={item.id + ind}>
+        <div key={item.id}>
           <a href={"#/" + item.link}>
             <div
               className={
@@ -52,14 +52,12 @@ class Azioni extends Component {
           </a>
         </div>
       ) : (
-        <div key={item.id} className="d-none" />
+        <div key={item.id + ind} className="d-none" />
       );
     });
     return (
       <React.Fragment>
         <hr className="overviw-line" />
-        {}
-
         {get(accountInfo, "profile.role.name") ? (
           <div className="row max-width mt-2 azioni">
             <Swiper

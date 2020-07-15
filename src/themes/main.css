@@ -682,7 +682,7 @@ a:hover {
   position: relative;
 }
 
-.sort-annunci button {
+.sort-annunci li > button {
   background: var(--accent-txt);
   color: var(--accent-bg);
   border: 1px solid var(--accent-bg);
@@ -1291,10 +1291,35 @@ i#private {
   border-left: 2px solid #edeef0;
 }
 
+.ant-tooltip {
+  pointer-events: none;
+}
+
 .transTable {
   width: 100%;
   background: #fff;
   border-collapse: collapse;
+}
+
+.transTable .nomeTd {
+  width: auto;
+  display: block;
+  white-space: nowrap;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 380px;
+  padding-left: 30px;
+  text-align: center;
+}
+
+.transTable .wsNwp {
+  position: relative;
+}
+
+.transTable .wsNwp i {
+  position: absolute;
+  top: 11px;
 }
 
 .transTable thead tr {
@@ -1397,6 +1422,33 @@ i#private {
 
 .wsNwp {
   white-space: nowrap;
+}
+
+body .ant-spin-dot {
+  width: 80px;
+  height: 80px;
+}
+
+body .ant-spin-dot-item {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-bg);
+}
+
+body .max-width {
+  position: relative;
+}
+
+body .ant-spin-spinning {
+  position: absolute;
+  display: inline-block;
+  opacity: 1;
+  margin: 0 auto;
+  display: block;
+  -webkit-transform: scale(1) translateX(-50%);
+          transform: scale(1) translateX(-50%);
+  left: 50%;
+  top: 1%;
 }
 
 /*adm styles*/
