@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { Select, notification } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import TextArea from "antd/lib/input/TextArea";
 const { Option } = Select;
 
 class Eventi extends Component {
   state = {
-    categoria: 0,
-    quantity: 0,
     categoryArray: [
       "Selezionare Evento",
       "Concerti",
@@ -25,6 +21,15 @@ class Eventi extends Component {
       "5",
       "6+(specificare su note)",
     ],
+    link: this.props.TicketByTcketId.link,
+    nome_agenzia: this.props.TicketByTcketId.nome_agenzia,
+    extra_data: this.props.TicketByTcketId.extra_data,
+    categoria: this.props.TicketByTcketId.categoria,
+    descrizione_categoria: this.props.TicketByTcketId.link,
+    quantity: this.props.TicketByTcketId.quantity,
+    name: this.props.TicketByTcketId.name,
+    email: this.props.TicketByTcketId.email,
+    telefono: this.props.TicketByTcketId.telefono,
   };
   resetState = (msg) => {
     if (!msg.error) {
@@ -93,37 +98,28 @@ class Eventi extends Component {
   };
   render() {
     return (
-      <div className="formsContainer--body">
-        <div className="formsItemTogether">
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Nome Agenzia</div>
+      <div className="newReg--row">
+        <div className="newReg--row__col">
+          <div className="itemCol full">
+            <label className="inputLabel">Nome Agenzia</label>
             <input
-              value={this.state.nome_agenzia}
+              class="ant-input"
               type="text"
+              readOnly={this.props.editable}
+              value={this.state.nome_agenzia}
               onChange={(e) => {
                 this.setState({ nome_agenzia: e.target.value });
               }}
-            />
+            ></input>
           </div>
-          <div className="formsContainer--body__item w-40">
-            <div className="label">Link </div>
-            <input
-              value={this.state.link}
-              onChange={(e) => {
-                this.setState({ link: e.target.value });
-              }}
-              type="text"
-            />
-          </div>
-
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Categoria </div>
-
+          <div className="itemCol full">
+            <label className="inputLabel">Categoria</label>
             <Select
+              disabled={this.props.editable}
               onChange={(value) => {
                 this.setState({ categoria: value });
               }}
-              defaultValue={"Selezionare Evento"}
+              defaultValue={this.props.TicketByTcketId.categoria}
             >
               <Option value="0">Selezionare Evento</Option>
               <Option value="1">Concerti</Option>
@@ -133,35 +129,54 @@ class Eventi extends Component {
               <Option value="5">Altro</Option>
             </Select>
           </div>
+          <div className="itemCol full">
+            <label className="inputLabel">Telefono</label>
+            <input
+              class="ant-input"
+              type="text"
+              value={this.state.telefono}
+              readOnly={this.props.editable}
+              onChange={(e) => {
+                this.setState({ telefono: e.target.value });
+              }}
+            ></input>
+          </div>
+
+          <div className="itemCol full">
+            <label className="inputLabel">Email</label>
+            <input
+              class="ant-input"
+              type="text"
+              value={this.state.email}
+              readOnly={this.props.editable}
+              onChange={(e) => {
+                this.setState({ email: e.target.value });
+              }}
+            ></input>
+          </div>
         </div>
-        <div className="formsItemTogether">
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Nome </div>
+
+        <div className="newReg--row__col">
+          <div className="itemCol full">
+            <label className="inputLabel">Link</label>
             <input
-              value={this.state.name}
+              class="ant-input"
               type="text"
+              value={this.state.link}
+              readOnly={this.props.editable}
               onChange={(e) => {
-                this.setState({ name: e.target.value });
+                this.setState({ link: e.target.value });
               }}
-            />
+            ></input>
           </div>
-          <div className="formsContainer--body__item w-40">
-            <div className="label">Descrizione</div>
-            <input
-              value={this.state.descrizione_categoria}
-              type="text"
-              onChange={(e) => {
-                this.setState({ descrizione_categoria: e.target.value });
-              }}
-            />
-          </div>
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Qta biglietti </div>
+          <div className="itemCol full">
+            <label className="inputLabel">Qta biglietti</label>
             <Select
+              disabled={this.props.editable}
               onChange={(value) => {
                 this.setState({ quantity: value });
               }}
-              defaultValue={"Selezionare un numero"}
+              defaultValue={this.props.TicketByTcketId.quantity}
             >
               <Option value="0">Selezionare un numero</Option>
               <Option value="1">1</Option>
@@ -172,42 +187,35 @@ class Eventi extends Component {
               <Option value="6">6+(specificare su note)</Option>
             </Select>
           </div>
-        </div>
-        <div className="formsItemTogetherStart">
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Email</div>
+          <div className="itemCol full">
+            <label className="inputLabel">Nome</label>
             <input
-              value={this.state.email}
+              class="ant-input"
               type="text"
+              value={this.state.name}
+              readOnly={this.props.editable}
               onChange={(e) => {
-                this.setState({ email: e.target.value });
+                this.setState({ name: e.target.value });
               }}
-            />
+            ></input>
           </div>
-          <div className="formsContainer--body__item w-25">
-            <div className="label"> Telefono</div>
+          <div className="itemCol full">
+            <label className="inputLabel">Descrizione</label>
             <input
-              value={this.state.telefono}
-              type="number"
+              class="ant-input"
+              type="text"
+              value={this.state.descrizione_categoria}
+              readOnly={this.props.editable}
               onChange={(e) => {
-                this.setState({ telefono: e.target.value });
+                this.setState({ descrizione_categoria: e.target.value });
               }}
-            />
+            ></input>
           </div>
-        </div>
-        <div className="formsContainer--body__item ">
-          <div className="label"> Note</div>
-          <TextArea
-            value={this.state.extra_data}
-            type="number"
-            onChange={(e) => {
-              this.setState({ extra_data: e.target.value });
-            }}
-          />
-        </div>
-
-        <div className="formsContainer--body__item submit">
-          <button onClick={this.submitData}>Invia</button>
+          <div className="rowForButton">
+            <button disabled className="SubmitButton" onClick={this.submitData}>
+              Invia
+            </button>
+          </div>
         </div>
       </div>
     );

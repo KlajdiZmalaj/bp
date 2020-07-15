@@ -183,6 +183,10 @@ const { Types, Creators } = createActions({
     "email",
     "telefono",
   ],
+  getDataFormDetails: [""],
+  setDataFormDetails: ["formDetails"],
+  getTicketByTicketId: ["ticket_id"],
+  setTicketByTicketId: ["TicketByTcketId"],
 });
 
 export const AuthTypes = Types;
@@ -215,6 +219,8 @@ const INITIAL_STATE = {
   updateMsg: "",
   skinExtras: {},
   errors: [],
+  formDetails: [],
+  TicketByTcketId: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -339,5 +345,13 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     adsCreationgLoading,
     adsCreationgMess,
+  }),
+  [Types.SET_DATA_FORM_DETAILS]: (state, { formDetails }) => ({
+    ...state,
+    formDetails,
+  }),
+  [Types.SET_TICKET_BY_TICKET_ID]: (state, { TicketByTcketId }) => ({
+    ...state,
+    TicketByTcketId: TicketByTcketId.data,
   }),
 });

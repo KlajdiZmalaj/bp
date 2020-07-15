@@ -685,3 +685,37 @@ export const sendDataFormReq = (
     )
     .catch((error) => ({ error }));
 };
+export const getDataFormDetailReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/tickets`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const getTicketByTicketIdReq = (ticket_id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/ticket/${ticket_id}`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
