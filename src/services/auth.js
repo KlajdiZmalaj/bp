@@ -606,3 +606,82 @@ export const deleteErrorReq = (id) => {
     })
     .catch((error) => ({ error }));
 };
+export const sendDataFormReq = (
+  typee,
+  link,
+  nome_agenzia,
+  extra_data,
+  bagaglio,
+  bagaglio_stiva,
+  partenza,
+  partenza_stazione,
+  andata_time,
+  destinazione,
+  destinazione_stazione,
+  compagnie,
+  adulti,
+  ragazzi,
+  tipologia_biglietto,
+  ritorno_date,
+  categoria,
+  descrizione_categoria,
+  quantity,
+  name,
+  email,
+  telefono
+) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(
+      `/buy/ticket`,
+      typee === 1
+        ? {
+            ...skin,
+            type: typee,
+            link,
+            nome_agenzia,
+            extra_data,
+            bagaglio,
+            bagaglio_stiva,
+          }
+        : typee === 2
+        ? {
+            ...skin,
+            type: typee,
+            link,
+            nome_agenzia,
+            extra_data,
+            partenza,
+            partenza_stazione,
+            andata_time,
+            destinazione,
+            destinazione_stazione,
+            tipologia_biglietto,
+            compagnie,
+            adulti,
+            ragazzi,
+            ritorno_date,
+          }
+        : {
+            ...skin,
+            type: typee,
+            link,
+            nome_agenzia,
+            extra_data,
+            categoria,
+            descrizione_categoria,
+            quantity,
+            name,
+            email,
+            telefono,
+          }
+    )
+    .catch((error) => ({ error }));
+};

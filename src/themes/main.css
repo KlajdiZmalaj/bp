@@ -655,6 +655,16 @@ a:hover {
           transform: rotatez(222deg);
 }
 
+.forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
 /*annunci styles*/
 .sort-annunci {
   display: -webkit-box;
@@ -670,6 +680,12 @@ a:hover {
   margin-bottom: 10px;
   background-color: #fff;
   position: relative;
+}
+
+.sort-annunci button {
+  background: var(--accent-txt);
+  color: var(--accent-bg);
+  border: 1px solid var(--accent-bg);
 }
 
 .sort-annunci .rdrDefinedRangesWrapper,

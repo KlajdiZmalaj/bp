@@ -24,6 +24,7 @@ import {
   fetchSkinExtras,
   fetchErrors,
   deleteErrorReq,
+  sendDataFormReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -537,4 +538,50 @@ export function* deleteError(data) {
     }
   }
   console.log("deleteErrorReq", response);
+}
+
+export function* sendDataForm(data) {
+  const response = yield call(
+    sendDataFormReq,
+    data.typee,
+    data.link,
+    data.nome_agenzia,
+    data.extra_data,
+    data.bagaglio,
+    data.bagaglio_stiva,
+    data.partenza,
+    data.partenza_stazione,
+    data.andata_time,
+    data.destinazione,
+    data.destinazione_stazione,
+    data.compagnie,
+    data.adulti,
+    data.ragazzi,
+    data.tipologia_biglietto,
+    data.ritorno_date,
+    data.categoria,
+    data.descrizione_categoria,
+    data.quantity,
+    data.name,
+    data.email,
+    data.telefono
+  );
+  if (response?.status === 200) {
+    data.callBack({
+      error: false,
+      msg: response?.data.message,
+    });
+  }
+  if (response.error) {
+    data.callBack({
+      error: true,
+      msg: [
+        response.error.response.data.message,
+        response.error.response.data.errors
+          ? Object.values(response.error.response.data.errors)
+          : "error backend",
+      ],
+    });
+  }
+  console.log("ca ka response", data, response);
 }
