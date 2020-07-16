@@ -589,6 +589,13 @@ a:hover {
   cursor: pointer;
 }
 
+.wig > span {
+  position: absolute;
+  color: #fff;
+  right: 30px;
+  top: 20px;
+}
+
 .wig a {
   color: #fff;
   font-family: "Roboto", "sans-serif";
@@ -663,6 +670,16 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+}
+
+.details {
+  position: fixed;
+  z-index: 3;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 /*annunci styles*/
@@ -1434,6 +1451,24 @@ i#private {
   width: 180px;
   margin-top: 100px;
   border-radius: 500px;
+}
+
+.paginationWrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+}
+
+.ant-pagination {
+  margin-right: 10px;
 }
 
 /*adm styles*/

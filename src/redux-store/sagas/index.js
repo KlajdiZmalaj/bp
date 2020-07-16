@@ -28,6 +28,8 @@ import {
   getErrors,
   deleteError,
   sendDataForm,
+  getDataFormDetails,
+  getTicketByTicketId,
 } from "./AuthSagas";
 
 import {
@@ -43,6 +45,8 @@ import {
 export default function* root() {
   yield all([
     // AUTH h
+    takeLatest(AuthTypes.GET_TICKET_BY_TICKET_ID, getTicketByTicketId),
+    takeLatest(AuthTypes.GET_DATA_FORM_DETAILS, getDataFormDetails),
     takeLatest(AuthTypes.SEND_DATA_FORM, sendDataForm),
     takeLatest(AuthTypes.SIGN_IN_BY_EMAIL, signInByEmail),
     takeLatest(AuthTypes.GET_ACCOUNT_INFO, getAccountInfo),

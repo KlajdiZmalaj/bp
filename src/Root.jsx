@@ -25,6 +25,7 @@ import {
 } from "./routes";
 import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
+import FormDetails from "./routes/views/FormDetails";
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -187,6 +188,13 @@ class Root extends React.Component {
                 "admin",
                 "agency",
               ]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/formsDetail"
+              component={FormDetails}
+              isLoggedin={isLoggedin}
+              allowedRoles={["support"]}
               role={role}
             />
           </Switch>

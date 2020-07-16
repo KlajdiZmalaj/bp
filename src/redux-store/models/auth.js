@@ -42,7 +42,7 @@ const { Types, Creators } = createActions({
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
-  getPayments: ["username", "from", "to"],
+  getPayments: ["username", "from", "to", "page_number", "limit"],
   setPayments: ["payments"],
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
@@ -183,13 +183,19 @@ const { Types, Creators } = createActions({
     "email",
     "telefono",
   ],
+  getDataFormDetails: [""],
+  setDataFormDetails: ["formDetails"],
+  getTicketByTicketId: ["ticket_id"],
+  setTicketByTicketId: ["TicketByTcketId"],
   setPaymentsLoading: ["loadingPayments"],
+  setPaymentsPages: ["paymentsPages"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  paymentsPages: 0,
   loadingPayments: true,
   privMsg: [],
   agents: [],
@@ -217,9 +223,15 @@ const INITIAL_STATE = {
   updateMsg: "",
   skinExtras: {},
   errors: [],
+  formDetails: [],
+  TicketByTcketId: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_PAYMENTS_PAGES]: (state, { paymentsPages }) => ({
+    ...state,
+    paymentsPages,
+  }),
   [Types.SET_PAYMENTS_LOADING]: (state, { loadingPayments }) => ({
     ...state,
     loadingPayments,
@@ -345,5 +357,13 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     adsCreationgLoading,
     adsCreationgMess,
+  }),
+  [Types.SET_DATA_FORM_DETAILS]: (state, { formDetails }) => ({
+    ...state,
+    formDetails,
+  }),
+  [Types.SET_TICKET_BY_TICKET_ID]: (state, { TicketByTcketId }) => ({
+    ...state,
+    TicketByTcketId: TicketByTcketId.data,
   }),
 });

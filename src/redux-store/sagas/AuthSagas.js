@@ -25,6 +25,8 @@ import {
   fetchErrors,
   deleteErrorReq,
   sendDataFormReq,
+  getDataFormDetailReq,
+  getTicketByTicketIdReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -182,12 +184,21 @@ export function* getPayments(params) {
     fetchPayments,
     params.username,
     params.from,
-    params.to
+    params.to,
+    params.page_number,
+    params.limit
   );
   if (response) {
     if (response.status === 200) {
       if (response.data) {
         yield put(AuthActions.setPayments(response.data.transactions));
+        yield put(
+          AuthActions.setPaymentsPages({
+            total_pages: response.data.total_pages,
+            total_records: response.data.total_records,
+          })
+        );
+
         if (response.data.usernames) {
           yield put(AuthActions.setUsernames(response.data.usernames));
         }
@@ -586,4 +597,34 @@ export function* sendDataForm(data) {
     });
   }
   // console.log("ca ka response", data, response);
+}
+export function* getDataFormDetails() {
+  const response = yield call(getDataFormDetailReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(
+        AuthActions.setDataFormDetails(
+          response.data ? response.data.tickets : null
+        )
+      );
+    }
+  }
+  console.log("ca ka response", response);
+
+  // console.log("fetchErrors", response);
+}
+export function* getTicketByTicketId(ticket_id) {
+  const response = yield call(getTicketByTicketIdReq, ticket_id.ticket_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(
+        AuthActions.setTicketByTicketId(response.data ? response.data : null)
+      );
+    }
+  }
+  console.log("ca ka response", response);
+
+  // console.log("fetchErrors", response);
 }

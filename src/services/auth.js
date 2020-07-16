@@ -115,7 +115,7 @@ export const fetchBolletiniBianchi = (
     })
     .catch((error) => ({ error }));
 
-export const fetchPayments = (username, from, to) =>
+export const fetchPayments = (username, from, to, page_number, limit) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -127,8 +127,10 @@ export const fetchPayments = (username, from, to) =>
     })
     .post(`/users/payments`, {
       ...(username ? { username: username } : {}),
-      ...{ from: from },
-      ...{ to: to },
+      ...(from ? { from } : null),
+      ...(to ? { to } : null),
+      page_number,
+      limit,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -684,5 +686,39 @@ export const sendDataFormReq = (
             telefono,
           }
     )
+    .catch((error) => ({ error }));
+};
+export const getDataFormDetailReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/tickets`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const getTicketByTicketIdReq = (ticket_id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/ticket/${ticket_id}`, {
+      params: {
+        ...skin,
+      },
+    })
     .catch((error) => ({ error }));
 };

@@ -84,6 +84,13 @@ export const azioni = [
     i: "fal fa-user-headset",
     displayRole: ["support"],
   },
+  {
+    id: 10,
+    name: "Prenotazioni Details",
+    link: "formsDetail",
+    i: "fab fa-wpforms",
+    displayRole: ["support", "super_admin", "user", "agency"],
+  },
 ];
 
 export const administrazioni = [

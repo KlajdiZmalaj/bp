@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-
-import { Form, Modal, Select, Tooltip } from "antd";
+import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
@@ -46,6 +45,7 @@ class Transazioni extends React.Component {
     phone: "",
     from: "",
     to: "",
+    perPage: 10,
     picker: [
       {
         startDate: new Date(),
@@ -161,7 +161,7 @@ class Transazioni extends React.Component {
     //     .subtract(parseInt(moment().format("D")), "days")
     //     .format()
     // );
-    this.props.getPayments("");
+    this.props.getPayments("", "", "", 1, 10);
   }
 
   render() {
@@ -182,8 +182,9 @@ class Transazioni extends React.Component {
       accountInfo,
       loadingPayments,
       paymentsFromCode,
+      paymentsPages,
     } = this.props;
-    // console.log("loadingPayments", loadingPayments);
+    console.log("paymentspayments", payments);
     const { selectedFilter, indexT, usernames } = this.state;
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
@@ -509,6 +510,25 @@ class Transazioni extends React.Component {
                   </table>
                 )}
               </div>
+              <div className="paginationWrapper">
+                <Pagination
+                  onChange={(e) => {
+                    // console.log("ca ka pagination", e);
+                    this.props.getPayments("", "", "", e, this.state.perPage);
+                  }}
+                  total={paymentsPages.total_pages * 10}
+                />
+                <Select
+                  defaultValue="10"
+                  onChange={(e) => {
+                    this.setState({ perPage: parseInt(e) });
+                  }}
+                >
+                  <Option value="10">10 Pagine</Option>
+                  <Option value="20">20 Pagine</Option>
+                  <Option value="30">30 Pagine</Option>
+                </Select>
+              </div>
             </div>
           </div>
           <Modal
@@ -613,6 +633,7 @@ const mapsStateToProps = (state) => ({
   navbarSearch: state.main.navbarSearch,
   skinExtras: state.auth.skinExtras,
   paymentsFromCode: state.auth.paymentsFromCode,
+  paymentsPages: state.auth.paymentsPages,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
