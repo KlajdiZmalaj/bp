@@ -182,12 +182,21 @@ export function* getPayments(params) {
     fetchPayments,
     params.username,
     params.from,
-    params.to
+    params.to,
+    params.page_number,
+    params.limit
   );
   if (response) {
     if (response.status === 200) {
       if (response.data) {
         yield put(AuthActions.setPayments(response.data.transactions));
+        yield put(
+          AuthActions.setPaymentsPages({
+            total_pages: response.data.total_pages,
+            total_records: response.data.total_records,
+          })
+        );
+
         if (response.data.usernames) {
           yield put(AuthActions.setUsernames(response.data.usernames));
         }

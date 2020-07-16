@@ -115,7 +115,7 @@ export const fetchBolletiniBianchi = (
     })
     .catch((error) => ({ error }));
 
-export const fetchPayments = (username, from, to) =>
+export const fetchPayments = (username, from, to, page_number, limit) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -127,8 +127,10 @@ export const fetchPayments = (username, from, to) =>
     })
     .post(`/users/payments`, {
       ...(username ? { username: username } : {}),
-      ...{ from: from },
-      ...{ to: to },
+      ...(from ? { from } : null),
+      ...(to ? { to } : null),
+      page_number,
+      limit,
       ...skin,
     })
     .catch((error) => ({ error }));
