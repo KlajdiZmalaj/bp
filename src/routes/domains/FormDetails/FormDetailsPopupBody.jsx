@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import Voli from "./Voli";
-import Treni from "../Forms/Treni";
+import Treni from "./Treni";
 import Eventi from "./Eventi";
 
 import "./style.scss";
@@ -16,17 +16,27 @@ export class FormDetailsPopupBody extends Component {
           <Voli
             TicketByTcketId={TicketByTcketId}
             typee={typee}
-            sendDataForm={this.props.sendDataForm}
+            updateDataForm={this.props.updateDataForm}
+            ticketId={TicketByTcketId.id}
+            editable={this.props.editable}
           />
         )}
         {typee === 2 && (
-          <Treni typee={typee} sendDataForm={this.props.sendDataForm} />
+          <Treni
+            TicketByTcketId={TicketByTcketId}
+            typee={typee}
+            updateDataForm={this.props.updateDataForm}
+            ticketId={TicketByTcketId.id}
+            editable={this.props.editable}
+          />
         )}
         {typee === 3 && (
           <Eventi
             TicketByTcketId={TicketByTcketId}
             typee={typee}
-            sendDataForm={this.props.sendDataForm}
+            updateDataForm={this.props.updateDataForm}
+            ticketId={TicketByTcketId.id}
+            editable={this.props.editable}
           />
         )}
       </div>

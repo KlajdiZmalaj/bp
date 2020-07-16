@@ -78,6 +78,7 @@ class Treni extends Component {
       ""
     );
   };
+
   render() {
     const { nome_agenzia, color } = this.props;
 

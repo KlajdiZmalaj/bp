@@ -9,17 +9,34 @@ const Tab = ({ name, icon }) => (
 );
 class FormDetailPopup extends Component {
   state = {
-    editable: false,
+    editable: true,
+    bounceOut: false,
   };
   componentWillUnmount() {
     this.setState({
-      editable: false,
+      editable: true,
     });
   }
+  exit = () => {
+    this.setState(
+      {
+        bounceOut: true,
+      },
+      () => {
+        setTimeout(() => {
+          this.props.setTicketByTicketId({ data: null });
+        }, 700);
+      }
+    );
+  };
   render() {
     return (
       <div>
-        <div className="newReg userDetailPopup animated bounceIn">
+        <div
+          className={`newReg userDetailPopup animated bounceIn ${
+            this.state.bounceOut ? "bounceOut" : ""
+          }`}
+        >
           <div className="newReg--header">
             {this.props.TicketByTcketId.type === 1 && (
               <Tab name={"Voli"} icon={"fas fa-plane"} />
@@ -30,10 +47,7 @@ class FormDetailPopup extends Component {
             {this.props.TicketByTcketId.type === 3 && (
               <Tab name="Eventi" icon={"fas fa-receipt"} />
             )}
-            <div
-              className="closeBtn"
-              onClick={() => this.props.setTicketByTicketId({ data: null })}
-            >
+            <div className="closeBtn" onClick={this.exit}>
               <i className="fal fa-times" aria-hidden="true" />
             </div>
           </div>
@@ -51,19 +65,16 @@ class FormDetailPopup extends Component {
                 className="SubmitButton"
                 onClick={() => {
                   this.setState({
-                    editable: true,
+                    editable: false,
                   });
                 }}
               >
-                Edit
+                Modificare
               </button>
             </div>
           </div>
         </div>
-        <div
-          class="backDrop"
-          onClick={() => this.props.setTicketByTicketId({ data: null })}
-        ></div>
+        <div class="backDrop" onClick={this.exit}></div>
       </div>
     );
   }
