@@ -542,8 +542,8 @@ class Transazioni extends React.Component {
                       "",
                       this.state.from || "",
                       this.state.to || "",
-                      e,
-                      this.state.perPage
+                      1,
+                      e
                     );
                   }}
                 >
