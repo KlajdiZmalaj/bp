@@ -25,6 +25,8 @@ import {
   fetchErrors,
   deleteErrorReq,
   sendDataFormReq,
+  getDataFormDetailReq,
+  getTicketByTicketIdReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -595,4 +597,34 @@ export function* sendDataForm(data) {
     });
   }
   // console.log("ca ka response", data, response);
+}
+export function* getDataFormDetails() {
+  const response = yield call(getDataFormDetailReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(
+        AuthActions.setDataFormDetails(
+          response.data ? response.data.tickets : null
+        )
+      );
+    }
+  }
+  console.log("ca ka response", response);
+
+  // console.log("fetchErrors", response);
+}
+export function* getTicketByTicketId(ticket_id) {
+  const response = yield call(getTicketByTicketIdReq, ticket_id.ticket_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(
+        AuthActions.setTicketByTicketId(response.data ? response.data : null)
+      );
+    }
+  }
+  console.log("ca ka response", response);
+
+  // console.log("fetchErrors", response);
 }
