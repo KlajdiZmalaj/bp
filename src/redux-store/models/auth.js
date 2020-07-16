@@ -183,14 +183,38 @@ const { Types, Creators } = createActions({
     "email",
     "telefono",
   ],
-<<<<<<< HEAD
   getDataFormDetails: [""],
   setDataFormDetails: ["formDetails"],
   getTicketByTicketId: ["ticket_id"],
   setTicketByTicketId: ["TicketByTcketId"],
-=======
   setPaymentsLoading: ["loadingPayments"],
->>>>>>> 5c4dcd27fe3c1099df14f9ac1555047cb3a3d501
+  updateDataForm: [
+    "typee",
+    "link",
+    "nome_agenzia",
+    "extra_data",
+    "bagaglio",
+    "bagaglio_stiva",
+    "callBack",
+    "partenza",
+    "partenza_stazione",
+    "andata_time",
+    "destinazione",
+    "destinazione_stazione",
+    "compagnie",
+    "adulti",
+    "ragazzi",
+    "tipologia_biglietto",
+    "ritorno_date",
+    "categoria",
+    "descrizione_categoria",
+    "quantity",
+    "name",
+    "email",
+    "telefono",
+    "price",
+    "ticket_id",
+  ],
 });
 
 export const AuthTypes = Types;

@@ -84,7 +84,6 @@ export const azioni = [
     i: "fal fa-user-headset",
     displayRole: ["support"],
   },
-<<<<<<< HEAD
   {
     id: 9,
     name: "Biglietaria",
@@ -99,8 +98,6 @@ export const azioni = [
     i: "fab fa-wpforms",
     displayRole: ["support", "super_admin", "user", "agency"],
   },
-=======
->>>>>>> 5c4dcd27fe3c1099df14f9ac1555047cb3a3d501
 ];
 
 export const administrazioni = [

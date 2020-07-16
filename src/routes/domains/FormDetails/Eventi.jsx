@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Select, notification } from "antd";
+import MyInput from "./Input";
 const { Option } = Select;
 
 class Eventi extends Component {
@@ -21,6 +22,8 @@ class Eventi extends Component {
       "5",
       "6+(specificare su note)",
     ],
+    price: this.props.TicketByTcketId.total_cost,
+
     link: this.props.TicketByTcketId.link,
     nome_agenzia: this.props.TicketByTcketId.nome_agenzia,
     extra_data: this.props.TicketByTcketId.extra_data,
@@ -33,17 +36,6 @@ class Eventi extends Component {
   };
   resetState = (msg) => {
     if (!msg.error) {
-      this.setState({
-        link: "",
-        nome_agenzia: "",
-        extra_data: "",
-        categoria: 0,
-        descrizione_categoria: "",
-        quantity: 0,
-        name: "",
-        email: "",
-        telefono: "",
-      });
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
@@ -69,6 +61,7 @@ class Eventi extends Component {
       name,
       email,
       telefono,
+      price,
     } = this.state;
     this.props.sendDataForm(
       this.props.typee,
@@ -97,29 +90,36 @@ class Eventi extends Component {
     );
   };
   render() {
+    const { editable, TicketByTcketId } = this.props;
+    const {
+      nome_agenzia,
+      telefono,
+      email,
+      link,
+      name,
+      descrizione_categoria,
+      price,
+    } = this.state;
     return (
       <div className="newReg--row">
         <div className="newReg--row__col">
-          <div className="itemCol full">
-            <label className="inputLabel">Nome Agenzia</label>
-            <input
-              class="ant-input"
-              type="text"
-              readOnly={this.props.editable}
-              value={this.state.nome_agenzia}
-              onChange={(e) => {
-                this.setState({ nome_agenzia: e.target.value });
-              }}
-            ></input>
-          </div>
+          <MyInput
+            labelName={"Nome Agenzia"}
+            type={"text"}
+            editable={editable}
+            value={nome_agenzia}
+            handleChange={(e) => {
+              this.setState({ nome_agenzia: e.target.value });
+            }}
+          />
           <div className="itemCol full">
             <label className="inputLabel">Categoria</label>
             <Select
-              disabled={this.props.editable}
+              disabled={editable}
               onChange={(value) => {
                 this.setState({ categoria: value });
               }}
-              defaultValue={this.props.TicketByTcketId.categoria}
+              defaultValue={TicketByTcketId.categoria}
             >
               <Option value="0">Selezionare Evento</Option>
               <Option value="1">Concerti</Option>
@@ -129,54 +129,52 @@ class Eventi extends Component {
               <Option value="5">Altro</Option>
             </Select>
           </div>
-          <div className="itemCol full">
-            <label className="inputLabel">Telefono</label>
-            <input
-              class="ant-input"
-              type="text"
-              value={this.state.telefono}
-              readOnly={this.props.editable}
-              onChange={(e) => {
-                this.setState({ telefono: e.target.value });
-              }}
-            ></input>
-          </div>
-
-          <div className="itemCol full">
-            <label className="inputLabel">Email</label>
-            <input
-              class="ant-input"
-              type="text"
-              value={this.state.email}
-              readOnly={this.props.editable}
-              onChange={(e) => {
-                this.setState({ email: e.target.value });
-              }}
-            ></input>
-          </div>
+          <MyInput
+            labelName={"Telefono"}
+            type={"text"}
+            editable={editable}
+            value={telefono}
+            handleChange={(e) => {
+              this.setState({ telefono: e.target.value });
+            }}
+          />
+          <MyInput
+            labelName={"Email"}
+            type={"text"}
+            editable={editable}
+            value={email}
+            handleChange={(e) => {
+              this.setState({ email: e.target.value });
+            }}
+          />
+          <MyInput
+            labelName={"Prezzo"}
+            type={"text"}
+            editable={editable}
+            value={price}
+            handleChange={(e) => {
+              this.setState({ price: e.target.value });
+            }}
+          />
         </div>
-
         <div className="newReg--row__col">
-          <div className="itemCol full">
-            <label className="inputLabel">Link</label>
-            <input
-              class="ant-input"
-              type="text"
-              value={this.state.link}
-              readOnly={this.props.editable}
-              onChange={(e) => {
-                this.setState({ link: e.target.value });
-              }}
-            ></input>
-          </div>
+          <MyInput
+            labelName={"Link"}
+            type={"text"}
+            editable={editable}
+            value={link}
+            handleChange={(e) => {
+              this.setState({ link: e.target.value });
+            }}
+          />
           <div className="itemCol full">
             <label className="inputLabel">Qta biglietti</label>
             <Select
-              disabled={this.props.editable}
+              disabled={editable}
               onChange={(value) => {
                 this.setState({ quantity: value });
               }}
-              defaultValue={this.props.TicketByTcketId.quantity}
+              defaultValue={TicketByTcketId.quantity}
             >
               <Option value="0">Selezionare un numero</Option>
               <Option value="1">1</Option>
@@ -187,32 +185,31 @@ class Eventi extends Component {
               <Option value="6">6+(specificare su note)</Option>
             </Select>
           </div>
-          <div className="itemCol full">
-            <label className="inputLabel">Nome</label>
-            <input
-              class="ant-input"
-              type="text"
-              value={this.state.name}
-              readOnly={this.props.editable}
-              onChange={(e) => {
-                this.setState({ name: e.target.value });
-              }}
-            ></input>
-          </div>
-          <div className="itemCol full">
-            <label className="inputLabel">Descrizione</label>
-            <input
-              class="ant-input"
-              type="text"
-              value={this.state.descrizione_categoria}
-              readOnly={this.props.editable}
-              onChange={(e) => {
-                this.setState({ descrizione_categoria: e.target.value });
-              }}
-            ></input>
-          </div>
+          <MyInput
+            labelName={"Nome"}
+            type={"text"}
+            editable={editable}
+            value={name}
+            handleChange={(e) => {
+              this.setState({ name: e.target.value });
+            }}
+          />
+          <MyInput
+            labelName={"Descrizione"}
+            type={"text"}
+            editable={editable}
+            value={descrizione_categoria}
+            handleChange={(e) => {
+              this.setState({ descrizione_categoria: e.target.value });
+            }}
+          />
+
           <div className="rowForButton">
-            <button disabled className="SubmitButton" onClick={this.submitData}>
+            <button
+              disabled={editable}
+              className="SubmitButton"
+              onClick={this.submitData}
+            >
               Invia
             </button>
           </div>

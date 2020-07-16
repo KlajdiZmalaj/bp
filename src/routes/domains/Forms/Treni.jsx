@@ -77,6 +77,7 @@ class Treni extends Component {
       ""
     );
   };
+
   render() {
     return (
       <div className="formsContainer--body">
@@ -191,6 +192,7 @@ class Treni extends Component {
                 value="1"
                 id="bagaglio1"
               />
+
               <label htmlFor="bagaglio1" className="customRadio">
                 <span></span>
               </label>
@@ -261,7 +263,7 @@ class Treni extends Component {
           <div className="label">Adulti</div>
           <input
             value={this.state.adulti}
-            type="text"
+            type="number"
             onChange={(e) => {
               this.setState({ adulti: e.target.value });
             }}
@@ -271,7 +273,7 @@ class Treni extends Component {
           <div className="label">Ragazzi</div>
           <input
             value={this.state.ragazzi}
-            type="text"
+            type="number"
             onChange={(e) => {
               this.setState({ ragazzi: e.target.value });
             }}
