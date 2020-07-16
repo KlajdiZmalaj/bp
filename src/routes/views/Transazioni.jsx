@@ -108,7 +108,9 @@ class Transazioni extends React.Component {
         this.props.getPayments(
           this.state.username,
           this.state.from || moment().subtract(30, "days").format("YYYY-MM-DD"),
-          this.state.to || moment().format("YYYY-MM-DD")
+          this.state.to || moment().format("YYYY-MM-DD"),
+          1,
+          this.state.perPage
         );
       }
     });
@@ -117,22 +119,30 @@ class Transazioni extends React.Component {
   changeSelected = (filter) => {
     this.setState({ selectedFilter: filter });
     if (filter === 0) {
-      this.props.getPayments("", moment(), moment());
+      this.props.getPayments("", moment(), moment(), 1, this.state.perPage);
     }
     if (filter === 1) {
       this.props.getPayments(
         "",
         moment().subtract(1, "days").format("YYYY-MM-DD"),
-        moment().subtract(1, "days").format("YYYY-MM-DD")
+        moment().subtract(1, "days").format("YYYY-MM-DD"),
+        1,
+        this.state.perPage
       );
     }
     if (filter === 2) {
       const time7daysAgo = moment().subtract(7, "days").startOf("day");
-      this.props.getPayments("", time7daysAgo, moment());
+      this.props.getPayments("", time7daysAgo, moment(), 1, this.state.perPage);
     }
     if (filter === 3) {
       const time30daysAgo = moment().subtract(30, "days").startOf("day");
-      this.props.getPayments("", time30daysAgo, moment());
+      this.props.getPayments(
+        "",
+        time30daysAgo,
+        moment(),
+        1,
+        this.state.perPage
+      );
       // this.props.getPayments();
     }
   };
@@ -514,7 +524,13 @@ class Transazioni extends React.Component {
                 <Pagination
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
-                    this.props.getPayments("", "", "", e, this.state.perPage);
+                    this.props.getPayments(
+                      "",
+                      this.state.from || "",
+                      this.state.to || "",
+                      e,
+                      this.state.perPage
+                    );
                   }}
                   total={paymentsPages.total_pages * 10}
                 />
@@ -522,6 +538,13 @@ class Transazioni extends React.Component {
                   defaultValue="10"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
+                    this.props.getPayments(
+                      "",
+                      this.state.from || "",
+                      this.state.to || "",
+                      e,
+                      this.state.perPage
+                    );
                   }}
                 >
                   <Option value="10">10 / Pagina</Option>
