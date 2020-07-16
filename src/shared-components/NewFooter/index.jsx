@@ -23,14 +23,14 @@ class Footer extends Component {
             >
               contattaci subito
             </button>
-            <div
+            {/* <div
               className="chat"
               onClick={() => {
                 window.zE("webWidget", "toggle");
               }}
             >
               <i className="fal fa-comments-alt"></i>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mid">

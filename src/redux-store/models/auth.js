@@ -42,7 +42,7 @@ const { Types, Creators } = createActions({
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
-  getPayments: ["username", "from", "to"],
+  getPayments: ["username", "from", "to", "page_number", "limit"],
   setPayments: ["payments"],
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
@@ -215,12 +215,14 @@ const { Types, Creators } = createActions({
     "price",
     "ticket_id",
   ],
+  setPaymentsPages: ["paymentsPages"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  paymentsPages: 0,
   loadingPayments: true,
   privMsg: [],
   agents: [],
@@ -253,6 +255,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_PAYMENTS_PAGES]: (state, { paymentsPages }) => ({
+    ...state,
+    paymentsPages,
+  }),
   [Types.SET_PAYMENTS_LOADING]: (state, { loadingPayments }) => ({
     ...state,
     loadingPayments,

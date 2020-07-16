@@ -84,4 +84,23 @@ export default {
   // HOX: require(`../assets/images${skin}/bill-dark.svg`),
   // FSTW: require(`../assets/images${skin}/bill-dark.svg`),
   // ILIO: require(`../assets/images${skin}/bill-dark.svg`)
+
+  //prenotazioni images
+  "expedia-logo": require(`../assets/images/prenotazioni/expedia-logo.png`),
+  "expedia-bg": require(`../assets/images/prenotazioni/expedia-bg.jpg`),
+
+  "flixbus-logo": require(`../assets/images/prenotazioni/flixbus-logo.png`),
+  "flixbus-bg": require(`../assets/images/prenotazioni/flixbus-bg.jpg`),
+
+  "trenitalia-logo": require(`../assets/images/prenotazioni/trenitalia-logo.png`),
+  "trenitalia-bg": require(`../assets/images/prenotazioni/trenitalia-bg.jpg`),
+
+  "vivaticket-logo": require(`../assets/images/prenotazioni/vivaticket-logo.png`),
+  "vivaticket-bg": require(`../assets/images/prenotazioni/vivaticket-bg.jpg`),
+
+  "ticketing-logo": require(`../assets/images/prenotazioni/ticketing-logo.png`),
+  "ticketing-bg": require(`../assets/images/prenotazioni/ticketing-bg.jpg`),
+
+  "stubhub-logo": require(`../assets/images/prenotazioni/stubhub-logo.png`),
+  "stubhub-bg": require(`../assets/images/prenotazioni/stubhub-bg.jpg`),
 };

@@ -85,15 +85,8 @@ export const azioni = [
     displayRole: ["support"],
   },
   {
-    id: 9,
-    name: "Biglietaria",
-    link: "forms",
-    i: "fab fa-wpforms",
-    displayRole: ["support", "super_admin", "user", "agency"],
-  },
-  {
     id: 10,
-    name: "Biglietaria Dettagli",
+    name: "Prenotazioni Details",
     link: "formsDetail",
     i: "fab fa-wpforms",
     displayRole: ["support", "super_admin", "user", "agency"],
