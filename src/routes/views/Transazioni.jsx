@@ -524,9 +524,9 @@ class Transazioni extends React.Component {
                     this.setState({ perPage: parseInt(e) });
                   }}
                 >
-                  <Option value="10">10 Pagine</Option>
-                  <Option value="20">20 Pagine</Option>
-                  <Option value="30">30 Pagine</Option>
+                  <Option value="10">10 / Pagina</Option>
+                  <Option value="20">20 / Pagina</Option>
+                  <Option value="30">30 / Pagina</Option>
                 </Select>
               </div>
             </div>

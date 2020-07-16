@@ -160,6 +160,18 @@
       &:first-child {
         margin-top: 0;
       }
+      .ant-select-selection--single {
+        border: none;
+        background: #ebeced;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        border-radius: 0;
+      }
+      .ant-select,
+      .ant-select-selection--single {
+        width: 100%;
+      }
       .ant-input {
         border-radius: 0;
       }
