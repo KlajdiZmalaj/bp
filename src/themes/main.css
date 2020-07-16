@@ -1351,7 +1351,11 @@ i#private {
 .transTable .bc {
   border-bottom: 1px solid #32424e;
   text-align: center;
+  width: auto;
   line-height: 14px;
+  display: block;
+  margin: 0 auto;
+  float: left;
 }
 
 .transTable th,
@@ -1439,6 +1443,7 @@ i#private {
 
 .wsNwp {
   white-space: nowrap;
+  width: 13%;
 }
 
 .loader {

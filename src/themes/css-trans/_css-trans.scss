@@ -70,7 +70,11 @@
   .bc {
     border-bottom: 1px solid #32424e;
     text-align: center;
+    width: auto;
     line-height: 14px;
+    display: block;
+    margin: 0 auto;
+    float: left;
   }
   th,
   td {
@@ -142,6 +146,7 @@
 }
 .wsNwp {
   white-space: nowrap;
+  width: 13%;
 }
 
 .loader {

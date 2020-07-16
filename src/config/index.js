@@ -92,11 +92,11 @@ export const azioni = [
     displayRole: ["support"],
   },
   {
-    id: 10,
+    id: 11,
     name: "Prenotazioni Details",
     link: "formsDetail",
     i: "fab fa-wpforms",
-    displayRole: ["support", "super_admin", "user", "agency"],
+    displayRole: ["support"],
   },
 ];
 
