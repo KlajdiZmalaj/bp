@@ -64,6 +64,13 @@ export const azioni = [
     displayRole: ["support", "super_admin", "user", "agency"],
   },
   {
+    id: 11,
+    name: "Visure",
+    link: "Visure",
+    i: "fab fa-wpforms",
+    displayRole: ["support"],
+  },
+  {
     id: 6,
     name: "configura",
     link: "configura",

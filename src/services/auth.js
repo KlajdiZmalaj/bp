@@ -791,6 +791,7 @@ export const updateDataFormReq = (
           }
         : {
             ...skin,
+            price,
             type: typee,
             link,
             nome_agenzia,

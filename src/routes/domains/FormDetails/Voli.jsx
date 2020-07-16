@@ -89,7 +89,11 @@ class Voli extends Component {
           />
           <div className="itemCol full Bagalio">
             <div className="inputLabel">Bagaglio</div>
-            <div className="itemCol full full-radio ant-input">
+            <div
+              className={`itemCol full full-radio ant-input ${
+                editable ? "disabled" : ""
+              }`}
+            >
               <span className="inputLabel">A mano</span>
 
               <input
@@ -170,7 +174,7 @@ class Voli extends Component {
           <div className="rowForButton">
             <button
               disabled={editable}
-              className="SubmitButton"
+              className={`SubmitButton ${editable ? "disabled" : ""}`}
               onClick={this.submitData}
             >
               Invia

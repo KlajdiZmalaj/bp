@@ -26,6 +26,8 @@ import {
 import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
+import Visure from "./routes/views/Visure";
+
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -105,7 +107,6 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["super_admin", "agency"]}
             />
-
             <PrivateRoute
               path="/wallet"
               component={Wallet}
@@ -148,7 +149,6 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["super_admin", "agency"]}
             />
-
             <PrivateRoute
               path="/registerUser"
               component={RegisterEndUser}
@@ -197,6 +197,14 @@ class Root extends React.Component {
               allowedRoles={["support"]}
               role={role}
             />
+            <PrivateRoute
+              path="/Visure"
+              component={Visure}
+              isLoggedin={isLoggedin}
+              allowedRoles={["support"]}
+              role={role}
+            />
+            Visure
           </Switch>
         </HashRouter>
         {this.state.top && (
