@@ -61,14 +61,14 @@ export const azioni = [
     name: "Prenotazioni",
     link: "forms",
     i: "fab fa-wpforms",
-    displayRole: ["support", "super_admin", "user", "agency"],
+    displayRole: ["super_admin", "user", "agency"],
   },
   {
     id: 11,
     name: "Visure",
     link: "Visure",
     i: "fab fa-wpforms",
-    displayRole: ["support"],
+    displayRole: ["super_admin", "user", "agency"],
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ export const azioni = [
     name: "Prenotazioni Details",
     link: "formsDetail",
     i: "fab fa-wpforms",
-    displayRole: ["support"],
+    displayRole: ["support","super_admin", "agency","user"],
   },
 ];
 

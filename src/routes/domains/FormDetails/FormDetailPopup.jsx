@@ -61,16 +61,21 @@ class FormDetailPopup extends Component {
           />
           <div className="newReg--row lastRow ">
             <div className="newReg--row__col submitcol ml-auto">
-              <button
-                className="SubmitButton"
-                onClick={() => {
-                  this.setState({
-                    editable: false,
-                  });
-                }}
-              >
-                Modificare
-              </button>
+              {(this.props.roleName === "support" &&
+                this.props.TicketByTcketId.status === "Nuova Richiesta") ||
+              (this.props.roleName != "support" &&
+                this.props.TicketByTcketId.status === "Nuova Offerta") ? (
+                <button
+                  className="SubmitButton"
+                  onClick={() => {
+                    this.setState({
+                      editable: false,
+                    });
+                  }}
+                >
+                  Modificare
+                </button>
+              ) : null}
             </div>
           </div>
         </div>
@@ -82,6 +87,7 @@ class FormDetailPopup extends Component {
 const mstp = (state) => {
   return {
     TicketByTcketId: state.auth.TicketByTcketId,
+    roleName: state.auth.accountInfo.profile.role.name,
   };
 };
 export default connect(mstp, AuthActions)(FormDetailPopup);

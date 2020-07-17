@@ -5,49 +5,64 @@ import AziendaOImpresaForm from "./AziendaOImpresaForm";
 import PersonaFisicaForm from "./PersonaFisicaForm";
 class FormVisureDomain extends Component {
   state = {
-    persona_fisica: 1,
+    change_form: 0,
+  };
+  resetState = () => {
+    this.setState({ change_form: 0 });
   };
   render() {
-    const { persona_fisica } = this.state;
+    const { change_form } = this.state;
     return (
       <div>
-        <div className="InputContainerChose">
-          <div className="VisuraSu">Visura su:</div>
-          <div>
-            <div className="RadoChose">
-              {" "}
-              <input
-                checked={persona_fisica == 1}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ persona_fisica: e.target.value });
-                  }
+        {change_form == 0 ? (
+          <div className="formsContainer">
+            <h1>Visure</h1>
+            <div className="formsContainer--cards">
+              <div
+                className="formsContainer--cards__item animated fadeIn"
+                onClick={() => {
+                  this.setState({
+                    change_form: 1,
+                  });
                 }}
-                type="radio"
-                name="PersonaFisica"
-                value={1}
-              />
-              <span className="inputLabel radiolabel">PERSONA FISICA</span>
-            </div>
-            <div className="RadoChose">
-              {" "}
-              <input
-                checked={persona_fisica == 2}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ persona_fisica: e.target.value });
-                  }
+              >
+                <div className="titleCard">
+                  PERSONA FISICA
+                  <i className="fas fa-receipt" />
+                </div>
+                <img className="bgImg" />
+                <div className="imageCard">
+                  <img className="logoImg" />
+                </div>
+              </div>
+              <div
+                className="formsContainer--cards__item animated fadeIn"
+                onClick={() => {
+                  this.setState({
+                    change_form: 2,
+                  });
                 }}
-                type="radio"
-                name="PersonaFisica"
-                value={2}
-              />
-              <span className="inputLabel radiolabel">AZIENDA O IMPRESA</span>
+              >
+                <div className="titleCard">
+                  AZIENDA O IMPRESA
+                  <i className="fas fa-receipt" />
+                </div>
+                <img className="bgImg" />
+                <div className="imageCard">
+                  <img className="logoImg" />
+                </div>
+              </div>
             </div>
           </div>
+        ) : null}
+        <div>
+          {" "}
+          {change_form == 2 ? (
+            <AziendaOImpresaForm type={change_form} goBack={this.resetState} />
+          ) : change_form == 1 ? (
+            <PersonaFisicaForm type={change_form} goBack={this.resetState} />
+          ) : null}
         </div>
-
-        {persona_fisica == 2 ? <AziendaOImpresaForm /> : <PersonaFisicaForm />}
       </div>
     );
   }

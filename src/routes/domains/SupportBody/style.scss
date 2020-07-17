@@ -1,8 +1,15 @@
 //
 .supportContent {
   .description {
-    display: block !important;
+    display: flex !important;
     cursor: pointer;
+    & .ErrorAdd {
+      padding-right: 1%;
+    }
+    & .descriptionErrorMsg {
+      width: 92%;
+      overflow: hidden;
+    }
   }
   .deleteError {
     width: 170px !important;

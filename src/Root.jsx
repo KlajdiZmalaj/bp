@@ -181,27 +181,21 @@ class Root extends React.Component {
               path="/forms"
               component={Forms}
               isLoggedin={isLoggedin}
-              allowedRoles={[
-                "support",
-                "super_admin",
-                "user",
-                "admin",
-                "agency",
-              ]}
+              allowedRoles={["super_admin", "user", "agency"]}
               role={role}
             />
             <PrivateRoute
               path="/formsDetail"
               component={FormDetails}
               isLoggedin={isLoggedin}
-              allowedRoles={["support"]}
+              allowedRoles={["support", "super_admin", "agency", "user"]}
               role={role}
             />
             <PrivateRoute
               path="/Visure"
               component={Visure}
               isLoggedin={isLoggedin}
-              allowedRoles={["support"]}
+              allowedRoles={["super_admin", "user", "agency"]}
               role={role}
             />
             Visure

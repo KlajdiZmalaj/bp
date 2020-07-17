@@ -806,3 +806,59 @@ export const updateDataFormReq = (
     )
     .catch((error) => ({ error }));
 };
+export const sendVisureDetailsReq = (
+  type,
+  codice_fiscale,
+  provincia,
+  address,
+  telefono,
+  email,
+  nome,
+  cognome,
+  data_di_nascita,
+  luogo_di_nascita,
+  ragione_sociale,
+  p_iva,
+  comune
+) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(
+      "/buy/visure",
+      type === 1
+        ? {
+            ...skin,
+            type,
+            codice_fiscale,
+            provincia,
+            address,
+            telefono,
+            email,
+            nome,
+            cognome,
+            data_di_nascita,
+            luogo_di_nascita,
+          }
+        : {
+            ...skin,
+            type,
+            ragione_sociale,
+            p_iva,
+            codice_fiscale,
+            provincia,
+            comune,
+            address,
+            email,
+            telefono,
+            luogo_di_nascita,
+          }
+    )
+    .catch((error) => ({ error }));
+};

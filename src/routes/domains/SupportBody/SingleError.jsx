@@ -3,24 +3,35 @@ import React, { useState, Fragment } from "react";
 const SingleError = ({ error, deleteError }) => {
   const [isHover, setHover] = useState(false);
   const [hasPopup, setPopUp] = useState(false);
-
+  const formatString = (string) => {
+    return (
+      string.charAt(0).toUpperCase() +
+      string.substring(1, string.length).toLowerCase()
+    );
+  };
   return (
     <div className="userList--noDoc__user singleUser">
       <div className="body">
-        <span>{error.id}</span>
         <span> {error.time}</span>
         <span> {error.title}</span>
-        <span> {error.user_full_name}</span>
-        <span> {error.username}</span>
+        <span> {formatString(error.user_full_name)}</span>
+        <span> {formatString(error.username)}</span>
         <span className="description">
-          {" "}
-          <i
-            onClick={() => {
-              setHover(!isHover);
-            }}
-            className="fal fa-plus-circle"
-          ></i>{" "}
-          {error.description}
+          <div className="descriptionErrorMsg">
+            {error.description.length <= 46
+              ? error.description
+              : error.description.substring(0, 45) + "..."}
+          </div>
+          <div className="ErrorAdd">
+            {" "}
+            <i
+              onClick={() => {
+                setHover(!isHover);
+              }}
+              style={{ cursor: "pointer" }}
+              className={`fal fa-${isHover ? "minus" : "plus"}-circle`}
+            ></i>
+          </div>
         </span>
         <span onClick={() => setPopUp(true)} className="deleteError">
           <i className="fal fa-trash-alt"></i>

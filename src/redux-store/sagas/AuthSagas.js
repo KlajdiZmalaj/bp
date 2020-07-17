@@ -28,6 +28,7 @@ import {
   getDataFormDetailReq,
   getTicketByTicketIdReq,
   updateDataFormReq,
+  sendVisureDetailsReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -605,9 +606,7 @@ export function* getDataFormDetails() {
   if (response.data) {
     if (response.status === 200) {
       yield put(
-        AuthActions.setDataFormDetails(
-          response.data ? response.data.tickets : null
-        )
+        AuthActions.setDataFormDetails(response.data ? response.data : null)
       );
     }
   }
@@ -673,4 +672,39 @@ export function* updateDataForm(data) {
     });
   }
   // console.log("ca ka response", data, response);
+}
+export function* sendVisureDetails(data) {
+  const response = yield call(
+    sendVisureDetailsReq,
+    data.typee,
+    data.codice_fiscale,
+    data.provincia,
+    data.address,
+    data.telefono,
+    data.email,
+    data.nome,
+    data.cognome,
+    data.data_di_nascita,
+    data.luogo_di_nascita,
+    data.ragione_sociale,
+    data.p_iva,
+    data.comune
+  );
+  if (response?.status === 200) {
+    data.callBack({
+      error: false,
+      msg: response?.data.message,
+    });
+  }
+  if (response.error) {
+    data.callBack({
+      error: true,
+      msg: [
+        response.error.response.data.message,
+        response.error.response.data.errors
+          ? Object.values(response.error.response.data.errors)
+          : "error backend",
+      ],
+    });
+  }
 }
