@@ -108,6 +108,7 @@
     background-color: #f5f5f5;
     text-transform: uppercase;
     display: flex;
+    justify-content: space-between !important;
     flex-flow: row;
     span {
       flex-grow: 1;
@@ -121,17 +122,15 @@
       font-size: 14px;
       text-transform: capitalize;
       &:nth-child(1) {
-        width: 40%;
-      }
-      &:nth-child(2) {
         width: 70%;
       }
-      &:nth-child(3) {
+      &:nth-child(2) {
         width: 150%;
       }
-      &:last-child {
+      &:nth-child(3) {
         width: 120%;
       }
+
       @media (max-width: 1024px) {
         text-transform: capitalize;
         font-size: 12px;
@@ -194,13 +193,13 @@
           text-transform: capitalize;
           font-size: 14px;
           &:nth-child(1) {
-            width: 40%;
-          }
-          &:nth-child(2) {
             width: 70%;
           }
-          &:nth-child(3) {
+          &:nth-child(2) {
             width: 150%;
+          }
+          &:nth-child(3) {
+            width: 120%;
           }
           &:last-child {
             width: 120%;

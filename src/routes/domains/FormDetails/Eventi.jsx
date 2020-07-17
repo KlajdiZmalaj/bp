@@ -23,7 +23,6 @@ class Eventi extends Component {
       "6+(specificare su note)",
     ],
     price: this.props.TicketByTcketId.total_cost,
-
     link: this.props.TicketByTcketId.link,
     nome_agenzia: this.props.TicketByTcketId.nome_agenzia,
     extra_data: this.props.TicketByTcketId.extra_data,
@@ -63,39 +62,7 @@ class Eventi extends Component {
       telefono,
       price,
     } = this.state;
-    this.props.sendDataForm(
-      "typee",
-      "link",
-      "nome_agenzia",
-      "extra_data",
-      "bagaglio",
-      "bagaglio_stiva",
-      "callBack",
-      "partenza",
-      "partenza_stazione",
-      "andata_time",
-      "destinazione",
-      "destinazione_stazione",
-      "compagnie",
-      "adulti",
-      "ragazzi",
-      "tipologia_biglietto",
-      "ritorno_date",
-      "categoria",
-      "descrizione_categoria",
-      "quantity",
-      "name",
-      "email",
-      "telefono",
-      "price",
-      "ticket_id",
-      categoria,
-      descrizione_categoria,
-      quantity,
-      name,
-      email,
-      telefono,
-      price,
+    this.props.updateDataForm(
       this.props.typee,
       link,
       nome_agenzia,
@@ -118,7 +85,9 @@ class Eventi extends Component {
       quantity,
       name,
       email,
-      telefono
+      telefono,
+      price,
+      this.props.ticketId
     );
   };
   render() {
@@ -148,6 +117,7 @@ class Eventi extends Component {
             <label className="inputLabel">Categoria</label>
             <Select
               disabled={editable}
+              className={`${editable ? "disabled" : ""}`}
               onChange={(value) => {
                 this.setState({ categoria: value });
               }}
@@ -202,6 +172,7 @@ class Eventi extends Component {
           <div className="itemCol full">
             <label className="inputLabel">Qta biglietti</label>
             <Select
+              className={`${editable ? "disabled" : ""}`}
               disabled={editable}
               onChange={(value) => {
                 this.setState({ quantity: value });
@@ -239,7 +210,7 @@ class Eventi extends Component {
           <div className="rowForButton">
             <button
               disabled={editable}
-              className="SubmitButton"
+              className={`SubmitButton ${editable ? "disabled" : ""}`}
               onClick={this.submitData}
             >
               Invia

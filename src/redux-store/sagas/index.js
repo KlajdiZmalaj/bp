@@ -31,6 +31,7 @@ import {
   getDataFormDetails,
   getTicketByTicketId,
   updateDataForm,
+  sendVisureDetails,
 } from "./AuthSagas";
 
 import {
@@ -46,6 +47,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH h
+    takeLatest(AuthTypes.SEND_VISURE_DETAILS, sendVisureDetails),
     takeLatest(AuthTypes.UPDATE_DATA_FORM, updateDataForm),
     takeLatest(AuthTypes.GET_TICKET_BY_TICKET_ID, getTicketByTicketId),
     takeLatest(AuthTypes.GET_DATA_FORM_DETAILS, getDataFormDetails),

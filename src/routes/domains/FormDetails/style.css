@@ -1,0 +1,39 @@
+.itemCol.full-radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  bottom: -8px;
+}
+
+.itemCol.full.Bagalio {
+  position: relative;
+  bottom: -4px;
+}
+
+.invisible {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.rowForButton {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-top: 15px;
+}
+/*# sourceMappingURL=style.css.map */

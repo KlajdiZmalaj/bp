@@ -146,6 +146,7 @@ class Treni extends Component {
           <div className="itemCol full">
             <label className="inputLabel">Andata</label>
             <DatePicker
+              className={` ${editable ? "disabled" : ""}`}
               value={moment(andata_time)}
               disabled={editable}
               showTime
@@ -159,6 +160,7 @@ class Treni extends Component {
               <label className="inputLabel">Ritorno</label>
 
               <DatePicker
+                className={` ${editable ? "disabled" : ""}`}
                 disabled={editable}
                 value={moment(ritorno_date)}
                 showTime
@@ -171,7 +173,11 @@ class Treni extends Component {
 
           <div className="itemCol full Bagalio">
             <div className="inputLabel">Tipologia Biglietto</div>
-            <div className="itemCol full full-radio ant-input">
+            <div
+              className={`itemCol full full-radio ant-input ${
+                editable ? "disabled" : ""
+              }`}
+            >
               <span className="inputLabel">Andata e ritorna</span>
 
               <input
@@ -264,7 +270,11 @@ class Treni extends Component {
           />
           <div className="itemCol full Bagalio">
             <div className="inputLabel">Compagnie</div>
-            <div className="itemCol full full-radio ant-input">
+            <div
+              className={`itemCol full full-radio ant-input ${
+                editable ? "disabled" : ""
+              }`}
+            >
               <span className="inputLabel">TrenItalia</span>
 
               <input
@@ -299,7 +309,7 @@ class Treni extends Component {
           <div className="rowForButton">
             <button
               disabled={editable}
-              className="SubmitButton"
+              className={`SubmitButton ${editable ? "disabled" : ""}`}
               onClick={this.submitData}
             >
               Invia

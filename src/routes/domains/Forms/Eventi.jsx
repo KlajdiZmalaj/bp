@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Select, Button, notification } from "antd";
 import TextArea from "antd/lib/input/TextArea";
+import images from "themes/images";
+
 const { Option } = Select;
 
 class Eventi extends Component {
@@ -55,7 +57,6 @@ class Eventi extends Component {
   submitData = () => {
     const {
       link,
-      nome_agenzia,
       extra_data,
       categoria,
       descrizione_categoria,
@@ -67,7 +68,7 @@ class Eventi extends Component {
     this.props.sendDataForm(
       this.props.typee,
       link,
-      nome_agenzia,
+      this.props.nome_agenzia,
       extra_data,
       null,
       null,
@@ -91,130 +92,138 @@ class Eventi extends Component {
     );
   };
   render() {
+    const { nome_agenzia, color } = this.props;
+
     return (
-      <div className="formsContainer--body">
-        <div className="formsItemTogether">
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Nome Agenzia</div>
-            <input
-              value={this.state.nome_agenzia}
-              type="text"
-              onChange={(e) => {
-                this.setState({ nome_agenzia: e.target.value });
-              }}
-            />
-          </div>
-          <div className="formsContainer--body__item w-40">
-            <div className="label">Link </div>
-            <input
-              value={this.state.link}
-              onChange={(e) => {
-                this.setState({ link: e.target.value });
-              }}
-              type="text"
-            />
-          </div>
-
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Categoria </div>
-
-            <Select
-              onChange={(value) => {
-                this.setState({ categoria: value });
-              }}
-              defaultValue={"Selezionare Evento"}
-            >
-              <Option value="0">Selezionare Evento</Option>
-              <Option value="1">Concerti</Option>
-              <Option value="2">Sport</Option>
-              <Option value="3">Museo</Option>
-              <Option value="4">Teatro</Option>
-              <Option value="5">Altro</Option>
-            </Select>
-            <Button>
-              {this.state.categoryArray[this.state.categoria]}{" "}
-              <i className="fal fa-chevron-down" aria-hidden="true"></i>
-            </Button>
-          </div>
-        </div>
-        <div className="formsItemTogether">
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Nome </div>
-            <input
-              value={this.state.name}
-              type="text"
-              onChange={(e) => {
-                this.setState({ name: e.target.value });
-              }}
-            />
-          </div>
-          <div className="formsContainer--body__item w-40">
-            <div className="label">Descrizione</div>
-            <input
-              value={this.state.descrizione_categoria}
-              type="text"
-              onChange={(e) => {
-                this.setState({ descrizione_categoria: e.target.value });
-              }}
-            />
-          </div>
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Qta biglietti </div>
-            <Select
-              onChange={(value) => {
-                this.setState({ quantity: value });
-              }}
-              defaultValue={"Selezionare un numero"}
-            >
-              <Option value="0">Selezionare un numero</Option>
-              <Option value="1">1</Option>
-              <Option value="2">2</Option>
-              <Option value="3">3</Option>
-              <Option value="4">4</Option>
-              <Option value="5">5</Option>
-              <Option value="6">6+(specificare su note)</Option>
-            </Select>
-            <Button>
-              {this.state.quantityArray[this.state.quantity]}{" "}
-              <i className="fal fa-chevron-down" aria-hidden="true"></i>
-            </Button>
-          </div>
-        </div>
-        <div className="formsItemTogetherStart">
-          <div className="formsContainer--body__item w-25">
-            <div className="label">Email</div>
-            <input
-              value={this.state.email}
-              type="text"
-              onChange={(e) => {
-                this.setState({ email: e.target.value });
-              }}
-            />
-          </div>
-          <div className="formsContainer--body__item w-25">
-            <div className="label"> Telefono</div>
-            <input
-              value={this.state.telefono}
-              type="number"
-              onChange={(e) => {
-                this.setState({ telefono: e.target.value });
-              }}
-            />
-          </div>
-        </div>
-        <div className="formsContainer--body__item ">
-          <div className="label"> Note</div>
-          <TextArea
-            value={this.state.extra_data}
-            type="number"
-            onChange={(e) => {
-              this.setState({ extra_data: e.target.value });
-            }}
+      <div className="formsContainer--body animated fadeIn">
+        <div className="leftForm">
+          <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
+          <img
+            src={images[`${nome_agenzia}-logo`]}
+            alt=""
+            className="imgLogo"
           />
+          <div className="overlayImg" style={{ backgroundColor: color }}></div>
         </div>
+        <div className="rightForm">
+          <div className="rightForm--header">
+            Prenotazione Biglietti{" "}
+            <img src={images[`${nome_agenzia}-logo`]} alt="" />
+          </div>
+          <div className="rightForm--left">
+            <div className="formsContainer--body__item">
+              <div className="label">Nome Agenzia</div>
+              <input
+                value={this.props.accountInfo?.profile?.name}
+                type="text"
+                disabled
+              />
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Link </div>
+              <input
+                value={this.state.link}
+                onChange={(e) => {
+                  this.setState({ link: e.target.value });
+                }}
+                type="text"
+              />
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Categoria </div>
 
-        <div className="formsContainer--body__item submit">
-          <button onClick={this.submitData}>Invia</button>
+              <Select
+                onChange={(value) => {
+                  this.setState({ categoria: value });
+                }}
+                defaultValue={"Selezionare Evento"}
+              >
+                <Option value="0">Selezionare Evento</Option>
+                <Option value="1">Concerti</Option>
+                <Option value="2">Sport</Option>
+                <Option value="3">Museo</Option>
+                <Option value="4">Teatro</Option>
+                <Option value="5">Altro</Option>
+              </Select>
+            </div>
+            <div className="formsContainer--body__item datiPass">
+              <div className="label"> Note</div>
+              <TextArea
+                value={this.state.extra_data}
+                type="number"
+                onChange={(e) => {
+                  this.setState({ extra_data: e.target.value });
+                }}
+              />
+            </div>
+          </div>
+          <div className="rightForm--right">
+            <div className="formsContainer--body__item ">
+              <div className="label">Nome </div>
+              <input
+                value={this.state.name}
+                type="text"
+                onChange={(e) => {
+                  this.setState({ name: e.target.value });
+                }}
+              />
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Descrizione</div>
+              <input
+                value={this.state.descrizione_categoria}
+                type="text"
+                onChange={(e) => {
+                  this.setState({ descrizione_categoria: e.target.value });
+                }}
+              />
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Qta biglietti </div>
+              <Select
+                onChange={(value) => {
+                  this.setState({ quantity: value });
+                }}
+                defaultValue={"Selezionare un numero"}
+              >
+                <Option value="0">Selezionare un numero</Option>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+                <Option value="4">4</Option>
+                <Option value="5">5</Option>
+                <Option value="6">6+(specificare su note)</Option>
+              </Select>
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Email</div>
+              <input
+                value={this.state.email}
+                type="text"
+                onChange={(e) => {
+                  this.setState({ email: e.target.value });
+                }}
+              />
+            </div>
+            <div className="formsContainer--body__item ">
+              <div className="label"> Telefono</div>
+              <input
+                value={this.state.telefono}
+                type="number"
+                onChange={(e) => {
+                  this.setState({ telefono: e.target.value });
+                }}
+              />
+            </div>
+            <div className="formsContainer--body__item submit">
+              <button
+                style={{ backgroundColor: color }}
+                onClick={this.submitData}
+              >
+                Invia
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
