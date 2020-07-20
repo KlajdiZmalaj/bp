@@ -188,7 +188,7 @@ class Header extends Component {
                 onClick={() => {
                   if (isLoggedin) {
                     this.props.logOut();
-                    localStorage.removeItem("accountDataB");
+                    // localStorage.removeItem("accountDataB");
                   } else {
                     this.props.history.push("/login");
                   }

@@ -1,4 +1,5 @@
 import { put, call, delay } from "redux-saga/effects";
+import { get } from "lodash";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
 import {
@@ -30,6 +31,7 @@ import {
   updateDataFormReq,
   sendVisureDetailsReq,
 } from "services/auth";
+import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
@@ -43,6 +45,7 @@ export function* signInByEmail(credencials) {
     if (response.data) {
       localStorage.setItem("accountDataB", JSON.stringify(response.data));
       yield put(AuthActions.setAccountInfo(response.data));
+      subscribeSocketUser(response.data.profile.id);
     }
     if (response.error) {
       yield put(AuthActions.setLoginMsg(response.error.response.data.message));
@@ -65,6 +68,12 @@ export function* logOut() {
   const response = yield call(logoutApi);
 
   if (response) {
+    console.log("logged out", response);
+    if (response.data) {
+      unSubscribeSocketUser(
+        JSON.parse(localStorage.getItem("accountDataB")).profile.id
+      );
+    }
     localStorage.setItem("accountDataB", null);
     yield put(AuthActions.setAccountInfo({}));
   }
