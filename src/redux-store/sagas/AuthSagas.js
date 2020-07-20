@@ -1,4 +1,4 @@
-import { put, call, delay } from "redux-saga/effects";
+import { put, call, delay, select } from "redux-saga/effects";
 import { get } from "lodash";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
@@ -342,6 +342,14 @@ export function* getAds() {
       yield put(AuthActions.setAccountInfo({}));
     }
   }
+}
+
+export function* addPrivateMsg(msg) {
+  let allMsgs = yield select((state) => {
+    return state.auth.privMsg;
+  });
+  yield put(AuthActions.setPrivateMsg([...allMsgs, msg]));
+  // console.log("called addprivate", allMsgs, msg);
 }
 
 export function* getRegister(params) {

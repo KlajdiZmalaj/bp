@@ -151,6 +151,7 @@ const { Types, Creators } = createActions({
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
+  addPrivateMsg: ["privMsg"],
   getSkinExtras: [""],
   setSkinExtras: ["skinExtras"],
   getErrors: [""],

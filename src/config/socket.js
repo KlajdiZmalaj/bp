@@ -13,7 +13,7 @@ const messageHandler = (msg, props) => {
   console.log("socket messageHandler", msg, props);
   switch (msg.type) {
     case "payment":
-      //
+      props.addPrivateMsg(msg.data);
       break;
     default:
   }
@@ -21,8 +21,9 @@ const messageHandler = (msg, props) => {
 //
 
 export const subscribeSocketUser = (userID, props) => {
-  window["echo"].channel(`bpoint_cache_${userID}`).listen("user", (msg) => {
-    console.log("ca ka socket msg", msg);
+  console.log("subscribed listening...");
+  window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
+    messageHandler(e, props);
   });
 };
 
