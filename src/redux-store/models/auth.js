@@ -67,8 +67,6 @@ const { Types, Creators } = createActions({
   setServiceType: ["serviceType"],
 
   getAds: [],
-  setAds: ["ads"],
-  createAds: ["data"],
 
   getRegister: [
     "first_name",

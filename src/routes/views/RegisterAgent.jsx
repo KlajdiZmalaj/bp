@@ -1,14 +1,6 @@
 import React, { Fragment } from "react";
 
-import {
-  Form,
-  Input,
-  Button,
-  DatePicker,
-  Select,
-  Checkbox,
-  message,
-} from "antd";
+import { Form, Input, Button, DatePicker, Select, Checkbox } from "antd";
 import moment from "moment";
 import uniqBy from "lodash/uniqBy";
 import { connect } from "react-redux";
@@ -775,7 +767,7 @@ class RegisterEndUser extends React.Component {
                   <i className="fas fa-file-check"></i>
                   <a
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     href="https://telematici.agenziaentrate.gov.it/VerificaPIVA/Scegli.do?parameter=verificaPiva"
                   >
                     <i className="fas fa-link"></i>

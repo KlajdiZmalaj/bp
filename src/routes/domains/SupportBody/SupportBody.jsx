@@ -10,22 +10,26 @@ export class SupportBody extends Component {
 
   render() {
     const { errors } = this.props;
-    console.log("errors", errors);
+
+    // console.log("errors", errors);
     return (
       <div className="accountInfo">
         <div className="contentAcc supportContent">
           <div className="userList">
             <div className="userList--AllUsers">
               <div className="header">
-                <span>time</span>
-                <span>title</span>
-                <span>utente</span>
+                <span>Data Ora</span>
+                <span>Skin</span>
                 <span>username</span>
-                <span>description</span>
+                <span>utente</span>
+
+                <span>Servizio</span>
+                <span>Causale</span>
                 <span className="deleteError">Delete</span>
               </div>
               {errors.map((error) => (
                 <SingleError
+                  key={error.id}
                   deleteError={this.props.deleteError}
                   error={error}
                 />

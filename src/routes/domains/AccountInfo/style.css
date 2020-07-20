@@ -179,23 +179,29 @@
   font-size: 14px;
   text-transform: capitalize;
 }
+.userList .header span {
+  border: 0.5px solid #edeef0;
+}
 
 .userList .header span:nth-child(1) {
-  width: 46%;
+  width: 42%;
 }
 
 .userList .header span:nth-child(2) {
-  width: 120%;
+  width: 26%;
 }
 
 .userList .header span:nth-child(3) {
-  width: 75%;
+  width: 42%;
 }
 .userList .header span:nth-child(4) {
-  width: 55%;
+  width: 50%;
 }
 .userList .header span:nth-child(5) {
-  width: 130%;
+  width: 60%;
+}
+.userList .header span:nth-child(6) {
+  width: 122%;
 }
 .userList .header span:last-child {
   width: 120%;
@@ -299,28 +305,43 @@
   text-transform: capitalize;
   font-size: 14px;
 }
-
+.userList--noDoc__user .body span,
+.userList--Doc__user .body span {
+  border: 0.5px solid #edeef0;
+}
+.userList--noDoc__user .body span.empty,
+.userList--Doc__user .body span.empty {
+  border: none;
+}
 .userList--noDoc__user .body span:nth-child(1),
 .userList--Doc__user .body span:nth-child(1) {
-  width: 46%;
+  width: 42%;
 }
 
 .userList--noDoc__user .body span:nth-child(2),
 .userList--Doc__user .body span:nth-child(2) {
-  width: 120%;
+  width: 26%;
 }
 
 .userList--noDoc__user .body span:nth-child(3),
 .userList--Doc__user .body span:nth-child(3) {
-  width: 75%;
+  width: 42%;
 }
 .userList--noDoc__user .body span:nth-child(4),
 .userList--Doc__user .body span:nth-child(4) {
-  width: 55%;
+  width: 50%;
 }
 .userList--noDoc__user .body span:nth-child(5),
 .userList--Doc__user .body span:nth-child(5) {
-  width: 130%;
+  width: 60%;
+}
+.userList--noDoc__user .body span:nth-child(6),
+.userList--Doc__user .body span:nth-child(6) {
+  width: 122%;
+}
+.userList--noDoc__user .body span:last-child(),
+.userList--Doc__user .body span:last-child {
+  width: 120%;
 }
 
 .userList--noDoc__user .body span:last-child,
@@ -336,7 +357,7 @@
 
 .userList--noDoc__user .body span:last-child i,
 .userList--Doc__user .body span:last-child i {
-  width: 15px;
+  width: 14px;
 }
 
 .userList--noDoc__user .body span:last-child button,
@@ -918,7 +939,6 @@
   .singleUser span:nth-child(5),
   .singleUser span:nth-child(6),
   .singleUser span:nth-child(7) {
-    display: none;
   }
   .userList--noDoc__user .body span:last-child,
   .userList--Doc__user .body span:last-child,

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 
 import Message from "./Message";
-import images from "themes/images";
+// import images from "themes/images";
 class Messages extends React.Component {
   render() {
     const { messages } = this.props;
@@ -33,8 +33,8 @@ class Messages extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
-  accountInfo: state.auth.accountInfo
+const mapsStateToProps = (state) => ({
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, AuthActions)(Messages);

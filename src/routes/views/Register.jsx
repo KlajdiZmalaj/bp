@@ -123,11 +123,11 @@ class Register extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { register } = this.props;
+    // const { register } = this.props;
     // const c = "NDR NNA 93 D 47 Z100 M";
     //NDRNNA93D47Z100M
-    const { comuniSelected, nazione, nazioneDiResidenca, sesso } = this.state;
-
+    const { comuniSelected, nazione, nazioneDiResidenca } = this.state;
+    // const {sesso}=this.state
     const allNazione = uniqBy(countriesArray, "nazione");
 
     const formItemLayout = {

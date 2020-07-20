@@ -6,22 +6,22 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmDirty: false
+      confirmDirty: false,
     };
   }
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (err) {
-        console.log("error ", err);
+        // console.log("error ", err);
       }
       if (!err) {
-        console.log("vals ", values);
+        // console.log("vals ", values);
         this.props.getChangedPassword(values.oldPassword, values.newPassword);
       }
     });
   };
-  handleConfirmBlur = e => {
+  handleConfirmBlur = (e) => {
     const { value } = e.target;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
@@ -45,7 +45,6 @@ class Profile extends Component {
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { passwordToReset } = this.state;
     return (
       <div className="changePassword">
         <h2>Cambio password</h2>
@@ -55,9 +54,9 @@ class Profile extends Component {
               rules: [
                 {
                   required: true,
-                  message: "Write old password"
-                }
-              ]
+                  message: "Write old password",
+                },
+              ],
             })(<Input.Password />)}
           </Form.Item>
 
@@ -66,12 +65,12 @@ class Profile extends Component {
               rules: [
                 {
                   required: true,
-                  message: "Write new password"
+                  message: "Write new password",
                 },
                 {
-                  validator: this.validateToNextPassword
-                }
-              ]
+                  validator: this.validateToNextPassword,
+                },
+              ],
             })(<Input.Password />)}
           </Form.Item>
           <Form.Item label="Conferma password" hasFeedback>
@@ -79,12 +78,12 @@ class Profile extends Component {
               rules: [
                 {
                   required: true,
-                  message: "Renter new password"
+                  message: "Renter new password",
                 },
                 {
-                  validator: this.compareToFirstPassword
-                }
-              ]
+                  validator: this.compareToFirstPassword,
+                },
+              ],
             })(<Input.Password onBlur={this.handleConfirmBlur} />)}
           </Form.Item>
           <Button type="primary" htmltype="submit" onClick={this.handleSubmit}>
@@ -97,7 +96,7 @@ class Profile extends Component {
 }
 const Profilee = Form.create({ name: "changePassword" })(Profile);
 
-const mapsStateToProps = state => ({});
+const mapsStateToProps = (state) => ({});
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
   Profilee

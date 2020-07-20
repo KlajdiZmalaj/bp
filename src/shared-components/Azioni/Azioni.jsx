@@ -36,7 +36,7 @@ class Azioni extends Component {
         item.displayRole,
         get(accountInfo, "profile.role.name")
       ) ? (
-        <div key={item.id}>
+        <div key={Math.random() + item.id}>
           <a href={"#/" + item.link}>
             <div
               className={
@@ -52,15 +52,19 @@ class Azioni extends Component {
           </a>
         </div>
       ) : (
-        <div key={item.id + ind} className="d-none" />
+        <div key={Math.random() + item.id + ind} className="d-none" />
       );
     });
     return (
       <React.Fragment>
         <hr className="overviw-line" />
         {get(accountInfo, "profile.role.name") ? (
-          <div className="row max-width mt-2 azioni">
+          <div
+            className="row max-width mt-2 azioni"
+            key={Math.random() + slides.id}
+          >
             <Swiper
+              key={Math.random() + slides.id * 2}
               {...params}
               // activeSlideKey={`${
               //   active === "carica-conto" || active === "configura" ? "3" : "0"
@@ -89,7 +93,7 @@ class Azioni extends Component {
                 item.id === 5 && (
                   <div
                     className="col-6 col-lg-2 p-0 pl-2 pl-lg-2"
-                    key={item.id}
+                    key={Math.random() + item.id * 2}
                   >
                     <a href={"#/" + item.link}>
                       <div

@@ -25,7 +25,7 @@ function beforeUpload(file) {
   if (!isLt2M) {
     message.error("Image must smaller than 10MB!");
   }
-  console.log("filee", file, file.size, isLt2M);
+  // console.log("filee", file, file.size, isLt2M);
   return isJpgOrPng && isLt2M;
 }
 
@@ -67,7 +67,7 @@ class ModulePopUp3 extends React.Component {
   };
 
   handleChangeFront = (info) => {
-    console.log("info", info);
+    // console.log("info", info);
     if (info.file.status) {
       getBase64(info.file.originFileObj, (imageUrl) =>
         this.setState({
@@ -79,7 +79,7 @@ class ModulePopUp3 extends React.Component {
   };
 
   handleChangeImporto(event) {
-    console.log("evvev", event.target.value);
+    // console.log("evvev", event.target.value);
     this.setState({ importo: event.target.value });
   }
 

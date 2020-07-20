@@ -60,7 +60,7 @@ class Header extends Component {
                     {ads.slice(0, 10).map((add) => {
                       return (
                         <div
-                          key={add.id}
+                          key={add.id ? add.id : Math.random()}
                           onClick={() => {
                             this.toggleAds();
                             this.props.history.push("/annunci");
@@ -88,7 +88,7 @@ class Header extends Component {
                     {privMsg.slice(0, 10).map((add) => {
                       return (
                         <div
-                          key={add.id}
+                          key={add.id ? add.id * 2 : Math.random()}
                           onClick={() => {
                             this.toggleprivMsgs();
                           }}

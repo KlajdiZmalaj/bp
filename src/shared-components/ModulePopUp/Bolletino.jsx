@@ -21,10 +21,10 @@ class Bolletino extends React.Component {
   };
   callback = (data) => {
     this.setState({ data });
-    console.log("callback", data);
+    // console.log("callback", data);
     message.success(data.message);
     setTimeout(() => {
-      console.log("timeout called");
+      // console.log("timeout called");
 
       this.props.form.setFieldsValue({
         codice_identificativo: data.data.codice_identificativo,
@@ -91,7 +91,7 @@ class Bolletino extends React.Component {
           );
         }
       }
-      console.log("faturaaaa", this.props.service_id, values);
+      // console.log("faturaaaa", this.props.service_id, values);
     });
   };
 

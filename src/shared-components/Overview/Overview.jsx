@@ -6,7 +6,6 @@ import "./Overview.styles.scss";
 import sumBy from "lodash/sumBy";
 import { get } from "lodash";
 import "./anim.css";
-import Details from "./Details";
 class Overview extends Component {
   state = {
     overviewDashboard: {},
@@ -29,7 +28,7 @@ class Overview extends Component {
   // }
 
   componentDidMount() {
-    const accountData = localStorage.getItem("accountDataB");
+    // const accountData = localStorage.getItem("accountDataB");
     // const data = JSON.parse(accountData);
 
     setTimeout(() => {
@@ -50,7 +49,7 @@ class Overview extends Component {
       fromFilterTop,
       dashboardFromFilterTop,
     } = this.props;
-    console.log("accountInfo", accountInfo);
+    // console.log("accountInfo", accountInfo);
     let provT = 0;
     let commT = 0;
     if (payments && payments.length > 0) {

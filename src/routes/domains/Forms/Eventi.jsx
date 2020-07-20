@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Select, Button, notification } from "antd";
+import { Select, notification } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import images from "themes/images";
 
@@ -114,7 +114,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Nome Agenzia</div>
               <input
-                value={this.props.accountInfo?.profile?.name}
+                value={this.props.accountInfo?.profile?.name || ""}
                 type="text"
                 disabled
               />
@@ -122,7 +122,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Link </div>
               <input
-                value={this.state.link}
+                value={this.state.link || ""}
                 onChange={(e) => {
                   this.setState({ link: e.target.value });
                 }}
@@ -149,7 +149,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item datiPass">
               <div className="label"> Note</div>
               <TextArea
-                value={this.state.extra_data}
+                value={this.state.extra_data || ""}
                 type="number"
                 onChange={(e) => {
                   this.setState({ extra_data: e.target.value });
@@ -161,7 +161,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item ">
               <div className="label">Nome </div>
               <input
-                value={this.state.name}
+                value={this.state.name || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ name: e.target.value });
@@ -171,7 +171,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Descrizione</div>
               <input
-                value={this.state.descrizione_categoria}
+                value={this.state.descrizione_categoria || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ descrizione_categoria: e.target.value });
@@ -198,7 +198,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Email</div>
               <input
-                value={this.state.email}
+                value={this.state.email || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ email: e.target.value });
@@ -208,7 +208,7 @@ class Eventi extends Component {
             <div className="formsContainer--body__item ">
               <div className="label"> Telefono</div>
               <input
-                value={this.state.telefono}
+                value={this.state.telefono || ""}
                 type="number"
                 onChange={(e) => {
                   this.setState({ telefono: e.target.value });
