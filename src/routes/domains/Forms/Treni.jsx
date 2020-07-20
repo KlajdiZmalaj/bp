@@ -240,7 +240,6 @@ class Treni extends Component {
                 }}
               />
             </div>
-<<<<<<< HEAD
             {nome_agenzia === "flixbus" ? null : (
               <div className="formsContainer--body__item">
                 <div className="label">Compagnie</div>
@@ -281,46 +280,6 @@ class Treni extends Component {
                       <span></span>
                     </label>
                   </div>
-=======
-            <div className="formsContainer--body__item">
-              <div className="label">Compagnie</div>
-              <div className="radioWrapper">
-                <div className="radioGr">
-                  <span>Trenitalia </span>
-                  <input
-                    checked={this.state.compagnie == "trenitalia"}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        this.setState({ compagnie: "trenitalia" });
-                      }
-                    }}
-                    type="radio"
-                    name="c"
-                    value="1"
-                    id="c1"
-                  />
-                  <label htmlFor="c1" className="customRadio">
-                    <span></span>
-                  </label>
-                </div>
-                <div className="radioGr">
-                  <span>Italo</span>
-                  <input
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        this.setState({ compagnie: "Italo" });
-                      }
-                    }}
-                    type="radio"
-                    name="c"
-                    value="2"
-                    id="c2"
-                    checked={this.state.compagnie == "Italo"}
-                  />
-                  <label htmlFor="c2" className="customRadio">
-                    <span></span>
-                  </label>
->>>>>>> 04fa67ca035ca225e56f6451401b33a6a654e898
                 </div>
               </div>
             )}
