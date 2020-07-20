@@ -6,7 +6,7 @@ class MyInput extends Component {
       <div className={`itemCol ${semi ? "semi" : "full"}`}>
         <label className="inputLabel">{this.props.labelName}</label>
         <input
-          className="ant-input"
+          className={`ant-input ${editable ? "disabled" : ""}`}
           type={type}
           readOnly={editable}
           value={value}

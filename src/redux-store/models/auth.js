@@ -216,6 +216,22 @@ const { Types, Creators } = createActions({
     "ticket_id",
   ],
   setPaymentsPages: ["paymentsPages"],
+  sendVisureDetails: [
+    "typee",
+    "codice_fiscale",
+    "provincia",
+    "address",
+    "telefono",
+    "email",
+    "nome",
+    "cognome",
+    "data_di_nascita",
+    "luogo_di_nascita",
+    "ragione_sociale",
+    "p_iva",
+    "comune",
+    "callBack",
+  ],
 });
 
 export const AuthTypes = Types;

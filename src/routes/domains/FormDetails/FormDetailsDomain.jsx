@@ -10,6 +10,10 @@ class FormDetailsDomain extends Component {
   }
   render() {
     const { formDetails, TicketByTcketId } = this.props;
+    const { my_tickets } = formDetails;
+    const { tickets } = formDetails;
+    console.log(formDetails);
+    console.log(my_tickets);
     const allRoles = {
       user: "fal fa-user text-success",
       agency: "fal fa-store text-success",
@@ -26,11 +30,14 @@ class FormDetailsDomain extends Component {
                 <div className="header">
                   <span>Id</span>
                   <span>User</span>
-                  <span>nome_agenzia</span>
+                  <span>Nome agenzia</span>
+                  <span>Ultimo Update</span>
+                  <span>status</span>
+
                   <span>type</span>
                 </div>
-                {formDetails
-                  ? formDetails.map((form) => {
+                {my_tickets
+                  ? my_tickets.map((form) => {
                       return (
                         <div
                           className="userList--noDoc__user singleUser"
@@ -46,9 +53,51 @@ class FormDetailsDomain extends Component {
                                 <i className={allRoles[form.role]} />
                               ) : null}
                               {form.user}
+                              <span></span>
                             </span>
 
                             <span>{form.nome_agenzia}</span>
+                            <span>{form.updated_at}</span>
+                            <span>{form.status}</span>
+
+                            <span>
+                              {form.type}
+                              <i
+                                className="fal fa-eye"
+                                aria-hidden="true"
+                                onClick={() => {
+                                  this.props.getTicketByTicketId(form.id);
+                                }}
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })
+                  : null}
+                {tickets
+                  ? tickets.map((form) => {
+                      return (
+                        <div
+                          className="userList--noDoc__user singleUser"
+                          key={form.id}
+                        >
+                          <div className="body">
+                            <span>{form.id}</span>
+                            <span>
+                              {form.role === "user" ||
+                              form.role === "agency" ||
+                              form.role === "agent" ||
+                              form.role === "super_admin" ? (
+                                <i className={allRoles[form.role]} />
+                              ) : null}
+                              {form.user}
+                              <span></span>
+                            </span>
+
+                            <span>{form.nome_agenzia}</span>
+                            <span>{form.updated_at}</span>
+                            <span>{form.status}</span>
 
                             <span>
                               {form.type}

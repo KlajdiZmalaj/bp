@@ -17,7 +17,6 @@ export class SupportBody extends Component {
           <div className="userList">
             <div className="userList--AllUsers">
               <div className="header">
-                <span>id</span>
                 <span>time</span>
                 <span>title</span>
                 <span>utente</span>

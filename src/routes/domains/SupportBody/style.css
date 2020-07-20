@@ -1,8 +1,15 @@
 .supportContent .description {
-  display: block !important;
+  display: flex !important;
+  min-width: 17%;
   cursor: pointer;
 }
-
+.ErrorAdd {
+  padding-right: 1%;
+}
+.descriptionErrorMsg {
+  width: 92%;
+  overflow: hidden;
+}
 .supportContent .deleteError {
   width: 170px !important;
 }
@@ -21,8 +28,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
 }
 
 .supportContent .confirmationDelete > div button {

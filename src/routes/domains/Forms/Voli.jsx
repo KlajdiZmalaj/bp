@@ -31,7 +31,7 @@ class Voli extends Component {
     this.props.sendDataForm(
       this.props.typee,
       link,
-      this.props.accountInfo?.profile?.name,
+      this.props.nome_agenzia,
       extra_data,
       bagaglio,
       bagaglio_stiva,
