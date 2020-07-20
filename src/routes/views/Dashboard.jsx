@@ -34,7 +34,6 @@ class Dashboard extends React.Component {
   render() {
     const { serviceSelected, keyService } = this.state;
     const { services, favorites } = this.props;
-
     let allFavServices = [];
     Object.keys(favorites).forEach((item) => {
       Object.keys(favorites[item]).forEach((subitem) => {
@@ -70,7 +69,6 @@ class Dashboard extends React.Component {
               >
                 {Object.keys(services).map((item, index) => {
                   const serv = services[item];
-
                   return (
                     (serv["name"] && serv["name"].toLowerCase()).includes(
                       this.props.navbarSearch.toLowerCase()
@@ -146,6 +144,8 @@ class Dashboard extends React.Component {
                                   </div>
                                 </div>
                               );
+                            } else {
+                              return null;
                             }
                           })}
                         </div>

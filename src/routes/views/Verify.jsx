@@ -56,7 +56,7 @@ class Verify extends Component {
   };
   render() {
     const { history, match } = this.props;
-    const { hasError, redirect } = this.state;
+    const { hasError } = this.state;
     console.log("history", history, match);
 
     return (

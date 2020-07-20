@@ -83,7 +83,7 @@ class Treni extends Component {
   };
 
   render() {
-    console.log("state", this.state);
+    // console.log("state", this.state);
     const { editable } = this.props;
     const {
       link,
@@ -178,7 +178,7 @@ class Treni extends Component {
                 editable ? "disabled" : ""
               }`}
             >
-              <span className="inputLabel">Andata e ritorna</span>
+              <span className="inputLabel">Andata e ritorno</span>
 
               <input
                 checked={tipologia_biglietto == 1}

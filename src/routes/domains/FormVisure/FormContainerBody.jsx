@@ -38,9 +38,9 @@ class FormContainerBody extends Component {
   render() {
     return (
       <div className="formsContainer--body animated fadeIn">
-        <div class="leftForm"></div>
-        <div class="rightForm">
-          <div class="rightForm--header">
+        <div className="leftForm"></div>
+        <div className="rightForm">
+          <div className="rightForm--header">
             <div>
               <i
                 className="fal fa-chevron-left Arrow"
@@ -67,7 +67,7 @@ class FormContainerBody extends Component {
     );
   }
 }
-const mstp = (state) => {
-  return {};
-};
+// const mstp = (state) => {
+//   return {};
+// };
 export default connect(null, AuthActions)(FormContainerBody);

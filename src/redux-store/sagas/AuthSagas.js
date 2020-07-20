@@ -5,7 +5,7 @@ import MainActions from "../models/main";
 import {
   fetchLogin,
   logoutApi,
-  fetchAccountInfo,
+  // fetchAccountInfo,
   fetchBolletiniBianchi,
   fetchBolletiniPremercati,
   fetchPayments,
@@ -121,7 +121,7 @@ export function* getBolletiniBianchi(params) {
   }
   if (response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
@@ -167,27 +167,27 @@ export function* getBolletiniPremercati(params) {
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
-function* modifyAccountData(wallet) {
-  const accountData = localStorage.getItem("accountDataB");
-  const data = JSON.parse(accountData);
+// function* modifyAccountData(wallet) {
+//   const accountData = localStorage.getItem("accountDataB");
+//   const data = JSON.parse(accountData);
 
-  const d = {
-    ...data,
-    profile: {
-      ...data.profile,
-      wallet: wallet,
-    },
-  };
+//   const d = {
+//     ...data,
+//     profile: {
+//       ...data.profile,
+//       wallet: wallet,
+//     },
+//   };
 
-  localStorage.setItem("accountDataB", JSON.stringify(d));
-  yield put(AuthActions.setAccountInfo(d));
+//   localStorage.setItem("accountDataB", JSON.stringify(d));
+//   yield put(AuthActions.setAccountInfo(d));
 
-  // console.log("data", data, d);
-}
+//   // console.log("data", data, d);
+// }
 
 export function* getPayments(params) {
   yield put(AuthActions.setPaymentsLoading(true));
@@ -273,7 +273,7 @@ export function* getRechargeMobile(params) {
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
@@ -325,7 +325,7 @@ export function* getPostePay(params) {
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 

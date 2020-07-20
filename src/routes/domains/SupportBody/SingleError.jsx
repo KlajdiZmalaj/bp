@@ -9,18 +9,21 @@ const SingleError = ({ error, deleteError }) => {
       string.substring(1, string.length).toLowerCase()
     );
   };
+
   return (
     <div className="userList--noDoc__user singleUser">
       <div className="body">
         <span> {error.time}</span>
-        <span> {error.title}</span>
-        <span> {formatString(error.user_full_name)}</span>
+        <span>{error.skin}</span>
         <span> {formatString(error.username)}</span>
+        <span> {formatString(error.user_full_name)}</span>
+
+        <span> {error.title}</span>
         <span className="description">
           <div className="descriptionErrorMsg">
-            {error.description.length <= 46
-              ? error.description
-              : error.description.substring(0, 45) + "..."}
+            {error.description.length <= 52
+              ? formatString(error.description)
+              : formatString(error.description.substring(0, 51) + "...")}
           </div>
           <div className="ErrorAdd">
             {" "}

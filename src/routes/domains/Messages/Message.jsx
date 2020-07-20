@@ -5,7 +5,7 @@ import images from "themes/images";
 
 class Message extends React.Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   toggleOpen = () => {
@@ -13,15 +13,15 @@ class Message extends React.Component {
   };
 
   render() {
-    const { isOpen } = this.state;
-    const {msg}=this.props;
+    // const { isOpen } = this.state;
+    const { msg } = this.props;
 
     return (
-        <div className="col-md-12">
+      <div className="col-md-12">
         <div
           className="panel-tab"
           data-toggle="collapse"
-          data-target={`msg`+msg[0]}
+          data-target={`msg` + msg[0]}
         >
           <i className="fas fa-dot-circle"></i>
           <h4>{msg[3]}</h4>
@@ -30,19 +30,19 @@ class Message extends React.Component {
         </div>
 
         <div
-        //   className="nav nav-tabs panel-content panel-content-annunci collapse"
-        className="nav nav-tabs panel-content panel-content-annunci"
-          id={`msg`+msg[0]}
+          //   className="nav nav-tabs panel-content panel-content-annunci collapse"
+          className="nav nav-tabs panel-content panel-content-annunci"
+          id={`msg` + msg[0]}
         >
           {msg[4]}
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapsStateToProps = state => ({
-  accountInfo: state.auth.accountInfo
+const mapsStateToProps = (state) => ({
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, AuthActions)(Message);

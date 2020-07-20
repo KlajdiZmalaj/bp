@@ -38,7 +38,7 @@ class Header extends Component {
     if (data) {
       isLoggedin = true;
     }
-    console.log("isLoggedin", isLoggedin);
+    // console.log("isLoggedin", isLoggedin);
     if (Object.keys(accountInfo).length > 0) {
       isLogged = true;
     }

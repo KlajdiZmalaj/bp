@@ -43,14 +43,7 @@ class SingleUser extends Component {
   componentDidMount() {}
   render() {
     const { user } = this.props;
-    const {
-      label,
-      val,
-      isOpen,
-      isPopUpActive,
-      valueInput,
-      moreInfo,
-    } = this.state;
+    const { val, isPopUpActive, valueInput } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
     // console.log("role", role);
     return (
@@ -172,7 +165,7 @@ class SingleUser extends Component {
           user.children.length > 0 && (
             <div className="level2">
               {user.children.map((user) => {
-                return <SingleUser2 user={user} />;
+                return <SingleUser2 user={user} key={user.id} />;
               })}
             </div>
           )}

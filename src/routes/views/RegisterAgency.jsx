@@ -38,12 +38,12 @@ class RegisterEndUser extends React.Component {
     tipoDocumento: "",
     fileType: 0,
     cardView: 0,
-    sesso: "",
+    // sesso: "",
     nascita: "",
     imageUrl: "",
     imageUrl2: "",
     loading: false,
-    step: 1,
+    // step: 1,
     pagamensileInp: "",
     costoanualeInp: "",
     recieve_emails: false,
@@ -64,24 +64,24 @@ class RegisterEndUser extends React.Component {
         });
       });
   }
-  nextStep = () => {
-    let { step } = this.state;
-    step += 1;
-    if (step >= 4) {
-      this.setState({ step: 4 });
-    } else {
-      this.setState({ step });
-    }
-  };
-  prevStep = () => {
-    let { step } = this.state;
-    step -= 1;
-    if (step <= 1) {
-      this.setState({ step: 1 });
-    } else {
-      this.setState({ step });
-    }
-  };
+  // nextStep = () => {
+  //   let { step } = this.state;
+  //   step += 1;
+  //   if (step >= 4) {
+  //     this.setState({ step: 4 });
+  //   } else {
+  //     this.setState({ step });
+  //   }
+  // };
+  // prevStep = () => {
+  //   let { step } = this.state;
+  //   step -= 1;
+  //   if (step <= 1) {
+  //     this.setState({ step: 1 });
+  //   } else {
+  //     this.setState({ step });
+  //   }
+  // };
   handleChangeBack = (info) => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
@@ -249,12 +249,12 @@ class RegisterEndUser extends React.Component {
     }
 
     if (sexKey > 40) {
-      this.setState({ sesso: "F" });
+      // this.setState({ sesso: "F" });
       this.props.form.setFieldsValue({
         gender: "F",
       });
     } else {
-      this.setState({ sesso: "M" });
+      // this.setState({ sesso: "M" });
       this.props.form.setFieldsValue({
         gender: "M",
       });
@@ -280,7 +280,8 @@ class RegisterEndUser extends React.Component {
     const { register } = this.props;
     const { codFisInps } = this.state;
 
-    const { nazione, nazioneDiResidenca, sesso } = this.state;
+    const { nazione, nazioneDiResidenca } = this.state;
+    // const {sesso}=this.state
 
     const allNazione = uniqBy(countriesArray, "nazione");
 
@@ -361,7 +362,7 @@ class RegisterEndUser extends React.Component {
     const number_prefix = getFieldDecorator("number_prefix", {
       initialValue: "+39",
     })(<Input style={{ width: 70 }}></Input>);
-    const { step } = this.state;
+    // const { step } = this.state;
     return (
       <Fragment>
         <Header></Header>
@@ -987,6 +988,7 @@ class RegisterEndUser extends React.Component {
                   <i className="fas fa-file-check"></i>
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://telematici.agenziaentrate.gov.it/VerificaPIVA/Scegli.do?parameter=verificaPiva"
                   >
                     <i className="fas fa-link"></i>

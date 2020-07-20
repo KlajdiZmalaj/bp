@@ -26,15 +26,13 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Provider store={store}>
-          {/* <Header /> */}
-          {/* <Overview /> */}
-          <Root />
-          <Footer />
-          <ModulePopUp></ModulePopUp>
-        </Provider>
-      </div>
+      <Provider store={store}>
+        {/* <Header /> */}
+        {/* <Overview /> */}
+        <Root />
+        <Footer />
+        <ModulePopUp></ModulePopUp>
+      </Provider>
     );
   }
 }

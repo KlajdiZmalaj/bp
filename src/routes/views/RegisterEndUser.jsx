@@ -45,7 +45,7 @@ class RegisterEndUser extends React.Component {
   state = {
     visible: true,
 
-    comuniSelected: {},
+    // comuniSelected: {},
     nazione: "",
     province_of_birth: "",
     city_of_birth: "",
@@ -232,7 +232,7 @@ class RegisterEndUser extends React.Component {
         (comune) => comune.codeKey.toString() === fiscalCodeKey.toString()
       )
       .map((comune) => {
-        this.setState({ comuniSelected: comune });
+        // this.setState({ comuniSelected: comune });
         this.setState({ nazione: comune.nazione });
         this.setState({ province_of_birth: comune.sigla });
         this.setState({ city_of_birth: comune.provincia });
@@ -254,20 +254,20 @@ class RegisterEndUser extends React.Component {
         <div className="ant-upload-text">Upload</div>
       </div>
     );
-    const { comuniSelected, nazione, nazioneDiResidenca, sesso } = this.state;
-
+    const { nazione, nazioneDiResidenca } = this.state;
+    // const {comuniSelected ,sesso}=this.state
     const allNazione = uniqBy(countriesArray, "nazione");
 
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-      },
-    };
+    // const formItemLayout = {
+    //   labelCol: {
+    //     xs: { span: 24 },
+    //     sm: { span: 8 },
+    //   },
+    //   wrapperCol: {
+    //     xs: { span: 24 },
+    //     sm: { span: 16 },
+    //   },
+    // };
 
     const nazioneList = [];
     if (allNazione && allNazione.length > 0) {
