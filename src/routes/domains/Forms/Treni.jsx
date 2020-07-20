@@ -238,7 +238,7 @@ class Treni extends Component {
               <div className="label">Compagnie</div>
               <div className="radioWrapper">
                 <div className="radioGr">
-                  <span>TrenItalia </span>
+                  <span>Trenitalia </span>
                   <input
                     checked={this.state.compagnie == "trenitalia"}
                     onChange={(e) => {
@@ -256,18 +256,18 @@ class Treni extends Component {
                   </label>
                 </div>
                 <div className="radioGr">
-                  <span>Italio</span>
+                  <span>Italo</span>
                   <input
                     onChange={(e) => {
                       if (e.target.checked) {
-                        this.setState({ compagnie: "italio" });
+                        this.setState({ compagnie: "Italo" });
                       }
                     }}
                     type="radio"
                     name="c"
                     value="2"
                     id="c2"
-                    checked={this.state.compagnie == "italio"}
+                    checked={this.state.compagnie == "Italo"}
                   />
                   <label htmlFor="c2" className="customRadio">
                     <span></span>
