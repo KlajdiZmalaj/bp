@@ -3,6 +3,8 @@ import { notification } from "antd";
 import { DatePicker } from "antd";
 import moment from "moment";
 import MyInput from "./Input";
+import FormSubmiter from "./FormSubmiter";
+
 class Treni extends Component {
   state = {
     price: this.props.TicketByTcketId.total_cost,
@@ -83,7 +85,6 @@ class Treni extends Component {
   };
 
   render() {
-    // console.log("state", this.state);
     const { editable } = this.props;
     const {
       link,
@@ -102,221 +103,213 @@ class Treni extends Component {
       andata_time,
     } = this.state;
     return (
-      <div className="newReg--row">
-        <div className="newReg--row__col">
-          <MyInput
-            labelName={"Nome Agenzia"}
-            type={"text"}
-            editable={editable}
-            value={nome_agenzia}
-            handleChange={(e) => {
-              this.setState({ nome_agenzia: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={" Nome passeggeri e dettagli per il biglietto"}
-            type={"text"}
-            editable={editable}
-            value={extra_data}
-            handleChange={(e) => {
-              this.setState({ extra_data: e.target.value });
-            }}
-          />
-          <MyInput
-            semi={true}
-            labelName={"Partenza"}
-            type={"text"}
-            editable={editable}
-            value={partenza}
-            handleChange={(e) => {
-              this.setState({ partenza: e.target.value });
-            }}
-          />
-
-          <MyInput
-            semi={true}
-            labelName={"Stazione"}
-            type={"text"}
-            editable={editable}
-            value={partenza_stazione}
-            handleChange={(e) => {
-              this.setState({ partenza_stazione: e.target.value });
-            }}
-          />
-          <div className="itemCol full">
-            <label className="inputLabel">Andata</label>
-            <DatePicker
-              className={` ${editable ? "disabled" : ""}`}
-              value={moment(andata_time)}
-              disabled={editable}
-              showTime
-              onChange={(e) => {
-                this.setState({ andata_time: moment(e).format() });
+      <React.Fragment>
+        <div className="formBody">
+          <div className="formBody--col">
+            <MyInput
+              labelName={"Nome Agenzia"}
+              type={"text"}
+              editable={editable}
+              value={nome_agenzia}
+              handleChange={(e) => {
+                this.setState({ nome_agenzia: e.target.value });
               }}
             />
-          </div>
-          {tipologia_biglietto == 1 ? (
-            <div className="itemCol full">
-              <label className="inputLabel">Ritorno</label>
+            <MyInput
+              labelName={" Nome passeggeri e dettagli per il biglietto"}
+              type={"text"}
+              editable={editable}
+              value={extra_data}
+              handleChange={(e) => {
+                this.setState({ extra_data: e.target.value });
+              }}
+            />
+            <MyInput
+              semi={true}
+              labelName={"Partenza"}
+              type={"text"}
+              editable={editable}
+              value={partenza}
+              handleChange={(e) => {
+                this.setState({ partenza: e.target.value });
+              }}
+            />
 
+            <MyInput
+              semi={true}
+              labelName={"Stazione"}
+              type={"text"}
+              editable={editable}
+              value={partenza_stazione}
+              handleChange={(e) => {
+                this.setState({ partenza_stazione: e.target.value });
+              }}
+            />
+            <div className="itemCol full">
+              <label className="inputLabel">Andata</label>
               <DatePicker
                 className={` ${editable ? "disabled" : ""}`}
+                value={moment(andata_time)}
                 disabled={editable}
-                value={moment(ritorno_date)}
                 showTime
                 onChange={(e) => {
-                  this.setState({ ritorno_date: moment(e).format() });
+                  this.setState({ andata_time: moment(e).format() });
                 }}
               />
             </div>
-          ) : null}
+            {tipologia_biglietto == 1 ? (
+              <div className="itemCol full">
+                <label className="inputLabel">Ritorno</label>
 
-          <div className="itemCol full Bagalio">
-            <div className="inputLabel">Tipologia Biglietto</div>
-            <div
-              className={`itemCol full full-radio ant-input ${
-                editable ? "disabled" : ""
-              }`}
-            >
-              <span className="inputLabel">Andata e ritorno</span>
+                <DatePicker
+                  className={` ${editable ? "disabled" : ""}`}
+                  disabled={editable}
+                  value={moment(ritorno_date)}
+                  showTime
+                  onChange={(e) => {
+                    this.setState({ ritorno_date: moment(e).format() });
+                  }}
+                />
+              </div>
+            ) : null}
 
-              <input
-                checked={tipologia_biglietto == 1}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ tipologia_biglietto: e.target.value });
-                  }
-                }}
-                type="radio"
-                disabled={editable}
-                name="bagaglio"
-                value="1"
-                id="bagaglio1"
-              />
-              <span className="inputLabel">Solo Andata</span>
+            <div className="itemCol full Bagalio">
+              <div className="inputLabel">Tipologia Biglietto</div>
+              <div
+                className={`itemCol full full-radio ant-input ${
+                  editable ? "disabled" : ""
+                }`}
+              >
+                <span className="inputLabel">Andata e ritorno</span>
 
-              <input
-                checked={tipologia_biglietto == 2}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ tipologia_biglietto: e.target.value });
-                  }
-                }}
-                type="radio"
-                name="bagaglio"
-                disabled={editable}
-                value="2"
-                id="bagaglio2"
-              />
+                <input
+                  checked={tipologia_biglietto == 1}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      this.setState({ tipologia_biglietto: e.target.value });
+                    }
+                  }}
+                  type="radio"
+                  disabled={editable}
+                  name="bagaglio"
+                  value="1"
+                  id="bagaglio1"
+                />
+                <span className="inputLabel">Solo Andata</span>
+
+                <input
+                  checked={tipologia_biglietto == 2}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      this.setState({ tipologia_biglietto: e.target.value });
+                    }
+                  }}
+                  type="radio"
+                  name="bagaglio"
+                  disabled={editable}
+                  value="2"
+                  id="bagaglio2"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="formBody--col">
+            <MyInput
+              labelName={"Link"}
+              type={"text"}
+              editable={editable}
+              value={link}
+              handleChange={(e) => {
+                this.setState({ link: e.target.value });
+              }}
+            />
+
+            <MyInput
+              semi={true}
+              labelName={"Adulti"}
+              type={"number"}
+              editable={editable}
+              value={adulti}
+              handleChange={(e) => {
+                this.setState({ adulti: e.target.value });
+              }}
+            />
+            <MyInput
+              semi={true}
+              labelName={"Ragazzi"}
+              type={"number"}
+              editable={editable}
+              value={ragazzi}
+              handleChange={(e) => {
+                this.setState({ ragazzi: e.target.value });
+              }}
+            />
+            <MyInput
+              labelName={"Destinazione"}
+              type={"text"}
+              editable={editable}
+              value={destinazione}
+              handleChange={(e) => {
+                this.setState({ destinazione: e.target.value });
+              }}
+            />
+            <MyInput
+              labelName={"Destinazione Stazione"}
+              type={"text"}
+              editable={editable}
+              value={destinazione_stazione}
+              handleChange={(e) => {
+                this.setState({ destinazione_stazione: e.target.value });
+              }}
+            />
+            <div className="itemCol full Bagalio">
+              <div className="inputLabel">Compagnie</div>
+              <div
+                className={`itemCol full full-radio ant-input ${
+                  editable ? "disabled" : ""
+                }`}
+              >
+                <span className="inputLabel">TrenItalia</span>
+
+                <input
+                  checked={compagnie == "trenitalia"}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      this.setState({ compagnie: "trenitalia" });
+                    }
+                  }}
+                  disabled={editable}
+                  type="radio"
+                  name="c"
+                  value="1"
+                  id="c1"
+                />
+                <span className="inputLabel">Italio</span>
+                <input
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      this.setState({ compagnie: "italio" });
+                    }
+                  }}
+                  disabled={editable}
+                  type="radio"
+                  name="c"
+                  value="2"
+                  id="c2"
+                  checked={compagnie == "italio"}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="newReg--row__col">
-          <MyInput
-            labelName={"Link"}
-            type={"text"}
-            editable={editable}
-            value={link}
-            handleChange={(e) => {
-              this.setState({ link: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Prezzo"}
-            type={"text"}
-            editable={editable}
-            value={price}
-            handleChange={(e) => {
-              this.setState({ price: e.target.value });
-            }}
-          />
-          <MyInput
-            semi={true}
-            labelName={"Adulti"}
-            type={"number"}
-            editable={editable}
-            value={adulti}
-            handleChange={(e) => {
-              this.setState({ adulti: e.target.value });
-            }}
-          />
-          <MyInput
-            semi={true}
-            labelName={"Ragazzi"}
-            type={"number"}
-            editable={editable}
-            value={ragazzi}
-            handleChange={(e) => {
-              this.setState({ ragazzi: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Destinazione"}
-            type={"text"}
-            editable={editable}
-            value={destinazione}
-            handleChange={(e) => {
-              this.setState({ destinazione: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Destinazione Stazione"}
-            type={"text"}
-            editable={editable}
-            value={destinazione_stazione}
-            handleChange={(e) => {
-              this.setState({ destinazione_stazione: e.target.value });
-            }}
-          />
-          <div className="itemCol full Bagalio">
-            <div className="inputLabel">Compagnie</div>
-            <div
-              className={`itemCol full full-radio ant-input ${
-                editable ? "disabled" : ""
-              }`}
-            >
-              <span className="inputLabel">TrenItalia</span>
-
-              <input
-                checked={compagnie == "trenitalia"}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ compagnie: "trenitalia" });
-                  }
-                }}
-                disabled={editable}
-                type="radio"
-                name="c"
-                value="1"
-                id="c1"
-              />
-              <span className="inputLabel">Italio</span>
-              <input
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ compagnie: "italio" });
-                  }
-                }}
-                disabled={editable}
-                type="radio"
-                name="c"
-                value="2"
-                id="c2"
-                checked={compagnie == "italio"}
-              />
-            </div>
-          </div>
-          <div className="rowForButton">
-            <button
-              disabled={editable}
-              className={`SubmitButton ${editable ? "disabled" : ""}`}
-              onClick={this.submitData}
-            >
-              Invia
-            </button>
-          </div>
-        </div>
-      </div>
+        <FormSubmiter
+          priceChange={(e) => {
+            this.setState({ price: e });
+          }}
+          sendOffert={this.submitData}
+          price={price}
+        />
+      </React.Fragment>
     );
   }
 }

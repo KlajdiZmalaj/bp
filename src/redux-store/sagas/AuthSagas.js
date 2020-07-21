@@ -333,7 +333,12 @@ export function* getAds() {
   const response = yield call(fetchAds);
   if (response.status === 200) {
     yield put(AuthActions.setAds(response.data.messages));
-    yield put(AuthActions.setPrivateMsg(response.data.private_messages));
+    yield put(
+      AuthActions.setPrivateMsg([
+        ...response.data.private_messages,
+        ...response.data.ticket_messages,
+      ])
+    );
   }
   if (response.error && response.error.response.status === 401) {
     const response = yield call(logoutApi);
@@ -348,7 +353,7 @@ export function* addPrivateMsg(msg) {
   let allMsgs = yield select((state) => {
     return state.auth.privMsg;
   });
-  yield put(AuthActions.setPrivateMsg([...allMsgs, msg]));
+  yield put(AuthActions.setPrivateMsg([...allMsgs, msg.privMsg]));
   // console.log("called addprivate", allMsgs, msg);
 }
 
@@ -636,7 +641,7 @@ export function* getTicketByTicketId(ticket_id) {
 
   if (response.data) {
     if (response.status === 200) {
-      yield put(AuthActions.setTicketByTicketId(response.data));
+      yield put(AuthActions.setTicketByTicketId(response.data.data));
     }
   }
   // console.log("fetchErrors", response);
