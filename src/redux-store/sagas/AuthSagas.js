@@ -40,12 +40,12 @@ export function* signInByEmail(credencials) {
     credencials.email,
     credencials.password
   );
-  // console.log("response123", response);
+
   if (response) {
     if (response.data) {
       localStorage.setItem("accountDataB", JSON.stringify(response.data));
       yield put(AuthActions.setAccountInfo(response.data));
-      subscribeSocketUser(response.data.profile.id);
+      credencials.c(response.data.profile.id);
     }
     if (response.error) {
       yield put(AuthActions.setLoginMsg(response.error.response.data.message));
