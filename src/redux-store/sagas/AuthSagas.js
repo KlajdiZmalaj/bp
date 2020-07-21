@@ -636,9 +636,7 @@ export function* getTicketByTicketId(ticket_id) {
 
   if (response.data) {
     if (response.status === 200) {
-      yield put(
-        AuthActions.setTicketByTicketId(response.data ? response.data : null)
-      );
+      yield put(AuthActions.setTicketByTicketId(response.data));
     }
   }
   // console.log("fetchErrors", response);
