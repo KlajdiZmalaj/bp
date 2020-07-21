@@ -60,7 +60,7 @@ class Voli extends Component {
             <div className="formsContainer--body__item datiPass">
               <div className="label">Dati Passegeri</div>
               <textarea
-                value={this.state.extra_data}
+                value={this.state.extra_data || ""}
                 onChange={(e) => {
                   this.setState({ extra_data: e.target.value });
                 }}
@@ -74,7 +74,11 @@ class Voli extends Component {
           <div className="rightForm--right">
             <div className="formsContainer--body__item">
               <div className="label">Nome Agenzia</div>
-              <input value={accountInfo?.profile?.name} type="text" disabled />
+              <input
+                value={accountInfo?.profile?.name || ""}
+                type="text"
+                disabled
+              />
             </div>
             <div className="formsContainer--body__item">
               <div className="label">Link</div>
@@ -83,7 +87,7 @@ class Voli extends Component {
                   color: "#096ecc",
                   textDecoration: "underline",
                 }}
-                value={this.state.link}
+                value={this.state.link || ""}
                 onChange={(e) => {
                   this.setState({ link: e.target.value });
                 }}
@@ -140,7 +144,7 @@ class Voli extends Component {
             >
               <div className="label">Bagaglio in stiva</div>
               <input
-                value={this.state.bagaglio_stiva}
+                value={this.state.bagaglio_stiva || ""}
                 onChange={(e) => {
                   this.setState({ bagaglio_stiva: e.target.value });
                 }}

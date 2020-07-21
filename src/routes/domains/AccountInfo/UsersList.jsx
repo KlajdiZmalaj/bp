@@ -63,7 +63,7 @@ class UsersList extends Component {
               <div className="title">Utenti con documenti</div>
               {userWithPhoto && userWithPhoto.length > 0 && (
                 <div className="header">
-                  <span>Id</span>
+                  <span className="headerId">Id</span>
                   <span>Name</span>
                   <span>codice fiscale</span>
                   <span>creato da</span>
@@ -462,7 +462,9 @@ class UsersList extends Component {
                     )}
                     {updateMsg.errors &&
                       Object.values(updateMsg.errors).map((error) => (
-                        <div className="Nmessage E">{error}</div>
+                        <div className="Nmessage E" key={error.id}>
+                          {error}
+                        </div>
                       ))}
                   </div>
                 </div>

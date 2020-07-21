@@ -40,7 +40,7 @@ class UserDoc extends Component {
         {isPopUpOpen && (
           <div className="popUp">
             <i
-              class="fal fa-times"
+              className="fal fa-times"
               onClick={() => {
                 this.setPopUp();
               }}
@@ -86,7 +86,7 @@ class UserDoc extends Component {
                 });
               }}
             >
-              Remove uploaded images <i class="far fa-trash-alt"></i>
+              Remove uploaded images <i className="far fa-trash-alt"></i>
             </div>
           </div>
         )}

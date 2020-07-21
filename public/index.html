@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="./fontAwesome/css/all.min.css" />
+    <link id="lnk" rel="stylesheet" href="" />
+    <script>
+      var root = document.getElementsByTagName("html")[0];
+      root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="stylesheet" href="./fontAwesome/css/all.min.css" />
-  <link id="lnk" rel="stylesheet" href="" />
-  <script>
-    var root = document.getElementsByTagName("html")[0];
-    root.setAttribute("class", `${window.location.host.split(".")[0]}`);
+      if (window.location.href.includes("bpoint")) {
+        document.getElementById("lnk").setAttribute("href", `var1.css`);
+      } else if (window.location.href.includes("gfb")) {
+        document.getElementById("lnk").setAttribute("href", "./var5.css");
+      } else if (window.location.href.includes("planet")) {
+        document.getElementById("lnk").setAttribute("href", "./var4.css");
+      } else if (
+        window.location.href.includes("derby") ||
+        window.location.href.includes("local")
+      ) {
+        document.getElementById("lnk").setAttribute("href", "./var3.css");
+      }
+      if (window.location.host.split(".")[1]) {
+        document.title =
+          window.location.host.split(".")[1].toUpperCase() +
+          " - Tutto con un click!";
+      } else {
+        document.title = window.location.host + " - Tutto con un click!";
+      }
+    </script>
+  </head>
 
-    if (window.location.href.includes("bpoint")) {
-      document.getElementById("lnk").setAttribute("href", `var1.css`);
-    } else if (window.location.href.includes("gfb")) {
-      document.getElementById("lnk").setAttribute("href", "./var5.css");
-    } else if (window.location.href.includes("planet")) {
-      document.getElementById("lnk").setAttribute("href", "./var4.css");
-    }
-    else if (window.location.href.includes("derby") || window.location.href.includes("local")) {
-      document.getElementById("lnk").setAttribute("href", "./var3.css");
-    }
-    if (window.location.host.split('.')[1]) {
-      document.title = window.location.host.split('.')[1].toUpperCase() + ' - Tutto con un click!'
-    } else {
-      document.title = window.location.host + ' - Tutto con un click!'
-    }
-
-  </script>
-</head>
-
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-  <script id="ze-snippet"
-    src="https://static.zdassets.com/ekr/snippet.js?key=1ac6da84-14c8-47dc-8148-1b636d8b4926"> </script>
-  <script>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!-- <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=1ac6da84-14c8-47dc-8148-1b636d8b4926"> </script> -->
+    <!-- <script>
     var xyz = window.location.host;
 
 
@@ -58,7 +63,17 @@
       }
     };
     window.zE('webWidget', 'prefill', { name: { value: `User from: ${window.location.host.split('.')[false | false]}`, readOnly: true | false } })
-  </script>
-</body>
-
+  </script> -->
+    <!-- <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5d443c5f7d27204601c8f6b8/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script> -->
+  </body>
 </html>

@@ -22,7 +22,8 @@ class Configura extends React.Component {
     this.setState({ pw3: e.target.value });
   };
   handleSubmit = () => {
-    const { pw1, pw2, pw3, hasError } = this.state;
+    const { pw1, pw2, pw3 } = this.state;
+    // const {hasError}=this.state
     if (pw2 === pw3) {
       this.props.getChangedPassword(pw1, pw3);
       this.setState({ hasError: "ok" });
@@ -33,8 +34,8 @@ class Configura extends React.Component {
   };
   render() {
     const { accountInfo, usersConfigura, pwError } = this.props;
-
-    console.log("pwError", pwError);
+    // let UserConfigura = {};
+    // console.log("pwError", pwError);
     if (
       get(accountInfo, "profile.id") &&
       Object.keys(usersConfigura).length < 1
@@ -64,58 +65,74 @@ class Configura extends React.Component {
                     <label>Rag. soc.</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_ragione_sociale}
+                      value={usersConfigura.a_ragione_sociale || ""}
                       disabled
                     />
                     <br />
                     <label>p. iva</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_p_iva}
+                      value={usersConfigura.a_p_iva || ""}
                       disabled
                     />
                     <br />
                     <label>provincia</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_comune_code}
+                      value={usersConfigura.a_comune_code || ""}
                       disabled
                     />
                     <br />
                     <label>Telefono</label>
-                    <input type="text" value={usersConfigura.phone} disabled />
+                    <input
+                      type="text"
+                      value={usersConfigura.phone || ""}
+                      disabled
+                    />
                   </div>
                   <div className="col-md-4">
                     <label>insegna</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_insegna}
+                      value={usersConfigura.a_insegna || ""}
                       disabled
                     />
                     <br />
                     <label>cod. fisc.</label>
                     <input
                       type="text"
-                      value={usersConfigura.personal_number}
+                      value={usersConfigura.personal_number || ""}
                       disabled
                     />
                     <br />
                     <label>cap</label>
-                    <input type="text" value={usersConfigura.cap} disabled />
+                    <input
+                      type="text"
+                      value={usersConfigura.cap || ""}
+                      disabled
+                    />
                   </div>
                   <div className="col-md-4">
                     <label>email</label>
-                    <input type="text" value={usersConfigura.email} disabled />
+                    <input
+                      type="text"
+                      value={usersConfigura.email || ""}
+                      disabled
+                    />
                     <br />
                     <label>indirizzo</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_address}
+                      value={usersConfigura.a_address || ""}
                       disabled
                     />
                     <br />
                     <label>localita</label>
-                    <input type="text" value={usersConfigura.a_city} disabled />
+                    <input
+                      type="text"
+                      value={usersConfigura.a_city || ""}
+                      disabled
+                    />
                   </div>
                 </div>
                 <div className="titleConf">
@@ -127,31 +144,31 @@ class Configura extends React.Component {
                     <label>nome</label>
                     <input
                       type="text"
-                      value={usersConfigura.first_name}
+                      value={usersConfigura.first_name || ""}
                       disabled
                     />
                     <br />
                     <label>tipo doc.</label>
-                    <input type="text" value={name} disabled />
+                    <input type="text" value={name || ""} disabled />
                     <br />
                     <label>provincia</label>
                     <input
                       type="text"
-                      value={usersConfigura.comune_code}
+                      value={usersConfigura.comune_code || ""}
                       disabled
                     />
                     <br />
                     <label>Telefono</label>
                     <input
                       type="text"
-                      value={usersConfigura.a_phone}
+                      value={usersConfigura.a_phone || ""}
                       disabled
                     />
                     <br />
                     <label>data</label>
                     <input
                       type="text"
-                      value={usersConfigura.birthday}
+                      value={usersConfigura.birthday || ""}
                       disabled
                     />
                   </div>
@@ -159,24 +176,28 @@ class Configura extends React.Component {
                     <label>cognome</label>
                     <input
                       type="text"
-                      value={usersConfigura.last_name}
+                      value={usersConfigura.last_name || ""}
                       disabled
                     />
                     <br />
                     <label>n. documento</label>
                     <input
                       type="text"
-                      value={usersConfigura.document_number}
+                      value={usersConfigura.document_number || ""}
                       disabled
                     />
                     <br />
                     <label>cap</label>
-                    <input type="text" value={usersConfigura.cap} disabled />
+                    <input
+                      type="text"
+                      value={usersConfigura.cap || ""}
+                      disabled
+                    />
                     <br />
                     <label>citta` nascita</label>
                     <input
                       type="text"
-                      value={usersConfigura.birth_place}
+                      value={usersConfigura.birth_place || ""}
                       disabled
                     />
                   </div>
@@ -184,14 +205,14 @@ class Configura extends React.Component {
                     <label>Cod. fisc.</label>
                     <input
                       type="text"
-                      value={usersConfigura.personal_number}
+                      value={usersConfigura.personal_number || ""}
                       disabled
                     />
                     <br />
                     <label>indirizzo</label>
                     <input
                       type="text"
-                      value={usersConfigura.address}
+                      value={usersConfigura.address || ""}
                       disabled
                     />
                   </div>
@@ -239,20 +260,18 @@ class Configura extends React.Component {
                     </button>
 
                     <div className="hasError">
-                      {isObject(this.props.pwError) ? (
+                      {isObject(pwError) ? (
                         <React.Fragment>
-                          {Object.values(this.props.pwError).map(
-                            (error, ind) => {
-                              return (
-                                <span>
-                                  {ind + 1}.{error}
-                                </span>
-                              );
-                            }
-                          )}
+                          {Object.values(pwError).map((error, ind) => {
+                            return (
+                              <span>
+                                {ind + 1}.{error}
+                              </span>
+                            );
+                          })}
                         </React.Fragment>
                       ) : (
-                        <span>{this.props.pwError}</span>
+                        <span>{pwError}</span>
                       )}
                     </div>
                   </div>

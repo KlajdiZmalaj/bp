@@ -43,14 +43,7 @@ class SingleUser extends Component {
   componentDidMount() {}
   render() {
     const { user } = this.props;
-    const {
-      label,
-      val,
-      isOpen,
-      isPopUpActive,
-      valueInput,
-      moreInfo,
-    } = this.state;
+    const { val, isPopUpActive, valueInput } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
     // console.log("role", role);
     return (
@@ -172,7 +165,7 @@ class SingleUser extends Component {
           user.children.length > 0 && (
             <div className="level2">
               {user.children.map((user) => {
-                return <SingleUser2 user={user} />;
+                return <SingleUser2 user={user} key={user.id} />;
               })}
             </div>
           )}
@@ -183,8 +176,34 @@ class SingleUser extends Component {
             <div className="popUp">
               <div className="title">{val}</div>
               <p>
-                The amount will be {val == "deposit" ? "added" : "substracted"}{" "}
-                to the current balance.
+                Il credito verrà {val == "deposit" ? "aggiunto" : "rimosso"} al{" "}
+                <span className="text-left justify-content-start">
+                  {user.username}{" "}
+                  {user.role === "agency" && (
+                    <i
+                      className={
+                        "fal fa-store" +
+                        (user.status === 1 ? " text-success" : " text-danger")
+                      }
+                    ></i>
+                  )}
+                  {user.role === "agent" && (
+                    <i
+                      className={
+                        "fas fa-user-tie" +
+                        (user.status === 1 ? " text-success" : " text-danger")
+                      }
+                    ></i>
+                  )}
+                  {user.role === "user" && (
+                    <i
+                      className={
+                        "fal fa-user" +
+                        (user.status === 1 ? " text-success" : " text-danger")
+                      }
+                    ></i>
+                  )}
+                </span>
               </p>
               <div className="inpgr">
                 <div className="inplabel">Amount</div>

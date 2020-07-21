@@ -9,7 +9,7 @@ class MyInput extends Component {
           className={`ant-input ${editable ? "disabled" : ""}`}
           type={type}
           readOnly={editable}
-          value={value}
+          value={value || ""}
           onChange={(e) => {
             handleChange(e);
           }}

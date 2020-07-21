@@ -93,7 +93,7 @@ class Service extends React.Component {
           <div
             className="cancelMobile"
             onClick={() => {
-              this.props.togglePopUpP(false);
+              togglePopUpP(false);
             }}
           >
             <img src={images.cancelMob} alt="" />

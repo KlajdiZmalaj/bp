@@ -232,12 +232,12 @@ class Transazioni extends React.Component {
                       e.stopPropagation();
                     }}
                     onChange={(item) => {
-                      console.log(
-                        "itemm",
-                        item,
-                        item.selection.startDate,
-                        format(item.selection.startDate, "yyyy-MM-dd")
-                      );
+                      // console.log(
+                      //   "itemm",
+                      //   item,
+                      //   item.selection.startDate,
+                      //   format(item.selection.startDate, "yyyy-MM-dd")
+                      // );
                       this.setState({
                         picker: [item.selection],
                         from: format(item.selection.startDate, "yyyy-MM-dd"),
@@ -493,10 +493,23 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp">{item.service_name}</td>
 
                                 <td className="right">
-                                  {item.price1000
-                                    ? slicedAmount(item.price1000 / 1000)
-                                    : "-"}
-                                  €
+                                  <span className="Importo">
+                                    <i
+                                      className={`fal fa-${
+                                        item.sign === "-" ? "minus" : "plus"
+                                      }-circle fa-sm`}
+                                      style={{
+                                        color:
+                                          item.sign === "-"
+                                            ? "#ff0000"
+                                            : "#0da90f",
+                                      }}
+                                    />
+                                    {item.price1000
+                                      ? slicedAmount(item.price1000 / 1000)
+                                      : "-"}
+                                    €
+                                  </span>
                                 </td>
                                 <td className="right">
                                   {item.commissione}€
@@ -509,7 +522,6 @@ class Transazioni extends React.Component {
                                 : "-"} */}
                                 </td>
                                 <td className="right">
-                                  {" "}
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
                               </tr>
@@ -532,7 +544,11 @@ class Transazioni extends React.Component {
                       this.state.perPage
                     );
                   }}
-                  total={paymentsPages.total_pages * 10}
+                  total={
+                    Object.keys(paymentsPages).length === 0
+                      ? 1
+                      : paymentsPages.total_pages * 10
+                  }
                 />
                 <Select
                   defaultValue="10"

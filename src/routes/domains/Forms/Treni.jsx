@@ -78,10 +78,16 @@ class Treni extends Component {
       ""
     );
   };
-
+  componentDidUpdate() {
+    if (
+      this.props.nome_agenzia === "flixbus" &&
+      this.state.compagnie !== "flixbus"
+    ) {
+      this.setState({ compagnie: "flixbus" });
+    }
+  }
   render() {
     const { nome_agenzia, color } = this.props;
-
     return (
       <div className="formsContainer--body animated fadeIn">
         <div className="leftForm">
@@ -102,7 +108,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Nome Agenzia</div>
               <input
-                value={this.props.accountInfo?.profile?.name}
+                value={this.props.accountInfo?.profile?.name || ""}
                 type="text"
                 disabled
               />
@@ -110,7 +116,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Partenza</div>
               <input
-                value={this.state.partenza}
+                value={this.state.partenza || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ partenza: e.target.value });
@@ -120,7 +126,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Stazione</div>
               <input
-                value={this.state.partenza_stazione}
+                value={this.state.partenza_stazione || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ partenza_stazione: e.target.value });
@@ -141,7 +147,7 @@ class Treni extends Component {
               <div className="label">Tipologia Biglietto</div>
               <div className="radioWrapper">
                 <div className="radioGr">
-                  <span>Andata e ritorna </span>
+                  <span>Andata e ritorno </span>
                   <input
                     checked={this.state.tipologia_biglietto == 1}
                     onChange={(e) => {
@@ -183,7 +189,7 @@ class Treni extends Component {
                 Nome passeggeri e dettagli per il biglietto
               </div>
               <textarea
-                value={this.state.extra_data}
+                value={this.state.extra_data || ""}
                 onChange={(e) => {
                   this.setState({ extra_data: e.target.value });
                 }}
@@ -198,7 +204,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Link</div>
               <input
-                value={this.state.link}
+                value={this.state.link || ""}
                 onChange={(e) => {
                   this.setState({ link: e.target.value });
                 }}
@@ -208,7 +214,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Destinazione</div>
               <input
-                value={this.state.destinazione}
+                value={this.state.destinazione || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ destinazione: e.target.value });
@@ -218,7 +224,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Destinazione Stazione</div>
               <input
-                value={this.state.destinazione_stazione}
+                value={this.state.destinazione_stazione || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ destinazione_stazione: e.target.value });
@@ -234,51 +240,54 @@ class Treni extends Component {
                 }}
               />
             </div>
-            <div className="formsContainer--body__item">
-              <div className="label">Compagnie</div>
-              <div className="radioWrapper">
-                <div className="radioGr">
-                  <span>Trenitalia </span>
-                  <input
-                    checked={this.state.compagnie == "trenitalia"}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        this.setState({ compagnie: "trenitalia" });
-                      }
-                    }}
-                    type="radio"
-                    name="c"
-                    value="1"
-                    id="c1"
-                  />
-                  <label htmlFor="c1" className="customRadio">
-                    <span></span>
-                  </label>
-                </div>
-                <div className="radioGr">
-                  <span>Italo</span>
-                  <input
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        this.setState({ compagnie: "Italo" });
-                      }
-                    }}
-                    type="radio"
-                    name="c"
-                    value="2"
-                    id="c2"
-                    checked={this.state.compagnie == "Italo"}
-                  />
-                  <label htmlFor="c2" className="customRadio">
-                    <span></span>
-                  </label>
+            {nome_agenzia === "flixbus" ? null : (
+              <div className="formsContainer--body__item">
+                <div className="label">Compagnie</div>
+                <div className="radioWrapper">
+                  <div className="radioGr">
+                    <span>TrenItalia </span>
+                    <input
+                      checked={this.state.compagnie == "trenitalia"}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          this.setState({ compagnie: "trenitalia" });
+                        }
+                      }}
+                      type="radio"
+                      name="c"
+                      value="1"
+                      id="c1"
+                    />
+                    <label htmlFor="c1" className="customRadio">
+                      <span></span>
+                    </label>
+                  </div>
+                  <div className="radioGr">
+                    <span>Italio</span>
+                    <input
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          this.setState({ compagnie: "italio" });
+                        }
+                      }}
+                      type="radio"
+                      name="c"
+                      value="2"
+                      id="c2"
+                      checked={this.state.compagnie == "italio"}
+                    />
+                    <label htmlFor="c2" className="customRadio">
+                      <span></span>
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
             <div className="formsContainer--body__item">
               <div className="label">Adulti</div>
               <input
-                value={this.state.adulti}
+                value={this.state.adulti || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ adulti: e.target.value });
@@ -288,7 +297,7 @@ class Treni extends Component {
             <div className="formsContainer--body__item">
               <div className="label">Ragazzi</div>
               <input
-                value={this.state.ragazzi}
+                value={this.state.ragazzi || ""}
                 type="text"
                 onChange={(e) => {
                   this.setState({ ragazzi: e.target.value });

@@ -79,7 +79,7 @@ class FormDetailPopup extends Component {
             </div>
           </div>
         </div>
-        <div class="backDrop" onClick={this.exit}></div>
+        <div className="backDrop" onClick={this.exit}></div>
       </div>
     );
   }

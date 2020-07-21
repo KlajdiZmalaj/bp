@@ -1,10 +1,11 @@
-import { put, call, delay } from "redux-saga/effects";
+import { put, call, delay, select } from "redux-saga/effects";
+import { get } from "lodash";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
 import {
   fetchLogin,
   logoutApi,
-  fetchAccountInfo,
+  // fetchAccountInfo,
   fetchBolletiniBianchi,
   fetchBolletiniPremercati,
   fetchPayments,
@@ -30,6 +31,7 @@ import {
   updateDataFormReq,
   sendVisureDetailsReq,
 } from "services/auth";
+import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
@@ -38,11 +40,12 @@ export function* signInByEmail(credencials) {
     credencials.email,
     credencials.password
   );
-  // console.log("response123", response);
+
   if (response) {
     if (response.data) {
       localStorage.setItem("accountDataB", JSON.stringify(response.data));
       yield put(AuthActions.setAccountInfo(response.data));
+      credencials.c(response.data.profile.id);
     }
     if (response.error) {
       yield put(AuthActions.setLoginMsg(response.error.response.data.message));
@@ -65,6 +68,12 @@ export function* logOut() {
   const response = yield call(logoutApi);
 
   if (response) {
+    console.log("logged out", response);
+    if (response.data) {
+      unSubscribeSocketUser(
+        JSON.parse(localStorage.getItem("accountDataB")).profile.id
+      );
+    }
     localStorage.setItem("accountDataB", null);
     yield put(AuthActions.setAccountInfo({}));
   }
@@ -112,7 +121,7 @@ export function* getBolletiniBianchi(params) {
   }
   if (response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
@@ -158,27 +167,27 @@ export function* getBolletiniPremercati(params) {
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
-function* modifyAccountData(wallet) {
-  const accountData = localStorage.getItem("accountDataB");
-  const data = JSON.parse(accountData);
+// function* modifyAccountData(wallet) {
+//   const accountData = localStorage.getItem("accountDataB");
+//   const data = JSON.parse(accountData);
 
-  const d = {
-    ...data,
-    profile: {
-      ...data.profile,
-      wallet: wallet,
-    },
-  };
+//   const d = {
+//     ...data,
+//     profile: {
+//       ...data.profile,
+//       wallet: wallet,
+//     },
+//   };
 
-  localStorage.setItem("accountDataB", JSON.stringify(d));
-  yield put(AuthActions.setAccountInfo(d));
+//   localStorage.setItem("accountDataB", JSON.stringify(d));
+//   yield put(AuthActions.setAccountInfo(d));
 
-  // console.log("data", data, d);
-}
+//   // console.log("data", data, d);
+// }
 
 export function* getPayments(params) {
   yield put(AuthActions.setPaymentsLoading(true));
@@ -264,7 +273,7 @@ export function* getRechargeMobile(params) {
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
@@ -316,7 +325,7 @@ export function* getPostePay(params) {
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
-    const response = yield call(logoutApi);
+    // const response = yield call(logoutApi);
   }
 }
 
@@ -333,6 +342,14 @@ export function* getAds() {
       yield put(AuthActions.setAccountInfo({}));
     }
   }
+}
+
+export function* addPrivateMsg(msg) {
+  let allMsgs = yield select((state) => {
+    return state.auth.privMsg;
+  });
+  yield put(AuthActions.setPrivateMsg([...allMsgs, msg]));
+  // console.log("called addprivate", allMsgs, msg);
 }
 
 export function* getRegister(params) {

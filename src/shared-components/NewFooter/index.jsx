@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import images from "themes/images";
-import { skinTexts, skinID } from "config/skinTexts";
+// import { skinTexts, skinID } from "config/skinTexts";
 import { connect } from "react-redux";
 class Footer extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Footer extends Component {
   //
   render() {
     const { skinExtras } = this.props;
-    console.log("skinExtras", skinExtras);
+    // console.log("skinExtras", skinExtras);
     return (
       <footer>
         <div className="top">

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Checkbox, notification } from "antd";
+import { notification } from "antd";
 import { AuthActions } from "redux-store/models";
 import FormContainerBody from "./FormContainerBody";
 import { InputForForm } from "./PersonaFisicaForm";
@@ -105,7 +105,6 @@ class AziendaOImpresaForm extends Component {
               goBack={this.props.goBack}
               resetOfState={this.resetState}
               data={this.state}
-              type={this.props.type}
               labelName="Indirizzo sede legale"
               value={address}
               handleChange={(e) => {

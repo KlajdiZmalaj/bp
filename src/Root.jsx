@@ -27,6 +27,11 @@ import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
 import Visure from "./routes/views/Visure";
+import {
+  subscribeSocketUser,
+  socket,
+  unSubscribeSocketUser,
+} from "config/socket";
 
 class Root extends React.Component {
   state = { top: false };
@@ -47,8 +52,19 @@ class Root extends React.Component {
         }
       }
     });
+    socket();
+    if (get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")) {
+      subscribeSocketUser(
+        get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id"),
+        this.props.addPrivateMsg
+      );
+    }
   }
-
+  componentWillUnmount() {
+    unSubscribeSocketUser(
+      get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")
+    );
+  }
   getStoredData = () => {
     const accountData = localStorage.getItem("accountDataB");
     const data = JSON.parse(accountData);
@@ -224,6 +240,7 @@ const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
   unauthorizated: state.auth.unauthorizated,
   screenWidth: state.main.screenWidth,
+  privMsg: state.auth.privMsg,
 });
 
 export default connect(mapsStateToProps, {

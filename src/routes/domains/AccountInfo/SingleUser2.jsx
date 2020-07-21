@@ -163,7 +163,7 @@ class SingleUser2 extends Component {
           user.children.length > 0 && (
             <div className="level3">
               {user.children.map((user) => {
-                return <SingleUser user={user} />;
+                return <SingleUser user={user} key={user.id} />;
               })}
             </div>
           )}

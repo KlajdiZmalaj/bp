@@ -2,7 +2,7 @@ import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
   changeAgent: ["id", "id2"],
-  signInByEmail: ["email", "password"],
+  signInByEmail: ["email", "password", "c"],
   authSuccess: ["user"],
   authFailure: ["error"],
   logOut: [],
@@ -67,8 +67,6 @@ const { Types, Creators } = createActions({
   setServiceType: ["serviceType"],
 
   getAds: [],
-  setAds: ["ads"],
-  createAds: ["data"],
 
   getRegister: [
     "first_name",
@@ -153,6 +151,7 @@ const { Types, Creators } = createActions({
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
+  addPrivateMsg: ["privMsg"],
   getSkinExtras: [""],
   setSkinExtras: ["skinExtras"],
   getErrors: [""],
