@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { AuthActions, MainActions } from "redux-store/models";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
@@ -81,6 +80,10 @@ class Root extends React.Component {
     if (data) {
       isLoggedin = true;
     }
+    if (!window.bigliettoPopUp) {
+      window.bigliettoPopUp = this.props.bigliettoPopUp;
+    }
+    console.log("popUpData", this.props.popUpData);
     return (
       <React.Fragment>
         <HashRouter>
@@ -241,6 +244,7 @@ const mapsStateToProps = (state) => ({
   unauthorizated: state.auth.unauthorizated,
   screenWidth: state.main.screenWidth,
   privMsg: state.auth.privMsg,
+  popUpData: state.auth.popUpData,
 });
 
 export default connect(mapsStateToProps, {

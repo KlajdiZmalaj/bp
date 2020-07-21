@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { notification } from "antd";
 import MyInput from "./Input";
+import FormSubmiter from "./FormSubmiter";
 class Voli extends Component {
   state = {
     price: this.props.TicketByTcketId.total_cost,
@@ -76,112 +77,108 @@ class Voli extends Component {
     } = this.state;
 
     return (
-      <div className="newReg--row">
-        <div className="newReg--row__col">
-          <MyInput
-            labelName={"Nome Agenzia"}
-            type={"text"}
-            editable={editable}
-            value={nome_agenzia}
-            handleChange={(e) => {
-              this.setState({ nome_agenzia: e.target.value });
-            }}
-          />
-          <div className="itemCol full Bagalio">
-            <div className="inputLabel">Bagaglio</div>
-            <div
-              className={`itemCol full full-radio ant-input ${
-                editable ? "disabled" : ""
-              }`}
-            >
-              <span className="inputLabel">A mano</span>
+      <React.Fragment>
+        <div className="formBody">
+          <div className="formBody--col">
+            <MyInput
+              labelName={"Nome Agenzia"}
+              type={"text"}
+              editable={editable}
+              value={nome_agenzia}
+              handleChange={(e) => {
+                this.setState({ nome_agenzia: e.target.value });
+              }}
+            />
+            <div className="itemCol full Bagalio">
+              <div className="inputLabel">Bagaglio</div>
+              <div
+                className={`itemCol full full-radio ant-input ${
+                  editable ? "disabled" : ""
+                }`}
+              >
+                <span className="inputLabel">A mano</span>
 
-              <input
-                checked={bagaglio == 1}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ bagaglio: e.target.value });
-                  }
-                }}
-                disabled={editable}
-                type="radio"
-                name="bagaglio"
-                value="1"
-                id="bagaglio1"
-              />
-              <span className="inputLabel">In stiva</span>
-
-              <input
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    this.setState({ bagaglio: e.target.value });
-                  }
-                }}
-                disabled={editable}
-                type="radio"
-                name="bagaglio"
-                value="2"
-                id="bagaglio2"
-                checked={bagaglio == 2}
-              />
-            </div>
-          </div>
-          <div className="itemCol full">
-            {
-              <div className={"" + (bagaglio == 2 ? "" : " invisible")}>
-                <div className="inputLabel">Bagaglio in stiva</div>
                 <input
-                  className="ant-input"
-                  value={bagaglio_stiva}
-                  readOnly={editable}
+                  checked={bagaglio == 1}
                   onChange={(e) => {
-                    this.setState({ bagaglio_stiva: e.target.value });
+                    if (e.target.checked) {
+                      this.setState({ bagaglio: e.target.value });
+                    }
                   }}
-                  type="text"
+                  disabled={editable}
+                  type="radio"
+                  name="bagaglio"
+                  value="1"
+                  id="bagaglio1"
+                />
+                <span className="inputLabel">In stiva</span>
+
+                <input
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      this.setState({ bagaglio: e.target.value });
+                    }
+                  }}
+                  disabled={editable}
+                  type="radio"
+                  name="bagaglio"
+                  value="2"
+                  id="bagaglio2"
+                  checked={bagaglio == 2}
                 />
               </div>
-            }
+            </div>
+            <div className="itemCol full">
+              {
+                <div
+                  className={
+                    "d-flex w-100" + (bagaglio == 2 ? "" : " invisible")
+                  }
+                >
+                  <div className="inputLabel">Bagaglio in stiva</div>
+                  <input
+                    className="ant-input"
+                    value={bagaglio_stiva}
+                    readOnly={editable}
+                    onChange={(e) => {
+                      this.setState({ bagaglio_stiva: e.target.value });
+                    }}
+                    type="text"
+                  />
+                </div>
+              }
+            </div>
+          </div>
+          <div className="formBody--col">
+            <MyInput
+              labelName={"Link"}
+              type={"text"}
+              editable={editable}
+              value={link}
+              handleChange={(e) => {
+                this.setState({ link: e.target.value });
+              }}
+            />
+
+            <MyInput
+              labelName={"Dati Passegeri"}
+              type={"text"}
+              editable={editable}
+              value={extra_data}
+              handleChange={(e) => {
+                this.setState({ extra_data: e.target.value });
+              }}
+            />
           </div>
         </div>
-        <div className="newReg--row__col">
-          <MyInput
-            labelName={"Link"}
-            type={"text"}
-            editable={editable}
-            value={link}
-            handleChange={(e) => {
-              this.setState({ link: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Prezzo"}
-            type={"text"}
-            editable={editable}
-            value={price}
-            handleChange={(e) => {
-              this.setState({ price: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Dati Passegeri"}
-            type={"text"}
-            editable={editable}
-            value={extra_data}
-            handleChange={(e) => {
-              this.setState({ extra_data: e.target.value });
-            }}
-          />
-          <div className="rowForButton">
-            <button
-              disabled={editable}
-              className={`SubmitButton ${editable ? "disabled" : ""}`}
-              onClick={this.submitData}
-            >
-              Invia
-            </button>
-          </div>
-        </div>
-      </div>
+        <FormSubmiter
+          price={price}
+          priceChange={(e) => {
+            this.setState({ price: e });
+          }}
+          sendOffert={this.submitData}
+        />
+      </React.Fragment>
     );
   }
 }
