@@ -2,7 +2,7 @@ import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
   changeAgent: ["id", "id2"],
-  signInByEmail: ["email", "password"],
+  signInByEmail: ["email", "password", "c"],
   authSuccess: ["user"],
   authFailure: ["error"],
   logOut: [],

@@ -56,7 +56,7 @@ class Root extends React.Component {
     if (get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")) {
       subscribeSocketUser(
         get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id"),
-        this.props
+        this.props.addPrivateMsg
       );
     }
   }
