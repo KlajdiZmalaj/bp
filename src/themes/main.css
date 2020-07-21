@@ -1330,13 +1330,28 @@ i#private {
   text-align: center;
 }
 
+.transTable .Importo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 .transTable .wsNwp {
+  font-size: 14px;
   position: relative;
 }
 
 .transTable .wsNwp i {
   position: absolute;
   top: 11px;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 
 .transTable thead tr {
@@ -1369,7 +1384,8 @@ i#private {
 .transTable th i,
 .transTable td i {
   color: #01a81b;
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 0.8em;
 }
 
 .transTable th.right,
@@ -1444,11 +1460,7 @@ i#private {
 .ant-select-selection--single .ant-select-selection {
   border: none;
 }
-.Importo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 .wsNwp {
   white-space: nowrap;
   width: 13%;

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACL,MAAM,EAAE,OAAO;CAChB;;AACD,AAAA,YAAY,CAAC;EACX,YAAY,EAAE,GAAG;CAClB",
+    "sources": [
+        "VisureStyles.scss"
+    ],
+    "names": [],
+    "file": "VisureStyles.css"
+}
