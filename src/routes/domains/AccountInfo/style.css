@@ -158,9 +158,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify !important;
-      -ms-flex-pack: justify !important;
-          justify-content: space-between !important;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row;
@@ -183,14 +180,18 @@
 }
 
 .userList .header span:nth-child(1) {
-  width: 70%;
+  width: 40%;
 }
 
 .userList .header span:nth-child(2) {
-  width: 150%;
+  width: 70%;
 }
 
 .userList .header span:nth-child(3) {
+  width: 150%;
+}
+
+.userList .header span:last-child {
   width: 120%;
 }
 
@@ -286,15 +287,15 @@
 }
 
 .userList--noDoc__user .body span:nth-child(1), .userList--Doc__user .body span:nth-child(1) {
-  width: 70%;
+  width: 40%;
 }
 
 .userList--noDoc__user .body span:nth-child(2), .userList--Doc__user .body span:nth-child(2) {
-  width: 150%;
+  width: 70%;
 }
 
 .userList--noDoc__user .body span:nth-child(3), .userList--Doc__user .body span:nth-child(3) {
-  width: 120%;
+  width: 150%;
 }
 
 .userList--noDoc__user .body span:last-child, .userList--Doc__user .body span:last-child {
