@@ -1,10 +1,119 @@
 //
 .confirmationPopup {
+  font-size: 15px;
   position: fixed;
   z-index: 3;
   background-color: #fff;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 15px;
+  &--body {
+    padding: 5px 35px;
+    & .NomeEmail {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 2px;
+      border-bottom: 0.5px solid rgba(34, 31, 31, 0.15);
+      & .confirmationPopup {
+        &--body__item {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          height: 31px;
+          padding: 10px 0px;
+          font-size: 16px;
+          span {
+            &.light {
+              position: absolute;
+              left: 0;
+              width: 40%;
+            }
+            &.dark {
+              font-weight: 600;
+              position: absolute;
+              width: 60%;
+              left: 40%;
+            }
+          }
+        }
+      }
+    }
+    & .Others {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 2px;
+      & .confirmationPopup {
+        &--body__item {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          height: 31px;
+          padding: 10px 0px;
+          font-size: 15px;
+          span {
+            &.light {
+              position: absolute;
+              left: 0;
+              width: 40%;
+            }
+            &.dark {
+              font-weight: 600;
+              position: absolute;
+              width: 60%;
+              left: 40%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &--buttons {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 6.5px solid var(--accent-bg);
+
+    & .Eseguito {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      width: 250px;
+      padding: 20px 0px;
+      border-top: 1.5px solid #0da90f;
+      border-right: 0.5px solid rgba(34, 31, 31, 0.15);
+    }
+    & .Annullato {
+      border: none;
+      background: transparent;
+      width: 250px;
+      padding: 20px 0px;
+      border-top: 1.5px solid #d31e1e;
+    }
+  }
+  &--header {
+    position: relative;
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    align-items: center;
+    width: 500px;
+    background-color: var(--accent-bg);
+    color: var(--accent-txt);
+    & .logoImg {
+      object-fit: cover;
+      object-position: 50% 50%;
+      height: auto;
+      width: 100px;
+    }
+  }
 }

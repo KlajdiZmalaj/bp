@@ -5,12 +5,16 @@ import "./style.scss";
 
 import DetailRow from "./DetailRow";
 class FormDetailsDomain extends Component {
+  state = {
+    filterTickets: "all",
+  };
   componentDidMount() {
     this.props.setTicketByTicketId({ data: null });
     this.props.getDataFormDetails();
   }
   render() {
     const { formDetails, TicketByTcketId } = this.props;
+    const { filterTickets } = this.state;
     const { my_tickets } = formDetails;
     const { tickets } = formDetails;
     // console.log(formDetails);
@@ -25,11 +29,42 @@ class FormDetailsDomain extends Component {
       <div className="ticketDetails">
         <div className="ticketDetails--filters">
           <div className="ticketDetails--filters__byTicket">
-            <i className="fa fa-plane" aria-hidden="true"></i>
-            <i className="fa fa-bus" aria-hidden="true"></i>
-            <i className="fa fa-train" aria-hidden="true"></i>
-            <i className="fas fa-ticket-alt"></i>
-            <i className="far fa-shopping-cart" aria-hidden="true"></i>
+            <i
+              onClick={() => this.setState({ filterTickets: "Voli" })}
+              className={
+                "fa fa-plane" + (filterTickets === "Voli" ? " active" : "")
+              }
+              aria-hidden="true"
+            ></i>
+            <i
+              onClick={() => this.setState({ filterTickets: "Treni1" })}
+              className={
+                "fa fa-bus" + (filterTickets === "Treni1" ? " active" : "")
+              }
+              aria-hidden="true"
+            ></i>
+            <i
+              onClick={() => this.setState({ filterTickets: "Treni2" })}
+              className={
+                "fa fa-train" + (filterTickets === "Treni2" ? " active" : "")
+              }
+              aria-hidden="true"
+            ></i>
+            <i
+              onClick={() => this.setState({ filterTickets: "Eventi" })}
+              className={
+                "fas fa-ticket-alt" +
+                (filterTickets === "Eventi" ? " active" : "")
+              }
+            ></i>
+            <i
+              onClick={() => this.setState({ filterTickets: "all" })}
+              className={
+                "far fa-shopping-cart" +
+                (filterTickets === "all" ? " active" : "")
+              }
+              aria-hidden="true"
+            ></i>
           </div>
         </div>
         <div className="ticketDetails--header">
@@ -43,24 +78,30 @@ class FormDetailsDomain extends Component {
         {(my_tickets || []).map((ticket) => {
           // console.log("ticket", ticket);
           return (
-            <DetailRow
-              allRoles={allRoles}
-              getTicketByTicketId={this.props.getTicketByTicketId}
-              isNew={true}
-              ticket={ticket}
-              key={ticket && ticket.id}
-            />
+            (filterTickets === "all" ||
+              filterTickets.includes(ticket.type)) && (
+              <DetailRow
+                allRoles={allRoles}
+                getTicketByTicketId={this.props.getTicketByTicketId}
+                isNew={true}
+                ticket={ticket}
+                key={ticket && ticket.id}
+              />
+            )
           );
         })}
         {(tickets || []).map((ticket) => {
           console.log("ticket", ticket);
           return (
-            <DetailRow
-              allRoles={allRoles}
-              getTicketByTicketId={this.props.getTicketByTicketId}
-              ticket={ticket}
-              key={ticket && ticket.id}
-            />
+            (filterTickets === "all" ||
+              filterTickets.includes(ticket.type)) && (
+              <DetailRow
+                allRoles={allRoles}
+                getTicketByTicketId={this.props.getTicketByTicketId}
+                ticket={ticket}
+                key={ticket && ticket.id}
+              />
+            )
           );
         })}
       </div>

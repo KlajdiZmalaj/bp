@@ -461,35 +461,40 @@
   }
   .fa-plane {
     color: #3d6389;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: #3d6389;
       color: #fff;
     }
   }
   .fa-bus {
     color: #578a17;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: #578a17;
       color: #fff;
     }
   }
   .fa-train {
     color: #c60d1a;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: #c60d1a;
       color: #fff;
     }
   }
   .fa-ticket-alt {
     color: #5400d6;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: #5400d6;
       color: #fff;
     }
   }
   .fa-shopping-cart {
     color: #f26521;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: #f26521;
       color: #222;
     }
