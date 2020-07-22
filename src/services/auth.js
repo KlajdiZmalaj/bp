@@ -863,7 +863,7 @@ export const sendVisureDetailsReq = (
     )
     .catch((error) => ({ error }));
 };
-export const userConfirmation = (ticket_id, status, c) => {
+export const userConfirmation = (ticket_id, status, c, recall) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -885,6 +885,7 @@ export const userConfirmation = (ticket_id, status, c) => {
           message: "Hai ricevuto una notifica",
           description: res.data.message,
         });
+        recall();
       }
     });
 };

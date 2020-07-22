@@ -30,7 +30,6 @@ export class DetailRow extends Component {
                 </div>
               </Tooltip>
             </span>
-
             <span>
               <i
                 className={`fas fa-${
@@ -49,7 +48,6 @@ export class DetailRow extends Component {
                 <div className="new">New</div>
               )}
             </span>
-
             <span>{ticket.user}</span>
             <span>BP-{ticket.id}</span>
             <span>{ticket.updated_at}</span>

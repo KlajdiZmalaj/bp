@@ -3,12 +3,15 @@ import EventiConfirmation from "./EventiConfirmation";
 import TreniConfirmation from "./TreniConfirmation";
 import VoliConfirmation from "./VoliConfirmation";
 import { userConfirmation } from "services/auth";
+import { AuthActions } from "redux-store/models";
+import { connect } from "react-redux";
 import "./style.css";
 const PopUpConfirmation = ({
   popUpData,
   getTicketByTicketId,
   TicketByTcketId,
   role,
+  getDataFormDetails,
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
@@ -43,7 +46,8 @@ const PopUpConfirmation = ({
                 userConfirmation(
                   popUpData.id,
                   role === "support" ? 4 : 3,
-                  setState
+                  () => {},
+                  getDataFormDetails
                 );
               }}
             >
@@ -51,7 +55,7 @@ const PopUpConfirmation = ({
             </button>
             <button
               onClick={() => {
-                userConfirmation(popUpData.id, 5, () => {});
+                userConfirmation(popUpData.id, 5, () => {}, getDataFormDetails);
                 setState(false);
               }}
             >
@@ -65,4 +69,4 @@ const PopUpConfirmation = ({
   );
 };
 
-export default PopUpConfirmation;
+export default connect(null, AuthActions)(PopUpConfirmation);

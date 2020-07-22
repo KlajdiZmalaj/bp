@@ -185,9 +185,9 @@
     justify-content: flex-start;
     align-items: center;
     [data-status="Eseguibile"] {
-      border: 1px solid green;
+      border: 1px solid #00ac56;
       span {
-        background-color: green;
+        background-color: #00ac56;
       }
     }
     [data-status="In Attesa"] {
@@ -200,6 +200,12 @@
       border: 1px solid #238be7;
       span {
         background-color: #238be7;
+      }
+    }
+    [data-status="Nuova Offerta"] {
+      border: 1px solid #00ac56;
+      span {
+        background-color: #00ac56;
       }
     }
     div {
@@ -342,8 +348,12 @@
       width: calc(25%);
       margin-right: 10px;
       cursor: pointer;
-
+      transition: 0.3s;
       justify-content: center;
+      &:hover {
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
+      }
       i {
         margin-right: 5px;
       }
@@ -359,21 +369,58 @@
       width: calc(25% / 2);
       margin-right: 10px;
       cursor: pointer;
-      border-bottom: 2px solid #01cc67;
       color: #5c5c5c;
       font-weight: 500;
       font-size: 14px;
       text-transform: uppercase;
       transition: 0.3s;
+      position: relative;
+      &:after {
+        width: 100%;
+        position: absolute;
+        height: 2px;
+        content: "";
+        bottom: 0;
+        left: 0;
+        background-color: #00ac56;
+        transition: 0.3s;
+        z-index: 0;
+        pointer-events: none;
+      }
+      &:before {
+        width: 100%;
+        position: absolute;
+        height: 0;
+        content: "";
+        top: 0;
+        left: 0;
+        background-color: #00ac56;
+        transition: 0.3s;
+        z-index: 0;
+        pointer-events: none;
+      }
+      span {
+        position: relative;
+        z-index: 1;
+      }
       &:hover {
-        background-color: #01cc67;
         color: #fff;
+        &:after {
+          height: 50%;
+        }
+        &:before {
+          height: 50%;
+        }
       }
       &.-c {
+        &:before {
+          background-color: #da1919;
+        }
+        &:after {
+          background-color: #da1919;
+        }
         margin-right: 0;
-        border-bottom: 2px solid #ea2424;
         &:hover {
-          background-color: #ea2424;
           color: #fff;
         }
       }
