@@ -1,6 +1,7 @@
 import request from "utils/request";
 import axios from "axios";
 import { skin } from "config/api";
+import { notification } from "antd";
 //import api from "config/api";
 
 // const accountData = localStorage.getItem("accountDataB");
@@ -862,7 +863,7 @@ export const sendVisureDetailsReq = (
     )
     .catch((error) => ({ error }));
 };
-export const userConfirmation = (ticket_id, status, c) => {
+export const userConfirmation = (ticket_id, status, c, recall) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -880,6 +881,11 @@ export const userConfirmation = (ticket_id, status, c) => {
       if (res.status === 200 && c) {
         window.setButtonsSupport(false);
         c(false);
+        notification.open({
+          message: "Hai ricevuto una notifica",
+          description: res.data.message,
+        });
+        recall();
       }
     });
 };
