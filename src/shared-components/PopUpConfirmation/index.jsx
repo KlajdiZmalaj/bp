@@ -4,7 +4,7 @@ import TreniConfirmation from "./TreniConfirmation";
 import VoliConfirmation from "./VoliConfirmation";
 import { userConfirmation } from "services/auth";
 import "./style.css";
-import images from "themes/images";
+import images from "../../themes/images";
 
 const PopUpConfirmation = ({
   popUpData,
@@ -21,35 +21,45 @@ const PopUpConfirmation = ({
     }
   }, [popUpData]);
   console.log("ca ka ticket", TicketByTcketId, popUpData);
-
+  const TicketbyTicketIdNew = {
+    id: "test",
+    nome_agenzia: "test",
+    email: "test",
+    extra_data: "test",
+    link: "test",
+    name: "test",
+    quantity: "test",
+    telefono: "test",
+    total_cost: "test",
+  };
   return (
-    ((TicketByTcketId &&
-      Object.keys(TicketByTcketId).length > 1 &&
-      active &&
-      popUpData.data) ||
-      true) && (
+    TicketByTcketId &&
+    Object.keys(TicketByTcketId).length > 1 &&
+    active &&
+    popUpData.data && (
       <React.Fragment>
         <div className="confirmationPopup">
           <div className="confirmationPopup--header">
             {" "}
             <img
               className="logoImg"
-              src={images[`${TicketByTcketId.nome_agenzia}-logo`]}
+              src={images[`${TicketbyTicketIdNew.nome_agenzia}-logo`]}
               alt=""
-            />{" "}
-            Id :
+            />
+            <span>{`Id :BP- ${TicketbyTicketIdNew.id}`}</span>
           </div>
           {TicketByTcketId.type == 3 && (
-            <EventiConfirmation TicketByTcketId={TicketByTcketId} />
+            <EventiConfirmation TicketByTcketId={TicketbyTicketIdNew} />
           )}
           {TicketByTcketId.type == 1 && (
-            <TreniConfirmation TicketByTcketId={TicketByTcketId} />
+            <TreniConfirmation TicketByTcketId={TicketbyTicketIdNew} />
           )}
           {TicketByTcketId.type == 2 && (
-            <VoliConfirmation TicketByTcketId={TicketByTcketId} />
+            <VoliConfirmation TicketByTcketId={TicketbyTicketIdNew} />
           )}
           <div className="confirmationPopup--buttons">
             <button
+              className="Eseguito"
               onClick={() => {
                 userConfirmation(
                   popUpData.id,
@@ -58,15 +68,16 @@ const PopUpConfirmation = ({
                 );
               }}
             >
-              YES
+              ESEGUITO{" "}
             </button>
             <button
+              className="Annullato"
               onClick={() => {
                 userConfirmation(popUpData.id, 5, () => {});
                 setState(false);
               }}
             >
-              NO
+              ANNULLATO{" "}
             </button>
           </div>
         </div>
