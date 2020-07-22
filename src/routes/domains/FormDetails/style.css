@@ -539,4 +539,10 @@
   background-color: #ea2424;
   color: #fff;
 }
+
+.dissableBtn {
+  pointer-events: none;
+  -webkit-filter: grayscale(0.7) brightness(0.9);
+          filter: grayscale(0.7) brightness(0.9);
+}
 /*# sourceMappingURL=style.css.map */

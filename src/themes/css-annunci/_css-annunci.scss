@@ -16,6 +16,26 @@
   .rdrStaticRange {
     background: #eaeaea;
   }
+  .rdrDefinedRangesWrapper {
+    width: 185px;
+  }
+  .rdrDateDisplay {
+    margin-left: 5%;
+    margin-left: 5%;
+    margin-top: 0.333rem;
+    margin-bottom: 0.333rem;
+    width: 90%;
+  }
+  .rdrMonthAndYearWrapper {
+    padding-top: 0;
+    height: auto;
+  }
+  i {
+    font-style: normal;
+  }
+  .rdrCalendarWrapper {
+    width: 455px;
+  }
   .rdrCalendarWrapper * {
     text-transform: capitalize;
   }
@@ -39,13 +59,20 @@
       border-left: 2px solid #edeef0;
     }
   }
-  .rdrInputRange span {
-    color: transparent;
-    &::before {
-      content: "Giorni da oggi";
-      color: #222;
-      position: relative;
-      top: 10px;
+  .rdrInputRange {
+    display: flex;
+    & .rdrInputRangeInput {
+      order: 2;
+    }
+    & span {
+      order: 1;
+      color: transparent;
+      &::before {
+        content: "Giorni da oggi";
+        color: #222;
+        position: relative;
+        top: 10px;
+      }
     }
   }
   .rdrInputRange:nth-child(2) {
@@ -54,9 +81,9 @@
   .calendarWrapper {
     position: absolute;
     z-index: 3;
-    left: 50%;
+    left: 52%;
     transform: translateX(-50%);
-    top: 74px;
+    top: 67px;
     box-shadow: 0 12px 20px 1px #0000008c;
     .buttons {
       background-color: #fff;

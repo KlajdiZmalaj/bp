@@ -33,6 +33,7 @@ import {
 } from "services/auth";
 import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
+import { unSubscribeSocketSupport } from "../../config/socket";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -45,7 +46,7 @@ export function* signInByEmail(credencials) {
     if (response.data) {
       localStorage.setItem("accountDataB", JSON.stringify(response.data));
       yield put(AuthActions.setAccountInfo(response.data));
-      credencials.c(response.data.profile.id);
+      credencials.c(response.data.profile);
     }
     if (response.error) {
       yield put(AuthActions.setLoginMsg(response.error.response.data.message));
@@ -73,6 +74,12 @@ export function* logOut() {
       unSubscribeSocketUser(
         JSON.parse(localStorage.getItem("accountDataB")).profile.id
       );
+      if (
+        JSON.parse(localStorage.getItem("accountDataB")).profile.role.name ===
+        "support"
+      ) {
+        unSubscribeSocketSupport();
+      }
     }
     localStorage.setItem("accountDataB", null);
     yield put(AuthActions.setAccountInfo({}));
@@ -124,7 +131,17 @@ export function* getBolletiniBianchi(params) {
     // const response = yield call(logoutApi);
   }
 }
-
+export function* addTicket({ ticket }) {
+  const my_tickets = yield select((state) => state.auth.my_tickets);
+  let tickets = yield select((state) => state.auth.formDetails.tickets);
+  console.log("allTickets allTickets", tickets, ticket);
+  yield put(
+    AuthActions.setDataFormDetails({
+      my_tickets,
+      tickets: [...tickets, ticket],
+    })
+  );
+}
 export function* getBolletiniPremercati(params) {
   const response = yield call(
     fetchBolletiniPremercati,
@@ -334,10 +351,14 @@ export function* getAds() {
   if (response.status === 200) {
     yield put(AuthActions.setAds(response.data.messages));
     yield put(
-      AuthActions.setPrivateMsg([
-        ...response.data.private_messages,
-        ...response.data.ticket_messages,
-      ])
+      AuthActions.setPrivateMsg(
+        response.data.ticket_messages
+          ? [
+              ...response.data.private_messages,
+              ...response.data.ticket_messages,
+            ]
+          : response.data.private_messages
+      )
     );
   }
   if (response.error && response.error.response.status === 401) {
@@ -632,9 +653,6 @@ export function* getDataFormDetails() {
       );
     }
   }
-  console.log("ca ka response", response);
-
-  // console.log("fetchErrors", response);
 }
 export function* getTicketByTicketId(ticket_id) {
   const response = yield call(getTicketByTicketIdReq, ticket_id.ticket_id);

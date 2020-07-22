@@ -7,3 +7,4 @@ export { default as ModulePopUp } from "./ModulePopUp/ModulePopUp";
 export { default as CatchError } from "./CatchErrors/CatchErrors";
 export { default as Modal } from "./ModulePopUp/Modal";
 export { default as Loader } from "./Loader/Loader";
+export { default as PopUpConfirmation } from "./PopUpConfirmation";

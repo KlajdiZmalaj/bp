@@ -232,12 +232,15 @@ const { Types, Creators } = createActions({
     "callBack",
   ],
   bigliettoPopUp: ["popUpData"],
+  setButtonsSupport: ["enableButtons"],
+  addTicket: ["ticket"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  enableButtons: false,
   popUpData: {},
   paymentsPages: 0,
   loadingPayments: true,
@@ -272,6 +275,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_BUTTONS_SUPPORT]: (state, { enableButtons }) => ({
+    ...state,
+    enableButtons,
+  }),
   [Types.BIGLIETTO_POP_UP]: (state, { popUpData }) => ({
     ...state,
     popUpData,
