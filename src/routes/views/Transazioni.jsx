@@ -45,6 +45,8 @@ class Transazioni extends React.Component {
     phone: "",
     from: "",
     to: "",
+    fromLabel: "",
+    toLabel: "",
     perPage: 10,
     picker: [
       {
@@ -175,6 +177,7 @@ class Transazioni extends React.Component {
   }
 
   render() {
+    console.log(this.state.from);
     const { getFieldDecorator } = this.props.form;
     const { barcode } = this.state;
     const formItemLayout = {
@@ -242,6 +245,11 @@ class Transazioni extends React.Component {
                         picker: [item.selection],
                         from: format(item.selection.startDate, "yyyy-MM-dd"),
                         to: format(item.selection.endDate, "yyyy-MM-dd"),
+                        fromLabel: format(
+                          item.selection.startDate,
+                          "dd/mm/yyyy"
+                        ),
+                        toLabel: format(item.selection.endDate, "dd/mm/yyyy"),
                       });
                     }}
                     locale={locales["it"]}
@@ -317,7 +325,12 @@ class Transazioni extends React.Component {
                           e.preventDefault();
                           e.stopPropagation();
                           this.setCalendar(false);
-                          this.setState({ from: "", to: "" });
+                          this.setState({
+                            from: "",
+                            to: "",
+                            fromLabel: "",
+                            toLabel: "",
+                          });
                         }}
                       >
                         Cancella
@@ -389,8 +402,8 @@ class Transazioni extends React.Component {
                       this.setCalendar(true);
                     }}
                   >
-                    {this.state.from
-                      ? `${this.state.from} - ${this.state.to}`
+                    {this.state.fromLabel
+                      ? `${this.state.fromLabel} - ${this.state.toLabel}`
                       : "Seleziona la data"}
                   </div>
                   <div>
@@ -564,8 +577,8 @@ class Transazioni extends React.Component {
                   }}
                 >
                   <Option value="10">10 / Pagina</Option>
-                  <Option value="20">20 / Pagina</Option>
-                  <Option value="30">30 / Pagina</Option>
+                  <Option value="25">25 / Pagina</Option>
+                  <Option value="30">50 / Pagina</Option>
                 </Select>
               </div>
             </div>
