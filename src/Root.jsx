@@ -100,7 +100,7 @@ class Root extends React.Component {
     if (!window.addTicket) {
       window.addTicket = this.props.addTicket;
     }
-    console.log("role", role);
+    // console.log("role", role);
     return (
       <React.Fragment>
         <HashRouter>
