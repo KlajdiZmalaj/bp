@@ -862,3 +862,24 @@ export const sendVisureDetailsReq = (
     )
     .catch((error) => ({ error }));
 };
+export const userConfirmation = (ticket_id, status, c) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/ticket/${ticket_id}/changeStatus`, {
+      ...skin,
+      status,
+    })
+    .then((res) => {
+      if (res.status === 200 && c) {
+        window.setButtonsSupport(false);
+        c(false);
+      }
+    });
+};

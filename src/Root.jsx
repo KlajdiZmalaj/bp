@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { AuthActions, MainActions } from "redux-store/models";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
@@ -31,8 +30,10 @@ import {
   subscribeSocketUser,
   socket,
   unSubscribeSocketUser,
+  subscribeSocketSupport,
+  unSubscribeSocketSupport,
 } from "config/socket";
-
+import { PopUpConfirmation } from "shared-components";
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -58,12 +59,21 @@ class Root extends React.Component {
         get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id"),
         this.props.addPrivateMsg
       );
+      if (
+        get(
+          JSON.parse(localStorage.getItem("accountDataB")),
+          "profile.role.name"
+        ) === "support"
+      ) {
+        subscribeSocketSupport();
+      }
     }
   }
   componentWillUnmount() {
     unSubscribeSocketUser(
       get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")
     );
+    unSubscribeSocketSupport();
   }
   getStoredData = () => {
     const accountData = localStorage.getItem("accountDataB");
@@ -81,6 +91,16 @@ class Root extends React.Component {
     if (data) {
       isLoggedin = true;
     }
+    if (!window.bigliettoPopUp) {
+      window.bigliettoPopUp = this.props.bigliettoPopUp;
+    }
+    if (!window.setButtonsSupport) {
+      window.setButtonsSupport = this.props.setButtonsSupport;
+    }
+    if (!window.addTicket) {
+      window.addTicket = this.props.addTicket;
+    }
+    console.log("role", role);
     return (
       <React.Fragment>
         <HashRouter>
@@ -231,6 +251,12 @@ class Root extends React.Component {
             <i className="fal fa-chevron-up"></i>
           </div>
         )}
+        <PopUpConfirmation
+          role={role}
+          TicketByTcketId={this.props.TicketByTcketId}
+          getTicketByTicketId={this.props.getTicketByTicketId}
+          popUpData={this.props.popUpData}
+        />
       </React.Fragment>
     );
   }
@@ -241,6 +267,8 @@ const mapsStateToProps = (state) => ({
   unauthorizated: state.auth.unauthorizated,
   screenWidth: state.main.screenWidth,
   privMsg: state.auth.privMsg,
+  popUpData: state.auth.popUpData,
+  TicketByTcketId: state.auth.TicketByTcketId,
 });
 
 export default connect(mapsStateToProps, {

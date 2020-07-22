@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
-import { subscribeSocketUser } from "config/socket.js";
+import { subscribeSocketUser, subscribeSocketSupport } from "config/socket.js";
 
 import "./login.css";
 
@@ -20,8 +20,11 @@ class Login extends React.Component {
   handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
-  socketCall = (id) => {
-    subscribeSocketUser(id, this.props.addPrivateMsg);
+  socketCall = (data) => {
+    subscribeSocketUser(data.id, this.props.addPrivateMsg);
+    if (data.role.name === "support") {
+      subscribeSocketSupport();
+    }
   };
   handleSubmit = (event) => {
     event.preventDefault();

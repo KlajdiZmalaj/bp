@@ -231,12 +231,17 @@ const { Types, Creators } = createActions({
     "comune",
     "callBack",
   ],
+  bigliettoPopUp: ["popUpData"],
+  setButtonsSupport: ["enableButtons"],
+  addTicket: ["ticket"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  enableButtons: false,
+  popUpData: {},
   paymentsPages: 0,
   loadingPayments: true,
   privMsg: [],
@@ -270,6 +275,14 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_BUTTONS_SUPPORT]: (state, { enableButtons }) => ({
+    ...state,
+    enableButtons,
+  }),
+  [Types.BIGLIETTO_POP_UP]: (state, { popUpData }) => ({
+    ...state,
+    popUpData,
+  }),
   [Types.SET_PAYMENTS_PAGES]: (state, { paymentsPages }) => ({
     ...state,
     paymentsPages,
@@ -406,6 +419,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   }),
   [Types.SET_TICKET_BY_TICKET_ID]: (state, { TicketByTcketId }) => ({
     ...state,
-    TicketByTcketId: TicketByTcketId.data,
+    TicketByTcketId,
   }),
 });

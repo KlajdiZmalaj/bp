@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Select, notification } from "antd";
 import MyInput from "./Input";
+import FormSubmiter from "./FormSubmiter";
+
 const { Option } = Select;
 
 class Eventi extends Component {
@@ -102,122 +104,112 @@ class Eventi extends Component {
       price,
     } = this.state;
     return (
-      <div className="newReg--row">
-        <div className="newReg--row__col">
-          <MyInput
-            labelName={"Nome Agenzia"}
-            type={"text"}
-            editable={editable}
-            value={nome_agenzia}
-            handleChange={(e) => {
-              this.setState({ nome_agenzia: e.target.value });
-            }}
-          />
-          <div className="itemCol full">
-            <label className="inputLabel">Categoria</label>
-            <Select
-              disabled={editable}
-              className={`${editable ? "disabled" : ""}`}
-              onChange={(value) => {
-                this.setState({ categoria: value });
+      <React.Fragment>
+        <div className="formBody">
+          <div className="formBody--col">
+            <MyInput
+              labelName={"Nome Agenzia"}
+              type={"text"}
+              editable={editable}
+              value={nome_agenzia}
+              handleChange={(e) => {
+                this.setState({ nome_agenzia: e.target.value });
               }}
-              defaultValue={TicketByTcketId.categoria}
-            >
-              <Option value="0">Selezionare Evento</Option>
-              <Option value="1">Concerti</Option>
-              <Option value="2">Sport</Option>
-              <Option value="3">Museo</Option>
-              <Option value="4">Teatro</Option>
-              <Option value="5">Altro</Option>
-            </Select>
-          </div>
-          <MyInput
-            labelName={"Telefono"}
-            type={"text"}
-            editable={editable}
-            value={telefono}
-            handleChange={(e) => {
-              this.setState({ telefono: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Email"}
-            type={"text"}
-            editable={editable}
-            value={email}
-            handleChange={(e) => {
-              this.setState({ email: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Prezzo"}
-            type={"text"}
-            editable={editable}
-            value={price}
-            handleChange={(e) => {
-              this.setState({ price: e.target.value });
-            }}
-          />
-        </div>
-        <div className="newReg--row__col">
-          <MyInput
-            labelName={"Link"}
-            type={"text"}
-            editable={editable}
-            value={link}
-            handleChange={(e) => {
-              this.setState({ link: e.target.value });
-            }}
-          />
-          <div className="itemCol full">
-            <label className="inputLabel">Qta biglietti</label>
-            <Select
-              className={`${editable ? "disabled" : ""}`}
-              disabled={editable}
-              onChange={(value) => {
-                this.setState({ quantity: value });
+            />
+            <div className="itemCol full">
+              <label className="inputLabel">Categoria</label>
+              <Select
+                disabled={editable}
+                className={`${editable ? "disabled" : ""}`}
+                onChange={(value) => {
+                  this.setState({ categoria: value });
+                }}
+                defaultValue={TicketByTcketId.categoria}
+              >
+                <Option value="0">Selezionare Evento</Option>
+                <Option value="1">Concerti</Option>
+                <Option value="2">Sport</Option>
+                <Option value="3">Museo</Option>
+                <Option value="4">Teatro</Option>
+                <Option value="5">Altro</Option>
+              </Select>
+            </div>
+            <MyInput
+              labelName={"Telefono"}
+              type={"text"}
+              editable={editable}
+              value={telefono}
+              handleChange={(e) => {
+                this.setState({ telefono: e.target.value });
               }}
-              defaultValue={TicketByTcketId.quantity}
-            >
-              <Option value="0">Selezionare un numero</Option>
-              <Option value="1">1</Option>
-              <Option value="2">2</Option>
-              <Option value="3">3</Option>
-              <Option value="4">4</Option>
-              <Option value="5">5</Option>
-              <Option value="6">6+(specificare su note)</Option>
-            </Select>
+            />
+            <MyInput
+              labelName={"Email"}
+              type={"text"}
+              editable={editable}
+              value={email}
+              handleChange={(e) => {
+                this.setState({ email: e.target.value });
+              }}
+            />
           </div>
-          <MyInput
-            labelName={"Nome"}
-            type={"text"}
-            editable={editable}
-            value={name}
-            handleChange={(e) => {
-              this.setState({ name: e.target.value });
-            }}
-          />
-          <MyInput
-            labelName={"Descrizione"}
-            type={"text"}
-            editable={editable}
-            value={descrizione_categoria}
-            handleChange={(e) => {
-              this.setState({ descrizione_categoria: e.target.value });
-            }}
-          />
-
-          <div className="rowForButton">
-            <button
-              disabled={editable}
-              className={`SubmitButton ${editable ? "disabled" : ""}`}
-              onClick={this.submitData}
-            >
-              Invia
-            </button>
+          <div className="formBody--col">
+            <MyInput
+              labelName={"Link"}
+              type={"text"}
+              editable={editable}
+              value={link}
+              handleChange={(e) => {
+                this.setState({ link: e.target.value });
+              }}
+            />
+            <div className="itemCol full">
+              <label className="inputLabel">Qta biglietti</label>
+              <Select
+                className={`${editable ? "disabled" : ""}`}
+                disabled={editable}
+                onChange={(value) => {
+                  this.setState({ quantity: value });
+                }}
+                defaultValue={TicketByTcketId.quantity}
+              >
+                <Option value="0">Selezionare un numero</Option>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+                <Option value="4">4</Option>
+                <Option value="5">5</Option>
+                <Option value="6">6+(specificare su note)</Option>
+              </Select>
+            </div>
+            <MyInput
+              labelName={"Nome"}
+              type={"text"}
+              editable={editable}
+              value={name}
+              handleChange={(e) => {
+                this.setState({ name: e.target.value });
+              }}
+            />
+            <MyInput
+              labelName={"Descrizione"}
+              type={"text"}
+              editable={editable}
+              value={descrizione_categoria}
+              handleChange={(e) => {
+                this.setState({ descrizione_categoria: e.target.value });
+              }}
+            />
           </div>
         </div>
-      </div>
+        <FormSubmiter
+          price={price}
+          priceChange={(e) => {
+            this.setState({ price: e });
+          }}
+          sendOffert={this.submitData}
+        />
+      </React.Fragment>
     );
   }
 }

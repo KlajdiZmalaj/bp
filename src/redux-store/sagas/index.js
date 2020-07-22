@@ -33,6 +33,7 @@ import {
   updateDataForm,
   sendVisureDetails,
   addPrivateMsg,
+  addTicket,
 } from "./AuthSagas";
 
 import {
@@ -48,6 +49,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH h
+    takeLatest(AuthTypes.ADD_TICKET, addTicket),
     takeLatest(AuthTypes.ADD_PRIVATE_MSG, addPrivateMsg),
     takeLatest(AuthTypes.SEND_VISURE_DETAILS, sendVisureDetails),
     takeLatest(AuthTypes.UPDATE_DATA_FORM, updateDataForm),
