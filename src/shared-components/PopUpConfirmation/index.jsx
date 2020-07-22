@@ -17,13 +17,13 @@ const PopUpConfirmation = ({
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
-    console.log("popUpData changed", popUpData, TicketByTcketId);
+    // console.log("popUpData changed", popUpData, TicketByTcketId);
     if (popUpData.id) {
       getTicketByTicketId(popUpData.id);
       setState(true);
     }
   }, [popUpData]);
-  console.log("ca ka ticket", TicketByTcketId, popUpData);
+  // console.log("ca ka ticket", TicketByTcketId, popUpData);
   const TicketbyTicketIdNew = {
     id: "test",
     nome_agenzia: "test",

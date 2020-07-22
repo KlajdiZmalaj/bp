@@ -13,12 +13,7 @@ export class DetailRow extends Component {
   render() {
     const { hasDetails } = this.state;
     const { ticket, TicketByTcketId } = this.props;
-    console.log(
-      "rowss infos ",
-      TicketByTcketId && TicketByTcketId.id,
-      ticket.id,
-      hasDetails
-    );
+
     return (
       ticket && (
         <React.Fragment>
@@ -31,18 +26,20 @@ export class DetailRow extends Component {
               </Tooltip>
             </span>
             <span>
-              <i
-                className={`fas fa-${
-                  ticket.type == "Treni"
-                    ? "train"
-                    : ticket.type == "Eventi"
-                    ? "receipt"
-                    : ticket.type == "Voli"
-                    ? "plane"
-                    : ""
-                }`}
-                aria-hidden="true"
-              ></i>
+              <Tooltip title={ticket.type}>
+                <i
+                  className={`fas fa-${
+                    ticket.type == "Treni"
+                      ? "train"
+                      : ticket.type == "Eventi"
+                      ? "ticket-alt"
+                      : ticket.type == "Voli"
+                      ? "plane"
+                      : ""
+                  }`}
+                  aria-hidden="true"
+                ></i>
+              </Tooltip>
               Prenotazione biglieto <div>{ticket.nome_agenzia}</div>{" "}
               {ticket.status === "Nuova Richiesta" && (
                 <div className="new">New</div>
