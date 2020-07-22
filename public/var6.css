@@ -1,0 +1,76 @@
+html {
+  --accent-bg: #212121;
+  --accent-txt: #c3c3c3;
+  --header-bg: #272727;
+  --header-txt: #fff;
+  --footerTop-bg: #2b2b2b;
+  --footerTop-txt: #fff;
+}
+.logo img {
+  width: 160px;
+}
+body .panels-container,
+body .favorites,
+body .chatSticky,
+body .accountInfo {
+  background: #3c3c3c !important;
+  color: #fff;
+}
+
+body .panel-tab {
+  background: #585858;
+  border-bottom: 2px solid #313131;
+  color: #fff;
+}
+body .panel-tab h4 {
+  color: #fff;
+}
+body .panel-tab:hover {
+  background-color: #000000;
+}
+body .favorites .title {
+  color: #fff;
+}
+body {
+  background: #3c3c3c !important;
+}
+.panel-services td p {
+  color: #222;
+}
+.login .title i,
+.login .title div,
+.login ul li .loginBtn {
+  color: #fff !important;
+}
+.carica-conto h3 {
+  color: #fff !important;
+}
+.sort-annunci .heading-tab {
+  color: #fff;
+}
+body .sort-annunci {
+  border-bottom: 1px solid #000000;
+
+  background-color: #545454;
+  color: #fff;
+}
+.inputsConf label {
+  color: #222;
+}
+body .panel-tab .date-pane,
+.sort-annunci li span {
+  color: #fff !important;
+}
+.panel-content-annunci {
+  border-color: #222 !important;
+}
+.contentAcc {
+  color: #222;
+}
+.transTable,
+.rdrStaticRangeLabel {
+  color: #222;
+}
+.sort-annunci .dal {
+  color: #fff !important;
+}

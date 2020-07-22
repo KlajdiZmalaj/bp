@@ -19,10 +19,12 @@ footer {
     font-size: 30px;
     margin-bottom: 0;
     font-family: Lato;
+    color: inherit;
   }
 
   .top {
     background-color: var(--footerTop-bg);
+    color: var(--footerTop-txt);
     padding: 10px;
 
     button {
@@ -64,6 +66,8 @@ footer {
 
   .mid {
     background-color: var(--accent-bg);
+    color: var(--accent-txt);
+
     img {
       width: 160px;
     }
@@ -91,6 +95,7 @@ footer {
 
         h3 {
           font-size: 16px;
+          color: inherit;
           text-transform: uppercase;
         }
 

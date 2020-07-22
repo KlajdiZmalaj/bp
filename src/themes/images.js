@@ -1,20 +1,18 @@
 let skin = "";
 
-if (
-  window.location.href.includes("bpoint")
-  // ||
-  // window.location. href.includes("localhost")
-) {
+if (window.location.href.includes("bpoint")) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;
-} else if (
-  window.location.href.includes("derby") ||
-  window.location.href.includes("localhost")
-) {
+} else if (window.location.href.includes("derby")) {
   skin = 3;
 } else if (window.location.href.includes("planet")) {
   skin = 4;
+} else if (
+  window.location.href.includes("sirpay") ||
+  window.location.href.includes("localhost")
+) {
+  skin = 6;
 }
 export default {
   loader: require(`../assets/images/loader.gif`),

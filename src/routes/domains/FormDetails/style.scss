@@ -28,15 +28,14 @@
   display: flex;
   flex-flow: column;
 }
-.ticketDetails {
-  width: 100%;
-  max-width: 1371px;
-  margin: 0 auto;
-}
+
 .ticketDetails {
   display: flex;
   flex-flow: column;
   background-color: #fff;
+  width: 100%;
+  max-width: 1371px;
+  margin: 0 auto;
   &--header {
     width: 100%;
     display: flex;

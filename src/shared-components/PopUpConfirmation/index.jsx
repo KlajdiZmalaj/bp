@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EventiConfirmation from "./EventiConfirmation";
+import TreniConfirmation from "./TreniConfirmation";
+import VoliConfirmation from "./VoliConfirmation";
 import { userConfirmation } from "services/auth";
 import "./style.css";
 const PopUpConfirmation = ({
@@ -28,6 +30,12 @@ const PopUpConfirmation = ({
           <div className="confirmationPopup--header">Ticket Confirmation</div>
           {TicketByTcketId.type == 3 && (
             <EventiConfirmation TicketByTcketId={TicketByTcketId} />
+          )}
+          {TicketByTcketId.type == 1 && (
+            <TreniConfirmation TicketByTcketId={TicketByTcketId} />
+          )}
+          {TicketByTcketId.type == 2 && (
+            <VoliConfirmation TicketByTcketId={TicketByTcketId} />
           )}
           <div className="confirmationPopup--buttons">
             <button
