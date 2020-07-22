@@ -13,6 +13,12 @@ export class DetailRow extends Component {
   render() {
     const { hasDetails } = this.state;
     const { ticket, TicketByTcketId } = this.props;
+    console.log(
+      "rowss infos ",
+      TicketByTcketId && TicketByTcketId.id,
+      ticket.id,
+      hasDetails
+    );
     return (
       ticket && (
         <React.Fragment>
@@ -65,23 +71,28 @@ export class DetailRow extends Component {
               <div
                 className="toggler"
                 onClick={() => {
-                  if (!hasDetails) {
-                    this.props.getTicketByTicketId(ticket.id);
-                  } else {
+                  if (TicketByTcketId && TicketByTcketId.id === ticket.id) {
                     this.props.setTicketByTicketId(null);
+                  } else {
+                    this.props.getTicketByTicketId(ticket.id);
                   }
-                  this.setState({ hasDetails: !this.state.hasDetails });
                 }}
               >
                 <i
-                  className={`fal fa-chevron-${!hasDetails ? "down" : "up"}`}
+                  className={`fal fa-chevron-${
+                    TicketByTcketId && TicketByTcketId.id === ticket.id
+                      ? "up"
+                      : "down"
+                  }`}
                   aria-hidden="true"
                 ></i>
-                {!hasDetails ? "View" : "Close"}
+                {TicketByTcketId && TicketByTcketId.id === ticket.id
+                  ? "Close"
+                  : "View"}
               </div>
             </span>
           </div>
-          {hasDetails && (
+          {TicketByTcketId && TicketByTcketId.id === ticket.id && (
             <div className="ticketDetails--infos animated fadeIn">
               <div className="ticketDetails--infos__header">
                 <img

@@ -31,7 +31,11 @@ export class FormSubmiter extends Component {
               userConfirmation(this.props.TicketByTcketId.id, 4, () => {});
             }}
             className={
-              "formSubmit--button -s" + (enableButtons ? "" : " dissableBtn")
+              "formSubmit--button -s" +
+              (enableButtons ||
+              this.props.TicketByTcketId.status === "Eseguibile"
+                ? ""
+                : " dissableBtn")
             }
           >
             Eseguito
@@ -41,7 +45,11 @@ export class FormSubmiter extends Component {
               userConfirmation(this.props.TicketByTcketId.id, 5, () => {});
             }}
             className={
-              "formSubmit--button -c" + (enableButtons ? "" : " dissableBtn")
+              "formSubmit--button -c" +
+              (enableButtons ||
+              this.props.TicketByTcketId.status === "Eseguibile"
+                ? ""
+                : " dissableBtn")
             }
           >
             Anullato
