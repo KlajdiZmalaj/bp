@@ -381,3 +381,7 @@
     }
   }
 }
+.dissableBtn {
+  pointer-events: none;
+  filter: grayscale(0.7) brightness(0.9);
+}

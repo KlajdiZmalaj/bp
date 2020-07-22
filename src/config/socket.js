@@ -33,9 +33,38 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
         data: e.data,
       });
     }
+    if (e.type === "support_popup") {
+      notification.open({
+        message: "Hai ricevuto una notifica",
+        description: e.data.title,
+        icon: <i className="fal fa-smile-beam"></i>,
+      });
+      window.setButtonsSupport(true);
+    }
+  });
+};
+
+export const subscribeSocketSupport = () => {
+  window["echo"].channel(`bpoint_cache_support`).listen(".support", (e) => {
+    console.log("subscribed listening support...", e);
+
+    if (e.type === "notification") {
+      notification.open({
+        message: "Hai ricevuto una notifica",
+        description: e.data.title,
+        icon: <i className="fal fa-smile-beam"></i>,
+      });
+
+      var audio = new Audio("notificationSupport.mp3");
+      audio.play();
+      window.addTicket(e.instance);
+    }
   });
 };
 
 export const unSubscribeSocketUser = (userID) => {
   window["echo"].leaveChannel(`bpoint_cache_${userID}`);
+};
+export const unSubscribeSocketSupport = () => {
+  window["echo"].leaveChannel(`bpoint_cache_support`);
 };

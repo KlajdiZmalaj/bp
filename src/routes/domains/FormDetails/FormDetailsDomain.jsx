@@ -39,7 +39,7 @@ class FormDetailsDomain extends Component {
               getTicketByTicketId={this.props.getTicketByTicketId}
               isNew={true}
               ticket={ticket}
-              key={ticket.id}
+              key={ticket && ticket.id}
             />
           );
         })}
@@ -49,114 +49,12 @@ class FormDetailsDomain extends Component {
             <DetailRow
               getTicketByTicketId={this.props.getTicketByTicketId}
               ticket={ticket}
-              key={ticket.id}
+              key={ticket && ticket.id}
             />
           );
         })}
       </div>
     );
-    // return (
-    //   <div>
-    //     {TicketByTcketId ? <FormDetailPopup /> : null}
-    //     <div className="accountInfo">
-    //       <div className="contentAcc supportContent">
-    //         <div className="userList">
-    //           <div className="userList--AllUsers">
-    //             <div className="header">
-    //               <span>Id</span>
-    //               <span>type</span>
-
-    //               <span>User</span>
-    //               <span>Nome agenzia</span>
-
-    //               <span>status</span>
-    //               <span>Ultimo Update</span>
-    //             </div>
-    //             {my_tickets
-    //               ? my_tickets.map((form) => {
-    //                   return (
-    //                     <div
-    //                       className="userList--noDoc__user singleUser"
-    //                       key={form.id}
-    //                     >
-    //                       <div className="body">
-    //                         <span>{form.id}</span>
-    //                         <span>{form.type}</span>
-
-    //                         <span>
-    //                           {form.role === "user" ||
-    //                           form.role === "agency" ||
-    //                           form.role === "agent" ||
-    //                           form.role === "super_admin" ? (
-    //                             <i className={allRoles[form.role]} />
-    //                           ) : null}
-    //                           {form.user}
-    //                           <span className="empty"></span>
-    //                         </span>
-
-    //                         <span>{form.nome_agenzia}</span>
-    //                         <span>{form.status}</span>
-    //                         <span>
-    //                           {form.updated_at}{" "}
-    //                           <i
-    //                             className="fal fa-eye"
-    //                             aria-hidden="true"
-    //                             onClick={() => {
-    //                               this.props.getTicketByTicketId(form.id);
-    //                             }}
-    //                           />
-    //                         </span>
-    //                       </div>
-    //                     </div>
-    //                   );
-    //                 })
-    //               : null}
-    //             {tickets
-    //               ? tickets.map((form) => {
-    //                   return (
-    //                     <div
-    //                       className="userList--noDoc__user singleUser"
-    //                       key={form.id}
-    //                     >
-    //                       <div className="body">
-    //                         <span>{form.id}</span>
-    //                         <span>{form.type}</span>
-    //                         <span>
-    //                           {form.role === "user" ||
-    //                           form.role === "agency" ||
-    //                           form.role === "agent" ||
-    //                           form.role === "super_admin" ? (
-    //                             <i className={allRoles[form.role]} />
-    //                           ) : null}
-    //                           {form.user}
-    //                           <span className="empty"></span>
-    //                         </span>
-
-    //                         <span>{form.nome_agenzia}</span>
-
-    //                         <span>{form.status}</span>
-
-    //                         <span>
-    //                           {form.updated_at}{" "}
-    //                           <i
-    //                             className="fal fa-eye"
-    //                             aria-hidden="true"
-    //                             onClick={() => {
-    //                               this.props.getTicketByTicketId(form.id);
-    //                             }}
-    //                           />
-    //                         </span>
-    //                       </div>
-    //                     </div>
-    //                   );
-    //                 })
-    //               : null}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 const mstp = (state) => {
