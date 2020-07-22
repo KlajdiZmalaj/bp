@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import EventiConfirmation from "./EventiConfirmation";
+import TreniConfirmation from "./TreniConfirmation";
+import VoliConfirmation from "./VoliConfirmation";
 import { userConfirmation } from "services/auth";
+import { AuthActions } from "redux-store/models";
+import { connect } from "react-redux";
 import "./style.css";
+import images from "../../themes/images";
+
 const PopUpConfirmation = ({
   popUpData,
   getTicketByTicketId,
   TicketByTcketId,
   role,
+  getDataFormDetails,
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
@@ -17,7 +24,17 @@ const PopUpConfirmation = ({
     }
   }, [popUpData]);
   console.log("ca ka ticket", TicketByTcketId, popUpData);
-
+  const TicketbyTicketIdNew = {
+    id: "test",
+    nome_agenzia: "test",
+    email: "test",
+    extra_data: "test",
+    link: "test",
+    name: "test",
+    quantity: "test",
+    telefono: "test",
+    total_cost: "test",
+  };
   return (
     TicketByTcketId &&
     Object.keys(TicketByTcketId).length > 1 &&
@@ -25,29 +42,46 @@ const PopUpConfirmation = ({
     popUpData.data && (
       <React.Fragment>
         <div className="confirmationPopup">
-          <div className="confirmationPopup--header">Ticket Confirmation</div>
+          <div className="confirmationPopup--header">
+            {" "}
+            <img
+              className="logoImg"
+              src={images[`${TicketbyTicketIdNew.nome_agenzia}-logo`]}
+              alt=""
+            />
+            <span>{`Id :BP- ${TicketbyTicketIdNew.id}`}</span>
+          </div>
           {TicketByTcketId.type == 3 && (
-            <EventiConfirmation TicketByTcketId={TicketByTcketId} />
+            <EventiConfirmation TicketByTcketId={TicketbyTicketIdNew} />
+          )}
+          {TicketByTcketId.type == 1 && (
+            <TreniConfirmation TicketByTcketId={TicketbyTicketIdNew} />
+          )}
+          {TicketByTcketId.type == 2 && (
+            <VoliConfirmation TicketByTcketId={TicketbyTicketIdNew} />
           )}
           <div className="confirmationPopup--buttons">
             <button
+              className="Eseguito"
               onClick={() => {
                 userConfirmation(
                   popUpData.id,
                   role === "support" ? 4 : 3,
-                  setState
+                  () => {},
+                  getDataFormDetails
                 );
               }}
             >
-              YES
+              ESEGUITO{" "}
             </button>
             <button
+              className="Annullato"
               onClick={() => {
-                userConfirmation(popUpData.id, 5, () => {});
+                userConfirmation(popUpData.id, 5, () => {}, getDataFormDetails);
                 setState(false);
               }}
             >
-              NO
+              ANNULLATO{" "}
             </button>
           </div>
         </div>
@@ -57,4 +91,4 @@ const PopUpConfirmation = ({
   );
 };
 
-export default PopUpConfirmation;
+export default connect(null, AuthActions)(PopUpConfirmation);
