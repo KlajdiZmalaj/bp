@@ -55,7 +55,7 @@ export const subscribeSocketSupport = () => {
         icon: <i className="fal fa-smile-beam"></i>,
       });
 
-      var audio = new Audio("notificationSupport.mp3");
+      var audio = new Audio("notification_sound.mp3");
       audio.play();
       window.addTicket(e.instance);
     }

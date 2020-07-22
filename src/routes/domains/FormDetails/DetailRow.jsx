@@ -27,7 +27,7 @@ export class DetailRow extends Component {
 
             <span>
               <i
-                className={`fal fa-${
+                className={`fas fa-${
                   ticket.type == "Treni"
                     ? "train"
                     : ticket.type == "Eventi"

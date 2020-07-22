@@ -3368,10 +3368,12 @@ footer h2 {
   font-size: 30px;
   margin-bottom: 0;
   font-family: Lato;
+  color: inherit;
 }
 
 footer .top {
   background-color: var(--footerTop-bg);
+  color: var(--footerTop-txt);
   padding: 10px;
 }
 
@@ -3425,6 +3427,7 @@ footer .top .maxWFooter {
 
 footer .mid {
   background-color: var(--accent-bg);
+  color: var(--accent-txt);
 }
 
 footer .mid img {
@@ -3458,6 +3461,7 @@ footer .mid .maxWFooter .colf:nth-child(3) p {
 
 footer .mid .maxWFooter .colf h3 {
   font-size: 16px;
+  color: inherit;
   text-transform: uppercase;
 }
 

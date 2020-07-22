@@ -247,9 +247,9 @@ class Transazioni extends React.Component {
                         to: format(item.selection.endDate, "yyyy-MM-dd"),
                         fromLabel: format(
                           item.selection.startDate,
-                          "yyyy/MM/dd"
+                          "dd/mm/yyyy"
                         ),
-                        toLabel: format(item.selection.endDate, "yyyy/MM/dd"),
+                        toLabel: format(item.selection.endDate, "dd/mm/yyyy"),
                       });
                     }}
                     locale={locales["it"]}
