@@ -42,12 +42,12 @@ export class SupportBody extends Component {
   };
   filterByDate = (errors, startDate, endDate) => {
     const result = errors.filter((error) => {
-      const errorDate = Date.parse(error.full_time);
-      const startDateFilter = Date.parse(startDate);
-      const endDateFilter = Date.parse(endDate);
-      // console.log(errorDate, startDateFilter, endDateFilter);
-      console.log(startDateFilter >= errorDate <= endDateFilter);
-      return startDateFilter >= errorDate <= endDateFilter;
+      const errorDate = new Date(error.full_time).getTime();
+      const startDateFilter = new Date(startDate).getTime();
+      const endDateFilter = new Date(endDate).getTime();
+      console.log(errorDate, startDateFilter, endDateFilter);
+      console.log(errorDate <= endDateFilter && startDateFilter >= errorDate);
+      return errorDate <= endDateFilter && startDateFilter >= errorDate;
     });
     return result;
   };
@@ -62,8 +62,8 @@ export class SupportBody extends Component {
     console.log(
       this.filterByDate(
         errors,
-        "2020-07-14T10:00:49.000000Z",
-        "2020-07-17T15:35:06.000000Z"
+        "2020-07-15T16:01:08.000000Z",
+        "2020-07-17T17:31:38.000000Z"
       )
     );
     return (

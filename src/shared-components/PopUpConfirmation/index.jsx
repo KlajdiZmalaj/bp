@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import EventiConfirmation from "./EventiConfirmation";
 import { userConfirmation } from "services/auth";
 import "./style.css";
+import images from "themes/images";
+
 const PopUpConfirmation = ({
   popUpData,
   getTicketByTicketId,
@@ -19,13 +21,22 @@ const PopUpConfirmation = ({
   console.log("ca ka ticket", TicketByTcketId, popUpData);
 
   return (
-    TicketByTcketId &&
-    Object.keys(TicketByTcketId).length > 1 &&
-    active &&
-    popUpData.data && (
+    ((TicketByTcketId &&
+      Object.keys(TicketByTcketId).length > 1 &&
+      active &&
+      popUpData.data) ||
+      true) && (
       <React.Fragment>
         <div className="confirmationPopup">
-          <div className="confirmationPopup--header">Ticket Confirmation</div>
+          <div className="confirmationPopup--header">
+            {" "}
+            <img
+              className="logoImg"
+              src={images[`${TicketByTcketId.nome_agenzia}-logo`]}
+              alt=""
+            />{" "}
+            Id :
+          </div>
           {TicketByTcketId.type == 3 && (
             <EventiConfirmation TicketByTcketId={TicketByTcketId} />
           )}
