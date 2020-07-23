@@ -3,29 +3,14 @@ import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
-import sumBy from "lodash/sumBy";
 import { get } from "lodash";
 import "./anim.css";
+// import CountUp from "./CountUp.jsx";
 class Overview extends Component {
   state = {
     overviewDashboard: {},
     activeFilter: 2,
-    payments: this.props.payments,
   };
-
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   let { payments } = prevState;
-  //   let { dashboardFromFilterTop } = prevState;
-  //   // console.log("abc", nextProps.payments, prevState.payments);
-  //   if (nextProps.payments !== prevState.payments && dashboardFromFilterTop) {
-  //     payments = nextProps.payments;
-  //     dashboardFromFilterTop = false;
-  //     return { ...prevState, payments, dashboardFromFilterTop };
-  //   } else {
-  //     dashboardFromFilterTop = true;
-  //     return { ...prevState, dashboardFromFilterTop };
-  //   }
-  // }
 
   componentDidMount() {
     // const accountData = localStorage.getItem("accountDataB");
@@ -43,26 +28,11 @@ class Overview extends Component {
     const {
       showOverview,
       toggleOverview,
-      payments,
-      accountInfo,
       dashboardData,
       fromFilterTop,
       dashboardFromFilterTop,
     } = this.props;
-    // console.log("accountInfo", accountInfo);
-    let provT = 0;
-    let commT = 0;
-    if (payments && payments.length > 0) {
-      // provT = (payments || [])
-      //   .map(item => parseFloat(item.percentage.replace(/,/g, "")))
-      //   .reduce((prev, next) => prev + next);
-      provT = sumBy(payments, function (o) {
-        return parseFloat(o.percentage.replace(/,/g, "."));
-      });
-      commT = sumBy(payments, function (o) {
-        return parseFloat(o.commissione.replace(/,/g, "."));
-      });
-    }
+
     return (
       <React.Fragment>
         <div className="max-width row">
@@ -147,7 +117,6 @@ class Overview extends Component {
             </div>
           </div>
         </div>
-        {/* <hr className="overviw-line" /> */}
         <div
           className={
             " row max-width no-gutters p-2 pl-md-4 wigs-overview " +
@@ -158,29 +127,15 @@ class Overview extends Component {
             <div className="wig wig1 animated fadeIn">
               <span>View Details</span>
               <h2>Saldo</h2>
-              <h3>
-                {get(accountInfo, "profile.wallet")}
-                {/* {dashboardFromFilterTop
-                  ? get(dashboardData, "saldo")
-                  : accountInfo.profile &&
-                    accountInfo.profile.wallet &&
-                    accountInfo.profile.wallet} */}
-                €
-              </h3>
+              <h3>{get(dashboardData, "saldo")}€</h3>
               <i className="fas fa-tag"></i>
             </div>
           </div>
           <div className="col-md-4">
             <div className="wig wig2  animated fadeIn">
               <span>View Details</span>
-              {/* <h2>Commissioni</h2> */}
               <h2>Commisione</h2>
-              <h3>
-                {dashboardFromFilterTop
-                  ? get(dashboardData, "commissione")
-                  : commT.toLocaleString("it-IT", { minimumFractionDigits: 2 })}
-                €
-              </h3>
+              <h3>{get(dashboardData, "commissione") || 0}€</h3>
 
               <i className="fas fa-user-alt"></i>
             </div>
@@ -189,17 +144,11 @@ class Overview extends Component {
             <div className="wig wig3 animated fadeIn">
               <span>View Details</span>
               <h2>Proviggioni</h2>
-              <h3>
-                {dashboardFromFilterTop
-                  ? get(dashboardData, "proviggioni")
-                  : provT.toLocaleString("it-IT", { minimumFractionDigits: 2 })}
-                €
-              </h3>
+              <h3>{get(dashboardData, "proviggioni") || 0}€</h3>
               <i className="fal fa-arrow-down"></i>
             </div>
           </div>
         </div>
-        {/* <Details /> */}
       </React.Fragment>
     );
   }
@@ -208,7 +157,6 @@ class Overview extends Component {
 const mapsStateToProps = (state) => ({
   showOverview: toggleOverviewSelector(state),
   services: state.services,
-  payments: state.auth.payments,
   accountInfo: state.auth.accountInfo,
   dashboardData: state.main.dashboardData,
 });

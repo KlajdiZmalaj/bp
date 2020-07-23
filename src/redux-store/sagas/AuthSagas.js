@@ -1,5 +1,4 @@
 import { put, call, delay, select } from "redux-saga/effects";
-import { get } from "lodash";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
 import {
@@ -232,6 +231,9 @@ export function* getPayments(params) {
 
         if (response.data.usernames) {
           yield put(AuthActions.setUsernames(response.data.usernames));
+        }
+        if (response.data.balance) {
+          yield put(MainActions.setOverviewDashboard(response.data.balance));
         }
       }
     } else if (response.error) {
