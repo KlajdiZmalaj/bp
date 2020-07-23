@@ -489,4 +489,101 @@
 .titleCard i {
   color: #b5b5b5;
 }
+
+.travalersSelector {
+  height: 40px;
+  background: #eaebec;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3px;
+  font-size: 15px;
+  padding: 0 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.travalersSelector * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.travalersSelectorDD {
+  position: absolute;
+  top: 66px;
+  z-index: 2;
+  background: #eaebec;
+  width: 100%;
+  -webkit-box-shadow: 0 0 13px -7px black;
+          box-shadow: 0 0 13px -7px black;
+  padding: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.travalersSelectorDD * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.travalersSelectorDD--item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.travalersSelectorDD--item i {
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.formsContainer--body__item {
+  position: relative;
+}
+
+.formsContainer .adult,
+.formsContainer .child {
+  background: #eaebec3d;
+  padding: 9px;
+  margin-top: 10px;
+}
+
+.formsContainer .swiper-container {
+  width: 100%;
+}
+
+.formsContainer .swiper-wrapper {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding-bottom: 30px;
+}
+
+.formsContainer .swiper-pagination {
+  bottom: 0;
+}
+
+.ant-switch-checked {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+}
 /*# sourceMappingURL=style.css.map */

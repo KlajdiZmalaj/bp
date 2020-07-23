@@ -34,11 +34,11 @@ class FormDetailsDomain extends Component {
             ></i>
             <i
               onClick={() =>
-                this.setState({ filterVisure: "Azienda O Impresa" })
+                this.setState({ filterVisure: "Azienda o Impresa" })
               }
               className={
                 "fa fa-building" +
-                (filterVisure === "Azienda O Impresa" ? " active" : "")
+                (filterVisure === "Azienda o Impresa" ? " active" : "")
               }
               aria-hidden="true"
             ></i>
@@ -53,14 +53,11 @@ class FormDetailsDomain extends Component {
             ></i>
           </div>
         </div>
-        <div className="ticketDetails--header">
+        <div className="ticketDetails--header --Visura">
           <span>Stato</span>
-
           <span>soggetto</span>
           <span>utente</span>
-
           <span>NR.PRENOTAZIONE</span>
-
           <span>Data</span>
           <span>Visura</span>
         </div>
@@ -68,13 +65,13 @@ class FormDetailsDomain extends Component {
           (visure) =>
             // console.log("ticket", ticket);
             (filterVisure === "all" || filterVisure === visure.type) && (
-              <DetailRow Visure={visure} allRoles={allRoles} />
+              <DetailRow key={visure.id} Visure={visure} allRoles={allRoles} />
             )
         )}
         {(visure || []).map(
           (vis) =>
             (filterVisure === "all" || filterVisure === vis.type) && (
-              <DetailRow Visure={vis} allRoles={allRoles} />
+              <DetailRow key={vis.id * 2} Visure={vis} allRoles={allRoles} />
             )
         )}
       </div>

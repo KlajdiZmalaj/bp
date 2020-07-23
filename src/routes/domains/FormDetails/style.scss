@@ -230,6 +230,18 @@
         background-color: #00ac56;
       }
     }
+    [data-status="Completato"] {
+      border: 1px solid #00ac2b;
+      span {
+        background-color: #00ac2b;
+      }
+    }
+    [data-status="Cancellato"] {
+      border: 1px solid #c91d1d;
+      span {
+        background-color: #c91d1d;
+      }
+    }
     div {
       width: 15px;
       height: 15px;
@@ -372,6 +384,17 @@
       cursor: pointer;
       transition: 0.3s;
       justify-content: center;
+      margin-bottom: 0;
+      &.toUpload {
+        background-color: #00ac56 !important;
+        color: #fff !important;
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+      }
       &:hover {
         background-color: var(--accent-bg);
         color: var(--accent-txt);

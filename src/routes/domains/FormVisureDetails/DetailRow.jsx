@@ -14,7 +14,7 @@ export class DetailRow extends Component {
     return (
       Visure && (
         <React.Fragment>
-          <div className="ticketDetails--row animated fadeIn">
+          <div className="ticketDetails--row animated fadeIn --Visura">
             <span className="status">
               <Tooltip title={Visure.status}>
                 <div data-status={`${Visure.status}`}>
@@ -29,7 +29,7 @@ export class DetailRow extends Component {
                   className={`fas fa-${
                     Visure.type === "Persona Fisica"
                       ? "user"
-                      : Visure.type === "Azienda O Impresa"
+                      : Visure.type === "Azienda o Impresa"
                       ? "building"
                       : ""
                   }`}
@@ -61,30 +61,23 @@ export class DetailRow extends Component {
                   <i className="fal fa-trash" aria-hidden="true"></i>
                 </div>
               </Tooltip>
-            </span>
-          </div>
-          {/* <div
+              <div
                 className="toggler"
                 onClick={() => {
-                  if (TicketByTcketId && TicketByTcketId.id === ticket.id) {
-                    this.props.setTicketByTicketId(null);
-                  } else {
-                    this.props.getTicketByTicketId(ticket.id);
-                  }
+                  // if (VisureByVisureId && VisureByVisureId.id === Visure.id) {
+                  //   this.props.setVisureByVisureId(null);
+                  // } else {
+                  this.props.getVisureByVisureId(Visure.id);
                 }}
               >
-                <i
-                  className={`fal fa-chevron-${
-                    TicketByTcketId && TicketByTcketId.id === ticket.id
-                      ? "up"
-                      : "down"
-                  }`}
-                  aria-hidden="true"
-                ></i>
-                {Visure && TicketByTcketId.id === ticket.id
+                <i className={`fal fa-chevron-up`} aria-hidden="true"></i>
+                {/* {VisureByVisureId && VisureByVisureId.id === Visure.id
                   ? "Close"
-                  : "View"} </div>*/}
-
+                  : "View"} */}
+                View
+              </div>
+            </span>
+          </div>
           {/* {TicketByTcketId && TicketByTcketId.id === ticket.id && (
             <div className="ticketDetails--infos animated fadeIn">
               <div className="ticketDetails--infos__header">
