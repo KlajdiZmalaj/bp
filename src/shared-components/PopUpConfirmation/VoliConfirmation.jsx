@@ -8,36 +8,31 @@ const Voli = ({ TicketByTcketId }) => (
         <span className="dark">{TicketByTcketId.nome_agenzia}</span>
       </div>
       <div className="confirmationPopup--body__item">
-        <span className="light">E-mail</span>
-        <span className="dark">{TicketByTcketId.email}</span>
+        <span className="light">Bagaglio</span>
+        <span className="dark">
+          {TicketByTcketId.bagaglio === 1 ? "A mano" : "In Stiva"}
+        </span>
+      </div>
+      <div className="confirmationPopup--body__item">
+        <span className="light">Prezzo</span>
+        <span className="dark">{TicketByTcketId.total_cost}</span>
       </div>
     </div>
     <div className="Others">
-      <div className="confirmationPopup--body__item">
-        <span className="light">Extra Dati/Notes</span>
-        <span className="dark">{TicketByTcketId.extra_data}</span>
-      </div>
+      {TicketByTcketId.bagaglio === 2 ? (
+        <div className="confirmationPopup--body__item">
+          <span className="light">Bagaglio in stiva</span>
+          <span className="dark">{TicketByTcketId.bagaglio_stiva}</span>
+        </div>
+      ) : null}
 
       <div className="confirmationPopup--body__item">
         <span className="light">Link</span>
         <span className="dark">{TicketByTcketId.link}</span>
       </div>
       <div className="confirmationPopup--body__item">
-        <span className="light">Nome</span>
-        <span className="dark">{TicketByTcketId.name}</span>
-      </div>
-      <div className="confirmationPopup--body__item">
-        <span className="light"> Quantity</span>
-        <span className="dark">{TicketByTcketId.quantity}</span>
-      </div>
-
-      <div className="confirmationPopup--body__item">
-        <span className="light">Telefono</span>
-        <span className="dark">{TicketByTcketId.telefono}</span>
-      </div>
-      <div className="confirmationPopup--body__item">
-        <span className="light">Costo totale</span>
-        <span className="dark">{TicketByTcketId.total_cost}</span>
+        <span className="light">Extra Dati/Notes</span>
+        <span className="dark">{TicketByTcketId.extra_data}</span>
       </div>
     </div>
   </div>

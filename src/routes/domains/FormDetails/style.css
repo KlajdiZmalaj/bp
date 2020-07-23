@@ -46,6 +46,44 @@
   margin: 0 auto;
 }
 
+.ticketDetails--filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 30px;
+}
+
+.ticketDetails--filters__byTicket {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ticketDetails--filters__byTicket i {
+  background-color: #e3e4e5;
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  border-radius: 40px;
+  margin-right: 5px;
+}
+
 .ticketDetails--header {
   width: 100%;
   display: -webkit-box;
@@ -260,11 +298,11 @@
 }
 
 .ticketDetails .status [data-status="Eseguibile"] {
-  border: 1px solid green;
+  border: 1px solid #00ac56;
 }
 
 .ticketDetails .status [data-status="Eseguibile"] span {
-  background-color: green;
+  background-color: #00ac56;
 }
 
 .ticketDetails .status [data-status="In Attesa"] {
@@ -281,6 +319,30 @@
 
 .ticketDetails .status [data-status="Nuova Richiesta"] span {
   background-color: #238be7;
+}
+
+.ticketDetails .status [data-status="Nuova Offerta"] {
+  border: 1px solid #00ac56;
+}
+
+.ticketDetails .status [data-status="Nuova Offerta"] span {
+  background-color: #00ac56;
+}
+
+.ticketDetails .status [data-status="Completato"] {
+  border: 1px solid #00ac2b;
+}
+
+.ticketDetails .status [data-status="Completato"] span {
+  background-color: #00ac2b;
+}
+
+.ticketDetails .status [data-status="Cancellato"] {
+  border: 1px solid #c91d1d;
+}
+
+.ticketDetails .status [data-status="Cancellato"] span {
+  background-color: #c91d1d;
 }
 
 .ticketDetails .status div {
@@ -487,9 +549,35 @@
   width: calc(25%);
   margin-right: 10px;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 0;
+}
+
+.ticketDetails .formSubmit--download.toUpload {
+  background-color: #00ac56 !important;
+  color: #fff !important;
+}
+
+.ticketDetails .formSubmit--download.toUpload div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.ticketDetails .formSubmit--download:hover {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
 }
 
 .ticketDetails .formSubmit--download i {
@@ -513,27 +601,73 @@
   width: calc(25% / 2);
   margin-right: 10px;
   cursor: pointer;
-  border-bottom: 2px solid #01cc67;
   color: #5c5c5c;
   font-weight: 500;
   font-size: 14px;
   text-transform: uppercase;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  position: relative;
+}
+
+.ticketDetails .formSubmit--button:after {
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  content: "";
+  bottom: 0;
+  left: 0;
+  background-color: #00ac56;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ticketDetails .formSubmit--button:before {
+  width: 100%;
+  position: absolute;
+  height: 0;
+  content: "";
+  top: 0;
+  left: 0;
+  background-color: #00ac56;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ticketDetails .formSubmit--button span {
+  position: relative;
+  z-index: 1;
 }
 
 .ticketDetails .formSubmit--button:hover {
-  background-color: #01cc67;
   color: #fff;
+}
+
+.ticketDetails .formSubmit--button:hover:after {
+  height: 50%;
+}
+
+.ticketDetails .formSubmit--button:hover:before {
+  height: 50%;
 }
 
 .ticketDetails .formSubmit--button.-c {
   margin-right: 0;
-  border-bottom: 2px solid #ea2424;
+}
+
+.ticketDetails .formSubmit--button.-c:before {
+  background-color: #da1919;
+}
+
+.ticketDetails .formSubmit--button.-c:after {
+  background-color: #da1919;
 }
 
 .ticketDetails .formSubmit--button.-c:hover {
-  background-color: #ea2424;
   color: #fff;
 }
 
@@ -541,5 +675,60 @@
   pointer-events: none;
   -webkit-filter: grayscale(0.7) brightness(0.9);
           filter: grayscale(0.7) brightness(0.9);
+}
+
+.ticketDetails .fas,
+.ticketDetails .fa {
+  cursor: pointer;
+}
+
+.ticketDetails .fa-plane {
+  color: #3d6389;
+}
+
+.ticketDetails .fa-plane:hover, .ticketDetails .fa-plane.active {
+  background-color: #3d6389;
+  color: #fff;
+}
+
+.ticketDetails .fa-bus {
+  color: #578a17;
+}
+
+.ticketDetails .fa-bus:hover, .ticketDetails .fa-bus.active {
+  background-color: #578a17;
+  color: #fff;
+}
+
+.ticketDetails .fa-train {
+  color: #c60d1a;
+}
+
+.ticketDetails .fa-train:hover, .ticketDetails .fa-train.active {
+  background-color: #c60d1a;
+  color: #fff;
+}
+
+.ticketDetails .fa-ticket-alt {
+  color: #5400d6;
+}
+
+.ticketDetails .fa-ticket-alt:hover, .ticketDetails .fa-ticket-alt.active {
+  background-color: #5400d6;
+  color: #fff;
+}
+
+.ticketDetails .fa-shopping-cart {
+  color: #f26521;
+}
+
+.ticketDetails .fa-shopping-cart:hover, .ticketDetails .fa-shopping-cart.active {
+  background-color: #f26521;
+  color: #222;
+}
+
+.ticketDetails--row .fas:hover {
+  background-color: unset !important;
+  color: var(--accent-bg) !important;
 }
 /*# sourceMappingURL=style.css.map */

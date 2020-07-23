@@ -23,18 +23,7 @@ const PopUpConfirmation = ({
       setState(true);
     }
   }, [popUpData]);
-  // console.log("ca ka ticket", TicketByTcketId, popUpData);
-  const TicketbyTicketIdNew = {
-    id: "test",
-    nome_agenzia: "test",
-    email: "test",
-    extra_data: "test",
-    link: "test",
-    name: "test",
-    quantity: "test",
-    telefono: "test",
-    total_cost: "test",
-  };
+  console.log("ca ka ticket", TicketByTcketId, popUpData);
   return (
     TicketByTcketId &&
     Object.keys(TicketByTcketId).length > 1 &&
@@ -46,19 +35,19 @@ const PopUpConfirmation = ({
             {" "}
             <img
               className="logoImg"
-              src={images[`${TicketbyTicketIdNew.nome_agenzia}-logo`]}
+              src={images[`${TicketByTcketId.nome_agenzia}-logo`]}
               alt=""
             />
-            <span>{`Id :BP- ${TicketbyTicketIdNew.id}`}</span>
+            <span>{`Id :BP- ${TicketByTcketId.id}`}</span>
           </div>
           {TicketByTcketId.type == 3 && (
-            <EventiConfirmation TicketByTcketId={TicketbyTicketIdNew} />
-          )}
-          {TicketByTcketId.type == 1 && (
-            <TreniConfirmation TicketByTcketId={TicketbyTicketIdNew} />
+            <EventiConfirmation TicketByTcketId={TicketByTcketId} />
           )}
           {TicketByTcketId.type == 2 && (
-            <VoliConfirmation TicketByTcketId={TicketbyTicketIdNew} />
+            <TreniConfirmation TicketByTcketId={TicketByTcketId} />
+          )}
+          {TicketByTcketId.type == 1 && (
+            <VoliConfirmation TicketByTcketId={TicketByTcketId} />
           )}
           <div className="confirmationPopup--buttons">
             <button
@@ -67,7 +56,7 @@ const PopUpConfirmation = ({
                 userConfirmation(
                   popUpData.id,
                   role === "support" ? 4 : 3,
-                  () => {},
+                  setState,
                   getDataFormDetails
                 );
               }}
@@ -85,7 +74,12 @@ const PopUpConfirmation = ({
             </button>
           </div>
         </div>
-        <div className="backDrop"></div>
+        <div
+          className="backDrop"
+          onClick={() => {
+            setState(false);
+          }}
+        ></div>
       </React.Fragment>
     )
   );

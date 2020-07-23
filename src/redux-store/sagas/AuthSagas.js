@@ -1,5 +1,4 @@
 import { put, call, delay, select } from "redux-saga/effects";
-import { get } from "lodash";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
 import {
@@ -28,8 +27,11 @@ import {
   sendDataFormReq,
   getDataFormDetailReq,
   getTicketByTicketIdReq,
+  getVisureReq,
   updateDataFormReq,
+  getDataFormDetailActivesReq,
   sendVisureDetailsReq,
+  getVisureByVisureIdReq,
 } from "services/auth";
 import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
@@ -229,6 +231,9 @@ export function* getPayments(params) {
 
         if (response.data.usernames) {
           yield put(AuthActions.setUsernames(response.data.usernames));
+        }
+        if (response.data.balance) {
+          yield put(MainActions.setOverviewDashboard(response.data.balance));
         }
       }
     } else if (response.error) {
@@ -654,6 +659,15 @@ export function* getDataFormDetails() {
     }
   }
 }
+export function* getDataFormDetailsActives() {
+  const response = yield call(getDataFormDetailActivesReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
+    }
+  }
+}
 export function* getTicketByTicketId(ticket_id) {
   const response = yield call(getTicketByTicketIdReq, ticket_id.ticket_id);
 
@@ -664,6 +678,7 @@ export function* getTicketByTicketId(ticket_id) {
   }
   // console.log("fetchErrors", response);
 }
+
 export function* updateDataForm(data) {
   const response = yield call(
     updateDataFormReq,
@@ -744,5 +759,24 @@ export function* sendVisureDetails(data) {
           : "error backend",
       ],
     });
+  }
+}
+export function* getVisure() {
+  const response = yield call(getVisureReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setVisure(response.data));
+    }
+  }
+  // console.log("fetchErrors", response);
+}
+export function* getVisureByVisureId(visura_id) {
+  const response = yield call(getVisureByVisureIdReq, visura_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setVisureByVisureId(response.data.data));
+    }
   }
 }

@@ -7,7 +7,7 @@ import Eventi from "./Eventi";
 import images from "themes/images";
 import "./style.css";
 
-const Card = ({ title, icon, color, clickHandler }) => {
+const Card = ({ title, icon, clickHandler }) => {
   return (
     <div
       onClick={clickHandler}
@@ -16,8 +16,8 @@ const Card = ({ title, icon, color, clickHandler }) => {
       <div className="titleCard">
         {title} <i className={icon}></i>{" "}
       </div>
-      <img className="bgImg" src={images[`${title}-bg`]} alt="" />
-      <div className="imageCard" style={{ backgroundColor: color }}>
+      <img className="bgImg" src={images[`${title}-card`]} alt="" />
+      <div className="imageCard">
         <img className="logoImg" src={images[`${title}-logo`]} alt="" />
       </div>
     </div>
@@ -33,6 +33,7 @@ export class FormsBody extends Component {
     color: "",
   };
   render() {
+    console.log(this.state);
     const { accountInfo } = this.props;
     const { typee, isSelected, nome_agenzia, color } = this.state;
     return (
@@ -125,6 +126,7 @@ export class FormsBody extends Component {
 
           {isSelected && typee === 1 && (
             <Voli
+              goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}
               typee={typee}
@@ -134,6 +136,7 @@ export class FormsBody extends Component {
           )}
           {isSelected && typee === 2 && (
             <Treni
+              goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}
               typee={typee}
@@ -143,6 +146,7 @@ export class FormsBody extends Component {
           )}
           {isSelected && typee === 3 && (
             <Eventi
+              goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}
               typee={typee}

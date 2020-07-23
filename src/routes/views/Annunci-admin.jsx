@@ -54,7 +54,7 @@ class AnnunciAdmin extends React.Component {
                   <i className="fas fa-dot-circle"></i>
                   <h4>Lorem, ipsum.</h4>
                   <span className="date-pane">12/12/2000</span>
-                  <img src={images.uparrow} alt="" />
+                  <i className="fal fa-chevron-down" aria-hidden="true"></i>
                 </div>
 
                 <div
@@ -73,7 +73,7 @@ class AnnunciAdmin extends React.Component {
                   <i className="fas fa-dot-circle"></i>
                   <h4>Lorem ipsum dolor sit amet consectetur.</h4>
                   <span className="date-pane">12/12/2000</span>
-                  <img src={images.uparrow} alt="" />
+                  <i className="fal fa-chevron-down" aria-hidden="true"></i>
                 </div>
 
                 <div

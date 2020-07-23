@@ -1,0 +1,91 @@
+.ticketDetails {
+  &--header.--Visura {
+    & span {
+      padding: 0.8% 1.2%;
+    }
+    & span:nth-child(2) {
+      width: 21%;
+    }
+    & span:nth-child(3) {
+      width: 15%;
+    }
+    & span:nth-child(4) {
+      width: 10%;
+    }
+    & span:nth-child(5) {
+      width: 15%;
+    }
+  }
+  &--row {
+    &.animated.fadeIn.--Visura {
+      & .options {
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        & span {
+          border: none;
+        }
+      }
+      & span {
+        display: flex;
+        align-items: center;
+      }
+      & span:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        width: 21%;
+        padding-right: 6%;
+        padding-left: 1.5%;
+        & .new {
+          margin-left: 10px;
+        }
+      }
+      & span:nth-child(3) {
+        width: 15%;
+        padding-left: 1.4%;
+      }
+      & span:nth-child(4) {
+        width: 10%;
+        padding-left: 1.6%;
+      }
+      & span:nth-child(5) {
+        width: 15%;
+        padding-left: 1.6%;
+      }
+
+      .fal,
+      .fas {
+        color: #578a17;
+        &.a-store {
+          color: #dc3545;
+        }
+        &.fa-building {
+          color: #3d6389;
+        }
+        &.fa-trash,
+        &.fa-archive {
+          color: #b5b5b5;
+        }
+      }
+    }
+  }
+  &--filters {
+    &__byTicket {
+      .fa-building {
+        &.active,
+        &:hover {
+          background-color: #3d6389;
+          color: #222;
+        }
+      }
+
+      .fa-user {
+        &.active,
+        &:hover {
+          background-color: #578a17;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
