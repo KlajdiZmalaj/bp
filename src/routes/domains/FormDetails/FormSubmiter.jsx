@@ -1,11 +1,39 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { userConfirmation } from "services/auth";
+import { userConfirmation, uploadPdf } from "services/auth";
 import { AuthActions } from "redux-store/models";
 
 export class FormSubmiter extends Component {
+  constructor() {
+    super();
+    this.state = {
+      base64: "",
+      fileType: {},
+      file: {},
+    };
+    this.fileUpInput = this.fileUpInput.bind(this);
+  }
+  fileUpInput = (e) => {
+    let _self = this;
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onload = function () {
+      let data = reader.result;
+      _self.setState({
+        base64: data,
+      });
+    };
+    file instanceof Blob && reader.readAsDataURL(file);
+    let fileType = file && file.name.split(".")[1];
+    this.setState({
+      file: file,
+      fileType: fileType,
+    });
+  };
   render() {
     const { enableButtons, TicketByTcketId, getDataFormDetails } = this.props;
+    const { fileType, file } = this.state;
+    console.log("fileType", fileType);
     return JSON.parse(localStorage.accountDataB).profile.role.name ===
       "support" ? (
       <div className="formSubmit">
@@ -32,23 +60,73 @@ export class FormSubmiter extends Component {
             INVIA OFFERTA <i className="fal fa-chevron-circle-right"></i>{" "}
           </div>
         </div>
-        <div
-          className={
-            "formSubmit--download" +
-            (this.props.TicketByTcketId.status === "Eseguibile"
-              ? " dissableBtn"
-              : "")
-          }
-        >
-          <i className="fal fa-cloud-upload-alt"></i> ALLEGA biglietto
-        </div>
+        <input
+          className="d-none"
+          required
+          id="doc"
+          type="file"
+          accept="image/*,.doc,.docx,application/msword,application/pdf"
+          onChange={(e) => this.fileUpInput(e)}
+        />
+        {TicketByTcketId.document ? (
+          <div className="formSubmit--download">
+            <i className="fal fa-download" aria-hidden="true"></i>
+            Download Documenti
+          </div>
+        ) : (
+          <label
+            htmlFor="doc"
+            className={
+              "formSubmit--download" +
+              (this.props.TicketByTcketId.status === "Eseguibile"
+                ? " dissableBtn"
+                : "") +
+              (this.state.base64 ? " toUpload" : "")
+            }
+          >
+            {this.state.base64 ? (
+              <div>
+                {" "}
+                <i
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    this.setState({ base64: null, fileType: null, file: {} });
+                  }}
+                  className="fal fa-trash-alt"
+                ></i>{" "}
+                {this.state.file.name}{" "}
+                {enableButtons ||
+                this.props.TicketByTcketId.status === "Eseguibile" ? (
+                  ""
+                ) : (
+                  <i
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      uploadPdf(TicketByTcketId.id, this.state.base64);
+                    }}
+                    className="fal fa-check-circle"
+                  ></i>
+                )}
+              </div>
+            ) : (
+              <div>
+                {" "}
+                <i className="fal fa-cloud-upload-alt"></i> ALLEGA BIGLIETTO
+              </div>
+            )}
+          </label>
+        )}
+
         <div
           onClick={() => {
             userConfirmation(
               this.props.TicketByTcketId.id,
               4,
               () => {},
-              getDataFormDetails
+              getDataFormDetails,
+              this.state.base64 && this.state.base64
             );
           }}
           className={

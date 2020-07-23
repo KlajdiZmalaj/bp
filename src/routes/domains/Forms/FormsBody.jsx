@@ -7,7 +7,7 @@ import Eventi from "./Eventi";
 import images from "themes/images";
 import "./style.css";
 
-const Card = ({ title, icon, color, clickHandler }) => {
+const Card = ({ title, icon, clickHandler }) => {
   return (
     <div
       onClick={clickHandler}
@@ -16,8 +16,8 @@ const Card = ({ title, icon, color, clickHandler }) => {
       <div className="titleCard">
         {title} <i className={icon}></i>{" "}
       </div>
-      <img className="bgImg" src={images[`${title}-bg`]} alt="" />
-      <div className="imageCard" style={{ backgroundColor: color }}>
+      <img className="bgImg" src={images[`${title}-card`]} alt="" />
+      <div className="imageCard">
         <img className="logoImg" src={images[`${title}-logo`]} alt="" />
       </div>
     </div>

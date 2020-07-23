@@ -183,6 +183,8 @@ const { Types, Creators } = createActions({
     "telefono",
   ],
   getDataFormDetails: [""],
+  getDataFormDetailsActives: [""],
+  setDataFormDetailsActives: ["formDetailsActives"],
   setDataFormDetails: ["formDetails"],
   getTicketByTicketId: ["ticket_id"],
   setTicketByTicketId: ["TicketByTcketId"],
@@ -272,9 +274,14 @@ const INITIAL_STATE = {
   errors: [],
   formDetails: [],
   TicketByTcketId: {},
+  formDetailsActives: [],
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_DATA_FORM_DETAILS_ACTIVES]: (state, { formDetailsActives }) => ({
+    ...state,
+    formDetailsActives,
+  }),
   [Types.SET_BUTTONS_SUPPORT]: (state, { enableButtons }) => ({
     ...state,
     enableButtons,

@@ -29,6 +29,7 @@ import {
   getDataFormDetailReq,
   getTicketByTicketIdReq,
   updateDataFormReq,
+  getDataFormDetailActivesReq,
   sendVisureDetailsReq,
 } from "services/auth";
 import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
@@ -651,6 +652,15 @@ export function* getDataFormDetails() {
       yield put(
         AuthActions.setDataFormDetails(response.data ? response.data : null)
       );
+    }
+  }
+}
+export function* getDataFormDetailsActives() {
+  const response = yield call(getDataFormDetailActivesReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
     }
   }
 }

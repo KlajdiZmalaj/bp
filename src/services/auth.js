@@ -706,6 +706,23 @@ export const getDataFormDetailReq = () => {
     })
     .catch((error) => ({ error }));
 };
+export const getDataFormDetailActivesReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/tickets/completed`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
 export const getTicketByTicketIdReq = (ticket_id) => {
   return axios
     .create({
@@ -863,7 +880,7 @@ export const sendVisureDetailsReq = (
     )
     .catch((error) => ({ error }));
 };
-export const userConfirmation = (ticket_id, status, c, recall) => {
+export const userConfirmation = (ticket_id, status, c, recall, documents) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -876,6 +893,7 @@ export const userConfirmation = (ticket_id, status, c, recall) => {
     .post(`/ticket/${ticket_id}/changeStatus`, {
       ...skin,
       status,
+      documents,
     })
     .then((res) => {
       if (res.status === 200 && c) {
@@ -886,6 +904,29 @@ export const userConfirmation = (ticket_id, status, c, recall) => {
           description: res.data.message,
         });
         recall();
+      }
+    });
+};
+export const uploadPdf = (ticket, document) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/ticket/${ticket}/addDocument`, {
+      ...skin,
+      document,
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        notification.open({
+          message: "Upload Notifica!",
+          description: res.data.message,
+        });
       }
     });
 };
