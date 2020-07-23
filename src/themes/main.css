@@ -710,16 +710,39 @@ a:hover {
   background: #eaeaea;
 }
 
+.sort-annunci .rdrDefinedRangesWrapper .rdrStaticRangeLabel,
+.sort-annunci .rdrStaticRange .rdrStaticRangeLabel {
+  font-weight: 600;
+}
+
+.sort-annunci .rdrStaticRange {
+  border-bottom: 0.7px solid #c7c7c7;
+}
+
 .sort-annunci .rdrDefinedRangesWrapper {
   width: 185px;
 }
 
 .sort-annunci .rdrDateDisplay {
-  margin-left: 5%;
-  margin-left: 5%;
-  margin-top: 0.333rem;
-  margin-bottom: 0.333rem;
-  width: 90%;
+  width: 182px;
+  padding: 4px 15px;
+  margin: 0;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  left: 0;
+  top: 58.5%;
+}
+
+.sort-annunci .rdrDateDisplayItem {
+  width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  margin-top: 0.3rem;
+  margin-left: 0;
 }
 
 .sort-annunci .rdrMonthAndYearWrapper {
@@ -732,7 +755,7 @@ a:hover {
 }
 
 .sort-annunci .rdrCalendarWrapper {
-  width: 455px;
+  width: 333px;
 }
 
 .sort-annunci .rdrCalendarWrapper * {
@@ -740,7 +763,7 @@ a:hover {
 }
 
 .sort-annunci .rdrMonth {
-  padding: 0 0.833em 1.666em 0.833em;
+  padding: 1.4em 1.4em;
   background: #f7f7f7;
 }
 
@@ -755,9 +778,7 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   color: var(--accent-bg);
-  padding: 0 20px;
   font-weight: 600;
-  padding: 0 20px;
 }
 
 .sort-annunci .dal:nth-child(1) {
@@ -766,16 +787,32 @@ a:hover {
 
 .sort-annunci .dal.calendar {
   cursor: pointer;
+  padding: 0 20px;
   border-left: 2px solid #edeef0;
+}
+
+.sort-annunci .rdrInputRanges {
+  padding: 0;
 }
 
 .sort-annunci .rdrInputRange {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-weight: bold;
+  padding: 1px 20px;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 0.7px solid #c7c7c7;
 }
 
 .sort-annunci .rdrInputRange .rdrInputRangeInput {
+  height: 25px;
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
@@ -795,6 +832,14 @@ a:hover {
   top: 10px;
 }
 
+.sort-annunci .rdrMonthName {
+  display: none;
+}
+
+.sort-annunci .rdrDayNumber {
+  font-weight: 600;
+}
+
 .sort-annunci .rdrInputRange:nth-child(2) {
   display: none;
 }
@@ -802,10 +847,10 @@ a:hover {
 .sort-annunci .calendarWrapper {
   position: absolute;
   z-index: 3;
-  left: 52%;
+  left: 56.3%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 67px;
+  top: 64px;
   -webkit-box-shadow: 0 12px 20px 1px #0000008c;
           box-shadow: 0 12px 20px 1px #0000008c;
 }
@@ -815,7 +860,7 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 20px;
+  padding: 8px 20px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -828,7 +873,7 @@ a:hover {
   border: 0;
   background-color: transparent;
   text-transform: uppercase;
-  padding: 5px 10px;
+  padding: 5px 20px;
 }
 
 .sort-annunci .calendarWrapper .buttons button:nth-child(2) {
@@ -946,6 +991,15 @@ a:hover {
 
 .sort-annunci .panel-tab i.fas.fa-dot-circle.nuovo {
   color: #00b850;
+}
+
+.ant-select-selection__rendered,
+.ant-form-item-control {
+  line-height: 37px;
+}
+
+.ant-select-selection--single {
+  height: 37px;
 }
 
 .carica-conto h3 {
@@ -1072,6 +1126,10 @@ i#private {
   border: 1px solid red;
   border-radius: 5px;
   color: red;
+}
+
+.sort-annunci .rdrCalendarWrapper * {
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 826px) {

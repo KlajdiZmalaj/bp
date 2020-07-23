@@ -24,7 +24,6 @@ const PopUpConfirmation = ({
     }
   }, [popUpData]);
   console.log("ca ka ticket", TicketByTcketId, popUpData);
-
   return (
     TicketByTcketId &&
     Object.keys(TicketByTcketId).length > 1 &&
@@ -44,10 +43,10 @@ const PopUpConfirmation = ({
           {TicketByTcketId.type == 3 && (
             <EventiConfirmation TicketByTcketId={TicketByTcketId} />
           )}
-          {TicketByTcketId.type == 1 && (
+          {TicketByTcketId.type == 2 && (
             <TreniConfirmation TicketByTcketId={TicketByTcketId} />
           )}
-          {TicketByTcketId.type == 2 && (
+          {TicketByTcketId.type == 1 && (
             <VoliConfirmation TicketByTcketId={TicketByTcketId} />
           )}
           <div className="confirmationPopup--buttons">
@@ -57,7 +56,7 @@ const PopUpConfirmation = ({
                 userConfirmation(
                   popUpData.id,
                   role === "support" ? 4 : 3,
-                  () => {},
+                  setState,
                   getDataFormDetails
                 );
               }}
@@ -75,7 +74,12 @@ const PopUpConfirmation = ({
             </button>
           </div>
         </div>
-        <div className="backDrop"></div>
+        <div
+          className="backDrop"
+          onClick={() => {
+            setState(false);
+          }}
+        ></div>
       </React.Fragment>
     )
   );

@@ -1,0 +1,20 @@
+.ticketDetails--row.animated.fadeIn .fal,
+.ticketDetails--row.animated.fadeIn .fas {
+  color: #578a17;
+}
+
+.ticketDetails--row.animated.fadeIn .fal.a-store,
+.ticketDetails--row.animated.fadeIn .fas.a-store {
+  color: #dc3545;
+}
+
+.ticketDetails--filters__byTicket .fa-building.active, .ticketDetails--filters__byTicket .fa-building:hover {
+  background-color: #3d6389;
+  color: #222;
+}
+
+.ticketDetails--filters__byTicket .fa-user.active, .ticketDetails--filters__byTicket .fa-user:hover {
+  background-color: #578a17;
+  color: #fff;
+}
+/*# sourceMappingURL=styles.css.map */

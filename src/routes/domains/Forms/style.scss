@@ -114,6 +114,15 @@
         font-size: 18px;
         border-bottom: 2px solid #ebeced;
         height: 67px;
+        & div.TitleBack {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          & i {
+            padding-right: 8px;
+            cursor: pointer;
+          }
+        }
         img {
           filter: brightness(0.8);
           width: 120px;

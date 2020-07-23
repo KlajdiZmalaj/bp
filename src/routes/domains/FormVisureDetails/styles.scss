@@ -1,0 +1,32 @@
+.ticketDetails {
+  &--row {
+    &.animated.fadeIn {
+      .fal,
+      .fas {
+        color: #578a17;
+        &.a-store {
+          color: #dc3545;
+        }
+      }
+    }
+  }
+  &--filters {
+    &__byTicket {
+      .fa-building {
+        &.active,
+        &:hover {
+          background-color: #3d6389;
+          color: #222;
+        }
+      }
+
+      .fa-user {
+        &.active,
+        &:hover {
+          background-color: #578a17;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

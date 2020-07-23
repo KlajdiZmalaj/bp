@@ -889,3 +889,20 @@ export const userConfirmation = (ticket_id, status, c, recall) => {
       }
     });
 };
+export const getVisureReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/visure`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};

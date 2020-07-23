@@ -28,6 +28,7 @@ import {
   sendDataFormReq,
   getDataFormDetailReq,
   getTicketByTicketIdReq,
+  getVisureReq,
   updateDataFormReq,
   sendVisureDetailsReq,
 } from "services/auth";
@@ -745,4 +746,14 @@ export function* sendVisureDetails(data) {
       ],
     });
   }
+}
+export function* getVisure() {
+  const response = yield call(getVisureReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setVisure(response.data));
+    }
+  }
+  // console.log("fetchErrors", response);
 }

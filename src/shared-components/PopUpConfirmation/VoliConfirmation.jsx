@@ -9,14 +9,23 @@ const Voli = ({ TicketByTcketId }) => (
       </div>
       <div className="confirmationPopup--body__item">
         <span className="light">Bagaglio</span>
-        <span className="dark">{TicketByTcketId.bagaglio}</span>
+        <span className="dark">
+          {TicketByTcketId.bagaglio === 1 ? "A mano" : "In Stiva"}
+        </span>
+      </div>
+      <div className="confirmationPopup--body__item">
+        <span className="light">Prezzo</span>
+        <span className="dark">{TicketByTcketId.total_cost}</span>
       </div>
     </div>
     <div className="Others">
-      <div className="confirmationPopup--body__item">
-        <span className="light">Bagaglio in stiva</span>
-        <span className="dark">{TicketByTcketId.bagaglio_stiva}</span>
-      </div>
+      {TicketByTcketId.bagaglio === 2 ? (
+        <div className="confirmationPopup--body__item">
+          <span className="light">Bagaglio in stiva</span>
+          <span className="dark">{TicketByTcketId.bagaglio_stiva}</span>
+        </div>
+      ) : null}
+
       <div className="confirmationPopup--body__item">
         <span className="light">Link</span>
         <span className="dark">{TicketByTcketId.link}</span>

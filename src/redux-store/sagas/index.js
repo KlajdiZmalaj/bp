@@ -34,6 +34,7 @@ import {
   sendVisureDetails,
   addPrivateMsg,
   addTicket,
+  getVisure,
 } from "./AuthSagas";
 
 import {
@@ -49,6 +50,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH h
+    takeLatest(AuthTypes.GET_VISURE, getVisure),
     takeLatest(AuthTypes.ADD_TICKET, addTicket),
     takeLatest(AuthTypes.ADD_PRIVATE_MSG, addPrivateMsg),
     takeLatest(AuthTypes.SEND_VISURE_DETAILS, sendVisureDetails),
