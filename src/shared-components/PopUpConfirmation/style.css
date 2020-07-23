@@ -51,14 +51,14 @@
 .confirmationPopup--body .NomeEmail .confirmationPopup--body__item span.light {
   position: absolute;
   left: 0;
-  width: 40%;
+  width: 45%;
 }
 
 .confirmationPopup--body .NomeEmail .confirmationPopup--body__item span.dark {
   font-weight: 600;
   position: absolute;
-  width: 60%;
-  left: 40%;
+  width: 55%;
+  left: 45%;
 }
 
 .confirmationPopup--body .Others {
@@ -98,14 +98,14 @@
 .confirmationPopup--body .Others .confirmationPopup--body__item span.light {
   position: absolute;
   left: 0;
-  width: 40%;
+  width: 45%;
 }
 
 .confirmationPopup--body .Others .confirmationPopup--body__item span.dark {
   font-weight: 600;
   position: absolute;
-  width: 60%;
-  left: 40%;
+  width: 55%;
+  left: 45%;
 }
 
 .confirmationPopup--buttons {

@@ -880,7 +880,7 @@ export const sendVisureDetailsReq = (
     )
     .catch((error) => ({ error }));
 };
-export const userConfirmation = (ticket_id, status, c, recall, documents) => {
+export const userConfirmation = (ticket_id, status, c, recall, document) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -893,7 +893,7 @@ export const userConfirmation = (ticket_id, status, c, recall, documents) => {
     .post(`/ticket/${ticket_id}/changeStatus`, {
       ...skin,
       status,
-      documents,
+      document,
     })
     .then((res) => {
       if (res.status === 200 && c) {

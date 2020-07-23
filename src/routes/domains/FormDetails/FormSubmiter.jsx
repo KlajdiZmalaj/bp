@@ -69,10 +69,14 @@ export class FormSubmiter extends Component {
           onChange={(e) => this.fileUpInput(e)}
         />
         {TicketByTcketId.document ? (
-          <div className="formSubmit--download">
+          <a
+            href={`https://services-api.bpoint.store/storage/payments/${TicketByTcketId.document}`}
+            download={`${TicketByTcketId.document}`}
+            className="formSubmit--download"
+          >
             <i className="fal fa-download" aria-hidden="true"></i>
             Download Documenti
-          </div>
+          </a>
         ) : (
           <label
             htmlFor="doc"
