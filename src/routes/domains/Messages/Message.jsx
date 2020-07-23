@@ -26,7 +26,7 @@ class Message extends React.Component {
           <i className="fas fa-dot-circle"></i>
           <h4>{msg[3]}</h4>
           <span className="date-pane">{msg[2]}</span>
-          <img src={images.uparrow} alt="" />
+          <i className="fal fa-chevron-down" aria-hidden="true"></i>
         </div>
 
         <div

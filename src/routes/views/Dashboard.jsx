@@ -82,7 +82,10 @@ class Dashboard extends React.Component {
                         >
                           <i className="fas fa-dot-circle"></i>
                           <h4>{capitalize(serv["name"])}</h4>
-                          <img src={images.uparrow} alt="" />
+                          <i
+                            className="fal fa-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </div>
 
                         <div

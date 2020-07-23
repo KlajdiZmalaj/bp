@@ -182,3 +182,17 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.panel-tab {
+  i.fal.fa-chevron-down {
+    color: inherit;
+    font-size: 15px;
+    right: 15px;
+    position: absolute;
+    transform: rotate(180deg);
+    transition: 0.3s;
+  }
+}
+.panel-tab[aria-expanded="true"] i.fal.fa-chevron-down {
+  transform: rotate(0deg);
+}

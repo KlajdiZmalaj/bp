@@ -15,7 +15,7 @@ class Annunci extends React.Component {
     this.state = {
       tabFilter: "",
       expanded: [],
-      modal: false
+      modal: false,
     };
     this.hideModal = this.hideModal.bind(this);
     this.showModal = this.showModal.bind(this);
@@ -43,7 +43,7 @@ class Annunci extends React.Component {
 
   tabExpand(tab) {
     if (this.state.expanded.includes(tab)) {
-      this.state.expanded = this.state.expanded.filter(el => el != tab);
+      this.state.expanded = this.state.expanded.filter((el) => el != tab);
       this.setState({});
     } else {
       this.state.expanded.push(tab);
@@ -58,7 +58,7 @@ class Annunci extends React.Component {
       this.state.tabFilter === ""
         ? Object.values(ads).sort((a, b) => b.id - a.id)
         : Object.values(ads)
-            .filter(m => m.importance === this.state.tabFilter)
+            .filter((m) => m.importance === this.state.tabFilter)
             .sort((a, b) => b.id - a.id);
     return (
       <div>
@@ -124,13 +124,13 @@ class Annunci extends React.Component {
                 ) : adsFiltered.length === 0 ? (
                   <div>Nessuna annunci per questa scheda</div>
                 ) : null}
-                {adsFiltered.map(m => (
+                {adsFiltered.map((m) => (
                   <div key={m.id}>
                     <div
                       onClick={() => this.tabExpand(m.id)}
                       className="panel-tab"
                       aria-expanded={`${
-                        this.state.expanded.find(tab => tab === m.id) != null
+                        this.state.expanded.find((tab) => tab === m.id) != null
                           ? "true"
                           : "false"
                       }`}
@@ -151,11 +151,11 @@ class Annunci extends React.Component {
                       ></i>
                       <h4>{m.title}</h4>
                       <span className="date-pane">{m.updated_at}</span>
-                      <img src={images.uparrow} alt="" />
+                      <i className="fal fa-chevron-down" aria-hidden="true"></i>
                     </div>
                     <div
                       className={`nav nav-tabs panel-content panel-content-annunci collapse ${
-                        this.state.expanded.find(tab => tab === m.id) != null
+                        this.state.expanded.find((tab) => tab === m.id) != null
                           ? "show"
                           : ""
                       }`}
@@ -188,7 +188,7 @@ class Annunci extends React.Component {
 }
 
 class AddAds extends React.Component {
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -216,9 +216,9 @@ class AddAds extends React.Component {
               rules: [
                 {
                   required: true,
-                  message: "Please select ads type"
-                }
-              ]
+                  message: "Please select ads type",
+                },
+              ],
             })(
               <Radio.Group>
                 <Radio value={3}>Cancellazione prodotto</Radio>
@@ -232,9 +232,9 @@ class AddAds extends React.Component {
               rules: [
                 {
                   required: true,
-                  message: "Please input ad title"
-                }
-              ]
+                  message: "Please input ad title",
+                },
+              ],
             })(<Input placeholder="Please input ad title" />)}
           </Form.Item>
           <Form.Item label="Text">
@@ -242,9 +242,9 @@ class AddAds extends React.Component {
               rules: [
                 {
                   required: true,
-                  message: "Please input ad text"
-                }
-              ]
+                  message: "Please input ad text",
+                },
+              ],
             })(<TextArea rows={4} />)}
           </Form.Item>
           <Form.Item>
@@ -274,12 +274,12 @@ class AddAds extends React.Component {
 
 const AddAdsForm = Form.create({ name: "addAnnunci" })(AddAds);
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   ads: state.auth.ads,
   ads_loading: state.auth.ads_loading,
   accountInfo: state.auth.accountInfo,
   adsCreationgLoading: state.auth.adsCreationgLoading,
-  adsCreationgMess: state.auth.adsCreationgMess
+  adsCreationgMess: state.auth.adsCreationgMess,
 });
 
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(
