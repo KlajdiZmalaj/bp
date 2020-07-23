@@ -36,6 +36,28 @@
   width: 100%;
   max-width: 1371px;
   margin: 0 auto;
+  &--filters {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+
+    &__byTicket {
+      margin-left: auto;
+      display: flex;
+      i {
+        background-color: #e3e4e5;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 40px;
+        margin-right: 5px;
+      }
+    }
+  }
   &--header {
     width: 100%;
     display: flex;
@@ -430,4 +452,57 @@
 .dissableBtn {
   pointer-events: none;
   filter: grayscale(0.7) brightness(0.9);
+}
+
+.ticketDetails {
+  .fas,
+  .fa {
+    cursor: pointer;
+  }
+  .fa-plane {
+    color: #3d6389;
+    &:hover,
+    &.active {
+      background-color: #3d6389;
+      color: #fff;
+    }
+  }
+  .fa-bus {
+    color: #578a17;
+    &:hover,
+    &.active {
+      background-color: #578a17;
+      color: #fff;
+    }
+  }
+  .fa-train {
+    color: #c60d1a;
+    &:hover,
+    &.active {
+      background-color: #c60d1a;
+      color: #fff;
+    }
+  }
+  .fa-ticket-alt {
+    color: #5400d6;
+    &:hover,
+    &.active {
+      background-color: #5400d6;
+      color: #fff;
+    }
+  }
+  .fa-shopping-cart {
+    color: #f26521;
+    &:hover,
+    &.active {
+      background-color: #f26521;
+      color: #222;
+    }
+  }
+  &--row {
+    .fas:hover {
+      background-color: unset !important;
+      color: var(--accent-bg) !important;
+    }
+  }
 }

@@ -17,7 +17,7 @@ const PopUpConfirmation = ({
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
-    console.log("popUpData changed", popUpData, TicketByTcketId);
+    // console.log("popUpData changed", popUpData, TicketByTcketId);
     if (popUpData.id) {
       getTicketByTicketId(popUpData.id);
       setState(true);

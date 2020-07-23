@@ -27,6 +27,11 @@ if (
     ...skin,
     skin_id: 5,
   };
+} else if (window.location.href.includes("sirpay")) {
+  skin = {
+    ...skin,
+    skin_id: 8,
+  };
 }
 
 export default {
