@@ -236,6 +236,10 @@ const { Types, Creators } = createActions({
   bigliettoPopUp: ["popUpData"],
   setButtonsSupport: ["enableButtons"],
   addTicket: ["ticket"],
+  getVisure: [""],
+  setVisure: ["Visure"],
+  getVisureByVisureId: ["visura_id"],
+  setVisureByVisureId: ["VisureByVisureId"],
 });
 
 export const AuthTypes = Types;
@@ -274,7 +278,9 @@ const INITIAL_STATE = {
   errors: [],
   formDetails: [],
   TicketByTcketId: {},
+  Visure: {},
   formDetailsActives: [],
+  VisureByVisureId: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -427,5 +433,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_TICKET_BY_TICKET_ID]: (state, { TicketByTcketId }) => ({
     ...state,
     TicketByTcketId,
+  }),
+  [Types.SET_VISURE]: (state, { Visure }) => ({
+    ...state,
+    Visure,
+  }),
+  [Types.SET_VISURE_BY_VISURE_ID]: (state, { VisureByVisureId }) => ({
+    ...state,
+    VisureByVisureId,
   }),
 });

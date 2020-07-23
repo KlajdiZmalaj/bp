@@ -5,7 +5,6 @@ import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
-// import sortBy from "lodash/sortBy";
 import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
@@ -58,6 +57,7 @@ class Transazioni extends React.Component {
     ],
     isCalendarOpen: false,
   };
+  // (new Date()).setMonth(new Date().getMonth()-1)
   fromFilterTop = (val) => {
     this.setState({ dashboardFromFilterTop: val });
   };
@@ -177,7 +177,6 @@ class Transazioni extends React.Component {
   }
 
   render() {
-    console.log(this.state.from);
     const { getFieldDecorator } = this.props.form;
     const { barcode } = this.state;
     const formItemLayout = {
@@ -214,7 +213,6 @@ class Transazioni extends React.Component {
       payments.sort(function (a, b) {
         return new Date(b.executed_date) - new Date(a.executed_date);
       });
-
     return (
       <div>
         <Header></Header>
@@ -247,16 +245,18 @@ class Transazioni extends React.Component {
                         to: format(item.selection.endDate, "yyyy-MM-dd"),
                         fromLabel: format(
                           item.selection.startDate,
-                          "dd/mm/yyyy"
+                          "dd/MM/yyyy"
                         ),
-                        toLabel: format(item.selection.endDate, "dd/mm/yyyy"),
+                        toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
                       });
                     }}
                     locale={locales["it"]}
                     color="#00e2b6"
                     showSelectionPreview={true}
                     moveRangeOnFirstSelection={false}
-                    months={2}
+                    months={1}
+                    maxDate={new Date()}
+                    dateDisplayFormat={"dd LLLL , yyyy"}
                     ranges={this.state.picker}
                     direction="horizontal"
                     renderStaticRangeLabel={(e) => {
@@ -297,7 +297,7 @@ class Transazioni extends React.Component {
                         },
                       },
                       {
-                        label: "Ultima 3 mesi",
+                        label: "Ultimi 3 mesi",
                         hasCustomRendering: true,
                         range: () => ({
                           endDate: new Date(),

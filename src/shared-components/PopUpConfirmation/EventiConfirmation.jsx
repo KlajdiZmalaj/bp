@@ -12,6 +12,10 @@ const Eventi = ({ TicketByTcketId }) => {
           <span className="light">E-mail</span>
           <span className="dark">{TicketByTcketId.email}</span>
         </div>
+        <div className="confirmationPopup--body__item">
+          <span className="light">Prezzo</span>
+          <span className="dark">{TicketByTcketId.total_cost}</span>
+        </div>
       </div>
       <div className="Others">
         <div className="confirmationPopup--body__item">

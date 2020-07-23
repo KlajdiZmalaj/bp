@@ -26,6 +26,7 @@ import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
 import Visure from "./routes/views/Visure";
+import VisureDetaggli from "./routes/views/VisureDetaggli";
 import {
   subscribeSocketUser,
   socket,
@@ -221,17 +222,24 @@ class Root extends React.Component {
               role={role}
             />
             <PrivateRoute
-              path="/formsDetail"
+              path="/dettagli-prenotazioni"
               component={FormDetails}
               isLoggedin={isLoggedin}
               allowedRoles={["support", "super_admin", "agency", "user"]}
               role={role}
             />
             <PrivateRoute
-              path="/Visure"
+              path="/visure"
               component={Visure}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/dettagli-visure"
+              component={VisureDetaggli}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             />
             Visure

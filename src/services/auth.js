@@ -907,6 +907,24 @@ export const userConfirmation = (ticket_id, status, c, recall, document) => {
       }
     });
 };
+export const getVisureReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/visure`, {
+      params: {
+        ...skin,
+      },
+    })
+
+    .catch((error) => ({ error }));
+};
 export const uploadPdf = (ticket, document) => {
   return axios
     .create({
@@ -917,6 +935,7 @@ export const uploadPdf = (ticket, document) => {
         }`,
       },
     })
+
     .post(`/ticket/${ticket}/addDocument`, {
       ...skin,
       document,
@@ -929,4 +948,22 @@ export const uploadPdf = (ticket, document) => {
         });
       }
     });
+};
+export const getVisureByVisureIdReq = ({ visura_id }) => {
+  console.log(visura_id);
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/visura/${visura_id}`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
 };

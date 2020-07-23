@@ -27,9 +27,11 @@ import {
   sendDataFormReq,
   getDataFormDetailReq,
   getTicketByTicketIdReq,
+  getVisureReq,
   updateDataFormReq,
   getDataFormDetailActivesReq,
   sendVisureDetailsReq,
+  getVisureByVisureIdReq,
 } from "services/auth";
 import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
@@ -676,6 +678,7 @@ export function* getTicketByTicketId(ticket_id) {
   }
   // console.log("fetchErrors", response);
 }
+
 export function* updateDataForm(data) {
   const response = yield call(
     updateDataFormReq,
@@ -756,5 +759,24 @@ export function* sendVisureDetails(data) {
           : "error backend",
       ],
     });
+  }
+}
+export function* getVisure() {
+  const response = yield call(getVisureReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setVisure(response.data));
+    }
+  }
+  // console.log("fetchErrors", response);
+}
+export function* getVisureByVisureId(visura_id) {
+  const response = yield call(getVisureByVisureIdReq, visura_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setVisureByVisureId(response.data.data));
+    }
   }
 }

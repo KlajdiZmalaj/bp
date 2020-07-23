@@ -90,7 +90,7 @@ class Eventi extends Component {
     );
   };
   render() {
-    const { nome_agenzia, color } = this.props;
+    const { nome_agenzia, color, goBack } = this.props;
 
     return (
       <div className="formsContainer--body animated fadeIn">
@@ -105,7 +105,11 @@ class Eventi extends Component {
         </div>
         <div className="rightForm">
           <div className="rightForm--header">
-            Prenotazione Biglietti{" "}
+            <div className="TitleBack">
+              <i class="fal fa-chevron-left Arrow" onClick={goBack}></i>
+              Prenotazione Biglietti{" "}
+            </div>
+
             <img src={images[`${nome_agenzia}-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
