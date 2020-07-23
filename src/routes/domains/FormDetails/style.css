@@ -260,11 +260,11 @@
 }
 
 .ticketDetails .status [data-status="Eseguibile"] {
-  border: 1px solid green;
+  border: 1px solid #00ac56;
 }
 
 .ticketDetails .status [data-status="Eseguibile"] span {
-  background-color: green;
+  background-color: #00ac56;
 }
 
 .ticketDetails .status [data-status="In Attesa"] {
@@ -281,6 +281,14 @@
 
 .ticketDetails .status [data-status="Nuova Richiesta"] span {
   background-color: #238be7;
+}
+
+.ticketDetails .status [data-status="Nuova Offerta"] {
+  border: 1px solid #00ac56;
+}
+
+.ticketDetails .status [data-status="Nuova Offerta"] span {
+  background-color: #00ac56;
 }
 
 .ticketDetails .status div {
@@ -487,9 +495,16 @@
   width: calc(25%);
   margin-right: 10px;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.ticketDetails .formSubmit--download:hover {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
 }
 
 .ticketDetails .formSubmit--download i {
@@ -513,27 +528,73 @@
   width: calc(25% / 2);
   margin-right: 10px;
   cursor: pointer;
-  border-bottom: 2px solid #01cc67;
   color: #5c5c5c;
   font-weight: 500;
   font-size: 14px;
   text-transform: uppercase;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  position: relative;
+}
+
+.ticketDetails .formSubmit--button:after {
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  content: "";
+  bottom: 0;
+  left: 0;
+  background-color: #00ac56;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ticketDetails .formSubmit--button:before {
+  width: 100%;
+  position: absolute;
+  height: 0;
+  content: "";
+  top: 0;
+  left: 0;
+  background-color: #00ac56;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ticketDetails .formSubmit--button span {
+  position: relative;
+  z-index: 1;
 }
 
 .ticketDetails .formSubmit--button:hover {
-  background-color: #01cc67;
   color: #fff;
+}
+
+.ticketDetails .formSubmit--button:hover:after {
+  height: 50%;
+}
+
+.ticketDetails .formSubmit--button:hover:before {
+  height: 50%;
 }
 
 .ticketDetails .formSubmit--button.-c {
   margin-right: 0;
-  border-bottom: 2px solid #ea2424;
+}
+
+.ticketDetails .formSubmit--button.-c:before {
+  background-color: #da1919;
+}
+
+.ticketDetails .formSubmit--button.-c:after {
+  background-color: #da1919;
 }
 
 .ticketDetails .formSubmit--button.-c:hover {
-  background-color: #ea2424;
   color: #fff;
 }
 
