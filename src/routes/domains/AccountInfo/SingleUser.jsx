@@ -158,6 +158,7 @@ class SingleUser extends Component {
                       ? this.props.getAgentByUserId(user.id)
                       : this.props.getUserDetail(user.id);
                   }}
+                  //
                   aria-hidden="true"
                 ></i>
               )}
