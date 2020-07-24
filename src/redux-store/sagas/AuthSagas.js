@@ -32,6 +32,8 @@ import {
   getDataFormDetailActivesReq,
   sendVisureDetailsReq,
   getVisureByVisureIdReq,
+  getAgentByUserIdReq,
+  getUserByUserIdReq,
 } from "services/auth";
 import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
@@ -777,6 +779,24 @@ export function* getVisureByVisureId(visura_id) {
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.setVisureByVisureId(response.data.data));
+    }
+  }
+}
+export function* getAgentByUserId(user_id) {
+  const response = yield call(getAgentByUserIdReq, user_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setUserDetail(response.data.user));
+    }
+  }
+}
+export function* getUserByUserId(user_id) {
+  const response = yield call(getUserByUserIdReq, user_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setUserDetail(response.data.user));
     }
   }
 }

@@ -37,6 +37,8 @@ import {
   getVisure,
   getDataFormDetailsActives,
   getVisureByVisureId,
+  getUserByUserId,
+  getAgentByUserId,
 } from "./AuthSagas";
 
 import {
@@ -52,6 +54,8 @@ import {
 export default function* root() {
   yield all([
     // AUTH h
+    takeLatest(AuthTypes.GET_AGENT_BY_USER_ID, getAgentByUserId),
+    takeLatest(AuthTypes.GET_USER_BY_USER_ID, getUserByUserId),
     takeLatest(AuthTypes.GET_VISURE_BY_VISURE_ID, getVisureByVisureId),
     takeLatest(AuthTypes.GET_VISURE, getVisure),
     takeLatest(

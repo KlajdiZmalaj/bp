@@ -240,6 +240,8 @@ const { Types, Creators } = createActions({
   setVisure: ["Visure"],
   getVisureByVisureId: ["visura_id"],
   setVisureByVisureId: ["VisureByVisureId"],
+  getUserByUserId: ["user_id"],
+  getAgentByUserId: ["user_id"],
 });
 
 export const AuthTypes = Types;
