@@ -82,9 +82,11 @@ export class FormSubmiter extends Component {
             htmlFor="doc"
             className={
               "formSubmit--download" +
-              (this.props.TicketByTcketId.status === "Eseguibile"
-                ? " dissableBtn"
-                : "") +
+              (this.props.TicketByTcketId.status === "Eseguibile" ||
+              this.props.TicketByTcketId.status === "Completato" ||
+              enableButtons
+                ? ""
+                : " dissableBtn") +
               (this.state.base64 ? " toUpload" : "")
             }
           >

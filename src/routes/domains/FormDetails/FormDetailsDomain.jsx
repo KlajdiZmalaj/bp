@@ -1,15 +1,51 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
-import { Switch } from "antd";
+import { Switch, Tooltip } from "antd";
 
 import "./style.scss";
-
 import DetailRow from "./DetailRow";
+
+export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
+  <Tooltip title={`Filtra per ${title === "all" ? "Tutti" : title}`}>
+    <span
+      className={`status ${filterType === title ? " active" : ""}`}
+      data-status={title}
+      onClick={handleClick}
+    >
+      <div
+        className={filterType === title ? " active" : ""}
+        aria-hidden="true"
+        data-status={title}
+      >
+        <span className={filterType === title ? " active" : ""}></span>
+      </div>
+      <span>
+        {title === "all"
+          ? "Tutti"
+          : title === "Nuova Richiesta"
+          ? "nuove richieste"
+          : title === "Eseguibile"
+          ? "Eseguibili"
+          : title === "In Attesa"
+          ? "In Attesa"
+          : title === "Completato"
+          ? "Completati"
+          : title === "Cancellato"
+          ? "Cancellati"
+          : title}
+      </span>
+    </span>
+  </Tooltip>
+);
 class FormDetailsDomain extends Component {
   state = {
     filterTickets: "all",
     statusRows: "all",
+    filterType: "all",
+    filterSkin: "",
+    filterAgenzie: "",
+    filterRicercaId: "",
   };
   componentDidMount() {
     this.props.setTicketByTicketId({ data: null });
@@ -17,11 +53,16 @@ class FormDetailsDomain extends Component {
   }
   render() {
     const { formDetails, TicketByTcketId, formDetailsActives } = this.props;
-    const { filterTickets, statusRows } = this.state;
+    const {
+      filterTickets,
+      statusRows,
+      filterSkin,
+      filterAgenzie,
+      filterRicercaId,
+      filterType,
+    } = this.state;
     const { my_tickets } = formDetails;
     const { tickets } = formDetails;
-    // console.log(formDetails);
-    // console.log(my_tickets);
     const allRoles = {
       user: "fal fa-user text-success",
       agency: "fal fa-store text-success",
@@ -31,7 +72,7 @@ class FormDetailsDomain extends Component {
     return (
       <div className="ticketDetails">
         <div className="ticketDetails--filters">
-          <div className="ticketDetails--filters__byStatus">
+          <div className="ticketDetails--filters__byTicket">
             <Switch
               onChange={(on) => {
                 if (on) {
@@ -49,8 +90,23 @@ class FormDetailsDomain extends Component {
                 <i className="fal fa-times-circle" aria-hidden="true"></i>
               }
             />
-          </div>
-          <div className="ticketDetails--filters__byTicket">
+            <input
+              placeholder="Skin"
+              onChange={(e) => this.setState({ filterSkin: e.target.value })}
+              value={filterSkin}
+            />
+            <input
+              placeholder="Ricerca Agenzia"
+              onChange={(e) => this.setState({ filterAgenzie: e.target.value })}
+              value={filterAgenzie}
+            />
+            <input
+              placeholder="Ricerca Id"
+              onChange={(e) =>
+                this.setState({ filterRicercaId: e.target.value })
+              }
+              value={filterRicercaId}
+            />
             <i
               onClick={() => this.setState({ filterTickets: "Voli" })}
               className={
@@ -88,10 +144,46 @@ class FormDetailsDomain extends Component {
               aria-hidden="true"
             ></i>
           </div>
+
+          <div className="ticketDetails--filters__byTicket">
+            <FilterTypeComponent
+              filterType={filterType}
+              handleClick={() => this.setState({ filterType: "all" })}
+              title="all"
+            />
+            <FilterTypeComponent
+              filterType={filterType}
+              handleClick={() =>
+                this.setState({ filterType: "Nuova Richiesta" })
+              }
+              title="Nuova Richiesta"
+            />
+            <FilterTypeComponent
+              filterType={filterType}
+              handleClick={() => this.setState({ filterType: "Eseguibile" })}
+              title="Eseguibile"
+            />
+            <FilterTypeComponent
+              filterType={filterType}
+              handleClick={() => this.setState({ filterType: "In Attesa" })}
+              title="In Attesa"
+            />
+            <FilterTypeComponent
+              filterType={filterType}
+              handleClick={() => this.setState({ filterType: "Completato" })}
+              title="Completato"
+            />
+            <FilterTypeComponent
+              filterType={filterType}
+              handleClick={() => this.setState({ filterType: "Cancellato" })}
+              title="Cancellato"
+            />
+          </div>
         </div>
         <div className="ticketDetails--header">
           <span>Stato</span>
           <span>Soggetto</span>
+          <span>Skin</span>
           <span>Agenzia</span>
           <span>Nr.Prenotazione</span>
           <span>Data</span>
@@ -101,7 +193,19 @@ class FormDetailsDomain extends Component {
           // console.log("ticket", ticket);
           return (
             (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
-            statusRows === "active" && (
+            statusRows === "active" &&
+            (filterType === "all" || filterType === ticket.status) &&
+            (filterSkin === "" ||
+              ticket.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
+            (filterAgenzie === "" ||
+              ticket.user
+                .toLowerCase()
+                .includes(filterAgenzie.toLowerCase())) &&
+            (filterRicercaId === "" ||
+              `BP-${ticket.id}`
+                .toString()
+                .toLowerCase()
+                .includes(filterRicercaId.toString().toLowerCase())) && (
               <DetailRow
                 allRoles={allRoles}
                 getTicketByTicketId={this.props.getTicketByTicketId}
@@ -115,7 +219,19 @@ class FormDetailsDomain extends Component {
         {(my_tickets || []).map((ticket) => {
           return (
             (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
-            statusRows === "all" && (
+            statusRows === "all" &&
+            (filterType === "all" || filterType === ticket.status) &&
+            (filterSkin === "" ||
+              ticket.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
+            (filterAgenzie === "" ||
+              ticket.user
+                .toLowerCase()
+                .includes(filterAgenzie.toLowerCase())) &&
+            (filterRicercaId === "" ||
+              `BP-${ticket.id}`
+                .toString()
+                .toLowerCase()
+                .includes(filterRicercaId.toString().toLowerCase())) && (
               <DetailRow
                 allRoles={allRoles}
                 getTicketByTicketId={this.props.getTicketByTicketId}

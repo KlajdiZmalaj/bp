@@ -45,7 +45,11 @@
     &__byTicket {
       margin-left: auto;
       display: flex;
-      i {
+      width: 100%;
+      .ant-switch {
+        margin-right: 20px;
+      }
+      > i {
         background-color: #e3e4e5;
         width: 40px;
         height: 40px;
@@ -55,6 +59,9 @@
         text-align: center;
         border-radius: 40px;
         margin-right: 5px;
+        &:nth-child(1) {
+          margin-left: auto;
+        }
       }
     }
   }
@@ -80,7 +87,7 @@
         width: 10%;
       }
       &:nth-child(2) {
-        width: 30%;
+        width: 20%;
         display: flex;
         align-items: center;
       }
@@ -130,7 +137,7 @@
         width: 10%;
       }
       &:nth-child(2) {
-        width: 30%;
+        width: 20%;
         display: flex;
         align-items: center;
         i {
@@ -159,6 +166,12 @@
         text-align: center;
         width: 1%;
         justify-content: center;
+      }
+      &:nth-child(4) {
+        i {
+          width: 15px;
+          margin-right: 10px;
+        }
       }
     }
     .toggler {
@@ -191,6 +204,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
         span:nth-child(2) {
           color: #00ac56;
           margin-left: 10px;

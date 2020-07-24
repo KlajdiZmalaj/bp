@@ -7,12 +7,8 @@ import Treni from "./Treni";
 import Eventi from "./Eventi";
 import { Tooltip } from "antd";
 export class DetailRow extends Component {
-  state = {
-    hasDetails: false,
-  };
   render() {
-    const { hasDetails } = this.state;
-    const { ticket, TicketByTcketId } = this.props;
+    const { ticket, TicketByTcketId, allRoles } = this.props;
 
     return (
       ticket && (
@@ -45,7 +41,11 @@ export class DetailRow extends Component {
                 <div className="new">New</div>
               )}
             </span>
-            <span>{ticket.user}</span>
+            <span>{ticket.skin}</span>
+            <span>
+              <i className={`${allRoles[ticket.role]}`} />
+              {ticket.user}
+            </span>
             <span>BP-{ticket.id}</span>
             <span>{ticket.updated_at}</span>
             <span className="options">

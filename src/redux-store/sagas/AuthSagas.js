@@ -32,10 +32,9 @@ import {
   getDataFormDetailActivesReq,
   sendVisureDetailsReq,
   getVisureByVisureIdReq,
+  updateVisuraReq,
 } from "services/auth";
-import { subscribeSocketUser, unSubscribeSocketUser } from "config/socket.js";
 import { fetchUsers } from "services/main";
-import { unSubscribeSocketSupport } from "../../config/socket";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -71,20 +70,6 @@ export function* logOut() {
   const response = yield call(logoutApi);
 
   if (response) {
-    console.log("logged out", response);
-    if (response.data) {
-      unSubscribeSocketUser(
-        JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB")).profile.id
-      );
-      if (
-        JSON.parse(localStorage.getItem("accountDataB")) &&
-        JSON.parse(localStorage.getItem("accountDataB")).profile.role.name ===
-          "support"
-      ) {
-        unSubscribeSocketSupport();
-      }
-    }
     localStorage.setItem("accountDataB", null);
     yield put(AuthActions.setAccountInfo({}));
   }
@@ -727,6 +712,13 @@ export function* updateDataForm(data) {
       msg: response?.data.message,
     });
   }
+  if (response?.status === 401) {
+    const response = yield call(logoutApi);
+    if (response) {
+      localStorage.setItem("accountDataB", null);
+      yield put(AuthActions.setAccountInfo({}));
+    }
+  }
   if (response.error) {
     data.callBack({
       error: true,
@@ -792,5 +784,46 @@ export function* getVisureByVisureId(visura_id) {
     if (response.status === 200) {
       yield put(AuthActions.setVisureByVisureId(response.data.data));
     }
+  }
+}
+
+export function* updateVisura(data) {
+  const response = yield call(
+    updateVisuraReq,
+    //same
+    data.visura_id,
+    data.typee,
+    data.codice_fiscale,
+    data.provincia,
+    data.address,
+    data.telefono,
+    data.email,
+    data.price,
+    //type2
+    data.ragione_sociale,
+    data.p_iva,
+    data.comune,
+    //type1
+    data.nome,
+    data.cognome,
+    data.data_di_nascita,
+    data.luogo_di_nascita
+  );
+  if (response?.status === 200) {
+    data.callBack({
+      error: false,
+      msg: response?.data.message,
+    });
+  }
+  if (response.error) {
+    data.callBack({
+      error: true,
+      msg: [
+        response.error.response.data.message,
+        response.error.response.data.errors
+          ? Object.values(response.error.response.data.errors)
+          : "error backend",
+      ],
+    });
   }
 }

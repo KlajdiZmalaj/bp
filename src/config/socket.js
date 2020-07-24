@@ -33,6 +33,12 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
         data: e.data,
       });
     }
+    if (e.type === "popup_visure") {
+      window.bigliettoPopUpVisure({
+        id: e.instance_id,
+        data: e.data,
+      });
+    }
     if (e.type === "support_popup") {
       notification.open({
         message: "Hai ricevuto una notifica",

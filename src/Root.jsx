@@ -34,7 +34,7 @@ import {
   subscribeSocketSupport,
   unSubscribeSocketSupport,
 } from "config/socket";
-import { PopUpConfirmation } from "shared-components";
+import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -95,6 +95,9 @@ class Root extends React.Component {
     if (!window.bigliettoPopUp) {
       window.bigliettoPopUp = this.props.bigliettoPopUp;
     }
+    if (!window.bigliettoPopUpVisure) {
+      window.bigliettoPopUpVisure = this.props.bigliettoPopUpVisure;
+    }
     if (!window.setButtonsSupport) {
       window.setButtonsSupport = this.props.setButtonsSupport;
     }
@@ -104,7 +107,7 @@ class Root extends React.Component {
     if (!window.addVisure) {
       window.addVisure = this.props.addVisure;
     }
-    // console.log("role", role);
+    console.log("this.props.popUpDataVisure", this.props.popUpDataVisure);
     return (
       <React.Fragment>
         <HashRouter>
@@ -268,6 +271,12 @@ class Root extends React.Component {
           getTicketByTicketId={this.props.getTicketByTicketId}
           popUpData={this.props.popUpData}
         />
+        <PopUpConfirmationVisure
+          role={role}
+          VisureByVisureId={this.props.VisureByVisureId}
+          getVisureByVisureId={this.props.getVisureByVisureId}
+          popUpDataVisure={this.props.popUpDataVisure}
+        />
       </React.Fragment>
     );
   }
@@ -279,7 +288,9 @@ const mapsStateToProps = (state) => ({
   screenWidth: state.main.screenWidth,
   privMsg: state.auth.privMsg,
   popUpData: state.auth.popUpData,
+  popUpDataVisure: state.auth.popUpDataVisure,
   TicketByTcketId: state.auth.TicketByTcketId,
+  VisureByVisureId: state.auth.VisureByVisureId,
 });
 
 export default connect(mapsStateToProps, {
