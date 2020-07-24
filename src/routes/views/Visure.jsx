@@ -8,7 +8,7 @@ export class Visure extends Component {
         <Header></Header>
         <div className="overview">
           <div className="azioni max-width">
-            <Azioni active="Visure"></Azioni>
+            <Azioni active="visure"></Azioni>
           </div>
         </div>
         <FormVisureDomain />

@@ -576,9 +576,9 @@ class Transazioni extends React.Component {
                     );
                   }}
                 >
-                  <Option value="10">10 / Pagina</Option>
-                  <Option value="25">25 / Pagina</Option>
-                  <Option value="30">50 / Pagina</Option>
+                  <Option value={10}>10 / Pagina</Option>
+                  <Option value={25}>25 / Pagina</Option>
+                  <Option value={50}>50 / Pagina</Option>
                 </Select>
               </div>
             </div>

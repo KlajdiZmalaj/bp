@@ -8,7 +8,7 @@ export class FormDetails extends Component {
         <Header></Header>
         <div className="overview">
           <div className="azioni max-width">
-            <Azioni active="formsDetails"></Azioni>
+            <Azioni active="dettagli-prenotazioni"></Azioni>
           </div>
         </div>
         <FormDetailsDomain />
