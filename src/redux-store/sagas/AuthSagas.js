@@ -33,6 +33,8 @@ import {
   sendVisureDetailsReq,
   getVisureByVisureIdReq,
   updateVisuraReq,
+  getAgentByUserIdReq,
+  getUserByUserIdReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -825,5 +827,23 @@ export function* updateVisura(data) {
           : "error backend",
       ],
     });
+  }
+}
+export function* getAgentByUserId(user_id) {
+  const response = yield call(getAgentByUserIdReq, user_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setUserDetail(response.data.user));
+    }
+  }
+}
+export function* getUserByUserId(user_id) {
+  const response = yield call(getUserByUserIdReq, user_id);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setUserDetail(response.data.user));
+    }
   }
 }

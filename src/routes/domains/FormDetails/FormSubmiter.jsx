@@ -33,7 +33,6 @@ export class FormSubmiter extends Component {
   render() {
     const { enableButtons, TicketByTcketId, getDataFormDetails } = this.props;
     const { fileType, file } = this.state;
-    console.log("fileType", fileType);
     return JSON.parse(localStorage.accountDataB).profile.role.name ===
       "support" ? (
       <div className="formSubmit">

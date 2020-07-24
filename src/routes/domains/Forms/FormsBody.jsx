@@ -33,7 +33,6 @@ export class FormsBody extends Component {
     color: "",
   };
   render() {
-    console.log(this.state);
     const { accountInfo } = this.props;
     const { typee, isSelected, nome_agenzia, color } = this.state;
     return (

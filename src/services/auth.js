@@ -984,7 +984,6 @@ export const uploadPdf = (id, document, isVisura) => {
     });
 };
 export const getVisureByVisureIdReq = ({ visura_id }) => {
-  console.log(visura_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1062,5 +1061,39 @@ export const updateVisuraReq = (
             price,
           }
     )
+    .catch((error) => ({ error }));
+};
+export const getAgentByUserIdReq = ({ user_id }) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/agent/${user_id}`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const getUserByUserIdReq = ({ user_id }) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`/user/${user_id}`, {
+      params: {
+        ...skin,
+      },
+    })
     .catch((error) => ({ error }));
 };

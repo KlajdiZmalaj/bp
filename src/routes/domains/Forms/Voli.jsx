@@ -79,7 +79,6 @@ class Voli extends Component {
         el: ".swiper-pagination",
       },
     };
-    console.log("travalers", travalers);
     return (
       <div className="formsContainer--body animated fadeIn">
         <div className="leftForm">
