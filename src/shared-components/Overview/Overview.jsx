@@ -126,7 +126,7 @@ class Overview extends Component {
           <div className=" col-md-4 ">
             <div className="wig wig1 animated fadeIn">
               <span>View Details</span>
-              <h2>Saldo</h2>
+              <h2>Transazioni</h2>
               <h3>{get(dashboardData, "saldo")}€</h3>
               <i className="fas fa-tag"></i>
             </div>

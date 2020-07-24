@@ -216,6 +216,26 @@ const { Types, Creators } = createActions({
     "price",
     "ticket_id",
   ],
+  updateVisura: [
+    "visura_id",
+    "typee",
+    "codice_fiscale",
+    "provincia",
+    "address",
+    "telefono",
+    "email",
+    "price",
+
+    "ragione_sociale",
+    "p_iva",
+    "comune",
+
+    "nome",
+    "cognome",
+    "data_di_nascita",
+    "luogo_di_nascita",
+    "callBack",
+  ],
   setPaymentsPages: ["paymentsPages"],
   sendVisureDetails: [
     "typee",
@@ -234,12 +254,16 @@ const { Types, Creators } = createActions({
     "callBack",
   ],
   bigliettoPopUp: ["popUpData"],
+  bigliettoPopUpVisure: ["popUpDataVisure"],
   setButtonsSupport: ["enableButtons"],
   addTicket: ["ticket"],
   getVisure: [""],
   setVisure: ["Visure"],
+  addVisure: ["singleVisure"],
   getVisureByVisureId: ["visura_id"],
   setVisureByVisureId: ["VisureByVisureId"],
+  getUserByUserId: ["user_id"],
+  getAgentByUserId: ["user_id"],
 });
 
 export const AuthTypes = Types;
@@ -281,6 +305,7 @@ const INITIAL_STATE = {
   Visure: {},
   formDetailsActives: [],
   VisureByVisureId: {},
+  popUpDataVisure: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -295,6 +320,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.BIGLIETTO_POP_UP]: (state, { popUpData }) => ({
     ...state,
     popUpData,
+  }),
+  [Types.BIGLIETTO_POP_UP_VISURE]: (state, { popUpDataVisure }) => ({
+    ...state,
+    popUpDataVisure,
   }),
   [Types.SET_PAYMENTS_PAGES]: (state, { paymentsPages }) => ({
     ...state,

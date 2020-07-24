@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .accountInfo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -946,38 +945,31 @@ body .userDetailPopup .SubmitButton {
   letter-spacing: 1px;
 }
 
-.level2,
-.level3 {
-  -webkit-box-shadow: inset 0 0 24px 0px var(--accent-bg);
-          box-shadow: inset 0 0 24px 0px var(--accent-bg);
+.level2 {
+  border-left: 3px solid var(--accent-bg);
   width: 100%;
-  padding-left: 3px;
 }
 
-.level2 .userList--noDoc__user,
-.level3 .userList--noDoc__user {
+.level2 .userList--noDoc__user {
   background-color: #f5f5f5;
 }
 
+.level2 .hasChildren {
+  border-left: 0 !important;
+}
+
 .isopenrow {
-  -webkit-box-shadow: 0 12px 26px -9px black;
-          box-shadow: 0 12px 26px -9px black;
   position: relative;
   z-index: 1;
 }
 
-.isopenrow:before {
-  content: " ⤹ ";
-  position: absolute;
-  left: -16px;
-  top: 10px;
-  color: var(--accent-bg);
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  font-size: 22px;
-}
-
 .isopenrow.level1 {
   z-index: 2;
+  -webkit-box-shadow: 0 3px 9px -6px black;
+          box-shadow: 0 3px 9px -6px black;
+}
+
+.isopenrow.level1 .hasChildren {
+  border-left: 0 !important;
 }
 /*# sourceMappingURL=style.css.map */

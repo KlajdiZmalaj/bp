@@ -1,45 +1,38 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { AuthActions } from "redux-store/models";
-import { notification } from "antd";
-
-import FormContainerBody from "./FormContainerBody";
-import { DatePicker } from "antd";
 import moment from "moment";
-import "./VisureStyles.css";
-export const InputForForm = ({ labelName, value, handleChange, type }) => {
+import { notification, DatePicker } from "antd";
+import { AuthActions } from "redux-store/models";
+import FormSubmiter from "./FormSubmiter";
+import "./styles.css";
+const InputForForm = ({ labelName, value, handleChange, type }) => {
   return (
-    <div className="formsContainer--body__item">
-      <div className="label">{labelName}</div>
-      <input value={value} onChange={handleChange} type={type} />
+    <div className="itemCol full">
+      <div className="inputLabel">{labelName}</div>
+      <input
+        className="ant-input"
+        value={value}
+        onChange={handleChange}
+        type={type}
+      />
     </div>
   );
 };
-class PersonaFisicaForm extends Component {
+class PersonaFisica extends Component {
   state = {
-    nome: "",
-    cognome: "",
-    codice_fiscale: "",
-    data_di_nascita: "",
-    luogo_di_nascita: "",
-    provincia: "",
-    address: "",
-    telefono: "",
-    email: "",
+    nome: this.props.VisureById.nome,
+    cognome: this.props.VisureById.cognome,
+    codice_fiscale: this.props.VisureById.codice_fiscale,
+    data_di_nascita: this.props.VisureById.data_di_nascita,
+    luogo_di_nascita: this.props.VisureById.luogo_di_nascita,
+    provincia: this.props.VisureById.provincia,
+    address: this.props.VisureById.address,
+    telefono: this.props.VisureById.telefono,
+    email: this.props.VisureById.email,
+    price: this.props.VisureById.total_cost,
   };
-  resetState = (msg) => {
+  callBack = (msg) => {
     if (!msg.error) {
-      this.setState({
-        nome: "",
-        cognome: "",
-        codice_fiscale: "",
-        data_di_nascita: "",
-        luogo_di_nascita: "",
-        provincia: "",
-        address: "",
-        telefono: "",
-        email: "",
-      });
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
@@ -54,6 +47,39 @@ class PersonaFisicaForm extends Component {
       });
     }
   };
+  submitData = async () => {
+    const {
+      nome,
+      cognome,
+      codice_fiscale,
+      data_di_nascita,
+      luogo_di_nascita,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+    } = await this.state;
+
+    await this.props.updateVisura(
+      this.props.VisureById.id,
+      1,
+      codice_fiscale,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+      "",
+      "",
+      "",
+      nome,
+      cognome,
+      data_di_nascita,
+      luogo_di_nascita,
+      this.callBack
+    );
+  };
   render() {
     const {
       nome,
@@ -65,16 +91,13 @@ class PersonaFisicaForm extends Component {
       address,
       telefono,
       email,
+      price,
     } = this.state;
+    console.log("VisureById", this.props.VisureById, this.props.updateVisura);
     return (
-      <FormContainerBody
-        goBack={this.props.goBack}
-        resetOfState={this.resetState}
-        data={this.state}
-        type={this.props.type}
-        headerTitle={"INDICA I DATI DELLA PERSONA"}
-        leftForm={
-          <div>
+      <React.Fragment>
+        <div className="formBody">
+          <div className="formBody--col">
             <InputForForm
               labelName="Nome"
               value={nome}
@@ -107,8 +130,8 @@ class PersonaFisicaForm extends Component {
               }}
               type={"text"}
             />
-            <div className="formsContainer--body__item">
-              <div className="label">Data di nascita</div>
+            <div className="itemCol full">
+              <div className="inputLabel">Data di nascita</div>
               {data_di_nascita === "" ? (
                 <DatePicker
                   value={null}
@@ -128,9 +151,7 @@ class PersonaFisicaForm extends Component {
               )}
             </div>
           </div>
-        }
-        rightForm={
-          <div>
+          <div className="formBody--col">
             <InputForForm
               labelName="Provincia di residenza"
               value={provincia}
@@ -164,12 +185,20 @@ class PersonaFisicaForm extends Component {
               type={"text"}
             />
           </div>
-        }
-      />
+        </div>
+
+        <FormSubmiter
+          price={price}
+          priceChange={(e) => {
+            this.setState({ price: e });
+          }}
+          sendOffert={this.submitData}
+        />
+      </React.Fragment>
     );
   }
 }
-const mstp = (state) => {
-  return {};
-};
-export default connect(mstp, AuthActions)(PersonaFisicaForm);
+// const mstp = (state) => {
+//   return {};
+// };
+export default connect(null, AuthActions)(PersonaFisica);

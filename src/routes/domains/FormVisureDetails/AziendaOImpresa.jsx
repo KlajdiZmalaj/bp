@@ -2,35 +2,37 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { notification } from "antd";
 import { AuthActions } from "redux-store/models";
-import FormContainerBody from "./FormContainerBody";
-import { InputForForm } from "./PersonaFisicaForm";
-import "./VisureStyles.css";
-
+import FormSubmiter from "./FormSubmiter";
+import "./styles.css";
+const InputForForm = ({ labelName, value, handleChange, type }) => {
+  return (
+    <div className="itemCol full">
+      <div className="inputLabel">{labelName}</div>
+      <input
+        className="ant-input"
+        value={value}
+        onChange={handleChange}
+        type={type}
+      />
+    </div>
+  );
+};
 class AziendaOImpresaForm extends Component {
   state = {
-    ragione_sociale: "",
-    p_iva: "",
-    codice_fiscale: "",
-    provincia: "",
-    comune: "",
-    address: "",
-    email: "",
-    telefono: "",
+    ragione_sociale: this.props.VisureById.ragione_sociale,
+    p_iva: this.props.VisureById.p_iva,
+    codice_fiscale: this.props.VisureById.codice_fiscale,
+    provincia: this.props.VisureById.provincia,
+    comune: this.props.VisureById.comune,
+    address: this.props.VisureById.address,
+    email: this.props.VisureById.email,
+    telefono: this.props.VisureById.telefono,
+    price: this.props.VisureById.total_cost,
     via_sms: false,
   };
-  resetState = (msg) => {
+
+  callBack = (msg) => {
     if (!msg.error) {
-      this.setState({
-        ragione_sociale: "",
-        p_iva: "",
-        codice_fiscale: "",
-        provincia: "",
-        comune: "",
-        address: "",
-        email: "",
-        telefono: "",
-        via_sms: false,
-      });
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
@@ -45,6 +47,39 @@ class AziendaOImpresaForm extends Component {
       });
     }
   };
+  submitData = async () => {
+    const {
+      codice_fiscale,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+
+      ragione_sociale,
+      p_iva,
+      comune,
+    } = await this.state;
+
+    await this.props.updateVisura(
+      this.props.VisureById.id,
+      2,
+      codice_fiscale,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+      ragione_sociale,
+      p_iva,
+      comune,
+      "",
+      "",
+      "",
+      "",
+      this.callBack
+    );
+  };
   render() {
     const {
       ragione_sociale,
@@ -53,18 +88,14 @@ class AziendaOImpresaForm extends Component {
       provincia,
       comune,
       address,
+      price,
       email,
       telefono,
     } = this.state;
     return (
-      <FormContainerBody
-        goBack={this.props.goBack}
-        resetOfState={this.resetState}
-        type={this.props.type}
-        data={this.state}
-        headerTitle={"INDICA I DATI DELL' AZIENDA"}
-        leftForm={
-          <div>
+      <React.Fragment>
+        <div className="formBody">
+          <div className="formBody--col">
             <InputForForm
               labelName="Ragione Sociale"
               value={ragione_sociale}
@@ -98,20 +129,7 @@ class AziendaOImpresaForm extends Component {
               type={"text"}
             />
           </div>
-        }
-        rightForm={
-          <div>
-            <InputForForm
-              goBack={this.props.goBack}
-              resetOfState={this.resetState}
-              data={this.state}
-              labelName="Indirizzo sede legale"
-              value={address}
-              handleChange={(e) => {
-                this.setState({ address: e.target.value });
-              }}
-              type={"text"}
-            />
+          <div className="formBody--col">
             <InputForForm
               labelName="Email"
               value={email}
@@ -136,23 +154,29 @@ class AziendaOImpresaForm extends Component {
               }}
               type={"text"}
             />
-            {/* <div className="formsContainer--body__item">
-              <Checkbox
-                defaultChecked={false}
-                onChange={(e) => {
-                  this.setState({ via_sms: e.target.checked });
-                }}
-              >
-                Avvisiami via SMS + 0.5 &euro;
-              </Checkbox>
-            </div> */}
+            <InputForForm
+              labelName="Indirizzo sede legale"
+              value={address}
+              handleChange={(e) => {
+                this.setState({ address: e.target.value });
+              }}
+              type={"text"}
+            />
           </div>
-        }
-      />
+        </div>
+
+        <FormSubmiter
+          price={price}
+          priceChange={(e) => {
+            this.setState({ price: e });
+          }}
+          sendOffert={this.submitData}
+        />
+      </React.Fragment>
     );
   }
 }
-const mstp = (state) => {
-  return {};
-};
-export default connect(mstp, AuthActions)(AziendaOImpresaForm);
+// const mstp = (state) => {
+//   return {};
+// };
+export default connect(null, AuthActions)(AziendaOImpresaForm);

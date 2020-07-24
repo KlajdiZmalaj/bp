@@ -28,7 +28,7 @@ class FormVisureDomain extends Component {
               >
                 <div className="titleCard">
                   PERSONA FISICA
-                  <i className="fas fa-receipt" />
+                  <i className="fas fa-user" />
                 </div>
                 <img className="bgImg" />
                 <div className="imageCard">
@@ -45,7 +45,7 @@ class FormVisureDomain extends Component {
               >
                 <div className="titleCard">
                   AZIENDA O IMPRESA
-                  <i className="fas fa-receipt" />
+                  <i className="fas fa-building" />
                 </div>
                 <img className="bgImg" />
                 <div className="imageCard">

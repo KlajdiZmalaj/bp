@@ -30,8 +30,9 @@ export class FormSubmiter extends Component {
       fileType: fileType,
     });
   };
+
   render() {
-    const { enableButtons, TicketByTcketId, getDataFormDetails } = this.props;
+    const { enableButtons, VisureByVisureId, getDataFormDetails } = this.props;
     const { fileType, file } = this.state;
     return JSON.parse(localStorage.accountDataB).profile.role.name ===
       "support" ? (
@@ -39,7 +40,7 @@ export class FormSubmiter extends Component {
         <div
           className={
             "formSubmit--price" +
-            (this.props.TicketByTcketId.status === "Eseguibile"
+            (this.props.VisureByVisureId.status === "Eseguibile"
               ? " dissableBtn"
               : "")
           }
@@ -56,9 +57,10 @@ export class FormSubmiter extends Component {
             />
           </div>
           <div className="submit" onClick={this.props.sendOffert}>
-            INVIA OFFERTA <i className="fal fa-chevron-circle-right"></i>{" "}
+            INVIA OFFERTAa <i className="fal fa-chevron-circle-right"></i>{" "}
           </div>
         </div>
+
         <input
           className="d-none"
           required
@@ -67,10 +69,10 @@ export class FormSubmiter extends Component {
           accept="image/*,.doc,.docx,application/msword,application/pdf"
           onChange={(e) => this.fileUpInput(e)}
         />
-        {TicketByTcketId.document ? (
+        {VisureByVisureId.document ? (
           <a
-            href={`https://services-api.bpoint.store/storage/payments/${TicketByTcketId.document}`}
-            download={`${TicketByTcketId.document}`}
+            href={`https://services-api.bpoint.store/storage/payments/${VisureByVisureId.document}`}
+            download={`${VisureByVisureId.document}`}
             className="formSubmit--download"
           >
             <i className="fal fa-download" aria-hidden="true"></i>
@@ -81,10 +83,10 @@ export class FormSubmiter extends Component {
             htmlFor="doc"
             className={
               "formSubmit--download" +
-              (this.props.TicketByTcketId.status === "Eseguibile" ||
-              this.props.TicketByTcketId.status === "Completato" ||
+              (this.props.VisureByVisureId.status === "Eseguibile" ||
+              this.props.VisureByVisureId.status === "Completato" ||
               enableButtons
-                ? ""
+                ? " "
                 : " dissableBtn") +
               (this.state.base64 ? " toUpload" : "")
             }
@@ -102,14 +104,14 @@ export class FormSubmiter extends Component {
                 ></i>{" "}
                 {this.state.file.name}{" "}
                 {enableButtons ||
-                this.props.TicketByTcketId.status === "Eseguibile" ? (
+                this.props.VisureByVisureId.status === "Eseguibile" ? (
                   ""
                 ) : (
                   <i
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
-                      uploadPdf(TicketByTcketId.id, this.state.base64);
+                      uploadPdf(VisureByVisureId.id, this.state.base64, true);
                     }}
                     className="fal fa-check-circle"
                   ></i>
@@ -127,16 +129,18 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
-              this.props.TicketByTcketId.id,
+              this.props.VisureByVisureId.id,
               4,
               () => {},
               getDataFormDetails,
-              this.state.base64 && this.state.base64
+              this.state.base64 && this.state.base64,
+              true
             );
           }}
           className={
             "formSubmit--button -s" +
-            (enableButtons || this.props.TicketByTcketId.status === "Eseguibile"
+            (enableButtons ||
+            this.props.VisureByVisureId.status === "Eseguibile"
               ? ""
               : " dissableBtn")
           }
@@ -146,15 +150,17 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
-              this.props.TicketByTcketId.id,
+              this.props.VisureByVisureId.id,
               5,
               () => {},
-              getDataFormDetails
+              getDataFormDetails,
+              true
             );
           }}
           className={
             "formSubmit--button -c" +
-            (enableButtons || this.props.TicketByTcketId.status === "Eseguibile"
+            (enableButtons ||
+            this.props.VisureByVisureId.status === "Eseguibile"
               ? ""
               : " dissableBtn")
           }
@@ -163,15 +169,16 @@ export class FormSubmiter extends Component {
         </div>
       </div>
     ) : (
-      TicketByTcketId.status === "Nuova Offerta" && (
+      VisureByVisureId.status === "Nuova Offerta" && (
         <div className="formSubmit">
           <div
             onClick={() => {
               userConfirmation(
-                this.props.TicketByTcketId.id,
+                this.props.VisureByVisureId.id,
                 3,
                 () => {},
-                getDataFormDetails
+                getDataFormDetails,
+                true
               );
             }}
             className={"formSubmit--button -s"}
@@ -181,10 +188,11 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
-                this.props.TicketByTcketId.id,
+                this.props.VisureByVisureId.id,
                 5,
                 () => {},
-                getDataFormDetails
+                getDataFormDetails,
+                true
               );
             }}
             className={"formSubmit--button -c"}
@@ -199,7 +207,7 @@ export class FormSubmiter extends Component {
 const mstp = (state) => {
   return {
     enableButtons: state.auth.enableButtons,
-    TicketByTcketId: state.auth.TicketByTcketId,
+    VisureByVisureId: state.auth.VisureByVisureId,
   };
 };
 export default connect(mstp, AuthActions)(FormSubmiter);

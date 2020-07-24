@@ -152,8 +152,13 @@ class SingleUser extends Component {
                     e.preventDefault();
                     e.stopPropagation();
                     this.setInfos();
-                    this.props.getUserDetail(user.id);
+                    user && user.role === "user"
+                      ? this.props.getUserByUserId(user.id)
+                      : user.role === "agent"
+                      ? this.props.getAgentByUserId(user.id)
+                      : this.props.getUserDetail(user.id);
                   }}
+                  //
                   aria-hidden="true"
                 ></i>
               )}
