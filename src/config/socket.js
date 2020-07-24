@@ -17,7 +17,7 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
     if (e.type === "payment") {
       addPrivateMsg(e.data);
     }
-    if (e.type === "notification") {
+    if (e.type === "notification" || e.type === "notification_visure") {
       notification.open({
         message: "Hai ricevuto una notifica",
         description: e.data.title,
