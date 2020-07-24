@@ -2,10 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { notification } from "antd";
 import { AuthActions } from "redux-store/models";
-import FormContainerBody from "./FormContainerBody";
-import { InputForForm } from "./PersonaFisicaForm";
-import "./VisureStyles.css";
-
+import FormSubmiter from "../FormDetails/FormSubmiter";
+import "./styles.css";
+const InputForForm = ({ labelName, value, handleChange, type }) => {
+  return (
+    <div className="itemCol full">
+      <div className="inputLabel">{labelName}</div>
+      <input
+        className="ant-input"
+        value={value}
+        onChange={handleChange}
+        type={type}
+      />
+    </div>
+  );
+};
 class AziendaOImpresaForm extends Component {
   state = {
     ragione_sociale: "",
@@ -18,6 +29,11 @@ class AziendaOImpresaForm extends Component {
     telefono: "",
     via_sms: false,
   };
+  componentDidMount() {
+    this.setState({
+      ...this.props.VisureById,
+    });
+  }
   resetState = (msg) => {
     if (!msg.error) {
       this.setState({
@@ -57,14 +73,9 @@ class AziendaOImpresaForm extends Component {
       telefono,
     } = this.state;
     return (
-      <FormContainerBody
-        goBack={this.props.goBack}
-        resetOfState={this.resetState}
-        type={this.props.type}
-        data={this.state}
-        headerTitle={"INDICA I DATI DELL' AZIENDA"}
-        leftForm={
-          <div>
+      <React.Fragment>
+        <div className="formBody">
+          <div className="formBody--col">
             <InputForForm
               labelName="Ragione Sociale"
               value={ragione_sociale}
@@ -98,20 +109,7 @@ class AziendaOImpresaForm extends Component {
               type={"text"}
             />
           </div>
-        }
-        rightForm={
-          <div>
-            <InputForForm
-              goBack={this.props.goBack}
-              resetOfState={this.resetState}
-              data={this.state}
-              labelName="Indirizzo sede legale"
-              value={address}
-              handleChange={(e) => {
-                this.setState({ address: e.target.value });
-              }}
-              type={"text"}
-            />
+          <div className="formBody--col">
             <InputForForm
               labelName="Email"
               value={email}
@@ -136,19 +134,17 @@ class AziendaOImpresaForm extends Component {
               }}
               type={"text"}
             />
-            {/* <div className="formsContainer--body__item">
-              <Checkbox
-                defaultChecked={false}
-                onChange={(e) => {
-                  this.setState({ via_sms: e.target.checked });
-                }}
-              >
-                Avvisiami via SMS + 0.5 &euro;
-              </Checkbox>
-            </div> */}
           </div>
-        }
-      />
+        </div>
+
+        <FormSubmiter
+          //   price={price}
+          priceChange={(e) => {
+            this.setState({ price: e });
+          }}
+          //   sendOffert={this.submitData}
+        />
+      </React.Fragment>
     );
   }
 }

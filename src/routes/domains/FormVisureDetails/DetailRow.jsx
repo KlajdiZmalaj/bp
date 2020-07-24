@@ -3,13 +3,16 @@ import { AuthActions } from "redux-store/models";
 import images from "themes/images";
 import { connect } from "react-redux";
 import { Tooltip } from "antd";
+import AziendaOImpresoForm from "./AziendaOImpresa";
+import PersonaFisicaForm from "./PersonaFisica";
+
 export class DetailRow extends Component {
   state = {
     hasDetails: false,
   };
   render() {
     const { hasDetails } = this.state;
-    const { Visure, allRoles } = this.props;
+    const { Visure, allRoles, VisureById } = this.props;
 
     return (
       Visure && (
@@ -41,6 +44,7 @@ export class DetailRow extends Component {
                 <div className="new">New</div>
               )}
             </span>
+            <span>{Visure.skin}</span>
             <span>
               <i className={`${allRoles[Visure.role]}`} />
               {Visure.user}
@@ -64,29 +68,32 @@ export class DetailRow extends Component {
               <div
                 className="toggler"
                 onClick={() => {
-                  // if (VisureByVisureId && VisureByVisureId.id === Visure.id) {
-                  //   this.props.setVisureByVisureId(null);
-                  // } else {
-                  this.props.getVisureByVisureId(Visure.id);
+                  if (VisureById && VisureById.id === Visure.id) {
+                    this.props.setVisureByVisureId(null);
+                  } else {
+                    this.props.getVisureByVisureId(Visure.id);
+                  }
                 }}
               >
-                <i className={`fal fa-chevron-up`} aria-hidden="true"></i>
-                {/* {VisureByVisureId && VisureByVisureId.id === Visure.id
-                  ? "Close"
-                  : "View"} */}
-                View
+                <i
+                  className={`fal fa-chevron-${
+                    VisureById && VisureById.id === Visure.id ? "up" : "down"
+                  }`}
+                  aria-hidden="true"
+                ></i>
+                {VisureById && VisureById.id === Visure.id ? "Close" : "View"}
               </div>
             </span>
           </div>
-          {/* {TicketByTcketId && TicketByTcketId.id === ticket.id && (
+          {VisureById && VisureById.id === Visure.id && (
             <div className="ticketDetails--infos animated fadeIn">
               <div className="ticketDetails--infos__header">
-                <img
+                {/* <img
                   src={images[`${ticket.nome_agenzia.toLowerCase()}-logo`]}
                   alt=""
-                />
+                /> */}
                 <div>
-                  <span>ID : BP-{ticket.id}</span>
+                  <span>ID : BP-{Visure.id}</span>
                   <span>
                     PRESA A CARICO{" "}
                     <i className="fal fa-check-circle" aria-hidden="true"></i>{" "}
@@ -94,36 +101,21 @@ export class DetailRow extends Component {
                 </div>
               </div>
               <div className="ticketDetails--infos__body">
-                {TicketByTcketId && TicketByTcketId.type === 1 && (
-                  <Voli
-                    TicketByTcketId={TicketByTcketId}
-                    typee={this.props.TicketByTcketId.type}
-                    updateDataForm={this.props.updateDataForm}
-                    ticketId={TicketByTcketId.id}
-                    editable={this.props.editable}
+                {VisureById && VisureById.type === 2 && (
+                  <AziendaOImpresoForm
+                    type={VisureById.type}
+                    VisureById={VisureById}
                   />
                 )}
-                {TicketByTcketId && TicketByTcketId.type === 2 && (
-                  <Treni
-                    TicketByTcketId={TicketByTcketId}
-                    typee={this.props.TicketByTcketId.type}
-                    updateDataForm={this.props.updateDataForm}
-                    ticketId={TicketByTcketId.id}
-                    editable={this.props.editable}
-                  />
-                )}
-                {TicketByTcketId && TicketByTcketId.type === 3 && (
-                  <Eventi
-                    TicketByTcketId={TicketByTcketId}
-                    typee={this.props.TicketByTcketId.type}
-                    updateDataForm={this.props.updateDataForm}
-                    ticketId={TicketByTcketId.id}
-                    editable={this.props.editable}
+                {VisureById && VisureById.type === 1 && (
+                  <PersonaFisicaForm
+                    type={VisureById.type}
+                    VisureById={VisureById}
                   />
                 )}
               </div>
             </div>
-          )} */}
+          )}
         </React.Fragment>
       )
     );
@@ -131,7 +123,7 @@ export class DetailRow extends Component {
 }
 const mstp = (state) => {
   return {
-    TicketByTcketId: state.auth.TicketByTcketId,
+    VisureById: state.auth.VisureByVisureId,
   };
 };
 export default connect(mstp, AuthActions)(DetailRow);

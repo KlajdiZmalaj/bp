@@ -9,7 +9,7 @@ export class VisureDetaggli extends Component {
         <Header></Header>
         <div className="overview">
           <div className="azioni max-width">
-            <Azioni active="formsDetails"></Azioni>
+            <Azioni active="dettagli-visure"></Azioni>
           </div>
         </div>
         <FormVisureDetails />

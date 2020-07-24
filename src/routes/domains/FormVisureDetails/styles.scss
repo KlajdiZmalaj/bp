@@ -2,17 +2,21 @@
   &--header.--Visura {
     & span {
       padding: 0.8% 1.2%;
+      box-sizing: border-box;
     }
     & span:nth-child(2) {
-      width: 21%;
+      width: 17%;
     }
     & span:nth-child(3) {
-      width: 15%;
+      width: 4%;
     }
     & span:nth-child(4) {
-      width: 10%;
+      width: 14%;
     }
     & span:nth-child(5) {
+      width: 11%;
+    }
+    & span:nth-child(6) {
       width: 15%;
     }
   }
@@ -29,6 +33,7 @@
       & span {
         display: flex;
         align-items: center;
+        box-sizing: border-box;
       }
       & span:nth-child(2) {
         display: flex;
@@ -40,15 +45,23 @@
           margin-left: 10px;
         }
       }
+      & span:nth-child(2) {
+        width: 17%;
+        padding-right: 3%;
+      }
       & span:nth-child(3) {
-        width: 15%;
-        padding-left: 1.4%;
+        width: 4%;
+        padding-left: 1.6%;
       }
       & span:nth-child(4) {
-        width: 10%;
+        width: 14%;
         padding-left: 1.6%;
       }
       & span:nth-child(5) {
+        width: 11%;
+        padding-left: 1.6%;
+      }
+      & span:nth-child(6) {
         width: 15%;
         padding-left: 1.6%;
       }
@@ -70,7 +83,116 @@
     }
   }
   &--filters {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     &__byTicket {
+      margin: 10px 15px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      & input {
+        border: 0.5px solid #9f9f9f;
+        border-radius: 2px;
+        padding: 6px 15px;
+        margin: 0 25px 0px 0px;
+        font-size: 14px;
+      }
+      & span.status {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 6px 10px;
+        margin: 0px 2px;
+        border-radius: 6px;
+        &[data-status="all"] {
+          &.active {
+            border: 1.5px solid #000000;
+          }
+        }
+        &[data-status="Nuova Richiesta"] {
+          &.active {
+            border: 1.5px solid #238be7;
+          }
+        }
+        &[data-status="In Attesa"] {
+          &.active {
+            border: 1.5px solid #eb6810;
+          }
+        }
+        &[data-status="Cancellato"] {
+          &.active {
+            border: 1.5px solid #c91d1d;
+          }
+        }
+        &[data-status="Eseguibile"] {
+          &.active {
+            border: 1.5px solid #00ac56;
+          }
+        }
+        &[data-status="Completato"] {
+          &.active {
+            border: 1.5px solid #00ac2b;
+          }
+        }
+        & div {
+          margin-right: 5px;
+          &[data-status="all"] {
+            & span {
+              background-color: #000000;
+            }
+            &.active {
+              background-color: #000000;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+          &[data-status="Nuova Richiesta"] {
+            &.active {
+              background-color: #238be7;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+          &[data-status="In Attesa"] {
+            &.active {
+              background-color: #eb6810;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+          &[data-status="Cancellato"] {
+            &.active {
+              background-color: #c91d1d;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+          &[data-status="Eseguibile"] {
+            &.active {
+              background-color: #00ac56;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+          &[data-status="Completato"] {
+            &.active {
+              background-color: #00ac2b;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+        }
+      }
       .fa-building {
         &.active,
         &:hover {

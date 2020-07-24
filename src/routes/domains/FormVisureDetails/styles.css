@@ -1,20 +1,26 @@
 .ticketDetails--header.--Visura span {
   padding: 0.8% 1.2%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .ticketDetails--header.--Visura span:nth-child(2) {
-  width: 21%;
+  width: 17%;
 }
 
 .ticketDetails--header.--Visura span:nth-child(3) {
-  width: 15%;
+  width: 4%;
 }
 
 .ticketDetails--header.--Visura span:nth-child(4) {
-  width: 10%;
+  width: 14%;
 }
 
 .ticketDetails--header.--Visura span:nth-child(5) {
+  width: 11%;
+}
+
+.ticketDetails--header.--Visura span:nth-child(6) {
   width: 15%;
 }
 
@@ -38,6 +44,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .ticketDetails--row.animated.fadeIn.--Visura span:nth-child(2) {
@@ -56,17 +64,27 @@
   margin-left: 10px;
 }
 
+.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(2) {
+  width: 17%;
+  padding-right: 3%;
+}
+
 .ticketDetails--row.animated.fadeIn.--Visura span:nth-child(3) {
-  width: 15%;
-  padding-left: 1.4%;
+  width: 4%;
+  padding-left: 1.6%;
 }
 
 .ticketDetails--row.animated.fadeIn.--Visura span:nth-child(4) {
-  width: 10%;
+  width: 14%;
   padding-left: 1.6%;
 }
 
 .ticketDetails--row.animated.fadeIn.--Visura span:nth-child(5) {
+  width: 11%;
+  padding-left: 1.6%;
+}
+
+.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(6) {
   width: 15%;
   padding-left: 1.6%;
 }
@@ -90,6 +108,142 @@
 .ticketDetails--row.animated.fadeIn.--Visura .fas.fa-trash,
 .ticketDetails--row.animated.fadeIn.--Visura .fas.fa-archive {
   color: #b5b5b5;
+}
+
+.ticketDetails--filters {
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.ticketDetails--filters__byTicket {
+  margin: 10px 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ticketDetails--filters__byTicket input {
+  border: 0.5px solid #9f9f9f;
+  border-radius: 2px;
+  padding: 6px 15px;
+  margin: 0 25px 0px 0px;
+  font-size: 14px;
+}
+
+.ticketDetails--filters__byTicket span.status {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 6px 10px;
+  margin: 0px 2px;
+  border-radius: 6px;
+}
+
+.ticketDetails--filters__byTicket span.status[data-status="all"].active {
+  border: 1.5px solid #000000;
+}
+
+.ticketDetails--filters__byTicket span.status[data-status="Nuova Richiesta"].active {
+  border: 1.5px solid #238be7;
+}
+
+.ticketDetails--filters__byTicket span.status[data-status="In Attesa"].active {
+  border: 1.5px solid #eb6810;
+}
+
+.ticketDetails--filters__byTicket span.status[data-status="Cancellato"].active {
+  border: 1.5px solid #c91d1d;
+}
+
+.ticketDetails--filters__byTicket span.status[data-status="Eseguibile"].active {
+  border: 1.5px solid #00ac56;
+}
+
+.ticketDetails--filters__byTicket span.status[data-status="Completato"].active {
+  border: 1.5px solid #00ac2b;
+}
+
+.ticketDetails--filters__byTicket span.status div {
+  margin-right: 5px;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="all"] span {
+  background-color: #000000;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="all"].active {
+  background-color: #000000;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="all"] span.active {
+  background-color: #fff;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Nuova Richiesta"].active {
+  background-color: #238be7;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Nuova Richiesta"] span.active {
+  background-color: #fff;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="In Attesa"].active {
+  background-color: #eb6810;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="In Attesa"] span.active {
+  background-color: #fff;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Cancellato"].active {
+  background-color: #c91d1d;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Cancellato"] span.active {
+  background-color: #fff;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Eseguibile"].active {
+  background-color: #00ac56;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Eseguibile"] span.active {
+  background-color: #fff;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Completato"].active {
+  background-color: #00ac2b;
+}
+
+.ticketDetails--filters__byTicket span.status div[data-status="Completato"] span.active {
+  background-color: #fff;
 }
 
 .ticketDetails--filters__byTicket .fa-building.active, .ticketDetails--filters__byTicket .fa-building:hover {
