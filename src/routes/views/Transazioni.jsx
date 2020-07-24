@@ -109,8 +109,8 @@ class Transazioni extends React.Component {
         console.log("Received values of form: ", values);
         this.props.getPayments(
           this.state.username,
-          this.state.from || moment().subtract(30, "days").format("YYYY-MM-DD"),
-          this.state.to || moment().format("YYYY-MM-DD"),
+          this.state.from || "",
+          this.state.to || "",
           1,
           this.state.perPage
         );
@@ -121,11 +121,29 @@ class Transazioni extends React.Component {
   changeSelected = (filter) => {
     this.setState({ selectedFilter: filter });
     if (filter === 0) {
-      this.props.getPayments("", moment(), moment(), 1, this.state.perPage);
+      this.setState({
+        fromLabel: "",
+        toLabel: "",
+        from: moment().format("YYYY-MM-DD"),
+        to: moment().format("YYYY-MM-DD"),
+      });
+      this.props.getPayments(
+        this.state.username != "" ? this.state.username : "",
+        moment().format("YYYY-MM-DD"),
+        moment().format("YYYY-MM-DD"),
+        1,
+        this.state.perPage
+      );
     }
     if (filter === 1) {
+      this.setState({
+        fromLabel: "",
+        toLabel: "",
+        from: moment().subtract(1, "days").format("YYYY-MM-DD"),
+        to: moment().subtract(1, "days").format("YYYY-MM-DD"),
+      });
       this.props.getPayments(
-        "",
+        this.state.username != "" ? this.state.username : "",
         moment().subtract(1, "days").format("YYYY-MM-DD"),
         moment().subtract(1, "days").format("YYYY-MM-DD"),
         1,
@@ -133,15 +151,39 @@ class Transazioni extends React.Component {
       );
     }
     if (filter === 2) {
-      const time7daysAgo = moment().subtract(7, "days").startOf("day");
-      this.props.getPayments("", time7daysAgo, moment(), 1, this.state.perPage);
+      this.setState({
+        fromLabel: "",
+        toLabel: "",
+        from: moment().subtract(7, "days").startOf("day").format("YYYY-MM-DD"),
+        to: moment().format("YYYY-MM-DD"),
+      });
+      const time7daysAgo = moment()
+        .subtract(7, "days")
+        .startOf("day")
+        .format("YYYY-MM-DD");
+      this.props.getPayments(
+        this.state.username != "" ? this.state.username : "",
+        time7daysAgo,
+        moment().format("YYYY-MM-DD"),
+        1,
+        this.state.perPage
+      );
     }
     if (filter === 3) {
-      const time30daysAgo = moment().subtract(30, "days").startOf("day");
+      this.setState({
+        from: "",
+        to: "",
+        fromLabel: "",
+        toLabel: "",
+      });
+      // const time30daysAgo = moment()
+      //   .subtract(30, "days")
+      //   .startOf("day")
+      //   .format("YYYY-MM-DD");
       this.props.getPayments(
+        this.state.username != "" ? this.state.username : "",
         "",
-        time30daysAgo,
-        moment(),
+        "",
         1,
         this.state.perPage
       );
@@ -173,9 +215,14 @@ class Transazioni extends React.Component {
     //     .subtract(parseInt(moment().format("D")), "days")
     //     .format()
     // );
-    this.props.getPayments("", "", "", 1, 10);
+    this.props.getPayments(
+      this.state.username != "" ? this.state.username : "",
+      "",
+      "",
+      1,
+      10
+    );
   }
-
   render() {
     const { getFieldDecorator } = this.props.form;
     const { barcode } = this.state;
@@ -550,7 +597,7 @@ class Transazioni extends React.Component {
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
                     this.props.getPayments(
-                      "",
+                      this.state.username != "" ? this.state.username : "",
                       this.state.from || "",
                       this.state.to || "",
                       e,
@@ -568,7 +615,7 @@ class Transazioni extends React.Component {
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
                     this.props.getPayments(
-                      "",
+                      this.state.username != "" ? this.state.username : "",
                       this.state.from || "",
                       this.state.to || "",
                       1,

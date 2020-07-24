@@ -58,7 +58,6 @@ class Voli extends Component {
         el: ".swiper-pagination",
       },
     };
-    console.log("travalers", travalers);
     return (
       <div className="formsContainer--body animated fadeIn">
         <div className="leftForm">
@@ -147,11 +146,6 @@ class Voli extends Component {
                   adults > 0 && (
                     <VoliUserFrom
                       handleChangeName={(travalers, travaler) => {
-                        console.log(
-                          "handlechange name",
-                          travalers,
-                          this.state.travalers
-                        );
                         if (this.state.travalers[`${travaler}`]) {
                           this.setState({
                             travalers: {
@@ -169,11 +163,6 @@ class Voli extends Component {
                         }
                       }}
                       handleChangeCognome={(travalers, travaler) => {
-                        console.log(
-                          "handlechange cogname",
-                          travalers,
-                          this.state.travalers
-                        );
                         if (this.state.travalers[`${travaler}`]) {
                           this.setState({
                             travalers: {

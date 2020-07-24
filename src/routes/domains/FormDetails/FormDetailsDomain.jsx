@@ -128,7 +128,6 @@ class FormDetailsDomain extends Component {
           );
         })}
         {(tickets || []).map((ticket) => {
-          console.log("ticket", ticket);
           return (
             (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
             statusRows === "all" && (

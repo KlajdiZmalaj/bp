@@ -45,8 +45,6 @@ export class SupportBody extends Component {
       const errorDate = new Date(error.full_time).getTime();
       const startDateFilter = new Date(startDate).getTime();
       const endDateFilter = new Date(endDate).getTime();
-      console.log(errorDate, startDateFilter, endDateFilter);
-      console.log(errorDate <= endDateFilter && startDateFilter >= errorDate);
       return errorDate <= endDateFilter && startDateFilter >= errorDate;
     });
     return result;
@@ -58,14 +56,7 @@ export class SupportBody extends Component {
   }
   render() {
     const { errors } = this.props;
-    console.log(errors);
-    console.log(
-      this.filterByDate(
-        errors,
-        "2020-07-15T16:01:08.000000Z",
-        "2020-07-17T17:31:38.000000Z"
-      )
-    );
+
     return (
       <div className="accountInfo">
         {/* <Select
