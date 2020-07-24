@@ -6,7 +6,7 @@ import Swiper from "react-id-swiper";
 class Voli extends Component {
   state = {
     bagaglio: 1,
-    adults: 0,
+    adults: 1,
     childrens: 0,
     hasDD: false,
     travalers: {},
@@ -35,16 +35,37 @@ class Voli extends Component {
     }
   };
   submitData = () => {
-    const { link, extra_data, bagaglio, bagaglio_stiva } = this.state;
+    const { link, bagaglio, bagaglio_stiva } = this.state;
     this.props.sendDataForm(
       this.props.typee,
       link,
       this.props.nome_agenzia,
-      extra_data,
+      JSON.stringify(this.state.travalers),
       bagaglio,
       bagaglio_stiva,
       this.resetState
     );
+  };
+  setTravalers = (travalers, travaler) => {
+    this.setState((prevState) => {
+      return {
+        travalers: prevState.travalers
+          ? {
+              ...prevState.travalers,
+              ...travalers,
+              [`${travaler}`]: {
+                ...prevState.travalers[travaler],
+                ...travalers[travaler],
+              },
+            }
+          : {
+              ...travalers,
+              [`${travaler}`]: {
+                ...travalers[travaler],
+              },
+            },
+      };
+    });
   };
   render() {
     const { nome_agenzia, color, accountInfo, goBack } = this.props;
@@ -146,65 +167,11 @@ class Voli extends Component {
                 return (
                   adults > 0 && (
                     <VoliUserFrom
-                      handleChangeName={(travalers, travaler) => {
-                        console.log(
-                          "handlechange name",
-                          travalers,
-                          this.state.travalers
-                        );
-                        if (this.state.travalers[`${travaler}`]) {
-                          this.setState({
-                            travalers: {
-                              ...this.state.travalers[`${travaler}`],
-                              ...travalers,
-                            },
-                          });
-                        } else {
-                          this.setState({
-                            travalers: {
-                              ...this.state.travalers,
-                              ...travalers,
-                            },
-                          });
-                        }
-                      }}
-                      handleChangeCognome={(travalers, travaler) => {
-                        console.log(
-                          "handlechange cogname",
-                          travalers,
-                          this.state.travalers
-                        );
-                        if (this.state.travalers[`${travaler}`]) {
-                          this.setState({
-                            travalers: {
-                              ...this.state.travalers[`${travaler}`],
-                              ...travalers,
-                            },
-                          });
-                        } else {
-                          this.setState({
-                            travalers: {
-                              ...this.state.travalers,
-                              ...travalers,
-                            },
-                          });
-                        }
-                      }}
-                      handleChangeDate={(travalers) => {
-                        this.setState({
-                          travalers: { ...this.state.travalers, ...travalers },
-                        });
-                      }}
-                      handleChangeTel={(travalers) => {
-                        this.setState({
-                          travalers: { ...this.state.travalers, ...travalers },
-                        });
-                      }}
-                      handleChangeEmail={(travalers) => {
-                        this.setState({
-                          travalers: { ...this.state.travalers, ...travalers },
-                        });
-                      }}
+                      handleChangeName={this.setTravalers}
+                      handleChangeCognome={this.setTravalers}
+                      handleChangeDate={this.setTravalers}
+                      handleChangeTel={this.setTravalers}
+                      handleChangeEmail={this.setTravalers}
                       ind={b}
                       isAdult={true}
                       key={b}
@@ -218,23 +185,19 @@ class Voli extends Component {
               .map((a, b) => {
                 return (
                   childrens > 0 && (
-                    <VoliUserFrom ind={b} isChild={true} key={b} />
+                    <VoliUserFrom
+                      handleChangeName={this.setTravalers}
+                      handleChangeCognome={this.setTravalers}
+                      handleChangeDate={this.setTravalers}
+                      handleChangeTel={this.setTravalers}
+                      handleChangeEmail={this.setTravalers}
+                      ind={b}
+                      isChild={true}
+                      key={b}
+                    />
                   )
                 );
               })}
-            <div className="formsContainer--body__item datiPass">
-              <div className="label">Dati Passegeri</div>
-              <textarea
-                value={this.state.extra_data || ""}
-                onChange={(e) => {
-                  this.setState({ extra_data: e.target.value });
-                }}
-                name="passageri"
-                rows="4"
-                cols="50"
-                placeholder="Nome, Cognome, Data di nascita, Telefono, E-mail"
-              ></textarea>
-            </div>
           </div>
           <div className="rightForm--right">
             <div className="formsContainer--body__item">

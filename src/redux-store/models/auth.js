@@ -238,6 +238,7 @@ const { Types, Creators } = createActions({
   addTicket: ["ticket"],
   getVisure: [""],
   setVisure: ["Visure"],
+  addVisure: ["singleVisure"],
   getVisureByVisureId: ["visura_id"],
   setVisureByVisureId: ["VisureByVisureId"],
 });

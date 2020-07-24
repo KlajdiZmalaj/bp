@@ -74,11 +74,13 @@ export function* logOut() {
     console.log("logged out", response);
     if (response.data) {
       unSubscribeSocketUser(
-        JSON.parse(localStorage.getItem("accountDataB")).profile.id
+        JSON.parse(localStorage.getItem("accountDataB")) &&
+          JSON.parse(localStorage.getItem("accountDataB")).profile.id
       );
       if (
+        JSON.parse(localStorage.getItem("accountDataB")) &&
         JSON.parse(localStorage.getItem("accountDataB")).profile.role.name ===
-        "support"
+          "support"
       ) {
         unSubscribeSocketSupport();
       }
@@ -134,13 +136,25 @@ export function* getBolletiniBianchi(params) {
   }
 }
 export function* addTicket({ ticket }) {
-  const my_tickets = yield select((state) => state.auth.my_tickets);
+  const my_tickets = yield select((state) => state.auth.formDetails.my_tickets);
   let tickets = yield select((state) => state.auth.formDetails.tickets);
   console.log("allTickets allTickets", tickets, ticket);
   yield put(
     AuthActions.setDataFormDetails({
       my_tickets,
-      tickets: [...tickets, ticket],
+      tickets: tickets ? [...tickets, ticket] : ticket,
+    })
+  );
+}
+export function* addVisure({ singleVisure }) {
+  console.log("called addVisure", singleVisure);
+  const my_visure = yield select((state) => state.auth.Visure.my_visure);
+  let visure = yield select((state) => state.auth.Visure.visure);
+
+  yield put(
+    AuthActions.setVisure({
+      my_visure,
+      visure: visure ? [...visure, singleVisure] : visure,
     })
   );
 }

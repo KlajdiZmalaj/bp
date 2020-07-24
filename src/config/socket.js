@@ -59,6 +59,17 @@ export const subscribeSocketSupport = () => {
       audio.play();
       window.addTicket(e.instance);
     }
+    if (e.type === "notification_visure") {
+      notification.open({
+        message: "Hai ricevuto una notifica",
+        description: e.data.title,
+        icon: <i className="fal fa-smile-beam"></i>,
+      });
+
+      var audio = new Audio("notification_sound.mp3");
+      audio.play();
+      window.addVisure(e.instance);
+    }
   });
 };
 

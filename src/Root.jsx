@@ -101,6 +101,9 @@ class Root extends React.Component {
     if (!window.addTicket) {
       window.addTicket = this.props.addTicket;
     }
+    if (!window.addVisure) {
+      window.addVisure = this.props.addVisure;
+    }
     // console.log("role", role);
     return (
       <React.Fragment>

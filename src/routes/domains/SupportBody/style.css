@@ -48,6 +48,12 @@
   background-color: #c52e2e;
 }
 
+.supportContent .userList--noDoc__user .body span:nth-child(1),
+.supportContent .userList--Doc__user .body span:nth-child(1),
+.supportContent .userList .header span:nth-child(1) {
+  width: 70%;
+}
+
 body .confirmationDelete {
   top: 30%;
 }
