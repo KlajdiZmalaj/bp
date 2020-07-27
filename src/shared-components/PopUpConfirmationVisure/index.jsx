@@ -1,46 +1,41 @@
 import React, { useEffect, useState } from "react";
-import EventiConfirmation from "./EventiConfirmation";
-import TreniConfirmation from "./TreniConfirmation";
-import VoliConfirmation from "./VoliConfirmation";
 import { userConfirmation } from "services/auth";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
-import "./style.css";
 import images from "../../themes/images";
 
-const PopUpConfirmation = ({
-  popUpData,
-  getTicketByTicketId,
-  TicketByTcketId,
+const PopUpConfirmationVisure = ({
+  popUpDataVisure,
+  VisureByVisureId,
   role,
-  getDataFormDetails,
+  getVisureByVisureId,
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
-    // console.log("popUpData changed", popUpData, TicketByTcketId);
-    if (popUpData.id) {
-      getTicketByTicketId(popUpData.id);
+    console.log("popUpData changed", popUpDataVisure, VisureByVisureId);
+    if (popUpDataVisure.id) {
+      getVisureByVisureId(popUpDataVisure.id);
       setState(true);
     }
-  }, [popUpData, getTicketByTicketId]);
-  console.log("ca ka ticket", TicketByTcketId, popUpData);
+  }, [popUpDataVisure, VisureByVisureId, getVisureByVisureId]);
+  console.log("ca ka visuree", VisureByVisureId, popUpDataVisure);
   return (
-    TicketByTcketId &&
-    Object.keys(TicketByTcketId).length > 1 &&
+    VisureByVisureId &&
+    Object.keys(VisureByVisureId).length > 1 &&
     active &&
-    popUpData.data && (
+    popUpDataVisure.data && (
       <React.Fragment>
         <div className="confirmationPopup">
           <div className="confirmationPopup--header">
             {" "}
             <img
               className="logoImg"
-              src={images[`${TicketByTcketId.nome_agenzia}-logo`]}
+              src={images[`${VisureByVisureId.nome_agenzia}-logo`]}
               alt=""
             />
-            <span>{`Id :BP- ${TicketByTcketId.id}`}</span>
+            <span>{`Id :BP- ${VisureByVisureId.id}`}</span>
           </div>
-          {TicketByTcketId.type == 3 && (
+          {/* {TicketByTcketId.type == 3 && (
             <EventiConfirmation TicketByTcketId={TicketByTcketId} />
           )}
           {TicketByTcketId.type == 2 && (
@@ -48,16 +43,18 @@ const PopUpConfirmation = ({
           )}
           {TicketByTcketId.type == 1 && (
             <VoliConfirmation TicketByTcketId={TicketByTcketId} />
-          )}
+          )} */}
           <div className="confirmationPopup--buttons">
             <button
               className="Eseguito"
               onClick={() => {
                 userConfirmation(
-                  popUpData.id,
+                  popUpDataVisure.id,
                   role === "support" ? 4 : 3,
                   setState,
-                  getDataFormDetails
+                  getVisureByVisureId,
+                  null,
+                  true
                 );
               }}
             >
@@ -66,7 +63,14 @@ const PopUpConfirmation = ({
             <button
               className="Annullato"
               onClick={() => {
-                userConfirmation(popUpData.id, 5, () => {}, getDataFormDetails);
+                userConfirmation(
+                  popUpDataVisure.id,
+                  5,
+                  () => {},
+                  getVisureByVisureId,
+                  null,
+                  true
+                );
                 setState(false);
               }}
             >
@@ -85,4 +89,4 @@ const PopUpConfirmation = ({
   );
 };
 
-export default connect(null, AuthActions)(PopUpConfirmation);
+export default connect(null, AuthActions)(PopUpConfirmationVisure);

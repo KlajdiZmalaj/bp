@@ -17,7 +17,7 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
     if (e.type === "payment") {
       addPrivateMsg(e.data);
     }
-    if (e.type === "notification") {
+    if (e.type === "notification" || e.type === "notification_visure") {
       notification.open({
         message: "Hai ricevuto una notifica",
         description: e.data.title,
@@ -29,6 +29,12 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
     }
     if (e.type === "popup") {
       window.bigliettoPopUp({
+        id: e.instance_id,
+        data: e.data,
+      });
+    }
+    if (e.type === "popup_visure") {
+      window.bigliettoPopUpVisure({
         id: e.instance_id,
         data: e.data,
       });
@@ -58,6 +64,17 @@ export const subscribeSocketSupport = () => {
       var audio = new Audio("notification_sound.mp3");
       audio.play();
       window.addTicket(e.instance);
+    }
+    if (e.type === "notification_visure") {
+      notification.open({
+        message: "Hai ricevuto una notifica",
+        description: e.data.title,
+        icon: <i className="fal fa-smile-beam"></i>,
+      });
+
+      audio = new Audio("notification_sound.mp3");
+      audio.play();
+      window.addVisure(e.instance);
     }
   });
 };

@@ -1,6 +1,9 @@
 let skin = "";
 
-if (window.location.href.includes("bpoint")) {
+if (
+  window.location.href.includes("bpoint") ||
+  window.location.href.includes("localhost")
+) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;
@@ -8,10 +11,7 @@ if (window.location.href.includes("bpoint")) {
   skin = 3;
 } else if (window.location.href.includes("planet")) {
   skin = 4;
-} else if (
-  window.location.href.includes("sirpay") ||
-  window.location.href.includes("localhost")
-) {
+} else if (window.location.href.includes("sirpay")) {
   skin = 6;
 }
 export default {

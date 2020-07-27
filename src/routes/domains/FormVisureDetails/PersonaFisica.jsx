@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import { notification, DatePicker } from "antd";
 import { AuthActions } from "redux-store/models";
-import FormSubmiter from "../FormDetails/FormSubmiter";
+import FormSubmiter from "./FormSubmiter";
 import "./styles.css";
 const InputForForm = ({ labelName, value, handleChange, type }) => {
   return (
@@ -18,36 +18,21 @@ const InputForForm = ({ labelName, value, handleChange, type }) => {
     </div>
   );
 };
-class AziendaOImpresaForm extends Component {
+class PersonaFisica extends Component {
   state = {
-    nome: "",
-    cognome: "",
-    codice_fiscale: "",
-    data_di_nascita: "",
-    luogo_di_nascita: "",
-    provincia: "",
-    address: "",
-    telefono: "",
-    email: "",
+    nome: this.props.VisureById.nome,
+    cognome: this.props.VisureById.cognome,
+    codice_fiscale: this.props.VisureById.codice_fiscale,
+    data_di_nascita: this.props.VisureById.data_di_nascita,
+    luogo_di_nascita: this.props.VisureById.luogo_di_nascita,
+    provincia: this.props.VisureById.provincia,
+    address: this.props.VisureById.address,
+    telefono: this.props.VisureById.telefono,
+    email: this.props.VisureById.email,
+    price: this.props.VisureById.total_cost,
   };
-  componentDidMount() {
-    this.setState({
-      ...this.props.VisureById,
-    });
-  }
-  resetState = (msg) => {
+  callBack = (msg) => {
     if (!msg.error) {
-      this.setState({
-        nome: "",
-        cognome: "",
-        codice_fiscale: "",
-        data_di_nascita: "",
-        luogo_di_nascita: "",
-        provincia: "",
-        address: "",
-        telefono: "",
-        email: "",
-      });
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
@@ -62,6 +47,39 @@ class AziendaOImpresaForm extends Component {
       });
     }
   };
+  submitData = async () => {
+    const {
+      nome,
+      cognome,
+      codice_fiscale,
+      data_di_nascita,
+      luogo_di_nascita,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+    } = await this.state;
+
+    await this.props.updateVisura(
+      this.props.VisureById.id,
+      1,
+      codice_fiscale,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+      "",
+      "",
+      "",
+      nome,
+      cognome,
+      data_di_nascita,
+      luogo_di_nascita,
+      this.callBack
+    );
+  };
   render() {
     const {
       nome,
@@ -73,7 +91,9 @@ class AziendaOImpresaForm extends Component {
       address,
       telefono,
       email,
+      price,
     } = this.state;
+    console.log("VisureById", this.props.VisureById, this.props.updateVisura);
     return (
       <React.Fragment>
         <div className="formBody">
@@ -168,17 +188,17 @@ class AziendaOImpresaForm extends Component {
         </div>
 
         <FormSubmiter
-          //   price={price}
+          price={price}
           priceChange={(e) => {
             this.setState({ price: e });
           }}
-          //   sendOffert={this.submitData}
+          sendOffert={this.submitData}
         />
       </React.Fragment>
     );
   }
 }
-const mstp = (state) => {
-  return {};
-};
-export default connect(mstp, AuthActions)(AziendaOImpresaForm);
+// const mstp = (state) => {
+//   return {};
+// };
+export default connect(null, AuthActions)(PersonaFisica);

@@ -1,11 +1,10 @@
 .ticketDetails {
   &--header.--Visura {
     & span {
-      padding: 0.8% 1.2%;
       box-sizing: border-box;
     }
     & span:nth-child(2) {
-      width: 17%;
+      width: 20%;
     }
     & span:nth-child(3) {
       width: 4%;
@@ -19,53 +18,56 @@
     & span:nth-child(6) {
       width: 15%;
     }
+    & span:nth-child(7) {
+      width: 10%;
+    }
   }
   &--row {
+    > span {
+      padding: 15px;
+    }
     &.animated.fadeIn.--Visura {
-      & .options {
+      .options {
         display: flex;
         align-items: center;
-        // justify-content: space-between;
-        & span {
-          border: none;
-        }
       }
-      & span {
+      > span {
         display: flex;
         align-items: center;
         box-sizing: border-box;
       }
-      & span:nth-child(2) {
+      > span:nth-child(2) {
         display: flex;
-        justify-content: space-between;
         width: 21%;
-        padding-right: 6%;
-        padding-left: 1.5%;
-        & .new {
+        .new {
           margin-left: 10px;
         }
       }
-      & span:nth-child(2) {
-        width: 17%;
-        padding-right: 3%;
+      > span:nth-child(2) {
+        width: 20%;
+        i {
+          width: 15px;
+        }
       }
-      & span:nth-child(3) {
+      > span:nth-child(3) {
         width: 4%;
-        padding-left: 1.6%;
       }
-      & span:nth-child(4) {
+      > span:nth-child(4) {
         width: 14%;
-        padding-left: 1.6%;
+        i {
+          width: 15px;
+          margin-right: 10px;
+        }
       }
-      & span:nth-child(5) {
+      > span:nth-child(5) {
         width: 11%;
-        padding-left: 1.6%;
       }
-      & span:nth-child(6) {
+      > span:nth-child(6) {
         width: 15%;
-        padding-left: 1.6%;
       }
-
+      > span:nth-child(7) {
+        width: 10%;
+      }
       .fal,
       .fas {
         color: #578a17;
@@ -91,7 +93,7 @@
       margin: 10px 15px;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       & input {
         border: 0.5px solid #9f9f9f;
         border-radius: 2px;

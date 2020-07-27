@@ -23,7 +23,7 @@ export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
         {title === "all"
           ? "Tutti"
           : title === "Nuova Richiesta"
-          ? "Nuovi Richiesti"
+          ? "nuove richieste"
           : title === "Eseguibile"
           ? "Eseguibili"
           : title === "In Attesa"

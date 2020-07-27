@@ -6,11 +6,11 @@ import UserDoc from "./UserDoc";
 import UserNoDoc from "./UserNoDoc";
 import SingleUser from "./SingleUser";
 import FastCarica from "./FastCarica";
-import { get, isArray, isString } from "lodash";
-import moment from "moment";
-import { Select, DatePicker } from "antd";
+import { get, isArray } from "lodash";
+import { Select } from "antd";
 import AdminComp from "./AdminComp";
 import AgentComp from "./AgetnComp";
+import UserComp from "./UserComp";
 const { Option } = Select;
 
 class UsersList extends Component {
@@ -151,14 +151,24 @@ class UsersList extends Component {
                     setTimeout(() => {
                       this.setState({ isClosing: false });
                       this.props.setUserDetail({});
-                    }, 600);
+                    }, 500);
                   }}
                 >
                   <i className="fal fa-times" aria-hidden="true"></i>
                 </div>
               </div>
+
               {userDetail.role === "agent" ? (
-                <AdminComp
+                <AgentComp
+                  state={this.state}
+                  userDetail={userDetail}
+                  handleChange={(name, value) => {
+                    this.setState({ [name]: value });
+                  }}
+                  updateMsg={updateMsg}
+                />
+              ) : userDetail.role === "user" ? (
+                <UserComp
                   state={this.state}
                   userDetail={userDetail}
                   handleChange={(name, value) => {
@@ -231,7 +241,7 @@ class UsersList extends Component {
                 setTimeout(() => {
                   this.setState({ isClosing: false });
                   this.props.setUserDetail({});
-                }, 600);
+                }, 500);
               }}
               className="backDrop"
             ></div>

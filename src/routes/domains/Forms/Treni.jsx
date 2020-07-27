@@ -102,7 +102,7 @@ class Treni extends Component {
         <div className="rightForm">
           <div className="rightForm--header">
             <div className="TitleBack">
-              <i class="fal fa-chevron-left Arrow" onClick={goBack}></i>
+              <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
               Prenotazione Biglietti{" "}
             </div>
             <img src={images[`${nome_agenzia}-logo`]} alt="" />

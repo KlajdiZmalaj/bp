@@ -35,6 +35,11 @@
       }
     }
   }
+  .userList--noDoc__user .body span:nth-child(1),
+  .userList--Doc__user .body span:nth-child(1),
+  .userList .header span:nth-child(1) {
+    width: 70%;
+  }
 }
 body .confirmationDelete {
   top: 30%;

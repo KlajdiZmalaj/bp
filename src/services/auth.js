@@ -2,6 +2,11 @@ import request from "utils/request";
 import axios from "axios";
 import { skin } from "config/api";
 import { notification } from "antd";
+import {
+  unSubscribeSocketSupport,
+  unSubscribeSocketUser,
+} from "config/socket.js";
+
 //import api from "config/api";
 
 // const accountData = localStorage.getItem("accountDataB");
@@ -26,10 +31,6 @@ export const fetchLogin = (email, password) =>
     .catch((error) => ({ error }));
 
 export const logoutApi = () =>
-  // req.post(`/users/logout`).catch(err => {
-  //   console.log("err", err);
-  // });
-
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -42,6 +43,23 @@ export const logoutApi = () =>
     })
     .post(`/users/logout`, {
       ...skin,
+    })
+    .then((res) => {
+      console.log("ca ka res", res);
+      if (res.status === 200) {
+        unSubscribeSocketUser(
+          JSON.parse(localStorage.getItem("accountDataB")) &&
+            JSON.parse(localStorage.getItem("accountDataB")).profile.id
+        );
+        if (
+          JSON.parse(localStorage.getItem("accountDataB")) &&
+          JSON.parse(localStorage.getItem("accountDataB")).profile.role.name ===
+            "support"
+        ) {
+          unSubscribeSocketSupport();
+        }
+        localStorage.removeItem("accountDataB");
+      }
     })
     .catch((error) => ({ error }));
 
@@ -880,7 +898,15 @@ export const sendVisureDetailsReq = (
     )
     .catch((error) => ({ error }));
 };
-export const userConfirmation = (ticket_id, status, c, recall, document) => {
+
+export const userConfirmation = (
+  ticket_id,
+  status,
+  c,
+  recall,
+  document,
+  isVisure
+) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -890,7 +916,7 @@ export const userConfirmation = (ticket_id, status, c, recall, document) => {
         }`,
       },
     })
-    .post(`/ticket/${ticket_id}/changeStatus`, {
+    .post(`/${isVisure ? "visura" : "ticket"}/${ticket_id}/changeStatus`, {
       ...skin,
       status,
       document,
@@ -925,7 +951,7 @@ export const getVisureReq = () => {
 
     .catch((error) => ({ error }));
 };
-export const uploadPdf = (ticket, document) => {
+export const uploadPdf = (id, document, isVisura) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -936,17 +962,25 @@ export const uploadPdf = (ticket, document) => {
       },
     })
 
-    .post(`/ticket/${ticket}/addDocument`, {
+    .post(`/${isVisura ? "visura" : "ticket"}/${id}/addDocument`, {
       ...skin,
       document,
     })
     .then((res) => {
+      console.log("res", res);
       if (res.status === 200) {
         notification.open({
           message: "Upload Notifica!",
           description: res.data.message,
         });
       }
+    })
+    .catch(function (error) {
+      console.log("error", error);
+      notification.open({
+        message: "Failed while uploading!",
+        description: "",
+      });
     });
 };
 export const getVisureByVisureIdReq = ({ visura_id }) => {
@@ -964,6 +998,69 @@ export const getVisureByVisureIdReq = ({ visura_id }) => {
         ...skin,
       },
     })
+    .catch((error) => ({ error }));
+};
+
+export const updateVisuraReq = (
+  visura_id,
+  type,
+  codice_fiscale,
+  provincia,
+  address,
+  telefono,
+  email,
+  price,
+
+  ragione_sociale,
+  p_iva,
+  comune,
+
+  nome,
+  cognome,
+  data_di_nascita,
+  luogo_di_nascita
+) => {
+  console.log(visura_id);
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(
+      `/visura/${visura_id}/update`,
+      type === 1
+        ? {
+            ...skin,
+            type,
+            codice_fiscale,
+            provincia,
+            address,
+            telefono,
+            email,
+            nome,
+            cognome,
+            data_di_nascita,
+            luogo_di_nascita,
+            price,
+          }
+        : {
+            ...skin,
+            type,
+            codice_fiscale,
+            provincia,
+            address,
+            telefono,
+            email,
+            ragione_sociale,
+            p_iva,
+            comune,
+            price,
+          }
+    )
     .catch((error) => ({ error }));
 };
 export const getAgentByUserIdReq = ({ user_id }) => {

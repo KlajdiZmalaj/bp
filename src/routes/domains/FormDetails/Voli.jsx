@@ -75,7 +75,6 @@ class Voli extends Component {
       bagaglio_stiva,
       price,
     } = this.state;
-
     return (
       <React.Fragment>
         <div className="formBody">
@@ -138,7 +137,7 @@ class Voli extends Component {
                   <div className="inputLabel">Bagaglio in stiva</div>
                   <input
                     className="ant-input"
-                    value={bagaglio_stiva}
+                    value={bagaglio_stiva || ""}
                     readOnly={editable}
                     onChange={(e) => {
                       this.setState({ bagaglio_stiva: e.target.value });

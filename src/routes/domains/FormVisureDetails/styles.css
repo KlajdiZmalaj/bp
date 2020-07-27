@@ -1,11 +1,10 @@
 .ticketDetails--header.--Visura span {
-  padding: 0.8% 1.2%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 .ticketDetails--header.--Visura span:nth-child(2) {
-  width: 17%;
+  width: 20%;
 }
 
 .ticketDetails--header.--Visura span:nth-child(3) {
@@ -24,6 +23,14 @@
   width: 15%;
 }
 
+.ticketDetails--header.--Visura span:nth-child(7) {
+  width: 10%;
+}
+
+.ticketDetails--row > span {
+  padding: 15px;
+}
+
 .ticketDetails--row.animated.fadeIn.--Visura .options {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,11 +40,7 @@
           align-items: center;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura .options span {
-  border: none;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura span {
+.ticketDetails--row.animated.fadeIn.--Visura > span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,45 +51,48 @@
           box-sizing: border-box;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(2) {
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   width: 21%;
-  padding-right: 6%;
-  padding-left: 1.5%;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(2) .new {
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) .new {
   margin-left: 10px;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(2) {
-  width: 17%;
-  padding-right: 3%;
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) {
+  width: 20%;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(3) {
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) i {
+  width: 15px;
+}
+
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(3) {
   width: 4%;
-  padding-left: 1.6%;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(4) {
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(4) {
   width: 14%;
-  padding-left: 1.6%;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(5) {
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(4) i {
+  width: 15px;
+  margin-right: 10px;
+}
+
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(5) {
   width: 11%;
-  padding-left: 1.6%;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura span:nth-child(6) {
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(6) {
   width: 15%;
-  padding-left: 1.6%;
+}
+
+.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(7) {
+  width: 10%;
 }
 
 .ticketDetails--row.animated.fadeIn.--Visura .fal,
@@ -133,9 +139,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .ticketDetails--filters__byTicket input {

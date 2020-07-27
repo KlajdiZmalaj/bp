@@ -19,48 +19,75 @@ const VoliUserForm = ({
         <div className="label"> Name</div>
         <input
           type="text"
-          onChange={(e) =>
-            handleChangeName(
-              {
-                [`adult${ind + 1}`]: {
-                  name: e.target.value,
-                },
-              },
-              `adult${ind}`
-            )
-          }
+          onChange={(e) => {
+            isAdult
+              ? handleChangeName(
+                  {
+                    [`adult${ind + 1}`]: {
+                      name: e.target.value,
+                    },
+                  },
+                  `adult${ind + 1}`
+                )
+              : handleChangeName(
+                  {
+                    [`child${ind + 1}`]: {
+                      name: e.target.value,
+                    },
+                  },
+                  `child${ind + 1}`
+                );
+          }}
         />
       </div>
       <div className="formsContainer--body__item">
         <div className="label"> Cognome</div>
         <input
           type="text"
-          onChange={(e) =>
-            handleChangeCognome(
-              {
-                [`adult${ind + 1}`]: {
-                  cogname: e.target.value,
-                },
-              },
-              `adult${ind}`
-            )
-          }
+          onChange={(e) => {
+            isAdult
+              ? handleChangeCognome(
+                  {
+                    [`adult${ind + 1}`]: {
+                      cogname: e.target.value,
+                    },
+                  },
+                  `adult${ind + 1}`
+                )
+              : handleChangeCognome(
+                  {
+                    [`child${ind + 1}`]: {
+                      cogname: e.target.value,
+                    },
+                  },
+                  `child${ind + 1}`
+                );
+          }}
         />
       </div>
       <div className="formsContainer--body__item">
         <div className="label"> Data Di Nascita</div>
         <input
           type="text"
-          onChange={(e) =>
-            handleChangeDate(
-              {
-                [`adult${ind + 1}`]: {
-                  date: e.target.value,
-                },
-              },
-              `adult${ind}`
-            )
-          }
+          onChange={(e) => {
+            isAdult
+              ? handleChangeDate(
+                  {
+                    [`adult${ind + 1}`]: {
+                      date: e.target.value,
+                    },
+                  },
+                  `adult${ind + 1}`
+                )
+              : handleChangeDate(
+                  {
+                    [`child${ind + 1}`]: {
+                      date: e.target.value,
+                    },
+                  },
+                  `child${ind + 1}`
+                );
+          }}
         />
       </div>
       {ind === 0 && isAdult && (
@@ -75,7 +102,7 @@ const VoliUserForm = ({
                     tel: e.target.value,
                   },
                 },
-                `adult${ind}`
+                `adult${ind + 1}`
               )
             }
           />
@@ -93,7 +120,7 @@ const VoliUserForm = ({
                     email: e.target.value,
                   },
                 },
-                `adult${ind}`
+                `adult${ind + 1}`
               )
             }
           />

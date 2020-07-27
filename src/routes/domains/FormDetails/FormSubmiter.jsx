@@ -32,7 +32,6 @@ export class FormSubmiter extends Component {
   };
   render() {
     const { enableButtons, TicketByTcketId, getDataFormDetails } = this.props;
-    const { fileType, file } = this.state;
     return JSON.parse(localStorage.accountDataB).profile.role.name ===
       "support" ? (
       <div className="formSubmit">
@@ -81,9 +80,11 @@ export class FormSubmiter extends Component {
             htmlFor="doc"
             className={
               "formSubmit--download" +
-              (this.props.TicketByTcketId.status === "Eseguibile"
-                ? " dissableBtn"
-                : "") +
+              (this.props.TicketByTcketId.status === "Eseguibile" ||
+              this.props.TicketByTcketId.status === "Completato" ||
+              enableButtons
+                ? ""
+                : " dissableBtn") +
               (this.state.base64 ? " toUpload" : "")
             }
           >

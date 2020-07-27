@@ -33,7 +33,6 @@ export class FormSubmiter extends Component {
 
   render() {
     const { enableButtons, VisureByVisureId, getDataFormDetails } = this.props;
-    const { fileType, file } = this.state;
     return JSON.parse(localStorage.accountDataB).profile.role.name ===
       "support" ? (
       <div className="formSubmit">
@@ -57,9 +56,10 @@ export class FormSubmiter extends Component {
             />
           </div>
           <div className="submit" onClick={this.props.sendOffert}>
-            INVIA OFFERTA <i className="fal fa-chevron-circle-right"></i>{" "}
+            INVIA OFFERTAa <i className="fal fa-chevron-circle-right"></i>{" "}
           </div>
         </div>
+
         <input
           className="d-none"
           required
@@ -82,9 +82,11 @@ export class FormSubmiter extends Component {
             htmlFor="doc"
             className={
               "formSubmit--download" +
-              (this.props.VisureByVisureId.status === "Eseguibile"
-                ? " dissableBtn"
-                : "") +
+              (this.props.VisureByVisureId.status === "Eseguibile" ||
+              this.props.VisureByVisureId.status === "Completato" ||
+              enableButtons
+                ? " "
+                : " dissableBtn") +
               (this.state.base64 ? " toUpload" : "")
             }
           >
@@ -108,7 +110,7 @@ export class FormSubmiter extends Component {
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
-                      uploadPdf(VisureByVisureId.id, this.state.base64);
+                      uploadPdf(VisureByVisureId.id, this.state.base64, true);
                     }}
                     className="fal fa-check-circle"
                   ></i>
@@ -130,7 +132,8 @@ export class FormSubmiter extends Component {
               4,
               () => {},
               getDataFormDetails,
-              this.state.base64 && this.state.base64
+              this.state.base64 && this.state.base64,
+              true
             );
           }}
           className={
@@ -149,7 +152,8 @@ export class FormSubmiter extends Component {
               this.props.VisureByVisureId.id,
               5,
               () => {},
-              getDataFormDetails
+              getDataFormDetails,
+              true
             );
           }}
           className={
@@ -172,7 +176,8 @@ export class FormSubmiter extends Component {
                 this.props.VisureByVisureId.id,
                 3,
                 () => {},
-                getDataFormDetails
+                getDataFormDetails,
+                true
               );
             }}
             className={"formSubmit--button -s"}
@@ -185,7 +190,8 @@ export class FormSubmiter extends Component {
                 this.props.VisureByVisureId.id,
                 5,
                 () => {},
-                getDataFormDetails
+                getDataFormDetails,
+                true
               );
             }}
             className={"formSubmit--button -c"}

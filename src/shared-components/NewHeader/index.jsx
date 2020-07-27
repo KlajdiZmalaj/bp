@@ -33,9 +33,7 @@ class Header extends Component {
     const { accountInfo, screenWidth, ads, privMsg, skinExtras } = this.props;
     const { isMobMenu, isDDopem } = this.state;
     let isLoggedin = false;
-    const accountData = localStorage.getItem("accountDataB");
-    const data = JSON.parse(accountData);
-    if (data) {
+    if (accountInfo.token) {
       isLoggedin = true;
     }
     return screenWidth > 860 ? (
@@ -186,11 +184,11 @@ class Header extends Component {
               <button
                 className="logoutBtn"
                 onClick={() => {
+                  if (!isLoggedin) {
+                    this.props.history.push("/login");
+                  }
                   if (isLoggedin) {
                     this.props.logOut();
-                    // localStorage.removeItem("accountDataB");
-                  } else {
-                    this.props.history.push("/login");
                   }
                 }}
               >
@@ -279,7 +277,6 @@ class Header extends Component {
             <button
               onClick={() => {
                 this.props.logOut();
-                localStorage.clear();
                 if (!isLoggedin) {
                   this.props.history.push("/login");
                 }

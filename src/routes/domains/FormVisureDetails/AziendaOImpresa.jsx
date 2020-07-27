@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { notification } from "antd";
 import { AuthActions } from "redux-store/models";
-import FormSubmiter from "../FormDetails/FormSubmiter";
+import FormSubmiter from "./FormSubmiter";
 import "./styles.css";
 const InputForForm = ({ labelName, value, handleChange, type }) => {
   return (
@@ -19,34 +19,20 @@ const InputForForm = ({ labelName, value, handleChange, type }) => {
 };
 class AziendaOImpresaForm extends Component {
   state = {
-    ragione_sociale: "",
-    p_iva: "",
-    codice_fiscale: "",
-    provincia: "",
-    comune: "",
-    address: "",
-    email: "",
-    telefono: "",
+    ragione_sociale: this.props.VisureById.ragione_sociale,
+    p_iva: this.props.VisureById.p_iva,
+    codice_fiscale: this.props.VisureById.codice_fiscale,
+    provincia: this.props.VisureById.provincia,
+    comune: this.props.VisureById.comune,
+    address: this.props.VisureById.address,
+    email: this.props.VisureById.email,
+    telefono: this.props.VisureById.telefono,
+    price: this.props.VisureById.total_cost,
     via_sms: false,
   };
-  componentDidMount() {
-    this.setState({
-      ...this.props.VisureById,
-    });
-  }
-  resetState = (msg) => {
+
+  callBack = (msg) => {
     if (!msg.error) {
-      this.setState({
-        ragione_sociale: "",
-        p_iva: "",
-        codice_fiscale: "",
-        provincia: "",
-        comune: "",
-        address: "",
-        email: "",
-        telefono: "",
-        via_sms: false,
-      });
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
@@ -61,6 +47,39 @@ class AziendaOImpresaForm extends Component {
       });
     }
   };
+  submitData = async () => {
+    const {
+      codice_fiscale,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+
+      ragione_sociale,
+      p_iva,
+      comune,
+    } = await this.state;
+
+    await this.props.updateVisura(
+      this.props.VisureById.id,
+      2,
+      codice_fiscale,
+      provincia,
+      address,
+      telefono,
+      email,
+      price,
+      ragione_sociale,
+      p_iva,
+      comune,
+      "",
+      "",
+      "",
+      "",
+      this.callBack
+    );
+  };
   render() {
     const {
       ragione_sociale,
@@ -69,6 +88,7 @@ class AziendaOImpresaForm extends Component {
       provincia,
       comune,
       address,
+      price,
       email,
       telefono,
     } = this.state;
@@ -134,21 +154,29 @@ class AziendaOImpresaForm extends Component {
               }}
               type={"text"}
             />
+            <InputForForm
+              labelName="Indirizzo sede legale"
+              value={address}
+              handleChange={(e) => {
+                this.setState({ address: e.target.value });
+              }}
+              type={"text"}
+            />
           </div>
         </div>
 
         <FormSubmiter
-          //   price={price}
+          price={price}
           priceChange={(e) => {
             this.setState({ price: e });
           }}
-          //   sendOffert={this.submitData}
+          sendOffert={this.submitData}
         />
       </React.Fragment>
     );
   }
 }
-const mstp = (state) => {
-  return {};
-};
-export default connect(mstp, AuthActions)(AziendaOImpresaForm);
+// const mstp = (state) => {
+//   return {};
+// };
+export default connect(null, AuthActions)(AziendaOImpresaForm);
