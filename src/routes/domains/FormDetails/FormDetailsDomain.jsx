@@ -242,19 +242,21 @@ class FormDetailsDomain extends Component {
             )
           );
         })}
-        {(tickets || []).map((ticket) => {
-          return (
-            (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
-            statusRows === "all" && (
-              <DetailRow
-                allRoles={allRoles}
-                getTicketByTicketId={this.props.getTicketByTicketId}
-                ticket={ticket}
-                key={ticket && ticket.id}
-              />
-            )
-          );
-        })}
+        {tickets &&
+          (tickets || []).map((ticket) => {
+            return (
+              (filterTickets === "all" ||
+                filterTickets.includes(ticket.type)) &&
+              statusRows === "all" && (
+                <DetailRow
+                  allRoles={allRoles}
+                  getTicketByTicketId={this.props.getTicketByTicketId}
+                  ticket={ticket}
+                  key={ticket && ticket.id}
+                />
+              )
+            );
+          })}
       </div>
     );
   }

@@ -129,7 +129,7 @@ export function* addTicket({ ticket }) {
   yield put(
     AuthActions.setDataFormDetails({
       my_tickets,
-      tickets: tickets ? [...tickets, ticket] : ticket,
+      tickets: tickets ? [...tickets, ticket] : [ticket],
     })
   );
 }

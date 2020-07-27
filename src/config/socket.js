@@ -11,11 +11,11 @@ export const socket = () => {
   });
 };
 
-export const subscribeSocketUser = (userID, addPrivateMsg) => {
+export const subscribeSocketUser = (userID, props) => {
   window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
-    console.log("subscribed listening...", userID, addPrivateMsg, e);
+    console.log("subscribed listening...", userID, props, e);
     if (e.type === "payment") {
-      addPrivateMsg(e.data);
+      props.addPrivateMsg(e.data);
     }
     if (e.type === "notification" || e.type === "notification_visure") {
       notification.open({
@@ -28,13 +28,13 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
       audio.play();
     }
     if (e.type === "popup") {
-      window.bigliettoPopUp({
+      props.bigliettoPopUp({
         id: e.instance_id,
         data: e.data,
       });
     }
     if (e.type === "popup_visure") {
-      window.bigliettoPopUpVisure({
+      props.bigliettoPopUpVisure({
         id: e.instance_id,
         data: e.data,
       });
@@ -45,14 +45,14 @@ export const subscribeSocketUser = (userID, addPrivateMsg) => {
         description: e.data.title,
         icon: <i className="fal fa-smile-beam"></i>,
       });
-      window.setButtonsSupport(true);
+      props.setButtonsSupport(true);
     }
   });
 };
 
-export const subscribeSocketSupport = () => {
+export const subscribeSocketSupport = (props) => {
   window["echo"].channel(`bpoint_cache_support`).listen(".support", (e) => {
-    console.log("subscribed listening support...", e);
+    console.log("subscribed listening support...", props, e);
 
     if (e.type === "notification") {
       notification.open({
@@ -63,7 +63,7 @@ export const subscribeSocketSupport = () => {
 
       var audio = new Audio("notification_sound.mp3");
       audio.play();
-      window.addTicket(e.instance);
+      props.addTicket(e.instance);
     }
     if (e.type === "notification_visure") {
       notification.open({
@@ -74,7 +74,7 @@ export const subscribeSocketSupport = () => {
 
       var audio = new Audio("notification_sound.mp3");
       audio.play();
-      window.addVisure(e.instance);
+      props.addVisure(e.instance);
     }
   });
 };
