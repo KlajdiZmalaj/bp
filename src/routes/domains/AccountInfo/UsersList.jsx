@@ -10,6 +10,7 @@ import { get, isArray, isString } from "lodash";
 import moment from "moment";
 import { Select, DatePicker } from "antd";
 import AdminComp from "./AdminComp";
+import AgentComp from "./AgetnComp";
 const { Option } = Select;
 
 class UsersList extends Component {
@@ -156,14 +157,26 @@ class UsersList extends Component {
                   <i className="fal fa-times" aria-hidden="true"></i>
                 </div>
               </div>
-              <AdminComp
-                state={this.state}
-                userDetail={userDetail}
-                handleChange={(name, value) => {
-                  this.setState({ [name]: value });
-                }}
-                updateMsg={updateMsg}
-              />
+              {userDetail.role === "agent" ? (
+                <AdminComp
+                  state={this.state}
+                  userDetail={userDetail}
+                  handleChange={(name, value) => {
+                    this.setState({ [name]: value });
+                  }}
+                  updateMsg={updateMsg}
+                />
+              ) : (
+                <AdminComp
+                  state={this.state}
+                  userDetail={userDetail}
+                  handleChange={(name, value) => {
+                    this.setState({ [name]: value });
+                  }}
+                  updateMsg={updateMsg}
+                />
+              )}
+
               <div className="newReg--row lastRow">
                 {userDetail.role != "agent" && userDetail.role != "user" ? (
                   <React.Fragment>

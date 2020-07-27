@@ -112,34 +112,38 @@ class FormDetailsDomain extends Component {
             )
           );
         })}
-        {(my_tickets || []).map((ticket) => {
-          // console.log("ticket", ticket);
-          return (
-            (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
-            statusRows === "all" && (
-              <DetailRow
-                allRoles={allRoles}
-                getTicketByTicketId={this.props.getTicketByTicketId}
-                isNew={true}
-                ticket={ticket}
-                key={ticket && ticket.id}
-              />
-            )
-          );
-        })}
-        {(tickets || []).map((ticket) => {
-          return (
-            (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
-            statusRows === "all" && (
-              <DetailRow
-                allRoles={allRoles}
-                getTicketByTicketId={this.props.getTicketByTicketId}
-                ticket={ticket}
-                key={ticket && ticket.id}
-              />
-            )
-          );
-        })}
+        {my_tickets &&
+          (my_tickets || []).map((ticket) => {
+            // console.log("ticket", ticket);
+            return (
+              (filterTickets === "all" ||
+                filterTickets.includes(ticket.type)) &&
+              statusRows === "all" && (
+                <DetailRow
+                  allRoles={allRoles}
+                  getTicketByTicketId={this.props.getTicketByTicketId}
+                  isNew={true}
+                  ticket={ticket}
+                  key={ticket && ticket.id}
+                />
+              )
+            );
+          })}
+        {tickets &&
+          (tickets || []).map((ticket) => {
+            return (
+              (filterTickets === "all" ||
+                filterTickets.includes(ticket.type)) &&
+              statusRows === "all" && (
+                <DetailRow
+                  allRoles={allRoles}
+                  getTicketByTicketId={this.props.getTicketByTicketId}
+                  ticket={ticket}
+                  key={ticket && ticket.id}
+                />
+              )
+            );
+          })}
       </div>
     );
   }

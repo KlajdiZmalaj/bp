@@ -3,76 +3,57 @@ import { Select, DatePicker } from "antd";
 import { isString } from "lodash";
 
 import moment from "moment";
-
+import ItemFull from "./AdminComp";
 const { Option } = Select;
-export const ItemFull = ({
-  readOnly,
-  value,
-  title,
-  handleChange,
-  changeValue,
-  Class,
-}) => (
-  <div className={`itemCol ${Class}`}>
-    <div className="inputLabel">{title}</div>
-    <input
-      onChange={(e) =>
-        changeValue ? handleChange(changeValue, e.target.value) : null
-      }
-      value={value}
-      className="ant-input"
-      type="text"
-      readOnly={readOnly}
-    />
-  </div>
-);
-class AdminComp extends React.Component {
+
+class AgentComp extends React.Component {
   render() {
     const { userDetail, state, handleChange, updateMsg } = this.props;
     return (
       <div className="newReg--row">
         <div className="newReg--row__col">
-          <ItemFull
+          {/* <ItemFull
             Class={"full"}
             readOnly={true}
             handleChange={null}
             changeValue={null}
             title={"Ragione Sociale"}
-            value={userDetail.ragione_sociale}
+            value={userDetail.ragione_sociale || ""}
+          /> */}
+
+          <ItemFull
+            Class="semi"
+            readOnly={false}
+            handleChange={handleChange}
+            changeValue={"address"}
+            title={"Address"}
+            value={state.address || userDetail.address}
           />
           <ItemFull
             Class="semi"
             readOnly={false}
             handleChange={handleChange}
-            changeValue={"changedInsegna"}
-            title={"Insegna"}
-            value={state.changedInsegna || userDetail.insegna}
-          />
-          <ItemFull
-            Class="semi"
-            readOnly={false}
-            handleChange={handleChange}
-            changeValue={"changedCordinate"}
-            title={"Cordinate"}
-            value={state.changedCordinate || userDetail.cordinate}
+            changeValue={"birth_comune_code"}
+            title={"Birth Comune Code"}
+            value={state.birth_comune_code || userDetail.birth_comune_code}
           />
           <ItemFull
             Class="full"
             readOnly={false}
             handleChange={handleChange}
-            changeValue={"changeda_phone"}
-            title={"Telefono Agenzia"}
-            value={state.changeda_phone || userDetail.a_phone}
+            changeValue={"birth_country"}
+            title={"Birth Country"}
+            value={state.birth_country || userDetail.birth_country}
           />
           <ItemFull
             Class="full"
             readOnly={false}
             handleChange={handleChange}
-            changeValue={"changedSede_operativa"}
-            title={"Sede Operativa"}
-            value={state.changedSede_operativa || userDetail.sede_operativa}
+            changeValue={"birth_place"}
+            title={"Birth Place"}
+            value={state.birth_place || userDetail.birth_place}
           />
-          <ItemFull
+          {/* <ItemFull
             Class="semi"
             readOnly={false}
             handleChange={handleChange}
@@ -122,7 +103,7 @@ class AdminComp extends React.Component {
             value={
               state.changedpagamento_mensile || userDetail.pagamento_mensile
             }
-          />
+          /> */}
         </div>
         <div className="newReg--row__col">
           <ItemFull
@@ -133,7 +114,7 @@ class AdminComp extends React.Component {
             title={"Nickname"}
             value={userDetail.username}
           />
-          <ItemFull
+          {/* <ItemFull
             Class="full"
             readOnly={false}
             handleChange={handleChange}
@@ -251,10 +232,10 @@ class AdminComp extends React.Component {
                   {error}
                 </div>
               ))}
-          </div>
+          </div> */}
         </div>
       </div>
     );
   }
 }
-export default AdminComp;
+export default AgentComp;
