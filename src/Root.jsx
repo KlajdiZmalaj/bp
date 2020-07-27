@@ -54,11 +54,11 @@ class Root extends React.Component {
         }
       }
     });
-    socket();
+    socket(this.props);
     if (get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")) {
       subscribeSocketUser(
         get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id"),
-        this.props.addPrivateMsg
+        this.props
       );
       if (
         get(
@@ -66,7 +66,7 @@ class Root extends React.Component {
           "profile.role.name"
         ) === "support"
       ) {
-        subscribeSocketSupport();
+        subscribeSocketSupport(this.props);
       }
     }
   }
@@ -92,22 +92,7 @@ class Root extends React.Component {
     if (data) {
       isLoggedin = true;
     }
-    if (!window.bigliettoPopUp) {
-      window.bigliettoPopUp = this.props.bigliettoPopUp;
-    }
-    if (!window.bigliettoPopUpVisure) {
-      window.bigliettoPopUpVisure = this.props.bigliettoPopUpVisure;
-    }
-    if (!window.setButtonsSupport) {
-      window.setButtonsSupport = this.props.setButtonsSupport;
-    }
-    if (!window.addTicket) {
-      window.addTicket = this.props.addTicket;
-    }
-    if (!window.addVisure) {
-      window.addVisure = this.props.addVisure;
-    }
-    console.log("this.props.popUpDataVisure", this.props.popUpDataVisure);
+
     return (
       <React.Fragment>
         <HashRouter>
