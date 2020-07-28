@@ -1,0 +1,388 @@
+.AdminHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 71px;
+  border: 1px solid #707070;
+  background-color: #ffffff;
+  border-bottom: 2.5px solid #0078ff;
+}
+
+.AdminHeader--Box {
+  width: 39.333%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.AdminHeader--Title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 20px 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0078ff;
+}
+
+.AdminHeader--Category {
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  width: 19.4%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-right: 1px solid #ebeced;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.AdminHeader--Category:nth-child(1) {
+  border-left: 1px solid #ebeced;
+}
+
+.AdminHeader--Category:nth-last-child() {
+  border-right: none;
+}
+
+.AdminHeader--Category div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 5px;
+  width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminHeader--Category div > i {
+  width: 23px;
+  padding-right: 7px;
+}
+
+.AdminHeader--Category--Prenotazioni {
+  cursor: pointer;
+  color: #0078ff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  width: 22%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.AdminHeader--Category--Prenotazioni div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 5px;
+  width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminHeader--Category--Prenotazioni div > i {
+  width: 23px;
+  padding-right: 7px;
+}
+
+.AdminHeader--ButtonWrapper {
+  height: 100%;
+  width: 13%;
+}
+
+.AdminHeader--ButtonWrapper button {
+  cursor: pointer;
+  padding: 20px 25px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #0078ff;
+  color: #ffffff;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+.AdminRightForm {
+  width: 400px;
+  min-height: calc(100% - 72px);
+  position: fixed;
+  left: calc(100% - 400px);
+  top: 71.5px;
+  background-color: #ffffff;
+  border: 1px solid #ebeced;
+}
+
+.AdminRightForm--Box {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  width: 100%;
+  padding: 15px 28px;
+  height: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box > i {
+  cursor: pointer;
+  width: 32px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.AdminRightForm--Box--Statistic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box--Statistic > i {
+  width: 32px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.AdminRightForm--Box--HeartRate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box--HeartRate > i {
+  width: 31px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.AdminRightForm--Box--Wallet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box--Wallet > i {
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.AdminLeftForm {
+  min-height: calc(100% - 72px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.AdminLeftForm--FirstBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.AdminLeftForm--FirstBox .Bars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.AdminLeftForm--FirstBox .Bars > i {
+  font-size: 16px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.AdminLeftForm--FirstBox--Box {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 35px;
+}
+
+.AdminLeftForm--FirstBox--Box--active {
+  color: #0078ff;
+  padding: 10px 35px;
+  border-left: 4px solid #0578fc;
+}
+
+.AdminLeftForm--FirstBox--Box--active--Skinsvg {
+  min-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminLeftForm--FirstBox--Box--active--Skinsvg svg {
+  width: 22px;
+  height: 22px;
+  margin-right: 15px;
+}
+
+.AdminLeftForm--FirstBox--Box--active--Skinsvg svg circle {
+  fill: #dce1e6;
+}
+
+.AdminLeftForm--FirstBox--Box--Skinsvg {
+  min-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminLeftForm--FirstBox--Box--Skinsvg svg {
+  width: 22px;
+  height: 22px;
+  margin-right: 15px;
+}
+
+.AdminLeftForm--FirstBox--Box--Skinsvg svg circle {
+  fill: #dce1e6;
+}
+
+.AdminLeftForm--LastBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.AdminLeftForm--LastBox--Box {
+  padding: 15px 35px;
+  border-top: 1px solid #ebeced;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.AdminLeftForm--LastBox--Box > i {
+  padding-right: 10px;
+}
+/*# sourceMappingURL=styles.css.map */

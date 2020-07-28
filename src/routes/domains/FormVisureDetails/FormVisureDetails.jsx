@@ -83,46 +83,56 @@ class FormDetailsDomain extends Component {
       <div className="ticketDetails">
         <div className="ticketDetails--filters">
           <div className="ticketDetails--filters__byTicket">
-            <input
-              placeholder="Skin"
-              onChange={(e) => this.setState({ filterSkin: e.target.value })}
-              value={filterSkin}
-            />
-            <input
-              placeholder="Ricerca Agenzia"
-              onChange={(e) => this.setState({ filterAgenzie: e.target.value })}
-              value={filterAgenzie}
-            />
-            <input
-              placeholder="Ricerca Id"
-              onChange={(e) =>
-                this.setState({ filterRicercaId: e.target.value })
-              }
-              value={filterRicercaId}
-            />
+            <div>
+              <div>
+                <input
+                  placeholder="Skin"
+                  onChange={(e) =>
+                    this.setState({ filterSkin: e.target.value })
+                  }
+                  value={filterSkin}
+                />
+                <input
+                  placeholder="Ricerca Agenzia"
+                  onChange={(e) =>
+                    this.setState({ filterAgenzie: e.target.value })
+                  }
+                  value={filterAgenzie}
+                />
+                <input
+                  placeholder="Ricerca Id"
+                  onChange={(e) =>
+                    this.setState({ filterRicercaId: e.target.value })
+                  }
+                  value={filterRicercaId}
+                />
+              </div>
 
-            <FilterVisureComponent
-              filterVisure={filterVisure}
-              handleClick={() =>
-                this.setState({ filterVisure: "Persona Fisica" })
-              }
-              title={"Persona Fisica"}
-              icon={"user"}
-            />
-            <FilterVisureComponent
-              filterVisure={filterVisure}
-              handleClick={() =>
-                this.setState({ filterVisure: "Azienda o Impresa" })
-              }
-              title={"Azienda o Impresa"}
-              icon={"building"}
-            />
-            <FilterVisureComponent
-              filterVisure={filterVisure}
-              handleClick={() => this.setState({ filterVisure: "all" })}
-              title={"all"}
-              icon={"shopping-cart"}
-            />
+              <div>
+                <FilterVisureComponent
+                  filterVisure={filterVisure}
+                  handleClick={() =>
+                    this.setState({ filterVisure: "Persona Fisica" })
+                  }
+                  title={"Persona Fisica"}
+                  icon={"user"}
+                />
+                <FilterVisureComponent
+                  filterVisure={filterVisure}
+                  handleClick={() =>
+                    this.setState({ filterVisure: "Azienda o Impresa" })
+                  }
+                  title={"Azienda o Impresa"}
+                  icon={"building"}
+                />
+                <FilterVisureComponent
+                  filterVisure={filterVisure}
+                  handleClick={() => this.setState({ filterVisure: "all" })}
+                  title={"all"}
+                  icon={"shopping-cart"}
+                />
+              </div>
+            </div>
           </div>
           <div className="ticketDetails--filters__byTicket">
             <FilterTypeComponent
@@ -159,6 +169,7 @@ class FormDetailsDomain extends Component {
             />
           </div>
         </div>
+
         <div className="ticketDetails--header --Visura">
           <span>Stato</span>
           <span>soggetto</span>

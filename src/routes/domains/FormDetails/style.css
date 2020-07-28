@@ -71,7 +71,20 @@
   margin-right: 20px;
 }
 
-.ticketDetails--filters__byTicket > i {
+.ticketDetails--filters__byTicket div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ticketDetails--filters__byTicket div > i {
   background-color: #e3e4e5;
   width: 40px;
   height: 40px;
@@ -89,7 +102,7 @@
   margin-right: 5px;
 }
 
-.ticketDetails--filters__byTicket > i:nth-child(1) {
+.ticketDetails--filters__byTicket div > i:nth-child(1) {
   margin-left: auto;
 }
 
@@ -745,5 +758,114 @@
 .ticketDetails--row .fas:hover {
   background-color: unset !important;
   color: var(--accent-bg) !important;
+}
+
+@media (max-width: 1000px) {
+  .ticketDetails--filters {
+    padding: 10px 10px !important;
+  }
+  .ticketDetails--filters__byTicket {
+    margin: 8px 10px !important;
+  }
+  .ticketDetails--filters__byTicket span.status {
+    padding: 5px 4px !important;
+  }
+  .ticketDetails--filters__byTicket i.fa,
+  .ticketDetails--filters__byTicket i.far,
+  .ticketDetails--filters__byTicket i.fas {
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    margin-right: 3px;
+  }
+  .ticketDetails--filters__byTicket input {
+    margin: 0 10px 0px 0px !important;
+    padding: 5px 5px !important;
+    max-width: 110px;
+  }
+  .ticketDetails--filters__byTicket .ant-switch {
+    margin-right: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ticketDetails--filters__byTicket div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .ticketDetails--filters__byTicket div > i:nth-child(1) {
+    margin-left: 0;
+  }
+  .ticketDetails--filters__byTicket div div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 6px 0;
+  }
+  .ticketDetails--filters__byTicket span.status {
+    background-color: #e3e4e5;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px !important;
+    margin-right: 3px !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+  }
+  .ticketDetails--filters__byTicket span.status span {
+    display: none;
+  }
+  .ticketDetails--filters__byTicket span.status div {
+    height: 13px;
+    width: 13px;
+    border-radius: 13px;
+    margin-right: 0 !important;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="all"] {
+    background-color: #000000;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="Completato"] {
+    background-color: #00ac2b;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="Eseguibile"] {
+    background-color: #00ac56;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="In Attesa"] {
+    background-color: #eb6810;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="Nuova Richiesta"] {
+    background-color: #238be7;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="Nuova Offerta"] {
+    background-color: #00ac56;
+  }
+  .ticketDetails--filters__byTicket span.status div[data-status="Cancellato"] {
+    background-color: #c91d1d;
+    border: none !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .ticketDetails--filters__byTicket input {
+    padding: 2px 2px !important;
+    max-width: 80px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

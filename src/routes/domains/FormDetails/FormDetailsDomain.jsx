@@ -73,76 +73,87 @@ class FormDetailsDomain extends Component {
       <div className="ticketDetails">
         <div className="ticketDetails--filters">
           <div className="ticketDetails--filters__byTicket">
-            <Switch
-              onChange={(on) => {
-                if (on) {
-                  this.props.getDataFormDetailsActives();
-                  this.setState({ statusRows: "active" });
-                } else {
-                  this.props.getDataFormDetails();
-                  this.setState({ statusRows: "all" });
-                }
-              }}
-              checkedChildren={
-                <i className="fal fa-check-circle" aria-hidden="true"></i>
-              }
-              unCheckedChildren={
-                <i className="fal fa-times-circle" aria-hidden="true"></i>
-              }
-            />
-            <input
-              placeholder="Skin"
-              onChange={(e) => this.setState({ filterSkin: e.target.value })}
-              value={filterSkin}
-            />
-            <input
-              placeholder="Ricerca Agenzia"
-              onChange={(e) => this.setState({ filterAgenzie: e.target.value })}
-              value={filterAgenzie}
-            />
-            <input
-              placeholder="Ricerca Id"
-              onChange={(e) =>
-                this.setState({ filterRicercaId: e.target.value })
-              }
-              value={filterRicercaId}
-            />
-            <i
-              onClick={() => this.setState({ filterTickets: "Voli" })}
-              className={
-                "fa fa-plane" + (filterTickets === "Voli" ? " active" : "")
-              }
-              aria-hidden="true"
-            ></i>
-            <i
-              onClick={() => this.setState({ filterTickets: "Treni1" })}
-              className={
-                "fa fa-bus" + (filterTickets === "Treni1" ? " active" : "")
-              }
-              aria-hidden="true"
-            ></i>
-            <i
-              onClick={() => this.setState({ filterTickets: "Treni2" })}
-              className={
-                "fa fa-train" + (filterTickets === "Treni2" ? " active" : "")
-              }
-              aria-hidden="true"
-            ></i>
-            <i
-              onClick={() => this.setState({ filterTickets: "Eventi" })}
-              className={
-                "fas fa-ticket-alt" +
-                (filterTickets === "Eventi" ? " active" : "")
-              }
-            ></i>
-            <i
-              onClick={() => this.setState({ filterTickets: "all" })}
-              className={
-                "far fa-shopping-cart" +
-                (filterTickets === "all" ? " active" : "")
-              }
-              aria-hidden="true"
-            ></i>
+            <div>
+              <div>
+                <Switch
+                  onChange={(on) => {
+                    if (on) {
+                      this.props.getDataFormDetailsActives();
+                      this.setState({ statusRows: "active" });
+                    } else {
+                      this.props.getDataFormDetails();
+                      this.setState({ statusRows: "all" });
+                    }
+                  }}
+                  checkedChildren={
+                    <i className="fal fa-check-circle" aria-hidden="true"></i>
+                  }
+                  unCheckedChildren={
+                    <i className="fal fa-times-circle" aria-hidden="true"></i>
+                  }
+                />
+                <input
+                  placeholder="Skin"
+                  onChange={(e) =>
+                    this.setState({ filterSkin: e.target.value })
+                  }
+                  value={filterSkin}
+                />
+                <input
+                  placeholder="Ricerca Agenzia"
+                  onChange={(e) =>
+                    this.setState({ filterAgenzie: e.target.value })
+                  }
+                  value={filterAgenzie}
+                />
+                <input
+                  placeholder="Ricerca Id"
+                  onChange={(e) =>
+                    this.setState({ filterRicercaId: e.target.value })
+                  }
+                  value={filterRicercaId}
+                />
+              </div>
+              <div>
+                <i
+                  onClick={() => this.setState({ filterTickets: "Voli" })}
+                  className={
+                    "fa fa-plane" + (filterTickets === "Voli" ? " active" : "")
+                  }
+                  aria-hidden="true"
+                ></i>
+                <i
+                  onClick={() => this.setState({ filterTickets: "Treni1" })}
+                  className={
+                    "fa fa-bus" + (filterTickets === "Treni1" ? " active" : "")
+                  }
+                  aria-hidden="true"
+                ></i>
+                <i
+                  onClick={() => this.setState({ filterTickets: "Treni2" })}
+                  className={
+                    "fa fa-train" +
+                    (filterTickets === "Treni2" ? " active" : "")
+                  }
+                  aria-hidden="true"
+                ></i>
+                <i
+                  onClick={() => this.setState({ filterTickets: "Eventi" })}
+                  className={
+                    "fas fa-ticket-alt" +
+                    (filterTickets === "Eventi" ? " active" : "")
+                  }
+                ></i>
+                <i
+                  onClick={() => this.setState({ filterTickets: "all" })}
+                  className={
+                    "far fa-shopping-cart" +
+                    (filterTickets === "all" ? " active" : "")
+                  }
+                  aria-hidden="true"
+                ></i>
+              </div>
+            </div>
           </div>
 
           <div className="ticketDetails--filters__byTicket">

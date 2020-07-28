@@ -1,0 +1,44 @@
+.AdminColumns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+.AdminColumns .Center {
+  position: fixed;
+  left: 250px;
+  right: 400px;
+  top: 70px;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.AdminColumns .Left {
+  border: 1px solid #ebeced;
+  width: 250px;
+  height: 100%;
+  min-height: 100%;
+  position: fixed;
+  left: 0;
+  top: 71.5px;
+  background-color: #ffffff;
+}
+/*# sourceMappingURL=styles.css.map */

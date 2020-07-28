@@ -2597,6 +2597,92 @@ span.superSmall {
   padding: 0 15px;
 }
 
+@media (max-width: 1210px) {
+  .panels-container::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .panels-container {
+    padding: 30px 10px !important;
+    width: auto;
+    overflow-y: scroll;
+  }
+  .panels-container .sort-annunci.sort-trasazioni {
+    padding: 4px 2px;
+    margin: 2px 2px;
+    min-width: 925px;
+  }
+  .panels-container .sort-annunci.sort-trasazioni .heading-tab {
+    font-size: 18px;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    padding-left: 5px !important;
+  }
+  .panels-container .sort-annunci.sort-trasazioni .datepics {
+    margin-left: 20px !important;
+  }
+  .panels-container .sort-annunci.sort-trasazioni li {
+    font-size: 16px !important;
+  }
+  .panels-container .paginationWrapper {
+    min-width: 600px;
+    margin-top: 10px !important;
+  }
+  .panels-container table.transTable {
+    min-width: 1200px;
+  }
+  .panels-container table.transTable td {
+    padding: 6px 0 !important;
+  }
+}
+
+@media (max-width: 826px) {
+  .panels-container .sort-annunci ul {
+    width: 400px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 4px 0 !important;
+  }
+  .panels-container .sort-annunci.sort-trasazioni {
+    min-width: 550px;
+    width: auto;
+  }
+  .panels-container .sort-annunci.sort-trasazioni .heading-tab {
+    font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 4px 0 !important;
+  }
+  .panels-container .sort-annunci.sort-trasazioni .datepics {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: none;
+    margin: 4px 0px;
+  }
+  .panels-container .sort-annunci.sort-trasazioni .datepics .ant-form {
+    border: 2px solid #edeef0;
+  }
+  .panels-container .sort-annunci.sort-trasazioni li {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 14px;
+    width: 19%;
+  }
+}
+
 /*modules*/
 .modulePopUP {
   background: #0000006b;

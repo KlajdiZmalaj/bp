@@ -26,6 +26,8 @@ import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
 import Visure from "./routes/views/Visure";
+import loginAdmin from "./routes/views/loginAdmin";
+import adminPanel from "./routes/views/adminPanel";
 import VisureDetaggli from "./routes/views/VisureDetaggli";
 import {
   subscribeSocketUser,
@@ -233,7 +235,20 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             />
-            Visure
+            <PrivateRoute
+              path="/login-admin"
+              component={loginAdmin}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "user", "agency", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/admin-panel"
+              component={adminPanel}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "user", "agency", "support"]}
+              role={role}
+            />
           </Switch>
         </HashRouter>
         {this.state.top && (

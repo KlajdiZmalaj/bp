@@ -1,0 +1,28 @@
+.AdminColumns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+  & .Center {
+    position: fixed;
+    left: 250px;
+    right: 400px;
+    top: 70px;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  & .Left {
+    border: 1px solid #ebeced;
+    width: 250px;
+    height: 100%;
+    min-height: 100%;
+    position: fixed;
+    left: 0;
+    top: 71.5px;
+    background-color: #ffffff;
+  }
+}
