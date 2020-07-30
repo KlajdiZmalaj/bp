@@ -5,6 +5,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Radio } from "antd";
 import { Azioni, Header, Loader, Modal } from "shared-components";
+import images from "themes/images";
 
 const { TextArea } = Input;
 
@@ -16,43 +17,34 @@ class Annunci extends React.Component {
       expanded: [],
       modal: false,
     };
-    this.hideModal = this.hideModal.bind(this);
-    this.showModal = this.showModal.bind(this);
   }
 
-  hideModal() {
+  hideModal = () => {
     document.body.style.overflow = "";
     this.setState({ modal: false });
-    this.setState({});
-  }
-  showModal() {
+  };
+  showModal = () => {
     document.body.style.overflow = "hidden";
     this.setState({ modal: true });
-
-    this.setState({});
-  }
+  };
 
   componentDidMount() {
     this.props.getAds();
   }
 
-  selectTab(payload) {
-    this.setState({
-      tabFilter: payload,
-    });
-    this.setState({});
-  }
+  selectTab = (payload) => {
+    this.setState({ tabFilter: payload });
+  };
 
-  tabExpand(tab) {
+  tabExpand = (tab) => {
     if (this.state.expanded.includes(tab)) {
       this.setState({
-        expanded: this.state.expanden.filter((el) => el != tab),
+        expanded: this.state.expanded.filter((el) => el != tab),
       });
-      this.setState({});
     } else {
-      this.setState({ expanded: this.state.expanded.push(tab) });
+      this.setState({ expanded: [...this.state.expanded, tab] });
     }
-  }
+  };
 
   render() {
     const { ads, ads_loading, accountInfo } = this.props;
@@ -132,11 +124,11 @@ class Annunci extends React.Component {
                     <div
                       onClick={() => this.tabExpand(m.id)}
                       className="panel-tab"
-                      aria-expanded={
+                      aria-expanded={`${
                         this.state.expanded.find((tab) => tab === m.id) != null
-                          ? true
-                          : false
-                      }
+                          ? "true"
+                          : "false"
+                      }`}
                     >
                       <i
                         id={
@@ -154,7 +146,7 @@ class Annunci extends React.Component {
                       ></i>
                       <h4>{m.title}</h4>
                       <span className="date-pane">{m.updated_at}</span>
-                      <i className="fal fa-chevron-down" aria-hidden="true"></i>
+                      <img src={images.uparrow} alt="" />
                     </div>
                     <div
                       className={`nav nav-tabs panel-content panel-content-annunci collapse ${
