@@ -1,4 +1,7 @@
 import React from "react";
+
+import MainActions from "redux-store/models/main";
+import { connect } from "react-redux";
 class AdminLeftForm extends React.Component {
   render() {
     return (
@@ -7,7 +10,7 @@ class AdminLeftForm extends React.Component {
           <div className="AdminLeftForm--FirstBox--Box">
             <div className="Bars">
               <span>NETWORK</span>
-              <i class="fal fa-bars"></i>
+              <i class="fal fa-bars" onClick={this.props.handleClick}></i>
             </div>
           </div>
           <div className="AdminLeftForm--FirstBox--Box--active">
@@ -20,7 +23,13 @@ class AdminLeftForm extends React.Component {
               >
                 <circle class="a" cx="11" cy="11" r="11" />
               </svg>
-              <span>BPOINT</span>
+              <span
+                onClick={() => {
+                  this.props.setActiveSkinId(1);
+                }}
+              >
+                BPOINT
+              </span>
             </div>
           </div>
         </div>
@@ -39,4 +48,4 @@ class AdminLeftForm extends React.Component {
     );
   }
 }
-export default AdminLeftForm;
+export default connect(null, { ...MainActions })(AdminLeftForm);

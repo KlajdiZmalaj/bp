@@ -41,7 +41,7 @@
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  padding: 20px 25px;
+  padding: 0px 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -129,7 +129,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 5px 5px;
   width: auto;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -151,7 +150,6 @@
 
 .AdminHeader--ButtonWrapper button {
   cursor: pointer;
-  padding: 20px 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #0078ff;
@@ -252,13 +250,217 @@
           align-items: center;
 }
 
+.AdminRightForm--Box--Wallet--Dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
+  border: 1px solid #ebeced;
+  margin: 11px 27px;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
+  margin-top: 28px;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown div.InputHolder input {
+  border: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 85%;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown div.InputHolder > i {
+  position: absolute;
+  top: 0;
+  left: 86%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 14%;
+  font-size: 14px;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown div.InputHolder > i.fa-check {
+  color: #00ac5c;
+  border-left: 1px solid #ebeced;
+  font-size: 15px;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown div.InputHolder span {
+  width: 14%;
+  position: absolute;
+  top: 0;
+  left: 86%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  font-family: "Roboto";
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--Submit {
+  margin: 11px 27px;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  border: none;
+  background: #0078ff;
+  color: #ffffff;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 10px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #ebeced;
+  font-weight: bold;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(1) {
+  border-bottom: 2px solid #00ac5c;
+  position: relative;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(1) svg {
+  display: none;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(1).active {
+  color: #00ac5c;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(1).active svg {
+  display: block;
+  position: absolute;
+  left: 48%;
+  bottom: 0px;
+  width: 11px;
+  height: 7px;
+  fill: #00ac5c;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(2) {
+  border-bottom: 2px solid #ffb100;
+  position: relative;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(2) svg {
+  display: none;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(2).active {
+  color: #ffb100;
+}
+
+.AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(2).active svg {
+  display: block;
+  position: absolute;
+  left: 48%;
+  bottom: 0px;
+  width: 11px;
+  height: 7px;
+  fill: #ffb100;
+}
+
 .AdminRightForm--Box--Wallet > i {
   padding-right: 15px;
   font-size: 16px;
   font-weight: 300;
 }
 
-.AdminLeftForm {
+.Left .AdminLeftForm {
   min-height: calc(100% - 72px);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -272,7 +474,7 @@
           flex-direction: column;
 }
 
-.AdminLeftForm--FirstBox {
+.Left .AdminLeftForm--FirstBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,7 +485,7 @@
           flex-direction: column;
 }
 
-.AdminLeftForm--FirstBox .Bars {
+.Left .AdminLeftForm--FirstBox .Bars {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,26 +500,26 @@
   font-size: 14px;
 }
 
-.AdminLeftForm--FirstBox .Bars > i {
+.Left .AdminLeftForm--FirstBox .Bars > i {
   font-size: 16px;
   font-weight: 300;
   cursor: pointer;
 }
 
-.AdminLeftForm--FirstBox--Box {
+.Left .AdminLeftForm--FirstBox--Box {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
   padding: 10px 35px;
 }
 
-.AdminLeftForm--FirstBox--Box--active {
+.Left .AdminLeftForm--FirstBox--Box--active {
   color: #0078ff;
   padding: 10px 35px;
   border-left: 4px solid #0578fc;
 }
 
-.AdminLeftForm--FirstBox--Box--active--Skinsvg {
+.Left .AdminLeftForm--FirstBox--Box--active--Skinsvg {
   min-height: 22px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -330,17 +532,17 @@
           align-items: center;
 }
 
-.AdminLeftForm--FirstBox--Box--active--Skinsvg svg {
+.Left .AdminLeftForm--FirstBox--Box--active--Skinsvg svg {
   width: 22px;
   height: 22px;
   margin-right: 15px;
 }
 
-.AdminLeftForm--FirstBox--Box--active--Skinsvg svg circle {
+.Left .AdminLeftForm--FirstBox--Box--active--Skinsvg svg circle {
   fill: #dce1e6;
 }
 
-.AdminLeftForm--FirstBox--Box--Skinsvg {
+.Left .AdminLeftForm--FirstBox--Box--Skinsvg {
   min-height: 22px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -353,17 +555,17 @@
           align-items: center;
 }
 
-.AdminLeftForm--FirstBox--Box--Skinsvg svg {
+.Left .AdminLeftForm--FirstBox--Box--Skinsvg svg {
   width: 22px;
   height: 22px;
   margin-right: 15px;
 }
 
-.AdminLeftForm--FirstBox--Box--Skinsvg svg circle {
+.Left .AdminLeftForm--FirstBox--Box--Skinsvg svg circle {
   fill: #dce1e6;
 }
 
-.AdminLeftForm--LastBox {
+.Left .AdminLeftForm--LastBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -373,7 +575,7 @@
           flex-direction: column;
 }
 
-.AdminLeftForm--LastBox--Box {
+.Left .AdminLeftForm--LastBox--Box {
   padding: 15px 35px;
   border-top: 1px solid #ebeced;
   font-family: "Roboto", sans-serif;
@@ -382,7 +584,341 @@
   font-weight: 400;
 }
 
-.AdminLeftForm--LastBox--Box > i {
+.Left .AdminLeftForm--LastBox--Box > i {
   padding-right: 10px;
+}
+
+.Left--Min .AdminLeftForm {
+  min-height: calc(100% - 72px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Left--Min .AdminLeftForm--FirstBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Left--Min .AdminLeftForm--FirstBox span {
+  display: none;
+}
+
+.Left--Min .AdminLeftForm--FirstBox .Bars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.Left--Min .AdminLeftForm--FirstBox .Bars > i {
+  font-size: 16px;
+  padding-left: 11px;
+  margin-bottom: 20px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg {
+  min-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg span {
+  display: block;
+  width: calc(2.2ch + 5px);
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 5px;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg svg {
+  display: none;
+  width: 22px;
+  height: 22px;
+  margin-right: 15px;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg svg circle {
+  fill: #dce1e6;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--active {
+  color: #0078ff;
+  border-left: 2px solid #0578fc;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--active--Skinsvg {
+  min-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--active--Skinsvg span {
+  display: block;
+  width: 2.2ch;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--active--Skinsvg svg {
+  display: none;
+  width: 22px;
+  height: 22px;
+  margin-right: 15px;
+}
+
+.Left--Min .AdminLeftForm--FirstBox--Box--active--Skinsvg svg circle {
+  fill: #dce1e6;
+}
+
+.Left--Min .AdminLeftForm--LastBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Left--Min .AdminLeftForm--LastBox--Box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #ebeced;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.Left--Min .AdminLeftForm--LastBox--Box span {
+  display: none;
+}
+
+.Left--Min .AdminLeftForm--LastBox--Box > i {
+  font-size: 16px;
+}
+
+.Graph {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 170px;
+  padding: 0px 5px;
+  padding-top: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f3f3f4;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: relative;
+}
+
+.Graph--Element {
+  background-color: #0377fc;
+  opacity: 0.3;
+  margin: 0px 1.2px;
+  width: 6px;
+}
+
+.Graph--Element:hover {
+  background-color: #0578fc;
+  opacity: 1;
+}
+
+.Graph .Date {
+  height: 45px;
+  width: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  left: 5%;
+  top: 5%;
+}
+
+.Graph .Date div:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Graph .Date div:first-child span:first-child {
+  font-family: "Roboto";
+  font-size: 31px;
+  font-weight: 200;
+}
+
+.Graph .Date div:first-child span:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  left: 15%;
+  top: 80%;
+  font-size: 10px;
+}
+
+.Graph .Date div {
+  padding: 1px 3px;
+}
+
+.Graph .Date div > i {
+  font-size: 12px;
+  padding-top: 12px;
+}
+
+.Tranzacioni {
+  height: 62px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Tranzacioni div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 62px;
+  border: 1px solid #ebeced;
+}
+
+.Tranzacioni div span {
+  font-weight: 300;
+}
+
+.Tranzacioni div span:first-child {
+  font-family: "Roboto";
+  font-size: 15px;
+  color: #5c5c5c;
+}
+
+.Tranzacioni div span:nth-child(2) {
+  font-size: 16px;
+  color: #0578fc;
+  font-family: "Roboto";
 }
 /*# sourceMappingURL=styles.css.map */

@@ -18,8 +18,10 @@
   position: fixed;
   left: 250px;
   right: 400px;
-  top: 70px;
-  bottom: 0;
+  top: 72px;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,6 +31,29 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.AdminColumns .Center--Big {
+  position: fixed;
+  left: 51px;
+  right: 400px;
+  top: 72px;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .AdminColumns .Left {
@@ -40,5 +65,819 @@
   left: 0;
   top: 71.5px;
   background-color: #ffffff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.AdminColumns .Left--Min {
+  border: 1px solid #ebeced;
+  width: 50px;
+  height: 100%;
+  min-height: 100%;
+  position: fixed;
+  left: 0;
+  top: 71.5px;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.AdminListaUtenti {
+  width: 100%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background-color: #ffffff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-height: 52px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px solid #ebeced;
+  background: #ffffff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children {
+  border-left: 4px solid #0078ff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div:nth-child(1) {
+  background-color: #f3f3f4;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) :nth-child(1) {
+  opacity: 0;
+  width: 13px;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) :nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) :nth-child(2) {
+  position: relative;
+  left: -8px;
+  width: 8px;
+  height: 2px;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active {
+  cursor: pointer;
+  border-left: 4px solid #0078ff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) {
+  left: -4px;
+  position: relative;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) :nth-child(1) {
+  opacity: 1;
+  display: block;
+  left: -13px;
+  z-index: 1;
+  background-color: #ffffff;
+  position: relative;
+  cursor: pointer;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2) :nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) :nth-child(2) {
+  position: relative;
+  left: -8px;
+  width: 8px;
+  height: 2px;
+  border-top: 1px dotted #0078ff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span {
+  width: 12.5%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0px;
+  margin-left: 3px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1) {
+  margin: 10px 5px;
+  width: 6%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
+  width: 24%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) > i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) > i {
+  font-size: 13px;
+  padding-right: 10px;
+  color: #0078ff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(3) {
+  margin: 10px 5px;
+  width: 13%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4) {
+  margin: 10px 5px;
+  width: 6%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(5) {
+  margin: 10px 5px;
+  width: 7%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(6), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(6) {
+  margin: 10px 5px;
+  width: 13%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(7) {
+  margin: 10px 5px;
+  width: 13%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(8), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(8) {
+  margin: 10px 5px;
+  width: 18%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child button, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child button {
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #5c5c5c;
+  border-radius: 17px;
+  padding: 5px 12px;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child > i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child > i {
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 300;
+  border: 1px solid #5c5c5c;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 7px 14px;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child > i.active, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child > i.active {
+  color: #0078ff;
+  border-color: #0078ff;
+}
+
+.AdminListaUtenti--Header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: #ffffff;
+  height: 52px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ebeced;
+}
+
+.AdminListaUtenti--Header span {
+  width: 12.5%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  left: 3px;
+}
+
+.AdminListaUtenti--Header span:nth-child(1) {
+  margin: 10px 5px;
+  width: 6%;
+}
+
+.AdminListaUtenti--Header span:nth-child(2) {
+  margin: 10px 0px;
+  width: 24%;
+}
+
+.AdminListaUtenti--Header span:nth-child(3) {
+  margin: 10px 5px;
+  position: relative;
+  left: 10px;
+  width: 13%;
+}
+
+.AdminListaUtenti--Header span:nth-child(4) {
+  margin: 10px 5px;
+  width: 6%;
+}
+
+.AdminListaUtenti--Header span:nth-child(5) {
+  margin: 10px 5px;
+  width: 7%;
+}
+
+.AdminListaUtenti--Header span:nth-child(6) {
+  margin: 10px 5px;
+  width: 13%;
+}
+
+.AdminListaUtenti--Header span:nth-child(7) {
+  margin: 10px 5px;
+  width: 13%;
+}
+
+.AdminListaUtenti--Header span:nth-child(8) {
+  margin: 10px 5px;
+  width: 18%;
+}
+
+@media (max-width: 2100px) {
+  .AdminListaUtenti .AdminListaUtenti--Header span {
+    padding: 10px 8px !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span {
+    padding: 2px 2px !important;
+  }
+}
+
+@media (max-width: 1900px) {
+  .AdminRightForm {
+    width: 350px;
+    left: calc(100% - 350px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box > i {
+    font-size: 18px;
+  }
+  .AdminColumns .Center--Big,
+  .AdminColumns .Center {
+    right: 350px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+@media (max-width: 1780px) {
+  .AdminRightForm {
+    width: 280px;
+    left: calc(100% - 280px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box > i {
+    font-size: 18px;
+  }
+  .AdminColumns .Center--Big,
+  .AdminColumns .Center {
+    right: 280px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+@media (max-width: 1550px) {
+  .AdminRightForm {
+    width: 220px;
+    left: calc(100% - 220px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box > i {
+    font-size: 18px;
+  }
+  .AdminColumns .Center--Big,
+  .AdminColumns .Center {
+    right: 220px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+@media (max-width: 1600px) {
+  .AdminHeader--Box {
+    width: 48%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .AdminHeader--Box {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .AdminHeader {
+    font-size: 14px;
+  }
+  .AdminHeader--Box {
+    width: 60%;
+  }
+}
+
+@media (max-width: 900px) {
+  .AdminHeader--Box {
+    width: 75%;
+  }
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2),
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) {
+  position: relative;
+  max-width: calc(24% - 40px);
+  margin-left: 40px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2):after,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2):after {
+  content: "";
+  width: 100%;
+  top: -42px;
+  left: -8px;
+  background-color: transparent;
+  height: 58px;
+  position: absolute;
+  border-left: 1px dotted #0078ff;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div {
+  border-left: 4px solid #004b9f;
+  background-color: #ebeced;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2),
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
+  max-width: calc(24% - 60px);
+  margin-left: 60px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before {
+  content: "";
+  width: 100%;
+  top: -36px;
+  left: -32px;
+  z-index: 2;
+  background-color: transparent;
+  height: 52.5px;
+  position: absolute;
+  border-left: 1px dotted #0078ff;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link {
+  border-top: 1px dotted #0078ff;
+  left: -21px;
+  top: 4px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div {
+  background-color: #ebeced;
+  border-left: 4px solid #004b9f;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2),
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) {
+  max-width: calc(24% - 60px);
+  margin-left: 60px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2):before,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2):before {
+  content: "";
+  width: 100%;
+  top: -42px;
+  left: -48px;
+  z-index: 2;
+  background-color: transparent;
+  height: 275%;
+  position: absolute;
+  border-color: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) .Link,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children.last
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) .Link {
+  border-top: 1px dotted #0078ff;
+  left: -21px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div
+> span:nth-child(2)
+> div,
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div
+> span:nth-child(2)
+> div {
+  width: 8px;
+  left: -21px;
+  border-top: 1px dotted #0078ff;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main.active
+> span:nth-child(2),
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main.active
+> span:nth-child(2) {
+  margin-right: 13px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div:nth-child(4)
+> div
+> span:nth-child(2),
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div:nth-child(4)
+> div
+> span:nth-child(2) {
+  margin-right: 18px;
+}
+
+.fa-user-tie,
+.fa-user {
+  padding-left: 3px;
+  position: relative;
+  left: -14px;
+  padding-right: 0px !important;
 }
 /*# sourceMappingURL=styles.css.map */

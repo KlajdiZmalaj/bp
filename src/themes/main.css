@@ -2683,6 +2683,26 @@ span.superSmall {
   }
 }
 
+@media (max-width: 620px) {
+  .panels-container .sort-annunci ul {
+    width: 400px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 4px 0 !important;
+  }
+  .panels-container .sort-annunci.sort-trasazioni {
+    min-width: 440px;
+    width: auto;
+  }
+  .panels-container .sort-annunci.sort-trasazioni li {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: auto;
+  }
+}
+
 /*modules*/
 .modulePopUP {
   background: #0000006b;
