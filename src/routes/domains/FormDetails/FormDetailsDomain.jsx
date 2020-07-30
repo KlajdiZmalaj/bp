@@ -52,7 +52,7 @@ class FormDetailsDomain extends Component {
     this.props.getDataFormDetails();
   }
   render() {
-    const { formDetails, TicketByTcketId, formDetailsActives } = this.props;
+    const { formDetails, formDetailsActives } = this.props;
     const {
       filterTickets,
       statusRows,
@@ -216,32 +216,34 @@ class FormDetailsDomain extends Component {
             )
           );
         })}
-        {(my_tickets || []).map((ticket) => {
-          return (
-            (filterTickets === "all" || filterTickets.includes(ticket.type)) &&
-            statusRows === "all" &&
-            (filterType === "all" || filterType === ticket.status) &&
-            (filterSkin === "" ||
-              ticket.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
-            (filterAgenzie === "" ||
-              ticket.user
-                .toLowerCase()
-                .includes(filterAgenzie.toLowerCase())) &&
-            (filterRicercaId === "" ||
-              `BP-${ticket.id}`
-                .toString()
-                .toLowerCase()
-                .includes(filterRicercaId.toString().toLowerCase())) && (
-              <DetailRow
-                allRoles={allRoles}
-                getTicketByTicketId={this.props.getTicketByTicketId}
-                isNew={true}
-                ticket={ticket}
-                key={ticket && ticket.id}
-              />
-            )
-          );
-        })}
+        {my_tickets &&
+          (my_tickets || []).map((ticket) => {
+            return (
+              (filterTickets === "all" ||
+                filterTickets.includes(ticket.type)) &&
+              statusRows === "all" &&
+              (filterType === "all" || filterType === ticket.status) &&
+              (filterSkin === "" ||
+                ticket.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
+              (filterAgenzie === "" ||
+                ticket.user
+                  .toLowerCase()
+                  .includes(filterAgenzie.toLowerCase())) &&
+              (filterRicercaId === "" ||
+                `BP-${ticket.id}`
+                  .toString()
+                  .toLowerCase()
+                  .includes(filterRicercaId.toString().toLowerCase())) && (
+                <DetailRow
+                  allRoles={allRoles}
+                  getTicketByTicketId={this.props.getTicketByTicketId}
+                  isNew={true}
+                  ticket={ticket}
+                  key={ticket && ticket.id}
+                />
+              )
+            );
+          })}
         {tickets &&
           (tickets || []).map((ticket) => {
             return (

@@ -124,9 +124,7 @@
     padding: 0;
     border-right: 2px solid #dfe4ef;
   }
-  .ant-select-selection.ant-select-selection--single {
-    // margin-bottom: 3px;
-  }
+
   .Select-clear {
     display: none;
   }
@@ -186,7 +184,7 @@
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #5f656d inset !important;
+    box-shadow: 0 0 0 30px #5f656d inset !important;
     color: #212529;
   }
   .sendBTN {
@@ -565,8 +563,8 @@
       padding: 20px 5px;
       display: flex;
       flex-flow: row wrap;
-      align-items: end;
-      justify-content: end;
+      align-items: flex-end;
+      justify-content: flex-end;
       height: 100%;
       &:last-child {
         border-right: 0;

@@ -233,7 +233,7 @@ class SingleUser extends Component {
                   );
                 }}
               >
-                <i class="fa fa-check"></i> Conferma
+                <i className="fa fa-check"></i> Conferma
               </button>
               <button
                 className="sendInput cancelInput"
@@ -241,7 +241,7 @@ class SingleUser extends Component {
                   this.setPopUpFalse();
                 }}
               >
-                <i class="fa fa-times"></i> Cancel
+                <i className="fa fa-times"></i> Cancel
               </button>
               {user.status === 2 && (
                 <p className="info">

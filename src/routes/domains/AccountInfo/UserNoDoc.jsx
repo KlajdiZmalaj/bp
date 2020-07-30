@@ -12,34 +12,34 @@ class UserDoc extends Component {
       isPopUpOpen: false,
       loading: false,
       imageUrl: "",
-      imageUrl2: ""
+      imageUrl2: "",
     };
   }
 
-  handleChangeFront = info => {
+  handleChangeFront = (info) => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
       return;
     }
     if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, imageUrl =>
+      getBase64(info.file.originFileObj, (imageUrl) =>
         this.setState({
           imageUrl,
-          loading: false
+          loading: false,
         })
       );
     }
   };
-  handleChangeBack = info => {
+  handleChangeBack = (info) => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
       return;
     }
     if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, imageUrl2 =>
+      getBase64(info.file.originFileObj, (imageUrl2) =>
         this.setState({
           imageUrl2,
-          loading: false
+          loading: false,
         })
       );
     }

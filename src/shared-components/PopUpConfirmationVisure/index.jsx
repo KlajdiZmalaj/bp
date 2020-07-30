@@ -17,7 +17,7 @@ const PopUpConfirmationVisure = ({
       getVisureByVisureId(popUpDataVisure.id);
       setState(true);
     }
-  }, [popUpDataVisure]);
+  }, [popUpDataVisure, VisureByVisureId, getVisureByVisureId]);
   console.log("ca ka visuree", VisureByVisureId, popUpDataVisure);
   return (
     VisureByVisureId &&

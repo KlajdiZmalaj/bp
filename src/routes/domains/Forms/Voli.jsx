@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { notification } from "antd";
 import images from "themes/images";
 import VoliUserFrom from "./VoliUserFrom";
-import Swiper from "react-id-swiper";
 class Voli extends Component {
   state = {
     bagaglio: 1,
@@ -69,16 +68,16 @@ class Voli extends Component {
   };
   render() {
     const { nome_agenzia, color, accountInfo, goBack } = this.props;
-    const { adults, childrens, hasDD, travalers } = this.state;
-    const params = {
-      spaceBetween: 0,
-      loop: false,
-      slidesPerView: 1,
-      freeMode: false,
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    };
+    const { adults, childrens, hasDD } = this.state;
+    // const params = {
+    //   spaceBetween: 0,
+    //   loop: false,
+    //   slidesPerView: 1,
+    //   freeMode: false,
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //   },
+    // };
     return (
       <div className="formsContainer--body animated fadeIn">
         <div className="leftForm">

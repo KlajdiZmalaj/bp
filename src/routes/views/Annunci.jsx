@@ -5,7 +5,6 @@ import { MainActions, AuthActions } from "redux-store/models";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Radio } from "antd";
 import { Azioni, Header, Loader, Modal } from "shared-components";
-import images from "themes/images";
 
 const { TextArea } = Input;
 
@@ -23,12 +22,13 @@ class Annunci extends React.Component {
 
   hideModal() {
     document.body.style.overflow = "";
-    this.state.modal = false;
+    this.setState({ modal: false });
     this.setState({});
   }
   showModal() {
     document.body.style.overflow = "hidden";
-    this.state.modal = true;
+    this.setState({ modal: true });
+
     this.setState({});
   }
 
@@ -37,17 +37,20 @@ class Annunci extends React.Component {
   }
 
   selectTab(payload) {
-    this.state.tabFilter = payload;
+    this.setState({
+      tabFilter: payload,
+    });
     this.setState({});
   }
 
   tabExpand(tab) {
     if (this.state.expanded.includes(tab)) {
-      this.state.expanded = this.state.expanded.filter((el) => el != tab);
+      this.setState({
+        expanded: this.state.expanden.filter((el) => el != tab),
+      });
       this.setState({});
     } else {
-      this.state.expanded.push(tab);
-      this.setState({});
+      this.setState({ expanded: this.state.expanded.push(tab) });
     }
   }
 
@@ -129,11 +132,11 @@ class Annunci extends React.Component {
                     <div
                       onClick={() => this.tabExpand(m.id)}
                       className="panel-tab"
-                      aria-expanded={`${
+                      aria-expanded={
                         this.state.expanded.find((tab) => tab === m.id) != null
-                          ? "true"
-                          : "false"
-                      }`}
+                          ? true
+                          : false
+                      }
                     >
                       <i
                         id={

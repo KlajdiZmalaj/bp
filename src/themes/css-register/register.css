@@ -239,6 +239,7 @@
 .infoUser.generalInfo.row input:-webkit-autofill:focus,
 .infoUser.generalInfo.row input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #5f656d inset !important;
+          box-shadow: 0 0 0 30px #5f656d inset !important;
   color: #212529;
 }
 
@@ -731,10 +732,10 @@
           flex-flow: row wrap;
   -webkit-box-align: end;
       -ms-flex-align: end;
-          align-items: end;
+          align-items: flex-end;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: end;
+          justify-content: flex-end;
   height: 100%;
 }
 

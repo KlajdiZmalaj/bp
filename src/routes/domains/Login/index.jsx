@@ -58,13 +58,15 @@ class Login extends React.Component {
               />
             </li>
             <li>
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                id="password"
-                onChange={this.handleChangePassword}
-              />
+              <form>
+                <input
+                  type="password"
+                  placeholder="password"
+                  name="password"
+                  id="password"
+                  onChange={this.handleChangePassword}
+                />
+              </form>
             </li>
             <li>
               <button

@@ -9,7 +9,6 @@ import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
-
 import { DateRangePicker } from "react-date-range";
 import { subDays, format } from "date-fns";
 import * as locales from "react-date-range/dist/locale";
@@ -103,70 +102,72 @@ class Transazioni extends React.Component {
   };
 
   handleSubmit = (e) => {
+    const { username, to, from, perPage } = this.state;
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
-        this.props.getPayments(
-          this.state.username,
-          this.state.from || "",
-          this.state.to || "",
-          1,
-          this.state.perPage
-        );
+        this.props.getPayments(username, from || "", to || "", 1, perPage);
       }
     });
   };
 
   changeSelected = (filter) => {
+    const { username, perPage } = this.state;
     this.setState({ selectedFilter: filter });
     if (filter === 0) {
+      const fromDate = moment().format("YYYY-MM-DD");
       this.setState({
         fromLabel: "",
         toLabel: "",
-        from: moment().format("YYYY-MM-DD"),
-        to: moment().format("YYYY-MM-DD"),
+        from: fromDate,
+        to: fromDate,
       });
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
-        moment().format("YYYY-MM-DD"),
-        moment().format("YYYY-MM-DD"),
+        username != "" ? username : "",
+        fromDate,
+        fromDate,
         1,
-        this.state.perPage
+        perPage
       );
     }
     if (filter === 1) {
+      const fromDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+      const toDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+
       this.setState({
         fromLabel: "",
         toLabel: "",
-        from: moment().subtract(1, "days").format("YYYY-MM-DD"),
-        to: moment().subtract(1, "days").format("YYYY-MM-DD"),
+        from: fromDate,
+        to: toDate,
       });
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
-        moment().subtract(1, "days").format("YYYY-MM-DD"),
-        moment().subtract(1, "days").format("YYYY-MM-DD"),
+        username != "" ? username : "",
+        fromDate,
+        toDate,
         1,
-        this.state.perPage
+        perPage
       );
     }
     if (filter === 2) {
-      this.setState({
-        fromLabel: "",
-        toLabel: "",
-        from: moment().subtract(7, "days").startOf("day").format("YYYY-MM-DD"),
-        to: moment().format("YYYY-MM-DD"),
-      });
-      const time7daysAgo = moment()
+      const fromDate = moment()
         .subtract(7, "days")
         .startOf("day")
         .format("YYYY-MM-DD");
+      const toDate = moment().format("YYYY-MM-DD");
+      this.setState({
+        fromLabel: "",
+        toLabel: "",
+        from: fromDate,
+        to: toDate,
+      });
+
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
-        time7daysAgo,
-        moment().format("YYYY-MM-DD"),
+        username != "" ? username : "",
+        fromDate,
+        toDate,
         1,
-        this.state.perPage
+        perPage
       );
     }
     if (filter === 3) {
@@ -176,24 +177,20 @@ class Transazioni extends React.Component {
         fromLabel: "",
         toLabel: "",
       });
-      // const time30daysAgo = moment()
-      //   .subtract(30, "days")
-      //   .startOf("day")
-      //   .format("YYYY-MM-DD");
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
+        username != "" ? username : "",
         "",
         "",
         1,
-        this.state.perPage
+        perPage
       );
-      // this.props.getPayments();
     }
   };
 
   handleSearch = (value) => {
-    if (value && this.props.usernames) {
-      let res = this.props.usernames.filter((user) =>
+    const { usernames } = this.props;
+    if (value && usernames) {
+      let res = usernames.filter((user) =>
         user.toLocaleLowerCase().includes(value.toLocaleLowerCase())
       );
       this.setState({ usernames: res });
@@ -215,17 +212,29 @@ class Transazioni extends React.Component {
     //     .subtract(parseInt(moment().format("D")), "days")
     //     .format()
     // );
-    this.props.getPayments(
-      this.state.username != "" ? this.state.username : "",
-      "",
-      "",
-      1,
-      10
-    );
+    const { username } = this.state;
+    this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcode } = this.state;
+    const {
+      barcode,
+      picker,
+      selectedFilter,
+      indexT,
+      usernames,
+      isCalendarOpen,
+      dashboardFromFilterTop,
+      fromLabel,
+      toLabel,
+      to,
+      from,
+      username,
+      perPage,
+      visible,
+      address,
+      name,
+    } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -242,9 +251,12 @@ class Transazioni extends React.Component {
       loadingPayments,
       paymentsFromCode,
       paymentsPages,
+      navbarSearch,
+      getCodiceTicket,
+      skinExtras,
+      getPayments,
     } = this.props;
     // console.log("paymentspayments", payments);
-    const { selectedFilter, indexT, usernames } = this.state;
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 
@@ -265,14 +277,14 @@ class Transazioni extends React.Component {
         <Header></Header>
         <Overview
           fromFilterTop={this.fromFilterTop}
-          dashboardFromFilterTop={this.state.dashboardFromFilterTop}
+          dashboardFromFilterTop={dashboardFromFilterTop}
         ></Overview>
         <div className="container-fluid overview ">
           <Azioni active="transazioni"></Azioni>
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
-              {this.state.isCalendarOpen && (
+              {isCalendarOpen && (
                 <div className="calendarWrapper">
                   <DateRangePicker
                     onClick={(e) => {
@@ -304,7 +316,7 @@ class Transazioni extends React.Component {
                     months={1}
                     maxDate={new Date()}
                     dateDisplayFormat={"dd LLLL , yyyy"}
-                    ranges={this.state.picker}
+                    ranges={picker}
                     direction="horizontal"
                     renderStaticRangeLabel={(e) => {
                       return renderStaticRangeLabel(e.label);
@@ -449,8 +461,8 @@ class Transazioni extends React.Component {
                       this.setCalendar(true);
                     }}
                   >
-                    {this.state.fromLabel
-                      ? `${this.state.fromLabel} - ${this.state.toLabel}`
+                    {fromLabel
+                      ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
                   <div>
@@ -511,9 +523,7 @@ class Transazioni extends React.Component {
                             (
                               item.service_name &&
                               item.service_name.toString().toLowerCase()
-                            ).includes(
-                              this.props.navbarSearch.toLowerCase()
-                            ) && (
+                            ).includes(navbarSearch.toLowerCase()) && (
                               <tr
                                 key={index}
                                 onClick={() => {
@@ -524,7 +534,7 @@ class Transazioni extends React.Component {
                                     item.agency_address,
                                     item.agency_phone
                                   );
-                                  this.props.getCodiceTicket(
+                                  getCodiceTicket(
                                     item.barcode,
                                     item.service_name
                                   );
@@ -596,12 +606,12 @@ class Transazioni extends React.Component {
                 <Pagination
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
-                    this.props.getPayments(
-                      this.state.username != "" ? this.state.username : "",
-                      this.state.from || "",
-                      this.state.to || "",
+                    getPayments(
+                      username != "" ? username : "",
+                      from || "",
+                      to || "",
                       e,
-                      this.state.perPage
+                      perPage
                     );
                   }}
                   total={
@@ -614,10 +624,10 @@ class Transazioni extends React.Component {
                   defaultValue="10"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
-                    this.props.getPayments(
-                      this.state.username != "" ? this.state.username : "",
-                      this.state.from || "",
-                      this.state.to || "",
+                    getPayments(
+                      username != "" ? username : "",
+                      from || "",
+                      to || "",
                       1,
                       e
                     );
@@ -632,7 +642,7 @@ class Transazioni extends React.Component {
           </div>
           <Modal
             title={null}
-            visible={this.state.visible}
+            visible={visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
             footer={null}
@@ -647,26 +657,20 @@ class Transazioni extends React.Component {
                   <span className="superSmall text-bold">
                     MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                   </span>
-                  <span className="superSmall">
-                    {this.props.skinExtras.address}
-                  </span>
-                  <span className="superSmall link">
-                    {this.props.skinExtras.email}
-                  </span>
-                  <span className="superSmall ">
-                    Tel: {this.props.skinExtras.cel}
-                  </span>
+                  <span className="superSmall">{skinExtras.address}</span>
+                  <span className="superSmall link">{skinExtras.email}</span>
+                  <span className="superSmall ">Tel: {skinExtras.cel}</span>
                   <span className="superSmall tel">P.IVA 03852290406</span>
 
                   {/* <span>BPOINT</span> */}
 
                   <span className="fontSmall text-bold">
-                    {this.state.name.charAt(0).toUpperCase() +
-                      this.state.name.slice(1).toLocaleLowerCase()}
+                    {name.charAt(0).toUpperCase() +
+                      name.slice(1).toLocaleLowerCase()}
                   </span>
                   <span className="fontSmall address">
-                    {this.state.address.charAt(0).toUpperCase() +
-                      this.state.address.slice(1).toLocaleLowerCase()}
+                    {address.charAt(0).toUpperCase() +
+                      address.slice(1).toLocaleLowerCase()}
                   </span>
                   {/* <span className="userCel">
                     {" "}

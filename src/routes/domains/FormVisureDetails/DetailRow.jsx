@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { AuthActions } from "redux-store/models";
-import images from "themes/images";
 import { connect } from "react-redux";
 import { Tooltip } from "antd";
 import AziendaOImpresoForm from "./AziendaOImpresa";
@@ -11,7 +10,6 @@ export class DetailRow extends Component {
     hasDetails: false,
   };
   render() {
-    const { hasDetails } = this.state;
     const { Visure, allRoles, VisureById } = this.props;
 
     return (

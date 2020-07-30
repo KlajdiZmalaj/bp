@@ -11,7 +11,7 @@ export const InputForForm = ({ labelName, value, handleChange, type }) => {
   return (
     <div className="formsContainer--body__item">
       <div className="label">{labelName}</div>
-      <input value={value} onChange={handleChange} type={type} />
+      <input value={value || ""} onChange={handleChange} type={type} />
     </div>
   );
 };
