@@ -82,11 +82,12 @@
       position: absolute;
       left: 0;
       top: 0;
+      max-height: 680px;
     }
     .imgLogo {
       position: absolute;
       z-index: 1;
-      top: 50%;
+      top: 320px;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 50%;
