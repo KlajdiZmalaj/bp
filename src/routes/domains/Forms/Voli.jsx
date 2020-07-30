@@ -104,12 +104,12 @@ class Voli extends Component {
                 className="travalersSelector"
                 onClick={() => this.setState({ hasDD: !hasDD })}
               >
-                <span>{adults}</span> Adults, <span>{childrens}</span>Childrens
+                <span>{adults}</span> Adulti, <span>{childrens}</span>Bambini
               </div>
               {hasDD && (
                 <div className="travalersSelectorDD">
                   <div className="travalersSelectorDD--item">
-                    <span>Adults</span>
+                    <span>Adulti</span>
                     <div>
                       <i
                         onClick={() =>
@@ -132,7 +132,7 @@ class Voli extends Component {
                   </div>
 
                   <div className="travalersSelectorDD--item">
-                    <span>Childrens</span>
+                    <span>Bambini</span>
                     <div>
                       <i
                         onClick={() =>
