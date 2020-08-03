@@ -551,9 +551,6 @@ export function* updateUserDetail(data) {
   console.log("responseresponseresponse", response);
   if (response.data) {
     if (response.status === 200) {
-      notification.open({
-        message: response.error.response.data.message,
-      });
       yield put(AuthActions.updateUserDetailMsg(response.data.message));
       const ress = yield call(fetchUsers);
       if (ress.data) {
