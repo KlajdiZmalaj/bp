@@ -507,13 +507,13 @@ class Transazioni extends React.Component {
                     <thead>
                       <tr>
                         <td className="wsNwp">Date / Ora</td>
-                        <td>Barcode</td>
+                        <td className="wsNwp">Barcode</td>
                         <td className="wsNwp">User</td>
-                        <td className="wsNwp">Service</td>
-                        <td className="right">Importo</td>
-                        <td className="right">Commissione</td>
-                        <td className="right">Proviggione</td>
-                        <td className="right">Saldo</td>
+                        <td className="wsNwp servizoTd">Service</td>
+                        <td className="wsNwp right">Importo</td>
+                        <td className="wsNwp right">Commissione</td>
+                        <td className=" wsNwp right">Proviggione</td>
+                        <td className=" wsNwp right">Saldo</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -545,7 +545,7 @@ class Transazioni extends React.Component {
                                     "DD/MM/YYYY HH:mm:ss"
                                   )}
                                 </td>
-                                <td>
+                                <td className="wsNwp">
                                   <div className="bc">{item.barcode}</div>
                                 </td>
                                 <td className="wsNwp">
@@ -560,38 +560,38 @@ class Transazioni extends React.Component {
                                     </span>
                                   </Tooltip>
                                 </td>
-                                <td className="wsNwp">{item.service_name}</td>
-
-                                <td className="right">
-                                  <span className="Importo">
-                                    <i
-                                      className={`fal fa-${
-                                        item.sign === "-" ? "minus" : "plus"
-                                      }-circle fa-sm`}
-                                      style={{
-                                        color:
-                                          item.sign === "-"
-                                            ? "#ff0000"
-                                            : "#0da90f",
-                                      }}
-                                    />
-                                    {item.price1000
-                                      ? slicedAmount(item.price1000 / 1000)
-                                      : "-"}
-                                    €
-                                  </span>
+                                <td className="wsNwp servizoTd">
+                                  {item.service_name}
                                 </td>
-                                <td className="right">
+
+                                <td className="wsNwp right importoTd">
+                                  <i
+                                    className={`fal fa-${
+                                      item.sign === "-" ? "minus" : "plus"
+                                    }-circle fa-sm`}
+                                    style={{
+                                      color:
+                                        item.sign === "-"
+                                          ? "#ff0000"
+                                          : "#0da90f",
+                                    }}
+                                  />
+                                  {item.price1000
+                                    ? slicedAmount(item.price1000 / 1000)
+                                    : "-"}
+                                  €
+                                </td>
+                                <td className="wsNwp right">
                                   {item.commissione}€
                                   {/* {item.commissione ? item.commissione : "-"}{" "} */}
                                 </td>
-                                <td className="right">
+                                <td className="wsNwp right">
                                   {item.percentage}€
                                   {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
                                 </td>
-                                <td className="right">
+                                <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
                               </tr>

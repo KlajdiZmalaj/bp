@@ -1444,18 +1444,6 @@ i#private {
   text-align: center;
 }
 
-.transTable .Importo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 .transTable .wsNwp {
   font-size: 14px;
   position: relative;
@@ -1466,6 +1454,12 @@ i#private {
   top: 11px;
   font-size: 0.8em;
   font-weight: 600;
+}
+
+.transTable .wsNwp.importoTd i {
+  position: absolute;
+  margin-right: auto;
+  left: 10px;
 }
 
 .transTable thead tr {
@@ -1505,6 +1499,12 @@ i#private {
 .transTable td.right {
   text-align: right;
   padding-right: 5px;
+  width: 8% !important;
+}
+
+.transTable th.servizoTd,
+.transTable td.servizoTd {
+  width: 30%;
 }
 
 .transTable tbody tr:hover {
@@ -1518,10 +1518,6 @@ i#private {
 
 .transTable tr:nth-child(1) td {
   border-left: 1px solid #fff;
-}
-
-.transTable tr:nth-child(1) td:nth-child(1), .transTable tr:nth-child(1) td:nth-child(2) {
-  width: 210px;
 }
 
 .transTable tr:nth-child(1) td.right {
@@ -1572,7 +1568,6 @@ i#private {
 
 .wsNwp {
   white-space: nowrap;
-  width: 13%;
 }
 
 .loader {

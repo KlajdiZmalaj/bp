@@ -37,6 +37,7 @@ import {
   getUserByUserIdReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
+import { notification } from "antd";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -547,9 +548,12 @@ export function* updateUserDetail(data) {
     data.password,
     data.confirm_password
   );
+  console.log("responseresponseresponse", response);
   if (response.data) {
-    // console.log("responseresponseresponse", response);
     if (response.status === 200) {
+      notification.open({
+        message: response.error.response.data.message,
+      });
       yield put(AuthActions.updateUserDetailMsg(response.data.message));
       const ress = yield call(fetchUsers);
       if (ress.data) {
@@ -558,16 +562,22 @@ export function* updateUserDetail(data) {
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
     }
-    if (response.error) {
-      yield put(
-        AuthActions.updateUserDetailMsg({
-          errorMsg: response.error.response.data.message,
-          errors: response.error.response.data.errors,
-        })
-      );
-      yield delay(4000);
-      yield put(AuthActions.updateUserDetailMsg(""));
-    }
+  }
+  if (response.error) {
+    // notification.open({
+    //   message: response.error.response.data.message,
+    //   description:
+    //     Object.values(response.error.response.data.errors) || "error",
+    //   icon: ":(",
+    // });
+    yield put(
+      AuthActions.updateUserDetailMsg({
+        errorMsg: response.error.response.data.message,
+        errors: response.error.response.data.errors,
+      })
+    );
+    yield delay(4000);
+    yield put(AuthActions.updateUserDetailMsg(""));
   }
 }
 export function* getSkinExtras() {
