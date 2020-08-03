@@ -214,7 +214,7 @@ class AdminListaUtenti extends React.Component {
           <span>AZIONI</span>
         </div>
         <div className="AdminListaUtentiRow">
-          {list.map((itemList) => {
+          {this.props.list.map((itemList) => {
             return <AdminListaUtentiRow itemList={itemList} />;
           })}
         </div>

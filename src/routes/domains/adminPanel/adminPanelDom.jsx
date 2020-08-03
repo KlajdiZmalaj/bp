@@ -3,6 +3,8 @@ import AdminRightForm from "shared-components/adminSharedComp/adminRightForm";
 import AdminLeftForm from "shared-components/adminSharedComp/adminLeftForm";
 import AdminHeader from "shared-components/adminSharedComp/adminHeader";
 import AdminListaUtenti from "./AdminListaUtenti";
+import Tranzacioni from "../../views/Transazioni";
+import AdminServizi from "./AdminServizi";
 import "./styles.css";
 class AdminPanelDom extends React.Component {
   state = {

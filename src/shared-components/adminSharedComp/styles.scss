@@ -6,9 +6,11 @@
   align-items: center;
   width: 100%;
   height: 71px;
+  position: fixed;
   border: 1px solid #707070;
   background-color: #ffffff;
   border-bottom: 2.5px solid #0078ff;
+  z-index: 2;
   &--Box {
     width: 39.333%;
     height: 100%;
@@ -116,6 +118,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #ebeced;
     > i {
       cursor: pointer;
       width: 32px;
@@ -328,7 +331,9 @@
         padding: 10px 35px;
         &--active {
           color: #0078ff;
-          padding: 10px 35px;
+          padding: 10px 20px;
+          padding-right: 30px;
+          background-color: #f3f3f4;
 
           border-left: 4px solid #0578fc;
           &--Skinsvg {
@@ -370,18 +375,39 @@
       flex-direction: column;
 
       &--Box {
+        animation: identifier 0.7s;
         padding: 15px 35px;
         border-top: 1px solid #ebeced;
         font-family: "Roboto", sans-serif;
         width: 100%;
         font-size: 14px;
         font-weight: 400;
+
         > i {
           padding-right: 10px;
         }
       }
     }
   }
+  @keyframes identifier {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    60% {
+      display: none;
+      opacity: 0.3;
+    }
+    80% {
+      display: none;
+      opacity: 0.7;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+
   &--Min {
     & .AdminLeftForm {
       min-height: calc(100% - 72px);

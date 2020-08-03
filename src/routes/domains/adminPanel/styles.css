@@ -15,13 +15,10 @@
 }
 
 .AdminColumns .Center {
-  position: fixed;
-  left: 250px;
-  right: 400px;
+  position: relative;
   top: 72px;
-  height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
+  left: 250px;
+  width: calc(100% - 250px - 400px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,13 +33,12 @@
 }
 
 .AdminColumns .Center--Big {
-  position: fixed;
+  position: relative;
+  width: calc(100% - 51px - 400px);
   left: 51px;
   right: 400px;
   top: 72px;
   height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,6 +80,10 @@
 
 .AdminListaUtenti {
   width: 100%;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow {
+  margin-bottom: 21px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete {
@@ -137,6 +137,8 @@
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) :nth-child(1) {
   opacity: 0;
   width: 13px;
+  left: -13px;
+  position: relative;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) :nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) :nth-child(2) {
@@ -152,7 +154,7 @@
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) {
-  left: -4px;
+  left: -0.3%;
   position: relative;
 }
 
@@ -160,7 +162,7 @@
   opacity: 1;
   display: block;
   left: -13px;
-  z-index: 1;
+  z-index: 2 !important;
   background-color: #ffffff;
   position: relative;
   cursor: pointer;
@@ -393,9 +395,13 @@
   .AdminRightForm--Box > i {
     font-size: 18px;
   }
-  .AdminColumns .Center--Big,
+  .AdminColumns .Center--Big {
+    width: calc(100% - 350px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
-    right: 350px;
+    width: calc(100% - 350px - 250px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -411,9 +417,20 @@
   .AdminRightForm--Box > i {
     font-size: 18px;
   }
-  .AdminColumns .Center--Big,
+  .Tranzacioni div span {
+    font-size: 14px;
+  }
+  .Graph--Element {
+    margin: 0px 0.6px;
+    width: 5px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 280px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
-    right: 280px;
+    width: calc(100% - 280px - 250px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -429,11 +446,30 @@
   .AdminRightForm--Box > i {
     font-size: 18px;
   }
-  .AdminColumns .Center--Big,
-  .AdminColumns .Center {
-    right: 220px;
+  .Tranzacioni div span {
+    font-size: 12px;
+  }
+  .Graph--Element {
+    margin: 0px 0.4px;
+    width: 4px;
+  }
+  .Graph {
+    padding: 0 2px;
+    padding-top: 10px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 220px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 220px - 250px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box {
+    padding: 10px 12px;
+    font-weight: 500;
   }
 }
 
@@ -511,10 +547,10 @@
 > div span:nth-child(2):after {
   content: "";
   width: 100%;
-  top: -42px;
-  left: -8px;
+  top: -133%;
+  left: -2.4%;
   background-color: transparent;
-  height: 58px;
+  height: 209%;
   position: absolute;
   border-left: 1px dotted #0078ff;
 }
@@ -523,14 +559,6 @@
 > div
 > div.AdminColumns
 > div.Center
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main--Child.children,
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
 > div
 > div.AdminListaUtentiRow
 > div
@@ -545,14 +573,6 @@
 > div
 > div.AdminListaUtentiRow
 > div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div,
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
-> div
-> div.AdminListaUtentiRow
-> div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div {
   border-left: transparent;
 }
@@ -561,14 +581,6 @@
 > div
 > div.AdminColumns
 > div.Center
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children,
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
 > div
 > div.AdminListaUtentiRow
 > div
@@ -583,14 +595,6 @@
 > div
 > div.AdminListaUtentiRow
 > div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div,
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
-> div
-> div.AdminListaUtentiRow
-> div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div {
   border-left: transparent;
 }
@@ -599,14 +603,6 @@
 > div
 > div.AdminColumns
 > div.Center
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div,
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
 > div
 > div.AdminListaUtentiRow
 > div
@@ -622,7 +618,100 @@
 > div
 > div.AdminListaUtentiRow
 > div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2),
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
+  max-width: calc(24% - 60px);
+  margin-left: 60px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before {
+  content: "";
+  width: 100%;
+  top: -136%;
+  left: -12.4%;
+  background-color: transparent;
+  height: 215%;
+  position: absolute;
+  border-left: 1px dotted #0078ff;
+  border-collapse: collapse;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link {
+  border-top: 1px dotted #0078ff;
+  width: 4%;
+  left: -7.2%;
+  top: 6.8px;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div {
+  border-left: transparent;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div {
+  border-left: 4px solid #004b9f;
+  background-color: #ebeced;
+}
+
 #root
 > div
 > div.AdminColumns
@@ -638,14 +727,6 @@
 #root
 > div
 > div.AdminColumns
-> div.Center
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before,
-#root
-> div
-> div.AdminColumns
 > div.Center--Big
 > div
 > div.AdminListaUtentiRow
@@ -653,23 +734,15 @@
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before {
   content: "";
   width: 100%;
-  top: -36px;
-  left: -32px;
-  z-index: 2;
+  top: -136%;
+  left: -10.7%;
   background-color: transparent;
-  height: 52.5px;
+  height: 215%;
   position: absolute;
   border-left: 1px dotted #0078ff;
+  border-collapse: collapse;
 }
 
-#root
-> div
-> div.AdminColumns
-> div.Center
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link,
 #root
 > div
 > div.AdminColumns
@@ -679,8 +752,9 @@
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link {
   border-top: 1px dotted #0078ff;
-  left: -21px;
-  top: 4px;
+  width: 4%;
+  left: -7.2%;
+  top: 6.8px;
 }
 
 #root
@@ -799,7 +873,9 @@
 > div
 > div span:nth-child(2) .Link {
   border-top: 1px dotted #0078ff;
-  left: -21px;
+  width: 4%;
+  left: -7.2%;
+  top: 6.8px;
 }
 
 #root
@@ -826,8 +902,9 @@
 > div
 > span:nth-child(2)
 > div {
-  width: 8px;
-  left: -21px;
+  width: 4%;
+  left: -7.2%;
+  top: 2px;
   border-top: 1px dotted #0078ff;
 }
 
@@ -879,5 +956,481 @@
   position: relative;
   left: -14px;
   padding-right: 0px !important;
+}
+
+div.Center .container-fluid.overview,
+div.Center .panels-container,
+div.Center--Big .container-fluid.overview,
+div.Center--Big .panels-container {
+  background: #ffffff !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 440px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 50px !important;
+}
+
+div.Center .container-fluid.overview .paginationWrapper,
+div.Center .panels-container .paginationWrapper,
+div.Center--Big .container-fluid.overview .paginationWrapper,
+div.Center--Big .panels-container .paginationWrapper {
+  margin-top: 20px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding: 0;
+}
+
+div.Center .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled,
+div.Center .panels-container .paginationWrapper .ant-select.ant-select-enabled,
+div.Center--Big .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled,
+div.Center--Big .panels-container .paginationWrapper .ant-select.ant-select-enabled {
+  border: 1px solid #ebeced;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+div.Center .container-fluid.overview .sort-annunci,
+div.Center .panels-container .sort-annunci,
+div.Center--Big .container-fluid.overview .sort-annunci,
+div.Center--Big .panels-container .sort-annunci {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Roboto";
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.Center .container-fluid.overview .sort-annunci .calendarWrapper,
+div.Center .panels-container .sort-annunci .calendarWrapper,
+div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper,
+div.Center--Big .panels-container .sort-annunci .calendarWrapper {
+  position: absolute;
+  z-index: 3;
+  left: 41.4%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 57px;
+  -webkit-box-shadow: 0 12px 20px 1px #0000008c;
+          box-shadow: 0 12px 20px 1px #0000008c;
+}
+
+div.Center .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisplay,
+div.Center .panels-container .sort-annunci .calendarWrapper .rdrDateDisplay,
+div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisplay,
+div.Center--Big .panels-container .sort-annunci .calendarWrapper .rdrDateDisplay {
+  top: 61%;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal.calendar,
+div.Center .panels-container .sort-annunci .dal.calendar,
+div.Center--Big .container-fluid.overview .sort-annunci .dal.calendar,
+div.Center--Big .panels-container .sort-annunci .dal.calendar {
+  font-size: 13px;
+  font-family: "Roboto";
+  font-weight: 400;
+  color: #5c5c5c;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 15px 40px;
+  border: none;
+  border-right: 1px solid #ebeced;
+  border-radius: 0;
+  min-width: 270px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filterBtn,
+div.Center .panels-container .sort-annunci .filterBtn,
+div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+div.Center--Big .panels-container .sort-annunci .filterBtn {
+  position: relative;
+  height: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 100px;
+  width: 114px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+  background-color: #0078ff;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filterBtn i,
+div.Center .panels-container .sort-annunci .filterBtn i,
+div.Center--Big .container-fluid.overview .sort-annunci .filterBtn i,
+div.Center--Big .panels-container .sort-annunci .filterBtn i {
+  padding-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal,
+div.Center .panels-container .sort-annunci .dal,
+div.Center--Big .container-fluid.overview .sort-annunci .dal,
+div.Center--Big .panels-container .sort-annunci .dal {
+  border-right: 1px solid #ebeced;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal div:first-child,
+div.Center .panels-container .sort-annunci .dal div:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci .dal div:first-child,
+div.Center--Big .panels-container .sort-annunci .dal div:first-child {
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 270px;
+}
+
+div.Center .container-fluid.overview .sort-annunci .ant-select-selection__rendered,
+div.Center .panels-container .sort-annunci .ant-select-selection__rendered,
+div.Center--Big .container-fluid.overview .sort-annunci .ant-select-selection__rendered,
+div.Center--Big .panels-container .sort-annunci .ant-select-selection__rendered {
+  height: 100%;
+  width: 80%;
+}
+
+div.Center .container-fluid.overview .sort-annunci div,
+div.Center .panels-container .sort-annunci div,
+div.Center--Big .container-fluid.overview .sort-annunci div,
+div.Center--Big .panels-container .sort-annunci div {
+  font-size: 13px;
+  font-family: "Roboto";
+  font-weight: 400;
+  color: #5c5c5c;
+}
+
+div.Center .container-fluid.overview .sort-annunci .datepics,
+div.Center .panels-container .sort-annunci .datepics,
+div.Center--Big .container-fluid.overview .sort-annunci .datepics,
+div.Center--Big .panels-container .sort-annunci .datepics {
+  margin: 0 !important;
+  border: none;
+}
+
+div.Center .container-fluid.overview .sort-annunci .heading-tab,
+div.Center .panels-container .sort-annunci .heading-tab,
+div.Center--Big .container-fluid.overview .sort-annunci .heading-tab,
+div.Center--Big .panels-container .sort-annunci .heading-tab {
+  display: none;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul,
+div.Center .panels-container .sort-annunci ul,
+div.Center--Big .container-fluid.overview .sort-annunci ul,
+div.Center--Big .panels-container .sort-annunci ul {
+  height: 48px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li,
+div.Center .panels-container .sort-annunci ul li,
+div.Center--Big .container-fluid.overview .sort-annunci ul li,
+div.Center--Big .panels-container .sort-annunci ul li {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 95px;
+  margin: auto 12px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(1) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) svg {
+  margin-right: 8px;
+  margin-left: 15px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(1) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(1) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) svg g circle:first-child {
+  fill: #707070;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(2) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(2) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(2) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(2) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(2) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(2) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(2) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(2) svg g circle:first-child {
+  fill: #0078ff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(3) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(3) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(3) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(3) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(3) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(3) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(3) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(3) svg g circle:first-child {
+  fill: #00b850;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(4) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(4) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(4) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(4) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(4) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(4) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(4) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(4) svg g circle:first-child {
+  fill: #e30000;
+}
+
+div.Center .container-fluid.overview .max-width,
+div.Center .panels-container .max-width,
+div.Center--Big .container-fluid.overview .max-width,
+div.Center--Big .panels-container .max-width {
+  margin: 0;
+}
+
+div.Center thead,
+div.Center--Big thead {
+  border-bottom: 1px solid #ebeced;
+  border-top: 4px solid #ebeced;
+}
+
+div.Center thead .wsNwp,
+div.Center thead td,
+div.Center--Big thead .wsNwp,
+div.Center--Big thead td {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Roboto";
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border: none;
+  text-align: start;
+}
+
+div.Center tbody,
+div.Center--Big tbody {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Roboto";
+}
+
+div.Center tbody tr,
+div.Center--Big tbody tr {
+  border-bottom: 1px solid #ebeced;
+}
+
+div.Center tbody .wsNwp,
+div.Center tbody td,
+div.Center--Big tbody .wsNwp,
+div.Center--Big tbody td {
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border: none;
+}
+
+div.Center tbody .wsNwp > i,
+div.Center tbody td > i,
+div.Center--Big tbody .wsNwp > i,
+div.Center--Big tbody td > i {
+  font-size: 12px;
+  top: 0;
+  position: relative;
+}
+
+div.Center tbody .wsNwp:nth-child(3),
+div.Center tbody td:nth-child(3),
+div.Center--Big tbody .wsNwp:nth-child(3),
+div.Center--Big tbody td:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background-color: #ffffff;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px auto;
+}
+
+div.Center tbody .wsNwp:nth-child(3) > i,
+div.Center tbody td:nth-child(3) > i,
+div.Center--Big tbody .wsNwp:nth-child(3) > i,
+div.Center--Big tbody td:nth-child(3) > i {
+  color: #0078ff;
+  font-size: 12px;
+}
+
+div.Center tbody .wsNwp:nth-child(3) span,
+div.Center tbody td:nth-child(3) span,
+div.Center--Big tbody .wsNwp:nth-child(3) span,
+div.Center--Big tbody td:nth-child(3) span {
+  padding-left: 5px;
+}
+
+div.Center tbody .wsNwp:nth-child(4),
+div.Center tbody td:nth-child(4),
+div.Center--Big tbody .wsNwp:nth-child(4),
+div.Center--Big tbody td:nth-child(4) {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto";
+  color: #0078ff;
+}
+
+div.Center tbody .right .Importo,
+div.Center--Big tbody .right .Importo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-left: 40%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center tbody .right .Importo i,
+div.Center--Big tbody .right .Importo i {
+  font-size: 12px;
+}
+
+div.Center .AdminServizi {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+div.Center .AdminServizi .AdminServiziItem {
+  width: 255px;
+  height: 253px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #ebeced;
+}
+
+div.Center .AdminServizi .AdminServiziItem--Prenotazione {
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 400;
+  color: #5c5c5c;
+}
+
+div.Center .AdminServizi .AdminServiziItem--Title {
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #000000;
 }
 /*# sourceMappingURL=styles.css.map */

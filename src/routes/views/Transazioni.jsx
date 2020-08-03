@@ -273,14 +273,21 @@ class Transazioni extends React.Component {
         return new Date(b.executed_date) - new Date(a.executed_date);
       });
     return (
-      <div>
-        <Header></Header>
-        <Overview
-          fromFilterTop={this.fromFilterTop}
-          dashboardFromFilterTop={dashboardFromFilterTop}
-        ></Overview>
+      <React.Fragment>
+        {this.props.forAdmin === true ? null : (
+          <React.Fragment>
+            <Header></Header>
+            <Overview
+              fromFilterTop={this.fromFilterTop}
+              dashboardFromFilterTop={dashboardFromFilterTop}
+            ></Overview>
+          </React.Fragment>
+        )}
+
         <div className="container-fluid overview ">
-          <Azioni active="transazioni"></Azioni>
+          {this.props.forAdmin === true ? null : (
+            <Azioni active="transazioni"></Azioni>
+          )}
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
@@ -465,11 +472,13 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  <div>
-                    <button className="filterBtn" htmltype="submit">
-                      Filter
-                    </button>
-                  </div>
+                  {this.props.forAdmin === false && (
+                    <div>
+                      <button className="filterBtn" htmltype="submit">
+                        Filter
+                      </button>
+                    </div>
+                  )}
                 </Form>
 
                 <div className="codice"></div>
@@ -485,12 +494,36 @@ class Transazioni extends React.Component {
                         this.fromFilterTop(false);
                       }}
                     >
-                      <i className="fas fa-dot-circle"></i>
+                      {this.props.forAdmin === true ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                        >
+                          <g class="a">
+                            <circle class="b" cx="7" cy="7" r="7" />
+                            <circle class="c" cx="7" cy="7" r="5.5" />
+                          </g>
+                        </svg>
+                      ) : (
+                        <i className="fas fa-dot-circle"></i>
+                      )}
                       {item}
                     </li>
                   );
                 })}
               </ul>
+              {this.props.forAdmin === true && (
+                <button
+                  className="filterBtn"
+                  htmltype="submit"
+                  onClick={this.handleSubmit}
+                >
+                  <i className="fas fa-filter"></i>
+                  Filter
+                </button>
+              )}
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
@@ -551,7 +584,7 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp">
                                   {" "}
                                   <i
-                                    className="fal fa-user-circle"
+                                    className="fal fa-user-alt"
                                     aria-hidden="true"
                                   ></i>{" "}
                                   <Tooltip title={item.agency_name}>
@@ -719,7 +752,7 @@ class Transazioni extends React.Component {
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -6,26 +6,22 @@
   position: relative;
   min-height: 100%;
   & .Center {
-    position: fixed;
-    left: 250px;
-    right: 400px;
+    position: relative;
     top: 72px;
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+    left: 250px;
+    width: calc(100% - 250px - 400px);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     transition: 0.5s;
 
     &--Big {
-      position: fixed;
+      position: relative;
+      width: calc(100% - 51px - 400px);
       left: 51px;
       right: 400px;
       top: 72px;
       height: auto;
-      overflow-x: hidden;
-      overflow-y: auto;
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
@@ -56,9 +52,11 @@
     }
   }
 }
+
 .AdminListaUtenti {
   width: 100%;
   & .AdminListaUtentiRow {
+    margin-bottom: 21px;
     &--Complete {
       width: 100%;
       display: flex;
@@ -88,6 +86,8 @@
           & :nth-child(1) {
             opacity: 0;
             width: 13px;
+            left: -13px;
+            position: relative;
           }
           & :nth-child(2) {
             position: relative;
@@ -98,14 +98,14 @@
         }
         &.active {
           & span:nth-child(2) {
-            left: -4px;
+            left: -0.3%;
             position: relative;
 
             & :nth-child(1) {
               opacity: 1;
               display: block;
               left: -13px;
-              z-index: 1;
+              z-index: 2 !important;
               background-color: #ffffff;
               position: relative;
               cursor: pointer;
@@ -306,9 +306,12 @@
     left: calc(100% - 350px);
     transition: 0.5s;
   }
-  .AdminColumns .Center--Big,
+  .AdminColumns .Center--Big {
+    width: calc(100% - 350px - 51px);
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
-    right: 350px;
+    width: calc(100% - 350px - 250px);
     transition: 0.5s;
   }
 }
@@ -323,9 +326,19 @@
     left: calc(100% - 280px);
     transition: 0.5s;
   }
-  .AdminColumns .Center--Big,
+  .Tranzacioni div span {
+    font-size: 14px;
+  }
+  .Graph--Element {
+    margin: 0px 0.6px;
+    width: 5px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 280px - 51px);
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
-    right: 280px;
+    width: calc(100% - 280px - 250px);
     transition: 0.5s;
   }
 }
@@ -340,10 +353,28 @@
     left: calc(100% - 220px);
     transition: 0.5s;
   }
-  .AdminColumns .Center--Big,
-  .AdminColumns .Center {
-    right: 220px;
+  .Tranzacioni div span {
+    font-size: 12px;
+  }
+  .Graph--Element {
+    margin: 0px 0.4px;
+    width: 4px;
+  }
+  .Graph {
+    padding: 0 2px;
+    padding-top: 10px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 220px - 51px);
     transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 220px - 250px);
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box {
+    padding: 10px 12px;
+    font-weight: 500;
   }
 }
 @media (max-width: 1600px) {
@@ -396,10 +427,10 @@
     &:after {
       content: "";
       width: 100%;
-      top: -42px;
-      left: -8px;
+      top: -133%;
+      left: -2.4%;
       background-color: transparent;
-      height: 58px;
+      height: 209%;
       position: absolute;
       border-left: 1px dotted #0078ff;
     }
@@ -415,7 +446,47 @@
   > div
   > div.AdminListaUtentiRow
   > div
-  > div.AdminListaUtentiRow--Complete--Main--Child.children,
+  > div.AdminListaUtentiRow--Complete--Main--Child.children {
+  border-left: transparent;
+  & > div {
+    border-left: transparent;
+
+    & > div.AdminListaUtentiRow--Complete--Main--Child.children {
+      border-left: transparent;
+
+      & > div {
+        border-left: transparent;
+
+        & > div {
+          border-left: 4px solid #004b9f;
+
+          background-color: #ebeced;
+          & span:nth-child(2) {
+            &:before {
+              content: "";
+              width: 100%;
+              top: -136%;
+              left: -12.4%;
+              background-color: transparent;
+              height: 215%;
+              position: absolute;
+              border-left: 1px dotted #0078ff;
+              border-collapse: collapse;
+            }
+            max-width: calc(24% - 60px);
+            & .Link {
+              border-top: 1px dotted #0078ff;
+              width: 4%;
+              left: -7.2%;
+              top: 6.8px;
+            }
+            margin-left: 60px;
+          }
+        }
+      }
+    }
+  }
+}
 #root
   > div
   > div.AdminColumns
@@ -442,19 +513,20 @@
             &:before {
               content: "";
               width: 100%;
-              top: -36px;
-              left: -32px;
-              z-index: 2;
+              top: -136%;
+              left: -10.7%;
               background-color: transparent;
-              height: 52.5px;
+              height: 215%;
               position: absolute;
               border-left: 1px dotted #0078ff;
+              border-collapse: collapse;
             }
             max-width: calc(24% - 60px);
             & .Link {
               border-top: 1px dotted #0078ff;
-              left: -21px;
-              top: 4px;
+              width: 4%;
+              left: -7.2%;
+              top: 6.8px;
             }
             margin-left: 60px;
           }
@@ -504,7 +576,10 @@
     max-width: calc(24% - 60px);
     & .Link {
       border-top: 1px dotted #0078ff;
-      left: -21px;
+
+      width: 4%;
+      left: -7.2%;
+      top: 6.8px;
     }
     margin-left: 60px;
   }
@@ -533,8 +608,9 @@
   > div
   > span:nth-child(2)
   > div {
-  width: 8px;
-  left: -21px;
+  width: 4%;
+  left: -7.2%;
+  top: 2px;
   border-top: 1px dotted #0078ff;
 }
 #root
@@ -583,4 +659,286 @@
   position: relative;
   left: -14px;
   padding-right: 0px !important;
+}
+// List Movimenti
+div.Center,
+div.Center--Big {
+  & .container-fluid.overview,
+  .panels-container {
+    background: #ffffff !important;
+    box-shadow: none;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 440px;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 50px !important;
+    & .paginationWrapper {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 0;
+      & .ant-select.ant-select-enabled {
+        border: 1px solid #ebeced;
+        box-sizing: border-box;
+      }
+    }
+    & .sort-annunci {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      font-family: "Roboto";
+      font-weight: 400;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-right: 50px;
+      justify-content: space-between;
+
+      & .calendarWrapper {
+        position: absolute;
+        z-index: 3;
+        left: 41.4%;
+        transform: translateX(-50%);
+        top: 57px;
+        box-shadow: 0 12px 20px 1px #0000008c;
+        & .rdrDateDisplay {
+          top: 61%;
+        }
+      }
+      & .dal.calendar {
+        font-size: 13px;
+        font-family: "Roboto";
+        font-weight: 400;
+        color: #5c5c5c;
+        justify-content: flex-start;
+        padding: 15px 40px;
+        border: none;
+        border-right: 1px solid #ebeced;
+        border-radius: 0;
+        min-width: 270px;
+        box-sizing: border-box;
+      }
+      & .filterBtn {
+        position: relative;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+        width: 114px;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: 500;
+        background-color: #0078ff;
+        order: 3;
+        & i {
+          padding-right: 8px;
+        }
+      }
+      & .dal {
+        border-right: 1px solid #ebeced;
+        & div:first-child {
+          height: 100%;
+          align-items: center;
+          display: flex;
+          width: 270px;
+        }
+      }
+      & .ant-select-selection__rendered {
+        height: 100%;
+        width: 80%;
+      }
+      & div {
+        font-size: 13px;
+        font-family: "Roboto";
+        font-weight: 400;
+        color: #5c5c5c;
+      }
+      & .datepics {
+        margin: 0 !important;
+        border: none;
+      }
+      & .heading-tab {
+        display: none;
+      }
+      & ul {
+        height: 48px;
+        & li {
+          font-size: 13px;
+          font-weight: 400;
+          font-family: "Roboto";
+          display: flex;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+          min-width: 95px;
+          margin: auto 12px;
+          &:nth-child(1) {
+            & svg {
+              margin-right: 8px;
+              margin-left: 15px;
+              & g {
+                & circle {
+                  &:first-child {
+                    fill: #707070;
+                  }
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          &:nth-child(2) {
+            & svg {
+              margin-right: 8px;
+              & g {
+                & circle {
+                  &:first-child {
+                    fill: #0078ff;
+                  }
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          &:nth-child(3) {
+            & svg {
+              margin-right: 8px;
+              & g {
+                & circle {
+                  &:first-child {
+                    fill: #00b850;
+                  }
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          &:nth-child(4) {
+            & svg {
+              margin-right: 8px;
+              & g {
+                & circle {
+                  &:first-child {
+                    fill: #e30000;
+                  }
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .max-width {
+      margin: 0;
+    }
+  }
+  & thead {
+    border-bottom: 1px solid #ebeced;
+    border-top: 4px solid #ebeced;
+
+    & .wsNwp,
+    td {
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Roboto";
+      background-color: #ffffff;
+      padding: 15px 10px;
+      border: none;
+      text-align: start;
+    }
+  }
+  & tbody {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Roboto";
+    & tr {
+      border-bottom: 1px solid #ebeced;
+    }
+    & .wsNwp,
+    td {
+      background-color: #ffffff;
+      padding: 15px 10px;
+      border: none;
+      > i {
+        font-size: 12px;
+        top: 0;
+        position: relative;
+      }
+      &:nth-child(3) {
+        display: flex;
+        width: 100%;
+        background-color: #ffffff;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px auto;
+
+        > i {
+          color: #0078ff;
+          font-size: 12px;
+        }
+        & span {
+          padding-left: 5px;
+        }
+      }
+      &:nth-child(4) {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Roboto";
+        color: #0078ff;
+      }
+    }
+    & .right {
+      & .Importo {
+        display: flex;
+        width: 100%;
+        padding-left: 40%;
+        box-sizing: border-box;
+        justify-content: space-around;
+        align-items: center;
+        & i {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+// Servizi
+div.Center {
+  & .AdminServizi {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    background-color: #ffffff;
+    & .AdminServiziItem {
+      width: 255px;
+      height: 253px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid #ebeced;
+      &--Prenotazione {
+        font-size: 14px;
+        font-family: "Roboto";
+        font-weight: 400;
+        color: #5c5c5c;
+      }
+      &--Title {
+        font-size: 14px;
+        font-family: "Roboto";
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #000000;
+      }
+    }
+  }
 }
