@@ -20,6 +20,6 @@ class Content extends Component {
   }
 }
 const mstp = ({ main }) => ({
-  activeAccount: main.activeAccount
+  activeAccount: main.activeAccount,
 });
 export default connect(mstp, null)(Content);

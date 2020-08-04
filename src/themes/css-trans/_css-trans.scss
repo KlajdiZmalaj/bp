@@ -53,11 +53,7 @@
     padding-left: 30px;
     text-align: center;
   }
-  .Importo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+
   .wsNwp {
     font-size: 14px;
 
@@ -67,6 +63,15 @@
       top: 11px;
       font-size: 0.8em;
       font-weight: 600;
+    }
+    &.importoTd {
+      i {
+        position: absolute;
+        margin-right: auto;
+        left: 10px;
+        font-weight: 400;
+        font-size: 13px;
+      }
     }
   }
   thead tr {
@@ -98,6 +103,10 @@
     &.right {
       text-align: right;
       padding-right: 5px;
+      width: 8% !important;
+    }
+    &.servizoTd {
+      width: 30%;
     }
   }
   tbody tr:hover {
@@ -110,10 +119,6 @@
   tr:nth-child(1) td {
     border-left: 1px solid #fff;
 
-    &:nth-child(1),
-    &:nth-child(2) {
-      width: 210px;
-    }
     &.right {
       width: 150px;
     }
@@ -155,7 +160,6 @@
 }
 .wsNwp {
   white-space: nowrap;
-  width: 13%;
 }
 
 .loader {

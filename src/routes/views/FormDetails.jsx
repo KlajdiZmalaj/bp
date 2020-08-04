@@ -3,7 +3,9 @@ import { Azioni, Header } from "shared-components";
 import FormDetailsDomain from "../domains/FormDetails/FormDetailsDomain";
 export class FormDetails extends Component {
   render() {
-    return (
+    return this.props.forAdmin === true ? (
+      <FormDetailsDomain />
+    ) : (
       <div className="formsDetails">
         <Header></Header>
         <div className="overview">

@@ -5,6 +5,7 @@ import AdminHeader from "shared-components/adminSharedComp/adminHeader";
 import AdminListaUtenti from "./AdminListaUtenti";
 import Tranzacioni from "../../views/Transazioni";
 import AdminServizi from "./AdminServizi";
+import Prenotazioni from "./Prenotazioni";
 import "./styles.css";
 class AdminPanelDom extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class AdminPanelDom extends React.Component {
               !this.state.menuSkinVisible ? "Center" : "Center--Big"
             }`}
           >
-            <AdminListaUtenti />
+            <Prenotazioni forAdmin={true} />
           </div>
           <AdminRightForm />
         </div>

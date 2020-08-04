@@ -1,15 +1,21 @@
 import React from "react";
 import "./styles.css";
-import AdminListaUtentiRow from "./AdminListaUtentiRow";
+import images from "themes/images";
+
 class AdminServiziItem extends React.Component {
   render() {
     return (
       <div className="AdminServiziItem">
-        <div className="AdminServiziItem--Prenotazione">
-          PRENOTAZIONE BIGLIETTI
+        <div className="AdminServiziItem--Header">
+          <div className="AdminServiziItem--Header--Prenotazione">
+            PRENOTAZIONE BIGLIETTI
+          </div>
+          <div className="AdminServiziItem--Header--Title">
+            {this.props.name}
+          </div>
         </div>
-        <div className="AdminServiziItem--Title">{this.props.name}</div>
-        <img className="AdminServiziItem--Image" />
+
+        <img src={images["flixbus-logo"]} className="AdminServiziItem--Image" />
         <div className="AdminServiziItem--ButtonWrapper">
           <button>ACTIVE</button>
           <button>INACTIVE</button>

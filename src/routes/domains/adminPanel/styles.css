@@ -17,8 +17,10 @@
 .AdminColumns .Center {
   position: relative;
   top: 72px;
-  left: 250px;
-  width: calc(100% - 250px - 400px);
+  left: 200px;
+  width: calc(100% - 200px - 400px);
+  max-width: auto;
+  min-width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,8 +30,6 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
 .AdminColumns .Center--Big {
@@ -42,6 +42,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  max-width: auto;
+  min-width: auto;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -54,7 +56,7 @@
 
 .AdminColumns .Left {
   border: 1px solid #ebeced;
-  width: 250px;
+  width: 200px;
   height: 100%;
   min-height: 100%;
   position: fixed;
@@ -63,6 +65,7 @@
   background-color: #ffffff;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  overflow-x: hidden;
 }
 
 .AdminColumns .Left--Min {
@@ -76,6 +79,7 @@
   background-color: #ffffff;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  overflow-x: hidden;
 }
 
 .AdminListaUtenti {
@@ -83,7 +87,7 @@
 }
 
 .AdminListaUtenti .AdminListaUtentiRow {
-  margin-bottom: 21px;
+  margin-bottom: 84px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete {
@@ -126,8 +130,9 @@
   background: #ffffff;
 }
 
-.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children {
-  border-left: 4px solid #0078ff;
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children .AdminListaUtentiRow--Complete--Main, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children .AdminListaUtentiRow--Complete--Main {
+  -webkit-box-shadow: inset 4px 0 #0078ff;
+          box-shadow: inset 4px 0 #0078ff;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div:nth-child(1) {
@@ -150,11 +155,11 @@
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active {
   cursor: pointer;
-  border-left: 4px solid #0078ff;
+  -webkit-box-shadow: inset 4px 0 #0078ff;
+          box-shadow: inset 4px 0 #0078ff;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) {
-  left: -0.3%;
   position: relative;
 }
 
@@ -162,7 +167,7 @@
   opacity: 1;
   display: block;
   left: -13px;
-  z-index: 2 !important;
+  z-index: 1;
   background-color: #ffffff;
   position: relative;
   cursor: pointer;
@@ -188,22 +193,22 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px 0px;
   margin-left: 3px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  max-height: 25px;
+  height: 25px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1) {
-  margin: 10px 5px;
-  width: 6%;
+  width: 8%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
-  width: 24%;
+  width: calc(14% + 57px);
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) > i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) > i {
@@ -213,33 +218,27 @@
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(3) {
-  margin: 10px 5px;
   width: 13%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4) {
-  margin: 10px 5px;
   width: 6%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(5) {
-  margin: 10px 5px;
   width: 7%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(6), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(6) {
-  margin: 10px 5px;
   width: 13%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(7) {
-  margin: 10px 5px;
   width: 13%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(8), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(8) {
-  margin: 10px 5px;
-  width: 18%;
+  width: calc(26% - 57px);
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child {
@@ -324,7 +323,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2px 10px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -335,54 +333,40 @@
 }
 
 .AdminListaUtenti--Header span:nth-child(1) {
-  margin: 10px 5px;
-  width: 6%;
+  width: 8%;
 }
 
 .AdminListaUtenti--Header span:nth-child(2) {
-  margin: 10px 0px;
-  width: 24%;
+  width: calc(14% + 60px);
+  left: -3px;
 }
 
 .AdminListaUtenti--Header span:nth-child(3) {
-  margin: 10px 5px;
   position: relative;
-  left: 10px;
   width: 13%;
+  left: -2px;
 }
 
 .AdminListaUtenti--Header span:nth-child(4) {
-  margin: 10px 5px;
   width: 6%;
+  left: -3px;
 }
 
 .AdminListaUtenti--Header span:nth-child(5) {
-  margin: 10px 5px;
   width: 7%;
 }
 
 .AdminListaUtenti--Header span:nth-child(6) {
-  margin: 10px 5px;
   width: 13%;
 }
 
 .AdminListaUtenti--Header span:nth-child(7) {
-  margin: 10px 5px;
   width: 13%;
 }
 
 .AdminListaUtenti--Header span:nth-child(8) {
-  margin: 10px 5px;
-  width: 18%;
-}
-
-@media (max-width: 2100px) {
-  .AdminListaUtenti .AdminListaUtenti--Header span {
-    padding: 10px 8px !important;
-  }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span {
-    padding: 2px 2px !important;
-  }
+  width: calc(26% - 57px);
+  left: 6px;
 }
 
 @media (max-width: 1900px) {
@@ -401,7 +385,7 @@
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 350px - 250px);
+    width: calc(100% - 350px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -430,7 +414,7 @@
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 280px - 250px);
+    width: calc(100% - 280px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -438,8 +422,8 @@
 
 @media (max-width: 1550px) {
   .AdminRightForm {
-    width: 220px;
-    left: calc(100% - 220px);
+    width: 240px;
+    left: calc(100% - 240px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -458,12 +442,12 @@
     padding-top: 10px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 220px - 51px);
+    width: calc(100% - 240px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 220px - 250px);
+    width: calc(100% - 240px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -500,6 +484,57 @@
   }
 }
 
+@media (max-width: 800px) {
+  .AdminHeader--Title {
+    font-size: 14px;
+  }
+  .AdminHeader--Category, .AdminHeader--Category--Prenotazioni {
+    font-size: 12px;
+  }
+  .AdminHeader--Category div, .AdminHeader--Category--Prenotazioni div {
+    padding: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+  }
+  .AdminHeader--Category div > i, .AdminHeader--Category--Prenotazioni div > i {
+    padding-bottom: 10px;
+  }
+  .AdminHeader--ButtonWrapper {
+    font-size: 12px;
+    padding: 0;
+  }
+  .AdminHeader--ButtonWrapper button {
+    padding: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .AdminHeader--Box {
+    width: 110%;
+  }
+  .AdminHeader--Category div span, .AdminHeader--Category--Prenotazioni div span {
+    display: none;
+  }
+  .AdminHeader--Category div > i, .AdminHeader--Category--Prenotazioni div > i {
+    padding: 0;
+    font-size: 16px;
+  }
+  .AdminHeader--ButtonWrapper {
+    font-size: 12px;
+    width: 18%;
+    padding: 0;
+  }
+  .AdminHeader--ButtonWrapper button {
+    padding: 0;
+  }
+}
+
 #root
 > div
 > div.AdminColumns
@@ -509,19 +544,9 @@
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children
 > div
-> div span:nth-child(2),
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main--Child.children
-> div
 > div span:nth-child(2) {
   position: relative;
-  max-width: calc(24% - 40px);
+  width: calc(14% + 20px);
   margin-left: 40px;
 }
 
@@ -534,7 +559,32 @@
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children
 > div
-> div span:nth-child(2):after,
+> div span:nth-child(2):after {
+  content: "";
+  width: 100%;
+  top: -133%;
+  left: -8px;
+  background-color: transparent;
+  height: 209%;
+  position: absolute;
+  border-left: 1px dotted #0078ff;
+}
+
+#root
+> div
+> div.AdminColumns
+> div.Center--Big
+> div
+> div.AdminListaUtentiRow
+> div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) {
+  position: relative;
+  width: calc(14% + 20px);
+  margin-left: 40px;
+}
+
 #root
 > div
 > div.AdminColumns
@@ -548,7 +598,7 @@
   content: "";
   width: 100%;
   top: -133%;
-  left: -2.4%;
+  left: -9px;
   background-color: transparent;
   height: 209%;
   position: absolute;
@@ -607,7 +657,8 @@
 > div.AdminListaUtentiRow
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div {
-  border-left: 4px solid #004b9f;
+  -webkit-box-shadow: inset 4px 0 #004b9f;
+          box-shadow: inset 4px 0 #004b9f;
   background-color: #ebeced;
 }
 
@@ -619,7 +670,7 @@
 > div.AdminListaUtentiRow
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
-  max-width: calc(24% - 60px);
+  width: 14%;
   margin-left: 60px;
 }
 
@@ -633,8 +684,8 @@
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before {
   content: "";
   width: 100%;
-  top: -136%;
-  left: -12.4%;
+  top: -140%;
+  left: -28px;
   background-color: transparent;
   height: 215%;
   position: absolute;
@@ -650,10 +701,11 @@
 > div.AdminListaUtentiRow
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link {
+  position: absolute;
+  width: 5%;
+  left: -6px;
+  top: 18px;
   border-top: 1px dotted #0078ff;
-  width: 4%;
-  left: -7.2%;
-  top: 6.8px;
 }
 
 #root
@@ -708,7 +760,6 @@
 > div.AdminListaUtentiRow
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div {
-  border-left: 4px solid #004b9f;
   background-color: #ebeced;
 }
 
@@ -720,8 +771,9 @@
 > div.AdminListaUtentiRow
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
-  max-width: calc(24% - 60px);
+  width: 14%;
   margin-left: 60px;
+  width: 14%;
 }
 
 #root
@@ -734,8 +786,8 @@
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2):before {
   content: "";
   width: 100%;
-  top: -136%;
-  left: -10.7%;
+  top: -140%;
+  left: -29px;
   background-color: transparent;
   height: 215%;
   position: absolute;
@@ -751,10 +803,11 @@
 > div.AdminListaUtentiRow
 > div
 > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) .Link {
+  position: absolute;
+  width: 5%;
+  left: -6px;
+  top: 18px;
   border-top: 1px dotted #0078ff;
-  width: 4%;
-  left: -7.2%;
-  top: 6.8px;
 }
 
 #root
@@ -782,7 +835,8 @@
 > div
 > div {
   background-color: #ebeced;
-  border-left: 4px solid #004b9f;
+  -webkit-box-shadow: inset 4px 0 #004b9f;
+          box-shadow: inset 4px 0 #004b9f;
 }
 
 #root
@@ -809,8 +863,8 @@
 > div.AdminListaUtentiRow--Complete--Main--Child.children
 > div
 > div span:nth-child(2) {
-  max-width: calc(24% - 60px);
   margin-left: 60px;
+  width: 14%;
 }
 
 #root
@@ -840,8 +894,8 @@
   content: "";
   width: 100%;
   top: -42px;
-  left: -48px;
-  z-index: 2;
+  left: -29px;
+  z-index: 1;
   background-color: transparent;
   height: 275%;
   position: absolute;
@@ -872,10 +926,11 @@
 > div.AdminListaUtentiRow--Complete--Main--Child.children
 > div
 > div span:nth-child(2) .Link {
+  position: absolute;
+  width: 5%;
+  left: -6px;
+  top: 18px;
   border-top: 1px dotted #0078ff;
-  width: 4%;
-  left: -7.2%;
-  top: 6.8px;
 }
 
 #root
@@ -902,59 +957,28 @@
 > div
 > span:nth-child(2)
 > div {
-  width: 4%;
-  left: -7.2%;
-  top: 2px;
+  position: absolute;
+  width: 5%;
+  left: -6px;
+  top: 14px;
   border-top: 1px dotted #0078ff;
 }
 
-#root
-> div
-> div.AdminColumns
-> div.Center
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main.active
-> span:nth-child(2),
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
-> div
-> div.AdminListaUtentiRow
-> div
-> div.AdminListaUtentiRow--Complete--Main.active
-> span:nth-child(2) {
-  margin-right: 13px;
-}
-
-#root
-> div
-> div.AdminColumns
-> div.Center
-> div
-> div.AdminListaUtentiRow
-> div:nth-child(4)
-> div
-> span:nth-child(2),
-#root
-> div
-> div.AdminColumns
-> div.Center--Big
-> div
-> div.AdminListaUtentiRow
-> div:nth-child(4)
-> div
-> span:nth-child(2) {
-  margin-right: 18px;
-}
-
-.fa-user-tie,
-.fa-user {
-  padding-left: 3px;
+div.Center--Big .AdminListaUtenti .fa-user-tie,
+div.Center--Big .AdminListaUtenti .fa-user {
+  padding-left: 5px;
   position: relative;
-  left: -14px;
+  left: -12px;
+  z-index: 1;
+  padding-right: 0px !important;
+}
+
+div.Center .AdminListaUtenti .fa-user-tie,
+div.Center .AdminListaUtenti .fa-user {
+  padding-left: 2px;
+  position: relative;
+  left: -9px;
+  z-index: 1;
   padding-right: 0px !important;
 }
 
@@ -966,9 +990,9 @@ div.Center--Big .panels-container {
   -webkit-box-shadow: none;
           box-shadow: none;
   width: 100%;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 440px;
+  min-width: 815px;
+  min-height: 490px;
+  overflow-x: auto;
   margin: 0;
   padding-top: 0;
   padding-bottom: 50px !important;
@@ -1293,6 +1317,8 @@ div.Center--Big thead td {
   padding: 15px 10px;
   border: none;
   text-align: start;
+  position: relative;
+  left: 5px;
 }
 
 div.Center tbody,
@@ -1368,6 +1394,15 @@ div.Center--Big tbody td:nth-child(4) {
   color: #0078ff;
 }
 
+div.Center tbody .right.importoTd > i,
+div.Center--Big tbody .right.importoTd > i {
+  position: relative;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  padding-right: 5px;
+}
+
 div.Center tbody .right .Importo,
 div.Center--Big tbody .right .Importo {
   display: -webkit-box;
@@ -1389,7 +1424,8 @@ div.Center--Big tbody .right .Importo i {
   font-size: 12px;
 }
 
-div.Center .AdminServizi {
+div.Center .AdminServizi,
+div.Center--Big .AdminServizi {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -1401,8 +1437,9 @@ div.Center .AdminServizi {
   background-color: #ffffff;
 }
 
-div.Center .AdminServizi .AdminServiziItem {
-  width: 255px;
+div.Center .AdminServizi .AdminServiziItem,
+div.Center--Big .AdminServizi .AdminServiziItem {
+  width: 100%;
   height: 253px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1419,18 +1456,1201 @@ div.Center .AdminServizi .AdminServiziItem {
   border: 1px solid #ebeced;
 }
 
-div.Center .AdminServizi .AdminServiziItem--Prenotazione {
+div.Center .AdminServizi .AdminServiziItem img,
+div.Center--Big .AdminServizi .AdminServiziItem img {
+  width: 150px;
+  height: auto;
+}
+
+div.Center .AdminServizi .AdminServiziItem--Header,
+div.Center--Big .AdminServizi .AdminServiziItem--Header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center .AdminServizi .AdminServiziItem--Header--Prenotazione,
+div.Center--Big .AdminServizi .AdminServiziItem--Header--Prenotazione {
   font-size: 14px;
   font-family: "Roboto";
   font-weight: 400;
   color: #5c5c5c;
 }
 
-div.Center .AdminServizi .AdminServiziItem--Title {
+div.Center .AdminServizi .AdminServiziItem--Header--Title,
+div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
   font-size: 14px;
   font-family: "Roboto";
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   color: #000000;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
+  width: 80%;
+  margin: 0 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper :first-child.active,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper :first-child.active {
+  border: 1px solid #00b850;
+  color: #00b850;
+  opacity: 1;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper :nth-child(2).active,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper :nth-child(2).active {
+  border: 1px solid #e30000;
+  color: #e30000;
+  opacity: 1;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
+  background-color: #ffffff;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: "Roboto";
+  border-radius: 100px;
+  color: #000000;
+  border: 1px solid #000000;
+  opacity: 0.3;
+  width: 78px;
+  height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1500px) {
+  div.Center .AdminServizi,
+  div.Center--Big .AdminServizi {
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    background-color: #ffffff;
+  }
+  div.Center .ticketDetails--filters,
+  div.Center--Big .ticketDetails--filters {
+    padding: 4px 0;
+  }
+  div.Center .ticketDetails--filters__byTicket,
+  div.Center--Big .ticketDetails--filters__byTicket {
+    margin: 5px 0;
+    width: 100%;
+  }
+  div.Center .ticketDetails--filters__byTicket span.status,
+  div.Center--Big .ticketDetails--filters__byTicket span.status {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding: 3px 7px;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  div.Center .ticketDetails--filters__byTicket div div button,
+  div.Center--Big .ticketDetails--filters__byTicket div div button {
+    margin-right: 8px;
+  }
+  div.Center .ticketDetails--filters__byTicket div div input,
+  div.Center--Big .ticketDetails--filters__byTicket div div input {
+    padding: 3px 3px;
+    width: 120px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    margin-right: 4px;
+  }
+  div.Center .ticketDetails--filters__byTicket div div > i,
+  div.Center--Big .ticketDetails--filters__byTicket div div > i {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 30px;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 1100px) {
+  div.Center .ticketDetails--filters,
+  div.Center--Big .ticketDetails--filters {
+    padding: 4px 0;
+  }
+  div.Center .ticketDetails--filters__byTicket,
+  div.Center--Big .ticketDetails--filters__byTicket {
+    margin: 5px 0;
+    width: 100%;
+  }
+  div.Center .ticketDetails--filters__byTicket span.status,
+  div.Center--Big .ticketDetails--filters__byTicket span.status {
+    border: none !important;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    width: 30px;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 30px;
+    background: #e3e4e5;
+    margin-right: 20px;
+  }
+  div.Center .ticketDetails--filters__byTicket span.status span,
+  div.Center--Big .ticketDetails--filters__byTicket span.status span {
+    display: none;
+  }
+  div.Center .ticketDetails--filters__byTicket span.status div,
+  div.Center--Big .ticketDetails--filters__byTicket span.status div {
+    margin: 0;
+  }
+  div.Center .ticketDetails--filters__byTicket div div button,
+  div.Center--Big .ticketDetails--filters__byTicket div div button {
+    margin-right: 6px;
+    zoom: 0.7;
+  }
+  div.Center .ticketDetails--filters__byTicket div div input,
+  div.Center--Big .ticketDetails--filters__byTicket div div input {
+    padding: 1px 1px;
+    width: 105px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    margin-right: 2px;
+  }
+  div.Center .ticketDetails--filters__byTicket div div > i,
+  div.Center--Big .ticketDetails--filters__byTicket div div > i {
+    width: 23px;
+    height: 23px;
+    font-size: 11px;
+    border-radius: 23px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 1000px) {
+  div.Center .ticketDetails--filters__byTicket span.status,
+  div.Center--Big .ticketDetails--filters__byTicket span.status {
+    border: none !important;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    width: 23px;
+    height: 23px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 23px;
+    background: #e3e4e5;
+    font-size: 11px;
+    margin-right: 10px;
+  }
+  div.Center .ticketDetails--filters__byTicket span.status span,
+  div.Center--Big .ticketDetails--filters__byTicket span.status span {
+    display: none;
+  }
+  div.Center .ticketDetails--filters__byTicket span.status div,
+  div.Center--Big .ticketDetails--filters__byTicket span.status div {
+    margin: 0;
+  }
+  div.Center .ticketDetails--filters__byTicket div div input,
+  div.Center--Big .ticketDetails--filters__byTicket div div input {
+    padding: 1px 1px !important;
+    width: 105px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    margin-right: 2px !important;
+  }
+  div.Center .ticketDetails--filters__byTicket div div > i,
+  div.Center--Big .ticketDetails--filters__byTicket div div > i {
+    width: 23px;
+    height: 23px;
+    font-size: 11px;
+    border-radius: 23px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 1300px) {
+  div.Center .AdminServizi,
+  div.Center--Big .AdminServizi {
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    background-color: #ffffff;
+  }
+}
+
+@media (max-width: 1020px) {
+  div.Center .AdminServizi,
+  div.Center--Big .AdminServizi {
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    width: 100%;
+    background-color: #ffffff;
+  }
+}
+
+@media (max-width: 850px) {
+  div.Center .AdminServizi,
+  div.Center--Big .AdminServizi {
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    width: 100%;
+    background-color: #ffffff;
+  }
+}
+
+.Prenotazioni {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Prenotazioni--Statistiche {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Prenotazioni--Statistiche div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.Prenotazioni--Statistiche div .Graph {
+  width: 22.5%;
+  min-width: 22.5%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 7px -4px #000000;
+          box-shadow: 0 3px 7px -4px #000000;
+  border: 1px solid #f2f2f2;
+  padding: 0px 11px;
+  padding-top: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 7.5px 10px;
+  margin-top: 20px;
+  margin-right: 24px;
+}
+
+.Prenotazioni--Statistiche div .Graph--Element {
+  width: 6px;
+  margin: 0 1.5px;
+}
+
+.Prenotazioni--Statistiche div .Graph--TM {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 400;
+  font-family: "Roboto";
+  width: 64px;
+  min-height: 29px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  top: 6%;
+  left: 5%;
+}
+
+.Prenotazioni--Statistiche div .Graph--Month {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 400;
+  font-family: "Roboto";
+  width: 80px;
+  height: auto;
+  min-height: 29px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  top: 6%;
+  right: 5%;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox {
+  width: 22.5%;
+  min-width: 22.5%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 7px -4px #000000;
+          box-shadow: 0 3px 7px -4px #000000;
+  border: 1px solid #f2f2f2;
+  padding: 19px 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 7.5px 10px;
+  margin-top: 20px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:first-child {
+  margin-left: 24px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:nth-child(4) {
+  margin-right: 24px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Price {
+  color: #5c5c5c;
+  font-weight: 300;
+  font-size: 30px;
+  font-family: "Roboto";
+  padding-right: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Title {
+  color: #5c5c5c;
+  font-weight: 400;
+  font-size: 10px;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni {
+  width: 22.5%;
+  min-width: 22.5%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 7.5px 10px;
+  margin-bottom: 20px;
+  height: 203px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child {
+  border: 1px solid #2cb850;
+  margin-left: 24px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) {
+  border: 1px solid #eb681e;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) {
+  border: 1px solid #238be7;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) {
+  border: 1px solid #e31117;
+  margin-right: 24px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Header {
+  background-color: #2db9501a;
+  color: #2cb850;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+  color: #2cb850;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Header {
+  background-color: #eb691e1a;
+  color: #eb681e;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+  color: #eb681e;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Header {
+  background-color: #238be71a;
+  color: #238be7;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+  color: #238be7;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Header {
+  background-color: #e411181a;
+  color: #e31117;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+  color: #e31117;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+  padding: 0 22px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--Stato {
+  font-weight: 500;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  font-family: "Robto";
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+  font-size: 30px;
+  font-family: "Robto";
+  font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding-right: 5px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 17px 20px;
+  height: 143px;
+  font-size: 14px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Roboto";
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain div > i {
+  font-size: 11px;
+  padding-right: 7px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain--Number {
+  font-weight: 400;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding-right: 10px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Roboto";
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train div > i {
+  font-size: 11px;
+  padding-right: 7px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train--Number {
+  font-weight: 400;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding-right: 10px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Roboto";
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus div > i {
+  font-size: 11px;
+  padding-right: 7px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus--Number {
+  font-weight: 400;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding-right: 10px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Roboto";
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event div > i {
+  font-size: 11px;
+  padding-right: 7px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event--Number {
+  font-weight: 400;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding-right: 10px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Roboto";
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping div > i {
+  font-size: 11px;
+  padding-right: 7px;
+}
+
+.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping--Number {
+  font-weight: 400;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding-right: 10px;
+}
+
+.Prenotazioni .ticketDetails {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 1330px) {
+  .Prenotazioni--Statistiche {
+    width: 100%;
+  }
+  .Prenotazioni--Statistiche div {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    width: 100%;
+  }
+  .Prenotazioni--Statistiche--Box--PriceBox, .Prenotazioni--Statistiche--Box--PriceBox:first-child, .Prenotazioni--Statistiche--Box--PriceBox:last-child,
+  .Prenotazioni--Statistiche .Graph {
+    width: 94% !important;
+    max-width: 100%;
+    margin: 2% 2% !important;
+  }
+  .Prenotazioni--Statistiche--Box--Informazioni, .Prenotazioni--Statistiche--Box--Informazioni:first-child, .Prenotazioni--Statistiche--Box--Informazioni:last-child {
+    width: 94% !important;
+    max-width: 100%;
+    margin: 2% 2% !important;
+  }
+}
+
+@media (max-width: 920px) {
+  .Prenotazioni--Statistiche {
+    width: 100%;
+  }
+  .Prenotazioni--Statistiche div {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  div.Prenotazioni--Statistiche {
+    width: 100%;
+  }
+  div.Prenotazioni--Statistiche--Box--PriceBox--Price {
+    font-size: 20px !important;
+  }
+  div.Prenotazioni--Statistiche div {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+    width: 100%;
+  }
+  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1720px) {
+  div.Center .container-fluid.overview .sort-annunci,
+  div.Center .panels-container .sort-annunci,
+  div.Center--Big .container-fluid.overview .sort-annunci,
+  div.Center--Big .panels-container .sort-annunci {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1650px) {
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right {
+    text-align: start !important;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap {
+    padding: 10px 3px;
+    left: 0;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap {
+    padding: 7px 3px;
+  }
+  div.Center .container-fluid.overview .sort-annunci,
+  div.Center .panels-container .sort-annunci,
+  div.Center--Big .container-fluid.overview .sort-annunci,
+  div.Center--Big .panels-container .sort-annunci {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-right: 0;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    height: 33px;
+    border-radius: 100px;
+    width: 100px;
+    font-size: 13px;
+    margin: 0 15px;
+  }
+  div.Center .container-fluid.overview .sort-annunci ul li,
+  div.Center .panels-container .sort-annunci ul li,
+  div.Center--Big .container-fluid.overview .sort-annunci ul li,
+  div.Center--Big .panels-container .sort-annunci ul li {
+    margin: 0 5px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
+    width: 120px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
+    padding: 0 10px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1400px) {
+  div.Center .container-fluid.overview .sort-annunci ul li,
+  div.Center .panels-container .sort-annunci ul li,
+  div.Center--Big .container-fluid.overview .sort-annunci ul li,
+  div.Center--Big .panels-container .sort-annunci ul li {
+    margin: 0 5px;
+    font-size: 12px;
+    min-width: auto !important;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
+    width: 120px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
+    padding: 0 10px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1510px) {
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
+    height: 35px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span {
+    opacity: 0;
+    width: 3ch;
+    position: absolute;
+    top: 22%;
+    left: 6%;
+    padding-left: 0;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i {
+    padding-left: 5px;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
+    height: 43px;
+  }
+}
+
+@media (max-width: 1490px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete span:last-child button {
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    border: 0.5px solid #5c5c5c;
+    border-radius: 17px;
+    padding: 2px 5px;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete span:last-child > i {
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 300;
+    border: 0.5px solid #5c5c5c;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 22px;
+    height: 27px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete span:last-child > i.active {
+    color: #0078ff;
+    border-color: #0078ff;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

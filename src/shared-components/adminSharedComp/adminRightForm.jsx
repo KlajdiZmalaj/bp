@@ -43,6 +43,18 @@ class AdminRightForm extends React.Component {
       { height: 70 },
       { height: 40 },
     ];
+    {
+      data.map((heigh, i) => {
+        return (
+          <Tooltip title={heigh.price}>
+            <div
+              className="Graph--Element"
+              style={{ height: `${heigh.height}%` }}
+            ></div>
+          </Tooltip>
+        );
+      });
+    }
     return (
       <div className="AdminRightForm">
         <div className="AdminRightForm--Box">

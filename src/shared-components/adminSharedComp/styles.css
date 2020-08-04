@@ -1,3 +1,7 @@
+.Admin-Panel {
+  min-width: 700px;
+}
+
 .AdminHeader {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -190,7 +190,17 @@ class AdminListaUtenti extends React.Component {
       {
         user_id: "#00106",
         role: "agency",
-
+        username: "MONTI VIRGILO",
+        rag_sociale: "PK SOLUTION S.R.L",
+        credito: "205.00",
+        city: "Bologna",
+        ultimo_deposit: "16-07-220 09:10:17",
+        ultimo_login: "16-07-220 09:10:17",
+        children: [],
+      },
+      {
+        user_id: "#00106",
+        role: "agency",
         username: "MONTI VIRGILO",
         rag_sociale: "PK SOLUTION S.R.L",
         credito: "205.00",
@@ -214,7 +224,7 @@ class AdminListaUtenti extends React.Component {
           <span>AZIONI</span>
         </div>
         <div className="AdminListaUtentiRow">
-          {this.props.list.map((itemList) => {
+          {list.map((itemList) => {
             return <AdminListaUtentiRow itemList={itemList} />;
           })}
         </div>

@@ -34,7 +34,6 @@
   flex-flow: column;
   background-color: #fff;
   width: 100%;
-  max-width: 1371px;
   margin: 30px auto;
   &--filters {
     display: flex;
@@ -572,8 +571,6 @@
         }
         & .ant-switch {
           margin-right: 8px;
-          i {
-          }
         }
       }
     }
