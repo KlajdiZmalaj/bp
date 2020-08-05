@@ -69,7 +69,14 @@ class SingleUser extends Component {
               style={{
                 paddingLeft: `calc(10px * ${this.props.level || 1})`,
               }}
-              className="text-left justify-content-start userDropAnch"
+              className={
+                "text-left justify-content-start userDropAnch" +
+                (user.children &&
+                user.children.length > 0 &&
+                !this.state.displayChildren
+                  ? " isPlus"
+                  : " isMinus")
+              }
             >
               {user.children &&
                 user.children.length > 0 &&
@@ -210,7 +217,14 @@ class SingleUser extends Component {
                   style={{
                     paddingLeft: `calc(10px * ${this.props.level || 1})`,
                   }}
-                  className="text-left justify-content-start userDropAnch"
+                  className={
+                    "text-left justify-content-start userDropAnch" +
+                    (user.children &&
+                    user.children.length > 0 &&
+                    !this.state.displayChildren
+                      ? " isPlus"
+                      : " isMinus")
+                  }
                 >
                   {user.username}{" "}
                   {user.role === "agency" && (

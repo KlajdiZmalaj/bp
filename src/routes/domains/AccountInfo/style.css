@@ -213,6 +213,7 @@
   text-align: left;
   background-color: #fff;
   border-bottom: 1px solid #dadada;
+  border-left: 3px solid transparent;
 }
 
 .userList--noDoc__user.hasChildren, .userList--Doc__user.hasChildren {
@@ -228,7 +229,6 @@
 }
 
 .userList--noDoc__user .body, .userList--Doc__user .body {
-  border-left: 1px solid #f5f5f5;
   border-right: 1px solid #f5f5f5;
   text-transform: uppercase;
   display: -webkit-box;
@@ -972,5 +972,72 @@ body .userDetailPopup .SubmitButton {
   position: absolute;
   left: 0px;
   top: 8px;
+  background: #fff;
+  color: #777676;
+  z-index: 1;
+}
+
+.hasChildren .userDropAnch:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 6px;
+  border-left: 1px dashed #777676;
+}
+
+.wrapppper .userDropAnch:before {
+  height: 100%;
+  top: 0;
+  left: 3px;
+  border-left: 1px dashed #777676;
+}
+
+.wrapppper .userDropAnch:after {
+  content: "";
+  position: absolute;
+  width: 21px;
+  left: 6px;
+  top: 14px;
+  border-bottom: 1px dashed #777676;
+  z-index: 0;
+}
+
+.isopenrow > .body .userDropAnch:before,
+.hasChildren > .body .userDropAnch:before {
+  content: "";
+  position: absolute;
+  height: calc(50% - 3px);
+  top: 22px;
+  left: 6px;
+  border-left: 1px dashed #777676;
+}
+
+.isopenrow > .body .userDropAnch:after,
+.hasChildren > .body .userDropAnch:after {
+  content: "";
+  position: absolute;
+  width: 21px;
+  left: 0;
+  top: 14px;
+  border-bottom: 1px dashed #777676;
+  z-index: 0;
+}
+
+html body .wrapppper .singleUser:last-child > .body .userDropAnch:before {
+  height: 50% !important;
+}
+
+.level1 > .body .isPlus:before {
+  display: none;
+}
+
+div.level2 .isMinus:before,
+div.level2 .isPlus:before, div.level3 .isMinus:before,
+div.level3 .isPlus:before, div.level4 .isMinus:before,
+div.level4 .isPlus:before, div.level5 .isMinus:before,
+div.level5 .isPlus:before {
+  height: 100% !important;
+  top: 0 !important;
 }
 /*# sourceMappingURL=style.css.map */
