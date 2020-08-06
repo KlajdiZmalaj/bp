@@ -47,6 +47,9 @@
       width: 100%;
       .ant-switch {
         margin-right: 20px;
+        @media (max-width: 768px) {
+          margin: 0;
+        }
       }
       & div {
         display: flex;
@@ -82,7 +85,18 @@
       font-size: 14px;
       text-transform: uppercase;
       color: #5c5c5c;
-
+      @media (max-width: 768px) {
+        font-size: 12px;
+        text-transform: capitalize;
+      }
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        @media (max-width: 768px) {
+          display: none !important;
+        }
+      }
       &:nth-child(1),
       &:nth-child(3),
       &:nth-child(4),
@@ -132,7 +146,20 @@
       white-space: nowrap;
       display: flex;
       align-items: center;
-
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        @media (max-width: 768px) {
+          display: none !important;
+        }
+      }
+      @media (max-width: 768px) {
+        font-size: 12px;
+        text-transform: capitalize;
+        padding: 13px 2px !important;
+        overflow: hidden;
+      }
       &:nth-child(1),
       &:nth-child(3),
       &:nth-child(4),
@@ -191,6 +218,11 @@
       cursor: pointer;
       color: #b5b5b5;
       font-size: 13px;
+      @media (max-width: 768px) {
+        font-size: 12px;
+        text-transform: capitalize;
+        padding: 0 2px;
+      }
       i {
         margin-right: 5px;
       }
@@ -209,6 +241,9 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        @media (max-width: 768px) {
+          display: none;
+        }
         span:nth-child(2) {
           color: #00ac56;
           margin-left: 10px;
@@ -281,11 +316,16 @@
     background: #fff;
     display: flex;
     margin-top: 15px;
+    @media (max-width: 768px) {
+      flex-flow: column;
+    }
     &--col {
       padding: 15px;
-
       width: 50%;
       border-right: 1px solid #ebeced;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
       &:nth-child(2) {
         border-right: 0;
       }
@@ -324,6 +364,10 @@
           padding: 0;
           margin-right: 50px;
           margin-left: 10px;
+          @media (max-width: 768px) {
+            margin-right: 2px;
+            margin-left: 2px;
+          }
         }
       }
     }
@@ -333,7 +377,16 @@
     align-items: center;
     justify-content: flex-start;
     margin-top: 10px;
-
+    @media (max-width: 768px) {
+      flex-flow: column;
+      > div,
+      > input,
+      > label {
+        width: 100%;
+        margin: 0;
+        margin-top: 5px;
+      }
+    }
     &--price {
       background: #fff;
       height: 48px;
@@ -544,112 +597,6 @@
     .fas:hover {
       background-color: unset !important;
       color: var(--accent-bg) !important;
-    }
-  }
-}
-@media (max-width: 1000px) {
-  .ticketDetails {
-    &--filters {
-      padding: 10px 10px !important;
-      &__byTicket {
-        margin: 8px 10px !important;
-        & span.status {
-          padding: 5px 4px !important;
-        }
-        & i.fa,
-        i.far,
-        i.fas {
-          width: 35px;
-          height: 35px;
-          border-radius: 35px;
-          margin-right: 3px;
-        }
-        & input {
-          margin: 0 10px 0px 0px !important;
-          padding: 5px 5px !important;
-          max-width: 110px;
-        }
-        & .ant-switch {
-          margin-right: 8px;
-        }
-      }
-    }
-  }
-}
-@media (max-width: 640px) {
-  .ticketDetails {
-    &--filters {
-      &__byTicket {
-        & div {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          > i {
-            &:nth-child(1) {
-              margin-left: 0;
-            }
-          }
-          & div {
-            display: flex;
-            width: 100%;
-            flex-direction: row;
-            margin: 6px 0;
-          }
-        }
-        & span.status {
-          background-color: #e3e4e5;
-          width: 35px;
-          height: 35px;
-          border-radius: 35px !important;
-          margin-right: 3px !important;
-          display: flex !important;
-          justify-content: center !important;
-          align-items: center !important;
-          & span {
-            display: none;
-          }
-          & div {
-            height: 13px;
-            width: 13px;
-            border-radius: 13px;
-            margin-right: 0 !important;
-            &[data-status="all"] {
-              background-color: #000000;
-            }
-            &[data-status="Completato"] {
-              background-color: #00ac2b;
-            }
-            &[data-status="Eseguibile"] {
-              background-color: #00ac56;
-            }
-            &[data-status="In Attesa"] {
-              background-color: #eb6810;
-            }
-            &[data-status="Nuova Richiesta"] {
-              background-color: #238be7;
-            }
-            &[data-status="Nuova Offerta"] {
-              background-color: #00ac56;
-            }
-            &[data-status="Cancellato"] {
-              background-color: #c91d1d;
-              border: none !important;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 450px) {
-  .ticketDetails {
-    &--filters {
-      &__byTicket {
-        & input {
-          padding: 2px 2px !important;
-          max-width: 80px;
-        }
-      }
     }
   }
 }

@@ -8,12 +8,19 @@ import Eventi from "./Eventi";
 import { Tooltip } from "antd";
 export class DetailRow extends Component {
   render() {
-    const { ticket, TicketByTcketId, allRoles } = this.props;
+    const { ticket, TicketByTcketId, allRoles, screenWidth } = this.props;
 
     return (
       ticket && (
         <React.Fragment>
-          <div className="ticketDetails--row animated fadeIn">
+          <div
+            onClick={() => {
+              if (screenWidth <= 768) {
+                this.props.mobilePopUp(ticket);
+              }
+            }}
+            className="ticketDetails--row animated fadeIn"
+          >
             <span className="status">
               <Tooltip title={ticket.status}>
                 <div data-status={`${ticket.status}`}>
@@ -65,7 +72,9 @@ export class DetailRow extends Component {
 
               <div
                 className="toggler"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
                   if (TicketByTcketId && TicketByTcketId.id === ticket.id) {
                     this.props.setTicketByTicketId(null);
                   } else {
@@ -141,6 +150,7 @@ export class DetailRow extends Component {
 const mstp = (state) => {
   return {
     TicketByTcketId: state.auth.TicketByTcketId,
+    screenWidth: state.main.screenWidth,
   };
 };
 export default connect(mstp, AuthActions)(DetailRow);

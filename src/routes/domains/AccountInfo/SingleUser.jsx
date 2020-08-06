@@ -49,12 +49,15 @@ class SingleUser extends Component {
     return (
       <React.Fragment>
         <div
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
             if (user.children && user.children.length > 0)
               this.setState({ displayChildren: !this.state.displayChildren });
           }}
           className={
-            "userList--noDoc__user singleUser level1" +
+            "userList--noDoc__user singleUser level" +
+            (this.props.level || "1") +
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
             (this.state.displayChildren ? " isopenrow" : "")
           }
@@ -62,7 +65,27 @@ class SingleUser extends Component {
           {" "}
           <div className="body">
             <span>#{user.id}</span>
-            <span className="text-left justify-content-start">
+            <span
+              style={{
+                paddingLeft: `calc(10px * ${this.props.level || 1})`,
+              }}
+              className={
+                "text-left justify-content-start userDropAnch" +
+                (user.children &&
+                user.children.length > 0 &&
+                !this.state.displayChildren
+                  ? " isPlus"
+                  : " isMinus")
+              }
+            >
+              {user.children &&
+                user.children.length > 0 &&
+                !this.state.displayChildren && (
+                  <i className="fal fa-plus-square mpIcon"></i>
+                )}
+              {this.state.displayChildren && (
+                <i className="fal fa-minus-square mpIcon"></i>
+              )}
               {user.role === "agency" && (
                 <i
                   className={
@@ -164,16 +187,24 @@ class SingleUser extends Component {
               )}
             </span>
           </div>
+          {this.state.displayChildren &&
+            user.children &&
+            user.children.length > 0 && (
+              <div className="wrapppper">
+                {user.children.map((user) => {
+                  return (
+                    <SingleUser2
+                      level={
+                        this.props.level ? parseInt(this.props.level) + 1 : 2
+                      }
+                      user={user}
+                      key={user.id}
+                    />
+                  );
+                })}
+              </div>
+            )}
         </div>
-        {this.state.displayChildren &&
-          user.children &&
-          user.children.length > 0 && (
-            <div className="level2">
-              {user.children.map((user) => {
-                return <SingleUser2 user={user} key={user.id} />;
-              })}
-            </div>
-          )}
 
         {isPopUpActive ? (
           <React.Fragment>
@@ -182,7 +213,19 @@ class SingleUser extends Component {
               <div className="title">{val}</div>
               <p>
                 Il credito verrà {val == "deposit" ? "aggiunto" : "rimosso"} al{" "}
-                <span className="text-left justify-content-start">
+                <span
+                  style={{
+                    paddingLeft: `calc(10px * ${this.props.level || 1})`,
+                  }}
+                  className={
+                    "text-left justify-content-start userDropAnch" +
+                    (user.children &&
+                    user.children.length > 0 &&
+                    !this.state.displayChildren
+                      ? " isPlus"
+                      : " isMinus")
+                  }
+                >
                   {user.username}{" "}
                   {user.role === "agency" && (
                     <i
