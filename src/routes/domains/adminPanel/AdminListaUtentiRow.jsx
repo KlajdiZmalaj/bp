@@ -80,11 +80,17 @@ class AdminListaUtentiRow extends React.Component {
           this.state.activateChildren === true &&
           itemList.children.map((child, i, arr) =>
             arr.length - 1 === i ? (
-              <div className="AdminListaUtentiRow--Complete--Main--Child children last">
+              <div
+                className="AdminListaUtentiRow--Complete--Main--Child children last"
+                key={child.user_id}
+              >
                 <AdminListaUtentiRowForLoop itemList={child} last={false} />
               </div>
             ) : (
-              <div className="AdminListaUtentiRow--Complete--Main--Child children">
+              <div
+                className="AdminListaUtentiRow--Complete--Main--Child children"
+                key={child.user_id}
+              >
                 <AdminListaUtentiRowForLoop itemList={child} last={true} />
               </div>
             )

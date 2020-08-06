@@ -130,14 +130,38 @@ class Prenotazioni extends React.Component {
     return (
       <div className="Prenotazioni">
         <div className="Prenotazioni--Statistiche">
-          <div>
+          <div className="Prenotazioni--Statistiche--First">
+            <div className="Prenotazioni--Statistiche--TitleHeaderLeft">
+              <i class="fal fa-analytics"></i>
+              <span>STATISTICHE</span>
+            </div>
+            <div className="Right">
+              <div className="Prenotazioni--Statistiche--DatePicker">
+                <div
+                  className="Prenotazioni--Statistiche--DatePicker-CalendarLabel"
+                  // onClick={() => {
+                  //   this.setCalendar(true);
+                  // }}
+                >
+                  {/* {fromLabel
+                      ? `${fromLabel} - ${toLabel}` */}
+                  Seleziona la data
+                  <i className="fal fa-calendar-alt"></i>
+                </div>
+              </div>
+              <div className="Prenotazioni--Statistiche--Arrow">
+                <i className="far fa-angle-down"></i>
+              </div>
+            </div>
+          </div>
+          <div className="Prenotazioni--Statistiche--Other--Second">
             <TranCommProv title={"TRANSAZIONI"} price={825866} />
             <TranCommProv title={"COMMISIONI"} price={56837} />
             <TranCommProv title={"PROVIGGIONI"} price={25643} />
             <Graph month={"LUGLIO 2020"} data={data} />
           </div>
 
-          <div>
+          <div className="Prenotazioni--Statistiche--Other--Third">
             <InformazioniDependeAlStato
               stato={"ESEGUITI"}
               totalInfo={262}

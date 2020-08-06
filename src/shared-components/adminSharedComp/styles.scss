@@ -1,5 +1,6 @@
 .Admin-Panel {
   min-width: 700px;
+  font-family: "Roboto", sans-serif;
 }
 //Header Styles
 .AdminHeader {
@@ -45,6 +46,9 @@
     font-size: 14px;
     font-weight: 400;
     font-family: "Lato", sans-serif;
+    &.active {
+      color: #0078ff;
+    }
     &:nth-child(1) {
       border-left: 1px solid #ebeced;
     }
@@ -76,6 +80,9 @@
       font-size: 14px;
       font-weight: 400;
       font-family: "Lato", sans-serif;
+      &.active {
+        color: #0078ff;
+      }
       & div {
         display: flex;
         width: auto;
@@ -104,13 +111,181 @@
 }
 //Right Form styles
 .AdminRightForm {
+  position: relative;
   width: 400px;
-  min-height: calc(100% - 72px);
-  position: fixed;
-  left: calc(100% - 400px);
-  top: 71.5px;
+  min-height: 100vh;
+
+  position: relative;
+  margin-top: 71.5px;
   background-color: #ffffff;
+  overflow-x: scroll;
   border: 1px solid #ebeced;
+  & .Close {
+    position: fixed;
+    right: 0;
+    top: 71.5px;
+    width: 40px;
+    height: 30px;
+    font-family: "Font Awesome 5 Pro";
+    border: 1px solid #f3f3f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    & i {
+      font-family: "Font Awesome 5 Pro";
+      color: #e30000;
+      font-weight: 500;
+      font-size: 18px;
+    }
+  }
+  & .printModal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 98vh;
+    height: 100%;
+    padding: 0 30px;
+    position: fixed;
+    top: 72px;
+    right: 0;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 99vh;
+
+    & i {
+      font-size: 14px;
+      font-weight: 300;
+      font-family: "Font Awesome 5 Pro";
+      zoom: 1;
+    }
+    & button {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    & .Buttons--Print {
+      position: absolute;
+      width: 100%;
+      height: 52px;
+      bottom: 63px;
+      font-size: 14px;
+      font-weight: bold;
+      zoom: 1;
+      border: none;
+      width: 33.33%;
+      left: 0;
+      border-right: 1px solid #ebeced;
+      border-top: 2px solid #00ac5c;
+      background-color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      zoom: 1;
+    }
+    & .Buttons--Download {
+      position: absolute;
+      width: 100%;
+      height: 52px;
+      bottom: 63px;
+      font-size: 14px;
+      font-weight: bold;
+      zoom: 1;
+      border: none;
+      width: 33.33%;
+      left: 33.33%;
+      border-right: 1px solid #ebeced;
+      border-top: 2px solid #ffb100;
+      background-color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      zoom: 1;
+    }
+    & .Buttons--Send {
+      position: absolute;
+      width: 100%;
+      height: 52px;
+      bottom: 63px;
+      font-size: 14px;
+      font-weight: bold;
+      zoom: 1;
+      border: none;
+      width: 33.33%;
+      left: 66.66%;
+      border-right: 1px solid #ebeced;
+      border-top: 2px solid #0078ff;
+      background-color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      zoom: 1;
+    }
+
+    & barcodeModal {
+      margin: 0;
+      margin-bottom: 50px;
+    }
+    & div.ContainerOfData:nth-child(1) {
+      zoom: 0.95;
+      max-height: 82%;
+      overflow: auto;
+      padding: 0px 35px;
+      margin: 34px 0;
+      height: 82%;
+      box-sizing: border-box;
+
+      & .headerModal {
+        margin: 0;
+        width: 100%;
+
+        zoom: 0.85;
+      }
+      & :nth-child(2) {
+        zoom: 0.8;
+        height: auto;
+        width: 100%;
+      }
+      & :nth-child(3) {
+        height: auto;
+      }
+    }
+  }
+  & .AdminRightForm--Box--LeUltime--Dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &--Row {
+      display: flex;
+      flex-direction: row;
+      height: 40px;
+      width: 100%;
+      justify-content: space-between;
+      border-bottom: 1px solid #ebeced;
+      padding: 0 14px;
+      align-items: center;
+      &--Data {
+        font-size: 12px;
+        font-family: "Roboto", sans-serif;
+        &.Date {
+          color: #727272;
+          font-weight: 400;
+        }
+        &.Id {
+          color: #4b4b4b;
+          font-weight: 500;
+        }
+        &.User {
+          color: #727272;
+          font-weight: 400;
+        }
+        &.Price {
+          color: #0078ff;
+          font-weight: 500;
+        }
+      }
+    }
+  }
   &--Box {
     font-family: "Roboto", sans-serif;
     font-weight: bold;
@@ -122,6 +297,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ebeced;
+
     > i {
       cursor: pointer;
       width: 32px;
@@ -217,7 +393,7 @@
             justify-content: center;
             align-items: center;
             font-size: 18px;
-            font-family: "Roboto";
+            font-family: "Roboto", sans-serif;
           }
         }
         &--Submit {
@@ -378,7 +554,7 @@
       flex-direction: column;
 
       &--Box {
-        animation: identifier 0.7s;
+        animation: SlowShow 0.7s;
         padding: 15px 35px;
         border-top: 1px solid #ebeced;
         font-family: "Roboto", sans-serif;
@@ -392,18 +568,25 @@
       }
     }
   }
-  @keyframes identifier {
+  @keyframes SlowShow {
     0% {
       display: none;
       opacity: 0;
     }
-    60% {
-      display: none;
-      opacity: 0.3;
+    70% {
+      opacity: 0;
     }
-    80% {
+    75% {
+      display: none;
+      opacity: 0.5;
+    }
+    85% {
       display: none;
       opacity: 0.7;
+    }
+    95% {
+      display: none;
+      opacity: 0.8;
     }
     100% {
       display: block;
@@ -563,7 +746,7 @@
 
       & span {
         &:first-child {
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           font-size: 31px;
           font-weight: 200;
         }
@@ -607,14 +790,206 @@
     & span {
       font-weight: 300;
       &:first-child {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: 15px;
         color: #5c5c5c;
       }
       &:nth-child(2) {
         font-size: 16px;
         color: #0578fc;
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
+      }
+    }
+  }
+}
+//Deposito Modal
+.DepositoModal {
+  width: 100%;
+  height: calc(100% - 72px);
+  position: fixed;
+  left: 0;
+  top: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--Container {
+    width: 350px;
+    height: 392px;
+    position: fixed;
+    background-color: #ffffff;
+    z-index: 2;
+    &--Up {
+      height: 73px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+
+      padding: 16px 20px;
+      border-bottom: 1px solid #dbdbdb;
+      &--Title {
+        font-size: 18px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        color: #0078ff;
+      }
+      &--Agguntoal {
+        color: #5c5c5c;
+        font-size: 12px;
+        font-family: "Roboto", sans-serif;
+        &--Persona {
+          & i {
+            font-size: 10px;
+            font-weight: 600;
+            padding-left: 10px;
+            padding-right: 3px;
+            top: -1px;
+            position: relative;
+          }
+          &--Part3 {
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+    &--Down {
+      height: 318px;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 7px 20px;
+      &--Form {
+        width: 100%;
+        &--MessageLine {
+          width: 100%;
+          border: 1px solid #d6d6d6;
+          border-radius: 3px;
+          min-height: 118px;
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          padding: 8px 15px;
+          font-size: 14px;
+          font-family: "Roboto", sans-serif;
+          color: #303030;
+          font-weight: 400;
+          outline: none;
+        }
+        &--buttons {
+          width: 100%;
+          border: none;
+          min-height: 42px;
+          display: flex;
+          justify-content: space-between;
+          padding: 2px 0px;
+          align-items: center;
+          margin: 10px 0;
+          & button {
+            width: 150px;
+            height: 42px;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 25px;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "Roboto", sans-serif;
+            background-color: #ffffff;
+          }
+          &--Conferma {
+            border: 2px solid #00b850;
+            border-radius: 3px;
+            color: #00b850;
+          }
+          &--Cancel {
+            border: 2px solid #7e7e7e;
+            border-radius: 3px;
+            color: #7e7e7e;
+          }
+        }
+        &--NotifyLine {
+          width: 100%;
+          border: 1px solid #d6d6d6;
+          border-radius: 3px;
+          min-height: 42px;
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          & span {
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+            color: #303030;
+            font-weight: 400;
+            border-right: 1px solid #d6d6d6;
+            width: 90%;
+            min-height: 42px;
+            padding-left: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          > i {
+            font-size: 15px;
+            color: #00b850;
+            font-weight: 400;
+            border-right: 1px solid #d6d6d6;
+            width: 10%;
+            min-height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+        &--AmountLine {
+          width: 100%;
+          border: 1px solid #d6d6d6;
+          border-radius: 3px;
+          min-height: 42px;
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+
+          &--Amount {
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+            color: #303030;
+            font-weight: 400;
+            border-right: 1px solid #d6d6d6;
+            width: 30%;
+            min-height: 42px;
+            padding-left: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          &--Input,
+          &--Input--Input {
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+            color: #303030;
+            font-weight: 400;
+            position: relative;
+            width: 70%;
+            min-height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            text-align: right;
+            padding-right: 15px;
+          }
+          &--Input--Input {
+            width: 100%;
+            padding-right: 5px;
+          }
+          &--Euro {
+            position: absolute;
+            right: 5px;
+            top: 0;
+          }
+        }
       }
     }
   }

@@ -3,7 +3,12 @@ import "./styles.css";
 import images from "themes/images";
 
 class AdminServiziItem extends React.Component {
+  state = {
+    buttonActiveVisibility: true,
+    buttonInactiveVisibility: false,
+  };
   render() {
+    const { buttonActiveVisibility, buttonInactiveVisibility } = this.state;
     return (
       <div className="AdminServiziItem">
         <div className="AdminServiziItem--Header">
@@ -17,8 +22,28 @@ class AdminServiziItem extends React.Component {
 
         <img src={images["flixbus-logo"]} className="AdminServiziItem--Image" />
         <div className="AdminServiziItem--ButtonWrapper">
-          <button>ACTIVE</button>
-          <button>INACTIVE</button>
+          <button
+            onClick={() => {
+              this.setState({
+                buttonActiveVisibility: true,
+                buttonInactiveVisibility: false,
+              });
+            }}
+            className={`${buttonActiveVisibility === true ? "active" : ""}`}
+          >
+            ACTIVE
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                buttonActiveVisibility: false,
+                buttonInactiveVisibility: true,
+              });
+            }}
+            className={`${buttonInactiveVisibility === true ? "active" : ""}`}
+          >
+            INACTIVE
+          </button>
         </div>
       </div>
     );

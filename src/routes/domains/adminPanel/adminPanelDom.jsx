@@ -2,10 +2,6 @@ import React from "react";
 import AdminRightForm from "shared-components/adminSharedComp/adminRightForm";
 import AdminLeftForm from "shared-components/adminSharedComp/adminLeftForm";
 import AdminHeader from "shared-components/adminSharedComp/adminHeader";
-import AdminListaUtenti from "./AdminListaUtenti";
-import Tranzacioni from "../../views/Transazioni";
-import AdminServizi from "./AdminServizi";
-import Prenotazioni from "./Prenotazioni";
 import "./styles.css";
 class AdminPanelDom extends React.Component {
   state = {
@@ -14,7 +10,10 @@ class AdminPanelDom extends React.Component {
   render() {
     return (
       <div className="Admin-Panel">
-        <AdminHeader />
+        <AdminHeader
+          history={this.props.history}
+          location={this.props.location}
+        />
         <div className="AdminColumns">
           <div
             className={`${
@@ -33,7 +32,7 @@ class AdminPanelDom extends React.Component {
               !this.state.menuSkinVisible ? "Center" : "Center--Big"
             }`}
           >
-            <Prenotazioni forAdmin={true} />
+            {this.props.component}
           </div>
           <AdminRightForm />
         </div>

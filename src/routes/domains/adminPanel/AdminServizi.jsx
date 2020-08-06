@@ -20,8 +20,8 @@ class AdminServizi extends React.Component {
 
     return (
       <div className="AdminServizi">
-        {list.map((itemList) => (
-          <AdminServiziItem {...itemList} />
+        {list.map((itemList, i) => (
+          <AdminServiziItem {...itemList} key={`${itemList.name}${i}`} />
         ))}
       </div>
     );

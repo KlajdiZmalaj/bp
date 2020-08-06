@@ -264,12 +264,15 @@ const { Types, Creators } = createActions({
   setVisureByVisureId: ["VisureByVisureId"],
   getUserByUserId: ["user_id"],
   getAgentByUserId: ["user_id"],
+  openModalForAdmin: ["openAdminModal"],
+  editModalDetails: ["ModalDetails"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  ModalDetails: {},
   enableButtons: false,
   popUpData: {},
   paymentsPages: 0,
@@ -306,6 +309,7 @@ const INITIAL_STATE = {
   formDetailsActives: [],
   VisureByVisureId: {},
   popUpDataVisure: {},
+  openAdminModal: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -470,5 +474,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_VISURE_BY_VISURE_ID]: (state, { VisureByVisureId }) => ({
     ...state,
     VisureByVisureId,
+  }),
+  [Types.OPEN_MODAL_FOR_ADMIN]: (state, { openAdminModal }) => ({
+    ...state,
+    openAdminModal,
+  }),
+  [Types.EDIT_MODAL_DETAILS]: (state, { ModalDetails }) => ({
+    ...state,
+    ModalDetails,
   }),
 });

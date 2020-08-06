@@ -1,5 +1,6 @@
 .Admin-Panel {
   min-width: 700px;
+  font-family: "Roboto", sans-serif;
 }
 
 .AdminHeader {
@@ -82,6 +83,10 @@
   font-family: "Lato", sans-serif;
 }
 
+.AdminHeader--Category.active {
+  color: #0078ff;
+}
+
 .AdminHeader--Category:nth-child(1) {
   border-left: 1px solid #ebeced;
 }
@@ -131,6 +136,10 @@
   font-family: "Lato", sans-serif;
 }
 
+.AdminHeader--Category--Prenotazioni.active {
+  color: #0078ff;
+}
+
 .AdminHeader--Category--Prenotazioni div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -166,13 +175,233 @@
 }
 
 .AdminRightForm {
+  position: relative;
   width: 400px;
-  min-height: calc(100% - 72px);
-  position: fixed;
-  left: calc(100% - 400px);
-  top: 71.5px;
+  min-height: 100vh;
+  position: relative;
+  margin-top: 71.5px;
   background-color: #ffffff;
+  overflow-x: scroll;
   border: 1px solid #ebeced;
+}
+
+.AdminRightForm .Close {
+  position: fixed;
+  right: 0;
+  top: 71.5px;
+  width: 40px;
+  height: 30px;
+  font-family: "Font Awesome 5 Pro";
+  border: 1px solid #f3f3f4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.AdminRightForm .Close i {
+  font-family: "Font Awesome 5 Pro";
+  color: #e30000;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.AdminRightForm .printModal {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 98vh;
+  height: 100%;
+  padding: 0 30px;
+  position: fixed;
+  top: 72px;
+  right: 0;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 99vh;
+}
+
+.AdminRightForm .printModal i {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Font Awesome 5 Pro";
+  zoom: 1;
+}
+
+.AdminRightForm .printModal button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm .printModal .Buttons--Print {
+  position: absolute;
+  width: 100%;
+  height: 52px;
+  bottom: 63px;
+  font-size: 14px;
+  font-weight: bold;
+  zoom: 1;
+  border: none;
+  width: 33.33%;
+  left: 0;
+  border-right: 1px solid #ebeced;
+  border-top: 2px solid #00ac5c;
+  background-color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  zoom: 1;
+}
+
+.AdminRightForm .printModal .Buttons--Download {
+  position: absolute;
+  width: 100%;
+  height: 52px;
+  bottom: 63px;
+  font-size: 14px;
+  font-weight: bold;
+  zoom: 1;
+  border: none;
+  width: 33.33%;
+  left: 33.33%;
+  border-right: 1px solid #ebeced;
+  border-top: 2px solid #ffb100;
+  background-color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  zoom: 1;
+}
+
+.AdminRightForm .printModal .Buttons--Send {
+  position: absolute;
+  width: 100%;
+  height: 52px;
+  bottom: 63px;
+  font-size: 14px;
+  font-weight: bold;
+  zoom: 1;
+  border: none;
+  width: 33.33%;
+  left: 66.66%;
+  border-right: 1px solid #ebeced;
+  border-top: 2px solid #0078ff;
+  background-color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  zoom: 1;
+}
+
+.AdminRightForm .printModal barcodeModal {
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+.AdminRightForm .printModal div.ContainerOfData:nth-child(1) {
+  zoom: 0.95;
+  max-height: 82%;
+  overflow: auto;
+  padding: 0px 35px;
+  margin: 34px 0;
+  height: 82%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.AdminRightForm .printModal div.ContainerOfData:nth-child(1) .headerModal {
+  margin: 0;
+  width: 100%;
+  zoom: 0.85;
+}
+
+.AdminRightForm .printModal div.ContainerOfData:nth-child(1) :nth-child(2) {
+  zoom: 0.8;
+  height: auto;
+  width: 100%;
+}
+
+.AdminRightForm .printModal div.ContainerOfData:nth-child(1) :nth-child(3) {
+  height: auto;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 40px;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #ebeced;
+  padding: 0 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
+  color: #727272;
+  font-weight: 400;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
+  color: #4b4b4b;
+  font-weight: 500;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
+  color: #727272;
+  font-weight: 400;
+}
+
+.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
+  color: #0078ff;
+  font-weight: 500;
 }
 
 .AdminRightForm--Box {
@@ -353,7 +582,7 @@
       -ms-flex-align: center;
           align-items: center;
   font-size: 18px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 .AdminRightForm--Box--Wallet--Dropdown--Submit {
@@ -585,8 +814,8 @@
 }
 
 .Left .AdminLeftForm--LastBox--Box {
-  -webkit-animation: identifier 0.7s;
-          animation: identifier 0.7s;
+  -webkit-animation: SlowShow 0.7s;
+          animation: SlowShow 0.7s;
   padding: 15px 35px;
   border-top: 1px solid #ebeced;
   font-family: "Roboto", sans-serif;
@@ -599,18 +828,25 @@
   padding-right: 10px;
 }
 
-@-webkit-keyframes identifier {
+@-webkit-keyframes SlowShow {
   0% {
     display: none;
     opacity: 0;
   }
-  60% {
-    display: none;
-    opacity: 0.3;
+  70% {
+    opacity: 0;
   }
-  80% {
+  75% {
+    display: none;
+    opacity: 0.5;
+  }
+  85% {
     display: none;
     opacity: 0.7;
+  }
+  95% {
+    display: none;
+    opacity: 0.8;
   }
   100% {
     display: block;
@@ -618,18 +854,25 @@
   }
 }
 
-@keyframes identifier {
+@keyframes SlowShow {
   0% {
     display: none;
     opacity: 0;
   }
-  60% {
-    display: none;
-    opacity: 0.3;
+  70% {
+    opacity: 0;
   }
-  80% {
+  75% {
+    display: none;
+    opacity: 0.5;
+  }
+  85% {
     display: none;
     opacity: 0.7;
+  }
+  95% {
+    display: none;
+    opacity: 0.8;
   }
   100% {
     display: block;
@@ -884,7 +1127,7 @@
 }
 
 .Graph .Date div:first-child span:first-child {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 31px;
   font-weight: 200;
 }
@@ -960,7 +1203,7 @@
 }
 
 .Tranzacioni div span:first-child {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   color: #5c5c5c;
 }
@@ -968,6 +1211,285 @@
 .Tranzacioni div span:nth-child(2) {
   font-size: 16px;
   color: #0578fc;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
+}
+
+.DepositoModal {
+  width: 100%;
+  height: calc(100% - 72px);
+  position: fixed;
+  left: 0;
+  top: 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container {
+  width: 350px;
+  height: 392px;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.DepositoModal--Container--Up {
+  height: 73px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.DepositoModal--Container--Up--Title {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #0078ff;
+}
+
+.DepositoModal--Container--Up--Agguntoal {
+  color: #5c5c5c;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}
+
+.DepositoModal--Container--Up--Agguntoal--Persona i {
+  font-size: 10px;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 3px;
+  top: -1px;
+  position: relative;
+}
+
+.DepositoModal--Container--Up--Agguntoal--Persona--Part3 {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.DepositoModal--Container--Down {
+  height: 318px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 7px 20px;
+}
+
+.DepositoModal--Container--Down--Form {
+  width: 100%;
+}
+
+.DepositoModal--Container--Down--Form--MessageLine {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  min-height: 118px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  outline: none;
+}
+
+.DepositoModal--Container--Down--Form--buttons {
+  width: 100%;
+  border: none;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2px 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.DepositoModal--Container--Down--Form--buttons button {
+  width: 150px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+}
+
+.DepositoModal--Container--Down--Form--buttons--Conferma {
+  border: 2px solid #00b850;
+  border-radius: 3px;
+  color: #00b850;
+}
+
+.DepositoModal--Container--Down--Form--buttons--Cancel {
+  border: 2px solid #7e7e7e;
+  border-radius: 3px;
+  color: #7e7e7e;
+}
+
+.DepositoModal--Container--Down--Form--NotifyLine {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.DepositoModal--Container--Down--Form--NotifyLine span {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  border-right: 1px solid #d6d6d6;
+  width: 90%;
+  min-height: 42px;
+  padding-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container--Down--Form--NotifyLine > i {
+  font-size: 15px;
+  color: #00b850;
+  font-weight: 400;
+  border-right: 1px solid #d6d6d6;
+  width: 10%;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Amount {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  border-right: 1px solid #d6d6d6;
+  width: 30%;
+  min-height: 42px;
+  padding-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Input, .DepositoModal--Container--Down--Form--AmountLine--Input--Input {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  position: relative;
+  width: 70%;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Input--Input {
+  width: 100%;
+  padding-right: 5px;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Euro {
+  position: absolute;
+  right: 5px;
+  top: 0;
 }
 /*# sourceMappingURL=styles.css.map */

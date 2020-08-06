@@ -9,25 +9,11 @@ import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
-import { DateRangePicker } from "react-date-range";
-import { subDays, format } from "date-fns";
-import * as locales from "react-date-range/dist/locale";
+import { format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
-const renderStaticRangeLabel = (e) => (
-  <CustomStaticRangeLabelContent text={e} />
-);
-class CustomStaticRangeLabelContent extends React.Component {
-  render() {
-    const { text } = this.props;
-    return (
-      <span>
-        <i>{text}</i>
-      </span>
-    );
-  }
-}
+import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 const { Option } = Select;
 class Transazioni extends React.Component {
   state = {
@@ -73,6 +59,12 @@ class Transazioni extends React.Component {
       phone,
     });
   };
+  componentWillUnmount() {
+    if (this.props.forAdmin === true) {
+      this.props.openModalForAdmin(false);
+      this.props.editModalDetails({});
+    }
+  }
   static getDerivedStateFromProps(nextProps, prevState) {
     let { usernames } = prevState;
 
@@ -87,6 +79,15 @@ class Transazioni extends React.Component {
 
     return null;
   }
+  activateModalForAdmin = (item, index) => {
+    this.props.openModalForAdmin(true);
+    this.props.editModalDetails({
+      index,
+      barcode: item.barcode,
+      agency_name: item.agency_name,
+      address: item.agency_address,
+    });
+  };
 
   handleOk = (e) => {
     this.setState({
@@ -217,6 +218,7 @@ class Transazioni extends React.Component {
   }
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { forAdmin } = this.props;
     const {
       barcode,
       picker,
@@ -292,128 +294,28 @@ class Transazioni extends React.Component {
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
               {isCalendarOpen && (
-                <div className="calendarWrapper">
-                  <DateRangePicker
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onChange={(item) => {
-                      // console.log(
-                      //   "itemm",
-                      //   item,
-                      //   item.selection.startDate,
-                      //   format(item.selection.startDate, "yyyy-MM-dd")
-                      // );
-                      this.setState({
-                        picker: [item.selection],
-                        from: format(item.selection.startDate, "yyyy-MM-dd"),
-                        to: format(item.selection.endDate, "yyyy-MM-dd"),
-                        fromLabel: format(
-                          item.selection.startDate,
-                          "dd/MM/yyyy"
-                        ),
-                        toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
-                      });
-                    }}
-                    locale={locales["it"]}
-                    color="#00e2b6"
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    months={1}
-                    maxDate={new Date()}
-                    dateDisplayFormat={"dd LLLL , yyyy"}
-                    ranges={picker}
-                    direction="horizontal"
-                    renderStaticRangeLabel={(e) => {
-                      return renderStaticRangeLabel(e.label);
-                    }}
-                    staticRanges={[
-                      {
-                        label: "Oggi",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: new Date(),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                      {
-                        label: "Ultima settimana",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: subDays(new Date(), 6),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                      {
-                        label: "Ultimo mese",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: subDays(new Date(), 29),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                      {
-                        label: "Ultimi 3 mesi",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: subDays(new Date(), 89),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                    ]}
-                    // scroll={{ enabled: true }}
-                  />
-                  <div
-                    className="blurCalendar"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      this.setCalendar(false);
-                    }}
-                  ></div>
-                  {
-                    <div className="buttons">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          this.setCalendar(false);
-                          this.setState({
-                            from: "",
-                            to: "",
-                            fromLabel: "",
-                            toLabel: "",
-                          });
-                        }}
-                      >
-                        Cancella
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          this.setCalendar(false);
-                          this.handleSubmit(e);
-                        }}
-                      >
-                        Esegui
-                      </button>
-                    </div>
-                  }
-                </div>
+                <CalendarRangePicker
+                  setStateFunc={(item) => {
+                    this.setState({
+                      picker: [item.selection],
+                      from: format(item.selection.startDate, "yyyy-MM-dd"),
+                      to: format(item.selection.endDate, "yyyy-MM-dd"),
+                      fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
+                      toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
+                    });
+                  }}
+                  setStateFuncEmpty={() => {
+                    this.setState({
+                      from: "",
+                      to: "",
+                      fromLabel: "",
+                      toLabel: "",
+                    });
+                  }}
+                  picker={picker}
+                  setCalendar={this.setCalendar}
+                  handleSubmit={this.handleSubmit}
+                />
               )}
               <h1 className="heading-tab ">Lista Movimenti</h1>
               <div className="datepics ml-auto mr-2">
@@ -501,9 +403,9 @@ class Transazioni extends React.Component {
                           height="14"
                           viewBox="0 0 14 14"
                         >
-                          <g class="a">
-                            <circle class="b" cx="7" cy="7" r="7" />
-                            <circle class="c" cx="7" cy="7" r="5.5" />
+                          <g className="a">
+                            <circle className="b" cx="7" cy="7" r="7" />
+                            <circle className="c" cx="7" cy="7" r="5.5" />
                           </g>
                         </svg>
                       ) : (
@@ -560,13 +462,15 @@ class Transazioni extends React.Component {
                               <tr
                                 key={index}
                                 onClick={() => {
-                                  this.showModal(
-                                    index,
-                                    item.barcode,
-                                    item.agency_name,
-                                    item.agency_address,
-                                    item.agency_phone
-                                  );
+                                  forAdmin === true
+                                    ? this.activateModalForAdmin(item, index)
+                                    : this.showModal(
+                                        index,
+                                        item.barcode,
+                                        item.agency_name,
+                                        item.agency_address,
+                                        item.agency_phone
+                                      );
                                   getCodiceTicket(
                                     item.barcode,
                                     item.service_name

@@ -30,6 +30,9 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: #f7f7f7;
 }
 
 .AdminColumns .Center--Big {
@@ -52,6 +55,7 @@
           align-items: flex-start;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  background: #00000008;
 }
 
 .AdminColumns .Left {
@@ -372,12 +376,14 @@
 @media (max-width: 1900px) {
   .AdminRightForm {
     width: 350px;
-    left: calc(100% - 350px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminRightForm--Box > i {
     font-size: 18px;
+  }
+  .AdminRightForm .printModal {
+    width: 350px;
   }
   .AdminColumns .Center--Big {
     width: calc(100% - 350px - 51px);
@@ -394,12 +400,15 @@
 @media (max-width: 1780px) {
   .AdminRightForm {
     width: 280px;
-    left: calc(100% - 280px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminRightForm--Box > i {
     font-size: 18px;
+  }
+  .AdminRightForm .printModal {
+    width: 320px;
+    padding: 0;
   }
   .Tranzacioni div span {
     font-size: 14px;
@@ -423,7 +432,6 @@
 @media (max-width: 1550px) {
   .AdminRightForm {
     width: 240px;
-    left: calc(100% - 240px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -992,10 +1000,17 @@ div.Center--Big .panels-container {
   width: 100%;
   min-width: 815px;
   min-height: 490px;
-  overflow-x: auto;
   margin: 0;
   padding-top: 0;
   padding-bottom: 50px !important;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right {
+  text-align: center;
+  width: 150px !important;
 }
 
 div.Center .container-fluid.overview .paginationWrapper,
@@ -1034,7 +1049,7 @@ div.Center--Big .panels-container .sort-annunci {
   margin: 0;
   padding: 0;
   font-size: 13px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1078,7 +1093,7 @@ div.Center .panels-container .sort-annunci .dal.calendar,
 div.Center--Big .container-fluid.overview .sort-annunci .dal.calendar,
 div.Center--Big .panels-container .sort-annunci .dal.calendar {
   font-size: 13px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: #5c5c5c;
   -webkit-box-pack: start;
@@ -1160,7 +1175,7 @@ div.Center .panels-container .sort-annunci div,
 div.Center--Big .container-fluid.overview .sort-annunci div,
 div.Center--Big .panels-container .sort-annunci div {
   font-size: 13px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: #5c5c5c;
 }
@@ -1193,7 +1208,7 @@ div.Center--Big .container-fluid.overview .sort-annunci ul li,
 div.Center--Big .panels-container .sort-annunci ul li {
   font-size: 13px;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1312,20 +1327,19 @@ div.Center--Big thead .wsNwp,
 div.Center--Big thead td {
   font-weight: bold;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   background-color: #ffffff;
   padding: 15px 10px;
   border: none;
   text-align: start;
   position: relative;
-  left: 5px;
 }
 
 div.Center tbody,
 div.Center--Big tbody {
   font-weight: 400;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 div.Center tbody tr,
@@ -1390,7 +1404,7 @@ div.Center--Big tbody .wsNwp:nth-child(4),
 div.Center--Big tbody td:nth-child(4) {
   font-size: 14px;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   color: #0078ff;
 }
 
@@ -1482,7 +1496,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header {
 div.Center .AdminServizi .AdminServiziItem--Header--Prenotazione,
 div.Center--Big .AdminServizi .AdminServiziItem--Header--Prenotazione {
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: #5c5c5c;
 }
@@ -1490,7 +1504,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header--Prenotazione {
 div.Center .AdminServizi .AdminServiziItem--Header--Title,
 div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   color: #000000;
@@ -1529,7 +1543,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   background-color: #ffffff;
   font-size: 11px;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   border-radius: 100px;
   color: #000000;
   border: 1px solid #000000;
@@ -1758,7 +1772,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   }
 }
 
-.Prenotazioni {
+div.Prenotazioni {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1775,7 +1789,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           justify-content: center;
 }
 
-.Prenotazioni--Statistiche {
+div.Prenotazioni--Statistiche {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1792,7 +1806,128 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           justify-content: center;
 }
 
-.Prenotazioni--Statistiche div {
+div.Prenotazioni--Statistiche div.Right {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px 29px;
+}
+
+div.Prenotazioni--Statistiche div.Right .Prenotazioni--Statistiche--DatePicker {
+  width: 197px;
+  height: 36px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 1px solid #00000035;
+  padding: 0 10px;
+  border-radius: 36px;
+  font-size: 12px;
+  font-family: "Roboto";
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+div.Prenotazioni--Statistiche div.Right .Prenotazioni--Statistiche--DatePicker i {
+  font-size: 18px;
+  height: 18px;
+  width: auto;
+}
+
+div.Prenotazioni--Statistiche div.Right .Prenotazioni--Statistiche--Arrow {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24px;
+  border: 1px solid #00000035;
+  margin-left: 10px;
+}
+
+div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 23px 30px;
+}
+
+div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft > i {
+  font-size: 16px;
+  font-weight: 300;
+  color: #5c5c5c;
+  padding-right: 10px;
+}
+
+div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5c5c5c;
+}
+
+div.Prenotazioni--Statistiche--First {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+  width: 100%;
+  height: 100px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background-color: #ebeced;
+}
+
+div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other {
+  z-index: 1;
+}
+
+div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Second {
+  margin-top: 58px;
+  z-index: 1;
+}
+
+div.Prenotazioni--Statistiche div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1805,7 +1940,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 100%;
 }
 
-.Prenotazioni--Statistiche div .Graph {
+div.Prenotazioni--Statistiche div .Graph {
   width: 22.5%;
   min-width: 22.5%;
   -webkit-box-sizing: border-box;
@@ -1832,20 +1967,19 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 7.5px 10px;
-  margin-top: 20px;
   margin-right: 24px;
 }
 
-.Prenotazioni--Statistiche div .Graph--Element {
+div.Prenotazioni--Statistiche div .Graph--Element {
   width: 6px;
   margin: 0 1.5px;
 }
 
-.Prenotazioni--Statistiche div .Graph--TM {
+div.Prenotazioni--Statistiche div .Graph--TM {
   position: absolute;
   font-size: 10px;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   width: 64px;
   min-height: 29px;
   height: auto;
@@ -1862,11 +1996,11 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   left: 5%;
 }
 
-.Prenotazioni--Statistiche div .Graph--Month {
+div.Prenotazioni--Statistiche div .Graph--Month {
   position: absolute;
   font-size: 10px;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   width: 80px;
   height: auto;
   min-height: 29px;
@@ -1883,7 +2017,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   right: 5%;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox {
   width: 22.5%;
   min-width: 22.5%;
   -webkit-box-sizing: border-box;
@@ -1909,22 +2043,21 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 7.5px 10px;
-  margin-top: 20px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:first-child {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:first-child {
   margin-left: 24px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:nth-child(4) {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:nth-child(4) {
   margin-right: 24px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Price {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Price {
   color: #5c5c5c;
   font-weight: 300;
   font-size: 30px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   padding-right: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1938,11 +2071,11 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Title {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Title {
   color: #5c5c5c;
   font-weight: 400;
   font-size: 10px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1955,7 +2088,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni {
   width: 22.5%;
   min-width: 22.5%;
   -webkit-box-sizing: border-box;
@@ -1980,61 +2113,61 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           justify-content: flex-start;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child {
   border: 1px solid #2cb850;
   margin-left: 24px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) {
   border: 1px solid #eb681e;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) {
   border: 1px solid #238be7;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) {
   border: 1px solid #e31117;
   margin-right: 24px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Header {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Header {
   background-color: #2db9501a;
   color: #2cb850;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
   color: #2cb850;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Header {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Header {
   background-color: #eb691e1a;
   color: #eb681e;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
   color: #eb681e;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Header {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Header {
   background-color: #238be71a;
   color: #238be7;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
   color: #238be7;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Header {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Header {
   background-color: #e411181a;
   color: #e31117;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
   color: #e31117;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2049,7 +2182,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding: 0 22px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--Stato {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--Stato {
   font-weight: 500;
   font-size: 14px;
   display: -webkit-box;
@@ -2062,12 +2195,12 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  font-family: "Robto";
+  font-family: "Roboto", sans-serif;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
   font-size: 30px;
-  font-family: "Robto";
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2082,7 +2215,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding-right: 5px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2101,7 +2234,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   font-size: 14px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2118,7 +2251,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 100%;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain div {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2134,17 +2267,17 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain div > i {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain div > i {
   font-size: 11px;
   padding-right: 7px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain--Number {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Plain--Number {
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2158,7 +2291,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding-right: 10px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2175,7 +2308,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 100%;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train div {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2191,17 +2324,17 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train div > i {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train div > i {
   font-size: 11px;
   padding-right: 7px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train--Number {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train--Number {
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2215,7 +2348,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding-right: 10px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2232,7 +2365,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 100%;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus div {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2248,17 +2381,17 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus div > i {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus div > i {
   font-size: 11px;
   padding-right: 7px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus--Number {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus--Number {
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2272,7 +2405,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding-right: 10px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2289,7 +2422,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 100%;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event div {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2305,17 +2438,17 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event div > i {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event div > i {
   font-size: 11px;
   padding-right: 7px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event--Number {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event--Number {
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2329,7 +2462,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding-right: 10px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2346,7 +2479,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 100%;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping div {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2362,17 +2495,17 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping div > i {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping div > i {
   font-size: 11px;
   padding-right: 7px;
 }
 
-.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping--Number {
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping--Number {
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2386,7 +2519,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   padding-right: 10px;
 }
 
-.Prenotazioni .ticketDetails {
+div.Prenotazioni .ticketDetails {
   margin: 0;
   margin-bottom: 5px;
 }
@@ -2395,9 +2528,9 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   .Prenotazioni--Statistiche {
     width: 100%;
   }
-  .Prenotazioni--Statistiche div {
-    display: -ms-grid;
-    display: grid;
+  .Prenotazioni--Statistiche--Other--Second, .Prenotazioni--Statistiche--Other--Third {
+    display: -ms-grid !important;
+    display: grid !important;
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     -ms-grid-rows: 1fr 1fr;
@@ -2463,12 +2596,6 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
 }
 
 @media (max-width: 1650px) {
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right,
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right {
-    text-align: start !important;
-  }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,

@@ -29,6 +29,11 @@ import Visure from "./routes/views/Visure";
 import loginAdmin from "./routes/views/loginAdmin";
 import adminPanel from "./routes/views/adminPanel";
 import VisureDetaggli from "./routes/views/VisureDetaggli";
+import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
+import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
+import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
+import AdminPanelServizi from "./routes/views/adminPanelServizi";
+
 import {
   subscribeSocketUser,
   socket,
@@ -87,13 +92,10 @@ class Root extends React.Component {
   };
 
   render() {
-    let isLoggedin = false;
-    const accountData = localStorage.getItem("accountDataB");
-    const data = JSON.parse(accountData);
+    let isLoggedin = JSON.parse(localStorage.getItem("accountDataB"))
+      ? true
+      : false;
     const role = get(this.props.accountInfo, "profile.role.name");
-    if (data) {
-      isLoggedin = true;
-    }
 
     return (
       <React.Fragment>
@@ -242,11 +244,33 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             />
+
             <PrivateRoute
-              path="/admin-panel"
-              component={adminPanel}
+              path="/back-office/utenti"
+              component={AdminPanelListaUtenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin", "user", "agency", "support"]}
+              allowedRoles={["super_admin"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/movimenti"
+              component={AdminPanelListaMovimenti}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/prenotazioni"
+              component={AdminPanelPrenotazioni}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/servizzi"
+              component={AdminPanelServizi}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin"]}
               role={role}
             />
           </Switch>

@@ -15,6 +15,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    transition: 0.5s;
+    background: #f7f7f7;
 
     &--Big {
       position: relative;
@@ -29,6 +31,7 @@
       justify-content: flex-start;
       align-items: flex-start;
       transition: 0.5s;
+      background: #00000008;
     }
   }
   & .Left {
@@ -273,8 +276,10 @@
         font-size: 18px;
       }
     }
+    & .printModal {
+      width: 350px;
+    }
     width: 350px;
-    left: calc(100% - 350px);
     transition: 0.5s;
   }
   .AdminColumns .Center--Big {
@@ -293,8 +298,11 @@
         font-size: 18px;
       }
     }
+    & .printModal {
+      width: 320px;
+      padding: 0;
+    }
     width: 280px;
-    left: calc(100% - 280px);
     transition: 0.5s;
   }
   .Tranzacioni div span {
@@ -320,8 +328,8 @@
         font-size: 18px;
       }
     }
+
     width: 240px;
-    left: calc(100% - 240px);
     transition: 0.5s;
   }
   .Tranzacioni div span {
@@ -381,6 +389,7 @@
     &--Category,
     &--Category--Prenotazioni {
       font-size: 12px;
+
       & div {
         padding: 0;
         flex-direction: column;
@@ -692,10 +701,19 @@ div.Center--Big {
     width: 100%;
     min-width: 815px;
     min-height: 490px;
-    overflow-x: auto;
     margin: 0;
     padding-top: 0;
     padding-bottom: 50px !important;
+    & .row.no-gutters.max-width {
+      & .col-md-12 {
+        & .transTable {
+          & td.right {
+            text-align: center;
+            width: 150px !important;
+          }
+        }
+      }
+    }
     & .paginationWrapper {
       margin-top: 20px;
       width: 100%;
@@ -714,7 +732,7 @@ div.Center--Big {
       margin: 0;
       padding: 0;
       font-size: 13px;
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       font-weight: 400;
       display: flex;
       flex-direction: row;
@@ -735,7 +753,7 @@ div.Center--Big {
       }
       & .dal.calendar {
         font-size: 13px;
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-weight: 400;
         color: #5c5c5c;
         justify-content: flex-start;
@@ -778,7 +796,7 @@ div.Center--Big {
       }
       & div {
         font-size: 13px;
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-weight: 400;
         color: #5c5c5c;
       }
@@ -794,7 +812,7 @@ div.Center--Big {
         & li {
           font-size: 13px;
           font-weight: 400;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           display: flex;
           height: 100%;
           align-items: center;
@@ -869,19 +887,18 @@ div.Center--Big {
     td {
       font-weight: bold;
       font-size: 14px;
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       background-color: #ffffff;
       padding: 15px 10px;
       border: none;
       text-align: start;
       position: relative;
-      left: 5px;
     }
   }
   & tbody {
     font-weight: 400;
     font-size: 14px;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     & tr {
       border-bottom: 1px solid #ebeced;
     }
@@ -914,7 +931,7 @@ div.Center--Big {
       &:nth-child(4) {
         font-size: 14px;
         font-weight: 400;
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         color: #0078ff;
       }
     }
@@ -971,13 +988,13 @@ div.Center--Big {
         align-items: center;
         &--Prenotazione {
           font-size: 14px;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           font-weight: 400;
           color: #5c5c5c;
         }
         &--Title {
           font-size: 14px;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           font-weight: 500;
           text-transform: uppercase;
           color: #000000;
@@ -1010,7 +1027,7 @@ div.Center--Big {
 
           font-size: 11px;
           font-weight: 400;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           border-radius: 100px;
           color: #000000;
           border: 1px solid #000000;
@@ -1216,7 +1233,7 @@ div.Center--Big {
   }
 }
 //Prenotazioni
-.Prenotazioni {
+div.Prenotazioni {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -1228,6 +1245,84 @@ div.Center--Big {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    & div.Right {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 16px 29px;
+      & .Prenotazioni--Statistiche--DatePicker {
+        width: 197px;
+        height: 36px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        border: 1px solid #00000035;
+        padding: 0 10px;
+        border-radius: 36px;
+        font-size: 12px;
+        font-family: "Roboto";
+        align-items: center;
+        cursor: pointer;
+
+        & i {
+          font-size: 18px;
+          height: 18px;
+          width: auto;
+        }
+      }
+      & .Prenotazioni--Statistiche--Arrow {
+        box-sizing: border-box;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        border: 1px solid #00000035;
+        margin-left: 10px;
+      }
+    }
+    & .Prenotazioni--Statistiche--TitleHeaderLeft {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 23px 30px;
+      > i {
+        font-size: 16px;
+        font-weight: 300;
+        color: #5c5c5c;
+        padding-right: 10px;
+      }
+      & span {
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c5c5c;
+      }
+    }
+    &--First {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between !important;
+      width: 100%;
+      height: 100px;
+      align-items: flex-start;
+      background-color: #ebeced;
+    }
+    & .Prenotazioni--Statistiche--Other {
+      &--Second {
+        margin-top: 58px;
+        z-index: 1;
+      }
+      z-index: 1;
+    }
     & div {
       display: flex;
       flex-direction: row;
@@ -1249,7 +1344,6 @@ div.Center--Big {
         align-items: flex-end;
         justify-content: center;
         margin: 7.5px 10px;
-        margin-top: 20px;
         margin-right: 24px;
         &--Element {
           width: 6px;
@@ -1259,7 +1353,7 @@ div.Center--Big {
           position: absolute;
           font-size: 10px;
           font-weight: 400;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           width: 64px;
           min-height: 29px;
           height: auto;
@@ -1273,7 +1367,7 @@ div.Center--Big {
           position: absolute;
           font-size: 10px;
           font-weight: 400;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           width: 80px;
           height: auto;
           min-height: 29px;
@@ -1299,7 +1393,6 @@ div.Center--Big {
         align-items: flex-start;
         justify-content: center;
         margin: 7.5px 10px;
-        margin-top: 20px;
         &:first-child {
           margin-left: 24px;
         }
@@ -1311,7 +1404,7 @@ div.Center--Big {
           color: #5c5c5c;
           font-weight: 300;
           font-size: 30px;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           padding-right: 8px;
           display: flex;
           justify-content: flex-start;
@@ -1322,7 +1415,7 @@ div.Center--Big {
           color: #5c5c5c;
           font-weight: 400;
           font-size: 10px;
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           display: flex;
           justify-content: flex-start;
           width: auto;
@@ -1414,11 +1507,11 @@ div.Center--Big {
             justify-content: flex-start;
             align-items: center;
             width: auto;
-            font-family: "Robto";
+            font-family: "Roboto", sans-serif;
           }
           &--TotalInfo {
             font-size: 30px;
-            font-family: "Robto";
+            font-family: "Roboto", sans-serif;
             font-weight: 300;
             display: flex;
             justify-content: flex-end;
@@ -1451,7 +1544,7 @@ div.Center--Big {
               align-items: center;
               text-transform: uppercase;
               font-size: 14px;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               > i {
                 font-size: 11px;
                 padding-right: 7px;
@@ -1459,7 +1552,7 @@ div.Center--Big {
             }
             &--Number {
               font-weight: 400;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               display: flex;
               justify-content: flex-end;
               align-items: center;
@@ -1480,7 +1573,7 @@ div.Center--Big {
               align-items: center;
               text-transform: uppercase;
               font-size: 14px;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               > i {
                 font-size: 11px;
                 padding-right: 7px;
@@ -1488,7 +1581,7 @@ div.Center--Big {
             }
             &--Number {
               font-weight: 400;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               display: flex;
               justify-content: flex-end;
               align-items: center;
@@ -1509,7 +1602,7 @@ div.Center--Big {
               align-items: center;
               text-transform: uppercase;
               font-size: 14px;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               > i {
                 font-size: 11px;
                 padding-right: 7px;
@@ -1517,7 +1610,7 @@ div.Center--Big {
             }
             &--Number {
               font-weight: 400;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               display: flex;
               justify-content: flex-end;
               align-items: center;
@@ -1538,7 +1631,7 @@ div.Center--Big {
               align-items: center;
               text-transform: uppercase;
               font-size: 14px;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               > i {
                 font-size: 11px;
                 padding-right: 7px;
@@ -1546,7 +1639,7 @@ div.Center--Big {
             }
             &--Number {
               font-weight: 400;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               display: flex;
               justify-content: flex-end;
               align-items: center;
@@ -1567,7 +1660,7 @@ div.Center--Big {
               align-items: center;
               text-transform: uppercase;
               font-size: 14px;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               > i {
                 font-size: 11px;
                 padding-right: 7px;
@@ -1575,7 +1668,7 @@ div.Center--Big {
             }
             &--Number {
               font-weight: 400;
-              font-family: "Roboto";
+              font-family: "Roboto", sans-serif;
               display: flex;
               justify-content: flex-end;
               align-items: center;
@@ -1596,8 +1689,9 @@ div.Center--Big {
 @media (max-width: 1330px) {
   .Prenotazioni--Statistiche {
     width: 100%;
-    & div {
-      display: grid;
+    &--Other--Second,
+    &--Other--Third {
+      display: grid !important;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       width: 100%;
@@ -1668,9 +1762,6 @@ div.Center--Big {
       & .row.no-gutters.max-width {
         & .col-md-12 {
           & .transTable {
-            & td.right {
-              text-align: start !important;
-            }
             & thead {
               & td,
               & .wsNwp,

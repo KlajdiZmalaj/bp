@@ -26,7 +26,7 @@ class AdminListaUtenti extends React.Component {
             children: [],
           },
           {
-            user_id: "#00103",
+            user_id: "#00104",
             role: "agent",
             username: "User",
             rag_sociale: "PK S.R.L",
@@ -37,7 +37,7 @@ class AdminListaUtenti extends React.Component {
             children: [],
           },
           {
-            user_id: "#00103",
+            user_id: "#00105",
             role: "agent",
             username: "User",
             rag_sociale: "PK S.R.L",
@@ -47,7 +47,7 @@ class AdminListaUtenti extends React.Component {
             ultimo_login: "16-07-220 09:10:17",
             children: [
               {
-                user_id: "#00104",
+                user_id: "#00106",
                 username: "MONTI VIRGILO",
                 rag_sociale: "PK SOLUTION S.R.L",
                 credito: "205.00",
@@ -58,7 +58,7 @@ class AdminListaUtenti extends React.Component {
                 role: "user",
               },
               {
-                user_id: "#00104",
+                user_id: "#00107",
                 username: "MONTI VIRGILO",
                 rag_sociale: "PK SOLUTION S.R.L",
                 credito: "205.00",
@@ -71,7 +71,7 @@ class AdminListaUtenti extends React.Component {
             ],
           },
           {
-            user_id: "#00103",
+            user_id: "#00108",
             role: "agent",
             username: "User",
             rag_sociale: "PK S.R.L",
@@ -81,7 +81,7 @@ class AdminListaUtenti extends React.Component {
             ultimo_login: "16-07-220 09:10:17",
             children: [
               {
-                user_id: "#00104",
+                user_id: "#00109",
                 username: "MONTI VIRGILO",
                 rag_sociale: "PK SOLUTION S.R.L",
                 credito: "205.00",
@@ -92,7 +92,7 @@ class AdminListaUtenti extends React.Component {
                 role: "user",
               },
               {
-                user_id: "#00104",
+                user_id: "#00111",
                 username: "MONTI VIRGILO",
                 rag_sociale: "PK SOLUTION S.R.L",
                 credito: "205.00",
@@ -107,7 +107,7 @@ class AdminListaUtenti extends React.Component {
         ],
       },
       {
-        user_id: "#00102",
+        user_id: "#00112",
         username: "MONTI VIRGILO",
         rag_sociale: "PK SOLUTION S.R.L",
         credito: "205.00",
@@ -128,7 +128,7 @@ class AdminListaUtenti extends React.Component {
             children: [],
           },
           {
-            user_id: "#00103",
+            user_id: "#00113",
             role: "agent",
             username: "User",
             rag_sociale: "PK S.R.L",
@@ -138,7 +138,7 @@ class AdminListaUtenti extends React.Component {
             ultimo_login: "16-07-220 09:10:17",
             children: [
               {
-                user_id: "#00104",
+                user_id: "#00114",
                 username: "MONTI VIRGILO",
                 rag_sociale: "PK SOLUTION S.R.L",
                 credito: "205.00",
@@ -149,7 +149,7 @@ class AdminListaUtenti extends React.Component {
                 role: "user",
               },
               {
-                user_id: "#00104",
+                user_id: "#00115",
                 username: "MONTI VIRGILO",
                 rag_sociale: "PK SOLUTION S.R.L",
                 credito: "205.00",
@@ -164,7 +164,7 @@ class AdminListaUtenti extends React.Component {
         ],
       },
       {
-        user_id: "#00105",
+        user_id: "#00116",
         role: "agency",
         username: "MONTI VIRGILO",
         rag_sociale: "PK SOLUTION S.R.L",
@@ -188,7 +188,7 @@ class AdminListaUtenti extends React.Component {
         ],
       },
       {
-        user_id: "#00106",
+        user_id: "#00117",
         role: "agency",
         username: "MONTI VIRGILO",
         rag_sociale: "PK SOLUTION S.R.L",
@@ -199,7 +199,7 @@ class AdminListaUtenti extends React.Component {
         children: [],
       },
       {
-        user_id: "#00106",
+        user_id: "#00118",
         role: "agency",
         username: "MONTI VIRGILO",
         rag_sociale: "PK SOLUTION S.R.L",
@@ -225,7 +225,9 @@ class AdminListaUtenti extends React.Component {
         </div>
         <div className="AdminListaUtentiRow">
           {list.map((itemList) => {
-            return <AdminListaUtentiRow itemList={itemList} />;
+            return (
+              <AdminListaUtentiRow itemList={itemList} key={itemList.user_id} />
+            );
           })}
         </div>
       </div>
