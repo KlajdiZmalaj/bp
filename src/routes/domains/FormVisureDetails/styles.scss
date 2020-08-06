@@ -94,6 +94,25 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
+      @media (max-width: 768px) {
+        flex-flow: column;
+        align-items: center;
+        margin: 0;
+        > i {
+          margin-top: 5px !important;
+        }
+        input {
+          width: 100%;
+          margin: 0 !important;
+          margin-top: 5px !important;
+        }
+        span.status {
+          width: 162px;
+          font-size: 12px;
+          justify-content: flex-start !important;
+          text-transform: uppercase;
+        }
+      }
       & input {
         border: 0.5px solid #9f9f9f;
         border-radius: 2px;

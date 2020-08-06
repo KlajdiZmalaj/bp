@@ -144,6 +144,35 @@
           justify-content: flex-start;
 }
 
+@media (max-width: 768px) {
+  .ticketDetails--filters__byTicket {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0;
+  }
+  .ticketDetails--filters__byTicket > i {
+    margin-top: 5px !important;
+  }
+  .ticketDetails--filters__byTicket input {
+    width: 100%;
+    margin: 0 !important;
+    margin-top: 5px !important;
+  }
+  .ticketDetails--filters__byTicket span.status {
+    width: 162px;
+    font-size: 12px;
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+    text-transform: uppercase;
+  }
+}
+
 .ticketDetails--filters__byTicket input {
   border: 0.5px solid #9f9f9f;
   border-radius: 2px;
