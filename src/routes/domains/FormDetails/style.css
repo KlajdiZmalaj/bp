@@ -42,6 +42,7 @@
           flex-flow: column;
   background-color: #fff;
   width: 100%;
+  max-width: 1371px;
   margin: 30px auto;
 }
 
@@ -76,20 +77,7 @@
   }
 }
 
-.ticketDetails--filters__byTicket div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.ticketDetails--filters__byTicket div > i {
+.ticketDetails--filters__byTicket > i {
   background-color: #e3e4e5;
   width: 40px;
   height: 40px;
@@ -107,7 +95,7 @@
   margin-right: 5px;
 }
 
-.ticketDetails--filters__byTicket div > i:nth-child(1) {
+.ticketDetails--filters__byTicket > i:nth-child(1) {
   margin-left: auto;
 }
 
@@ -844,5 +832,73 @@
 .ticketDetails--row .fas:hover {
   background-color: unset !important;
   color: var(--accent-bg) !important;
+}
+
+.rowPopUp {
+  position: fixed;
+  width: 90%;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  -webkit-box-shadow: 0 0 44px -15px black;
+          box-shadow: 0 0 44px -15px black;
+  z-index: 3;
+}
+
+.rowPopUp--header {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  background: var(--accent-bg);
+  color: var(--accent-txt);
+  text-transform: uppercase;
+  font-size: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.rowPopUp--header > i {
+  font-size: 18px;
+}
+
+.rowPopUp--body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.rowPopUp--body__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: capitalize;
+  font-size: 13px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 3px 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.Visure .overview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */
