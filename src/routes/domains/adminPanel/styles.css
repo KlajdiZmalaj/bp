@@ -141,6 +141,30 @@
   background-color: #f3f3f4;
 }
 
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div.TranzacioniModalResponsive ::after, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div.TranzacioniModalResponsive ::after {
+  border-left: transparent !important;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div.TranzacioniModalResponsive ::before, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div.TranzacioniModalResponsive ::before {
+  display: none;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div.TranzacioniModalResponsive--Data, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div.TranzacioniModalResponsive--Data {
+  z-index: 99 !important;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div.TranzacioniModalResponsive div.TranzacioniModalResponsive--Data--Header:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div.TranzacioniModalResponsive div.TranzacioniModalResponsive--Data--Header:nth-child(1) {
+  background-color: #0078ff;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div.TranzacioniModalResponsive div:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div.TranzacioniModalResponsive div:nth-child(1) {
+  background-color: transparent;
+}
+
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children div.backDrop, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children div.backDrop {
+  background-color: rgba(0, 0, 0, 0.349) !important;
+}
+
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) :nth-child(1) {
   opacity: 0;
   width: 13px;
@@ -1654,7 +1678,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   width: 55%;
 }
 
-.TranzacioniModalResponsive--Data--Row--Data {
+.TranzacioniModalResponsive--Data--Row--DateOra, .TranzacioniModalResponsive--Data--Row--Barcode, .TranzacioniModalResponsive--Data--Row--User, .TranzacioniModalResponsive--Data--Row--Service, .TranzacioniModalResponsive--Data--Row--Importo, .TranzacioniModalResponsive--Data--Row--Commissione, .TranzacioniModalResponsive--Data--Row--Proviggione, .TranzacioniModalResponsive--Data--Row--Saldo, .TranzacioniModalResponsive--Data--Row--UserId, .TranzacioniModalResponsive--Data--Row--Username, .TranzacioniModalResponsive--Data--Row--City, .TranzacioniModalResponsive--Data--Row--Credito, .TranzacioniModalResponsive--Data--Row--RagSociale, .TranzacioniModalResponsive--Data--Row--Role, .TranzacioniModalResponsive--Data--Row--UltimoDeposit, .TranzacioniModalResponsive--Data--Row--UltimoLogin {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1668,215 +1692,25 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
           align-items: center;
 }
 
-.TranzacioniModalResponsive--Data--Row--Data--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
+.TranzacioniModalResponsive--Data--Row--DateOra--Header, .TranzacioniModalResponsive--Data--Row--Barcode--Header, .TranzacioniModalResponsive--Data--Row--User--Header, .TranzacioniModalResponsive--Data--Row--Service--Header, .TranzacioniModalResponsive--Data--Row--Importo--Header, .TranzacioniModalResponsive--Data--Row--Commissione--Header, .TranzacioniModalResponsive--Data--Row--Proviggione--Header, .TranzacioniModalResponsive--Data--Row--Saldo--Header, .TranzacioniModalResponsive--Data--Row--UserId--Header, .TranzacioniModalResponsive--Data--Row--Username--Header, .TranzacioniModalResponsive--Data--Row--City--Header, .TranzacioniModalResponsive--Data--Row--Credito--Header, .TranzacioniModalResponsive--Data--Row--RagSociale--Header, .TranzacioniModalResponsive--Data--Row--Role--Header, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header {
+  font-weight: bold !important;
+  padding-right: 4% !important;
+  width: 51% !important;
+  text-align: start !important;
+  margin: 0 !important;
 }
 
-.TranzacioniModalResponsive--Data--Row--Data--Header:after {
+.TranzacioniModalResponsive--Data--Row--DateOra--Header:after, .TranzacioniModalResponsive--Data--Row--Barcode--Header:after, .TranzacioniModalResponsive--Data--Row--User--Header:after, .TranzacioniModalResponsive--Data--Row--Service--Header:after, .TranzacioniModalResponsive--Data--Row--Importo--Header:after, .TranzacioniModalResponsive--Data--Row--Commissione--Header:after, .TranzacioniModalResponsive--Data--Row--Proviggione--Header:after, .TranzacioniModalResponsive--Data--Row--Saldo--Header:after, .TranzacioniModalResponsive--Data--Row--UserId--Header:after, .TranzacioniModalResponsive--Data--Row--Username--Header:after, .TranzacioniModalResponsive--Data--Row--City--Header:after, .TranzacioniModalResponsive--Data--Row--Credito--Header:after, .TranzacioniModalResponsive--Data--Row--RagSociale--Header:after, .TranzacioniModalResponsive--Data--Row--Role--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header:after {
   content: " :";
 }
 
-.TranzacioniModalResponsive--Data--Row--Barcode {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Barcode--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Barcode--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--User {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--User--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--User--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--Service {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Service--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Service--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--Importo {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Importo--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Importo--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--Commissione {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Commissione--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Commissione--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--Proviggione {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Proviggione--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Proviggione--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--Proviggione {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Proviggione--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Proviggione--Header:after {
-  content: " :";
-}
-
-.TranzacioniModalResponsive--Data--Row--Saldo {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.TranzacioniModalResponsive--Data--Row--Saldo--Header {
-  font-weight: bold;
-  padding-right: 10%;
-  width: 45%;
-  text-align: start;
-}
-
-.TranzacioniModalResponsive--Data--Row--Saldo--Header:after {
-  content: " :";
+.TranzacioniModalResponsive--Data--Row--DateOra--Info, .TranzacioniModalResponsive--Data--Row--Barcode--Info, .TranzacioniModalResponsive--Data--Row--User--Info, .TranzacioniModalResponsive--Data--Row--Service--Info, .TranzacioniModalResponsive--Data--Row--Importo--Info, .TranzacioniModalResponsive--Data--Row--Commissione--Info, .TranzacioniModalResponsive--Data--Row--Proviggione--Info, .TranzacioniModalResponsive--Data--Row--Saldo--Info, .TranzacioniModalResponsive--Data--Row--UserId--Info, .TranzacioniModalResponsive--Data--Row--Username--Info, .TranzacioniModalResponsive--Data--Row--City--Info, .TranzacioniModalResponsive--Data--Row--Credito--Info, .TranzacioniModalResponsive--Data--Row--RagSociale--Info, .TranzacioniModalResponsive--Data--Row--Role--Info, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Info, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Info {
+  width: 55% !important;
+  min-width: 55% !important;
+  margin: 0 !important;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
 }
 
 @media (max-width: 1500px) {
@@ -2883,27 +2717,6 @@ div.Prenotazioni .ticketDetails {
   }
 }
 
-@media (max-width: 520px) {
-  div.Prenotazioni--Statistiche {
-    width: 100%;
-  }
-  div.Prenotazioni--Statistiche--Box--PriceBox--Price {
-    font-size: 20px !important;
-  }
-  div.Prenotazioni--Statistiche div {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 1fr;
-        grid-template-rows: 1fr;
-    width: 100%;
-  }
-  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
-    font-size: 20px;
-  }
-}
-
 @media (max-width: 1720px) {
   div.Center .container-fluid.overview .sort-annunci,
   div.Center .panels-container .sort-annunci,
@@ -3698,6 +3511,7 @@ div.Prenotazioni .ticketDetails {
   .TranzacioniModalResponsive--Data {
     position: fixed;
     width: 320px;
+    height: 400px;
     left: calc((100% - 300px) / 2);
   }
 }
@@ -3706,6 +3520,7 @@ div.Prenotazioni .ticketDetails {
   .TranzacioniModalResponsive--Data {
     position: fixed;
     width: 320px;
+    height: 400px;
     left: calc((100% - 280px) / 2);
   }
   div.Center .container-fluid.overview .paginationWrapper,
@@ -3757,6 +3572,7 @@ div.Prenotazioni .ticketDetails {
   .TranzacioniModalResponsive--Data {
     position: fixed;
     width: 260px;
+    height: 400px;
     left: calc((100% - 260px) / 2);
   }
   .TranzacioniModalResponsive--Data--Header {
@@ -3782,6 +3598,275 @@ div.Prenotazioni .ticketDetails {
   .TranzacioniModalResponsive--Data--Row div span:nth-child(2) {
     font-size: 12px;
     font-weight: 400;
+  }
+}
+
+@media (max-width: 1200px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child i {
+    border: none;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+}
+
+@media (max-width: 950px) {
+  .AdminListaUtenti .AdminListaUtentiRow > div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) {
+    width: calc(35% - 40px) !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
+    width: calc(35% - 60px) !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(5) {
+    display: none;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(3) {
+    display: none;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(6), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(6) {
+    display: none;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(7) {
+    display: none;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1) {
+    width: 15%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
+    width: 35%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4) {
+    width: 15%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(8), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(8) {
+    width: 35%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child i {
+    border: 0.5px solid #5c5c5c;
+    background-color: #ffffff;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+  }
+  .AdminListaUtenti--Header span:nth-child(5) {
+    display: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(3) {
+    display: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(6) {
+    display: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(7) {
+    display: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(1) {
+    width: 15%;
+  }
+  .AdminListaUtenti--Header span:nth-child(2) {
+    width: 35%;
+  }
+  .AdminListaUtenti--Header span:nth-child(4) {
+    width: 15%;
+  }
+  .AdminListaUtenti--Header span:nth-child(8) {
+    width: 35%;
+  }
+  .AdminListaUtenti--Header span:last-child {
+    left: 15px;
+  }
+}
+
+@media (max-width: 520px) {
+  div.Prenotazioni--Statistiche {
+    width: 100%;
+  }
+  div.Prenotazioni--Statistiche--Box--PriceBox--Price {
+    font-size: 20px !important;
+  }
+  div.Prenotazioni--Statistiche div {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+    width: 100%;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Second {
+    margin-top: 100px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 145px;
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Prenotazioni--Statistiche--TitleHeaderLeft {
+    width: 100%;
+    padding: 20px 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0px 5px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker,
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
+    width: 60%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
+    width: 100%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+    font-size: 20px;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow > div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) {
+    width: calc(47% - 40px) !important;
+    margin-left: calc(4% + 35px) !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
+    width: calc(47% - 60px) !important;
+    margin-left: calc(6% + 48px) !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
+    width: 47%;
+    margin-left: 4%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4) {
+    display: none;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child {
+    margin-right: 10px;
+    width: 38%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child button, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child button {
+    padding: 0;
+    font-size: 10px;
+    padding: 3px 2px;
+    border-radius: 6px;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child i {
+    padding: 0 !important;
+    width: auto;
+    height: auto;
+    border: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(4) {
+    display: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(2) {
+    width: 47%;
+  }
+  .AdminListaUtenti--Header span:last-child {
+    width: 38%;
+    left: 8px;
+  }
+}
+
+@media (max-width: 450px) {
+  .AdminListaUtenti .AdminListaUtentiRow > div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span:nth-child(2) {
+    width: calc(55% - 40px) !important;
+    margin-left: calc(7% + 35px) !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow > div
+> div.AdminListaUtentiRow--Complete--Main--Child.children
+> div
+> div span.TranzacioniModalResponsive--Data--Row--Username--Info {
+    width: 55% !important;
+    margin: 0 !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span:nth-child(2) {
+    width: calc(55% - 40px) !important;
+    margin-left: calc(7% + 55px) !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div.AdminListaUtentiRow--Complete--Main--Child.children > div > div span.TranzacioniModalResponsive--Data--Row--Username--Info {
+    width: 55% !important;
+    margin: 0 !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:first-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:first-child {
+    display: none;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
+    width: 55%;
+    margin-left: 7%;
+    font-size: 12px;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child {
+    width: 45%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child i {
+    margin: 0 3px;
+  }
+  .AdminListaUtenti--Header span:first-child {
+    display: none;
+  }
+  .AdminListaUtenti--Header span:nth-child(2) {
+    width: 55%;
+    margin-left: 6%;
+  }
+  .AdminListaUtenti--Header span:last-child {
+    width: 45%;
+  }
+  .AdminListaUtenti .TranzacioniModalResponsive--Data span:first-child {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
   }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -6,6 +6,9 @@ import ReactToPrint from "react-to-print";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import Ticket from "./Ticket";
+import AdminRightFormUltimeDetails from "./AdminRightFormUltimeDetails";
+import AdminRightFormStatisticheDetails from "./AdminRightFormStatisticheDetails";
+import AdminRightFormWalletDetails from "./AdminRightFormWalletDetails";
 class AdminRightForm extends React.Component {
   state = {
     dropdownVisibility: false,
@@ -81,9 +84,17 @@ class AdminRightForm extends React.Component {
         price: "241.98",
       },
     ];
+    const {
+      depositoActiveVisibility,
+      dropdownVisibility,
+      statisticheDropdownVisibility,
+      leUltimeTransazioni,
+      addebitoActiveVisibility,
+    } = this.state;
+    const { openAdminModal } = this.props;
     return (
       <div className="AdminRightForm">
-        {this.props.openAdminModal === false ? (
+        {openAdminModal === false ? (
           <React.Fragment>
             {" "}
             <div className="AdminRightForm--Box">
@@ -93,57 +104,22 @@ class AdminRightForm extends React.Component {
               </div>
               <i
                 className={`far fa-chevron-${
-                  this.state.statisticheDropdownVisibility === false
-                    ? "down"
-                    : "up"
+                  statisticheDropdownVisibility === false ? "down" : "up"
                 }`}
                 onClick={() => {
                   this.setState({
-                    statisticheDropdownVisibility: !this.state
-                      .statisticheDropdownVisibility,
+                    statisticheDropdownVisibility: !statisticheDropdownVisibility,
                   });
                 }}
               ></i>
             </div>
-            {this.state.statisticheDropdownVisibility && (
-              <div className="Statistiche Dropdown">
-                <div className="Graph">
-                  {data.map((heigh, i) => {
-                    return (
-                      <Tooltip
-                        title={heigh.price}
-                        key={heigh.price + heigh.height * 2 + i}
-                      >
-                        <div
-                          key={heigh.price + heigh.height * 3 + i}
-                          className="Graph--Element"
-                          style={{ height: `${heigh.height}%` }}
-                        ></div>
-                      </Tooltip>
-                    );
-                  })}
-                  <div className="Date">
-                    <div>
-                      <span>{new Date().getDate()}</span>
-                      <span>{moment().format("MMMM")}</span>
-                    </div>
-                    <div>
-                      <i className="fal fa-calendar-alt"></i>
-                    </div>
-                  </div>
-                </div>
-                <div className="Tranzacioni">
-                  <div>
-                    <span>Tranzacioni</span> <span>258.66 $</span>{" "}
-                  </div>
-                  <div>
-                    <span>Commisione</span> <span>360 $</span>{" "}
-                  </div>
-                  <div>
-                    <span>Proviggioni</span> <span>220 $</span>
-                  </div>
-                </div>
-              </div>
+            {statisticheDropdownVisibility && (
+              <AdminRightFormStatisticheDetails
+                graphData={data}
+                Tranzacioni={"2586.66"}
+                Commisione={"2586.66"}
+                Proviggioni={"2586.66"}
+              />
             )}
             <div className="AdminRightForm--Box">
               <div className="AdminRightForm--Box--HeartRate">
@@ -153,38 +129,19 @@ class AdminRightForm extends React.Component {
 
               <i
                 className={`far fa-chevron-${
-                  this.state.leUltimeTransazioni === false ? "down" : "up"
+                  leUltimeTransazioni === false ? "down" : "up"
                 }`}
                 onClick={() => {
                   this.setState({
-                    leUltimeTransazioni: !this.state.leUltimeTransazioni,
+                    leUltimeTransazioni: !leUltimeTransazioni,
                   });
                 }}
               ></i>
             </div>
-            {this.state.leUltimeTransazioni && (
-              <div className="AdminRightForm--Box--LeUltime--Dropdown">
-                {leUltimeTransazioniDet.map((Tranzacioni) => (
-                  <div
-                    className="AdminRightForm--Box--LeUltime--Dropdown--Row"
-                    key={Tranzacioni.id}
-                  >
-                    <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Date">
-                      {Tranzacioni.date}
-                    </span>
-                    <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Id">
-                      {Tranzacioni.id}
-                    </span>
-
-                    <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data User">
-                      {Tranzacioni.utente}
-                    </span>
-                    <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Price">
-                      {Tranzacioni.price}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            {leUltimeTransazioni && (
+              <AdminRightFormUltimeDetails
+                leUltimeTransazioniDet={leUltimeTransazioniDet}
+              />
             )}
             <div className="AdminRightForm--Box">
               <div className="AdminRightForm--Box--Wallet">
@@ -194,87 +151,28 @@ class AdminRightForm extends React.Component {
               </div>
               <i
                 className={`far fa-chevron-${
-                  this.state.dropdownVisibility === false ? "down" : "up"
+                  dropdownVisibility === false ? "down" : "up"
                 }`}
                 onClick={() => {
                   this.setState({
-                    dropdownVisibility: !this.state.dropdownVisibility,
+                    dropdownVisibility: !dropdownVisibility,
                   });
                 }}
               ></i>
             </div>
-            {this.state.dropdownVisibility && (
-              <div className="AdminRightForm--Box--Wallet--Dropdown">
-                <div className="AdminRightForm--Box--Wallet--Dropdown--ChoseButtons">
-                  <button
-                    onClick={() => {
-                      this.setState({
-                        depositoActiveVisibility: !this.state
-                          .depositoActiveVisibility,
-                        addebitoActiveVisibility: this.state
-                          .depositoActiveVisibility,
-                      });
-                    }}
-                    className={`${
-                      this.state.depositoActiveVisibility === true
-                        ? "active"
-                        : ""
-                    }`}
-                  >
-                    DEPOSITO{" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="11"
-                      height="7"
-                      viewBox="0 0 11 7"
-                    >
-                      <path className="a" d="M5.5,0,11,7H0Z" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => {
-                      this.setState({
-                        addebitoActiveVisibility: !this.state
-                          .addebitoActiveVisibility,
-                        depositoActiveVisibility: this.state
-                          .addebitoActiveVisibility,
-                      });
-                    }}
-                    className={`${
-                      this.state.addebitoActiveVisibility === true
-                        ? "active"
-                        : ""
-                    }`}
-                  >
-                    ADDEBITO{" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="11"
-                      height="7"
-                      viewBox="0 0 11 7"
-                    >
-                      <path className="a" d="M5.5,0,11,7H0Z" />
-                    </svg>
-                  </button>
-                </div>
-                <div className="InputHolder">
-                  <input placeholder="SEARCH USERNAME" />
-                  <i className="fal fa-search"></i>
-                </div>
-
-                <div className="InputHolder">
-                  <input placeholder="SOMMA" />
-                  <span>&euro;</span>
-                </div>
-                <div className="InputHolder">
-                  <input placeholder="NOTIFICA ALL’USER" />
-                  <i className="far fa-check"></i>
-                </div>
-
-                <button className="AdminRightForm--Box--Wallet--Dropdown--Submit">
-                  DEPOSITO
-                </button>
-              </div>
+            {dropdownVisibility && (
+              <AdminRightFormWalletDetails
+                handleDebitoVisibility={this.setState({
+                  depositoActiveVisibility: true,
+                  addebitoActiveVisibility: false,
+                })}
+                handleDepositoVisibility={this.setState({
+                  depositoActiveVisibility: false,
+                  addebitoActiveVisibility: true,
+                })}
+                addebitoActiveVisibility={addebitoActiveVisibility}
+                depositoActiveVisibility={depositoActiveVisibility}
+              />
             )}
           </React.Fragment>
         ) : (
