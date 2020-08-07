@@ -447,7 +447,7 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  {this.props.forAdmin === false && (
+                  {!this.props.forAdmin && (
                     <div>
                       <button className="filterBtn" htmltype="submit">
                         Filter
