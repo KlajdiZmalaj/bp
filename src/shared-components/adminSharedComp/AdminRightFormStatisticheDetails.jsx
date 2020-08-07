@@ -1,11 +1,12 @@
 import React from "react";
 import { Tooltip } from "antd";
 import moment from "moment";
-const AdminRightFormStatisticheDetails = ({
+const NormalStatDetails = ({
   graphData,
   Tranzacioni,
   Commisione,
   Proviggioni,
+  ModalOrNo,
 }) => (
   <div className="Statistiche Dropdown">
     <div className="Graph">
@@ -42,5 +43,33 @@ const AdminRightFormStatisticheDetails = ({
       </div>
     </div>
   </div>
+);
+const AdminRightFormStatisticheDetails = ({
+  graphData,
+  Tranzacioni,
+  Commisione,
+  Proviggioni,
+  ModalOrNo,
+}) => (
+  <React.Fragment>
+    {ModalOrNo === true ? (
+      <div className="RightFormModal">
+        <div className="backDrop"></div>
+        <NormalStatDetails
+          graphData={graphData}
+          Tranzacioni={Tranzacioni}
+          Commisione={Commisione}
+          Proviggioni={Proviggioni}
+        />
+      </div>
+    ) : (
+      <NormalStatDetails
+        graphData={graphData}
+        Tranzacioni={Tranzacioni}
+        Commisione={Commisione}
+        Proviggioni={Proviggioni}
+      />
+    )}
+  </React.Fragment>
 );
 export default AdminRightFormStatisticheDetails;

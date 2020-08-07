@@ -35,7 +35,7 @@ class UseCode extends React.Component {
     const { paymentsFromCode } = this.props;
     // console.log("paymentsFromCode", paymentsFromCode, inputVal);
     return (
-      <div>
+      <div className="Container">
         <Header></Header>
         {/* <Overview></Overview> */}
         <div className="container-fluid overview ">

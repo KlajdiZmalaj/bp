@@ -282,7 +282,10 @@ class Transazioni extends React.Component {
         return new Date(b.executed_date) - new Date(a.executed_date);
       });
     return (
-      <React.Fragment>
+      <div
+        className={`${forAdmin === true ? "" : "Container"}`}
+        style={forAdmin === true ? { width: "100%" } : { width: "auto" }}
+      >
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
@@ -408,7 +411,7 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  {this.props.forAdmin === false && (
+                  {!this.props.forAdmin && (
                     <div>
                       <button className="filterBtn" htmltype="submit">
                         Filter
@@ -715,7 +718,7 @@ class Transazioni extends React.Component {
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

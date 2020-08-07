@@ -1,5 +1,5 @@
 import React from "react";
-const AdminRightFormWalletDetails = ({
+const NormalDrop = ({
   handleDepositoVisibility,
   handleDebitoVisibility,
   depositoActiveVisibility,
@@ -54,5 +54,34 @@ const AdminRightFormWalletDetails = ({
       DEPOSITO
     </button>
   </div>
+);
+const AdminRightFormWalletDetails = ({
+  handleDepositoVisibility,
+  handleDebitoVisibility,
+  depositoActiveVisibility,
+  addebitoActiveVisibility,
+  ModalOrNo,
+}) => (
+  <React.Fragment>
+    {ModalOrNo === true ? (
+      <div className="RightFormModal">
+        <div className="backDrop">
+          <NormalDrop
+            handleDepositoVisibility={handleDepositoVisibility}
+            handleDebitoVisibility={handleDebitoVisibility}
+            depositoActiveVisibility={depositoActiveVisibility}
+            addebitoActiveVisibility={addebitoActiveVisibility}
+          />
+        </div>
+      </div>
+    ) : (
+      <NormalDrop
+        handleDepositoVisibility={handleDepositoVisibility}
+        handleDebitoVisibility={handleDebitoVisibility}
+        depositoActiveVisibility={depositoActiveVisibility}
+        addebitoActiveVisibility={addebitoActiveVisibility}
+      />
+    )}
+  </React.Fragment>
 );
 export default AdminRightFormWalletDetails;

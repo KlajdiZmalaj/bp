@@ -13,7 +13,7 @@ class Messages extends React.Component {
       messages = accountInfo.messages;
     }
     return (
-      <div>
+      <div className="Container">
         <div className="container-fluid overview ">
           <Azioni active="annunci"></Azioni>
 
@@ -56,8 +56,8 @@ class Messages extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
-  accountInfo: state.auth.accountInfo
+const mapsStateToProps = (state) => ({
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, AuthActions)(Messages);

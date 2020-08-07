@@ -3,6 +3,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.bodyAdmin footer {
+  display: none !important;
+}
+
 .AdminHeader {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -177,7 +181,7 @@
 .AdminRightForm {
   position: relative;
   width: 400px;
-  min-height: 100vh;
+  min-height: 103vh;
   position: relative;
   margin-top: 71.5px;
   background-color: #ffffff;
@@ -236,6 +240,7 @@
   flex-direction: column;
   align-items: center;
   height: 99vh;
+  border: 1px solid #ebeced;
 }
 
 .AdminRightForm .printModal i {

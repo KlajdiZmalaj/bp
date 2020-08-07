@@ -1908,12 +1908,24 @@ i#private {
   color: #c5cbd1;
 }
 
-.panels-container {
+div.Container .max-width.row {
+  max-width: 1371px;
+}
+
+div.Container .panels-container {
   background: #ececed !important;
   -webkit-box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
           box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
   padding-bottom: 150px;
   padding-top: 40px;
+}
+
+div.Container .panels-container .max-width {
+  max-width: 1371px;
+}
+
+div.Container .panels-container .row.no-gutters.max-width {
+  max-width: 1371px;
 }
 
 .servicesContainer {

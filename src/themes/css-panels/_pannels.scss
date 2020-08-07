@@ -66,12 +66,24 @@
     color: #c5cbd1;
   }
 }
-.panels-container {
-  background: #ececed !important;
-  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
-  padding-bottom: 150px;
-  padding-top: 40px;
+div.Container {
+  & .max-width.row {
+    max-width: 1371px;
+  }
+  & .panels-container {
+    background: #ececed !important;
+    box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
+    padding-bottom: 150px;
+    padding-top: 40px;
+    & .max-width {
+      max-width: 1371px;
+    }
+    & .row.no-gutters.max-width {
+      max-width: 1371px;
+    }
+  }
 }
+
 .servicesContainer {
   height: 461px;
   overflow: auto;

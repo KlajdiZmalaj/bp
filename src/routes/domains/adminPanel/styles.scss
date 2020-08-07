@@ -62,7 +62,7 @@
 .AdminListaUtenti {
   width: 100%;
   & .AdminListaUtentiRow {
-    margin-bottom: 84px;
+    margin-bottom: 72px;
     &--Complete {
       width: 100%;
       display: flex;
@@ -913,6 +913,14 @@ div.Center--Big {
 
     & .wsNwp,
     td {
+      &.right {
+        text-align: right !important;
+        padding-left: 0;
+        padding-right: 0;
+        &:last-child {
+          padding-right: 11px;
+        }
+      }
       font-weight: bold;
       font-size: 14px;
       font-family: "Roboto", sans-serif;
@@ -964,13 +972,18 @@ div.Center--Big {
       }
     }
     & .right {
+      text-align: right !important;
+
       &.importoTd {
+        text-align: right !important;
+        padding-left: 0;
+        padding-right: 0;
+
         > i {
-          position: relative;
+          position: absolute;
           left: 0;
-          margin: 0;
+          top: calc(50% - 7.5px);
           padding: 0;
-          padding-right: 5px;
         }
       }
       & .Importo {
@@ -1183,12 +1196,8 @@ div.Center--Big {
       &__byTicket {
         margin: 5px 0;
         width: 100%;
-        & span.status {
-          margin-bottom: 10px;
-          margin-top: 5px;
-          padding: 3px 7px;
-          font-size: 14px;
-          margin-right: 8px;
+        &:nth-child(2) {
+          margin-bottom: 15px;
         }
         & div {
           & div {
@@ -1203,11 +1212,6 @@ div.Center--Big {
               margin-right: 4px;
             }
             > i {
-              width: 30px;
-              height: 30px;
-              font-size: 13px;
-              border-radius: 30px;
-              margin-right: 5px;
             }
           }
         }
@@ -1215,32 +1219,30 @@ div.Center--Big {
     }
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   div.Center,
   div.Center--Big {
     & .ticketDetails--filters {
       padding: 4px 0;
+
       &__byTicket {
         margin: 5px 0;
         width: 100%;
+        &:nth-child(2) {
+          margin-bottom: 15px;
+        }
+        & button:first-child {
+          zoom: 0.8;
+        }
+        & input {
+          padding: 3px 5px;
+          margin: 0 2px;
+        }
         & span.status {
-          border: none !important;
-          padding: 0;
-          margin: 0;
-          margin-bottom: 10px;
-          width: 30px;
-          height: 30px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 30px;
-          background: #e3e4e5;
-          margin-right: 20px;
-          & span {
-            display: none;
-          }
+          font-size: 14px;
+          padding: 3px 5px;
           & div {
-            margin: 0;
+            margin: 2px;
           }
         }
         & div {
@@ -1257,60 +1259,6 @@ div.Center--Big {
               margin-right: 2px;
             }
             > i {
-              width: 23px;
-              height: 23px;
-              font-size: 11px;
-              border-radius: 23px;
-              margin-right: 4px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 1000px) {
-  div.Center,
-  div.Center--Big {
-    & .ticketDetails--filters {
-      &__byTicket {
-        & span.status {
-          border: none !important;
-          padding: 0;
-          margin: 0;
-          margin-bottom: 10px;
-          width: 23px;
-          height: 23px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 23px;
-          background: #e3e4e5;
-          font-size: 11px;
-
-          margin-right: 10px;
-          & span {
-            display: none;
-          }
-          & div {
-            margin: 0;
-          }
-        }
-        & div {
-          & div {
-            & input {
-              padding: 1px 1px !important;
-              width: 105px;
-              box-sizing: border-box;
-              margin: 0;
-              margin-right: 2px !important;
-            }
-            > i {
-              width: 23px;
-              height: 23px;
-              font-size: 11px;
-              border-radius: 23px;
-              margin-right: 4px;
             }
           }
         }
@@ -1568,7 +1516,6 @@ div.Prenotazioni {
         margin: 7.5px 10px;
         margin-bottom: 20px;
         height: 203px;
-        margin-bottom: 20px;
         display: flex;
         border-radius: 4px;
         flex-direction: column;
@@ -1808,7 +1755,8 @@ div.Prenotazioni {
 
   & .ticketDetails {
     margin: 0;
-    margin-bottom: 5px;
+    margin: 0 auto;
+    padding-bottom: 76px;
   }
 }
 @media (max-width: 1330px) {

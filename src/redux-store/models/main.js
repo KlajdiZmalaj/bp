@@ -27,7 +27,6 @@ export default Creators;
 
 const INITIAL_STATE = {
   favorites: [],
-
   services: {},
   showOverview: true,
   isShowing: false,

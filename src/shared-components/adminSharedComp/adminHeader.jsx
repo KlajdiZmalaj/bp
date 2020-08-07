@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 class AdminHeader extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="AdminHeader">
         <div className="AdminHeader--Title">ADMIN PANEL</div>

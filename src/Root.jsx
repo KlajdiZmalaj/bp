@@ -41,7 +41,11 @@ import {
   subscribeSocketSupport,
   unSubscribeSocketSupport,
 } from "config/socket";
-import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
+import {
+  PopUpConfirmation,
+  PopUpConfirmationVisure,
+  Footer,
+} from "shared-components";
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -249,32 +253,33 @@ class Root extends React.Component {
               path="/back-office/utenti"
               component={AdminPanelListaUtenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin"]}
+              allowedRoles={["super_admin", "support"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/movimenti"
               component={AdminPanelListaMovimenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin"]}
+              allowedRoles={["super_admin", "support"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/prenotazioni"
               component={AdminPanelPrenotazioni}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin"]}
+              allowedRoles={["super_admin", "support"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/servizzi"
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin"]}
+              allowedRoles={["super_admin", "support"]}
               role={role}
             />
           </Switch>
         </HashRouter>
+
         {this.state.top && (
           <div
             className="backTopTop animated slideInUp"

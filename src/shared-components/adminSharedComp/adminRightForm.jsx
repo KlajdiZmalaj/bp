@@ -9,6 +9,40 @@ import Ticket from "./Ticket";
 import AdminRightFormUltimeDetails from "./AdminRightFormUltimeDetails";
 import AdminRightFormStatisticheDetails from "./AdminRightFormStatisticheDetails";
 import AdminRightFormWalletDetails from "./AdminRightFormWalletDetails";
+export const data = [
+  { height: 50, price: "235 $" },
+  { height: 10, price: "235 $" },
+  { height: 90, price: "235 $" },
+  { height: 35, price: "235 $" },
+  { height: 20 },
+  { height: 70 },
+  { height: 50 },
+  { height: 40 },
+  { height: 20 },
+  { height: 10 },
+  { height: 40 },
+  { height: 20 },
+  { height: 40, price: "235 $" },
+  { height: 30 },
+  { height: 40 },
+  { height: 60 },
+  { height: 90 },
+  { height: 40 },
+  { height: 90 },
+  { height: 40 },
+  { height: 40 },
+  { height: 40 },
+  { height: 40 },
+  { height: 100 },
+  { height: 40 },
+  { height: 40 },
+  { height: 10 },
+  { height: 40 },
+  { height: 20 },
+  { height: 40 },
+  { height: 70 },
+  { height: 40 },
+];
 class AdminRightForm extends React.Component {
   state = {
     dropdownVisibility: false,
@@ -18,40 +52,6 @@ class AdminRightForm extends React.Component {
     addebitoActiveVisibility: false,
   };
   render() {
-    const data = [
-      { height: 50, price: "235 $" },
-      { height: 10, price: "235 $" },
-      { height: 90, price: "235 $" },
-      { height: 35, price: "235 $" },
-      { height: 20 },
-      { height: 70 },
-      { height: 50 },
-      { height: 40 },
-      { height: 20 },
-      { height: 10 },
-      { height: 40 },
-      { height: 20 },
-      { height: 40, price: "235 $" },
-      { height: 30 },
-      { height: 40 },
-      { height: 60 },
-      { height: 90 },
-      { height: 40 },
-      { height: 90 },
-      { height: 40 },
-      { height: 40 },
-      { height: 40 },
-      { height: 40 },
-      { height: 100 },
-      { height: 40 },
-      { height: 40 },
-      { height: 10 },
-      { height: 40 },
-      { height: 20 },
-      { height: 40 },
-      { height: 70 },
-      { height: 40 },
-    ];
     const leUltimeTransazioniDet = [
       {
         date: "16 LUG 09:10",
@@ -162,14 +162,18 @@ class AdminRightForm extends React.Component {
             </div>
             {dropdownVisibility && (
               <AdminRightFormWalletDetails
-                handleDebitoVisibility={this.setState({
-                  depositoActiveVisibility: true,
-                  addebitoActiveVisibility: false,
-                })}
-                handleDepositoVisibility={this.setState({
-                  depositoActiveVisibility: false,
-                  addebitoActiveVisibility: true,
-                })}
+                handleDebitoVisibility={() => {
+                  this.setState({
+                    depositoActiveVisibility: true,
+                    addebitoActiveVisibility: false,
+                  });
+                }}
+                handleDepositoVisibility={() => {
+                  this.setState({
+                    depositoActiveVisibility: false,
+                    addebitoActiveVisibility: true,
+                  });
+                }}
                 addebitoActiveVisibility={addebitoActiveVisibility}
                 depositoActiveVisibility={depositoActiveVisibility}
               />

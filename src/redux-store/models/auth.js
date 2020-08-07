@@ -266,6 +266,9 @@ const { Types, Creators } = createActions({
   getAgentByUserId: ["user_id"],
   openModalForAdmin: ["openAdminModal"],
   editModalDetails: ["ModalDetails"],
+  editStatModal: ["statModal"],
+  editUltModal: ["ultModal"],
+  editDepModal: ["depModal"],
 });
 
 export const AuthTypes = Types;
@@ -310,6 +313,9 @@ const INITIAL_STATE = {
   VisureByVisureId: {},
   popUpDataVisure: {},
   openAdminModal: false,
+  statModal: { visibility: false, data: "" },
+  ultModal: { visibility: false, data: "" },
+  depModal: { visibility: false, data: "" },
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -482,5 +488,17 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EDIT_MODAL_DETAILS]: (state, { ModalDetails }) => ({
     ...state,
     ModalDetails,
+  }),
+  [Types.EDIT_STAT_MODAL]: (state, { statModal }) => ({
+    ...state,
+    statModal,
+  }),
+  [Types.EDIT_ULT_MODAL]: (state, { ultModal }) => ({
+    ...state,
+    ultModal,
+  }),
+  [Types.EDIT_DEP_MODAL]: (state, { depModal }) => ({
+    ...state,
+    depModal,
   }),
 });
