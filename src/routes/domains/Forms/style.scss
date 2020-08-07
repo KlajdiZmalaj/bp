@@ -67,6 +67,8 @@
     margin-bottom: 20px;
     align-items: stretch;
     margin-top: 60px;
+    max-width: 1371px;
+
     @media (max-width: 768px) {
       flex-flow: column;
     }
@@ -407,4 +409,7 @@
 .ant-switch-checked {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
+}
+.swiper-wrapper {
+  transition: unset !important;
 }
