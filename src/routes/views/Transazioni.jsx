@@ -15,6 +15,28 @@ import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 const { Option } = Select;
+const ModalRow = ({ title, data }) => (
+  <div
+    className={`TranzacioniModalResponsive--Data--Row--${
+      title === "Date/Ora" ? "Data" : title
+    }`}
+  >
+    <span
+      className={`TranzacioniModalResponsive--Data--Row--${
+        title === "Date/Ora" ? "Data" : title
+      }--Header`}
+    >
+      {title}
+    </span>
+    <span
+      className={`TranzacioniModalResponsive--Data--Row--${
+        title === "Date/Ora" ? "Data" : title
+      }--Info`}
+    >
+      {data}
+    </span>
+  </div>
+);
 class Transazioni extends React.Component {
   state = {
     dashboardFromFilterTop: true,
@@ -29,9 +51,11 @@ class Transazioni extends React.Component {
     phone: "",
     from: "",
     to: "",
+    modalDetails: "",
     fromLabel: "",
     toLabel: "",
     perPage: 10,
+    showModalResponsive: false,
     picker: [
       {
         startDate: new Date(),
@@ -236,7 +260,9 @@ class Transazioni extends React.Component {
       visible,
       address,
       name,
+      modalDetails,
     } = this.state;
+    console.log("modalDetails", modalDetails);
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -285,7 +311,54 @@ class Transazioni extends React.Component {
             ></Overview>
           </React.Fragment>
         )}
+        {this.state.showModalResponsive === true &&
+        this.props.screenWidth <= 1050 ? (
+          <div className="TranzacioniModalResponsive">
+            <div
+              className="backDrop"
+              onClick={() =>
+                this.setState({
+                  modalDetails: "",
+                  showModalResponsive: false,
+                })
+              }
+            ></div>
+            <div className="TranzacioniModalResponsive--Data">
+              <div className="TranzacioniModalResponsive--Data--Header">
+                <div className="TranzacioniModalResponsive--Data--Header--Title">
+                  Dettagli completi per la riga della tabella
+                </div>
+                <div
+                  className="TranzacioniModalResponsive--Data--Header--Close"
+                  onClick={() =>
+                    this.setState({
+                      modalDetails: "",
+                      showModalResponsive: false,
+                    })
+                  }
+                >
+                  x
+                </div>
+              </div>
 
+              <div className="TranzacioniModalResponsive--Data--Row">
+                <ModalRow
+                  title="Date/Ora"
+                  data={moment(modalDetails.executed_date).format(
+                    "DD/MM/YYYY HH:mm:ss"
+                  )}
+                />
+                <ModalRow title="Barcode" data={modalDetails.barcode} />
+                <ModalRow title="User" data={modalDetails.agency_name} />
+                <ModalRow title="Service" data={modalDetails.service_name} />
+                <ModalRow title="Importo" data={modalDetails.price1000} />
+                <ModalRow title="Commissione" data={modalDetails.commissione} />
+                <ModalRow title="Proviggione" data={modalDetails.percentage} />
+                <ModalRow title="Saldo" data={modalDetails.saldo} />
+              </div>
+            </div>
+          </div>
+        ) : null}
         <div className="container-fluid overview ">
           {this.props.forAdmin === true ? null : (
             <Azioni active="transazioni"></Azioni>
@@ -449,6 +522,9 @@ class Transazioni extends React.Component {
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>
                         <td className=" wsNwp right">Saldo</td>
+                        {this.props.screenWidth <= 1050 && forAdmin === true ? (
+                          <td className="wsNwp"></td>
+                        ) : null}
                       </tr>
                     </thead>
                     <tbody>
@@ -461,20 +537,28 @@ class Transazioni extends React.Component {
                             ).includes(navbarSearch.toLowerCase()) && (
                               <tr
                                 key={index}
-                                onClick={() => {
-                                  forAdmin === true
-                                    ? this.activateModalForAdmin(item, index)
-                                    : this.showModal(
-                                        index,
-                                        item.barcode,
-                                        item.agency_name,
-                                        item.agency_address,
-                                        item.agency_phone
-                                      );
-                                  getCodiceTicket(
-                                    item.barcode,
-                                    item.service_name
-                                  );
+                                onClick={(e) => {
+                                  if (e.target.tagName != "I") {
+                                    if (this.props.screenWidth <= 402) {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    }
+                                    forAdmin === true
+                                      ? this.activateModalForAdmin(item, index)
+                                      : this.showModal(
+                                          index,
+                                          item.barcode,
+                                          item.agency_name,
+                                          item.agency_address,
+                                          item.agency_phone
+                                        );
+                                    getCodiceTicket(
+                                      item.barcode,
+                                      item.service_name
+                                    );
+                                  }
                                 }}
                               >
                                 <td className="wsNwp">
@@ -531,6 +615,20 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
+                                {this.props.screenWidth <= 1050 &&
+                                forAdmin === true ? (
+                                  <td
+                                    className=" wsNwp right"
+                                    onClick={() => {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    }}
+                                  >
+                                    <i className="fal fa-search-plus"></i>
+                                  </td>
+                                ) : null}
                               </tr>
                             )
                           );
@@ -674,6 +772,7 @@ const mapsStateToProps = (state) => ({
   skinExtras: state.auth.skinExtras,
   paymentsFromCode: state.auth.paymentsFromCode,
   paymentsPages: state.auth.paymentsPages,
+  screenWidth: state.main.screenWidth,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

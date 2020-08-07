@@ -19,7 +19,10 @@ class Content extends Component {
     );
   }
 }
-const mstp = ({ main }) => ({
-  activeAccount: main.activeAccount,
-});
+const mstp = (state) => {
+  return {
+    activeAccount: state.main.activeAccount,
+  };
+};
+
 export default connect(mstp, null)(Content);

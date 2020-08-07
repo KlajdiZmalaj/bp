@@ -220,9 +220,8 @@
       zoom: 1;
     }
 
-    & barcodeModal {
-      margin: 0;
-      margin-bottom: 50px;
+    & .barcodeModal {
+      margin: 5px auto;
     }
     & div.ContainerOfData:nth-child(1) {
       zoom: 0.95;

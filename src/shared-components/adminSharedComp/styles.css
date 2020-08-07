@@ -310,9 +310,8 @@
   zoom: 1;
 }
 
-.AdminRightForm .printModal barcodeModal {
-  margin: 0;
-  margin-bottom: 50px;
+.AdminRightForm .printModal .barcodeModal {
+  margin: 5px auto;
 }
 
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1) {
