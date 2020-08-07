@@ -302,7 +302,7 @@ class Transazioni extends React.Component {
       });
     return (
       <React.Fragment>
-        {this.props.forAdmin === true ? null : (
+        {!forAdmin && (
           <React.Fragment>
             <Header></Header>
             <Overview
@@ -360,9 +360,7 @@ class Transazioni extends React.Component {
           </div>
         ) : null}
         <div className="container-fluid overview ">
-          {this.props.forAdmin === true ? null : (
-            <Azioni active="transazioni"></Azioni>
-          )}
+          {!forAdmin && <Azioni active="transazioni"></Azioni>}
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
@@ -447,7 +445,7 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  {!this.props.forAdmin && (
+                  {!forAdmin && (
                     <div>
                       <button className="filterBtn" htmltype="submit">
                         Filter
@@ -469,7 +467,7 @@ class Transazioni extends React.Component {
                         this.fromFilterTop(false);
                       }}
                     >
-                      {this.props.forAdmin === true ? (
+                      {forAdmin ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="14"
@@ -489,7 +487,7 @@ class Transazioni extends React.Component {
                   );
                 })}
               </ul>
-              {this.props.forAdmin === true && (
+              {forAdmin && (
                 <button
                   className="filterBtn"
                   htmltype="submit"
@@ -522,7 +520,7 @@ class Transazioni extends React.Component {
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>
                         <td className=" wsNwp right">Saldo</td>
-                        {this.props.screenWidth <= 1050 && forAdmin === true ? (
+                        {this.props.screenWidth <= 1050 && forAdmin ? (
                           <td className="wsNwp"></td>
                         ) : null}
                       </tr>
@@ -545,7 +543,7 @@ class Transazioni extends React.Component {
                                         modalDetails: item,
                                       });
                                     }
-                                    forAdmin === true
+                                    forAdmin
                                       ? this.activateModalForAdmin(item, index)
                                       : this.showModal(
                                           index,
@@ -615,8 +613,7 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
-                                {this.props.screenWidth <= 1050 &&
-                                forAdmin === true ? (
+                                {this.props.screenWidth <= 1050 && forAdmin && (
                                   <td
                                     className=" wsNwp right"
                                     onClick={() => {
@@ -628,7 +625,7 @@ class Transazioni extends React.Component {
                                   >
                                     <i className="fal fa-search-plus"></i>
                                   </td>
-                                ) : null}
+                                )}
                               </tr>
                             )
                           );
