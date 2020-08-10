@@ -107,32 +107,29 @@ class FormDetailsDomain extends Component {
                   value={filterRicercaId}
                 />
               </div>
-
-              <div>
-                <FilterVisureComponent
-                  filterVisure={filterVisure}
-                  handleClick={() =>
-                    this.setState({ filterVisure: "Persona Fisica" })
-                  }
-                  title={"Persona Fisica"}
-                  icon={"user"}
-                />
-                <FilterVisureComponent
-                  filterVisure={filterVisure}
-                  handleClick={() =>
-                    this.setState({ filterVisure: "Azienda o Impresa" })
-                  }
-                  title={"Azienda o Impresa"}
-                  icon={"building"}
-                />
-                <FilterVisureComponent
-                  filterVisure={filterVisure}
-                  handleClick={() => this.setState({ filterVisure: "all" })}
-                  title={"all"}
-                  icon={"shopping-cart"}
-                />
-              </div>
             </div>
+            <FilterVisureComponent
+              filterVisure={filterVisure}
+              handleClick={() =>
+                this.setState({ filterVisure: "Persona Fisica" })
+              }
+              title={"Persona Fisica"}
+              icon={"user"}
+            />
+            <FilterVisureComponent
+              filterVisure={filterVisure}
+              handleClick={() =>
+                this.setState({ filterVisure: "Azienda o Impresa" })
+              }
+              title={"Azienda o Impresa"}
+              icon={"building"}
+            />
+            <FilterVisureComponent
+              filterVisure={filterVisure}
+              handleClick={() => this.setState({ filterVisure: "all" })}
+              title={"all"}
+              icon={"shopping-cart"}
+            />
           </div>
           <div className="ticketDetails--filters__byTicket">
             <FilterTypeComponent

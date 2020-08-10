@@ -110,6 +110,7 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   margin-top: 60px;
+  max-width: 1371px;
 }
 
 @media (max-width: 768px) {
@@ -632,5 +633,10 @@
 .ant-switch-checked {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
+}
+
+.swiper-wrapper {
+  -webkit-transition: unset !important;
+  transition: unset !important;
 }
 /*# sourceMappingURL=style.css.map */

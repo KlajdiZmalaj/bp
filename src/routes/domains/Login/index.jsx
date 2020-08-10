@@ -50,6 +50,11 @@ class Login extends React.Component {
           <ul>
             <li>
               <input
+                onKeyDown={(e) => {
+                  if (e.keyCode === 13) {
+                    this.handleSubmit(e);
+                  }
+                }}
                 type="text"
                 placeholder="Email addres"
                 name="userName"
@@ -58,15 +63,18 @@ class Login extends React.Component {
               />
             </li>
             <li>
-              <form>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  id="password"
-                  onChange={this.handleChangePassword}
-                />
-              </form>
+              <input
+                onKeyDown={(e) => {
+                  if (e.keyCode === 13) {
+                    this.handleSubmit(e);
+                  }
+                }}
+                type="password"
+                placeholder="password"
+                name="password"
+                id="password"
+                onChange={this.handleChangePassword}
+              />
             </li>
             <li>
               <button
