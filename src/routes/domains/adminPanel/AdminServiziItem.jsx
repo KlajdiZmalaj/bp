@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.css";
 import images from "themes/images";
-
 class AdminServiziItem extends React.Component {
   state = {
     buttonActiveVisibility: true,

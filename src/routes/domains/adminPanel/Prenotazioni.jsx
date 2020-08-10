@@ -2,6 +2,16 @@ import React from "react";
 import "./styles.css";
 import FormDetails from "../../views/FormDetails";
 import { Tooltip } from "antd";
+import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
+import { format } from "date-fns";
+import {
+  graphData,
+  Tranzacioni,
+  Commisione,
+  Proviggioni,
+} from "./StaticAdminData";
+import { numberWithCommas } from "./HelperFunc";
+
 const PartsType = ({ partType, iconClass, number }) => (
   <div
     className={`Prenotazioni--Statistiche--Box--Informazioni--Parts--${partType}`}
@@ -75,61 +85,84 @@ const InformazioniDependeAlStato = ({
     </div>
   </div>
 );
-const Graph = ({ data, month }) => (
+const Graph = ({ graphData, month }) => (
   <div className="Graph">
     <div className="Graph--TM">TRANSAZIONI MENSILI</div>
     <div className="Graph--Month">{month}</div>
-    {data.map((heigh, i) => {
-      return (
-        <Tooltip title={heigh.price}>
-          <div
-            className="Graph--Element"
-            style={{ height: `${heigh.height}%` }}
-          ></div>
-        </Tooltip>
-      );
-    })}
+    {graphData &&
+      Array.isArray(graphData) &&
+      graphData.map((heigh, i) => {
+        return (
+          <Tooltip title={heigh.price}>
+            <div
+              className="Graph--Element"
+              style={{ height: `${heigh.height}%` }}
+            ></div>
+          </Tooltip>
+        );
+      })}
   </div>
 );
 class Prenotazioni extends React.Component {
+  state = {
+    dropdownVisibility: false,
+    from: "",
+    to: "",
+    fromLabel: "",
+    toLabel: "",
+    picker: [
+      {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: "selection",
+        color: "var(--accent-bg)",
+      },
+    ],
+    isCalendarOpen: false,
+  };
+  setCalendar = (val) => {
+    this.setState({ isCalendarOpen: val });
+  };
   render() {
-    const data = [
-      { height: 50, price: "235 $" },
-      { height: 10, price: "235 $" },
-      { height: 90, price: "235 $" },
-      { height: 35, price: "235 $" },
-      { height: 20 },
-      { height: 70 },
-      { height: 50 },
-      { height: 40 },
-      { height: 20 },
-      { height: 10 },
-      { height: 40 },
-      { height: 20 },
-      { height: 40, price: "235 $" },
-      { height: 30 },
-      { height: 40 },
-      { height: 60 },
-      { height: 90 },
-      { height: 40 },
-      { height: 90 },
-      { height: 40 },
-      { height: 40 },
-      { height: 40 },
-      { height: 40 },
-      { height: 100 },
-      { height: 40 },
-      { height: 40 },
-      { height: 10 },
-      { height: 40 },
-      { height: 20 },
-      { height: 40 },
-      { height: 70 },
-      { height: 40 },
-    ];
+    const {
+      dropdownVisibility,
+      picker,
+      isCalendarOpen,
+      fromLabel,
+      toLabel,
+    } = this.state;
     return (
       <div className="Prenotazioni">
-        <div className="Prenotazioni--Statistiche">
+        {isCalendarOpen && (
+          <CalendarRangePicker
+            setStateFunc={(item) => {
+              this.setState({
+                picker: [item.selection],
+                from: format(item.selection.startDate, "yyyy-MM-dd"),
+                to: format(item.selection.endDate, "yyyy-MM-dd"),
+                fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
+                toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
+              });
+            }}
+            setStateFuncEmpty={() => {
+              this.setState({
+                from: "",
+                to: "",
+                fromLabel: "",
+                toLabel: "",
+              });
+            }}
+            picker={picker}
+            setCalendar={this.setCalendar}
+            handleSubmit={this.handleSubmi}
+          />
+        )}
+
+        <div
+          className={`Prenotazioni--Statistiche ${
+            dropdownVisibility === false ? "Minimize" : ""
+          }`}
+        >
           <div className="Prenotazioni--Statistiche--First">
             <div className="Prenotazioni--Statistiche--TitleHeaderLeft">
               <i class="fal fa-analytics"></i>
@@ -139,26 +172,44 @@ class Prenotazioni extends React.Component {
               <div className="Prenotazioni--Statistiche--DatePicker">
                 <div
                   className="Prenotazioni--Statistiche--DatePicker-CalendarLabel"
-                  // onClick={() => {
-                  //   this.setCalendar(true);
-                  // }}
+                  onClick={() => {
+                    this.setCalendar(true);
+                  }}
                 >
-                  {/* {fromLabel
-                      ? `${fromLabel} - ${toLabel}` */}
-                  Seleziona la data
+                  {fromLabel
+                    ? `${fromLabel} - ${toLabel}`
+                    : "Seleziona la data"}
                   <i className="fal fa-calendar-alt"></i>
                 </div>
               </div>
               <div className="Prenotazioni--Statistiche--Arrow">
-                <i className="far fa-angle-down"></i>
+                <i
+                  className={`far fa-angle-${
+                    dropdownVisibility === false ? "down" : "up"
+                  }`}
+                  onClick={() =>
+                    this.setState((state) => ({
+                      dropdownVisibility: !state.dropdownVisibility,
+                    }))
+                  }
+                ></i>
               </div>
             </div>
           </div>
           <div className="Prenotazioni--Statistiche--Other--Second">
-            <TranCommProv title={"TRANSAZIONI"} price={825866} />
-            <TranCommProv title={"COMMISIONI"} price={56837} />
-            <TranCommProv title={"PROVIGGIONI"} price={25643} />
-            <Graph month={"LUGLIO 2020"} data={data} />
+            <TranCommProv
+              title={"TRANSAZIONI"}
+              price={numberWithCommas(Tranzacioni)}
+            />
+            <TranCommProv
+              title={"COMMISIONI"}
+              price={numberWithCommas(Commisione)}
+            />
+            <TranCommProv
+              title={"PROVIGGIONI"}
+              price={numberWithCommas(Proviggioni)}
+            />
+            <Graph month={"LUGLIO 2020"} graphData={graphData} />
           </div>
 
           <div className="Prenotazioni--Statistiche--Other--Third">

@@ -720,66 +720,10 @@ a:hover {
   border: 1px solid var(--accent-bg);
 }
 
-.sort-annunci .rdrDefinedRangesWrapper,
-.sort-annunci .rdrStaticRange {
-  background: #eaeaea;
-}
-
-.sort-annunci .rdrDefinedRangesWrapper .rdrStaticRangeLabel,
-.sort-annunci .rdrStaticRange .rdrStaticRangeLabel {
-  font-weight: 600;
-}
-
-.sort-annunci .rdrStaticRange {
-  border-bottom: 0.7px solid #c7c7c7;
-}
-
-.sort-annunci .rdrDefinedRangesWrapper {
-  width: 185px;
-}
-
-.sort-annunci .rdrDateDisplay {
-  width: 182px;
-  padding: 4px 15px;
-  margin: 0;
-  position: absolute;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  left: 0;
-  top: 58.5%;
-}
-
-.sort-annunci .rdrDateDisplayItem {
-  width: auto;
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
-  margin-top: 0.3rem;
-  margin-left: 0;
-}
-
-.sort-annunci .rdrMonthAndYearWrapper {
-  padding-top: 0;
-  height: auto;
-}
-
-.sort-annunci i {
-  font-style: normal;
-}
-
-.sort-annunci .rdrCalendarWrapper {
-  width: 333px;
-}
-
-.sort-annunci .rdrCalendarWrapper * {
-  text-transform: capitalize;
-}
-
-.sort-annunci .rdrMonth {
-  padding: 1.4em 1.4em;
-  background: #f7f7f7;
+.sort-annunci .calendarWrapper {
+  position: fixed;
+  top: 142px;
+  left: 43%;
 }
 
 .sort-annunci .dal {
@@ -804,101 +748,6 @@ a:hover {
   cursor: pointer;
   padding: 0 20px;
   border-left: 2px solid #edeef0;
-}
-
-.sort-annunci .rdrInputRanges {
-  padding: 0;
-}
-
-.sort-annunci .rdrInputRange {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-weight: bold;
-  padding: 1px 20px;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-bottom: 0.7px solid #c7c7c7;
-}
-
-.sort-annunci .rdrInputRange .rdrInputRangeInput {
-  height: 25px;
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
-}
-
-.sort-annunci .rdrInputRange span {
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
-  color: transparent;
-}
-
-.sort-annunci .rdrInputRange span::before {
-  content: "Giorni da oggi";
-  color: #222;
-  position: relative;
-  top: 10px;
-}
-
-.sort-annunci .rdrMonthName {
-  display: none;
-}
-
-.sort-annunci .rdrDayNumber {
-  font-weight: 600;
-}
-
-.sort-annunci .rdrInputRange:nth-child(2) {
-  display: none;
-}
-
-.sort-annunci .calendarWrapper {
-  position: absolute;
-  z-index: 3;
-  left: 56.3%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  top: 64px;
-  -webkit-box-shadow: 0 12px 20px 1px #0000008c;
-          box-shadow: 0 12px 20px 1px #0000008c;
-}
-
-.sort-annunci .calendarWrapper .buttons {
-  background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 8px 20px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.sort-annunci .calendarWrapper .buttons button {
-  border: 0;
-  background-color: transparent;
-  text-transform: uppercase;
-  padding: 5px 20px;
-}
-
-.sort-annunci .calendarWrapper .buttons button:nth-child(2) {
-  background-color: #00b850;
-  color: #fff;
-}
-
-.sort-annunci .calendarWrapper .buttons button:nth-child(1) {
-  background-color: #c53f3f;
-  color: #fff;
 }
 
 .sort-annunci .heading-tab {
@@ -1157,6 +1006,15 @@ i#private {
   }
   .sort-annunci li {
     width: 20%;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .sort-annunci .calendarWrapper {
+    position: fixed;
+    top: 190px;
+    left: calc((100vw - 460px) / 2);
+    margin-left: auto;
   }
 }
 

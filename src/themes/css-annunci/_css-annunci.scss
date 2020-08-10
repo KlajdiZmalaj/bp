@@ -12,53 +12,11 @@
     color: var(--accent-bg);
     border: 1px solid var(--accent-bg);
   }
-  .rdrDefinedRangesWrapper,
-  .rdrStaticRange {
-    background: #eaeaea;
 
-    & .rdrStaticRangeLabel {
-      font-weight: 600;
-    }
-  }
-  .rdrStaticRange {
-    border-bottom: 0.7px solid #c7c7c7;
-  }
-  .rdrDefinedRangesWrapper {
-    width: 185px;
-  }
-  .rdrDateDisplay {
-    width: 182px;
-    padding: 4px 15px;
-    margin: 0;
-    position: absolute;
-    flex-direction: column;
-    left: 0;
-
-    top: 58.5%;
-  }
-
-  .rdrDateDisplayItem {
-    width: auto;
-    flex: auto;
-    margin-top: 0.3rem;
-    margin-left: 0;
-  }
-  .rdrMonthAndYearWrapper {
-    padding-top: 0;
-    height: auto;
-  }
-  i {
-    font-style: normal;
-  }
-  .rdrCalendarWrapper {
-    width: 333px;
-  }
-  .rdrCalendarWrapper * {
-    text-transform: capitalize;
-  }
-  .rdrMonth {
-    padding: 1.4em 1.4em;
-    background: #f7f7f7;
+  .calendarWrapper {
+    position: fixed;
+    top: 142px;
+    left: 43%;
   }
   .dal {
     display: flex;
@@ -75,70 +33,7 @@
       border-left: 2px solid #edeef0;
     }
   }
-  .rdrInputRanges {
-    padding: 0;
-  }
-  .rdrInputRange {
-    display: flex;
-    font-weight: bold;
-    padding: 1px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 0.7px solid #c7c7c7;
-    & .rdrInputRangeInput {
-      height: 25px;
-      order: 2;
-    }
-    & span {
-      order: 1;
-      color: transparent;
-      &::before {
-        content: "Giorni da oggi";
-        color: #222;
-        position: relative;
-        top: 10px;
-      }
-    }
-  }
-  .rdrMonthName {
-    display: none;
-  }
-  .rdrDayNumber {
-    font-weight: 600;
-  }
-  .rdrInputRange:nth-child(2) {
-    display: none;
-  }
-  .calendarWrapper {
-    position: absolute;
-    z-index: 3;
-    left: 56.3%;
-    transform: translateX(-50%);
-    top: 64px;
-    box-shadow: 0 12px 20px 1px #0000008c;
-    .buttons {
-      background-color: #fff;
-      display: flex;
-      padding: 8px 20px;
-      justify-content: space-between;
-      align-items: center;
-      button {
-        border: 0;
-        background-color: transparent;
-        text-transform: uppercase;
-        padding: 5px 20px;
-        &:nth-child(2) {
-          background-color: #00b850;
-          color: #fff;
-        }
-        &:nth-child(1) {
-          background-color: #c53f3f;
-          color: #fff;
-        }
-      }
-    }
-  }
+
   .heading-tab {
     padding-top: 0;
     cursor: default;
@@ -339,6 +234,16 @@ i#private {
     padding: 0 20px;
     li {
       width: 20%;
+    }
+  }
+}
+@media only screen and (max-width: 870px) {
+  .sort-annunci {
+    & .calendarWrapper {
+      position: fixed;
+      top: 190px;
+      left: calc((100vw - 460px) / 2);
+      margin-left: auto;
     }
   }
 }

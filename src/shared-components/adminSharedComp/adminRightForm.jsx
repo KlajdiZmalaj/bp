@@ -9,40 +9,7 @@ import Ticket from "./Ticket";
 import AdminRightFormUltimeDetails from "./AdminRightFormUltimeDetails";
 import AdminRightFormStatisticheDetails from "./AdminRightFormStatisticheDetails";
 import AdminRightFormWalletDetails from "./AdminRightFormWalletDetails";
-export const data = [
-  { height: 50, price: "235 $" },
-  { height: 10, price: "235 $" },
-  { height: 90, price: "235 $" },
-  { height: 35, price: "235 $" },
-  { height: 20 },
-  { height: 70 },
-  { height: 50 },
-  { height: 40 },
-  { height: 20 },
-  { height: 10 },
-  { height: 40 },
-  { height: 20 },
-  { height: 40, price: "235 $" },
-  { height: 30 },
-  { height: 40 },
-  { height: 60 },
-  { height: 90 },
-  { height: 40 },
-  { height: 90 },
-  { height: 40 },
-  { height: 40 },
-  { height: 40 },
-  { height: 40 },
-  { height: 100 },
-  { height: 40 },
-  { height: 40 },
-  { height: 10 },
-  { height: 40 },
-  { height: 20 },
-  { height: 40 },
-  { height: 70 },
-  { height: 40 },
-];
+
 class AdminRightForm extends React.Component {
   state = {
     dropdownVisibility: false,
@@ -52,38 +19,7 @@ class AdminRightForm extends React.Component {
     addebitoActiveVisibility: false,
   };
   render() {
-    const leUltimeTransazioniDet = [
-      {
-        date: "16 LUG 09:10",
-        id: "#110441",
-        utente: "RNGALASSI",
-        price: "241.98",
-      },
-      {
-        date: "16 LUG 09:10",
-        id: "#110441",
-        utente: "RNGALASSI",
-        price: "241.98",
-      },
-      {
-        date: "16 LUG 09:10",
-        id: "#110441",
-        utente: "RNGALASSI",
-        price: "241.98",
-      },
-      {
-        date: "16 LUG 09:10",
-        id: "#110441",
-        utente: "RNGALASSI",
-        price: "241.98",
-      },
-      {
-        date: "16 LUG 09:10",
-        id: "#110441",
-        utente: "RNGALASSI",
-        price: "241.98",
-      },
-    ];
+  
     const {
       depositoActiveVisibility,
       dropdownVisibility,
@@ -91,7 +27,8 @@ class AdminRightForm extends React.Component {
       leUltimeTransazioni,
       addebitoActiveVisibility,
     } = this.state;
-    const { openAdminModal } = this.props;
+    const {openAdminModal,graphData,leUltimeTransazioniDet,Tranzacioni,Proviggioni,Commisione}=this.props;
+
     return (
       <div className="AdminRightForm">
         {openAdminModal === false ? (
@@ -115,10 +52,10 @@ class AdminRightForm extends React.Component {
             </div>
             {statisticheDropdownVisibility && (
               <AdminRightFormStatisticheDetails
-                graphData={data}
-                Tranzacioni={"2586.66"}
-                Commisione={"2586.66"}
-                Proviggioni={"2586.66"}
+                graphData={graphData}
+                Tranzacioni={Tranzacioni}
+                Commisione={Commisione}
+                Proviggioni={Proviggioni}
               />
             )}
             <div className="AdminRightForm--Box">

@@ -4,6 +4,7 @@ import { subDays, format } from "date-fns";
 import * as locales from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
+import "./styles.css";
 const renderStaticRangeLabel = (e) => (
   <CustomStaticRangeLabelContent text={e} />
 );

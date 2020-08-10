@@ -1,12 +1,11 @@
 import React from "react";
 import { Tooltip } from "antd";
 import moment from "moment";
-const NormalStatDetails = ({
+const AdminRightFormStatisticheDetailsHelper = ({
   graphData,
   Tranzacioni,
   Commisione,
   Proviggioni,
-  ModalOrNo,
 }) => (
   <div className="Statistiche Dropdown">
     <div className="Graph">
@@ -50,12 +49,27 @@ const AdminRightFormStatisticheDetails = ({
   Commisione,
   Proviggioni,
   ModalOrNo,
+  Close,
 }) => (
   <React.Fragment>
     {ModalOrNo === true ? (
       <div className="RightFormModal">
-        <div className="backDrop"></div>
-        <NormalStatDetails
+        <div
+          className="backDrop"
+          onClick={() => {
+            Close({ visibility: false, data: "" });
+          }}
+        ></div>
+        <div
+          className="Close"
+          onClick={() => {
+            Close({ visibility: false, data: "" });
+          }}
+        >
+          <i className="fal fa-times"></i>
+        </div>
+        <div className="Header">Statistiche</div>
+        <AdminRightFormStatisticheDetailsHelper
           graphData={graphData}
           Tranzacioni={Tranzacioni}
           Commisione={Commisione}
@@ -63,7 +77,7 @@ const AdminRightFormStatisticheDetails = ({
         />
       </div>
     ) : (
-      <NormalStatDetails
+      <AdminRightFormStatisticheDetailsHelper
         graphData={graphData}
         Tranzacioni={Tranzacioni}
         Commisione={Commisione}

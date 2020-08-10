@@ -1,5 +1,5 @@
 import React from "react";
-const NormalDrop = ({
+const AdminRightFormWalletDetailsHelper = ({
   handleDepositoVisibility,
   handleDebitoVisibility,
   depositoActiveVisibility,
@@ -61,21 +61,37 @@ const AdminRightFormWalletDetails = ({
   depositoActiveVisibility,
   addebitoActiveVisibility,
   ModalOrNo,
+  Close,
 }) => (
   <React.Fragment>
     {ModalOrNo === true ? (
       <div className="RightFormModal">
-        <div className="backDrop">
-          <NormalDrop
-            handleDepositoVisibility={handleDepositoVisibility}
-            handleDebitoVisibility={handleDebitoVisibility}
-            depositoActiveVisibility={depositoActiveVisibility}
-            addebitoActiveVisibility={addebitoActiveVisibility}
-          />
+        <div
+          className="backDrop"
+          onClick={() => {
+            Close({ visibility: false, data: "" });
+          }}
+        ></div>
+
+        <div
+          className="Close"
+          onClick={() => {
+            Close({ visibility: false, data: "" });
+          }}
+        >
+          <i className="fal fa-times"></i>
         </div>
+        <div className="Header">Deposito / Addebito</div>
+
+        <AdminRightFormWalletDetailsHelper
+          handleDepositoVisibility={handleDepositoVisibility}
+          handleDebitoVisibility={handleDebitoVisibility}
+          depositoActiveVisibility={depositoActiveVisibility}
+          addebitoActiveVisibility={addebitoActiveVisibility}
+        />
       </div>
     ) : (
-      <NormalDrop
+      <AdminRightFormWalletDetailsHelper
         handleDepositoVisibility={handleDepositoVisibility}
         handleDebitoVisibility={handleDebitoVisibility}
         depositoActiveVisibility={depositoActiveVisibility}

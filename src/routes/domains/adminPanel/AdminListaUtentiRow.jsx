@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import AdminListaUtentiRowForLoop from "./AdminListaUtentiRowForLoop";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
-
 import moment from "moment";
 class AdminListaUtentiRow extends React.Component {
   state = {
@@ -133,6 +132,7 @@ class AdminListaUtentiRow extends React.Component {
             </span>
           </div>
           {itemList &&
+            Array.isArray(itemList.children) &&
             itemList.children?.length > 0 &&
             this.state.activateChildren === true &&
             itemList.children.map((child, i, arr) =>

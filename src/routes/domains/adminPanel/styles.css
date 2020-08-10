@@ -31,7 +31,8 @@
           align-items: flex-start;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #f7f7f7;
+  background: #edeef0;
+  min-height: 550px;
 }
 
 .AdminColumns .Center--Big {
@@ -53,7 +54,8 @@
           align-items: flex-start;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #00000008;
+  background: #edeef0;
+  min-height: 550px;
 }
 
 .AdminColumns .Left {
@@ -230,7 +232,9 @@
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1) {
-  width: 8%;
+  width: 6%;
+  padding-left: 1%;
+  margin-right: 3%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
@@ -314,6 +318,10 @@
   padding: 7px 14px;
 }
 
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child > i:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child > i:last-child {
+  margin-right: 10px;
+}
+
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child > i.active, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child > i.active {
   color: #0078ff;
   border-color: #0078ff;
@@ -360,39 +368,44 @@
 
 .AdminListaUtenti--Header span:nth-child(1) {
   width: 8%;
+  left: 1%;
 }
 
 .AdminListaUtenti--Header span:nth-child(2) {
   width: calc(14% + 60px);
-  left: -3px;
+  left: 1%;
 }
 
 .AdminListaUtenti--Header span:nth-child(3) {
   position: relative;
   width: 13%;
-  left: -2px;
+  left: 1%;
 }
 
 .AdminListaUtenti--Header span:nth-child(4) {
   width: 6%;
-  left: -3px;
+  left: 0.3%;
 }
 
 .AdminListaUtenti--Header span:nth-child(5) {
   width: 7%;
+  left: 1.8%;
 }
 
 .AdminListaUtenti--Header span:nth-child(6) {
   width: 13%;
+  left: 0.8%;
 }
 
 .AdminListaUtenti--Header span:nth-child(7) {
   width: 13%;
+  left: 0.9%;
 }
 
 .AdminListaUtenti--Header span:nth-child(8) {
   width: calc(26% - 57px);
   left: 6px;
+  left: 1%;
 }
 
 @media (max-width: 1900px) {
@@ -429,8 +442,7 @@
     font-size: 18px;
   }
   .AdminRightForm .printModal {
-    width: 320px;
-    padding: 0;
+    width: 340px;
   }
   .Tranzacioni div span {
     font-size: 14px;
@@ -453,7 +465,7 @@
 
 @media (max-width: 1550px) {
   .AdminRightForm {
-    width: 240px;
+    width: 260px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -475,18 +487,55 @@
     padding-top: 10px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 240px - 51px);
+    width: calc(100% - 260px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 240px - 200px);
+    width: calc(100% - 260px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminRightForm--Box {
     padding: 10px 12px;
+    padding-right: 3px;
     font-weight: 500;
+  }
+}
+
+@media (max-width: 1100px) {
+  .AdminRightForm {
+    width: 220px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
+    width: 25%;
+    font-size: 11px;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 1px;
+  }
+  .AdminRightForm div.Tranzacioni div span {
+    font-size: 12px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 220px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 220px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
 }
 
@@ -1020,6 +1069,7 @@ div.Center .panels-container,
 div.Center--Big .container-fluid.overview,
 div.Center--Big .panels-container {
   background: #ffffff !important;
+  position: relative;
   -webkit-box-shadow: none;
           box-shadow: none;
   width: 100%;
@@ -1097,10 +1147,7 @@ div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper,
 div.Center--Big .panels-container .sort-annunci .calendarWrapper {
   position: absolute;
   z-index: 3;
-  left: 41.4%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  top: 57px;
+  left: 0;
   -webkit-box-shadow: 0 12px 20px 1px #0000008c;
           box-shadow: 0 12px 20px 1px #0000008c;
 }
@@ -1563,8 +1610,8 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
 
 div.Center .AdminServizi .AdminServiziItem--ButtonWrapper,
 div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
-  width: 80%;
-  margin: 0 10%;
+  width: 70%;
+  margin: 0 15%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1889,6 +1936,7 @@ div.Prenotazioni {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
 }
 
 div.Prenotazioni--Statistiche {
@@ -1908,6 +1956,23 @@ div.Prenotazioni--Statistiche {
           justify-content: center;
 }
 
+div.Prenotazioni--Statistiche.Minimize {
+  height: 70px;
+  position: relative;
+}
+
+div.Prenotazioni--Statistiche.Minimize .Prenotazioni--Statistiche--First {
+  height: 100%;
+}
+
+div.Prenotazioni--Statistiche.Minimize .Prenotazioni--Statistiche--Other--Second {
+  display: none !important;
+}
+
+div.Prenotazioni--Statistiche.Minimize .Prenotazioni--Statistiche--Other--Third {
+  display: none !important;
+}
+
 div.Prenotazioni--Statistiche div.Right {
   width: auto;
   display: -webkit-box;
@@ -1919,7 +1984,7 @@ div.Prenotazioni--Statistiche div.Right {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 16px 29px;
+  padding: 16px 24px;
 }
 
 div.Prenotazioni--Statistiche div.Right .Prenotazioni--Statistiche--DatePicker {
@@ -1982,7 +2047,7 @@ div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 23px 30px;
+  padding: 23px 27px;
 }
 
 div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft > i {
@@ -2237,6 +2302,10 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:f
   color: #2cb850;
 }
 
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+  background-color: #ffffff;
+}
+
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
   color: #2cb850;
 }
@@ -2244,6 +2313,10 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:f
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Header {
   background-color: #eb691e1a;
   color: #eb681e;
+}
+
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+  background-color: #ffffff;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
@@ -2255,6 +2328,10 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:n
   color: #238be7;
 }
 
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+  background-color: #ffffff;
+}
+
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(3) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
   color: #238be7;
 }
@@ -2262,6 +2339,10 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:n
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Header {
   background-color: #e411181a;
   color: #e31117;
+}
+
+div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+  background-color: #ffffff;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) .Prenotazioni--Statistiche--Box--Informazioni--Parts .numbers {
@@ -2313,7 +2394,8 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  padding-right: 5px;
+  position: relative;
+  left: 2px;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts {
@@ -2330,7 +2412,7 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 17px 20px;
+  padding: 17px 22px;
   height: 143px;
   font-size: 14px;
 }
@@ -2389,7 +2471,6 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  padding-right: 10px;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Train {
@@ -2446,7 +2527,6 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  padding-right: 10px;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Bus {
@@ -2503,7 +2583,6 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  padding-right: 10px;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Event {
@@ -2560,7 +2639,6 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  padding-right: 10px;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Parts--Shopping {
@@ -2617,20 +2695,21 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--
       -ms-flex-align: center;
           align-items: center;
   width: auto;
-  padding-right: 10px;
 }
 
 div.Prenotazioni .ticketDetails {
   margin: 0;
   margin: 0 auto;
+  width: 100%;
   padding-bottom: 76px;
+  max-width: 100%;
 }
 
 @media (max-width: 1330px) {
-  .Prenotazioni--Statistiche {
+  div.Prenotazioni--Statistiche {
     width: 100%;
   }
-  .Prenotazioni--Statistiche--Other--Second, .Prenotazioni--Statistiche--Other--Third {
+  div.Prenotazioni--Statistiche--Other--Second, div.Prenotazioni--Statistiche--Other--Third {
     display: -ms-grid !important;
     display: grid !important;
     -ms-grid-columns: 1fr 1fr;
@@ -2639,13 +2718,13 @@ div.Prenotazioni .ticketDetails {
         grid-template-rows: 1fr 1fr;
     width: 100%;
   }
-  .Prenotazioni--Statistiche--Box--PriceBox, .Prenotazioni--Statistiche--Box--PriceBox:first-child, .Prenotazioni--Statistiche--Box--PriceBox:last-child,
-  .Prenotazioni--Statistiche .Graph {
+  div.Prenotazioni--Statistiche--Box--PriceBox, div.Prenotazioni--Statistiche--Box--PriceBox:first-child, div.Prenotazioni--Statistiche--Box--PriceBox:last-child,
+  div.Prenotazioni--Statistiche .Graph {
     width: 94% !important;
     max-width: 100%;
     margin: 2% 2% !important;
   }
-  .Prenotazioni--Statistiche--Box--Informazioni, .Prenotazioni--Statistiche--Box--Informazioni:first-child, .Prenotazioni--Statistiche--Box--Informazioni:last-child {
+  div.Prenotazioni--Statistiche--Box--Informazioni, div.Prenotazioni--Statistiche--Box--Informazioni:first-child, div.Prenotazioni--Statistiche--Box--Informazioni:last-child {
     width: 94% !important;
     max-width: 100%;
     margin: 2% 2% !important;
@@ -3639,6 +3718,10 @@ div.Prenotazioni .ticketDetails {
   div.Prenotazioni--Statistiche {
     width: 100%;
   }
+  div.Prenotazioni--Statistiche.Minimize {
+    min-height: 120px;
+    height: 120px;
+  }
   div.Prenotazioni--Statistiche--Box--PriceBox--Price {
     font-size: 20px !important;
   }
@@ -3750,6 +3833,7 @@ div.Prenotazioni .ticketDetails {
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child i {
     padding: 0 !important;
+    margin-right: 0 !important;
     width: auto;
     height: auto;
     border: none;
@@ -3817,6 +3901,284 @@ div.Prenotazioni .ticketDetails {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
+  }
+}
+
+.bodyAdmin .Center .calendarWrapper {
+  position: absolute;
+  right: 6%;
+  top: 60px;
+}
+
+.bodyAdmin .Center--Big .calendarWrapper {
+  position: absolute;
+  right: 6%;
+  top: 60px;
+}
+
+.RightFormModal {
+  position: absolute;
+  width: 80vw;
+  top: 71px;
+  margin: calc((20vh - 71px) / 2) 10vw;
+  height: 80vh;
+  z-index: 5;
+  -webkit-box-shadow: 0 3px 6px 1px #0000008c;
+          box-shadow: 0 3px 6px 1px #0000008c;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown {
+  background-color: #ffffff;
+  padding: 4vh 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 7.1vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 6;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown--Submit {
+  margin-top: 4vh;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
+  margin: 4vh 27px;
+  height: 7vh;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
+  margin-top: 7vh;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown {
+  background-color: #ffffff;
+  padding: 3vh 2vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 7.1vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 6;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.2vw + 1.2vh);
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
+  font-family: "Roboto";
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
+  color: #727272;
+  font-weight: 400;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
+  color: #4b4b4b;
+  font-weight: 500;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
+  color: #727272;
+  font-weight: 400;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
+  font-weight: 500;
+  color: #0078ff;
+}
+
+.RightFormModal .Header {
+  position: absolute;
+  width: calc(100% - 8.25vw);
+  z-index: 7;
+  background-color: #ffffff;
+  left: 0.1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 3vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.6vw + 1.6vh);
+  font-family: "Roboto";
+  height: 7vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-bottom: 1px solid #c53f3f;
+}
+
+.RightFormModal .Close {
+  position: absolute;
+  z-index: 7;
+  background: #c53f3f;
+  left: calc(100% - 8.9vw);
+  width: 9vw;
+  height: 7vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.6vw + 1.6vh);
+  font-family: "Roboto";
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.RightFormModal .Close i {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: calc(1.6vw + 1.6vh);
+}
+
+.RightFormModal .backDrop {
+  top: 71px;
+  height: calc(100vh - 71px);
+  width: calc(100vw - 51px);
+  left: 51px;
+  z-index: 4;
+}
+
+.RightFormModal .Statistiche.Dropdown {
+  background-color: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 7.1vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 6;
+}
+
+.RightFormModal .Statistiche.Dropdown .Graph {
+  width: 100%;
+  height: 85%;
+  z-index: 6;
+  padding-top: 7vh;
+}
+
+.RightFormModal .Statistiche.Dropdown .Graph--Element {
+  margin: 0px 0.5%;
+  width: 1.8%;
+}
+
+.RightFormModal .Statistiche.Dropdown .Date {
+  font-size: calc(1vw + 1vh);
+  width: auto;
+  top: 0;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.RightFormModal .Statistiche.Dropdown .Date i {
+  font-size: calc(1.2vw + 1.2vh);
+  position: relative;
+  top: -3vh;
+  left: -0.5vw;
+}
+
+.RightFormModal .Statistiche.Dropdown .Date div span:first-child {
+  font-size: calc(2.5vw + 2.5vh);
+  font-weight: 500;
+}
+
+.RightFormModal .Statistiche.Dropdown .Date div span:nth-child(2) {
+  position: relative;
+  font-size: calc(1.2vw + 1.2vh);
+  font-weight: 400;
+  top: -2vh;
+  left: 2vw;
+}
+
+.RightFormModal .Statistiche.Dropdown .Tranzacioni {
+  width: 100%;
+  height: 15%;
+  z-index: 6;
+  background-color: #ffffff;
+}
+
+.RightFormModal .Statistiche.Dropdown .Tranzacioni div {
+  height: 100%;
+}
+
+.RightFormModal .Statistiche.Dropdown .Tranzacioni div span {
+  font-size: calc(1.2vw + 1.2vh);
+}
+
+@media (max-width: 500px) {
+  .RightFormModal .Statistiche.Dropdown .Graph--Element {
+    margin: 0px 0.5%;
+    width: 2%;
+  }
+  .RightFormModal .Statistiche.Dropdown .Date {
+    font-size: calc(1.5vw + 1.5vh);
+  }
+  .RightFormModal .Statistiche.Dropdown .Date i {
+    font-size: calc(1.5vw + 1.5vh);
+    position: relative;
+    top: -3vh;
+    left: -0.5vw;
+  }
+  .RightFormModal .Statistiche.Dropdown .Date div span:first-child {
+    font-size: calc(2.8vw + 2.8vh);
+    font-weight: 500;
+  }
+  .RightFormModal .Statistiche.Dropdown .Date div span:nth-child(2) {
+    position: relative;
+    font-size: calc(1.5vw + 1.5vh);
+    font-weight: 400;
+    top: -2vh;
+    left: 2vw;
+  }
+  .RightFormModal .Statistiche.Dropdown .Tranzacioni {
+    width: 100%;
+    height: 15%;
+    z-index: 6;
+    background-color: #ffffff;
+  }
+  .RightFormModal .Statistiche.Dropdown .Tranzacioni div {
+    height: 100%;
+  }
+  .RightFormModal .Statistiche.Dropdown .Tranzacioni div span {
+    font-size: calc(1.4vw + 1.4vh);
   }
 }
 /*# sourceMappingURL=styles.css.map */

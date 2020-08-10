@@ -1,6 +1,6 @@
 import React from "react";
 
-const NormalDrop = ({ leUltimeTransazioniDet }) => (
+const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
   <div className="AdminRightForm--Box--LeUltime--Dropdown">
     {leUltimeTransazioniDet.map((Tranzacioni) => (
       <div
@@ -24,16 +24,38 @@ const NormalDrop = ({ leUltimeTransazioniDet }) => (
     ))}
   </div>
 );
-const AdminRightFormUltimeDetails = ({ leUltimeTransazioniDet, ModalOrNo }) => (
+const AdminRightFormUltimeDetails = ({
+  leUltimeTransazioniDet,
+  ModalOrNo,
+  Close,
+}) => (
   <React.Fragment>
     {ModalOrNo === true ? (
       <div className="RightFormModal">
-        <div className="backDrop">
-          <NormalDrop leUltimeTransazioniDet={leUltimeTransazioniDet} />
+        <div
+          className="backDrop"
+          onClick={() => {
+            Close({ visibility: false, data: "" });
+          }}
+        ></div>
+        <div className="Header">LE ULTIME TRANSAZIONI</div>
+
+        <AdminRightFormUltimeDetailsHelper
+          leUltimeTransazioniDet={leUltimeTransazioniDet}
+        />
+        <div className="Close">
+          <i
+            className="fal fa-times"
+            onClick={() => {
+              Close({ visibility: false, data: "" });
+            }}
+          ></i>
         </div>
       </div>
     ) : (
-      <NormalDrop leUltimeTransazioniDet={leUltimeTransazioniDet} />
+      <AdminRightFormUltimeDetailsHelper
+        leUltimeTransazioniDet={leUltimeTransazioniDet}
+      />
     )}
   </React.Fragment>
 );

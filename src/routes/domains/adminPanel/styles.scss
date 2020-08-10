@@ -15,7 +15,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     transition: 0.5s;
-    background: #f7f7f7;
+    background: #edeef0;
+    min-height: 550px;
 
     &--Big {
       position: relative;
@@ -29,7 +30,8 @@
       justify-content: flex-start;
       align-items: flex-start;
       transition: 0.5s;
-      background: #00000008;
+      background: #edeef0;
+      min-height: 550px;
     }
   }
   & .Left {
@@ -99,11 +101,6 @@
             }
             &--Data {
               z-index: 99 !important;
-
-              &--Header {
-              }
-              &--Row {
-              }
             }
             & div.TranzacioniModalResponsive--Data--Header:nth-child(1) {
               background-color: #0078ff;
@@ -170,7 +167,9 @@
           height: 25px;
 
           &:nth-child(1) {
-            width: 8%;
+            width: 6%;
+            padding-left: 1%;
+            margin-right: 3%;
           }
           &:nth-child(2) {
             width: calc(14% + 57px);
@@ -229,6 +228,9 @@
               justify-content: center;
               align-items: center;
               padding: 7px 14px;
+              &:last-child {
+                margin-right: 10px;
+              }
               &.active {
                 color: #0078ff;
                 border-color: #0078ff;
@@ -262,32 +264,37 @@
       left: 3px;
       &:nth-child(1) {
         width: 8%;
+        left: 1%;
       }
       &:nth-child(2) {
         width: calc(14% + 60px);
-        left: -3px;
+        left: 1%;
       }
       &:nth-child(3) {
         position: relative;
         width: 13%;
-        left: -2px;
+        left: 1%;
       }
       &:nth-child(4) {
         width: 6%;
-        left: -3px;
+        left: 0.3%;
       }
       &:nth-child(5) {
         width: 7%;
+        left: 1.8%;
       }
       &:nth-child(6) {
         width: 13%;
+        left: 0.8%;
       }
       &:nth-child(7) {
         width: 13%;
+        left: 0.9%;
       }
       &:nth-child(8) {
         width: calc(26% - 57px);
         left: 6px;
+        left: 1%;
       }
     }
   }
@@ -323,8 +330,7 @@
       }
     }
     & .printModal {
-      width: 320px;
-      padding: 0;
+      width: 340px;
     }
     width: 280px;
     transition: 0.5s;
@@ -353,7 +359,7 @@
       }
     }
 
-    width: 240px;
+    width: 260px;
     transition: 0.5s;
     & .AdminRightForm--Box--LeUltime--Dropdown {
       &--Row {
@@ -373,16 +379,49 @@
     padding-top: 10px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 240px - 51px);
+    width: calc(100% - 260px - 51px);
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 240px - 200px);
+    width: calc(100% - 260px - 200px);
     transition: 0.5s;
   }
   .AdminRightForm--Box {
     padding: 10px 12px;
+    padding-right: 3px;
     font-weight: 500;
+  }
+}
+@media (max-width: 1100px) {
+  .AdminRightForm {
+    width: 220px;
+    transition: 0.5s;
+    & .AdminRightForm--Box--LeUltime--Dropdown--Row {
+      &--Data {
+        width: 25%;
+        font-size: 11px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 1px;
+      }
+    }
+    & div.Tranzacioni {
+      & div {
+        & span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 220px - 51px);
+    transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 220px - 200px);
+    transition: 0.5s;
   }
 }
 @media (max-width: 1600px) {
@@ -726,6 +765,7 @@ div.Center--Big {
   & .container-fluid.overview,
   .panels-container {
     background: #ffffff !important;
+    position: relative;
     box-shadow: none;
     width: 100%;
     min-height: 490px;
@@ -771,9 +811,7 @@ div.Center--Big {
       & .calendarWrapper {
         position: absolute;
         z-index: 3;
-        left: 41.4%;
-        transform: translateX(-50%);
-        top: 57px;
+        left: 0;
         box-shadow: 0 12px 20px 1px #0000008c;
         & .rdrDateDisplay {
           top: 61%;
@@ -1043,8 +1081,8 @@ div.Center--Big {
       }
 
       &--ButtonWrapper {
-        width: 80%;
-        margin: 0 10%;
+        width: 70%;
+        margin: 0 15%;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -1211,8 +1249,6 @@ div.Center--Big {
               margin: 0;
               margin-right: 4px;
             }
-            > i {
-            }
           }
         }
       }
@@ -1257,8 +1293,6 @@ div.Center--Big {
               box-sizing: border-box;
               margin: 0;
               margin-right: 2px;
-            }
-            > i {
             }
           }
         }
@@ -1312,18 +1346,34 @@ div.Prenotazioni {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  position: relative;
   &--Statistiche {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    &.Minimize {
+      height: 70px;
+      position: relative;
+      & .Prenotazioni--Statistiche--First {
+        height: 100%;
+      }
+      .Prenotazioni--Statistiche--Other {
+        &--Second {
+          display: none !important;
+        }
+        &--Third {
+          display: none !important;
+        }
+      }
+    }
     & div.Right {
       width: auto;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding: 16px 29px;
+      padding: 16px 24px;
       & .Prenotazioni--Statistiche--DatePicker {
         width: 197px;
         height: 36px;
@@ -1364,7 +1414,7 @@ div.Prenotazioni {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding: 23px 30px;
+      padding: 23px 27px;
       > i {
         font-size: 16px;
         font-weight: 300;
@@ -1527,6 +1577,7 @@ div.Prenotazioni {
             color: #2cb850;
           }
           & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
             & .numbers {
               color: #2cb850;
             }
@@ -1538,6 +1589,8 @@ div.Prenotazioni {
             color: #eb681e;
           }
           & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+
             & .numbers {
               color: #eb681e;
             }
@@ -1549,6 +1602,8 @@ div.Prenotazioni {
             color: #238be7;
           }
           & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+
             & .numbers {
               color: #238be7;
             }
@@ -1560,6 +1615,8 @@ div.Prenotazioni {
             color: #e31117;
           }
           & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+
             & .numbers {
               color: #e31117;
             }
@@ -1589,7 +1646,8 @@ div.Prenotazioni {
             justify-content: flex-end;
             align-items: center;
             width: auto;
-            padding-right: 5px;
+            position: relative;
+            left: 2px;
           }
         }
 
@@ -1599,7 +1657,7 @@ div.Prenotazioni {
           flex-direction: column;
           justify-content: space-around;
           align-items: flex-start;
-          padding: 17px 20px;
+          padding: 17px 22px;
           height: 143px;
           font-size: 14px;
 
@@ -1629,7 +1687,6 @@ div.Prenotazioni {
               justify-content: flex-end;
               align-items: center;
               width: auto;
-              padding-right: 10px;
             }
           }
           &--Train {
@@ -1658,7 +1715,6 @@ div.Prenotazioni {
               justify-content: flex-end;
               align-items: center;
               width: auto;
-              padding-right: 10px;
             }
           }
           &--Bus {
@@ -1687,7 +1743,6 @@ div.Prenotazioni {
               justify-content: flex-end;
               align-items: center;
               width: auto;
-              padding-right: 10px;
             }
           }
           &--Event {
@@ -1716,7 +1771,6 @@ div.Prenotazioni {
               justify-content: flex-end;
               align-items: center;
               width: auto;
-              padding-right: 10px;
             }
           }
           &--Shopping {
@@ -1745,7 +1799,6 @@ div.Prenotazioni {
               justify-content: flex-end;
               align-items: center;
               width: auto;
-              padding-right: 10px;
             }
           }
         }
@@ -1756,11 +1809,13 @@ div.Prenotazioni {
   & .ticketDetails {
     margin: 0;
     margin: 0 auto;
+    width: 100%;
     padding-bottom: 76px;
+    max-width: 100%;
   }
 }
 @media (max-width: 1330px) {
-  .Prenotazioni--Statistiche {
+  div.Prenotazioni--Statistiche {
     width: 100%;
     &--Other--Second,
     &--Other--Third {
@@ -2346,10 +2401,6 @@ div.Prenotazioni {
         }
       }
     }
-    &--Header {
-      & span {
-      }
-    }
   }
 }
 @media (max-width: 950px) {
@@ -2456,6 +2507,10 @@ div.Prenotazioni {
 @media (max-width: 520px) {
   div.Prenotazioni--Statistiche {
     width: 100%;
+    &.Minimize {
+      min-height: 120px;
+      height: 120px;
+    }
     &--Box--PriceBox {
       &--Price {
         font-size: 20px !important;
@@ -2558,6 +2613,7 @@ div.Prenotazioni {
               }
               & i {
                 padding: 0 !important;
+                margin-right: 0 !important;
                 width: auto;
                 height: auto;
                 border: none;
@@ -2659,6 +2715,249 @@ div.Prenotazioni {
       & span {
         &:first-child {
           display: flex !important;
+        }
+      }
+    }
+  }
+}
+// Calendar
+.bodyAdmin {
+  & .Center {
+    & .calendarWrapper {
+      position: absolute;
+      right: 6%;
+      top: 60px;
+    }
+  }
+  & .Center--Big {
+    & .calendarWrapper {
+      position: absolute;
+      right: 6%;
+      top: 60px;
+    }
+  }
+}
+.RightFormModal {
+  position: absolute;
+  width: 80vw;
+  top: 71px;
+  margin: calc((20vh - 71px) / 2) 10vw;
+  height: 80vh;
+  z-index: 5;
+  box-shadow: 0 3px 6px 1px #0000008c;
+  & .AdminRightForm--Box--Wallet--Dropdown {
+    background-color: #ffffff;
+    padding: 4vh 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 7.1vh;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 6;
+    &--Submit {
+      margin-top: 4vh;
+    }
+    & div.InputHolder {
+      margin: 4vh 27px;
+      height: 7vh;
+      &:nth-child(2) {
+        margin-top: 7vh;
+      }
+    }
+  }
+  & .AdminRightForm--Box--LeUltime--Dropdown {
+    background-color: #ffffff;
+    padding: 3vh 2vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 7.1vh;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 6;
+    &--Row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: calc(1.2vw + 1.2vh);
+      &--Data {
+        font-family: "Roboto";
+        &.User {
+          color: #727272;
+          font-weight: 400;
+        }
+        &.Id {
+          color: #4b4b4b;
+          font-weight: 500;
+        }
+        &.Date {
+          color: #727272;
+          font-weight: 400;
+        }
+        &.Price {
+          font-weight: 500;
+          color: #0078ff;
+        }
+      }
+    }
+  }
+  & .Header {
+    position: absolute;
+    width: calc(100% - 8.25vw);
+    z-index: 7;
+    background-color: #ffffff;
+    left: 0.1vw;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 3vw;
+    align-items: center;
+    font-size: calc(1.6vw + 1.6vh);
+    font-family: "Roboto";
+    height: 7vh;
+    box-sizing: border-box;
+    border-bottom: 1px solid #c53f3f;
+  }
+
+  & .Close {
+    position: absolute;
+    z-index: 7;
+    background: #c53f3f;
+    left: calc(100% - 8.9vw);
+    width: 9vw;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(1.6vw + 1.6vh);
+    font-family: "Roboto";
+    display: flex;
+    box-sizing: border-box;
+
+    & i {
+      color: #ffffff;
+
+      font-weight: 400;
+      font-size: calc(1.6vw + 1.6vh);
+    }
+  }
+  & .backDrop {
+    top: 71px;
+    height: calc(100vh - 71px);
+    width: calc(100vw - 51px);
+    left: 51px;
+    z-index: 4;
+  }
+  & .Statistiche.Dropdown {
+    background-color: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 7.1vh;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 6;
+    & .Graph {
+      width: 100%;
+      height: 85%;
+      z-index: 6;
+      padding-top: 7vh;
+      &--Element {
+        margin: 0px 0.5%;
+        width: 1.8%;
+      }
+    }
+    & .Date {
+      font-size: calc(1vw + 1vh);
+      width: auto;
+      top: 0;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & i {
+        font-size: calc(1.2vw + 1.2vh);
+        position: relative;
+        top: -3vh;
+        left: -0.5vw;
+      }
+      & div {
+        & span {
+          &:first-child {
+            font-size: calc(2.5vw + 2.5vh);
+            font-weight: 500;
+          }
+          &:nth-child(2) {
+            position: relative;
+            font-size: calc(1.2vw + 1.2vh);
+            font-weight: 400;
+            top: -2vh;
+            left: 2vw;
+          }
+        }
+      }
+    }
+    & .Tranzacioni {
+      width: 100%;
+      height: 15%;
+      z-index: 6;
+      background-color: #ffffff;
+      & div {
+        height: 100%;
+        & span {
+          font-size: calc(1.2vw + 1.2vh);
+        }
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .RightFormModal {
+    & .Statistiche.Dropdown {
+      & .Graph {
+        &--Element {
+          margin: 0px 0.5%;
+          width: 2%;
+        }
+      }
+      & .Date {
+        font-size: calc(1.5vw + 1.5vh);
+        & i {
+          font-size: calc(1.5vw + 1.5vh);
+          position: relative;
+          top: -3vh;
+          left: -0.5vw;
+        }
+        & div {
+          & span {
+            &:first-child {
+              font-size: calc(2.8vw + 2.8vh);
+              font-weight: 500;
+            }
+            &:nth-child(2) {
+              position: relative;
+              font-size: calc(1.5vw + 1.5vh);
+              font-weight: 400;
+              top: -2vh;
+              left: 2vw;
+            }
+          }
+        }
+      }
+      & .Tranzacioni {
+        width: 100%;
+        height: 15%;
+        z-index: 6;
+        background-color: #ffffff;
+        & div {
+          height: 100%;
+          & span {
+            font-size: calc(1.4vw + 1.4vh);
+          }
         }
       }
     }

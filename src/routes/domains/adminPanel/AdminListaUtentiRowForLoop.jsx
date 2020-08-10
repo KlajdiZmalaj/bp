@@ -135,6 +135,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           </div>
           {itemList &&
             itemList.children?.length > 0 &&
+            Array.isArray(itemList.children) &&
             this.state.activateChildren === true &&
             itemList.children.map((child, i, arr) =>
               arr.length - 1 === i ? (

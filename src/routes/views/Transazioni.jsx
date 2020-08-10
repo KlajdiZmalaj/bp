@@ -349,7 +349,7 @@ class Transazioni extends React.Component {
                   }}
                   picker={picker}
                   setCalendar={this.setCalendar}
-                  handleSubmit={this.handleSubmit}
+                  handleSubmit={this.handleSubmi}
                 />
               )}
               <h1 className="heading-tab ">Lista Movimenti</h1>
@@ -507,7 +507,7 @@ class Transazioni extends React.Component {
                                         modalDetails: item,
                                       });
                                     }
-                                    forAdmin
+                                    forAdmin && this.props.screenWidth >= 1050
                                       ? this.activateModalForAdmin(item, index)
                                       : this.showModal(
                                           index,

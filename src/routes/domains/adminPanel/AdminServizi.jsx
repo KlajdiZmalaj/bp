@@ -1,28 +1,16 @@
 import React from "react";
 import "./styles.css";
 import AdminServiziItem from "./AdminServiziItem";
+import { serviziList } from "./StaticAdminData";
 class AdminServizi extends React.Component {
   render() {
-    const list = [
-      { name: "expedia" },
-      { name: "ryanair" },
-      { name: "ryanair" },
-      { name: "trivago" },
-      { name: "expedia" },
-      { name: "ryanair" },
-      { name: "ryanair" },
-      { name: "trivago" },
-      { name: "expedia" },
-      { name: "ryanair" },
-      { name: "ryanair" },
-      { name: "trivago" },
-    ];
-
     return (
       <div className="AdminServizi">
-        {list.map((itemList, i) => (
-          <AdminServiziItem {...itemList} key={`${itemList.name}${i}`} />
-        ))}
+        {serviziList &&
+          Array.isArray(serviziList) &&
+          serviziList.map((itemList, i) => (
+            <AdminServiziItem {...itemList} key={`${itemList.name}${i}`} />
+          ))}
       </div>
     );
   }

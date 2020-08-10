@@ -6,6 +6,7 @@ import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { data } from "./adminRightForm";
 import AdminRightFormStatisticheDetails from "./AdminRightFormStatisticheDetails";
+
 class AdminLeftForm extends React.Component {
   state = {
     statModal: false,
@@ -13,6 +14,19 @@ class AdminLeftForm extends React.Component {
     ultModal: false,
   };
   render() {
+    const {
+      handleClick,
+      setActiveSkinId,
+      graphData,
+      leUltimeTransazioniDet,
+      Tranzacioni,
+      Proviggioni,
+      Commisione,
+      screenWidth,
+      editDepModal,
+      editStatModal,
+      editUltModal,
+    } = this.props;
     return (
       <React.Fragment>
         <div className="AdminLeftForm">
@@ -20,7 +34,7 @@ class AdminLeftForm extends React.Component {
             <div className="AdminLeftForm--FirstBox--Box">
               <div className="Bars">
                 <span>NETWORK</span>
-                <i className="fal fa-bars" onClick={this.props.handleClick}></i>
+                <i className="fal fa-bars" onClick={handleClick}></i>
               </div>
             </div>
             <div className="AdminLeftForm--FirstBox--Box--active">
@@ -35,7 +49,7 @@ class AdminLeftForm extends React.Component {
                 </svg>
                 <span
                   onClick={() => {
-                    this.props.setActiveSkinId(1);
+                    setActiveSkinId(1);
                   }}
                 >
                   BPOINT
@@ -45,19 +59,27 @@ class AdminLeftForm extends React.Component {
           </div>
 
           <div className="AdminLeftForm--LastBox">
-            {this.props.screenWidth <= 1050 ? (
+            {screenWidth <= 1050 ? (
               <React.Fragment>
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
-                    this.props.editStatModal({
+                    editStatModal({
                       visibility: true,
-                      statModal: {
-                        graphData: data,
-                        Tranzacioni: "2586.66",
-                        Commisione: "2586.66",
-                        Proviggioni: "2586.66",
+                      data: {
+                        graphData: graphData,
+                        Tranzacioni: Tranzacioni,
+                        Commisione: Commisione,
+                        Proviggioni: Proviggioni,
                       },
+                    });
+                    editUltModal({
+                      visibility: false,
+                      data: "",
+                    });
+                    editDepModal({
+                      visibility: false,
+                      data: "",
                     });
                   }}
                 >
@@ -66,10 +88,19 @@ class AdminLeftForm extends React.Component {
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
-                    this.setState({
-                      statModal: false,
-                      wallModal: true,
-                      ultModal: false,
+                    editUltModal({
+                      visibility: true,
+                      data: {
+                        leUltimeTransazioniDet: leUltimeTransazioniDet,
+                      },
+                    });
+                    editStatModal({
+                      visibility: false,
+                      data: "",
+                    });
+                    editDepModal({
+                      visibility: false,
+                      data: "",
                     });
                   }}
                 >
@@ -78,10 +109,19 @@ class AdminLeftForm extends React.Component {
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
-                    this.setState({
-                      statModal: false,
-                      wallModal: false,
-                      ultModal: true,
+                    editDepModal({
+                      visibility: true,
+                      data: {
+                        graphData: "full",
+                      },
+                    });
+                    editStatModal({
+                      visibility: false,
+                      data: "",
+                    });
+                    editUltModal({
+                      visibility: false,
+                      data: "",
                     });
                   }}
                 >
