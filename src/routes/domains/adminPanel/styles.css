@@ -2035,7 +2035,7 @@ div.Prenotazioni--Statistiche div.Right {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 16px 24px;
+  padding: 16px 2.8%;
 }
 
 div.Prenotazioni--Statistiche div.Right .Prenotazioni--Statistiche--DatePicker {
@@ -2098,7 +2098,7 @@ div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 23px 27px;
+  padding: 23px 2.8%;
 }
 
 div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--TitleHeaderLeft > i {
@@ -2190,7 +2190,7 @@ div.Prenotazioni--Statistiche div .Graph {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 7.5px 10px;
-  margin-right: 24px;
+  margin-right: 2.8%;
 }
 
 div.Prenotazioni--Statistiche div .Graph--Element {
@@ -2269,11 +2269,11 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox {
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:first-child {
-  margin-left: 24px;
+  margin-left: 2.8%;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox:nth-child(4) {
-  margin-right: 24px;
+  margin-right: 2.8%;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Price {
@@ -2337,7 +2337,7 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni {
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child {
   border: 1px solid #2cb850;
-  margin-left: 24px;
+  margin-left: 2.8%;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(2) {
@@ -2350,7 +2350,7 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:n
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:nth-child(4) {
   border: 1px solid #e31117;
-  margin-right: 24px;
+  margin-right: 2.8%;
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni:first-child .Prenotazioni--Statistiche--Box--Informazioni--Header {
@@ -2761,9 +2761,15 @@ div.Prenotazioni .ticketDetails {
   max-width: 100%;
 }
 
-@media (max-width: 1330px) {
+@media (max-width: 1370px) {
   div.Prenotazioni--Statistiche {
     width: 100%;
+  }
+  div.Prenotazioni--Statistiche.Right {
+    padding: 16px 2% !important;
+  }
+  div.Prenotazioni--Statistiche--TitleHeaderLeft {
+    padding: 23px 2% !important;
   }
   div.Prenotazioni--Statistiche--Other--Second, div.Prenotazioni--Statistiche--Other--Third {
     display: -ms-grid !important;
@@ -2776,14 +2782,16 @@ div.Prenotazioni .ticketDetails {
   }
   div.Prenotazioni--Statistiche--Box--PriceBox, div.Prenotazioni--Statistiche--Box--PriceBox:first-child, div.Prenotazioni--Statistiche--Box--PriceBox:last-child,
   div.Prenotazioni--Statistiche .Graph {
-    width: 94% !important;
+    width: 95% !important;
     max-width: 100%;
     margin: 2% 2% !important;
+    padding: 0;
   }
   div.Prenotazioni--Statistiche--Box--Informazioni, div.Prenotazioni--Statistiche--Box--Informazioni:first-child, div.Prenotazioni--Statistiche--Box--Informazioni:last-child {
-    width: 94% !important;
+    width: 95% !important;
     max-width: 100%;
     margin: 2% 2% !important;
+    padding: 0;
   }
 }
 

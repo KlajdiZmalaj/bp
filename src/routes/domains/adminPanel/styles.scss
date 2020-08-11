@@ -1417,7 +1417,7 @@ div.Prenotazioni {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding: 16px 24px;
+      padding: 16px 2.8%;
       & .Prenotazioni--Statistiche--DatePicker {
         width: 197px;
         height: 36px;
@@ -1458,7 +1458,7 @@ div.Prenotazioni {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding: 23px 27px;
+      padding: 23px 2.8%;
       > i {
         font-size: 16px;
         font-weight: 300;
@@ -1515,7 +1515,7 @@ div.Prenotazioni {
         align-items: flex-end;
         justify-content: center;
         margin: 7.5px 10px;
-        margin-right: 24px;
+        margin-right: 2.8%;
         &--Element {
           width: 6px;
           margin: 0 1.5px;
@@ -1565,11 +1565,11 @@ div.Prenotazioni {
         justify-content: center;
         margin: 7.5px 10px;
         &:first-child {
-          margin-left: 24px;
+          margin-left: 2.8%;
         }
 
         &:nth-child(4) {
-          margin-right: 24px;
+          margin-right: 2.8%;
         }
         &--Price {
           color: #5c5c5c;
@@ -1596,7 +1596,7 @@ div.Prenotazioni {
       &.Prenotazioni--Statistiche--Box--Informazioni {
         &:first-child {
           border: 1px solid #2cb850;
-          margin-left: 24px;
+          margin-left: 2.8%;
         }
         &:nth-child(2) {
           border: 1px solid #eb681e;
@@ -1606,7 +1606,7 @@ div.Prenotazioni {
         }
         &:nth-child(4) {
           border: 1px solid #e31117;
-          margin-right: 24px;
+          margin-right: 2.8%;
         }
         width: 22.5%;
         min-width: 22.5%;
@@ -1862,9 +1862,15 @@ div.Prenotazioni {
     max-width: 100%;
   }
 }
-@media (max-width: 1330px) {
+@media (max-width: 1370px) {
   div.Prenotazioni--Statistiche {
     width: 100%;
+    &.Right {
+      padding: 16px 2% !important;
+    }
+    &--TitleHeaderLeft {
+      padding: 23px 2% !important;
+    }
     &--Other--Second,
     &--Other--Third {
       display: grid !important;
@@ -1876,16 +1882,18 @@ div.Prenotazioni {
     &--Box--PriceBox:first-child,
     &--Box--PriceBox:last-child,
     .Graph {
-      width: 94% !important;
+      width: 95% !important;
       max-width: 100%;
       margin: 2% 2% !important;
+      padding: 0;
     }
     &--Box--Informazioni,
     &--Box--Informazioni:first-child,
     &--Box--Informazioni:last-child {
-      width: 94% !important;
+      width: 95% !important;
       max-width: 100%;
       margin: 2% 2% !important;
+      padding: 0;
     }
   }
 }
