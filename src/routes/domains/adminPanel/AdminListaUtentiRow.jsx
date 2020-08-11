@@ -1,10 +1,11 @@
 import React from "react";
 import "./styles.css";
 import { connect } from "react-redux";
-import AdminListaUtentiRowForLoop from "./AdminListaUtentiRowForLoop";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import moment from "moment";
+import AdminListaUtentiRowForLoop from "./AdminListaUtentiRowForLoop";
+import { allRoles } from "config/index";
 class AdminListaUtentiRow extends React.Component {
   state = {
     activateChildren: false,
@@ -14,14 +15,7 @@ class AdminListaUtentiRow extends React.Component {
     ModalRowVisibility: false,
     ModalRowDetails: "",
   };
-
   render() {
-    const allRoles = {
-      user: "fal fa-user",
-      agency: "fas fa-store",
-      agent: "fas fa-user-tie",
-      super_admin: "fas fa-store",
-    };
     const { itemList, screenWidth } = this.props;
     console.log(this.state);
     const {

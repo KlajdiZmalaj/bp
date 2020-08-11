@@ -1,3 +1,7 @@
+.bodyAdmin {
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.03);
+}
 .AdminColumns {
   display: flex;
   flex-direction: row;
@@ -15,7 +19,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     transition: 0.5s;
-    background: #edeef0;
+    background-color: rgba(0, 0, 0, 0.03);
+
     min-height: 550px;
 
     &--Big {
@@ -30,7 +35,7 @@
       justify-content: flex-start;
       align-items: flex-start;
       transition: 0.5s;
-      background: #edeef0;
+      background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
     }
   }
@@ -165,7 +170,7 @@
           box-sizing: border-box;
           max-height: 25px;
           height: 25px;
-
+          color: #5c5c5c;
           &:nth-child(1) {
             width: 6%;
             padding-left: 1%;
@@ -184,6 +189,7 @@
           }
           &:nth-child(4) {
             width: 6%;
+            font-weight: 500;
           }
           &:nth-child(5) {
             width: 7%;
@@ -206,7 +212,7 @@
               background-color: #ffffff;
               cursor: pointer;
               font-size: 11px;
-              font-weight: 400;
+              font-weight: 500;
               font-family: "Roboto", sans-serif;
               border: 1px solid #5c5c5c;
               border-radius: 17px;
@@ -262,6 +268,8 @@
       box-sizing: border-box;
       position: relative;
       left: 3px;
+      color: #5c5c5c;
+
       &:nth-child(1) {
         width: 8%;
         left: 1%;
@@ -410,7 +418,9 @@
     & div.Tranzacioni {
       & div {
         & span {
-          font-size: 12px;
+          &:nth-child(2) {
+            font-size: 13px;
+          }
         }
       }
     }
@@ -501,6 +511,16 @@
       & button {
         padding: 0;
       }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .AdminHeader {
+    &--Title {
+      display: none;
+    }
+    &--Box {
+      width: 100%;
     }
   }
 }
@@ -951,6 +971,7 @@ div.Center--Big {
 
     & .wsNwp,
     td {
+      color: #5c5c5c;
       &.right {
         text-align: right !important;
         padding-left: 0;
@@ -978,9 +999,11 @@ div.Center--Big {
     }
     & .wsNwp,
     td {
+      color: #5c5c5c;
       background-color: #ffffff;
       padding: 15px 10px;
       border: none;
+      font-weight: 400;
       > i {
         font-size: 12px;
         top: 0;
@@ -992,6 +1015,7 @@ div.Center--Big {
         background-color: #ffffff;
         justify-content: flex-start;
         align-items: center;
+        font-weight: 500;
         padding: 10px auto;
 
         > i {
@@ -1103,9 +1127,8 @@ div.Center--Big {
         }
         & button {
           background-color: #ffffff;
-
           font-size: 11px;
-          font-weight: 400;
+          font-weight: 500;
           font-family: "Roboto", sans-serif;
           border-radius: 100px;
           color: #000000;
@@ -1123,11 +1146,12 @@ div.Center--Big {
 }
 //Modal For Responsivnes of Movimenti
 .TranzacioniModalResponsive--Data {
+  box-shadow: 0 0 44px -15px black;
   position: fixed;
-  width: 420px;
-  height: 300px;
-  left: calc((100% - 380px) / 2);
-  top: calc((100% - 300px) / 4);
+  width: 90%;
+  height: 70%;
+  left: 5%;
+  top: 17%;
   z-index: 5;
   background-color: #ffffff;
   font-family: "Roboto";
@@ -1141,7 +1165,7 @@ div.Center--Big {
     height: 14%;
     display: flex;
     justify-content: flex-start;
-    padding: 5px 20px;
+    padding: 5px 10px;
     align-items: center;
     font-weight: 500;
     font-family: "Roboto", sans-serif;
@@ -1158,26 +1182,44 @@ div.Center--Big {
       right: 0;
       top: 0;
       height: 100%;
-      background-color: #e72626;
+      background-color: #0078ff;
+      text-transform: lowercase;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
+      width: 10%;
+      cursor: pointer;
+      & i {
+        color: #ffffff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 4%;
+        height: 100%;
+        width: 20%;
+      }
     }
   }
   &--Row {
+    overflow: auto;
     width: 100%;
     height: 86%;
     display: flex;
-    padding: 15px 20px;
+    padding: 0 !important;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     font-size: 14px;
     font-family: "Roboto", sans-serif;
-    & span:nth-child(2) {
-      width: 55%;
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
     }
+    &::-webkit-scrollbar-thumb {
+      background: #0078ff;
+    }
+
     &--DateOra,
     &--Barcode,
     &--User,
@@ -1198,21 +1240,23 @@ div.Center--Big {
       display: flex;
       flex-direction: row;
       align-items: center;
+      padding: 10px 3%;
+      border-bottom: 1px solid #ebeced;
+      justify-content: space-between;
+      font-family: "Roboto", sans-serif;
+      &:last-child {
+        border: none;
+      }
       &--Header {
-        font-weight: bold !important;
-        padding-right: 4% !important;
-        width: 51% !important;
-        text-align: start !important;
-        margin: 0 !important;
+        font-weight: bold;
+        font-size: 15px;
         &:after {
           content: " :";
         }
       }
       &--Info {
-        width: 55% !important;
-        min-width: 55% !important;
-        margin: 0 !important;
-        justify-content: flex-start !important;
+        font-size: 14px;
+        font-weight: 400;
       }
     }
   }
@@ -1443,6 +1487,10 @@ div.Prenotazioni {
       &--Second {
         margin-top: 58px;
         z-index: 1;
+        background: transparent;
+      }
+      &--Third {
+        background: transparent;
       }
       z-index: 1;
     }
@@ -2157,9 +2205,6 @@ div.Prenotazioni {
   }
 }
 @media (max-width: 670px) {
-  .TranzacioniModalResponsive--Data {
-    top: calc((100% - 10px) / 4);
-  }
   div.Center,
   div.Center--Big {
     & .container-fluid.overview,
@@ -2296,22 +2341,7 @@ div.Prenotazioni {
     }
   }
 }
-@media (max-width: 490px) {
-  .TranzacioniModalResponsive--Data {
-    position: fixed;
-    width: 320px;
-    height: 400px;
-    left: calc((100% - 300px) / 2);
-  }
-}
 @media (max-width: 405px) {
-  .TranzacioniModalResponsive--Data {
-    position: fixed;
-    width: 320px;
-    height: 400px;
-
-    left: calc((100% - 280px) / 2);
-  }
   div.Center,
   div.Center--Big {
     & .container-fluid.overview,
@@ -2348,11 +2378,6 @@ div.Prenotazioni {
 
 @media (max-width: 365px) {
   .TranzacioniModalResponsive--Data {
-    position: fixed;
-    width: 260px;
-    height: 400px;
-
-    left: calc((100% - 260px) / 2);
     &--Header {
       padding: 0;
       margin: 0;
@@ -2758,6 +2783,7 @@ div.Prenotazioni {
     z-index: 6;
     &--Submit {
       margin-top: 4vh;
+      font-weight: 500;
     }
     & div.InputHolder {
       margin: 4vh 27px;
@@ -2961,5 +2987,30 @@ div.Prenotazioni {
         }
       }
     }
+  }
+}
+.bodyAdmin {
+  & .rowPopUp {
+    & .rowPopUp--header {
+      background: #0078ff;
+      color: #ffffff;
+    }
+  }
+}
+body.bodyAdmin,
+.ant-modal-wrap,
+.Left,
+.Left--Min,
+.Statistiche.Dropdown,
+.AdminRightForm--Box--LeUltime--Dropdown,
+.AdminRightForm--Box--Wallet--Dropdown,
+.AdminColumns,
+.TranzacioniModalResponsive--Data--Row {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #0078ff;
   }
 }

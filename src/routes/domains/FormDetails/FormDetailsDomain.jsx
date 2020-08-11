@@ -5,6 +5,7 @@ import { Switch, Tooltip } from "antd";
 import RowDetailsMobile from "./RowDetailsMobile";
 import "./style.scss";
 import DetailRow from "./DetailRow";
+import { allRoles } from "config/index";
 
 export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
   <Tooltip title={`Filtra per ${title === "all" ? "Tutti" : title}`}>
@@ -67,12 +68,7 @@ class FormDetailsDomain extends Component {
     } = this.state;
     const { my_tickets } = formDetails;
     const { tickets } = formDetails;
-    const allRoles = {
-      user: "fal fa-user text-success",
-      agency: "fal fa-store text-success",
-      agent: "fas fa-user-tie text-success",
-      super_admin: "fal fa-store text-success",
-    };
+
     return (
       <React.Fragment>
         <div className="ticketDetails">

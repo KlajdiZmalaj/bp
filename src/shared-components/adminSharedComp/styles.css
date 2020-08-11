@@ -1,6 +1,8 @@
 .Admin-Panel {
   min-width: 700px;
   font-family: "Roboto", sans-serif;
+  color: #5c5c5c;
+  background-color: #ffffff;
 }
 
 .bodyAdmin footer {
@@ -163,18 +165,30 @@
 
 .AdminHeader--ButtonWrapper {
   height: 100%;
-  width: 13%;
+  width: 15%;
 }
 
 .AdminHeader--ButtonWrapper button {
   cursor: pointer;
+  border: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #0078ff;
   color: #ffffff;
-  border: none;
+  font-weight: bold;
+  font-family: Lato;
+  font-size: 14px;
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .AdminRightForm {
@@ -240,6 +254,7 @@
   align-items: center;
   height: 99vh;
   border: 1px solid #ebeced;
+  padding-right: 10px;
 }
 
 .AdminRightForm .printModal i {
@@ -321,7 +336,9 @@
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1) {
   zoom: 1;
   overflow: auto;
-  padding: 0px 35px;
+  width: 100%;
+  padding: 0;
+  padding-right: 20px;
   margin: 34px 0;
   height: calc(98vh - 145px);
   -webkit-box-sizing: border-box;
@@ -424,6 +441,7 @@
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 1px solid #ebeced;
+  color: #5c5c5c;
 }
 
 .AdminRightForm--Box > i {
@@ -594,6 +612,7 @@
       -ms-flex-align: center;
           align-items: center;
   font-size: 18px;
+  font-weight: 300;
   font-family: "Roboto", sans-serif;
 }
 
@@ -1145,7 +1164,8 @@
 .Graph .Date div:first-child span:first-child {
   font-family: "Roboto", sans-serif;
   font-size: 31px;
-  font-weight: 200;
+  font-weight: 100;
+  color: #5c5c5c;
 }
 
 .Graph .Date div:first-child span:nth-child(2) {
@@ -1165,6 +1185,8 @@
           align-items: flex-start;
   left: 15%;
   top: 80%;
+  font-weight: 500;
+  color: #aaaaaa;
   font-size: 10px;
 }
 
@@ -1220,7 +1242,8 @@
 
 .Tranzacioni div span:first-child {
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
+  font-size: 10px;
+  font-weight: 400;
   color: #5c5c5c;
 }
 

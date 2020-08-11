@@ -69,7 +69,7 @@ class AdminHeader extends React.Component {
                 this.props.logOut();
               }}
             >
-              LOG OUT
+              <span>LOG OUT</span>
             </button>
           </div>
         </div>

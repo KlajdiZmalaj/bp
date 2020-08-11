@@ -7,9 +7,7 @@ import AdminRightFormStatisticheDetails from "shared-components/adminSharedComp/
 import AdminRightFormUltimeDetails from "shared-components/adminSharedComp/AdminRightFormUltimeDetails";
 import AdminRightFormWalletDetails from "shared-components/adminSharedComp/AdminRightFormWalletDetails";
 import AuthActions from "redux-store/models/auth";
-import Ticket from "shared-components/adminSharedComp/Ticket";
 import { numberWithCommas } from "./HelperFunc";
-
 import {
   graphData,
   Tranzacioni,
@@ -18,7 +16,6 @@ import {
   leUltimeTransazioniDet,
 } from "./StaticAdminData";
 import "./styles.css";
-
 class AdminPanelDom extends React.Component {
   state = {
     menuSkinVisible: false,
@@ -27,6 +24,9 @@ class AdminPanelDom extends React.Component {
   };
   componentDidMount() {
     document.body.classList.add("bodyAdmin");
+  }
+  componentWillUnmount() {
+    document.body.classList.remove("bodyAdmin");
   }
   componentDidUpdate() {
     if (this.state.menuSkinVisible === true && this.props.screenWidth <= 1320) {
@@ -47,7 +47,6 @@ class AdminPanelDom extends React.Component {
       editUltModal,
       editStatModal,
       editDepModal,
-      openAdminModal,
     } = this.props;
     return (
       <React.Fragment>

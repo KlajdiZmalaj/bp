@@ -10,7 +10,6 @@ class AdminListaUtenti extends React.Component {
           <span>USER ID</span>
           <span>USERNAME</span>
           <span>RAG SOCIALE</span>
-
           <span>CREDITO</span>
           <span>CITY</span>
           <span>ULTIMO DEPOSIT</span>

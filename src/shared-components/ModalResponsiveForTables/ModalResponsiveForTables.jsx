@@ -11,7 +11,7 @@ const ModalResponsiveForTables = ({ Close, Rows }) => (
           className="TranzacioniModalResponsive--Data--Header--Close"
           onClick={Close}
         >
-          x
+          <i className="fal fa-times" aria-hidden="true"></i>
         </div>
       </div>
 

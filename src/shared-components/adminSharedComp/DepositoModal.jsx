@@ -1,10 +1,6 @@
 import React from "react";
-const allRoles = {
-  user: "fal fa-user",
-  agency: "fas fa-store",
-  agent: "fas fa-user-tie",
-  super_admin: "fas fa-store",
-};
+import { allRoles } from "config/index";
+
 const DepositoModal = () => {
   return (
     <div className="DepositoModal">

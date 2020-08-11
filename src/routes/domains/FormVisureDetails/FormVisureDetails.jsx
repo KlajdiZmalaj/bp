@@ -4,7 +4,7 @@ import { AuthActions } from "redux-store/models";
 import DetailRow from "./DetailRow";
 import { Tooltip } from "antd";
 import "./styles.css";
-
+import { allRoles } from "config/index";
 export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
   <Tooltip title={`Filtra per ${title === "all" ? "Tutti" : title}`}>
     <span
@@ -64,12 +64,6 @@ class FormDetailsDomain extends Component {
     this.props.getVisure();
   }
   render() {
-    const allRoles = {
-      user: "fal fa-user ",
-      agency: "fal fa-store",
-      agent: "fas fa-user-tie",
-      super_admin: "fal fa-store",
-    };
     const {
       filterVisure,
       filterType,

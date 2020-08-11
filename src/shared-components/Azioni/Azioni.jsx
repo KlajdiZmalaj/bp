@@ -10,11 +10,10 @@ import Swiper from "react-id-swiper";
 class Azioni extends Component {
   render() {
     const { active, accountInfo } = this.props;
+    console.log(active);
     const params = {
       mousewheel: true,
-      centeredSlides:
-        active === "annunci" || active === "account-info" ? false : true,
-
+      activeSlideKey: active === "dashboard" ? "0" : active,
       breakpoints: {
         // when window width is >= 320px
         320: {
@@ -52,7 +51,7 @@ class Azioni extends Component {
           </a>
         </div>
       ) : (
-        <></>
+        <div key={item.id} style={{ display: "none" }}></div>
       );
     });
     return (

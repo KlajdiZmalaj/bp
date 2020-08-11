@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import AdminListaUtentiRow from "./AdminListaUtentiRow";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import moment from "moment";
+import { allRoles } from "config/index";
 class AdminListaUtentiRowForLoop extends React.Component {
   state = {
     activateChildren: false,
@@ -16,12 +17,6 @@ class AdminListaUtentiRowForLoop extends React.Component {
   };
 
   render() {
-    const allRoles = {
-      user: "fal fa-user",
-      agency: "fas fa-store",
-      agent: "fas fa-user-tie",
-      super_admin: "fas fa-store",
-    };
     const { itemList, screenWidth } = this.props;
     console.log(this.state);
     const {

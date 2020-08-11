@@ -1,6 +1,8 @@
 .Admin-Panel {
   min-width: 700px;
   font-family: "Roboto", sans-serif;
+  color: #5c5c5c;
+  background-color: #ffffff;
 }
 .bodyAdmin {
   & footer {
@@ -101,15 +103,21 @@
   }
   &--ButtonWrapper {
     height: 100%;
-    width: 13%;
+    width: 15%;
     & button {
       cursor: pointer;
+      border: none;
       box-sizing: border-box;
       background-color: #0078ff;
       color: #ffffff;
-      border: none;
+      font-weight: bold;
+      font-family: Lato;
+      font-size: 14px;
       height: 100%;
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
@@ -162,7 +170,7 @@
     align-items: center;
     height: 99vh;
     border: 1px solid #ebeced;
-
+    padding-right: 10px;
     & i {
       font-size: 14px;
       font-weight: 300;
@@ -232,7 +240,9 @@
     & div.ContainerOfData:nth-child(1) {
       zoom: 1;
       overflow: auto;
-      padding: 0px 35px;
+      width: 100%;
+      padding: 0;
+      padding-right: 20px;
       margin: 34px 0;
       height: calc(98vh - 145px);
       box-sizing: border-box;
@@ -302,7 +312,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ebeced;
-
+    color: #5c5c5c;
     > i {
       cursor: pointer;
       width: 32px;
@@ -392,7 +402,6 @@
           }
           & span {
             width: 14%;
-
             position: absolute;
             top: 0;
             left: 86%;
@@ -401,6 +410,7 @@
             justify-content: center;
             align-items: center;
             font-size: 18px;
+            font-weight: 300;
             font-family: "Roboto", sans-serif;
           }
         }
@@ -760,7 +770,8 @@
         &:first-child {
           font-family: "Roboto", sans-serif;
           font-size: 31px;
-          font-weight: 200;
+          font-weight: 100;
+          color: #5c5c5c;
         }
         &:nth-child(2) {
           display: flex;
@@ -770,7 +781,8 @@
           align-items: flex-start;
           left: 15%;
           top: 80%;
-
+          font-weight: 500;
+          color: #aaaaaa;
           font-size: 10px;
         }
       }
@@ -803,7 +815,8 @@
       font-weight: 300;
       &:first-child {
         font-family: "Roboto", sans-serif;
-        font-size: 15px;
+        font-size: 10px;
+        font-weight: 400;
         color: #5c5c5c;
       }
       &:nth-child(2) {

@@ -118,3 +118,104 @@
     }
   }
 }
+@media (max-width: 550px) {
+  .calendarWrapper {
+    height: 280px;
+    width: 375px;
+    & .buttons {
+      height: 35px;
+      & button {
+        font-size: 15px;
+      }
+    }
+    & .rdrCalendarWrapper.rdrDateRangeWrapper {
+      padding-left: 5px;
+      min-height: 250px;
+      width: 240px;
+    }
+    & .rdrDateRangePickerWrapper {
+      width: 100%;
+    }
+    & .rdrMonths.rdrMonthsHorizontal {
+      & .rdrMonth {
+        padding: 0 0;
+        & .rdrWeekDays {
+          width: 100%;
+          margin: 0;
+        }
+        & .rdrMonthName {
+          display: none;
+        }
+      }
+      .rdrDay {
+        line-height: 2.5rem;
+        height: 2.5em;
+        font-size: 12px;
+        width: calc(100% / 7);
+      }
+    }
+    & .rdrMonthAndYearWrapper {
+      width: 100%;
+      & button {
+        margin: 0 2px;
+      }
+    }
+    & i {
+      font-size: 11px;
+      font-weight: 400;
+    }
+    & .rdrDefinedRangesWrapper {
+      width: 127px;
+    }
+    & .rdrDateDisplayWrapper {
+      width: 56%;
+      font-size: 11px;
+      left: -56%;
+      top: 61%;
+      background-color: transparent;
+      min-height: 93px;
+      & input {
+        height: 25px;
+        font-size: 11px;
+      }
+      & .rdrDateDisplay .rdrDateInput {
+        width: 80%;
+      }
+    }
+
+    & .rdrStaticRangeLabel {
+      padding: 5px 10px;
+    }
+    & .rdrInputRanges {
+      & .rdrInputRange:nth-child(2) {
+        padding: 5px 10px;
+        font-weight: 400;
+        font-size: 12px;
+        & .rdrInputRangeInput {
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          font-weight: 400;
+          font-size: 11px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 4px;
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 452px) {
+  .bodyAdmin {
+    & .calendarWrapper {
+      position: fixed !important;
+      margin: 150px calc((100vw - 375px) / 2) !important;
+    }
+  }
+  .calendarWrapper {
+    position: fixed !important;
+    margin: 150px calc((100vw - 375px) / 2) !important;
+  }
+}

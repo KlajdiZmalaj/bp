@@ -500,26 +500,36 @@ class Transazioni extends React.Component {
                               <tr
                                 key={index}
                                 onClick={(e) => {
+                                  if ([...e.target.classList].includes("bc")) {
+                                    getCodiceTicket(
+                                      item.barcode,
+                                      item.service_name
+                                    );
+                                  }
                                   if (e.target.tagName != "I") {
-                                    if (this.props.screenWidth <= 402) {
+                                    if (
+                                      this.props.screenWidth <= 402 &&
+                                      ![...e.target.classList].includes("bc")
+                                    ) {
                                       this.setState({
                                         showModalResponsive: true,
                                         modalDetails: item,
                                       });
                                     }
-                                    forAdmin && this.props.screenWidth >= 1050
+                                    forAdmin &&
+                                    this.props.screenWidth >= 1050 &&
+                                    ![...e.target.classList].includes("bc")
                                       ? this.activateModalForAdmin(item, index)
-                                      : this.showModal(
+                                      : [...e.target.classList].includes(
+                                          "bc"
+                                        ) &&
+                                        this.showModal(
                                           index,
                                           item.barcode,
                                           item.agency_name,
                                           item.agency_address,
                                           item.agency_phone
                                         );
-                                    getCodiceTicket(
-                                      item.barcode,
-                                      item.service_name
-                                    );
                                   }
                                 }}
                               >

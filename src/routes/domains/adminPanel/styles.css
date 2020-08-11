@@ -1,3 +1,8 @@
+.bodyAdmin {
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
 .AdminColumns {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,7 +36,7 @@
           align-items: flex-start;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #edeef0;
+  background-color: rgba(0, 0, 0, 0.03);
   min-height: 550px;
 }
 
@@ -54,7 +59,7 @@
           align-items: flex-start;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #edeef0;
+  background-color: rgba(0, 0, 0, 0.031);
   min-height: 550px;
 }
 
@@ -229,6 +234,7 @@
           box-sizing: border-box;
   max-height: 25px;
   height: 25px;
+  color: #5c5c5c;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1) {
@@ -253,6 +259,7 @@
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4) {
   width: 6%;
+  font-weight: 500;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(5) {
@@ -288,7 +295,7 @@
   background-color: #ffffff;
   cursor: pointer;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
   border: 1px solid #5c5c5c;
   border-radius: 17px;
@@ -364,6 +371,7 @@
           box-sizing: border-box;
   position: relative;
   left: 3px;
+  color: #5c5c5c;
 }
 
 .AdminListaUtenti--Header span:nth-child(1) {
@@ -524,8 +532,8 @@
             align-items: center;
     padding-left: 1px;
   }
-  .AdminRightForm div.Tranzacioni div span {
-    font-size: 12px;
+  .AdminRightForm div.Tranzacioni div span:nth-child(2) {
+    font-size: 13px;
   }
   .AdminColumns .Center--Big {
     width: calc(100% - 220px - 51px);
@@ -614,6 +622,15 @@
   }
   .AdminHeader--ButtonWrapper button {
     padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .AdminHeader--Title {
+    display: none;
+  }
+  .AdminHeader--Box {
+    width: 100%;
   }
 }
 
@@ -1396,6 +1413,7 @@ div.Center thead .wsNwp,
 div.Center thead td,
 div.Center--Big thead .wsNwp,
 div.Center--Big thead td {
+  color: #5c5c5c;
   font-weight: bold;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
@@ -1438,9 +1456,11 @@ div.Center tbody .wsNwp,
 div.Center tbody td,
 div.Center--Big tbody .wsNwp,
 div.Center--Big tbody td {
+  color: #5c5c5c;
   background-color: #ffffff;
   padding: 15px 10px;
   border: none;
+  font-weight: 400;
 }
 
 div.Center tbody .wsNwp > i,
@@ -1467,6 +1487,7 @@ div.Center--Big tbody td:nth-child(3) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-weight: 500;
   padding: 10px auto;
 }
 
@@ -1640,7 +1661,7 @@ div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button,
 div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   background-color: #ffffff;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
   border-radius: 100px;
   color: #000000;
@@ -1660,11 +1681,13 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
 }
 
 .TranzacioniModalResponsive--Data {
+  -webkit-box-shadow: 0 0 44px -15px black;
+          box-shadow: 0 0 44px -15px black;
   position: fixed;
-  width: 420px;
-  height: 300px;
-  left: calc((100% - 380px) / 2);
-  top: calc((100% - 300px) / 4);
+  width: 90%;
+  height: 70%;
+  left: 5%;
+  top: 17%;
   z-index: 5;
   background-color: #ffffff;
   font-family: "Roboto";
@@ -1693,7 +1716,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  padding: 5px 20px;
+  padding: 5px 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1714,7 +1737,8 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   right: 0;
   top: 0;
   height: 100%;
-  background-color: #e72626;
+  background-color: #0078ff;
+  text-transform: lowercase;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1724,16 +1748,35 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 40px;
+  width: 10%;
+  cursor: pointer;
+}
+
+.TranzacioniModalResponsive--Data--Header--Close i {
+  color: #ffffff;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 4%;
+  height: 100%;
+  width: 20%;
 }
 
 .TranzacioniModalResponsive--Data--Row {
+  overflow: auto;
   width: 100%;
   height: 86%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 15px 20px;
+  padding: 0 !important;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1748,8 +1791,13 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   font-family: "Roboto", sans-serif;
 }
 
-.TranzacioniModalResponsive--Data--Row span:nth-child(2) {
-  width: 55%;
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
+  background: #0078ff;
 }
 
 .TranzacioniModalResponsive--Data--Row--DateOra, .TranzacioniModalResponsive--Data--Row--Barcode, .TranzacioniModalResponsive--Data--Row--User, .TranzacioniModalResponsive--Data--Row--Service, .TranzacioniModalResponsive--Data--Row--Importo, .TranzacioniModalResponsive--Data--Row--Commissione, .TranzacioniModalResponsive--Data--Row--Proviggione, .TranzacioniModalResponsive--Data--Row--Saldo, .TranzacioniModalResponsive--Data--Row--UserId, .TranzacioniModalResponsive--Data--Row--Username, .TranzacioniModalResponsive--Data--Row--City, .TranzacioniModalResponsive--Data--Row--Credito, .TranzacioniModalResponsive--Data--Row--RagSociale, .TranzacioniModalResponsive--Data--Row--Role, .TranzacioniModalResponsive--Data--Row--UltimoDeposit, .TranzacioniModalResponsive--Data--Row--UltimoLogin {
@@ -1764,14 +1812,21 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 10px 3%;
+  border-bottom: 1px solid #ebeced;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+}
+
+.TranzacioniModalResponsive--Data--Row--DateOra:last-child, .TranzacioniModalResponsive--Data--Row--Barcode:last-child, .TranzacioniModalResponsive--Data--Row--User:last-child, .TranzacioniModalResponsive--Data--Row--Service:last-child, .TranzacioniModalResponsive--Data--Row--Importo:last-child, .TranzacioniModalResponsive--Data--Row--Commissione:last-child, .TranzacioniModalResponsive--Data--Row--Proviggione:last-child, .TranzacioniModalResponsive--Data--Row--Saldo:last-child, .TranzacioniModalResponsive--Data--Row--UserId:last-child, .TranzacioniModalResponsive--Data--Row--Username:last-child, .TranzacioniModalResponsive--Data--Row--City:last-child, .TranzacioniModalResponsive--Data--Row--Credito:last-child, .TranzacioniModalResponsive--Data--Row--RagSociale:last-child, .TranzacioniModalResponsive--Data--Row--Role:last-child, .TranzacioniModalResponsive--Data--Row--UltimoDeposit:last-child, .TranzacioniModalResponsive--Data--Row--UltimoLogin:last-child {
+  border: none;
 }
 
 .TranzacioniModalResponsive--Data--Row--DateOra--Header, .TranzacioniModalResponsive--Data--Row--Barcode--Header, .TranzacioniModalResponsive--Data--Row--User--Header, .TranzacioniModalResponsive--Data--Row--Service--Header, .TranzacioniModalResponsive--Data--Row--Importo--Header, .TranzacioniModalResponsive--Data--Row--Commissione--Header, .TranzacioniModalResponsive--Data--Row--Proviggione--Header, .TranzacioniModalResponsive--Data--Row--Saldo--Header, .TranzacioniModalResponsive--Data--Row--UserId--Header, .TranzacioniModalResponsive--Data--Row--Username--Header, .TranzacioniModalResponsive--Data--Row--City--Header, .TranzacioniModalResponsive--Data--Row--Credito--Header, .TranzacioniModalResponsive--Data--Row--RagSociale--Header, .TranzacioniModalResponsive--Data--Row--Role--Header, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header {
-  font-weight: bold !important;
-  padding-right: 4% !important;
-  width: 51% !important;
-  text-align: start !important;
-  margin: 0 !important;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .TranzacioniModalResponsive--Data--Row--DateOra--Header:after, .TranzacioniModalResponsive--Data--Row--Barcode--Header:after, .TranzacioniModalResponsive--Data--Row--User--Header:after, .TranzacioniModalResponsive--Data--Row--Service--Header:after, .TranzacioniModalResponsive--Data--Row--Importo--Header:after, .TranzacioniModalResponsive--Data--Row--Commissione--Header:after, .TranzacioniModalResponsive--Data--Row--Proviggione--Header:after, .TranzacioniModalResponsive--Data--Row--Saldo--Header:after, .TranzacioniModalResponsive--Data--Row--UserId--Header:after, .TranzacioniModalResponsive--Data--Row--Username--Header:after, .TranzacioniModalResponsive--Data--Row--City--Header:after, .TranzacioniModalResponsive--Data--Row--Credito--Header:after, .TranzacioniModalResponsive--Data--Row--RagSociale--Header:after, .TranzacioniModalResponsive--Data--Row--Role--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header:after {
@@ -1779,12 +1834,8 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
 }
 
 .TranzacioniModalResponsive--Data--Row--DateOra--Info, .TranzacioniModalResponsive--Data--Row--Barcode--Info, .TranzacioniModalResponsive--Data--Row--User--Info, .TranzacioniModalResponsive--Data--Row--Service--Info, .TranzacioniModalResponsive--Data--Row--Importo--Info, .TranzacioniModalResponsive--Data--Row--Commissione--Info, .TranzacioniModalResponsive--Data--Row--Proviggione--Info, .TranzacioniModalResponsive--Data--Row--Saldo--Info, .TranzacioniModalResponsive--Data--Row--UserId--Info, .TranzacioniModalResponsive--Data--Row--Username--Info, .TranzacioniModalResponsive--Data--Row--City--Info, .TranzacioniModalResponsive--Data--Row--Credito--Info, .TranzacioniModalResponsive--Data--Row--RagSociale--Info, .TranzacioniModalResponsive--Data--Row--Role--Info, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Info, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Info {
-  width: 55% !important;
-  min-width: 55% !important;
-  margin: 0 !important;
-  -webkit-box-pack: start !important;
-      -ms-flex-pack: start !important;
-          justify-content: flex-start !important;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 @media (max-width: 1500px) {
@@ -2092,6 +2143,11 @@ div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other {
 div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Second {
   margin-top: 58px;
   z-index: 1;
+  background: transparent;
+}
+
+div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third {
+  background: transparent;
 }
 
 div.Prenotazioni--Statistiche div {
@@ -3157,9 +3213,6 @@ div.Prenotazioni .ticketDetails {
 }
 
 @media (max-width: 670px) {
-  .TranzacioniModalResponsive--Data {
-    top: calc((100% - 10px) / 4);
-  }
   div.Center .container-fluid.overview .paginationWrapper,
   div.Center .panels-container .paginationWrapper,
   div.Center--Big .container-fluid.overview .paginationWrapper,
@@ -3536,22 +3589,7 @@ div.Prenotazioni .ticketDetails {
   }
 }
 
-@media (max-width: 490px) {
-  .TranzacioniModalResponsive--Data {
-    position: fixed;
-    width: 320px;
-    height: 400px;
-    left: calc((100% - 300px) / 2);
-  }
-}
-
 @media (max-width: 405px) {
-  .TranzacioniModalResponsive--Data {
-    position: fixed;
-    width: 320px;
-    height: 400px;
-    left: calc((100% - 280px) / 2);
-  }
   div.Center .container-fluid.overview .paginationWrapper,
   div.Center .panels-container .paginationWrapper,
   div.Center--Big .container-fluid.overview .paginationWrapper,
@@ -3598,12 +3636,6 @@ div.Prenotazioni .ticketDetails {
 }
 
 @media (max-width: 365px) {
-  .TranzacioniModalResponsive--Data {
-    position: fixed;
-    width: 260px;
-    height: 400px;
-    left: calc((100% - 260px) / 2);
-  }
   .TranzacioniModalResponsive--Data--Header {
     padding: 0;
     margin: 0;
@@ -3943,6 +3975,7 @@ div.Prenotazioni .ticketDetails {
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown--Submit {
   margin-top: 4vh;
+  font-weight: 500;
 }
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
@@ -4180,5 +4213,35 @@ div.Prenotazioni .ticketDetails {
   .RightFormModal .Statistiche.Dropdown .Tranzacioni div span {
     font-size: calc(1.4vw + 1.4vh);
   }
+}
+
+.bodyAdmin .rowPopUp .rowPopUp--header {
+  background: #0078ff;
+  color: #ffffff;
+}
+
+body.bodyAdmin::-webkit-scrollbar,
+.ant-modal-wrap::-webkit-scrollbar,
+.Left::-webkit-scrollbar,
+.Left--Min::-webkit-scrollbar,
+.Statistiche.Dropdown::-webkit-scrollbar,
+.AdminRightForm--Box--LeUltime--Dropdown::-webkit-scrollbar,
+.AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar,
+.AdminColumns::-webkit-scrollbar,
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar {
+  width: 4px;
+  height: 5px;
+}
+
+body.bodyAdmin::-webkit-scrollbar-thumb,
+.ant-modal-wrap::-webkit-scrollbar-thumb,
+.Left::-webkit-scrollbar-thumb,
+.Left--Min::-webkit-scrollbar-thumb,
+.Statistiche.Dropdown::-webkit-scrollbar-thumb,
+.AdminRightForm--Box--LeUltime--Dropdown::-webkit-scrollbar-thumb,
+.AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar-thumb,
+.AdminColumns::-webkit-scrollbar-thumb,
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
+  background: #0078ff;
 }
 /*# sourceMappingURL=styles.css.map */

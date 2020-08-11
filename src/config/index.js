@@ -1,4 +1,10 @@
 // import images from "themes/images";
+export const allRoles = {
+  user: "fal fa-user",
+  agency: "fas fa-store",
+  agent: "fas fa-user-tie",
+  super_admin: "fas fa-store",
+};
 export const docType = [
   {
     id: 1,
