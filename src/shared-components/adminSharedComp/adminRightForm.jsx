@@ -19,7 +19,6 @@ class AdminRightForm extends React.Component {
     addebitoActiveVisibility: false,
   };
   render() {
-  
     const {
       depositoActiveVisibility,
       dropdownVisibility,
@@ -27,7 +26,14 @@ class AdminRightForm extends React.Component {
       leUltimeTransazioni,
       addebitoActiveVisibility,
     } = this.state;
-    const {openAdminModal,graphData,leUltimeTransazioniDet,Tranzacioni,Proviggioni,Commisione}=this.props;
+    const {
+      openAdminModal,
+      graphData,
+      leUltimeTransazioniDet,
+      Tranzacioni,
+      Proviggioni,
+      Commisione,
+    } = this.props;
 
     return (
       <div className="AdminRightForm">
@@ -99,7 +105,7 @@ class AdminRightForm extends React.Component {
             </div>
             {dropdownVisibility && (
               <AdminRightFormWalletDetails
-                handleDebitoVisibility={() => {
+                handleDepositoVisibility={() => {
                   this.setState({
                     depositoActiveVisibility: true,
                     addebitoActiveVisibility: false,

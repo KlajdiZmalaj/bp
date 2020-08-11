@@ -70,13 +70,13 @@ class AdminPanelDom extends React.Component {
           )}
           {depModal && depModal.visibility === true && screenWidth <= 1050 && (
             <AdminRightFormWalletDetails
-              handleDebitoVisibility={() => {
+              handleDepositoVisibility={() => {
                 this.setState({
                   depositoActiveVisibility: true,
                   addebitoActiveVisibility: false,
                 });
               }}
-              handleDepositoVisibility={() => {
+              handleDebitoVisibility={() => {
                 this.setState({
                   depositoActiveVisibility: false,
                   addebitoActiveVisibility: true,

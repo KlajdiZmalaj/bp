@@ -1,7 +1,6 @@
 import React from "react";
 
 const RowDetailsMobile = ({ mobilePopUp, mobilePopUpData }) => {
-  console.log("mobilePopUpData", mobilePopUpData);
   return mobilePopUpData.status ? (
     <React.Fragment>
       <div className="rowPopUp ">

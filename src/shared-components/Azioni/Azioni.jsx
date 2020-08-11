@@ -10,7 +10,6 @@ import Swiper from "react-id-swiper";
 class Azioni extends Component {
   render() {
     const { active, accountInfo } = this.props;
-    console.log(active);
     const params = {
       mousewheel: true,
       activeSlideKey: active === "dashboard" ? "0" : active,

@@ -93,7 +93,6 @@ class PersonaFisica extends Component {
       email,
       price,
     } = this.state;
-    console.log("VisureById", this.props.VisureById, this.props.updateVisura);
     return (
       <React.Fragment>
         <div className="formBody">

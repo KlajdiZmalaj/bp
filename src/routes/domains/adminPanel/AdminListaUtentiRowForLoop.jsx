@@ -18,7 +18,6 @@ class AdminListaUtentiRowForLoop extends React.Component {
 
   render() {
     const { itemList, screenWidth } = this.props;
-    console.log(this.state);
     const {
       ModalRowDetails,
       ModalRowVisibility,

@@ -112,7 +112,6 @@ class Transazioni extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
         this.props.getPayments(username, from || "", to || "", 1, perPage);
       }
     });
