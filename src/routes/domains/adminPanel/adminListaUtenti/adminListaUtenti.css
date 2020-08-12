@@ -54,6 +54,10 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   margin-bottom: 72px;
 }
 
+.AdminListaUtenti .AdminListaUtentiRow i.fa-user {
+  font-weight: 600 !important;
+}
+
 .AdminListaUtenti .AdminListaUtentiRow i.fa-user,
 .AdminListaUtenti .AdminListaUtentiRow .fa-store,
 .AdminListaUtenti .AdminListaUtentiRow .fa-user-tie {

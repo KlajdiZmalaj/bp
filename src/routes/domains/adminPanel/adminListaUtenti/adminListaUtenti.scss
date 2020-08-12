@@ -40,6 +40,10 @@ div.Center--Big {
 .AdminListaUtenti {
   width: 100%;
   & .AdminListaUtentiRow {
+    & i.fa-user {
+      font-weight: 600 !important;
+    }
+
     margin-bottom: 72px;
     & i.fa-user,
     .fa-store,
