@@ -1,6 +1,7 @@
 import React from "react";
 import { Tooltip } from "antd";
 import moment from "moment";
+import "./aRFSD.css";
 const AdminRightFormStatisticheDetailsHelper = ({
   graphData,
   Tranzacioni,

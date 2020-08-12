@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
-import FormDetails from "../../views/FormDetails";
+import "./Prenotazioni.css";
+import FormDetails from "../../../views/FormDetails";
 import { Tooltip } from "antd";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 import { format } from "date-fns";
@@ -9,8 +9,8 @@ import {
   Tranzacioni,
   Commisione,
   Proviggioni,
-} from "./StaticAdminData";
-import { numberWithCommas } from "./HelperFunc";
+} from "../StaticAdminData";
+import { numberWithCommas } from "../HelperFunc";
 
 const PartsType = ({ partType, iconClass, number }) => (
   <div

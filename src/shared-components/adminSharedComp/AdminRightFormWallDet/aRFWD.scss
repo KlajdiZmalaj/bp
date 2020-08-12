@@ -1,0 +1,79 @@
+.RightFormModal {
+  position: absolute;
+  width: 80vw;
+  top: 71px;
+  margin: calc((20vh - 71px) / 2) 10vw;
+  height: 80vh;
+  z-index: 5;
+  box-shadow: 0 3px 6px 1px #0000008c;
+  & .AdminRightForm--Box--Wallet--Dropdown {
+    background-color: #ffffff;
+    padding: 4vh 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 7.1vh;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 6;
+    &--Submit {
+      margin-top: 4vh;
+      font-weight: 500;
+    }
+    & div.InputHolder {
+      margin: 4vh 27px;
+      height: 7vh;
+      &:nth-child(2) {
+        margin-top: 7vh;
+      }
+    }
+  }
+
+  & .Header {
+    position: absolute;
+    width: calc(100% - 8.25vw);
+    z-index: 7;
+    background-color: #ffffff;
+    left: 0.1vw;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 3vw;
+    align-items: center;
+    font-size: calc(1.6vw + 1.6vh);
+    font-family: "Roboto";
+    height: 7vh;
+    box-sizing: border-box;
+    border-bottom: 1px solid #c53f3f;
+  }
+
+  & .Close {
+    position: absolute;
+    z-index: 7;
+    background: #c53f3f;
+    left: calc(100% - 8.9vw);
+    width: 9vw;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(1.6vw + 1.6vh);
+    font-family: "Roboto";
+    display: flex;
+    box-sizing: border-box;
+
+    & i {
+      color: #ffffff;
+
+      font-weight: 400;
+      font-size: calc(1.6vw + 1.6vh);
+    }
+  }
+  & .backDrop {
+    top: 71px;
+    height: calc(100vh - 71px);
+    width: calc(100vw - 51px);
+    left: 51px;
+    z-index: 4;
+  }
+}

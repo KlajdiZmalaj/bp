@@ -1,7 +1,7 @@
 import React from "react";
-import "./styles.css";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
+import "./adminHeader.css";
 class AdminHeader extends React.Component {
   render() {
     return (

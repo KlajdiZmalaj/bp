@@ -1,10 +1,7 @@
 import React from "react";
-import "./styles.css";
-import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import { connect } from "react-redux";
 import AdminListaUtentiRow from "./AdminListaUtentiRow";
-import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
-import moment from "moment";
+import AuthActions from "redux-store/models/auth";
 import { allRoles } from "config/index";
 class AdminListaUtentiRowForLoop extends React.Component {
   state = {
@@ -12,58 +9,12 @@ class AdminListaUtentiRowForLoop extends React.Component {
     lock: "",
     eyeClicked: false,
     plusVisibility: false,
-    ModalRowVisibility: false,
-    ModalRowDetails: "",
   };
-
   render() {
-    const { itemList, screenWidth } = this.props;
-    const {
-      ModalRowDetails,
-      ModalRowVisibility,
-      activateChildren,
-      lock,
-      eyeClicked,
-    } = this.state;
+    const { itemList, screenWidth, editUtentiRespModal } = this.props;
+    const { lock } = this.state;
     return (
       <React.Fragment>
-        {ModalRowVisibility === true && screenWidth <= 950 ? (
-          <ModalResponsiveForTables
-            Close={() =>
-              this.setState({
-                ModalRowVisibility: "",
-                ModalRowDetails: false,
-              })
-            }
-            Rows={
-              <React.Fragment>
-                <ModalRow title="User Id" data={ModalRowDetails.user_id} />
-                <ModalRow title="Username" data={ModalRowDetails.username} />
-
-                <ModalRow title="City" data={ModalRowDetails.city} />
-                <ModalRow title="Credito" data={ModalRowDetails.credito} />
-                <ModalRow
-                  title="Rag Sociale"
-                  data={ModalRowDetails.rag_sociale}
-                />
-                <ModalRow title="Role" data={ModalRowDetails.role} />
-                <ModalRow
-                  title="Ultimo Deposit"
-                  data={moment(ModalRowDetails.ultimo_deposit).format(
-                    "DD/MM/YYYY HH:mm:ss"
-                  )}
-                />
-                <ModalRow
-                  title="Ultimo Login"
-                  data={moment(ModalRowDetails.ultimo_login).format(
-                    "DD/MM/YYYY HH:mm:ss"
-                  )}
-                />
-              </React.Fragment>
-            }
-          />
-        ) : null}
-
         <div className="AdminListaUtentiRow--Complete">
           <div
             className={`AdminListaUtentiRow--Complete--Main ${
@@ -71,32 +22,30 @@ class AdminListaUtentiRowForLoop extends React.Component {
             }`}
             onClick={(e) => {
               if (screenWidth <= 950 && e.target.tagName != "I") {
-                this.setState({
-                  ModalRowVisibility: true,
-                  ModalRowDetails: { ...itemList },
+                editUtentiRespModal({
+                  visibility: true,
+                  data: { ...itemList },
                 });
               }
             }}
           >
             <span>{itemList.user_id}</span>
-
             <span>
               <i
                 className={`fal fa-${
                   this.state.plusVisibility === false ? "plus" : "minus"
                 }-square`}
                 onClick={() => {
-                  this.setState({
-                    plusVisibility: !this.state.plusVisibility,
-                    activateChildren: !activateChildren,
-                  });
+                  this.setState((state) => ({
+                    plusVisibility: !state.plusVisibility,
+                    activateChildren: !state.activateChildren,
+                  }));
                 }}
               ></i>
               <div className="Link"></div>
 
               <i className={`${allRoles[itemList.role]}`} />
-
-              {itemList.username}
+              <span className="Username">{itemList.username}</span>
             </span>
             <span>{itemList.rag_sociale}</span>
             <span>{itemList.credito}</span>
@@ -122,7 +71,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
                   this.state.eyeClicked === true ? "-slash active" : ""
                 }`}
                 onClick={() => {
-                  this.setState({ eyeClicked: !eyeClicked });
+                  this.setState((state) => ({ eyeClicked: !state.eyeClicked }));
                 }}
               ></i>
             </span>
@@ -156,4 +105,4 @@ class AdminListaUtentiRowForLoop extends React.Component {
 const mstp = (state) => ({
   screenWidth: state.main.screenWidth,
 });
-export default connect(mstp, null)(AdminListaUtentiRowForLoop);
+export default connect(mstp, AuthActions)(AdminListaUtentiRowForLoop);

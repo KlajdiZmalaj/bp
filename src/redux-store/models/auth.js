@@ -269,6 +269,7 @@ const { Types, Creators } = createActions({
   editStatModal: ["statModal"],
   editUltModal: ["ultModal"],
   editDepModal: ["depModal"],
+  editUtentiRespModal: ["utentiResModal"],
 });
 
 export const AuthTypes = Types;
@@ -316,6 +317,7 @@ const INITIAL_STATE = {
   statModal: { visibility: false, data: "" },
   ultModal: { visibility: false, data: "" },
   depModal: { visibility: false, data: "" },
+  utentiResModal: { visibility: false, data: "" },
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -500,5 +502,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EDIT_DEP_MODAL]: (state, { depModal }) => ({
     ...state,
     depModal,
+  }),
+  [Types.EDIT_UTENTI_RESP_MODAL]: (state, { utentiResModal }) => ({
+    ...state,
+    utentiResModal,
   }),
 });

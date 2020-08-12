@@ -2,10 +2,8 @@ import React from "react";
 
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
-
+import "./adminLeftForm.css";
 import { connect } from "react-redux";
-import { data } from "./adminRightForm";
-import AdminRightFormStatisticheDetails from "./AdminRightFormStatisticheDetails";
 
 class AdminLeftForm extends React.Component {
   state = {

@@ -70,17 +70,17 @@ export const leUltimeTransazioniDet = [
 export const ListaUtenti = [
   {
     user_id: "#00102",
-    username: "MONTI VIRGILO",
+    username: "MONTI VIRGILO sdasdasda",
     rag_sociale: "PK SOLUTION S.R.L",
     credito: "205.00",
     city: "Bologna",
     ultimo_deposit: "16-07-220 09:10:17",
     ultimo_login: "16-07-220 09:10:17",
-    role: "agency",
+    role: "agent",
     children: [
       {
         user_id: "#00103",
-        role: "agent",
+        role: "agency",
         username: "User",
         rag_sociale: "PK S.R.L",
         credito: "205.00",
@@ -102,7 +102,7 @@ export const ListaUtenti = [
       },
       {
         user_id: "#00105",
-        role: "agent",
+        role: "agency",
         username: "User",
         rag_sociale: "PK S.R.L",
         credito: "205.00",
@@ -119,7 +119,7 @@ export const ListaUtenti = [
             ultimo_deposit: "16-07-220 09:10:17",
             ultimo_login: "16-07-220 09:10:17",
             children: [],
-            role: "user",
+            role: "agent",
           },
           {
             user_id: "#00107",
@@ -178,11 +178,11 @@ export const ListaUtenti = [
     city: "Bologna",
     ultimo_deposit: "16-07-220 09:10:17",
     ultimo_login: "16-07-220 09:10:17",
-    role: "agency",
+    role: "agent",
     children: [
       {
         user_id: "#00103",
-        role: "agent",
+        role: "agency",
         username: "User",
         rag_sociale: "PK S.R.L",
         credito: "205.00",
@@ -193,7 +193,7 @@ export const ListaUtenti = [
       },
       {
         user_id: "#00113",
-        role: "agent",
+        role: "user",
         username: "User",
         rag_sociale: "PK S.R.L",
         credito: "205.00",

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./aRFUD.css";
 const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
   <div className="AdminRightForm--Box--LeUltime--Dropdown">
     {leUltimeTransazioniDet.map((Tranzacioni) => (

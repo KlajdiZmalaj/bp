@@ -1,0 +1,289 @@
+.RightFormModal {
+  position: absolute;
+  width: 80vw;
+  top: 71px;
+  margin: calc((20vh - 71px) / 2) 10vw;
+  height: 80vh;
+  z-index: 5;
+  -webkit-box-shadow: 0 3px 6px 1px #0000008c;
+          box-shadow: 0 3px 6px 1px #0000008c;
+}
+
+.RightFormModal .Tranzacioni {
+  height: 62px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.RightFormModal .Tranzacioni div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 62px;
+  border: 1px solid #ebeced;
+}
+
+.RightFormModal .Tranzacioni div span {
+  font-weight: 300;
+}
+
+.RightFormModal .Tranzacioni div span:first-child {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #5c5c5c;
+}
+
+.RightFormModal .Tranzacioni div span:nth-child(2) {
+  font-size: 16px;
+  color: #0578fc;
+  font-family: "Roboto", sans-serif;
+}
+
+.RightFormModal .Graph {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 170px;
+  padding: 0px 5px;
+  padding-top: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f3f3f4;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: relative;
+}
+
+.RightFormModal .Graph--Element {
+  background-color: #0377fc;
+  opacity: 0.3;
+  margin: 0px 1.2px;
+  width: 6px;
+}
+
+.RightFormModal .Graph--Element:hover {
+  background-color: #0578fc;
+  opacity: 1;
+}
+
+.RightFormModal .Graph .Date {
+  height: 45px;
+  width: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  left: 5%;
+  top: 5%;
+}
+
+.RightFormModal .Graph .Date div:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.RightFormModal .Graph .Date div:first-child span:first-child {
+  font-family: "Roboto", sans-serif;
+  font-size: 31px;
+  font-weight: 100;
+  color: #5c5c5c;
+}
+
+.RightFormModal .Graph .Date div:first-child span:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  left: 15%;
+  top: 80%;
+  font-weight: 500;
+  color: #aaaaaa;
+  font-size: 10px;
+}
+
+.RightFormModal .Graph .Date div {
+  padding: 1px 3px;
+}
+
+.RightFormModal .Graph .Date div > i {
+  font-size: 12px;
+  padding-top: 12px;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown {
+  background-color: #ffffff;
+  padding: 3vh 2vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 7.1vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 6;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.2vw + 1.2vh);
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
+  font-family: "Roboto";
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
+  color: #727272;
+  font-weight: 400;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
+  color: #4b4b4b;
+  font-weight: 500;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
+  color: #727272;
+  font-weight: 400;
+}
+
+.RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
+  font-weight: 500;
+  color: #0078ff;
+}
+
+.RightFormModal .Header {
+  position: absolute;
+  width: calc(100% - 8.25vw);
+  z-index: 7;
+  background-color: #ffffff;
+  left: 0.1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 3vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.6vw + 1.6vh);
+  font-family: "Roboto";
+  height: 7vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-bottom: 1px solid #c53f3f;
+}
+
+.RightFormModal .Close {
+  position: absolute;
+  z-index: 7;
+  background: #c53f3f;
+  left: calc(100% - 8.9vw);
+  width: 9vw;
+  height: 7vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.6vw + 1.6vh);
+  font-family: "Roboto";
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.RightFormModal .Close i {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: calc(1.6vw + 1.6vh);
+}
+
+.RightFormModal .backDrop {
+  top: 71px;
+  height: calc(100vh - 71px);
+  width: calc(100vw - 51px);
+  left: 51px;
+  z-index: 4;
+}
+/*# sourceMappingURL=aRFUD.css.map */

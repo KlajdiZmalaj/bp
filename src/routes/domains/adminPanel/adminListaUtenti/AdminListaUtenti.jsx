@@ -1,7 +1,7 @@
 import React from "react";
-import "./styles.css";
+import "./adminListaUtenti.css";
 import AdminListaUtentiRow from "./AdminListaUtentiRow";
-import { ListaUtenti } from "./StaticAdminData";
+import { ListaUtenti } from "../StaticAdminData";
 class AdminListaUtenti extends React.Component {
   render() {
     return (

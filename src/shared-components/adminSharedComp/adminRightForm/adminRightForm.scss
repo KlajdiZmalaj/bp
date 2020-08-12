@@ -1,0 +1,481 @@
+.AdminRightForm {
+  position: relative;
+  width: 400px;
+  min-height: 103vh;
+
+  position: relative;
+  margin-top: 71.5px;
+  background-color: #ffffff;
+  overflow-x: scroll;
+  border: 1px solid #ebeced;
+  & .Tranzacioni {
+    height: 62px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    & div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      height: 62px;
+      border: 1px solid #ebeced;
+      & span {
+        font-weight: 300;
+        &:first-child {
+          font-family: "Roboto", sans-serif;
+          font-size: 10px;
+          font-weight: 400;
+          color: #5c5c5c;
+        }
+        &:nth-child(2) {
+          font-size: 16px;
+          color: #0578fc;
+          font-family: "Roboto", sans-serif;
+        }
+      }
+    }
+  }
+  & .Graph {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 170px;
+    padding: 0px 5px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    background-color: #f3f3f4;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+    &--Element {
+      background-color: #0377fc;
+      opacity: 0.3;
+      margin: 0px 1.2px;
+      width: 6px;
+      &:hover {
+        background-color: #0578fc;
+        opacity: 1;
+      }
+    }
+    & .Date {
+      height: 45px;
+      width: 45px;
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      justify-content: center;
+      align-items: flex-start;
+      left: 5%;
+      top: 1%;
+
+      & div:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & span {
+          &:first-child {
+            font-family: "Roboto", sans-serif;
+            font-size: 31px;
+            font-weight: 100;
+            color: #5c5c5c;
+          }
+          &:nth-child(2) {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            justify-content: center;
+            align-items: flex-start;
+            left: 15%;
+            top: 80%;
+            font-weight: 500;
+            color: #aaaaaa;
+            font-size: 10px;
+          }
+        }
+      }
+      & div {
+        > i {
+          font-size: 12px;
+          padding-top: 12px;
+        }
+        padding: 1px 3px;
+      }
+    }
+  }
+  & .Close {
+    position: fixed;
+    right: 0;
+    top: 71.5px;
+    width: 40px;
+    height: 30px;
+    font-family: "Font Awesome 5 Pro";
+    border: 1px solid #f3f3f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    & i {
+      font-family: "Font Awesome 5 Pro";
+      color: #e30000;
+      font-weight: 500;
+      font-size: 18px;
+    }
+  }
+  & .printModal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 98vh;
+    height: 100%;
+    padding: 0 15px;
+    position: fixed;
+    top: 72px;
+    right: 0;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 99vh;
+    border: 1px solid #ebeced;
+    padding-right: 10px;
+    & i {
+      font-size: 14px;
+      font-weight: 300;
+      font-family: "Font Awesome 5 Pro";
+      zoom: 1;
+    }
+    & button {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    & .Buttons--Print {
+      position: absolute;
+      width: 100%;
+      height: 52px;
+      bottom: 63px;
+      font-size: 14px;
+      font-weight: bold;
+      zoom: 1;
+      border: none;
+      width: 33.33%;
+      left: 0;
+      border-right: 1px solid #ebeced;
+      border-top: 2px solid #00ac5c;
+      background-color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      zoom: 1;
+    }
+    & .Buttons--Download {
+      position: absolute;
+      width: 100%;
+      height: 52px;
+      bottom: 63px;
+      font-size: 14px;
+      font-weight: bold;
+      zoom: 1;
+      border: none;
+      width: 33.33%;
+      left: 33.33%;
+      border-right: 1px solid #ebeced;
+      border-top: 2px solid #ffb100;
+      background-color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      zoom: 1;
+    }
+    & .Buttons--Send {
+      position: absolute;
+      width: 100%;
+      height: 52px;
+      bottom: 63px;
+      font-size: 14px;
+      font-weight: bold;
+      zoom: 1;
+      border: none;
+      width: 33.33%;
+      left: 66.66%;
+      border-right: 1px solid #ebeced;
+      border-top: 2px solid #0078ff;
+      background-color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      zoom: 1;
+    }
+
+    & .barcodeModal {
+      margin: 5px auto;
+    }
+    & div.ContainerOfData:nth-child(1) {
+      zoom: 1;
+      overflow: auto;
+
+      width: 100%;
+      padding: 0;
+      padding-right: 20px;
+      margin: 34px 0;
+      height: calc(98vh - 145px);
+      box-sizing: border-box;
+      &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #0078ff;
+      }
+
+      & .headerModal {
+        margin: 0;
+        width: 100%;
+
+        zoom: 0.85;
+      }
+      & :nth-child(2) {
+        zoom: 0.85;
+        height: auto;
+        width: 100%;
+      }
+      & :nth-child(3) {
+        height: auto;
+      }
+    }
+  }
+  & .AdminRightForm--Box--LeUltime--Dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &--Row {
+      display: flex;
+      flex-direction: row;
+      height: 40px;
+      width: 100%;
+      justify-content: space-between;
+      border-bottom: 1px solid #ebeced;
+      padding: 0 14px;
+      align-items: center;
+      &--Data {
+        font-size: 12px;
+        font-family: "Roboto", sans-serif;
+        &.Date {
+          color: #727272;
+          font-weight: 400;
+        }
+        &.Id {
+          color: #4b4b4b;
+          font-weight: 500;
+        }
+        &.User {
+          color: #727272;
+          font-weight: 400;
+        }
+        &.Price {
+          color: #0078ff;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  &--Box {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+    padding: 15px 0;
+    padding-right: 5%;
+    padding-left: 7%;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ebeced;
+    color: #5c5c5c;
+    > i {
+      cursor: pointer;
+      width: 32px;
+      box-sizing: border-box;
+      font-weight: 300;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--Statistic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > i {
+        width: 32px;
+        box-sizing: border-box;
+        padding-right: 9%;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+    &--HeartRate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > i {
+        width: 31px;
+        box-sizing: border-box;
+        padding-right: 15px;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+    &--Wallet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &--Dropdown {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        & div.InputHolder {
+          border: 1px solid #ebeced;
+          margin: 11px 27px;
+          height: 40px;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 20px;
+          font-family: "Roboto", sans-serif;
+          position: relative;
+          font-size: 13px;
+          border-radius: 6px;
+          &:nth-child(2) {
+            margin-top: 28px;
+          }
+
+          & input {
+            border: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 0 20px;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+          }
+          > i {
+            position: absolute;
+            top: 0;
+            left: 86%;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            width: 14%;
+            font-size: 14px;
+            &.fa-check {
+              color: #00ac5c;
+              border-left: 1px solid #ebeced;
+              font-size: 15px;
+            }
+          }
+          & span {
+            width: 14%;
+            position: absolute;
+            top: 0;
+            left: 86%;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 300;
+            font-family: "Roboto", sans-serif;
+          }
+        }
+        &--Submit {
+          margin: 11px 27px;
+          height: 40px;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 20px;
+          font-family: "Roboto", sans-serif;
+          font-size: 13px;
+          border: none;
+          background: #0078ff;
+          color: #ffffff;
+        }
+        &--ChoseButtons {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          & button {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 10px;
+            border: none;
+            background-color: #ffffff;
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+            border: 1px solid #ebeced;
+            font-weight: bold;
+          }
+          & button:nth-child(1) {
+            border-bottom: 2px solid #00ac5c;
+            position: relative;
+            & svg {
+              display: none;
+            }
+            &.active {
+              color: #00ac5c;
+              & svg {
+                display: block;
+                position: absolute;
+                left: 48%;
+                bottom: 0px;
+                width: 11px;
+                height: 7px;
+                fill: #00ac5c;
+              }
+            }
+          }
+          & button:nth-child(2) {
+            border-bottom: 2px solid #ffb100;
+            position: relative;
+            & svg {
+              display: none;
+            }
+            &.active {
+              color: #ffb100;
+              & svg {
+                display: block;
+                position: absolute;
+                left: 48%;
+                bottom: 0px;
+                width: 11px;
+                height: 7px;
+                fill: #ffb100;
+              }
+            }
+          }
+        }
+      }
+      > i {
+        padding-right: 15px;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+  }
+}

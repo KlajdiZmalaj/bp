@@ -1,4 +1,5 @@
 import React from "react";
+import "./mRFT.css";
 const ModalResponsiveForTables = ({ Close, Rows }) => (
   <div className="TranzacioniModalResponsive">
     <div className="backDrop" onClick={Close}></div>

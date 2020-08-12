@@ -1,14 +1,11 @@
 import React from "react";
-import moment from "moment";
-import { Tooltip } from "antd";
-import DepositoModal from "./DepositoModal";
-import ReactToPrint from "react-to-print";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import Ticket from "./Ticket";
-import AdminRightFormUltimeDetails from "./AdminRightFormUltimeDetails";
-import AdminRightFormStatisticheDetails from "./AdminRightFormStatisticheDetails";
-import AdminRightFormWalletDetails from "./AdminRightFormWalletDetails";
+import "./adminRightForm.css";
+import AdminRightFormUltimeDetails from "../AdminRightFormUltDet/AdminRightFormUltimeDetails";
+import AdminRightFormStatisticheDetails from "../AdminRightFormStatDet/AdminRightFormStatisticheDetails";
+import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightFormWalletDetails";
 
 class AdminRightForm extends React.Component {
   state = {
@@ -50,9 +47,9 @@ class AdminRightForm extends React.Component {
                   statisticheDropdownVisibility === false ? "down" : "up"
                 }`}
                 onClick={() => {
-                  this.setState({
-                    statisticheDropdownVisibility: !statisticheDropdownVisibility,
-                  });
+                  this.setState((state) => ({
+                    statisticheDropdownVisibility: !state.statisticheDropdownVisibility,
+                  }));
                 }}
               ></i>
             </div>
@@ -75,9 +72,9 @@ class AdminRightForm extends React.Component {
                   leUltimeTransazioni === false ? "down" : "up"
                 }`}
                 onClick={() => {
-                  this.setState({
-                    leUltimeTransazioni: !leUltimeTransazioni,
-                  });
+                  this.setState((state) => ({
+                    leUltimeTransazioni: !state.leUltimeTransazioni,
+                  }));
                 }}
               ></i>
             </div>
@@ -97,9 +94,9 @@ class AdminRightForm extends React.Component {
                   dropdownVisibility === false ? "down" : "up"
                 }`}
                 onClick={() => {
-                  this.setState({
-                    dropdownVisibility: !dropdownVisibility,
-                  });
+                  this.setState((state) => ({
+                    dropdownVisibility: !state.dropdownVisibility,
+                  }));
                 }}
               ></i>
             </div>
@@ -111,7 +108,7 @@ class AdminRightForm extends React.Component {
                     addebitoActiveVisibility: false,
                   });
                 }}
-                handleDepositoVisibility={() => {
+                handleDebitoVisibility={() => {
                   this.setState({
                     depositoActiveVisibility: false,
                     addebitoActiveVisibility: true,

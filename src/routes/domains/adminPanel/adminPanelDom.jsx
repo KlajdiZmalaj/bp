@@ -1,13 +1,16 @@
 import React from "react";
-import AdminRightForm from "shared-components/adminSharedComp/adminRightForm";
-import AdminLeftForm from "shared-components/adminSharedComp/adminLeftForm";
-import AdminHeader from "shared-components/adminSharedComp/adminHeader";
+import AdminRightForm from "shared-components/adminSharedComp/adminRightForm/adminRightForm";
+import AdminLeftForm from "shared-components/adminSharedComp/adminLeftForm/adminLeftForm";
+import AdminHeader from "shared-components/adminSharedComp/adminHeader/adminHeader";
 import { connect } from "react-redux";
-import AdminRightFormStatisticheDetails from "shared-components/adminSharedComp/AdminRightFormStatisticheDetails";
-import AdminRightFormUltimeDetails from "shared-components/adminSharedComp/AdminRightFormUltimeDetails";
-import AdminRightFormWalletDetails from "shared-components/adminSharedComp/AdminRightFormWalletDetails";
+import AdminRightFormStatisticheDetails from "shared-components/adminSharedComp/AdminRightFormStatDet/AdminRightFormStatisticheDetails";
+import AdminRightFormUltimeDetails from "shared-components/adminSharedComp/AdminRightFormUltDet/AdminRightFormUltimeDetails";
+import AdminRightFormWalletDetails from "shared-components/adminSharedComp/AdminRightFormWallDet/AdminRightFormWalletDetails";
 import AuthActions from "redux-store/models/auth";
 import { numberWithCommas } from "./HelperFunc";
+import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
+import moment from "moment";
+import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import {
   graphData,
   Tranzacioni,
@@ -47,10 +50,57 @@ class AdminPanelDom extends React.Component {
       editUltModal,
       editStatModal,
       editDepModal,
+      utentiResModal,
+      editUtentiRespModal,
     } = this.props;
     return (
       <React.Fragment>
         <div className="Admin-Panel">
+          {utentiResModal?.visibility === true && screenWidth <= 950 ? (
+            <ModalResponsiveForTables
+              Close={() => {
+                editUtentiRespModal({
+                  visibility: false,
+                  data: "",
+                });
+              }}
+              Rows={
+                <React.Fragment>
+                  <ModalRow
+                    title="User Id"
+                    data={utentiResModal.data.user_id}
+                  />
+                  <ModalRow
+                    title="Username"
+                    data={utentiResModal.data.username}
+                  />
+
+                  <ModalRow title="City" data={utentiResModal.data.city} />
+                  <ModalRow
+                    title="Credito"
+                    data={utentiResModal.data.credito}
+                  />
+                  <ModalRow
+                    title="Rag Sociale"
+                    data={utentiResModal.data.rag_sociale}
+                  />
+                  <ModalRow title="Role" data={utentiResModal.data.role} />
+                  <ModalRow
+                    title="Ultimo Deposit"
+                    data={moment(utentiResModal.data.ultimo_deposit).format(
+                      "DD/MM/YYYY HH:mm:ss"
+                    )}
+                  />
+                  <ModalRow
+                    title="Ultimo Login"
+                    data={moment(utentiResModal.data.ultimo_login).format(
+                      "DD/MM/YYYY HH:mm:ss"
+                    )}
+                  />
+                </React.Fragment>
+              }
+            />
+          ) : null}
           {statModal?.visibility === true && screenWidth <= 1050 && (
             <AdminRightFormStatisticheDetails
               graphData={statModal.data.graphData}
@@ -147,5 +197,6 @@ const mapStateToProps = (state) => ({
   ultModal: state.auth.ultModal,
   depModal: state.auth.depModal,
   openAdminModal: state.auth.openAdminModal,
+  utentiResModal: state.auth.utentiResModal,
 });
 export default connect(mapStateToProps, AuthActions)(AdminPanelDom);

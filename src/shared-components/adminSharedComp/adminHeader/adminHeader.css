@@ -1,0 +1,269 @@
+.AdminHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 71px;
+  position: fixed;
+  background-color: #ffffff;
+  border-bottom: 2.5px solid #0078ff;
+  z-index: 2;
+}
+
+.AdminHeader--Box {
+  width: 39.333%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.AdminHeader--Title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0px 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0078ff;
+}
+
+.AdminHeader--Category {
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  width: 19.4%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-right: 1px solid #ebeced;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.AdminHeader--Category.active {
+  color: #0078ff;
+}
+
+.AdminHeader--Category:nth-child(1) {
+  border-left: 1px solid #ebeced;
+}
+
+.AdminHeader--Category:nth-last-child() {
+  border-right: none;
+}
+
+.AdminHeader--Category div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 5px;
+  width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminHeader--Category div > i {
+  width: 23px;
+  padding-right: 7px;
+}
+
+.AdminHeader--Category--Prenotazioni {
+  cursor: pointer;
+  color: #0078ff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  width: 22%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.AdminHeader--Category--Prenotazioni.active {
+  color: #0078ff;
+}
+
+.AdminHeader--Category--Prenotazioni div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminHeader--Category--Prenotazioni div > i {
+  width: 23px;
+  padding-right: 7px;
+}
+
+.AdminHeader--ButtonWrapper {
+  height: 100%;
+  width: 15%;
+}
+
+.AdminHeader--ButtonWrapper button {
+  cursor: pointer;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #0078ff;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: Lato;
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1600px) {
+  .AdminHeader--Box {
+    width: 48%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .AdminHeader--Box {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .AdminHeader {
+    font-size: 14px;
+  }
+  .AdminHeader--Box {
+    width: 60%;
+  }
+}
+
+@media (max-width: 900px) {
+  .AdminHeader--Box {
+    width: 75%;
+  }
+}
+
+@media (max-width: 800px) {
+  .AdminHeader--Title {
+    font-size: 14px;
+  }
+  .AdminHeader--Category, .AdminHeader--Category--Prenotazioni {
+    font-size: 12px;
+  }
+  .AdminHeader--Category div, .AdminHeader--Category--Prenotazioni div {
+    padding: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+  }
+  .AdminHeader--Category div > i, .AdminHeader--Category--Prenotazioni div > i {
+    padding-bottom: 10px;
+  }
+  .AdminHeader--ButtonWrapper {
+    font-size: 12px;
+    padding: 0;
+  }
+  .AdminHeader--ButtonWrapper button {
+    padding: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .AdminHeader--Box {
+    width: 110%;
+  }
+  .AdminHeader--Category div span, .AdminHeader--Category--Prenotazioni div span {
+    display: none;
+  }
+  .AdminHeader--Category div > i, .AdminHeader--Category--Prenotazioni div > i {
+    padding: 0;
+    font-size: 16px;
+  }
+  .AdminHeader--ButtonWrapper {
+    font-size: 12px;
+    width: 18%;
+    padding: 0;
+  }
+  .AdminHeader--ButtonWrapper button {
+    padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .AdminHeader--Title {
+    display: none;
+  }
+  .AdminHeader--Box {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=adminHeader.css.map */

@@ -1,6 +1,4 @@
 import React from "react";
-import { allRoles } from "config/index";
-
 const DepositoModal = () => {
   return (
     <div className="DepositoModal">

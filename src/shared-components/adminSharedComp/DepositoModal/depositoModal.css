@@ -1,0 +1,279 @@
+.DepositoModal {
+  width: 100%;
+  height: calc(100% - 72px);
+  position: fixed;
+  left: 0;
+  top: 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container {
+  width: 350px;
+  height: 392px;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.DepositoModal--Container--Up {
+  height: 73px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.DepositoModal--Container--Up--Title {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #0078ff;
+}
+
+.DepositoModal--Container--Up--Agguntoal {
+  color: #5c5c5c;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}
+
+.DepositoModal--Container--Up--Agguntoal--Persona i {
+  font-size: 10px;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 3px;
+  top: -1px;
+  position: relative;
+}
+
+.DepositoModal--Container--Up--Agguntoal--Persona--Part3 {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.DepositoModal--Container--Down {
+  height: 318px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 7px 20px;
+}
+
+.DepositoModal--Container--Down--Form {
+  width: 100%;
+}
+
+.DepositoModal--Container--Down--Form--MessageLine {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  min-height: 118px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  outline: none;
+}
+
+.DepositoModal--Container--Down--Form--buttons {
+  width: 100%;
+  border: none;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2px 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.DepositoModal--Container--Down--Form--buttons button {
+  width: 150px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+}
+
+.DepositoModal--Container--Down--Form--buttons--Conferma {
+  border: 2px solid #00b850;
+  border-radius: 3px;
+  color: #00b850;
+}
+
+.DepositoModal--Container--Down--Form--buttons--Cancel {
+  border: 2px solid #7e7e7e;
+  border-radius: 3px;
+  color: #7e7e7e;
+}
+
+.DepositoModal--Container--Down--Form--NotifyLine {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.DepositoModal--Container--Down--Form--NotifyLine span {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  border-right: 1px solid #d6d6d6;
+  width: 90%;
+  min-height: 42px;
+  padding-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container--Down--Form--NotifyLine > i {
+  font-size: 15px;
+  color: #00b850;
+  font-weight: 400;
+  border-right: 1px solid #d6d6d6;
+  width: 10%;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Amount {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  border-right: 1px solid #d6d6d6;
+  width: 30%;
+  min-height: 42px;
+  padding-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Input, .DepositoModal--Container--Down--Form--AmountLine--Input--Input {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #303030;
+  font-weight: 400;
+  position: relative;
+  width: 70%;
+  min-height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Input--Input {
+  width: 100%;
+  padding-right: 5px;
+}
+
+.DepositoModal--Container--Down--Form--AmountLine--Euro {
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+/*# sourceMappingURL=depositoModal.css.map */

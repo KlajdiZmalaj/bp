@@ -242,7 +242,6 @@ class Transazioni extends React.Component {
       name,
       modalDetails,
     } = this.state;
-    console.log("modalDetails", modalDetails);
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -439,7 +438,7 @@ class Transazioni extends React.Component {
                         >
                           <g className="a">
                             <circle className="b" cx="7" cy="7" r="7" />
-                            <circle className="c" cx="7" cy="7" r="5.5" />
+                            <circle className="c" cx="7" cy="7" r="4" />
                           </g>
                         </svg>
                       ) : (
@@ -517,7 +516,7 @@ class Transazioni extends React.Component {
                                     }
                                     forAdmin &&
                                     this.props.screenWidth >= 1050 &&
-                                    ![...e.target.classList].includes("bc")
+                                    [...e.target.classList].includes("bc")
                                       ? this.activateModalForAdmin(item, index)
                                       : [...e.target.classList].includes(
                                           "bc"

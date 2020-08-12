@@ -1,5 +1,5 @@
 import React from "react";
-import Prenotazioni from "../domains/adminPanel/Prenotazioni";
+import Prenotazioni from "../domains/adminPanel/Prenotazioni/Prenotazioni";
 import AdminPanelDom from "../domains/adminPanel/adminPanelDom";
 class AdminPanelPrenotazioni extends React.Component {
   state = {
