@@ -2,7 +2,7 @@
   box-shadow: 0 12px 20px 1px #0000008c;
   position: fixed;
   background-color: #ffffff;
-  z-index: 3;
+  z-index: 2;
   height: 390px;
   width: 460px;
   & .rdrDayNumber {
@@ -84,6 +84,11 @@
         background: #eaeaea;
         border-bottom: 0.7px solid #c7c7c7;
       }
+    }
+  }
+  & .dal {
+    & .ant-form-item-children {
+      width: 100%;
     }
   }
   & .rdrMonthAndYearWrapper {

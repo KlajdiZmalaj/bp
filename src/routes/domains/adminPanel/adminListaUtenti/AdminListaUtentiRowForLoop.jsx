@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import AdminListaUtentiRow from "./AdminListaUtentiRow";
 import AuthActions from "redux-store/models/auth";
 import { allRoles } from "config/index";
+import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 class AdminListaUtentiRowForLoop extends React.Component {
   state = {
     activateChildren: false,
@@ -43,13 +44,28 @@ class AdminListaUtentiRowForLoop extends React.Component {
                 }}
               ></i>
               <div className="Link"></div>
-
               <i className={`${allRoles[itemList.role]}`} />
-              <span className="Username">{itemList.username}</span>
+              <SpanFormater
+                myClassName="Username"
+                Word={itemList.username}
+                size={screenWidth <= 420 ? 7 : 15}
+                nrOfRows={2}
+                formatWord={true}
+              />{" "}
             </span>
-            <span>{itemList.rag_sociale}</span>
-            <span>{itemList.credito}</span>
-            <span>{itemList.city}</span>
+            <SpanFormater
+              Word={itemList.rag_sociale}
+              size={17}
+              nrOfRows={2}
+              formatWord={true}
+            />
+            <SpanFormater Word={itemList.credito} size={8} nrOfRows={2} />
+            <SpanFormater
+              Word={itemList.city}
+              size={10}
+              nrOfRows={2}
+              formatWord={true}
+            />
             <span>{itemList.ultimo_deposit}</span>
             <span>{itemList.ultimo_login}</span>
             <span>

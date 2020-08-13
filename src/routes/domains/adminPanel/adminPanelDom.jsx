@@ -9,7 +9,6 @@ import AdminRightFormWalletDetails from "shared-components/adminSharedComp/Admin
 import AuthActions from "redux-store/models/auth";
 import { numberWithCommas } from "./HelperFunc";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
-import moment from "moment";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import {
   graphData,
@@ -87,15 +86,11 @@ class AdminPanelDom extends React.Component {
                   <ModalRow title="Role" data={utentiResModal.data.role} />
                   <ModalRow
                     title="Ultimo Deposit"
-                    data={moment(utentiResModal.data.ultimo_deposit).format(
-                      "DD/MM/YYYY HH:mm:ss"
-                    )}
+                    data={utentiResModal.data.ultimo_deposit}
                   />
                   <ModalRow
                     title="Ultimo Login"
-                    data={moment(utentiResModal.data.ultimo_login).format(
-                      "DD/MM/YYYY HH:mm:ss"
-                    )}
+                    data={utentiResModal.data.ultimo_login}
                   />
                 </React.Fragment>
               }

@@ -20,7 +20,7 @@
   min-height: 100%;
   & .Center {
     position: relative;
-    top: 72px;
+    top: 70px;
     left: 200px;
     width: calc(100% - 200px - 400px);
     max-width: auto;
@@ -37,7 +37,7 @@
       width: calc(100% - 51px - 400px);
       left: 51px;
       right: 400px;
-      top: 72px;
+      top: 70px;
       height: auto;
       display: flex;
       max-width: auto;
@@ -51,11 +51,10 @@
   & .Left {
     border: 1px solid #ebeced;
     width: 200px;
-    height: 100%;
-    min-height: 100%;
+    height: calc(100vh - 71px);
     position: fixed;
     left: 0;
-    top: 71.5px;
+    top: 71px;
     background-color: #ffffff;
     transition: 0.5s;
     overflow-x: hidden;
@@ -63,11 +62,10 @@
     &--Min {
       border: 1px solid #ebeced;
       width: 50px;
-      height: 100%;
-      min-height: 100%;
+      height: calc(100vh - 71px);
       position: fixed;
       left: 0;
-      top: 71.5px;
+      top: 71px;
       background-color: #ffffff;
       transition: 0.5s;
       overflow-x: hidden;
@@ -328,9 +326,10 @@ div.Center--Big {
           min-width: 95px;
           margin: auto 12px;
           &:nth-child(1) {
+            margin-left: 15px;
+
             & svg {
               margin-right: 8px;
-              margin-left: 15px;
               & g {
                 & circle {
                   &:first-child {
@@ -465,7 +464,7 @@ div.Center--Big {
 
         > i {
           position: absolute;
-          left: 0;
+          left: 10%;
           top: calc(50% - 7.5px);
           padding: 0;
         }
@@ -702,6 +701,7 @@ div.Center--Big {
                 &:nth-child(8) {
                   display: none;
                 }
+
                 &:last-child {
                   width: 2%;
                   & i {
@@ -719,6 +719,11 @@ div.Center--Big {
                 &:nth-child(7),
                 &:nth-child(8) {
                   display: none;
+                }
+                &:nth-child(5) {
+                  & i {
+                    left: 40% !important;
+                  }
                 }
                 &:last-child {
                   width: 2%;
@@ -809,6 +814,13 @@ div.Center--Big {
             & .dal {
               width: 50%;
               border-bottom: 1px solid #ebeced;
+              & .ant-row.ant-form-item {
+                width: 100%;
+                & div,
+                span {
+                  width: 100%;
+                }
+              }
             }
           }
         }

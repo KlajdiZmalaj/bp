@@ -1,6 +1,6 @@
 .Left {
   & .AdminLeftForm {
-    min-height: calc(100% - 72px);
+    height: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -119,7 +119,7 @@
 
   &--Min {
     & .AdminLeftForm {
-      min-height: calc(100% - 72px);
+      height: 100%;
       display: flex;
       justify-content: space-between;
       flex-direction: column;

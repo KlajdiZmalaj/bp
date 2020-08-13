@@ -15,6 +15,8 @@ import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
+import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/ModalResPForTabMain";
+
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 const { Option } = Select;
 
@@ -294,33 +296,54 @@ class Transazioni extends React.Component {
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&
-        this.props.screenWidth <= 1050 ? (
-          <ModalResponsiveForTables
-            Close={(e) => {
-              this.setState({
-                modalDetails: "",
-                showModalResponsive: false,
-              });
-            }}
-            Rows={
-              <React.Fragment>
-                <ModalRow
-                  title="Date Ora"
-                  data={moment(modalDetails.executed_date).format(
-                    "DD/MM/YYYY HH:mm:ss"
-                  )}
-                />
-                <ModalRow title="Barcode" data={modalDetails.barcode} />
-                <ModalRow title="User" data={modalDetails.agency_name} />
-                <ModalRow title="Service" data={modalDetails.service_name} />
-                <ModalRow title="Importo" data={modalDetails.price1000} />
-                <ModalRow title="Commissione" data={modalDetails.commissione} />
-                <ModalRow title="Proviggione" data={modalDetails.percentage} />
-                <ModalRow title="Saldo" data={modalDetails.saldo} />{" "}
-              </React.Fragment>
-            }
-          />
-        ) : null}
+          this.props.screenWidth <= 1050 &&
+          forAdmin && (
+            <ModalResponsiveForTables
+              Close={(e) => {
+                this.setState({
+                  modalDetails: "",
+                  showModalResponsive: false,
+                });
+              }}
+              Rows={
+                <React.Fragment>
+                  <ModalRow
+                    title="Date Ora"
+                    data={moment(modalDetails.executed_date).format(
+                      "DD/MM/YYYY HH:mm:ss"
+                    )}
+                  />
+                  <ModalRow title="Barcode" data={modalDetails.barcode} />
+                  <ModalRow title="User" data={modalDetails.agency_name} />
+                  <ModalRow title="Service" data={modalDetails.service_name} />
+                  <ModalRow title="Importo" data={modalDetails.price1000} />
+                  <ModalRow
+                    title="Commissione"
+                    data={modalDetails.commissione}
+                  />
+                  <ModalRow
+                    title="Proviggione"
+                    data={modalDetails.percentage}
+                  />
+                  <ModalRow title="Saldo" data={modalDetails.saldo} />{" "}
+                </React.Fragment>
+              }
+            />
+          )}
+        {this.state.showModalResponsive === true &&
+          this.props.screenWidth <= 800 &&
+          !forAdmin && (
+            <ModalResPForTabMain
+              Close={(e) => {
+                this.setState({
+                  modalDetails: "",
+                  showModalResponsive: false,
+                });
+              }}
+              mobilePopUpData={modalDetails}
+              exception={"sign"}
+            />
+          )}
         <div className="container-fluid overview ">
           {!forAdmin && <Azioni active="transazioni"></Azioni>}
 
@@ -506,7 +529,17 @@ class Transazioni extends React.Component {
                                   }
                                   if (e.target.tagName != "I") {
                                     if (
+                                      forAdmin &&
                                       this.props.screenWidth <= 402 &&
+                                      ![...e.target.classList].includes("bc")
+                                    ) {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    } else if (
+                                      !forAdmin &&
+                                      this.props.screenWidth <= 800 &&
                                       ![...e.target.classList].includes("bc")
                                     ) {
                                       this.setState({

@@ -1,12 +1,17 @@
 .AdminRightForm {
-  position: relative;
+  position: fixed;
   width: 400px;
-  min-height: 103vh;
-  position: relative;
-  margin-top: 71.5px;
+  right: 0;
+  bottom: 0;
+  top: 71px;
+  min-height: calc(100vh - 71px);
   background-color: #ffffff;
-  overflow-x: scroll;
+  overflow: auto;
   border: 1px solid #ebeced;
+}
+
+.AdminRightForm::-webkit-scrollbar-thumb {
+  background: #0078ff;
 }
 
 .AdminRightForm .Tranzacioni {

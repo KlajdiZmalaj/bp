@@ -70,7 +70,8 @@ export const leUltimeTransazioniDet = [
 export const ListaUtenti = [
   {
     user_id: "#00102",
-    username: "MONTI VIRGILO sdasdasda",
+    username:
+      "ASDSASDASDASDA ASDSASDASDASDA ASDSASDASDASDA ASDSASDASDASDA ASDSASDASDASDA",
     rag_sociale: "PK SOLUTION S.R.L",
     credito: "205.00",
     city: "Bologna",
