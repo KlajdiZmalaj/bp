@@ -216,11 +216,39 @@
   .bodyAdmin {
     & .calendarWrapper {
       position: fixed !important;
+      left: 0;
       margin: 150px calc((100vw - 375px) / 2) !important;
     }
   }
   .calendarWrapper {
     position: fixed !important;
+    left: 0;
     margin: 150px calc((100vw - 375px) / 2) !important;
+  }
+}
+@media (max-width: 370px) {
+  .bodyAdmin {
+    & .calendarWrapper {
+      zoom: 0.9;
+      top: calc((100% - 280px) / 2) !important;
+      left: calc((100% - 375px) / 2) !important;
+      margin: 0 !important;
+    }
+  }
+  .calendarWrapper {
+    zoom: 0.9;
+    top: calc((100% - 280px) / 2) !important;
+    left: calc((100% - 375px) / 2) !important;
+    margin: 0 !important;
+  }
+}
+@media (max-width: 350px) {
+  .bodyAdmin {
+    & .calendarWrapper {
+      zoom: 0.7;
+    }
+  }
+  .calendarWrapper {
+    zoom: 0.7;
   }
 }
