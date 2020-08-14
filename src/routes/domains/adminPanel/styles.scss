@@ -217,7 +217,30 @@ div.Center--Big {
         & .transTable {
           & td.right {
             text-align: center;
-            width: 150px !important;
+            width: 95px !important;
+          }
+          & thead {
+            & td.right {
+              &:last-child {
+                padding-right: 15px;
+              }
+            }
+          }
+          & tbody {
+            & td.wsNwp.right.importoTd {
+              padding-right: 8%;
+              position: relative;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              & i {
+                padding-left: 8%;
+                margin-left: 8px;
+                position: relative;
+                top: 0;
+                left: 0;
+              }
+            }
           }
         }
       }
@@ -455,19 +478,10 @@ div.Center--Big {
       }
     }
     & .right {
-      text-align: right !important;
-
+      text-align: right;
       &.importoTd {
-        text-align: right !important;
         padding-left: 0;
         padding-right: 0;
-
-        > i {
-          position: absolute;
-          left: 10%;
-          top: calc(50% - 7.5px);
-          padding: 0;
-        }
       }
       & .Importo {
         display: flex;
@@ -589,7 +603,7 @@ div.Center--Big {
             & tbody,
             & thead {
               & .wsNwp:nth-child(3) {
-                height: 35px;
+                height: 34px;
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -719,11 +733,6 @@ div.Center--Big {
                 &:nth-child(7),
                 &:nth-child(8) {
                   display: none;
-                }
-                &:nth-child(5) {
-                  & i {
-                    left: 40% !important;
-                  }
                 }
                 &:last-child {
                   width: 2%;
@@ -878,7 +887,7 @@ div.Center--Big {
                 &:nth-child(6),
                 &:nth-child(7),
                 &:nth-child(8) {
-                  display: none;
+                  display: none !important;
                 }
                 &:nth-child(2) {
                   width: 40%;

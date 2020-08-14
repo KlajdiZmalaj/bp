@@ -4,6 +4,9 @@ import ReactToPrint from "react-to-print";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 class Ticket extends React.Component {
+  componentWillUnmount() {
+    this.props.openModalForAdmin(false);
+  }
   render() {
     const {
       skinExtras,

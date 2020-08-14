@@ -251,7 +251,41 @@ div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable td
 div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
 div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right {
   text-align: center;
-  width: 150px !important;
+  width: 95px !important;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child {
+  padding-right: 15px;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd {
+  padding-right: 8%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i {
+  padding-left: 8%;
+  margin-left: 8px;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 div.Center .container-fluid.overview .paginationWrapper,
@@ -674,22 +708,13 @@ div.Center--Big tbody td:nth-child(4) {
 
 div.Center tbody .right,
 div.Center--Big tbody .right {
-  text-align: right !important;
+  text-align: right;
 }
 
 div.Center tbody .right.importoTd,
 div.Center--Big tbody .right.importoTd {
-  text-align: right !important;
   padding-left: 0;
   padding-right: 0;
-}
-
-div.Center tbody .right.importoTd > i,
-div.Center--Big tbody .right.importoTd > i {
-  position: absolute;
-  left: 10%;
-  top: calc(50% - 7.5px);
-  padding: 0;
 }
 
 div.Center tbody .right .Importo,
@@ -824,7 +849,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
-    height: 35px;
+    height: 34px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1041,20 +1066,6 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8) {
     display: none;
-  }
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5) i,
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5) i,
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5) i,
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5) i,
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5) i,
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5) i,
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5) i,
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5) i,
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5) i,
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5) i,
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5) i,
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5) i {
-    left: 40% !important;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child,
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child,
@@ -1445,7 +1456,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8) {
-    display: none;
+    display: none !important;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(2),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(2),

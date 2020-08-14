@@ -24,39 +24,43 @@ const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
     ))}
   </div>
 );
-const AdminRightFormUltimeDetails = ({
-  leUltimeTransazioniDet,
-  ModalOrNo,
-  Close,
-}) => (
-  <React.Fragment>
-    {ModalOrNo === true ? (
-      <div className="RightFormModal">
-        <div
-          className="backDrop"
-          onClick={() => {
-            Close({ visibility: false, data: "" });
-          }}
-        ></div>
-        <div className="Header">LE ULTIME TRANSAZIONI</div>
+class AdminRightFormUltimeDetails extends React.Component {
+  componentWillUnmount() {
+    this.props.Close({ visibility: false, data: "" });
+  }
+  render() {
+    const { leUltimeTransazioniDet, ModalOrNo, Close } = this.props;
+    return (
+      <React.Fragment>
+        {ModalOrNo === true ? (
+          <div className="RightFormModal">
+            <div
+              className="backDrop"
+              onClick={() => {
+                Close({ visibility: false, data: "" });
+              }}
+            ></div>
+            <div className="Header">LE ULTIME TRANSAZIONI</div>
 
-        <AdminRightFormUltimeDetailsHelper
-          leUltimeTransazioniDet={leUltimeTransazioniDet}
-        />
-        <div className="Close">
-          <i
-            className="fal fa-times"
-            onClick={() => {
-              Close({ visibility: false, data: "" });
-            }}
-          ></i>
-        </div>
-      </div>
-    ) : (
-      <AdminRightFormUltimeDetailsHelper
-        leUltimeTransazioniDet={leUltimeTransazioniDet}
-      />
-    )}
-  </React.Fragment>
-);
+            <AdminRightFormUltimeDetailsHelper
+              leUltimeTransazioniDet={leUltimeTransazioniDet}
+            />
+            <div className="Close">
+              <i
+                className="fal fa-times"
+                onClick={() => {
+                  Close({ visibility: false, data: "" });
+                }}
+              ></i>
+            </div>
+          </div>
+        ) : (
+          <AdminRightFormUltimeDetailsHelper
+            leUltimeTransazioniDet={leUltimeTransazioniDet}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
+}
 export default AdminRightFormUltimeDetails;

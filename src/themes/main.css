@@ -2211,6 +2211,15 @@ body:not(.bodyAdmin) div.Container .panels-container .row.no-gutters.max-width {
   border-right: 2px solid #f9f9f9;
 }
 
+@media only screen and (max-width: 984px) and (min-width: 768px) {
+  .servicesContainer {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 .servicesContainer::-webkit-scrollbar {
   width: 0;
 }

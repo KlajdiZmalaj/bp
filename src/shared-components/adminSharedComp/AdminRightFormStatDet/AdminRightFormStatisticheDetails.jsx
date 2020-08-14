@@ -44,47 +44,55 @@ const AdminRightFormStatisticheDetailsHelper = ({
     </div>
   </div>
 );
-const AdminRightFormStatisticheDetails = ({
-  graphData,
-  Tranzacioni,
-  Commisione,
-  Proviggioni,
-  ModalOrNo,
-  Close,
-}) => (
-  <React.Fragment>
-    {ModalOrNo === true ? (
-      <div className="RightFormModal">
-        <div
-          className="backDrop"
-          onClick={() => {
-            Close({ visibility: false, data: "" });
-          }}
-        ></div>
-        <div
-          className="Close"
-          onClick={() => {
-            Close({ visibility: false, data: "" });
-          }}
-        >
-          <i className="fal fa-times"></i>
-        </div>
-        <div className="Header">Statistiche</div>
-        <AdminRightFormStatisticheDetailsHelper
-          graphData={graphData}
-          Tranzacioni={Tranzacioni}
-          Commisione={Commisione}
-          Proviggioni={Proviggioni}
-        />
-      </div>
-    ) : (
-      <AdminRightFormStatisticheDetailsHelper
-        graphData={graphData}
-        Tranzacioni={Tranzacioni}
-        Commisione={Commisione}
-        Proviggioni={Proviggioni}
-      />
-    )}
-  </React.Fragment>
-);
+class AdminRightFormStatisticheDetails extends React.Component {
+  componentWillUnmount() {
+    this.props.Close({ visibility: false, data: "" });
+  }
+  render() {
+    const {
+      graphData,
+      Tranzacioni,
+      Commisione,
+      Proviggioni,
+      ModalOrNo,
+      Close,
+    } = this.props;
+    return (
+      <React.Fragment>
+        {ModalOrNo === true ? (
+          <div className="RightFormModal">
+            <div
+              className="backDrop"
+              onClick={() => {
+                Close({ visibility: false, data: "" });
+              }}
+            ></div>
+            <div
+              className="Close"
+              onClick={() => {
+                Close({ visibility: false, data: "" });
+              }}
+            >
+              <i className="fal fa-times"></i>
+            </div>
+            <div className="Header">Statistiche</div>
+            <AdminRightFormStatisticheDetailsHelper
+              graphData={graphData}
+              Tranzacioni={Tranzacioni}
+              Commisione={Commisione}
+              Proviggioni={Proviggioni}
+            />
+          </div>
+        ) : (
+          <AdminRightFormStatisticheDetailsHelper
+            graphData={graphData}
+            Tranzacioni={Tranzacioni}
+            Commisione={Commisione}
+            Proviggioni={Proviggioni}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
+}
 export default AdminRightFormStatisticheDetails;

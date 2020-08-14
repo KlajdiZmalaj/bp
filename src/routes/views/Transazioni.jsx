@@ -16,6 +16,7 @@ import { isArray } from "lodash";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/ModalResPForTabMain";
+import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 const { Option } = Select;
@@ -579,9 +580,13 @@ class Transazioni extends React.Component {
                                     aria-hidden="true"
                                   ></i>{" "}
                                   <Tooltip title={item.agency_name}>
-                                    <span className="nomeTd">
-                                      {item.agency_name}
-                                    </span>
+                                    <SpanFormater
+                                      myClassName="nomeTd"
+                                      Word={item.agency_name}
+                                      size={35}
+                                      nrOfRows={1}
+                                      formatWord={true}
+                                    />
                                   </Tooltip>
                                 </td>
                                 <td className="wsNwp servizoTd">

@@ -56,49 +56,57 @@ const AdminRightFormWalletDetailsHelper = ({
     </button>
   </div>
 );
-const AdminRightFormWalletDetails = ({
-  handleDepositoVisibility,
-  handleDebitoVisibility,
-  depositoActiveVisibility,
-  addebitoActiveVisibility,
-  ModalOrNo,
-  Close,
-}) => (
-  <React.Fragment>
-    {ModalOrNo === true ? (
-      <div className="RightFormModal">
-        <div
-          className="backDrop"
-          onClick={() => {
-            Close({ visibility: false, data: "" });
-          }}
-        ></div>
+class AdminRightFormWalletDetails extends React.Component {
+  componentWillUnmount() {
+    this.props.Close({ visibility: false, data: "" });
+  }
+  render() {
+    const {
+      handleDepositoVisibility,
+      handleDebitoVisibility,
+      depositoActiveVisibility,
+      addebitoActiveVisibility,
+      ModalOrNo,
+      Close,
+    } = this.props;
+    return (
+      <React.Fragment>
+        {ModalOrNo === true ? (
+          <div className="RightFormModal">
+            <div
+              className="backDrop"
+              onClick={() => {
+                Close({ visibility: false, data: "" });
+              }}
+            ></div>
 
-        <div
-          className="Close"
-          onClick={() => {
-            Close({ visibility: false, data: "" });
-          }}
-        >
-          <i className="fal fa-times"></i>
-        </div>
-        <div className="Header">Deposito / Addebito</div>
+            <div
+              className="Close"
+              onClick={() => {
+                Close({ visibility: false, data: "" });
+              }}
+            >
+              <i className="fal fa-times"></i>
+            </div>
+            <div className="Header">Deposito / Addebito</div>
 
-        <AdminRightFormWalletDetailsHelper
-          handleDepositoVisibility={handleDepositoVisibility}
-          handleDebitoVisibility={handleDebitoVisibility}
-          depositoActiveVisibility={depositoActiveVisibility}
-          addebitoActiveVisibility={addebitoActiveVisibility}
-        />
-      </div>
-    ) : (
-      <AdminRightFormWalletDetailsHelper
-        handleDepositoVisibility={handleDepositoVisibility}
-        handleDebitoVisibility={handleDebitoVisibility}
-        depositoActiveVisibility={depositoActiveVisibility}
-        addebitoActiveVisibility={addebitoActiveVisibility}
-      />
-    )}
-  </React.Fragment>
-);
+            <AdminRightFormWalletDetailsHelper
+              handleDepositoVisibility={handleDepositoVisibility}
+              handleDebitoVisibility={handleDebitoVisibility}
+              depositoActiveVisibility={depositoActiveVisibility}
+              addebitoActiveVisibility={addebitoActiveVisibility}
+            />
+          </div>
+        ) : (
+          <AdminRightFormWalletDetailsHelper
+            handleDepositoVisibility={handleDepositoVisibility}
+            handleDebitoVisibility={handleDebitoVisibility}
+            depositoActiveVisibility={depositoActiveVisibility}
+            addebitoActiveVisibility={addebitoActiveVisibility}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
+}
 export default AdminRightFormWalletDetails;
