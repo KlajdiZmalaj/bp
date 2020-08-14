@@ -277,13 +277,13 @@
 @media (max-width: 370px) {
   .bodyAdmin .calendarWrapper {
     zoom: 0.9;
-    top: calc((100% - 280px) / 2) !important;
+    top: calc((100% - 280px) / 4) !important;
     left: calc((100% - 375px) / 2) !important;
     margin: 0 !important;
   }
   .calendarWrapper {
     zoom: 0.9;
-    top: calc((100% - 280px) / 2) !important;
+    top: calc((100% - 280px) / 4) !important;
     left: calc((100% - 375px) / 2) !important;
     margin: 0 !important;
   }
@@ -291,10 +291,10 @@
 
 @media (max-width: 350px) {
   .bodyAdmin .calendarWrapper {
-    zoom: 0.7;
+    zoom: 0.8;
   }
   .calendarWrapper {
-    zoom: 0.7;
+    zoom: 0.8;
   }
 }
 /*# sourceMappingURL=styles.css.map */
