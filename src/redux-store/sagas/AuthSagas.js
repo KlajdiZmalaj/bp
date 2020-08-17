@@ -35,6 +35,7 @@ import {
   updateVisuraReq,
   getAgentByUserIdReq,
   getUserByUserIdReq,
+  getSkinsReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -851,6 +852,15 @@ export function* getUserByUserId(user_id) {
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.setUserDetail(response.data.user));
+    }
+  }
+}
+export function* getSkins() {
+  const response = yield call(getSkinsReq);
+
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setSkins(response.data.users));
     }
   }
 }

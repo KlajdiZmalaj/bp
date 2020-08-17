@@ -1090,3 +1090,20 @@ export const getUserByUserIdReq = ({ user_id }) => {
     })
     .catch((error) => ({ error }));
 };
+export const getSkinsReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/skins", {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
