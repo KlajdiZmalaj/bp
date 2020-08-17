@@ -24,6 +24,8 @@ class AdminLeftForm extends React.Component {
       editDepModal,
       editStatModal,
       editUltModal,
+      skinList,
+      activeSkinId,
     } = this.props;
     return (
       <React.Fragment>
@@ -35,25 +37,35 @@ class AdminLeftForm extends React.Component {
                 <i className="fal fa-bars" onClick={handleClick}></i>
               </div>
             </div>
-            <div className="AdminLeftForm--FirstBox--Box--active">
-              <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
+            {skinList &&
+              Array.isArray(skinList) &&
+              skinList.map((skin) => (
+                <div
+                  className={`AdminLeftForm--FirstBox--Box${
+                    activeSkinId === skin.id ? "--active" : ""
+                  }`}
+                  key={skin.id}
                 >
-                  <circle className="a" cx="11" cy="11" r="11" />
-                </svg>
-                <span
-                  onClick={() => {
-                    setActiveSkinId(1);
-                  }}
-                >
-                  BPOINT
-                </span>
-              </div>
-            </div>
+                  <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                    >
+                      <circle className="a" cx="11" cy="11" r="11" />
+                    </svg>
+
+                    <span
+                      onClick={() => {
+                        setActiveSkinId(skin.id);
+                      }}
+                    >
+                      {skin.username.toUpperCase()}
+                    </span>
+                  </div>
+                </div>
+              ))}
           </div>
 
           <div className="AdminLeftForm--LastBox">
@@ -143,5 +155,7 @@ class AdminLeftForm extends React.Component {
 }
 const mstp = (state) => ({
   screenWidth: state.main.screenWidth,
+  skinList: state.auth.skinList,
+  activeSkinId: state.main.activeSkinId,
 });
 export default connect(mstp, { ...MainActions, ...AuthActions })(AdminLeftForm);

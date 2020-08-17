@@ -25,6 +25,7 @@ class AdminPanelDom extends React.Component {
     addebitoActiveVisibility: false,
   };
   componentDidMount() {
+    this.props.getSkins();
     document.body.classList.add("bodyAdmin");
   }
   componentWillUnmount() {

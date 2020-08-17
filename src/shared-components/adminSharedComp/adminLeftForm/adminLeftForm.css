@@ -48,7 +48,14 @@
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  padding: 10px 35px;
+  padding: 10px 20px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.Left .AdminLeftForm--FirstBox--Box:first-child {
+  padding-left: 30px;
+  padding-bottom: 20px;
 }
 
 .Left .AdminLeftForm--FirstBox--Box--active {
@@ -56,7 +63,9 @@
   padding: 10px 20px;
   padding-right: 30px;
   background-color: #f3f3f4;
-  border-left: 4px solid #0578fc;
+  cursor: pointer;
+  -webkit-box-shadow: inset 8px 0px 0px -4px #0078ff;
+          box-shadow: inset 8px 0px 0px -4px #0078ff;
 }
 
 .Left .AdminLeftForm--FirstBox--Box--active--Skinsvg {
@@ -70,6 +79,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.Left .AdminLeftForm--FirstBox--Box--active--Skinsvg span {
+  font-weight: 500;
 }
 
 .Left .AdminLeftForm--FirstBox--Box--active--Skinsvg svg {
@@ -93,6 +106,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.Left .AdminLeftForm--FirstBox--Box--Skinsvg span {
+  width: 105px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .Left .AdminLeftForm--FirstBox--Box--Skinsvg svg {
@@ -242,6 +261,7 @@
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
+  cursor: pointer;
   width: 100%;
 }
 
@@ -275,6 +295,8 @@
 
 .Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg svg circle {
   fill: #dce1e6;
+  width: 22px;
+  height: 22px;
 }
 
 .Left--Min .AdminLeftForm--FirstBox--Box--active {

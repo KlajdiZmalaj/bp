@@ -58,7 +58,9 @@ const AdminRightFormWalletDetailsHelper = ({
 );
 class AdminRightFormWalletDetails extends React.Component {
   componentWillUnmount() {
-    this.props.Close({ visibility: false, data: "" });
+    if (this.props.ModalOrNo) {
+      this.props.Close({ visibility: false, data: "" });
+    }
   }
   render() {
     const {

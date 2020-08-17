@@ -270,6 +270,8 @@ const { Types, Creators } = createActions({
   editUltModal: ["ultModal"],
   editDepModal: ["depModal"],
   editUtentiRespModal: ["utentiResModal"],
+  getSkins: [],
+  setSkins: ["skinList"],
 });
 
 export const AuthTypes = Types;
@@ -318,6 +320,7 @@ const INITIAL_STATE = {
   ultModal: { visibility: false, data: "" },
   depModal: { visibility: false, data: "" },
   utentiResModal: { visibility: false, data: "" },
+  skinList: [],
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -506,5 +509,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EDIT_UTENTI_RESP_MODAL]: (state, { utentiResModal }) => ({
     ...state,
     utentiResModal,
+  }),
+  [Types.SET_SKINS]: (state, { skinList }) => ({
+    ...state,
+    skinList,
   }),
 });
