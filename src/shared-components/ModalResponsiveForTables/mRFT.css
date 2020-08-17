@@ -1,0 +1,187 @@
+.TranzacioniModalResponsive--Data {
+  -webkit-box-shadow: 0 0 44px -15px black;
+          box-shadow: 0 0 44px -15px black;
+  position: fixed;
+  width: 90%;
+  height: 70%;
+  left: 5%;
+  top: 17%;
+  z-index: 5;
+  background-color: #ffffff;
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 4px;
+}
+
+.TranzacioniModalResponsive--Data--Header {
+  width: 100%;
+  height: 14%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 5px 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+  background-color: #0078ff;
+  border-radius: 4px;
+  position: relative;
+}
+
+.TranzacioniModalResponsive--Data--Header--Close {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: #0078ff;
+  text-transform: lowercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 10%;
+  cursor: pointer;
+}
+
+.TranzacioniModalResponsive--Data--Header--Close i {
+  color: #ffffff;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 4%;
+  height: 100%;
+  width: 20%;
+}
+
+.TranzacioniModalResponsive--Data--Row {
+  overflow: auto;
+  width: 100%;
+  height: 86%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
+
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
+  background: #0078ff;
+}
+
+.TranzacioniModalResponsive--Data--Row--DateOra, .TranzacioniModalResponsive--Data--Row--Barcode, .TranzacioniModalResponsive--Data--Row--User, .TranzacioniModalResponsive--Data--Row--Service, .TranzacioniModalResponsive--Data--Row--Importo, .TranzacioniModalResponsive--Data--Row--Commissione, .TranzacioniModalResponsive--Data--Row--Proviggione, .TranzacioniModalResponsive--Data--Row--Saldo, .TranzacioniModalResponsive--Data--Row--UserId, .TranzacioniModalResponsive--Data--Row--Username, .TranzacioniModalResponsive--Data--Row--City, .TranzacioniModalResponsive--Data--Row--Credito, .TranzacioniModalResponsive--Data--Row--RagSociale, .TranzacioniModalResponsive--Data--Row--Role, .TranzacioniModalResponsive--Data--Row--UltimoDeposit, .TranzacioniModalResponsive--Data--Row--UltimoLogin {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 3%;
+  border-bottom: 1px solid #ebeced;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+}
+
+.TranzacioniModalResponsive--Data--Row--DateOra:last-child, .TranzacioniModalResponsive--Data--Row--Barcode:last-child, .TranzacioniModalResponsive--Data--Row--User:last-child, .TranzacioniModalResponsive--Data--Row--Service:last-child, .TranzacioniModalResponsive--Data--Row--Importo:last-child, .TranzacioniModalResponsive--Data--Row--Commissione:last-child, .TranzacioniModalResponsive--Data--Row--Proviggione:last-child, .TranzacioniModalResponsive--Data--Row--Saldo:last-child, .TranzacioniModalResponsive--Data--Row--UserId:last-child, .TranzacioniModalResponsive--Data--Row--Username:last-child, .TranzacioniModalResponsive--Data--Row--City:last-child, .TranzacioniModalResponsive--Data--Row--Credito:last-child, .TranzacioniModalResponsive--Data--Row--RagSociale:last-child, .TranzacioniModalResponsive--Data--Row--Role:last-child, .TranzacioniModalResponsive--Data--Row--UltimoDeposit:last-child, .TranzacioniModalResponsive--Data--Row--UltimoLogin:last-child {
+  border: none;
+}
+
+.TranzacioniModalResponsive--Data--Row--DateOra--Header, .TranzacioniModalResponsive--Data--Row--Barcode--Header, .TranzacioniModalResponsive--Data--Row--User--Header, .TranzacioniModalResponsive--Data--Row--Service--Header, .TranzacioniModalResponsive--Data--Row--Importo--Header, .TranzacioniModalResponsive--Data--Row--Commissione--Header, .TranzacioniModalResponsive--Data--Row--Proviggione--Header, .TranzacioniModalResponsive--Data--Row--Saldo--Header, .TranzacioniModalResponsive--Data--Row--UserId--Header, .TranzacioniModalResponsive--Data--Row--Username--Header, .TranzacioniModalResponsive--Data--Row--City--Header, .TranzacioniModalResponsive--Data--Row--Credito--Header, .TranzacioniModalResponsive--Data--Row--RagSociale--Header, .TranzacioniModalResponsive--Data--Row--Role--Header, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header {
+  font-weight: bold;
+  font-size: 15px;
+  width: 35%;
+}
+
+.TranzacioniModalResponsive--Data--Row--DateOra--Header:after, .TranzacioniModalResponsive--Data--Row--Barcode--Header:after, .TranzacioniModalResponsive--Data--Row--User--Header:after, .TranzacioniModalResponsive--Data--Row--Service--Header:after, .TranzacioniModalResponsive--Data--Row--Importo--Header:after, .TranzacioniModalResponsive--Data--Row--Commissione--Header:after, .TranzacioniModalResponsive--Data--Row--Proviggione--Header:after, .TranzacioniModalResponsive--Data--Row--Saldo--Header:after, .TranzacioniModalResponsive--Data--Row--UserId--Header:after, .TranzacioniModalResponsive--Data--Row--Username--Header:after, .TranzacioniModalResponsive--Data--Row--City--Header:after, .TranzacioniModalResponsive--Data--Row--Credito--Header:after, .TranzacioniModalResponsive--Data--Row--RagSociale--Header:after, .TranzacioniModalResponsive--Data--Row--Role--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header:after {
+  content: " :";
+}
+
+.TranzacioniModalResponsive--Data--Row--DateOra--Info, .TranzacioniModalResponsive--Data--Row--Barcode--Info, .TranzacioniModalResponsive--Data--Row--User--Info, .TranzacioniModalResponsive--Data--Row--Service--Info, .TranzacioniModalResponsive--Data--Row--Importo--Info, .TranzacioniModalResponsive--Data--Row--Commissione--Info, .TranzacioniModalResponsive--Data--Row--Proviggione--Info, .TranzacioniModalResponsive--Data--Row--Saldo--Info, .TranzacioniModalResponsive--Data--Row--UserId--Info, .TranzacioniModalResponsive--Data--Row--Username--Info, .TranzacioniModalResponsive--Data--Row--City--Info, .TranzacioniModalResponsive--Data--Row--Credito--Info, .TranzacioniModalResponsive--Data--Row--RagSociale--Info, .TranzacioniModalResponsive--Data--Row--Role--Info, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Info, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Info {
+  font-size: 14px;
+  font-weight: 400;
+  width: 65%;
+}
+
+@media (max-width: 365px) {
+  .TranzacioniModalResponsive--Data--Header {
+    padding: 0;
+    margin: 0;
+    height: 13%;
+  }
+  .TranzacioniModalResponsive--Data--Header--Title {
+    width: 80%;
+    font-size: 13px;
+    padding-left: 25px;
+  }
+  .TranzacioniModalResponsive--Data--Row {
+    height: 87%;
+    width: 100%;
+    padding: 20px 5px;
+  }
+  .TranzacioniModalResponsive--Data--Row div span:first-child {
+    font-size: 13px;
+    font-weight: 500;
+    padding-right: 7%;
+  }
+  .TranzacioniModalResponsive--Data--Row div span:nth-child(2) {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+/*# sourceMappingURL=mRFT.css.map */

@@ -5,9 +5,10 @@ import Amministrazione from "shared-components/Amministrazione/Amministrazione.j
 class AdminAccount extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Container">
         <Header></Header>
         <Overview></Overview>
+
         <div className="container-fluid overview ">
           <Amministrazione active="admin-account"></Amministrazione>
           <div className="panels-container">

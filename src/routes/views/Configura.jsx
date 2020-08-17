@@ -49,8 +49,9 @@ class Configura extends React.Component {
       }
     });
     return (
-      <div>
+      <div className="Container">
         <Header />
+
         <div className="container-fluid overview ">
           <Azioni active="configura"></Azioni>
           <div className="panels-container">

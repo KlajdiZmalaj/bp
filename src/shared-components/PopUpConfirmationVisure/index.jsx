@@ -12,13 +12,11 @@ const PopUpConfirmationVisure = ({
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
-    console.log("popUpData changed", popUpDataVisure, VisureByVisureId);
     if (popUpDataVisure.id) {
       getVisureByVisureId(popUpDataVisure.id);
       setState(true);
     }
-  }, [popUpDataVisure]);
-  console.log("ca ka visuree", VisureByVisureId, popUpDataVisure);
+  }, [popUpDataVisure, VisureByVisureId, getVisureByVisureId]);
   return (
     VisureByVisureId &&
     Object.keys(VisureByVisureId).length > 1 &&

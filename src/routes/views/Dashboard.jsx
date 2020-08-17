@@ -48,8 +48,9 @@ class Dashboard extends React.Component {
     }
     const scrollView = document.getElementsByClassName("panels-container")[0];
     return (
-      <div>
+      <div className="Container">
         <Header></Header>
+
         {/* <Overview></Overview> */}
         <div className="container-fluid mobileNav-Content">
           <div className="row">

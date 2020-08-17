@@ -26,7 +26,14 @@ import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
 import Visure from "./routes/views/Visure";
+import loginAdmin from "./routes/views/loginAdmin";
+import adminPanel from "./routes/views/adminPanel";
 import VisureDetaggli from "./routes/views/VisureDetaggli";
+import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
+import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
+import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
+import AdminPanelServizi from "./routes/views/adminPanelServizi";
+
 import {
   subscribeSocketUser,
   socket,
@@ -34,7 +41,11 @@ import {
   subscribeSocketSupport,
   unSubscribeSocketSupport,
 } from "config/socket";
-import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
+import {
+  PopUpConfirmation,
+  PopUpConfirmationVisure,
+  Footer,
+} from "shared-components";
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -54,11 +65,11 @@ class Root extends React.Component {
         }
       }
     });
-    socket();
+    socket(this.props);
     if (get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")) {
       subscribeSocketUser(
         get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id"),
-        this.props.addPrivateMsg
+        this.props
       );
       if (
         get(
@@ -66,7 +77,7 @@ class Root extends React.Component {
           "profile.role.name"
         ) === "support"
       ) {
-        subscribeSocketSupport();
+        subscribeSocketSupport(this.props);
       }
     }
   }
@@ -85,29 +96,11 @@ class Root extends React.Component {
   };
 
   render() {
-    let isLoggedin = false;
-    const accountData = localStorage.getItem("accountDataB");
-    const data = JSON.parse(accountData);
+    let isLoggedin = JSON.parse(localStorage.getItem("accountDataB"))
+      ? true
+      : false;
     const role = get(this.props.accountInfo, "profile.role.name");
-    if (data) {
-      isLoggedin = true;
-    }
-    if (!window.bigliettoPopUp) {
-      window.bigliettoPopUp = this.props.bigliettoPopUp;
-    }
-    if (!window.bigliettoPopUpVisure) {
-      window.bigliettoPopUpVisure = this.props.bigliettoPopUpVisure;
-    }
-    if (!window.setButtonsSupport) {
-      window.setButtonsSupport = this.props.setButtonsSupport;
-    }
-    if (!window.addTicket) {
-      window.addTicket = this.props.addTicket;
-    }
-    if (!window.addVisure) {
-      window.addVisure = this.props.addVisure;
-    }
-    console.log("this.props.popUpDataVisure", this.props.popUpDataVisure);
+
     return (
       <React.Fragment>
         <HashRouter>
@@ -248,9 +241,45 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             />
-            Visure
+            <PrivateRoute
+              path="/login-admin"
+              component={loginAdmin}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "user", "agency", "support"]}
+              role={role}
+            />
+
+            <PrivateRoute
+              path="/back-office/utenti"
+              component={AdminPanelListaUtenti}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/movimenti"
+              component={AdminPanelListaMovimenti}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/prenotazioni"
+              component={AdminPanelPrenotazioni}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/servizzi"
+              component={AdminPanelServizi}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "support"]}
+              role={role}
+            />
           </Switch>
         </HashRouter>
+
         {this.state.top && (
           <div
             className="backTopTop animated slideInUp"

@@ -1,0 +1,148 @@
+.TranzacioniModalResponsive--Data {
+  box-shadow: 0 0 44px -15px black;
+  position: fixed;
+  width: 90%;
+  height: 70%;
+  left: 5%;
+  top: 17%;
+  z-index: 5;
+  background-color: #ffffff;
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 4px;
+  &--Header {
+    width: 100%;
+    height: 14%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    align-items: center;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    background-color: #0078ff;
+    border-radius: 4px;
+    position: relative;
+    &--Close {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 400;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      background-color: #0078ff;
+      text-transform: lowercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 10%;
+      cursor: pointer;
+      & i {
+        color: #ffffff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 4%;
+        height: 100%;
+        width: 20%;
+      }
+    }
+  }
+  &--Row {
+    overflow: auto;
+    width: 100%;
+    height: 86%;
+    display: flex;
+    padding: 0 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #0078ff;
+    }
+
+    &--DateOra,
+    &--Barcode,
+    &--User,
+    &--Service,
+    &--Importo,
+    &--Commissione,
+    &--Proviggione,
+    &--Saldo,
+    &--UserId,
+    &--Username,
+    &--City,
+    &--Credito,
+    &--RagSociale,
+    &--Role,
+    &--UltimoDeposit,
+    &--UltimoLogin {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px 3%;
+      border-bottom: 1px solid #ebeced;
+      justify-content: space-between;
+      font-family: "Roboto", sans-serif;
+      &:last-child {
+        border: none;
+      }
+      &--Header {
+        font-weight: bold;
+        font-size: 15px;
+        width: 35%;
+        &:after {
+          content: " :";
+        }
+      }
+      &--Info {
+        font-size: 14px;
+        font-weight: 400;
+        width: 65%;
+      }
+    }
+  }
+}
+@media (max-width: 365px) {
+  .TranzacioniModalResponsive--Data {
+    &--Header {
+      padding: 0;
+      margin: 0;
+      height: 13%;
+      &--Title {
+        width: 80%;
+        font-size: 13px;
+        padding-left: 25px;
+      }
+    }
+    &--Row {
+      height: 87%;
+      width: 100%;
+      padding: 20px 5px;
+      & div {
+        & span:first-child {
+          font-size: 13px;
+          font-weight: 500;
+          padding-right: 7%;
+        }
+        & span:nth-child(2) {
+          font-size: 12px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

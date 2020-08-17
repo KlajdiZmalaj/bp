@@ -11,10 +11,8 @@ class Azioni extends Component {
   render() {
     const { active, accountInfo } = this.props;
     const params = {
-      spaceBetween: 10,
-      loop: false,
-      slidesPerView: 6,
-      freeMode: false,
+      mousewheel: true,
+      activeSlideKey: active === "dashboard" ? "0" : active,
       breakpoints: {
         // when window width is >= 320px
         320: {
@@ -36,7 +34,7 @@ class Azioni extends Component {
         item.displayRole,
         get(accountInfo, "profile.role.name")
       ) ? (
-        <div key={Math.random() + item.id}>
+        <div key={item.link}>
           <a href={"#/" + item.link}>
             <div
               className={
@@ -52,7 +50,7 @@ class Azioni extends Component {
           </a>
         </div>
       ) : (
-        <div key={Math.random() + item.id + ind} className="d-none" />
+        <div key={item.id} style={{ display: "none" }}></div>
       );
     });
     return (
@@ -65,10 +63,8 @@ class Azioni extends Component {
           >
             <Swiper
               key={Math.random() + slides.id * 2}
+              activeSlideKey={active}
               {...params}
-              // activeSlideKey={`${
-              //   active === "carica-conto" || active === "configura" ? "3" : "0"
-              // }`}
             >
               {slides}
             </Swiper>

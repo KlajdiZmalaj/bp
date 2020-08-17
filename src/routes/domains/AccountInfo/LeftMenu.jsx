@@ -11,20 +11,20 @@ class LeftMenu extends Component {
   render() {
     return (
       <div className="leftMenuAcc">
-        {profileLinks.map((item) => {
-          // console.log("item.id", item.id);
-          // return (
-          //   <div
-          //     className={item.id === this.props.activeAccount ? "active" : ""}
-          //     onClick={() => {
-          //       this.props.setAccount(item.id);
-          //     }}
-          //     key={item.id}
-          //   >
-          //     {item.name}
-          //   </div>
-          // );
-        })}
+        {/* {profileLinks.map((item) => {
+          console.log("item.id", item.id);
+          return (
+            <div
+              className={item.id === this.props.activeAccount ? "active" : ""}
+              onClick={() => {
+                this.props.setAccount(item.id);
+              }}
+              key={item.id}
+            >
+              {item.name}
+            </div>
+          );
+        })} */}
       </div>
     );
   }

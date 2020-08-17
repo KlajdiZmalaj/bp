@@ -5,8 +5,9 @@ class CaricaConto extends React.Component {
   render() {
     const { skinExtras } = this.props;
     return (
-      <div>
+      <div className="Container">
         <Header />
+
         <div className="container-fluid overview ">
           <Azioni active="carica-conto"></Azioni>
           <div className="panels-container">

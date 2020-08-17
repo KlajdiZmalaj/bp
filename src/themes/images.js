@@ -82,7 +82,7 @@ export default {
   // HOX: require(`../assets/images${skin}/bill-dark.svg`),
   // FSTW: require(`../assets/images${skin}/bill-dark.svg`),
   // ILIO: require(`../assets/images${skin}/bill-dark.svg`)
-
+  "google-authenticator": require(`../assets/images/google-authenticator-2.svg`),
   //prenotazioni images
   "expedia-logo": require(`../assets/images/prenotazioni/expedia.svg`),
   "expedia-bg": require(`../assets/images/prenotazioni/expedia-bg.jpg`),

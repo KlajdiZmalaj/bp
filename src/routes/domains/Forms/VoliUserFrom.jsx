@@ -13,7 +13,7 @@ const VoliUserForm = ({
   return (
     <div className={isChild ? "child" : isAdult ? "adult" : ""}>
       <div className="header">
-        {isAdult ? `Adult ${ind + 1}` : isChild ? `Child ${ind + 1}` : ""}
+        {isAdult ? `Adulto ${ind + 1}` : isChild ? `Bambino ${ind + 1}` : ""}
       </div>
       <div className={"formsContainer--body__item"}>
         <div className="label"> Name</div>

@@ -33,7 +33,6 @@ export class FormSubmiter extends Component {
 
   render() {
     const { enableButtons, VisureByVisureId, getDataFormDetails } = this.props;
-    const { fileType, file } = this.state;
     return JSON.parse(localStorage.accountDataB).profile.role.name ===
       "support" ? (
       <div className="formSubmit">

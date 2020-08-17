@@ -5,7 +5,7 @@ import { isString } from "lodash";
 import moment from "moment";
 
 const { Option } = Select;
-const ItemFull = ({
+export const ItemFull = ({
   readOnly,
   value,
   title,
@@ -19,7 +19,7 @@ const ItemFull = ({
       onChange={(e) =>
         changeValue ? handleChange(changeValue, e.target.value) : null
       }
-      value={value}
+      value={value || ""}
       className="ant-input"
       type="text"
       readOnly={readOnly}

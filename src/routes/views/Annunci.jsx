@@ -17,39 +17,34 @@ class Annunci extends React.Component {
       expanded: [],
       modal: false,
     };
-    this.hideModal = this.hideModal.bind(this);
-    this.showModal = this.showModal.bind(this);
   }
 
-  hideModal() {
+  hideModal = () => {
     document.body.style.overflow = "";
-    this.state.modal = false;
-    this.setState({});
-  }
-  showModal() {
+    this.setState({ modal: false });
+  };
+  showModal = () => {
     document.body.style.overflow = "hidden";
-    this.state.modal = true;
-    this.setState({});
-  }
+    this.setState({ modal: true });
+  };
 
   componentDidMount() {
     this.props.getAds();
   }
 
-  selectTab(payload) {
-    this.state.tabFilter = payload;
-    this.setState({});
-  }
+  selectTab = (payload) => {
+    this.setState({ tabFilter: payload });
+  };
 
-  tabExpand(tab) {
+  tabExpand = (tab) => {
     if (this.state.expanded.includes(tab)) {
-      this.state.expanded = this.state.expanded.filter((el) => el != tab);
-      this.setState({});
+      this.setState({
+        expanded: this.state.expanded.filter((el) => el != tab),
+      });
     } else {
-      this.state.expanded.push(tab);
-      this.setState({});
+      this.setState({ expanded: [...this.state.expanded, tab] });
     }
-  }
+  };
 
   render() {
     const { ads, ads_loading, accountInfo } = this.props;
@@ -61,7 +56,7 @@ class Annunci extends React.Component {
             .filter((m) => m.importance === this.state.tabFilter)
             .sort((a, b) => b.id - a.id);
     return (
-      <div>
+      <div className="Container">
         <Header></Header>
         {/* <Overview></Overview> */}
         <div className="container-fluid overview ">
@@ -151,7 +146,7 @@ class Annunci extends React.Component {
                       ></i>
                       <h4>{m.title}</h4>
                       <span className="date-pane">{m.updated_at}</span>
-                      <i className="fal fa-chevron-down" aria-hidden="true"></i>
+                      <img src={images.uparrow} alt="" />
                     </div>
                     <div
                       className={`nav nav-tabs panel-content panel-content-annunci collapse ${

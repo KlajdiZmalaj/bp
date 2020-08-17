@@ -22,8 +22,7 @@ const PopUpConfirmation = ({
       getTicketByTicketId(popUpData.id);
       setState(true);
     }
-  }, [popUpData]);
-  console.log("ca ka ticket", TicketByTcketId, popUpData);
+  }, [popUpData, getTicketByTicketId]);
   return (
     TicketByTcketId &&
     Object.keys(TicketByTcketId).length > 1 &&

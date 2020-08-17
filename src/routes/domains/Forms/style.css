@@ -103,7 +103,6 @@
       -ms-flex-flow: row;
           flex-flow: row;
   width: 100%;
-  max-width: 1371px;
   margin: 0 auto;
   background: #fff;
   margin-bottom: 20px;
@@ -111,6 +110,16 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   margin-top: 60px;
+  max-width: 1371px;
+}
+
+@media (max-width: 768px) {
+  .formsContainer--body {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+  }
 }
 
 .formsContainer--body .overlayImg {
@@ -129,16 +138,23 @@
   position: absolute;
   left: 0;
   top: 0;
+  max-height: 710px;
 }
 
 .formsContainer--body .imgLogo {
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 320px;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 50%;
+}
+
+@media (max-width: 768px) {
+  .formsContainer--body .imgLogo {
+    top: 50%;
+  }
 }
 
 .formsContainer--body .leftForm {
@@ -154,6 +170,13 @@
   width: 271px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .formsContainer--body .leftForm {
+    min-height: 244px;
+    width: 100%;
+  }
 }
 
 .formsContainer--body .rightForm {
@@ -200,6 +223,13 @@
           justify-content: flex-start;
 }
 
+@media (max-width: 768px) {
+  .formsContainer--body .rightForm--header div.TitleBack {
+    font-size: 20px;
+    text-transform: capitalize;
+  }
+}
+
 .formsContainer--body .rightForm--header div.TitleBack i {
   padding-right: 8px;
   cursor: pointer;
@@ -209,6 +239,12 @@
   -webkit-filter: brightness(0.8);
           filter: brightness(0.8);
   width: 120px;
+}
+
+@media (max-width: 768px) {
+  .formsContainer--body .rightForm--header img {
+    display: none;
+  }
 }
 
 .formsContainer--body .rightForm--left {
@@ -225,6 +261,12 @@
           flex-flow: column;
 }
 
+@media (max-width: 768px) {
+  .formsContainer--body .rightForm--left {
+    width: 100%;
+  }
+}
+
 .formsContainer--body .rightForm--right {
   height: calc(100% - 67px);
   width: 50%;
@@ -236,6 +278,12 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+}
+
+@media (max-width: 768px) {
+  .formsContainer--body .rightForm--right {
+    width: 100%;
+  }
 }
 
 .formsContainer--body .formsItemTogether {
@@ -585,5 +633,10 @@
 .ant-switch-checked {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
+}
+
+.swiper-wrapper {
+  -webkit-transition: unset !important;
+  transition: unset !important;
 }
 /*# sourceMappingURL=style.css.map */

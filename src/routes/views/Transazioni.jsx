@@ -9,27 +9,18 @@ import { Azioni, Overview, Header } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
-
-import { DateRangePicker } from "react-date-range";
-import { subDays, format } from "date-fns";
-import * as locales from "react-date-range/dist/locale";
+import { format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
-const renderStaticRangeLabel = (e) => (
-  <CustomStaticRangeLabelContent text={e} />
-);
-class CustomStaticRangeLabelContent extends React.Component {
-  render() {
-    const { text } = this.props;
-    return (
-      <span>
-        <i>{text}</i>
-      </span>
-    );
-  }
-}
+import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
+import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
+import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/ModalResPForTabMain";
+import SpanFormater from "shared-components/SpanFormater/SpanFormater";
+
+import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 const { Option } = Select;
+
 class Transazioni extends React.Component {
   state = {
     dashboardFromFilterTop: true,
@@ -44,9 +35,11 @@ class Transazioni extends React.Component {
     phone: "",
     from: "",
     to: "",
+    modalDetails: "",
     fromLabel: "",
     toLabel: "",
     perPage: 10,
+    showModalResponsive: false,
     picker: [
       {
         startDate: new Date(),
@@ -74,6 +67,12 @@ class Transazioni extends React.Component {
       phone,
     });
   };
+  componentWillUnmount() {
+    if (this.props.forAdmin === true) {
+      this.props.openModalForAdmin(false);
+      this.props.editModalDetails({});
+    }
+  }
   static getDerivedStateFromProps(nextProps, prevState) {
     let { usernames } = prevState;
 
@@ -88,6 +87,15 @@ class Transazioni extends React.Component {
 
     return null;
   }
+  activateModalForAdmin = (item, index) => {
+    this.props.openModalForAdmin(true);
+    this.props.editModalDetails({
+      index,
+      barcode: item.barcode,
+      agency_name: item.agency_name,
+      address: item.agency_address,
+    });
+  };
 
   handleOk = (e) => {
     this.setState({
@@ -103,70 +111,71 @@ class Transazioni extends React.Component {
   };
 
   handleSubmit = (e) => {
+    const { username, to, from, perPage } = this.state;
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
-        this.props.getPayments(
-          this.state.username,
-          this.state.from || "",
-          this.state.to || "",
-          1,
-          this.state.perPage
-        );
+        this.props.getPayments(username, from || "", to || "", 1, perPage);
       }
     });
   };
 
   changeSelected = (filter) => {
+    const { username, perPage } = this.state;
     this.setState({ selectedFilter: filter });
     if (filter === 0) {
+      const fromDate = moment().format("YYYY-MM-DD");
       this.setState({
         fromLabel: "",
         toLabel: "",
-        from: moment().format("YYYY-MM-DD"),
-        to: moment().format("YYYY-MM-DD"),
+        from: fromDate,
+        to: fromDate,
       });
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
-        moment().format("YYYY-MM-DD"),
-        moment().format("YYYY-MM-DD"),
+        username != "" ? username : "",
+        fromDate,
+        fromDate,
         1,
-        this.state.perPage
+        perPage
       );
     }
     if (filter === 1) {
+      const fromDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+      const toDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+
       this.setState({
         fromLabel: "",
         toLabel: "",
-        from: moment().subtract(1, "days").format("YYYY-MM-DD"),
-        to: moment().subtract(1, "days").format("YYYY-MM-DD"),
+        from: fromDate,
+        to: toDate,
       });
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
-        moment().subtract(1, "days").format("YYYY-MM-DD"),
-        moment().subtract(1, "days").format("YYYY-MM-DD"),
+        username != "" ? username : "",
+        fromDate,
+        toDate,
         1,
-        this.state.perPage
+        perPage
       );
     }
     if (filter === 2) {
-      this.setState({
-        fromLabel: "",
-        toLabel: "",
-        from: moment().subtract(7, "days").startOf("day").format("YYYY-MM-DD"),
-        to: moment().format("YYYY-MM-DD"),
-      });
-      const time7daysAgo = moment()
+      const fromDate = moment()
         .subtract(7, "days")
         .startOf("day")
         .format("YYYY-MM-DD");
+      const toDate = moment().format("YYYY-MM-DD");
+      this.setState({
+        fromLabel: "",
+        toLabel: "",
+        from: fromDate,
+        to: toDate,
+      });
+
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
-        time7daysAgo,
-        moment().format("YYYY-MM-DD"),
+        username != "" ? username : "",
+        fromDate,
+        toDate,
         1,
-        this.state.perPage
+        perPage
       );
     }
     if (filter === 3) {
@@ -176,24 +185,20 @@ class Transazioni extends React.Component {
         fromLabel: "",
         toLabel: "",
       });
-      // const time30daysAgo = moment()
-      //   .subtract(30, "days")
-      //   .startOf("day")
-      //   .format("YYYY-MM-DD");
       this.props.getPayments(
-        this.state.username != "" ? this.state.username : "",
+        username != "" ? username : "",
         "",
         "",
         1,
-        this.state.perPage
+        perPage
       );
-      // this.props.getPayments();
     }
   };
 
   handleSearch = (value) => {
-    if (value && this.props.usernames) {
-      let res = this.props.usernames.filter((user) =>
+    const { usernames } = this.props;
+    if (value && usernames) {
+      let res = usernames.filter((user) =>
         user.toLocaleLowerCase().includes(value.toLocaleLowerCase())
       );
       this.setState({ usernames: res });
@@ -215,17 +220,31 @@ class Transazioni extends React.Component {
     //     .subtract(parseInt(moment().format("D")), "days")
     //     .format()
     // );
-    this.props.getPayments(
-      this.state.username != "" ? this.state.username : "",
-      "",
-      "",
-      1,
-      10
-    );
+    const { username } = this.state;
+    this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcode } = this.state;
+    const { forAdmin } = this.props;
+    const {
+      barcode,
+      picker,
+      selectedFilter,
+      indexT,
+      usernames,
+      isCalendarOpen,
+      dashboardFromFilterTop,
+      fromLabel,
+      toLabel,
+      to,
+      from,
+      username,
+      perPage,
+      visible,
+      address,
+      name,
+      modalDetails,
+    } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -242,9 +261,12 @@ class Transazioni extends React.Component {
       loadingPayments,
       paymentsFromCode,
       paymentsPages,
+      navbarSearch,
+      getCodiceTicket,
+      skinExtras,
+      getPayments,
     } = this.props;
     // console.log("paymentspayments", payments);
-    const { selectedFilter, indexT, usernames } = this.state;
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 
@@ -261,140 +283,96 @@ class Transazioni extends React.Component {
         return new Date(b.executed_date) - new Date(a.executed_date);
       });
     return (
-      <div>
-        <Header></Header>
-        <Overview
-          fromFilterTop={this.fromFilterTop}
-          dashboardFromFilterTop={this.state.dashboardFromFilterTop}
-        ></Overview>
+      <div
+        className={`${forAdmin === true ? "" : "Container"}`}
+        style={forAdmin === true ? { width: "100%" } : { width: "auto" }}
+      >
+        {this.props.forAdmin === true ? null : (
+          <React.Fragment>
+            <Header></Header>
+            <Overview
+              fromFilterTop={this.fromFilterTop}
+              dashboardFromFilterTop={dashboardFromFilterTop}
+            ></Overview>
+          </React.Fragment>
+        )}
+        {this.state.showModalResponsive === true &&
+          this.props.screenWidth <= 1050 &&
+          forAdmin && (
+            <ModalResponsiveForTables
+              Close={(e) => {
+                this.setState({
+                  modalDetails: "",
+                  showModalResponsive: false,
+                });
+              }}
+              Rows={
+                <React.Fragment>
+                  <ModalRow
+                    title="Date Ora"
+                    data={moment(modalDetails.executed_date).format(
+                      "DD/MM/YYYY HH:mm:ss"
+                    )}
+                  />
+                  <ModalRow title="Barcode" data={modalDetails.barcode} />
+                  <ModalRow title="User" data={modalDetails.agency_name} />
+                  <ModalRow title="Service" data={modalDetails.service_name} />
+                  <ModalRow title="Importo" data={modalDetails.price1000} />
+                  <ModalRow
+                    title="Commissione"
+                    data={modalDetails.commissione}
+                  />
+                  <ModalRow
+                    title="Proviggione"
+                    data={modalDetails.percentage}
+                  />
+                  <ModalRow title="Saldo" data={modalDetails.saldo} />{" "}
+                </React.Fragment>
+              }
+            />
+          )}
+        {this.state.showModalResponsive === true &&
+          this.props.screenWidth <= 800 &&
+          !forAdmin && (
+            <ModalResPForTabMain
+              Close={(e) => {
+                this.setState({
+                  modalDetails: "",
+                  showModalResponsive: false,
+                });
+              }}
+              mobilePopUpData={modalDetails}
+              exception={"sign"}
+            />
+          )}
         <div className="container-fluid overview ">
-          <Azioni active="transazioni"></Azioni>
+          {!forAdmin && <Azioni active="transazioni"></Azioni>}
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
-              {this.state.isCalendarOpen && (
-                <div className="calendarWrapper">
-                  <DateRangePicker
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onChange={(item) => {
-                      // console.log(
-                      //   "itemm",
-                      //   item,
-                      //   item.selection.startDate,
-                      //   format(item.selection.startDate, "yyyy-MM-dd")
-                      // );
-                      this.setState({
-                        picker: [item.selection],
-                        from: format(item.selection.startDate, "yyyy-MM-dd"),
-                        to: format(item.selection.endDate, "yyyy-MM-dd"),
-                        fromLabel: format(
-                          item.selection.startDate,
-                          "dd/MM/yyyy"
-                        ),
-                        toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
-                      });
-                    }}
-                    locale={locales["it"]}
-                    color="#00e2b6"
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    months={1}
-                    maxDate={new Date()}
-                    dateDisplayFormat={"dd LLLL , yyyy"}
-                    ranges={this.state.picker}
-                    direction="horizontal"
-                    renderStaticRangeLabel={(e) => {
-                      return renderStaticRangeLabel(e.label);
-                    }}
-                    staticRanges={[
-                      {
-                        label: "Oggi",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: new Date(),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                      {
-                        label: "Ultima settimana",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: subDays(new Date(), 6),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                      {
-                        label: "Ultimo mese",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: subDays(new Date(), 29),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                      {
-                        label: "Ultimi 3 mesi",
-                        hasCustomRendering: true,
-                        range: () => ({
-                          endDate: new Date(),
-                          startDate: subDays(new Date(), 89),
-                        }),
-                        isSelected() {
-                          return false;
-                        },
-                      },
-                    ]}
-                    // scroll={{ enabled: true }}
-                  />
-                  <div
-                    className="blurCalendar"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      this.setCalendar(false);
-                    }}
-                  ></div>
-                  {
-                    <div className="buttons">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          this.setCalendar(false);
-                          this.setState({
-                            from: "",
-                            to: "",
-                            fromLabel: "",
-                            toLabel: "",
-                          });
-                        }}
-                      >
-                        Cancella
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          this.setCalendar(false);
-                          this.handleSubmit(e);
-                        }}
-                      >
-                        Esegui
-                      </button>
-                    </div>
-                  }
-                </div>
+              {isCalendarOpen && (
+                <CalendarRangePicker
+                  setStateFunc={(item) => {
+                    this.setState({
+                      picker: [item.selection],
+                      from: format(item.selection.startDate, "yyyy-MM-dd"),
+                      to: format(item.selection.endDate, "yyyy-MM-dd"),
+                      fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
+                      toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
+                    });
+                  }}
+                  setStateFuncEmpty={() => {
+                    this.setState({
+                      from: "",
+                      to: "",
+                      fromLabel: "",
+                      toLabel: "",
+                    });
+                  }}
+                  picker={picker}
+                  setCalendar={this.setCalendar}
+                  handleSubmit={this.handleSubmi}
+                />
               )}
               <h1 className="heading-tab ">Lista Movimenti</h1>
               <div className="datepics ml-auto mr-2">
@@ -449,15 +427,17 @@ class Transazioni extends React.Component {
                       this.setCalendar(true);
                     }}
                   >
-                    {this.state.fromLabel
-                      ? `${this.state.fromLabel} - ${this.state.toLabel}`
+                    {fromLabel
+                      ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  <div>
-                    <button className="filterBtn" htmltype="submit">
-                      Filter
-                    </button>
-                  </div>
+                  {!this.props.forAdmin && (
+                    <div>
+                      <button className="filterBtn" htmltype="submit">
+                        Filter
+                      </button>
+                    </div>
+                  )}
                 </Form>
 
                 <div className="codice"></div>
@@ -473,12 +453,36 @@ class Transazioni extends React.Component {
                         this.fromFilterTop(false);
                       }}
                     >
-                      <i className="fas fa-dot-circle"></i>
+                      {forAdmin ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                        >
+                          <g className="a">
+                            <circle className="b" cx="7" cy="7" r="7" />
+                            <circle className="c" cx="7" cy="7" r="4" />
+                          </g>
+                        </svg>
+                      ) : (
+                        <i className="fas fa-dot-circle"></i>
+                      )}
                       {item}
                     </li>
                   );
                 })}
               </ul>
+              {forAdmin && (
+                <button
+                  className="filterBtn"
+                  htmltype="submit"
+                  onClick={this.handleSubmit}
+                >
+                  <i className="fas fa-filter"></i>
+                  Filter
+                </button>
+              )}
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
@@ -495,13 +499,16 @@ class Transazioni extends React.Component {
                     <thead>
                       <tr>
                         <td className="wsNwp">Date / Ora</td>
-                        <td>Barcode</td>
+                        <td className="wsNwp">Barcode</td>
                         <td className="wsNwp">User</td>
-                        <td className="wsNwp">Service</td>
-                        <td className="right">Importo</td>
-                        <td className="right">Commissione</td>
-                        <td className="right">Proviggione</td>
-                        <td className="right">Saldo</td>
+                        <td className="wsNwp servizoTd">Service</td>
+                        <td className="wsNwp right">Importo</td>
+                        <td className="wsNwp right">Commissione</td>
+                        <td className=" wsNwp right">Proviggione</td>
+                        <td className=" wsNwp right">Saldo</td>
+                        {this.props.screenWidth <= 1050 && forAdmin ? (
+                          <td className="wsNwp"></td>
+                        ) : null}
                       </tr>
                     </thead>
                     <tbody>
@@ -511,23 +518,51 @@ class Transazioni extends React.Component {
                             (
                               item.service_name &&
                               item.service_name.toString().toLowerCase()
-                            ).includes(
-                              this.props.navbarSearch.toLowerCase()
-                            ) && (
+                            ).includes(navbarSearch.toLowerCase()) && (
                               <tr
                                 key={index}
-                                onClick={() => {
-                                  this.showModal(
-                                    index,
-                                    item.barcode,
-                                    item.agency_name,
-                                    item.agency_address,
-                                    item.agency_phone
-                                  );
-                                  this.props.getCodiceTicket(
-                                    item.barcode,
-                                    item.service_name
-                                  );
+                                onClick={(e) => {
+                                  if ([...e.target.classList].includes("bc")) {
+                                    getCodiceTicket(
+                                      item.barcode,
+                                      item.service_name
+                                    );
+                                  }
+                                  if (e.target.tagName != "I") {
+                                    if (
+                                      forAdmin &&
+                                      this.props.screenWidth <= 402 &&
+                                      ![...e.target.classList].includes("bc")
+                                    ) {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    } else if (
+                                      !forAdmin &&
+                                      this.props.screenWidth <= 800 &&
+                                      ![...e.target.classList].includes("bc")
+                                    ) {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    }
+                                    forAdmin &&
+                                    this.props.screenWidth >= 1050 &&
+                                    [...e.target.classList].includes("bc")
+                                      ? this.activateModalForAdmin(item, index)
+                                      : [...e.target.classList].includes(
+                                          "bc"
+                                        ) &&
+                                        this.showModal(
+                                          index,
+                                          item.barcode,
+                                          item.agency_name,
+                                          item.agency_address,
+                                          item.agency_phone
+                                        );
+                                  }
                                 }}
                               >
                                 <td className="wsNwp">
@@ -535,55 +570,72 @@ class Transazioni extends React.Component {
                                     "DD/MM/YYYY HH:mm:ss"
                                   )}
                                 </td>
-                                <td>
+                                <td className="wsNwp">
                                   <div className="bc">{item.barcode}</div>
                                 </td>
                                 <td className="wsNwp">
                                   {" "}
                                   <i
-                                    className="fal fa-user-circle"
+                                    className="fal fa-user-alt"
                                     aria-hidden="true"
                                   ></i>{" "}
                                   <Tooltip title={item.agency_name}>
-                                    <span className="nomeTd">
-                                      {item.agency_name}
-                                    </span>
+                                    <SpanFormater
+                                      myClassName="nomeTd"
+                                      Word={item.agency_name}
+                                      size={35}
+                                      nrOfRows={1}
+                                      formatWord={true}
+                                    />
                                   </Tooltip>
                                 </td>
-                                <td className="wsNwp">{item.service_name}</td>
-
-                                <td className="right">
-                                  <span className="Importo">
-                                    <i
-                                      className={`fal fa-${
-                                        item.sign === "-" ? "minus" : "plus"
-                                      }-circle fa-sm`}
-                                      style={{
-                                        color:
-                                          item.sign === "-"
-                                            ? "#ff0000"
-                                            : "#0da90f",
-                                      }}
-                                    />
-                                    {item.price1000
-                                      ? slicedAmount(item.price1000 / 1000)
-                                      : "-"}
-                                    €
-                                  </span>
+                                <td className="wsNwp servizoTd">
+                                  {item.service_name}
                                 </td>
-                                <td className="right">
+
+                                <td className="wsNwp right importoTd">
+                                  <i
+                                    className={`fal fa-${
+                                      item.sign === "-" ? "minus" : "plus"
+                                    }-circle fa-sm`}
+                                    style={{
+                                      color:
+                                        item.sign === "-"
+                                          ? "#ff0000"
+                                          : "#0da90f",
+                                    }}
+                                  />
+                                  {item.price1000
+                                    ? slicedAmount(item.price1000 / 1000)
+                                    : "-"}
+                                  €
+                                </td>
+                                <td className="wsNwp right">
                                   {item.commissione}€
                                   {/* {item.commissione ? item.commissione : "-"}{" "} */}
                                 </td>
-                                <td className="right">
+                                <td className="wsNwp right">
                                   {item.percentage}€
                                   {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
                                 </td>
-                                <td className="right">
+                                <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
+                                {this.props.screenWidth <= 1050 && forAdmin && (
+                                  <td
+                                    className=" wsNwp right"
+                                    onClick={() => {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    }}
+                                  >
+                                    <i className="fal fa-search-plus"></i>
+                                  </td>
+                                )}
                               </tr>
                             )
                           );
@@ -596,12 +648,12 @@ class Transazioni extends React.Component {
                 <Pagination
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
-                    this.props.getPayments(
-                      this.state.username != "" ? this.state.username : "",
-                      this.state.from || "",
-                      this.state.to || "",
+                    getPayments(
+                      username != "" ? username : "",
+                      from || "",
+                      to || "",
                       e,
-                      this.state.perPage
+                      perPage
                     );
                   }}
                   total={
@@ -614,10 +666,10 @@ class Transazioni extends React.Component {
                   defaultValue="10"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
-                    this.props.getPayments(
-                      this.state.username != "" ? this.state.username : "",
-                      this.state.from || "",
-                      this.state.to || "",
+                    getPayments(
+                      username != "" ? username : "",
+                      from || "",
+                      to || "",
                       1,
                       e
                     );
@@ -632,7 +684,7 @@ class Transazioni extends React.Component {
           </div>
           <Modal
             title={null}
-            visible={this.state.visible}
+            visible={visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
             footer={null}
@@ -647,26 +699,20 @@ class Transazioni extends React.Component {
                   <span className="superSmall text-bold">
                     MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
                   </span>
-                  <span className="superSmall">
-                    {this.props.skinExtras.address}
-                  </span>
-                  <span className="superSmall link">
-                    {this.props.skinExtras.email}
-                  </span>
-                  <span className="superSmall ">
-                    Tel: {this.props.skinExtras.cel}
-                  </span>
+                  <span className="superSmall">{skinExtras.address}</span>
+                  <span className="superSmall link">{skinExtras.email}</span>
+                  <span className="superSmall ">Tel: {skinExtras.cel}</span>
                   <span className="superSmall tel">P.IVA 03852290406</span>
 
                   {/* <span>BPOINT</span> */}
 
                   <span className="fontSmall text-bold">
-                    {this.state.name.charAt(0).toUpperCase() +
-                      this.state.name.slice(1).toLocaleLowerCase()}
+                    {name.charAt(0).toUpperCase() +
+                      name.slice(1).toLocaleLowerCase()}
                   </span>
                   <span className="fontSmall address">
-                    {this.state.address.charAt(0).toUpperCase() +
-                      this.state.address.slice(1).toLocaleLowerCase()}
+                    {address.charAt(0).toUpperCase() +
+                      address.slice(1).toLocaleLowerCase()}
                   </span>
                   {/* <span className="userCel">
                     {" "}
@@ -733,6 +779,7 @@ const mapsStateToProps = (state) => ({
   skinExtras: state.auth.skinExtras,
   paymentsFromCode: state.auth.paymentsFromCode,
   paymentsPages: state.auth.paymentsPages,
+  screenWidth: state.main.screenWidth,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

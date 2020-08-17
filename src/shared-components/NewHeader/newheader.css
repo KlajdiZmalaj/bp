@@ -553,5 +553,6 @@ header.header .navLinks .item:hover {
   border-radius: 90px;
   cursor: pointer;
   z-index: 999;
+  border: 1px solid var(--accent-txt);
 }
 /*# sourceMappingURL=newheader.css.map */

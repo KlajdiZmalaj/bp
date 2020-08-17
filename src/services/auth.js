@@ -45,7 +45,6 @@ export const logoutApi = () =>
       ...skin,
     })
     .then((res) => {
-      console.log("ca ka res", res);
       if (res.status === 200) {
         unSubscribeSocketUser(
           JSON.parse(localStorage.getItem("accountDataB")) &&
@@ -505,11 +504,8 @@ export const transferMoney = (id, amount, type, c, role) => {
           // this.setState({ isPopUpActive: false });
           // this.props.getUsers();
         }
-        console.log("succData", data);
       },
-      (data) => {
-        console.log("err data", data);
-      }
+      (data) => {}
     );
 };
 export const fetchUserDetails = (user_id) => {
@@ -967,7 +963,6 @@ export const uploadPdf = (id, document, isVisura) => {
       document,
     })
     .then((res) => {
-      console.log("res", res);
       if (res.status === 200) {
         notification.open({
           message: "Upload Notifica!",
@@ -976,7 +971,6 @@ export const uploadPdf = (id, document, isVisura) => {
       }
     })
     .catch(function (error) {
-      console.log("error", error);
       notification.open({
         message: "Failed while uploading!",
         description: "",
@@ -1020,7 +1014,6 @@ export const updateVisuraReq = (
   data_di_nascita,
   luogo_di_nascita
 ) => {
-  console.log(visura_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",

@@ -53,11 +53,7 @@
     padding-left: 30px;
     text-align: center;
   }
-  .Importo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+
   .wsNwp {
     font-size: 14px;
 
@@ -67,6 +63,15 @@
       top: 11px;
       font-size: 0.8em;
       font-weight: 600;
+    }
+    &.importoTd {
+      i {
+        position: absolute;
+        margin-right: auto;
+        left: 10px;
+        font-weight: 400;
+        font-size: 13px;
+      }
     }
   }
   thead tr {
@@ -98,6 +103,10 @@
     &.right {
       text-align: right;
       padding-right: 5px;
+      width: 8% !important;
+    }
+    &.servizoTd {
+      width: 23%;
     }
   }
   tbody tr:hover {
@@ -110,10 +119,6 @@
   tr:nth-child(1) td {
     border-left: 1px solid #fff;
 
-    &:nth-child(1),
-    &:nth-child(2) {
-      width: 210px;
-    }
     &.right {
       width: 150px;
     }
@@ -155,7 +160,6 @@
 }
 .wsNwp {
   white-space: nowrap;
-  width: 13%;
 }
 
 .loader {
@@ -178,4 +182,109 @@
 }
 .ant-pagination {
   margin-right: 10px;
+}
+@media (max-width: 1240px) {
+  body:not(.bodyAdmin) {
+    & .transTable .wsNwp:nth-child(3) {
+      position: relative;
+      text-align: center;
+      & i {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+      }
+      & span {
+        overflow: hidden;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+}
+@media (max-width: 1000px) {
+  body:not(.bodyAdmin) {
+    & .panels-container {
+      & .sort-annunci {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 5px;
+        align-items: center;
+        justify-content: space-between;
+        & li {
+          font-size: 14px;
+          margin-right: 2%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          &:nth-child(1),
+          &:nth-child(2) {
+            width: 54px;
+          }
+          &:nth-child(3) {
+            width: 96px;
+          }
+          &:last-child {
+            width: 106px;
+          }
+        }
+      }
+      & .max-width {
+        margin: 10px auto;
+      }
+      & .ml-auto,
+      .mx-auto {
+        margin-left: 10px !important;
+      }
+      & h1.heading-tab {
+        font-size: 20px;
+        padding-top: 0;
+        padding-left: 2%;
+        margin: 0;
+        min-height: 41px;
+        box-sizing: border-box;
+        align-items: center;
+        display: flex;
+      }
+    }
+
+    .transTable th,
+    .transTable td {
+      padding: 6px 1px;
+      padding-left: 3px;
+      text-align: left !important;
+    }
+    .transTable th.right,
+    .transTable td.right {
+      width: 10% !important;
+    }
+    .transTable .wsNwp.importoTd i {
+      position: relative;
+      margin-right: auto;
+      left: 0;
+      top: 0;
+      font-weight: 400;
+      padding-right: 4%;
+      font-size: 13px;
+    }
+  }
+}
+@media (max-width: 900px) {
+  body:not(.bodyAdmin) {
+    & .panels-container {
+      & h1.heading-tab {
+        font-size: 17px;
+        text-align: center;
+        padding-left: 0 !important;
+      }
+    }
+  }
 }

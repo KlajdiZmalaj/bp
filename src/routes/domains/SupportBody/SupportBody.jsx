@@ -55,8 +55,6 @@ export class SupportBody extends Component {
     }
   }
   render() {
-    const { errors } = this.props;
-
     return (
       <div className="accountInfo">
         {/* <Select

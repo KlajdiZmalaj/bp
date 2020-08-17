@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { notification, Tooltip } from "antd";
+import { notification } from "antd";
 import MyInput from "./Input";
 import FormSubmiter from "./FormSubmiter";
 class Voli extends Component {

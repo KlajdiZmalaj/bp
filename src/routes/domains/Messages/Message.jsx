@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
-import images from "themes/images";
 
 class Message extends React.Component {
   state = {

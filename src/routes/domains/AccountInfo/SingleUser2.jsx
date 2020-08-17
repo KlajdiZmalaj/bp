@@ -47,20 +47,43 @@ class SingleUser2 extends Component {
     return (
       <React.Fragment>
         <div
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
             if (user.children && user.children.length > 0)
               this.setState({ displayChildren: !this.state.displayChildren });
           }}
           className={
             "userList--noDoc__user singleUser" +
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
-            (this.state.displayChildren ? " isopenrow" : "")
+            (this.state.displayChildren ? " isopenrow" : "") +
+            ` level${this.props.level}`
           }
         >
           {" "}
           <div className="body">
             <span>#{user.id}</span>
-            <span className="text-left justify-content-start">
+            <span
+              className={
+                "text-left justify-content-start userDropAnch" +
+                (user.children &&
+                user.children.length > 0 &&
+                !this.state.displayChildren
+                  ? " isPlus"
+                  : " isMinus")
+              }
+              style={{
+                paddingLeft: `calc(10px * ${this.props.level || 1})`,
+              }}
+            >
+              {user.children &&
+                user.children.length > 0 &&
+                !this.state.displayChildren && (
+                  <i className="fal fa-plus-square mpIcon"></i>
+                )}
+              {this.state.displayChildren && (
+                <i className="fal fa-minus-square mpIcon"></i>
+              )}
               {user.role === "agency" && (
                 <i
                   className={
@@ -165,9 +188,15 @@ class SingleUser2 extends Component {
         {this.state.displayChildren &&
           user.children &&
           user.children.length > 0 && (
-            <div className="level3">
+            <div className={"wrapppper"}>
               {user.children.map((user) => {
-                return <SingleUser user={user} key={user.id} />;
+                return (
+                  <SingleUser
+                    level={parseInt(this.props.level) + 1}
+                    user={user}
+                    key={user.id}
+                  />
+                );
               })}
             </div>
           )}
@@ -204,7 +233,7 @@ class SingleUser2 extends Component {
                   );
                 }}
               >
-                <i class="fa fa-check"></i> Conferma
+                <i className="fa fa-check"></i> Conferma
               </button>
               <button
                 className="sendInput cancelInput"
@@ -212,7 +241,7 @@ class SingleUser2 extends Component {
                   this.setPopUpFalse();
                 }}
               >
-                <i class="fa fa-times"></i> Cancel
+                <i className="fa fa-times"></i> Cancel
               </button>
               {user.status === 2 && (
                 <p className="info">

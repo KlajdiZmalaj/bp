@@ -1,0 +1,1592 @@
+.Admin-Panel {
+  min-width: 700px;
+  font-family: "Roboto", sans-serif;
+  color: #5c5c5c;
+  background-color: #ffffff;
+}
+
+.bodyAdmin {
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.bodyAdmin footer {
+  display: none !important;
+}
+
+.AdminColumns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+.AdminColumns .Center {
+  position: relative;
+  top: 70px;
+  left: 200px;
+  width: calc(100% - 200px - 400px);
+  max-width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0.03);
+  min-height: 550px;
+}
+
+.AdminColumns .Center--Big {
+  position: relative;
+  width: calc(100% - 51px - 400px);
+  left: 51px;
+  right: 400px;
+  top: 70px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: auto;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0.031);
+  min-height: 550px;
+}
+
+.AdminColumns .Left {
+  border: 1px solid #ebeced;
+  width: 200px;
+  height: calc(100vh - 71px);
+  position: fixed;
+  left: 0;
+  top: 71px;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  overflow-x: hidden;
+}
+
+.AdminColumns .Left--Min {
+  border: 1px solid #ebeced;
+  width: 50px;
+  height: calc(100vh - 71px);
+  position: fixed;
+  left: 0;
+  top: 71px;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  overflow-x: hidden;
+}
+
+@media (max-width: 1900px) {
+  .AdminRightForm {
+    width: 350px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box > i {
+    font-size: 18px;
+  }
+  .AdminRightForm .printModal {
+    width: 350px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 350px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 350px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+@media (max-width: 1780px) {
+  .AdminRightForm {
+    width: 280px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box > i {
+    font-size: 18px;
+  }
+  .AdminRightForm .printModal {
+    width: 340px;
+  }
+  .Tranzacioni div span {
+    font-size: 14px;
+  }
+  .Graph--Element {
+    margin: 0px 0.6px;
+    width: 5px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 280px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 280px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+@media (max-width: 1550px) {
+  .AdminRightForm {
+    width: 260px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box > i {
+    font-size: 18px;
+  }
+  .AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row {
+    padding: 0;
+  }
+  .Tranzacioni div span {
+    font-size: 12px;
+  }
+  .Graph--Element {
+    margin: 0px 0.4px;
+    width: 4px;
+  }
+  .Graph {
+    padding: 0 2px;
+    padding-top: 10px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 260px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 260px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm--Box {
+    padding: 10px 12px;
+    padding-right: 3px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 1100px) {
+  .AdminRightForm {
+    width: 220px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
+    width: 25%;
+    font-size: 11px;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 1px;
+  }
+  .AdminRightForm div.Tranzacioni div span:nth-child(2) {
+    font-size: 13px;
+  }
+  .AdminColumns .Center--Big {
+    width: calc(100% - 220px - 51px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center {
+    width: calc(100% - 220px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+div.Center .container-fluid.overview,
+div.Center .panels-container,
+div.Center--Big .container-fluid.overview,
+div.Center--Big .panels-container {
+  background: #ffffff !important;
+  position: relative;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  width: 100%;
+  min-height: 490px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 50px !important;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right {
+  text-align: center;
+  width: 95px !important;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child {
+  padding-right: 15px;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd {
+  padding-right: 8%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i {
+  padding-left: 8%;
+  margin-left: 8px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+div.Center .container-fluid.overview .paginationWrapper,
+div.Center .panels-container .paginationWrapper,
+div.Center--Big .container-fluid.overview .paginationWrapper,
+div.Center--Big .panels-container .paginationWrapper {
+  margin-top: 20px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding: 0;
+}
+
+div.Center .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled,
+div.Center .panels-container .paginationWrapper .ant-select.ant-select-enabled,
+div.Center--Big .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled,
+div.Center--Big .panels-container .paginationWrapper .ant-select.ant-select-enabled {
+  border: 1px solid #ebeced;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+div.Center .container-fluid.overview .sort-annunci,
+div.Center .panels-container .sort-annunci,
+div.Center--Big .container-fluid.overview .sort-annunci,
+div.Center--Big .panels-container .sort-annunci {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.Center .container-fluid.overview .sort-annunci .calendarWrapper,
+div.Center .panels-container .sort-annunci .calendarWrapper,
+div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper,
+div.Center--Big .panels-container .sort-annunci .calendarWrapper {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  -webkit-box-shadow: 0 12px 20px 1px #0000008c;
+          box-shadow: 0 12px 20px 1px #0000008c;
+}
+
+div.Center .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisplay,
+div.Center .panels-container .sort-annunci .calendarWrapper .rdrDateDisplay,
+div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisplay,
+div.Center--Big .panels-container .sort-annunci .calendarWrapper .rdrDateDisplay {
+  top: 61%;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal.calendar,
+div.Center .panels-container .sort-annunci .dal.calendar,
+div.Center--Big .container-fluid.overview .sort-annunci .dal.calendar,
+div.Center--Big .panels-container .sort-annunci .dal.calendar {
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #5c5c5c;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 15px 40px;
+  border: none;
+  border-right: 1px solid #ebeced;
+  border-radius: 0;
+  min-width: 270px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filterBtn,
+div.Center .panels-container .sort-annunci .filterBtn,
+div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+div.Center--Big .panels-container .sort-annunci .filterBtn {
+  position: relative;
+  height: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 100px;
+  width: 114px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+  background-color: #0078ff;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filterBtn i,
+div.Center .panels-container .sort-annunci .filterBtn i,
+div.Center--Big .container-fluid.overview .sort-annunci .filterBtn i,
+div.Center--Big .panels-container .sort-annunci .filterBtn i {
+  padding-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal,
+div.Center .panels-container .sort-annunci .dal,
+div.Center--Big .container-fluid.overview .sort-annunci .dal,
+div.Center--Big .panels-container .sort-annunci .dal {
+  border-right: 1px solid #ebeced;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal div:first-child,
+div.Center .panels-container .sort-annunci .dal div:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci .dal div:first-child,
+div.Center--Big .panels-container .sort-annunci .dal div:first-child {
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 270px;
+}
+
+div.Center .container-fluid.overview .sort-annunci .ant-select-selection__rendered,
+div.Center .panels-container .sort-annunci .ant-select-selection__rendered,
+div.Center--Big .container-fluid.overview .sort-annunci .ant-select-selection__rendered,
+div.Center--Big .panels-container .sort-annunci .ant-select-selection__rendered {
+  height: 100%;
+  width: 80%;
+}
+
+div.Center .container-fluid.overview .sort-annunci div,
+div.Center .panels-container .sort-annunci div,
+div.Center--Big .container-fluid.overview .sort-annunci div,
+div.Center--Big .panels-container .sort-annunci div {
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #5c5c5c;
+}
+
+div.Center .container-fluid.overview .sort-annunci .datepics,
+div.Center .panels-container .sort-annunci .datepics,
+div.Center--Big .container-fluid.overview .sort-annunci .datepics,
+div.Center--Big .panels-container .sort-annunci .datepics {
+  margin: 0 !important;
+  border: none;
+}
+
+div.Center .container-fluid.overview .sort-annunci .heading-tab,
+div.Center .panels-container .sort-annunci .heading-tab,
+div.Center--Big .container-fluid.overview .sort-annunci .heading-tab,
+div.Center--Big .panels-container .sort-annunci .heading-tab {
+  display: none;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul,
+div.Center .panels-container .sort-annunci ul,
+div.Center--Big .container-fluid.overview .sort-annunci ul,
+div.Center--Big .panels-container .sort-annunci ul {
+  height: 48px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li,
+div.Center .panels-container .sort-annunci ul li,
+div.Center--Big .container-fluid.overview .sort-annunci ul li,
+div.Center--Big .panels-container .sort-annunci ul li {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 95px;
+  margin: auto 12px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1),
+div.Center .panels-container .sort-annunci ul li:nth-child(1),
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1),
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) {
+  margin-left: 15px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(1) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(1) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(1) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(1) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(1) svg g circle:first-child {
+  fill: #707070;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(2) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(2) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(2) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(2) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(2) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(2) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(2) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(2) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(2) svg g circle:first-child {
+  fill: #0078ff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(3) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(3) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(3) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(3) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(3) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(3) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(3) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(3) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(3) svg g circle:first-child {
+  fill: #00b850;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(4) svg,
+div.Center .panels-container .sort-annunci ul li:nth-child(4) svg,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(4) svg,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(4) svg {
+  margin-right: 8px;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle,
+div.Center .panels-container .sort-annunci ul li:nth-child(4) svg g circle,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(4) svg g circle {
+  fill: #ffffff;
+}
+
+div.Center .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle:first-child,
+div.Center .panels-container .sort-annunci ul li:nth-child(4) svg g circle:first-child,
+div.Center--Big .container-fluid.overview .sort-annunci ul li:nth-child(4) svg g circle:first-child,
+div.Center--Big .panels-container .sort-annunci ul li:nth-child(4) svg g circle:first-child {
+  fill: #e30000;
+}
+
+div.Center .container-fluid.overview .max-width,
+div.Center .panels-container .max-width,
+div.Center--Big .container-fluid.overview .max-width,
+div.Center--Big .panels-container .max-width {
+  margin: 0;
+}
+
+div.Center thead,
+div.Center--Big thead {
+  border-bottom: 1px solid #ebeced;
+  border-top: 4px solid #ebeced;
+}
+
+div.Center thead .wsNwp,
+div.Center thead td,
+div.Center--Big thead .wsNwp,
+div.Center--Big thead td {
+  color: #5c5c5c;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border: none;
+  text-align: start;
+  position: relative;
+}
+
+div.Center thead .wsNwp.right,
+div.Center thead td.right,
+div.Center--Big thead .wsNwp.right,
+div.Center--Big thead td.right {
+  text-align: right !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.Center thead .wsNwp.right:last-child,
+div.Center thead td.right:last-child,
+div.Center--Big thead .wsNwp.right:last-child,
+div.Center--Big thead td.right:last-child {
+  padding-right: 11px;
+}
+
+div.Center tbody,
+div.Center--Big tbody {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
+
+div.Center tbody tr,
+div.Center--Big tbody tr {
+  border-bottom: 1px solid #ebeced;
+}
+
+div.Center tbody .wsNwp,
+div.Center tbody td,
+div.Center--Big tbody .wsNwp,
+div.Center--Big tbody td {
+  color: #5c5c5c;
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border: none;
+  font-weight: 400;
+}
+
+div.Center tbody .wsNwp > i,
+div.Center tbody td > i,
+div.Center--Big tbody .wsNwp > i,
+div.Center--Big tbody td > i {
+  font-size: 12px;
+  top: 0;
+  position: relative;
+}
+
+div.Center tbody .wsNwp:nth-child(3),
+div.Center tbody td:nth-child(3),
+div.Center--Big tbody .wsNwp:nth-child(3),
+div.Center--Big tbody td:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background-color: #ffffff;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+  padding: 10px auto;
+}
+
+div.Center tbody .wsNwp:nth-child(3) > i,
+div.Center tbody td:nth-child(3) > i,
+div.Center--Big tbody .wsNwp:nth-child(3) > i,
+div.Center--Big tbody td:nth-child(3) > i {
+  color: #0078ff;
+  font-size: 12px;
+}
+
+div.Center tbody .wsNwp:nth-child(3) span,
+div.Center tbody td:nth-child(3) span,
+div.Center--Big tbody .wsNwp:nth-child(3) span,
+div.Center--Big tbody td:nth-child(3) span {
+  padding-left: 5px;
+}
+
+div.Center tbody .wsNwp:nth-child(4),
+div.Center tbody td:nth-child(4),
+div.Center--Big tbody .wsNwp:nth-child(4),
+div.Center--Big tbody td:nth-child(4) {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #0078ff;
+}
+
+div.Center tbody .right,
+div.Center--Big tbody .right {
+  text-align: right;
+}
+
+div.Center tbody .right.importoTd,
+div.Center--Big tbody .right.importoTd {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.Center tbody .right .Importo,
+div.Center--Big tbody .right .Importo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-left: 40%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center tbody .right .Importo i,
+div.Center--Big tbody .right .Importo i {
+  font-size: 12px;
+}
+
+@media (max-width: 1720px) {
+  div.Center .container-fluid.overview .sort-annunci,
+  div.Center .panels-container .sort-annunci,
+  div.Center--Big .container-fluid.overview .sort-annunci,
+  div.Center--Big .panels-container .sort-annunci {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1650px) {
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap {
+    padding: 10px 3px;
+    left: 0;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap {
+    padding: 7px 3px;
+  }
+  div.Center .container-fluid.overview .sort-annunci,
+  div.Center .panels-container .sort-annunci,
+  div.Center--Big .container-fluid.overview .sort-annunci,
+  div.Center--Big .panels-container .sort-annunci {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-right: 0;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    height: 33px;
+    border-radius: 100px;
+    width: 100px;
+    font-size: 13px;
+    margin: 0 15px;
+  }
+  div.Center .container-fluid.overview .sort-annunci ul li,
+  div.Center .panels-container .sort-annunci ul li,
+  div.Center--Big .container-fluid.overview .sort-annunci ul li,
+  div.Center--Big .panels-container .sort-annunci ul li {
+    margin: 0 5px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
+    width: 120px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
+    padding: 0 10px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1400px) {
+  div.Center .container-fluid.overview .sort-annunci ul li,
+  div.Center .panels-container .sort-annunci ul li,
+  div.Center--Big .container-fluid.overview .sort-annunci ul li,
+  div.Center--Big .panels-container .sort-annunci ul li {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
+    width: 120px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
+    padding: 0 10px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1510px) {
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
+    height: 34px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) span {
+    opacity: 0;
+    width: 3ch;
+    position: absolute;
+    top: 22%;
+    left: 6%;
+    padding-left: 0;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) i {
+    padding-left: 5px;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
+    height: 43px;
+  }
+}
+
+@media (max-width: 1250px) {
+  div.Center .container-fluid.overview .sort-annunci ul li,
+  div.Center .panels-container .sort-annunci ul li,
+  div.Center--Big .container-fluid.overview .sort-annunci ul li,
+  div.Center--Big .panels-container .sort-annunci ul li {
+    margin: 0 2px;
+    font-size: 11.5px;
+    max-width: 88px;
+    min-width: 37px;
+    width: auto;
+  }
+  div.Center .container-fluid.overview .sort-annunci ul li svg,
+  div.Center .panels-container .sort-annunci ul li svg,
+  div.Center--Big .container-fluid.overview .sort-annunci ul li svg,
+  div.Center--Big .panels-container .sort-annunci ul li svg {
+    margin-right: 3px;
+    width: 12px;
+    height: 12px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    font-size: 12px;
+    margin: 0 3px;
+    margin-left: 7px;
+    width: 82px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
+    width: 110px;
+    font-size: 12.5px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
+    padding: 0 10px;
+    min-width: auto;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4) {
+    width: 16%;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4) {
+    width: 16%;
+  }
+}
+
+@media (max-width: 1050px) {
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8) {
+    display: none;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child {
+    width: 2%;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child i {
+    color: #000;
+    font-weight: 300;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8) {
+    display: none;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child {
+    width: 2%;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:last-child i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:last-child i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:last-child i {
+    color: #000;
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 1050px) {
+  .AdminColumns .AdminRightForm {
+    display: none;
+  }
+  .AdminColumns div.Center,
+  .AdminColumns div.Center--Big {
+    width: calc(100vw - 51px);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 670px) {
+  div.Center .container-fluid.overview .paginationWrapper,
+  div.Center .panels-container .paginationWrapper,
+  div.Center--Big .container-fluid.overview .paginationWrapper,
+  div.Center--Big .panels-container .paginationWrapper {
+    margin-top: 10px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    padding: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    align-items: center;
+  }
+  div.Center .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled,
+  div.Center .panels-container .paginationWrapper .ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .paginationWrapper .ant-select.ant-select-enabled {
+    width: 30%;
+    margin: 3% 35%;
+  }
+  div.Center .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single,
+  div.Center .panels-container .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single,
+  div.Center--Big .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single,
+  div.Center--Big .panels-container .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single {
+    width: 100%;
+    font-size: 13px;
+  }
+  div.Center .container-fluid.overview .paginationWrapper ul,
+  div.Center .panels-container .paginationWrapper ul,
+  div.Center--Big .container-fluid.overview .paginationWrapper ul,
+  div.Center--Big .panels-container .paginationWrapper ul {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 5% !important;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 30px;
+  }
+  div.Center .container-fluid.overview .paginationWrapper ul li,
+  div.Center .panels-container .paginationWrapper ul li,
+  div.Center--Big .container-fluid.overview .paginationWrapper ul li,
+  div.Center--Big .panels-container .paginationWrapper ul li {
+    width: 7%;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 13px;
+  }
+  div.Center .container-fluid.overview .paginationWrapper ul li a,
+  div.Center .panels-container .paginationWrapper ul li a,
+  div.Center--Big .container-fluid.overview .paginationWrapper ul li a,
+  div.Center--Big .panels-container .paginationWrapper ul li a {
+    width: 100%;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 13px;
+  }
+  div.Center .container-fluid.overview .sort-annunci,
+  div.Center .panels-container .sort-annunci,
+  div.Center--Big .container-fluid.overview .sort-annunci,
+  div.Center--Big .panels-container .sort-annunci {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2,
+  div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2,
+  div.Center--Big .panels-container .sort-annunci .datepics.ml-auto.mr-2 {
+    position: relative;
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form,
+  div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2 form,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form,
+  div.Center--Big .panels-container .sort-annunci .datepics.ml-auto.mr-2 form {
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal,
+  div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal,
+  div.Center--Big .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal {
+    width: 50%;
+    border-bottom: 1px solid #ebeced;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item,
+  div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item,
+  div.Center--Big .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item {
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item div,
+  div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item span,
+  div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item div,
+  div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item span,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item div,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item span,
+  div.Center--Big .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item div,
+  div.Center--Big .panels-container .sort-annunci .datepics.ml-auto.mr-2 form .dal .ant-row.ant-form-item span {
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .sort-annunci ul,
+  div.Center .panels-container .sort-annunci ul,
+  div.Center--Big .container-fluid.overview .sort-annunci ul,
+  div.Center--Big .panels-container .sort-annunci ul {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-bottom: 1px solid #ebeced;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    width: 100%;
+    border-radius: 0;
+    height: 30px;
+    opacity: 0.9;
+    margin: 5px 0;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap {
+    background-color: #ffffff;
+    margin: 0 !important;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(1), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(5), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(1),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(5),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(1),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(5),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(1),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(5),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(1),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(5),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(1),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(5),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(1),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(5),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(1),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(5),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(1),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(5),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(1),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(5),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(1),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(5),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(1),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(5),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(8) {
+    display: none;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(2),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(2),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(2),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(2),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(2),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(2),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(2),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(2),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(2),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(2),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(2),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(2) {
+    width: 35%;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(3),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(3) {
+    width: auto;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4) {
+    width: 35%;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap {
+    background-color: #ffffff;
+    margin: 0 !important;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(1), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(1),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(1),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(1),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(1),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(1),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(1),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(1),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(1),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(1),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(1),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(5),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(8),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(1),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(5),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(6),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(7),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(8) {
+    display: none !important;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(2),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(2),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(2),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(2),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(2),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(2),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(2),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(2),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(2),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(2),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(2),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(2) {
+    width: 40%;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) {
+    width: auto;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4) {
+    width: 40%;
+  }
+}
+
+@media (max-width: 405px) {
+  div.Center .container-fluid.overview .paginationWrapper,
+  div.Center .panels-container .paginationWrapper,
+  div.Center--Big .container-fluid.overview .paginationWrapper,
+  div.Center--Big .panels-container .paginationWrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  div.Center .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single,
+  div.Center .panels-container .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single,
+  div.Center--Big .container-fluid.overview .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single,
+  div.Center--Big .panels-container .paginationWrapper .ant-select.ant-select-enabled .ant-select-selection--single {
+    height: 25px;
+    font-size: 11px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0;
+  }
+  div.Center .container-fluid.overview .paginationWrapper ul li,
+  div.Center .panels-container .paginationWrapper ul li,
+  div.Center--Big .container-fluid.overview .paginationWrapper ul li,
+  div.Center--Big .panels-container .paginationWrapper ul li {
+    height: 25px;
+    font-size: 11px;
+    margin-right: 1%;
+    width: 70%;
+  }
+  div.Center .container-fluid.overview .paginationWrapper ul li a,
+  div.Center .panels-container .paginationWrapper ul li a,
+  div.Center--Big .container-fluid.overview .paginationWrapper ul li a,
+  div.Center--Big .panels-container .paginationWrapper ul li a {
+    height: 25px;
+    font-size: 11px;
+    padding: 0 2px;
+  }
+}
+
+.bodyAdmin .Center .calendarWrapper {
+  position: absolute;
+  right: 6%;
+  top: 60px;
+}
+
+.bodyAdmin .Center--Big .calendarWrapper {
+  position: absolute;
+  right: 6%;
+  top: 60px;
+}
+
+.bodyAdmin .rowPopUp .rowPopUp--header {
+  background: #0078ff;
+  color: #ffffff;
+}
+
+body.bodyAdmin::-webkit-scrollbar,
+.ant-modal-wrap::-webkit-scrollbar,
+.Left::-webkit-scrollbar,
+.Left--Min::-webkit-scrollbar,
+.Statistiche.Dropdown::-webkit-scrollbar,
+.AdminRightForm--Box--LeUltime--Dropdown::-webkit-scrollbar,
+.AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar,
+.AdminColumns::-webkit-scrollbar,
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar {
+  width: 4px;
+  height: 5px;
+}
+
+body.bodyAdmin::-webkit-scrollbar-thumb,
+.ant-modal-wrap::-webkit-scrollbar-thumb,
+.Left::-webkit-scrollbar-thumb,
+.Left--Min::-webkit-scrollbar-thumb,
+.Statistiche.Dropdown::-webkit-scrollbar-thumb,
+.AdminRightForm--Box--LeUltime--Dropdown::-webkit-scrollbar-thumb,
+.AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar-thumb,
+.AdminColumns::-webkit-scrollbar-thumb,
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
+  background: #0078ff;
+}
+/*# sourceMappingURL=styles.css.map */

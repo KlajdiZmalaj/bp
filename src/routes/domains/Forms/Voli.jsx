@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { notification } from "antd";
 import images from "themes/images";
 import VoliUserFrom from "./VoliUserFrom";
-import Swiper from "react-id-swiper";
 class Voli extends Component {
   state = {
     bagaglio: 1,
@@ -69,16 +68,16 @@ class Voli extends Component {
   };
   render() {
     const { nome_agenzia, color, accountInfo, goBack } = this.props;
-    const { adults, childrens, hasDD, travalers } = this.state;
-    const params = {
-      spaceBetween: 0,
-      loop: false,
-      slidesPerView: 1,
-      freeMode: false,
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    };
+    const { adults, childrens, hasDD } = this.state;
+    // const params = {
+    //   spaceBetween: 0,
+    //   loop: false,
+    //   slidesPerView: 1,
+    //   freeMode: false,
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //   },
+    // };
     return (
       <div className="formsContainer--body animated fadeIn">
         <div className="leftForm">
@@ -105,12 +104,12 @@ class Voli extends Component {
                 className="travalersSelector"
                 onClick={() => this.setState({ hasDD: !hasDD })}
               >
-                <span>{adults}</span> Adults, <span>{childrens}</span>Childrens
+                <span>{adults}</span> Adulti, <span>{childrens}</span>Bambini
               </div>
               {hasDD && (
                 <div className="travalersSelectorDD">
                   <div className="travalersSelectorDD--item">
-                    <span>Adults</span>
+                    <span>Adulti</span>
                     <div>
                       <i
                         onClick={() =>
@@ -133,7 +132,7 @@ class Voli extends Component {
                   </div>
 
                   <div className="travalersSelectorDD--item">
-                    <span>Childrens</span>
+                    <span>Bambini</span>
                     <div>
                       <i
                         onClick={() =>

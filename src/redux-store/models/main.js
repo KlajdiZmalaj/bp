@@ -19,6 +19,7 @@ const { Types, Creators } = createActions({
   setFavorites: ["favorites"],
   getFavorites: [],
   toggleFavorite: ["id", "sType"],
+  setActiveSkinId: ["activeSkinId"],
 });
 
 export const MainTypes = Types;
@@ -35,6 +36,7 @@ const INITIAL_STATE = {
   userListBySearch: [],
   dashboardData: {},
   navbarSearch: "",
+  activeSkinId: 1,
   screenWidth: window.innerWidth,
 };
 
@@ -82,5 +84,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.TOGGLE_POP_UP]: (state, { isShowing }) => ({
     ...state,
     isShowing,
+  }),
+  [Types.SET_ACTIVE_SKIN_ID]: (state, { activeSkinId }) => ({
+    ...state,
+    activeSkinId,
   }),
 });
