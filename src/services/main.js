@@ -28,8 +28,10 @@ export const fetchFavorites = () =>
     })
     .catch((error) => ({ error }));
 
-export const fetchUsers = (search_user) =>
-  axios
+export const fetchUsers = (search_user, skin_id, backoffice) => {
+  console.log(backoffice);
+  const skin_id_to_use = skin_id ? skin_id : { ...skin };
+  return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
@@ -40,10 +42,11 @@ export const fetchUsers = (search_user) =>
     })
     .post(`/users/list`, {
       ...(search_user ? { search_user: search_user } : {}),
-      ...skin,
+      ...skin_id_to_use,
+      ...(backoffice ? backoffice : {}),
     })
     .catch((error) => ({ error }));
-
+};
 export const fetchUsersSimple = () =>
   axios
     .create({

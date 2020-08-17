@@ -42,7 +42,7 @@ const { Types, Creators } = createActions({
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
-  getPayments: ["username", "from", "to", "page_number", "limit"],
+  getPayments: ["username", "from", "to", "page_number", "limit", "skin_id"],
   setPayments: ["payments"],
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],

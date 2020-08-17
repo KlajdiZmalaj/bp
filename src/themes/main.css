@@ -686,15 +686,13 @@ a:hover {
   font-size: 15px;
   right: 15px;
   position: absolute;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 .panel-tab[aria-expanded="true"] i.fal.fa-chevron-down {
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 /*annunci styles*/

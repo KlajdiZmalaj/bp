@@ -107,4 +107,5 @@ export default {
   "stubhub-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
   "stubhub-bg": require(`../assets/images/prenotazioni/stubhub-bg.jpg`),
   "stubhub-card": require(`../assets/images/prenotazioni/stubhub-card.png`),
+  faturaBackground: require(`../assets/images/FaturaBackground.png`),
 };

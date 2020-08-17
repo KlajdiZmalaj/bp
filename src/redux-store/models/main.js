@@ -8,7 +8,7 @@ const { Types, Creators } = createActions({
   setAccount: ["activeAccount"],
   setUsers: ["userList"],
   setUsersSimple: ["userListSimple"],
-  getUsers: ["search_user"],
+  getUsers: ["search_user", "skin_id"],
   getUsersSimple: [],
   getUsersBySearch: ["search_user"],
   setUsersBySearch: ["userListBySearch"],
@@ -20,6 +20,7 @@ const { Types, Creators } = createActions({
   getFavorites: [],
   toggleFavorite: ["id", "sType"],
   setActiveSkinId: ["activeSkinId"],
+  setLoaderForAdminUtenti: ["LoaderAU"],
 });
 
 export const MainTypes = Types;
@@ -38,6 +39,7 @@ const INITIAL_STATE = {
   navbarSearch: "",
   activeSkinId: 1,
   screenWidth: window.innerWidth,
+  LoaderAU: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -88,5 +90,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_ACTIVE_SKIN_ID]: (state, { activeSkinId }) => ({
     ...state,
     activeSkinId,
+  }),
+  [Types.SET_LOADER_FOR_ADMIN_UTENTI]: (state, { LoaderAU }) => ({
+    ...state,
+    LoaderAU,
   }),
 });

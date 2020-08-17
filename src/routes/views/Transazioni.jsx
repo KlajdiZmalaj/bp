@@ -102,6 +102,23 @@ class Transazioni extends React.Component {
       visible: false,
     });
   };
+  componentDidUpdate(prevPrps) {
+    const { username, from, to, perPage } = this.state;
+    const { activeSkinId, usernames } = this.props;
+    if (
+      this.props.activeSkinId != prevPrps.activeSkinId &&
+      this.props.forAdmin
+    ) {
+      this.props.getPayments(
+        username != "" ? username : "",
+        from || "",
+        to || "",
+        1,
+        perPage ? perPage : 10,
+        activeSkinId
+      );
+    }
+  }
 
   handleCancel = (e) => {
     this.props.setPaymentsFromCode({});
@@ -115,7 +132,16 @@ class Transazioni extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        this.props.getPayments(username, from || "", to || "", 1, perPage);
+        this.props.forAdmin
+          ? this.props.getPayments(
+              username,
+              from || "",
+              to || "",
+              1,
+              perPage,
+              this.props.activeSkinId
+            )
+          : this.props.getPayments(username, from || "", to || "", 1, perPage);
       }
     });
   };
@@ -131,13 +157,22 @@ class Transazioni extends React.Component {
         from: fromDate,
         to: fromDate,
       });
-      this.props.getPayments(
-        username != "" ? username : "",
-        fromDate,
-        fromDate,
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            fromDate,
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            fromDate,
+            1,
+            perPage
+          );
     }
     if (filter === 1) {
       const fromDate = moment().subtract(1, "days").format("YYYY-MM-DD");
@@ -149,13 +184,22 @@ class Transazioni extends React.Component {
         from: fromDate,
         to: toDate,
       });
-      this.props.getPayments(
-        username != "" ? username : "",
-        fromDate,
-        toDate,
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            fromDate,
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            toDate,
+            1,
+            perPage
+          );
     }
     if (filter === 2) {
       const fromDate = moment()
@@ -169,14 +213,22 @@ class Transazioni extends React.Component {
         from: fromDate,
         to: toDate,
       });
-
-      this.props.getPayments(
-        username != "" ? username : "",
-        fromDate,
-        toDate,
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            toDate,
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            toDate,
+            1,
+            perPage
+          );
     }
     if (filter === 3) {
       this.setState({
@@ -185,13 +237,22 @@ class Transazioni extends React.Component {
         fromLabel: "",
         toLabel: "",
       });
-      this.props.getPayments(
-        username != "" ? username : "",
-        "",
-        "",
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            "",
+            "",
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            "",
+            "",
+            1,
+            perPage
+          );
     }
   };
 
@@ -221,7 +282,17 @@ class Transazioni extends React.Component {
     //     .format()
     // );
     const { username } = this.state;
-    this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
+
+    this.props.forAdmin
+      ? this.props.getPayments(
+          username != "" ? username : "",
+          "",
+          "",
+          1,
+          10,
+          this.props.activeSkinId
+        )
+      : this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -270,11 +341,6 @@ class Transazioni extends React.Component {
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 
-    let options = [];
-
-    if (usernames && usernames.length > 0) {
-      options = usernames.map((user) => <Option key={user}>{user}</Option>);
-    }
     // console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
       payments &&
@@ -371,7 +437,7 @@ class Transazioni extends React.Component {
                   }}
                   picker={picker}
                   setCalendar={this.setCalendar}
-                  handleSubmit={this.handleSubmi}
+                  handleSubmit={this.handleSubmit}
                 />
               )}
               <h1 className="heading-tab ">Lista Movimenti</h1>
@@ -382,7 +448,8 @@ class Transazioni extends React.Component {
                   className="filters"
                 >
                   {(get(accountInfo, "profile.role.name") === "super_admin" ||
-                    get(accountInfo, "profile.role.name") === "agent") && (
+                    get(accountInfo, "profile.role.name") === "agent" ||
+                    get(accountInfo, "profile.role.name") === "main_admin") && (
                     <div className="dal">
                       {
                         <Form.Item>
@@ -412,7 +479,11 @@ class Transazioni extends React.Component {
                                   : "Select"
                               }
                             >
-                              {options}
+                              {this.props.usernames &&
+                                this.props.usernames.length > 0 &&
+                                this.props.usernames.map((user) => (
+                                  <Option key={user}>{user}</Option>
+                                ))}
                             </Select>
                           )}
                         </Form.Item>
@@ -491,9 +562,12 @@ class Transazioni extends React.Component {
                     {payments.message}
                   </div>
                 )}
-                {loadingPayments && (
-                  <img className="loader" src={images.loader}></img>
-                )}
+                {loadingPayments &&
+                  (forAdmin ? (
+                    <div className="loaderAdmin"></div>
+                  ) : (
+                    <img className="loader" src={images.loader}></img>
+                  ))}
                 {!loadingPayments && (
                   <table className="transTable">
                     <thead>
@@ -513,6 +587,13 @@ class Transazioni extends React.Component {
                     </thead>
                     <tbody>
                       {!payments.message &&
+                      (paymentsO || []) &&
+                      paymentsO.length === 0 ? (
+                        <div class="NoData">
+                          <i class="fal fa-info-circle"></i>
+                          <span>No Data</span>
+                        </div>
+                      ) : (
                         (paymentsO || []).map((item, index) => {
                           return (
                             (
@@ -639,7 +720,8 @@ class Transazioni extends React.Component {
                               </tr>
                             )
                           );
-                        })}
+                        })
+                      )}
                     </tbody>
                   </table>
                 )}
@@ -648,13 +730,22 @@ class Transazioni extends React.Component {
                 <Pagination
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
-                    getPayments(
-                      username != "" ? username : "",
-                      from || "",
-                      to || "",
-                      e,
-                      perPage
-                    );
+                    forAdmin
+                      ? this.props.getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          e,
+                          perPage,
+                          this.props.activeSkinId
+                        )
+                      : getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          e,
+                          perPage
+                        );
                   }}
                   total={
                     Object.keys(paymentsPages).length === 0
@@ -666,13 +757,22 @@ class Transazioni extends React.Component {
                   defaultValue="10"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
-                    getPayments(
-                      username != "" ? username : "",
-                      from || "",
-                      to || "",
-                      1,
-                      e
-                    );
+                    forAdmin
+                      ? getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          1,
+                          e,
+                          this.props.activeSkinId
+                        )
+                      : getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          1,
+                          e
+                        );
                   }}
                 >
                   <Option value={10}>10 / Pagina</Option>

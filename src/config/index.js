@@ -111,6 +111,13 @@ export const azioni = [
     i: "fab fa-wpforms",
     displayRole: ["super_admin", "user", "agency", "support"],
   },
+  {
+    id: 13,
+    name: "Fatura",
+    link: "fatura",
+    i: "fas fa-ballot-check",
+    displayRole: ["super_admin", "user", "agency", "support"],
+  },
 ];
 
 export const administrazioni = [

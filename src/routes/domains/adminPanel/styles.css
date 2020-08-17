@@ -250,15 +250,8 @@ div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .trans
 div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right,
 div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable td.right,
 div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable td.right {
-  text-align: center;
-  width: 95px !important;
-}
-
-div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
-div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
-div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child,
-div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.right:last-child {
-  padding-right: 15px;
+  text-align: center !important;
+  width: 105px !important;
 }
 
 div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd,
@@ -272,6 +265,7 @@ div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTab
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  height: 52px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -646,6 +640,7 @@ div.Center tbody .wsNwp,
 div.Center tbody td,
 div.Center--Big tbody .wsNwp,
 div.Center--Big tbody td {
+  height: 52px;
   color: #5c5c5c;
   background-color: #ffffff;
   padding: 15px 10px;
@@ -678,6 +673,7 @@ div.Center--Big tbody td:nth-child(3) {
       -ms-flex-align: center;
           align-items: center;
   font-weight: 500;
+  height: 53px;
   padding: 10px auto;
 }
 
