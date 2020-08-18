@@ -1123,13 +1123,11 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
         }`,
       },
     })
-    .post("//users/report", {
-      params: {
-        ...skin,
-        user_id,
-        year,
-        month,
-      },
+    .post("/users/report", {
+      ...skin,
+      user_id,
+      year,
+      month,
     })
     .catch((error) => ({ error }));
 };

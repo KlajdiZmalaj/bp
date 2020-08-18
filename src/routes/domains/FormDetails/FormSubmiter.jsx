@@ -130,7 +130,8 @@ export class FormSubmiter extends Component {
               4,
               () => {},
               getDataFormDetails,
-              this.state.base64 && this.state.base64
+              this.state.base64 && this.state.base64,
+              this.props.setButtonsSupport
             );
           }}
           className={
@@ -148,7 +149,8 @@ export class FormSubmiter extends Component {
               this.props.TicketByTcketId.id,
               5,
               () => {},
-              getDataFormDetails
+              getDataFormDetails,
+              this.props.setButtonsSupport
             );
           }}
           className={
@@ -170,7 +172,8 @@ export class FormSubmiter extends Component {
                 this.props.TicketByTcketId.id,
                 3,
                 () => {},
-                getDataFormDetails
+                getDataFormDetails,
+                this.props.setButtonsSupport
               );
             }}
             className={"formSubmit--button -s"}
@@ -183,7 +186,8 @@ export class FormSubmiter extends Component {
                 this.props.TicketByTcketId.id,
                 5,
                 () => {},
-                getDataFormDetails
+                getDataFormDetails,
+                this.props.setButtonsSupport
               );
             }}
             className={"formSubmit--button -c"}

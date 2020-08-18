@@ -867,8 +867,13 @@ export function* getSkins() {
     }
   }
 }
-export function* getFaturaDetails(user_id, year, month) {
-  const response = yield call(getFaturaDetailsReq, user_id, year, month);
+export function* getFaturaDetails(params) {
+  const response = yield call(
+    getFaturaDetailsReq,
+    params.user_id,
+    params.year,
+    params.month
+  );
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.setFaturaDetails(response.data));
