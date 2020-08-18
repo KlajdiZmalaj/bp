@@ -216,15 +216,8 @@ div.Center--Big {
       & .col-md-12 {
         & .transTable {
           & td.right {
-            text-align: center;
-            width: 95px !important;
-          }
-          & thead {
-            & td.right {
-              &:last-child {
-                padding-right: 15px;
-              }
-            }
+            text-align: center !important;
+            width: 105px !important;
           }
           & tbody {
             & td.wsNwp.right.importoTd {
@@ -232,6 +225,7 @@ div.Center--Big {
               position: relative;
               display: flex;
               justify-content: space-around;
+              height: 52px;
               align-items: center;
               & i {
                 padding-left: 8%;
@@ -443,6 +437,7 @@ div.Center--Big {
     }
     & .wsNwp,
     td {
+      height: 52px;
       color: #5c5c5c;
       background-color: #ffffff;
       padding: 15px 10px;
@@ -460,6 +455,7 @@ div.Center--Big {
         justify-content: flex-start;
         align-items: center;
         font-weight: 500;
+        height: 53px;
         padding: 10px auto;
 
         > i {

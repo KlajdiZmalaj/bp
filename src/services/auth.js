@@ -133,8 +133,15 @@ export const fetchBolletiniBianchi = (
     })
     .catch((error) => ({ error }));
 
-export const fetchPayments = (username, from, to, page_number, limit) =>
-  axios
+export const fetchPayments = (
+  username,
+  from,
+  to,
+  page_number,
+  limit,
+  skin_id
+) => {
+  return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
@@ -149,10 +156,11 @@ export const fetchPayments = (username, from, to, page_number, limit) =>
       ...(to ? { to } : null),
       page_number,
       limit,
-      ...skin,
+
+      ...(skin_id ? { skin_id } : { ...skin }),
     })
     .catch((error) => ({ error }));
-
+};
 export const fetchRechargeMobile = (service_id, tel_no) =>
   axios
     .create({
@@ -1101,8 +1109,26 @@ export const getSkinsReq = () => {
       },
     })
     .get("/skins", {
+      ...skin,
+    })
+    .catch((error) => ({ error }));
+};
+export const getFaturaDetailsReq = (user_id, year, month) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post("//users/report", {
       params: {
         ...skin,
+        user_id,
+        year,
+        month,
       },
     })
     .catch((error) => ({ error }));

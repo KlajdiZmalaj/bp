@@ -42,7 +42,7 @@ const { Types, Creators } = createActions({
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
-  getPayments: ["username", "from", "to", "page_number", "limit"],
+  getPayments: ["username", "from", "to", "page_number", "limit", "skin_id"],
   setPayments: ["payments"],
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
@@ -272,6 +272,8 @@ const { Types, Creators } = createActions({
   editUtentiRespModal: ["utentiResModal"],
   getSkins: [],
   setSkins: ["skinList"],
+  getFaturaDetails: ["user_id", "year", "month"],
+  setFaturaDetails: ["faturaDetails"],
 });
 
 export const AuthTypes = Types;
@@ -321,6 +323,7 @@ const INITIAL_STATE = {
   depModal: { visibility: false, data: "" },
   utentiResModal: { visibility: false, data: "" },
   skinList: [],
+  faturaDetails: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -513,5 +516,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SKINS]: (state, { skinList }) => ({
     ...state,
     skinList,
+  }),
+  [Types.SET_FATURA_DETAILS]: (state, { faturaDetails }) => ({
+    ...state,
+    faturaDetails,
   }),
 });

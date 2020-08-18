@@ -42,6 +42,7 @@ import {
   getUserByUserId,
   getAgentByUserId,
   getSkins,
+  getFaturaDetails,
 } from "./AuthSagas";
 
 import {
@@ -57,6 +58,9 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+
+    takeLatest(AuthTypes.GET_SKINS, getFaturaDetails),
+
     takeLatest(AuthTypes.GET_SKINS, getSkins),
     takeLatest(AuthTypes.UPDATE_VISURA, updateVisura),
     takeLatest(AuthTypes.ADD_VISURE, addVisure),

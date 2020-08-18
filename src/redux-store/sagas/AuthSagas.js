@@ -36,6 +36,7 @@ import {
   getAgentByUserIdReq,
   getUserByUserIdReq,
   getSkinsReq,
+  getFaturaDetailsReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -219,7 +220,8 @@ export function* getPayments(params) {
     params.from,
     params.to,
     params.page_number,
-    params.limit
+    params.limit,
+    params.skin_id
   );
   if (response) {
     if (response.status === 200) {
@@ -252,8 +254,9 @@ export function* getPayments(params) {
         yield put(AuthActions.setPayments(response.error.response.data));
       }
     }
-    yield put(AuthActions.setPaymentsLoading(false));
   }
+  yield put(AuthActions.setPaymentsLoading(false));
+
   // console.log("response payments", response);
 }
 
@@ -861,6 +864,14 @@ export function* getSkins() {
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.setSkins(response.data.users));
+    }
+  }
+}
+export function* getFaturaDetails(user_id, year, month) {
+  const response = yield call(getFaturaDetailsReq, user_id, year, month);
+  if (response.data) {
+    if (response.status === 200) {
+      yield put(AuthActions.setFaturaDetails(response.data));
     }
   }
 }

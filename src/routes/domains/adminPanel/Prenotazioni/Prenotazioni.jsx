@@ -166,7 +166,7 @@ class Prenotazioni extends React.Component {
           <div className="Prenotazioni--Statistiche--First">
             <div className="Prenotazioni--Statistiche--TitleHeaderLeft">
               <i class="fal fa-analytics"></i>
-              <span>STATISTICHE</span>
+              <span>PRENOTAZIONI</span>
             </div>
             <div className="Right">
               <div className="Prenotazioni--Statistiche--DatePicker">

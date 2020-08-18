@@ -33,7 +33,7 @@ import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
 import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
 import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
-
+import Fatura from "./routes/views/Fatura";
 import {
   subscribeSocketUser,
   socket,
@@ -111,6 +111,7 @@ class Root extends React.Component {
               path="/login"
               component={Login}
               isLoggedin={isLoggedin}
+              role={role}
             />
             <PublicRoute
               path="/verify?token="
@@ -242,13 +243,20 @@ class Root extends React.Component {
               role={role}
             />
             <PrivateRoute
+              path="/fatura"
+              component={Fatura}
+              isLoggedin={isLoggedin}
+              allowedRoles={["super_admin", "user", "agency", "support"]}
+              role={role}
+            />
+            {/* <PrivateRoute
               path="/login-admin"
               component={loginAdmin}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
-            />
-
+            /> */}
+            {/* 
             <PrivateRoute
               path="/back-office/utenti"
               component={AdminPanelListaUtenti}
@@ -276,7 +284,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
-            />
+            /> */}
           </Switch>
         </HashRouter>
 

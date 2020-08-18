@@ -31,7 +31,7 @@ class AdminListaUtentiRow extends React.Component {
               }
             }}
           >
-            <span>{itemList.user_id}</span>
+            <span>{itemList.id}</span>
             <span>
               <i
                 className={`fal fa-${
@@ -55,20 +55,20 @@ class AdminListaUtentiRow extends React.Component {
               />
             </span>
             <SpanFormater
-              Word={itemList.rag_sociale}
+              Word={itemList.rag_soc}
               size={17}
               nrOfRows={2}
               formatWord={true}
             />
-            <SpanFormater Word={itemList.credito} size={8} nrOfRows={2} />
+            <SpanFormater Word={itemList.wallet} size={8} nrOfRows={2} />
             <SpanFormater
               Word={itemList.city}
               size={10}
               nrOfRows={2}
               formatWord={true}
             />
-            <span>{itemList.ultimo_deposit}</span>
-            <span>{itemList.ultimo_login}</span>
+            <span>{itemList.last_deposit}</span>
+            <span>{itemList.last_login_time}</span>
             <span>
               <button>DEPOSITO</button>
               <button>ADDEBITO</button>
@@ -101,14 +101,14 @@ class AdminListaUtentiRow extends React.Component {
               arr.length - 1 === i ? (
                 <div
                   className="AdminListaUtentiRow--Complete--Main--Child children last"
-                  key={child.user_id}
+                  key={child.id}
                 >
                   <AdminListaUtentiRowForLoop itemList={child} last={false} />
                 </div>
               ) : (
                 <div
                   className="AdminListaUtentiRow--Complete--Main--Child children"
-                  key={child.user_id}
+                  key={child.id}
                 >
                   <AdminListaUtentiRowForLoop itemList={child} last={true} />
                 </div>
