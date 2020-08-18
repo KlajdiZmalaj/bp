@@ -120,6 +120,10 @@ class Prenotazioni extends React.Component {
     ],
     isCalendarOpen: false,
   };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("ok");
+  };
   setCalendar = (val) => {
     this.setState({ isCalendarOpen: val });
   };
@@ -154,7 +158,7 @@ class Prenotazioni extends React.Component {
             }}
             picker={picker}
             setCalendar={this.setCalendar}
-            handleSubmit={this.handleSubmi}
+            handleSubmit={this.handleSubmit}
           />
         )}
 
