@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import images from "../../themes/images";
 
 const PopUpConfirmationVisure = ({
+  setButtonsSupport,
   popUpDataVisure,
   VisureByVisureId,
   role,
@@ -47,6 +48,7 @@ const PopUpConfirmationVisure = ({
               className="Eseguito"
               onClick={() => {
                 userConfirmation(
+                  setButtonsSupport,
                   popUpDataVisure.id,
                   role === "support" ? 4 : 3,
                   setState,
@@ -62,6 +64,7 @@ const PopUpConfirmationVisure = ({
               className="Annullato"
               onClick={() => {
                 userConfirmation(
+                  setButtonsSupport,
                   popUpDataVisure.id,
                   5,
                   () => {},

@@ -1,1 +1,156 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+.FauturaFilter {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 36px;
+}
+
+.FauturaFilter button {
+  border: none;
+  color: #ebeced;
+  background: #f26521;
+  height: 100%;
+  padding: 0 15px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+.FauturaFilter--Header {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #3c4349;
+}
+
+.FauturaFilter--CalendarLabel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  background: #ffffff;
+  padding-left: 10px;
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 500;
+  color: #f26521;
+}
+
+.FauturaFilter--CalendarLabel i:first-child {
+  font-size: 24px;
+  color: #bfc0c0;
+  padding-right: 10px;
+  font-weight: 300;
+}
+
+.FauturaFilter--CalendarLabel i {
+  font-size: 16px;
+  color: #bfc0c0;
+  padding: 0 10px;
+  font-weight: 600;
+}
+
+.FauturaFilter--Options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 45%;
+  height: 100%;
+}
+
+.FauturaFilter--Options div {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.FauturaFilter--Options div:first-child {
+  position: relative;
+}
+
+.FauturaFilter--Options div:first-child .Search {
+  position: absolute;
+  width: 30%;
+  right: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.FauturaFilter--Options div:first-child i.fa-search {
+  width: 20px;
+  height: 21px;
+  font-size: 20px;
+  color: #bfc0c0;
+  font-weight: 300;
+}
+
+.FauturaFilter--Options input,
+.FauturaFilter--Options .Ricerca {
+  width: 165px;
+  border: 1px solid #f5f5f5;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #bfc0c0;
+  background: #ffffff;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.FauturaFilter--Options input {
+  border: none;
+  outline: none;
+  width: 123px;
+  width: 75%;
+}
+/*# sourceMappingURL=styles.css.map */

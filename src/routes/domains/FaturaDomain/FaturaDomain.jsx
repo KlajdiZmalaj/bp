@@ -63,24 +63,42 @@ class FaturaDomain extends React.Component {
         <div className="panels-container">
           <div className="row no-gutters max-width">
             <div className="FauturaFilter">
-              <div>Fature</div>
-              <div>
-                <input placeholder="Ricerca User" />{" "}
-                <i classNane="fal fa-search"></i>
+              <div className="FauturaFilter--Header">
+                <div>Fature</div>
               </div>
-              <div>
-                {" "}
-                <div
-                  className="FauturaFilter--CalendarLabel"
-                  onClick={() => {
-                    this.setCalendar(true);
-                  }}
-                >
-                  {fromLabel
-                    ? `${fromLabel} - ${toLabel}`
-                    : "Seleziona la data"}
-                  <i className="fal fa-calendar-alt"></i>
+              <div className="FauturaFilter--Options">
+                <div>
+                  <div className="Ricerca">
+                    <input placeholder="Ricerca User" />
+                  </div>
+                  <div className="Search">
+                    <i className="fal fa-search"></i>
+                  </div>
                 </div>
+                <div>
+                  {" "}
+                  <div
+                    className="FauturaFilter--CalendarLabel"
+                    onClick={(e) => {
+                      if (e.target.tagName != "I") {
+                        this.setCalendar(!calendarVis);
+                      }
+                    }}
+                  >
+                    <i className="fal fa-calendar-alt"></i>
+
+                    {fromLabel
+                      ? `${fromLabel} - ${toLabel}`
+                      : "Seleziona la data"}
+                    <i
+                      class={`fal fa-chevron-${calendarVis ? "up" : "down"}`}
+                      onClick={() => {
+                        this.setCalendar(!calendarVis);
+                      }}
+                    ></i>
+                  </div>
+                </div>
+                <button>Filtra</button>
               </div>
             </div>
           </div>

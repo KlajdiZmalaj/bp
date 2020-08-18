@@ -126,12 +126,12 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
+              this.props.setButtonsSupport,
               this.props.TicketByTcketId.id,
               4,
               () => {},
               getDataFormDetails,
-              this.state.base64 && this.state.base64,
-              this.props.setButtonsSupport
+              this.state.base64 && this.state.base64
             );
           }}
           className={
@@ -146,11 +146,11 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
+              this.props.setButtonsSupport,
               this.props.TicketByTcketId.id,
               5,
               () => {},
-              getDataFormDetails,
-              this.props.setButtonsSupport
+              getDataFormDetails
             );
           }}
           className={
@@ -169,11 +169,11 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
+                this.props.setButtonsSupport,
                 this.props.TicketByTcketId.id,
                 3,
                 () => {},
-                getDataFormDetails,
-                this.props.setButtonsSupport
+                getDataFormDetails
               );
             }}
             className={"formSubmit--button -s"}
@@ -183,11 +183,11 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
+                this.props.setButtonsSupport,
                 this.props.TicketByTcketId.id,
                 5,
                 () => {},
-                getDataFormDetails,
-                this.props.setButtonsSupport
+                getDataFormDetails
               );
             }}
             className={"formSubmit--button -c"}

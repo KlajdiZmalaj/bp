@@ -1,4 +1,5 @@
 import React from "react";
+import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 
 const Eventi = ({ TicketByTcketId }) => {
   return (
@@ -20,7 +21,16 @@ const Eventi = ({ TicketByTcketId }) => {
       <div className="Others">
         <div className="confirmationPopup--body__item">
           <span className="light">Link</span>
-          <span className="dark">{TicketByTcketId.link}</span>
+          <span className="dark">
+            <a href={TicketByTcketId.link}>
+              <SpanFormater
+                Word={TicketByTcketId.link}
+                size={28}
+                nrOfRows={1}
+                formatWord={false}
+              />
+            </a>
+          </span>
         </div>
         <div className="confirmationPopup--body__item">
           <span className="light">Nome</span>
@@ -41,6 +51,13 @@ const Eventi = ({ TicketByTcketId }) => {
         </div>
         <div className="confirmationPopup--body__item">
           <span className="light">Extra Dati/Notes</span>
+          <SpanFormater
+            Word={TicketByTcketId.extra_data}
+            size={28}
+            myClassName="dark"
+            nrOfRows={1}
+            formatWord={false}
+          />
           <span className="dark">{TicketByTcketId.extra_data}</span>
         </div>
       </div>

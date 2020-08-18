@@ -904,6 +904,8 @@ export const sendVisureDetailsReq = (
 };
 
 export const userConfirmation = (
+  setButtonsSupport,
+
   ticket_id,
   status,
   c,
@@ -927,7 +929,7 @@ export const userConfirmation = (
     })
     .then((res) => {
       if (res.status === 200 && c) {
-        window.setButtonsSupport(false);
+        setButtonsSupport(false);
         c(false);
         notification.open({
           message: "Hai ricevuto una notifica",
