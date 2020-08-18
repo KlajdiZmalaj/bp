@@ -1,6 +1,26 @@
 import React from "react";
 import images from "themes/images";
 import "./styles.css";
+const payment_data = [
+  {
+    so: "---",
+    descrizione: "Ricarica Paysafe Card 10 Euro",
+    cod_art: "#00192",
+    quantita: 9,
+    imp_unitario: "10.00",
+    imp_totale: "90.00",
+    cod_iva: "---",
+  },
+  {
+    so: "---",
+    descrizione: "Tim 10+ Euro",
+    cod_art: "#00014",
+    quantita: 7,
+    imp_unitario: "10.00",
+    imp_totale: "70.00",
+    cod_iva: "---",
+  },
+];
 const FaturaDomain = () => {
   return (
     <div className="Fatura">
@@ -59,150 +79,18 @@ const FaturaDomain = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Richariche telefoniche </td>
-                <td>0102</td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-                <td>Art . 74 </td>
-              </tr>
+              {payment_data &&
+                (payment_data || []).map((payment) => (
+                  <tr>
+                    <td>{payment.so}</td>
+                    <td> {payment.descrizione} </td>
+                    <td>{payment.cod_art}</td>
+                    <td>{payment.quantita}</td>
+                    <td>{payment.imp_unitario}</td>
+                    <td>{payment.imp_totale}</td>
+                    <td>{payment.cod_iva}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
