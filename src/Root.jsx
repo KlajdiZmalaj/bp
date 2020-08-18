@@ -256,7 +256,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             /> */}
-            {/* 
+
             <PrivateRoute
               path="/back-office/utenti"
               component={AdminPanelListaUtenti}
@@ -284,7 +284,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
-            /> */}
+            />
           </Switch>
         </HashRouter>
 
