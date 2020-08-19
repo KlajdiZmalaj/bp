@@ -3,10 +3,22 @@ import images from "themes/images";
 import ReactToPrint from "react-to-print";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+
 class Ticket extends React.Component {
   componentWillUnmount() {
     this.props.openModalForAdmin(false);
   }
+  printDocument() {
+    // html2canvas(document.querySelector("#divToPrint")).then((canvas) => {
+    //   const imgData = canvas.toDataURL("image/png");
+    //   const pdf = new jsPDF();
+    //   pdf.addImage(imgData, "PNG", 0, 0);
+    //   pdf.save("download.pdf");
+    // });
+  }
+
   render() {
     const {
       skinExtras,
@@ -24,7 +36,11 @@ class Ticket extends React.Component {
         >
           <i className="fal fa-times"></i>
         </div>
-        <div className="printModal" ref={(el) => (this.componentRef = el)}>
+        <div
+          className="printModal"
+          id="divToPrint"
+          ref={(el) => (this.componentRef = el)}
+        >
           <div className="ContainerOfData">
             <div className="headerModal">
               <img className="logo" src={images.logo} alt="" />
@@ -88,7 +104,10 @@ class Ticket extends React.Component {
             </button>
            
           </div> */}
-          <button className="printBtn Buttons--Download">
+          <button
+            className="printBtn Buttons--Download"
+            onClick={this.printDocument}
+          >
             <span>DOWNLOAD</span>
             <i className="fal fa-arrow-to-bottom"></i>
           </button>

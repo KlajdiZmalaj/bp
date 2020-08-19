@@ -10,6 +10,11 @@
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+.bodyAdmin .backTopTop {
+  background: #0078ff;
+  border: none;
+}
+
 .bodyAdmin footer {
   display: none !important;
 }
@@ -265,7 +270,7 @@ div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTab
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  height: 52px;
+  height: 49px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -465,7 +470,7 @@ div.Center .container-fluid.overview .sort-annunci ul,
 div.Center .panels-container .sort-annunci ul,
 div.Center--Big .container-fluid.overview .sort-annunci ul,
 div.Center--Big .panels-container .sort-annunci ul {
-  height: 48px;
+  height: 47px;
 }
 
 div.Center .container-fluid.overview .sort-annunci ul li,
@@ -601,7 +606,6 @@ div.Center--Big thead td {
   font-weight: bold;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
-  background-color: #ffffff;
   padding: 15px 10px;
   border: none;
   text-align: start;
@@ -640,9 +644,8 @@ div.Center tbody .wsNwp,
 div.Center tbody td,
 div.Center--Big tbody .wsNwp,
 div.Center--Big tbody td {
-  height: 52px;
+  height: 49px;
   color: #5c5c5c;
-  background-color: #ffffff;
   padding: 15px 10px;
   border: none;
   font-weight: 400;
@@ -665,7 +668,6 @@ div.Center--Big tbody td:nth-child(3) {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  background-color: #ffffff;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -673,7 +675,7 @@ div.Center--Big tbody td:nth-child(3) {
       -ms-flex-align: center;
           align-items: center;
   font-weight: 500;
-  height: 53px;
+  height: 50px;
   padding: 10px auto;
 }
 
@@ -845,7 +847,6 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
-    height: 34px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -885,7 +886,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
   div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3) {
-    height: 43px;
+    height: 47px;
   }
 }
 
@@ -1274,7 +1275,6 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td,
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap {
-    background-color: #ffffff;
     margin: 0 !important;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -1391,7 +1391,6 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td,
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap {
-    background-color: #ffffff;
     margin: 0 !important;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -1544,16 +1543,16 @@ div.Center--Big tbody .right .Importo i {
   }
 }
 
-.bodyAdmin .Center .calendarWrapper {
-  position: absolute;
-  right: 6%;
-  top: 60px;
+.bodyAdmin .Center div.panels-container .calendarWrapper,
+.bodyAdmin .Center--Big div.panels-container .calendarWrapper {
+  top: 47px;
 }
 
+.bodyAdmin .Center .calendarWrapper,
 .bodyAdmin .Center--Big .calendarWrapper {
   position: absolute;
   right: 6%;
-  top: 60px;
+  top: 52.5px;
 }
 
 .bodyAdmin .rowPopUp .rowPopUp--header {

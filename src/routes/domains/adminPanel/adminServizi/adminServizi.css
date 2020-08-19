@@ -1,5 +1,6 @@
 div.Center .AdminServizi,
 div.Center--Big .AdminServizi {
+  position: relative;
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -9,6 +10,7 @@ div.Center--Big .AdminServizi {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 100%;
   background-color: #ffffff;
+  margin-bottom: 61px;
 }
 
 div.Center .AdminServizi .AdminServiziItem,

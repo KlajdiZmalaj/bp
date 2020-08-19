@@ -49,12 +49,6 @@ class SingleUser extends Component {
     return (
       <React.Fragment>
         <div
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (user.children && user.children.length > 0)
-              this.setState({ displayChildren: !this.state.displayChildren });
-          }}
           className={
             "userList--noDoc__user singleUser level" +
             (this.props.level || "1") +
@@ -66,6 +60,24 @@ class SingleUser extends Component {
           <div className="body">
             <span>#{user.id}</span>
             <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (
+                  user.children &&
+                  user.children.length > 0 &&
+                  !e.target.classList.contains("fa-ey") &&
+                  !e.target.classList.contains(" fa-lock-open") &&
+                  !e.target.classList.contains(" fa-lock") &&
+                  e.target.tagName != "BUTTON"
+                ) {
+                  console.log("u mbyll");
+                  console.log(e.target);
+                  this.setState({
+                    displayChildren: !this.state.displayChildren,
+                  });
+                }
+              }}
               style={{
                 paddingLeft: `calc(10px * ${this.props.level || 1})`,
               }}
@@ -213,19 +225,7 @@ class SingleUser extends Component {
               <div className="title">{val}</div>
               <p>
                 Il credito verrà {val == "deposit" ? "aggiunto" : "rimosso"} al{" "}
-                <span
-                  style={{
-                    paddingLeft: `calc(10px * ${this.props.level || 1})`,
-                  }}
-                  className={
-                    "text-left justify-content-start userDropAnch" +
-                    (user.children &&
-                    user.children.length > 0 &&
-                    !this.state.displayChildren
-                      ? " isPlus"
-                      : " isMinus")
-                  }
-                >
+                <span>
                   {user.username}{" "}
                   {user.role === "agency" && (
                     <i

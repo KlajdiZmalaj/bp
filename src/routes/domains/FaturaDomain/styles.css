@@ -1,4 +1,33 @@
-.FauturaFilter {
+.FaturaDomain .panels-container {
+  position: relative;
+}
+
+.FaturaDomain .calendarWrapper {
+  position: absolute;
+  right: 0;
+  margin-right: calc((100% - 1371px) / 2);
+  top: 20%;
+}
+
+@media (max-width: 1371px) {
+  .FaturaDomain .calendarWrapper {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .FaturaDomain .calendarWrapper {
+    top: 18%;
+  }
+}
+
+@media (max-width: 825px) {
+  .FaturaDomain .calendarWrapper {
+    top: 13%;
+  }
+}
+
+.FaturaDomain .FauturaFilter {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,7 +41,7 @@
   height: 36px;
 }
 
-.FauturaFilter button {
+.FaturaDomain .FauturaFilter button {
   border: none;
   color: #ebeced;
   background: #f26521;
@@ -23,14 +52,14 @@
   font-family: "Roboto", sans-serif;
 }
 
-.FauturaFilter--Header {
+.FaturaDomain .FauturaFilter--Header {
   font-size: 20px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   color: #3c4349;
 }
 
-.FauturaFilter--CalendarLabel {
+.FaturaDomain .FauturaFilter--CalendarLabel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,23 +77,24 @@
   font-family: "Roboto";
   font-weight: 500;
   color: #f26521;
+  cursor: pointer;
 }
 
-.FauturaFilter--CalendarLabel i:first-child {
+.FaturaDomain .FauturaFilter--CalendarLabel i:first-child {
   font-size: 24px;
   color: #bfc0c0;
   padding-right: 10px;
   font-weight: 300;
 }
 
-.FauturaFilter--CalendarLabel i {
+.FaturaDomain .FauturaFilter--CalendarLabel i {
   font-size: 16px;
   color: #bfc0c0;
   padding: 0 10px;
   font-weight: 600;
 }
 
-.FauturaFilter--Options {
+.FaturaDomain .FauturaFilter--Options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,7 +112,7 @@
   height: 100%;
 }
 
-.FauturaFilter--Options div {
+.FaturaDomain .FauturaFilter--Options div {
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,11 +125,11 @@
           align-items: center;
 }
 
-.FauturaFilter--Options div:first-child {
+.FaturaDomain .FauturaFilter--Options div:first-child {
   position: relative;
 }
 
-.FauturaFilter--Options div:first-child .Search {
+.FaturaDomain .FauturaFilter--Options div:first-child .Search {
   position: absolute;
   width: 30%;
   right: 0;
@@ -115,7 +145,7 @@
           align-items: center;
 }
 
-.FauturaFilter--Options div:first-child i.fa-search {
+.FaturaDomain .FauturaFilter--Options div:first-child i.fa-search {
   width: 20px;
   height: 21px;
   font-size: 20px;
@@ -123,8 +153,8 @@
   font-weight: 300;
 }
 
-.FauturaFilter--Options input,
-.FauturaFilter--Options .Ricerca {
+.FaturaDomain .FauturaFilter--Options input,
+.FaturaDomain .FauturaFilter--Options .Ricerca {
   width: 165px;
   border: 1px solid #f5f5f5;
   font-size: 14px;
@@ -147,10 +177,38 @@
   margin-right: 8px;
 }
 
-.FauturaFilter--Options input {
+.FaturaDomain .FauturaFilter--Options input {
   border: none;
   outline: none;
   width: 123px;
   width: 75%;
+}
+
+.FaturaDomain div.FaturaTable {
+  width: 100%;
+}
+
+.FaturaDomain div.FaturaTable table.transTable {
+  width: 100%;
+}
+
+.FaturaDomain div.FaturaTable table.transTable .wsNwp i {
+  position: relative;
+  font-weight: 300;
+  font-size: 24px;
+  top: 0;
+  color: #32424e;
+  font-family: "Font Awesome 5 Pro";
+}
+
+.FaturaDomain div.FaturaTable table.transTable tbody .wsNwp:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=styles.css.map */

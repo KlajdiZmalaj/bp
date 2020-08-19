@@ -56,15 +56,15 @@ class AdminListaUtentiRow extends React.Component {
             </span>
             <SpanFormater
               Word={itemList.rag_soc}
-              size={17}
+              size={screenWidth <= 1600 ? 13 : 17}
               nrOfRows={2}
               formatWord={true}
             />
-            <SpanFormater Word={itemList.wallet} size={8} nrOfRows={2} />
+            <SpanFormater Word={itemList.wallet} size={8} nrOfRows={1} />
             <SpanFormater
               Word={itemList.city}
-              size={10}
-              nrOfRows={2}
+              size={screenWidth <= 1600 ? 8 : 11}
+              nrOfRows={1}
               formatWord={true}
             />
             <span>{itemList.last_deposit}</span>

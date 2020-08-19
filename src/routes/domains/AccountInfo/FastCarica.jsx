@@ -43,6 +43,44 @@ class FastCarica extends Component {
       this.setState({ toDisplayUserDD: false });
     }
   };
+  returnAllUsers = (users) => {
+    const allUsers = users;
+    users.forEach((user) => {
+      if (user?.children && user?.children.length >= 0) {
+        user.children.forEach((child) => {
+          allUsers.push(child);
+          if (child?.children && child?.children.length >= 0) {
+            let arrayToGet = this.checkIfHaveMoreUsers(child.children);
+            if (arrayToGet.length >= 0) {
+              arrayToGet.forEach((element) => {
+                allUsers.push(element);
+              });
+            }
+          }
+        });
+      }
+    });
+    return allUsers;
+  };
+  checkIfHaveMoreUsers = (users) => {
+    const allUsers = users;
+    users.forEach((user) => {
+      if (user?.children && user?.children.length >= 0) {
+        user.children.forEach((child) => {
+          allUsers.push(child);
+          if (child?.children && child?.children.length >= 0) {
+            let arrayToGet = this.returnAllUsers(child.children);
+            if (arrayToGet.length >= 0) {
+              arrayToGet.forEach((element) => {
+                allUsers.push(element);
+              });
+            }
+          }
+        });
+      }
+    });
+    return allUsers;
+  };
   render() {
     const {
       type,
@@ -52,7 +90,7 @@ class FastCarica extends Component {
       amountVal,
       toDisplayUserDD,
     } = this.state;
-    const { users } = this.props;
+    const users = [...new Set(this.returnAllUsers(this.props.users))];
     return (
       <div className="fastCarica">
         <div className="switchGr">

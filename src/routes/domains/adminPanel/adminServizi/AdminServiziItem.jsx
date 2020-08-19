@@ -14,7 +14,7 @@ class AdminServiziItem extends React.Component {
             PRENOTAZIONE BIGLIETTI
           </div>
           <div className="AdminServiziItem--Header--Title">
-            {this.props.name}
+            {this.props.full_name}
           </div>
         </div>
 

@@ -47,12 +47,6 @@ class SingleUser2 extends Component {
     return (
       <React.Fragment>
         <div
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (user.children && user.children.length > 0)
-              this.setState({ displayChildren: !this.state.displayChildren });
-          }}
           className={
             "userList--noDoc__user singleUser" +
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
@@ -64,6 +58,24 @@ class SingleUser2 extends Component {
           <div className="body">
             <span>#{user.id}</span>
             <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (
+                  user.children &&
+                  user.children.length > 0 &&
+                  !e.target.classList.contains("fa-ey") &&
+                  !e.target.classList.contains(" fa-lock-open") &&
+                  !e.target.classList.contains(" fa-lock") &&
+                  e.target.tagName != "BUTTON"
+                ) {
+                  console.log("u mbyll");
+                  console.log(e.target);
+                  this.setState({
+                    displayChildren: !this.state.displayChildren,
+                  });
+                }
+              }}
               className={
                 "text-left justify-content-start userDropAnch" +
                 (user.children &&

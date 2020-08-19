@@ -1133,3 +1133,21 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     })
     .catch((error) => ({ error }));
 };
+export const getAllServicesReq = (skin_id) => {
+  console.log(skin_id);
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/allServices", {
+      params: {
+        skin_id,
+      },
+    })
+    .catch((error) => ({ error }));
+};
