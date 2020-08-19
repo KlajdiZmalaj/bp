@@ -1,0 +1,3408 @@
+<!doctype html>
+<html amp lang="it">
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <title>    Web Mail PEC
+</title>
+        <link rel="canonical" href="../webmail.htm">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <style amp-custom>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            color: #264178;
+            font-size: 1.7vw;
+        }
+        a, a:hover, a:focus,span:hover, span:hover{
+            outline: none;
+            color: inherit;
+        }
+        h1,h2,h3{
+            font-weight: 300;
+        }
+        h1 {
+            font-size: 40px;
+            font-size: 3.5vw;
+            font-weight: 600;
+            margin: 2%;
+        }
+        h2 {
+            font-size: 22px;
+            font-size: 2vw;
+            margin: 2%;
+            display: block;
+        }
+        h3 {
+            font-size: 20px;
+            font-size: 1.8vw;
+            font-weight: 400;
+        }
+        li {
+            list-style: none;
+        }
+        amp-carousel {
+            margin: 45px 15px 35px 15px;
+        }
+        amp-sidebar {
+            background-color: #fff;
+        }
+        amp-accordion{
+            min-width: 220px;
+        }
+        .amp-carousel-button-prev {
+            left: 0px;
+            background-image: url('/bundles/qmtuttovisure/img/foto-AMP/left_arrow.svg');
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            background-size: 30px 30px;
+        }
+        .amp-carousel-button-prev:after {
+            content: 'Prec';
+            display: block;
+            padding: 33px 0 0 3px;
+            font-size: 11px;
+            text-decoration: underline;
+        }
+
+        .amp-carousel-button-prev:focus,.amp-carousel-button-next:focus{
+            outline: none;
+        }
+
+        .amp-carousel-button-next {
+            right: 0px;
+            background-image: url('/bundles/qmtuttovisure/img/foto-AMP/right_arrow.svg');
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            background-size: 30px 30px;
+        }
+        .amp-carousel-button-next:after {
+            content: 'Succ';
+            display: block;
+            padding: 33px 0 0 3px;
+            text-decoration: underline;
+            font-size: 11px;
+        }
+        .header {
+            position: relative;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+            padding-top: 52px;
+            background-color: #264178;
+        }
+
+        .header #tv-menu {
+            position:absolute;
+            top:0;
+            left: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            padding: 13px 10px;
+        }
+        .header #tv-logo,.header #tv-logo-business {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            font-size: 0;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            background-image: url('/bundles/qmtuttovisure/img/foto-AMP/iconaT.svg');
+            width: 32px;
+            height: 32px;
+        }
+        .header #tv-logo-business {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            font-size: 0;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            background-image: url('/bundles/qmtuttovisure/img/foto-AMP/T-b2b.svg');
+            width: 32px;
+            height: 32px;
+        }
+        .header form {
+            padding: 0;
+        }
+        .header input::-webkit-search-decoration,
+        .header input::-webkit-search-cancel-button {
+            display: none;
+        }
+        .header input[type=submit] {
+            position:absolute;
+            top:10px; right:8px;
+            background-color: #ffc100;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('/bundles/qmtuttovisure/img/foto-AMP/ico-search.png');
+            border: 0 none;
+            height: 33px;
+            width: 36px;
+            -webkit-appearance: none;
+            border-radius: 0;
+            -moz-border-top-right-radius: 4px;
+            -moz-border-bottom-right-radius: 4px;
+            -webkit-border-top-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        .header input[type=search], .header input[type=text] {
+            position: absolute;
+            top: 10px;
+            right: 24px;
+            background: #ededed ;
+            padding: 0 8px;
+            width: 22vw;
+            height: 33px;
+            font-family: inherit;
+            font-size: 100%;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            border: solid 0px #ccc;
+            border-radius: 0;
+            -moz-border-top-left-radius: 4px;
+            -moz-border-bottom-left-radius: 4px;
+            -webkit-border-top-left-radius: 4px;
+            -webkit-border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            -webkit-transition: all .9s;
+            -moz-transition: all .9s;
+            transition: all .9s ease;
+        }
+        .header input[type=search]:focus, .header input[type=text]:focus {
+            box-sizing: border-box;
+            width: 80vw;
+            max-width: 700px;
+            height: 33px;
+            background-color: #fff;
+            border-color: #eb407a;
+            -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+            -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+            box-shadow: 0 0 5px rgba(109,207,246,.5);
+            outline:none;
+        }
+        .header input[type=submit]:focus{
+            outline:none;
+        }
+
+        .header input:-moz-placeholder,
+        .header input::-webkit-input-placeholder {
+            color: #999;
+        }
+        .header input:focus ~ a{
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.4s, opacity 0.4s ease;
+        }
+        .header input ~ a {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 2.2s ease;
+            color: #ffffff;
+        }
+        .content{
+            padding: 2% 0 2% 0;
+        }
+        .box{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-content: center;
+        }
+        .blue{
+            flex-flow: row wrap;
+        }
+        .box h3{
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0vw 2.5vw 3.5vw 2.5vw
+        }
+
+        .box ul{
+            margin: 0 2.1vw;
+            overflow: auto;
+        }
+
+        .box ul li a, .blog-feed a{
+            text-decoration: none;
+            color: #264178;
+        }
+        .box > div,.blue > div{
+            flex: 1 1 auto;
+            background-color: #eee;
+            padding: 4vw 2vw;
+            margin: 1vw;
+        }
+        .blue > div{
+            padding: 4vw 0;
+        }
+        .box li a:hover{
+            text-decoration: underline;
+        }
+        .box p, .box .btn-default {
+            margin: 2.5vw
+        }
+        .sconti-img {
+            margin: 5.5vw 3vw
+        }
+        .marketing{
+            background-image: url('/bundles/qmtuttovisure/img/foto-page/adv-soluzioni.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: right center;
+            min-height: 100px;
+            margin: 1% 1% 2% 1%;
+        }
+        .marketing > div{
+            flex: 1 1 auto;
+            padding: 1vw 0 3vw 0;
+        }
+        .marketing p{
+            color: #fff;
+            font-size: 20px;
+            font-size: 3.5vw;
+            text-align: center;
+            background-color: #536891;
+            padding: 2% 0;
+            opacity: 0.9;
+            margin: 11% 0 4% 0;
+        }
+        .marketing p span{
+            font-size: 12px;
+            padding: 10px 20px;
+            line-height: 17px;
+            display: block;
+            text-align: left;
+        }
+        .marketing .btn-default,.blue .btn-default{
+            max-width: 40%;
+            margin: 0 auto;
+        }
+        .blue .btn-default{
+            max-width: 40%;
+            margin: 0 auto;
+        }
+        .blue > div{
+            background-color: #536891;
+            color: #fff;
+            max-width: 47.9%;
+        }
+        .blue > div h3{
+            color: #ffbf00;
+            font-weight: normal;
+        }
+        .blue > div p{
+            min-height: 35%;
+        }
+        #menu h4{
+            background-color: white;
+            border: none;
+            margin-right: 10px;
+            padding-right: 35px;
+            font-weight: normal;
+            outline:none;
+        }
+        #menu h4 a{
+            display: inline-block;
+            text-decoration: none;
+        }
+        #menu section {
+            padding: 9px 0 9px 10px;
+            border-bottom: 1px solid #fff;
+            position: relative;
+        }
+        #menu section[expanded] > h4:after, #menu section:not([expanded]) > h4:after {
+            content: '\203A';
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            padding-left: 13px;
+            top: 0px;
+            -ms-transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            font-size: 30px;
+        }
+        #menu section:not([expanded]) > h4:after {
+            right: -2px;
+            top: -6px;
+            -ms-transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            padding-left: 0;
+        }
+        #menu section[expanded] {
+            border-bottom: 1px solid #fff;
+            color: #fff;
+            background-color: #264178;
+        }
+        #menu section[expanded] > h4{
+            background-color: #264178;
+            color: #fff;
+        }
+        #menu section:first-of-type[expanded] > h4:after,#menu section:first-of-type:not([expanded]) > h4:after{
+            content: '';
+        }
+        #menu section ul {
+            padding: 7px 0 3px 5px;
+        }
+
+        #menu section ul li {
+            padding: 5px 15px 5px 0;
+        }
+        #menu section ul li a{
+            text-decoration: none;
+        }
+        #menu section ul li:before {
+            content: '';
+            display: inline-block;
+            background-color: transparent;
+            width: 3px;
+            height: 3px;
+            border: 2px solid #ffbf00;
+            border-radius: 2px;
+            margin-right: 5px;
+        }
+        .menu-b2b{
+            background-color: #eeeeee;
+        }
+        .menu-b2b .sconti{
+            background-color: #ffbf00;
+            margin-top: 10px;
+        }
+        .menu-b2b li,.menu-b2biz li {
+            line-height: 15px;
+            padding: 10px;
+            font-size: 15px;
+            display: block;
+        }
+        .menu-b2b li a,.menu-b2biz li a{
+            text-decoration: none;
+        }
+        .menu-b2b li i,.menu-b2biz li i {
+            padding-right: 7px;
+            min-width: 15px;
+        }
+        #menu section ul.user-list li:before{
+            content: '';
+            width: 0px;
+            height: 0px;
+            border: none;
+            margin: 0;
+        }
+        #menu section.user,#menu section.user h4{
+            background-color: #ffbf00;
+        }
+        #menu section.user[expanded] > h4, #menu section.user[expanded]{
+            background-color: #264178;
+            color: #fff;
+        }
+        #menu section.user a i{
+            margin-right: 5px;
+            width: 15px;
+        }
+        .menu-b2biz {
+            padding: 4px 0;
+            background-color: #eeeeee;
+        }
+        .menu-b2biz li{
+            padding: 3px 10px;
+            font-size: 12px;
+        }
+        .menu-b2biz .saldo{
+            display: block;
+            font-weight: bold;
+            padding-left: 22px;
+            margin-top: 5px;
+        }
+        .assistenza,.assistenza-top{
+            padding: 10px;
+            font-size: 15px;
+            background-color: #264178;
+            color: #fff;
+        }
+        .assistenza-top{
+            position: absolute;
+            top: 10px;
+            left: 120px;
+            padding: 3px 8px 3px 7px;
+            margin-left: 3vw;
+            background-color: transparent;
+            color: white;
+            border-radius: 4px;
+            border: 1px solid white;
+        }
+        .assistenza i,.assistenza-top i{
+            float: left;
+            font-size: 18px;
+            padding-right: 7px;
+            margin-top: 10px;
+        }
+        .assistenza-top i{
+            font-size: 22px;
+            margin-top: 2px;
+            padding-right: 3px;
+        }
+        .assistenza p:first-of-type,.assistenza-top p:first-of-type{
+            color: #ffbf00;
+        }
+        .assistenza-top p:first-of-type{
+            color: #ffffff;
+            font-size: 10px;
+            float: left;
+            padding-left: 4px;
+        }
+        .assistenza-top p:first-of-type span{
+            display: block;
+        }
+
+        .legend {
+            font-style: italic;
+            font-size: 13px;
+            position: absolute;
+            top: -25px;
+            left: 60px;
+        }
+        .legend i{
+            color: #ffbf00;
+            margin: 0 3px 0 5px
+        }
+
+        .relative{
+            position: relative;
+        }
+        .upper{
+            background-color: #fafafa;
+            padding: 0 15px 15px 15px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .breadcrumb {
+            display: block;
+            clear: both;
+            margin: 1% 2% 0 2%;
+        }
+        .breadcrumb li{
+            color: #999;
+            display: inline-block;
+            margin: 20px 0 10px 0;
+            padding-left: 4px;
+        }
+        .breadcrumb li:after{
+            content: '|';
+            display: inline-block;
+            padding-left: 8px;
+        }
+        .breadcrumb li:last-of-type:after{
+            content: '';
+        }
+        .breadcrumb li a{
+            color: #999;
+        }
+        .slide {
+            display: flex;
+            margin: 0 40px;
+            flex-wrap: nowrap;
+        }
+        .slide .item {
+            flex: 1 1 auto;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            align-items: center;
+            justify-content: center;
+            -moz-border-top-left-radius: 4px;
+            -moz-border-bottom-left-radius: 4px;
+            -webkit-border-top-left-radius: 4px;
+            -webkit-border-bottom-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            width: 33%;
+            max-width: 33%;
+            margin: 12px 7px;
+            padding-top: 5px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+        .slide .item p {
+            margin: 14px 14px 0 14px;
+            color: #444444;
+        }
+        .slide .item h3{
+            font-weight: 600;
+            border-bottom: 1px solid #264178;
+            padding: 13px 0;
+            display: block;
+            margin: 0px 14px 0 14px;
+        }
+        .slide .item h3 a{
+            text-decoration: none;
+        }
+        .tulps{
+            font-size: 10px;
+            margin: 15px auto;
+            max-width: 220px;
+            text-align: center;
+        }
+        #main-wrap {
+            overflow: hidden;
+        }
+
+        .footer{
+            background-color: #264178;
+            border-top: 3px solid #ffc100;
+            color: #fff;
+            padding: 15px 20px;
+            display: block;
+        }
+        .footer .link{
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #4a5f8e;
+            padding: 5px 0 20px 0;
+            justify-content: space-between;
+            text-align: center;
+        }
+        .footer .link ul {
+            min-width: 100%;
+            margin-bottom: 0;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footer .link ul li{
+            display: inline-block;
+            line-height: 1.3em;
+        }
+        .footer .link ul li a:after{
+            display: inline-block;
+            content: '-';
+            padding-left: 5px;
+        }
+        .footer .link ul li a{
+            padding-left: 2px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer .link ul li:last-of-type a:after{
+            content: '';
+        }
+        .footer p{
+            margin: 10px;
+        }
+        .credits{
+            text-align: center;
+            font-size: 12px;
+            margin: 13px 0;
+        }
+
+        .social{
+            flex: 1 1 auto;
+            text-align: right;
+        }
+        .social li {
+            display: inline-block;
+            margin: 6px 2px 2px 2px;
+            min-height: 20px;
+        }
+
+        .info-camere{
+            flex: 1 1 auto;
+        }
+        .info-camere amp-img{
+            display: block;
+            margin-top: 3px;
+        }
+        .flex{
+            display: flex;
+            margin-top: 20px;
+            border-top: 1px solid #4a5f8e;
+            padding: 30px 0 20px 0;
+        }
+        .actions{
+            position: absolute;
+            bottom: 30px;
+            width: calc(33% - 66px);
+        }
+        .actions a,.actions span{
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+        }
+        .btn-default,.btn-blue,.btn-white{
+            background-color: #ffc100;
+            color: #264178;
+            text-decoration: none;
+            border: 0;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 8px 2px;
+            text-align: center;
+            margin: 0 12px;
+            font-size: 13px;
+            font-size: 2.5vw;
+            flex: 1 1 auto;
+            text-transform: uppercase;
+            display: block;
+        }
+        .btn-default a,.btn-blue a,.btn-white a{
+            text-decoration: none;
+        }
+        .btn-blue,.btn-blue:hover{
+            background-color: #00a3d8;
+            color: #ffffff;
+        }
+        .btn-white,.btn-white:hover{
+            background-color: #ffffff;
+            color: #264178;
+            border: 1px solid #cccccc;
+        }
+        .btn-white i{
+            margin-right: 5px;
+        }
+        .modal-buttons .btn-white{
+            margin: 20px auto;
+            display: block;
+            padding: 8px 20px;
+        }
+        .lightbox {
+            width: 100%;
+            min-height: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.8);
+            outline: none;
+        }
+
+        .lightbox.display {
+            position: relative;
+            background: transparent;
+        }
+
+        .lightbox .ctn{
+            width: 100%;
+            min-height: 100vh;
+            background-color: #fafafa;
+            color: #264178;
+            margin: 0 auto;
+            padding: 0 1%;
+        }
+
+        .lightbox.display .ctn{
+            background-color: #ffffff;
+        }
+
+        .lightbox .ctn amp-accordion{
+            min-width: 0;
+        }
+
+        .lightbox .ctn .modal-buttons{
+            margin: 40px 0;
+        }
+
+        .lightbox h2{
+            font-weight: bold;
+            position: relative;
+            line-height: 2.5em;
+        }
+
+        .lightbox h4{
+            outline: none;
+            font-weight: normal;
+            border: none;
+            position: relative;
+            line-height: 20px;
+            background-color: transparent;
+        }
+
+        .table-row section:not([expanded]) > h4:after,.table-row section[expanded] > h4:after  {
+            position: absolute;
+            right: 10%;
+            top: 0;
+            background-color: #264178;
+            color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #264178;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            font-weight: bold;
+            content: "-";
+            display: inline-block;
+        }
+
+        .table-row section:not([expanded]) > h4:after {
+            content: "+";
+        }
+
+        .table-row section ul li{
+            margin-top: 5px;
+            display: block;
+            font-size: 0.8em;
+        }
+
+        .lightbox h2 button{
+            position: absolute;
+            right: 5px;
+            top: 7px;
+            border-radius: 20px;
+            border: 1px solid #264178;
+            background-color: #264178;
+            color: #ffffff;
+            line-height: 16px;
+            width: 18px;
+            font-size: 18px;
+            height: 18px;
+            text-align: center;
+        }
+        .lightbox .btn-default{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .table-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table-row:nth-child(odd) {
+            background-color: #eeeeee;
+        }
+        .table-row div {
+            flex: 1 1 auto;
+            border-right: 1px solid #e0e0e0;
+            width: 19%;
+            text-align: center;
+            padding: 10px 5px;
+        }
+        #modal-persona .table-row div{
+            width: 18%;
+        }
+        .table-row div:first-of-type {
+            width: 41%;
+            text-align: left;
+            padding-left: 10px;
+            border-left: 1px solid #e0e0e0;
+            color: #444444;
+        }
+        #modal-persona .table-row div:first-of-type {
+            width: 28%;
+            text-align: left;
+            padding-left: 10px;
+        }
+        .table-row div span.smaller{
+            font-size: 9px;
+        }
+        .table-row.header {
+            color: #ffffff;
+            padding: 0;
+            border-bottom: 0;
+            background-color: #eeeeee;
+            border-bottom: 2px solid #ffc100;
+            box-shadow: none;
+        }
+        .table-row.header span {
+            color: #ffc100;
+            font-weight: bold;
+            margin-top: 3px;
+            display: block;
+        }
+        .table-row.header div {
+            border: 1px solid #fafafa;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            background-color: #264178;
+            min-height: 25px;
+            border-left: none;
+            border-bottom: none;
+            width: 19%;
+        }
+        #modal-persona .table-row.header div {
+            width: 18%;
+            font-size: 2.7vw;
+        }
+        .table-row.header div:first-of-type {
+            border: none;
+            padding-left: 10px;
+            border-right: 1px solid #eeeeee;
+            margin-top: 1px;
+            width: 41%;
+        }
+        #modal-persona .table-row.header div:first-of-type {
+            width: 28%;
+        }
+        .webmail,.prof-text {
+            margin: 20px 30px;
+        }
+        .webmail p,.prof-text p{
+           margin: 10px 0;
+        }
+
+        .webmail a{
+            color: #00a3d8;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+        .webmail a i{
+            color: #264178;
+            margin-right: 5px;
+        }
+        .transparent{
+            background-color: transparent;
+        }
+        .sconti-table{
+            margin: 3% 3%;
+        }
+        .sconti-table h3{
+            margin-bottom: 18px;
+            font-weight: bold;
+        }
+        .sconti-item{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #e7e7e7;
+            border-top: none;
+        }
+        .sconti-item:nth-child(even){
+            background-color: #f1f1f1;
+        }
+        .sconti-item:first-of-type{
+            border-top: 1px solid #e7e7e7;
+        }
+        .sconti-item .foto,.sconti-item .foto1,.sconti-item .foto2,.sconti-item .foto3,.sconti-item .foto4,.sconti-item .foto5,.sconti-item .foto6{
+            background-image: url('/bundles/qmtuttovisure/img/ricariche_verticale.png');
+            background-position: 0 -2px;
+            height: 41px;
+            width: 85px;
+            background-repeat: no-repeat;
+        }
+        .sconti-item .foto1{
+            background-position: 0 -44px;
+        }
+        .sconti-item .foto2{
+            background-position: 0 -86px;
+        }
+        .sconti-item .foto3{
+            background-position: 0 -128px;
+        }
+        .sconti-item .foto4{
+            background-position: 0 -170px;
+        }
+        .sconti-item .foto5{
+            background-position: 0 -212px;
+        }
+        .sconti-item .foto6{
+            background-position: 0 -254px;
+        }
+        .sconti-item div:first-of-type{
+            width: 25%;
+        }
+        .sconti-item div{
+            flex: 1 1 auto;
+        }
+        .vantaggi p{
+            margin-top: 0;
+        }
+        .vantaggi p span{
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+        @media (max-width: 749px) {
+            body{
+                font-size: 14px;
+                font-size: 2.3vw;
+            }
+            h1{
+                font-size: 40px;
+                font-size: 4.5vw;
+            }
+            h2{
+                font-size: 22px;
+                font-size: 3.4vw;
+            }
+            h3{
+                font-size: 20px;
+                font-size: 2.7vw;
+            }
+            .slide .item{
+                min-width: calc(100% - 10px);
+                max-height: 230px;
+                margin: 8px 7px;
+            }
+            .slide{
+                flex-direction: column;
+            }
+            .actions{
+                flex-direction: row;
+                display: flex;
+            }
+            .actions a,.actions span{
+                margin-top: 0;
+                flex: 1 1 auto;
+            }
+            amp-carousel{
+                min-height: 660px;
+            }
+            .slide .item p {
+                min-height: 70px;;
+                margin-bottom: 10px;
+            }
+            .actions{
+                position: relative;
+                bottom: auto;
+                width: auto;
+            }
+            .actions a{
+                margin-top: 0px;
+            }
+            .content{
+                padding: 3% 0 2% 0%;
+            }
+            .box{
+                flex-direction: column;
+            }
+            .box > div,.marketing{
+                margin: 2vw 0;
+            }
+            .blue{
+                flex-direction: row
+            }
+            .blue > div{
+                margin: 1% 1%;
+            }
+            div.prof-text {
+                padding: 4vw;
+            }
+        }
+        @media (max-width: 500px) {
+            body{
+                font-size: 14px;
+                font-size: 3vw;
+            }
+            h1{
+                font-size: 40px;
+                font-size: 6.4vw;
+            }
+            h2{
+                font-size: 22px;
+                font-size: 4.5vw;
+            }
+            h3{
+                font-size: 20px;
+                font-size: 3.9vw;
+            }
+            #menu h4{
+                font-size: 15px;
+                font-size: 3.9vw;
+                font-weight: normal;
+            }
+            .lightbox .btn-default{
+                font-size: 2vw;
+                margin: 0 6px;
+            }
+            .blue > div h3{
+                font-size: 20px;
+                font-size: 3.2vw;
+            }
+            .sconti-item{
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+            .sconti-item div,.sconti-item div:first-of-type{
+                margin: 8px 0;
+                font-size: 5vw;
+                width: 100%;
+                text-align: center;
+            }
+            .sconti-table h3{
+                text-align: center;
+            }
+            .sconti-item .btn-default{
+                font-size: 4.2vw;
+            }
+        }
+        @media (max-width: 375px) {
+            body{
+                font-size: 14px;
+                font-size: 3.6vw;
+            }
+            .btn-default, .btn-blue, .btn-white {
+                padding: 8px 2px;
+            }
+
+            .lightbox .ctn{
+                font-size: 3vw;
+            }
+            .table-row div span.smaller{
+                font-size: 7.5px;
+            }
+            .btn-default, .btn-blue, .btn-transparent,.btn-white {
+                font-size: 20px;
+                font-size: 2.9vw;
+            }
+        }
+        @media (min-width: 375px) {
+            .assistenza-top p:first-of-type{
+                display: inline-block;
+            }
+            .header #tv-logo,.header #tv-logo-business {
+                left: 31px;
+                top: 9px;
+                border: none;
+                background-image: url(/bundles/qmtuttovisure/img/foto-AMP/logo_bianco.svg);
+                width: 129px;
+                background-repeat: no-repeat;
+                height: 46px;
+            }
+            .header #tv-logo-business {
+                left: 46px;
+                top: 15px;
+                border: none;
+                background-image: url(/bundles/qmtuttovisure/img/foto-AMP/myTuttoVisure.svg);
+                width: 109px;
+                background-repeat: no-repeat;
+                height: 26px;
+            }
+            .assistenza-top{
+                left: 160px;
+            }
+        }
+        @media (min-width: 600px) {
+            .header input[type=search] {
+                width: 100px;
+            }
+            .header input[type=search]:focus {
+                width: 600px;
+            }
+            .assistenza-top p:first-of-type{
+                font-size: 12px;
+                display: inline-block;
+                padding-top: 4px;
+            }
+            .assistenza-top p:first-of-type span{
+                display: inline-block;
+            }
+        }
+        @media (min-width: 750px){
+            .btn-default, .btn-blue, .btn-white {
+                font-size: 20px;
+                font-size: 2vw;
+            }
+            .content{
+                padding-left: 1%;
+                padding-right: 1%;
+            }
+            #modal-persona .table-row.header div,.table-row.header div {
+                font-size: 2vw;
+            }
+            .mw-50{
+                max-width: 44%;
+                min-width: 44%;
+            }
+            .assistenza-top{
+                left: 270px;
+            }
+            .marketing p span{
+                font-size: 15px;
+            }
+            .vantaggi p{
+                float: left;
+                width: 36%;
+            }
+            .header input[type=submit] {
+                right: 18px;
+            }
+            .header input[type=search], .header input[type=text] {
+                right: 34px;
+            }
+            .header #tv-logo, .header #tv-logo-business {
+                left: 60px;
+                top: 6px;
+                border: none;
+                width: 149px;
+                background-repeat: no-repeat;
+                height: 38px;
+            }
+            .header #tv-logo {
+                background-image: url('/bundles/qmtuttovisure/img/foto-AMP/logo_bianco.svg');
+            }
+            .header #tv-logo-business {
+                background-image: url('/bundles/qmtuttovisure/img/foto-AMP/myTuttoVisure.svg');
+                left: 75px;
+                top: 9px;
+            }
+            .header #tv-menu {
+                left: 16px;
+            }
+        }
+        @media (min-width: 1024px){
+            .btn-default, .btn-blue, .btn-white {
+                font-size: 20px;
+                font-size: 1.6vw;
+            }
+            .header input[type=submit] {
+                right:4%;
+            }
+            .marketing p{
+                padding: 1% 0;
+                font-size: 3vw;
+            }
+            .marketing .btn-default{
+                max-width: 22%;
+            }
+            .header input[type=search], .header input[type=text] {
+                right: 5%;
+            }
+            .table-row.header {
+                font-weight: normal;
+            }
+            .lightbox .btn-default{
+                margin: 10px 20px;
+            }
+            .modal-buttons{
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .modal-buttons .btn-white{
+                display: inline-block;
+                margin: 0 15px;
+            }
+
+        }
+        @media (min-width: 1200px) {
+            body{
+                font-size: 1.1vw;
+            }
+            .slide .item h3{
+                text-align: center;
+                margin-right: 0;
+                margin-left: 0;
+                font-size: 1.4vw;
+            }
+            .content {
+                padding: 2vw 0 2vw 0;
+            }
+            h1{
+                font-size: 2.5vw;
+                margin: 1% 2%;
+            }
+            h2{
+                font-size: 1.5vw;
+                margin: 1% 2%;
+            }
+            .btn-default,.btn-blue,.btn-white{
+                font-size: 1.3vw;
+            }
+            .lightbox {
+                width: 60%;
+                padding: 0 20%;
+            }
+            .lightbox .ctn{
+                margin: 4% auto;
+                padding: 0 3%;
+            }
+            #modal-persona .table-row.header div, .table-row.header div {
+                font-size: 1.5vw;
+            }
+            .assistenza-top p:first-of-type{
+                font-size: 14px;
+                padding-top: 4px;
+            }
+            .marketing p {
+                font-size: 2vw;
+            }
+            .marketing p span{
+                text-align: center;
+            }
+            .box > div,.blue > div{
+                padding: 2vw;
+            }
+            .blue > div{
+                padding: 2vw 0;
+            }
+            .box h3{
+                margin-bottom: 1.5vw;
+            }
+            .sconti-img {
+                margin: 3.5vw 3vw
+            }
+            .blue > div {
+                max-width: 23%;
+            }
+            .blue > div h3{
+                font-size: 1.4vw;
+            }
+        }
+        @media (min-width: 1500px) {
+            .actions {
+                position: absolute;
+                bottom: 30px;
+                width: calc(33% - 71px);
+            }
+        }
+
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+    <noscript>
+        <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>
+    </noscript>
+</head>
+<body>
+        <amp-sidebar id="menu" layout="nodisplay" side="left">
+        <amp-accordion disable-session-states>
+            <section>
+                <h4><a id="menu-homepage" href="../amp.htm">Home Page</a></h4>
+                <span></span>
+            </section>
+            <section>
+                <h4><a id="menu-catasto" href="catasto.htm">Catasto</a></h4>
+                <ul>
+                    <li>
+                        <a id="visura-catastale" href="../catasto/visura-catastale.htm">Visura Catastale</a>
+                    </li>
+                    <li>
+                        <a id="visura-catastale-storica" href="../catasto/visura-catastale-storica.htm">Visura Catastale Storica</a>
+                    </li>
+                    <li>
+                        <a id="planimetria-catastale" href="../catasto/planimetria-catastale.htm">Planimetria Catastale</a>
+                    </li>
+                    <li>
+                        <a id="estratto-di-mappa" href="../catasto/estratto-di-mappa.htm">Estratto di Mappa</a>
+                    </li>
+                    <li>
+                        <a id="visura-immobiliare" href="../catasto/visura-immobiliare.htm">Visura Immobiliare</a>
+                    </li>
+                    <li>
+                        <a id="ricerca-catastale-per-indirizzo" href="../catasto/ricerca-per-indirizzo.htm">Ricerca Catastale per indirizzo</a>
+                    </li>
+                    <li>
+                        <a id="rendita-catastale" href="../catasto/rendita-catastale.htm">Rendita Catastale</a>
+                    </li>
+                    <li>
+                        <a id="elenco-immobili" href="../catasto/elenco-immobili.htm">Elenco Immobili</a>
+                    </li>
+                    <li>
+                        <a id="voltura-catastale" href="../catasto/voltura-catastale.htm">Voltura Catastale</a>
+                    </li>
+                    <li>
+                        <a id="correzione-visura-catastale" href="../catasto/correzione-visura-catastale.htm">Correzione Visura Catastale</a>
+                    </li>
+                    <li>
+                        <a id="elaborato-planimetrico" href="../catasto/elaborato-planimetrico.htm">Elaborato Planimetrico</a>
+                    </li>
+                    <li>
+                        <a id="planietria-catastale-impianto" href="../catasto/planimetria-catastale-impianto.htm">Planimetria Catastale d'Impianto</a>
+                    </li>
+                    <li>
+                        <a id="calcolo-della-superficie-da-planimetria" href="../catasto/calcolo-superficie-da-planimetria.htm">Calcolo della Superficie da Planimetria</a>
+                    </li>
+                    <li>
+                        <a id="correzione-planimetria-catastale" href="../catasto/correzione-planimetria-catastale.htm">Correzione Planimetria Catastale</a>
+                    </li>
+                    <li>
+                        <a id="variazioni-catastali" href="../catasto/variazioni-catastali.htm">Variazioni Catastali</a>
+                    </li>
+                    <li><a id="catasto-tavolare" href="catasto-tavolare.htm">Catasto Tavolare</a></li>
+                    <li>
+                        <a id="calcola-imu-gratis" href="../catasto/calcola-imu/calcola-imu.htm">Calcola IMU Gratis</a>
+                    </li>
+                </Ul>
+            </section>
+            <section>
+                <h4><a id="menu-conservatoria" href="conservatoria.htm">Conservatoria</a></h4>
+                <ul>
+                    <li>
+                        <a id="visura-ipocatastale-conservatoria"  href="../conservatoria/visura-ipocatastale.htm">Visura Ipocatastale</a>
+                    </li>
+                    <li>
+                        <a id="copia-atto-notarile" href="../conservatoria/copia-atto-notarile.htm">Copia Atto Notarile</a>
+                    </li>
+                    <li>
+                        <a id="trascrizione-atti-immobiliari" href="../conservatoria/trascrizione-atti-immobiliari.htm">Trascrizione Atti Immobiliari</a>
+                    </li>
+                    <li>
+                        <a id="ispezione-nazionale-conservatoria" href="../conservatoria/ispezione-nazionale-conservatoria.htm">Ispezione Nazionale in Conservatoria</a>
+                    </li>
+                    <li>
+                        <a id="archivio-cartaceo-conservatoria" href="../conservatoria/archivio-cartaceo-conservatoria.htm">Archivio Cartaceo Conservatoria</a>
+                    </li>
+                    <li>
+                        <a id="visura-ventennale" href="../conservatoria/visura-ventennale.htm">Visura Ventennale</a>
+                    </li>
+                    <li>
+                        <a id="ispezione-libro-fondiario" href="../catasto-tavolare/ispezione-libro-fondiario.htm">Ispezione Libro Fondiario</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-camera-di-commercio" href="camera-di-commercio.htm">Camera di Commercio</a></h4>
+                <ul>
+                    <li>
+                        <a id="visura-camerale" href="../camera-di-commercio/visura-camerale.htm">Visura Camerale</a>
+                    </li>
+                    <li>
+                        <a id="visura-protesti" href="../camera-di-commercio/visura-protesti.htm">Visura Protesti</a>
+                    </li>
+                    <li>
+                        <a id="bilancio-aziendale" href="../camera-di-commercio/bilancio-aziendale.htm">Bilancio Aziendale</a>
+                    </li>
+                    <li>
+                        <a id="analisi-di-bilancio" href="../camera-di-commercio/analisi-di-bilancio.htm">Analisi di Bilancio</a>
+                    </li>
+                    <li>
+                        <a id="certificato-camerale" href="../camera-di-commercio/certificato-camerale.htm">Certificato Camerale</a>
+                    </li>
+                    <li>
+                        <a id="certificato-di-vigenza" href="../camera-di-commercio/certificato-di-vigenza.htm">Certificato di Vigenza</a>
+                    </li>
+                    <li>
+                        <a id="visura-protesti-uso-riabilitazione" href="../centrale-rischi/visura-protesti-uso-riabilitazione.htm">Visura Protesti ad Uso Riabilitazione</a>
+                    </li>
+                    <li>
+                        <a id="cariche-aziendali" href="../camera-di-commercio/cariche-aziendali.htm">Cariche Aziendali</a>
+                    </li>
+                    <li>
+                        <a id="partecipazioni-in-societa" href="../camera-di-commercio/partecipazioni-in-societa.htm">Partecipazioni in Società</a>
+                    </li>
+                    <li>
+                        <a id="fascicolo-azienda" href="../camera-di-commercio/fascicolo-azienda.htm">Fascicolo Azienda</a>
+                    </li>
+                    <li>
+                        <a id="elenco-soci-azienda" href="../camera-di-commercio/elenco-soci-azienda.htm">Elenco Soci Azienda</a>
+                    </li>
+                    <li>
+                        <a id="visura-statuto-patti-sociali" href="../camera-di-commercio/visura-statuto.htm">Visura Statuto e Patti Sociali</a>
+                    </li>
+                    <li>
+                        <a id="visura-procedure-in-corso" href="../camera-di-commercio/visura-procedure-in-corso.htm">Visura Procedure in Corso</a>
+                    </li>
+                    <li>
+                        <a id="visura-marchi-brevetti" href="../camera-di-commercio/visura-marchi-brevetti.htm">Visura Marchi e Brevetti</a>
+                    </li>
+                    <li>
+                        <a id="comunica-pec-camera-commercio" href="../camera-di-commercio/comunica-pec-alla-cciaa.htm">Comunica la Pec alla Camera di Commercio</a>
+                    </li>
+                    <li>
+                        <a id="pec-posta-elettronica-certificata" href="../camera-di-commercio/pec.htm">PEC - Posta Elettronica Certificata</a>
+                    </li>
+                    <li>
+                        <a id="atti-camerali" href="../camera-di-commercio/atti-camerali.htm">Atti Camerali</a>
+                    </li>
+                    <li>
+                        <a id="visura-amministratori" href="../camera-di-commercio/visura-amministratori.htm">Visura Amministratori</a>
+                    </li>
+                    <li>
+                        <a id="visura-sede-unita-locali" href="../camera-di-commercio/visura-sede-unita-locali.htm">Visura Sede e Unità Locali</a>
+                    </li>
+                    <li>
+                        <a id="saldo-diritti-ccia" href="../camera-di-commercio/saldo-diritti-cciaa.htm">Saldo Diritti CCIAA</a>
+                    </li>
+                    <li><a href="../telemaco.htm">Telemaco</a> </li>
+                    <li><a href="../monitoraggio-impresa.htm">Monitoraggio Impresa</a></li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-pra" href="pra.htm">PRA</a></h4>
+                <ul>
+                    <li>
+                        <a id="visura-aci-pra" href="../pra/visure-aci-pra.htm">Visura Aci PRA</a>
+                    </li>
+                    <li>
+                        <a id="visura-targa-veicolo" href="../pra/visura-targa-veicolo.htm">Visura Targa Veicolo</a>
+                    </li>
+                    <li>
+                        <a id="visura-proprietari-veicolo" href="../pra/visura-proprietari-veicolo.htm">Visura Proprietari Veicolo</a>
+                    </li>
+                    <li>
+                        <a id="certificato-cronologico-veicolo" href="../pra/certificato-cronologico-veicolo.htm">Certificato Cronologico Veicolo</a>
+                    </li>
+                    <li>
+                        <a id="rintraccio-veicoli-intestati" href="../pra/rintraccio-veicoli-intestati.htm">Rintraccio Veicoli Intestati</a>
+                    </li>
+                    <li>
+                        <a id="visura-telaio-veicolo" href="../pra/visura-telaio-veicolo.htm">Visura Telaio Veicolo</a>
+                    </li>
+                    <li>
+                        <a id="cancellazione-fermo-amministrativo" href="../pra/cancellazione-fermo-amministrativo.htm">Cancellazione Fermo Amministrativo</a>
+                    </li>
+                    <li>
+                        <a id="perdita-possesso-veicolo" href="../pra/perdita-possesso-veicolo.htm">Perdita Possesso Veicolo</a>
+                    </li>
+                    <li>
+                        <a id="visura-bollo-veicolo" href="../pra/visura-bollo-veicolo.htm">Visura Bollo Veicolo</a>
+                    </li>
+                    <li>
+                        <a id="verifica-veicolo" href="pra/verifica-veicolo.htm">Verifica Veicolo</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-tribunale" href="tribunale.htm">Tribunale</a></h4>
+                <ul>
+                    <li>
+                        <a id="casellario-giudiziale" href="../tribunale/casellario-giudiziale.htm">Casellario Giudiziale</a>
+                    </li>
+                    <li>
+                        <a id="certificato-carichi-pendenti" href="../tribunale/certificato-carichi-pendenti.htm">Certificato Carichi Pendenti</a>
+                    </li>
+                    <li>
+                        <a id="certificato-antipedofilia" href="../tribunale/certificato-antipedofilia.htm">Certificato Antipedofilia</a>
+                    </li>
+                    <li>
+                        <a id="casellario-giudiziale-carichi-pendenti-estero" href="../tribunale/casellario-giudiziale-carichi-pendenti-uso-estero.htm">Casellario e Carichi Pendenti per l'Estero</a>
+                    </li>
+                    <li>
+                        <a id="anagrafe-sanzioni-amministrative" href="../tribunale/anagrafe-delle-sanzioni-amministrative.htm">Anagrafe delle Sanzioni Amministrative</a>
+                    </li>
+                    <li>
+                        <a id="certificato-chiusura-inchiesta" href="../tribunale/certificato-chiusura-inchiesta.htm">Certificato di Chiusura Inchiesta</a>
+                    </li>
+                    <li>
+                        <a id="certificato-diritti-civili" href="../tribunale/certificato-diritti-civili.htm">Certificato Diritti Civili</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-indagini" href="indagini.htm">Indagini</a></h4>
+                <ul>
+                    <li>
+                        <a id="indagini-persona-fisica" href="../indagini/indagini-persona-fisica_5.htm">Indagini Persona Fisica</a>
+                    </li>
+                    <li>
+                        <a id="indagini-azienda" href="../indagini/indagine-azienda_3.htm">Indagini Azienda</a>
+                    </li>
+                    <li>
+                        <a id="indagini-patrimoniali" href="../indagini/indagini-patrimoniali.htm">Indagini Patrimoniali</a>
+                    </li>
+                    <li>
+                        <a id="indagini-rintraccio" href="../indagini/indagini-di-rintraccio.htm">Indagini di Rintraccio</a>
+                    </li>
+                    <li>
+                        <a id="indagini-azienda-estera" href="../indagini/indagini-azienda-estera.htm">Indagini su Azienda Estera</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-comune" href="comune.htm">Comune</a></h4>
+                <ul>
+                    <li>
+                        <a id="certificato-stato-famiglia" href="../comune/certificato-di-stato-di-famiglia.htm">Certificato di Stato di Famiglia</a>
+                    </li>
+                    <li>
+                        <a id="certificato-ed-estratto-di-nascita" href="../comune/certificato-ed-estratto-di-nascita.htm">Certificato ed Estratto di Nascita</a>
+                    </li>
+                    <li>
+                        <a id="certificato-ed-estratto-di-morte" href="../comune/certificato-ed-estratto-di-morte.htm">Certificato ed Estratto di Morte</a>
+                    </li>
+                    <li>
+                        <a id="certificato-ed-estratto-di-matrimonio" href="../comune/certificato-ed-estratto-di-matrimonio.htm">Certificato ed Estratto di Matrimonio</a>
+                    </li>
+                    <li>
+                        <a id="certificato-di-residenza" href="../comune/certificato-di-residenza.htm">Certificato di Residenza</a>
+                    </li>
+                    <li>
+                        <a id="certificato-contestuale" href="../comune/certificato-contestuale.htm">Certificato Contestuale o Cumulativo</a>
+                    </li>
+                    <li>
+                        <a id="certificato-di-stato-libero" href="../comune/certificato-di-stato-libero.htm">Certificato Di Stato Libero</a>
+                    </li>
+                    <li>
+                        <a id="certificato-di-cittadinanza" href="../comune/certificato-di-cittadinanza.htm">Certificato Di Cittadinanza</a>
+                    </li>
+                    <li>
+                        <a id="certificato-di-esistenza-in-vita" href="../comune/certificato-di-esistenza-in-vita.htm">Certificato Di Esistenza In Vita</a>
+                    </li>
+                    <li>
+                        <a id="certificato-storico" href="../comune/certificato-storico.htm">Certificato Storico Anagrafico</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-centrale-rischi" href="centrale-rischi.htm">Centrale Rischi</a></h4>
+                <ul class="dropdown">
+                    <li>
+                        <a id="visura-cattivo-pagatore" href="../centrale-rischi/visura-cattivo-pagatore.htm">Visura Cattivo Pagatore</a>
+                    </li>
+                    <li>
+                        <a id="crif" href="https://www.tuttovisure.it/centrale-rischi/crif">Visura Crif (Eurisc)</a>
+                    </li>
+                    <li>
+                        <a id="ctc" href="https://www.tuttovisure.it/centrale-rischi/ctc">Visura CTC</a>
+                    </li>
+                    <li>
+                        <a id="experian" href="https://www.tuttovisure.it/centrale-rischi/experian">Visura Experian</a>
+                    </li>
+                    <li>
+                        <a id="cr-banca-italia" href="https://www.tuttovisure.it/centrale-rischi/cr-banca-italia">Visura CR Banca d'Italia</a>
+                    </li>
+                    <li>
+                        <a id="cai" href="https://www.tuttovisure.it/centrale-rischi/cai">Visura CAI</a>
+                    </li>
+                    <li>
+                        <a id="protesti" href="https://www.tuttovisure.it/centrale-rischi/protesti">Visura Protesti</a>
+                    </li>
+                    <li>
+                        <a id="visura-protesti-uso-riabilitazione" href="../centrale-rischi/visura-protesti-uso-riabilitazione.htm">Visura Protesti ad Uso Riabilitazione</a>
+                    </li>
+                    <li>
+                        <a id="usura-anatocismo-bancario" href="../usura-anatocismo-bancario.htm">Usura e Anatocismo Bancario</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-equitalia" href="equitalia.htm">Equitalia / Ag. Entrate</a></h4>
+                <ul>
+                    <li>
+                        <a id="estratto-conto-debitorio-equitalia" href="../equitalia/estratto-conto-debitorio-equitalia.htm">Estratto Conto Debitorio Equitalia</a>
+                    </li>
+                    <li>
+                        <a id="verifica-cartelle-equitalia" href="../equitalia/verifica-cartelle-equitalia.htm">Verifica Cartelle Equitalia</a>
+                    </li>
+                    <li>
+                        <a id="certificato-attribuzione-partita-iva" href="../equitalia/certificato-attribuzione-partita-iva.htm">Certificato Attribuzione Partita Iva</a>
+                    </li>
+                    <li>
+                        <a id="certificato-cessazione-partita-iva" href="../equitalia/certificato-cessazione-partita-iva.htm">Certificato Cessazione Partita Iva</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-inps" href="inps.htm">INPS</a></h4>
+                <ul>
+                    <li>
+                        <a id="copia-modello-cud" href="../inps/copia-modello-cud.htm">Copia Modello CUD</a>
+                    </li>
+                    <li>
+                        <a id="estratto-contributivo-storico" href="../inps/estratto-contributivo-storico.htm">Estratto Contributivo Storico</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4><a id="menu-pec" href="pec.htm">PEC</a></h4>
+                <ul>
+                    <li>
+                        <a id="pec-posta-certificata" href="../camera-di-commercio/pec.htm">PEC-Posta Elettronica Certificata</a>
+                    </li>
+                    <li>
+                        <a id="gestisci-pec" href="webmail.htm">Gestisci la tua PEC</a>
+                    </li>
+                    <li>
+                        <a id="comunica-pec-alla-cciaa" href="../camera-di-commercio/comunica-pec-alla-cciaa.htm">Comunicazione email PEC alla CCIAA</a>
+                    </li>
+                    <li>
+                        <a id="codice-lei" href="../camera-di-commercio/codice-lei.htm">Codice LEI</a>
+                    </li>
+                </ul>
+            </section>
+        </amp-accordion>
+        <ul class="menu-b2b">
+            <li class="sconti"><a id="sconti-e-abbonamento-topbar" href="abbonamenti.htm"><i class="fa fa-tags"></i>Sconti e Abbonamenti</a></li>
+            <li><a id="clienti-business" href="professionisti.htm"><i class="fa fa-briefcase"></i>Clienti Business</a></li>
+            <li><a id="area-riservata-topbar" href="https://www.tuttovisure.it/area-riservata/"><i class="fa fa-lock"></i>Area Riservata</a></li>
+        </ul>
+        <a href="tel:199240460">
+            <div class="assistenza">
+                <i class="fa fa-phone"></i>
+                <p>Assistenza Clienti</p>
+                <p>199.240.460</p>
+            </div>
+        </a>
+        <p class="tulps">Azienda Autorizzata TULPS al numero QHAY/2013/14 Protocollo QH/2013/7561.</p>
+    </amp-sidebar>
+<div class="header">
+    <form method="GET"
+          action="../cercaAjax.htm"
+          target="_top" id="cerca-prodotti">
+        <a id="tv-menu" on="tap:menu.toggle">
+            <amp-img src="/bundles/qmtuttovisure/img/foto-AMP/toggle-menu.png" width="24" height="24" alt="navigation"></amp-img>
+        </a>
+
+        <input name="q" class="ricerca-prodotti" type="text" placeholder="Cerca">
+                    <a href="tel:199240460" class="assistenza-top">
+                <i class="fa fa-phone"></i>
+                <p>Assistenza <span>Clienti</span></p>
+            </a>
+            <a id="tv-logo" href="../amp.htm"></a>
+                <input type="submit" value="">
+    </form>
+</div>
+
+<amp-analytics type="googleanalytics">
+    <script type="application/json">
+        {
+            "vars": {
+                "account": "UA-6255932-2"
+            },
+            "triggers": {
+                "Assistenza Clienti": {
+                    "on": "click",
+                    "selector": ".assistenza-top",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_logobar",
+                        "eventAction": "click",
+                        "eventLabel": "Assistenza Clienti"
+                    }
+                },
+                "home": {
+                    "on": "click",
+                    "selector": "#tv-logo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_logobar",
+                        "eventAction": "click",
+                        "eventLabel": "home"
+                    }
+                },
+                "Sconti e Abbonamento topbar": {
+                    "on": "click",
+                    "selector": "#sconti-e-abbonamento-topbar",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_topbar-desktop",
+                        "eventAction": "click",
+                        "eventLabel": "home"
+                    }
+                },
+                "Clienti Business topbar": {
+                    "on": "click",
+                    "selector": "#clienti-business",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_topbar-desktop",
+                        "eventAction": "click",
+                        "eventLabel": "Clienti Business"
+                    }
+                },
+                "Area Riservata topbar": {
+                    "on": "click",
+                    "selector": "#area-riservata-topbar",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_topbar-desktop",
+                        "eventAction": "click",
+                        "eventLabel": "Area Riservata"
+                    }
+                },
+                "Menu Home Page": {
+                    "on": "click",
+                    "selector": "#menu-homepage",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Home Page"
+                    }
+                },
+                "Menu Catasto": {
+                    "on": "click",
+                    "selector": "#menu-catasto",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Catasto"
+                    }
+                },
+                "Menu Conservatoria": {
+                    "on": "click",
+                    "selector": "#menu-conservatoria",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Conservatoria"
+                    }
+                },
+                "Menu Camera di Commercio": {
+                    "on": "click",
+                    "selector": "#menu-camera-di-commercio",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Camera di Commercio"
+                    }
+                },
+                "Menu PRA": {
+                    "on": "click",
+                    "selector": "#menu-pra",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu PRA"
+                    }
+                },
+                "Menu Tribunale": {
+                    "on": "click",
+                    "selector": "#menu-tribunale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Tribunale"
+                    }
+                },
+                "Menu Indagini": {
+                    "on": "click",
+                    "selector": "#menu-indagini",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Indagini"
+                    }
+                },
+                "Menu Comune": {
+                    "on": "click",
+                    "selector": "#menu-comune",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Comune"
+                    }
+                },
+                "Menu Centrale Rischi": {
+                    "on": "click",
+                    "selector": "#menu-centrale-rischi",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Centrale Rischi"
+                    }
+                },
+                "Menu Equitalia Agenzia Entrate": {
+                    "on": "click",
+                    "selector": "#menu-equitalia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Equitalia Agenzia Entrate"
+                    }
+                },
+                "Menu INPS": {
+                    "on": "click",
+                    "selector": "#menu-inps",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu INPS"
+                    }
+                },
+                "Menu PEC": {
+                    "on": "click",
+                    "selector": "#menu-pec",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu",
+                        "eventAction": "click",
+                        "eventLabel": "Menu PEC"
+                    }
+                },
+                "Visura Catastale": {
+                    "on": "click",
+                    "selector": "#visura-catastale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Visura Catastale"
+                    }
+                },
+                "Visura Catastale Storica": {
+                    "on": "click",
+                    "selector": "#visura-catastale-storica",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Visura Catastale Storica"
+                    }
+                },
+                "Planimetria Catastale": {
+                    "on": "click",
+                    "selector": "#planimetria-catastale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Planimetria Catastale"
+                    }
+                },
+                "Estratto di Mappa": {
+                    "on": "click",
+                    "selector": "#estratto-di-mappa",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Estratto di Mappa"
+
+                    }
+                },
+                "Visura Immobiliare": {
+                    "on": "click",
+                    "selector": "#visura-immobiliare",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Visura Immobiliare"
+                    }
+                },
+                "Ricerca Catastale per indirizzo": {
+                    "on": "click",
+                    "selector": "#ricerca-catastale-per-indirizzo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Ricerca Catastale per indirizzo"
+                    }
+                },
+                "Rendita Catastale": {
+                    "on": "click",
+                    "selector": "#rendita-catastale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Rendita Catastale"
+                    }
+                },
+                "Elenco Immobili": {
+                    "on": "click",
+                    "selector": "#elenco-immobili",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Elenco Immobili"
+                    }
+                },
+                "Voltura Catastale": {
+                    "on": "click",
+                    "selector": "#voltura-catastale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Voltura Catastale"
+                    }
+                },
+                "Correzione Visura Catastale": {
+                    "on": "click",
+                    "selector": "#correzione-visura-catastale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Correzione Visura Catastale"
+                    }
+                },
+                "Elaborato Planimetrico": {
+                    "on": "click",
+                    "selector": "#elaborato-planimetrico",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Elaborato Planimetrico"
+                    }
+                },
+                "Planimetria Catastale d'Impianto": {
+                    "on": "click",
+                    "selector": "#planietria-catastale-impianto",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Planimetria Catastale d'Impianto"
+                    }
+                },
+                "Calcolo della Superficie da Planimetria": {
+                    "on": "click",
+                    "selector": "#calcolo-della-superficie-da-planimetria",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Calcolo della Superficie da Planimetria"
+                    }
+                },
+                "Correzione Planimetria Catastale": {
+                    "on": "click",
+                    "selector": "#correzione-planimetria-catastale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Correzione Planimetria Catastale"
+                    }
+                },
+                "Catasto Tavolare": {
+                    "on": "click",
+                    "selector": "#catasto-tavolare",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Catasto Tavolare"
+                    }
+                },
+                "Calcola IMU Gratis": {
+                    "on": "click",
+                    "selector": "#calcola-imu-gratis",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Calcola IMU Gratis"
+                    }
+                },
+                "Variazioni Catastali": {
+                    "on": "click",
+                    "selector": "#variazioni-catastali",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_catasto",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Variazioni Catastali"
+                    }
+                },
+                "Copia atto notarile": {
+                    "on": "click",
+                    "selector": "#copia-atto-notarile",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Copia atto notarile"
+                    }
+                },
+                "Visura Ipocatastale conservatoria": {
+                    "on": "click",
+                    "selector": "#visura-ipocatastale-conservatoria",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Menu Visura Ipocatastale conservatoria"
+                    }
+                },
+                "Trascrizione Atti Immobiliari": {
+                    "on": "click",
+                    "selector": "#trascrizione-atti-immobiliari",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Trascrizione Atti Immobiliari"
+                    }
+                },
+                "Ispezione Nazionale in Conservatoria": {
+                    "on": "click",
+                    "selector": "#ispezione-nazionale-conservatoria",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Ispezione Nazionale in Conservatoria"
+                    }
+                },
+                "Archivio Cartaceo Conservatoria": {
+                    "on": "click",
+                    "selector": "#archivio-cartaceo-conservatoria",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Archivio Cartaceo Conservatoria"
+                    }
+                },
+                "Visura Ventennale": {
+                    "on": "click",
+                    "selector": "#visura-ventennale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Visura ventennale"
+                    }
+                },
+                "Ispezione Libro Fondiario": {
+                    "on": "click",
+                    "selector": "#ispezione-libro-fondiario",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_conservatoria",
+                        "eventAction": "click",
+                        "eventLabel": "Ispezione Libro Fondiario"
+                    }
+                },
+                "Visura camerale": {
+                    "on": "click",
+                    "selector": "#visura-camerale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura camerale"
+                    }
+                },
+                "Visura protesti": {
+                    "on": "click",
+                    "selector": "#visura-protesti",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura protesti"
+                    }
+                },
+                "Bilancio aziendale": {
+                    "on": "click",
+                    "selector": "#bilancio-aziendale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Bilancio aziendale"
+                    }
+                },
+                "Analisi di bilancio": {
+                    "on": "click",
+                    "selector": "#analisi-di-bilancio",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Analisi di bilancio"
+                    }
+                },
+                "Certificato camerale": {
+                    "on": "click",
+                    "selector": "#certificato-camerale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato camerale"
+                    }
+                },
+                "Certificato di vigenza": {
+                    "on": "click",
+                    "selector": "#certificato-di-vigenza",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato di vigenza"
+                    }
+                },
+                "Visura protesti ad uso riabilitazione": {
+                    "on": "click",
+                    "selector": "#visura-protesti-uso-riabilitazione",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura protesti ad uso riabilitazione"
+                    }
+                },
+                "Cariche aziendali": {
+                    "on": "click",
+                    "selector": "#cariche-aziendali",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Cariche aziendali"
+                    }
+                },
+                "Partecipazioni in societa": {
+                    "on": "click",
+                    "selector": "#partecipazioni-in-societa",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Partecipazioni in societa"
+                    }
+                },
+                "Fascicolo azienda": {
+                    "on": "click",
+                    "selector": "#fascicolo-azienda",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Fascicolo azienda"
+                    }
+                },
+                "Elenco soci azienda": {
+                    "on": "click",
+                    "selector": "#elenco-soci-azienda",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Elenco soci azienda"
+                    }
+                },
+                "Visura statuto patti sociali": {
+                    "on": "click",
+                    "selector": "#visura-statuto-patti-sociali",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura statuto patti sociali"
+                    }
+                },
+                "Visura procedure in corso": {
+                    "on": "click",
+                    "selector": "#visura-procedure-in-corso",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura procedure in corso"
+                    }
+                },
+                "Visura marchi e brevetti": {
+                    "on": "click",
+                    "selector": "#visura-marchi-brevetti",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura marchi e brevetti"
+                    }
+                },
+                "Comunica PEC camera di commercio": {
+                    "on": "click",
+                    "selector": "#comunica-pec-camera-commercio",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Comunica PEC camera di commercio"
+                    }
+                },
+                "PEC posta elettronica certificata": {
+                    "on": "click",
+                    "selector": "#pec-posta-elettronica-certificata",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "PEC posta elettronica certificata"
+                    }
+                },
+                "Atti camerali": {
+                    "on": "click",
+                    "selector": "#atti-camerali",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Atti camerali"
+                    }
+                },
+                "Visura amministratori": {
+                    "on": "click",
+                    "selector": "#visura-amministratori",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura amministratori"
+                    }
+                },
+                "Visura sede unita locali": {
+                    "on": "click",
+                    "selector": "#visura-sede-unita-locali",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Visura sede unita locali"
+                    }
+                },
+                "Saldo diritti CCIA": {
+                    "on": "click",
+                    "selector": "#saldo-diritti-ccia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_camera_di_commercio",
+                        "eventAction": "click",
+                        "eventLabel": "Saldo diritti CCIA"
+                    }
+                },
+                "Visura ACI PRA": {
+                    "on": "click",
+                    "selector": "#visura-aci-pra",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Visura ACI PRA"
+                    }
+                },
+                "Visura Targa Veicolo": {
+                    "on": "click",
+                    "selector": "#visura-targa-veicolo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Visura Targa Veicolo"
+                    }
+                },
+                "Visura proprietari veicolo": {
+                    "on": "click",
+                    "selector": "#visura-proprietari-veicolo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Visura proprietari veicolo"
+                    }
+                },
+                "Certificato cronologico veicolo": {
+                    "on": "click",
+                    "selector": "#certificato-cronologico-veicolo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato cronologico veicolo"
+                    }
+                },
+                "Rintraccio veicoli intestati": {
+                    "on": "click",
+                    "selector": "#rintraccio-veicoli-intestati",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Rintraccio veicoli intestati"
+                    }
+                },
+                "Visura telaio veicolo": {
+                    "on": "click",
+                    "selector": "#visura-telaio-veicolo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Visura telaio veicolo"
+                    }
+                },
+                "Cancellazione fermo amministrativo": {
+                    "on": "click",
+                    "selector": "#cancellazione-fermo-amministrativo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Cancellazione fermo amministrativo"
+                    }
+                },
+                "Perdita possesso veicolo": {
+                    "on": "click",
+                    "selector": "#perdita-possesso-veicolo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Perdita possesso veicolo"
+                    }
+                },
+                "Visura bollo veicolo": {
+                    "on": "click",
+                    "selector": "#visura-bollo-veicolo",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pra",
+                        "eventAction": "click",
+                        "eventLabel": "Visura bollo veicolo"
+                    }
+                },
+                "Casellario giudiziale": {
+                    "on": "click",
+                    "selector": "#casellario-giudiziale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Casellario giudiziale"
+                    }
+                },
+                "Certificato carichi pendenti": {
+                    "on": "click",
+                    "selector": "#certificato-carichi-pendenti",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato carichi pendenti"
+                    }
+                },
+                "Certificato antipedofilia": {
+                    "on": "click",
+                    "selector": "#certificato-antipedofilia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato antipedofilia"
+                    }
+                },
+                "Casellario e Carichi Pendenti per l'Estero": {
+                    "on": "click",
+                    "selector": "#casellario-giudiziale-carichi-pendenti-estero",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Casellario e Carichi Pendenti per l'Estero"
+                    }
+                },
+                "Anagrafe sanzioni amministrative": {
+                    "on": "click",
+                    "selector": "#anagrafe-sanzioni-amministrative",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Anagrafe sanzioni amministrative"
+                    }
+                },
+                "Certificato chiusura inchiesta": {
+                    "on": "click",
+                    "selector": "#certificato-chiusura-inchiesta",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato chiusura inchiesta"
+                    }
+                },
+                "Certificato diritti civili": {
+                    "on": "click",
+                    "selector": "#certificato-diritti-civili",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_tribunale",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato diritti civili"
+                    }
+                },
+                "Indagini persona fisica": {
+                    "on": "click",
+                    "selector": "#indagini-persona-fisica",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_indagini",
+                        "eventAction": "click",
+                        "eventLabel": "Indagini persona fisica"
+                    }
+                },
+                "Indagini azienda": {
+                    "on": "click",
+                    "selector": "#indagini-azienda",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_indagini",
+                        "eventAction": "click",
+                        "eventLabel": "Indagini azienda"
+                    }
+                },
+                "Indagini patrimoniali": {
+                    "on": "click",
+                    "selector": "#indagini-patrimoniali",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_indagini",
+                        "eventAction": "click",
+                        "eventLabel": "Indagini patrimoniali"
+                    }
+                },
+                "Indagini rintraccio": {
+                    "on": "click",
+                    "selector": "#indagini-rintraccio",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_indagini",
+                        "eventAction": "click",
+                        "eventLabel": "Indagini rintraccio"
+                    }
+                },
+                "Indagini azienda estera": {
+                    "on": "click",
+                    "selector": "#indagini-azienda-estera",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_indagini",
+                        "eventAction": "click",
+                        "eventLabel": "Indagini azienda estera"
+                    }
+                },
+                "Certificato di stato di famiglia": {
+                    "on": "click",
+                    "selector": "#certificato-stato-famiglia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato di stato di famiglia"
+                    }
+                },
+                "Certificato ed estratto di nascita": {
+                    "on": "click",
+                    "selector": "#certificato-ed-estratto-di-nascita",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato ed estratto di nascita"
+                    }
+                },
+                "Certificato ed estratto di morte": {
+                    "on": "click",
+                    "selector": "#certificato-ed-estratto-di-morte",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato ed estratto di morte"
+                    }
+                },
+                "Certificato ed estratto di matrimonio": {
+                    "on": "click",
+                    "selector": "#certificato-ed-estratto-di-matrimonio",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato ed estratto di matrimonio"
+                    }
+                },
+                "Certificato di residenza": {
+                    "on": "click",
+                    "selector": "#certificato-di-residenza",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato di residenza"
+                    }
+                },
+                "Certificato contestuale": {
+                    "on": "click",
+                    "selector": "#certificato-contestuale",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato contestuale"
+                    }
+                },
+                "Certificato di stato libero": {
+                    "on": "click",
+                    "selector": "#certificato-di-stato-libero",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato di stato libero"
+                    }
+                },
+                "Certificato di cittadinanza": {
+                    "on": "click",
+                    "selector": "#certificato-di-cittadinanza",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato di cittadinanza"
+                    }
+                },
+                "Certificato di esistenza in vita": {
+                    "on": "click",
+                    "selector": "#certificato-di-esistenza-in-vita",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato di esistenza in vita"
+                    }
+                },
+                "Certificato storico": {
+                    "on": "click",
+                    "selector": "#certificato-storico",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_comune",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato storico"
+                    }
+                },
+                "Crif": {
+                    "on": "click",
+                    "selector": "#crif",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Crif"
+                    }
+                },
+                "Ctc": {
+                    "on": "click",
+                    "selector": "#ctc",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Ctc"
+                    }
+                },
+                "Experian": {
+                    "on": "click",
+                    "selector": "#experian",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Experian"
+                    }
+                },
+                "Cr Banca Italia": {
+                    "on": "click",
+                    "selector": "#cr-banca-italia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Cr Banca Italia"
+                    }
+                },
+                "Cai": {
+                    "on": "click",
+                    "selector": "#cai",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Cai"
+                    }
+                },
+                "Protesti": {
+                    "on": "click",
+                    "selector": "#protesti",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Protesti"
+                    }
+                },
+                "Visura protesti uso riabilitazione": {
+                    "on": "click",
+                    "selector": "#visura-protesti-uso-riabilitazione",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Visura protesti uso riabilitazione"
+                    }
+                },
+                "Usura anatocismo bancario": {
+                    "on": "click",
+                    "selector": "#usura-anatocismo-bancario",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Usura anatocismo bancario"
+                    }
+                },
+                "Cattivo pagatore": {
+                    "on": "click",
+                    "selector": "#visura-cattivo-pagatore",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_centrale_rischi",
+                        "eventAction": "click",
+                        "eventLabel": "Cattivo pagatore"
+                    }
+                },
+                "Estratto conto debitorio equitalia": {
+                    "on": "click",
+                    "selector": "#estratto-conto-debitorio-equitalia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_equitalia",
+                        "eventAction": "click",
+                        "eventLabel": "Estratto conto debitorio equitalia"
+                    }
+                },
+                "Verifica cartelle equitalia": {
+                    "on": "click",
+                    "selector": "#verifica-cartelle-equitalia",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_equitalia",
+                        "eventAction": "click",
+                        "eventLabel": "Verifica cartelle equitalia"
+                    }
+                },
+                "Certificato attribuzione partita iva": {
+                    "on": "click",
+                    "selector": "#certificato-attribuzione-partita-iva",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_equitalia",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato attribuzione partita iva"
+                    }
+                },
+                "Certificato cessazione partita iva": {
+                    "on": "click",
+                    "selector": "#certificato-cessazione-partita-iva",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_equitalia",
+                        "eventAction": "click",
+                        "eventLabel": "Certificato cessazione partita iva"
+                    }
+                },
+                "Copia modello cud": {
+                    "on": "click",
+                    "selector": "#copia-modello-cud",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_inps",
+                        "eventAction": "click",
+                        "eventLabel": "Copia modello cud"
+                    }
+                },
+                "Estratto contributivo storico": {
+                    "on": "click",
+                    "selector": "#estratto-contributivo-storico",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_inps",
+                        "eventAction": "click",
+                        "eventLabel": "Estratto contributivo storico"
+                    }
+                },
+                "PEC posta certificata": {
+                    "on": "click",
+                    "selector": "#pec-posta-certificata",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pec",
+                        "eventAction": "click",
+                        "eventLabel": "PEC posta certificata"
+                    }
+                },
+                "Gestisci PEC": {
+                    "on": "click",
+                    "selector": "#gestisci-pec",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pec",
+                        "eventAction": "click",
+                        "eventLabel": "Gestisci PEC"
+                    }
+                },
+                "Comunica PEC alla CCIA": {
+                    "on": "click",
+                    "selector": "#comunica-pec-alla-cciaa",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pec",
+                        "eventAction": "click",
+                        "eventLabel": "Comunica PEC alla CCIA"
+                    }
+                },
+                "Codice LEI": {
+                    "on": "click",
+                    "selector": "#codice-lei",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "amp_menu_pec",
+                        "eventAction": "click",
+                        "eventLabel": "Codice LEI"
+                    }
+                }
+            }
+        }
+    </script>
+</amp-analytics>
+
+
+        <div class="upper">
+        <ul class="breadcrumb">
+            <li><a href="../amp.htm" title="Home Page Tuttovisure.it">Home</a></li>
+            <li><a href="https://www.tuttovisure.it/amp/pec.htm" title="PEC">PEC</a></li>
+            <li>Gestisci la tua PEC</li>
+        </ul>
+        <h1>Gestisci la tua casella PEC</h1>
+        <h2>Da questi link puoi gestire la tua casella di posta elettronica PEC.</h2>
+    </div>
+    <div id="main-wrap">
+        <div class="content webmail">
+            <p>
+                <a href="https://webmail.pec.it/index.html" target="_blank" rel="noindex, nofollow"><i class="fa fa-envelope"></i> Leggi la posta</a>
+                <a href="https://gestionemail.pec.it/" target="_blank" rel="noindex, nofollow"><i class="fa fa-cogs"></i> Impostazioni casella PEC</a>
+            </p>
+            <p>Per informazioni su attivazioni di nuove pec visita la pagina del servizio: <a href="https://www.tuttovisure.it/camera-di-commercio/pec.htm" target="_blank">PEC</a></p>
+            <p>Per assistenza tecnica invia un'email a <a href="mailto:operativo@tuttovisure.it">operativo@tuttovisure.it</a> oppure chiama il numero 06.99.33.03.23.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+    <!--  Link  -->
+    <div class="link">
+        <ul>
+            <li><a id="chi-siamo" href="https://www.tuttovisure.it/chi-siamo.htm">Chi Siamo</a></li>
+            <li><a id="blog" href="https://www.tuttovisure.it/info_tuttovisure_default.html" target="_blank">Blog</a></li>
+            <li><a id="contatti" href="https://www.tuttovisure.it/contatti.htm">Contatti</a></li>
+                            <li><a id="sconti-e-abbonamenti" href="https://www.tuttovisure.it/amp/abbonamenti.htm">Sconti e Abbonamenti</a></li>
+                        <li><a id="faq" href="https://www.tuttovisure.it/faq.htm">FAQ</a></li>
+            <li><a id="condizioni-del-servizio" href="https://www.tuttovisure.it/condizioni-generali-del-servizio.htm">Condizioni del servizio</a></li>
+            <li><a id="privacy" href="https://www.tuttovisure.it/privacy.htm">Privacy</a></li>
+            <li><a id="cancellazione-maling" href="https://www.tuttovisure.it/cancellazione-mailing.htm">Cancellazione Maling</a></li>
+        </ul>
+        <ul>
+            <li><a id="diventa-partner" href="https://www.tuttovisure.it/diventa-partner.htm">Diventa Partner</a></li>
+            <li><a id="esigenze-particolari" href="https://www.tuttovisure.it/esigenze-particolari.htm">Esigenze Particolari</a></li>
+            <li><a id="soluzioni-sales-e-marketing" href="https://www.tuttovisure.it/marketing.htm">Soluzioni Sales & Marketing</a></li>
+            <li><a id="pagamenti-sicuri" href="https://www.tuttovisure.it/pagamenti-sicuri.htm">Pagamenti Sicuri</a></li>
+            <li><a id="listini" href="https://www.tuttovisure.it/confronta-listini.htm">Listini</a></li>
+            <li><a id="area-riservata" href="https://www.tuttovisure.it/area-riservata/" target="_blank">Area Riservata</a></li>
+        </ul>
+    </div>
+    <!--  Riga Copyright  -->
+    <div class="credits">
+        <p>QM srl Via Emanuele Pessagno - 11 00122 Roma - P.Iva 07432331002.</p>
+        <p>© 2016 TuttoVisure.it. Tutti i diritti sono riservati.</p>
+    </div>
+    <div class="flex">
+        <div class="info-camere">
+            Distributore Ufficiale
+            <a href="https://www.tuttovisure.it/infocamere.htm" title="Distributore ufficiale di InfoCamere" target="_blank">
+                <amp-img src="/bundles/qmtuttovisure/img/foto-AMP/InfoCamere_logo.png"
+                         width="100"
+                         height="29"
+                         alt="InfoCamere">
+                </amp-img>
+            </a>
+        </div>
+        <div class="social">
+            <span>Seguici su</span>
+            <ul>
+                <li class="facebook"><a href="https://www.facebook.com/TUTTOVISURE" target="_blank" title="Tuttovisure.it pagina Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                <li class="twitter"><a href="https://twitter.com/TuttoVisure" target="_blank" title="Segui Tuttovisure.it su Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+                <li class="linkedin"><a href="https://www.linkedin.com/company/tuttovisure-it" title="Lavora con noi e seguici su LinkedIn" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+            {
+                "vars": {
+                    "account": "UA-6255932-2"
+                },
+                "triggers": {
+                    "default pageview": {
+                        "on": "visible",
+                        "request": "pageview"
+                    },
+                    "Visura Catastale logo": {
+                        "on": "click",
+                        "selector": "#visura-catastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Catastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Visura Catastale button": {
+                        "on": "click",
+                        "selector": "#visura-catastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Catastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Visura Catastale Storica logo": {
+                        "on": "click",
+                        "selector": "#visura-catastale-storica-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Catastale Storica",
+                            "eventValue": 1
+                        }
+                    },
+                    "Visura Catastale Storica button": {
+                        "on": "click",
+                        "selector": "#visura-catastale-storica-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Catastale Storica",
+                            "eventValue": 2
+                        }
+                    },
+                    "Planimetria Catastale logo": {
+                        "on": "click",
+                        "selector": "#planimetria-catastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Planimetria Catastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Planimetria Catastale button": {
+                        "on": "click",
+                        "selector": "#planimetria-catastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Planimetria Catastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Estratto di Mappa logo": {
+                        "on": "click",
+                        "selector": "#estratto-di-mappa-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Estratto di Mappa",
+                            "eventValue": 1
+                        }
+                    },
+                    "Estratto di Mappa button": {
+                        "on": "click",
+                        "selector": "#estratto-di-mappa-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Estratto di Mappa",
+                            "eventValue": 2
+                        }
+                    },
+                    "Visura Immobiliare logo": {
+                        "on": "click",
+                        "selector": "#visura-immobiliare-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Immobiliare",
+                            "eventValue": 1
+                        }
+                    },
+                    "Visura Immobiliare button": {
+                        "on": "click",
+                        "selector": "#visura-immobiliare-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Immobiliare",
+                            "eventValue": 2
+                        }
+                    },
+                    "Ricerca Catastale per indirizzo logo": {
+                        "on": "click",
+                        "selector": "#ricerca-catastale-per-indirizzo-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Ricerca Catastale per indirizzo",
+                            "eventValue": 1
+                        }
+                    },
+                    "Ricerca Catastale per indirizzo button": {
+                        "on": "click",
+                        "selector": "#ricerca-catastale-per-indirizzo-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Ricerca Catastale per indirizzo",
+                            "eventValue": 2
+                        }
+                    },
+                    "Rendita Catastale logo": {
+                        "on": "click",
+                        "selector": "#rendita-catastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Rendita Catastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Rendita Catastale button": {
+                        "on": "click",
+                        "selector": "#rendita-catastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Rendita Catastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Elenco Immobili logo": {
+                        "on": "click",
+                        "selector": "#elenco-immobili-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Elenco Immobili",
+                            "eventValue": 1
+                        }
+                    },
+                    "Elenco Immobili button": {
+                        "on": "click",
+                        "selector": "#elelnco-immobili-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Elenco Immobili",
+                            "eventValue": 2
+                        }
+                    },
+                    "Voltura Catastale logo": {
+                        "on": "click",
+                        "selector": "#voltura-catastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Voltura Catastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Voltura Catastale button": {
+                        "on": "click",
+                        "selector": "#voltura-catastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Voltura Catastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Correzione Visura Catastale logo": {
+                        "on": "click",
+                        "selector": "#correzione-visura-catastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Correzione Visura Catastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Correzione Visura Catastale button": {
+                        "on": "click",
+                        "selector": "#correzione-visura-catastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Correzione Visura Catastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Elaborato Planimetrico logo": {
+                        "on": "click",
+                        "selector": "#elaborato-planimetrico-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Elaborato Planimetrico",
+                            "eventValue": 1
+                        }
+                    },
+                    "Elaborato Planimetrico button": {
+                        "on": "click",
+                        "selector": "#elaborato-planimetrico-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Elaborato Planimetrico",
+                            "eventValue": 2
+                        }
+                    },
+                    "Planimetria Catastale d'Impianto logo": {
+                        "on": "click",
+                        "selector": "#planietria-catastale-impianto-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Planimetria Catastale d'Impianto",
+                            "eventValue": 1
+                        }
+                    },
+                    "Planimetria Catastale d'Impianto button": {
+                        "on": "click",
+                        "selector": "#planimetria-catastale-impianto-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Planimetria Catastale d'Impianto",
+                            "eventValue": 2
+                        }
+                    },
+                    "Calcolo della Superficie da Planimetria logo": {
+                        "on": "click",
+                        "selector": "#calcolo-della-superficie-da-planimetria-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Calcolo della Superficie da Planimetria",
+                            "eventValue": 1
+                        }
+                    },
+                    "Calcolo della Superficie da Planimetria button": {
+                        "on": "click",
+                        "selector": "#calcolo-della-superficie-da-planimetria-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Calcolo della Superficie da Planimetria",
+                            "eventValue": 2
+                        }
+                    },
+                    "Correzione Planimetria Catastale logo": {
+                        "on": "click",
+                        "selector": "#correzione-planimetria-catastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Correzione Planimetria Catastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Correzione Planimetria Catastale button": {
+                        "on": "click",
+                        "selector": "#correzione-planimetria-catastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Correzione Planimetria Catastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Visura Ipocatastale logo": {
+                        "on": "click",
+                        "selector": "#visura-ipocatastale-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Ipocatastale",
+                            "eventValue": 1
+                        }
+                    },
+                    "Visura Ipocatastale button": {
+                        "on": "click",
+                        "selector": "#visura-ipocatastale-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Visura Ipocatastale",
+                            "eventValue": 2
+                        }
+                    },
+                    "Catasto Tavolare logo": {
+                        "on": "click",
+                        "selector": "#catasto-tavolare-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Catasto Tavolare",
+                            "eventValue": 1
+                        }
+                    },
+                    "Catasto Tavolare button": {
+                        "on": "click",
+                        "selector": "#catasto-tavolare-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Catasto Tavolare",
+                            "eventValue": 2
+                        }
+                    },
+                    "Calcola IMU Gratis logo": {
+                        "on": "click",
+                        "selector": "#calcola-imu-gratis-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Calcola IMU Gratis",
+                            "eventValue": 1
+                        }
+                    },
+                    "Calcola IMU Gratis button": {
+                        "on": "click",
+                        "selector": "#calcola-imu-gratis-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Calcola IMU Gratis",
+                            "eventValue": 2
+                        }
+                    },
+                    "Variazioni Catastali logo": {
+                        "on": "click",
+                        "selector": "#variazioni-catastali-logo",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Variazioni Catastali",
+                            "eventValue": 1
+                        }
+                    },
+                    "Variazioni Catastali button": {
+                        "on": "click",
+                        "selector": "#variazioni-catastali-button",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_boxUfficioCatasto",
+                            "eventAction": "click",
+                            "eventLabel": "Variazioni Catastali",
+                            "eventValue": 2
+                        }
+                    },
+                    "Ricerca": {
+                        "on": "search",
+                        "selector": ".ricerca-prodotti",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_barraRicerca",
+                            "eventAction": "search",
+                            "eventLabel": "Ricerca",
+                            "eventValue": 2
+                        }
+                    },
+                    "Ricarica 100": {
+                        "on": "click",
+                        "selector": "#ricarica-100",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 100
+                        }
+                    },
+                    "Ricarica 300": {
+                        "on": "click",
+                        "selector": "#ricarica-300",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 300
+                        }
+                    },
+                    "Ricarica 400": {
+                        "on": "click",
+                        "selector": "#ricarica-400",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 400
+                        }
+                    },
+                    "Ricarica 1000": {
+                        "on": "click",
+                        "selector": "#ricarica-1000",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 1000
+                        }
+                    },
+                    "Ricarica 3000": {
+                        "on": "click",
+                        "selector": "#ricarica-3000",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 3000
+                        }
+                    },
+                    "Ricarica 5000": {
+                        "on": "click",
+                        "selector": "#ricarica-5000",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 5000
+                        }
+                    },
+                    "Ricarica 10000": {
+                        "on": "click",
+                        "selector": "#ricarica-10000",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_abbonamento",
+                            "eventAction": "click",
+                            "eventLabel": "ricarica",
+                            "eventValue": 10000
+                        }
+                    },
+                    "Telemaco Professionisti": {
+                        "on": "click",
+                        "selector": "#telemaco-professsionisti",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_box telemaco",
+                            "eventAction": "click",
+                            "eventLabel": "Telemaco"
+                        }
+                    },
+                    "Monitoraggio Professionisti": {
+                        "on": "click",
+                        "selector": "#monitoraggio-impresa-professionisti",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_box monitoraggio",
+                            "eventAction": "click",
+                            "eventLabel": "Monitoraggio"
+                        }
+                    },
+                    "Diventa Partner Professionisti": {
+                        "on": "click",
+                        "selector": "#diventa-partner-professionisti",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_box partner",
+                            "eventAction": "click",
+                            "eventLabel": "Diventa Partner"
+                        }
+                    },
+                    "Esigenze Particolari Professionisti": {
+                        "on": "click",
+                        "selector": "#richieste-on-demand-professionisti",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_box ondemand",
+                            "eventAction": "click",
+                            "eventLabel": "Esigenze Particolari"
+                        }
+                    },
+                    "Marketing Professionisti": {
+                        "on": "click",
+                        "selector": "#marketing-professioni",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_box soluzioni",
+                            "eventAction": "click",
+                            "eventLabel": "Marketing"
+                        }
+                    },
+                    "Ricarica ora Professionisti": {
+                        "on": "click",
+                        "selector": "#abbonamenti-professionisti",
+                        "request": "event",
+                        "vars": {
+                            "eventCategory": "amp_box sconti large",
+                            "eventAction": "click",
+                            "eventLabel": "Ricarica ora"
+                        }
+                    }
+                }
+            }
+        </script>
+    </amp-analytics>
+</body>
+</html>
