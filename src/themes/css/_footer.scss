@@ -201,6 +201,39 @@ footer {
     }
     .mid {
       .maxWFooter {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        > .newsletter {
+          align-items: center !important;
+          text-align: center;
+          padding-bottom: 10px;
+        }
+        > div {
+          text-align: center;
+        }
+        img {
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  footer {
+    .top {
+      .maxWFooter {
+        display: flex;
+        flex-flow: column;
+        text-align: center;
+        h2 {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .mid {
+      .maxWFooter {
+        display: flex;
         flex-flow: column;
         > .newsletter {
           align-items: center !important;

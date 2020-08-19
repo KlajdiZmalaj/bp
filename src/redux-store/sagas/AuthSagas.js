@@ -37,6 +37,7 @@ import {
   getUserByUserIdReq,
   getSkinsReq,
   getFaturaDetailsReq,
+  getAllServicesReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -879,4 +880,15 @@ export function* getFaturaDetails(params) {
       yield put(AuthActions.setFaturaDetails(response.data));
     }
   }
+}
+export function* getAllServices({ skin_id }) {
+  yield put(AuthActions.setServicesLoading(true));
+  const response = yield call(getAllServicesReq, skin_id);
+  if (response.data) {
+    console.log(response.data);
+    if (response.status === 200) {
+      yield put(AuthActions.setAllServices(response.data.result));
+    }
+  }
+  yield put(AuthActions.setServicesLoading(false));
 }

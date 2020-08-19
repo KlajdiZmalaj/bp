@@ -274,6 +274,9 @@ const { Types, Creators } = createActions({
   setSkins: ["skinList"],
   getFaturaDetails: ["user_id", "year", "month"],
   setFaturaDetails: ["faturaDetails"],
+  getAllServices: ["skin_id"],
+  setAllServices: ["allServices"],
+  setServicesLoading: ["servicesLoader"],
 });
 
 export const AuthTypes = Types;
@@ -324,6 +327,8 @@ const INITIAL_STATE = {
   utentiResModal: { visibility: false, data: "" },
   skinList: [],
   faturaDetails: {},
+  allServices: [],
+  servicesLoader: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -520,5 +525,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_FATURA_DETAILS]: (state, { faturaDetails }) => ({
     ...state,
     faturaDetails,
+  }),
+  [Types.SET_ALL_SERVICES]: (state, { allServices }) => ({
+    ...state,
+    allServices,
+  }),
+  [Types.SET_SERVICES_LOADING]: (state, { servicesLoader }) => ({
+    ...state,
+    servicesLoader,
   }),
 });

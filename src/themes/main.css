@@ -3850,6 +3850,45 @@ footer .bottom .maxWFooter img {
     margin-bottom: 20px;
   }
   footer .mid .maxWFooter {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  footer .mid .maxWFooter > .newsletter {
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  footer .mid .maxWFooter > div {
+    text-align: center;
+  }
+  footer .mid .maxWFooter img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  footer .top .maxWFooter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    text-align: center;
+  }
+  footer .top .maxWFooter h2 {
+    margin-bottom: 20px;
+  }
+  footer .mid .maxWFooter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-flow: column;

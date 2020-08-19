@@ -904,6 +904,8 @@ export const sendVisureDetailsReq = (
 };
 
 export const userConfirmation = (
+  setButtonsSupport,
+
   ticket_id,
   status,
   c,
@@ -927,7 +929,7 @@ export const userConfirmation = (
     })
     .then((res) => {
       if (res.status === 200 && c) {
-        window.setButtonsSupport(false);
+        setButtonsSupport(false);
         c(false);
         notification.open({
           message: "Hai ricevuto una notifica",
@@ -1128,6 +1130,24 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
       user_id,
       year,
       month,
+    })
+    .catch((error) => ({ error }));
+};
+export const getAllServicesReq = (skin_id) => {
+  console.log(skin_id);
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/allServices", {
+      params: {
+        skin_id,
+      },
     })
     .catch((error) => ({ error }));
 };

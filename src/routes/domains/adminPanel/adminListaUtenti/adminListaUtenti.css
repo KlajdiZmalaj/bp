@@ -686,10 +686,11 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
     border: 0.5px solid #5c5c5c;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    width: 22px;
-    height: 27px;
+    width: 21px;
+    height: 21px;
+    padding: 11px 11px;
     box-sizing: border-box;
-    border-radius: 25px;
+    border-radius: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1002,5 +1003,63 @@ table.transTable .NoData span {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: #5c5c5c;
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 955px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(6),
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7),
+  .AdminListaUtenti--Header span:nth-child(6),
+  .AdminListaUtenti--Header span:nth-child(7) {
+    width: 9.5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    left: 0;
+    right: 0;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5),
+  .AdminListaUtenti--Header span:nth-child(5) {
+    width: 10%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4),
+  .AdminListaUtenti--Header span:nth-child(4) {
+    width: 7%;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3),
+  .AdminListaUtenti--Header span:nth-child(3) {
+    width: 16%;
+  }
+  .AdminListaUtenti--Header span:nth-child(5) {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    left: 0;
+  }
 }
 /*# sourceMappingURL=adminListaUtenti.css.map */
