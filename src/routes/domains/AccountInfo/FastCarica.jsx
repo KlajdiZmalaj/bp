@@ -4,7 +4,59 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { transferMoney } from "services/auth";
+import { numberWithCommas } from "../adminPanel/HelperFunc";
 
+class Popup extends Component {
+  componentDidMount() {
+    const { confirmTranzacionModal } = this.props;
+    if (
+      confirmTranzacionModal.data.amount === 0 ||
+      !confirmTranzacionModal.data.userName
+    ) {
+      setTimeout(() => {
+        this.props.settingState();
+      }, 800);
+    }
+  }
+  render() {
+    const { confirmTranzacionModal, settingState, confirmation } = this.props;
+    return (
+      <div className="Confirma">
+        {confirmTranzacionModal?.data?.amount === 0 ||
+        !confirmTranzacionModal?.data?.userName ? (
+          <div className="Message">
+            <div> Check username and amount must not be empty or 0 </div>
+          </div>
+        ) : (
+          <div className="Message">
+            <div>
+              {" "}
+              {`Stai esseguiendo una ${
+                confirmTranzacionModal.data.type === "deposit"
+                  ? "Accredito"
+                  : "Prelevo"
+              } da  € ${numberWithCommas(
+                confirmTranzacionModal.data.amount * 100
+              )}   
+                a ${confirmTranzacionModal.data.userName} `}
+            </div>
+            <div>Confermi ?</div>
+            <div className="Buttons">
+              <button
+                onClick={() => {
+                  confirmation();
+                }}
+              >
+                Si
+              </button>
+              <button onClick={settingState}>No</button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
 class FastCarica extends Component {
   state = {
     type: "deposit",
@@ -14,12 +66,13 @@ class FastCarica extends Component {
     userName: "",
     amountVal: 0,
     notifyUser: true,
+    confirmTranzacionModal: { visibility: false, data: "" },
   };
   toggleNotify = () => {
     this.setState({ notifyUser: !this.state.notifyUser });
   };
   transferCallback = () => {
-    this.setState({ isPopUpActive: false });
+    this.setState({ confirmTranzacionModal: { visibility: false, data: "" } });
     this.props.getUsers();
   };
 
@@ -84,12 +137,41 @@ class FastCarica extends Component {
       userId,
       amountVal,
       toDisplayUserDD,
+      confirmTranzacionModal,
     } = this.state;
-    console.log(valSearched);
+
+    console.log(confirmTranzacionModal);
     const allUsers = [...this.props.users];
     const UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
     return (
       <div className="fastCarica">
+        {confirmTranzacionModal?.visibility === true && (
+          <React.Fragment>
+            <Popup
+              settingState={() => {
+                this.setState({
+                  confirmTranzacionModal: {
+                    ...{ visibility: false, data: "" },
+                  },
+                });
+              }}
+              confirmTranzacionModal={confirmTranzacionModal}
+              confirmation={() => {
+                transferMoney(userId, amountVal, type, this.transferCallback);
+              }}
+            />
+            <div
+              className="backDrop"
+              onClick={() => {
+                this.setState({
+                  confirmTranzacionModal: {
+                    ...{ visibility: false, data: "" },
+                  },
+                });
+              }}
+            ></div>
+          </React.Fragment>
+        )}
         <div className="switchGr">
           <span
             onClick={() => {
@@ -188,7 +270,13 @@ class FastCarica extends Component {
         <button
           className="addFounds"
           onClick={() => {
-            transferMoney(userId, amountVal, type, this.transferCallback);
+            this.setState({
+              confirmTranzacionModal: {
+                visibility: true,
+                data: { amount: amountVal, type: type, userName: userName },
+              },
+            });
+            // transferMoney(userId, amountVal, type, this.transferCallback);
           }}
         >
           {type == "deposit" ? "Accredita" : "Preleva"}

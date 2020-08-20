@@ -508,13 +508,26 @@ export const transferMoney = (id, amount, type, c, role) => {
       (data) => {
         if (data && data.status === 200) {
           c();
+          notification["success"]({
+            message: "Azione completata",
+            description: data?.data?.message,
+            placement: "bottomRight",
+          });
+
           // /skin/transferMoney/{skin_id}
           // this.setState({ isPopUpActive: false });
           // this.props.getUsers();
         }
       },
       (data) => {}
-    );
+    )
+    .catch((err) => {
+      notification["error"]({
+        message: "Something wrong happened",
+        placement: "bottomRight",
+        duration: "5",
+      });
+    });
 };
 export const fetchUserDetails = (user_id) => {
   return axios
