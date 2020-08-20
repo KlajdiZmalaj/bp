@@ -277,6 +277,7 @@ const { Types, Creators } = createActions({
   getAllServices: ["skin_id"],
   setAllServices: ["allServices"],
   setServicesLoading: ["servicesLoader"],
+  setDepositoPopup: ["DepositoPopup"],
 });
 
 export const AuthTypes = Types;
@@ -329,6 +330,7 @@ const INITIAL_STATE = {
   faturaDetails: {},
   allServices: [],
   servicesLoader: false,
+  DepositoPopup: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -533,5 +535,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SERVICES_LOADING]: (state, { servicesLoader }) => ({
     ...state,
     servicesLoader,
+  }),
+  [Types.SET_DEPOSITO_POPUP]: (state, { DepositoPopup }) => ({
+    ...state,
+    DepositoPopup,
   }),
 });

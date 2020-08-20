@@ -43,9 +43,7 @@ class SingleUser extends Component {
   componentDidMount() {}
   render() {
     const { user } = this.props;
-    const { val, isPopUpActive, valueInput } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
-    // console.log("role", role);
     return (
       <React.Fragment>
         <div
@@ -139,7 +137,11 @@ class SingleUser extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("deposit");
+                  this.props.setDepositoPopup({
+                    val: "deposit",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Deposit
@@ -148,7 +150,11 @@ class SingleUser extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("withdraw");
+                  this.props.setDepositoPopup({
+                    val: "withdraw",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Addebito
@@ -217,89 +223,6 @@ class SingleUser extends Component {
               </div>
             )}
         </div>
-
-        {isPopUpActive ? (
-          <React.Fragment>
-            {" "}
-            <div className="popUp">
-              <div className="title">{val}</div>
-              <p>
-                Il credito verrà {val == "deposit" ? "aggiunto" : "rimosso"} al{" "}
-                <span>
-                  {user.username}{" "}
-                  {user.role === "agency" && (
-                    <i
-                      className={
-                        "fal fa-store" +
-                        (user.status === 1 ? " text-success" : " text-danger")
-                      }
-                    ></i>
-                  )}
-                  {user.role === "agent" && (
-                    <i
-                      className={
-                        "fas fa-user-tie" +
-                        (user.status === 1 ? " text-success" : " text-danger")
-                      }
-                    ></i>
-                  )}
-                  {user.role === "user" && (
-                    <i
-                      className={
-                        "fal fa-user" +
-                        (user.status === 1 ? " text-success" : " text-danger")
-                      }
-                    ></i>
-                  )}
-                </span>
-              </p>
-              <div className="inpgr">
-                <div className="inplabel">Amount</div>
-                <input
-                  type="number"
-                  placeholder="0.00€"
-                  onChange={(e) => {
-                    this.inpHandler(e);
-                  }}
-                />
-              </div>
-
-              <button
-                className="sendInput"
-                onClick={() => {
-                  transferMoney(
-                    user.id,
-                    valueInput,
-                    val,
-                    this.transferCallback,
-                    role
-                  );
-                }}
-              >
-                <i className="fa fa-check"></i> Conferma
-              </button>
-              <button
-                className="sendInput cancelInput"
-                onClick={() => {
-                  this.setPopUpFalse();
-                }}
-              >
-                <i className="fa fa-times"></i> Cancel
-              </button>
-              {user.status === 2 && (
-                <p className="info">
-                  <i className="fad fa-info-circle"></i> L'UTENTE È BLOCCATO
-                </p>
-              )}
-            </div>
-            <div
-              className="backDrop"
-              onClick={() => {
-                this.setPopUpFalse();
-              }}
-            ></div>
-          </React.Fragment>
-        ) : null}
       </React.Fragment>
     );
   }

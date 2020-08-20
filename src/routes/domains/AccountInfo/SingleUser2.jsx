@@ -34,9 +34,6 @@ class SingleUser2 extends Component {
   switchLabel = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
-  setTransferItem = (val) => {
-    this.setState({ val, isPopUpActive: true });
-  };
   setPopUpFalse = () => {
     this.setState({ isPopUpActive: false });
   };
@@ -137,7 +134,11 @@ class SingleUser2 extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("deposit");
+                  this.props.setDepositoPopup({
+                    val: "deposit",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Deposit
@@ -146,7 +147,11 @@ class SingleUser2 extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("withdraw");
+                  this.props.setDepositoPopup({
+                    val: "withdraw",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Addebito
