@@ -25,7 +25,6 @@ class FaturaDomain extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ok");
   };
   componentDidMount() {
     this.props.getFaturaDetails(1, 2000, 5);

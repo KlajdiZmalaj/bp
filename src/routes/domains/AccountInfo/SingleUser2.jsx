@@ -66,8 +66,6 @@ class SingleUser2 extends Component {
                   !e.target.classList.contains(" fa-lock") &&
                   e.target.tagName != "BUTTON"
                 ) {
-                  console.log("u mbyll");
-                  console.log(e.target);
                   this.setState({
                     displayChildren: !this.state.displayChildren,
                   });

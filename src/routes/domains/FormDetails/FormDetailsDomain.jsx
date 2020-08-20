@@ -76,7 +76,6 @@ class FormDetailsDomain extends Component {
             <div className="ticketDetails--filters__byTicket">
               <Switch
                 onChange={(on) => {
-                  console.log(on);
                   if (on) {
                     this.props.getDataFormDetailsActives();
                     this.setState({ statusRows: "active" });

@@ -513,7 +513,6 @@ export const transferMoney = (id, amount, type, c, role) => {
             description: data?.data?.message,
             placement: "bottomRight",
           });
-
           // /skin/transferMoney/{skin_id}
           // this.setState({ isPopUpActive: false });
           // this.props.getUsers();
@@ -1147,7 +1146,6 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     .catch((error) => ({ error }));
 };
 export const getAllServicesReq = (skin_id) => {
-  console.log(skin_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",

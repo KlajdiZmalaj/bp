@@ -122,7 +122,6 @@ class Prenotazioni extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ok");
   };
   setCalendar = (val) => {
     this.setState({ isCalendarOpen: val });
