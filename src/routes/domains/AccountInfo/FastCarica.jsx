@@ -37,11 +37,6 @@ class FastCarica extends Component {
   };
   inpHandler = (e) => {
     this.setState({ valSearched: e.target.value, userName: e.target.value });
-    if (this.state.userName) {
-      this.setState({ toDisplayUserDD: true });
-    } else {
-      this.setState({ toDisplayUserDD: false });
-    }
   };
   returnAllUsers = (users) => {
     const allUsers = users;
@@ -90,7 +85,9 @@ class FastCarica extends Component {
       amountVal,
       toDisplayUserDD,
     } = this.state;
-    const users = [...new Set(this.returnAllUsers(this.props.users))];
+    console.log(valSearched);
+    const allUsers = [...this.props.users];
+    const UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
     return (
       <div className="fastCarica">
         <div className="switchGr">
@@ -116,6 +113,11 @@ class FastCarica extends Component {
           <input
             type="text"
             placeholder="Search Username"
+            onClick={() => {
+              this.setState({
+                toDisplayUserDD: true,
+              });
+            }}
             onChange={(e) => {
               this.inpHandler(e);
             }}
@@ -123,25 +125,43 @@ class FastCarica extends Component {
           />
           <i className="fal fa-search"></i>
           {toDisplayUserDD && (
-            <div className="ddUsers">
-              {(users || []).map((user) => {
-                return (
-                  user.username
-                    .toLowerCase()
-                    .includes(valSearched.toLowerCase()) && (
-                    <span
-                      key={user.id}
-                      onClick={() => {
-                        this.setUser(user.id, user.username);
-                        this.closeUsersDialog();
-                      }}
-                    >
-                      {user.username}
-                    </span>
-                  )
-                );
-              })}
-            </div>
+            <React.Fragment>
+              <div
+                onClick={this.closeUsersDialog}
+                className="backDrop"
+                style={{
+                  background: "transparent",
+                  zIndex: 1,
+
+                  position: "absolute",
+                  top: "35px",
+                  left: "-100px",
+                  padding: "15px",
+                  width: "200%",
+                  height: "500px",
+                }}
+              ></div>
+              <div className="ddUsers" style={{ zIndex: 2 }}>
+                {(UsersToSearch || []).map((user) => {
+                  return (
+                    (user?.username
+                      .toLowerCase()
+                      .includes(valSearched.toLowerCase()) ||
+                      valSearched === "") && (
+                      <span
+                        key={user.id}
+                        onClick={() => {
+                          this.setUser(user.id, user.username);
+                          this.closeUsersDialog();
+                        }}
+                      >
+                        {user.username}
+                      </span>
+                    )
+                  );
+                })}
+              </div>
+            </React.Fragment>
           )}
         </div>
         <div className="amountGr">
