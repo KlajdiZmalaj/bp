@@ -455,6 +455,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 
 .AdminListaUtenti--Header span:nth-child(2) {
   width: calc(14% + 60px);
+  left: 29px;
 }
 
 .AdminListaUtenti--Header span:nth-child(3) {

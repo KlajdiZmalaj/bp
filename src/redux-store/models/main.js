@@ -37,7 +37,7 @@ const INITIAL_STATE = {
   userListBySearch: [],
   dashboardData: {},
   navbarSearch: "",
-  activeSkinId: 1,
+  activeSkinId: -1,
   screenWidth: window.innerWidth,
   LoaderAU: false,
 };

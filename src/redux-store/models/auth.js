@@ -278,6 +278,9 @@ const { Types, Creators } = createActions({
   setAllServices: ["allServices"],
   setServicesLoading: ["servicesLoader"],
   setDepositoPopup: ["DepositoPopup"],
+  getAllFaturaBySearch: ["username", "month", "year"],
+  setAllFaturaBySearch: ["Fatture"],
+  sendMailFattura: ["file_name"],
 });
 
 export const AuthTypes = Types;
@@ -331,6 +334,7 @@ const INITIAL_STATE = {
   allServices: [],
   servicesLoader: false,
   DepositoPopup: {},
+  Fatture: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -539,5 +543,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_DEPOSITO_POPUP]: (state, { DepositoPopup }) => ({
     ...state,
     DepositoPopup,
+  }),
+  [Types.SET_ALL_FATURA_BY_SEARCH]: (state, { Fatture }) => ({
+    ...state,
+    Fatture,
   }),
 });

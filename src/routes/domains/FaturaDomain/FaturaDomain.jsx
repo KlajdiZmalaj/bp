@@ -2,23 +2,34 @@ import React from "react";
 import "./styles.css";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
-import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
-import { format } from "date-fns";
+import { allRoles } from "config/index";
+let years = [];
+for (let i = 2000; i <= new Date().getFullYear(); i++) {
+  years.push({ id: i - 1999, name: i });
+}
+const months = [
+  { id: 1, name: "Gennaio" },
+  { id: 2, name: "Febbraio" },
+  { id: 3, name: "Marzo" },
+  { id: 4, name: "Aprile" },
+  { id: 5, name: "Maggio" },
+  { id: 6, name: "giugno" },
+  { id: 7, name: "Luglio" },
+  { id: 8, name: "Agosto" },
+  { id: 9, name: "Settembre" },
+  { id: 10, name: "Ottobre" },
+  { id: 11, name: "Novembre" },
+  { id: 12, name: "Dicembre" },
+];
 class FaturaDomain extends React.Component {
   state = {
+    yearDropdown: false,
+    monthDropdown: false,
+    yearChosen: "",
+    monthChosen: "",
     calendarVis: false,
-    fromLabel: "",
-    toLabel: "",
-    from: "",
-    to: "",
-    picker: [
-      {
-        startDate: new Date(),
-        endDate: new Date(),
-        key: "selection",
-        color: "var(--accent-bg)",
-      },
-    ],
+    userName: "",
+    userListShow: false,
   };
   setCalendar = (val) => {
     this.setState({ calendarVis: val });
@@ -28,48 +39,152 @@ class FaturaDomain extends React.Component {
   };
   componentDidMount() {
     this.props.getFaturaDetails(1, 2000, 5);
+    this.props.getAllFaturaBySearch(null, null, null);
   }
   render() {
-    const { faturaDetails, skinExtras } = this.props;
-    const { calendarVis, toLabel, fromLabel, picker } = this.state;
-    const { payment_data } = faturaDetails;
+    const { faturaDetails, Fatture, skinExtras } = this.props;
+    const {
+      calendarVis,
+      monthDropdown,
+      yearDropdown,
+      monthChosen,
+      yearChosen,
+      userName,
+      userListShow,
+    } = this.state;
+    const faturaDet = Fatture?.FaturaDetails;
+    const Users = Fatture?.Users;
     return (
       <div className="Container">
         <div className="FaturaDomain">
           <div className="panels-container">
-            {calendarVis && (
-              <CalendarRangePicker
-                setStateFunc={(item) => {
-                  this.setState({
-                    picker: [item.selection],
-                    from: format(item.selection.startDate, "yyyy-MM-dd"),
-                    to: format(item.selection.endDate, "yyyy-MM-dd"),
-                    fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
-                    toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
-                  });
-                }}
-                setStateFuncEmpty={() => {
-                  this.setState({
-                    from: "",
-                    to: "",
-                    fromLabel: "",
-                    toLabel: "",
-                  });
-                }}
-                picker={picker}
-                setCalendar={this.setCalendar}
-                handleSubmit={this.handleSubmit}
-              />
-            )}
             <div className="row no-gutters max-width">
               <div className="FauturaFilter">
+                {calendarVis && (
+                  <React.Fragment>
+                    <div className="Chose--Month">
+                      <div
+                        className="Header"
+                        onClick={() => {
+                          this.setState((state) => ({
+                            monthDropdown: !state.monthDropdown,
+                          }));
+                        }}
+                      >
+                        {`${
+                          monthChosen?.name ? monthChosen.name : " Chose Month"
+                        }`}
+                      </div>
+                      {monthDropdown && (
+                        <div className="Body">
+                          {months.map((month) => {
+                            return (
+                              <div
+                                className="month"
+                                onClick={() => {
+                                  this.setState((state) => ({
+                                    monthChosen: {
+                                      id: month.id,
+                                      name: month.name,
+                                    },
+                                    monthDropdown: !state.monthDropdown,
+                                  }));
+                                }}
+                                className={`${
+                                  monthChosen.name === month.name
+                                    ? "active"
+                                    : ""
+                                }`}
+                                key={month.id}
+                              >
+                                {month.name}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                    <div className="Chose--Year">
+                      <div
+                        className="Header"
+                        onClick={() => {
+                          this.setState((state) => ({
+                            yearDropdown: !state.yearDropdown,
+                          }));
+                        }}
+                      >
+                        {`${yearChosen ? yearChosen : " Chose Year"}`}
+                      </div>
+                      {yearDropdown && (
+                        <div className="Body">
+                          {years.map((year) => {
+                            return (
+                              <div
+                                className="year"
+                                onClick={() => {
+                                  this.setState((state) => ({
+                                    yearChosen: year.name,
+                                    yearDropdown: !state.yearDropdown,
+                                  }));
+                                }}
+                                className={`${
+                                  yearChosen === year.name ? "active" : ""
+                                }`}
+                                key={year.id}
+                              >
+                                {year.name}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </React.Fragment>
+                )}
                 <div className="FauturaFilter--Header">
                   <div>Fature</div>
                 </div>
                 <div className="FauturaFilter--Options">
                   <div>
                     <div className="Ricerca">
-                      <input placeholder="Ricerca User" />
+                      <input
+                        onClick={() => {
+                          this.setState((state) => ({
+                            userListShow: !state.userListShow,
+                          }));
+                        }}
+                        placeholder="Ricerca User"
+                        onChange={(e) => {
+                          this.setState({
+                            userName: e.target.value,
+                          });
+                          if (userListShow === false) {
+                            this.setState({ userListShow: true });
+                          }
+                        }}
+                        value={userName}
+                      />
+                      {userListShow && (
+                        <div className="Ricerca--UserList">
+                          {Users &&
+                            Array.isArray(Users) &&
+                            Users.filter(
+                              (user) =>
+                                user.includes(userName) || userName === ""
+                            ).map((user) => (
+                              <div
+                                onClick={() => {
+                                  this.setState({
+                                    userName: user,
+                                    userListShow: false,
+                                  });
+                                }}
+                              >
+                                {user}
+                              </div>
+                            ))}
+                        </div>
+                      )}
                     </div>
                     <div className="Search">
                       <i className="fal fa-search"></i>
@@ -87,8 +202,8 @@ class FaturaDomain extends React.Component {
                     >
                       <i className="fal fa-calendar-alt"></i>
 
-                      {fromLabel
-                        ? `${fromLabel} - ${toLabel}`
+                      {monthChosen && yearChosen
+                        ? `${monthChosen.name} / ${yearChosen}`
                         : "Seleziona la data"}
                       <i
                         class={`fal fa-chevron-${calendarVis ? "up" : "down"}`}
@@ -98,7 +213,17 @@ class FaturaDomain extends React.Component {
                       ></i>
                     </div>
                   </div>
-                  <button>Filtra</button>
+                  <button
+                    onClick={() => {
+                      this.props.getAllFaturaBySearch(
+                        userName,
+                        monthChosen.id,
+                        yearChosen
+                      );
+                    }}
+                  >
+                    Filtra
+                  </button>
                 </div>
               </div>
             </div>
@@ -118,30 +243,34 @@ class FaturaDomain extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="wsNwp">Numero</td>
-                      <td class="wsNwp">Date / Ora</td>
-                      <td class="wsNwp">User</td>
-                      <td class="wsNwp">Descrizione</td>
-                      <td class="wsNwp">Importo</td>
-                      <td class="wsNwp">Commissione</td>
-                      <td class=" wsNwp">Proviggione</td>
-                      <td class=" wsNwp">
-                        <i className="fal fa-file-pdf"></i>
-                        <i className="far fa-print"></i>
-                        <i class="far fa-envelope-open-text"></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="wsNwp">Numero</td>
-                      <td class="wsNwp">Date / Ora</td>
-                      <td class="wsNwp">User</td>
-                      <td class="wsNwp">Descrizione</td>
-                      <td class="wsNwp">Importo</td>
-                      <td class="wsNwp">Commissione</td>
-                      <td class=" wsNwp">Proviggione</td>
-                      <td class=" wsNwp">Operazione</td>
-                    </tr>
+                    {faturaDet &&
+                      Array.isArray(faturaDet) &&
+                      faturaDet.map((fatura) => (
+                        <tr>
+                          <td class="wsNwp">{fatura.numero}</td>
+                          <td class="wsNwp">{fatura.time}</td>
+                          <td class="wsNwp">
+                            <span>
+                              <i className="fal fa-store"></i>
+                              {fatura.user}
+                            </span>
+                          </td>
+                          <td class="wsNwp">{fatura.descrizione}</td>
+                          <td class="wsNwp">{fatura.importo}</td>
+                          <td class="wsNwp">{fatura.commissione}</td>
+                          <td class="wsNwp">{fatura.proviggione}</td>
+                          <td class=" wsNwp">
+                            <i className="fal fa-file-pdf"></i>
+                            <i className="far fa-print"></i>
+                            <i
+                              class="far fa-envelope-open-text"
+                              onClick={() => {
+                                this.props.sendMailFattura(fatura.file_name);
+                              }}
+                            ></i>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
@@ -155,5 +284,6 @@ class FaturaDomain extends React.Component {
 const mpst = (state) => ({
   faturaDetails: state.auth.faturaDetails,
   skinExtras: state.auth.skinExtras,
+  Fatture: state.auth.Fatture,
 });
 export default connect(mpst, AuthActions)(FaturaDomain);

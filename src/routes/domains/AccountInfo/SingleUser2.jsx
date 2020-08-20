@@ -156,7 +156,7 @@ class SingleUser2 extends Component {
               </button>
               {user.status == 1 ? (
                 <i
-                  className="fal fa-lock"
+                  className="fal fa-open"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -168,7 +168,7 @@ class SingleUser2 extends Component {
                 ></i>
               ) : (
                 <i
-                  className="fal fa-lock-open"
+                  className="fal fa-lock-lock"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();

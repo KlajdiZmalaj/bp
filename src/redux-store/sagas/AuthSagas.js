@@ -37,7 +37,9 @@ import {
   getUserByUserIdReq,
   getSkinsReq,
   getFaturaDetailsReq,
+  getAllFaturaBySearchReq,
   getAllServicesReq,
+  sendMailFatturaReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -891,4 +893,32 @@ export function* getAllServices({ skin_id }) {
     }
   }
   yield put(AuthActions.setServicesLoading(false));
+}
+export function* getAllFaturaBySearch({ username, year, month }) {
+  const response = yield call(getAllFaturaBySearchReq, username, year, month);
+  if (response.data) {
+    console.log(response.data);
+    let FatturaArray = [];
+    Object.keys(response.data.fatture).map((fatureKey) => {
+      FatturaArray.push(response.data.fatture[fatureKey]);
+    });
+    if (response.status === 200) {
+      yield put(
+        AuthActions.setAllFaturaBySearch({
+          FaturaDetails: FatturaArray,
+          Users: response.data?.usernames && response.data?.usernames,
+        })
+      );
+    }
+  }
+}
+export function* sendMailFattura({ file_name }) {
+  const response = yield call(sendMailFatturaReq, file_name);
+  if (response) {
+    notification["success"]({
+      message: "Azione completata",
+      description: response.data.message,
+      placement: "bottomRight",
+    });
+  }
 }

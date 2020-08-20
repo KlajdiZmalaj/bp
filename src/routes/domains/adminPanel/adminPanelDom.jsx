@@ -7,7 +7,6 @@ import AdminRightFormStatisticheDetails from "shared-components/adminSharedComp/
 import AdminRightFormUltimeDetails from "shared-components/adminSharedComp/AdminRightFormUltDet/AdminRightFormUltimeDetails";
 import AdminRightFormWalletDetails from "shared-components/adminSharedComp/AdminRightFormWallDet/AdminRightFormWalletDetails";
 import AuthActions from "redux-store/models/auth";
-import { numberWithCommas } from "./HelperFunc";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import {
@@ -18,6 +17,7 @@ import {
   leUltimeTransazioniDet,
 } from "./StaticAdminData";
 import "./styles.css";
+import { numberWithCommas } from "utils/HelperFunc";
 class AdminPanelDom extends React.Component {
   state = {
     menuSkinVisible: false,

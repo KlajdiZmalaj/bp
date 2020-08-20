@@ -4,6 +4,7 @@ import AdminListaUtentiRowForLoop from "./AdminListaUtentiRowForLoop";
 import AuthActions from "redux-store/models/auth";
 import { allRoles } from "config/index";
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
+import { numberWithCommas } from "utils/HelperFunc";
 
 class AdminListaUtentiRow extends React.Component {
   state = {
@@ -60,7 +61,11 @@ class AdminListaUtentiRow extends React.Component {
               nrOfRows={2}
               formatWord={true}
             />
-            <SpanFormater Word={itemList.wallet} size={8} nrOfRows={1} />
+            <SpanFormater
+              Word={numberWithCommas(itemList.wallet)}
+              size={8}
+              nrOfRows={1}
+            />
             <SpanFormater
               Word={itemList.city}
               size={screenWidth <= 1600 ? 8 : 11}

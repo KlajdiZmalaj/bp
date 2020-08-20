@@ -1145,6 +1145,26 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     })
     .catch((error) => ({ error }));
 };
+export const getAllFaturaBySearchReq = (username, year, month) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/fatture", {
+      params: {
+        ...skin,
+        ...(username && username),
+        ...(year && year),
+        ...(month && month),
+      },
+    })
+    .catch((error) => ({ error }));
+};
 export const getAllServicesReq = (skin_id) => {
   return axios
     .create({
@@ -1159,6 +1179,22 @@ export const getAllServicesReq = (skin_id) => {
       params: {
         skin_id,
       },
+    })
+    .catch((error) => ({ error }));
+};
+export const sendMailFatturaReq = (file_name) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post("/mailFattura", {
+      ...skin,
+      file_name,
     })
     .catch((error) => ({ error }));
 };

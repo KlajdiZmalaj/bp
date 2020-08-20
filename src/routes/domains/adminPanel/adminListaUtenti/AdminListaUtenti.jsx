@@ -4,12 +4,19 @@ import AdminListaUtentiRow from "./AdminListaUtentiRow";
 import { ListaUtenti } from "../StaticAdminData";
 import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
+
 class AdminListaUtenti extends React.Component {
   componentDidMount() {
-    this.props.getUsers(null, {
-      skin_id: this.props.activeSkinId,
-      backoffice: true,
-    });
+    if (this.props.activeSkinId === -1) {
+      this.props.getUsers(null, {
+        skin_id: 1,
+      });
+    } else {
+      this.props.getUsers(null, {
+        skin_id: this.props.activeSkinId,
+        backoffice: true,
+      });
+    }
   }
   componentDidUpdate(prevProps) {
     if (this.props.activeSkinId != prevProps.activeSkinId) {

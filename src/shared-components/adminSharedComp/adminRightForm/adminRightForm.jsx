@@ -131,5 +131,6 @@ class AdminRightForm extends React.Component {
 const mapsStateToProps = (state) => ({
   openAdminModal: state.auth.openAdminModal,
   screenWidth: state.main.screenWidth,
+  activeSkinId: state.main.activeSkinId,
 });
 export default connect(mapsStateToProps, { ...AuthActions })(AdminRightForm);

@@ -11,12 +11,16 @@ class Ticket extends React.Component {
     this.props.openModalForAdmin(false);
   }
   printDocument() {
-    // html2canvas(document.querySelector("#divToPrint")).then((canvas) => {
-    //   const imgData = canvas.toDataURL("image/png");
-    //   const pdf = new jsPDF();
-    //   pdf.addImage(imgData, "PNG", 0, 0);
-    //   pdf.save("download.pdf");
-    // });
+    html2canvas(document.querySelector("#divToPrint")).then((canvas) => {
+      const pdf = new jsPDF();
+      const width = pdf.internal.pageSize.width;
+      const height = pdf.internal.pageSize.height;
+      const imgData = canvas.toDataURL("image/png");
+      console.log(canvas);
+      console.log(document.querySelector("#divToPrint"));
+      pdf.addImage(imgData, "PNG", 0, 0, width, height);
+      pdf.save("download.pdf");
+    });
   }
 
   render() {
@@ -131,6 +135,29 @@ class Ticket extends React.Component {
     );
   }
 }
+
+const styles = {
+  printModal: {
+    position: "fixed",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    minHeight: "98vh",
+    height: "100%",
+    padding: " 0 15px",
+    position: "fixed",
+    top: "71px",
+    right: "0",
+    width: "400px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "99vh",
+    border: " 1px solid #ebeced",
+    paddingRight: "10px",
+  },
+};
+
 const mapsStateToProps = (state) => ({
   skinExtras: state.auth.skinExtras,
   paymentsFromCode: state.auth.paymentsFromCode,

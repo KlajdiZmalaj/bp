@@ -4,7 +4,7 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { transferMoney } from "services/auth";
-import { numberWithCommas } from "../adminPanel/HelperFunc";
+import { numberWithCommas } from "utils/HelperFunc";
 
 class Popup extends Component {
   componentDidMount() {
@@ -33,12 +33,12 @@ class Popup extends Component {
           <div className="Message">
             <div>
               {" "}
-              {`Stai esseguiendo una ${
+              {` Stai per ${
                 confirmTranzacionModal.data.type === "deposit"
-                  ? "Accredito"
-                  : "Prelevo"
-              } da  € ${numberWithCommas(
-                confirmTranzacionModal.data.amount * 100
+                  ? "Accreditare"
+                  : "Prelevare"
+              } la somma di:  € ${numberWithCommas(
+                confirmTranzacionModal.data.amount
               )}   
                 a ${confirmTranzacionModal.data.userName} `}
             </div>
@@ -112,6 +112,7 @@ class FastCarica extends Component {
     });
     return allUsers;
   };
+
   checkIfHaveMoreUsers = (users) => {
     const allUsers = users;
     users.forEach((user) => {

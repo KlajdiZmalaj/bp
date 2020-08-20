@@ -17,7 +17,7 @@ import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarR
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/ModalResPForTabMain";
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
-
+import { numberWithCommas } from "utils/HelperFunc";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 const { Option } = Select;
 
@@ -383,7 +383,10 @@ class Transazioni extends React.Component {
                   <ModalRow title="Barcode" data={modalDetails.barcode} />
                   <ModalRow title="User" data={modalDetails.agency_name} />
                   <ModalRow title="Service" data={modalDetails.service_name} />
-                  <ModalRow title="Importo" data={modalDetails.price1000} />
+                  <ModalRow
+                    title="Importo"
+                    data={numberWithCommas(modalDetails.price1000)}
+                  />
                   <ModalRow
                     title="Commissione"
                     data={modalDetails.commissione}
@@ -686,9 +689,11 @@ class Transazioni extends React.Component {
                                           : "#0da90f",
                                     }}
                                   />
-                                  {item.price1000
-                                    ? slicedAmount(item.price1000 / 1000)
-                                    : "-"}
+                                  {numberWithCommas(
+                                    item.price1000
+                                      ? slicedAmount(item.price1000 / 1000)
+                                      : "-"
+                                  )}
                                   €
                                 </td>
                                 <td className="wsNwp right">

@@ -538,6 +538,7 @@
 
 .AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
   margin-top: 28px;
+  padding: 0;
 }
 
 .AdminRightForm--Box--Wallet--Dropdown div.InputHolder input {
