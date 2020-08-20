@@ -12,7 +12,6 @@ class AdminListaUtenti extends React.Component {
     });
   }
   componentDidUpdate(prevProps) {
-    console.log(prevProps, this.props);
     if (this.props.activeSkinId != prevProps.activeSkinId) {
       this.props.getUsers(null, {
         skin_id: this.props.activeSkinId,

@@ -1041,4 +1041,88 @@ div.level5 .isPlus:before {
   height: 100% !important;
   top: 0 !important;
 }
+
+.userList .Confirma {
+  position: fixed;
+  left: calc((100% - 500px) / 2);
+  width: 500px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px 10px;
+  background: #f3f3f3db;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: calc((100% - 200px) / 2);
+  padding: 0;
+  z-index: 3;
+}
+
+.userList .Confirma .Message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.userList .Confirma .Message div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 4px 10px;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-style: 16px;
+}
+
+.userList .Confirma .Message div.Buttons {
+  padding-top: 15px;
+}
+
+.userList .Confirma .Message div.Buttons button {
+  width: 60px;
+  height: 33.5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.userList .Confirma .Message div.Buttons button:first-child {
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background: #00b850;
+  padding: 6px 20px;
+  margin: 0 15px;
+}
+
+.userList .Confirma .Message div.Buttons button:nth-child(2) {
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background: #f5222d;
+  padding: 6px 20px;
+  margin: 0 15px;
+}
 /*# sourceMappingURL=style.css.map */
