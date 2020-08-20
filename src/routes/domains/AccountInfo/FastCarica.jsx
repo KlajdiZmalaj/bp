@@ -25,7 +25,9 @@ class Popup extends Component {
         {confirmTranzacionModal?.data?.amount === 0 ||
         !confirmTranzacionModal?.data?.userName ? (
           <div className="Message">
-            <div> Check username and amount must not be empty or 0 </div>
+            <div>
+              Verifica nome utente e importo non devono essere vuoti o 0{" "}
+            </div>
           </div>
         ) : (
           <div className="Message">
