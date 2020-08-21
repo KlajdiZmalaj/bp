@@ -524,7 +524,7 @@ export function* changeAgent(data) {
   // console.log("response changeAgent", data, response);
 }
 export function* getUserDetail(data) {
-  const response = yield call(fetchUserDetails, data.id);
+  const response = yield call(fetchUserDetails, data.id, data.skin_id);
   if (response) {
     if (response.status === 200) {
       yield put(AuthActions.setUserDetail(response.data.user));
@@ -843,8 +843,8 @@ export function* updateVisura(data) {
     });
   }
 }
-export function* getAgentByUserId(user_id) {
-  const response = yield call(getAgentByUserIdReq, user_id);
+export function* getAgentByUserId(data) {
+  const response = yield call(getAgentByUserIdReq, data.user_id, data.skin_id);
 
   if (response.data) {
     if (response.status === 200) {
@@ -852,8 +852,8 @@ export function* getAgentByUserId(user_id) {
     }
   }
 }
-export function* getUserByUserId(user_id) {
-  const response = yield call(getUserByUserIdReq, user_id);
+export function* getUserByUserId(data) {
+  const response = yield call(getUserByUserIdReq, data.user_id, data.skin_id);
 
   if (response.data) {
     if (response.status === 200) {

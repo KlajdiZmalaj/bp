@@ -456,7 +456,7 @@ export const fetchAgents = () =>
     })
     .catch((error) => ({ error }));
 
-export const switchUserStatus = (id, status, c, role) => {
+export const switchUserStatus = (id, status, c, role, backOffice) => {
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -467,12 +467,12 @@ export const switchUserStatus = (id, status, c, role) => {
       },
     })
     .post(
-      role === "main_admin"
+      (role === "main_admin" && !backOffice) || backOffice === -1
         ? `/skins/${id}/changeStatus`
         : `/users/${id}/changeStatus`,
       {
         ...{ status },
-        ...skin,
+        ...(backOffice ? (backOffice != -1 ? skin : backOffice) : skin),
       }
     )
     .then(
@@ -484,7 +484,7 @@ export const switchUserStatus = (id, status, c, role) => {
       (data) => {}
     );
 };
-export const transferMoney = (id, amount, type, c, role) => {
+export const transferMoney = (id, amount, type, c, role, backOffice) => {
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -495,13 +495,13 @@ export const transferMoney = (id, amount, type, c, role) => {
       },
     })
     .post(
-      role === "main_admin"
+      (role === "main_admin" && !backOffice) || backOffice === -1
         ? `/skin/transferMoney/${id}`
         : `/users/${id}/transfer`,
       {
         ...{ amount },
         ...{ type },
-        ...skin,
+        ...(backOffice ? (backOffice != -1 ? skin : backOffice) : skin),
       }
     )
     .then(
@@ -528,7 +528,9 @@ export const transferMoney = (id, amount, type, c, role) => {
       });
     });
 };
-export const fetchUserDetails = (user_id) => {
+export const fetchUserDetails = (user_id, skin_id) => {
+  console.log(user_id, skin_id);
+
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -540,7 +542,7 @@ export const fetchUserDetails = (user_id) => {
     })
     .get(`agency/${user_id}`, {
       params: {
-        ...skin,
+        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -1078,7 +1080,8 @@ export const updateVisuraReq = (
     )
     .catch((error) => ({ error }));
 };
-export const getAgentByUserIdReq = ({ user_id }) => {
+export const getAgentByUserIdReq = (user_id, skin_id) => {
+  console.log(user_id, skin_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1090,12 +1093,13 @@ export const getAgentByUserIdReq = ({ user_id }) => {
     })
     .get(`/agent/${user_id}`, {
       params: {
-        ...skin,
+        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
       },
     })
     .catch((error) => ({ error }));
 };
-export const getUserByUserIdReq = ({ user_id }) => {
+export const getUserByUserIdReq = (user_id, skin_id) => {
+  console.log(user_id, skin_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1107,7 +1111,7 @@ export const getUserByUserIdReq = ({ user_id }) => {
     })
     .get(`/user/${user_id}`, {
       params: {
-        ...skin,
+        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -1146,6 +1150,7 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     .catch((error) => ({ error }));
 };
 export const getAllFaturaBySearchReq = (username, year, month) => {
+  console.log(username);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1158,9 +1163,9 @@ export const getAllFaturaBySearchReq = (username, year, month) => {
     .get("/fatture", {
       params: {
         ...skin,
-        ...(username && username),
-        ...(year && year),
-        ...(month && month),
+        username: username ? username : null,
+        year: year ? year : null,
+        month: month ? month : null,
       },
     })
     .catch((error) => ({ error }));

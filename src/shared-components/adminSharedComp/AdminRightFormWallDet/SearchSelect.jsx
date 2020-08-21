@@ -2,9 +2,6 @@ import React from "react";
 import { Select } from "antd";
 import "./SearchSelect.css";
 const { Option } = Select;
-function handleChange(value) {
-  console.log(`selected ${value}`);
-}
 
 class SearchSelect extends React.Component {
   state = {
@@ -21,7 +18,6 @@ class SearchSelect extends React.Component {
   render() {
     const { SearchOptions } = this.state;
     const { UsersToSearch, handleChange, userKey } = this.props;
-    console.log(userKey);
     return (
       <div className="Select">
         <div

@@ -10,6 +10,22 @@
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+.bodyAdmin .userDetailPopup .newReg--row::-webkit-scrollbar-thumb {
+  background: #0078ff;
+}
+
+.bodyAdmin .userDetailPopup .checkCol button {
+  background: #0078ff;
+}
+
+.bodyAdmin .userDetailPopup .SubmitButton {
+  background: #0078ff;
+}
+
+.bodyAdmin .userDetailPopup .newReg--header {
+  background: #0078ff;
+}
+
 .bodyAdmin .backTopTop {
   background: #0078ff;
   border: none;

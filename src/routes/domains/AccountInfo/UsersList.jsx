@@ -10,9 +10,10 @@ import { get, isArray } from "lodash";
 import { Select } from "antd";
 import AdminComp from "./AdminComp";
 import AgentComp from "./AgetnComp";
+import UserComp from "./UserComp";
+
 import { switchUserStatus, transferMoney } from "services/auth";
 
-import UserComp from "./UserComp";
 const { Option } = Select;
 
 class UsersList extends Component {

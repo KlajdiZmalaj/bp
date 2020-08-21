@@ -126,7 +126,7 @@ const { Types, Creators } = createActions({
   getBarcodeData: ["barcode", "callback"],
   setBarcodeData: ["barcodeData"],
   setLoginMsg: ["loginMsg"],
-  getUserDetail: ["id"],
+  getUserDetail: ["id", "skin_id"],
   setUserDetail: ["userDetail"],
   updateUserDetail: [
     "user_id",
@@ -262,8 +262,8 @@ const { Types, Creators } = createActions({
   addVisure: ["singleVisure"],
   getVisureByVisureId: ["visura_id"],
   setVisureByVisureId: ["VisureByVisureId"],
-  getUserByUserId: ["user_id"],
-  getAgentByUserId: ["user_id"],
+  getUserByUserId: ["user_id", "skin_id"],
+  getAgentByUserId: ["user_id", "skin_id"],
   openModalForAdmin: ["openAdminModal"],
   editModalDetails: ["ModalDetails"],
   editStatModal: ["statModal"],
@@ -281,6 +281,7 @@ const { Types, Creators } = createActions({
   getAllFaturaBySearch: ["username", "month", "year"],
   setAllFaturaBySearch: ["Fatture"],
   sendMailFattura: ["file_name"],
+  setDepositoModalAdmin: ["adminDepModal"],
 });
 
 export const AuthTypes = Types;
@@ -335,6 +336,7 @@ const INITIAL_STATE = {
   servicesLoader: false,
   DepositoPopup: {},
   Fatture: {},
+  adminDepModal: null,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -547,5 +549,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_ALL_FATURA_BY_SEARCH]: (state, { Fatture }) => ({
     ...state,
     Fatture,
+  }),
+  [Types.SET_DEPOSITO_MODAL_ADMIN]: (state, { adminDepModal }) => ({
+    ...state,
+    adminDepModal,
   }),
 });

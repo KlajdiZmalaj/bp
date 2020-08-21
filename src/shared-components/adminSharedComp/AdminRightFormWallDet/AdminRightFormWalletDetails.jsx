@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import AuthActions from "redux-store/models/auth";
+import MainActions from "redux-store/models/main";
+
 import { connect } from "react-redux";
 import SearchSelect from "./SearchSelect";
 import "./aRFWD.css";
@@ -9,9 +11,12 @@ const AdminRightFormWalletDetailsHelper = ({
   depositoActiveVisibility,
   addebitoActiveVisibility,
   UsersToSearch,
+  setDepositoModalAdmin,
 }) => {
   const [closeSelect, setcloseSelect] = useState(false);
   const [userKey, setUserKey] = useState("");
+  const [amount, setAmount] = useState("");
+  const [tickOrX, setTickOrX] = useState(true);
 
   return (
     <div
@@ -62,7 +67,13 @@ const AdminRightFormWalletDetailsHelper = ({
       </div>
 
       <div className="InputHolder">
-        <input placeholder="SOMMA" />
+        <input
+          placeholder="SOMMA"
+          onChange={(e) => {
+            setAmount(e.target.value);
+          }}
+          value={amount}
+        />
         <span>&euro;</span>
       </div>
       <div className="InputHolder">
@@ -71,11 +82,28 @@ const AdminRightFormWalletDetailsHelper = ({
           readOnly
           style={{ cursor: "inherit" }}
         />
-        <i className="far fa-check"></i>
+        <i
+          style={{ cursor: "pointer", color: "#00ac5c" }}
+          className={`${tickOrX ? "far fa-check" : "fas fa-times"}`}
+          onClick={() => {
+            setTickOrX(!tickOrX);
+          }}
+        ></i>
       </div>
 
-      <button className="AdminRightForm--Box--Wallet--Dropdown--Submit">
-        DEPOSITO
+      <button
+        className="AdminRightForm--Box--Wallet--Dropdown--Submit"
+        onClick={() => {
+          setDepositoModalAdmin({
+            depositoModalVis: true,
+            type: depositoActiveVisibility ? "deposit" : "withdraw",
+            username: userKey,
+            id: 1,
+            amount: parseInt(amount),
+          });
+        }}
+      >
+        {`${depositoActiveVisibility ? "DEPOSITO" : "ADDEBITO"}`}
       </button>
     </div>
   );
@@ -146,6 +174,7 @@ class AdminRightFormWalletDetails extends React.Component {
       addebitoActiveVisibility,
       ModalOrNo,
       Close,
+      setDepositoModalAdmin,
     } = this.props;
     return (
       <React.Fragment>
@@ -174,10 +203,12 @@ class AdminRightFormWalletDetails extends React.Component {
               depositoActiveVisibility={depositoActiveVisibility}
               addebitoActiveVisibility={addebitoActiveVisibility}
               UsersToSearch={UsersToSearch}
+              setDepositoModalAdmin={setDepositoModalAdmin}
             />
           </div>
         ) : (
           <AdminRightFormWalletDetailsHelper
+            setDepositoModalAdmin={setDepositoModalAdmin}
             handleDepositoVisibility={handleDepositoVisibility}
             handleDebitoVisibility={handleDebitoVisibility}
             depositoActiveVisibility={depositoActiveVisibility}
@@ -193,7 +224,6 @@ const mapStateToProps = (state) => ({
   userList: state.main.userList,
   activeSkinId: state.main.activeSkinId,
 });
-export default connect(
-  mapStateToProps,
-  AuthActions
-)(AdminRightFormWalletDetails);
+export default connect(mapStateToProps, { ...AuthActions, ...MainActions })(
+  AdminRightFormWalletDetails
+);

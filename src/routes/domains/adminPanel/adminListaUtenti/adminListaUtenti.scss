@@ -161,14 +161,10 @@ div.Center--Big {
           & .active {
             & span:nth-child(2) {
               position: relative;
-
               & :nth-child(1) {
-                opacity: 1;
                 display: block;
                 left: -13.8px;
                 top: 5px;
-                z-index: 1;
-                background-color: #ffffff;
                 position: relative;
                 padding: 0;
                 width: auto;
@@ -187,8 +183,8 @@ div.Center--Big {
         }
         & span:nth-child(2) {
           & :nth-child(1) {
-            opacity: 0;
             width: 13px;
+            visibility: hidden;
             left: -13px;
             position: relative;
           }
@@ -202,13 +198,10 @@ div.Center--Big {
         &.active {
           & span:nth-child(2) {
             position: relative;
-
             & :nth-child(1) {
-              opacity: 1;
+              visibility: visible;
               display: block;
               left: -6px;
-              z-index: 1;
-              background-color: #ffffff;
               position: relative;
               cursor: pointer;
             }
@@ -401,7 +394,6 @@ div.AdminColumns {
                     width: 100%;
                     top: -42px;
                     left: -29px;
-                    z-index: 1;
                     background-color: transparent;
                     height: 275%;
                     position: absolute;
@@ -507,7 +499,6 @@ div.AdminColumns {
                     width: 100%;
                     top: -42px;
                     left: -29px;
-                    z-index: 1;
                     background-color: transparent;
                     height: 275%;
                     position: absolute;

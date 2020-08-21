@@ -225,12 +225,9 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children .active span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children .active span:nth-child(2) :nth-child(1) {
-  opacity: 1;
   display: block;
   left: -13.8px;
   top: 5px;
-  z-index: 1;
-  background-color: #ffffff;
   position: relative;
   padding: 0;
   width: auto;
@@ -247,8 +244,8 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) :nth-child(1) {
-  opacity: 0;
   width: 13px;
+  visibility: hidden;
   left: -13px;
   position: relative;
 }
@@ -271,11 +268,9 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2) :nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) :nth-child(1) {
-  opacity: 1;
+  visibility: visible;
   display: block;
   left: -6px;
-  z-index: 1;
-  background-color: #ffffff;
   position: relative;
   cursor: pointer;
 }
@@ -507,7 +502,6 @@ div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow
   width: 100%;
   top: -42px;
   left: -29px;
-  z-index: 1;
   background-color: transparent;
   height: 275%;
   position: absolute;
@@ -597,7 +591,6 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
   width: 100%;
   top: -42px;
   left: -29px;
-  z-index: 1;
   background-color: transparent;
   height: 275%;
   position: absolute;

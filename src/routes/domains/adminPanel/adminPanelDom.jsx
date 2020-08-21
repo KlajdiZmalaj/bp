@@ -9,6 +9,12 @@ import AdminRightFormWalletDetails from "shared-components/adminSharedComp/Admin
 import AuthActions from "redux-store/models/auth";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
+import DepositoModal from "shared-components/adminSharedComp/DepositoModal/DepositoModal";
+import AdminComp from "../AccountInfo/AdminComp";
+import AgentComp from "../AccountInfo/AgetnComp";
+import UserComp from "../AccountInfo/UserComp";
+import { Select } from "antd";
+import MainActions from "redux-store/models/main";
 import {
   graphData,
   Tranzacioni,
@@ -18,6 +24,8 @@ import {
 } from "./StaticAdminData";
 import "./styles.css";
 import { numberWithCommas } from "utils/HelperFunc";
+
+const { Option } = Select;
 class AdminPanelDom extends React.Component {
   state = {
     menuSkinVisible: false,
@@ -26,6 +34,7 @@ class AdminPanelDom extends React.Component {
   };
   componentDidMount() {
     this.props.getSkins();
+    this.props.getAgents();
     document.body.classList.add("bodyAdmin");
   }
   componentWillUnmount() {
@@ -52,10 +61,133 @@ class AdminPanelDom extends React.Component {
       editDepModal,
       utentiResModal,
       editUtentiRespModal,
+      adminDepModal,
+      setDepositoModalAdmin,
+      userDetail,
+      agents,
+      updateMsg,
     } = this.props;
+    console.log(agents);
     return (
       <React.Fragment>
         <div className="Admin-Panel">
+          {userDetail && Object.keys(userDetail).length > 0 && (
+            <React.Fragment>
+              <div
+                className={
+                  "newReg userDetailPopup animated bounceIn" +
+                  (this.state.isClosing ? " bounceOut" : "")
+                }
+                style={{ animationDuration: "0.5s" }}
+              >
+                <div className="newReg--header">
+                  punta ancora di {userDetail.username}
+                  <div
+                    className="closeBtn"
+                    onClick={() => {
+                      this.setState({ isClosing: true });
+
+                      setTimeout(() => {
+                        this.setState({ isClosing: false });
+                        this.props.setUserDetail({});
+                      }, 500);
+                    }}
+                  >
+                    <i className="fal fa-times" aria-hidden="true"></i>
+                  </div>
+                </div>
+                {userDetail?.role === "agent" ? (
+                  <AgentComp
+                    state={this.state}
+                    userDetail={userDetail}
+                    handleChange={(name, value) => {
+                      this.setState({ [name]: value });
+                    }}
+                    updateMsg={updateMsg}
+                  />
+                ) : userDetail?.role === "user" ? (
+                  <UserComp
+                    state={this.state}
+                    userDetail={userDetail}
+                    handleChange={(name, value) => {
+                      this.setState({ [name]: value });
+                    }}
+                    updateMsg={updateMsg}
+                  />
+                ) : (
+                  <AdminComp
+                    state={this.state}
+                    userDetail={userDetail}
+                    handleChange={(name, value) => {
+                      this.setState({ [name]: value });
+                    }}
+                    updateMsg={updateMsg}
+                  />
+                )}
+                <div className="newReg--row lastRow">
+                  {userDetail.role != "agent" && userDetail.role != "user" ? (
+                    <React.Fragment>
+                      <div className="newReg--row__col">Cambia Agente</div>
+                      <div className="newReg--row__col checkCol">
+                        {this.props.agents && (
+                          <React.Fragment>
+                            <Select
+                              defaultValue={userDetail.agent_id}
+                              onChange={(e) => {
+                                this.setState({ agentSelected: e });
+                              }}
+                            >
+                              {(this.props.agents || []).map((agent, id) => (
+                                <Option key={id} value={agent.id}>
+                                  {agent.first_name} {agent.last_name} [
+                                  {`${agent.username}`}]
+                                </Option>
+                              ))}
+                            </Select>
+                            <button
+                              onClick={() => {
+                                this.props.changeAgent(
+                                  this.state.agentSelected,
+                                  userDetail.id
+                                );
+                              }}
+                            >
+                              <i
+                                className="fal fa-check"
+                                aria-hidden="true"
+                              ></i>
+                            </button>{" "}
+                          </React.Fragment>
+                        )}
+                      </div>
+                      <div className="newReg--row__col submitcol ml-auto">
+                        <button
+                          onClick={() => {
+                            this.updateUser();
+                          }}
+                          className="SubmitButton"
+                        >
+                          Salva
+                        </button>
+                      </div>
+                    </React.Fragment>
+                  ) : null}
+                </div>
+              </div>
+              <div
+                onClick={() => {
+                  this.setState({ isClosing: true });
+
+                  setTimeout(() => {
+                    this.setState({ isClosing: false });
+                    this.props.setUserDetail({});
+                  }, 500);
+                }}
+                className="backDrop"
+              ></div>
+            </React.Fragment>
+          )}
+
           {utentiResModal?.visibility === true && screenWidth <= 950 ? (
             <ModalResponsiveForTables
               Close={() => {
@@ -172,6 +304,24 @@ class AdminPanelDom extends React.Component {
                   : "Center--Big"
               }`}
             >
+              {adminDepModal?.depositoModalVis && (
+                <DepositoModal
+                  type={adminDepModal.type}
+                  id={adminDepModal.id}
+                  amountGiven={
+                    adminDepModal?.amount ? adminDepModal.amount : null
+                  }
+                  username={adminDepModal.username}
+                  Close={() => {
+                    setDepositoModalAdmin({
+                      depositoModalVis: false,
+                      type: "deposit",
+                      username: "",
+                      id: "",
+                    });
+                  }}
+                />
+              )}
               {this.props.component}
             </div>
             <AdminRightForm
@@ -194,5 +344,11 @@ const mapStateToProps = (state) => ({
   depModal: state.auth.depModal,
   openAdminModal: state.auth.openAdminModal,
   utentiResModal: state.auth.utentiResModal,
+  adminDepModal: state.auth.adminDepModal,
+  userDetail: state.auth.userDetail,
+  agents: state.auth.agents,
+  updateMsg: state.auth.updateMsg,
 });
-export default connect(mapStateToProps, AuthActions)(AdminPanelDom);
+export default connect(mapStateToProps, { ...AuthActions, ...MainActions })(
+  AdminPanelDom
+);

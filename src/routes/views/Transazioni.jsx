@@ -19,6 +19,7 @@ import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/Moda
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 import { numberWithCommas } from "utils/HelperFunc";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
+import Exel from "./Exel";
 const { Option } = Select;
 
 class Transazioni extends React.Component {
@@ -353,6 +354,7 @@ class Transazioni extends React.Component {
         className={`${forAdmin === true ? "" : "Container"}`}
         style={forAdmin === true ? { width: "100%" } : { width: "auto" }}
       >
+        <Exel payments={payments} />
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>

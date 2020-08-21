@@ -5,6 +5,22 @@
   background-color: #ffffff;
 }
 .bodyAdmin {
+  & .userDetailPopup {
+    & .newReg--row {
+      &::-webkit-scrollbar-thumb {
+        background: #0078ff;
+      }
+    }
+    & .checkCol button {
+      background: #0078ff;
+    }
+    & .SubmitButton {
+      background: #0078ff;
+    }
+    & .newReg--header {
+      background: #0078ff;
+    }
+  }
   background-color: #ffffff;
   background-color: rgba(0, 0, 0, 0.03);
   & .backTopTop {
