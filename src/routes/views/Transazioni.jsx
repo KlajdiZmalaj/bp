@@ -19,7 +19,7 @@ import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/Moda
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 import { numberWithCommas } from "utils/HelperFunc";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
-import Exel from "./Exel";
+import Excel from "./Excel";
 const { Option } = Select;
 
 class Transazioni extends React.Component {
@@ -297,7 +297,7 @@ class Transazioni extends React.Component {
   }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { forAdmin } = this.props;
+    const { forAdmin, paymentsForExcel } = this.props;
     const {
       barcode,
       picker,
@@ -354,7 +354,6 @@ class Transazioni extends React.Component {
         className={`${forAdmin === true ? "" : "Container"}`}
         style={forAdmin === true ? { width: "100%" } : { width: "auto" }}
       >
-        <Exel payments={payments} />
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
@@ -562,6 +561,14 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
+                <Excel
+                  username={username}
+                  from={from}
+                  to={to}
+                  perPage={perPage}
+                  payments={paymentsForExcel}
+                />
+
                 {payments.message && (
                   <div className="alert alert-danger text-center">
                     {payments.message}
@@ -887,6 +894,7 @@ const mapsStateToProps = (state) => ({
   paymentsFromCode: state.auth.paymentsFromCode,
   paymentsPages: state.auth.paymentsPages,
   screenWidth: state.main.screenWidth,
+  paymentsForExcel: state.auth.paymentsForExcel,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

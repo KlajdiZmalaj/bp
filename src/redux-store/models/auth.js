@@ -42,8 +42,27 @@ const { Types, Creators } = createActions({
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
-  getPayments: ["username", "from", "to", "page_number", "limit", "skin_id"],
+  getPayments: [
+    "username",
+    "from",
+    "to",
+    "page_number",
+    "limit",
+    "skin_id",
+    "excel",
+  ],
+  getPaymentsForExcel: [
+    "username",
+    "from",
+    "to",
+    "page_number",
+    "limit",
+    "skin_id",
+    "excel",
+  ],
   setPayments: ["payments"],
+  setPaymentsForExcel: ["paymentsForExcel"],
+
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
   setRechargeMobile: ["rechargeMobile"],
@@ -282,6 +301,7 @@ const { Types, Creators } = createActions({
   setAllFaturaBySearch: ["Fatture"],
   sendMailFattura: ["file_name"],
   setDepositoModalAdmin: ["adminDepModal"],
+  setPaymentsExcelLoading: ["paymentExcelLoading"],
 });
 
 export const AuthTypes = Types;
@@ -289,6 +309,7 @@ export default Creators;
 
 const INITIAL_STATE = {
   ModalDetails: {},
+  fatturaPdf: "",
   enableButtons: false,
   popUpData: {},
   paymentsPages: 0,
@@ -337,6 +358,8 @@ const INITIAL_STATE = {
   DepositoPopup: {},
   Fatture: {},
   adminDepModal: null,
+  paymentsForExcel: {},
+  paymentExcelLoading: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -553,5 +576,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_DEPOSITO_MODAL_ADMIN]: (state, { adminDepModal }) => ({
     ...state,
     adminDepModal,
+  }),
+  [Types.SET_PAYMENTS_FOR_EXCEL]: (state, { paymentsForExcel }) => ({
+    ...state,
+    paymentsForExcel,
+  }),
+  [Types.SET_PAYMENTS_EXCEL_LOADING]: (state, { paymentExcelLoading }) => ({
+    ...state,
+    paymentExcelLoading,
   }),
 });

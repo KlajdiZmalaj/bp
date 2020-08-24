@@ -1,5 +1,5 @@
 import { put, call, delay, select } from "redux-saga/effects";
-import AuthActions from "../models/auth";
+import AuthActions, { AuthTypes } from "../models/auth";
 import MainActions from "../models/main";
 import {
   fetchLogin,
@@ -40,6 +40,7 @@ import {
   getAllFaturaBySearchReq,
   getAllServicesReq,
   sendMailFatturaReq,
+  printFatturaReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -215,6 +216,41 @@ export function* getBolletiniPremercati(params) {
 //   // console.log("data", data, d);
 // }
 
+export function* getPaymentsForExcel(params) {
+  yield put(AuthActions.setPaymentsExcelLoading(true));
+  const response = yield call(
+    fetchPayments,
+    params.username,
+    params.from,
+    params.to,
+    params.page_number,
+    params.limit,
+    params.skin_id,
+    params.excel
+  );
+  if (response) {
+    if (response.status === 200) {
+      if (response.data) {
+        yield put(AuthActions.setPaymentsForExcel(response.data.transactions));
+      }
+    } else if (response.error) {
+      if (response.error.response.status === 401) {
+        yield put(AuthActions.setUnauthorization());
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      } else {
+        yield put(AuthActions.setPayments(response.error.response.data));
+      }
+    }
+  }
+  yield put(AuthActions.setPaymentsExcelLoading(false));
+
+  // console.log("response payments", response);
+}
 export function* getPayments(params) {
   yield put(AuthActions.setPaymentsLoading(true));
   const response = yield call(
@@ -224,7 +260,8 @@ export function* getPayments(params) {
     params.to,
     params.page_number,
     params.limit,
-    params.skin_id
+    params.skin_id,
+    params.excel
   );
   if (response) {
     if (response.status === 200) {
@@ -259,7 +296,6 @@ export function* getPayments(params) {
     }
   }
   yield put(AuthActions.setPaymentsLoading(false));
-
   // console.log("response payments", response);
 }
 

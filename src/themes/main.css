@@ -2199,6 +2199,47 @@ body:not(.bodyAdmin) div.Container .panels-container .max-width {
   max-width: 1371px;
 }
 
+body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel {
+  width: calc(100% - 15px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-right: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Roboto";
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #01a81b;
+}
+
+body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel span:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel span:first-child i {
+  font-size: 18px;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
 body:not(.bodyAdmin) div.Container .panels-container .row.no-gutters.max-width {
   max-width: 1371px;
 }

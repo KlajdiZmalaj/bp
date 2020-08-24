@@ -139,7 +139,8 @@ export const fetchPayments = (
   to,
   page_number,
   limit,
-  skin_id
+  skin_id,
+  excel
 ) => {
   return axios
     .create({
@@ -154,10 +155,10 @@ export const fetchPayments = (
       ...(username ? { username: username } : {}),
       ...(from ? { from } : null),
       ...(to ? { to } : null),
-      page_number,
-      limit,
-
+      ...(page_number ? { page_number } : {}),
+      ...(limit ? { limit } : {}),
       ...(skin_id ? { skin_id } : { ...skin }),
+      ...(excel === "special" ? { excel } : {}),
     })
     .catch((error) => ({ error }));
 };
@@ -1198,6 +1199,22 @@ export const sendMailFatturaReq = (file_name) => {
       },
     })
     .post("/mailFattura", {
+      ...skin,
+      file_name,
+    })
+    .catch((error) => ({ error }));
+};
+export const printFatturaReq = (file_name) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post("/printFattura", {
       ...skin,
       file_name,
     })

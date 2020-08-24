@@ -46,6 +46,8 @@ import {
   getAllServices,
   sendMailFattura,
   getAllFaturaBySearch,
+  getPaymentsForExcel,
+  getFatturaPdf,
 } from "./AuthSagas";
 
 import {
@@ -61,6 +63,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(AuthTypes.GET_PAYMENTS_FOR_EXCEL, getPaymentsForExcel),
     takeLatest(AuthTypes.SEND_MAIL_FATTURA, sendMailFattura),
     takeLatest(AuthTypes.GET_ALL_FATURA_BY_SEARCH, getAllFaturaBySearch),
     takeLatest(AuthTypes.GET_ALL_SERVICES, getAllServices),

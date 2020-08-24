@@ -2,25 +2,9 @@ import React from "react";
 import "./styles.css";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
-import { allRoles } from "config/index";
-let years = [];
-for (let i = 2000; i <= new Date().getFullYear(); i++) {
-  years.push({ id: i - 1999, name: i });
-}
-const months = [
-  { id: 1, name: "Gennaio" },
-  { id: 2, name: "Febbraio" },
-  { id: 3, name: "Marzo" },
-  { id: 4, name: "Aprile" },
-  { id: 5, name: "Maggio" },
-  { id: 6, name: "giugno" },
-  { id: 7, name: "Luglio" },
-  { id: 8, name: "Agosto" },
-  { id: 9, name: "Settembre" },
-  { id: 10, name: "Ottobre" },
-  { id: 11, name: "Novembre" },
-  { id: 12, name: "Dicembre" },
-];
+import { printFatturaReq } from "services/auth";
+import DatePicker from "./DatePicker";
+
 class FaturaDomain extends React.Component {
   state = {
     yearDropdown: false,
@@ -34,15 +18,73 @@ class FaturaDomain extends React.Component {
   setCalendar = (val) => {
     this.setState({ calendarVis: val });
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
   };
+  convertB64ToBolbThenPrnt(file_name) {
+    printFatturaReq(file_name).then(async (response) => {
+      const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
+
+        for (
+          let offset = 0;
+          offset < byteCharacters.length;
+          offset += sliceSize
+        ) {
+          const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+          const byteNumbers = new Array(slice.length);
+          for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          const byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+
+        const blob = new Blob(byteArrays, {
+          type: contentType,
+        });
+        return blob;
+      };
+      var myBlob = b64toBlob(response.data.base64, "application/pdf");
+      var objectURL = URL.createObjectURL(myBlob);
+      document.querySelector("#pdf-frame").src = "";
+      document.querySelector("#pdf-frame").src = objectURL;
+      objectURL = URL.revokeObjectURL(myBlob);
+      window.setTimeout(function () {
+        document.querySelector("#pdf-frame").contentWindow.print();
+      }, 1000);
+    });
+  }
+  PreviewPdf(file_name) {
+    printFatturaReq(file_name).then(async (response) => {
+      var winparams =
+        "dependent=yes,locationbar=no,scrollbars=yes,menubar=yes," +
+        `resizable,screenX=50,screenY=50,width=${
+          this.props.screenWidth < 1000
+            ? this.props.screenWidth
+            : (this.props.screenWidth * 80) / 100
+        },height=900`;
+
+      var htmlPop =
+        "<embed width=100% height=100%" +
+        ' type="application/pdf"' +
+        ' src="data:application/pdf;base64,' +
+        escape(response.data.base64) +
+        '"></embed>';
+
+      var printWindow = window.open("", "PDF", winparams);
+      printWindow.document.write(htmlPop);
+    });
+  }
   componentDidMount() {
-    this.props.getFaturaDetails(1, 2000, 5);
     this.props.getAllFaturaBySearch(null, null, null);
   }
   render() {
-    const { faturaDetails, Fatture, skinExtras } = this.props;
+    const { Fatture } = this.props;
     const {
       calendarVis,
       monthDropdown,
@@ -61,85 +103,37 @@ class FaturaDomain extends React.Component {
             <div className="row no-gutters max-width">
               <div className="FauturaFilter">
                 {calendarVis && (
-                  <React.Fragment>
-                    <div className="Chose--Month">
-                      <div
-                        className="Header"
-                        onClick={() => {
-                          this.setState((state) => ({
-                            monthDropdown: !state.monthDropdown,
-                          }));
-                        }}
-                      >
-                        {`${
-                          monthChosen?.name ? monthChosen.name : " Chose Month"
-                        }`}
-                      </div>
-                      {monthDropdown && (
-                        <div className="Body">
-                          {months.map((month) => {
-                            return (
-                              <div
-                                className="month"
-                                onClick={() => {
-                                  this.setState((state) => ({
-                                    monthChosen: {
-                                      id: month.id,
-                                      name: month.name,
-                                    },
-                                    monthDropdown: !state.monthDropdown,
-                                  }));
-                                }}
-                                className={`${
-                                  monthChosen.name === month.name
-                                    ? "active"
-                                    : ""
-                                }`}
-                                key={month.id}
-                              >
-                                {month.name}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                    <div className="Chose--Year">
-                      <div
-                        className="Header"
-                        onClick={() => {
-                          this.setState((state) => ({
-                            yearDropdown: !state.yearDropdown,
-                          }));
-                        }}
-                      >
-                        {`${yearChosen ? yearChosen : " Chose Year"}`}
-                      </div>
-                      {yearDropdown && (
-                        <div className="Body">
-                          {years.map((year) => {
-                            return (
-                              <div
-                                className="year"
-                                onClick={() => {
-                                  this.setState((state) => ({
-                                    yearChosen: year.name,
-                                    yearDropdown: !state.yearDropdown,
-                                  }));
-                                }}
-                                className={`${
-                                  yearChosen === year.name ? "active" : ""
-                                }`}
-                                key={year.id}
-                              >
-                                {year.name}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  </React.Fragment>
+                  <DatePicker
+                    setMonthDropdown={() => {
+                      this.setState((state) => ({
+                        monthDropdown: !state.monthDropdown,
+                      }));
+                    }}
+                    setYearDropdown={() => {
+                      this.setState((state) => ({
+                        yearDropdown: !state.yearDropdown,
+                      }));
+                    }}
+                    setMonthChosen={(month) => {
+                      this.setState((state) => ({
+                        monthChosen: {
+                          id: month.id,
+                          name: month.name,
+                        },
+                        monthDropdown: !state.monthDropdown,
+                      }));
+                    }}
+                    setYearChosen={(year) => {
+                      this.setState((state) => ({
+                        yearChosen: year.name,
+                        yearDropdown: !state.yearDropdown,
+                      }));
+                    }}
+                    yearChosen={yearChosen}
+                    monthChosen={monthChosen}
+                    monthDropdown={monthDropdown}
+                    yearDropdown={yearDropdown}
+                  />
                 )}
                 <div className="FauturaFilter--Header">
                   <div>Fature</div>
@@ -260,8 +254,22 @@ class FaturaDomain extends React.Component {
                           <td class="wsNwp">{fatura.commissione}</td>
                           <td class="wsNwp">{fatura.proviggione}</td>
                           <td class=" wsNwp">
-                            <i className="fal fa-file-pdf"></i>
-                            <i className="far fa-print"></i>
+                            <i
+                              className="fal fa-file-pdf"
+                              onClick={() => {
+                                this.PreviewPdf(fatura.file_name);
+                              }}
+                            ></i>
+                            <i
+                              className="far fa-print"
+                              onClick={() => {
+                                this.convertB64ToBolbThenPrnt(fatura.file_name);
+                              }}
+                            ></i>
+                            <iframe
+                              id="pdf-frame"
+                              style={{ display: "none" }}
+                            ></iframe>
                             <i
                               class="far fa-envelope-open-text"
                               onClick={() => {
@@ -285,5 +293,6 @@ const mpst = (state) => ({
   faturaDetails: state.auth.faturaDetails,
   skinExtras: state.auth.skinExtras,
   Fatture: state.auth.Fatture,
+  screenWidth: state.main.screenWidth,
 });
 export default connect(mpst, AuthActions)(FaturaDomain);
