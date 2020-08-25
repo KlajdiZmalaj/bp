@@ -65,8 +65,13 @@ export function* signInByEmail(credencials) {
     }
   }
 }
-export function* getAgents() {
-  const response = yield call(fetchAgents);
+export function* getAgents(params) {
+  let response;
+  if (params?.skin_id && params?.skin_id != -1) {
+    response = yield call(fetchAgents, params.skin_id);
+  } else {
+    response = yield call(fetchAgents);
+  }
   // console.log("agents res", response);
   if (response.data) {
     yield put(AuthActions.setAgents(response.data.agents));
@@ -132,7 +137,6 @@ export function* getBolletiniBianchi(params) {
 export function* addTicket({ ticket }) {
   const my_tickets = yield select((state) => state.auth.formDetails.my_tickets);
   let tickets = yield select((state) => state.auth.formDetails.tickets);
-  console.log("allTickets allTickets", tickets, ticket);
   yield put(
     AuthActions.setDataFormDetails({
       my_tickets,
@@ -141,7 +145,6 @@ export function* addTicket({ ticket }) {
   );
 }
 export function* addVisure({ singleVisure }) {
-  console.log("called addVisure", singleVisure);
   const my_visure = yield select((state) => state.auth.Visure.my_visure);
   let visure = yield select((state) => state.auth.Visure.visure);
 
@@ -547,7 +550,12 @@ export function* getBarcodeData(e) {
   }
 }
 export function* changeAgent(data) {
-  const response = yield call(changeAgentReq, data.id, data.id2);
+  let response;
+  if (data?.skin_id && data?.skin_id != -1) {
+    response = yield call(changeAgentReq, data.id, data.id2, data.skin_id);
+  } else {
+    response = yield call(changeAgentReq, data.id, data.id2);
+  }
   if (response) {
     if (response.status === 200) {
       yield put(AuthActions.setUserDetail(response.data.user));
@@ -569,29 +577,55 @@ export function* getUserDetail(data) {
   // console.log("response get users details", data, response);
 }
 export function* updateUserDetail(data) {
-  const response = yield call(
-    updateUsers,
-    data.user_id,
-    data.phone,
-    data.document_type,
-    data.document_number,
-    data.rilasciato_da,
-    data.luogo_di_rilascio,
-    data.data_di_rilascio,
-    data.data_di_scadenza,
-    data.a_insegna,
-    data.a_cordinate,
-    data.a_phone,
-    data.a_address,
-    data.a_city,
-    data.a_comune_code,
-    data.a_cap,
-    data.a_country,
-    data.a_rent,
-    data.password,
-    data.confirm_password
-  );
-  console.log("responseresponseresponse", response);
+  let response;
+  if (data?.skin_id && data?.skin_id != -1) {
+    response = yield call(
+      updateUsers,
+      data.user_id,
+      data.phone,
+      data.document_type,
+      data.document_number,
+      data.rilasciato_da,
+      data.luogo_di_rilascio,
+      data.data_di_rilascio,
+      data.data_di_scadenza,
+      data.a_insegna,
+      data.a_cordinate,
+      data.a_phone,
+      data.a_address,
+      data.a_city,
+      data.a_comune_code,
+      data.a_cap,
+      data.a_country,
+      data.a_rent,
+      data.password,
+      data.confirm_password,
+      data.skin_id
+    );
+  } else {
+    response = yield call(
+      updateUsers,
+      data.user_id,
+      data.phone,
+      data.document_type,
+      data.document_number,
+      data.rilasciato_da,
+      data.luogo_di_rilascio,
+      data.data_di_rilascio,
+      data.data_di_scadenza,
+      data.a_insegna,
+      data.a_cordinate,
+      data.a_phone,
+      data.a_address,
+      data.a_city,
+      data.a_comune_code,
+      data.a_cap,
+      data.a_country,
+      data.a_rent,
+      data.password,
+      data.confirm_password
+    );
+  }
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.updateUserDetailMsg(response.data.message));
@@ -923,7 +957,6 @@ export function* getAllServices({ skin_id }) {
   yield put(AuthActions.setServicesLoading(true));
   const response = yield call(getAllServicesReq, skin_id);
   if (response.data) {
-    console.log(response.data);
     if (response.status === 200) {
       yield put(AuthActions.setAllServices(response.data.result));
     }
@@ -933,7 +966,6 @@ export function* getAllServices({ skin_id }) {
 export function* getAllFaturaBySearch({ username, year, month }) {
   const response = yield call(getAllFaturaBySearchReq, username, year, month);
   if (response.data) {
-    console.log(response.data);
     let FatturaArray = [];
     Object.keys(response.data.fatture).map((fatureKey) => {
       FatturaArray.push(response.data.fatture[fatureKey]);

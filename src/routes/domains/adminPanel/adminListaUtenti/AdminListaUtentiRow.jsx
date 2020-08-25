@@ -64,24 +64,66 @@ class AdminListaUtentiRow extends React.Component {
           </span>
           <SpanFormater
             Word={itemList.rag_soc}
-            size={screenWidth <= 1600 ? 13 : 17}
+            styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
+            size={
+              this.props.activeSkinId === -1
+                ? 30
+                : screenWidth <= 1600
+                ? 13
+                : 17
+            }
             nrOfRows={2}
             formatWord={true}
+            link={this.props.activeSkinId === -1 ? true : false}
           />
           <SpanFormater
+            styles={
+              this.props.activeSkinId === -1
+                ? {
+                    width: "8%",
+                    justifyContent: "flex-end",
+                    paddingRight: "1%",
+                  }
+                : { justifyContent: "flex-end", paddingRight: "1%" }
+            }
             Word={numberWithCommas(itemList.wallet)}
             size={8}
             nrOfRows={1}
           />
-          <SpanFormater
-            Word={itemList.city}
-            size={screenWidth <= 1600 ? 8 : 11}
-            nrOfRows={1}
-            formatWord={true}
-          />
-          <span>{itemList.last_deposit}</span>
-          <span>{itemList.last_login_time}</span>
-          <span>
+          {activeSkinId === -1 ? null : (
+            <SpanFormater
+              Word={itemList.city}
+              size={screenWidth <= 1600 ? 8 : 11}
+              nrOfRows={1}
+              formatWord={true}
+            />
+          )}
+
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
+            {itemList.last_deposit}
+          </span>
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
+            {itemList.last_login_time}
+          </span>
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "24%", justifyContent: "space-around" }
+                : {}
+            }
+          >
             <button
               onClick={() => {
                 setDepositoModalAdmin({

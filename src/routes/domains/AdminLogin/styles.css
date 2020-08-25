@@ -3,6 +3,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  top: 101px;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -13,7 +15,199 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 100%;
+}
+
+.AdminLogin--Step1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 1030px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: auto;
+  overflow: auto;
+  top: -240px;
+  background: #ffffff;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  min-height: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 10px;
+}
+
+.AdminLogin--Step1 .fa-long-arrow-left {
+  position: absolute;
+  font-weight: 400;
+  font-size: 18px;
+  left: 1%;
+  top: 1.5%;
+  width: 5%;
+  cursor: pointer;
+}
+
+.AdminLogin--Step1 i {
+  font-size: 16px;
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 300;
+  position: absolute;
+  width: 12%;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminLogin--Step1 span {
+  height: 42px;
+  width: 100%;
+  margin: 6px 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto";
+  border: 1px solid #ebeced;
+  border-radius: 6px;
+}
+
+.AdminLogin--Step1 span input {
+  width: 85%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+.AdminLogin--Step1 svg {
+  fill: #5c5c5c;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  margin-right: calc((12% - 12px) / 2);
+  width: 12px;
+}
+
+.AdminLogin--Step1 button {
+  background: #0078ff;
+  color: #ffffff;
+  width: 100%;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Roboto";
+  border: none;
+  margin: 6px 0;
+  margin-top: 15px;
+}
+
+.AdminLogin--Step1 h1 {
+  color: #0078ff;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.AdminLogin--Step1 h1:first-child {
+  padding: 25px 0;
+  padding-bottom: 10px;
+}
+
+.AdminLogin--Step1--Right {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-right: 1px solid #ebeced;
+  padding: 0 30px;
+}
+
+.AdminLogin--Step1--Right--Important, .AdminLogin--Step1--Right--Payment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.AdminLogin--Step1--Left {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 30px;
+}
+
+.AdminLogin--Step1--Left--SocialMedia i {
+  font-weight: bold;
+  font-family: "Font Awesome 5 Brands";
+  color: #5c5c5c;
+  position: absolute;
+}
+
+.AdminLogin--Step1--Left--SkinUrl, .AdminLogin--Step1--Left--SocialMedia {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .AdminLogin--Part {
@@ -33,13 +227,21 @@
   background-color: #0078ff;
 }
 
-.AdminLogin--Part--Blue .title {
+.AdminLogin--Part--Blue span {
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 12px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 1030px;
+  margin: 0 auto;
   text-transform: uppercase;
   color: #ffffff;
+  left: 0;
+  top: -45px;
+  right: 0;
   height: 235px;
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -49,31 +251,40 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px 10px;
+  text-align: center;
+}
+
+.AdminLogin--Part--Blue .title {
+  font-weight: 300;
+  font-size: 30px;
+  top: 0;
+}
+
+.AdminLogin--Part--Blue .title--Stepper {
+  top: -70px;
+  font-weight: 300;
+  font-size: 30px;
 }
 
 .AdminLogin--LoginForm {
-  width: 360px;
-  height: 360px;
   position: absolute;
-  top: -115px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 40px 35px;
+  left: 0;
+  right: 0;
+  width: 1030px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  z-index: 1;
-  background-color: #ffffff;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  height: auto;
+  overflow: auto;
+  top: -125px;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
 }
 
 .AdminLogin--LoginForm--Back {
@@ -87,36 +298,32 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 360px;
+  height: calc(100vh - 350px);
+  background: url("../../../assets//images/AdminSkinListBackground.png");
   position: relative;
 }
 
-.AdminLogin--LoginForm span {
-  position: relative;
-  width: 100%;
-  height: 60px;
-  padding: 21px 27px;
-  border: 1px solid #ebeced;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
+.AdminLogin--LoginForm div {
+  height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
-.AdminLogin--LoginForm span img {
-  position: absolute;
-  left: 84%;
-  top: 0;
-  width: 24px;
-  margin: 18px 11.2px;
-  height: 24px;
+.AdminLogin--LoginForm div:nth-child(4), .AdminLogin--LoginForm div:last-child {
+  margin-right: 0;
+  margin-bottom: 5px;
 }
 
-.AdminLogin--LoginForm span > i {
-  position: absolute;
-  left: 84%;
-  top: 0;
+.AdminLogin--LoginForm span:first-child {
+  height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -126,45 +333,40 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 18px;
-  width: 16%;
-  height: 100%;
+  background: #ffffff;
 }
 
-.AdminLogin--LoginForm span input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 84%;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-  padding: 21px 27px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
+.AdminLogin--LoginForm span:first-child i {
+  font-size: 120px;
+  font-weight: 300;
+  color: #bfbfbf;
+  cursor: pointer;
+  font-family: "Font Awesome 5 Pro";
+  -webkit-text-stroke-width: 9px;
+  -webkit-text-stroke-color: #ffffff;
 }
 
-.AdminLogin--LoginForm button {
-  width: 100%;
-  height: 60px;
-  font-family: "Roboto", sans-serif;
+.AdminLogin--LoginForm span:first-child img {
+  width: 160px;
+  height: auto;
+}
+
+.AdminLogin--LoginForm span:nth-child(2) {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3px;
+  background: #ffffff;
+  color: #5c5c5c;
+  font-family: "Roboto";
   font-weight: 400;
   font-size: 16px;
-  border: none;
-  background-color: #0078ff;
-  color: #ffffff;
-  text-transform: uppercase;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -39,12 +39,40 @@ class AdminListaUtenti extends React.Component {
         <div className="AdminListaUtenti--Header">
           <span>USER ID</span>
           <span>USERNAME</span>
-          <span>RAG SOCIALE</span>
-          <span>CREDITO</span>
-          <span>CITY</span>
-          <span>ULTIMO DEPOSIT</span>
-          <span>ULTIMO LOGIN</span>
-          <span>AZIONI</span>
+          <span style={this.props.activeSkinId === -1 ? { width: "16%" } : {}}>
+            RAG SOCIALE
+          </span>
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "10%", justifyContent: "flex-end", left: "-2%" }
+                : { justifyContent: "flex-end", left: "-1%" }
+            }
+          >
+            CREDITO
+          </span>
+          {this.props.activeSkinId === -1 ? null : <span>CITY</span>}
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
+            ULTIMO DEPOSIT
+          </span>
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
+            ULTIMO LOGIN
+          </span>
+          <span style={this.props.activeSkinId === -1 ? { width: "24%" } : {}}>
+            AZIONI
+          </span>
         </div>
         <div className="AdminListaUtentiRow">
           {LoaderAU && LoaderAU === true ? (

@@ -18,7 +18,10 @@ class AdminServiziItem extends React.Component {
           </div>
         </div>
 
-        <img src={images["flixbus-logo"]} className="AdminServiziItem--Image" />
+        <img
+          src={`http://www.perdemo.it/ricaricheSPS/${this.props.category}.png`}
+          className="AdminServiziItem--Image"
+        />
         <div className="AdminServiziItem--ButtonWrapper">
           <button
             onClick={() => {

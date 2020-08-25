@@ -3,8 +3,8 @@
   width: 400px;
   right: 0;
   bottom: 0;
-  top: 71px;
-  min-height: calc(100vh - 71px);
+  top: 101px;
+  min-height: calc(100vh - 101px);
   background-color: #ffffff;
   overflow: auto;
   border: 1px solid #ebeced;
@@ -223,7 +223,7 @@
   height: 100%;
   padding: 0 15px;
   position: fixed;
-  top: 71px;
+  top: 101px;
   right: 0;
   width: 400px;
   display: flex;

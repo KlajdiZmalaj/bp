@@ -1,14 +1,14 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-  changeAgent: ["id", "id2"],
+  changeAgent: ["id", "id2", "skin_id"],
   signInByEmail: ["email", "password", "c"],
   authSuccess: ["user"],
   authFailure: ["error"],
   logOut: [],
   getAccountInfo: [],
   setAccountInfo: ["accountInfo"],
-  getAgents: [""],
+  getAgents: ["skin_id"],
   setAgents: ["agents"],
   setUnauthorization: [],
   getBolletiniBianchi: [
@@ -167,6 +167,7 @@ const { Types, Creators } = createActions({
     "a_rent",
     "password",
     "confirm_password",
+    "skin_id",
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
@@ -302,6 +303,8 @@ const { Types, Creators } = createActions({
   sendMailFattura: ["file_name"],
   setDepositoModalAdmin: ["adminDepModal"],
   setPaymentsExcelLoading: ["paymentExcelLoading"],
+  goToAdminPanel: ["goToAdminPanelVis"],
+  addEditSkinDetails: ["addEditSkin"],
 });
 
 export const AuthTypes = Types;
@@ -360,6 +363,8 @@ const INITIAL_STATE = {
   adminDepModal: null,
   paymentsForExcel: {},
   paymentExcelLoading: false,
+  goToAdminPanelVis: true,
+  addEditSkin: { skinPannel: false },
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -584,5 +589,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_PAYMENTS_EXCEL_LOADING]: (state, { paymentExcelLoading }) => ({
     ...state,
     paymentExcelLoading,
+  }),
+  [Types.GO_TO_ADMIN_PANEL]: (state, { goToAdminPanelVis }) => ({
+    ...state,
+    goToAdminPanelVis,
+  }),
+  [Types.ADD_EDIT_SKIN_DETAILS]: (state, { addEditSkin }) => ({
+    ...state,
+    addEditSkin,
   }),
 });

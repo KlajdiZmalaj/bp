@@ -66,23 +66,36 @@ class AdminListaUtentiRowForLoop extends React.Component {
           </span>
           <SpanFormater
             Word={itemList.rag_soc}
+            styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
             size={17}
             nrOfRows={2}
             formatWord={true}
+            link={this.props.activeSkinId === -1 ? true : false}
           />
           <SpanFormater
+            styles={
+              this.props.activeSkinId === -1
+                ? { width: "8%", justifyContent: "flex-end" }
+                : { justifyContent: "flex-end" }
+            }
             Word={numberWithCommas(itemList.wallet)}
             size={8}
             nrOfRows={2}
           />
-          <SpanFormater
-            Word={itemList.city}
-            size={10}
-            nrOfRows={2}
-            formatWord={true}
-          />
-          <span>{itemList.last_deposit}</span>
-          <span>{itemList.last_login_time}</span>
+          {activeSkinId === -1 ? null : (
+            <SpanFormater
+              Word={itemList.city}
+              size={screenWidth <= 1600 ? 8 : 11}
+              nrOfRows={1}
+              formatWord={true}
+            />
+          )}
+          <span style={{ justifyContent: "center", left: 0 }}>
+            {itemList.last_deposit}
+          </span>
+          <span style={{ justifyContent: "center", left: 0 }}>
+            {itemList.last_login_time}
+          </span>
           <span>
             <button
               onClick={() => {

@@ -70,7 +70,12 @@ class Excel extends React.Component {
       <div className="ExportToExel">
         <span>
           <i class="far fa-file-excel"></i>
-          <span>In attesa di dati completi ...</span>
+          {this.props.activeSkinId === -1 &&
+          document.querySelector("body").classList.contains("bodyAdmin") ? (
+            <span>No data For this skin</span>
+          ) : (
+            <span>In attesa di dati completi ...</span>
+          )}
         </span>
       </div>
     ) : (
@@ -82,7 +87,12 @@ class Excel extends React.Component {
       >
         <span>
           <i class="far fa-file-excel"></i>
-          <span>Esportare i dati completi in Excel</span>
+          {this.props.activeSkinId === -1 &&
+          document.querySelector("body").classList.contains("bodyAdmin") ? (
+            <span>No data For this skin</span>
+          ) : (
+            <span>Esportare i dati completi in Excel</span>
+          )}
         </span>
       </CSVLink>
     );
@@ -90,5 +100,6 @@ class Excel extends React.Component {
 }
 const mapStateToProps = (state) => ({
   paymentExcelLoading: state.auth.paymentExcelLoading,
+  activeSkinId: state.main.activeSkinId,
 });
 export default connect(mapStateToProps, AuthActions)(Excel);

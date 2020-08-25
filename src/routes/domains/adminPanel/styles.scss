@@ -3,8 +3,25 @@
   font-family: "Roboto", sans-serif;
   color: #5c5c5c;
   background-color: #ffffff;
+  & .TopHeader {
+    height: 30px;
+    background: #ffffff;
+    width: 100%;
+    border: 1px solid #ebeced;
+    z-index: 2;
+    position: fixed;
+  }
 }
 .bodyAdmin {
+  & .ExportToExel {
+    color: #0078ff;
+    & i {
+      margin-right: 10px;
+      margin-left: 74%;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
   & .userDetailPopup {
     & .newReg--row {
       &::-webkit-scrollbar-thumb {
@@ -40,7 +57,7 @@
   min-height: 100%;
   & .Center {
     position: relative;
-    top: 71px;
+    top: 101px;
     left: 200px;
     width: calc(100% - 200px - 400px);
     max-width: auto;
@@ -49,7 +66,7 @@
     align-items: flex-start;
     transition: 0.5s;
     background-color: rgba(0, 0, 0, 0.03);
-
+    margin-bottom: 41px;
     min-height: 550px;
 
     &--Big {
@@ -57,7 +74,7 @@
       width: calc(100% - 51px - 400px);
       left: 51px;
       right: 400px;
-      top: 71px;
+      top: 101px;
       height: auto;
       display: flex;
       max-width: auto;
@@ -66,15 +83,16 @@
       transition: 0.5s;
       background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
+      margin-bottom: 41px;
     }
   }
   & .Left {
     border: 1px solid #ebeced;
     width: 200px;
-    height: calc(100vh - 71px);
+    height: calc(100vh - 101px);
     position: fixed;
     left: 0;
-    top: 71px;
+    top: 101px;
     background-color: #ffffff;
     transition: 0.5s;
     overflow-x: hidden;
@@ -82,10 +100,10 @@
     &--Min {
       border: 1px solid #ebeced;
       width: 50px;
-      height: calc(100vh - 71px);
+      height: calc(100vh - 101px);
       position: fixed;
       left: 0;
-      top: 71px;
+      top: 101px;
       background-color: #ffffff;
       transition: 0.5s;
       overflow-x: hidden;
@@ -284,6 +302,7 @@ div.Center--Big {
       align-items: center;
       padding-right: 50px;
       justify-content: space-between;
+      border-bottom: 2px solid #f5f5f5 !important;
 
       & .calendarWrapper {
         position: absolute;

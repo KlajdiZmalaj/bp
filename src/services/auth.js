@@ -406,7 +406,7 @@ export const fetchBarcodeData = (barcode) => {
     })
     .catch((error) => ({ error }));
 };
-export const changeAgentReq = (aaa, agent_id) => {
+export const changeAgentReq = (aaa, agent_id, skin_id) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -418,7 +418,7 @@ export const changeAgentReq = (aaa, agent_id) => {
     })
     .post(`/agency/${agent_id}/changeAgent`, {
       agent_id: aaa,
-      ...skin,
+      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
 };
@@ -440,7 +440,7 @@ export const fetchCodice = (barcode, service) =>
       },
     })
     .catch((error) => ({ error }));
-export const fetchAgents = () =>
+export const fetchAgents = (skin_id) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -452,7 +452,7 @@ export const fetchAgents = () =>
     })
     .get("/agents", {
       params: {
-        ...skin,
+        ...(skin_id ? { skin_id } : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -530,8 +530,6 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
     });
 };
 export const fetchUserDetails = (user_id, skin_id) => {
-  console.log(user_id, skin_id);
-
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -543,7 +541,7 @@ export const fetchUserDetails = (user_id, skin_id) => {
     })
     .get(`agency/${user_id}`, {
       params: {
-        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
+        ...(skin_id ? (skin_id != -1 ? { skin_id } : skin) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -567,7 +565,8 @@ export const updateUsers = (
   a_country,
   a_rent,
   password,
-  confirm_password
+  confirm_password,
+  skin_id
 ) => {
   return axios
     .create({
@@ -598,7 +597,7 @@ export const updateUsers = (
       a_rent,
       password,
       confirm_password,
-      ...skin,
+      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
 };
@@ -1082,7 +1081,6 @@ export const updateVisuraReq = (
     .catch((error) => ({ error }));
 };
 export const getAgentByUserIdReq = (user_id, skin_id) => {
-  console.log(user_id, skin_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1100,7 +1098,6 @@ export const getAgentByUserIdReq = (user_id, skin_id) => {
     .catch((error) => ({ error }));
 };
 export const getUserByUserIdReq = (user_id, skin_id) => {
-  console.log(user_id, skin_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1151,7 +1148,6 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     .catch((error) => ({ error }));
 };
 export const getAllFaturaBySearchReq = (username, year, month) => {
-  console.log(username);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
