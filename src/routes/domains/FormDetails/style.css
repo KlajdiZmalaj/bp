@@ -165,6 +165,7 @@
           flex-flow: row;
   position: relative;
   border-bottom: 1px solid #ebeced;
+  z-index: 0;
 }
 
 .ticketDetails--row .fa-file-pdf {
@@ -843,8 +844,8 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
-  -webkit-box-shadow: 0 0 44px -15px black;
-          box-shadow: 0 0 44px -15px black;
+  -webkit-box-shadow: 0 0 34px -11px black;
+          box-shadow: 0 0 34px -11px black;
   z-index: 3;
 }
 
@@ -900,5 +901,68 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+input[value*="http"] {
+  color: #238be7 !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+input[value="Visualizzare i dati"] {
+  cursor: pointer;
+}
+
+input[value="Visualizzare i dati"]:hover {
+  color: #238be7 !important;
+}
+
+.datiPassageri {
+  position: fixed;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  width: 340px;
+  height: 380px;
+  color: #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 0 20px -11px black;
+          box-shadow: 0 0 20px -11px black;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.datiPassageri--header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.datiPassageri--header i {
+  cursor: pointer;
+}
+
+.datiPassageri--body {
+  overflow-y: scroll;
+  height: calc(100% - 55px);
+  padding: 15px;
+}
+
+.datiPassageri--body__pass .header {
+  text-transform: capitalize;
+}
+
+.datiPassageri--body__pass ul,
+.datiPassageri--body__pass li {
+  list-style-type: circle;
 }
 /*# sourceMappingURL=style.css.map */

@@ -450,6 +450,8 @@ a:hover {
   padding-left: 0;
   padding-right: 0;
   background: #3c4349;
+  position: relative;
+  z-index: 0;
 }
 
 .overview-btn {
