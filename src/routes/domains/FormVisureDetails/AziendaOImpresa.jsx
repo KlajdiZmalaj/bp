@@ -29,6 +29,7 @@ class AziendaOImpresaForm extends Component {
     telefono: this.props.VisureById.telefono,
     price: this.props.VisureById.total_cost,
     via_sms: false,
+    servizi: this.props.VisureById.servizi,
   };
 
   callBack = (msg) => {
@@ -59,6 +60,7 @@ class AziendaOImpresaForm extends Component {
       ragione_sociale,
       p_iva,
       comune,
+      servizi,
     } = await this.state;
 
     await this.props.updateVisura(
@@ -77,7 +79,8 @@ class AziendaOImpresaForm extends Component {
       "",
       "",
       "",
-      this.callBack
+      this.callBack,
+      servizi
     );
   };
   render() {
@@ -91,11 +94,20 @@ class AziendaOImpresaForm extends Component {
       price,
       email,
       telefono,
+      servizi,
     } = this.state;
     return (
       <React.Fragment>
         <div className="formBody">
           <div className="formBody--col">
+            <InputForForm
+              labelName="Servizi"
+              value={servizi}
+              handleChange={(e) => {
+                this.setState({ servizi: e.target.value });
+              }}
+              type={"text"}
+            />
             <InputForForm
               labelName="Ragione Sociale"
               value={ragione_sociale}

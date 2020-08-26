@@ -873,7 +873,10 @@ export const sendVisureDetailsReq = (
   luogo_di_nascita,
   ragione_sociale,
   p_iva,
-  comune
+  comune,
+  servizi,
+  price,
+  sc
 ) => {
   return axios
     .create({
@@ -899,6 +902,9 @@ export const sendVisureDetailsReq = (
             cognome,
             data_di_nascita,
             luogo_di_nascita,
+            servizi,
+            price,
+            sc: parseInt(sc),
           }
         : {
             ...skin,
@@ -912,6 +918,9 @@ export const sendVisureDetailsReq = (
             email,
             telefono,
             luogo_di_nascita,
+            servizi,
+            price,
+            sc: parseInt(sc),
           }
     )
     .catch((error) => ({ error }));
@@ -919,7 +928,6 @@ export const sendVisureDetailsReq = (
 
 export const userConfirmation = (
   setButtonsSupport,
-
   ticket_id,
   status,
   c,
@@ -1036,7 +1044,8 @@ export const updateVisuraReq = (
   nome,
   cognome,
   data_di_nascita,
-  luogo_di_nascita
+  luogo_di_nascita,
+  servizi
 ) => {
   return axios
     .create({
@@ -1063,6 +1072,7 @@ export const updateVisuraReq = (
             data_di_nascita,
             luogo_di_nascita,
             price,
+            servizi,
           }
         : {
             ...skin,
@@ -1076,6 +1086,7 @@ export const updateVisuraReq = (
             p_iva,
             comune,
             price,
+            servizi,
           }
     )
     .catch((error) => ({ error }));

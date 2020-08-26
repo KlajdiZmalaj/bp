@@ -833,7 +833,10 @@ export function* sendVisureDetails(data) {
     data.luogo_di_nascita,
     data.ragione_sociale,
     data.p_iva,
-    data.comune
+    data.comune,
+    data.servizi,
+    data.price,
+    data.sc
   );
   if (response?.status === 200) {
     data.callBack({
@@ -893,7 +896,8 @@ export function* updateVisura(data) {
     data.nome,
     data.cognome,
     data.data_di_nascita,
-    data.luogo_di_nascita
+    data.luogo_di_nascita,
+    data.servizi
   );
   if (response?.status === 200) {
     data.callBack({

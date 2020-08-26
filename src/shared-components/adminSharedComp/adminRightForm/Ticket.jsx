@@ -3,9 +3,6 @@ import images from "themes/images";
 import ReactToPrint from "react-to-print";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-
 class Ticket extends React.Component {
   componentWillUnmount() {
     this.props.openModalForAdmin(false);

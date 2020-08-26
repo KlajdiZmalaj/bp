@@ -30,6 +30,7 @@ class PersonaFisica extends Component {
     telefono: this.props.VisureById.telefono,
     email: this.props.VisureById.email,
     price: this.props.VisureById.total_cost,
+    servizi: this.props.VisureById.servizi,
   };
   callBack = (msg) => {
     if (!msg.error) {
@@ -59,6 +60,7 @@ class PersonaFisica extends Component {
       telefono,
       email,
       price,
+      servizi,
     } = await this.state;
 
     await this.props.updateVisura(
@@ -77,7 +79,8 @@ class PersonaFisica extends Component {
       cognome,
       data_di_nascita,
       luogo_di_nascita,
-      this.callBack
+      this.callBack,
+      servizi
     );
   };
   render() {
@@ -92,11 +95,20 @@ class PersonaFisica extends Component {
       telefono,
       email,
       price,
+      servizi,
     } = this.state;
     return (
       <React.Fragment>
         <div className="formBody">
           <div className="formBody--col">
+            <InputForForm
+              labelName="Servizi"
+              value={servizi}
+              handleChange={(e) => {
+                this.setState({ servizi: e.target.value });
+              }}
+              type={"text"}
+            />
             <InputForForm
               labelName="Nome"
               value={nome}

@@ -16,6 +16,9 @@ class FormContainerBody extends Component {
       ragione_sociale,
       p_iva,
       comune,
+      servizi,
+      price,
+      sc,
     } = this.props.data;
     const typee = this.props.type;
     this.props.sendVisureDetails(
@@ -32,21 +35,18 @@ class FormContainerBody extends Component {
       ragione_sociale,
       p_iva,
       comune,
-      this.props.resetOfState
+      this.props.resetOfState,
+      servizi,
+      price,
+      sc
     );
   };
   render() {
     return (
       <div className="formsContainer--body animated fadeIn">
-        <div className="leftForm"></div>
         <div className="rightForm">
           <div className="rightForm--header">
             <div>
-              <i
-                className="fal fa-chevron-left Arrow"
-                onClick={this.props.goBack}
-              ></i>
-
               <span className="HeaderTitle">{this.props.headerTitle}</span>
             </div>
           </div>
@@ -56,7 +56,10 @@ class FormContainerBody extends Component {
             <div className="formsContainer--body__item submit">
               <button
                 onClick={this.submitData}
-                style={{ backgroundColor: "rgba(17, 55, 93, 0.68)" }}
+                style={{
+                  backgroundColor: "var(--accent-bg)",
+                  color: "var(--accent-txt)",
+                }}
               >
                 Invia
               </button>
