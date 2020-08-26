@@ -111,13 +111,13 @@ export const azioni = [
     i: "fab fa-wpforms",
     displayRole: ["super_admin", "user", "agency", "support"],
   },
-  {
-    id: 13,
-    name: "Fatura",
-    link: "fatura",
-    i: "fas fa-ballot-check",
-    displayRole: ["super_admin", "user", "agency", "support"],
-  },
+  // {
+  //   id: 13,
+  //   name: "Fatura",
+  //   link: "fatura",
+  //   i: "fas fa-ballot-check",
+  //   displayRole: ["super_admin", "user", "agency", "support"],
+  // },
 ];
 
 export const administrazioni = [
@@ -50998,123 +50998,148 @@ export const countriesArray = [
   },
 ];
 export const servicesVisure = {
-  "Servizi Ufficio Catasto" : {
-    services : [
-      {name : 'Visura Catastale',price:13,sco:'40'},
-      {name : 'Visura per soggetoo storica',price:13,sco:'35'},
-      {name : 'Planimetria Catastale',price:29,sco:'35'},
-      {name : 'Mappa Edificio / Elaboro di Mappa',price:13,sco:'35'},
-      {name : 'Elenco Imobili',price:9,sco:'35'},
-      {name : 'Mappa Edificio / Elaboro Planimetrico',price:13,sco:'35'},
-      {name : 'Rendita catastale',price:5,sco:'35'},
-      {name : 'Reddito domimicale e reddito agrario',price:5,sco:'35'},
-      {name : 'Certificato della superficie da Planimetra',price:28,sco:'35'},
-      {name : 'Calcolo della superficie da Planimetra',price:40,sco:'35'},
-      {name : 'Correzione Visura Catastale',price:29,sco:'35'},
-      {name : 'Voltura Catastale',price:149,sco:'35'},
-    ]
+  "Servizi Ufficio Catasto": {
+    services: [
+      { name: "Visura Catastale", price: 13, sco: "40" },
+      { name: "Visura per soggetoo storica", price: 13, sco: "35" },
+      { name: "Planimetria Catastale", price: 29, sco: "35" },
+      { name: "Mappa Edificio / Elaboro di Mappa", price: 13, sco: "35" },
+      { name: "Elenco Imobili", price: 9, sco: "35" },
+      { name: "Mappa Edificio / Elaboro Planimetrico", price: 13, sco: "35" },
+      { name: "Rendita catastale", price: 5, sco: "35" },
+      { name: "Reddito domimicale e reddito agrario", price: 5, sco: "35" },
+      {
+        name: "Certificato della superficie da Planimetra",
+        price: 28,
+        sco: "35",
+      },
+      { name: "Calcolo della superficie da Planimetra", price: 40, sco: "35" },
+      { name: "Correzione Visura Catastale", price: 29, sco: "35" },
+      { name: "Voltura Catastale", price: 149, sco: "35" },
+    ],
   },
-  "Servizi Ufficio Camera di Commercio" : {
-    services  :[ 
-      {name : 'Report Azienda Full',price : 19,sco:'25'},
-      {name : 'Report Azienda Light',price : 14,sco:'25'},
-      {name : 'Visura Camerale',price : 15,sco:'40'},
-      {name : 'Bilancio Aziendale',price : 13,sco:'25'},
-      {name : 'Visura Protesti',price : 6,sco:'25'},
-      {name : 'Analisi bilancio',price : 13,sco:'25'},
-      {name : 'Certificato Camerale',price : 29,sco:'25'},
-      {name : 'Certificato camerale ordinario',price : 29,sco:'25'},
-      {name : 'Certificato camerale storico',price : 29,sco:'25'},
-      {name : 'Scheda Persona',price : 16,sco:'25'},
-      {name : 'Certificato di Vigenza',price : 29,sco:'25'},
-      {name : 'Cariche Aziendali',price : 9,sco:'25'},
-      {name : 'Elenco Soci Azienda',price : 9,sco:'25'},
-      {name : 'Visura Amministratori',price : 9,sco:'25'},
-      {name : 'Visura Camerale in Inglese',price : 15,sco:'25'},
-      {name : 'Carta cronotachigrafica',price : 59,sco:'25'},
-      {name : 'Visura Procedure in corso',price : 12,sco:'25'},
-      {name : 'Visura Statuto / Patti Sociali',price : 12,sco:'25'},
-      {name : 'Scheda Partecipazioni in Società',price : 10,sco:'25'},
-      {name : 'Visura Sede ed Unità locali',price : 5,sco:'25'},
-      {name : 'Atto in Camera di Commercio',price : 11,sco:'25'},
-      {name : 'Report su Persona',price : 15,sco:'25'},
-    ]
+  "Servizi Ufficio Camera di Commercio": {
+    services: [
+      { name: "Report Azienda Full", price: 19, sco: "25" },
+      { name: "Report Azienda Light", price: 14, sco: "25" },
+      { name: "Visura Camerale", price: 15, sco: "40" },
+      { name: "Bilancio Aziendale", price: 13, sco: "25" },
+      { name: "Visura Protesti", price: 6, sco: "25" },
+      { name: "Analisi bilancio", price: 13, sco: "25" },
+      { name: "Certificato Camerale", price: 29, sco: "25" },
+      { name: "Certificato camerale ordinario", price: 29, sco: "25" },
+      { name: "Certificato camerale storico", price: 29, sco: "25" },
+      { name: "Scheda Persona", price: 16, sco: "25" },
+      { name: "Certificato di Vigenza", price: 29, sco: "25" },
+      { name: "Cariche Aziendali", price: 9, sco: "25" },
+      { name: "Elenco Soci Azienda", price: 9, sco: "25" },
+      { name: "Visura Amministratori", price: 9, sco: "25" },
+      { name: "Visura Camerale in Inglese", price: 15, sco: "25" },
+      { name: "Carta cronotachigrafica", price: 59, sco: "25" },
+      { name: "Visura Procedure in corso", price: 12, sco: "25" },
+      { name: "Visura Statuto / Patti Sociali", price: 12, sco: "25" },
+      { name: "Scheda Partecipazioni in Società", price: 10, sco: "25" },
+      { name: "Visura Sede ed Unità locali", price: 5, sco: "25" },
+      { name: "Atto in Camera di Commercio", price: 11, sco: "25" },
+      { name: "Report su Persona", price: 15, sco: "25" },
+    ],
   },
-  "Servizi Ufficio Conservatoria" : {
-    services  :[ 
-      {name : 'Visura Ipotecaria',price : 39,sco:'35'},
-      {name : 'Ispezione Nazionale in Conservatoria',price : 35,sco:'35'},
-      {name : 'Visura Ipoteche e Compravendite',price : 39,sco:'35'},
-      {name : 'Visura per Nota',price : 18,sco:'35'},
-      {name : 'Visura Pregiudizievoli',price : 29,sco:'35'},
-      {name : 'Copia Atto Notarile',price : 98,sco:'35'},
-    ]
+  "Servizi Ufficio Conservatoria": {
+    services: [
+      { name: "Visura Ipotecaria", price: 39, sco: "35" },
+      { name: "Ispezione Nazionale in Conservatoria", price: 35, sco: "35" },
+      { name: "Visura Ipoteche e Compravendite", price: 39, sco: "35" },
+      { name: "Visura per Nota", price: 18, sco: "35" },
+      { name: "Visura Pregiudizievoli", price: 29, sco: "35" },
+      { name: "Copia Atto Notarile", price: 98, sco: "35" },
+    ],
   },
-  "Servizi Ufficio P.R.A. e Pratiche Veicoli" : {
-    services  :[ 
-      {name : 'Visura Targa PRA',price : 18,sco:'50'},
-      {name : 'Aggiornamento indirizzo su Libretto Veicolo',price : 49,sco:'25'},
-      {name : 'Visura Targa in Motorizzazione',price : 29,sco:'25'},
-      {name : 'Perdita di possesso motociclo',price : 49,sco:'25'},
-      {name : 'Certificato Cronologico PRA',price : 45,sco:'35'},
-      {name : 'Visura Proprietari PRA',price : 13,sco:'25'},
-      {name : 'Visura Telaio PRA',price : 13,sco:'25'},
-      {name : 'Visura Bolli',price : 19,sco:'25'},
-      {name : 'Visura veicoli intestati',price : 29,sco:'25'},
-      {name : 'Copia atto di vendita PRA',price : 55,sco:'30'},
-      {name : 'Copia Certificato Proprietà Veicolo',price : 49,sco:'25'},
-      {name : 'Perdita Possesso Veicolo',price : 49,sco:'25'},
-      {name : 'Rientro in Possesso',price : 49,sco:'25'},
-      {name : 'Duplicato Carta Circolazione',price : 49,sco:'25'},
-    ]
+  "Servizi Ufficio P.R.A. e Pratiche Veicoli": {
+    services: [
+      { name: "Visura Targa PRA", price: 18, sco: "50" },
+      {
+        name: "Aggiornamento indirizzo su Libretto Veicolo",
+        price: 49,
+        sco: "25",
+      },
+      { name: "Visura Targa in Motorizzazione", price: 29, sco: "25" },
+      { name: "Perdita di possesso motociclo", price: 49, sco: "25" },
+      { name: "Certificato Cronologico PRA", price: 45, sco: "35" },
+      { name: "Visura Proprietari PRA", price: 13, sco: "25" },
+      { name: "Visura Telaio PRA", price: 13, sco: "25" },
+      { name: "Visura Bolli", price: 19, sco: "25" },
+      { name: "Visura veicoli intestati", price: 29, sco: "25" },
+      { name: "Copia atto di vendita PRA", price: 55, sco: "30" },
+      { name: "Copia Certificato Proprietà Veicolo", price: 49, sco: "25" },
+      { name: "Perdita Possesso Veicolo", price: 49, sco: "25" },
+      { name: "Rientro in Possesso", price: 49, sco: "25" },
+      { name: "Duplicato Carta Circolazione", price: 49, sco: "25" },
+    ],
   },
-  "Servizi Ufficio Anagrafe / Comune" : {
-    services  :[ 
-      {name : 'Estratto di Nascita Multilingua',price : 34,sco:'30'},
-      {name : 'Estratto di Matrimonio Multilingua',price : 34,sco:'30'},
-      {name : 'Estratto di Morte Multilingua',price : 34,sco:'30'},
-      {name : 'Certificato Aire',price : 29,sco:'30'},
-      {name : 'Certificato / Estratto di Nascita',price : 29,sco:'30'},
-      {name : 'Certificato / Estratto di Matrimonio',price : 29,sco:'30'},
-      {name : 'Certificato di Residenza',price : 29,sco:'30'},
-      {name : 'Certificato Stato di Famiglia',price : 29,sco:'30'},
-      {name : 'Certificato / Estratto di Morte',price : 29,sco:'30'},
-      {name : 'Certificato Contestuale',price : 29,sco:'30'},
-      {name : 'Certificato di Stato Libero',price : 29,sco:'30'},
-      {name : 'Certificato di Esistenza in Vita',price : 29,sco:'30'},
-      {name : 'Certificato di Battesimo',price : 39,sco:'30'},
-      {name : 'Certificato di Cittadinanza',price : 29,sco:'30'},
-      {name : 'Certificato di Cresima',price : 39,sco:'30'},
-      {name : 'Certificato Storico',price : 39,sco:'30'},
-      {name : 'Certificato Godimento dei Diritti Politici',price : 29,sco:'30'},
-      
-    ]
+  "Servizi Ufficio Anagrafe / Comune": {
+    services: [
+      { name: "Estratto di Nascita Multilingua", price: 34, sco: "30" },
+      { name: "Estratto di Matrimonio Multilingua", price: 34, sco: "30" },
+      { name: "Estratto di Morte Multilingua", price: 34, sco: "30" },
+      { name: "Certificato Aire", price: 29, sco: "30" },
+      { name: "Certificato / Estratto di Nascita", price: 29, sco: "30" },
+      { name: "Certificato / Estratto di Matrimonio", price: 29, sco: "30" },
+      { name: "Certificato di Residenza", price: 29, sco: "30" },
+      { name: "Certificato Stato di Famiglia", price: 29, sco: "30" },
+      { name: "Certificato / Estratto di Morte", price: 29, sco: "30" },
+      { name: "Certificato Contestuale", price: 29, sco: "30" },
+      { name: "Certificato di Stato Libero", price: 29, sco: "30" },
+      { name: "Certificato di Esistenza in Vita", price: 29, sco: "30" },
+      { name: "Certificato di Battesimo", price: 39, sco: "30" },
+      { name: "Certificato di Cittadinanza", price: 29, sco: "30" },
+      { name: "Certificato di Cresima", price: 39, sco: "30" },
+      { name: "Certificato Storico", price: 39, sco: "30" },
+      {
+        name: "Certificato Godimento dei Diritti Politici",
+        price: 29,
+        sco: "30",
+      },
+    ],
   },
-  "Servizi Ufficio Altri Uffici" : {
-    services  :[ 
-      {name : 'Estratto Conto Riscossione (ex Equitalia)',price : 59,sco:'25'},
-      {name : 'Certificato Iscrizione Albo',price : 39,sco:'25'},
-      {name : 'Visura Centrale Rischi',price : 39,sco:'25'},
-      {name : 'Certificato di Laurea',price : 39,sco:'25'},
-      {name : 'Posta Elettronica Certificata - PEC Aruba',price : 5,sco:'30'},
-    ]
+  "Servizi Ufficio Altri Uffici": {
+    services: [
+      {
+        name: "Estratto Conto Riscossione (ex Equitalia)",
+        price: 59,
+        sco: "25",
+      },
+      { name: "Certificato Iscrizione Albo", price: 39, sco: "25" },
+      { name: "Visura Centrale Rischi", price: 39, sco: "25" },
+      { name: "Certificato di Laurea", price: 39, sco: "25" },
+      {
+        name: "Posta Elettronica Certificata - PEC Aruba",
+        price: 5,
+        sco: "30",
+      },
+    ],
   },
-  "Servizi Ufficio Agenzia delle Entrate" : {
-    services  :[ 
-      {name : 'Certificato di Residenza Fiscale',price : 39,sco:'25'},
-      {name : 'Certificato contro le doppie imposizioni',price : 39,sco:'25'},
-      {name : 'Certificato di Attribuzione/Cessazione Partita IVA',price : 39,sco:'25'},
-    ]
+  "Servizi Ufficio Agenzia delle Entrate": {
+    services: [
+      { name: "Certificato di Residenza Fiscale", price: 39, sco: "25" },
+      {
+        name: "Certificato contro le doppie imposizioni",
+        price: 39,
+        sco: "25",
+      },
+      {
+        name: "Certificato di Attribuzione/Cessazione Partita IVA",
+        price: 39,
+        sco: "25",
+      },
+    ],
   },
-  "Servizi Ufficio Fatturazione Elettronica" : {
-    services  :[ 
-      {name : 'Fatturazione Elettronica',price : 25,sco:'28'},
-    ]
+  "Servizi Ufficio Fatturazione Elettronica": {
+    services: [{ name: "Fatturazione Elettronica", price: 25, sco: "28" }],
   },
-  "Servizi Ufficio Prefettura" : {
-    services  :[ 
-      {name : 'Certificato Apostillato',price : 32,sco:'78'},
-      {name : 'Estratto Apostillato',price : 32,sco:'78'},
-    ]
+  "Servizi Ufficio Prefettura": {
+    services: [
+      { name: "Certificato Apostillato", price: 32, sco: "78" },
+      { name: "Estratto Apostillato", price: 32, sco: "78" },
+    ],
   },
-}
+};
