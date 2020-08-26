@@ -62,6 +62,7 @@ const PopUpConfirmation = ({
                 );
               }}
             >
+              {""}
               ESEGUITO{" "}
             </button>
             <button
