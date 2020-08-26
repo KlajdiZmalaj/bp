@@ -14,6 +14,7 @@ const PopUpConfirmation = ({
   TicketByTcketId,
   role,
   getDataFormDetails,
+  setButtonsSupport,
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
@@ -23,7 +24,6 @@ const PopUpConfirmation = ({
       setState(true);
     }
   }, [popUpData, getTicketByTicketId]);
-  console.log("ca ka ticket", TicketByTcketId, popUpData);
   return (
     TicketByTcketId &&
     Object.keys(TicketByTcketId).length > 1 &&
@@ -54,6 +54,7 @@ const PopUpConfirmation = ({
               className="Eseguito"
               onClick={() => {
                 userConfirmation(
+                  setButtonsSupport,
                   popUpData.id,
                   role === "support" ? 4 : 3,
                   setState,
@@ -66,7 +67,13 @@ const PopUpConfirmation = ({
             <button
               className="Annullato"
               onClick={() => {
-                userConfirmation(popUpData.id, 5, () => {}, getDataFormDetails);
+                userConfirmation(
+                  setButtonsSupport,
+                  popUpData.id,
+                  5,
+                  () => {},
+                  getDataFormDetails
+                );
                 setState(false);
               }}
             >

@@ -56,7 +56,7 @@ class Annunci extends React.Component {
             .filter((m) => m.importance === this.state.tabFilter)
             .sort((a, b) => b.id - a.id);
     return (
-      <div>
+      <div className="Container">
         <Header></Header>
         {/* <Overview></Overview> */}
         <div className="container-fluid overview ">

@@ -7,9 +7,10 @@ import images from "themes/images";
 class AnnunciAdmin extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Container">
         <Header></Header>
         <Overview></Overview>
+
         <div className="container-fluid overview ">
           <Amministrazione active="annunci-admin"></Amministrazione>
 

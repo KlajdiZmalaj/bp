@@ -47,10 +47,19 @@ export function* toggleFavorite(params) {
   }
 }
 export function* getUsers(params) {
-  const response = yield call(fetchUsers, params.search_user);
+  yield put(MainActions.setLoaderForAdminUtenti(true));
+  const response = yield call(
+    fetchUsers,
+    params.search_user,
+    params.skin_id,
+    params.backoffice
+  );
   // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsers(response.data.users));
+    yield put(MainActions.setLoaderForAdminUtenti(false));
+  } else {
+    yield put(MainActions.setLoaderForAdminUtenti(false));
   }
 }
 export function* getUsersSimple() {

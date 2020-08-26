@@ -30,7 +30,7 @@ class App extends React.Component {
         {/* <Header /> */}
         {/* <Overview /> */}
         <Root />
-        {/* <Footer /> */}
+        <Footer />
         <ModulePopUp></ModulePopUp>
       </Provider>
     );

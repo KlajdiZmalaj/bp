@@ -8,6 +8,7 @@ export class FormDetails extends Component {
     ) : (
       <div className="formsDetails">
         <Header></Header>
+
         <div className="overview">
           <div className="azioni max-width">
             <Azioni active="dettagli-prenotazioni"></Azioni>

@@ -1,0 +1,245 @@
+.Left {
+  & .AdminLeftForm {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    &--FirstBox {
+      display: flex;
+      padding-top: 15px;
+      flex-direction: column;
+
+      & .Bars {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        font-size: 14px;
+        > i {
+          font-size: 16px;
+          font-weight: 300;
+          cursor: pointer;
+        }
+      }
+      &--Box {
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 10px 20px;
+        padding-right: 30px;
+        cursor: pointer;
+        &:first-child {
+          padding-left: 30px;
+          padding-bottom: 20px;
+        }
+        &--active {
+          color: #0078ff;
+          padding: 10px 20px;
+          padding-right: 30px;
+          background-color: #f3f3f4;
+          cursor: pointer;
+          box-shadow: inset 8px 0px 0px -4px #0078ff;
+          &--Skinsvg {
+            min-height: 22px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            & span {
+              font-weight: 500;
+            }
+            & svg {
+              & circle {
+                fill: #dce1e6;
+              }
+              width: 22px;
+              height: 22px;
+              margin-right: 15px;
+            }
+          }
+        }
+        &--Skinsvg {
+          min-height: 22px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          & span {
+            width: 105px;
+            font-size: 14px;
+            font-weight: 400;
+          }
+          & svg {
+            & circle {
+              fill: #dce1e6;
+            }
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+    &--LastBox {
+      display: flex;
+
+      flex-direction: column;
+
+      &--Box {
+        animation: SlowShow 0.7s;
+        padding: 10px 15px;
+        padding-left: 25px;
+        border-top: 1px solid #ebeced;
+        font-family: "Roboto";
+        width: 100%;
+        font-size: 14px;
+        font-weight: 400;
+        color: #5c5c5c;
+
+        > i {
+          padding-right: 10px;
+          font-size: 16px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  @keyframes SlowShow {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    70% {
+      opacity: 0;
+    }
+    75% {
+      display: none;
+      opacity: 0.5;
+    }
+    85% {
+      display: none;
+      opacity: 0.7;
+    }
+    95% {
+      display: none;
+      opacity: 0.8;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  &--Min {
+    & .AdminLeftForm {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      &--FirstBox {
+        display: flex;
+        padding-top: 15px;
+        flex-direction: column;
+        & span {
+          display: none;
+        }
+        & .Bars {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-family: "Roboto", sans-serif;
+          font-weight: bold;
+          font-size: 14px;
+          > i {
+            font-size: 16px;
+            padding-left: 11px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            cursor: pointer;
+          }
+        }
+        &--Box {
+          font-family: "Roboto", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          cursor: pointer;
+          width: 100%;
+          &--Skinsvg {
+            min-height: 22px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            & span {
+              display: block;
+              width: calc(2.2ch + 5px);
+              overflow: hidden;
+              white-space: nowrap;
+              padding-left: 5px;
+            }
+            & svg {
+              display: none;
+
+              & circle {
+                fill: #dce1e6;
+                width: 22px;
+                height: 22px;
+              }
+              width: 22px;
+              height: 22px;
+              margin-right: 15px;
+            }
+          }
+          &--active {
+            color: #0078ff;
+            border-left: 2px solid #0578fc;
+            &--Skinsvg {
+              min-height: 22px;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              & span {
+                display: block;
+                width: 2.2ch;
+                overflow: hidden;
+                white-space: nowrap;
+              }
+              & svg {
+                display: none;
+
+                & circle {
+                  fill: #dce1e6;
+                }
+                width: 22px;
+                height: 22px;
+                margin-right: 15px;
+              }
+            }
+          }
+        }
+      }
+      &--LastBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &--Box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 20px 0;
+          border-top: 1px solid #ebeced;
+          font-family: "Roboto", sans-serif;
+          width: 100%;
+          font-size: 14px;
+          font-weight: 400;
+          & span {
+            display: none;
+          }
+          > i {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

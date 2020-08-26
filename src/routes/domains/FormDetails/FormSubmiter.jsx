@@ -126,6 +126,7 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
+              this.props.setButtonsSupport,
               this.props.TicketByTcketId.id,
               4,
               () => {},
@@ -145,6 +146,7 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
+              this.props.setButtonsSupport,
               this.props.TicketByTcketId.id,
               5,
               () => {},
@@ -167,6 +169,7 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
+                this.props.setButtonsSupport,
                 this.props.TicketByTcketId.id,
                 3,
                 () => {},
@@ -180,6 +183,7 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
+                this.props.setButtonsSupport,
                 this.props.TicketByTcketId.id,
                 5,
                 () => {},

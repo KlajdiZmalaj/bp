@@ -6,6 +6,7 @@ import { switchUserStatus, transferMoney } from "services/auth";
 import { capitalize, get } from "lodash";
 import { message } from "antd";
 import SingleUser2 from "./SingleUser2";
+import { numberWithCommas } from "utils/HelperFunc";
 class SingleUser extends Component {
   state = {
     label: "deposit",
@@ -43,18 +44,10 @@ class SingleUser extends Component {
   componentDidMount() {}
   render() {
     const { user } = this.props;
-    const { val, isPopUpActive, valueInput } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
-    // console.log("role", role);
     return (
       <React.Fragment>
         <div
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (user.children && user.children.length > 0)
-              this.setState({ displayChildren: !this.state.displayChildren });
-          }}
           className={
             "userList--noDoc__user singleUser level" +
             (this.props.level || "1") +
@@ -66,6 +59,22 @@ class SingleUser extends Component {
           <div className="body">
             <span>#{user.id}</span>
             <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (
+                  user.children &&
+                  user.children.length > 0 &&
+                  !e.target.classList.contains("fa-ey") &&
+                  !e.target.classList.contains(" fa-lock-open") &&
+                  !e.target.classList.contains(" fa-lock") &&
+                  e.target.tagName != "BUTTON"
+                ) {
+                  this.setState({
+                    displayChildren: !this.state.displayChildren,
+                  });
+                }
+              }}
               style={{
                 paddingLeft: `calc(10px * ${this.props.level || 1})`,
               }}
@@ -114,7 +123,7 @@ class SingleUser extends Component {
             </span>
             <span>{capitalize(user.rag_soc)}</span>
             <span className="text-right justify-content-end">
-              {user.wallet}€
+              {numberWithCommas(user.wallet)}€
             </span>
             <span className="text-right justify-content-start">
               {user.city}
@@ -127,7 +136,11 @@ class SingleUser extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("deposit");
+                  this.props.setDepositoPopup({
+                    val: "deposit",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Deposit
@@ -136,14 +149,18 @@ class SingleUser extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("withdraw");
+                  this.props.setDepositoPopup({
+                    val: "withdraw",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Addebito
               </button>
               {user.status == 1 ? (
                 <i
-                  className="fal fa-lock"
+                  className="fal fa-lock-open"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -155,7 +172,7 @@ class SingleUser extends Component {
                 ></i>
               ) : (
                 <i
-                  className="fal fa-lock-open"
+                  className="fal fa-lock"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -205,101 +222,6 @@ class SingleUser extends Component {
               </div>
             )}
         </div>
-
-        {isPopUpActive ? (
-          <React.Fragment>
-            {" "}
-            <div className="popUp">
-              <div className="title">{val}</div>
-              <p>
-                Il credito verrà {val == "deposit" ? "aggiunto" : "rimosso"} al{" "}
-                <span
-                  style={{
-                    paddingLeft: `calc(10px * ${this.props.level || 1})`,
-                  }}
-                  className={
-                    "text-left justify-content-start userDropAnch" +
-                    (user.children &&
-                    user.children.length > 0 &&
-                    !this.state.displayChildren
-                      ? " isPlus"
-                      : " isMinus")
-                  }
-                >
-                  {user.username}{" "}
-                  {user.role === "agency" && (
-                    <i
-                      className={
-                        "fal fa-store" +
-                        (user.status === 1 ? " text-success" : " text-danger")
-                      }
-                    ></i>
-                  )}
-                  {user.role === "agent" && (
-                    <i
-                      className={
-                        "fas fa-user-tie" +
-                        (user.status === 1 ? " text-success" : " text-danger")
-                      }
-                    ></i>
-                  )}
-                  {user.role === "user" && (
-                    <i
-                      className={
-                        "fal fa-user" +
-                        (user.status === 1 ? " text-success" : " text-danger")
-                      }
-                    ></i>
-                  )}
-                </span>
-              </p>
-              <div className="inpgr">
-                <div className="inplabel">Amount</div>
-                <input
-                  type="number"
-                  placeholder="0.00€"
-                  onChange={(e) => {
-                    this.inpHandler(e);
-                  }}
-                />
-              </div>
-
-              <button
-                className="sendInput"
-                onClick={() => {
-                  transferMoney(
-                    user.id,
-                    valueInput,
-                    val,
-                    this.transferCallback,
-                    role
-                  );
-                }}
-              >
-                <i className="fa fa-check"></i> Conferma
-              </button>
-              <button
-                className="sendInput cancelInput"
-                onClick={() => {
-                  this.setPopUpFalse();
-                }}
-              >
-                <i className="fa fa-times"></i> Cancel
-              </button>
-              {user.status === 2 && (
-                <p className="info">
-                  <i className="fad fa-info-circle"></i> L'UTENTE È BLOCCATO
-                </p>
-              )}
-            </div>
-            <div
-              className="backDrop"
-              onClick={() => {
-                this.setPopUpFalse();
-              }}
-            ></div>
-          </React.Fragment>
-        ) : null}
       </React.Fragment>
     );
   }

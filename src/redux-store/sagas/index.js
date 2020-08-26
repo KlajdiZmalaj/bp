@@ -41,6 +41,13 @@ import {
   updateVisura,
   getUserByUserId,
   getAgentByUserId,
+  getSkins,
+  getFaturaDetails,
+  getAllServices,
+  sendMailFattura,
+  getAllFaturaBySearch,
+  getPaymentsForExcel,
+  getFatturaPdf,
 } from "./AuthSagas";
 
 import {
@@ -56,6 +63,13 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(AuthTypes.GET_PAYMENTS_FOR_EXCEL, getPaymentsForExcel),
+    takeLatest(AuthTypes.SEND_MAIL_FATTURA, sendMailFattura),
+    takeLatest(AuthTypes.GET_ALL_FATURA_BY_SEARCH, getAllFaturaBySearch),
+    takeLatest(AuthTypes.GET_ALL_SERVICES, getAllServices),
+    takeLatest(AuthTypes.GET_FATURA_DETAILS, getFaturaDetails),
+
+    takeLatest(AuthTypes.GET_SKINS, getSkins),
     takeLatest(AuthTypes.UPDATE_VISURA, updateVisura),
     takeLatest(AuthTypes.ADD_VISURE, addVisure),
     // AUTH h

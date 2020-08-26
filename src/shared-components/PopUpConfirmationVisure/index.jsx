@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import images from "../../themes/images";
 
 const PopUpConfirmationVisure = ({
+  setButtonsSupport,
   popUpDataVisure,
   VisureByVisureId,
   role,
@@ -12,13 +13,11 @@ const PopUpConfirmationVisure = ({
 }) => {
   const [active, setState] = useState(false);
   useEffect(() => {
-    console.log("popUpData changed", popUpDataVisure, VisureByVisureId);
     if (popUpDataVisure.id) {
       getVisureByVisureId(popUpDataVisure.id);
       setState(true);
     }
   }, [popUpDataVisure, VisureByVisureId, getVisureByVisureId]);
-  console.log("ca ka visuree", VisureByVisureId, popUpDataVisure);
   return (
     VisureByVisureId &&
     Object.keys(VisureByVisureId).length > 1 &&
@@ -49,6 +48,7 @@ const PopUpConfirmationVisure = ({
               className="Eseguito"
               onClick={() => {
                 userConfirmation(
+                  setButtonsSupport,
                   popUpDataVisure.id,
                   role === "support" ? 4 : 3,
                   setState,
@@ -64,6 +64,7 @@ const PopUpConfirmationVisure = ({
               className="Annullato"
               onClick={() => {
                 userConfirmation(
+                  setButtonsSupport,
                   popUpDataVisure.id,
                   5,
                   () => {},

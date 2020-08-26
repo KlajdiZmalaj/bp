@@ -45,7 +45,6 @@ export const logoutApi = () =>
       ...skin,
     })
     .then((res) => {
-      console.log("ca ka res", res);
       if (res.status === 200) {
         unSubscribeSocketUser(
           JSON.parse(localStorage.getItem("accountDataB")) &&
@@ -134,8 +133,16 @@ export const fetchBolletiniBianchi = (
     })
     .catch((error) => ({ error }));
 
-export const fetchPayments = (username, from, to, page_number, limit) =>
-  axios
+export const fetchPayments = (
+  username,
+  from,
+  to,
+  page_number,
+  limit,
+  skin_id,
+  excel
+) => {
+  return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
@@ -148,12 +155,13 @@ export const fetchPayments = (username, from, to, page_number, limit) =>
       ...(username ? { username: username } : {}),
       ...(from ? { from } : null),
       ...(to ? { to } : null),
-      page_number,
-      limit,
-      ...skin,
+      ...(page_number ? { page_number } : {}),
+      ...(limit ? { limit } : {}),
+      ...(skin_id ? { skin_id } : { ...skin }),
+      ...(excel === "special" ? { excel } : {}),
     })
     .catch((error) => ({ error }));
-
+};
 export const fetchRechargeMobile = (service_id, tel_no) =>
   axios
     .create({
@@ -398,7 +406,7 @@ export const fetchBarcodeData = (barcode) => {
     })
     .catch((error) => ({ error }));
 };
-export const changeAgentReq = (aaa, agent_id) => {
+export const changeAgentReq = (aaa, agent_id, skin_id) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -410,7 +418,7 @@ export const changeAgentReq = (aaa, agent_id) => {
     })
     .post(`/agency/${agent_id}/changeAgent`, {
       agent_id: aaa,
-      ...skin,
+      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
 };
@@ -432,7 +440,7 @@ export const fetchCodice = (barcode, service) =>
       },
     })
     .catch((error) => ({ error }));
-export const fetchAgents = () =>
+export const fetchAgents = (skin_id) =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -444,12 +452,12 @@ export const fetchAgents = () =>
     })
     .get("/agents", {
       params: {
-        ...skin,
+        ...(skin_id ? { skin_id } : skin),
       },
     })
     .catch((error) => ({ error }));
 
-export const switchUserStatus = (id, status, c, role) => {
+export const switchUserStatus = (id, status, c, role, backOffice) => {
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -460,12 +468,12 @@ export const switchUserStatus = (id, status, c, role) => {
       },
     })
     .post(
-      role === "main_admin"
+      (role === "main_admin" && !backOffice) || backOffice === -1
         ? `/skins/${id}/changeStatus`
         : `/users/${id}/changeStatus`,
       {
         ...{ status },
-        ...skin,
+        ...(backOffice ? (backOffice != -1 ? skin : backOffice) : skin),
       }
     )
     .then(
@@ -477,7 +485,7 @@ export const switchUserStatus = (id, status, c, role) => {
       (data) => {}
     );
 };
-export const transferMoney = (id, amount, type, c, role) => {
+export const transferMoney = (id, amount, type, c, role, backOffice) => {
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -488,31 +496,40 @@ export const transferMoney = (id, amount, type, c, role) => {
       },
     })
     .post(
-      role === "main_admin"
+      (role === "main_admin" && !backOffice) || backOffice === -1
         ? `/skin/transferMoney/${id}`
         : `/users/${id}/transfer`,
       {
         ...{ amount },
         ...{ type },
-        ...skin,
+        ...(backOffice ? (backOffice != -1 ? skin : backOffice) : skin),
       }
     )
     .then(
       (data) => {
         if (data && data.status === 200) {
           c();
+          notification["success"]({
+            message: "Azione completata",
+            description: data?.data?.message,
+            placement: "bottomRight",
+          });
           // /skin/transferMoney/{skin_id}
           // this.setState({ isPopUpActive: false });
           // this.props.getUsers();
         }
-        console.log("succData", data);
       },
-      (data) => {
-        console.log("err data", data);
-      }
-    );
+      (data) => {}
+    )
+    .catch((err) => {
+      notification["error"]({
+        message: "Something wrong happened",
+        placement: "bottomRight",
+        duration: "5",
+      });
+    });
 };
-export const fetchUserDetails = (user_id) => {
+export const fetchUserDetails = (user_id, skin_id) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -524,7 +541,7 @@ export const fetchUserDetails = (user_id) => {
     })
     .get(`agency/${user_id}`, {
       params: {
-        ...skin,
+        ...(skin_id ? (skin_id != -1 ? { skin_id } : skin) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -548,7 +565,8 @@ export const updateUsers = (
   a_country,
   a_rent,
   password,
-  confirm_password
+  confirm_password,
+  skin_id
 ) => {
   return axios
     .create({
@@ -579,7 +597,7 @@ export const updateUsers = (
       a_rent,
       password,
       confirm_password,
-      ...skin,
+      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
 };
@@ -900,6 +918,8 @@ export const sendVisureDetailsReq = (
 };
 
 export const userConfirmation = (
+  setButtonsSupport,
+
   ticket_id,
   status,
   c,
@@ -923,7 +943,7 @@ export const userConfirmation = (
     })
     .then((res) => {
       if (res.status === 200 && c) {
-        window.setButtonsSupport(false);
+        setButtonsSupport(false);
         c(false);
         notification.open({
           message: "Hai ricevuto una notifica",
@@ -967,7 +987,6 @@ export const uploadPdf = (id, document, isVisura) => {
       document,
     })
     .then((res) => {
-      console.log("res", res);
       if (res.status === 200) {
         notification.open({
           message: "Upload Notifica!",
@@ -976,7 +995,6 @@ export const uploadPdf = (id, document, isVisura) => {
       }
     })
     .catch(function (error) {
-      console.log("error", error);
       notification.open({
         message: "Failed while uploading!",
         description: "",
@@ -1020,7 +1038,6 @@ export const updateVisuraReq = (
   data_di_nascita,
   luogo_di_nascita
 ) => {
-  console.log(visura_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1063,7 +1080,7 @@ export const updateVisuraReq = (
     )
     .catch((error) => ({ error }));
 };
-export const getAgentByUserIdReq = ({ user_id }) => {
+export const getAgentByUserIdReq = (user_id, skin_id) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1075,12 +1092,12 @@ export const getAgentByUserIdReq = ({ user_id }) => {
     })
     .get(`/agent/${user_id}`, {
       params: {
-        ...skin,
+        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
       },
     })
     .catch((error) => ({ error }));
 };
-export const getUserByUserIdReq = ({ user_id }) => {
+export const getUserByUserIdReq = (user_id, skin_id) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1092,8 +1109,110 @@ export const getUserByUserIdReq = ({ user_id }) => {
     })
     .get(`/user/${user_id}`, {
       params: {
-        ...skin,
+        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
       },
+    })
+    .catch((error) => ({ error }));
+};
+export const getSkinsReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/skins", {
+      ...skin,
+    })
+    .catch((error) => ({ error }));
+};
+export const getFaturaDetailsReq = (user_id, year, month) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post("/users/report", {
+      ...skin,
+      user_id,
+      year,
+      month,
+    })
+    .catch((error) => ({ error }));
+};
+export const getAllFaturaBySearchReq = (username, year, month) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/fatture", {
+      params: {
+        ...skin,
+        username: username ? username : null,
+        year: year ? year : null,
+        month: month ? month : null,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const getAllServicesReq = (skin_id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/allServices", {
+      params: {
+        skin_id,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const sendMailFatturaReq = (file_name) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post("/mailFattura", {
+      ...skin,
+      file_name,
+    })
+    .catch((error) => ({ error }));
+};
+export const printFatturaReq = (file_name) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post("/printFattura", {
+      ...skin,
+      file_name,
     })
     .catch((error) => ({ error }));
 };

@@ -1,0 +1,100 @@
+.RightFormModal {
+  position: fixed;
+  width: 80vw;
+  top: 71px;
+  margin: calc((20vh - 71px) / 2) 10vw;
+  height: 80vh;
+  z-index: 5;
+  -webkit-box-shadow: 0 3px 6px 1px #0000008c;
+          box-shadow: 0 3px 6px 1px #0000008c;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown {
+  background-color: #ffffff;
+  padding: 4vh 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 7vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 6;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown--Submit {
+  margin-top: 4vh;
+  font-weight: 500;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
+  margin: 4vh 27px;
+  height: 7vh;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
+  margin-top: 7vh;
+}
+
+.RightFormModal .Header {
+  position: absolute;
+  width: calc(100% - 8.25vw);
+  z-index: 7;
+  background-color: #ffffff;
+  left: 0.1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 3vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.6vw + 1.6vh);
+  font-family: "Roboto";
+  height: 7vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-bottom: 1px solid #c53f3f;
+}
+
+.RightFormModal .Close {
+  position: absolute;
+  z-index: 7;
+  background: #c53f3f;
+  left: calc(100% - 8.9vw);
+  width: 9vw;
+  height: 7vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(1.6vw + 1.6vh);
+  font-family: "Roboto";
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.RightFormModal .Close i {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: calc(1.6vw + 1.6vh);
+}
+
+.RightFormModal .backDrop {
+  top: 71px;
+  height: calc(100vh - 71px);
+  width: calc(100vw - 51px);
+  left: 51px;
+  z-index: 4;
+}
+/*# sourceMappingURL=aRFWD.css.map */

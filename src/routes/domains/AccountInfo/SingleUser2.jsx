@@ -34,9 +34,6 @@ class SingleUser2 extends Component {
   switchLabel = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
-  setTransferItem = (val) => {
-    this.setState({ val, isPopUpActive: true });
-  };
   setPopUpFalse = () => {
     this.setState({ isPopUpActive: false });
   };
@@ -47,12 +44,6 @@ class SingleUser2 extends Component {
     return (
       <React.Fragment>
         <div
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (user.children && user.children.length > 0)
-              this.setState({ displayChildren: !this.state.displayChildren });
-          }}
           className={
             "userList--noDoc__user singleUser" +
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
@@ -64,6 +55,22 @@ class SingleUser2 extends Component {
           <div className="body">
             <span>#{user.id}</span>
             <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (
+                  user.children &&
+                  user.children.length > 0 &&
+                  !e.target.classList.contains("fa-ey") &&
+                  !e.target.classList.contains(" fa-lock-open") &&
+                  !e.target.classList.contains(" fa-lock") &&
+                  e.target.tagName != "BUTTON"
+                ) {
+                  this.setState({
+                    displayChildren: !this.state.displayChildren,
+                  });
+                }
+              }}
               className={
                 "text-left justify-content-start userDropAnch" +
                 (user.children &&
@@ -125,7 +132,11 @@ class SingleUser2 extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("deposit");
+                  this.props.setDepositoPopup({
+                    val: "deposit",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Deposit
@@ -134,14 +145,18 @@ class SingleUser2 extends Component {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  this.setTransferItem("withdraw");
+                  this.props.setDepositoPopup({
+                    val: "withdraw",
+                    data: user,
+                    visibility: true,
+                  });
                 }}
               >
                 Addebito
               </button>
               {user.status == 1 ? (
                 <i
-                  className="fal fa-lock"
+                  className="fal fa-open"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -153,7 +168,7 @@ class SingleUser2 extends Component {
                 ></i>
               ) : (
                 <i
-                  className="fal fa-lock-open"
+                  className="fal fa-lock-lock"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();

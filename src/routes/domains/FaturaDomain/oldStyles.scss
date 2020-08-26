@@ -1,0 +1,302 @@
+.Fatura {
+  background: #ffffff;
+  position: relative;
+  width: 595px;
+  height: 842px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-direction: column;
+  &--Background {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &--Body--BeforeFooter {
+    height: 38px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 34px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 9px;
+    font-family: "Roboto";
+    z-index: 1;
+    & div:first-child {
+      width: 414px;
+    }
+  }
+  &--Body {
+    height: 627px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px 34px;
+    &--BottomPart {
+      min-height: 73px;
+      top: -43px;
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1;
+      &--Left {
+        display: flex;
+        width: calc(100% - 85px);
+        height: 100%;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        & .Data {
+          font-size: 12px;
+          font-weight: 500;
+          font-family: "Roboto";
+          color: #000000;
+          height: 33%;
+        }
+      }
+      &--Right {
+        display: flex;
+        width: auto;
+        margin-left: 8px;
+        flex-direction: column;
+        height: 100%;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+        top: -1.5px;
+        & .Data {
+          font-size: 14px;
+          font-weight: 500;
+          font-family: "Roboto";
+          color: #e44200;
+          height: 33%;
+        }
+      }
+    }
+    &--CenterTable {
+      width: 100%;
+      height: 362.53px;
+      position: relative;
+      top: -5px;
+      z-index: 1;
+      & table {
+        width: 100%;
+        height: auto;
+        border-collapse: collapse;
+        & tr,
+        td,
+        tbody,
+        thead {
+          border: 1px solid #8c8b8b;
+          border-collapse: collapse;
+        }
+        & thead {
+          background: #bababa;
+          & td {
+            padding: 5px 4px;
+            font-size: 10px;
+            font-weight: 400;
+            color: #161615;
+            font-family: "Roboto";
+          }
+        }
+        & tbody {
+          & td {
+            padding: 2.5px 4px;
+            font-size: 10px;
+            font-weight: 400;
+            color: #161615;
+            font-family: "Roboto";
+          }
+          & tr {
+            &:nth-child(n + 9) {
+              background: rgba(228, 66, 0, 0.1);
+            }
+          }
+        }
+      }
+    }
+    &--TopPart {
+      width: 100%;
+      height: 121px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      &--Left {
+        z-index: 1;
+        height: 88px;
+        width: 144px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 15px;
+        & .head {
+          font-weight: bold;
+          font-size: 12px;
+          font-family: "Roboto", sans-serif;
+        }
+        & .totale {
+          font-weight: 500;
+          font-size: 14px;
+          font-family: "Roboto", sans-serif;
+          color: var(--accent-bg);
+        }
+        & .Prepagato {
+          font-weight: 500;
+          font-size: 10px;
+          font-family: "Roboto", sans-serif;
+          color: var(--accent-bg);
+        }
+        & .data {
+          font-weight: 400;
+          font-size: 10px;
+          font-family: "Roboto", sans-serif;
+        }
+      }
+      &--Right {
+        width: 280.97px;
+        height: 121px;
+        border: 1px solid #d2d1d1;
+        z-index: 1;
+        border-radius: 8.72px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 0 25px;
+        & .head {
+          font-weight: 500;
+          font-size: 10px;
+          font-family: "Roboto";
+        }
+        & .data {
+          font-weight: 300;
+          font-size: 10px;
+          font-family: "Roboto";
+        }
+      }
+    }
+  }
+  &--footer {
+    width: 100%;
+    height: 56.69px;
+    background: var(--accent-bg);
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding: 7px 25px;
+    z-index: 1;
+    & i {
+      width: 11.11px;
+      height: 7.11px;
+      padding-right: 4px;
+    }
+    &--Left {
+      & svg {
+        fill: #ffffff;
+        margin-right: 4px;
+        position: relative;
+        top: -0.5px;
+      }
+      & span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & svg {
+          margin-left: 8px;
+        }
+      }
+      width: 270px;
+      font-size: 7.14px;
+      font-weight: 400;
+      font-family: "Roboto", sans-serif;
+      & div {
+        height: 11px;
+        display: flex;
+        align-items: center;
+      }
+      & div:first-child {
+        padding-left: 11px;
+        font-weight: 500;
+      }
+      & div:last-child {
+        & span:first-child {
+          padding-right: 5px;
+          width: 11.11px;
+          height: 7.11px;
+
+          position: relative;
+          top: -0.5px;
+        }
+      }
+    }
+
+    &--Right {
+      width: 80px;
+      font-size: 7.02px;
+      font-weight: 400;
+      font-family: "Roboto", sans-serif;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      flex-direction: column;
+      & div:nth-child(2) {
+        float: right;
+      }
+      & div:first-child {
+        padding-right: 2px;
+      }
+      & svg {
+        width: 17.01px;
+        height: 17.01px;
+        margin-left: 2px;
+        margin-top: 4px;
+        fill: #ffffff;
+      }
+    }
+  }
+  & .Head {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 102px;
+    margin-bottom: 20px;
+    width: auto;
+    box-sizing: border-box;
+    position: relative;
+
+    & .Fatura--Logo {
+      width: 223px;
+      height: 102px;
+      padding: 25px 30px;
+      padding-bottom: 15px;
+      position: relative;
+      left: -8px;
+    }
+    & .Fatura--RightPart {
+      width: 206px;
+      padding: 30px 20px;
+      padding-bottom: 15px;
+      padding-right: 34px;
+      padding-left: 0;
+      font-size: 7px;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif;
+    }
+  }
+}
+.Container .Fatura {
+  display: none;
+}

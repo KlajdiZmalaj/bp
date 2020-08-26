@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 const CountUp = ({ nr }) => {
   const [count, setstate] = useState(0);
-  console.log("ca ka count", nr);
   useEffect(() => {
     setstate(0);
     if (parseInt(nr) > 0) {

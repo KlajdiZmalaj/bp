@@ -1,0 +1,254 @@
+.calendarWrapper {
+  box-shadow: 0px 5px 17px 5px rgba(92, 92, 92, 0.25);
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 2;
+  height: 390px;
+  width: 460px;
+  & .rdrDayNumber {
+    font-weight: 600;
+  }
+  & .buttons {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    background-color: #ffffff;
+    height: 45px;
+    padding: 0 15px !important;
+
+    align-items: center;
+    & button {
+      border: none;
+      background: transparent;
+      height: 75%;
+      margin: auto 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 20px;
+      color: #ffffff;
+      font-weight: 500;
+      &:first-child {
+        background-color: #c53f3f;
+      }
+      &:nth-child(2) {
+        background-color: #00b850;
+      }
+    }
+  }
+  & i {
+    font-weight: 400;
+    font-style: normal;
+  }
+  & .rdrInputRanges {
+    height: 39px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .rdrInputRange:nth-child(1) {
+      display: none;
+    }
+    & .rdrInputRange:nth-child(2) {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      padding: 2px 20px;
+
+      justify-content: space-between;
+      border-bottom: 0.7px solid #c7c7c7;
+
+      align-items: center;
+      &::before {
+        content: "Giorni Da Oggi";
+        font-weight: bold;
+      }
+      & span {
+        display: none;
+      }
+    }
+  }
+  & .rdrCalendarWrapper.rdrDateRangeWrapper {
+    position: relative;
+    width: 285px;
+  }
+  & .rdrDefinedRangesWrapper {
+    width: 175px;
+    background: #eaeaea;
+    & .rdrStaticRanges {
+      & .rdrStaticRange {
+        background: #eaeaea;
+        border-bottom: 0.7px solid #c7c7c7;
+      }
+    }
+  }
+  & .dal {
+    & .ant-form-item-children {
+      width: 100%;
+    }
+  }
+  & .rdrMonthAndYearWrapper {
+    height: 33px;
+    padding-top: 0;
+  }
+  & .rdrDateDisplayWrapper {
+    position: absolute;
+    width: 59%;
+    font-size: 11px;
+    left: -60.5%;
+    top: 59%;
+    background-color: transparent;
+    min-height: 93px;
+    & .rdrDateDisplay {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+      margin: 0 auto;
+      margin-top: 10px;
+      & .rdrDateInput {
+        width: 80%;
+        margin: 4px 0;
+      }
+    }
+
+    & .rdrMonths.rdrMonthsHorizontal {
+      height: 290px;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .calendarWrapper {
+    height: 280px;
+    width: 375px;
+    & .buttons {
+      height: 35px;
+      & button {
+        font-size: 15px;
+      }
+    }
+    & .rdrCalendarWrapper.rdrDateRangeWrapper {
+      padding-left: 5px;
+      min-height: 250px;
+      width: 240px;
+    }
+    & .rdrDateRangePickerWrapper {
+      width: 100%;
+    }
+    & .rdrMonths.rdrMonthsHorizontal {
+      & .rdrMonth {
+        padding: 0 0;
+        & .rdrWeekDays {
+          width: 100%;
+          margin: 0;
+        }
+        & .rdrMonthName {
+          display: none;
+        }
+      }
+      .rdrDay {
+        line-height: 2.5rem;
+        height: 2.5em;
+        font-size: 12px;
+        width: calc(100% / 7);
+      }
+    }
+    & .rdrMonthAndYearWrapper {
+      width: 100%;
+      & button {
+        margin: 0 2px;
+      }
+    }
+    & i {
+      font-size: 11px;
+      font-weight: 400;
+    }
+    & .rdrDefinedRangesWrapper {
+      width: 127px;
+    }
+    & .rdrDateDisplayWrapper {
+      width: 56%;
+      font-size: 11px;
+      left: -56%;
+      top: 61%;
+      background-color: transparent;
+      min-height: 93px;
+      & input {
+        height: 25px;
+        font-size: 11px;
+      }
+      & .rdrDateDisplay .rdrDateInput {
+        width: 80%;
+      }
+    }
+
+    & .rdrStaticRangeLabel {
+      padding: 5px 10px;
+    }
+    & .rdrInputRanges {
+      & .rdrInputRange:nth-child(2) {
+        padding: 5px 10px;
+        font-weight: 400;
+        font-size: 12px;
+        & .rdrInputRangeInput {
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          font-weight: 400;
+          font-size: 11px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 4px;
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 452px) {
+  .bodyAdmin {
+    & .calendarWrapper {
+      position: fixed !important;
+      left: 0;
+      margin: 150px calc((100vw - 375px) / 2) !important;
+    }
+  }
+  .calendarWrapper {
+    position: fixed !important;
+    left: 0;
+    margin: 150px calc((100vw - 375px) / 2) !important;
+  }
+}
+@media (max-width: 370px) {
+  .bodyAdmin {
+    & .calendarWrapper {
+      zoom: 0.9;
+      top: calc((100% - 280px) / 4) !important;
+      left: calc((100% - 375px) / 2) !important;
+      margin: 0 !important;
+    }
+  }
+  .calendarWrapper {
+    zoom: 0.9;
+    top: calc((100% - 280px) / 4) !important;
+    left: calc((100% - 375px) / 2) !important;
+    margin: 0 !important;
+  }
+}
+@media (max-width: 350px) {
+  .bodyAdmin {
+    & .calendarWrapper {
+      zoom: 0.8;
+    }
+  }
+  .calendarWrapper {
+    zoom: 0.8;
+  }
+}

@@ -6,7 +6,7 @@ import AuthActions from "redux-store/models/auth";
 import MainActions from "redux-store/models/main";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-
+import { numberWithCommas } from "utils/HelperFunc";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -177,7 +177,7 @@ class Header extends Component {
                 <div className="name">{get(accountInfo, "profile.name")}</div>
                 {isLoggedin && (
                   <div className="money">
-                    {get(accountInfo, "profile.wallet")}€
+                    {numberWithCommas(get(accountInfo, "profile.wallet"))}€
                   </div>
                 )}
               </div>

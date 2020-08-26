@@ -14,29 +14,14 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
+import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
+import ModalResPForTabMain from "shared-components/ModalResponsiveForTables/ModalResPForTabMain";
+import SpanFormater from "shared-components/SpanFormater/SpanFormater";
+import { numberWithCommas } from "utils/HelperFunc";
+import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
+import Excel from "./Excel";
 const { Option } = Select;
-const ModalRow = ({ title, data }) => (
-  <div
-    className={`TranzacioniModalResponsive--Data--Row--${
-      title === "Date/Ora" ? "Data" : title
-    }`}
-  >
-    <span
-      className={`TranzacioniModalResponsive--Data--Row--${
-        title === "Date/Ora" ? "Data" : title
-      }--Header`}
-    >
-      {title}
-    </span>
-    <span
-      className={`TranzacioniModalResponsive--Data--Row--${
-        title === "Date/Ora" ? "Data" : title
-      }--Info`}
-    >
-      {data}
-    </span>
-  </div>
-);
+
 class Transazioni extends React.Component {
   state = {
     dashboardFromFilterTop: true,
@@ -118,6 +103,23 @@ class Transazioni extends React.Component {
       visible: false,
     });
   };
+  componentDidUpdate(prevPrps) {
+    const { username, from, to, perPage } = this.state;
+    const { activeSkinId, usernames } = this.props;
+    if (
+      this.props.activeSkinId != prevPrps.activeSkinId &&
+      this.props.forAdmin
+    ) {
+      this.props.getPayments(
+        username != "" ? username : "",
+        from || "",
+        to || "",
+        1,
+        perPage ? perPage : 10,
+        activeSkinId
+      );
+    }
+  }
 
   handleCancel = (e) => {
     this.props.setPaymentsFromCode({});
@@ -131,8 +133,16 @@ class Transazioni extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
-        this.props.getPayments(username, from || "", to || "", 1, perPage);
+        this.props.forAdmin
+          ? this.props.getPayments(
+              username,
+              from || "",
+              to || "",
+              1,
+              perPage,
+              this.props.activeSkinId
+            )
+          : this.props.getPayments(username, from || "", to || "", 1, perPage);
       }
     });
   };
@@ -148,13 +158,22 @@ class Transazioni extends React.Component {
         from: fromDate,
         to: fromDate,
       });
-      this.props.getPayments(
-        username != "" ? username : "",
-        fromDate,
-        fromDate,
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            fromDate,
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            fromDate,
+            1,
+            perPage
+          );
     }
     if (filter === 1) {
       const fromDate = moment().subtract(1, "days").format("YYYY-MM-DD");
@@ -166,13 +185,22 @@ class Transazioni extends React.Component {
         from: fromDate,
         to: toDate,
       });
-      this.props.getPayments(
-        username != "" ? username : "",
-        fromDate,
-        toDate,
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            fromDate,
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            toDate,
+            1,
+            perPage
+          );
     }
     if (filter === 2) {
       const fromDate = moment()
@@ -186,14 +214,22 @@ class Transazioni extends React.Component {
         from: fromDate,
         to: toDate,
       });
-
-      this.props.getPayments(
-        username != "" ? username : "",
-        fromDate,
-        toDate,
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            toDate,
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            fromDate,
+            toDate,
+            1,
+            perPage
+          );
     }
     if (filter === 3) {
       this.setState({
@@ -202,13 +238,22 @@ class Transazioni extends React.Component {
         fromLabel: "",
         toLabel: "",
       });
-      this.props.getPayments(
-        username != "" ? username : "",
-        "",
-        "",
-        1,
-        perPage
-      );
+      this.props.forAdmin
+        ? this.props.getPayments(
+            username != "" ? username : "",
+            "",
+            "",
+            1,
+            perPage,
+            this.props.activeSkinId
+          )
+        : this.props.getPayments(
+            username != "" ? username : "",
+            "",
+            "",
+            1,
+            perPage
+          );
     }
   };
 
@@ -238,11 +283,21 @@ class Transazioni extends React.Component {
     //     .format()
     // );
     const { username } = this.state;
-    this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
+
+    this.props.forAdmin
+      ? this.props.getPayments(
+          username != "" ? username : "",
+          "",
+          "",
+          1,
+          10,
+          this.props.activeSkinId
+        )
+      : this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { forAdmin } = this.props;
+    const { forAdmin, paymentsForExcel } = this.props;
     const {
       barcode,
       picker,
@@ -262,7 +317,6 @@ class Transazioni extends React.Component {
       name,
       modalDetails,
     } = this.state;
-    console.log("modalDetails", modalDetails);
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -288,11 +342,6 @@ class Transazioni extends React.Component {
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 
-    let options = [];
-
-    if (usernames && usernames.length > 0) {
-      options = usernames.map((user) => <Option key={user}>{user}</Option>);
-    }
     // console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
       payments &&
@@ -301,8 +350,11 @@ class Transazioni extends React.Component {
         return new Date(b.executed_date) - new Date(a.executed_date);
       });
     return (
-      <React.Fragment>
-        {!forAdmin && (
+      <div
+        className={`${forAdmin === true ? "" : "Container"}`}
+        style={forAdmin === true ? { width: "100%" } : { width: "auto" }}
+      >
+        {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
             <Overview
@@ -312,53 +364,57 @@ class Transazioni extends React.Component {
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&
-        this.props.screenWidth <= 1050 ? (
-          <div className="TranzacioniModalResponsive">
-            <div
-              className="backDrop"
-              onClick={() =>
+          this.props.screenWidth <= 1050 &&
+          forAdmin && (
+            <ModalResponsiveForTables
+              Close={(e) => {
                 this.setState({
                   modalDetails: "",
                   showModalResponsive: false,
-                })
+                });
+              }}
+              Rows={
+                <React.Fragment>
+                  <ModalRow
+                    title="Date Ora"
+                    data={moment(modalDetails.executed_date).format(
+                      "DD/MM/YYYY HH:mm:ss"
+                    )}
+                  />
+                  <ModalRow title="Barcode" data={modalDetails.barcode} />
+                  <ModalRow title="User" data={modalDetails.agency_name} />
+                  <ModalRow title="Service" data={modalDetails.service_name} />
+                  <ModalRow
+                    title="Importo"
+                    data={numberWithCommas(modalDetails.price1000)}
+                  />
+                  <ModalRow
+                    title="Commissione"
+                    data={modalDetails.commissione}
+                  />
+                  <ModalRow
+                    title="Proviggione"
+                    data={modalDetails.percentage}
+                  />
+                  <ModalRow title="Saldo" data={modalDetails.saldo} />{" "}
+                </React.Fragment>
               }
-            ></div>
-            <div className="TranzacioniModalResponsive--Data">
-              <div className="TranzacioniModalResponsive--Data--Header">
-                <div className="TranzacioniModalResponsive--Data--Header--Title">
-                  Dettagli completi per la riga della tabella
-                </div>
-                <div
-                  className="TranzacioniModalResponsive--Data--Header--Close"
-                  onClick={() =>
-                    this.setState({
-                      modalDetails: "",
-                      showModalResponsive: false,
-                    })
-                  }
-                >
-                  x
-                </div>
-              </div>
-
-              <div className="TranzacioniModalResponsive--Data--Row">
-                <ModalRow
-                  title="Date/Ora"
-                  data={moment(modalDetails.executed_date).format(
-                    "DD/MM/YYYY HH:mm:ss"
-                  )}
-                />
-                <ModalRow title="Barcode" data={modalDetails.barcode} />
-                <ModalRow title="User" data={modalDetails.agency_name} />
-                <ModalRow title="Service" data={modalDetails.service_name} />
-                <ModalRow title="Importo" data={modalDetails.price1000} />
-                <ModalRow title="Commissione" data={modalDetails.commissione} />
-                <ModalRow title="Proviggione" data={modalDetails.percentage} />
-                <ModalRow title="Saldo" data={modalDetails.saldo} />
-              </div>
-            </div>
-          </div>
-        ) : null}
+            />
+          )}
+        {this.state.showModalResponsive === true &&
+          this.props.screenWidth <= 800 &&
+          !forAdmin && (
+            <ModalResPForTabMain
+              Close={(e) => {
+                this.setState({
+                  modalDetails: "",
+                  showModalResponsive: false,
+                });
+              }}
+              mobilePopUpData={modalDetails}
+              exception={"sign"}
+            />
+          )}
         <div className="container-fluid overview ">
           {!forAdmin && <Azioni active="transazioni"></Azioni>}
 
@@ -396,7 +452,8 @@ class Transazioni extends React.Component {
                   className="filters"
                 >
                   {(get(accountInfo, "profile.role.name") === "super_admin" ||
-                    get(accountInfo, "profile.role.name") === "agent") && (
+                    get(accountInfo, "profile.role.name") === "agent" ||
+                    get(accountInfo, "profile.role.name") === "main_admin") && (
                     <div className="dal">
                       {
                         <Form.Item>
@@ -426,7 +483,11 @@ class Transazioni extends React.Component {
                                   : "Select"
                               }
                             >
-                              {options}
+                              {this.props.usernames &&
+                                this.props.usernames.length > 0 &&
+                                this.props.usernames.map((user) => (
+                                  <Option key={user}>{user}</Option>
+                                ))}
                             </Select>
                           )}
                         </Form.Item>
@@ -445,7 +506,7 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  {!forAdmin && (
+                  {!this.props.forAdmin && (
                     <div>
                       <button className="filterBtn" htmltype="submit">
                         Filter
@@ -476,7 +537,7 @@ class Transazioni extends React.Component {
                         >
                           <g className="a">
                             <circle className="b" cx="7" cy="7" r="7" />
-                            <circle className="c" cx="7" cy="7" r="5.5" />
+                            <circle className="c" cx="7" cy="7" r="4" />
                           </g>
                         </svg>
                       ) : (
@@ -500,14 +561,25 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
+                <Excel
+                  username={username}
+                  from={from}
+                  to={to}
+                  perPage={perPage}
+                  payments={paymentsForExcel}
+                />
+
                 {payments.message && (
                   <div className="alert alert-danger text-center">
                     {payments.message}
                   </div>
                 )}
-                {loadingPayments && (
-                  <img className="loader" src={images.loader}></img>
-                )}
+                {loadingPayments &&
+                  (forAdmin ? (
+                    <div className="loaderAdmin"></div>
+                  ) : (
+                    <img className="loader" src={images.loader}></img>
+                  ))}
                 {!loadingPayments && (
                   <table className="transTable">
                     <thead>
@@ -527,6 +599,13 @@ class Transazioni extends React.Component {
                     </thead>
                     <tbody>
                       {!payments.message &&
+                      (paymentsO || []) &&
+                      paymentsO.length === 0 ? (
+                        <div class="NoData">
+                          <i class="fal fa-info-circle"></i>
+                          <span>No Data</span>
+                        </div>
+                      ) : (
                         (paymentsO || []).map((item, index) => {
                           return (
                             (
@@ -536,26 +615,46 @@ class Transazioni extends React.Component {
                               <tr
                                 key={index}
                                 onClick={(e) => {
+                                  if ([...e.target.classList].includes("bc")) {
+                                    getCodiceTicket(
+                                      item.barcode,
+                                      item.service_name
+                                    );
+                                  }
                                   if (e.target.tagName != "I") {
-                                    if (this.props.screenWidth <= 402) {
+                                    if (
+                                      forAdmin &&
+                                      this.props.screenWidth <= 402 &&
+                                      ![...e.target.classList].includes("bc")
+                                    ) {
+                                      this.setState({
+                                        showModalResponsive: true,
+                                        modalDetails: item,
+                                      });
+                                    } else if (
+                                      !forAdmin &&
+                                      this.props.screenWidth <= 800 &&
+                                      ![...e.target.classList].includes("bc")
+                                    ) {
                                       this.setState({
                                         showModalResponsive: true,
                                         modalDetails: item,
                                       });
                                     }
-                                    forAdmin
+                                    forAdmin &&
+                                    this.props.screenWidth >= 1050 &&
+                                    [...e.target.classList].includes("bc")
                                       ? this.activateModalForAdmin(item, index)
-                                      : this.showModal(
+                                      : [...e.target.classList].includes(
+                                          "bc"
+                                        ) &&
+                                        this.showModal(
                                           index,
                                           item.barcode,
                                           item.agency_name,
                                           item.agency_address,
                                           item.agency_phone
                                         );
-                                    getCodiceTicket(
-                                      item.barcode,
-                                      item.service_name
-                                    );
                                   }
                                 }}
                               >
@@ -574,9 +673,13 @@ class Transazioni extends React.Component {
                                     aria-hidden="true"
                                   ></i>{" "}
                                   <Tooltip title={item.agency_name}>
-                                    <span className="nomeTd">
-                                      {item.agency_name}
-                                    </span>
+                                    <SpanFormater
+                                      myClassName="nomeTd"
+                                      Word={item.agency_name}
+                                      size={35}
+                                      nrOfRows={1}
+                                      formatWord={true}
+                                    />
                                   </Tooltip>
                                 </td>
                                 <td className="wsNwp servizoTd">
@@ -595,9 +698,11 @@ class Transazioni extends React.Component {
                                           : "#0da90f",
                                     }}
                                   />
-                                  {item.price1000
-                                    ? slicedAmount(item.price1000 / 1000)
-                                    : "-"}
+                                  {numberWithCommas(
+                                    item.price1000
+                                      ? slicedAmount(item.price1000 / 1000)
+                                      : "-"
+                                  )}
                                   €
                                 </td>
                                 <td className="wsNwp right">
@@ -629,7 +734,8 @@ class Transazioni extends React.Component {
                               </tr>
                             )
                           );
-                        })}
+                        })
+                      )}
                     </tbody>
                   </table>
                 )}
@@ -638,13 +744,22 @@ class Transazioni extends React.Component {
                 <Pagination
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
-                    getPayments(
-                      username != "" ? username : "",
-                      from || "",
-                      to || "",
-                      e,
-                      perPage
-                    );
+                    forAdmin
+                      ? this.props.getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          e,
+                          perPage,
+                          this.props.activeSkinId
+                        )
+                      : getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          e,
+                          perPage
+                        );
                   }}
                   total={
                     Object.keys(paymentsPages).length === 0
@@ -656,13 +771,22 @@ class Transazioni extends React.Component {
                   defaultValue="10"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
-                    getPayments(
-                      username != "" ? username : "",
-                      from || "",
-                      to || "",
-                      1,
-                      e
-                    );
+                    forAdmin
+                      ? getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          1,
+                          e,
+                          this.props.activeSkinId
+                        )
+                      : getPayments(
+                          username != "" ? username : "",
+                          from || "",
+                          to || "",
+                          1,
+                          e
+                        );
                   }}
                 >
                   <Option value={10}>10 / Pagina</Option>
@@ -751,7 +875,7 @@ class Transazioni extends React.Component {
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -770,6 +894,7 @@ const mapsStateToProps = (state) => ({
   paymentsFromCode: state.auth.paymentsFromCode,
   paymentsPages: state.auth.paymentsPages,
   screenWidth: state.main.screenWidth,
+  paymentsForExcel: state.auth.paymentsForExcel,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

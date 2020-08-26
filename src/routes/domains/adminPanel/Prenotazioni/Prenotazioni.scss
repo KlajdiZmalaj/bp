@@ -1,0 +1,728 @@
+div.Prenotazioni {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  & .Graph {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 170px;
+    padding: 0px 5px;
+    padding-top: 15px;
+    box-sizing: border-box;
+    background-color: #f3f3f4;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+    &--Element {
+      background-color: #0377fc;
+      opacity: 0.3;
+      margin: 0px 1.2px;
+      width: 6px;
+      &:hover {
+        background-color: #0578fc;
+        opacity: 1;
+      }
+    }
+    & .Date {
+      height: 45px;
+      width: 45px;
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      justify-content: center;
+      align-items: flex-start;
+      left: 5%;
+      top: 5%;
+
+      & div:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & span {
+          &:first-child {
+            font-family: "Roboto", sans-serif;
+            font-size: 31px;
+            font-weight: 100;
+            color: #5c5c5c;
+          }
+          &:nth-child(2) {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            justify-content: center;
+            align-items: flex-start;
+            left: 15%;
+            top: 80%;
+            font-weight: 500;
+            color: #aaaaaa;
+            font-size: 10px;
+          }
+        }
+      }
+      & div {
+        > i {
+          font-size: 12px;
+          padding-top: 12px;
+        }
+        padding: 1px 3px;
+      }
+    }
+  }
+  &--Statistiche {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    &.Minimize {
+      height: 70px;
+      position: relative;
+      & .Prenotazioni--Statistiche--First {
+        height: 100%;
+      }
+      .Prenotazioni--Statistiche--Other {
+        &--Second {
+          display: none !important;
+        }
+        &--Third {
+          display: none !important;
+        }
+      }
+    }
+    & div.Right {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 16px 2.8%;
+      & .Prenotazioni--Statistiche--DatePicker {
+        width: 197px;
+        height: 36px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        border: 1px solid #00000035;
+        padding: 0 10px;
+        border-radius: 36px;
+        font-size: 12px;
+        font-family: "Roboto";
+        align-items: center;
+        cursor: pointer;
+
+        & i {
+          font-size: 18px;
+          height: 18px;
+          width: auto;
+        }
+      }
+      & .Prenotazioni--Statistiche--Arrow {
+        box-sizing: border-box;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        border: 1px solid #00000035;
+        margin-left: 10px;
+      }
+    }
+    & .Prenotazioni--Statistiche--TitleHeaderLeft {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 23px 2.8%;
+      > i {
+        font-size: 16px;
+        font-weight: 300;
+        color: #5c5c5c;
+        padding-right: 10px;
+      }
+      & span {
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c5c5c;
+      }
+    }
+    &--First {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between !important;
+      width: 100%;
+      height: 100px;
+      align-items: flex-start;
+      background-color: #ebeced;
+    }
+    & .Prenotazioni--Statistiche--Other {
+      &--Second {
+        margin-top: 58px;
+        z-index: 1;
+        background: transparent;
+      }
+      &--Third {
+        background: transparent;
+      }
+      z-index: 1;
+    }
+    & div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+      & .Graph {
+        width: 22.5%;
+        min-width: 22.5%;
+        box-sizing: border-box;
+        height: 90px;
+        background-color: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 3px 7px -4px #000000;
+        border: 1px solid #f2f2f2;
+        padding: 0px 11px;
+        padding-top: 32px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: center;
+        margin: 7.5px 10px;
+        margin-right: 2.8%;
+        &--Element {
+          width: 6px;
+          margin: 0 1.5px;
+        }
+        &--TM {
+          position: absolute;
+          font-size: 10px;
+          font-weight: 400;
+          font-family: "Roboto", sans-serif;
+          width: 64px;
+          min-height: 29px;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          top: 6%;
+          left: 5%;
+        }
+        &--Month {
+          position: absolute;
+          font-size: 10px;
+          font-weight: 400;
+          font-family: "Roboto", sans-serif;
+          width: 80px;
+          height: auto;
+          min-height: 29px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          top: 6%;
+          right: 5%;
+        }
+      }
+      &.Prenotazioni--Statistiche--Box--PriceBox {
+        width: 22.5%;
+        min-width: 22.5%;
+        box-sizing: border-box;
+        height: 90px;
+        background-color: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 3px 7px -4px #000000;
+        border: 1px solid #f2f2f2;
+        padding: 19px 26px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 7.5px 10px;
+        &:first-child {
+          margin-left: 2.8%;
+        }
+
+        &:nth-child(4) {
+          margin-right: 2.8%;
+        }
+        &--Price {
+          color: #5c5c5c;
+          font-weight: 300;
+          font-size: 30px;
+          font-family: "Roboto", sans-serif;
+          padding-right: 8px;
+          display: flex;
+          justify-content: flex-start;
+          width: auto;
+          align-items: center;
+        }
+        &--Title {
+          color: #5c5c5c;
+          font-weight: 400;
+          font-size: 10px;
+          font-family: "Roboto", sans-serif;
+          display: flex;
+          justify-content: flex-start;
+          width: auto;
+          align-items: center;
+        }
+      }
+      &.Prenotazioni--Statistiche--Box--Informazioni {
+        &:first-child {
+          border: 1px solid #2cb850;
+          margin-left: 2.8%;
+        }
+        &:nth-child(2) {
+          border: 1px solid #eb681e;
+        }
+        &:nth-child(3) {
+          border: 1px solid #238be7;
+        }
+        &:nth-child(4) {
+          border: 1px solid #e31117;
+          margin-right: 2.8%;
+        }
+        width: 22.5%;
+        min-width: 22.5%;
+        box-sizing: border-box;
+        margin: 7.5px 10px;
+        margin-bottom: 20px;
+        height: 203px;
+        display: flex;
+        border-radius: 4px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        &:first-child {
+          & .Prenotazioni--Statistiche--Box--Informazioni--Header {
+            background-color: #2db9501a;
+            color: #2cb850;
+          }
+          & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+            & .numbers {
+              color: #2cb850;
+            }
+          }
+        }
+        &:nth-child(2) {
+          & .Prenotazioni--Statistiche--Box--Informazioni--Header {
+            background-color: #eb691e1a;
+            color: #eb681e;
+          }
+          & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+
+            & .numbers {
+              color: #eb681e;
+            }
+          }
+        }
+        &:nth-child(3) {
+          & .Prenotazioni--Statistiche--Box--Informazioni--Header {
+            background-color: #238be71a;
+            color: #238be7;
+          }
+          & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+
+            & .numbers {
+              color: #238be7;
+            }
+          }
+        }
+        &:nth-child(4) {
+          & .Prenotazioni--Statistiche--Box--Informazioni--Header {
+            background-color: #e411181a;
+            color: #e31117;
+          }
+          & .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+            background-color: #ffffff;
+
+            & .numbers {
+              color: #e31117;
+            }
+          }
+        }
+        &--Header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 60px;
+          padding: 0 22px;
+          &--Stato {
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: auto;
+            font-family: "Roboto", sans-serif;
+          }
+          &--TotalInfo {
+            font-size: 30px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 300;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: auto;
+            position: relative;
+            left: 2px;
+          }
+        }
+
+        &--Parts {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-start;
+          padding: 17px 22px;
+          height: 143px;
+          font-size: 14px;
+
+          &--Plain {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            & div {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-family: "Roboto", sans-serif;
+              > i {
+                font-size: 11px;
+                padding-right: 7px;
+              }
+            }
+            &--Number {
+              font-weight: 400;
+              font-family: "Roboto", sans-serif;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              width: auto;
+            }
+          }
+          &--Train {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            & div {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-family: "Roboto", sans-serif;
+              > i {
+                font-size: 11px;
+                padding-right: 7px;
+              }
+            }
+            &--Number {
+              font-weight: 400;
+              font-family: "Roboto", sans-serif;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              width: auto;
+            }
+          }
+          &--Bus {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            & div {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-family: "Roboto", sans-serif;
+              > i {
+                font-size: 11px;
+                padding-right: 7px;
+              }
+            }
+            &--Number {
+              font-weight: 400;
+              font-family: "Roboto", sans-serif;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              width: auto;
+            }
+          }
+          &--Event {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            & div {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-family: "Roboto", sans-serif;
+              > i {
+                font-size: 11px;
+                padding-right: 7px;
+              }
+            }
+            &--Number {
+              font-weight: 400;
+              font-family: "Roboto", sans-serif;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              width: auto;
+            }
+          }
+          &--Shopping {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            & div {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-family: "Roboto", sans-serif;
+              > i {
+                font-size: 11px;
+                padding-right: 7px;
+              }
+            }
+            &--Number {
+              font-weight: 400;
+              font-family: "Roboto", sans-serif;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .ticketDetails {
+    margin: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 76px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 1370px) {
+  div.Prenotazioni--Statistiche {
+    width: 100%;
+    &.Right {
+      padding: 16px 2% !important;
+    }
+    &--TitleHeaderLeft {
+      padding: 23px 2% !important;
+    }
+    &--Other--Second,
+    &--Other--Third {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 100%;
+    }
+    &--Box--PriceBox,
+    &--Box--PriceBox:first-child,
+    &--Box--PriceBox:last-child,
+    .Graph {
+      width: 95% !important;
+      max-width: 100%;
+      margin: 2% 2% !important;
+      padding: 0;
+    }
+    &--Box--Informazioni,
+    &--Box--Informazioni:first-child,
+    &--Box--Informazioni:last-child {
+      width: 95% !important;
+      max-width: 100%;
+      margin: 2% 2% !important;
+      padding: 0;
+    }
+  }
+}
+@media (max-width: 920px) {
+  .Prenotazioni--Statistiche {
+    width: 100%;
+    & div {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 520px) {
+  div.Prenotazioni--Statistiche {
+    width: 100%;
+    &.Minimize {
+      min-height: 120px;
+      height: 120px;
+    }
+    &--Box--PriceBox {
+      &--Price {
+        font-size: 20px !important;
+      }
+    }
+    & div {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      width: 100%;
+    }
+    & .Prenotazioni--Statistiche {
+      &--Other--Second {
+        margin-top: 100px;
+      }
+      &--First {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 145px;
+        justify-content: flex-start !important;
+        & div.Prenotazioni--Statistiche--TitleHeaderLeft {
+          width: 100%;
+          padding: 20px 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        & div.Right {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0px 5px;
+          & div.Prenotazioni--Statistiche--DatePicker,
+          div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
+            width: 60%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          & div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
+            width: 100%;
+            justify-content: space-around;
+          }
+        }
+      }
+    }
+    & div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+      font-size: 20px;
+    }
+  }
+}
+@media (max-width: 1500px) {
+  div.Center,
+  div.Center--Big {
+    & .ticketDetails--filters {
+      padding: 4px 0;
+      &__byTicket {
+        margin: 5px 0;
+        width: 100%;
+        &:nth-child(2) {
+          margin-bottom: 15px;
+        }
+        & div {
+          & div {
+            & button {
+              margin-right: 8px;
+            }
+            & input {
+              padding: 3px 3px;
+              width: 120px;
+              box-sizing: border-box;
+              margin: 0;
+              margin-right: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1250px) {
+  div.Center,
+  div.Center--Big {
+    & .ticketDetails--filters {
+      padding: 4px 0;
+
+      &__byTicket {
+        margin: 5px 0;
+        width: 100%;
+        &:nth-child(2) {
+          margin-bottom: 15px;
+        }
+        & button:first-child {
+          zoom: 0.8;
+        }
+        & input {
+          padding: 3px 5px;
+          margin: 0 2px;
+        }
+        & span.status {
+          font-size: 14px;
+          padding: 3px 5px;
+          & div {
+            margin: 2px;
+          }
+        }
+        & div {
+          & div {
+            & button {
+              margin-right: 6px;
+              zoom: 0.7;
+            }
+            & input {
+              padding: 1px 1px;
+              width: 105px;
+              box-sizing: border-box;
+              margin: 0;
+              margin-right: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

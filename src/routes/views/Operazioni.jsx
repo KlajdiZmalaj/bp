@@ -5,7 +5,7 @@ import { Amministrazione } from "shared-components";
 class Operazioni extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Container">
         <div className="container-fluid overview ">
           <Amministrazione active="operazioni"></Amministrazione>
 

@@ -128,6 +128,7 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
+              this.props.setButtonsSupport,
               this.props.VisureByVisureId.id,
               4,
               () => {},
@@ -149,6 +150,8 @@ export class FormSubmiter extends Component {
         <div
           onClick={() => {
             userConfirmation(
+              this.props.setButtonsSupport,
+
               this.props.VisureByVisureId.id,
               5,
               () => {},
@@ -173,6 +176,7 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
+                this.props.setButtonsSupport,
                 this.props.VisureByVisureId.id,
                 3,
                 () => {},
@@ -187,6 +191,7 @@ export class FormSubmiter extends Component {
           <div
             onClick={() => {
               userConfirmation(
+                this.props.setButtonsSupport,
                 this.props.VisureByVisureId.id,
                 5,
                 () => {},
