@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.8f12a747.chunk.css",
-    "main.js": "/static/js/main.c9c1a453.chunk.js",
-    "main.js.map": "/static/js/main.c9c1a453.chunk.js.map",
+    "main.css": "/static/css/main.efb55598.chunk.css",
+    "main.js": "/static/js/main.6b8355ca.chunk.js",
+    "main.js.map": "/static/js/main.6b8355ca.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c66f21da.js",
     "runtime-main.js.map": "/static/js/runtime-main.c66f21da.js.map",
-    "static/css/2.213f1531.chunk.css": "/static/css/2.213f1531.chunk.css",
-    "static/js/2.77fd1a58.chunk.js": "/static/js/2.77fd1a58.chunk.js",
-    "static/js/2.77fd1a58.chunk.js.map": "/static/js/2.77fd1a58.chunk.js.map",
+    "static/css/2.846ec544.chunk.css": "/static/css/2.846ec544.chunk.css",
+    "static/js/2.cf6c8d69.chunk.js": "/static/js/2.cf6c8d69.chunk.js",
+    "static/js/2.cf6c8d69.chunk.js.map": "/static/js/2.cf6c8d69.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.6662686a1434c426013a415db637bd27.js": "/precache-manifest.6662686a1434c426013a415db637bd27.js",
+    "precache-manifest.38d4441b94bb23c0a80aa57f2ebf07cc.js": "/precache-manifest.38d4441b94bb23c0a80aa57f2ebf07cc.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.213f1531.chunk.css.map": "/static/css/2.213f1531.chunk.css.map",
-    "static/css/main.8f12a747.chunk.css.map": "/static/css/main.8f12a747.chunk.css.map",
-    "static/js/2.77fd1a58.chunk.js.LICENSE.txt": "/static/js/2.77fd1a58.chunk.js.LICENSE.txt",
+    "static/css/2.846ec544.chunk.css.map": "/static/css/2.846ec544.chunk.css.map",
+    "static/css/main.efb55598.chunk.css.map": "/static/css/main.efb55598.chunk.css.map",
+    "static/js/2.cf6c8d69.chunk.js.LICENSE.txt": "/static/js/2.cf6c8d69.chunk.js.LICENSE.txt",
     "static/media/Car.svg": "/static/media/Car.eae5a2d7.svg",
     "static/media/FaturaBackground.png": "/static/media/FaturaBackground.b4ff8492.png",
     "static/media/Sky_Italia_-_Logo_2018.svg": "/static/media/Sky_Italia_-_Logo_2018.6a7f97bc.svg",
@@ -78,9 +78,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c66f21da.js",
-    "static/css/2.213f1531.chunk.css",
-    "static/js/2.77fd1a58.chunk.js",
-    "static/css/main.8f12a747.chunk.css",
-    "static/js/main.c9c1a453.chunk.js"
+    "static/css/2.846ec544.chunk.css",
+    "static/js/2.cf6c8d69.chunk.js",
+    "static/css/main.efb55598.chunk.css",
+    "static/js/main.6b8355ca.chunk.js"
   ]
 }
