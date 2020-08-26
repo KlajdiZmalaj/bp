@@ -203,7 +203,7 @@ const { Types, Creators } = createActions({
     "telefono",
   ],
   getDataFormDetails: [""],
-  getDataFormDetailsActives: [""],
+  getDataFormDetailsActives: ["isVisure"],
   setDataFormDetailsActives: ["formDetailsActives"],
   setDataFormDetails: ["formDetails"],
   getTicketByTicketId: ["ticket_id"],

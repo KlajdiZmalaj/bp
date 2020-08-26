@@ -742,7 +742,7 @@ export const getDataFormDetailReq = () => {
     })
     .catch((error) => ({ error }));
 };
-export const getDataFormDetailActivesReq = () => {
+export const getDataFormDetailActivesReq = (isVisure) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -752,7 +752,7 @@ export const getDataFormDetailActivesReq = () => {
         }`,
       },
     })
-    .get(`/tickets/completed`, {
+    .get(`/${isVisure ? "visure" : "tickets"}/completed`, {
       params: {
         ...skin,
       },

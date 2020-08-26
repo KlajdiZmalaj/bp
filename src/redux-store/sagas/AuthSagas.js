@@ -744,12 +744,16 @@ export function* getDataFormDetails() {
     }
   }
 }
-export function* getDataFormDetailsActives() {
-  const response = yield call(getDataFormDetailActivesReq);
+export function* getDataFormDetailsActives(data) {
+  const response = yield call(getDataFormDetailActivesReq, data.isVisure);
 
   if (response.data) {
     if (response.status === 200) {
-      yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
+      if (data.isVisure) {
+        yield put(AuthActions.setDataFormDetailsActives(response.data.visure));
+      } else {
+        yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
+      }
     }
   }
 }
