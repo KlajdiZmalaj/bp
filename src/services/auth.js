@@ -1227,3 +1227,103 @@ export const printFatturaReq = (file_name) => {
     })
     .catch((error) => ({ error }));
 };
+export const addLogo = (logo, skin_id) => {
+  console.log(logo);
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/skins/${skin_id}/addLogo`, {
+      logo,
+    })
+    .catch((error) => ({ error }));
+};
+export const AddSkinReq = (name, url, email, agency_rent) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/skins`, {
+      name,
+      url,
+      email,
+      agency_rent,
+    })
+    .catch((error) => {
+      if (error?.response?.data?.errors) {
+        Object.keys(error?.response?.data?.errors).forEach((key) => {
+          return notification["error"]({
+            message: error.response.data.message,
+            description: error.response.data.errors[key][0],
+          });
+        });
+      }
+    });
+};
+export const AddExtraData = (
+  cel,
+  mail,
+  address,
+  link1,
+  link2,
+  link3,
+  link4,
+  link5,
+  ig,
+  pin,
+  yt,
+  bank_name,
+  account_name,
+  iban,
+  main_color,
+  skin_id
+) => {
+  console.log(skin_id);
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/skins/${skin_id}/updateExtra`, {
+      cel,
+      mail,
+      address,
+      link1,
+      link2,
+      link3,
+      link4,
+      link5,
+      ig,
+      pin,
+      yt,
+      bank_name,
+      account_name,
+      iban,
+      main_color,
+    })
+    .catch((error) => {
+      console.log(error.response);
+      // if (error?.response?.data?.errors) {
+      //   Object.keys(error?.response?.data?.errors).forEach((key) => {
+      //     return notification["error"]({
+      //       message: error.response.data.message,
+      //       description: error.response.data.errors[key][0],
+      //     });
+      //   });
+      // }
+    });
+};

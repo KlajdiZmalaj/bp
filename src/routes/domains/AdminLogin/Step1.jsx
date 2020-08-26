@@ -1,7 +1,10 @@
 import React from "react";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
-const MySpan = ({
+import { notification } from "antd";
+import { addLogo, AddExtraData } from "services/auth";
+import Password from "antd/lib/input/Password";
+export const MySpan = ({
   title,
   iconClass,
   classNm,
@@ -20,44 +23,45 @@ const MySpan = ({
     {component ? component : <i className={iconClass} />}
   </span>
 );
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nome_skin: "",
-      link_servizi: "",
-      upload_logo: "",
-      email: "",
-      noreply_email: "",
-      indirizzo: "",
-      telefono: "",
-      canone_mensile_agenzie: "",
-      nome_banca: "",
-      societa_beneficiare: "",
-      iban: "",
-      home: "",
-      chi_siamo: "",
-      contatti: "",
-      servizi: "",
-      affiliazioni: "",
-      facebook: "",
-      instagram: "",
-      pinterest: "",
-      youtube: "",
+      base64: "",
+      step1: {
+        nome_skin: "",
+        link_servizi: "",
+        upload_logo: "",
+        email: "",
+        noreply_email: "",
+        indirizzo: "",
+        telefono: "",
+        canone_mensile_agenzie: "",
+        nome_banca: "",
+        societa_beneficiare: "",
+        iban: "",
+        home: "",
+        chi_siamo: "",
+        contatti: "",
+        servizi: "",
+        affiliazioni: "",
+        facebook: "",
+        instagram: "",
+        pinterest: "",
+        youtube: "",
+      },
     };
   }
-  componentDidMount() {
-    if (
-      !JSON.stringify(this.state) !=
-      JSON.stringify(this.props.addEditSkin?.step1)
-    ) {
-      this.setState({
-        ...this.props.addEditSkin?.step1,
-      });
-    }
-  }
-  render() {
-    const { addEditSkinDetails, addEditSkin } = this.props;
+  componentDidUpdate(prevProps) {
+    const { newSkinId } = this.props;
+    const { base64, step1 } = this.state;
     const {
       nome_skin,
       link_servizi,
@@ -79,7 +83,83 @@ class Step1 extends React.Component {
       instagram,
       pinterest,
       youtube,
-    } = this.state;
+    } = step1;
+    if (prevProps.newSkinId != newSkinId) {
+      if (newSkinId === -1) {
+        notification["error"]({
+          message: "Ops...",
+          description: "I tuoi dati per la creazione della skin sono sbagliati",
+          duration: "5",
+        });
+      } else {
+        AddExtraData(
+          telefono,
+          email,
+          indirizzo,
+          chi_siamo,
+          servizi,
+          home,
+          contatti,
+          affiliazioni,
+          instagram,
+          pinterest,
+          youtube,
+          nome_banca,
+          nome_skin,
+          iban,
+          "orange",
+          newSkinId
+        );
+        if (upload_logo?.includes(".png")) {
+          addLogo(base64, newSkinId);
+        } else {
+          notification["error"]({
+            message: "Ops...",
+            description: "Il formato dell'immagine dovrebbe essere png",
+            duration: "5",
+          });
+        }
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (
+      !JSON.stringify(this.state.step1) !=
+      JSON.stringify(this.props.addEditSkin?.step1)
+    ) {
+      this.setState({
+        step1: { ...this.props.addEditSkin?.step1 },
+      });
+    }
+  }
+  render() {
+    const { addEditSkinDetails, addEditSkin, newSkinId } = this.props;
+    const { step1, base64 } = this.state;
+    const {
+      nome_skin,
+      link_servizi,
+      upload_logo,
+      email,
+      noreply_email,
+      indirizzo,
+      telefono,
+      canone_mensile_agenzie,
+      nome_banca,
+      societa_beneficiare,
+      iban,
+      home,
+      chi_siamo,
+      contatti,
+      servizi,
+      affiliazioni,
+      facebook,
+      instagram,
+      pinterest,
+      youtube,
+    } = step1;
+    console.log(upload_logo?.includes(".png"));
+
     return (
       <div className="AdminLogin--Step1">
         <i
@@ -87,7 +167,10 @@ class Step1 extends React.Component {
           onClick={() => {
             addEditSkinDetails({
               step1: {
-                ...this.state,
+                ...this.state.step1,
+              },
+              step2: {
+                ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),
               },
               skinId: addEditSkin?.skinId,
               skinName: addEditSkin?.skinName,
@@ -104,7 +187,9 @@ class Step1 extends React.Component {
               title="NOME SKIN"
               iconClass="fal fa-user"
               handleChange={(e) => {
-                this.setState({ nome_skin: e.target.value });
+                this.setState({
+                  step1: { ...step1, nome_skin: e.target.value },
+                });
               }}
               value={nome_skin}
             />
@@ -112,23 +197,45 @@ class Step1 extends React.Component {
               title="LINK SERVIZI"
               iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ link_servizi: e.target.value });
+                this.setState({
+                  step1: { ...step1, link_servizi: e.target.value },
+                });
               }}
               value={link_servizi}
             />
-            <MySpan
-              title="UPLOAD LOGO"
-              iconClass="fal fa-cloud-upload"
-              handleChange={(e) => {
-                this.setState({ upload_logo: e.target.value });
-              }}
-              value={upload_logo}
-            />
+            <span>
+              <input
+                type="file"
+                id="myfile"
+                onChange={async (e) => {
+                  this.setState({
+                    step1: {
+                      ...step1,
+                      upload_logo: e.target?.files[0]?.name
+                        ? e.target.files[0].name
+                        : "",
+                    },
+                  });
+
+                  const file = document.querySelector("#myfile").files[0];
+                  const Base64 = await toBase64(file);
+                  this.setState({ base64: Base64 });
+                }}
+              />
+              <i className="fal fa-cloud-upload" />
+              <label>
+                {!upload_logo || upload_logo === ""
+                  ? "Select Logo"
+                  : upload_logo}
+              </label>
+            </span>
             <MySpan
               title="EMAIL"
               iconClass="fal fa-envelope"
               handleChange={(e) => {
-                this.setState({ email: e.target.value });
+                this.setState({
+                  step1: { ...step1, email: e.target.value },
+                });
               }}
               value={email}
             />
@@ -136,15 +243,19 @@ class Step1 extends React.Component {
               title="NOREPLY EMAIL"
               iconClass="fal fa-envelope"
               handleChange={(e) => {
-                this.setState({ noreply_email: e.target.value });
+                this.setState({
+                  step1: { ...step1, noreply_email: e.target.value },
+                });
               }}
               value={noreply_email}
             />
-            <mySpan
+            <MySpan
               title="INDIRIZZO"
               iconClass="fal fa-map-marker-alt"
               handleChange={(e) => {
-                this.setState({ indirizzo: e.target.value });
+                this.setState({
+                  step1: { ...step1, indirizzo: e.target.value },
+                });
               }}
               value={indirizzo}
             />
@@ -152,7 +263,9 @@ class Step1 extends React.Component {
               title="TELEFONO"
               iconClass="fal fa-mobile"
               handleChange={(e) => {
-                this.setState({ telefono: e.target.value });
+                this.setState({
+                  step1: { ...step1, telefono: e.target.value },
+                });
               }}
               value={telefono}
             />
@@ -160,7 +273,9 @@ class Step1 extends React.Component {
               title="Canone Mensile Agenzie"
               iconClass="fal fa-euro-sign"
               handleChange={(e) => {
-                this.setState({ canone_mensile_agenzie: e.target.value });
+                this.setState({
+                  step1: { ...step1, canone_mensile_agenzie: e.target.value },
+                });
               }}
               value={canone_mensile_agenzie}
             />
@@ -171,7 +286,9 @@ class Step1 extends React.Component {
               title="NOME BANCA"
               iconClass="fal fa-university"
               handleChange={(e) => {
-                this.setState({ nome_banca: e.target.value });
+                this.setState({
+                  step1: { ...step1, nome_banca: e.target.value },
+                });
               }}
               value={nome_banca}
             />
@@ -179,7 +296,9 @@ class Step1 extends React.Component {
               title="SOCIETA BENEFICIARIA"
               iconClass="fal fa-university"
               handleChange={(e) => {
-                this.setState({ societa_beneficiare: e.target.value });
+                this.setState({
+                  step1: { ...step1, societa_beneficiare: e.target.value },
+                });
               }}
               value={societa_beneficiare}
             />
@@ -187,7 +306,9 @@ class Step1 extends React.Component {
               title="IBAN"
               iconClass="fal fa-university"
               handleChange={(e) => {
-                this.setState({ iban: e.target.value });
+                this.setState({
+                  step1: { ...step1, iban: e.target.value },
+                });
               }}
               value={iban}
             />
@@ -200,7 +321,9 @@ class Step1 extends React.Component {
               title="HOME"
               iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ home: e.target.value });
+                this.setState({
+                  step1: { ...step1, home: e.target.value },
+                });
               }}
               value={home}
             />
@@ -208,7 +331,9 @@ class Step1 extends React.Component {
               title="CHI SIAMO"
               iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ chi_siamo: e.target.value });
+                this.setState({
+                  step1: { ...step1, chi_siamo: e.target.value },
+                });
               }}
               value={chi_siamo}
             />
@@ -216,7 +341,9 @@ class Step1 extends React.Component {
               title="CONTATTI"
               iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ contatti: e.target.value });
+                this.setState({
+                  step1: { ...step1, contatti: e.target.value },
+                });
               }}
               value={contatti}
             />
@@ -224,14 +351,19 @@ class Step1 extends React.Component {
               title="SERVIZI"
               iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ servizi: e.target.value });
+                this.setState({
+                  step1: { ...step1, servizi: e.target.value },
+                });
               }}
               value={servizi}
             />
             <MySpan
               title="AFFILIAZIONI"
+              iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ affiliazioni: e.target.value });
+                this.setState({
+                  step1: { ...step1, affiliazioni: e.target.value },
+                });
               }}
               value={affiliazioni}
             />
@@ -255,7 +387,9 @@ class Step1 extends React.Component {
                 </svg>
               }
               handleChange={(e) => {
-                this.setState({ facebook: e.target.value });
+                this.setState({
+                  step1: { ...step1, facebook: e.target.value },
+                });
               }}
               value={facebook}
             />
@@ -263,7 +397,9 @@ class Step1 extends React.Component {
               title="INSTAGRAM"
               iconClass="fab fa-instagram"
               handleChange={(e) => {
-                this.setState({ instagram: e.target.value });
+                this.setState({
+                  step1: { ...step1, instagram: e.target.value },
+                });
               }}
               value={instagram}
             />
@@ -284,7 +420,9 @@ class Step1 extends React.Component {
                 </svg>
               }
               handleChange={(e) => {
-                this.setState({ pinterest: e.target.value });
+                this.setState({
+                  step1: { ...step1, pinterest: e.target.value },
+                });
               }}
               value={pinterest}
             />
@@ -292,21 +430,68 @@ class Step1 extends React.Component {
               title="YOUTUBE"
               iconClass="fab fa-youtube"
               handleChange={(e) => {
-                this.setState({ youtube: e.target.value });
+                this.setState({
+                  step1: { ...step1, youtube: e.target.value },
+                });
               }}
               value={youtube}
             />
             <button
-              onClick={() => {
-                addEditSkinDetails({
-                  step1: {
-                    ...this.state,
-                  },
-                  skinId: addEditSkin?.skinId,
-                  skinName: addEditSkin?.skinName,
-                  skinPannel: true,
-                  stepNumber: addEditSkin?.stepNumber + 1,
-                });
+              onClick={async (e) => {
+                e.preventDefault();
+                if (
+                  link_servizi.includes("http") &&
+                  link_servizi.includes("://")
+                ) {
+                  await this.props.AddSkinNew(
+                    nome_skin,
+                    link_servizi,
+                    noreply_email,
+                    canone_mensile_agenzie
+                  );
+                } else {
+                  await notification["error"]({
+                    message: "Ops...",
+                    description: "Link Servizzi should be link type 'http://",
+                    duration: "5",
+                  });
+                }
+
+                //   let ifempty = false;
+                //   if (upload_logo?.includes(".png")) {
+                //     Object.keys(this.state).forEach((key) => {
+                //       if (!this.state[key] || this.state[key] === "") {
+                //         ifempty = true;
+                //       }
+                //     });
+                //     if (ifempty) {
+                //       notification["error"]({
+                //         message: "Ops...",
+                //         description:
+                //           "Non puoi continuare al secondo step ,completi tutti i dati prima",
+                //         duration: "5",
+                //       });
+                //     } else {
+                //       addEditSkinDetails({
+                //         step1: {
+                //           ...this.state,
+                //         },
+                //         step2: {
+                //           ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),
+                //         },
+                //         skinId: addEditSkin?.skinId,
+                //         skinName: addEditSkin?.skinName,
+                //         skinPannel: true,
+                //         stepNumber: addEditSkin?.stepNumber + 1,
+                //       });
+                //     }
+                //   } else {
+                //     notification["error"]({
+                //       message: "Ops...",
+                //       description: "Logo file should be png/jpg/svg",
+                //       duration: "5",
+                //     });
+                //   }
               }}
             >
               Create Skin
@@ -319,5 +504,6 @@ class Step1 extends React.Component {
 }
 const mapsStateToProps = (state) => ({
   addEditSkin: state.auth.addEditSkin,
+  newSkinId: state.auth.newSkinId,
 });
 export default connect(mapsStateToProps, AuthActions)(Step1);

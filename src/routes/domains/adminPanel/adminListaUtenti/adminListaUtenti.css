@@ -391,7 +391,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 7px 14px;
+  padding: 7px 7px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child > i:last-child, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child > i:last-child {

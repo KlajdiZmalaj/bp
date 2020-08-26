@@ -102,7 +102,6 @@ class AdminPanelDom extends React.Component {
       updateMsg,
       goToAdminPanelVis,
     } = this.props;
-    console.log(goToAdminPanelVis);
     return (
       <React.Fragment>
         {goToAdminPanelVis === true ? (

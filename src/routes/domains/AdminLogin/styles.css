@@ -32,7 +32,6 @@
   margin: 0 auto;
   position: absolute;
   left: 0;
-  min-height: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,6 +43,139 @@
       -ms-flex-direction: row;
           flex-direction: row;
   padding-top: 10px;
+  height: calc(100vh - 240px);
+}
+
+.AdminLogin--Step1::-webkit-scrollbar-thumb {
+  background: #0078ff;
+}
+
+.AdminLogin--Step1 label {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 15px;
+  padding-right: 5px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.702);
+  font-family: "Roboto";
+}
+
+.AdminLogin--Step1 input[type="file"] {
+  opacity: 0;
+  z-index: 1;
+}
+
+.AdminLogin--Step1--Step2 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 15px;
+}
+
+.AdminLogin--Step1--Step2 span {
+  margin: 6.5px 0;
+}
+
+.AdminLogin--Step1--Step2 span div.dropdown:nth-child(2) {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  left: 0;
+  bottom: -71px;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(92, 92, 92, 0.302);
+  border-radius: 3px;
+}
+
+.AdminLogin--Step1--Step2 span div.dropdown:nth-child(2) div {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.702);
+  font-family: "Roboto";
+  cursor: pointer;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-left: 15px;
+  background: #ffffff;
+}
+
+.AdminLogin--Step1--Step2 span div.dropdown:nth-child(2) div:first-child {
+  border-bottom: 1px solid rgba(92, 92, 92, 0.302);
+}
+
+.AdminLogin--Step1--Step2 span div.dropdown:nth-child(2) div:hover {
+  background: rgba(92, 92, 92, 0.0602);
+}
+
+.AdminLogin--Step1--Step2 span div.dropdown:nth-child(2) div.active {
+  background: rgba(0, 119, 255, 0.202);
+}
+
+.AdminLogin--Step1--Step2 span div:first-child {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 8px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.702);
+  font-family: "Roboto";
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.AdminLogin--Step1--Step2 span div:first-child div {
+  position: absolute;
+  width: 90%;
+}
+
+.AdminLogin--Step1--Step2 span div:first-child i {
+  position: absolute;
+}
+
+.AdminLogin--Step1--Step2 button {
+  position: relative;
+  margin-top: 166px !important;
 }
 
 .AdminLogin--Step1 .fa-long-arrow-left {
@@ -126,7 +258,6 @@
 .AdminLogin--Step1 button {
   background: #0078ff;
   color: #ffffff;
-  width: 100%;
   height: 42px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,8 +272,7 @@
   font-weight: 600;
   font-family: "Roboto";
   border: none;
-  margin: 6px 0;
-  margin-top: 15px;
+  margin-top: 60px;
 }
 
 .AdminLogin--Step1 h1 {
@@ -154,8 +284,34 @@
 }
 
 .AdminLogin--Step1 h1:first-child {
-  padding: 25px 0;
   padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.AdminLogin--Step1 .ant-calendar-picker {
+  width: 100%;
+  position: relative;
+}
+
+.AdminLogin--Step1 .ant-calendar-picker div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.AdminLogin--Step1 .ant-calendar-picker i {
+  height: 100%;
+  top: 17%;
+  bottom: 0;
+  position: absolute;
+}
+
+.AdminLogin--Step1 .ant-calendar-picker i svg {
+  height: 16px;
+  position: relative;
+  right: 0;
+  margin-right: 0;
+  width: 16px;
 }
 
 .AdminLogin--Step1--Right {
@@ -169,6 +325,7 @@
           flex-direction: column;
   border-right: 1px solid #ebeced;
   padding: 0 30px;
+  padding-top: 20px;
 }
 
 .AdminLogin--Step1--Right--Important, .AdminLogin--Step1--Right--Payment {
@@ -191,6 +348,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0 30px;
+  padding-top: 20px;
 }
 
 .AdminLogin--Step1--Left--SocialMedia i {

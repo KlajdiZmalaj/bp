@@ -2,44 +2,36 @@ import React from "react";
 import { CSVLink } from "react-csv";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
-
+import axios from "axios";
 class Excel extends React.Component {
-  componentWillMount() {
-    const { username, from, to, perPage } = this.props;
-    this.props.getPaymentsForExcel(
-      username,
-      from,
-      to,
-      "",
-      perPage,
-      "",
-      "special"
-    );
-  }
-  componentDidUpdate(prevProps) {
-    const { username, from, to, perPage } = this.props;
+  csvLink = React.createRef();
+
+  state = {
+    clickedLink: false,
+  };
+  componentDidUpdate() {
     if (
-      username != prevProps.username ||
-      from != prevProps.from ||
-      to != prevProps.to ||
-      perPage != prevProps.perPage
+      this.props.paymentExcelLoading === false &&
+      this.state.clickedLink === true &&
+      this.props.payments &&
+      this.props.payments != {}
     ) {
-      this.props.getPaymentsForExcel(
-        username,
-        from,
-        to,
-        "",
-        perPage,
-        "",
-        "special"
-      );
+      this.csvLink.current.link.click();
     }
   }
   render() {
-    const { paymentExcelLoading, payments } = this.props;
+    const {
+      paymentExcelLoading,
+      payments,
+      perPage,
+      from,
+      to,
+      username,
+    } = this.props;
+    const { clickedLink } = this.state;
     const headers = [
       { label: "Date / Ora", key: "executed_date" },
-      { label: "Barcode", key: "barcode" },
+      { label: "Barcode            ", key: "barcode" },
       { label: "User", key: "agency_name" },
       { label: "Service", key: "service_name" },
       { label: "Importo", key: "price1000" },
@@ -54,47 +46,57 @@ class Excel extends React.Component {
               Array.isArray(payments) &&
               payments.map((pay) => {
                 return {
-                  executed_date: pay.executed_date,
-                  barcode: pay.barcode,
+                  executed_date: pay.executed_date + `  `,
+                  barcode: '=""' + pay.barcode + '""',
                   agency_name: pay.agency_name,
                   service_name: pay.service_name,
-                  price1000: pay.price1000,
-                  commissione: pay.commissione,
-                  percentage: pay.percentage,
-                  saldo: pay.saldo,
+                  price1000: pay.price1000 / 1000 + `  €`,
+                  commissione: pay.commissione + `  €`,
+                  percentage: pay.percentage + `  €`,
+                  saldo: pay.saldo + `  €`,
                 };
               })),
           ]
         : [];
-    return paymentExcelLoading === true ? (
-      <div className="ExportToExel">
-        <span>
-          <i class="far fa-file-excel"></i>
+    return (
+      <React.Fragment>
+        <span
+          className="ExportToExel"
+          onClick={() => {
+            this.props.getPaymentsForExcel(
+              username,
+              from,
+              to,
+              "",
+              perPage,
+              "",
+              "special"
+            );
+            this.setState({ clickedLink: true });
+          }}
+        >
+          <i class="far fa-file-csv"></i>
           {this.props.activeSkinId === -1 &&
           document.querySelector("body").classList.contains("bodyAdmin") ? (
             <span>No data For this skin</span>
           ) : (
-            <span>In attesa di dati completi ...</span>
+            <span style={{ cursor: "pointer" }}>
+              {paymentExcelLoading === true && clickedLink === true
+                ? "Aspetti..."
+                : "Esporta Csv"}
+            </span>
           )}
         </span>
-      </div>
-    ) : (
-      <CSVLink
-        data={dataSet}
-        headers={headers}
-        filename={"Tranzacioni.csv"}
-        className="ExportToExel"
-      >
-        <span>
-          <i class="far fa-file-excel"></i>
-          {this.props.activeSkinId === -1 &&
-          document.querySelector("body").classList.contains("bodyAdmin") ? (
-            <span>No data For this skin</span>
-          ) : (
-            <span>Esportare i dati completi in Excel</span>
-          )}
-        </span>
-      </CSVLink>
+        <CSVLink
+          separator={","}
+          ref={this.csvLink}
+          data={dataSet}
+          headers={headers}
+          filename={"Tranzacioni.csv"}
+          className="hidden"
+          target="_blank"
+        ></CSVLink>
+      </React.Fragment>
     );
   }
 }
