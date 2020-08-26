@@ -19,7 +19,8 @@ class AdminLoginDom extends React.Component {
                 : "title"
             }
           >
-            {addEditSkin?.skinPannel === true
+            {addEditSkin?.skinPannel === true &&
+            (addEditSkin?.stepNumber === 1 || addEditSkin?.stepNumber === 2)
               ? addEditSkin?.stepNumber === 1
                 ? "CREATE SKIN "
                 : "CREATE ADMIN"

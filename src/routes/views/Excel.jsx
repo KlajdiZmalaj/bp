@@ -39,7 +39,6 @@ class Excel extends React.Component {
       { label: "Proviggione", key: "percentage" },
       { label: "Saldo", key: "saldo" },
     ];
-    console.log(payments);
     const dataSet =
       payments && Array.isArray(payments)
         ? [
@@ -76,7 +75,7 @@ class Excel extends React.Component {
             this.setState({ clickedLink: true });
           }}
         >
-          <i class="far fa-file-excel"></i>
+          <i class="far fa-file-csv"></i>
           {this.props.activeSkinId === -1 &&
           document.querySelector("body").classList.contains("bodyAdmin") ? (
             <span>No data For this skin</span>
@@ -84,7 +83,7 @@ class Excel extends React.Component {
             <span style={{ cursor: "pointer" }}>
               {paymentExcelLoading === true && clickedLink === true
                 ? "Aspetti..."
-                : "Esportare i dati completi in Excel"}
+                : "Esporta Csv"}
             </span>
           )}
         </span>

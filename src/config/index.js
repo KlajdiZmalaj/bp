@@ -50997,3 +50997,24 @@ export const countriesArray = [
     nazione: "SUD SUDAN",
   },
 ];
+export const servicesVisure = {
+  "Servizi Ufficio Catasto" : {
+    services : [
+      {name : 'Visura Catastale',price:1},
+      {name : 'Visura per soggetoo storica',price:1},
+      {name : 'Planimetria Catastale',price:1},
+      {name : 'Mappa Edificio / Elaboro Planimetrico',price:1},
+      {name : 'Rendita catastale',price:1},
+      {name : 'Reddito domimicale e reddito agrario',price:1},
+      {name : 'Certificato della superficie da Planimetra',price:1},
+      {name : 'Correzione Visura Catastale',price:1},
+      {name : 'Voltura Catastale',price:1},
+    ]
+  },
+  "Servizi Ufficio Camera di Commercio" : {
+    services  :[ 
+      {name : 'Report Azienda Full',price : 2},
+      {name : 'Report Azienda Light',price : 2}
+    ]
+  }
+}

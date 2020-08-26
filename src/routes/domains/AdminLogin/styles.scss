@@ -20,11 +20,14 @@
     margin: 0 auto;
     position: absolute;
     left: 0;
-    min-height: 700px;
     display: flex;
     justify-content: center;
     flex-direction: row;
     padding-top: 10px;
+    height: calc(100vh - 240px);
+    &::-webkit-scrollbar-thumb {
+      background: #0078ff;
+    }
     & label {
       position: absolute;
       width: 90%;
@@ -108,9 +111,8 @@
         }
       }
       & button {
-        position: absolute;
-        bottom: 30px;
-        width: 44% !important;
+        position: relative;
+        margin-top: 166px !important;
       }
     }
     & .fa-long-arrow-left {
@@ -170,7 +172,6 @@
     & button {
       background: #0078ff;
       color: #ffffff;
-      width: 100%;
       height: 42px;
       display: flex;
       justify-content: center;
@@ -179,8 +180,7 @@
       font-weight: 600;
       font-family: "Roboto";
       border: none;
-      margin: 6px 0;
-      margin-top: 15px;
+      margin-top: 60px;
     }
     & h1 {
       color: #0078ff;
@@ -189,8 +189,30 @@
       font-family: "Roboto", sans-serif;
       margin: 0;
       &:first-child {
-        padding: 25px 0;
         padding-bottom: 10px;
+        padding-top: 5px;
+      }
+    }
+    & .ant-calendar-picker {
+      width: 100%;
+      position: relative;
+      & div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      & i {
+        height: 100%;
+        top: 17%;
+        bottom: 0;
+        position: absolute;
+        & svg {
+          height: 16px;
+          position: relative;
+          right: 0;
+          margin-right: 0;
+          width: 16px;
+        }
       }
     }
     &--Right {
@@ -199,6 +221,7 @@
       flex-direction: column;
       border-right: 1px solid #ebeced;
       padding: 0 30px;
+      padding-top: 20px;
       &--Important,
       &--Payment {
         display: flex;
@@ -210,6 +233,7 @@
       display: flex;
       flex-direction: column;
       padding: 0 30px;
+      padding-top: 20px;
 
       &--SocialMedia {
         & i {

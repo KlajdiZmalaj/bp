@@ -6,7 +6,6 @@ const bolli = 2;
 class FatturaDetails extends React.Component {
   render() {
     const { faturaDetails, skinExtras } = this.props;
-    console.log(faturaDetails);
     return (
       <Fragment>
         {faturaDetails && (

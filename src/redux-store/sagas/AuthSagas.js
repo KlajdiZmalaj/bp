@@ -41,6 +41,7 @@ import {
   getAllServicesReq,
   sendMailFatturaReq,
   printFatturaReq,
+  AddSkinReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -988,5 +989,13 @@ export function* sendMailFattura({ file_name }) {
       description: response.data.message,
       placement: "bottomRight",
     });
+  }
+}
+export function* AddSkinNew({ name, url, email, agency_rent }) {
+  const response = yield call(AddSkinReq, name, url, email, agency_rent);
+
+  if (response) {
+    console.log(response.data.skin_id);
+    yield put(AuthActions.setSkinId(response.data.skin_id));
   }
 }

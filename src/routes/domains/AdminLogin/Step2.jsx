@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
-import { DatePicker } from "antd";
+import { notification, DatePicker } from "antd";
 import { MySpan } from "./Step1";
+import moment from "moment";
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
@@ -34,14 +35,15 @@ class Step1 extends React.Component {
   }
   componentDidMount() {
     if (
-      !JSON.stringify(this.state) !=
+      !JSON.stringify(this.state.step2) !=
       JSON.stringify(this.props.addEditSkin?.step2)
     ) {
       this.setState({
-        ...this.props.addEditSkin?.step2,
+        step2: { ...this.state.step2, ...this.props.addEditSkin?.step2 },
       });
     }
   }
+
   render() {
     const { addEditSkinDetails, addEditSkin } = this.props;
     const { step2 } = this.state;
@@ -67,8 +69,6 @@ class Step1 extends React.Component {
       codice_fiscale,
       p_iva,
     } = step2;
-    console.log(gender);
-
     return (
       <div className="AdminLogin--Step1">
         <div className="AdminLogin--Step1--Step2">
@@ -250,7 +250,9 @@ class Step1 extends React.Component {
               title="COMUNE NASCITA"
               iconClass="fal fa-home"
               handleChange={(e) => {
-                this.setState({ comune_nascita: e.target.value });
+                this.setState({
+                  step2: { ...step2, comune_nascita: e.target.value },
+                });
               }}
               value={comune_nascita}
             />
@@ -258,23 +260,43 @@ class Step1 extends React.Component {
               title="STATO NASCITA"
               iconClass="fal fa-globe"
               handleChange={(e) => {
-                this.setState({ stato_nascita: e.target.value });
+                this.setState({
+                  step2: { ...step2, stato_nascita: e.target.value },
+                });
               }}
               value={stato_nascita}
             />
-            <MySpan
-              title="DATA DI NASCITA"
-              iconClass="fal fa-calendar-alt"
-              handleChange={(e) => {
-                this.setState({ data_di_nascita: e.target.value });
-              }}
-              value={data_di_nascita}
-            />
+            <span>
+              <DatePicker
+                onChange={(data_di_nascita) => {
+                  data_di_nascita && data_di_nascita.isValid()
+                    ? this.setState({
+                        step2: {
+                          ...step2,
+                          data_di_nascita: data_di_nascita.format("DD/MM/YYYY"),
+                        },
+                      })
+                    : this.setState({
+                        step2: {
+                          ...step2,
+                          data_di_nascita: null,
+                        },
+                      });
+                }}
+                value={
+                  data_di_nascita ? moment(data_di_nascita, "DD/MM/YYYY") : null
+                }
+                format={("DD/MM/YYYY", "DD/MM/YYYY")}
+              />
+            </span>
+
             <MySpan
               title="PASSWORD"
               iconClass="fal fa-key"
               handleChange={(e) => {
-                this.setState({ password: e.target.value });
+                this.setState({
+                  step2: { ...step2, password: e.target.value },
+                });
               }}
               value={password}
             />
@@ -282,7 +304,9 @@ class Step1 extends React.Component {
               title="CONFERMA PASSWORD"
               iconClass="fab fa-key"
               handleChange={(e) => {
-                this.setState({ conferma_password: e.target.value });
+                this.setState({
+                  step2: { ...step2, conferma_password: e.target.value },
+                });
               }}
               value={conferma_password}
             />
@@ -290,7 +314,9 @@ class Step1 extends React.Component {
               title="RAGIONE SOCIALE"
               iconClass="fal fa-briefcase"
               handleChange={(e) => {
-                this.setState({ ragione_sociale: e.target.value });
+                this.setState({
+                  step2: { ...step2, ragione_sociale: e.target.value },
+                });
               }}
               value={ragione_sociale}
             />
@@ -298,7 +324,9 @@ class Step1 extends React.Component {
               title="P.IVA"
               iconClass="fab fa-receipt"
               handleChange={(e) => {
-                this.setState({ p_iva: e.target.value });
+                this.setState({
+                  step2: { ...step2, p_iva: e.target.value },
+                });
               }}
               value={p_iva}
             />
@@ -306,24 +334,41 @@ class Step1 extends React.Component {
               title="CODICE FISCALE "
               iconClass="fab fa-id-card"
               handleChange={(e) => {
-                this.setState({ codice_fiscale: e.target.value });
+                this.setState({
+                  step2: { ...step2, codice_fiscale: e.target.value },
+                });
               }}
               value={codice_fiscale}
             />
             <button
               onClick={() => {
-                addEditSkinDetails({
-                  step1: {
-                    ...(addEditSkin?.step1 ? addEditSkin.step1 : {}),
-                  },
-                  step2: {
-                    ...this.state.step2,
-                  },
-                  skinId: addEditSkin?.skinId,
-                  skinName: addEditSkin?.skinName,
-                  skinPannel: true,
-                  stepNumber: addEditSkin?.stepNumber + 1,
+                let ifempty = false;
+                Object.keys(step2).forEach((key) => {
+                  if (!step2[key] || step2[key] === "") {
+                    ifempty = true;
+                  }
                 });
+                if (ifempty) {
+                  notification["error"]({
+                    message: "Ops...",
+                    description:
+                      "Non puoi continuare al  ,completi tutti i dati prima",
+                    duration: "5",
+                  });
+                } else {
+                  addEditSkinDetails({
+                    step1: {
+                      ...(addEditSkin?.step1 ? addEditSkin.step1 : {}),
+                    },
+                    step2: {
+                      ...this.state.step2,
+                    },
+                    skinId: addEditSkin?.skinId,
+                    skinName: addEditSkin?.skinName,
+                    skinPannel: true,
+                    stepNumber: addEditSkin?.stepNumber + 1,
+                  });
+                }
               }}
             >
               CREATE ADMIN

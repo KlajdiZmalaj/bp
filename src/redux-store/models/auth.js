@@ -305,6 +305,8 @@ const { Types, Creators } = createActions({
   setPaymentsExcelLoading: ["paymentExcelLoading"],
   goToAdminPanel: ["goToAdminPanelVis"],
   addEditSkinDetails: ["addEditSkin"],
+  AddSkinNew: ["name", "url", "email", "agency_rent"],
+  setSkinId: ["newSkinId"],
 });
 
 export const AuthTypes = Types;
@@ -365,6 +367,7 @@ const INITIAL_STATE = {
   paymentExcelLoading: false,
   goToAdminPanelVis: true,
   addEditSkin: { skinPannel: false },
+  newSkinId: -1,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -597,5 +600,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.ADD_EDIT_SKIN_DETAILS]: (state, { addEditSkin }) => ({
     ...state,
     addEditSkin,
+  }),
+  [Types.SET_SKIN_ID]: (state, { newSkinId }) => ({
+    ...state,
+    newSkinId,
   }),
 });
