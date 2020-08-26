@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import DetailRow from "./DetailRow";
-import { Tooltip } from "antd";
+import { Switch, Tooltip } from "antd";
 import "./styles.css";
 import { allRoles } from "config/index";
 export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
@@ -59,6 +59,7 @@ class FormDetailsDomain extends Component {
     filterSkin: "",
     filterAgenzie: "",
     filterRicercaId: "",
+    statusRows: "all",
   };
   componentDidMount() {
     this.props.getVisure();
@@ -70,8 +71,10 @@ class FormDetailsDomain extends Component {
       filterSkin,
       filterAgenzie,
       filterRicercaId,
+      statusRows,
     } = this.state;
-    const { Visure } = this.props;
+    const { Visure, formDetailsActives } = this.props;
+    // console.log("formDetailsActives", formDetailsActives);
     const { my_visure, visure } = Visure;
     return (
       <div className="ticketDetails">
@@ -79,6 +82,23 @@ class FormDetailsDomain extends Component {
           <div className="ticketDetails--filters__byTicket">
             <div>
               <div>
+                <Switch
+                  onChange={(on) => {
+                    if (on) {
+                      this.props.getDataFormDetailsActives(true);
+                      this.setState({ statusRows: "active" });
+                    } else {
+                      this.props.getVisure();
+                      this.setState({ statusRows: "all" });
+                    }
+                  }}
+                  checkedChildren={
+                    <i className="fal fa-check-circle" aria-hidden="true"></i>
+                  }
+                  unCheckedChildren={
+                    <i className="fal fa-times-circle" aria-hidden="true"></i>
+                  }
+                />
                 <input
                   placeholder="Skin"
                   onChange={(e) =>
@@ -170,10 +190,32 @@ class FormDetailsDomain extends Component {
           <span>Data</span>
           <span>Visura</span>
         </div>
+        {(formDetailsActives || []).map((visure) => {
+          // console.log("ticket", ticket);
+          return (
+            (filterVisure === "all" || filterVisure === visure.type) &&
+            statusRows === "active" &&
+            (filterType === "all" || filterType === visure.status) &&
+            (filterSkin === "" ||
+              visure.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
+            (filterAgenzie === "" ||
+              visure.user
+                .toLowerCase()
+                .includes(filterAgenzie.toLowerCase())) &&
+            (filterRicercaId === "" ||
+              `BP-${visure.id}`
+                .toString()
+                .toLowerCase()
+                .includes(filterRicercaId.toString().toLowerCase())) && (
+              <DetailRow key={visure.id} Visure={visure} allRoles={allRoles} />
+            )
+          );
+        })}
         {(my_visure || []).map(
           (visure) =>
             // console.log("ticket", ticket);
             (filterVisure === "all" || filterVisure === visure.type) &&
+            statusRows === "all" &&
             (filterType === "all" || filterType === visure.status) &&
             (filterSkin === "" ||
               visure.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
@@ -192,6 +234,7 @@ class FormDetailsDomain extends Component {
         {(visure || []).map(
           (vis) =>
             (filterVisure === "all" || filterVisure === vis.type) &&
+            statusRows === "all" &&
             (filterType === "all" || filterType === vis.status) &&
             (filterSkin === "" ||
               vis.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
@@ -213,6 +256,7 @@ class FormDetailsDomain extends Component {
 const mstp = (state) => {
   return {
     Visure: state.auth.Visure,
+    formDetailsActives: state.auth.formDetailsActives,
   };
 };
 export default connect(mstp, AuthActions)(FormDetailsDomain);

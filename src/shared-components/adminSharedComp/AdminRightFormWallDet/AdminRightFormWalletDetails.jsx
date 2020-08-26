@@ -1,68 +1,172 @@
-import React from "react";
+import React, { useState } from "react";
+import AuthActions from "redux-store/models/auth";
+import MainActions from "redux-store/models/main";
+
+import { connect } from "react-redux";
+import SearchSelect from "./SearchSelect";
 import "./aRFWD.css";
 const AdminRightFormWalletDetailsHelper = ({
   handleDepositoVisibility,
   handleDebitoVisibility,
   depositoActiveVisibility,
   addebitoActiveVisibility,
-}) => (
-  <div className="AdminRightForm--Box--Wallet--Dropdown">
-    <div className="AdminRightForm--Box--Wallet--Dropdown--ChoseButtons">
-      <button
-        onClick={handleDepositoVisibility}
-        className={`${depositoActiveVisibility === true ? "active" : ""}`}
-      >
-        DEPOSITO{" "}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="11"
-          height="7"
-          viewBox="0 0 11 7"
-        >
-          <path className="a" d="M5.5,0,11,7H0Z" />
-        </svg>
-      </button>
-      <button
-        onClick={handleDebitoVisibility}
-        className={`${addebitoActiveVisibility === true ? "active" : ""}`}
-      >
-        ADDEBITO{" "}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="11"
-          height="7"
-          viewBox="0 0 11 7"
-        >
-          <path className="a" d="M5.5,0,11,7H0Z" />
-        </svg>
-      </button>
-    </div>
-    <div className="InputHolder">
-      <input placeholder="SEARCH USERNAME" />
-      <i className="fal fa-search"></i>
-    </div>
+  UsersToSearch,
+  setDepositoModalAdmin,
+}) => {
+  const [closeSelect, setcloseSelect] = useState(false);
+  const [userKey, setUserKey] = useState("");
+  const [amount, setAmount] = useState("");
+  const [tickOrX, setTickOrX] = useState(true);
 
-    <div className="InputHolder">
-      <input placeholder="SOMMA" />
-      <span>&euro;</span>
-    </div>
-    <div className="InputHolder">
-      <input placeholder="NOTIFICA ALL’USER" />
-      <i className="far fa-check"></i>
-    </div>
+  return (
+    <div
+      className="AdminRightForm--Box--Wallet--Dropdown"
+      onClick={() => {
+        setcloseSelect(true);
+      }}
+    >
+      <div className="AdminRightForm--Box--Wallet--Dropdown--ChoseButtons">
+        <button
+          onClick={handleDepositoVisibility}
+          className={`${depositoActiveVisibility === true ? "active" : ""}`}
+        >
+          DEPOSITO{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="11"
+            height="7"
+            viewBox="0 0 11 7"
+          >
+            <path className="a" d="M5.5,0,11,7H0Z" />
+          </svg>
+        </button>
+        <button
+          onClick={handleDebitoVisibility}
+          className={`${addebitoActiveVisibility === true ? "active" : ""}`}
+        >
+          ADDEBITO{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="11"
+            height="7"
+            viewBox="0 0 11 7"
+          >
+            <path className="a" d="M5.5,0,11,7H0Z" />
+          </svg>
+        </button>
+      </div>
+      <div className="InputHolder">
+        <SearchSelect
+          UsersToSearch={UsersToSearch}
+          closeSelect={closeSelect}
+          userKey={userKey}
+          handleChange={(e) => {
+            setUserKey(e.target.value);
+          }}
+        />{" "}
+      </div>
 
-    <button className="AdminRightForm--Box--Wallet--Dropdown--Submit">
-      DEPOSITO
-    </button>
-  </div>
-);
+      <div className="InputHolder">
+        <input
+          placeholder="SOMMA"
+          onChange={(e) => {
+            setAmount(e.target.value);
+          }}
+          value={amount}
+        />
+        <span>&euro;</span>
+      </div>
+      <div className="InputHolder">
+        <input
+          placeholder="NOTIFICA ALL’USER"
+          readOnly
+          style={{ cursor: "inherit" }}
+        />
+        <i
+          style={{ cursor: "pointer", color: "#00ac5c" }}
+          className={`${tickOrX ? "far fa-check" : "fas fa-times"}`}
+          onClick={() => {
+            setTickOrX(!tickOrX);
+          }}
+        ></i>
+      </div>
+
+      <button
+        className="AdminRightForm--Box--Wallet--Dropdown--Submit"
+        onClick={() => {
+          setDepositoModalAdmin({
+            depositoModalVis: true,
+            type: depositoActiveVisibility ? "deposit" : "withdraw",
+            username: userKey,
+            id: 1,
+            amount: parseInt(amount),
+          });
+        }}
+      >
+        {`${depositoActiveVisibility ? "DEPOSITO" : "ADDEBITO"}`}
+      </button>
+    </div>
+  );
+};
 class AdminRightFormWalletDetails extends React.Component {
   componentWillUnmount() {
     if (this.props.ModalOrNo) {
       this.props.Close({ visibility: false, data: "" });
     }
   }
+  returnAllUsers = (users) => {
+    const allUsers = users;
+    users.forEach((user) => {
+      if (user?.children && user?.children.length >= 0) {
+        user.children.forEach((child) => {
+          allUsers.push(child);
+          if (child?.children && child?.children.length >= 0) {
+            let arrayToGet = this.returnAllUsers(child.children);
+            if (arrayToGet.length >= 0) {
+              arrayToGet.forEach((element) => {
+                allUsers.push(element);
+              });
+            }
+          }
+        });
+      }
+    });
+    return allUsers;
+  };
+
+  componentDidMount() {
+    if (
+      !window.location.href.includes("utenti") &&
+      this.props.ModalOrNo === true
+    ) {
+      if (this.props.activeSkinId === -1) {
+        this.props.getUsers(null, {
+          skin_id: 1,
+        });
+      } else {
+        this.props.getUsers(null, {
+          skin_id: this.props.activeSkinId,
+          backoffice: true,
+        });
+      }
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (
+      !window.location.href.includes("utenti") &&
+      this.props.ModalOrNo === true
+    ) {
+      if (this.props.activeSkinId != prevProps.activeSkinId) {
+        this.props.getUsers(null, {
+          skin_id: this.props.activeSkinId,
+          backoffice: true,
+        });
+      }
+    }
+  }
   render() {
+    const allUsers = this.props.userList;
+    const UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
     const {
       handleDepositoVisibility,
       handleDebitoVisibility,
@@ -70,6 +174,7 @@ class AdminRightFormWalletDetails extends React.Component {
       addebitoActiveVisibility,
       ModalOrNo,
       Close,
+      setDepositoModalAdmin,
     } = this.props;
     return (
       <React.Fragment>
@@ -97,18 +202,28 @@ class AdminRightFormWalletDetails extends React.Component {
               handleDebitoVisibility={handleDebitoVisibility}
               depositoActiveVisibility={depositoActiveVisibility}
               addebitoActiveVisibility={addebitoActiveVisibility}
+              UsersToSearch={UsersToSearch}
+              setDepositoModalAdmin={setDepositoModalAdmin}
             />
           </div>
         ) : (
           <AdminRightFormWalletDetailsHelper
+            setDepositoModalAdmin={setDepositoModalAdmin}
             handleDepositoVisibility={handleDepositoVisibility}
             handleDebitoVisibility={handleDebitoVisibility}
             depositoActiveVisibility={depositoActiveVisibility}
             addebitoActiveVisibility={addebitoActiveVisibility}
+            UsersToSearch={UsersToSearch}
           />
         )}
       </React.Fragment>
     );
   }
 }
-export default AdminRightFormWalletDetails;
+const mapStateToProps = (state) => ({
+  userList: state.main.userList,
+  activeSkinId: state.main.activeSkinId,
+});
+export default connect(mapStateToProps, { ...AuthActions, ...MainActions })(
+  AdminRightFormWalletDetails
+);

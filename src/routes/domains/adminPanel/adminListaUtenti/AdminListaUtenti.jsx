@@ -4,19 +4,32 @@ import AdminListaUtentiRow from "./AdminListaUtentiRow";
 import { ListaUtenti } from "../StaticAdminData";
 import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
+
 class AdminListaUtenti extends React.Component {
   componentDidMount() {
-    this.props.getUsers(null, {
-      skin_id: this.props.activeSkinId,
-      backoffice: true,
-    });
-  }
-  componentDidUpdate(prevProps) {
-    if (this.props.activeSkinId != prevProps.activeSkinId) {
+    if (this.props.activeSkinId === -1) {
+      this.props.getUsers(null, {
+        skin_id: 1,
+      });
+    } else {
       this.props.getUsers(null, {
         skin_id: this.props.activeSkinId,
         backoffice: true,
       });
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.activeSkinId != prevProps.activeSkinId) {
+      if (this.props.activeSkinId === -1) {
+        this.props.getUsers(null, {
+          skin_id: 1,
+        });
+      } else {
+        this.props.getUsers(null, {
+          skin_id: this.props.activeSkinId,
+          backoffice: true,
+        });
+      }
     }
   }
   render() {
@@ -26,12 +39,40 @@ class AdminListaUtenti extends React.Component {
         <div className="AdminListaUtenti--Header">
           <span>USER ID</span>
           <span>USERNAME</span>
-          <span>RAG SOCIALE</span>
-          <span>CREDITO</span>
-          <span>CITY</span>
-          <span>ULTIMO DEPOSIT</span>
-          <span>ULTIMO LOGIN</span>
-          <span>AZIONI</span>
+          <span style={this.props.activeSkinId === -1 ? { width: "16%" } : {}}>
+            RAG SOCIALE
+          </span>
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "10%", justifyContent: "flex-end", left: "-2%" }
+                : { justifyContent: "flex-end", left: "-1%" }
+            }
+          >
+            CREDITO
+          </span>
+          {this.props.activeSkinId === -1 ? null : <span>CITY</span>}
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
+            ULTIMO DEPOSIT
+          </span>
+          <span
+            style={
+              this.props.activeSkinId === -1
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
+            ULTIMO LOGIN
+          </span>
+          <span style={this.props.activeSkinId === -1 ? { width: "24%" } : {}}>
+            AZIONI
+          </span>
         </div>
         <div className="AdminListaUtentiRow">
           {LoaderAU && LoaderAU === true ? (

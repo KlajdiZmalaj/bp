@@ -2,7 +2,15 @@ import React from "react";
 import { Tooltip } from "antd";
 import { longestWord, returnNumberThatPasses } from "./HelperFunct";
 
-const SpanFormater = ({ Word, size, myClassName, nrOfRows, formatWord }) => {
+const SpanFormater = ({
+  Word,
+  size,
+  myClassName,
+  nrOfRows,
+  formatWord,
+  styles,
+  link,
+}) => {
   let props = {};
   let updatedWord, mySize, nrOfSpaces, theLongestWord, WordsLength;
   if (Word) {
@@ -31,15 +39,45 @@ const SpanFormater = ({ Word, size, myClassName, nrOfRows, formatWord }) => {
     ) : nrOfSpaces >= nrOfRows &&
       returnNumberThatPasses(WordsLength, mySize / 2) >= nrOfRows ? (
       <Tooltip title={updatedWord}>
-        <span {...props}>{updatedWord.substring(0, mySize - 2) + "..."}</span>
+        {!link ? (
+          <span style={{ ...styles }} {...props}>
+            {updatedWord.substring(0, mySize - 2) + "..."}
+          </span>
+        ) : (
+          <span style={{ ...styles }} {...props}>
+            <a style={{ ...styles }} {...props} href={Word}>
+              {updatedWord.substring(0, mySize - 2) + "..."}
+            </a>
+          </span>
+        )}
       </Tooltip>
     ) : theLongestWord <= mySize &&
       (Word.length <= mySize ||
         (Word.length > mySize && Word.length < mySize * nrOfRows)) ? (
-      <span {...props}>{updatedWord}</span>
+      !link ? (
+        <span style={{ ...styles }} {...props}>
+          {updatedWord}
+        </span>
+      ) : (
+        <span style={{ ...styles }} {...props}>
+          <a style={{ ...styles }} {...props} href={Word}>
+            {updatedWord}
+          </a>
+        </span>
+      )
     ) : (
       <Tooltip title={updatedWord}>
-        <span {...props}>{updatedWord.substring(0, mySize - 2) + "..."}</span>
+        {!link ? (
+          <span style={{ ...styles }} {...props}>
+            {updatedWord.substring(0, mySize - 2) + "..."}
+          </span>
+        ) : (
+          <span style={{ ...styles }} {...props}>
+            <a style={{ ...styles }} {...props} href={Word}>
+              {updatedWord.substring(0, mySize - 2) + "..."}
+            </a>
+          </span>
+        )}
       </Tooltip>
     ))
   );

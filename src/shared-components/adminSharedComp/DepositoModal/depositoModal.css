@@ -20,7 +20,7 @@
   height: 392px;
   position: fixed;
   background-color: #ffffff;
-  z-index: 2;
+  z-index: 4;
 }
 
 .DepositoModal--Container--Up {

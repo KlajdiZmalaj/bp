@@ -10,7 +10,7 @@ import {
   Commisione,
   Proviggioni,
 } from "../StaticAdminData";
-import { numberWithCommas } from "../HelperFunc";
+import { numberWithCommas } from "utils/HelperFunc";
 
 const PartsType = ({ partType, iconClass, number }) => (
   <div

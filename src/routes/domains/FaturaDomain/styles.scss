@@ -1,6 +1,81 @@
 .FaturaDomain {
   & .panels-container {
     position: relative;
+    & .Chose {
+      &--Month {
+        box-shadow: 0px 5px 4px 1px rgba(92, 92, 92, 0.25);
+        position: absolute;
+        right: 64px;
+        top: 37px;
+        width: 103px;
+        background: #ffffff;
+        z-index: 2;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+
+        font-family: "Roboto";
+        min-width: 103px;
+        cursor: pointer;
+        & .Header {
+          font-weight: bold;
+          border: 1px solid #ebeced;
+          padding: 5px 5px;
+        }
+        & .Body {
+          height: 200px;
+          overflow: auto;
+          padding: 5px 5px;
+          & .active {
+            background: var(--accent-bg);
+            color: var(--accent-txt);
+            &:after {
+              content: "✔";
+              color: var(--accent-txt);
+              position: absolute;
+              right: 12px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      &--Year {
+        min-width: 88px;
+        text-align: center;
+        box-shadow: 0px 5px 4px 1px rgba(92, 92, 92, 0.25);
+        background: #ffffff;
+        z-index: 2;
+        position: absolute;
+        position: absolute;
+        right: 170px;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Roboto";
+        top: 37px;
+        cursor: pointer;
+        & .Body {
+          height: 200px;
+          overflow: auto;
+          padding: 5px 5px;
+          & .active {
+            background: var(--accent-bg);
+            color: var(--accent-txt);
+            &:after {
+              content: "✔";
+              color: var(--accent-txt);
+              position: absolute;
+              right: 12px;
+              font-size: 14px;
+            }
+          }
+        }
+        & .Header {
+          font-weight: bold;
+          padding: 5px 5px;
+          border: 1px solid #ebeced;
+        }
+      }
+    }
   }
   & .calendarWrapper {
     position: absolute;
@@ -18,6 +93,7 @@
     }
   }
   & .FauturaFilter {
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
@@ -40,6 +116,7 @@
       color: #3c4349;
     }
     &--CalendarLabel {
+      min-width: 193px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -99,6 +176,7 @@
       }
       & input,
       & .Ricerca {
+        position: relative;
         width: 165px;
         border: 1px solid #f5f5f5;
         font-size: 14px;
@@ -113,6 +191,26 @@
         align-items: center;
         border-radius: 5px;
         margin-right: 8px;
+        &--UserList {
+          position: absolute;
+          width: 100%;
+          height: 200px;
+          bottom: -202px;
+          left: 0;
+          overflow: auto;
+          background: #ffffff;
+          z-index: 2;
+          box-shadow: 0px 9px 4px 1px rgba(92, 92, 92, 0.25);
+          display: block;
+          & div {
+            color: black;
+            font-size: 14px;
+            font-family: "Roboto";
+            font-weight: 400;
+            height: 40px;
+            cursor: pointer !important;
+          }
+        }
       }
       & input {
         border: none;
@@ -127,6 +225,12 @@
     & table.transTable {
       width: 100%;
       & .wsNwp {
+        &:nth-child(5),
+        &:nth-child(6),
+        &:nth-child(7) {
+          text-align: right;
+          width: 7%;
+        }
         & i {
           position: relative;
           font-weight: 300;
@@ -138,6 +242,19 @@
       }
       & tbody {
         & .wsNwp {
+          &:nth-child(3) {
+            & i {
+              color: #28a745;
+              font-size: 14px;
+              padding-right: 5px;
+            }
+          }
+          &:nth-child(5),
+          &:nth-child(6),
+          &:nth-child(7) {
+            text-align: right;
+            width: 7%;
+          }
           &:last-child {
             display: flex;
             justify-content: space-around;

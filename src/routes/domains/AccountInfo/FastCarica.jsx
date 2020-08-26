@@ -4,61 +4,9 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { transferMoney } from "services/auth";
-import { numberWithCommas } from "../adminPanel/HelperFunc";
+import { numberWithCommas } from "utils/HelperFunc";
+import ConfirmPopup from "shared-components/ConfirmPopup/ConfirmPopup";
 
-class Popup extends Component {
-  componentDidMount() {
-    const { confirmTranzacionModal } = this.props;
-    if (
-      confirmTranzacionModal.data.amount === 0 ||
-      !confirmTranzacionModal.data.userName
-    ) {
-      setTimeout(() => {
-        this.props.settingState();
-      }, 800);
-    }
-  }
-  render() {
-    const { confirmTranzacionModal, settingState, confirmation } = this.props;
-    return (
-      <div className="Confirma">
-        {confirmTranzacionModal?.data?.amount === 0 ||
-        !confirmTranzacionModal?.data?.userName ? (
-          <div className="Message">
-            <div>
-              Verifica nome utente e importo non devono essere vuoti o 0{" "}
-            </div>
-          </div>
-        ) : (
-          <div className="Message">
-            <div>
-              {" "}
-              {`Stai esseguiendo una ${
-                confirmTranzacionModal.data.type === "deposit"
-                  ? "Accredito"
-                  : "Prelevo"
-              } da  € ${numberWithCommas(
-                confirmTranzacionModal.data.amount * 100
-              )}   
-                a ${confirmTranzacionModal.data.userName} `}
-            </div>
-            <div>Confermi ?</div>
-            <div className="Buttons">
-              <button
-                onClick={() => {
-                  confirmation();
-                }}
-              >
-                Si
-              </button>
-              <button onClick={settingState}>No</button>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
 class FastCarica extends Component {
   state = {
     type: "deposit",
@@ -112,6 +60,7 @@ class FastCarica extends Component {
     });
     return allUsers;
   };
+
   checkIfHaveMoreUsers = (users) => {
     const allUsers = users;
     users.forEach((user) => {
@@ -141,15 +90,13 @@ class FastCarica extends Component {
       toDisplayUserDD,
       confirmTranzacionModal,
     } = this.state;
-
-    console.log(confirmTranzacionModal);
     const allUsers = [...this.props.users];
     const UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
     return (
       <div className="fastCarica">
         {confirmTranzacionModal?.visibility === true && (
           <React.Fragment>
-            <Popup
+            <ConfirmPopup
               settingState={() => {
                 this.setState({
                   confirmTranzacionModal: {

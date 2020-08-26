@@ -32,7 +32,7 @@ export class FormSubmiter extends Component {
   };
   render() {
     const { enableButtons, TicketByTcketId, getDataFormDetails } = this.props;
-    return JSON.parse(localStorage.accountDataB).profile.role.name ===
+    return JSON.parse(localStorage.accountDataB)?.profile?.role?.name ===
       "support" ? (
       <div className="formSubmit">
         <div

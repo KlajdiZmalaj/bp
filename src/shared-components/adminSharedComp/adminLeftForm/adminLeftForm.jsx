@@ -58,7 +58,8 @@ class AdminLeftForm extends React.Component {
 
                     <span
                       onClick={() => {
-                        setActiveSkinId(skin.id);
+                        console.log(activeSkinId, skin.id);
+                        setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
                       }}
                     >
                       {skin.username.toUpperCase()}
@@ -66,6 +67,36 @@ class AdminLeftForm extends React.Component {
                   </div>
                 </div>
               ))}
+            <div
+              style={{ cursor: "pointer" }}
+              className={`AdminLeftForm--FirstBox--Box`}
+              key={"createSkin"}
+            >
+              <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 22 22"
+                >
+                  <circle className="a" cx="11" cy="11" r="11" />
+                </svg>
+
+                <span
+                  onClick={() => {
+                    this.props.goToAdminPanel(false);
+                    this.props.addEditSkinDetails({
+                      skinId: -1,
+                      skinName: "newSkin",
+                      skinPannel: false,
+                      stepNumber: 0,
+                    });
+                  }}
+                >
+                  Create Add Skin
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="AdminLeftForm--LastBox">

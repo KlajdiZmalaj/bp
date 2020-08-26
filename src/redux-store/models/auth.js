@@ -1,14 +1,14 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-  changeAgent: ["id", "id2"],
+  changeAgent: ["id", "id2", "skin_id"],
   signInByEmail: ["email", "password", "c"],
   authSuccess: ["user"],
   authFailure: ["error"],
   logOut: [],
   getAccountInfo: [],
   setAccountInfo: ["accountInfo"],
-  getAgents: [""],
+  getAgents: ["skin_id"],
   setAgents: ["agents"],
   setUnauthorization: [],
   getBolletiniBianchi: [
@@ -42,8 +42,27 @@ const { Types, Creators } = createActions({
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
 
-  getPayments: ["username", "from", "to", "page_number", "limit", "skin_id"],
+  getPayments: [
+    "username",
+    "from",
+    "to",
+    "page_number",
+    "limit",
+    "skin_id",
+    "excel",
+  ],
+  getPaymentsForExcel: [
+    "username",
+    "from",
+    "to",
+    "page_number",
+    "limit",
+    "skin_id",
+    "excel",
+  ],
   setPayments: ["payments"],
+  setPaymentsForExcel: ["paymentsForExcel"],
+
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no"],
   setRechargeMobile: ["rechargeMobile"],
@@ -126,7 +145,7 @@ const { Types, Creators } = createActions({
   getBarcodeData: ["barcode", "callback"],
   setBarcodeData: ["barcodeData"],
   setLoginMsg: ["loginMsg"],
-  getUserDetail: ["id"],
+  getUserDetail: ["id", "skin_id"],
   setUserDetail: ["userDetail"],
   updateUserDetail: [
     "user_id",
@@ -148,6 +167,7 @@ const { Types, Creators } = createActions({
     "a_rent",
     "password",
     "confirm_password",
+    "skin_id",
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
@@ -183,7 +203,7 @@ const { Types, Creators } = createActions({
     "telefono",
   ],
   getDataFormDetails: [""],
-  getDataFormDetailsActives: [""],
+  getDataFormDetailsActives: ["isVisure"],
   setDataFormDetailsActives: ["formDetailsActives"],
   setDataFormDetails: ["formDetails"],
   getTicketByTicketId: ["ticket_id"],
@@ -235,6 +255,7 @@ const { Types, Creators } = createActions({
     "data_di_nascita",
     "luogo_di_nascita",
     "callBack",
+    "servizi",
   ],
   setPaymentsPages: ["paymentsPages"],
   sendVisureDetails: [
@@ -252,6 +273,9 @@ const { Types, Creators } = createActions({
     "p_iva",
     "comune",
     "callBack",
+    "servizi",
+    "price",
+    "sc",
   ],
   bigliettoPopUp: ["popUpData"],
   bigliettoPopUpVisure: ["popUpDataVisure"],
@@ -262,8 +286,8 @@ const { Types, Creators } = createActions({
   addVisure: ["singleVisure"],
   getVisureByVisureId: ["visura_id"],
   setVisureByVisureId: ["VisureByVisureId"],
-  getUserByUserId: ["user_id"],
-  getAgentByUserId: ["user_id"],
+  getUserByUserId: ["user_id", "skin_id"],
+  getAgentByUserId: ["user_id", "skin_id"],
   openModalForAdmin: ["openAdminModal"],
   editModalDetails: ["ModalDetails"],
   editStatModal: ["statModal"],
@@ -278,6 +302,15 @@ const { Types, Creators } = createActions({
   setAllServices: ["allServices"],
   setServicesLoading: ["servicesLoader"],
   setDepositoPopup: ["DepositoPopup"],
+  getAllFaturaBySearch: ["username", "month", "year"],
+  setAllFaturaBySearch: ["Fatture"],
+  sendMailFattura: ["file_name"],
+  setDepositoModalAdmin: ["adminDepModal"],
+  setPaymentsExcelLoading: ["paymentExcelLoading"],
+  goToAdminPanel: ["goToAdminPanelVis"],
+  addEditSkinDetails: ["addEditSkin"],
+  AddSkinNew: ["name", "url", "email", "agency_rent"],
+  setSkinId: ["newSkinId"],
 });
 
 export const AuthTypes = Types;
@@ -285,6 +318,7 @@ export default Creators;
 
 const INITIAL_STATE = {
   ModalDetails: {},
+  fatturaPdf: "",
   enableButtons: false,
   popUpData: {},
   paymentsPages: 0,
@@ -331,6 +365,13 @@ const INITIAL_STATE = {
   allServices: [],
   servicesLoader: false,
   DepositoPopup: {},
+  Fatture: {},
+  adminDepModal: null,
+  paymentsForExcel: {},
+  paymentExcelLoading: false,
+  goToAdminPanelVis: true,
+  addEditSkin: { skinPannel: false },
+  newSkinId: -1,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -539,5 +580,33 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_DEPOSITO_POPUP]: (state, { DepositoPopup }) => ({
     ...state,
     DepositoPopup,
+  }),
+  [Types.SET_ALL_FATURA_BY_SEARCH]: (state, { Fatture }) => ({
+    ...state,
+    Fatture,
+  }),
+  [Types.SET_DEPOSITO_MODAL_ADMIN]: (state, { adminDepModal }) => ({
+    ...state,
+    adminDepModal,
+  }),
+  [Types.SET_PAYMENTS_FOR_EXCEL]: (state, { paymentsForExcel }) => ({
+    ...state,
+    paymentsForExcel,
+  }),
+  [Types.SET_PAYMENTS_EXCEL_LOADING]: (state, { paymentExcelLoading }) => ({
+    ...state,
+    paymentExcelLoading,
+  }),
+  [Types.GO_TO_ADMIN_PANEL]: (state, { goToAdminPanelVis }) => ({
+    ...state,
+    goToAdminPanelVis,
+  }),
+  [Types.ADD_EDIT_SKIN_DETAILS]: (state, { addEditSkin }) => ({
+    ...state,
+    addEditSkin,
+  }),
+  [Types.SET_SKIN_ID]: (state, { newSkinId }) => ({
+    ...state,
+    newSkinId,
   }),
 });

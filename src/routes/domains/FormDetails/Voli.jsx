@@ -162,7 +162,7 @@ class Voli extends Component {
             <MyInput
               labelName={"Dati Passegeri"}
               type={"text"}
-              editable={editable}
+              editable={""}
               value={extra_data}
               handleChange={(e) => {
                 this.setState({ extra_data: e.target.value });

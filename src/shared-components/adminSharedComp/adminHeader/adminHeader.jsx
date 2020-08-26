@@ -14,6 +14,7 @@ class AdminHeader extends React.Component {
             }`}
             onClick={() => {
               this.props.history.push("/back-office/utenti");
+              this.props.goToAdminPanel(true);
             }}
           >
             <div>
@@ -27,6 +28,7 @@ class AdminHeader extends React.Component {
             }`}
             onClick={() => {
               this.props.history.push("/back-office/movimenti");
+              this.props.goToAdminPanel(true);
             }}
           >
             <div>
@@ -41,6 +43,7 @@ class AdminHeader extends React.Component {
             }`}
             onClick={() => {
               this.props.history.push("/back-office/servizzi");
+              this.props.goToAdminPanel(true);
             }}
           >
             <div>
@@ -56,6 +59,7 @@ class AdminHeader extends React.Component {
             }`}
             onClick={() => {
               this.props.history.push("/back-office/prenotazioni");
+              this.props.goToAdminPanel(true);
             }}
           >
             <div>

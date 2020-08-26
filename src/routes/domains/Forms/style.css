@@ -639,4 +639,175 @@
   -webkit-transition: unset !important;
   transition: unset !important;
 }
+
+.visures {
+  width: 100%;
+  max-width: 1371px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 550px;
+  margin-top: 60px;
+}
+
+.visures--services {
+  background-color: #fff;
+  width: 25%;
+  margin-right: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.visures--services__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  border-bottom: 1px solid #ebeced;
+}
+
+.visures--services__item.active .header {
+  color: var(--accent-bg);
+  font-weight: 500;
+}
+
+.visures--services__item .header {
+  padding: 0 15px;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+  color: #7e7e7e;
+}
+
+.visures--services__item .header i {
+  font-size: 13px;
+}
+
+.visures--services__item ul {
+  padding: 15px;
+  -webkit-box-shadow: inset 0px 11px 20px -16px black;
+          box-shadow: inset 0px 11px 20px -16px black;
+  margin: 0;
+  background-color: #fcfcfc;
+}
+
+.visures--services__item ul li {
+  font-size: 12px;
+  position: relative;
+  list-style-type: none;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.visures--services__item ul li.active {
+  color: var(--accent-bg);
+}
+
+.visures--form {
+  background-color: #fff;
+  width: 75%;
+}
+
+.visures--form .formsContainer--body {
+  margin: 0;
+}
+
+.visures--form .formsContainer--body .rightForm--right,
+.visures--form .formsContainer--body .rightForm--left {
+  height: calc(100% - 45px);
+}
+
+.visures--form .formsContainer--body .rightForm--left {
+  border-right: 1px solid #ebeced;
+}
+
+.visures--form .formsContainer--body .rightForm--header {
+  border-bottom: 1px solid #ebeced;
+  height: 45px;
+  font-size: 13px;
+  padding-left: 7px;
+}
+
+.visures--form .formsContainer--body__item.submit button {
+  padding: 10px;
+}
+
+.visureHeader {
+  text-transform: uppercase;
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  font-size: 15px;
+  border-bottom: 1px solid #ebeced;
+}
+
+.visureHeader > span,
+.visureHeader > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15px;
+  height: 45px;
+}
+
+.visureHeader > span {
+  font-weight: 500;
+  color: var(--accent-bg);
+}
+
+.visureHeader > div {
+  border-right: 1px solid #ebeced;
+  cursor: pointer;
+  font-weight: 500;
+  color: #c5c5c5;
+}
+
+.visureHeader > div i {
+  margin-right: 3px;
+}
+
+.visureHeader > div.active {
+  color: var(--accent-bg);
+}
+
+.visureHeader > div:nth-child(1) {
+  cursor: default;
+  color: #595959;
+}
+
+.itemWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: calc(550px - 45px);
+  overflow: auto;
+}
 /*# sourceMappingURL=style.css.map */
