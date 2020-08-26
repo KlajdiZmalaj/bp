@@ -413,3 +413,121 @@
 .swiper-wrapper {
   transition: unset !important;
 }
+.visures {
+  width: 100%;
+  max-width: 1371px;
+  margin: 0 auto;
+  display: flex;
+  min-height: 550px;
+  margin-top: 60px;
+  &--services {
+    background-color: #fff;
+    width: 25%;
+    margin-right: 5px;
+    display: flex;
+    flex-flow: column;
+    &__item {
+      display: flex;
+      flex-flow: column;
+      border-bottom: 1px solid #ebeced;
+      &.active {
+        .header {
+          color: var(--accent-bg);
+          font-weight: 500;
+        }
+      }
+      .header {
+        padding: 0 15px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        color: #7e7e7e;
+        i {
+          font-size: 13px;
+        }
+      }
+      ul {
+        padding: 15px;
+        box-shadow: inset 0px 11px 20px -16px black;
+        margin: 0;
+        background-color: #fcfcfc;
+        li {
+          font-size: 12px;
+          position: relative;
+          list-style-type: none;
+          padding: 5px 0;
+          cursor: pointer;
+          &.active {
+            color: var(--accent-bg);
+          }
+        }
+      }
+    }
+  }
+  &--form {
+    background-color: #fff;
+    width: 75%;
+    .formsContainer--body {
+      margin: 0;
+    }
+    .formsContainer--body .rightForm--right,
+    .formsContainer--body .rightForm--left {
+      height: calc(100% - 45px);
+    }
+    .formsContainer--body .rightForm--left {
+      border-right: 1px solid #ebeced;
+    }
+    .formsContainer--body .rightForm--header {
+      border-bottom: 1px solid #ebeced;
+      height: 45px;
+      font-size: 13px;
+      padding-left: 7px;
+    }
+    .formsContainer--body__item.submit button {
+      padding: 10px;
+    }
+  }
+}
+.visureHeader {
+  text-transform: uppercase;
+  font-weight: 400;
+  display: flex;
+  align-items: stretch;
+  font-size: 15px;
+  border-bottom: 1px solid #ebeced;
+  > span,
+  > div {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    height: 45px;
+  }
+  > span {
+    font-weight: 500;
+    color: var(--accent-bg);
+  }
+  > div {
+    border-right: 1px solid #ebeced;
+    cursor: pointer;
+    font-weight: 500;
+    color: #c5c5c5;
+    i {
+      margin-right: 3px;
+    }
+    &.active {
+      color: var(--accent-bg);
+    }
+    &:nth-child(1) {
+      cursor: default;
+      color: #595959;
+    }
+  }
+}
+.itemWrapper {
+  display: flex;
+  flex-flow: column;
+  height: calc(550px - 45px);
+  overflow: auto;
+}

@@ -56,7 +56,7 @@ export class FormSubmiter extends Component {
             />
           </div>
           <div className="submit" onClick={this.props.sendOffert}>
-            INVIA OFFERTAa <i className="fal fa-chevron-circle-right"></i>{" "}
+            INVIA OFFERTA <i className="fal fa-chevron-circle-right"></i>{" "}
           </div>
         </div>
 
@@ -156,6 +156,7 @@ export class FormSubmiter extends Component {
               5,
               () => {},
               getDataFormDetails,
+              this.state.base64 && this.state.base64,
               true
             );
           }}
@@ -181,6 +182,7 @@ export class FormSubmiter extends Component {
                 3,
                 () => {},
                 getDataFormDetails,
+                this.state.base64 && this.state.base64,
                 true
               );
             }}
@@ -196,6 +198,7 @@ export class FormSubmiter extends Component {
                 5,
                 () => {},
                 getDataFormDetails,
+                this.state.base64 && this.state.base64,
                 true
               );
             }}

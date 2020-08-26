@@ -242,13 +242,13 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             />
-            <PrivateRoute
+            {/* <PrivateRoute
               path="/fatura"
               component={Fatura}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
-            />
+            /> */}
             {/* <PrivateRoute
               path="/login-admin"
               component={loginAdmin}

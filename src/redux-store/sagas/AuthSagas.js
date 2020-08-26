@@ -745,12 +745,16 @@ export function* getDataFormDetails() {
     }
   }
 }
-export function* getDataFormDetailsActives() {
-  const response = yield call(getDataFormDetailActivesReq);
+export function* getDataFormDetailsActives(data) {
+  const response = yield call(getDataFormDetailActivesReq, data.isVisure);
 
   if (response.data) {
     if (response.status === 200) {
-      yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
+      if (data.isVisure) {
+        yield put(AuthActions.setDataFormDetailsActives(response.data.visure));
+      } else {
+        yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
+      }
     }
   }
 }
@@ -834,7 +838,10 @@ export function* sendVisureDetails(data) {
     data.luogo_di_nascita,
     data.ragione_sociale,
     data.p_iva,
-    data.comune
+    data.comune,
+    data.servizi,
+    data.price,
+    data.sc
   );
   if (response?.status === 200) {
     data.callBack({
@@ -894,7 +901,8 @@ export function* updateVisura(data) {
     data.nome,
     data.cognome,
     data.data_di_nascita,
-    data.luogo_di_nascita
+    data.luogo_di_nascita,
+    data.servizi
   );
   if (response?.status === 200) {
     data.callBack({

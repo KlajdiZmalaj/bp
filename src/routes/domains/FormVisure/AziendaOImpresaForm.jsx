@@ -56,15 +56,29 @@ class AziendaOImpresaForm extends Component {
       email,
       telefono,
     } = this.state;
+    const { activeService } = this.props;
+
     return (
       <FormContainerBody
         goBack={this.props.goBack}
         resetOfState={this.resetState}
-        type={this.props.type}
-        data={this.state}
+        type={2}
+        data={{
+          ...this.state,
+          servizi: activeService.name,
+          price: activeService.price,
+          sc: activeService.sco,
+        }}
         headerTitle={"INDICA I DATI DELL' AZIENDA"}
         leftForm={
           <div>
+            <InputForForm
+              labelName="Servizi"
+              value={activeService.name || "Seleziona servizo"}
+              handleChange={() => {}}
+              type={"text"}
+              readOnly={true}
+            />
             <InputForForm
               labelName="Ragione Sociale"
               value={ragione_sociale}
@@ -146,6 +160,17 @@ class AziendaOImpresaForm extends Component {
                 Avvisiami via SMS + 0.5 &euro;
               </Checkbox>
             </div> */}
+            <InputForForm
+              labelName="Prezzo"
+              value={
+                activeService.price
+                  ? `${activeService.price}€`
+                  : "Seleziona servizo"
+              }
+              handleChange={() => {}}
+              type={"text"}
+              readOnly={true}
+            />
           </div>
         }
       />

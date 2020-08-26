@@ -3,6 +3,8 @@ import { userConfirmation } from "services/auth";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
 import images from "../../themes/images";
+import PersonaFisicaConfirmation from "./PersonaFisicaConfirmation";
+import AziendaOImpresaConfirmation from "./AziendaOImpresaConfirmation";
 
 const PopUpConfirmationVisure = ({
   setButtonsSupport,
@@ -34,15 +36,13 @@ const PopUpConfirmationVisure = ({
             />
             <span>{`Id :BP- ${VisureByVisureId.id}`}</span>
           </div>
-          {/* {TicketByTcketId.type == 3 && (
-            <EventiConfirmation TicketByTcketId={TicketByTcketId} />
+          {VisureByVisureId.type == 1 && (
+            <PersonaFisicaConfirmation TicketByTcketId={VisureByVisureId} />
           )}
-          {TicketByTcketId.type == 2 && (
-            <TreniConfirmation TicketByTcketId={TicketByTcketId} />
+          {VisureByVisureId.type == 2 && (
+            <AziendaOImpresaConfirmation TicketByTcketId={VisureByVisureId} />
           )}
-          {TicketByTcketId.type == 1 && (
-            <VoliConfirmation TicketByTcketId={TicketByTcketId} />
-          )} */}
+
           <div className="confirmationPopup--buttons">
             <button
               className="Eseguito"

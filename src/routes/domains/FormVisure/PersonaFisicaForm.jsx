@@ -7,11 +7,22 @@ import FormContainerBody from "./FormContainerBody";
 import { DatePicker } from "antd";
 import moment from "moment";
 import "./VisureStyles.css";
-export const InputForForm = ({ labelName, value, handleChange, type }) => {
+export const InputForForm = ({
+  readOnly,
+  labelName,
+  value,
+  handleChange,
+  type,
+}) => {
   return (
     <div className="formsContainer--body__item">
       <div className="label">{labelName}</div>
-      <input value={value || ""} onChange={handleChange} type={type} />
+      <input
+        readOnly={readOnly}
+        value={value || ""}
+        onChange={handleChange}
+        type={type}
+      />
     </div>
   );
 };
@@ -55,6 +66,7 @@ class PersonaFisicaForm extends Component {
     }
   };
   render() {
+    const { activeService } = this.props;
     const {
       nome,
       cognome,
@@ -70,11 +82,23 @@ class PersonaFisicaForm extends Component {
       <FormContainerBody
         goBack={this.props.goBack}
         resetOfState={this.resetState}
-        data={this.state}
-        type={this.props.type}
+        data={{
+          ...this.state,
+          servizi: activeService.name,
+          price: activeService.price,
+          sc: activeService.sco,
+        }}
+        type={1}
         headerTitle={"INDICA I DATI DELLA PERSONA"}
         leftForm={
           <div>
+            <InputForForm
+              labelName="Servizi"
+              value={activeService.name || "Seleziona servizo"}
+              handleChange={() => {}}
+              type={"text"}
+              readOnly={true}
+            />
             <InputForForm
               labelName="Nome"
               value={nome}
@@ -162,6 +186,17 @@ class PersonaFisicaForm extends Component {
                 this.setState({ email: e.target.value });
               }}
               type={"text"}
+            />
+            <InputForForm
+              labelName="Prezzo"
+              value={
+                activeService.price
+                  ? `${activeService.price}€`
+                  : "Seleziona servizo"
+              }
+              handleChange={() => {}}
+              type={"text"}
+              readOnly={true}
             />
           </div>
         }
