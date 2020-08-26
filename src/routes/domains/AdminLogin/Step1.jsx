@@ -1,7 +1,8 @@
 import React from "react";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
-const MySpan = ({
+import { notification } from "antd";
+export const MySpan = ({
   title,
   iconClass,
   classNm,
@@ -89,6 +90,9 @@ class Step1 extends React.Component {
               step1: {
                 ...this.state,
               },
+              step2: {
+                ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),
+              },
               skinId: addEditSkin?.skinId,
               skinName: addEditSkin?.skinName,
               skinPannel: true,
@@ -116,14 +120,16 @@ class Step1 extends React.Component {
               }}
               value={link_servizi}
             />
-            <MySpan
-              title="UPLOAD LOGO"
-              iconClass="fal fa-cloud-upload"
-              handleChange={(e) => {
-                this.setState({ upload_logo: e.target.value });
-              }}
-              value={upload_logo}
-            />
+            <span>
+              <input
+                type="file"
+                onChange={(e) => {
+                  this.setState({ upload_logo: e.target.files[0].name });
+                }}
+              />
+              <i className="fal fa-cloud-upload" />
+              <label>{upload_logo === "" ? "Select Logo" : upload_logo}</label>
+            </span>
             <MySpan
               title="EMAIL"
               iconClass="fal fa-envelope"
@@ -230,6 +236,7 @@ class Step1 extends React.Component {
             />
             <MySpan
               title="AFFILIAZIONI"
+              iconClass="fal fa-globe"
               handleChange={(e) => {
                 this.setState({ affiliazioni: e.target.value });
               }}
@@ -298,15 +305,36 @@ class Step1 extends React.Component {
             />
             <button
               onClick={() => {
-                addEditSkinDetails({
-                  step1: {
-                    ...this.state,
-                  },
-                  skinId: addEditSkin?.skinId,
-                  skinName: addEditSkin?.skinName,
-                  skinPannel: true,
-                  stepNumber: addEditSkin?.stepNumber + 1,
-                });
+                let ifempty = false;
+                if (
+                  Object.keys(this.state).forEach((key) => {
+                    if (!this.state[key] || this.state[key] === "") {
+                      ifempty = true;
+                    }
+                  })
+                )
+                  if (ifempty) {
+                    notification["error"]({
+                      message: "Ops...",
+                      description:
+                        "Non puoi continuare al secondo step ,completi tutti i dati prima",
+                      placement: "topCenter",
+                      duration: "5",
+                    });
+                  } else {
+                    addEditSkinDetails({
+                      step1: {
+                        ...this.state,
+                      },
+                      step2: {
+                        ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),
+                      },
+                      skinId: addEditSkin?.skinId,
+                      skinName: addEditSkin?.skinName,
+                      skinPannel: true,
+                      stepNumber: addEditSkin?.stepNumber + 1,
+                    });
+                  }
               }}
             >
               Create Skin

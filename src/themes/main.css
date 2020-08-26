@@ -2218,6 +2218,13 @@ body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #01a81b;
+  margin-bottom: 4px;
+}
+
+body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel i {
+  font-size: 18px;
+  font-weight: 300;
+  margin-right: 10px;
 }
 
 body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel span:first-child {
@@ -2232,12 +2239,6 @@ body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel sp
           align-items: center;
   height: 100%;
   width: 100%;
-}
-
-body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel span:first-child i {
-  font-size: 18px;
-  font-weight: 300;
-  margin-right: 10px;
 }
 
 body:not(.bodyAdmin) div.Container .panels-container .row.no-gutters.max-width {
