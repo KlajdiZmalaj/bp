@@ -31,7 +31,7 @@ class Excel extends React.Component {
     const { clickedLink } = this.state;
     const headers = [
       { label: "Date / Ora", key: "executed_date" },
-      { label: "Barcode            ", key: "barcode", width: {wch: 40} },
+      { label: "Barcode", key: "barcode", width: {wch: 40} },
       { label: "User", key: "agency_name" },
       { label: "Service", key: "service_name" },
       { label: "Importo", key: "price1000" },
