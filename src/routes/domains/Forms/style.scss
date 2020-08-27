@@ -434,6 +434,9 @@
         .header {
           color: var(--accent-bg);
           font-weight: 500;
+          position: sticky;
+          top: 0;
+          z-index: 1;
         }
       }
       .header {
@@ -444,6 +447,7 @@
         justify-content: space-between;
         cursor: pointer;
         color: #7e7e7e;
+        background-color: #fff;
         i {
           font-size: 13px;
         }
@@ -459,6 +463,15 @@
           list-style-type: none;
           padding: 5px 0;
           cursor: pointer;
+          position: relative;
+          padding-left: 25px;
+          font-weight: 500;
+          color: #5c5c5c;
+          &:before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+          }
           &.active {
             color: var(--accent-bg);
           }
@@ -528,6 +541,7 @@
 .itemWrapper {
   display: flex;
   flex-flow: column;
-  height: calc(550px - 45px);
+  height: calc(650px - 45px);
   overflow: auto;
+  position: relative;
 }

@@ -145,6 +145,7 @@ class PersonaFisica extends Component {
               <div className="inputLabel">Data di nascita</div>
               {data_di_nascita === "" ? (
                 <DatePicker
+                  format={"DD/MM/YYYY"}
                   value={null}
                   onChange={(e) => {
                     this.setState({ data_di_nascita: moment(e).format() });
@@ -152,6 +153,7 @@ class PersonaFisica extends Component {
                 />
               ) : (
                 <DatePicker
+                  format={"DD/MM/YYYY"}
                   value={moment(
                     data_di_nascita != "" ? data_di_nascita : new Date()
                   )}

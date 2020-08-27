@@ -20,8 +20,9 @@ import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 import { numberWithCommas } from "utils/HelperFunc";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import Excel from "./Excel";
+import UseCode from "routes/views/UseCode";
+import ClickOut from "react-onclickout";
 const { Option } = Select;
-
 class Transazioni extends React.Component {
   state = {
     dashboardFromFilterTop: true,
@@ -338,7 +339,12 @@ class Transazioni extends React.Component {
       skinExtras,
       getPayments,
     } = this.props;
-    // console.log("paymentspayments", payments);
+    console.log(
+      "paymentspayments",
+      payments,
+      paymentsForExcel,
+      paymentsFromCode
+    );
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 
@@ -444,7 +450,13 @@ class Transazioni extends React.Component {
                   handleSubmit={this.handleSubmit}
                 />
               )}
-              <h1 className="heading-tab ">Lista Movimenti</h1>
+              <h1 className="heading-tab">Lista Movimenti</h1>
+              <button
+                onClick={() => this.setState({ hasVPT: true })}
+                className="barcodeBtn"
+              >
+                ricerca movimenti <i className="fal fa-barcode-read"></i>
+              </button>
               <div className="datepics ml-auto mr-2">
                 <Form
                   {...formItemLayout}
@@ -561,6 +573,14 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
+                {/* <Pdf
+                  username={username}
+                  from={from}
+                  to={to}
+                  perPage={perPage}
+                  payments={paymentsForExcel}
+                  getPaymentsForExcel={this.props.getPaymentsForExcel}
+                /> */}
                 <Excel
                   username={username}
                   from={from}
@@ -803,7 +823,7 @@ class Transazioni extends React.Component {
             onCancel={this.handleCancel}
             footer={null}
           >
-            {indexT !== null && payments[indexT] && (
+            {paymentsFromCode && (
               <div
                 className="printModal"
                 ref={(el) => (this.componentRef = el)}
@@ -821,12 +841,10 @@ class Transazioni extends React.Component {
                   {/* <span>BPOINT</span> */}
 
                   <span className="fontSmall text-bold">
-                    {name.charAt(0).toUpperCase() +
-                      name.slice(1).toLocaleLowerCase()}
+                    {paymentsFromCode.agency_name}
                   </span>
                   <span className="fontSmall address">
-                    {address.charAt(0).toUpperCase() +
-                      address.slice(1).toLocaleLowerCase()}
+                    {paymentsFromCode.agency_address}
                   </span>
                   {/* <span className="userCel">
                     {" "}
@@ -875,6 +893,20 @@ class Transazioni extends React.Component {
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />
         </div>
+        {!forAdmin && this.state.hasVPT && (
+          <ClickOut
+            onClickOut={() => {
+              this.setState({ hasVPT: false });
+            }}
+          >
+            <div className="useCodePopUp">
+              <UseCode
+                getCodiceTicket={getCodiceTicket}
+                showModal={this.showModal}
+              />
+            </div>
+          </ClickOut>
+        )}
       </div>
     );
   }

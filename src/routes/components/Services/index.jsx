@@ -17,6 +17,11 @@ class Service extends React.Component {
   };
 
   selectService = (id) => {
+    // console.log(
+    //   "ca clikohet",
+    //   id,
+    //   this.props.servicesItems[this.props.serviceSelected]
+    // );
     this.props.setServiceId(id);
     this.props.togglePopUp(true);
     this.props.setServiceS(

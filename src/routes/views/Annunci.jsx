@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
+import moment from "moment";
 
 import "antd/dist/antd.css";
 import { Form, Input, Button, Radio } from "antd";
@@ -145,7 +146,9 @@ class Annunci extends React.Component {
                         className="fas fa-dot-circle"
                       ></i>
                       <h4>{m.title}</h4>
-                      <span className="date-pane">{m.updated_at}</span>
+                      <span className="date-pane">
+                        {moment(m.updated_at).format("DD/MM/YYYY HH:mm")}
+                      </span>
                       <img src={images.uparrow} alt="" />
                     </div>
                     <div

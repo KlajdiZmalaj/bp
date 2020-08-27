@@ -697,6 +697,50 @@ a:hover {
           transform: rotate(180deg);
 }
 
+.azioniTabs {
+  width: 100%;
+  max-width: 1371px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.azioniTabs > div {
+  height: 50px;
+  border-radius: 3px;
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: uppercase;
+  margin-right: 6px;
+  min-width: 185px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
+
+.azioniTabs > div.active::before {
+  content: "\f0d9";
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(89deg);
+          transform: translateX(-50%) rotate(89deg);
+  font-size: 26px;
+}
+
 /*annunci styles*/
 .sort-annunci {
   display: -webkit-box;
@@ -1877,6 +1921,27 @@ i#private {
   }
 }
 
+.barcodeBtn {
+  background-color: #edeef0;
+  color: #f36520;
+  text-transform: capitalize;
+  position: relative;
+  bottom: 5px;
+  border: 0;
+  padding: 8px 19px;
+  margin-left: 12px;
+  border: 1px solid #d2d2d2;
+}
+
+.useCodePopUp {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
 /*adm styles*/
 .creatutente {
   position: relative;
@@ -2193,7 +2258,7 @@ body:not(.bodyAdmin) div.Container .panels-container {
   -webkit-box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
           box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
   padding-bottom: 150px;
-  padding-top: 40px;
+  padding-top: 22px;
   min-height: 500px;
 }
 
@@ -2931,6 +2996,17 @@ span.superSmall {
 .favorites--row {
   margin-top: 30px;
   padding: 0 15px;
+}
+
+.fa-caret-left {
+  opacity: 0 !important;
+}
+
+.clickedItem .fa-caret-left {
+  margin-left: auto !important;
+  color: var(--accent-bg) !important;
+  opacity: 1 !important;
+  font-size: 22px !important;
 }
 
 /*modules*/

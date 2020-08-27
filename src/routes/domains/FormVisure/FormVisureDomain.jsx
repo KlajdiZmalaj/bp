@@ -5,24 +5,41 @@ import AziendaOImpresaForm from "./AziendaOImpresaForm";
 import PersonaFisicaForm from "./PersonaFisicaForm";
 import { servicesVisure } from "config";
 
-const Item = ({ service, activeService, setActiveService }) => {
+const Item = ({
+  service,
+  activeService,
+  setActiveService,
+  ind,
+  tabOpen,
+  setTab,
+}) => {
   const [isOpen, setOpen] = useState(false);
   return (
-    <div className={"visures--services__item" + (isOpen ? " active" : "")}>
+    <div
+      className={
+        "visures--services__item" + (isOpen && tabOpen === ind ? " active" : "")
+      }
+    >
       <div
         onClick={() => {
-          setOpen(!isOpen);
+          if (tabOpen !== ind) {
+            setOpen(true);
+            setTab(ind);
+          } else {
+            setOpen(false);
+            setTab(null);
+          }
         }}
         className="header"
       >
         <span>{service}</span>{" "}
-        {isOpen ? (
+        {isOpen && tabOpen === ind ? (
           <i className="fas fa-minus-circle" aria-hidden="true"></i>
         ) : (
           <i className="fal fa-plus-circle" aria-hidden="true"></i>
         )}
       </div>
-      {isOpen && (
+      {isOpen && tabOpen === ind && (
         <ul className="animated fadeIn">
           {servicesVisure[service].services.map((item) => {
             return (
@@ -45,12 +62,16 @@ class FormVisureDomain extends Component {
   state = {
     activeVisure: 1,
     activeService: "",
+    tabOpen: null,
   };
   setActiveService = (activeService) => {
     this.setState({ activeService });
   };
+  setTab = (tabOpen) => {
+    this.setState({ tabOpen });
+  };
   render() {
-    const { activeVisure, activeService } = this.state;
+    const { activeVisure, activeService, tabOpen } = this.state;
     return (
       <div className="formsContainer">
         <h1>Visure e altro</h1>
@@ -60,12 +81,16 @@ class FormVisureDomain extends Component {
               <span>Servizi</span>
             </div>
             <div className="itemWrapper">
-              {Object.keys(servicesVisure).map((service) => {
+              {Object.keys(servicesVisure).map((service, ind) => {
                 return (
                   <Item
+                    key={service}
+                    ind={ind}
                     setActiveService={this.setActiveService}
                     activeService={this.state.activeService}
                     service={service}
+                    tabOpen={tabOpen}
+                    setTab={this.setTab}
                   />
                 );
               })}

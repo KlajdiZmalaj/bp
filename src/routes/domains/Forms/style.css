@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .formsContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -678,6 +679,10 @@
 .visures--services__item.active .header {
   color: var(--accent-bg);
   font-weight: 500;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .visures--services__item .header {
@@ -694,6 +699,7 @@
           justify-content: space-between;
   cursor: pointer;
   color: #7e7e7e;
+  background-color: #fff;
 }
 
 .visures--services__item .header i {
@@ -714,6 +720,16 @@
   list-style-type: none;
   padding: 5px 0;
   cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  font-weight: 500;
+  color: #5c5c5c;
+}
+
+.visures--services__item ul li:before {
+  content: "•";
+  position: absolute;
+  left: 10px;
 }
 
 .visures--services__item ul li.active {
@@ -809,5 +825,6 @@
           flex-flow: column;
   height: calc(550px - 45px);
   overflow: auto;
+  position: relative;
 }
 /*# sourceMappingURL=style.css.map */

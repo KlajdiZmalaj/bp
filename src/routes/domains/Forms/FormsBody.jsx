@@ -120,6 +120,12 @@ export class FormsBody extends Component {
                 icon={"fas fa-receipt"}
                 color="#3f1d74b5"
               />
+              <Card
+                clickHandler={() => (window.location.hash = "visure")}
+                title="visure"
+                icon={"fal fa-align-right"}
+                color="#277d74b5"
+              />
             </div>
           )}
 
