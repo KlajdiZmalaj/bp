@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
     serviceSelected: "",
     keyService: "",
     toDisplay: false,
+    serviceFilter: "all",
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -32,7 +33,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { serviceSelected, keyService } = this.state;
+    const { serviceSelected, keyService, serviceFilter } = this.state;
     const { services, favorites } = this.props;
     let allFavServices = [];
     Object.keys(favorites).forEach((item) => {
@@ -62,6 +63,29 @@ class Dashboard extends React.Component {
           <Azioni active="dashboard"></Azioni>
 
           <div className="panels-container">
+            <div className="azioniTabs">
+              <div
+                className={serviceFilter === "all" ? "active" : ""}
+                onClick={() => {
+                  this.setState({ serviceFilter: "all" });
+                }}
+              >
+                Tutte
+              </div>
+              <div
+                className={serviceFilter === "ricariche" ? "active" : ""}
+                onClick={() => this.setState({ serviceFilter: "ricariche" })}
+              >
+                Ricariche
+              </div>
+              <div
+                onClick={() => {
+                  window.location.hash = "forms";
+                }}
+              >
+                Prenotazioni
+              </div>
+            </div>
             <div className="row no-gutters max-width">
               <div
                 className={`col-md-${
@@ -73,8 +97,10 @@ class Dashboard extends React.Component {
                   return (
                     (serv["name"] && serv["name"].toLowerCase()).includes(
                       this.props.navbarSearch.toLowerCase()
-                    ) && (
-                      <div key={index + item}>
+                    ) &&
+                    (serviceFilter === "all" ||
+                      serv["name"].toLowerCase().includes(serviceFilter)) && (
+                      <div key={index + item} className="animated fadeIn">
                         <div
                           className="panel-tab"
                           data-toggle="collapse"
@@ -102,6 +128,22 @@ class Dashboard extends React.Component {
                                     onClick={() => {
                                       this.changeServce(service, item);
                                       this.togglePopUp(true);
+                                      //i hap sherbimet me 1 click
+                                      if (
+                                        item === "RTELD" ||
+                                        item === "RTELC" ||
+                                        item === "RTELI" ||
+                                        item === "SCMS" ||
+                                        item === "RTVD"
+                                      ) {
+                                        this.props.setServiceId(
+                                          services[item][service]?.services[0]
+                                        );
+                                        this.props.togglePopUp(true);
+                                        this.props.setServiceS(
+                                          services[item][service]
+                                        );
+                                      }
                                     }}
                                     className={
                                       "panel-item" +
@@ -112,12 +154,12 @@ class Dashboard extends React.Component {
                                   >
                                     <i className="fas fa-dot-circle"></i>
                                     <h4>{serv[service].name} </h4>
-                                    <img
+                                    {/* <img
                                       className="rightTriangle"
                                       src={images.rightTriangle}
                                       alt=""
-                                    />
-
+                                    /> */}
+                                    <i className="fas fa-caret-left rightTriangle"></i>
                                     <div
                                       className={
                                         "star" +

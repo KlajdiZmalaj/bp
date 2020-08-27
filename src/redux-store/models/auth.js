@@ -367,7 +367,7 @@ const INITIAL_STATE = {
   DepositoPopup: {},
   Fatture: {},
   adminDepModal: null,
-  paymentsForExcel: {},
+  paymentsForExcel: [],
   paymentExcelLoading: false,
   goToAdminPanelVis: true,
   addEditSkin: { skinPannel: false },

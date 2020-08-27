@@ -135,18 +135,32 @@ class PersonaFisicaForm extends Component {
               <div className="label">Data di nascita</div>
               {data_di_nascita === "" ? (
                 <DatePicker
-                  value={null}
+                  format={"DD/MM/YYYY"}
                   onChange={(e) => {
-                    this.setState({ data_di_nascita: moment(e).format() });
+                    console.log(
+                      "DatePicker",
+                      e,
+                      moment(e).format(),
+                      moment(e).format("DD/MM/YYYY")
+                    );
+                    this.setState({
+                      data_di_nascita: moment(e).format("DD/MM/YYYY"),
+                    });
                   }}
                 />
               ) : (
                 <DatePicker
-                  value={moment(
-                    data_di_nascita != "" ? data_di_nascita : new Date()
-                  )}
+                  format={"DD/MM/YYYY"}
                   onChange={(e) => {
-                    this.setState({ data_di_nascita: moment(e).format() });
+                    console.log(
+                      "DatePicker",
+                      e,
+                      moment(e).format(),
+                      moment(e).format("DD/MM/YYYY")
+                    );
+                    this.setState({
+                      data_di_nascita: moment(e).format("DD/MM/YYYY"),
+                    });
                   }}
                 />
               )}

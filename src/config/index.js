@@ -48,13 +48,13 @@ export const azioni = [
     i: "fal fa-file-invoice-dollar",
     displayRole: ["super_admin", "agency", "agent"],
   },
-  {
-    id: 4,
-    name: "ricerca movimenti",
-    link: "use-code",
-    i: "fal fa-barcode-read",
-    displayRole: ["super_admin", "agency"],
-  },
+  // {
+  //   id: 4,
+  //   name: "ricerca movimenti",
+  //   link: "use-code",
+  //   i: "fal fa-barcode-read",
+  //   displayRole: ["super_admin", "agency"],
+  // },
   {
     id: 5,
     name: "servizi",
@@ -69,13 +69,13 @@ export const azioni = [
     i: "fab fa-wpforms",
     displayRole: ["super_admin", "user", "agency"],
   },
-  {
-    id: 12,
-    name: "Visure",
-    link: "visure",
-    i: "fab fa-wpforms",
-    displayRole: ["super_admin", "user", "agency"],
-  },
+  // {
+  //   id: 12,
+  //   name: "Visure",
+  //   link: "visure",
+  //   i: "fab fa-wpforms",
+  //   displayRole: ["super_admin", "user", "agency"],
+  // },
   {
     id: 6,
     name: "configura",

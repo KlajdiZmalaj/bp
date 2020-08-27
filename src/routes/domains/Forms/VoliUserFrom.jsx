@@ -1,5 +1,6 @@
 import React from "react";
-
+import { DatePicker } from "antd";
+import moment from "moment";
 const VoliUserForm = ({
   handleChangeName,
   handleChangeCognome,
@@ -67,14 +68,14 @@ const VoliUserForm = ({
       </div>
       <div className="formsContainer--body__item">
         <div className="label"> Data Di Nascita</div>
-        <input
-          type="text"
+
+        <DatePicker
           onChange={(e) => {
             isAdult
               ? handleChangeDate(
                   {
                     [`adult${ind + 1}`]: {
-                      date: e.target.value,
+                      date: moment(e).format("DD/MM/YYYY"),
                     },
                   },
                   `adult${ind + 1}`
@@ -82,12 +83,13 @@ const VoliUserForm = ({
               : handleChangeDate(
                   {
                     [`child${ind + 1}`]: {
-                      date: e.target.value,
+                      date: moment(e).format("DD/MM/YYYY"),
                     },
                   },
                   `child${ind + 1}`
                 );
           }}
+          format={("DD/MM/YYYY", "DD/MM/YYYY")}
         />
       </div>
       {ind === 0 && isAdult && (

@@ -2,7 +2,8 @@ import React from "react";
 import { CSVLink } from "react-csv";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
-import axios from "axios";
+import { numberWithCommas } from "utils/HelperFunc";
+
 class Excel extends React.Component {
   csvLink = React.createRef();
 
@@ -29,6 +30,7 @@ class Excel extends React.Component {
       username,
     } = this.props;
     const { clickedLink } = this.state;
+    console.log("payments", payments);
     const headers = [
       { label: "Date / Ora", key: "executed_date" },
       { label: "Barcode            ", key: "barcode" },
@@ -50,7 +52,7 @@ class Excel extends React.Component {
                   barcode: '=""' + pay.barcode + '""',
                   agency_name: pay.agency_name,
                   service_name: pay.service_name,
-                  price1000: pay.price1000 / 1000 + `  €`,
+                  price1000: numberWithCommas(pay.price1000 / 1000) + `  €`,
                   commissione: pay.commissione + `  €`,
                   percentage: pay.percentage + `  €`,
                   saldo: pay.saldo + `  €`,
@@ -62,7 +64,9 @@ class Excel extends React.Component {
       <React.Fragment>
         <span
           className="ExportToExel"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
             this.props.getPaymentsForExcel(
               username,
               from,
@@ -92,7 +96,9 @@ class Excel extends React.Component {
           ref={this.csvLink}
           data={dataSet}
           headers={headers}
-          filename={"Tranzacioni.csv"}
+          filename={
+            from ? `Transazioni${from + "-" + to}.csv` : "Transazioni.csv"
+          }
           className="hidden"
           target="_blank"
         ></CSVLink>

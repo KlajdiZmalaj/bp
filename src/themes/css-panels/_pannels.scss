@@ -75,7 +75,7 @@ body:not(.bodyAdmin) {
       background: #ececed !important;
       box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.09);
       padding-bottom: 150px;
-      padding-top: 40px;
+      padding-top: 22px;
       min-height: 500px;
       & .max-width {
         max-width: 1371px;
@@ -642,4 +642,13 @@ span.superSmall {
     margin-top: 30px;
     padding: 0 15px;
   }
+}
+.fa-caret-left {
+  opacity: 0 !important;
+}
+.clickedItem .fa-caret-left {
+  margin-left: auto !important;
+  color: var(--accent-bg) !important;
+  opacity: 1 !important;
+  font-size: 22px !important;
 }

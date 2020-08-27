@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
-
+import moment from "moment";
 class Message extends React.Component {
   state = {
     isOpen: false,
@@ -24,7 +24,9 @@ class Message extends React.Component {
         >
           <i className="fas fa-dot-circle"></i>
           <h4>{msg[3]}</h4>
-          <span className="date-pane">{msg[2]}</span>
+          <span className="date-pane">
+            {moment(msg[2]).format("DD/MM/YYYY HH:mm")}
+          </span>
           <i className="fal fa-chevron-down" aria-hidden="true"></i>
         </div>
 

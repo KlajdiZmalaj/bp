@@ -288,3 +288,21 @@
     }
   }
 }
+.barcodeBtn {
+  background-color: #edeef0;
+  color: #f36520;
+  text-transform: capitalize;
+  position: relative;
+  bottom: 5px;
+  border: 0;
+  padding: 8px 19px;
+  margin-left: 12px;
+  border: 1px solid #d2d2d2;
+}
+.useCodePopUp {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
