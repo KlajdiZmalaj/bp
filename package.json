@@ -6,20 +6,11 @@
     "@ant-design/icons": "^4.2.1",
     "antd": "^3.26.18",
     "aos": "^2.3.4",
-<<<<<<< HEAD
-    "axios": "^0.19.2",
-    "bootstrap": "^4.5.0",
-    "cross-env": "^5.2.1",
-    "date-fns": "^2.15.0",
-    "html2canvas": "^1.0.0-rc.7",
-    "jquery": "^3.5.1",
-=======
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "cross-env": "^5.2.0",
     "date-fns": "^2.12.0",
     "jquery": "^3.4.1",
->>>>>>> 1a733299ea8ffed4dbd0b418ba9f335105674017
     "jquery-ui": "^1.12.1",
     "laravel-echo": "^1.8.0",
     "lodash": "^4.17.19",
@@ -29,12 +20,8 @@
     "react-charts": "^2.0.0-beta.7",
     "react-csv": "^2.0.3",
     "react-date-range": "^1.0.3",
-<<<<<<< HEAD
-    "react-dom": "^16.13.1",
-=======
     "react-dom": "^16.9.0",
     "react-export-excel": "^0.5.3",
->>>>>>> 1a733299ea8ffed4dbd0b418ba9f335105674017
     "react-id-swiper": "^2.4.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
