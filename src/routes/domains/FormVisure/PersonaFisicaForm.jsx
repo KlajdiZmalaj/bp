@@ -212,6 +212,17 @@ class PersonaFisicaForm extends Component {
               type={"text"}
               readOnly={true}
             />
+            <InputForForm
+              labelName="Evasione"
+              value={
+                activeService.price
+                  ? `${activeService.time}`
+                  : "Seleziona servizo"
+              }
+              handleChange={() => {}}
+              type={"text"}
+              readOnly={true}
+            />
           </div>
         }
       />
