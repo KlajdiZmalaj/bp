@@ -751,10 +751,27 @@ export function* getDataFormDetailsActives(data) {
 
   if (response.data) {
     if (response.status === 200) {
+      const activeTickets = yield select(
+        (state) => state.auth.formDetailsActives.rowsTickets
+      );
+      const activeVisure = yield select(
+        (state) => state.auth.formDetailsActives.rowsVisure
+      );
+
       if (data.isVisure) {
-        yield put(AuthActions.setDataFormDetailsActives(response.data.visure));
+        yield put(
+          AuthActions.setDataFormDetailsActives({
+            rowsVisure: response.data.visure,
+            rowsTickets: [...activeTickets],
+          })
+        );
       } else {
-        yield put(AuthActions.setDataFormDetailsActives(response.data.tickets));
+        yield put(
+          AuthActions.setDataFormDetailsActives({
+            rowsVisure: [...activeVisure],
+            rowsTickets: response.data.tickets,
+          })
+        );
       }
     }
   }
@@ -1008,8 +1025,8 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
     yield put(AuthActions.setSkinId(response.data.skin_id));
   }
 }
-export function* getWidgetPayments() {
-  const response = yield call(widgetPaymentsReq);
+export function* getWidgetPayments({ skin_id }) {
+  const response = yield call(widgetPaymentsReq, skin_id);
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
   }

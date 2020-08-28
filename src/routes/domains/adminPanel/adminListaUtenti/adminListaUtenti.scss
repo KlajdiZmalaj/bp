@@ -88,7 +88,7 @@ div.Center--Big {
         display: flex;
         justify-content: flex-start;
         flex-direction: row;
-        min-height: 52px;
+        min-height: 40px;
         box-sizing: border-box;
         align-items: center;
         border-top: 1px solid #ebeced;
@@ -1004,11 +1004,10 @@ body.bodyAdmin {
 }
 table.transTable {
   & .NoData {
-    width: 100%;
-    position: relative;
-    padding: 20px 15px;
-    display: block;
-    left: 200%;
+    text-align: center;
+    td {
+      text-align: center;
+    }
     & i {
       font-size: 20px;
       font-weight: 600;
@@ -1061,4 +1060,8 @@ table.transTable {
     align-items: center;
     left: 0;
   }
+}
+.AdminListaUtentiRow--Complete:nth-child(even)
+  .AdminListaUtentiRow--Complete--Main {
+  background: #fcfcfc !important;
 }

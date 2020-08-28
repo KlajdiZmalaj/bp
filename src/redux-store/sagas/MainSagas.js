@@ -55,7 +55,7 @@ export function* getUsers(params) {
     params.backoffice
   );
   // console.log("getUsers called", response);
-  if (response.data) {
+  if (response && response.data) {
     yield put(MainActions.setUsers(response.data.users));
     yield put(MainActions.setLoaderForAdminUtenti(false));
   } else {

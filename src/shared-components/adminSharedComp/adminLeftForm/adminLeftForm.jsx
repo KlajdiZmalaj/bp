@@ -11,6 +11,7 @@ class AdminLeftForm extends React.Component {
     wallModal: false,
     ultModal: false,
   };
+
   render() {
     const {
       handleClick,
@@ -27,6 +28,7 @@ class AdminLeftForm extends React.Component {
       skinList,
       activeSkinId,
     } = this.props;
+
     return (
       <React.Fragment>
         <div className="AdminLeftForm">
@@ -47,19 +49,35 @@ class AdminLeftForm extends React.Component {
                   key={skin.id}
                 >
                   <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
-                    <svg
+                    <img
+                      src={
+                        skin.id === 1 ||
+                        skin.id === 3 ||
+                        skin.id === 4 ||
+                        skin.id === 5 ||
+                        skin.id === 6 ||
+                        skin.id === 8
+                          ? require(`../../../assets/images${
+                              skin.id === 8 ? 6 : skin.id
+                            }/favicon-32x32.svg`)
+                          : require(`../../../assets/images${1}/favicon-32x32.svg`)
+                      }
+                      alt=""
+                    />
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22"
                       height="22"
                       viewBox="0 0 22 22"
                     >
                       <circle className="a" cx="11" cy="11" r="11" />
-                    </svg>
+                    </svg> */}
 
                     <span
                       onClick={() => {
                         console.log(activeSkinId, skin.id);
                         setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                        this.props.getWidgetPayments(skin.id);
                       }}
                     >
                       {skin.username.toUpperCase()}

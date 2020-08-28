@@ -2,11 +2,8 @@ import React from "react";
 import "./aRFUD.css";
 const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
   <div className="AdminRightForm--Box--LeUltime--Dropdown">
-    {leUltimeTransazioniDet.map((Tranzacioni) => (
-      <div
-        className="AdminRightForm--Box--LeUltime--Dropdown--Row"
-        key={Tranzacioni.id}
-      >
+    {leUltimeTransazioniDet.map((Tranzacioni, i) => (
+      <div className="AdminRightForm--Box--LeUltime--Dropdown--Row" key={i}>
         <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Date">
           {Tranzacioni.date}
         </span>

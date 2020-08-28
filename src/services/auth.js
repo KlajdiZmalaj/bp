@@ -1327,7 +1327,7 @@ export const AddExtraData = (
       // }
     });
 };
-export const widgetPaymentsReq = () => {
+export const widgetPaymentsReq = (skin_id) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1340,6 +1340,7 @@ export const widgetPaymentsReq = () => {
     .get("/widgetPayments", {
       params: {
         ...skin,
+        ...(skin_id ? { skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));

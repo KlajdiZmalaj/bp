@@ -25,8 +25,9 @@ const Step0 = ({ skinList, addEditSkinDetails, addEditSkin }) => {
       </div>
       {skinList &&
         Array.isArray(skinList) &&
-        skinList.map((skin) => (
+        skinList.map((skin, i) => (
           <div
+            key={skin.id + i}
             onClick={() => {
               addEditSkinDetails({
                 ...{
@@ -42,9 +43,11 @@ const Step0 = ({ skinList, addEditSkinDetails, addEditSkin }) => {
           >
             <span>
               <img
-                src={require(`../../../assets/images${
-                  skin.id != 2 && skin.id < 7 ? skin.id : 1
-                }/logo.svg`)}
+                src={
+                  "https://services-api.bpoint.store/storage/" +
+                  skin.username.toLowerCase().split(" ").join("") +
+                  ".png"
+                }
               />
             </span>
             <span>{skin.username}</span>

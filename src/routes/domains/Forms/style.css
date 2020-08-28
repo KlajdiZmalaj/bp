@@ -334,10 +334,32 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 10px;
+  position: relative;
 }
 
 .formsContainer--body__item:first-child {
   margin-top: 0;
+}
+
+.formsContainer--body__item.hasInfo input {
+  background: transparent;
+  padding-left: 30px;
+  text-transform: capitalize;
+}
+
+.formsContainer--body__item.hasInfo:before {
+  font-family: "Font Awesome 5 Pro";
+  position: absolute;
+  left: 4px;
+  top: 28px;
+}
+
+.formsContainer--body__item.hasInfo.costo:before {
+  content: "\f53a";
+}
+
+.formsContainer--body__item.hasInfo.time:before {
+  content: "\f017";
 }
 
 .formsContainer--body__item .ant-select-selection--single {

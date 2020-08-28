@@ -92,12 +92,8 @@ class FormDetailsDomain extends Component {
                       this.setState({ statusRows: "all" });
                     }
                   }}
-                  checkedChildren={
-                    <i className="fal fa-check-circle" aria-hidden="true"></i>
-                  }
-                  unCheckedChildren={
-                    <i className="fal fa-times-circle" aria-hidden="true"></i>
-                  }
+                  checkedChildren={"Finita"}
+                  unCheckedChildren={"Incompiuta"}
                 />
                 <input
                   placeholder="Skin"
@@ -190,7 +186,7 @@ class FormDetailsDomain extends Component {
           <span>Data</span>
           <span>Visura</span>
         </div>
-        {(formDetailsActives || []).map((visure) => {
+        {(formDetailsActives.rowsVisure || []).map((visure) => {
           // console.log("ticket", ticket);
           return (
             (filterVisure === "all" || filterVisure === visure.type) &&

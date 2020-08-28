@@ -67,7 +67,7 @@ class AdminHeader extends React.Component {
               <span>PRENOTAZIONI</span>
             </div>
           </div>
-          <div className="AdminHeader--ButtonWrapper">
+          {/* <div className="AdminHeader--ButtonWrapper">
             <button
               onClick={() => {
                 this.props.logOut();
@@ -75,7 +75,7 @@ class AdminHeader extends React.Component {
             >
               <span>LOG OUT</span>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     );

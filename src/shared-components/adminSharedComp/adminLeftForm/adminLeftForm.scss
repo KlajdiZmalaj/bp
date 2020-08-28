@@ -45,6 +45,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
             & span {
               font-weight: 500;
             }
@@ -63,6 +64,16 @@
           display: flex;
           justify-content: flex-start;
           align-items: center;
+          img {
+            width: 23px;
+            border-radius: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: cover;
+            object-position: center;
+            margin: 0 6px;
+          }
           & span {
             width: 105px;
             font-size: 14px;

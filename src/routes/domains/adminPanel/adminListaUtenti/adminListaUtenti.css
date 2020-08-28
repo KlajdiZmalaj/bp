@@ -128,7 +128,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  min-height: 52px;
+  min-height: 40px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-align: center;
@@ -978,11 +978,11 @@ body.bodyAdmin .loaderAdmin {
 }
 
 table.transTable .NoData {
-  width: 100%;
-  position: relative;
-  padding: 20px 15px;
-  display: block;
-  left: 200%;
+  text-align: center;
+}
+
+table.transTable .NoData td {
+  text-align: center;
 }
 
 table.transTable .NoData i {
@@ -1055,5 +1055,10 @@ table.transTable .NoData span {
             align-items: center;
     left: 0;
   }
+}
+
+.AdminListaUtentiRow--Complete:nth-child(even)
+.AdminListaUtentiRow--Complete--Main {
+  background: #fcfcfc !important;
 }
 /*# sourceMappingURL=adminListaUtenti.css.map */

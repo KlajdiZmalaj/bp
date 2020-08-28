@@ -825,6 +825,7 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   text-transform: capitalize;
+  white-space: nowrap;
 }
 
 .sort-annunci li span {
@@ -1931,6 +1932,13 @@ i#private {
   padding: 8px 19px;
   margin-left: 12px;
   border: 1px solid #d2d2d2;
+  white-space: nowrap;
+}
+
+.bodyAdmin .barcodeBtn {
+  position: relative;
+  top: 1px;
+  color: #0078ff;
 }
 
 .useCodePopUp {
@@ -2352,6 +2360,7 @@ body:not(.bodyAdmin) div.Container .panels-container .row.no-gutters.max-width {
   height: 461px;
   overflow: auto;
   border-right: 2px solid #f9f9f9;
+  background: #fff;
 }
 
 @media only screen and (max-width: 984px) and (min-width: 768px) {
@@ -2578,6 +2587,8 @@ body:not(.bodyAdmin) div.Container .panels-container .row.no-gutters.max-width {
   margin: 0;
   padding: 5px;
   background: #fff;
+  height: 461px !important;
+  overflow-y: scroll;
 }
 
 .panel-services table {

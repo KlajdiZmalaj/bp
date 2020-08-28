@@ -161,10 +161,11 @@ class AziendaOImpresaForm extends Component {
               </Checkbox>
             </div> */}
             <InputForForm
-              labelName="Prezzo"
+              info="costo"
+              labelName="Costo del servizio"
               value={
                 activeService.price
-                  ? `${activeService.price}€`
+                  ? `da €${activeService.price} + iva`
                   : "Seleziona servizo"
               }
               handleChange={() => {}}
@@ -172,7 +173,8 @@ class AziendaOImpresaForm extends Component {
               readOnly={true}
             />
             <InputForForm
-              labelName="Evasione"
+              info="time"
+              labelName="Tempi di consegna"
               value={
                 activeService.price
                   ? `${activeService.time}`

@@ -117,6 +117,7 @@ body:not(.bodyAdmin) {
   height: 461px;
   overflow: auto;
   border-right: 2px solid #f9f9f9;
+  background: #fff;
   @media only screen and (max-width: 984px) and (min-width: 768px) {
     flex: 0 0 100%;
     max-width: 100%;
@@ -285,6 +286,8 @@ body:not(.bodyAdmin) {
   margin: 0;
   padding: 5px;
   background: #fff;
+  height: 461px !important;
+  overflow-y: scroll;
   table {
     width: 100%;
   }

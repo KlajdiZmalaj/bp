@@ -193,8 +193,32 @@
       align-items: flex-start;
       justify-content: center;
       margin-top: 10px;
+      position: relative;
       &:first-child {
         margin-top: 0;
+      }
+      &.hasInfo {
+        input {
+          background: transparent;
+          padding-left: 30px;
+          text-transform: capitalize;
+        }
+        &:before {
+          font-family: "Font Awesome 5 Pro";
+          position: absolute;
+          left: 4px;
+          top: 28px;
+        }
+        &.costo {
+          &:before {
+            content: "\f53a";
+          }
+        }
+        &.time {
+          &:before {
+            content: "\f017";
+          }
+        }
       }
       .ant-select-selection--single {
         border: none;
