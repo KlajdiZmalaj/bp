@@ -186,7 +186,7 @@ class FormDetailsDomain extends Component {
           <span>Data</span>
           <span>Visura</span>
         </div>
-        {(formDetailsActives || []).map((visure) => {
+        {(formDetailsActives.rowsVisure || []).map((visure) => {
           // console.log("ticket", ticket);
           return (
             (filterVisure === "all" || filterVisure === visure.type) &&

@@ -355,7 +355,7 @@ const INITIAL_STATE = {
   formDetails: [],
   TicketByTcketId: {},
   Visure: {},
-  formDetailsActives: [],
+  formDetailsActives: { rowsVisure: [], rowsTickets: [] },
   VisureByVisureId: {},
   popUpDataVisure: {},
   openAdminModal: false,

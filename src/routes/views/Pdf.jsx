@@ -64,7 +64,7 @@ export default ({
         </thead>
         <tbody>
           {(payments || []).map((pay) => (
-            <tr>
+            <tr key={pay.id}>
               <td>{pay.executed_date}</td>
               <td>{pay.barcode}</td>
               <td>{pay.agency_name}</td>

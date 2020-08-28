@@ -188,7 +188,7 @@ class FormDetailsDomain extends Component {
             <span>Data</span>
             <span>Biglietto</span>
           </div>
-          {(formDetailsActives || []).map((ticket) => {
+          {(formDetailsActives.rowsTickets || []).map((ticket) => {
             // console.log("ticket", ticket);
             return (
               (filterTickets === "all" ||
