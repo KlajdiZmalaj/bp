@@ -1008,8 +1008,8 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
     yield put(AuthActions.setSkinId(response.data.skin_id));
   }
 }
-export function* getWidgetPayments() {
-  const response = yield call(widgetPaymentsReq);
+export function* getWidgetPayments({ skin_id }) {
+  const response = yield call(widgetPaymentsReq, skin_id);
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
   }

@@ -60,6 +60,7 @@ class AdminLeftForm extends React.Component {
                       onClick={() => {
                         console.log(activeSkinId, skin.id);
                         setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                        this.props.getWidgetPayments(skin.id);
                       }}
                     >
                       {skin.username.toUpperCase()}

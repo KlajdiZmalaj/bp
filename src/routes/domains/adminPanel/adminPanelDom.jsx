@@ -104,7 +104,7 @@ class AdminPanelDom extends React.Component {
       leUltimeTransazioniDet,
       accountInfo,
     } = this.props;
-    console.log("accountInfo", accountInfo);
+    console.log("activeSkinId", this.props.activeSkinId);
     return (
       <React.Fragment>
         {goToAdminPanelVis === true ? (

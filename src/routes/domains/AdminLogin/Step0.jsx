@@ -42,9 +42,11 @@ const Step0 = ({ skinList, addEditSkinDetails, addEditSkin }) => {
           >
             <span>
               <img
-                src={require(`../../../assets/images${
-                  skin.id != 2 && skin.id < 7 ? skin.id : 1
-                }/logo.svg`)}
+                src={
+                  "https://services-api.bpoint.store/storage/" +
+                  skin.username.toLowerCase().split(" ").join("") +
+                  ".png"
+                }
               />
             </span>
             <span>{skin.username}</span>
