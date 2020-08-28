@@ -18,6 +18,7 @@ class Excel extends React.Component {
       this.props.payments != {}
     ) {
       this.csvLink.current.link.click();
+      this.setState({ clickedLink: false });
     }
   }
   render() {

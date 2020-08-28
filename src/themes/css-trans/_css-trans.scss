@@ -305,4 +305,33 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
+  box-shadow: 0 0 16px -5px black;
+}
+.tablePrint {
+  display: none;
+  margin: 20px;
+  td,
+  tr,
+  th {
+    border: 1px solid #222;
+    padding: 5px;
+    border-collapse: collapse;
+  }
+}
+.filesBtns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.exportPDF {
+  > div {
+    color: rgb(197, 39, 39);
+    cursor: pointer;
+    margin-bottom: 4px;
+  }
+}
+.afterprint {
+  .tablePrint {
+    display: table;
+  }
 }

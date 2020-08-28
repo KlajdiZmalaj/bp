@@ -311,6 +311,8 @@ const { Types, Creators } = createActions({
   addEditSkinDetails: ["addEditSkin"],
   AddSkinNew: ["name", "url", "email", "agency_rent"],
   setSkinId: ["newSkinId"],
+  getWidgetPayments: ["skin_id"],
+  setWidgetPayments: ["leUltimeTransazioniDet"],
 });
 
 export const AuthTypes = Types;
@@ -372,9 +374,14 @@ const INITIAL_STATE = {
   goToAdminPanelVis: true,
   addEditSkin: { skinPannel: false },
   newSkinId: -1,
+  leUltimeTransazioniDet: [],
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_WIDGET_PAYMENTS]: (state, { leUltimeTransazioniDet }) => ({
+    ...state,
+    leUltimeTransazioniDet,
+  }),
   [Types.SET_DATA_FORM_DETAILS_ACTIVES]: (state, { formDetailsActives }) => ({
     ...state,
     formDetailsActives,

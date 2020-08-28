@@ -22,7 +22,6 @@ import {
   Tranzacioni,
   Commisione,
   Proviggioni,
-  leUltimeTransazioniDet,
 } from "./StaticAdminData";
 import "./styles.css";
 import { numberWithCommas } from "utils/HelperFunc";
@@ -65,6 +64,7 @@ class AdminPanelDom extends React.Component {
   componentDidMount() {
     this.props.getSkins();
     this.props.getAgents(this.props.activeSkinId);
+    this.props.getWidgetPayments();
     document.body.classList.add("bodyAdmin");
   }
   componentWillUnmount() {
@@ -101,7 +101,10 @@ class AdminPanelDom extends React.Component {
       skinList,
       updateMsg,
       goToAdminPanelVis,
+      leUltimeTransazioniDet,
+      accountInfo,
     } = this.props;
+    console.log("accountInfo", accountInfo);
     return (
       <React.Fragment>
         {goToAdminPanelVis === true ? (
@@ -304,7 +307,9 @@ class AdminPanelDom extends React.Component {
                 Close={editDepModal}
               />
             )}
-            <div className="TopHeader"></div>
+            <div className="TopHeader">
+              <span>Credito : {accountInfo?.profile?.wallet}€ </span>
+            </div>
             <AdminHeader
               history={this.props.history}
               location={this.props.location}
@@ -406,6 +411,8 @@ const mapStateToProps = (state) => ({
   activeSkinId: state.main.activeSkinId,
   goToAdminPanelVis: state.auth.goToAdminPanelVis,
   skinList: state.auth.skinList,
+  leUltimeTransazioniDet: state.auth.leUltimeTransazioniDet,
+  accountInfo: state.auth.accountInfo,
 });
 export default connect(mapStateToProps, { ...AuthActions, ...MainActions })(
   AdminPanelDom

@@ -5,11 +5,19 @@
   background-color: #ffffff;
   & .TopHeader {
     height: 30px;
-    background: #ffffff;
+    background: #0078ffe3;
+    color: #fff;
     width: 100%;
-    border: 1px solid #ebeced;
     z-index: 2;
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    span {
+      margin-left: auto;
+      margin-right: 10px;
+    }
   }
 }
 .bodyAdmin {

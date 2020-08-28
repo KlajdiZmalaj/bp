@@ -1327,3 +1327,20 @@ export const AddExtraData = (
       // }
     });
 };
+export const widgetPaymentsReq = () => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/widgetPayments", {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};

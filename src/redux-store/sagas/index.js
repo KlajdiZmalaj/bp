@@ -49,6 +49,7 @@ import {
   getPaymentsForExcel,
   getFatturaPdf,
   AddSkinNew,
+  getWidgetPayments,
 } from "./AuthSagas";
 
 import {
@@ -70,6 +71,7 @@ export default function* root() {
     takeLatest(AuthTypes.GET_ALL_FATURA_BY_SEARCH, getAllFaturaBySearch),
     takeLatest(AuthTypes.GET_ALL_SERVICES, getAllServices),
     takeLatest(AuthTypes.GET_FATURA_DETAILS, getFaturaDetails),
+    takeLatest(AuthTypes.GET_WIDGET_PAYMENTS, getWidgetPayments),
 
     takeLatest(AuthTypes.GET_SKINS, getSkins),
     takeLatest(AuthTypes.UPDATE_VISURA, updateVisura),
