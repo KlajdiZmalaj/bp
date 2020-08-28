@@ -7,11 +7,26 @@
 
 .Admin-Panel .TopHeader {
   height: 30px;
-  background: #ffffff;
+  background: #0078ffe3;
+  color: #fff;
   width: 100%;
-  border: 1px solid #ebeced;
   z-index: 2;
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+}
+
+.Admin-Panel .TopHeader span {
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .bodyAdmin {

@@ -11,14 +11,14 @@ const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
           {Tranzacioni.date}
         </span>
         <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Id">
-          {Tranzacioni.id}
+          {Tranzacioni.barcode}
         </span>
 
         <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data User">
-          {Tranzacioni.utente}
+          {Tranzacioni.user}
         </span>
         <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Price">
-          {Tranzacioni.price}
+          {Tranzacioni.cost}
         </span>
       </div>
     ))}

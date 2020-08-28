@@ -42,6 +42,7 @@ import {
   sendMailFatturaReq,
   printFatturaReq,
   AddSkinReq,
+  widgetPaymentsReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1003,7 +1004,14 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   const response = yield call(AddSkinReq, name, url, email, agency_rent);
 
   if (response) {
-    console.log(response.data.skin_id);
+    // console.log(response.data.skin_id);
     yield put(AuthActions.setSkinId(response.data.skin_id));
   }
+}
+export function* getWidgetPayments() {
+  const response = yield call(widgetPaymentsReq);
+  if (response.data) {
+    yield put(AuthActions.setWidgetPayments(response.data.payments));
+  }
+  // console.log("response wiget payments", response);
 }

@@ -22,6 +22,7 @@ import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import Excel from "./Excel";
 import UseCode from "routes/views/UseCode";
 import ClickOut from "react-onclickout";
+import Pdf from "./Pdf";
 const { Option } = Select;
 class Transazioni extends React.Component {
   state = {
@@ -573,21 +574,24 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                {/* <Pdf
-                  username={username}
-                  from={from}
-                  to={to}
-                  perPage={perPage}
-                  payments={paymentsForExcel}
-                  getPaymentsForExcel={this.props.getPaymentsForExcel}
-                /> */}
-                <Excel
-                  username={username}
-                  from={from}
-                  to={to}
-                  perPage={perPage}
-                  payments={paymentsForExcel}
-                />
+                <div className="filesBtns">
+                  <Pdf
+                    paymentExcelLoading={this.props.paymentExcelLoading}
+                    username={username}
+                    from={from}
+                    to={to}
+                    perPage={perPage}
+                    payments={paymentsForExcel}
+                    getPaymentsForExcel={this.props.getPaymentsForExcel}
+                  />
+                  <Excel
+                    username={username}
+                    from={from}
+                    to={to}
+                    perPage={perPage}
+                    payments={paymentsForExcel}
+                  />
+                </div>
 
                 {payments.message && (
                   <div className="alert alert-danger text-center">
@@ -927,6 +931,7 @@ const mapsStateToProps = (state) => ({
   paymentsPages: state.auth.paymentsPages,
   screenWidth: state.main.screenWidth,
   paymentsForExcel: state.auth.paymentsForExcel,
+  paymentExcelLoading: state.auth.paymentExcelLoading,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

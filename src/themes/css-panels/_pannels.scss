@@ -80,10 +80,10 @@ body:not(.bodyAdmin) {
       & .max-width {
         max-width: 1371px;
         & .ExportToExel {
-          width: calc(100% - 15px);
+          width: 120px;
           display: flex;
           justify-content: flex-end;
-          margin-right: 15px;
+          // margin-left: auto;
           align-items: center;
           height: 30px;
           font-size: 16px;

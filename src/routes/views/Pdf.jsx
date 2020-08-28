@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { numberWithCommas } from "utils/HelperFunc";
-import ReactToPdf from "react-to-pdf";
+import ReactToPrint from "react-to-print";
 
 export default ({
   getPaymentsForExcel,
@@ -9,33 +9,58 @@ export default ({
   payments,
   from,
   to,
+  paymentExcelLoading,
 }) => {
   const ref = useRef(null);
-  useEffect(() => {}, payments);
+  const print = useRef(null);
+
+  const [toPrint, setPrint] = useState(false);
+  useEffect(() => {
+    if (print.current && !paymentExcelLoading) {
+      print.current.click();
+    }
+  }, [paymentExcelLoading]);
   console.log("paymentspdf", payments);
-  console.log("ref", ref);
   return (
     <div className="exportPDF">
-      <ReactToPdf x={0} y={0} targetRef={ref} filename="div-blue.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
-      </ReactToPdf>
-      <button
-        onClick={() => {
-          getPaymentsForExcel(username, from, to, "", perPage, "", "special");
-        }}
-      >
-        Download PDF
-      </button>
-      <table id="test" ref={ref} className="tablePrint">
+      {payments.length > 0 && toPrint ? (
+        <ReactToPrint
+          trigger={() => (
+            <div ref={print}>
+              <i className="fal fa-file-pdf"></i> Printing...
+            </div>
+          )}
+          onBeforePrint={() => {
+            setPrint(false);
+          }}
+          content={() => ref.current}
+          bodyClass="afterprint"
+          // copyStyles="false"
+        />
+      ) : (
+        <div
+          onClick={() => {
+            getPaymentsForExcel(username, from, to, "", perPage, "", "special");
+            setPrint(true);
+          }}
+        >
+          {" "}
+          <i className="fal fa-file-pdf"></i>{" "}
+          {paymentExcelLoading ? "Aspetti..." : "Scarica PDF "}
+        </div>
+      )}
+      <table id="pdfTable" ref={ref} className="tablePrint">
         <thead>
-          <th>Date / Ora</th>
-          <th>Barcode</th>
-          <th>User</th>
-          <th>Service</th>
-          <th>Importo</th>
-          <th>Commissione</th>
-          <th>Proviggione</th>
-          <th>Saldo</th>
+          <tr>
+            <th>Date / Ora</th>
+            <th>Barcode</th>
+            <th>User</th>
+            <th>Service</th>
+            <th>Importo</th>
+            <th>Commissione</th>
+            <th>Proviggione</th>
+            <th>Saldo</th>
+          </tr>
         </thead>
         <tbody>
           {(payments || []).map((pay) => (
