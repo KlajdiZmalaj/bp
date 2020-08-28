@@ -108,6 +108,25 @@
           align-items: center;
 }
 
+.Left .AdminLeftForm--FirstBox--Box--Skinsvg img {
+  width: 23px;
+  border-radius: 19px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  margin: 0 6px;
+}
+
 .Left .AdminLeftForm--FirstBox--Box--Skinsvg span {
   width: 105px;
   font-size: 14px;

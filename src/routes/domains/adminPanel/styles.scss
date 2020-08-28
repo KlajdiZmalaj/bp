@@ -12,10 +12,9 @@
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     font-size: 14px;
     span {
-      margin-left: auto;
       margin-right: 10px;
     }
   }
@@ -23,11 +22,9 @@
 .bodyAdmin {
   & .ExportToExel {
     color: #0078ff;
-    & i {
-      margin-right: 10px;
-      margin-left: 74%;
-      margin-top: 20px;
-      margin-bottom: 10px;
+    padding: 10px;
+    i {
+      margin-right: 4px;
     }
   }
   & .userDetailPopup {

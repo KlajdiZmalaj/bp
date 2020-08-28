@@ -13,9 +13,14 @@ export const InputForForm = ({
   value,
   handleChange,
   type,
+  info,
 }) => {
   return (
-    <div className="formsContainer--body__item">
+    <div
+      className={
+        "formsContainer--body__item" + (info ? ` hasInfo ${info}` : "")
+      }
+    >
       <div className="label">{labelName}</div>
       <input
         readOnly={readOnly}
@@ -202,10 +207,11 @@ class PersonaFisicaForm extends Component {
               type={"text"}
             />
             <InputForForm
-              labelName="Prezzo"
+              info="costo"
+              labelName="Costo del servizio"
               value={
                 activeService.price
-                  ? `${activeService.price}€`
+                  ? `da €${activeService.price} + iva`
                   : "Seleziona servizo"
               }
               handleChange={() => {}}
@@ -213,7 +219,8 @@ class PersonaFisicaForm extends Component {
               readOnly={true}
             />
             <InputForForm
-              labelName="Evasione"
+              info="time"
+              labelName="Tempi di consegna"
               value={
                 activeService.price
                   ? `${activeService.time}`

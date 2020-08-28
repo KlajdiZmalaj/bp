@@ -80,7 +80,7 @@ class Excel extends React.Component {
             this.setState({ clickedLink: true });
           }}
         >
-          <i class="far fa-file-csv"></i>
+          <i className="far fa-file-csv"></i>
           {this.props.activeSkinId === -1 &&
           document.querySelector("body").classList.contains("bodyAdmin") ? (
             <span>No data For this skin</span>

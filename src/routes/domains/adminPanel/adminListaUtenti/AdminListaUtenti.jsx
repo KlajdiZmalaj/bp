@@ -78,9 +78,12 @@ class AdminListaUtenti extends React.Component {
           {LoaderAU && LoaderAU === true ? (
             <div className="loaderAdmin">Loading...</div>
           ) : userList && Array.isArray(userList) && userList.length >= 1 ? (
-            userList.map((itemList) => {
+            userList.map((itemList, i) => {
               return (
-                <AdminListaUtentiRow itemList={itemList} key={itemList.id} />
+                <AdminListaUtentiRow
+                  itemList={itemList}
+                  key={itemList.id + i}
+                />
               );
             })
           ) : (

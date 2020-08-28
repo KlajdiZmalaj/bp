@@ -79,6 +79,30 @@ class Dashboard extends React.Component {
                 Ricariche
               </div>
               <div
+                className={serviceFilter === "carte" ? "active" : ""}
+                onClick={() => this.setState({ serviceFilter: "carte" })}
+              >
+                Carte di Credito
+              </div>
+              <div
+                className={serviceFilter === "gift" ? "active" : ""}
+                onClick={() => this.setState({ serviceFilter: "gift" })}
+              >
+                Gift Card
+              </div>
+              <div
+                className={serviceFilter === "crypto" ? "active" : ""}
+                onClick={() => this.setState({ serviceFilter: "crypto" })}
+              >
+                Crypto Valute
+              </div>
+              <div
+                className={serviceFilter === "sondag" ? "active" : ""}
+                onClick={() => this.setState({ serviceFilter: "sondag" })}
+              >
+                Sondaggi
+              </div>
+              <div
                 onClick={() => {
                   window.location.hash = "forms";
                 }}

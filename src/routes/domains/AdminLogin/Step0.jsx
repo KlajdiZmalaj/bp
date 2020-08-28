@@ -25,8 +25,9 @@ const Step0 = ({ skinList, addEditSkinDetails, addEditSkin }) => {
       </div>
       {skinList &&
         Array.isArray(skinList) &&
-        skinList.map((skin) => (
+        skinList.map((skin, i) => (
           <div
+            key={skin.id + i}
             onClick={() => {
               addEditSkinDetails({
                 ...{

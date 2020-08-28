@@ -12,9 +12,9 @@ const AdminRightFormStatisticheDetailsHelper = ({
     <div className="Graph">
       {graphData.map((heigh, i) => {
         return (
-          <Tooltip title={heigh.price} key={heigh.price + heigh.height * 2 + i}>
+          <Tooltip title={heigh.price} key={i}>
             <div
-              key={heigh.price + heigh.height * 3 + i}
+              key={i + 99}
               className="Graph--Element"
               style={{ height: `${heigh.height}%` }}
             ></div>
@@ -33,10 +33,10 @@ const AdminRightFormStatisticheDetailsHelper = ({
     </div>
     <div className="Tranzacioni">
       <div>
-        <span>Tranzacioni</span> <span>{`${Tranzacioni} `} &euro;</span>{" "}
+        <span>Transazioni</span> <span>{`${Tranzacioni} `} &euro;</span>{" "}
       </div>
       <div>
-        <span>Commisione</span> <span>{`${Commisione} `} &euro;</span>{" "}
+        <span>Commisioni</span> <span>{`${Commisione} `} &euro;</span>{" "}
       </div>
       <div>
         <span>Proviggioni</span> <span>{`${Proviggioni} `} &euro;</span>

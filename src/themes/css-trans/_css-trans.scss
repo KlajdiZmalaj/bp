@@ -298,6 +298,14 @@
   padding: 8px 19px;
   margin-left: 12px;
   border: 1px solid #d2d2d2;
+  white-space: nowrap;
+}
+.bodyAdmin {
+  .barcodeBtn {
+    position: relative;
+    top: 1px;
+    color: #0078ff;
+  }
 }
 .useCodePopUp {
   position: fixed;

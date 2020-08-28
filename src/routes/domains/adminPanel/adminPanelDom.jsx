@@ -17,6 +17,7 @@ import { Select } from "antd";
 import MainActions from "redux-store/models/main";
 import AdminLoginDom from "../AdminLogin/AdminLoginDom";
 import AdminLoginSkins from "../AdminLogin/AdminLoginSkins";
+import { Time } from "shared-components";
 import {
   graphData,
   Tranzacioni,
@@ -104,7 +105,6 @@ class AdminPanelDom extends React.Component {
       leUltimeTransazioniDet,
       accountInfo,
     } = this.props;
-    console.log("activeSkinId", this.props.activeSkinId);
     return (
       <React.Fragment>
         {goToAdminPanelVis === true ? (
@@ -308,7 +308,19 @@ class AdminPanelDom extends React.Component {
               />
             )}
             <div className="TopHeader">
-              <span>Credito : {accountInfo?.profile?.wallet}€ </span>
+              <Time />
+              <span className="creditoD">
+                Credito : {accountInfo?.profile?.wallet}€{" "}
+              </span>
+              <span
+                className="logOutBtn"
+                onClick={() => {
+                  this.props.logOut();
+                  this.props.history.push("/login");
+                }}
+              >
+                Log OUT
+              </span>
             </div>
             <AdminHeader
               history={this.props.history}

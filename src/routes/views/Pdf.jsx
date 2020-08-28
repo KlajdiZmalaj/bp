@@ -46,7 +46,7 @@ export default ({
         >
           {" "}
           <i className="fal fa-file-pdf"></i>{" "}
-          {paymentExcelLoading ? "Aspetti..." : "Scarica PDF "}
+          {paymentExcelLoading && toPrint ? "Aspetti..." : "Scarica PDF "}
         </div>
       )}
       <table id="pdfTable" ref={ref} className="tablePrint">

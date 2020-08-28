@@ -93,8 +93,9 @@ const Graph = ({ graphData, month }) => (
       Array.isArray(graphData) &&
       graphData.map((heigh, i) => {
         return (
-          <Tooltip title={heigh.price}>
+          <Tooltip title={heigh.price} key={i}>
             <div
+              key={i + 99}
               className="Graph--Element"
               style={{ height: `${heigh.height}%` }}
             ></div>
@@ -168,7 +169,7 @@ class Prenotazioni extends React.Component {
         >
           <div className="Prenotazioni--Statistiche--First">
             <div className="Prenotazioni--Statistiche--TitleHeaderLeft">
-              <i class="fal fa-analytics"></i>
+              <i className="fal fa-analytics"></i>
               <span>PRENOTAZIONI</span>
             </div>
             <div className="Right">

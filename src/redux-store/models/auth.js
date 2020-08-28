@@ -59,6 +59,7 @@ const { Types, Creators } = createActions({
     "limit",
     "skin_id",
     "excel",
+    "callback",
   ],
   setPayments: ["payments"],
   setPaymentsForExcel: ["paymentsForExcel"],

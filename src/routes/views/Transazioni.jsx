@@ -625,10 +625,13 @@ class Transazioni extends React.Component {
                       {!payments.message &&
                       (paymentsO || []) &&
                       paymentsO.length === 0 ? (
-                        <div class="NoData">
-                          <i class="fal fa-info-circle"></i>
-                          <span>No Data</span>
-                        </div>
+                        <tr class="NoData">
+                          <td colSpan="8">
+                            {" "}
+                            <i class="fal fa-info-circle"></i>
+                            <span>No Data</span>
+                          </td>
+                        </tr>
                       ) : (
                         (paymentsO || []).map((item, index) => {
                           return (

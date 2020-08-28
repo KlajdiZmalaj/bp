@@ -19,7 +19,7 @@ export default {
   logo: require(`../assets/images${skin}/logo.svg`),
   logoFooter: require(`../assets/images${skin}/logoFooter.svg`),
   leftLogin: require(`../assets/images${skin}/login.png`),
-  customFav: require(`../assets/images${skin}/favicon-32x32.png`),
+  customFav: require(`../assets/images${skin}/favicon-32x32.svg`),
   footerBottom: require(`../assets/images${skin}/footerb.svg`),
   tickets: require(`../assets/images${skin}/tickets.svg`),
   uparrow: require(`../assets/images${skin}/uparrow.svg`),
