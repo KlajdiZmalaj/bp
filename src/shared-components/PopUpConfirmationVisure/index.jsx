@@ -19,7 +19,7 @@ const PopUpConfirmationVisure = ({
       getVisureByVisureId(popUpDataVisure.id);
       setState(true);
     }
-  }, [popUpDataVisure, VisureByVisureId, getVisureByVisureId]);
+  }, [popUpDataVisure, getVisureByVisureId]);
   return (
     VisureByVisureId &&
     Object.keys(VisureByVisureId).length > 1 &&

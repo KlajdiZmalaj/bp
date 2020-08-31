@@ -88,7 +88,7 @@ class Eventi extends Component {
       name,
       email,
       telefono,
-      price,
+      parseFloat(price),
       this.props.ticketId
     );
   };

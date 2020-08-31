@@ -79,7 +79,7 @@ class Treni extends Component {
       "",
       "",
       "",
-      price,
+      parseFloat(price),
       this.props.ticketId
     );
   };

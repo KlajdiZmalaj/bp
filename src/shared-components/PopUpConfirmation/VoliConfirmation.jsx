@@ -40,7 +40,7 @@ const Voli = ({ TicketByTcketId }) => (
           </a>
         </span>
       </div>
-      <div className="confirmationPopup--body__item">
+      {/* <div className="confirmationPopup--body__item">
         <span className="light">Extra Dati/Notes</span>
         <SpanFormater
           Word={TicketByTcketId.extra_data}
@@ -49,7 +49,7 @@ const Voli = ({ TicketByTcketId }) => (
           nrOfRows={1}
           formatWord={false}
         />
-      </div>
+      </div> */}
     </div>
   </div>
 );

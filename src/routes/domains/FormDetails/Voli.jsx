@@ -61,7 +61,7 @@ class Voli extends Component {
       "",
       "",
       "",
-      price,
+      parseFloat(price),
       this.props.ticketId
     );
   };
@@ -75,6 +75,7 @@ class Voli extends Component {
       bagaglio_stiva,
       price,
     } = this.state;
+    console.log("ca ka voli ", bagaglio, bagaglio_stiva);
     return (
       <React.Fragment>
         <div className="formBody">

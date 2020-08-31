@@ -71,7 +71,7 @@ class PersonaFisica extends Component {
       address,
       telefono,
       email,
-      price,
+      parseFloat(price),
       "",
       "",
       "",

@@ -261,28 +261,28 @@ class Root extends React.Component {
               path="/back-office/utenti"
               component={AdminPanelListaUtenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin", "support"]}
+              allowedRoles={["main_admin"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/movimenti"
               component={AdminPanelListaMovimenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin", "support"]}
+              allowedRoles={["main_admin"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/prenotazioni"
               component={AdminPanelPrenotazioni}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin", "support"]}
+              allowedRoles={["main_admin"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/servizzi"
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin", "support"]}
+              allowedRoles={["main_admin"]}
               role={role}
             />
           </Switch>
