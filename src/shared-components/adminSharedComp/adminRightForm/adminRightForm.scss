@@ -250,43 +250,7 @@
       }
     }
   }
-  & .AdminRightForm--Box--LeUltime--Dropdown {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    &--Row {
-      display: flex;
-      flex-direction: row;
-      height: 40px;
-      width: 100%;
-      justify-content: space-between;
-      border-bottom: 1px solid #ebeced;
-      padding: 0 14px;
-      align-items: center;
-      &--Data {
-        font-size: 12px;
-        font-family: "Roboto", sans-serif;
-        &.Date {
-          color: #727272;
-          font-weight: 400;
-        }
-        &.Id {
-          color: #4b4b4b;
-          font-weight: 500;
-        }
-        &.User {
-          color: #727272;
-          font-weight: 400;
-        }
-        &.Price {
-          color: #0078ff;
-          font-weight: 500;
-        }
-      }
-    }
-  }
+
   &--Box {
     font-family: "Roboto", sans-serif;
     font-weight: bold;
@@ -301,6 +265,43 @@
     align-items: center;
     border-bottom: 1px solid #ebeced;
     color: #5c5c5c;
+    &--LeUltime--Dropdown {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      &--Row {
+        display: flex;
+        flex-direction: row;
+        height: 40px;
+        width: 100%;
+        justify-content: space-between;
+        border-bottom: 1px solid #ebeced;
+        padding: 0 14px;
+        align-items: center;
+        &--Data {
+          font-size: 12px;
+          font-family: "Roboto", sans-serif;
+          &.Date {
+            color: #727272;
+            font-weight: 400;
+          }
+          &.Id {
+            color: #4b4b4b;
+            font-weight: 500;
+          }
+          &.User {
+            color: #727272;
+            font-weight: 400;
+          }
+          &.Price {
+            color: #0078ff;
+            font-weight: 500;
+          }
+        }
+      }
+    }
     > i {
       cursor: pointer;
       width: 32px;

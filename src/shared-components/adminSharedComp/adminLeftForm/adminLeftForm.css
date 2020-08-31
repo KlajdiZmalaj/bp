@@ -128,9 +128,12 @@
 }
 
 .Left .AdminLeftForm--FirstBox--Box--Skinsvg span {
-  width: 105px;
+  width: 117px;
   font-size: 14px;
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Left .AdminLeftForm--FirstBox--Box--Skinsvg svg {

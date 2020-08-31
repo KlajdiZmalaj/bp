@@ -347,68 +347,6 @@
   height: auto;
 }
 
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 40px;
-  width: 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-bottom: 1px solid #ebeced;
-  padding: 0 14px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
-  font-size: 12px;
-  font-family: "Roboto", sans-serif;
-}
-
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
-  color: #727272;
-  font-weight: 400;
-}
-
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
-  color: #4b4b4b;
-  font-weight: 500;
-}
-
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
-  color: #727272;
-  font-weight: 400;
-}
-
-.AdminRightForm .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
-  color: #0078ff;
-  font-weight: 500;
-}
-
 .AdminRightForm--Box {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -429,6 +367,68 @@
           align-items: center;
   border-bottom: 1px solid #ebeced;
   color: #5c5c5c;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown--Row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 40px;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #ebeced;
+  padding: 0 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
+  color: #727272;
+  font-weight: 400;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
+  color: #4b4b4b;
+  font-weight: 500;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
+  color: #727272;
+  font-weight: 400;
+}
+
+.AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
+  color: #0078ff;
+  font-weight: 500;
 }
 
 .AdminRightForm--Box > i {
