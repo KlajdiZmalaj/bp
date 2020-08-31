@@ -668,6 +668,13 @@ input[value="Visualizzare i dati"] {
   box-sizing: border-box;
   box-shadow: 0 0 20px -11px black;
   transform: translate(-50%, -50%);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
   &--header {
     display: flex;
     justify-content: space-between;
@@ -686,9 +693,21 @@ input[value="Visualizzare i dati"] {
       .header {
         text-transform: capitalize;
       }
-      ul,
       li {
         list-style-type: circle;
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        i {
+          cursor: pointer;
+          margin-left: auto;
+        }
+      }
+      li {
+        border-bottom: 1px solid #b5b5b5;
+        padding: 0 10px;
       }
     }
   }

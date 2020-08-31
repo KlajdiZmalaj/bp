@@ -937,6 +937,18 @@ input[value="Visualizzare i dati"]:hover {
           box-shadow: 0 0 20px -11px black;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 }
 
 .datiPassageri--header {
@@ -967,8 +979,29 @@ input[value="Visualizzare i dati"]:hover {
   text-transform: capitalize;
 }
 
-.datiPassageri--body__pass ul,
 .datiPassageri--body__pass li {
   list-style-type: circle;
+}
+
+.datiPassageri--body__pass li span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.datiPassageri--body__pass li i {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.datiPassageri--body__pass li {
+  border-bottom: 1px solid #b5b5b5;
+  padding: 0 10px;
 }
 /*# sourceMappingURL=style.css.map */

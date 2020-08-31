@@ -1,6 +1,6 @@
 // here would add most used functions
 import { message } from "antd";
-export const slicedAmount = text => {
+export const slicedAmount = (text) => {
   if (text !== undefined && text !== "0") {
     // var t = text / 100;
     var t = text;
@@ -16,7 +16,7 @@ export const getBase64 = (img, callback) => {
   reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
 };
-export const beforeUpload = file => {
+export const beforeUpload = (file) => {
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
   if (!isJpgOrPng) {
     message.error("You can only upload JPG/PNG file!");
@@ -26,4 +26,11 @@ export const beforeUpload = file => {
     message.error("Image must smaller than 2MB!");
   }
   return isJpgOrPng && isLt2M;
+};
+export const getCopy = (a) => {
+  let textDiv = document.querySelector("#write");
+  textDiv.value = a;
+  textDiv.select();
+  document.execCommand("copy");
+  message.success(`Copiato "${a}" su ClipBoard`);
 };
