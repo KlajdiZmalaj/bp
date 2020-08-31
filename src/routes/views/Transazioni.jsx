@@ -446,12 +446,14 @@ class Transazioni extends React.Component {
                 />
               )}
               <h1 className="heading-tab">Lista Movimenti</h1>
-              <button
-                onClick={() => this.setState({ hasVPT: true })}
-                className="barcodeBtn"
-              >
-                ricerca movimenti <i className="fal fa-barcode-read"></i>
-              </button>
+              {!forAdmin && (
+                <button
+                  onClick={() => this.setState({ hasVPT: true })}
+                  className="barcodeBtn"
+                >
+                  ricerca movimenti <i className="fal fa-barcode-read"></i>
+                </button>
+              )}
               <div className="datepics ml-auto mr-2">
                 <Form
                   {...formItemLayout}
