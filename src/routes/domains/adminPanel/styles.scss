@@ -3,6 +3,16 @@
   font-family: "Roboto", sans-serif;
   color: #5c5c5c;
   background-color: #ffffff;
+}
+.bodyAdmin {
+  & .exportPDF > div {
+    margin: 0;
+    margin-right: 10px;
+  }
+  & .barcodeBtn {
+    padding: 8px 2px;
+    margin-left: 5px;
+  }
   & .TopHeader {
     height: 30px;
     background: #0078ffe3;
@@ -18,8 +28,6 @@
       margin-right: 10px;
     }
   }
-}
-.bodyAdmin {
   & .ExportToExel {
     color: #0078ff;
     padding: 10px;

@@ -115,7 +115,27 @@ class AdminRightFormWalletDetails extends React.Component {
     }
   }
   returnAllUsers = (users) => {
-    const allUsers = users;
+    let allUsers = [...users];
+    users.forEach((user) => {
+      if (user?.children && user?.children.length >= 0) {
+        user.children.forEach((child) => {
+          allUsers.push(child);
+          if (child?.children && child?.children.length >= 0) {
+            let arrayToGet = this.checkIfHaveMoreUsers(child.children);
+            if (arrayToGet.length >= 0) {
+              arrayToGet.forEach((element) => {
+                allUsers.push(element);
+              });
+            }
+          }
+        });
+      }
+    });
+    return allUsers;
+  };
+
+  checkIfHaveMoreUsers = (users) => {
+    let allUsers = [...users];
     users.forEach((user) => {
       if (user?.children && user?.children.length >= 0) {
         user.children.forEach((child) => {

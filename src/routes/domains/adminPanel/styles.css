@@ -5,7 +5,22 @@
   background-color: #ffffff;
 }
 
-.Admin-Panel .TopHeader {
+.bodyAdmin {
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.bodyAdmin .exportPDF > div {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.bodyAdmin .barcodeBtn {
+  padding: 8px 2px;
+  margin-left: 5px;
+}
+
+.bodyAdmin .TopHeader {
   height: 30px;
   background: #0078ffe3;
   color: #fff;
@@ -24,13 +39,8 @@
   font-size: 14px;
 }
 
-.Admin-Panel .TopHeader span {
+.bodyAdmin .TopHeader span {
   margin-right: 10px;
-}
-
-.bodyAdmin {
-  background-color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .bodyAdmin .ExportToExel {

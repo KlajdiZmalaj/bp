@@ -16,6 +16,7 @@
         font-family: "Roboto", sans-serif;
         font-weight: bold;
         font-size: 14px;
+        padding-right: 20px;
         > i {
           font-size: 16px;
           font-weight: 300;
@@ -26,22 +27,31 @@
         font-family: "Roboto", sans-serif;
         font-size: 14px;
         font-weight: 400;
-        padding: 10px 20px;
-        padding-right: 30px;
         cursor: pointer;
         &:first-child {
           padding-left: 30px;
           padding-bottom: 20px;
         }
+        &--Skinsvg {
+          min-height: 22px;
+          width: 100%;
+          height: 100%;
+          padding: 7px 20px;
+          margin: 2px 0;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
         &--active {
           color: #0078ff;
-          padding: 10px 20px;
-          padding-right: 30px;
           background-color: #f3f3f4;
           cursor: pointer;
           box-shadow: inset 8px 0px 0px -4px #0078ff;
           &--Skinsvg {
             min-height: 22px;
+            width: 100%;
+            height: 100%;
+            padding: 10px 20px;
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -55,7 +65,7 @@
               }
               width: 22px;
               height: 22px;
-              margin-right: 15px;
+              margin: 0 6px;
             }
           }
         }
@@ -85,7 +95,7 @@
             }
             width: 22px;
             height: 22px;
-            margin-right: 15px;
+            margin: 0 6px;
           }
         }
       }
@@ -97,13 +107,12 @@
 
       &--Box {
         animation: SlowShow 0.7s;
-        padding: 10px 15px;
-        padding-left: 25px;
         border-top: 1px solid #ebeced;
         font-family: "Roboto";
         width: 100%;
         font-size: 14px;
         font-weight: 400;
+        padding: 10px 20px;
         color: #5c5c5c;
 
         > i {
@@ -146,6 +155,7 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
+
       &--FirstBox {
         display: flex;
         padding-top: 15px;
@@ -179,12 +189,19 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            & img {
+              width: 15px;
+              border-radius: 19px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              object-fit: cover;
+              object-position: center;
+              margin: 0 6px;
+              margin-left: 15px;
+            }
             & span {
-              display: block;
-              width: calc(2.2ch + 5px);
-              overflow: hidden;
-              white-space: nowrap;
-              padding-left: 5px;
+              display: none;
             }
             & svg {
               display: none;
@@ -196,12 +213,12 @@
               }
               width: 22px;
               height: 22px;
-              margin-right: 15px;
+              margin: 0 6px;
             }
           }
           &--active {
             color: #0078ff;
-            border-left: 2px solid #0578fc;
+            box-shadow: inset 7px 0px 0px -4px #0078ff;
             &--Skinsvg {
               min-height: 22px;
               display: flex;
@@ -221,7 +238,7 @@
                 }
                 width: 22px;
                 height: 22px;
-                margin-right: 15px;
+                margin: 0 6px;
               }
             }
           }
@@ -237,12 +254,12 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 20px 0;
           border-top: 1px solid #ebeced;
           font-family: "Roboto", sans-serif;
           width: 100%;
           font-size: 14px;
           font-weight: 400;
+          padding: 10px 20px;
           & span {
             display: none;
           }

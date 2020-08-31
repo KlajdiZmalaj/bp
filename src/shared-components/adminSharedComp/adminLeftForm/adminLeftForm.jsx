@@ -43,6 +43,9 @@ class AdminLeftForm extends React.Component {
               Array.isArray(skinList) &&
               skinList.map((skin) => (
                 <div
+                  onClick={() => {
+                    setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                  }}
                   className={`AdminLeftForm--FirstBox--Box${
                     activeSkinId === skin.id ? "--active" : ""
                   }`}
@@ -75,8 +78,6 @@ class AdminLeftForm extends React.Component {
 
                     <span
                       onClick={() => {
-                        console.log(activeSkinId, skin.id);
-                        setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
                         this.props.getWidgetPayments(skin.id);
                       }}
                     >

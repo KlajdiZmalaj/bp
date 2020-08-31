@@ -43,6 +43,9 @@ import {
   printFatturaReq,
   AddSkinReq,
   widgetPaymentsReq,
+  AddExtraDataReq,
+  AddSuperAdminReq,
+  getStatisticheReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1023,6 +1026,7 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   if (response) {
     // console.log(response.data.skin_id);
     yield put(AuthActions.setSkinId(response.data.skin_id));
+    yield put(AuthActions.registerSkinSucc({ addSkinSucc: true }));
   }
 }
 export function* getWidgetPayments({ skin_id }) {
@@ -1031,4 +1035,105 @@ export function* getWidgetPayments({ skin_id }) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
   }
   // console.log("response wiget payments", response);
+}
+export function* AddSuperAdmin({
+  first_name,
+  last_name,
+  gender,
+  username,
+  email,
+  phone,
+  personal_number,
+  password,
+  confirm_password,
+  address,
+  city,
+  comune_code,
+  cap,
+  country,
+  birth_place,
+  birth_country,
+  birthday,
+  a_ragione_sociale,
+  a_p_iva,
+  a_codice_fiscale,
+  skin_id,
+  c,
+}) {
+  const response = yield call(
+    AddSuperAdminReq,
+    first_name,
+    last_name,
+    gender,
+    username,
+    email,
+    phone,
+    personal_number,
+    password,
+    confirm_password,
+    address,
+    city,
+    comune_code,
+    cap,
+    country,
+    birth_place,
+    birth_country,
+    birthday,
+    a_ragione_sociale,
+    a_p_iva,
+    a_codice_fiscale,
+    skin_id
+  );
+  if (response) {
+    yield call(c);
+  }
+}
+export function* AddExtraData({
+  cel,
+  mail,
+  address,
+  link1,
+  link2,
+  link3,
+  link4,
+  link5,
+  ig,
+  pin,
+  yt,
+  fb,
+  bank_name,
+  account_name,
+  iban,
+  main_color,
+  skin_id,
+}) {
+  const response = yield call(
+    AddExtraDataReq,
+    cel,
+    mail,
+    address,
+    link1,
+    link2,
+    link3,
+    link4,
+    link5,
+    ig,
+    pin,
+    yt,
+    fb,
+    bank_name,
+    account_name,
+    iban,
+    main_color,
+    skin_id
+  );
+  if (response) {
+    yield put(AuthActions.registerSkinSucc({ addExtraDataSucc: true }));
+  }
+}
+export function* getStatistiche() {
+  const response = yield call(getStatisticheReq);
+  if (response) {
+    yield put(AuthActions.setStatistiche(response.data.data));
+  }
 }

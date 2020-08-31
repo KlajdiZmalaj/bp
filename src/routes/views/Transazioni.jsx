@@ -340,12 +340,6 @@ class Transazioni extends React.Component {
       skinExtras,
       getPayments,
     } = this.props;
-    console.log(
-      "paymentspayments",
-      payments,
-      paymentsForExcel,
-      paymentsFromCode
-    );
 
     const filters = ["oggi", "ieri", "questa sett", "queste mese"];
 

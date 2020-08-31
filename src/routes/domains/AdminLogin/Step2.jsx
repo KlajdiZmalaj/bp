@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { notification, DatePicker } from "antd";
 import { MySpan } from "./Step1";
 import moment from "moment";
+
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +34,21 @@ class Step1 extends React.Component {
       },
     };
   }
+  c = () => {
+    const { addEditSkinDetails, addEditSkin } = this.props;
+    addEditSkinDetails({
+      step1: {
+        ...(addEditSkin?.step1 ? addEditSkin.step1 : {}),
+      },
+      step2: {
+        ...this.state.step2,
+      },
+      skinId: addEditSkin?.skinId,
+      skinName: addEditSkin?.skinName,
+      skinPannel: true,
+      stepNumber: addEditSkin?.stepNumber + 1,
+    });
+  };
   componentDidMount() {
     if (
       !JSON.stringify(this.state.step2) !=
@@ -43,9 +59,26 @@ class Step1 extends React.Component {
       });
     }
   }
+  componentDidUpdate() {
+    if (this.props.addEditSkin.stepNumber >= 3) {
+      this.props.addEditSkinDetails({
+        step2: {},
+        step1: {},
+        skinId: -1,
+        skinName: null,
+        skinPannel: true,
+        stepNumber: 0,
+      });
+    }
+  }
 
   render() {
-    const { addEditSkinDetails, addEditSkin } = this.props;
+    const {
+      addEditSkinDetails,
+      addEditSkin,
+      newSkinId,
+      AddSuperAdmin,
+    } = this.props;
     const { step2 } = this.state;
     const {
       first_name,
@@ -273,7 +306,7 @@ class Step1 extends React.Component {
                     ? this.setState({
                         step2: {
                           ...step2,
-                          data_di_nascita: data_di_nascita.format("DD/MM/YYYY"),
+                          data_di_nascita: data_di_nascita.format("DD-MM-YYYY"),
                         },
                       })
                     : this.setState({
@@ -284,7 +317,7 @@ class Step1 extends React.Component {
                       });
                 }}
                 value={
-                  data_di_nascita ? moment(data_di_nascita, "DD/MM/YYYY") : null
+                  data_di_nascita ? moment(data_di_nascita, "DD-MM-YYYY") : null
                 }
                 format={("DD/MM/YYYY", "DD/MM/YYYY")}
               />
@@ -341,33 +374,45 @@ class Step1 extends React.Component {
               value={codice_fiscale}
             />
             <button
-              onClick={() => {
+              onClick={async () => {
                 let ifempty = false;
-                Object.keys(step2).forEach((key) => {
+                await Object.keys(step2).forEach((key) => {
                   if (!step2[key] || step2[key] === "") {
                     ifempty = true;
                   }
                 });
                 if (ifempty) {
-                  notification["error"]({
+                  await notification["error"]({
                     message: "Ops...",
                     description:
                       "Non puoi continuare al  ,completi tutti i dati prima",
                     duration: "5",
                   });
                 } else {
-                  addEditSkinDetails({
-                    step1: {
-                      ...(addEditSkin?.step1 ? addEditSkin.step1 : {}),
-                    },
-                    step2: {
-                      ...this.state.step2,
-                    },
-                    skinId: addEditSkin?.skinId,
-                    skinName: addEditSkin?.skinName,
-                    skinPannel: true,
-                    stepNumber: addEditSkin?.stepNumber + 1,
-                  });
+                  await AddSuperAdmin(
+                    first_name,
+                    last_name,
+                    ...(gender === "Male" ? "M" : "F"),
+                    username,
+                    email,
+                    phone,
+                    personal_number,
+                    password,
+                    conferma_password,
+                    address,
+                    city,
+                    provincia,
+                    cap,
+                    country,
+                    comune_nascita,
+                    stato_nascita,
+                    data_di_nascita,
+                    ragione_sociale,
+                    p_iva,
+                    codice_fiscale,
+                    newSkinId,
+                    this.c
+                  );
                 }
               }}
             >
@@ -381,5 +426,6 @@ class Step1 extends React.Component {
 }
 const mapsStateToProps = (state) => ({
   addEditSkin: state.auth.addEditSkin,
+  newSkinId: state.auth.newSkinId,
 });
 export default connect(mapsStateToProps, AuthActions)(Step1);

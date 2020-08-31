@@ -31,7 +31,6 @@ class Excel extends React.Component {
       username,
     } = this.props;
     const { clickedLink } = this.state;
-    console.log("payments", payments);
     const headers = [
       { label: "Date / Ora", key: "executed_date" },
       { label: "Barcode            ", key: "barcode" },

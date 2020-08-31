@@ -565,10 +565,10 @@ div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow
 div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div span:nth-child(2):after {
   content: "";
   width: 100%;
-  top: -133%;
-  left: -9px;
+  top: -87%;
+  left: -8px;
   background-color: transparent;
-  height: 209%;
+  height: 160%;
   position: absolute;
   border-left: 1px dotted #0078ff;
 }
@@ -653,10 +653,10 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
 div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child div span:nth-child(2):after {
   content: "";
   width: 100%;
-  top: -133%;
+  top: -87%;
   left: -8px;
   background-color: transparent;
-  height: 209%;
+  height: 160%;
   position: absolute;
   border-left: 1px dotted #0078ff;
 }

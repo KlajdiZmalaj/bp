@@ -322,6 +322,7 @@ class AdminPanelDom extends React.Component {
                 Log OUT
               </span>
             </div>
+
             <AdminHeader
               history={this.props.history}
               location={this.props.location}
@@ -391,7 +392,22 @@ class AdminPanelDom extends React.Component {
           </div>
         ) : (
           <React.Fragment>
-            <div className="TopHeader"></div>
+            <div className="TopHeader">
+              <Time />
+              <span className="creditoD">
+                Credito : {accountInfo?.profile?.wallet}€{" "}
+              </span>
+              <span
+                className="logOutBtn"
+                onClick={() => {
+                  this.props.logOut();
+                  this.props.history.push("/login");
+                }}
+              >
+                Log OUT
+              </span>
+            </div>
+
             <AdminHeader
               history={this.props.history}
               location={this.props.location}

@@ -6,6 +6,7 @@ import "./adminRightForm.css";
 import AdminRightFormUltimeDetails from "../AdminRightFormUltDet/AdminRightFormUltimeDetails";
 import AdminRightFormStatisticheDetails from "../AdminRightFormStatDet/AdminRightFormStatisticheDetails";
 import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightFormWalletDetails";
+import { graphData } from "../../../routes/domains/adminPanel/StaticAdminData";
 
 class AdminRightForm extends React.Component {
   state = {
@@ -15,6 +16,9 @@ class AdminRightForm extends React.Component {
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
+  async componentDidMount() {
+    this.props.getStatistiche();
+  }
   render() {
     const {
       depositoActiveVisibility,
@@ -31,8 +35,15 @@ class AdminRightForm extends React.Component {
       Proviggioni,
       Commisione,
       screenWidth,
+      Statistiche,
     } = this.props;
+    // let max =
+    //   Statistiche &&
+    //   Object.keys(Statistiche).reduce((a, b) =>
+    //     Statistiche[a] > Statistiche[b] ? Statistiche[a] : Statistiche[b]
+    //   );
 
+    // console.log(max);
     return (
       <div className="AdminRightForm">
         {screenWidth >= 1050 &&
@@ -58,6 +69,7 @@ class AdminRightForm extends React.Component {
               {statisticheDropdownVisibility && (
                 <AdminRightFormStatisticheDetails
                   graphData={graphData}
+                  // max={max}
                   Tranzacioni={Tranzacioni}
                   Commisione={Commisione}
                   Proviggioni={Proviggioni}
@@ -132,5 +144,6 @@ const mapsStateToProps = (state) => ({
   openAdminModal: state.auth.openAdminModal,
   screenWidth: state.main.screenWidth,
   activeSkinId: state.main.activeSkinId,
+  Statistiche: state.auth.Statistiche,
 });
 export default connect(mapsStateToProps, { ...AuthActions })(AdminRightForm);
