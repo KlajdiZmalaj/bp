@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 export default function configureStore() {
   const loggerMiddleware = (store) => (next) => (action) => {
     const returnValue = next(action);
-    console.log(store);
+    console.log(action);
     return returnValue;
   };
   const sagaMiddleware = createSagaMiddleware();

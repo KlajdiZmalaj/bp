@@ -1030,6 +1030,7 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   }
 }
 export function* getWidgetPayments({ skin_id }) {
+  console.log(skin_id);
   const response = yield call(widgetPaymentsReq, skin_id);
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
@@ -1131,8 +1132,8 @@ export function* AddExtraData({
     yield put(AuthActions.registerSkinSucc({ addExtraDataSucc: true }));
   }
 }
-export function* getStatistiche() {
-  const response = yield call(getStatisticheReq);
+export function* getStatistiche(params) {
+  const response = yield call(getStatisticheReq, params.skin_id);
   if (response) {
     yield put(AuthActions.setStatistiche(response.data));
   }

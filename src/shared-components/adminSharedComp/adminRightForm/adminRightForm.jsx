@@ -9,14 +9,35 @@ import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightForm
 
 class AdminRightForm extends React.Component {
   state = {
-    dropdownVisibility: true,
-    statisticheDropdownVisibility: true,
-    leUltimeTransazioni: true,
+    dropdownVisibility: false,
+    statisticheDropdownVisibility: false,
+    leUltimeTransazioni: false,
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
-  componentDidMount() {
-    this.props.getStatistiche();
+  componentDidMount() {}
+  componentDidUpdate(prevProps, prevState) {
+    const { activeSkinId } = this.props;
+    if (this.state.statisticheDropdownVisibility === true) {
+      if (
+        (this.state.statisticheDropdownVisibility === true &&
+          prevState.statisticheDropdownVisibility === false) ||
+        (this.props.activeSkinId != prevProps.activeSkinId &&
+          this.state.statisticheDropdownVisibility === true)
+      ) {
+        this.props.getStatistiche(activeSkinId);
+      }
+    }
+    if (this.state.leUltimeTransazioni === true) {
+      if (
+        (this.state.leUltimeTransazioni === true &&
+          prevState.leUltimeTransazioni === false) ||
+        (this.props.activeSkinId != prevProps.activeSkinId &&
+          this.state.leUltimeTransazioni === true)
+      ) {
+        this.props.getWidgetPayments(activeSkinId);
+      }
+    }
   }
   render() {
     const {
@@ -61,7 +82,6 @@ class AdminRightForm extends React.Component {
               {statisticheDropdownVisibility && (
                 <AdminRightFormStatisticheDetails
                   graphData={Statistiche ? Statistiche : ""}
-                  // max={max}
                   Tranzacioni={TrCoPro?.importo ? TrCoPro?.importo : 0}
                   Commisione={TrCoPro?.commissione ? TrCoPro?.commissione : 0}
                   Proviggioni={TrCoPro?.proviggioni ? TrCoPro.proviggioni : 0}

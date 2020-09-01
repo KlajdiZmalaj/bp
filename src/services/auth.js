@@ -1404,8 +1404,7 @@ export const widgetPaymentsReq = (skin_id) => {
     })
     .get("/widgetPayments", {
       params: {
-        ...skin,
-        ...(skin_id ? { skin_id } : {}),
+        ...(skin_id && skin_id != -1 ? { skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));
@@ -1422,7 +1421,7 @@ export const getStatisticheReq = (skin_id) => {
     })
     .get("/statistiche", {
       params: {
-        ...(skin_id ? { skin_id } : skin),
+        ...(skin_id && skin_id != -1 ? { skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));

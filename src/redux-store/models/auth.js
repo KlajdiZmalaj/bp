@@ -357,7 +357,7 @@ const { Types, Creators } = createActions({
     "skin_id",
   ],
   registerSkinSucc: ["registerSkinS"],
-  getStatistiche: [],
+  getStatistiche: ["skin_id"],
   setStatistiche: ["Statistiche"],
 });
 
