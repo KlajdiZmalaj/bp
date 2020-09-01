@@ -74,7 +74,12 @@ class AdminListaUtentiRow extends React.Component {
             }
             nrOfRows={2}
             formatWord={true}
-            link={this.props.activeSkinId === -1 ? true : false}
+            link={
+              this.props.activeSkinId === -1 &&
+              accountInfo.profile.role.name === "main_admin"
+                ? true
+                : false
+            }
           />
           <SpanFormater
             styles={

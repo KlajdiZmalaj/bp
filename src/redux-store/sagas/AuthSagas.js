@@ -1134,6 +1134,6 @@ export function* AddExtraData({
 export function* getStatistiche() {
   const response = yield call(getStatisticheReq);
   if (response) {
-    yield put(AuthActions.setStatistiche(response.data.data));
+    yield put(AuthActions.setStatistiche(response.data));
   }
 }

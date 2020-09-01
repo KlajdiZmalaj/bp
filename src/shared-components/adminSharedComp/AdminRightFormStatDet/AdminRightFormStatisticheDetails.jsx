@@ -1,49 +1,30 @@
-import React from "react";
-import { Tooltip } from "antd";
-import moment from "moment";
+import React, { useState } from "react";
+import Graph from "../Graph/Graph";
 import "./aRFSD.css";
 const AdminRightFormStatisticheDetailsHelper = ({
   graphData,
   Tranzacioni,
   Commisione,
   Proviggioni,
-}) => (
-  <div className="Statistiche Dropdown">
-    <div className="Graph">
-      {graphData.map((heigh, i) => {
-        return (
-          <Tooltip title={heigh.price} key={i}>
-            <div
-              key={i + 99}
-              className="Graph--Element"
-              style={{ height: `${heigh.height}%` }}
-            ></div>
-          </Tooltip>
-        );
-      })}
-      <div className="Date">
+}) => {
+  const [date, setDate] = useState(new Date());
+  return (
+    <div className="Statistiche Dropdown">
+      <Graph graphicData={graphData} date={date} setDate={setDate} />
+      <div className="Tranzacioni">
         <div>
-          <span>{new Date().getDate()}</span>
-          <span>{moment().format("MMMM")}</span>
+          <span>Transazioni</span> <span>{`${Tranzacioni} `} &euro;</span>{" "}
         </div>
         <div>
-          <i className="fal fa-calendar-alt"></i>
+          <span>Commisioni</span> <span>{`${Commisione} `} &euro;</span>{" "}
+        </div>
+        <div>
+          <span>Proviggioni</span> <span>{`${Proviggioni} `} &euro;</span>
         </div>
       </div>
     </div>
-    <div className="Tranzacioni">
-      <div>
-        <span>Transazioni</span> <span>{`${Tranzacioni} `} &euro;</span>{" "}
-      </div>
-      <div>
-        <span>Commisioni</span> <span>{`${Commisione} `} &euro;</span>{" "}
-      </div>
-      <div>
-        <span>Proviggioni</span> <span>{`${Proviggioni} `} &euro;</span>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 class AdminRightFormStatisticheDetails extends React.Component {
   componentWillUnmount() {
     if (this.props.ModalOrNo) {

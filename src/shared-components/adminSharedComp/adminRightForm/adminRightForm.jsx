@@ -6,7 +6,6 @@ import "./adminRightForm.css";
 import AdminRightFormUltimeDetails from "../AdminRightFormUltDet/AdminRightFormUltimeDetails";
 import AdminRightFormStatisticheDetails from "../AdminRightFormStatDet/AdminRightFormStatisticheDetails";
 import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightFormWalletDetails";
-import { graphData } from "../../../routes/domains/adminPanel/StaticAdminData";
 
 class AdminRightForm extends React.Component {
   state = {
@@ -16,7 +15,7 @@ class AdminRightForm extends React.Component {
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getStatistiche();
   }
   render() {
@@ -29,21 +28,14 @@ class AdminRightForm extends React.Component {
     } = this.state;
     const {
       openAdminModal,
-      graphData,
       leUltimeTransazioniDet,
       Tranzacioni,
       Proviggioni,
       Commisione,
       screenWidth,
       Statistiche,
+      TrCoPro,
     } = this.props;
-    // let max =
-    //   Statistiche &&
-    //   Object.keys(Statistiche).reduce((a, b) =>
-    //     Statistiche[a] > Statistiche[b] ? Statistiche[a] : Statistiche[b]
-    //   );
-
-    // console.log(max);
     return (
       <div className="AdminRightForm">
         {screenWidth >= 1050 &&
@@ -68,11 +60,11 @@ class AdminRightForm extends React.Component {
               </div>
               {statisticheDropdownVisibility && (
                 <AdminRightFormStatisticheDetails
-                  graphData={graphData}
+                  graphData={Statistiche ? Statistiche : ""}
                   // max={max}
-                  Tranzacioni={Tranzacioni}
-                  Commisione={Commisione}
-                  Proviggioni={Proviggioni}
+                  Tranzacioni={TrCoPro?.importo ? TrCoPro?.importo : 0}
+                  Commisione={TrCoPro?.commissione ? TrCoPro?.commissione : 0}
+                  Proviggioni={TrCoPro?.proviggioni ? TrCoPro.proviggioni : 0}
                 />
               )}
               <div className="AdminRightForm--Box">
@@ -144,6 +136,7 @@ const mapsStateToProps = (state) => ({
   openAdminModal: state.auth.openAdminModal,
   screenWidth: state.main.screenWidth,
   activeSkinId: state.main.activeSkinId,
-  Statistiche: state.auth.Statistiche,
+  Statistiche: state.auth.Statistiche?.data,
+  TrCoPro: state.auth.Statistiche?.total,
 });
 export default connect(mapsStateToProps, { ...AuthActions })(AdminRightForm);
