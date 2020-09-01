@@ -13,5 +13,7 @@ export default () => {
     };
   });
 
-  return <span className="timeH">{moment().format("DD/MM/YYY HH:mm:ss")}</span>;
+  return (
+    <span className="timeH">{moment().format("DD/MM/YYYY HH:mm:ss")}</span>
+  );
 };

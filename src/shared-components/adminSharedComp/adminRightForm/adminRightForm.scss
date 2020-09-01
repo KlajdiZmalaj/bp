@@ -283,6 +283,12 @@
         &--Data {
           font-size: 12px;
           font-family: "Roboto", sans-serif;
+          width: 25%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
           &.Date {
             color: #727272;
             font-weight: 400;

@@ -113,8 +113,8 @@ export const azioni = [
   // },
   {
     id: 13,
-    name: "Fatura",
-    link: "fatura",
+    name: "Fattura",
+    link: "fattura",
     i: "fas fa-ballot-check",
     displayRole: ["super_admin"],
   },

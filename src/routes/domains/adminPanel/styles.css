@@ -1156,7 +1156,7 @@ div.Center--Big tbody .right .Importo i {
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1320px) {
   .AdminColumns .AdminRightForm {
     display: none;
   }

@@ -409,6 +409,18 @@
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
   font-size: 12px;
   font-family: "Roboto", sans-serif;
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {

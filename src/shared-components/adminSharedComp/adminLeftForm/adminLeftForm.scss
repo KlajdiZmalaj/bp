@@ -193,15 +193,14 @@
             justify-content: flex-start;
             align-items: center;
             & img {
-              width: 15px;
+              width: 23px;
               border-radius: 19px;
               display: flex;
               align-items: center;
               justify-content: center;
               object-fit: cover;
               object-position: center;
-              margin: 0 6px;
-              margin-left: 15px;
+              margin: 4px 6px;
             }
             & span {
               display: none;

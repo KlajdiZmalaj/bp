@@ -66,20 +66,24 @@ class AdminListaUtentiRow extends React.Component {
             Word={itemList.rag_soc}
             styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
             size={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId === -1 && screenWidth >= 1600
                 ? 30
-                : screenWidth <= 1600
-                ? 13
-                : 17
+                : this.props.activeSkinId === -1 && screenWidth >= 1300
+                ? 20
+                : this.props.activeSkinId === -1 && screenWidth >= 800
+                ? 16
+                : screenWidth <= 1120
+                ? 8
+                : screenWidth <= 1320
+                ? 12
+                : screenWidth <= 1500
+                ? 11
+                : screenWidth <= 1700
+                ? 16
+                : 18
             }
             nrOfRows={2}
             formatWord={true}
-            link={
-              this.props.activeSkinId === -1 &&
-              accountInfo.profile.role.name === "main_admin"
-                ? true
-                : false
-            }
           />
           <SpanFormater
             styles={
@@ -115,7 +119,9 @@ class AdminListaUtentiRow extends React.Component {
           </span>
           <span
             style={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId != -1 && screenWidth <= 950
+                ? { justifyContent: "center", left: 0, display: "none" }
+                : this.props.activeSkinId === -1
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
@@ -124,7 +130,9 @@ class AdminListaUtentiRow extends React.Component {
           </span>
           <span
             style={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId === -1 && screenWidth <= 950
+                ? { width: "38%" }
+                : this.props.activeSkinId === -1
                 ? { width: "24%", justifyContent: "space-around" }
                 : {}
             }

@@ -269,7 +269,7 @@ class AdminPanelDom extends React.Component {
                 }
               />
             ) : null}
-            {statModal?.visibility === true && screenWidth <= 1050 && (
+            {statModal?.visibility === true && screenWidth <= 1320 && (
               <AdminRightFormStatisticheDetails
                 graphData={statModal.data.graphData}
                 Tranzacioni={numberWithCommas(statModal.data.Tranzacioni)}
@@ -281,14 +281,14 @@ class AdminPanelDom extends React.Component {
             )}
             {ultModal &&
               ultModal.visibility === true &&
-              screenWidth <= 1050 && (
+              screenWidth <= 1320 && (
                 <AdminRightFormUltimeDetails
                   leUltimeTransazioniDet={ultModal.data.leUltimeTransazioniDet}
                   ModalOrNo={true}
                   Close={editUltModal}
                 />
               )}
-            {depModal && depModal.visibility === true && screenWidth <= 1050 && (
+            {depModal && depModal.visibility === true && screenWidth <= 1320 && (
               <AdminRightFormWalletDetails
                 handleDepositoVisibility={() => {
                   this.setState({

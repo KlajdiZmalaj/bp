@@ -1,9 +1,9 @@
 .RightFormModal {
   position: fixed;
-  width: 80vw;
-  top: 71px;
-  margin: calc((20vh - 71px) / 2) 10vw;
-  height: 80vh;
+  width: 70vw;
+  top: 101px;
+  margin: calc((29vh - 71px) / 2) 15vw;
+  height: 70vh;
   z-index: 5;
   box-shadow: 0 3px 6px 1px #0000008c;
   & .AdminRightForm--Box--Wallet--Dropdown {
@@ -70,7 +70,7 @@
     }
   }
   & .backDrop {
-    top: 71px;
+    top: 101px;
     height: calc(100vh - 71px);
     width: calc(100vw - 51px);
     left: 51px;

@@ -114,7 +114,7 @@ class AdminLeftForm extends React.Component {
           </div>
 
           <div className="AdminLeftForm--LastBox">
-            {screenWidth <= 1050 ? (
+            {screenWidth <= 1320 ? (
               <React.Fragment>
                 <div
                   className="AdminLeftForm--LastBox--Box"
