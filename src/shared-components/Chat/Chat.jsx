@@ -1,9 +1,21 @@
 import React from "react";
-const open = () => {
+import { connect } from "react-redux";
+const open = (screenWidth, innerHeight) => {
   var winparams =
     "dependent=yes,locationbar=no,scrollbars=yes,menubar=yes," +
-    `resizable,screenX=50,screenY=50,width=300
-        ,height=600`;
+    `resizable,screenX=${
+      screenWidth >= 1000
+        ? (screenWidth - screenWidth / 4) / 2
+        : screenWidth >= 600 && screenWidth <= 1000
+        ? screenWidth / 2 / 2
+        : 0
+    },screenY=${(innerHeight - 600) / 2},width=${
+      screenWidth >= 1000
+        ? screenWidth / 4
+        : screenWidth >= 600 && screenWidth <= 1000
+        ? screenWidth / 2
+        : screenWidth
+    },height=600`;
   var htmlPop =
     "<embed width=100% height=100%" +
     ' src="https://tawk.to/chat/5f4e3671f0e7167d000c81cc/default' +
@@ -12,18 +24,35 @@ const open = () => {
   var printWindow = window.open("", "PDF", winparams);
   printWindow.document.write(htmlPop);
 };
-const Chat = () => {
+const Chat = ({ screenWidth }) => {
+  console.log(window.innerHeight);
   return (
     <React.Fragment>
       <div
+        style={{ cursor: "pointer" }}
         onClick={() => {
-          open();
+          open(screenWidth, window.innerHeight);
         }}
       >
-        <span>Chat</span>
-        <i className="far fa-comments"></i>
+        <i
+          className="far fa-comments"
+          style={{
+            paddingRight: "10px",
+            fontSize: "16px",
+            fontWeight: 300,
+          }}
+        ></i>
+
+        <span
+          style={{ fontSize: "14px", fontFamily: "Roboto", fontWeight: 400 }}
+        >
+          Support
+        </span>
       </div>
     </React.Fragment>
   );
 };
-export default Chat;
+const mapStateToProps = (state) => ({
+  screenWidth: state.main.screenWidth,
+});
+export default connect(mapStateToProps, null)(Chat);
