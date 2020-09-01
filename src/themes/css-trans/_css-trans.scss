@@ -343,3 +343,8 @@
     display: table;
   }
 }
+input#write {
+  position: fixed;
+  z-index: -99;
+  opacity: 0;
+}

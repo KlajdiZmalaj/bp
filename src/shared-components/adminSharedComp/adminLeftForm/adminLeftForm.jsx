@@ -4,6 +4,7 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import "./adminLeftForm.css";
 import { connect } from "react-redux";
+import Chat from "shared-components/Chat/Chat";
 
 class AdminLeftForm extends React.Component {
   state = {
@@ -43,6 +44,9 @@ class AdminLeftForm extends React.Component {
               Array.isArray(skinList) &&
               skinList.map((skin) => (
                 <div
+                  onClick={() => {
+                    setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                  }}
                   className={`AdminLeftForm--FirstBox--Box${
                     activeSkinId === skin.id ? "--active" : ""
                   }`}
@@ -73,15 +77,7 @@ class AdminLeftForm extends React.Component {
                       <circle className="a" cx="11" cy="11" r="11" />
                     </svg> */}
 
-                    <span
-                      onClick={() => {
-                        console.log(activeSkinId, skin.id);
-                        setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
-                        this.props.getWidgetPayments(skin.id);
-                      }}
-                    >
-                      {skin.username.toUpperCase()}
-                    </span>
+                    <span>{skin.username.toUpperCase()}</span>
                   </div>
                 </div>
               ))}
@@ -188,6 +184,9 @@ class AdminLeftForm extends React.Component {
                 </div>
               </React.Fragment>
             ) : null}
+            <div className="AdminLeftForm--LastBox--Box">
+              <Chat />
+            </div>
             <div className="AdminLeftForm--LastBox--Box">
               <i className="fal fa-envelope"></i>
               <span>MESSAGGI</span>

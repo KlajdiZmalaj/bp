@@ -2,8 +2,7 @@ import React from "react";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
 import { notification } from "antd";
-import { addLogo, AddExtraData } from "services/auth";
-import Password from "antd/lib/input/Password";
+import { addLogo } from "services/auth";
 export const MySpan = ({
   title,
   iconClass,
@@ -55,70 +54,125 @@ class Step1 extends React.Component {
         facebook: "",
         instagram: "",
         pinterest: "",
+        color_skin: "",
         youtube: "",
       },
     };
   }
-  componentDidUpdate(prevProps) {
-    const { newSkinId } = this.props;
+  async componentDidUpdate(prevProps) {
+    const {
+      addEditSkinDetails,
+      addEditSkin,
+      newSkinId,
+      AddExtraData,
+    } = this.props;
     const { base64, step1 } = this.state;
     const {
       nome_skin,
-      link_servizi,
       upload_logo,
+      color_skin,
       email,
-      noreply_email,
       indirizzo,
       telefono,
-      canone_mensile_agenzie,
       nome_banca,
-      societa_beneficiare,
       iban,
       home,
       chi_siamo,
       contatti,
       servizi,
       affiliazioni,
-      facebook,
       instagram,
+      facebook,
       pinterest,
       youtube,
     } = step1;
     if (prevProps.newSkinId != newSkinId) {
-      if (newSkinId === -1) {
-        notification["error"]({
-          message: "Ops...",
-          description: "I tuoi dati per la creazione della skin sono sbagliati",
-          duration: "5",
-        });
-      } else {
-        AddExtraData(
-          telefono,
-          email,
-          indirizzo,
-          chi_siamo,
-          servizi,
-          home,
-          contatti,
-          affiliazioni,
-          instagram,
-          pinterest,
-          youtube,
-          nome_banca,
-          nome_skin,
-          iban,
-          "orange",
-          newSkinId
-        );
-        if (upload_logo?.includes(".png")) {
-          addLogo(base64, newSkinId);
-        } else {
-          notification["error"]({
+      try {
+        if (newSkinId === -1) {
+          await notification["error"]({
             message: "Ops...",
-            description: "Il formato dell'immagine dovrebbe essere png",
+            description:
+              "I tuoi dati per la creazione della skin sono sbagliati",
+            duration: "5",
+          });
+        } else {
+          let ifempty = false;
+          await Object.keys(this.state.step1).forEach((key) => {
+            if (!this.state.step1[key] || this.state.step1[key] === "") {
+              ifempty = true;
+            }
+          });
+          if (ifempty) {
+            await notification["error"]({
+              message: "Ops...",
+              description:
+                "Non puoi continuare al secondo step ,completi tutti i dati prima",
+              duration: "5",
+            });
+          } else {
+            await AddExtraData(
+              telefono,
+              email,
+              indirizzo,
+              chi_siamo,
+              servizi,
+              home,
+              contatti,
+              affiliazioni,
+              instagram,
+              pinterest,
+              youtube,
+              facebook,
+              nome_banca,
+              nome_skin,
+              iban,
+              color_skin,
+              newSkinId
+            );
+          }
+          if (upload_logo?.includes(".png")) {
+            await addLogo(base64, newSkinId);
+            if (
+              this.props.registerSkin?.addExtraDataSucc &&
+              this.props.registerSkin?.addSkinSucc
+            ) {
+              await addEditSkinDetails({
+                step1: {
+                  ...this.state.step1,
+                },
+                step2: {
+                  ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),
+                },
+                skinId: addEditSkin?.skinId,
+                skinName: addEditSkin?.skinName,
+                skinPannel: true,
+                stepNumber: addEditSkin?.stepNumber + 1,
+              });
+            }
+          } else {
+            await notification["error"]({
+              message: "Ops...",
+              description: "Il formato dell'immagine dovrebbe essere png",
+              duration: "5",
+            });
+          }
+        }
+        if (
+          this.props.registerSkin?.addExtraDataSucc &&
+          this.props.registerSkin?.addSkinSucc
+        ) {
+          await notification["success"]({
+            message: "Molto Bene",
+            description: "la pelle viene creata con successo",
             duration: "5",
           });
         }
+      } catch (error) {
+        notification["error"]({
+          message: "Ops..",
+          description: "Something wrong happened please contact administrator",
+          duration: "5",
+        });
       }
     }
   }
@@ -134,11 +188,17 @@ class Step1 extends React.Component {
     }
   }
   render() {
-    const { addEditSkinDetails, addEditSkin, newSkinId } = this.props;
+    const {
+      addEditSkinDetails,
+      addEditSkin,
+      newSkinId,
+      AddExtraData,
+    } = this.props;
     const { step1, base64 } = this.state;
     const {
       nome_skin,
       link_servizi,
+      color_skin,
       upload_logo,
       email,
       noreply_email,
@@ -158,8 +218,6 @@ class Step1 extends React.Component {
       pinterest,
       youtube,
     } = step1;
-    console.log(upload_logo?.includes(".png"));
-
     return (
       <div className="AdminLogin--Step1">
         <i
@@ -278,6 +336,17 @@ class Step1 extends React.Component {
                 });
               }}
               value={canone_mensile_agenzie}
+            />
+            <MySpan
+              title="Color Dell Skin (Solo numeri in codice esadecimale es: ffffff)"
+              iconClass="fal fa-euro-sign"
+              handleChange={(e) => {
+                this.setState({
+                  step1: { ...step1, color_skin: e.target.value },
+                });
+              }}
+              value={color_skin}
+              component={<div className="colorSkin">#</div>}
             />
           </div>
           <div className="AdminLogin--Step1--Right--Payment">
@@ -456,42 +525,6 @@ class Step1 extends React.Component {
                     duration: "5",
                   });
                 }
-
-                //   let ifempty = false;
-                //   if (upload_logo?.includes(".png")) {
-                //     Object.keys(this.state).forEach((key) => {
-                //       if (!this.state[key] || this.state[key] === "") {
-                //         ifempty = true;
-                //       }
-                //     });
-                //     if (ifempty) {
-                //       notification["error"]({
-                //         message: "Ops...",
-                //         description:
-                //           "Non puoi continuare al secondo step ,completi tutti i dati prima",
-                //         duration: "5",
-                //       });
-                //     } else {
-                //       addEditSkinDetails({
-                //         step1: {
-                //           ...this.state,
-                //         },
-                //         step2: {
-                //           ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),
-                //         },
-                //         skinId: addEditSkin?.skinId,
-                //         skinName: addEditSkin?.skinName,
-                //         skinPannel: true,
-                //         stepNumber: addEditSkin?.stepNumber + 1,
-                //       });
-                //     }
-                //   } else {
-                //     notification["error"]({
-                //       message: "Ops...",
-                //       description: "Logo file should be png/jpg/svg",
-                //       duration: "5",
-                //     });
-                //   }
               }}
             >
               Create Skin
@@ -505,5 +538,6 @@ class Step1 extends React.Component {
 const mapsStateToProps = (state) => ({
   addEditSkin: state.auth.addEditSkin,
   newSkinId: state.auth.newSkinId,
+  registerSkin: state.auth.registerSkin,
 });
 export default connect(mapsStateToProps, AuthActions)(Step1);

@@ -63,6 +63,8 @@ div.Center .AdminServizi .AdminServiziItem img,
 div.Center--Big .AdminServizi .AdminServiziItem img {
   width: 150px;
   height: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 div.Center .AdminServizi .AdminServiziItem--Header,

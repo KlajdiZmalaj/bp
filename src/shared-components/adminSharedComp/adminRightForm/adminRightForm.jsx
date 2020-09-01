@@ -9,12 +9,36 @@ import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightForm
 
 class AdminRightForm extends React.Component {
   state = {
-    dropdownVisibility: true,
-    statisticheDropdownVisibility: true,
-    leUltimeTransazioni: true,
+    dropdownVisibility: false,
+    statisticheDropdownVisibility: false,
+    leUltimeTransazioni: false,
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
+  componentDidMount() {}
+  componentDidUpdate(prevProps, prevState) {
+    const { activeSkinId } = this.props;
+    if (this.state.statisticheDropdownVisibility === true) {
+      if (
+        (this.state.statisticheDropdownVisibility === true &&
+          prevState.statisticheDropdownVisibility === false) ||
+        (this.props.activeSkinId != prevProps.activeSkinId &&
+          this.state.statisticheDropdownVisibility === true)
+      ) {
+        this.props.getStatistiche(activeSkinId);
+      }
+    }
+    if (this.state.leUltimeTransazioni === true) {
+      if (
+        (this.state.leUltimeTransazioni === true &&
+          prevState.leUltimeTransazioni === false) ||
+        (this.props.activeSkinId != prevProps.activeSkinId &&
+          this.state.leUltimeTransazioni === true)
+      ) {
+        this.props.getWidgetPayments(activeSkinId);
+      }
+    }
+  }
   render() {
     const {
       depositoActiveVisibility,
@@ -25,14 +49,14 @@ class AdminRightForm extends React.Component {
     } = this.state;
     const {
       openAdminModal,
-      graphData,
       leUltimeTransazioniDet,
       Tranzacioni,
       Proviggioni,
       Commisione,
       screenWidth,
+      Statistiche,
+      TrCoPro,
     } = this.props;
-
     return (
       <div className="AdminRightForm">
         {screenWidth >= 1050 &&
@@ -57,10 +81,10 @@ class AdminRightForm extends React.Component {
               </div>
               {statisticheDropdownVisibility && (
                 <AdminRightFormStatisticheDetails
-                  graphData={graphData}
-                  Tranzacioni={Tranzacioni}
-                  Commisione={Commisione}
-                  Proviggioni={Proviggioni}
+                  graphData={Statistiche ? Statistiche : ""}
+                  Tranzacioni={TrCoPro?.importo ? TrCoPro?.importo : 0}
+                  Commisione={TrCoPro?.commissione ? TrCoPro?.commissione : 0}
+                  Proviggioni={TrCoPro?.proviggioni ? TrCoPro.proviggioni : 0}
                 />
               )}
               <div className="AdminRightForm--Box">
@@ -132,5 +156,7 @@ const mapsStateToProps = (state) => ({
   openAdminModal: state.auth.openAdminModal,
   screenWidth: state.main.screenWidth,
   activeSkinId: state.main.activeSkinId,
+  Statistiche: state.auth.Statistiche?.data,
+  TrCoPro: state.auth.Statistiche?.total,
 });
 export default connect(mapsStateToProps, { ...AuthActions })(AdminRightForm);

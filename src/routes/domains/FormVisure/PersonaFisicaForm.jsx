@@ -142,12 +142,6 @@ class PersonaFisicaForm extends Component {
                 <DatePicker
                   format={"DD/MM/YYYY"}
                   onChange={(e) => {
-                    console.log(
-                      "DatePicker",
-                      e,
-                      moment(e).format(),
-                      moment(e).format("DD/MM/YYYY")
-                    );
                     this.setState({
                       data_di_nascita: moment(e).format("DD/MM/YYYY"),
                     });
@@ -157,12 +151,6 @@ class PersonaFisicaForm extends Component {
                 <DatePicker
                   format={"DD/MM/YYYY"}
                   onChange={(e) => {
-                    console.log(
-                      "DatePicker",
-                      e,
-                      moment(e).format(),
-                      moment(e).format("DD/MM/YYYY")
-                    );
                     this.setState({
                       data_di_nascita: moment(e).format("DD/MM/YYYY"),
                     });

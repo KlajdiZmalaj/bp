@@ -172,6 +172,10 @@ class Treni extends Component {
                 />
               </div>
             ) : null}
+            <div className="itemCol full">
+              <div className="inputLabel">Prezzo</div>
+              <input className="ant-input" value={price} readOnly />
+            </div>
 
             <div className="itemCol full Bagalio">
               <div className="inputLabel">Tipologia Biglietto</div>

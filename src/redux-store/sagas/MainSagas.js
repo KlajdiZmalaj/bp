@@ -54,7 +54,7 @@ export function* getUsers(params) {
     params.skin_id,
     params.backoffice
   );
-  // console.log("getUsers called", response);
+  console.log("getUsers called", response);
   if (response && response.data) {
     yield put(MainActions.setUsers(response.data.users));
     yield put(MainActions.setLoaderForAdminUtenti(false));

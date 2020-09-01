@@ -111,13 +111,13 @@ export const azioni = [
   //   i: "fab fa-wpforms",
   //   displayRole: ["super_admin", "user", "agency", "support"],
   // },
-  // {
-  //   id: 13,
-  //   name: "Fatura",
-  //   link: "fatura",
-  //   i: "fas fa-ballot-check",
-  //   displayRole: ["super_admin", "user", "agency", "support"],
-  // },
+  {
+    id: 13,
+    name: "Fatura",
+    link: "fatura",
+    i: "fas fa-ballot-check",
+    displayRole: ["super_admin"],
+  },
 ];
 
 export const administrazioni = [
@@ -51007,28 +51007,28 @@ export const servicesVisure = {
         time: "in pochi secondi",
       },
       {
-        name: "Visura per soggetoo storica",
+        name: "Visura per soggetto storica",
         price: 13,
         sco: "35",
         time: "2 ore",
       },
       { name: "Planimetria Catastale", price: 29, sco: "35", time: "2 ore" },
       {
-        name: "Mappa Edificio / Elaboro di Mappa",
+        name: "Mappa Catastale / Estratto di Mappa",
         price: 13,
         sco: "35",
         time: "2 ore",
       },
       { name: "Elenco Imobili", price: 9, sco: "35", time: "2 ore" },
       {
-        name: "Mappa Edificio / Elaboro Planimetrico",
+        name: "Mappa Edificio / Elaborato Planimetrico",
         price: 13,
         sco: "35",
         time: "4 ore",
       },
       { name: "Rendita catastale", price: 5, sco: "35", time: "2 ore" },
       {
-        name: "Reddito domimicale e reddito agrario",
+        name: "Reddito dominicale e reddito agrario",
         price: 5,
         sco: "35",
         time: "2 ore",
@@ -51040,7 +51040,7 @@ export const servicesVisure = {
         time: "2 giorni",
       },
       {
-        name: "Calcolo della superficie da Planimetra",
+        name: "Calcolo della Superficie da Planimetria",
         price: 40,
         sco: "35",
         time: "2 ore",
@@ -51419,6 +51419,46 @@ export const servicesVisure = {
         time: "20 giorni",
       },
       { name: "Estratto Apostillato", price: 32, sco: "78", time: "20 giorni" },
+    ],
+  },
+  "Servizi Ufficio Tribunale": {
+    services: [
+      {
+        name: "Casellario Giudiziale",
+        price: 49,
+        sco: "25",
+        time: "7 giorni",
+      },
+      {
+        name: "Certificato Carichi Pendenti",
+        price: 49,
+        sco: "25",
+        time: "12 giorni",
+      },
+      {
+        name: "Certificato dell'anagrafe delle sanzioni amministrative",
+        price: 49,
+        sco: "25",
+        time: "7 giorni",
+      },
+      {
+        name: "Carichi Pendenti degli illeciti amministrativi ",
+        price: 49,
+        sco: "25",
+        time: "12 giorni",
+      },
+      {
+        name: "Certificato Antipedofilia",
+        price: 49,
+        sco: "25",
+        time: "7 giorni",
+      },
+      {
+        name: "Certificato Fallimentare",
+        price: 59,
+        sco: "25",
+        time: "20 giorni",
+      },
     ],
   },
 };

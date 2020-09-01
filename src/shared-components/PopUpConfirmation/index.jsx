@@ -63,7 +63,7 @@ const PopUpConfirmation = ({
               }}
             >
               {""}
-              ESEGUITO{" "}
+              Conferma{" "}
             </button>
             <button
               className="Annullato"
@@ -78,7 +78,7 @@ const PopUpConfirmation = ({
                 setState(false);
               }}
             >
-              ANNULLATO{" "}
+              Rifiuta{" "}
             </button>
           </div>
         </div>

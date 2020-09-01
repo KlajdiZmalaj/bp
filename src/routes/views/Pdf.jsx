@@ -20,7 +20,6 @@ export default ({
       print.current.click();
     }
   }, [paymentExcelLoading]);
-  console.log("paymentspdf", payments);
   return (
     <div className="exportPDF">
       {payments.length > 0 && toPrint ? (

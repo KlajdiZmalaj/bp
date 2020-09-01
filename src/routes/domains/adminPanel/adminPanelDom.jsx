@@ -10,6 +10,7 @@ import AuthActions from "redux-store/models/auth";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import DepositoModal from "shared-components/adminSharedComp/DepositoModal/DepositoModal";
+
 import AdminComp from "../AccountInfo/AdminComp";
 import AgentComp from "../AccountInfo/AgetnComp";
 import UserComp from "../AccountInfo/UserComp";
@@ -28,6 +29,7 @@ import "./styles.css";
 import { numberWithCommas } from "utils/HelperFunc";
 
 const { Option } = Select;
+
 class AdminPanelDom extends React.Component {
   state = {
     menuSkinVisible: false,
@@ -65,7 +67,6 @@ class AdminPanelDom extends React.Component {
   componentDidMount() {
     this.props.getSkins();
     this.props.getAgents(this.props.activeSkinId);
-    this.props.getWidgetPayments();
     document.body.classList.add("bodyAdmin");
   }
   componentWillUnmount() {
@@ -322,6 +323,7 @@ class AdminPanelDom extends React.Component {
                 Log OUT
               </span>
             </div>
+
             <AdminHeader
               history={this.props.history}
               location={this.props.location}
@@ -391,7 +393,22 @@ class AdminPanelDom extends React.Component {
           </div>
         ) : (
           <React.Fragment>
-            <div className="TopHeader"></div>
+            <div className="TopHeader">
+              <Time />
+              <span className="creditoD">
+                Credito : {accountInfo?.profile?.wallet}€{" "}
+              </span>
+              <span
+                className="logOutBtn"
+                onClick={() => {
+                  this.props.logOut();
+                  this.props.history.push("/login");
+                }}
+              >
+                Log OUT
+              </span>
+            </div>
+
             <AdminHeader
               history={this.props.history}
               location={this.props.location}

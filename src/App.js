@@ -32,6 +32,7 @@ class App extends React.Component {
         <Root />
         <Footer />
         <ModulePopUp></ModulePopUp>
+        <input id="write" />
       </Provider>
     );
   }

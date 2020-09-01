@@ -1228,7 +1228,6 @@ export const printFatturaReq = (file_name) => {
     .catch((error) => ({ error }));
 };
 export const addLogo = (logo, skin_id) => {
-  console.log(logo);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1270,7 +1269,7 @@ export const AddSkinReq = (name, url, email, agency_rent) => {
       }
     });
 };
-export const AddExtraData = (
+export const AddExtraDataReq = (
   cel,
   mail,
   address,
@@ -1282,13 +1281,13 @@ export const AddExtraData = (
   ig,
   pin,
   yt,
+  fb,
   bank_name,
   account_name,
   iban,
   main_color,
   skin_id
 ) => {
-  console.log(skin_id);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1310,21 +1309,87 @@ export const AddExtraData = (
       ig,
       pin,
       yt,
+      fb,
       bank_name,
       account_name,
       iban,
       main_color,
     })
     .catch((error) => {
-      console.log(error.response);
-      // if (error?.response?.data?.errors) {
-      //   Object.keys(error?.response?.data?.errors).forEach((key) => {
-      //     return notification["error"]({
-      //       message: error.response.data.message,
-      //       description: error.response.data.errors[key][0],
-      //     });
-      //   });
-      // }
+      if (error?.response?.data?.errors) {
+        Object.keys(error?.response?.data?.errors).forEach((key) => {
+          return notification["error"]({
+            message: error.response.data.message,
+            description: error.response.data.errors[key][0],
+          });
+        });
+      }
+    });
+};
+export const AddSuperAdminReq = (
+  first_name,
+  last_name,
+  gender,
+  username,
+  email,
+  phone,
+  personal_number,
+  password,
+  confirm_password,
+  address,
+  city,
+  comune_code,
+  cap,
+  country,
+  birth_place,
+  birth_country,
+  birthday,
+  a_ragione_sociale,
+  a_p_iva,
+  a_codice_fiscale,
+  skin_id
+) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .post(`/skins/${skin_id}/addSuperAdmin`, {
+      first_name,
+      last_name,
+      gender,
+      username,
+      email,
+      phone,
+      personal_number,
+      password,
+      confirm_password,
+      address,
+      city,
+      comune_code,
+      cap,
+      country,
+      birth_place,
+      birth_country,
+      birthday,
+      a_ragione_sociale,
+      a_p_iva,
+      a_codice_fiscale,
+    })
+
+    .catch((error) => {
+      if (error?.response?.data?.errors) {
+        Object.keys(error?.response?.data?.errors).forEach((key) => {
+          return notification["error"]({
+            message: error.response.data.message,
+            description: error.response.data.errors[key][0],
+          });
+        });
+      }
     });
 };
 export const widgetPaymentsReq = (skin_id) => {
@@ -1339,8 +1404,24 @@ export const widgetPaymentsReq = (skin_id) => {
     })
     .get("/widgetPayments", {
       params: {
-        ...skin,
-        ...(skin_id ? { skin_id } : {}),
+        ...(skin_id && skin_id != -1 ? { skin_id } : {}),
+      },
+    })
+    .catch((error) => ({ error }));
+};
+export const getStatisticheReq = (skin_id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get("/statistiche", {
+      params: {
+        ...(skin_id && skin_id != -1 ? { skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));

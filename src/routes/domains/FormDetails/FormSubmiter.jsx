@@ -178,7 +178,11 @@ export class FormSubmiter extends Component {
             }}
             className={"formSubmit--button -s"}
           >
-            <span>Eseguito</span>
+            <span>{`${
+              this.props.accountInfo.profile.role.name != "support"
+                ? "Conferma"
+                : "Eseguito"
+            }`}</span>
           </div>
           <div
             onClick={() => {
@@ -192,7 +196,11 @@ export class FormSubmiter extends Component {
             }}
             className={"formSubmit--button -c"}
           >
-            <span>Anullato</span>
+            <span>
+              {this.props.accountInfo.profile.role.name != "support"
+                ? "Rifiuta"
+                : "Anullato"}
+            </span>
           </div>
         </div>
       )
@@ -203,6 +211,7 @@ const mstp = (state) => {
   return {
     enableButtons: state.auth.enableButtons,
     TicketByTcketId: state.auth.TicketByTcketId,
+    accountInfo: state.auth.accountInfo,
   };
 };
 export default connect(mstp, AuthActions)(FormSubmiter);

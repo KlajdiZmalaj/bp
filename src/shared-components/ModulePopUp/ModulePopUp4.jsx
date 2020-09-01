@@ -304,7 +304,6 @@ class ModulePopUp4 extends React.Component {
                         </span> */}
                         {/* <span>BPOINT</span> */}
                       </div>
-                      {console.log("rechargeMobile.receipt", rechargeMobile)}
                       <div
                         dangerouslySetInnerHTML={{
                           __html: rechargeMobile.receipt
