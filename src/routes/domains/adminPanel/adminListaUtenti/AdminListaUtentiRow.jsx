@@ -135,6 +135,7 @@ class AdminListaUtentiRow extends React.Component {
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
           >
             {itemList.last_deposit}
           </span>
@@ -146,6 +147,7 @@ class AdminListaUtentiRow extends React.Component {
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
           >
             {itemList.last_login_time}
           </span>
@@ -157,6 +159,7 @@ class AdminListaUtentiRow extends React.Component {
                 ? { width: "24%", justifyContent: "space-around" }
                 : {}
             }
+            className={`${this.props.activeSkinId === -1 ? "activated" : ""}`}
           >
             <button
               onClick={() => {

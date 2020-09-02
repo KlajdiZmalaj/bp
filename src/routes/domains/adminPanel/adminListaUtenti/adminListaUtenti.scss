@@ -587,7 +587,7 @@ div.AdminColumns {
 @media screen and (max-width: 1700px) and (min-width: 1320px) {
   .AdminListaUtenti {
     &--Header {
-      & span {
+      & span:not(.activated) {
         &:nth-child(6),
         &:nth-child(7) {
           display: none;
@@ -599,13 +599,14 @@ div.AdminColumns {
         &:nth-child(5) {
           width: 18% !important;
         }
-        &:last-child {
+        &.none {
+          display: none;
         }
       }
     }
     & .AdminListaUtentiRow {
       &--Complete {
-        & span {
+        & span:not(.activated) {
           &:nth-child(6),
           &:nth-child(7) {
             display: none;
@@ -617,7 +618,8 @@ div.AdminColumns {
           &:nth-child(5) {
             width: 18% !important;
           }
-          &:last-child {
+          &.none {
+            display: none;
           }
         }
       }

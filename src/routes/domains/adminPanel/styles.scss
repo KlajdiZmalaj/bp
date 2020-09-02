@@ -208,7 +208,7 @@
     width: calc(100% - 280px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header {
-      width: calc(100% - 200px - 200px);
+      width: calc(100% - 280px - 200px);
       transition: 0.5s;
     }
   }
@@ -858,6 +858,9 @@ div.Center--Big {
     & div.Center--Big {
       width: calc(100vw - 51px);
       overflow: hidden;
+      & .AdminListaUtenti--Header {
+        width: calc(100vw - 51px);
+      }
     }
   }
 }

@@ -266,7 +266,7 @@
     transition: 0.5s;
   }
   .AdminColumns .Center .AdminListaUtenti--Header {
-    width: calc(100% - 200px - 200px);
+    width: calc(100% - 280px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -1237,6 +1237,10 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns div.Center--Big {
     width: calc(100vw - 51px);
     overflow: hidden;
+  }
+  .AdminColumns div.Center .AdminListaUtenti--Header,
+  .AdminColumns div.Center--Big .AdminListaUtenti--Header {
+    width: calc(100vw - 51px);
   }
 }
 

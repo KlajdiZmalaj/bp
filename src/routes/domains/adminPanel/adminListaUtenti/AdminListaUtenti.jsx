@@ -44,7 +44,11 @@ class AdminListaUtenti extends React.Component {
           </span>
           <span
             style={
-              screenWidth <= 950 && this.props.activeSkinId === -1
+              screenWidth <= 1700 &&
+              screenWidth >= 1320 &&
+              this.props.activeSkinId === -1
+                ? { width: "10%", justifyContent: "flex-end", left: "0%" }
+                : screenWidth <= 950 && this.props.activeSkinId === -1
                 ? { justifyContent: "flex-end", left: "-3%" }
                 : this.props.activeSkinId === -1
                 ? { width: "10%", justifyContent: "flex-end", left: "-2%" }
@@ -55,6 +59,7 @@ class AdminListaUtenti extends React.Component {
           </span>
           {this.props.activeSkinId === -1 ? null : <span>CITY</span>}
           <span
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
             style={
               this.props.activeSkinId === -1
                 ? { width: "14%", justifyContent: "center", left: 0 }
@@ -64,6 +69,7 @@ class AdminListaUtenti extends React.Component {
             ULTIMO DEPOSIT
           </span>
           <span
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
             style={
               this.props.activeSkinId != -1 && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
@@ -82,6 +88,7 @@ class AdminListaUtenti extends React.Component {
                 ? { width: "24%" }
                 : {}
             }
+            className={`${this.props.activeSkinId === -1 ? "activated" : ""}`}
           >
             AZIONI
           </span>
