@@ -44,6 +44,8 @@ div.Center--Big {
 .AdminListaUtenti {
   width: 100%;
   & .AdminListaUtentiRow {
+    position: relative;
+    top: 52px;
     .NoData {
       width: 100%;
       display: flex;
@@ -232,8 +234,8 @@ div.Center--Big {
           color: #5c5c5c;
           &:nth-child(1) {
             width: 6%;
-            padding-left: 1%;
             margin-right: 2%;
+            padding-left: 0.7%;
           }
           &:nth-child(2) {
             width: calc(14% + 57px);
@@ -252,6 +254,7 @@ div.Center--Big {
           }
           &:nth-child(5) {
             width: 7%;
+            justify-content: center;
           }
           &:nth-child(6) {
             width: 13%;
@@ -307,11 +310,13 @@ div.Center--Big {
     }
   }
   &--Header {
-    width: 100%;
     display: flex;
     justify-content: flex-start;
     background-color: #ffffff;
     height: 52px;
+    top: 101px;
+    z-index: 2;
+    position: fixed;
     box-sizing: border-box;
     align-items: center;
     border-bottom: 1px solid #ebeced;
@@ -348,7 +353,7 @@ div.Center--Big {
       }
       &:nth-child(5) {
         width: 7%;
-        left: 0.7%;
+        justify-content: center;
       }
       &:nth-child(6) {
         width: 13%;
@@ -579,7 +584,46 @@ div.AdminColumns {
     }
   }
 }
-
+@media screen and (max-width: 1700px) and (min-width: 1320px) {
+  .AdminListaUtenti {
+    &--Header {
+      & span {
+        &:nth-child(6),
+        &:nth-child(7) {
+          display: none;
+        }
+        &:nth-child(4) {
+          width: 18% !important;
+          margin: 0 2%;
+        }
+        &:nth-child(5) {
+          width: 18% !important;
+        }
+        &:last-child {
+        }
+      }
+    }
+    & .AdminListaUtentiRow {
+      &--Complete {
+        & span {
+          &:nth-child(6),
+          &:nth-child(7) {
+            display: none;
+          }
+          &:nth-child(4) {
+            width: 18% !important;
+            margin: 0 2%;
+          }
+          &:nth-child(5) {
+            width: 18% !important;
+          }
+          &:last-child {
+          }
+        }
+      }
+    }
+  }
+}
 @media (max-width: 1490px) {
   .AdminListaUtenti {
     & .AdminListaUtentiRow {

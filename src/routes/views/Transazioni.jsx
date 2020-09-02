@@ -446,14 +446,12 @@ class Transazioni extends React.Component {
                 />
               )}
               <h1 className="heading-tab">Lista Movimenti</h1>
-              {!forAdmin && (
-                <button
-                  onClick={() => this.setState({ hasVPT: true })}
-                  className="barcodeBtn"
-                >
-                  ricerca movimenti <i className="fal fa-barcode-read"></i>
-                </button>
-              )}
+              <button
+                onClick={() => this.setState({ hasVPT: true })}
+                className="barcodeBtn"
+              >
+                ricerca movimenti <i className="fal fa-barcode-read"></i>
+              </button>
               <div className="datepics ml-auto mr-2">
                 <Form
                   {...formItemLayout}
@@ -482,7 +480,7 @@ class Transazioni extends React.Component {
                               showSearch
                               defaultActiveFirstOption={false}
                               showArrow={false}
-                              filterOption={false}
+                              filterOption={true}
                               onSearch={this.handleSearch}
                               onChange={this.handleChange}
                               // notFoundContent={null}
@@ -526,6 +524,36 @@ class Transazioni extends React.Component {
 
                 <div className="codice"></div>
               </div>
+              {/* <Select
+                defaultValue="3"
+                style={{ width: 120 }}
+                onChange={() => {}}
+              >
+                {filters.map((item, index) => {
+                  return (
+                    <Option value={index}>
+                      <span>
+                        {forAdmin ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                          >
+                            <g className="a">
+                              <circle className="b" cx="7" cy="7" r="7" />
+                              <circle className="c" cx="7" cy="7" r="4" />
+                            </g>
+                          </svg>
+                        ) : (
+                          <i className="fas fa-dot-circle"></i>
+                        )}
+                        {item}
+                      </span>
+                    </Option>
+                  );
+                })}
+              </Select> */}
               <ul className="m-0 p-0">
                 {filters.map((item, index) => {
                   return (

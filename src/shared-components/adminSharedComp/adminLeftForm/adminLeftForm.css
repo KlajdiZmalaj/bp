@@ -1,3 +1,7 @@
+.Left {
+  background: #353d45;
+}
+
 .Left .AdminLeftForm {
   height: 100%;
   display: -webkit-box;
@@ -10,13 +14,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background: #353d45;
+  color: #ffffff;
 }
 
 .Left .AdminLeftForm--FirstBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 15px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -52,11 +57,6 @@
   cursor: pointer;
 }
 
-.Left .AdminLeftForm--FirstBox--Box:first-child {
-  padding-left: 30px;
-  padding-bottom: 20px;
-}
-
 .Left .AdminLeftForm--FirstBox--Box--Skinsvg {
   min-height: 22px;
   width: 100%;
@@ -75,11 +75,9 @@
 }
 
 .Left .AdminLeftForm--FirstBox--Box--active {
-  color: #0078ff;
-  background-color: #f3f3f4;
+  background-color: #272c31;
+  font-weight: 600;
   cursor: pointer;
-  -webkit-box-shadow: inset 8px 0px 0px -4px #0078ff;
-          box-shadow: inset 8px 0px 0px -4px #0078ff;
 }
 
 .Left .AdminLeftForm--FirstBox--Box--active--Skinsvg {
@@ -127,7 +125,6 @@
 
 .Left .AdminLeftForm--FirstBox--Box--Skinsvg img {
   width: 23px;
-  border-radius: 19px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,6 +164,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: #ffffff;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -176,13 +174,13 @@
 .Left .AdminLeftForm--LastBox--Box {
   -webkit-animation: SlowShow 0.7s;
           animation: SlowShow 0.7s;
-  border-top: 1px solid #ebeced;
+  border-top: 1px solid #272c31;
   font-family: "Roboto";
   width: 100%;
   font-size: 14px;
   font-weight: 400;
   padding: 10px 20px;
-  color: #5c5c5c;
+  color: #ffffff;
 }
 
 .Left .AdminLeftForm--LastBox--Box > i {
@@ -318,7 +316,6 @@
 
 .Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg img {
   width: 23px;
-  border-radius: 19px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -332,7 +329,7 @@
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  margin: 4px 6px;
+  margin: 4px 10px;
 }
 
 .Left--Min .AdminLeftForm--FirstBox--Box--Skinsvg span {
@@ -353,9 +350,9 @@
 }
 
 .Left--Min .AdminLeftForm--FirstBox--Box--active {
-  color: #0078ff;
-  -webkit-box-shadow: inset 7px 0px 0px -4px #0078ff;
-          box-shadow: inset 7px 0px 0px -4px #0078ff;
+  color: #ffffff;
+  background-color: #272c31;
+  font-weight: 500;
 }
 
 .Left--Min .AdminLeftForm--FirstBox--Box--active--Skinsvg {
@@ -403,6 +400,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #ffffff;
 }
 
 .Left--Min .AdminLeftForm--LastBox--Box {
@@ -419,7 +417,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 1px solid #ebeced;
+  border-top: 1px solid #272c31;
   font-family: "Roboto", sans-serif;
   width: 100%;
   font-size: 14px;

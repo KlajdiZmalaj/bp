@@ -10,7 +10,6 @@ import AuthActions from "redux-store/models/auth";
 import ModalResponsiveForTables from "shared-components/ModalResponsiveForTables/ModalResponsiveForTables";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import DepositoModal from "shared-components/adminSharedComp/DepositoModal/DepositoModal";
-
 import AdminComp from "../AccountInfo/AdminComp";
 import AgentComp from "../AccountInfo/AgetnComp";
 import UserComp from "../AccountInfo/UserComp";
@@ -19,12 +18,6 @@ import MainActions from "redux-store/models/main";
 import AdminLoginDom from "../AdminLogin/AdminLoginDom";
 import AdminLoginSkins from "../AdminLogin/AdminLoginSkins";
 import { Time } from "shared-components";
-import {
-  graphData,
-  Tranzacioni,
-  Commisione,
-  Proviggioni,
-} from "./StaticAdminData";
 import "./styles.css";
 import { numberWithCommas } from "utils/HelperFunc";
 
@@ -79,6 +72,12 @@ class AdminPanelDom extends React.Component {
     if (this.props.activeSkinId != prevProps.activeSkinId) {
       this.props.getAgents(this.props.activeSkinId);
     }
+    if (
+      this.props.activeSkinId != prevProps.activeSkinId &&
+      this.props.screenWidth <= 1320
+    ) {
+      this.props.getStatistiche(this.props.activeSkinId);
+    }
   }
   render() {
     const {
@@ -105,6 +104,8 @@ class AdminPanelDom extends React.Component {
       goToAdminPanelVis,
       leUltimeTransazioniDet,
       accountInfo,
+      Statistiche,
+      TrCoPro,
     } = this.props;
     return (
       <React.Fragment>
@@ -238,32 +239,34 @@ class AdminPanelDom extends React.Component {
                 }}
                 Rows={
                   <React.Fragment>
-                    <ModalRow
-                      title="User Id"
-                      data={utentiResModal.data.user_id}
-                    />
+                    <ModalRow title="User Id" data={utentiResModal.data.id} />
                     <ModalRow
                       title="Username"
                       data={utentiResModal.data.username}
                     />
-
-                    <ModalRow title="City" data={utentiResModal.data.city} />
+                    {utentiResModal.data.city &&
+                      utentiResModal.data.city != "-" && (
+                        <ModalRow
+                          title="City"
+                          data={utentiResModal.data.city}
+                        />
+                      )}
                     <ModalRow
                       title="Credito"
-                      data={utentiResModal.data.credito}
+                      data={utentiResModal.data.wallet}
                     />
                     <ModalRow
                       title="Rag Sociale"
-                      data={utentiResModal.data.rag_sociale}
+                      data={utentiResModal.data.rag_soc}
                     />
                     <ModalRow title="Role" data={utentiResModal.data.role} />
                     <ModalRow
                       title="Ultimo Deposit"
-                      data={utentiResModal.data.ultimo_deposit}
+                      data={utentiResModal.data.last_deposit}
                     />
                     <ModalRow
                       title="Ultimo Login"
-                      data={utentiResModal.data.ultimo_login}
+                      data={utentiResModal.data.last_login_time}
                     />
                   </React.Fragment>
                 }
@@ -325,6 +328,12 @@ class AdminPanelDom extends React.Component {
             </div>
 
             <AdminHeader
+              handleClick={() => {
+                this.setState({
+                  menuSkinVisible:
+                    screenWidth >= 1320 ? !menuSkinVisible : false,
+                });
+              }}
               history={this.props.history}
               location={this.props.location}
             />
@@ -338,20 +347,7 @@ class AdminPanelDom extends React.Component {
                     : "Left"
                 }`}
               >
-                <AdminLeftForm
-                  graphData={graphData}
-                  leUltimeTransazioniDet={leUltimeTransazioniDet}
-                  Tranzacioni={numberWithCommas(Tranzacioni)}
-                  Commisione={numberWithCommas(Commisione)}
-                  Proviggioni={numberWithCommas(Proviggioni)}
-                  handleClick={() => {
-                    this.setState({
-                      menuSkinVisible:
-                        screenWidth >= 1320 ? !menuSkinVisible : false,
-                    });
-                  }}
-                  visible={menuSkinVisible}
-                />
+                <AdminLeftForm visible={menuSkinVisible} />
               </div>
               <div
                 className={`${
@@ -382,13 +378,7 @@ class AdminPanelDom extends React.Component {
                 )}
                 {this.props.component}
               </div>
-              <AdminRightForm
-                graphData={graphData}
-                leUltimeTransazioniDet={leUltimeTransazioniDet}
-                Tranzacioni={numberWithCommas(Tranzacioni)}
-                Commisione={numberWithCommas(Commisione)}
-                Proviggioni={numberWithCommas(Proviggioni)}
-              />
+              <AdminRightForm leUltimeTransazioniDet={leUltimeTransazioniDet} />
             </div>
           </div>
         ) : (

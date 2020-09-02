@@ -453,7 +453,7 @@
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
   overflow: auto;
-  top: -125px;
+  top: -150px;
   margin: 0 auto;
   position: absolute;
   left: 0;

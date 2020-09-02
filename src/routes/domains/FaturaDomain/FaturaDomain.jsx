@@ -59,27 +59,26 @@ class FaturaDomain extends React.Component {
       }, 1000);
     });
   }
-  PreviewPdf(file_name) {
-    printFatturaReq(file_name).then(async (response) => {
-      var winparams =
-        "dependent=yes,locationbar=no,scrollbars=yes,menubar=yes," +
-        `resizable,screenX=50,screenY=50,width=${
-          this.props.screenWidth < 1000
-            ? this.props.screenWidth
-            : (this.props.screenWidth * 80) / 100
-        },height=900`;
+  // PreviewPdf(file_name) {
+  //   printFatturaReq(file_name).then(async (response) => {
+  //     var winparams =
+  //       "dependent=yes,locationbar=no,scrollbars=yes,menubar=yes," +
+  //       `resizable,screenX=50,screenY=50,width=${
+  //         this.props.screenWidth < 1000
+  //           ? this.props.screenWidth
+  //           : (this.props.screenWidth * 80) / 100
+  //       },height=900`;
+  //     var htmlPop =
+  //       "<iframe width=100% height=100%" +
+  //       ' type="application/pdf"' +
+  //       ' src="data:application/pdf;base64,' +
+  //       escape(response.data.base64) +
+  //       '"></iframe>';
 
-      var htmlPop =
-        "<embed width=100% height=100%" +
-        ' type="application/pdf"' +
-        ' src="data:application/pdf;base64,' +
-        escape(response.data.base64) +
-        '"></embed>';
-
-      var printWindow = window.open("", "PDF", winparams);
-      printWindow.document.write(htmlPop);
-    });
-  }
+  //     var printWindow = window.open("", "PDF", winparams);
+  //     printWindow.document.write(htmlPop);
+  //   });
+  // }
   componentDidMount() {
     this.props.getAllFaturaBySearch(null, null, null);
   }
@@ -254,12 +253,12 @@ class FaturaDomain extends React.Component {
                           <td class="wsNwp">{fatura.commissione}</td>
                           <td class="wsNwp">{fatura.proviggione}</td>
                           <td class=" wsNwp">
-                            <i
-                              className="fal fa-file-pdf"
-                              onClick={() => {
-                                this.PreviewPdf(fatura.file_name);
-                              }}
-                            ></i>
+                            <a
+                              href={`https://services-api.bpoint.store/storage/fatture/${fatura.file_name}`}
+                              target="_blank"
+                            >
+                              <i className="fal fa-file-pdf"></i>
+                            </a>
                             <i
                               className="far fa-print"
                               onClick={() => {

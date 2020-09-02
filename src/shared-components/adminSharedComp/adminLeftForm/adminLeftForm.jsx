@@ -12,16 +12,56 @@ class AdminLeftForm extends React.Component {
     wallModal: false,
     ultModal: false,
   };
-
+  async componentDidMount() {
+    await this.props.getStatistiche(this.props.activeSkinId);
+    await this.props.getWidgetPayments(this.props.activeSkinId);
+    await setTimeout(() => {
+      const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
+      this.props.editStatModal({
+        visibility: false,
+        data: {
+          graphData: Statistiche,
+          Tranzacioni: TrCoPro?.importo,
+          Commisione: TrCoPro?.commissione,
+          Proviggioni: TrCoPro?.proviggioni,
+        },
+      });
+      this.props.editUltModal({
+        visibility: false,
+        data: {
+          leUltimeTransazioniDet: leUltimeTransazioniDet,
+        },
+      });
+    }, 600);
+  }
+  async componentDidUpdate(prevProps) {
+    if (this.props.activeSkinId != prevProps.activeSkinId) {
+      await this.props.getStatistiche(this.props.activeSkinId);
+      await this.props.getWidgetPayments(this.props.activeSkinId);
+      await setTimeout(() => {
+        const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
+        this.props.editStatModal({
+          visibility: false,
+          data: {
+            graphData: Statistiche,
+            Tranzacioni: TrCoPro?.importo,
+            Commisione: TrCoPro?.commissione,
+            Proviggioni: TrCoPro?.proviggioni,
+          },
+        });
+        this.props.editUltModal({
+          visibility: false,
+          data: {
+            leUltimeTransazioniDet: leUltimeTransazioniDet,
+          },
+        });
+      }, 600);
+    }
+  }
   render() {
     const {
-      handleClick,
       setActiveSkinId,
-      graphData,
       leUltimeTransazioniDet,
-      Tranzacioni,
-      Proviggioni,
-      Commisione,
       screenWidth,
       editDepModal,
       editStatModal,
@@ -34,12 +74,6 @@ class AdminLeftForm extends React.Component {
       <React.Fragment>
         <div className="AdminLeftForm">
           <div className="AdminLeftForm--FirstBox">
-            <div className="AdminLeftForm--FirstBox--Box">
-              <div className="Bars">
-                <span>NETWORK</span>
-                <i className="fal fa-bars" onClick={handleClick}></i>
-              </div>
-            </div>
             {skinList &&
               Array.isArray(skinList) &&
               skinList.map((skin) => (
@@ -68,15 +102,6 @@ class AdminLeftForm extends React.Component {
                       }
                       alt=""
                     />
-                    {/* <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 22 22"
-                    >
-                      <circle className="a" cx="11" cy="11" r="11" />
-                    </svg> */}
-
                     <span>{skin.username.toUpperCase()}</span>
                   </div>
                 </div>
@@ -119,15 +144,18 @@ class AdminLeftForm extends React.Component {
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
+                    const { Statistiche } = this.props;
+                    const { TrCoPro } = this.props;
                     editStatModal({
                       visibility: true,
                       data: {
-                        graphData: graphData,
-                        Tranzacioni: Tranzacioni,
-                        Commisione: Commisione,
-                        Proviggioni: Proviggioni,
+                        graphData: Statistiche,
+                        Tranzacioni: TrCoPro?.importo,
+                        Commisione: TrCoPro?.commissione,
+                        Proviggioni: TrCoPro?.proviggioni,
                       },
                     });
+
                     editUltModal({
                       visibility: false,
                       data: "",
@@ -205,5 +233,8 @@ const mstp = (state) => ({
   screenWidth: state.main.screenWidth,
   skinList: state.auth.skinList,
   activeSkinId: state.main.activeSkinId,
+  TrCoPro: state.auth.Statistiche?.total,
+  Statistiche: state.auth.Statistiche?.data,
+  leUltimeTransazioniDet: state.auth.leUltimeTransazioniDet,
 });
 export default connect(mstp, { ...MainActions, ...AuthActions })(AdminLeftForm);
