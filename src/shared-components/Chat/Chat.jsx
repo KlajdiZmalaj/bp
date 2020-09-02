@@ -22,6 +22,7 @@ const open = (screenWidth, innerHeight) => {
     '"></embed>';
 
   var printWindow = window.open("", "PDF", winparams);
+  printWindow.document.title = "SUPPORT";
   printWindow.document.write(htmlPop);
 };
 const Chat = ({ screenWidth }) => {
