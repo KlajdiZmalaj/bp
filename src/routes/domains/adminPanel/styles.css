@@ -256,7 +256,7 @@
     transition: 0.5s;
   }
   .AdminColumns .Center--Big .AdminListaUtenti--Header {
-    width: calc(100% - 51px - 200px);
+    width: calc(100% - 280px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
