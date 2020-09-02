@@ -40,28 +40,49 @@ class AdminListaUtentiRow extends React.Component {
           }}
         >
           <span>{itemList.id}</span>
-          <span>
-            <i
-              className={`fal fa-${
-                this.state.plusVisibility === false ? "plus" : "minus"
-              }-square`}
-              onClick={() => {
-                this.setState((state) => ({
-                  plusVisibility: !state.plusVisibility,
-                  activateChildren: !state.activateChildren,
-                }));
-              }}
-            ></i>
-            <div className="Link"></div>
-            <i className={`${allRoles[itemList.role]}`} />
-            <SpanFormater
-              myClassName="Username"
-              Word={itemList.username}
-              size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
-              nrOfRows={2}
-              formatWord={true}
-            />
-          </span>
+          {activeSkinId === -1 ? (
+            <span>
+              <div></div>
+              <a
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingLeft: "10%",
+                  width: "100%",
+                  height: "100%",
+                }}
+                href={itemList.link}
+              >
+                {itemList.username}
+              </a>
+            </span>
+          ) : (
+            <React.Fragment>
+              <span>
+                <i
+                  className={`fal fa-${
+                    this.state.plusVisibility === false ? "plus" : "minus"
+                  }-square`}
+                  onClick={() => {
+                    this.setState((state) => ({
+                      plusVisibility: !state.plusVisibility,
+                      activateChildren: !state.activateChildren,
+                    }));
+                  }}
+                ></i>
+                <div className="Link"></div>
+                <i className={`${allRoles[itemList.role]}`} />
+                <SpanFormater
+                  myClassName="Username"
+                  Word={itemList.username}
+                  size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
+                  nrOfRows={2}
+                  formatWord={true}
+                />
+              </span>
+            </React.Fragment>
+          )}
+
           <SpanFormater
             Word={itemList.rag_soc}
             styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}

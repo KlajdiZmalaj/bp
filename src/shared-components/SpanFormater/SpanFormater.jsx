@@ -11,6 +11,7 @@ const SpanFormater = ({
   styles,
   link,
 }) => {
+  console.log(Word, link);
   let props = {};
   let updatedWord, mySize, nrOfSpaces, theLongestWord, WordsLength;
   if (Word) {
@@ -45,7 +46,7 @@ const SpanFormater = ({
           </span>
         ) : (
           <span style={{ ...styles }} {...props}>
-            <a style={{ ...styles }} {...props} href={Word}>
+            <a style={{ ...styles }} {...props} href={link}>
               {updatedWord.substring(0, mySize - 2) + "..."}
             </a>
           </span>
@@ -60,7 +61,7 @@ const SpanFormater = ({
         </span>
       ) : (
         <span style={{ ...styles }} {...props}>
-          <a style={{ ...styles }} {...props} href={Word}>
+          <a style={{ ...styles }} {...props} href={link}>
             {updatedWord}
           </a>
         </span>
@@ -73,7 +74,7 @@ const SpanFormater = ({
           </span>
         ) : (
           <span style={{ ...styles }} {...props}>
-            <a style={{ ...styles }} {...props} href={Word}>
+            <a style={{ ...styles }} {...props} href={link}>
               {updatedWord.substring(0, mySize - 2) + "..."}
             </a>
           </span>
