@@ -11,11 +11,11 @@
   }
   & .barcodeBtn {
     padding: 8px 2px;
-    margin-left: 5px;
+    margin-left: 1%;
   }
   & .TopHeader {
     height: 30px;
-    background: #0078ffe3;
+    background: #353d45;
     color: #fff;
     width: 100%;
     z-index: 2;
@@ -23,9 +23,26 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 14px;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Roboto";
     span {
       margin-right: 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      &.logOutBtn {
+        border-radius: 0;
+        margin-right: 0;
+        margin-left: 10px;
+        padding: 0 18px;
+        color: #7bb928;
+        font-weight: 600;
+        font-size: 12px;
+        border: none;
+        border-left: 1px solid #ffffff1a;
+      }
     }
   }
   & .ExportToExel {
@@ -81,7 +98,10 @@
     background-color: rgba(0, 0, 0, 0.03);
     margin-bottom: 41px;
     min-height: 550px;
-
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 200px - 400px);
+      transition: 0.5s;
+    }
     &--Big {
       position: relative;
       width: calc(100% - 51px - 400px);
@@ -97,27 +117,29 @@
       background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
       margin-bottom: 41px;
+      & .AdminListaUtenti--Header {
+        width: calc(100% - 51px - 400px);
+        transition: 0.5s;
+      }
     }
   }
   & .Left {
-    border: 1px solid #ebeced;
     width: 200px;
     height: calc(100vh - 101px);
     position: fixed;
     left: 0;
     top: 101px;
-    background-color: #ffffff;
+    background-color: #353d45;
     transition: 0.5s;
     overflow-x: hidden;
 
     &--Min {
-      border: 1px solid #ebeced;
       width: 50px;
       height: calc(100vh - 101px);
       position: fixed;
       left: 0;
       top: 101px;
-      background-color: #ffffff;
+      background-color: #353d45;
       transition: 0.5s;
       overflow-x: hidden;
     }
@@ -140,10 +162,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 350px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 350px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 350px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 350px - 200px);
+      transition: 0.5s;
+    }
   }
 }
 @media (max-width: 1780px) {
@@ -169,10 +199,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 280px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 200px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 280px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 280px - 200px);
+      transition: 0.5s;
+    }
   }
 }
 @media (max-width: 1550px) {
@@ -205,10 +243,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 260px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 260px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 260px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 260px - 200px);
+      transition: 0.5s;
+    }
   }
   .AdminRightForm--Box {
     padding: 10px 12px;
@@ -244,10 +290,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 220px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 220px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 220px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 220px - 200px);
+      transition: 0.5s;
+    }
   }
 }
 // List Movimenti
@@ -358,6 +412,7 @@ div.Center--Big {
       }
       & .dal {
         border-right: 1px solid #ebeced;
+        border-left: 1px solid #ebeced !important;
         & div:first-child {
           height: 100%;
           align-items: center;
@@ -793,7 +848,7 @@ div.Center--Big {
     }
   }
 }
-@media (max-width: 1050px) {
+@media (max-width: 1320px) {
   .AdminColumns {
     & .AdminRightForm {
       display: none;
@@ -803,6 +858,9 @@ div.Center--Big {
     & div.Center--Big {
       width: calc(100vw - 51px);
       overflow: hidden;
+      & .AdminListaUtenti--Header {
+        width: calc(100vw - 51px);
+      }
     }
   }
 }

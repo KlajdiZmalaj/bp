@@ -36,17 +36,24 @@ const Chat = ({ screenWidth }) => {
       >
         <i
           className="far fa-comments"
-          style={{
-            paddingRight: "10px",
-            fontSize: "16px",
-            fontWeight: 300,
-          }}
+          style={
+            screenWidth >= 1320
+              ? {
+                  paddingRight: "10px",
+                  fontSize: "16px",
+                  fontWeight: 300,
+                }
+              : {
+                  fontSize: "16px",
+                  fontWeight: 300,
+                }
+          }
         ></i>
 
         <span
           style={{ fontSize: "14px", fontFamily: "Roboto", fontWeight: 400 }}
         >
-          Support
+          SUPPORT
         </span>
       </div>
     </React.Fragment>

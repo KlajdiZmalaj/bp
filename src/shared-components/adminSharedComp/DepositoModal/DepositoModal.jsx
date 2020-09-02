@@ -20,7 +20,7 @@ const DepositoModal = ({
   const [tickOrX, setTickOrX] = useState(true);
   return (
     <div className="DepositoModal">
-      <div className="backDrop" style={{ zIndex: 3 }} onClick={Close}></div>
+      <div className="backDrop" style={{ zIndex: 8 }} onClick={Close}></div>
       <div className="DepositoModal--Container">
         <div className="DepositoModal--Container--Up">
           <div className="DepositoModal--Container--Up--Title">{`${

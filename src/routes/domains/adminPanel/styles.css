@@ -17,12 +17,12 @@
 
 .bodyAdmin .barcodeBtn {
   padding: 8px 2px;
-  margin-left: 5px;
+  margin-left: 1%;
 }
 
 .bodyAdmin .TopHeader {
   height: 30px;
-  background: #0078ffe3;
+  background: #353d45;
   color: #fff;
   width: 100%;
   z-index: 2;
@@ -36,11 +36,33 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  font-size: 14px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: "Roboto";
 }
 
 .bodyAdmin .TopHeader span {
   margin-right: 10px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bodyAdmin .TopHeader span.logOutBtn {
+  border-radius: 0;
+  margin-right: 0;
+  margin-left: 10px;
+  padding: 0 18px;
+  color: #7bb928;
+  font-weight: 600;
+  font-size: 12px;
+  border: none;
+  border-left: 1px solid #ffffff1a;
 }
 
 .bodyAdmin .ExportToExel {
@@ -115,6 +137,12 @@
   min-height: 550px;
 }
 
+.AdminColumns .Center .AdminListaUtenti--Header {
+  width: calc(100% - 200px - 400px);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .AdminColumns .Center--Big {
   position: relative;
   width: calc(100% - 51px - 400px);
@@ -139,27 +167,31 @@
   margin-bottom: 41px;
 }
 
+.AdminColumns .Center--Big .AdminListaUtenti--Header {
+  width: calc(100% - 51px - 400px);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .AdminColumns .Left {
-  border: 1px solid #ebeced;
   width: 200px;
   height: calc(100vh - 101px);
   position: fixed;
   left: 0;
   top: 101px;
-  background-color: #ffffff;
+  background-color: #353d45;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   overflow-x: hidden;
 }
 
 .AdminColumns .Left--Min {
-  border: 1px solid #ebeced;
   width: 50px;
   height: calc(100vh - 101px);
   position: fixed;
   left: 0;
   top: 101px;
-  background-color: #ffffff;
+  background-color: #353d45;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   overflow-x: hidden;
@@ -182,7 +214,17 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
+  .AdminColumns .Center--Big .AdminListaUtenti--Header {
+    width: calc(100% - 51px - 350px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
+    width: calc(100% - 350px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center .AdminListaUtenti--Header {
     width: calc(100% - 350px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -213,7 +255,17 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
+  .AdminColumns .Center--Big .AdminListaUtenti--Header {
+    width: calc(100% - 51px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
+    width: calc(100% - 280px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center .AdminListaUtenti--Header {
     width: calc(100% - 280px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -248,7 +300,17 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
+  .AdminColumns .Center--Big .AdminListaUtenti--Header {
+    width: calc(100% - 51px - 260px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
+    width: calc(100% - 260px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center .AdminListaUtenti--Header {
     width: calc(100% - 260px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -289,7 +351,17 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
+  .AdminColumns .Center--Big .AdminListaUtenti--Header {
+    width: calc(100% - 51px - 220px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
   .AdminColumns .Center {
+    width: calc(100% - 220px - 200px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .AdminColumns .Center .AdminListaUtenti--Header {
     width: calc(100% - 220px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -478,6 +550,7 @@ div.Center .panels-container .sort-annunci .dal,
 div.Center--Big .container-fluid.overview .sort-annunci .dal,
 div.Center--Big .panels-container .sort-annunci .dal {
   border-right: 1px solid #ebeced;
+  border-left: 1px solid #ebeced !important;
 }
 
 div.Center .container-fluid.overview .sort-annunci .dal div:first-child,
@@ -1156,7 +1229,7 @@ div.Center--Big tbody .right .Importo i {
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1320px) {
   .AdminColumns .AdminRightForm {
     display: none;
   }
@@ -1164,6 +1237,10 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns div.Center--Big {
     width: calc(100vw - 51px);
     overflow: hidden;
+  }
+  .AdminColumns div.Center .AdminListaUtenti--Header,
+  .AdminColumns div.Center--Big .AdminListaUtenti--Header {
+    width: calc(100vw - 51px);
   }
 }
 

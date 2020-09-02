@@ -3,7 +3,7 @@
   height: calc(100% - 72px);
   position: fixed;
   left: 0;
-  top: 71px;
+  top: 101px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
     height: 392px;
     position: fixed;
     background-color: #ffffff;
-    z-index: 4;
+    z-index: 9;
     &--Up {
       height: 73px;
       display: flex;

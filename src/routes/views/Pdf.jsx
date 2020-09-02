@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { numberWithCommas } from "utils/HelperFunc";
 import ReactToPrint from "react-to-print";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
+const antIcon = (
+  <LoadingOutlined style={{ fontSize: 24, color: "#c52727" }} spin />
+);
 export default ({
   getPaymentsForExcel,
   username,
@@ -26,7 +31,7 @@ export default ({
         <ReactToPrint
           trigger={() => (
             <div ref={print}>
-              <i className="fal fa-file-pdf"></i> Printing...
+              <i className="fal fa-file-pdf"></i> <Spin indicator={antIcon} />
             </div>
           )}
           onBeforePrint={() => {
@@ -45,7 +50,11 @@ export default ({
         >
           {" "}
           <i className="fal fa-file-pdf"></i>{" "}
-          {paymentExcelLoading && toPrint ? "Aspetti..." : "Scarica PDF "}
+          {paymentExcelLoading && toPrint ? (
+            <Spin indicator={antIcon} />
+          ) : (
+            "Scarica PDF "
+          )}
         </div>
       )}
       <table id="pdfTable" ref={ref} className="tablePrint">

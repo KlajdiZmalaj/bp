@@ -75,8 +75,12 @@ class AdminListaUtentiRowForLoop extends React.Component {
           <SpanFormater
             styles={
               this.props.activeSkinId === -1
-                ? { width: "8%", justifyContent: "flex-end" }
-                : { justifyContent: "flex-end" }
+                ? {
+                    width: "8%",
+                    justifyContent: "flex-end",
+                    paddingRight: "1%",
+                  }
+                : { justifyContent: "flex-end", paddingRight: "1%" }
             }
             Word={numberWithCommas(itemList.wallet)}
             size={8}
@@ -93,7 +97,13 @@ class AdminListaUtentiRowForLoop extends React.Component {
           <span style={{ justifyContent: "center", left: 0 }}>
             {itemList.last_deposit}
           </span>
-          <span style={{ justifyContent: "center", left: 0 }}>
+          <span
+            style={
+              this.props.activeSkinId != -1 && screenWidth <= 950
+                ? { justifyContent: "center", left: 0, display: "none" }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
             {itemList.last_login_time}
           </span>
           <span>

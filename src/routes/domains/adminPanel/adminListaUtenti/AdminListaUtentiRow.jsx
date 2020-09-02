@@ -40,46 +40,71 @@ class AdminListaUtentiRow extends React.Component {
           }}
         >
           <span>{itemList.id}</span>
-          <span>
-            <i
-              className={`fal fa-${
-                this.state.plusVisibility === false ? "plus" : "minus"
-              }-square`}
-              onClick={() => {
-                this.setState((state) => ({
-                  plusVisibility: !state.plusVisibility,
-                  activateChildren: !state.activateChildren,
-                }));
-              }}
-            ></i>
-            <div className="Link"></div>
-            <i className={`${allRoles[itemList.role]}`} />
-            <SpanFormater
-              myClassName="Username"
-              Word={itemList.username}
-              size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
-              nrOfRows={2}
-              formatWord={true}
-            />
-          </span>
+          {activeSkinId === -1 ? (
+            <span>
+              <div></div>
+              <a
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingLeft: "10%",
+                  width: "100%",
+                  height: "100%",
+                }}
+                href={itemList.link}
+              >
+                {itemList.username}
+              </a>
+            </span>
+          ) : (
+            <React.Fragment>
+              <span>
+                <i
+                  className={`fal fa-${
+                    this.state.plusVisibility === false ? "plus" : "minus"
+                  }-square`}
+                  onClick={() => {
+                    this.setState((state) => ({
+                      plusVisibility: !state.plusVisibility,
+                      activateChildren: !state.activateChildren,
+                    }));
+                  }}
+                ></i>
+                <div className="Link"></div>
+                <i className={`${allRoles[itemList.role]}`} />
+                <SpanFormater
+                  myClassName="Username"
+                  Word={itemList.username}
+                  size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
+                  nrOfRows={2}
+                  formatWord={true}
+                />
+              </span>
+            </React.Fragment>
+          )}
+
           <SpanFormater
             Word={itemList.rag_soc}
             styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
             size={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId === -1 && screenWidth >= 1600
                 ? 30
-                : screenWidth <= 1600
-                ? 13
-                : 17
+                : this.props.activeSkinId === -1 && screenWidth >= 1300
+                ? 20
+                : this.props.activeSkinId === -1 && screenWidth >= 800
+                ? 16
+                : screenWidth <= 1120
+                ? 8
+                : screenWidth <= 1320
+                ? 12
+                : screenWidth <= 1500
+                ? 11
+                : screenWidth <= 1700
+                ? 16
+                : 18
             }
             nrOfRows={2}
             formatWord={true}
-            link={
-              this.props.activeSkinId === -1 &&
-              accountInfo.profile.role.name === "main_admin"
-                ? true
-                : false
-            }
           />
           <SpanFormater
             styles={
@@ -110,24 +135,31 @@ class AdminListaUtentiRow extends React.Component {
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
           >
             {itemList.last_deposit}
           </span>
           <span
             style={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId != -1 && screenWidth <= 950
+                ? { justifyContent: "center", left: 0, display: "none" }
+                : this.props.activeSkinId === -1
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
           >
             {itemList.last_login_time}
           </span>
           <span
             style={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId === -1 && screenWidth <= 950
+                ? { width: "38%" }
+                : this.props.activeSkinId === -1
                 ? { width: "24%", justifyContent: "space-around" }
                 : {}
             }
+            className={`${this.props.activeSkinId === -1 ? "activated" : ""}`}
           >
             <button
               onClick={() => {

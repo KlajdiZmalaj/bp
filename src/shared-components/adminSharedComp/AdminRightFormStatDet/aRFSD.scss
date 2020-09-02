@@ -1,7 +1,7 @@
 .RightFormModal {
   position: fixed;
   width: 80vw;
-  top: 71px;
+  top: 101px;
   margin: calc((20vh - 71px) / 2) 10vw;
   height: 80vh;
   z-index: 5;
@@ -46,7 +46,7 @@
     }
   }
   & .backDrop {
-    top: 71px;
+    top: 101px;
     height: calc(100vh - 71px);
     width: calc(100vw - 51px);
     left: 51px;

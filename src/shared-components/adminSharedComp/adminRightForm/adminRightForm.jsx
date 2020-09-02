@@ -59,7 +59,7 @@ class AdminRightForm extends React.Component {
     } = this.props;
     return (
       <div className="AdminRightForm">
-        {screenWidth >= 1050 &&
+        {screenWidth >= 1320 &&
           (openAdminModal === false ? (
             <React.Fragment>
               {" "}

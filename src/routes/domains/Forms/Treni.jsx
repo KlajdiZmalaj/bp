@@ -88,6 +88,7 @@ class Treni extends Component {
   }
   render() {
     const { nome_agenzia, color, goBack } = this.props;
+    console.log(this.state.tipologia_biglietto);
     return (
       <div className="formsContainer--body animated fadeIn">
         <div className="leftForm">
@@ -123,26 +124,6 @@ class Treni extends Component {
                 type="text"
                 onChange={(e) => {
                   this.setState({ partenza: e.target.value });
-                }}
-              />
-            </div>
-            <div className="formsContainer--body__item">
-              <div className="label">Stazione</div>
-              <input
-                value={this.state.partenza_stazione || ""}
-                type="text"
-                onChange={(e) => {
-                  this.setState({ partenza_stazione: e.target.value });
-                }}
-              />
-            </div>
-            <div className="formsContainer--body__item">
-              <div className="label">Andata</div>
-              <DatePicker
-                showTime
-                onChange={(e) => {
-                  //   console.log("ca ka picker", moment(e).format());
-                  this.setState({ andata_time: moment(e).format() });
                 }}
               />
             </div>
@@ -187,6 +168,41 @@ class Treni extends Component {
                 </div>
               </div>
             </div>
+            {this.state.tipologia_biglietto == 2 ? (
+              <div className="formsContainer--body__item">
+                <div className="label">Andata</div>
+                <DatePicker
+                  showTime
+                  onChange={(e) => {
+                    //   console.log("ca ka picker", moment(e).format());
+                    this.setState({ andata_time: moment(e).format() });
+                  }}
+                />
+              </div>
+            ) : (
+              <React.Fragment>
+                <div className="formsContainer--body__item">
+                  <div className="label">Andata</div>
+                  <DatePicker
+                    showTime
+                    onChange={(e) => {
+                      //   console.log("ca ka picker", moment(e).format());
+                      this.setState({ andata_time: moment(e).format() });
+                    }}
+                  />
+                </div>
+                <div className="formsContainer--body__item">
+                  <div className="label">Ritorno</div>
+                  <DatePicker
+                    showTime
+                    onChange={(e) => {
+                      this.setState({ ritorno_date: moment(e).format() });
+                    }}
+                  />
+                </div>
+              </React.Fragment>
+            )}
+
             <div className="formsContainer--body__item datiPass">
               <div className="label">
                 Nome passeggeri e dettagli per il biglietto
@@ -225,6 +241,17 @@ class Treni extends Component {
               />
             </div>
             <div className="formsContainer--body__item">
+              <div className="label">Stazione</div>
+              <input
+                value={this.state.partenza_stazione || ""}
+                type="text"
+                onChange={(e) => {
+                  this.setState({ partenza_stazione: e.target.value });
+                }}
+              />
+            </div>
+
+            <div className="formsContainer--body__item">
               <div className="label">Destinazione Stazione</div>
               <input
                 value={this.state.destinazione_stazione || ""}
@@ -234,15 +261,7 @@ class Treni extends Component {
                 }}
               />
             </div>
-            <div className="formsContainer--body__item">
-              <div className="label">Ritorno</div>
-              <DatePicker
-                showTime
-                onChange={(e) => {
-                  this.setState({ ritorno_date: moment(e).format() });
-                }}
-              />
-            </div>
+
             {nome_agenzia === "flixbus" ? null : (
               <div className="formsContainer--body__item">
                 <div className="label">Compagnie</div>

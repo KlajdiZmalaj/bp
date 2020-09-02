@@ -6,7 +6,17 @@ class AdminHeader extends React.Component {
   render() {
     return (
       <div className="AdminHeader">
-        <div className="AdminHeader--Title">ADMIN PANEL</div>
+        <div className="AdminHeader--Title">
+          <span>
+            <i className="fal fa-bars" onClick={this.props.handleClick}></i>
+          </span>
+          <span>
+            {this.props.accountInfo.profile.role.name === "support"
+              ? "Support"
+              : "Admin"}
+          </span>
+          <span>Panel</span>
+        </div>
         <div className="AdminHeader--Box">
           <div
             className={`AdminHeader--Category ${
@@ -81,5 +91,7 @@ class AdminHeader extends React.Component {
     );
   }
 }
-
-export default connect(null, AuthActions)(AdminHeader);
+const mapStateToProps = (state) => ({
+  accountInfo: state.auth.accountInfo,
+});
+export default connect(mapStateToProps, AuthActions)(AdminHeader);
