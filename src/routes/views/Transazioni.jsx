@@ -514,11 +514,31 @@ class Transazioni extends React.Component {
                       : "Seleziona la data"}
                   </div>
                   {!this.props.forAdmin && (
-                    <div>
-                      <button className="filterBtn" htmltype="submit">
-                        Filter
-                      </button>
-                    </div>
+                    <React.Fragment>
+                      <div>
+                        <button className="filterBtn" htmltype="submit">
+                          Filter
+                        </button>
+                      </div>
+                      <div className="filesBtns">
+                        <Pdf
+                          paymentExcelLoading={this.props.paymentExcelLoading}
+                          username={username}
+                          from={from}
+                          to={to}
+                          perPage={perPage}
+                          payments={paymentsForExcel}
+                          getPaymentsForExcel={this.props.getPaymentsForExcel}
+                        />
+                        <Excel
+                          username={username}
+                          from={from}
+                          to={to}
+                          perPage={perPage}
+                          payments={paymentsForExcel}
+                        />
+                      </div>
+                    </React.Fragment>
                   )}
                 </Form>
 
@@ -586,37 +606,38 @@ class Transazioni extends React.Component {
                 })}
               </ul>
               {forAdmin && (
-                <button
-                  className="filterBtn"
-                  htmltype="submit"
-                  onClick={this.handleSubmit}
-                >
-                  <i className="fas fa-filter"></i>
-                  Filter
-                </button>
+                <React.Fragment>
+                  <button
+                    className="filterBtn"
+                    htmltype="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    <i className="fas fa-filter"></i>
+                    Filter
+                  </button>
+                  <div className="filesBtns">
+                    <Pdf
+                      paymentExcelLoading={this.props.paymentExcelLoading}
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                      getPaymentsForExcel={this.props.getPaymentsForExcel}
+                    />
+                    <Excel
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                    />
+                  </div>
+                </React.Fragment>
               )}
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                <div className="filesBtns">
-                  <Pdf
-                    paymentExcelLoading={this.props.paymentExcelLoading}
-                    username={username}
-                    from={from}
-                    to={to}
-                    perPage={perPage}
-                    payments={paymentsForExcel}
-                    getPaymentsForExcel={this.props.getPaymentsForExcel}
-                  />
-                  <Excel
-                    username={username}
-                    from={from}
-                    to={to}
-                    perPage={perPage}
-                    payments={paymentsForExcel}
-                  />
-                </div>
-
                 {payments.message && (
                   <div className="alert alert-danger text-center">
                     {payments.message}

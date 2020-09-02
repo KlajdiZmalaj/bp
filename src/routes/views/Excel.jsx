@@ -91,7 +91,7 @@ class Excel extends React.Component {
               {paymentExcelLoading === true && clickedLink === true ? (
                 <Spin indicator={antIcon} />
               ) : (
-                "Esporta Csv"
+                "Csv"
               )}
             </span>
           )}

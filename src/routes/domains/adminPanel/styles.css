@@ -512,6 +512,58 @@ div.Center--Big .panels-container .sort-annunci .dal.calendar {
           box-sizing: border-box;
 }
 
+div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
+div.Center .container-fluid.overview .sort-annunci .filesBtns .ExportToExel,
+div.Center .panels-container .sort-annunci .filesBtns .exportPDF,
+div.Center .panels-container .sort-annunci .filesBtns .ExportToExel,
+div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
+div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .ExportToExel,
+div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF,
+div.Center--Big .panels-container .sort-annunci .filesBtns .ExportToExel {
+  font-size: 15px;
+  font-weight: 400;
+  width: 60px;
+  border: 1px solid #353d45;
+  border-radius: 5px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF div,
+div.Center .container-fluid.overview .sort-annunci .filesBtns .ExportToExel div,
+div.Center .panels-container .sort-annunci .filesBtns .exportPDF div,
+div.Center .panels-container .sort-annunci .filesBtns .ExportToExel div,
+div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF div,
+div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .ExportToExel div,
+div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF div,
+div.Center--Big .panels-container .sort-annunci .filesBtns .ExportToExel div {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
+div.Center .panels-container .sort-annunci .filesBtns .exportPDF,
+div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
+div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF {
+  margin-right: 10px;
+}
+
+div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF div,
+div.Center .panels-container .sort-annunci .filesBtns .exportPDF div,
+div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF div,
+div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF div {
+  color: #c52727;
+}
+
 div.Center .container-fluid.overview .sort-annunci .filterBtn,
 div.Center .panels-container .sort-annunci .filterBtn,
 div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
@@ -533,9 +585,6 @@ div.Center--Big .panels-container .sort-annunci .filterBtn {
   color: #ffffff;
   font-weight: 500;
   background-color: #0078ff;
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
 }
 
 div.Center .container-fluid.overview .sort-annunci .filterBtn i,
