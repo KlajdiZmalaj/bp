@@ -337,6 +337,19 @@ class AdminPanelDom extends React.Component {
               history={this.props.history}
               location={this.props.location}
             />
+            {screenWidth <= 550 && (
+              <AdminHeader
+                small={true}
+                handleClick={() => {
+                  this.setState({
+                    menuSkinVisible:
+                      screenWidth >= 1320 ? !menuSkinVisible : false,
+                  });
+                }}
+                history={this.props.history}
+                location={this.props.location}
+              />
+            )}
             <div className="AdminColumns">
               <div
                 className={`${

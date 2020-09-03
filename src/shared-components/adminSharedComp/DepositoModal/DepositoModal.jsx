@@ -103,10 +103,12 @@ const DepositoModal = ({
               >
                 CONFERMA
               </button>
-              <button className="DepositoModal--Container--Down--Form--buttons--Cancel">
-                {" "}
+              <button
+                className="DepositoModal--Container--Down--Form--buttons--Cancel"
+                onClick={Close}
+              >
                 <i class="fal fa-times"></i>
-                <span onClick={Close}>CANCEL</span>
+                <span>CANCEL</span>
               </button>
             </div>
           </form>

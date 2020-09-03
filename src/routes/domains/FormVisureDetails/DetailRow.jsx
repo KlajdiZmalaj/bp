@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { AuthActions } from "redux-store/models";
+import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { Tooltip } from "antd";
 import AziendaOImpresoForm from "./AziendaOImpresa";
 import PersonaFisicaForm from "./PersonaFisica";
 
-export class DetailRow extends Component {
+class DetailRowVisure extends Component {
   state = {
     hasDetails: false,
   };
@@ -15,7 +15,7 @@ export class DetailRow extends Component {
     return (
       Visure && (
         <React.Fragment>
-          <div className="ticketDetails--row animated fadeIn --Visura">
+          <div className="ticketDetails--row animated fadeIn Visura">
             <span className="status">
               <Tooltip title={Visure.status}>
                 <div data-status={`${Visure.status}`}>
@@ -23,7 +23,6 @@ export class DetailRow extends Component {
                 </div>
               </Tooltip>
             </span>
-
             <span>
               <Tooltip title={Visure.type}>
                 <i
@@ -124,4 +123,4 @@ const mstp = (state) => {
     VisureById: state.auth.VisureByVisureId,
   };
 };
-export default connect(mstp, AuthActions)(DetailRow);
+export default connect(mstp, AuthActions)(DetailRowVisure);

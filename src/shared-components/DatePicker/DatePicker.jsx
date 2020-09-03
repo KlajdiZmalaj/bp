@@ -23,7 +23,7 @@ const DatePicker = ({
         <AntdDatePicker
           disabled={disabled ? disabled : false}
           locale={locale}
-          format={format ? format : "YYYY-MM-DD"}
+          format={format ? format : "DD-MM-YYYY, HH:mm "}
           onChange={(e) => {
             onChange(e);
           }}

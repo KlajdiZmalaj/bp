@@ -5,8 +5,79 @@ import { Switch, Tooltip } from "antd";
 import RowDetailsMobile from "./RowDetailsMobile";
 import "./style.scss";
 import DetailRow from "./DetailRow";
-import { allRoles } from "config/index";
+import DetailRowVisure from "../FormVisureDetails/DetailRow";
 
+import { allRoles } from "config/index";
+export const FilterVisureComponent = ({
+  filterVisure,
+  title,
+  handleClick,
+  icon,
+  type,
+}) => (
+  <Tooltip
+    title={`Filtra ${
+      title === "all" && icon != "shopping-cart"
+        ? "Tutti"
+        : title === "visura"
+        ? "Visura"
+        : title === "all" && icon === "shopping-cart"
+        ? `Tutti ${type}`
+        : title === "Treni1"
+        ? "FlixBus"
+        : title === "Treni2"
+        ? "Trenitalia"
+        : title
+    }`}
+  >
+    <i
+      onClick={handleClick}
+      className={`fa fa-${icon}` + (filterVisure === title ? " active" : "")}
+      aria-hidden="true"
+    ></i>
+  </Tooltip>
+);
+function Filter(
+  ticket,
+  type,
+  mainFilter,
+  filterByType,
+  statusRow,
+  statusRowWanted,
+  filterSkin,
+  filterAgenzie,
+  filterRicercaId,
+  nome_agenzia
+) {
+  let newNAg = nome_agenzia === "visura" ? "visura" : "Prenotazioni";
+  if (
+    (newNAg === type && mainFilter === type) ||
+    (mainFilter === "all" && newNAg === type)
+  ) {
+    if (
+      filterByType === "all" ||
+      filterByType === ticket.type ||
+      filterByType.includes(ticket.type)
+    ) {
+      if (statusRow === statusRowWanted) {
+        if (
+          (filterSkin === "" ||
+            ticket.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
+          (filterAgenzie === "" ||
+            ticket.user.toLowerCase().includes(filterAgenzie.toLowerCase())) &&
+          (filterRicercaId === "" ||
+            `BP-${ticket.id}`
+              .toString()
+              .toLowerCase()
+              .includes(filterRicercaId.toString().toLowerCase()))
+        ) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
 export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
   <Tooltip title={`Filtra per ${title === "all" ? "Tutti" : title}`}>
     <span
@@ -47,6 +118,8 @@ class FormDetailsDomain extends Component {
     filterSkin: "",
     filterAgenzie: "",
     filterRicercaId: "",
+    filterVisure: "all",
+    MainFilter: "all",
     mobilePopUpData: {},
   };
   mobilePopUp = (mobilePopUpData) => {
@@ -65,6 +138,8 @@ class FormDetailsDomain extends Component {
       filterAgenzie,
       filterRicercaId,
       filterType,
+      MainFilter,
+      filterVisure,
     } = this.state;
     const { my_tickets } = formDetails;
     const { tickets } = formDetails;
@@ -106,44 +181,95 @@ class FormDetailsDomain extends Component {
                 }
                 value={filterRicercaId}
               />
-              <i
-                onClick={() => this.setState({ filterTickets: "Voli" })}
-                className={
-                  "fa fa-plane" + (filterTickets === "Voli" ? " active" : "")
+              <FilterVisureComponent
+                filterVisure={MainFilter}
+                handleClick={() => this.setState({ MainFilter: "all" })}
+                title={"all"}
+                icon={"list"}
+              />
+              <FilterVisureComponent
+                filterVisure={MainFilter}
+                handleClick={() =>
+                  this.setState({ MainFilter: "Prenotazioni" })
                 }
-                aria-hidden="true"
-              ></i>
-              <i
-                onClick={() => this.setState({ filterTickets: "Treni1" })}
-                className={
-                  "fa fa-bus" + (filterTickets === "Treni1" ? " active" : "")
-                }
-                aria-hidden="true"
-              ></i>
-              <i
-                onClick={() => this.setState({ filterTickets: "Treni2" })}
-                className={
-                  "fa fa-train" + (filterTickets === "Treni2" ? " active" : "")
-                }
-                aria-hidden="true"
-              ></i>
-              <i
-                onClick={() => this.setState({ filterTickets: "Eventi" })}
-                className={
-                  "fas fa-ticket-alt" +
-                  (filterTickets === "Eventi" ? " active" : "")
-                }
-              ></i>
-              <i
-                onClick={() => this.setState({ filterTickets: "all" })}
-                className={
-                  "far fa-shopping-cart" +
-                  (filterTickets === "all" ? " active" : "")
-                }
-                aria-hidden="true"
-              ></i>
+                title={"Prenotazioni"}
+                icon={"clipboard-check"}
+              />
+              <FilterVisureComponent
+                filterVisure={MainFilter}
+                handleClick={() => this.setState({ MainFilter: "visura" })}
+                title={"visura"}
+                icon={"ballot-check"}
+              />
+              {(MainFilter === "visura" || MainFilter === "all") && (
+                <React.Fragment>
+                  <FilterVisureComponent
+                    filterVisure={filterVisure}
+                    handleClick={() =>
+                      this.setState({ filterVisure: "Persona Fisica" })
+                    }
+                    title={"Persona Fisica"}
+                    icon={"user"}
+                  />
+                  <FilterVisureComponent
+                    filterVisure={filterVisure}
+                    handleClick={() =>
+                      this.setState({ filterVisure: "Azienda o Impresa" })
+                    }
+                    title={"Azienda o Impresa"}
+                    icon={"building"}
+                  />
+                  <FilterVisureComponent
+                    filterVisure={filterVisure}
+                    handleClick={() => this.setState({ filterVisure: "all" })}
+                    title={"all"}
+                    type={"Visura"}
+                    icon={"shopping-cart"}
+                  />
+                </React.Fragment>
+              )}
+              {(MainFilter === "Prenotazioni" || MainFilter === "all") && (
+                <React.Fragment>
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() => this.setState({ filterTickets: "Voli" })}
+                    title={"Voli"}
+                    icon={"plane"}
+                  />
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() =>
+                      this.setState({ filterTickets: "Treni1" })
+                    }
+                    title={"Treni1"}
+                    icon={"bus"}
+                  />
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() =>
+                      this.setState({ filterTickets: "Treni2" })
+                    }
+                    title={"Treni2"}
+                    icon={"train"}
+                  />
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() => this.setState({ filterTickets: "all" })}
+                    title={"all"}
+                    icon={"shopping-cart"}
+                    type={"Prenotazioni"}
+                  />
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() =>
+                      this.setState({ filterTickets: "Eventi" })
+                    }
+                    title={"Eventi"}
+                    icon={"ticket-alt"}
+                  />
+                </React.Fragment>
+              )}
             </div>
-
             {statusRows === "active" ? (
               <div className="ticketDetails--filters__byTicket">
                 <FilterTypeComponent
@@ -205,23 +331,76 @@ class FormDetailsDomain extends Component {
             <span>Biglietto</span>
           </div>
           {(formDetailsActives.rowsTickets || []).map((ticket) => {
-            // console.log("ticket", ticket);
-            return (
-              (filterTickets === "all" ||
-                filterTickets.includes(ticket.type)) &&
-              statusRows === "active" &&
-              (filterType === "all" || filterType === ticket.status) &&
-              (filterSkin === "" ||
-                ticket.skin.toLowerCase().includes(filterSkin.toLowerCase())) &&
-              (filterAgenzie === "" ||
-                ticket.user
-                  .toLowerCase()
-                  .includes(filterAgenzie.toLowerCase())) &&
-              (filterRicercaId === "" ||
-                `BP-${ticket.id}`
-                  .toString()
-                  .toLowerCase()
-                  .includes(filterRicercaId.toString().toLowerCase())) && (
+            return Filter(
+              ticket,
+              "visura",
+              MainFilter,
+              filterVisure,
+              statusRows,
+              "active",
+              filterSkin,
+              filterAgenzie,
+              filterRicercaId,
+              ticket.nome_agenzia
+            ) ? (
+              <DetailRowVisure
+                key={ticket.id}
+                Visure={ticket}
+                allRoles={allRoles}
+              />
+            ) : Filter(
+                ticket,
+                "Prenotazioni",
+                MainFilter,
+                filterTickets,
+                statusRows,
+                "active",
+                filterSkin,
+                filterAgenzie,
+                filterRicercaId,
+                ticket.nome_agenzia
+              ) ? (
+              <DetailRow
+                mobilePopUp={this.mobilePopUp}
+                allRoles={allRoles}
+                getTicketByTicketId={this.props.getTicketByTicketId}
+                isNew={true}
+                ticket={ticket}
+                key={ticket && ticket.id}
+              />
+            ) : null;
+          })}
+          {my_tickets &&
+            (my_tickets || []).map((ticket) => {
+              return Filter(
+                ticket,
+                "visura",
+                MainFilter,
+                filterVisure,
+                statusRows,
+                "all",
+                filterSkin,
+                filterAgenzie,
+                filterRicercaId,
+                ticket.nome_agenzia
+              ) ? (
+                <DetailRowVisure
+                  key={ticket.id}
+                  Visure={ticket}
+                  allRoles={allRoles}
+                />
+              ) : Filter(
+                  ticket,
+                  "Prenotazioni",
+                  MainFilter,
+                  filterTickets,
+                  statusRows,
+                  "all",
+                  filterSkin,
+                  filterAgenzie,
+                  filterRicercaId,
+                  ticket.nome_agenzia
+                ) ? (
                 <DetailRow
                   mobilePopUp={this.mobilePopUp}
                   allRoles={allRoles}
@@ -230,69 +409,48 @@ class FormDetailsDomain extends Component {
                   ticket={ticket}
                   key={ticket && ticket.id}
                 />
-              )
-            );
-          })}
-          {my_tickets &&
-            (my_tickets || []).map((ticket) => {
-              return (
-                (filterTickets === "all" ||
-                  filterTickets.includes(ticket.type)) &&
-                statusRows === "all" &&
-                (filterType === "all" || filterType === ticket.status) &&
-                (filterSkin === "" ||
-                  ticket.skin
-                    .toLowerCase()
-                    .includes(filterSkin.toLowerCase())) &&
-                (filterAgenzie === "" ||
-                  ticket.user
-                    .toLowerCase()
-                    .includes(filterAgenzie.toLowerCase())) &&
-                (filterRicercaId === "" ||
-                  `BP-${ticket.id}`
-                    .toString()
-                    .toLowerCase()
-                    .includes(filterRicercaId.toString().toLowerCase())) && (
-                  <DetailRow
-                    allRoles={allRoles}
-                    mobilePopUp={this.mobilePopUp}
-                    getTicketByTicketId={this.props.getTicketByTicketId}
-                    isNew={true}
-                    ticket={ticket}
-                    key={ticket && ticket.id}
-                  />
-                )
-              );
+              ) : null;
             })}
           {tickets &&
             (tickets || []).map((ticket) => {
-              return (
-                (filterTickets === "all" ||
-                  filterTickets.includes(ticket.type)) &&
-                statusRows === "all" &&
-                (filterType === "all" || filterType === ticket.status) &&
-                (filterSkin === "" ||
-                  ticket.skin
-                    .toLowerCase()
-                    .includes(filterSkin.toLowerCase())) &&
-                (filterAgenzie === "" ||
-                  ticket.user
-                    .toLowerCase()
-                    .includes(filterAgenzie.toLowerCase())) &&
-                (filterRicercaId === "" ||
-                  `BP-${ticket.id}`
-                    .toString()
-                    .toLowerCase()
-                    .includes(filterRicercaId.toString().toLowerCase())) && (
-                  <DetailRow
-                    mobilePopUp={this.mobilePopUp}
-                    allRoles={allRoles}
-                    getTicketByTicketId={this.props.getTicketByTicketId}
-                    ticket={ticket}
-                    key={ticket && ticket.id}
-                  />
-                )
-              );
+              return Filter(
+                ticket,
+                "visura",
+                MainFilter,
+                filterVisure,
+                statusRows,
+                "all",
+                filterSkin,
+                filterAgenzie,
+                filterRicercaId,
+                ticket.nome_agenzia
+              ) ? (
+                <DetailRowVisure
+                  key={ticket.id}
+                  Visure={ticket}
+                  allRoles={allRoles}
+                />
+              ) : Filter(
+                  ticket,
+                  "Prenotazioni",
+                  MainFilter,
+                  filterTickets,
+                  statusRows,
+                  "all",
+                  filterSkin,
+                  filterAgenzie,
+                  filterRicercaId,
+                  ticket.nome_agenzia
+                ) ? (
+                <DetailRow
+                  mobilePopUp={this.mobilePopUp}
+                  allRoles={allRoles}
+                  getTicketByTicketId={this.props.getTicketByTicketId}
+                  isNew={true}
+                  ticket={ticket}
+                  key={ticket && ticket.id}
+                />
+              ) : null;
             })}
         </div>
         <RowDetailsMobile

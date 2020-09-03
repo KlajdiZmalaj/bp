@@ -4,19 +4,24 @@ import AuthActions from "redux-store/models/auth";
 import "./adminHeader.css";
 class AdminHeader extends React.Component {
   render() {
+    const { small } = this.props;
+
     return (
       <div className="AdminHeader">
-        <div className="AdminHeader--Title">
-          <span>
-            <i className="fal fa-bars" onClick={this.props.handleClick}></i>
-          </span>
-          <span>
-            {this.props.accountInfo.profile.role.name === "support"
-              ? "Support"
-              : "Admin"}
-          </span>
-          <span>Panel</span>
-        </div>
+        {!small && (
+          <div className="AdminHeader--Title">
+            <span>
+              <i className="fal fa-bars" onClick={this.props.handleClick}></i>
+            </span>
+            <span>
+              {this.props.accountInfo.profile.role.name === "support"
+                ? "Support"
+                : "Admin"}
+            </span>
+            <span>Panel</span>
+          </div>
+        )}
+
         <div className="AdminHeader--Box">
           <div
             className={`AdminHeader--Category ${
@@ -77,15 +82,6 @@ class AdminHeader extends React.Component {
               <span>PRENOTAZIONI</span>
             </div>
           </div>
-          {/* <div className="AdminHeader--ButtonWrapper">
-            <button
-              onClick={() => {
-                this.props.logOut();
-              }}
-            >
-              <span>LOG OUT</span>
-            </button>
-          </div> */}
         </div>
       </div>
     );

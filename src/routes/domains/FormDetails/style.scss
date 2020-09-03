@@ -552,48 +552,80 @@
 }
 
 .ticketDetails {
-  .fas,
-  .fa {
-    cursor: pointer;
-  }
-  .fa-plane {
-    color: #3d6389;
-    &:hover,
-    &.active {
-      background-color: #3d6389;
-      color: #fff;
-    }
-  }
-  .fa-bus {
+  .fa-user,
+  .fa-store {
     color: #578a17;
-    &:hover,
-    &.active {
-      background-color: #578a17;
-      color: #fff;
-    }
+    cursor: normal;
   }
-  .fa-train {
-    color: #c60d1a;
-    &:hover,
-    &.active {
-      background-color: #c60d1a;
-      color: #fff;
+  i[aria-hidden="true"] {
+    &.fas,
+    &.fa {
+      cursor: pointer;
     }
-  }
-  .fa-ticket-alt {
-    color: #5400d6;
-    &:hover,
-    &.active {
-      background-color: #5400d6;
-      color: #fff;
+    &.fa-plane {
+      color: #3d6389;
+      &:hover,
+      &.active {
+        background-color: #3d6389;
+        color: #fff;
+      }
     }
-  }
-  .fa-shopping-cart {
-    color: #f26521;
-    &:hover,
-    &.active {
-      background-color: #f26521;
-      color: #222;
+    &.fa-bus {
+      color: #578a17;
+      &:hover,
+      &.active {
+        background-color: #578a17;
+        color: #fff;
+      }
+    }
+    &.fa-train {
+      color: #c60d1a;
+      &:hover,
+      &.active {
+        background-color: #c60d1a;
+        color: #fff;
+      }
+    }
+    &.fa-ticket-alt {
+      color: #5400d6;
+      &:hover,
+      &.active {
+        background-color: #5400d6;
+        color: #fff;
+      }
+    }
+    &.fa-shopping-cart {
+      color: #f26521;
+      &:hover,
+      &.active {
+        background-color: #f26521;
+        color: #222;
+      }
+    }
+    &.fa-list {
+      color: #353d45;
+      &:hover,
+      &.active {
+        background-color: #353d45;
+        color: #fff;
+      }
+    }
+    &.fa-clipboard-check {
+      color: #0078ff;
+      &:hover,
+      &.active {
+        background-color: #0078ff;
+        color: #fff;
+      }
+    }
+
+    &.fa-ballot-check {
+      color: #7bb928;
+      &:hover,
+      &.active {
+        background-color: #7bb928;
+        color: #fff;
+      }
     }
   }
   &--row {

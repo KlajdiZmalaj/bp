@@ -131,7 +131,6 @@ div.Center--Big {
             left: -12px;
             top: 5px;
             padding-right: 0px !important;
-            z-index: 1;
           }
           & .AdminListaUtentiRow--Complete--Main {
             box-shadow: inset 8px 0px 0px -4px #0078ff;
@@ -315,7 +314,7 @@ div.Center--Big {
     background-color: #ffffff;
     height: 52px;
     top: 101px;
-    z-index: 2;
+    z-index: 1;
     position: fixed;
     box-sizing: border-box;
     align-items: center;

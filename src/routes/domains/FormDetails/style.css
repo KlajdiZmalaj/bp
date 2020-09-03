@@ -786,54 +786,86 @@
           filter: grayscale(0.7) brightness(0.9);
 }
 
-.ticketDetails .fas,
-.ticketDetails .fa {
+.ticketDetails .fa-user,
+.ticketDetails .fa-store {
+  color: #578a17;
+  cursor: normal;
+}
+
+.ticketDetails i[aria-hidden="true"].fas, .ticketDetails i[aria-hidden="true"].fa {
   cursor: pointer;
 }
 
-.ticketDetails .fa-plane {
+.ticketDetails i[aria-hidden="true"].fa-plane {
   color: #3d6389;
 }
 
-.ticketDetails .fa-plane:hover, .ticketDetails .fa-plane.active {
+.ticketDetails i[aria-hidden="true"].fa-plane:hover, .ticketDetails i[aria-hidden="true"].fa-plane.active {
   background-color: #3d6389;
   color: #fff;
 }
 
-.ticketDetails .fa-bus {
+.ticketDetails i[aria-hidden="true"].fa-bus {
   color: #578a17;
 }
 
-.ticketDetails .fa-bus:hover, .ticketDetails .fa-bus.active {
+.ticketDetails i[aria-hidden="true"].fa-bus:hover, .ticketDetails i[aria-hidden="true"].fa-bus.active {
   background-color: #578a17;
   color: #fff;
 }
 
-.ticketDetails .fa-train {
+.ticketDetails i[aria-hidden="true"].fa-train {
   color: #c60d1a;
 }
 
-.ticketDetails .fa-train:hover, .ticketDetails .fa-train.active {
+.ticketDetails i[aria-hidden="true"].fa-train:hover, .ticketDetails i[aria-hidden="true"].fa-train.active {
   background-color: #c60d1a;
   color: #fff;
 }
 
-.ticketDetails .fa-ticket-alt {
+.ticketDetails i[aria-hidden="true"].fa-ticket-alt {
   color: #5400d6;
 }
 
-.ticketDetails .fa-ticket-alt:hover, .ticketDetails .fa-ticket-alt.active {
+.ticketDetails i[aria-hidden="true"].fa-ticket-alt:hover, .ticketDetails i[aria-hidden="true"].fa-ticket-alt.active {
   background-color: #5400d6;
   color: #fff;
 }
 
-.ticketDetails .fa-shopping-cart {
+.ticketDetails i[aria-hidden="true"].fa-shopping-cart {
   color: #f26521;
 }
 
-.ticketDetails .fa-shopping-cart:hover, .ticketDetails .fa-shopping-cart.active {
+.ticketDetails i[aria-hidden="true"].fa-shopping-cart:hover, .ticketDetails i[aria-hidden="true"].fa-shopping-cart.active {
   background-color: #f26521;
   color: #222;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-list {
+  color: #353d45;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-list:hover, .ticketDetails i[aria-hidden="true"].fa-list.active {
+  background-color: #353d45;
+  color: #fff;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-clipboard-check {
+  color: #0078ff;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-clipboard-check:hover, .ticketDetails i[aria-hidden="true"].fa-clipboard-check.active {
+  background-color: #0078ff;
+  color: #fff;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-ballot-check {
+  color: #7bb928;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-ballot-check:hover, .ticketDetails i[aria-hidden="true"].fa-ballot-check.active {
+  background-color: #7bb928;
+  color: #fff;
 }
 
 .ticketDetails--row .fas:hover {

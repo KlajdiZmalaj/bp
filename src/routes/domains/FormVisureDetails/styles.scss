@@ -1,76 +1,14 @@
 .ticketDetails {
-  &--header.--Visura {
-    & span {
-      box-sizing: border-box;
-    }
-    & span:nth-child(2) {
-      width: 20%;
-    }
-    & span:nth-child(3) {
-      width: 4%;
-    }
-    & span:nth-child(4) {
-      width: 14%;
-    }
-    & span:nth-child(5) {
-      width: 11%;
-    }
-    & span:nth-child(6) {
-      width: 15%;
-    }
-    & span:nth-child(7) {
-      width: 10%;
-    }
-  }
   &--row {
     > span {
       padding: 15px;
     }
-    &.animated.fadeIn.--Visura {
-      .options {
-        display: flex;
-        align-items: center;
-      }
-      > span {
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-      }
-      > span:nth-child(2) {
-        display: flex;
-        width: 21%;
-        .new {
-          margin-left: 10px;
-        }
-      }
-      > span:nth-child(2) {
-        width: 20%;
-        i {
-          width: 15px;
-        }
-      }
-      > span:nth-child(3) {
-        width: 4%;
-      }
-      > span:nth-child(4) {
-        width: 14%;
-        i {
-          width: 15px;
-          margin-right: 10px;
-        }
-      }
-      > span:nth-child(5) {
-        width: 11%;
-      }
-      > span:nth-child(6) {
-        width: 15%;
-      }
-      > span:nth-child(7) {
-        width: 10%;
+    &.animated.fadeIn.Visura {
+      .new {
+        margin-left: 10px;
       }
       .fal,
       .fas {
-        color: #578a17;
         &.a-store {
           color: #dc3545;
         }
@@ -218,7 +156,7 @@
         &.active,
         &:hover {
           background-color: #3d6389;
-          color: #222;
+          color: #fff;
         }
       }
 
