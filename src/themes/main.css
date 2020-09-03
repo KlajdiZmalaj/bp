@@ -2065,6 +2065,42 @@ input#write {
   opacity: 0;
 }
 
+@media (max-width: 870px) {
+  .sort-annunci.sort-trasazioni .ant-select {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection__rendered {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 0 5px !important;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 135px;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection i,
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection svg {
+    margin-right: 5px !important;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection i[data-icon="down"],
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection svg[data-icon="down"] {
+    margin-right: 0px !important;
+    position: relative;
+    left: 8px;
+  }
+}
+
 /*adm styles*/
 .creatutente {
   position: relative;

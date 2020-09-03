@@ -392,3 +392,33 @@ input#write {
   z-index: -99;
   opacity: 0;
 }
+@media (max-width: 870px) {
+  .sort-annunci {
+    &.sort-trasazioni {
+      & .ant-select {
+        display: flex;
+        justify-content: space-around;
+        & .ant-select-selection__rendered {
+          display: flex;
+          justify-content: space-around;
+          margin: 0 5px !important;
+        }
+        & .ant-select-selection {
+          display: flex;
+          justify-content: space-around;
+
+          width: 135px;
+          & i,
+          svg {
+            margin-right: 5px !important;
+            &[data-icon="down"] {
+              margin-right: 0px !important;
+              position: relative;
+              left: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

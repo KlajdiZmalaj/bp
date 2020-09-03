@@ -17,7 +17,6 @@ export class FormDetails extends Component {
           </div>
         </div>
         <FormDetailsDomain />
-        <FormVisureDetails />
       </div>
     );
   }

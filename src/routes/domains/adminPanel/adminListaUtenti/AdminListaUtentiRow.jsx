@@ -75,7 +75,7 @@ class AdminListaUtentiRow extends React.Component {
                 <SpanFormater
                   myClassName="Username"
                   Word={itemList.username}
-                  size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
+                  size={screenWidth <= 1600 ? 12 : 17}
                   nrOfRows={2}
                   formatWord={true}
                 />

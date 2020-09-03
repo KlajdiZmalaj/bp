@@ -1293,7 +1293,7 @@ div.Center--Big tbody .right .Importo i {
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 795px) {
   div.Center .container-fluid.overview .paginationWrapper,
   div.Center .panels-container .paginationWrapper,
   div.Center--Big .container-fluid.overview .paginationWrapper,
@@ -1394,6 +1394,47 @@ div.Center--Big tbody .right .Importo i {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  div.Center .container-fluid.overview .sort-annunci .barcodeBtn,
+  div.Center .panels-container .sort-annunci .barcodeBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
+  div.Center--Big .panels-container .sort-annunci .barcodeBtn {
+    width: 25%;
+    height: 38px;
+    margin-bottom: 5px;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filesBtns,
+  div.Center .panels-container .sort-annunci .filesBtns,
+  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
+  div.Center--Big .panels-container .sort-annunci .filesBtns {
+    position: absolute;
+    top: 0;
+    left: calc(32% + 140px);
+    margin-top: 3px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    position: absolute;
+    top: 0;
+    width: 12%;
+    left: calc(35% + 280px);
+    height: 34px;
+    border-radius: 5px;
+    margin: 3px 0;
+    margin-left: 5px;
+  }
+  div.Center .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    border: 1px solid #ebeced;
+  }
   div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2,
   div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2,
   div.Center--Big .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2,
@@ -1444,11 +1485,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center .panels-container .sort-annunci .filterBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
   div.Center--Big .panels-container .sort-annunci .filterBtn {
-    width: 100%;
-    border-radius: 0;
-    height: 30px;
     opacity: 0.9;
-    margin: 5px 0;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td,
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp,
@@ -1681,6 +1718,34 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4) {
     width: 40%;
+  }
+}
+
+@media (max-width: 595px) {
+  div.Center .container-fluid.overview .sort-annunci .barcodeBtn,
+  div.Center .panels-container .sort-annunci .barcodeBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
+  div.Center--Big .panels-container .sort-annunci .barcodeBtn {
+    width: 132px;
+    margin-left: 0;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filesBtns,
+  div.Center .panels-container .sort-annunci .filesBtns,
+  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
+  div.Center--Big .panels-container .sort-annunci .filesBtns {
+    left: 268px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    left: 412px;
+  }
+  div.Center .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled {
+    left: 136px;
   }
 }
 

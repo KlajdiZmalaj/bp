@@ -186,7 +186,6 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   left: -12px;
   top: 5px;
   padding-right: 0px !important;
-  z-index: 1;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children .AdminListaUtentiRow--Complete--Main, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children .AdminListaUtentiRow--Complete--Main {
@@ -418,7 +417,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   background-color: #ffffff;
   height: 52px;
   top: 101px;
-  z-index: 2;
+  z-index: 1;
   position: fixed;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

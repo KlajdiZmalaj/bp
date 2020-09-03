@@ -87,12 +87,13 @@
   width: 100%;
   height: 85%;
   z-index: 6;
+  padding: 0 5%;
   padding-top: 7vh;
 }
 
 .RightFormModal .Statistiche.Dropdown .Graph--Element {
   margin: 0px 0.5%;
-  width: 1.8%;
+  width: 2%;
 }
 
 .RightFormModal .Statistiche.Dropdown .Date {
@@ -146,7 +147,12 @@
   font-size: calc(1.2vw + 1.2vh);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
+  .RightFormModal {
+    margin: calc((25vh - 121px) / 2) calc(12.5vw + 15px) !important;
+    width: 75vw;
+    height: 75vw;
+  }
   .RightFormModal .Statistiche.Dropdown .Graph--Element {
     margin: 0px 0.5%;
     width: 2%;

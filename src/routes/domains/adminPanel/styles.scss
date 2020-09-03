@@ -888,7 +888,8 @@ div.Center--Big {
     }
   }
 }
-@media (max-width: 670px) {
+
+@media (max-width: 795px) {
   div.Center,
   div.Center--Big {
     & .container-fluid.overview,
@@ -941,6 +942,34 @@ div.Center--Big {
 
       & .sort-annunci {
         flex-direction: column;
+        & .barcodeBtn {
+          width: 25%;
+          height: 38px;
+          margin-bottom: 5px;
+          align-self: flex-start;
+        }
+        & .filesBtns {
+          position: absolute;
+          top: 0;
+          left: calc(32% + 140px);
+          margin-top: 3px;
+        }
+        & .filterBtn {
+          position: absolute;
+          top: 0;
+          width: 12%;
+          left: calc(35% + 280px);
+          height: 34px;
+          border-radius: 5px;
+          margin: 3px 0;
+          margin-left: 5px;
+        }
+        & div:nth-child(4).ant-select.ant-select-enabled {
+          position: absolute;
+          top: 0;
+          left: 30%;
+          border: 1px solid #ebeced;
+        }
         & .datepics.ml-auto.mr-2 {
           position: relative;
           width: 100%;
@@ -965,11 +994,7 @@ div.Center--Big {
           border-bottom: 1px solid #ebeced;
         }
         & .filterBtn {
-          width: 100%;
-          border-radius: 0;
-          height: 30px;
           opacity: 0.9;
-          margin: 5px 0;
         }
       }
       & .row.no-gutters.max-width {
@@ -1025,6 +1050,29 @@ div.Center--Big {
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 595px) {
+  div.Center,
+  div.Center--Big {
+    & .container-fluid.overview,
+    & .panels-container {
+      & .sort-annunci {
+        & .barcodeBtn {
+          width: 132px;
+          margin-left: 0;
+        }
+        & .filesBtns {
+          left: 268px;
+        }
+        & .filterBtn {
+          left: 412px;
+        }
+        & div:nth-child(4).ant-select.ant-select-enabled {
+          left: 136px;
         }
       }
     }
