@@ -108,7 +108,6 @@
   }
   & .AdminRightForm--Box--LeUltime--Dropdown {
     background-color: #ffffff;
-    padding: 3vh 2vw;
     overflow-y: auto;
     overflow-x: hidden;
     padding-top: 7vh;
@@ -122,9 +121,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: calc(1.2vw + 1.2vh);
+      padding: 3vh 2vw;
       &--Data {
         font-family: "Roboto";
+        font-size: calc(1vw + 1vh);
         &.User {
           color: #727272;
           font-weight: 400;

@@ -278,14 +278,12 @@
         width: 100%;
         justify-content: space-between;
         border-bottom: 1px solid #ebeced;
-        padding: 0 14px;
+        padding: 0 5px;
         align-items: center;
         &--Data {
-          font-size: 12px;
+          font-size: 11px;
           font-family: "Roboto", sans-serif;
-          width: 25%;
           display: flex;
-          justify-content: flex-start;
           margin: 0 2%;
           box-sizing: border-box;
           align-items: center;
@@ -294,18 +292,29 @@
           &.Date {
             color: #727272;
             font-weight: 400;
+            font-size: 10px;
+            width: 28%;
+            justify-content: flex-start;
           }
           &.Id {
             color: #4b4b4b;
             font-weight: 500;
+            width: 27%;
+            justify-content: flex-start;
+            padding: 0 2px;
           }
           &.User {
             color: #727272;
             font-weight: 400;
+            width: 30%;
+            justify-content: flex-start;
+            padding: 0 2px;
           }
           &.Price {
             color: #0078ff;
             font-weight: 500;
+            width: 15%;
+            justify-content: flex-end;
           }
         }
       }

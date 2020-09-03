@@ -1,8 +1,15 @@
+.sort-annunci {
+  justify-content: space-around;
+  &.sort-trasazioni .ml-auto.mr-2 {
+    margin-left: 0 !important;
+  }
+}
 .datepics {
   border: 2px solid $second;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
+
   label {
     width: 10%;
     cursor: pointer;
@@ -328,16 +335,53 @@
 }
 .filesBtns {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-}
-.exportPDF {
-  > div {
-    color: rgb(197, 39, 39);
-    cursor: pointer;
-    margin-bottom: 4px;
+  width: 140px;
+  & .ExportToExel {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #edeef0;
+    border-radius: 5px;
+    height: 42px;
+    color: #01a81b;
+    & i {
+      font-size: 18px;
+      font-weight: 300;
+      margin-right: 5px;
+    }
+    & span:first-child {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  & .exportPDF {
+    margin: 0 10px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #edeef0;
+    border-radius: 5px;
+    height: 42px;
+    > div {
+      color: rgb(197, 39, 39);
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    & i {
+      padding-right: 5px;
+    }
   }
 }
+
 .afterprint {
   .tablePrint {
     display: table;

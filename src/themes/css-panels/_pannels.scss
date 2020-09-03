@@ -79,36 +79,10 @@ body:not(.bodyAdmin) {
       min-height: 500px;
       & .max-width {
         max-width: 1371px;
-        & .ExportToExel {
-          width: 120px;
-          display: flex;
-          justify-content: flex-end;
-          // margin-left: auto;
-          align-items: center;
-          height: 30px;
-          font-size: 16px;
-          font-weight: 400;
-          font-family: "Roboto";
-          box-sizing: border-box;
-          color: #01a81b;
-          margin-bottom: 4px;
-          & i {
-            font-size: 18px;
-            font-weight: 300;
-            margin-right: 10px;
-          }
-          & span:first-child {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-          }
-        }
       }
-      & .row.no-gutters.max-width {
-        max-width: 1371px;
-      }
+    }
+    & .row.no-gutters.max-width {
+      max-width: 1371px;
     }
   }
 }

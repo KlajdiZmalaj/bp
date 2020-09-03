@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { notification } from "antd";
-import { DatePicker } from "antd";
 import moment from "moment";
 import images from "themes/images";
+import DatePicker from "shared-components/DatePicker/DatePicker";
 
 class Treni extends Component {
   state = {};
@@ -102,8 +102,8 @@ class Treni extends Component {
         </div>
         <div className="rightForm">
           <div className="rightForm--header">
-            <div className="TitleBack">
-              <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
+            <div className="TitleBack" onClick={goBack}>
+              <i className="fal fa-chevron-left Arrow"></i>
               Prenotazione Biglietti{" "}
             </div>
             <img src={images[`${nome_agenzia}-logo`]} alt="" />
@@ -117,15 +117,35 @@ class Treni extends Component {
                 disabled
               />
             </div>
-            <div className="formsContainer--body__item">
-              <div className="label">Partenza</div>
-              <input
-                value={this.state.partenza || ""}
-                type="text"
-                onChange={(e) => {
-                  this.setState({ partenza: e.target.value });
-                }}
-              />
+            <div
+              className="formsContainer--body__item"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              <div className="formsContainer--body__item semi">
+                <div className="label">Destinazione</div>
+                <input
+                  value={this.state.destinazione || ""}
+                  type="text"
+                  onChange={(e) => {
+                    this.setState({ destinazione: e.target.value });
+                  }}
+                />
+              </div>
+              <div className="formsContainer--body__item semi">
+                <div className="label">Partenza</div>
+                <input
+                  value={this.state.partenza || ""}
+                  type="text"
+                  onChange={(e) => {
+                    this.setState({ partenza: e.target.value });
+                  }}
+                />
+              </div>
             </div>
             <div className="formsContainer--body__item">
               <div className="label">Tipologia Biglietto</div>
@@ -168,20 +188,17 @@ class Treni extends Component {
                 </div>
               </div>
             </div>
-            {this.state.tipologia_biglietto == 2 ? (
-              <div className="formsContainer--body__item">
-                <div className="label">Andata</div>
-                <DatePicker
-                  showTime
-                  onChange={(e) => {
-                    //   console.log("ca ka picker", moment(e).format());
-                    this.setState({ andata_time: moment(e).format() });
-                  }}
-                />
-              </div>
-            ) : (
-              <React.Fragment>
-                <div className="formsContainer--body__item">
+            <div
+              className="formsContainer--body__item"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              {this.state.tipologia_biglietto == 2 ? (
+                <div className="formsContainer--body__item semi">
                   <div className="label">Andata</div>
                   <DatePicker
                     showTime
@@ -191,17 +208,30 @@ class Treni extends Component {
                     }}
                   />
                 </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">Ritorno</div>
-                  <DatePicker
-                    showTime
-                    onChange={(e) => {
-                      this.setState({ ritorno_date: moment(e).format() });
-                    }}
-                  />
-                </div>
-              </React.Fragment>
-            )}
+              ) : (
+                <React.Fragment>
+                  <div className="formsContainer--body__item semi">
+                    <div className="label">Andata</div>
+                    <DatePicker
+                      showTime
+                      onChange={(e) => {
+                        //   console.log("ca ka picker", moment(e).format());
+                        this.setState({ andata_time: moment(e).format() });
+                      }}
+                    />
+                  </div>
+                  <div className="formsContainer--body__item semi">
+                    <div className="label">Ritorno</div>
+                    <DatePicker
+                      showTime
+                      onChange={(e) => {
+                        this.setState({ ritorno_date: moment(e).format() });
+                      }}
+                    />
+                  </div>
+                </React.Fragment>
+              )}
+            </div>
 
             <div className="formsContainer--body__item datiPass">
               <div className="label">
@@ -230,16 +260,7 @@ class Treni extends Component {
                 type="text"
               />
             </div>
-            <div className="formsContainer--body__item">
-              <div className="label">Destinazione</div>
-              <input
-                value={this.state.destinazione || ""}
-                type="text"
-                onChange={(e) => {
-                  this.setState({ destinazione: e.target.value });
-                }}
-              />
-            </div>
+
             <div className="formsContainer--body__item">
               <div className="label">Stazione</div>
               <input
