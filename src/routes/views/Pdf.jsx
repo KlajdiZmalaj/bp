@@ -53,7 +53,7 @@ export default ({
           {paymentExcelLoading && toPrint ? (
             <Spin indicator={antIcon} />
           ) : (
-            "Scarica PDF "
+            "PDF "
           )}
         </div>
       )}

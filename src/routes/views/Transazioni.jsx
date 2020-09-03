@@ -341,7 +341,12 @@ class Transazioni extends React.Component {
       getPayments,
     } = this.props;
 
-    const filters = ["oggi", "ieri", "questa sett", "queste mese"];
+    const filters = [
+      { name: "Oggi", color: "#707070" },
+      { name: "Ieri", color: "#0078f" },
+      { name: "Queste Sett", color: "#00b850" },
+      { name: "Queste Mese", color: "#e30000" },
+    ];
 
     // console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
@@ -513,110 +518,137 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  {!this.props.forAdmin && (
-                    <div>
-                      <button className="filterBtn" htmltype="submit">
-                        Filter
-                      </button>
-                    </div>
-                  )}
                 </Form>
 
                 <div className="codice"></div>
               </div>
-              {/* <Select
+              <Select
                 defaultValue="3"
-                style={{ width: 120 }}
-                onChange={() => {}}
+                onChange={(value) => {
+                  this.changeSelected(parseInt(value));
+                  this.fromFilterTop(false);
+                  console.log(value);
+                }}
               >
                 {filters.map((item, index) => {
                   return (
-                    <Option value={index}>
-                      <span>
+                    <Option value={index.toString()}>
+                      <span
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          alignItems: "center",
+                          display: "flex",
+                        }}
+                      >
                         {forAdmin ? (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="14"
                             height="14"
                             viewBox="0 0 14 14"
+                            style={{
+                              marginRight: "15px",
+                            }}
                           >
                             <g className="a">
-                              <circle className="b" cx="7" cy="7" r="7" />
-                              <circle className="c" cx="7" cy="7" r="4" />
+                              <circle
+                                className="b"
+                                cx="7"
+                                cy="7"
+                                r="7"
+                                style={{
+                                  fill: `${item.color}`,
+                                }}
+                              />
+                              <circle
+                                className="c"
+                                cx="7"
+                                cy="7"
+                                r="4"
+                                style={{ fill: "#ffffff" }}
+                              />
                             </g>
                           </svg>
                         ) : (
-                          <i className="fas fa-dot-circle"></i>
+                          <i
+                            className="fas fa-dot-circle"
+                            style={{
+                              color: `${item.color}`,
+                              paddingRight: "12px",
+                              fontSize: "13px",
+                            }}
+                          ></i>
                         )}
-                        {item}
+                        {item.name}
                       </span>
                     </Option>
                   );
                 })}
-              </Select> */}
-              <ul className="m-0 p-0">
-                {filters.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className={index === selectedFilter ? "active" : ""}
-                      onClick={() => {
-                        this.changeSelected(index);
-                        this.fromFilterTop(false);
-                      }}
+              </Select>
+              {!this.props.forAdmin ? (
+                <React.Fragment>
+                  <div>
+                    <button
+                      className="filterBtn"
+                      htmltype="submit"
+                      onClick={this.handleSubmit}
                     >
-                      {forAdmin ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 14 14"
-                        >
-                          <g className="a">
-                            <circle className="b" cx="7" cy="7" r="7" />
-                            <circle className="c" cx="7" cy="7" r="4" />
-                          </g>
-                        </svg>
-                      ) : (
-                        <i className="fas fa-dot-circle"></i>
-                      )}
-                      {item}
-                    </li>
-                  );
-                })}
-              </ul>
-              {forAdmin && (
-                <button
-                  className="filterBtn"
-                  htmltype="submit"
-                  onClick={this.handleSubmit}
-                >
-                  <i className="fas fa-filter"></i>
-                  Filter
-                </button>
+                      Filter
+                    </button>
+                  </div>
+                  <div className="filesBtns">
+                    <Pdf
+                      paymentExcelLoading={this.props.paymentExcelLoading}
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                      getPaymentsForExcel={this.props.getPaymentsForExcel}
+                    />
+                    <Excel
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                    />
+                  </div>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <button
+                    className="filterBtn"
+                    htmltype="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    <i className="fas fa-filter"></i>
+                    Filter
+                  </button>
+                  <div className="filesBtns">
+                    <Pdf
+                      paymentExcelLoading={this.props.paymentExcelLoading}
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                      getPaymentsForExcel={this.props.getPaymentsForExcel}
+                    />
+                    <Excel
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                    />
+                  </div>
+                </React.Fragment>
               )}
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                <div className="filesBtns">
-                  <Pdf
-                    paymentExcelLoading={this.props.paymentExcelLoading}
-                    username={username}
-                    from={from}
-                    to={to}
-                    perPage={perPage}
-                    payments={paymentsForExcel}
-                    getPaymentsForExcel={this.props.getPaymentsForExcel}
-                  />
-                  <Excel
-                    username={username}
-                    from={from}
-                    to={to}
-                    perPage={perPage}
-                    payments={paymentsForExcel}
-                  />
-                </div>
-
                 {payments.message && (
                   <div className="alert alert-danger text-center">
                     {payments.message}

@@ -200,7 +200,7 @@
     width: calc(100% - 280px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header {
-      width: calc(100% - 51px - 200px);
+      width: calc(100% - 280px - 51px);
       transition: 0.5s;
     }
   }
@@ -393,6 +393,31 @@ div.Center--Big {
         min-width: 270px;
         box-sizing: border-box;
       }
+      & .filesBtns {
+        & .exportPDF,
+        & .ExportToExel {
+          & div {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 400;
+          }
+          font-size: 15px;
+          font-weight: 400;
+          width: 60px;
+          border: 1px solid #ebeced;
+          border-radius: 5px;
+          height: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        & .exportPDF {
+          & div {
+            color: #c52727;
+          }
+          margin-right: 10px;
+        }
+      }
       & .filterBtn {
         position: relative;
         height: 36px;
@@ -405,7 +430,6 @@ div.Center--Big {
         color: #ffffff;
         font-weight: 500;
         background-color: #0078ff;
-        order: 3;
         & i {
           padding-right: 8px;
         }

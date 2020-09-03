@@ -4,7 +4,7 @@ import { AuthActions } from "redux-store/models";
 import { notification } from "antd";
 
 import FormContainerBody from "./FormContainerBody";
-import { DatePicker } from "antd";
+import DatePicker from "shared-components/DatePicker/DatePicker";
 import moment from "moment";
 import "./VisureStyles.css";
 export const InputForForm = ({

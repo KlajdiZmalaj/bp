@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { notification } from "antd";
-import { DatePicker } from "antd";
+import DatePicker from "shared-components/DatePicker/DatePicker";
 import moment from "moment";
 import MyInput from "./Input";
 import FormSubmiter from "./FormSubmiter";

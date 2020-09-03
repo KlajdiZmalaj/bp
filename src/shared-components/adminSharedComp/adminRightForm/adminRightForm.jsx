@@ -50,10 +50,8 @@ class AdminRightForm extends React.Component {
     const {
       openAdminModal,
       leUltimeTransazioniDet,
-      Tranzacioni,
-      Proviggioni,
-      Commisione,
       screenWidth,
+      accountInfo,
       Statistiche,
       TrCoPro,
     } = this.props;
@@ -109,40 +107,44 @@ class AdminRightForm extends React.Component {
                   leUltimeTransazioniDet={leUltimeTransazioniDet}
                 />
               )}
-              <div className="AdminRightForm--Box">
-                <div className="AdminRightForm--Box--Wallet">
-                  {" "}
-                  <i className="fal fa-wallet"></i>
-                  <span>DEPOSITO / ADDEBITO</span>
-                </div>
-                <i
-                  className={`far fa-chevron-${
-                    dropdownVisibility === false ? "down" : "up"
-                  }`}
-                  onClick={() => {
-                    this.setState((state) => ({
-                      dropdownVisibility: !state.dropdownVisibility,
-                    }));
-                  }}
-                ></i>
-              </div>
-              {dropdownVisibility && (
-                <AdminRightFormWalletDetails
-                  handleDepositoVisibility={() => {
-                    this.setState({
-                      depositoActiveVisibility: true,
-                      addebitoActiveVisibility: false,
-                    });
-                  }}
-                  handleDebitoVisibility={() => {
-                    this.setState({
-                      depositoActiveVisibility: false,
-                      addebitoActiveVisibility: true,
-                    });
-                  }}
-                  addebitoActiveVisibility={addebitoActiveVisibility}
-                  depositoActiveVisibility={depositoActiveVisibility}
-                />
+              {accountInfo.profile.role.name != "support" && (
+                <React.Fragment>
+                  <div className="AdminRightForm--Box">
+                    <div className="AdminRightForm--Box--Wallet">
+                      {" "}
+                      <i className="fal fa-wallet"></i>
+                      <span>DEPOSITO / ADDEBITO</span>
+                    </div>
+                    <i
+                      className={`far fa-chevron-${
+                        dropdownVisibility === false ? "down" : "up"
+                      }`}
+                      onClick={() => {
+                        this.setState((state) => ({
+                          dropdownVisibility: !state.dropdownVisibility,
+                        }));
+                      }}
+                    ></i>
+                  </div>
+                  {dropdownVisibility && (
+                    <AdminRightFormWalletDetails
+                      handleDepositoVisibility={() => {
+                        this.setState({
+                          depositoActiveVisibility: true,
+                          addebitoActiveVisibility: false,
+                        });
+                      }}
+                      handleDebitoVisibility={() => {
+                        this.setState({
+                          depositoActiveVisibility: false,
+                          addebitoActiveVisibility: true,
+                        });
+                      }}
+                      addebitoActiveVisibility={addebitoActiveVisibility}
+                      depositoActiveVisibility={depositoActiveVisibility}
+                    />
+                  )}
+                </React.Fragment>
               )}
             </React.Fragment>
           ) : (
@@ -158,5 +160,6 @@ const mapsStateToProps = (state) => ({
   activeSkinId: state.main.activeSkinId,
   Statistiche: state.auth.Statistiche?.data,
   TrCoPro: state.auth.Statistiche?.total,
+  accountInfo: state.auth.accountInfo,
 });
 export default connect(mapsStateToProps, { ...AuthActions })(AdminRightForm);

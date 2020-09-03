@@ -631,6 +631,15 @@
   position: relative;
 }
 
+.formsContainer--body__item .formsContainer--body__item.semi {
+  width: 49%;
+  margin: 0;
+}
+
+.formsContainer--body__item .formsContainer--body__item.semi:first-child {
+  margin-right: 2%;
+}
+
 .formsContainer .adult,
 .formsContainer .child {
   background: #eaebec3d;

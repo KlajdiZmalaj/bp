@@ -40,7 +40,7 @@ class AdminListaUtentiRow extends React.Component {
           }}
         >
           <span>{itemList.id}</span>
-          {activeSkinId === -1 ? (
+          {activeSkinId === -1 && accountInfo.profile.role.name != "support" ? (
             <span>
               <div></div>
               <a

@@ -400,22 +400,18 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-bottom: 1px solid #ebeced;
-  padding: 0 14px;
+  padding: 0 5px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
-  font-size: 12px;
+  font-size: 11px;
   font-family: "Roboto", sans-serif;
-  width: 25%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   margin: 0 2%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -429,21 +425,40 @@
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
   color: #727272;
   font-weight: 400;
+  font-size: 10px;
+  width: 28%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
   color: #4b4b4b;
   font-weight: 500;
+  width: 27%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0 2px;
 }
 
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
   color: #727272;
   font-weight: 400;
+  width: 30%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0 2px;
 }
 
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
   color: #0078ff;
   font-weight: 500;
+  width: 15%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .AdminRightForm--Box > i {

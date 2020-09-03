@@ -13,8 +13,9 @@ class Excel extends React.Component {
   state = {
     clickedLink: false,
   };
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (
+      prevProps.paymentExcelLoading === true &&
       this.props.paymentExcelLoading === false &&
       this.state.clickedLink === true &&
       this.props.payments &&
@@ -91,7 +92,7 @@ class Excel extends React.Component {
               {paymentExcelLoading === true && clickedLink === true ? (
                 <Spin indicator={antIcon} />
               ) : (
-                "Esporta Csv"
+                "Csv"
               )}
             </span>
           )}

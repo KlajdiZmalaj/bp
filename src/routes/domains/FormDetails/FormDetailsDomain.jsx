@@ -144,40 +144,56 @@ class FormDetailsDomain extends Component {
               ></i>
             </div>
 
-            <div className="ticketDetails--filters__byTicket">
-              <FilterTypeComponent
-                filterType={filterType}
-                handleClick={() => this.setState({ filterType: "all" })}
-                title="all"
-              />
-              <FilterTypeComponent
-                filterType={filterType}
-                handleClick={() =>
-                  this.setState({ filterType: "Nuova Richiesta" })
-                }
-                title="Nuova Richiesta"
-              />
-              <FilterTypeComponent
-                filterType={filterType}
-                handleClick={() => this.setState({ filterType: "Eseguibile" })}
-                title="Eseguibile"
-              />
-              <FilterTypeComponent
-                filterType={filterType}
-                handleClick={() => this.setState({ filterType: "In Attesa" })}
-                title="In Attesa"
-              />
-              <FilterTypeComponent
-                filterType={filterType}
-                handleClick={() => this.setState({ filterType: "Completato" })}
-                title="Completato"
-              />
-              <FilterTypeComponent
-                filterType={filterType}
-                handleClick={() => this.setState({ filterType: "Cancellato" })}
-                title="Cancellato"
-              />
-            </div>
+            {statusRows === "active" ? (
+              <div className="ticketDetails--filters__byTicket">
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() => this.setState({ filterType: "all" })}
+                  title="all"
+                />
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() =>
+                    this.setState({ filterType: "Completato" })
+                  }
+                  title="Completato"
+                />
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() =>
+                    this.setState({ filterType: "Cancellato" })
+                  }
+                  title="Cancellato"
+                />
+              </div>
+            ) : (
+              <div className="ticketDetails--filters__byTicket">
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() => this.setState({ filterType: "all" })}
+                  title="all"
+                />{" "}
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() =>
+                    this.setState({ filterType: "Nuova Richiesta" })
+                  }
+                  title="Nuova Richiesta"
+                />
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() =>
+                    this.setState({ filterType: "Eseguibile" })
+                  }
+                  title="Eseguibile"
+                />
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() => this.setState({ filterType: "In Attesa" })}
+                  title="In Attesa"
+                />
+              </div>
+            )}
           </div>
           <div className="ticketDetails--header">
             <span>Stato</span>

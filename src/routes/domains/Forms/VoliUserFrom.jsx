@@ -1,5 +1,5 @@
 import React from "react";
-import { DatePicker } from "antd";
+import DatePicker from "shared-components/DatePicker/DatePicker";
 import moment from "moment";
 const VoliUserForm = ({
   handleChangeName,
