@@ -237,8 +237,8 @@
           justify-content: center;
           align-self: center;
           & i {
-            font-weight: 300;
-            font-size: 20px;
+            font-weight: 300 !important;
+            font-size: 20px !important;
             margin: 0;
             padding: 0;
           }

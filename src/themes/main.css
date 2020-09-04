@@ -1932,8 +1932,8 @@ i#private {
 }
 
 .barcodeBtn {
-  background-color: #edeef0;
-  color: #f36520;
+  background-color: #ffffff;
+  color: #353d45;
   text-transform: capitalize;
   position: relative;
   bottom: 5px;
@@ -1947,7 +1947,8 @@ i#private {
 .bodyAdmin .barcodeBtn {
   position: relative;
   top: 1px;
-  color: #0078ff;
+  background-color: #ffffff;
+  color: #353d45;
 }
 
 .useCodePopUp {
@@ -1981,7 +1982,7 @@ i#private {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 140px;
+  width: 144px;
 }
 
 .filesBtns .ExportToExel {
@@ -1995,15 +1996,16 @@ i#private {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #edeef0;
+  border: 1px solid #353d45;
   border-radius: 5px;
   height: 42px;
-  color: #01a81b;
+  color: #353d45;
 }
 
 .filesBtns .ExportToExel i {
   font-size: 18px;
-  font-weight: 300;
+  color: #353d45;
+  font-weight: 600;
   margin-right: 5px;
 }
 
@@ -2023,20 +2025,20 @@ i#private {
 
 .filesBtns .exportPDF {
   margin: 0 10px;
-  width: 60px;
+  width: 64px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #edeef0;
+  border: 1px solid #353d45;
   border-radius: 5px;
   height: 42px;
 }
 
 .filesBtns .exportPDF > div {
-  color: #c52727;
+  color: #353d45;
   cursor: pointer;
   width: 100%;
   height: 100%;
@@ -2052,7 +2054,10 @@ i#private {
 }
 
 .filesBtns .exportPDF i {
-  padding-right: 5px;
+  font-size: 18px;
+  color: #353d45;
+  font-weight: 600;
+  margin-right: 5px;
 }
 
 .afterprint .tablePrint {

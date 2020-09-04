@@ -33,7 +33,11 @@ class AdminListaUtentiRowForLoop extends React.Component {
             itemList && itemList.children?.length > 0 ? "active" : ""
           }`}
           onClick={(e) => {
-            if (screenWidth <= 950 && e.target.tagName != "I") {
+            if (
+              screenWidth <= 950 &&
+              screenWidth >= 550 &&
+              e.target.tagName != "I"
+            ) {
               editUtentiRespModal({
                 visibility: true,
                 data: { ...itemList },
@@ -82,9 +86,11 @@ class AdminListaUtentiRowForLoop extends React.Component {
                   }
                 : { justifyContent: "flex-end", paddingRight: "1%" }
             }
-            Word={numberWithCommas(itemList.wallet)}
+            Word={itemList.wallet}
             size={8}
             nrOfRows={2}
+            type={"number"}
+            formatWord={true}
           />
           {activeSkinId === -1 ? null : (
             <SpanFormater
@@ -196,6 +202,18 @@ class AdminListaUtentiRowForLoop extends React.Component {
               // }}
             ></i>
           </span>
+          {screenWidth <= 550 && (
+            <span
+              onClick={(e) => {
+                editUtentiRespModal({
+                  visibility: true,
+                  data: { ...itemList },
+                });
+              }}
+            >
+              <i className="fal fa-eye"> </i>
+            </span>
+          )}
         </div>
         {itemList &&
           itemList.children?.length > 0 &&

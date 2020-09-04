@@ -16,7 +16,7 @@
 }
 
 .bodyAdmin .barcodeBtn {
-  padding: 8px 2px;
+  padding: 8px 8px;
   margin-left: 1%;
 }
 
@@ -523,7 +523,7 @@ div.Center--Big .panels-container .sort-annunci .filesBtns .ExportToExel {
   font-size: 15px;
   font-weight: 400;
   width: 60px;
-  border: 1px solid #ebeced;
+  border: 1px solid #353d45;
   border-radius: 5px;
   height: 35px;
   display: -webkit-box;
@@ -561,7 +561,7 @@ div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF div,
 div.Center .panels-container .sort-annunci .filesBtns .exportPDF div,
 div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF div,
 div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF div {
-  color: #c52727;
+  color: #353d45;
 }
 
 div.Center .container-fluid.overview .sort-annunci .filterBtn,
@@ -1194,7 +1194,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child,
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child,
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:last-child {
-    width: 2%;
+    width: 0.1%;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:last-child i,
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:last-child i,
@@ -1398,9 +1398,9 @@ div.Center--Big tbody .right .Importo i {
   div.Center .panels-container .sort-annunci .barcodeBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
   div.Center--Big .panels-container .sort-annunci .barcodeBtn {
-    width: 25%;
+    width: 26%;
     height: 38px;
-    margin-bottom: 5px;
+    margin: 2px 0;
     -ms-flex-item-align: start;
         align-self: flex-start;
   }
@@ -1409,7 +1409,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
   div.Center--Big .panels-container .sort-annunci .filesBtns {
     position: absolute;
-    top: 0;
+    bottom: 3px;
     left: calc(32% + 140px);
     margin-top: 3px;
   }
@@ -1418,20 +1418,20 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
   div.Center--Big .panels-container .sort-annunci .filterBtn {
     position: absolute;
-    top: 0;
+    bottom: 2px;
     width: 12%;
     left: calc(35% + 280px);
     height: 34px;
     border-radius: 5px;
-    margin: 3px 0;
+    margin: 1px 0;
     margin-left: 5px;
   }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled {
+  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
     position: absolute;
-    top: 0;
+    bottom: 1px;
     left: 30%;
     border: 1px solid #ebeced;
   }
@@ -1726,26 +1726,200 @@ div.Center--Big tbody .right .Importo i {
   div.Center .panels-container .sort-annunci .barcodeBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
   div.Center--Big .panels-container .sort-annunci .barcodeBtn {
-    width: 132px;
+    width: 145px;
     margin-left: 0;
   }
   div.Center .container-fluid.overview .sort-annunci .filesBtns,
   div.Center .panels-container .sort-annunci .filesBtns,
   div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
   div.Center--Big .panels-container .sort-annunci .filesBtns {
-    left: 268px;
+    left: 280px;
+    margin: 0;
   }
   div.Center .container-fluid.overview .sort-annunci .filterBtn,
   div.Center .panels-container .sort-annunci .filterBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
   div.Center--Big .panels-container .sort-annunci .filterBtn {
-    left: 412px;
+    left: 420px;
   }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(4).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(4).ant-select.ant-select-enabled {
-    left: 136px;
+  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
+    left: 150px;
+  }
+}
+
+@media (max-width: 540px) {
+  div.Center .container-fluid.overview .sort-annunci .barcodeBtn,
+  div.Center .panels-container .sort-annunci .barcodeBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
+  div.Center--Big .panels-container .sort-annunci .barcodeBtn {
+    width: 50%;
+    margin-left: 0;
+    margin-bottom: 50px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filesBtns,
+  div.Center .panels-container .sort-annunci .filesBtns,
+  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
+  div.Center--Big .panels-container .sort-annunci .filesBtns {
+    left: 5%;
+    width: 70%;
+    margin: 0;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
+  div.Center .panels-container .sort-annunci .filesBtns .exportPDF,
+  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
+  div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF {
+    width: 30%;
+    margin-right: 20%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filesBtns .ExportToExel,
+  div.Center .panels-container .sort-annunci .filesBtns .ExportToExel,
+  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .ExportToExel,
+  div.Center--Big .panels-container .sort-annunci .filesBtns .ExportToExel {
+    width: 30%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    width: 17%;
+    left: 78%;
+  }
+  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
+    left: 52%;
+    bottom: 48px;
+    width: 48%;
+  }
+  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div,
+  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div,
+  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div,
+  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(2), .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(4) {
+    display: none;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(5) {
+    display: table-cell !important;
+    width: 15% !important;
+    padding: 0 !important;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(5) i {
+    display: none;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(3) {
+    display: table-cell !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: flex-start !important;
+    width: 70% !important;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(3) div {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5%;
+    margin: 0 0 !important;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(3) div:first-child {
+    color: #5c5c5c;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Roboto";
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(3) div:nth-child(2) {
+    color: #0078ff;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Roboto";
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:last-child {
+    width: 15% !important;
+    border-left: 1px solid #ebeced;
+    border-right: 1px solid #ebeced;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:last-child i {
+    font-size: 16px !important;
+    font-weight: 300 !important;
+    color: #5c5c5c;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead td.wsNwp:nth-child(5) {
+    display: table-cell !important;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead td.wsNwp:nth-child(2), .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead td.wsNwp:nth-child(4) {
+    display: none;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead td.wsNwp:nth-child(3) {
+    width: 70% !important;
+    padding-left: 5% !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tr {
+    width: 100%;
+    height: 45px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable td {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead tr td.wsNwp:nth-child(5).right {
+    width: 60% !important;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable td.wsNwp:nth-child(5).importoTd {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    width: 30% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 

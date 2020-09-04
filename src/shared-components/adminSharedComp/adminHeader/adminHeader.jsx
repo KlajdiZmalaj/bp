@@ -2,7 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import "./adminHeader.css";
+import Chat from "shared-components/Chat/Chat";
+
 class AdminHeader extends React.Component {
+  state = {
+    chat: false,
+  };
   render() {
     const { small } = this.props;
 
@@ -37,6 +42,7 @@ class AdminHeader extends React.Component {
               <span>UTENTI</span>
             </div>
           </div>
+
           <div
             className={`AdminHeader--Category ${
               this.props.location.pathname.includes("movimenti") ? "active" : ""
@@ -82,6 +88,19 @@ class AdminHeader extends React.Component {
               <span>PRENOTAZIONI</span>
             </div>
           </div>
+          {small && (
+            <div
+              className={`AdminHeader--Category `}
+              onClick={() => {
+                this.setState((state) => ({ chat: !state.chat }));
+                this.props.goToAdminPanel(true);
+              }}
+            >
+              <div>
+                <Chat />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );

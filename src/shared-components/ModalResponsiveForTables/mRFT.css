@@ -1,11 +1,11 @@
-.TranzacioniModalResponsive--Data {
+.TrMoRes--Data {
   -webkit-box-shadow: 0 0 44px -15px black;
           box-shadow: 0 0 44px -15px black;
   position: fixed;
-  width: 90%;
-  height: 70%;
-  left: 5%;
-  top: 17%;
+  width: 85%;
+  height: 75%;
+  left: 12%;
+  top: 15%;
   z-index: 5;
   background-color: #ffffff;
   font-family: "Roboto";
@@ -25,37 +25,53 @@
   border-radius: 4px;
 }
 
-.TranzacioniModalResponsive--Data--Header {
+.TrMoRes--Data--Header {
   width: 100%;
-  height: 14%;
+  height: 12%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  padding: 5px 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
-  color: #ffffff;
-  font-size: 14px;
-  background-color: #0078ff;
   border-radius: 4px;
   position: relative;
 }
 
-.TranzacioniModalResponsive--Data--Header--Close {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 400;
-  position: absolute;
-  right: 0;
-  top: 0;
+.TrMoRes--Data--Header--Title {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: 100%;
-  background-color: #0078ff;
+  border-bottom: 1px solid #ebeced;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #0078ff;
+  padding-left: 6%;
+}
+
+.TrMoRes--Data--Header--Title i {
+  color: #5c5c5c;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 5%;
+}
+
+.TrMoRes--Data--Header--Close {
+  height: 100%;
+  border-bottom: 1px solid #ebeced;
+  background-color: #fff;
   text-transform: lowercase;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -66,13 +82,125 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 10%;
+  width: 15%;
   cursor: pointer;
 }
 
-.TranzacioniModalResponsive--Data--Header--Close i {
-  color: #ffffff;
-  font-size: 18px;
+.TrMoRes--Data--Header--Close i {
+  color: #5c5c5c;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.TrMoRes--Data--BeforeFooter {
+  width: 100%;
+  height: 12%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #ebeced;
+  border-bottom: 1px solid #ebeced;
+}
+
+.TrMoRes--Data--BeforeFooter div {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 6%;
+}
+
+.TrMoRes--Data--BeforeFooter div span:first-child {
+  color: #5c5c5c;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.TrMoRes--Data--BeforeFooter div span:nth-child(2) {
+  color: #0078ff;
+  font-weight: 500;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+
+.TrMoRes--Data--Footer {
+  width: 100%;
+  height: 13%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #ebeced;
+}
+
+.TrMoRes--Data--Footer span {
+  width: 100%;
+  height: 101%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.TrMoRes--Data--Footer span button {
+  border: none;
+  height: 100%;
+  background: #fff;
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Roboto";
+}
+
+.TrMoRes--Data--Footer span button:nth-child(2) {
+  -webkit-box-shadow: inset 0 -5px 0px #ff6c00 !important;
+          box-shadow: inset 0 -5px 0px #ff6c00 !important;
+  color: #ff6c00;
+}
+
+.TrMoRes--Data--Footer span button:first-child {
+  -webkit-box-shadow: inset 0 -5px 0px #00b850 !important;
+          box-shadow: inset 0 -5px 0px #00b850 !important;
+  color: #00b850;
+}
+
+.TrMoRes--Data--Footer span i {
+  width: 20%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,19 +210,21 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-right: 4%;
-  height: 100%;
-  width: 20%;
+  color: #0078ff;
+  font-size: 17px;
+  font-weight: 300;
+  -webkit-box-shadow: inset 0 -5px 0px #0078ff;
+          box-shadow: inset 0 -5px 0px #0078ff;
 }
 
-.TranzacioniModalResponsive--Data--Row {
+.TrMoRes--Data--Row {
   overflow: auto;
   width: 100%;
-  height: 86%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 !important;
+  height: 86%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -102,23 +232,186 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
 }
 
-.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar {
+.TrMoRes--Data--Row::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
 
-.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
+.TrMoRes--Data--Row::-webkit-scrollbar-thumb {
   background: #0078ff;
 }
 
-.TranzacioniModalResponsive--Data--Row--DateOra, .TranzacioniModalResponsive--Data--Row--Barcode, .TranzacioniModalResponsive--Data--Row--User, .TranzacioniModalResponsive--Data--Row--Service, .TranzacioniModalResponsive--Data--Row--Importo, .TranzacioniModalResponsive--Data--Row--Commissione, .TranzacioniModalResponsive--Data--Row--Proviggione, .TranzacioniModalResponsive--Data--Row--Saldo, .TranzacioniModalResponsive--Data--Row--UserId, .TranzacioniModalResponsive--Data--Row--Username, .TranzacioniModalResponsive--Data--Row--City, .TranzacioniModalResponsive--Data--Row--Credito, .TranzacioniModalResponsive--Data--Row--RagSociale, .TranzacioniModalResponsive--Data--Row--Role, .TranzacioniModalResponsive--Data--Row--UltimoDeposit, .TranzacioniModalResponsive--Data--Row--UltimoLogin {
+.TrMoRes--Data--Row .ServiceRow {
+  width: 100%;
+  height: 22%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ebeced;
+  border-top: 1px solid #ebeced;
+}
+
+.TrMoRes--Data--Row .ServiceRow .TrMoRes--Data--Row--Service {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 100%;
+  padding: 0 5%;
+}
+
+.TrMoRes--Data--Row .ServiceRow .TrMoRes--Data--Row--Service--Header {
+  color: #959595;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.TrMoRes--Data--Row .ServiceRow .TrMoRes--Data--Row--Service--Info {
+  color: #0078ff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.TrMoRes--Data--Row .DateOraRow {
+  width: 100%;
+  height: 15%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ebeced;
+  border-top: 1px solid #ebeced;
+}
+
+.TrMoRes--Data--Row .DateOraRow .TrMoRes--Data--Row--DateOra {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding: 0 5%;
+}
+
+.TrMoRes--Data--Row .DateOraRow .TrMoRes--Data--Row--DateOra--Header {
+  color: #959595;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.TrMoRes--Data--Row .DateOraRow .TrMoRes--Data--Row--DateOra--Info {
+  font-size: 13px;
+  font-weight: 500;
+  color: #5c5c5c;
+  text-align: end;
+}
+
+.TrMoRes--Data--Row .OtherRow {
+  width: 100%;
+  height: 63%;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ebeced;
+  border-top: 1px solid #ebeced;
+}
+
+.TrMoRes--Data--Row .OtherRow div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 100%;
+  padding: 0.4% 6%;
+}
+
+.TrMoRes--Data--Row .OtherRow div:first-child {
+  margin-top: 4%;
+  padding-top: 0.5%;
+  cursor: pointer;
+}
+
+.TrMoRes--Data--Row .OtherRow div:last-child {
+  padding-bottom: 6%;
+}
+
+.TrMoRes--Data--Row .OtherRow div span:first-child {
+  color: #959595;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.TrMoRes--Data--Row .OtherRow div span:nth-child(2) {
+  font-size: 13px;
+  font-weight: 500;
+  color: #5c5c5c;
+  text-align: end;
+}
+
+.TrMoRes--Data--Row--DateOra, .TrMoRes--Data--Row--Barcode, .TrMoRes--Data--Row--User, .TrMoRes--Data--Row--Service, .TrMoRes--Data--Row--Importo, .TrMoRes--Data--Row--Commissione, .TrMoRes--Data--Row--Proviggione, .TrMoRes--Data--Row--Saldo, .TrMoRes--Data--Row--UserId, .TrMoRes--Data--Row--Username, .TrMoRes--Data--Row--City, .TrMoRes--Data--Row--RagSociale, .TrMoRes--Data--Row--Role, .TrMoRes--Data--Row--UltimoDeposit, .TrMoRes--Data--Row--UltimoLogin {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -130,31 +423,36 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px 3%;
-  border-bottom: 1px solid #ebeced;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-family: "Roboto", sans-serif;
+  padding: 1.3% 6%;
 }
 
-.TranzacioniModalResponsive--Data--Row--DateOra:last-child, .TranzacioniModalResponsive--Data--Row--Barcode:last-child, .TranzacioniModalResponsive--Data--Row--User:last-child, .TranzacioniModalResponsive--Data--Row--Service:last-child, .TranzacioniModalResponsive--Data--Row--Importo:last-child, .TranzacioniModalResponsive--Data--Row--Commissione:last-child, .TranzacioniModalResponsive--Data--Row--Proviggione:last-child, .TranzacioniModalResponsive--Data--Row--Saldo:last-child, .TranzacioniModalResponsive--Data--Row--UserId:last-child, .TranzacioniModalResponsive--Data--Row--Username:last-child, .TranzacioniModalResponsive--Data--Row--City:last-child, .TranzacioniModalResponsive--Data--Row--Credito:last-child, .TranzacioniModalResponsive--Data--Row--RagSociale:last-child, .TranzacioniModalResponsive--Data--Row--Role:last-child, .TranzacioniModalResponsive--Data--Row--UltimoDeposit:last-child, .TranzacioniModalResponsive--Data--Row--UltimoLogin:last-child {
+.TrMoRes--Data--Row--DateOra:first-child, .TrMoRes--Data--Row--Barcode:first-child, .TrMoRes--Data--Row--User:first-child, .TrMoRes--Data--Row--Service:first-child, .TrMoRes--Data--Row--Importo:first-child, .TrMoRes--Data--Row--Commissione:first-child, .TrMoRes--Data--Row--Proviggione:first-child, .TrMoRes--Data--Row--Saldo:first-child, .TrMoRes--Data--Row--UserId:first-child, .TrMoRes--Data--Row--Username:first-child, .TrMoRes--Data--Row--City:first-child, .TrMoRes--Data--Row--RagSociale:first-child, .TrMoRes--Data--Row--Role:first-child, .TrMoRes--Data--Row--UltimoDeposit:first-child, .TrMoRes--Data--Row--UltimoLogin:first-child {
+  padding-top: 4%;
+}
+
+.TrMoRes--Data--Row--DateOra:last-child, .TrMoRes--Data--Row--Barcode:last-child, .TrMoRes--Data--Row--User:last-child, .TrMoRes--Data--Row--Service:last-child, .TrMoRes--Data--Row--Importo:last-child, .TrMoRes--Data--Row--Commissione:last-child, .TrMoRes--Data--Row--Proviggione:last-child, .TrMoRes--Data--Row--Saldo:last-child, .TrMoRes--Data--Row--UserId:last-child, .TrMoRes--Data--Row--Username:last-child, .TrMoRes--Data--Row--City:last-child, .TrMoRes--Data--Row--RagSociale:last-child, .TrMoRes--Data--Row--Role:last-child, .TrMoRes--Data--Row--UltimoDeposit:last-child, .TrMoRes--Data--Row--UltimoLogin:last-child {
   border: none;
 }
 
-.TranzacioniModalResponsive--Data--Row--DateOra--Header, .TranzacioniModalResponsive--Data--Row--Barcode--Header, .TranzacioniModalResponsive--Data--Row--User--Header, .TranzacioniModalResponsive--Data--Row--Service--Header, .TranzacioniModalResponsive--Data--Row--Importo--Header, .TranzacioniModalResponsive--Data--Row--Commissione--Header, .TranzacioniModalResponsive--Data--Row--Proviggione--Header, .TranzacioniModalResponsive--Data--Row--Saldo--Header, .TranzacioniModalResponsive--Data--Row--UserId--Header, .TranzacioniModalResponsive--Data--Row--Username--Header, .TranzacioniModalResponsive--Data--Row--City--Header, .TranzacioniModalResponsive--Data--Row--Credito--Header, .TranzacioniModalResponsive--Data--Row--RagSociale--Header, .TranzacioniModalResponsive--Data--Row--Role--Header, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header {
-  font-weight: bold;
-  font-size: 15px;
+.TrMoRes--Data--Row--DateOra--Header, .TrMoRes--Data--Row--Barcode--Header, .TrMoRes--Data--Row--User--Header, .TrMoRes--Data--Row--Service--Header, .TrMoRes--Data--Row--Importo--Header, .TrMoRes--Data--Row--Commissione--Header, .TrMoRes--Data--Row--Proviggione--Header, .TrMoRes--Data--Row--Saldo--Header, .TrMoRes--Data--Row--UserId--Header, .TrMoRes--Data--Row--Username--Header, .TrMoRes--Data--Row--City--Header, .TrMoRes--Data--Row--RagSociale--Header, .TrMoRes--Data--Row--Role--Header, .TrMoRes--Data--Row--UltimoDeposit--Header, .TrMoRes--Data--Row--UltimoLogin--Header {
+  font-weight: 400;
+  color: #959595;
+  font-size: 13px;
   width: 35%;
 }
 
-.TranzacioniModalResponsive--Data--Row--DateOra--Header:after, .TranzacioniModalResponsive--Data--Row--Barcode--Header:after, .TranzacioniModalResponsive--Data--Row--User--Header:after, .TranzacioniModalResponsive--Data--Row--Service--Header:after, .TranzacioniModalResponsive--Data--Row--Importo--Header:after, .TranzacioniModalResponsive--Data--Row--Commissione--Header:after, .TranzacioniModalResponsive--Data--Row--Proviggione--Header:after, .TranzacioniModalResponsive--Data--Row--Saldo--Header:after, .TranzacioniModalResponsive--Data--Row--UserId--Header:after, .TranzacioniModalResponsive--Data--Row--Username--Header:after, .TranzacioniModalResponsive--Data--Row--City--Header:after, .TranzacioniModalResponsive--Data--Row--Credito--Header:after, .TranzacioniModalResponsive--Data--Row--RagSociale--Header:after, .TranzacioniModalResponsive--Data--Row--Role--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Header:after, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Header:after {
+.TrMoRes--Data--Row--DateOra--Header:after, .TrMoRes--Data--Row--Barcode--Header:after, .TrMoRes--Data--Row--User--Header:after, .TrMoRes--Data--Row--Service--Header:after, .TrMoRes--Data--Row--Importo--Header:after, .TrMoRes--Data--Row--Commissione--Header:after, .TrMoRes--Data--Row--Proviggione--Header:after, .TrMoRes--Data--Row--Saldo--Header:after, .TrMoRes--Data--Row--UserId--Header:after, .TrMoRes--Data--Row--Username--Header:after, .TrMoRes--Data--Row--City--Header:after, .TrMoRes--Data--Row--RagSociale--Header:after, .TrMoRes--Data--Row--Role--Header:after, .TrMoRes--Data--Row--UltimoDeposit--Header:after, .TrMoRes--Data--Row--UltimoLogin--Header:after {
   content: " :";
 }
 
-.TranzacioniModalResponsive--Data--Row--DateOra--Info, .TranzacioniModalResponsive--Data--Row--Barcode--Info, .TranzacioniModalResponsive--Data--Row--User--Info, .TranzacioniModalResponsive--Data--Row--Service--Info, .TranzacioniModalResponsive--Data--Row--Importo--Info, .TranzacioniModalResponsive--Data--Row--Commissione--Info, .TranzacioniModalResponsive--Data--Row--Proviggione--Info, .TranzacioniModalResponsive--Data--Row--Saldo--Info, .TranzacioniModalResponsive--Data--Row--UserId--Info, .TranzacioniModalResponsive--Data--Row--Username--Info, .TranzacioniModalResponsive--Data--Row--City--Info, .TranzacioniModalResponsive--Data--Row--Credito--Info, .TranzacioniModalResponsive--Data--Row--RagSociale--Info, .TranzacioniModalResponsive--Data--Row--Role--Info, .TranzacioniModalResponsive--Data--Row--UltimoDeposit--Info, .TranzacioniModalResponsive--Data--Row--UltimoLogin--Info {
-  font-size: 14px;
-  font-weight: 400;
+.TrMoRes--Data--Row--DateOra--Info, .TrMoRes--Data--Row--Barcode--Info, .TrMoRes--Data--Row--User--Info, .TrMoRes--Data--Row--Service--Info, .TrMoRes--Data--Row--Importo--Info, .TrMoRes--Data--Row--Commissione--Info, .TrMoRes--Data--Row--Proviggione--Info, .TrMoRes--Data--Row--Saldo--Info, .TrMoRes--Data--Row--UserId--Info, .TrMoRes--Data--Row--Username--Info, .TrMoRes--Data--Row--City--Info, .TrMoRes--Data--Row--RagSociale--Info, .TrMoRes--Data--Row--Role--Info, .TrMoRes--Data--Row--UltimoDeposit--Info, .TrMoRes--Data--Row--UltimoLogin--Info {
+  color: #5c5c5c;
+  font-size: 13px;
+  font-weight: 500;
   width: 65%;
 }
 

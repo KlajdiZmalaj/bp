@@ -18,9 +18,10 @@ import MainActions from "redux-store/models/main";
 import AdminLoginDom from "../AdminLogin/AdminLoginDom";
 import AdminLoginSkins from "../AdminLogin/AdminLoginSkins";
 import { Time } from "shared-components";
+import { message } from "antd";
 import "./styles.css";
 import { numberWithCommas } from "utils/HelperFunc";
-
+import { allRoles } from "config/index";
 const { Option } = Select;
 
 class AdminPanelDom extends React.Component {
@@ -98,14 +99,12 @@ class AdminPanelDom extends React.Component {
       adminDepModal,
       setDepositoModalAdmin,
       userDetail,
-      agents,
       skinList,
       updateMsg,
       goToAdminPanelVis,
       leUltimeTransazioniDet,
       accountInfo,
-      Statistiche,
-      TrCoPro,
+      activeSkinId,
     } = this.props;
     return (
       <React.Fragment>
@@ -229,7 +228,9 @@ class AdminPanelDom extends React.Component {
               </React.Fragment>
             )}
 
-            {utentiResModal?.visibility === true && screenWidth <= 950 ? (
+            {utentiResModal?.visibility === true &&
+            screenWidth <= 950 &&
+            window.location.href.includes("utenti") ? (
               <ModalResponsiveForTables
                 Close={() => {
                   editUtentiRespModal({
@@ -237,13 +238,119 @@ class AdminPanelDom extends React.Component {
                     data: "",
                   });
                 }}
+                Header={
+                  <React.Fragment>
+                    <i className={`${allRoles[utentiResModal.data.role]}`} />
+                    <span>{utentiResModal.data.username}</span>
+                  </React.Fragment>
+                }
+                beforeFooter={
+                  <ModalRow
+                    title="Credito"
+                    data={numberWithCommas(utentiResModal.data.wallet) + "€"}
+                  />
+                }
+                Footer={
+                  <span>
+                    <button
+                      onClick={() => {
+                        this.props.setDepositoModalAdmin({
+                          depositoModalVis: true,
+                          type: "deposit",
+                          username: utentiResModal.data.username,
+                          id: utentiResModal.data.id,
+                        });
+                      }}
+                    >
+                      DEPOSITO
+                    </button>
+                    <button
+                      onClick={() => {
+                        this.props.setDepositoModalAdmin({
+                          depositoModalVis: true,
+                          type: "withdraw",
+                          username: utentiResModal.data.username,
+                          id: utentiResModal.data.id,
+                        });
+                      }}
+                    >
+                      ADDEBITO
+                    </button>
+                    <i
+                      id="lock"
+                      className={`fal fa-lock${
+                        activeSkinId === -1 && utentiResModal.data.status === 0
+                          ? "-alt"
+                          : utentiResModal.data.status === 1 &&
+                            activeSkinId != -1
+                          ? "-alt"
+                          : "-open-alt active"
+                      }`}
+                      onClick={async () => {
+                        const changeStatus = await (activeSkinId === -1 &&
+                        utentiResModal.data.status === 1
+                          ? 0
+                          : utentiResModal.data.status === 1 &&
+                            activeSkinId != -1
+                          ? 2
+                          : 1);
+                        await this.props.switchUserStatus(
+                          utentiResModal.data.id,
+                          changeStatus,
+
+                          () => {},
+                          accountInfo.role,
+                          activeSkinId
+                        );
+                        if (this.props.activeSkinId === -1) {
+                          await this.props.getUsers(null, {
+                            skin_id: 1,
+                          });
+                        } else {
+                          await this.props.getUsers(null, {
+                            skin_id: this.props.activeSkinId,
+                            backoffice: true,
+                          });
+                        }
+                        await ((changeStatus === 0 && activeSkinId === -1) ||
+                        (changeStatus === 1 && activeSkinId != -1)
+                          ? message.error(
+                              `lo stato dell${
+                                utentiResModal.data.username
+                              } ${`è cambiato : 'DISATTIVATO'`}`
+                            )
+                          : message.success(
+                              `lo stato dell${
+                                utentiResModal.data.username
+                              } ${`è cambiato : 'ATTIVATO'`}`
+                            ));
+                      }}
+                    ></i>
+                    {/* <i
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        utentiResModal.data && utentiResModal.data.role === "user"
+                          ? this.props.getUserByUserId(
+                            utentiResModal.data.id,
+                              activeSkinId
+                            )
+                          : utentiResModal.data.role === "agent"
+                          ? this.props.getAgentByUserId(
+                            utentiResModal.data.id,
+                              activeSkinId
+                            )
+                          : this.props.getUserDetail(utentiResModal.data.id, activeSkinId);
+                      }}
+                      className={`fal fa-eye${
+                        this.state.eyeClicked === true ? "-slash active" : ""
+                      }`}
+                    ></i> */}
+                  </span>
+                }
                 Rows={
                   <React.Fragment>
                     <ModalRow title="User Id" data={utentiResModal.data.id} />
-                    <ModalRow
-                      title="Username"
-                      data={utentiResModal.data.username}
-                    />
                     {utentiResModal.data.city &&
                       utentiResModal.data.city != "-" && (
                         <ModalRow
@@ -251,10 +358,7 @@ class AdminPanelDom extends React.Component {
                           data={utentiResModal.data.city}
                         />
                       )}
-                    <ModalRow
-                      title="Credito"
-                      data={utentiResModal.data.wallet}
-                    />
+
                     <ModalRow
                       title="Rag Sociale"
                       data={utentiResModal.data.rag_soc}

@@ -30,7 +30,7 @@ const DepositoModal = ({
             {" "}
             <span className="DepositoModal--Container--Up--Agguntoal--Persona">
               <span className="DepositoModal--Container--Up--Agguntoal--Persona--Part1">
-                Il credito vera a
+                Il credito verrà aggiunto a:
               </span>
               {/* <i className={`${allRoles[itemList.role]}`} /> */}
               <i className="fal fa-user" />
@@ -45,7 +45,7 @@ const DepositoModal = ({
             <div className="DepositoModal--Container--Down--Form--AmountLine">
               {" "}
               <span className="DepositoModal--Container--Down--Form--AmountLine--Amount">
-                AMOUNT
+                SOMMA
               </span>{" "}
               <div className="DepositoModal--Container--Down--Form--AmountLine--Input">
                 <input
@@ -65,7 +65,7 @@ const DepositoModal = ({
             </div>
             <div className="DepositoModal--Container--Down--Form--NotifyLine">
               {" "}
-              <span>NOTIFICA ALL'USER</span>
+              <span>NOTIFICA ALL'UTENTE</span>
               <i
                 style={{ cursor: "pointer" }}
                 className={`${tickOrX ? "far fa-check" : "fas fa-times"}`}
@@ -76,7 +76,7 @@ const DepositoModal = ({
             </div>
 
             <textarea
-              placeholder="MESSAGE"
+              placeholder="MESSAGGIO"
               onChange={(e) => {
                 setMessage(e.target.value);
               }}
@@ -108,7 +108,7 @@ const DepositoModal = ({
                 onClick={Close}
               >
                 <i class="fal fa-times"></i>
-                <span>CANCEL</span>
+                <span>CANCELLA</span>
               </button>
             </div>
           </form>

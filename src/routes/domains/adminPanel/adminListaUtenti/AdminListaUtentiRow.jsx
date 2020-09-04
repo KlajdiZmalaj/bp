@@ -31,7 +31,11 @@ class AdminListaUtentiRow extends React.Component {
             itemList && itemList.children?.length > 0 ? "active" : ""
           }`}
           onClick={(e) => {
-            if (screenWidth <= 950 && e.target.tagName != "I") {
+            if (
+              screenWidth <= 950 &&
+              screenWidth >= 550 &&
+              e.target.tagName != "I"
+            ) {
               editUtentiRespModal({
                 visibility: true,
                 data: { ...itemList },
@@ -116,8 +120,10 @@ class AdminListaUtentiRow extends React.Component {
                   }
                 : { justifyContent: "flex-end", paddingRight: "1%" }
             }
-            Word={numberWithCommas(itemList.wallet)}
+            Word={itemList.wallet}
             size={8}
+            type={"number"}
+            formatWord={true}
             nrOfRows={1}
           />
           {activeSkinId === -1 ? null : (
@@ -251,6 +257,19 @@ class AdminListaUtentiRow extends React.Component {
               // }}
             ></i>
           </span>
+          {screenWidth <= 550 && (
+            <span
+              style={activeSkinId === -1 ? { marginLeft: "16%" } : {}}
+              onClick={(e) => {
+                editUtentiRespModal({
+                  visibility: true,
+                  data: { ...itemList },
+                });
+              }}
+            >
+              <i className="fal fa-eye"> </i>
+            </span>
+          )}
         </div>
         {itemList &&
           Array.isArray(itemList.children) &&

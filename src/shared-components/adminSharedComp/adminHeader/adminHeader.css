@@ -325,8 +325,8 @@
   }
   .Admin-Panel .AdminHeader ~ .AdminHeader .AdminHeader--Category div i,
   .Admin-Panel .AdminHeader ~ .AdminHeader .AdminHeader--Category--Prenotazioni div i {
-    font-weight: 300;
-    font-size: 20px;
+    font-weight: 300 !important;
+    font-size: 20px !important;
     margin: 0;
     padding: 0;
   }

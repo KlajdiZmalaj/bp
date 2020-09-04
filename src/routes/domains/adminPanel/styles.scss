@@ -10,7 +10,7 @@
     margin-right: 10px;
   }
   & .barcodeBtn {
-    padding: 8px 2px;
+    padding: 8px 8px;
     margin-left: 1%;
   }
   & .TopHeader {
@@ -404,7 +404,7 @@ div.Center--Big {
           font-size: 15px;
           font-weight: 400;
           width: 60px;
-          border: 1px solid #ebeced;
+          border: 1px solid #353d45;
           border-radius: 5px;
           height: 35px;
           display: flex;
@@ -413,7 +413,7 @@ div.Center--Big {
         }
         & .exportPDF {
           & div {
-            color: #c52727;
+            color: #353d45;
           }
           margin-right: 10px;
         }
@@ -840,7 +840,7 @@ div.Center--Big {
                 }
 
                 &:last-child {
-                  width: 2%;
+                  width: 0.1%;
                   & i {
                     color: #000;
                     font-weight: 300;
@@ -943,30 +943,30 @@ div.Center--Big {
       & .sort-annunci {
         flex-direction: column;
         & .barcodeBtn {
-          width: 25%;
+          width: 26%;
           height: 38px;
-          margin-bottom: 5px;
+          margin: 2px 0;
           align-self: flex-start;
         }
         & .filesBtns {
           position: absolute;
-          top: 0;
+          bottom: 3px;
           left: calc(32% + 140px);
           margin-top: 3px;
         }
         & .filterBtn {
           position: absolute;
-          top: 0;
+          bottom: 2px;
           width: 12%;
           left: calc(35% + 280px);
           height: 34px;
           border-radius: 5px;
-          margin: 3px 0;
+          margin: 1px 0;
           margin-left: 5px;
         }
-        & div:nth-child(4).ant-select.ant-select-enabled {
+        & div:nth-child(3).ant-select.ant-select-enabled {
           position: absolute;
-          top: 0;
+          bottom: 1px;
           left: 30%;
           border: 1px solid #ebeced;
         }
@@ -1062,17 +1062,182 @@ div.Center--Big {
     & .panels-container {
       & .sort-annunci {
         & .barcodeBtn {
-          width: 132px;
+          width: 145px;
           margin-left: 0;
         }
         & .filesBtns {
-          left: 268px;
+          left: 280px;
+          margin: 0;
         }
         & .filterBtn {
-          left: 412px;
+          left: 420px;
         }
-        & div:nth-child(4).ant-select.ant-select-enabled {
-          left: 136px;
+        & div:nth-child(3).ant-select.ant-select-enabled {
+          left: 150px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 540px) {
+  div.Center,
+  div.Center--Big {
+    & .container-fluid.overview,
+    & .panels-container {
+      & .sort-annunci {
+        & .barcodeBtn {
+          width: 50%;
+          margin-left: 0;
+          margin-bottom: 50px;
+        }
+        & .filesBtns {
+          left: 5%;
+          width: 70%;
+          margin: 0;
+          & .exportPDF {
+            width: 30%;
+            margin-right: 20%;
+          }
+          & .ExportToExel {
+            width: 30%;
+          }
+        }
+        & .filterBtn {
+          width: 17%;
+          left: 78%;
+        }
+        & div:nth-child(3).ant-select.ant-select-enabled {
+          left: 52%;
+          bottom: 48px;
+          width: 48%;
+          & div {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .AdminColumns {
+    & div.container-fluid.overview {
+      & div.panels-container {
+        & div.row.no-gutters.max-width {
+          & table.transTable {
+            & tbody {
+              & td.wsNwp {
+                &:nth-child(2),
+                &:nth-child(4) {
+                  display: none;
+                }
+                &:nth-child(5) {
+                  display: table-cell !important;
+                  width: 15% !important;
+                  padding: 0 !important;
+                  & i {
+                    display: none;
+                  }
+                }
+                &:nth-child(3) {
+                  display: table-cell !important;
+                  flex-direction: column;
+                  align-items: flex-start !important;
+                  width: 70% !important;
+                  & div {
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding-left: 5%;
+                    margin: 0 0 !important;
+                    &:first-child {
+                      color: #5c5c5c;
+                      font-weight: 400;
+                      font-size: 14px;
+                      font-family: "Roboto";
+                    }
+                    &:nth-child(2) {
+                      color: #0078ff;
+                      font-weight: 400;
+                      font-size: 14px;
+                      font-family: "Roboto";
+                    }
+                  }
+                }
+                &:last-child {
+                  width: 15% !important;
+                  border-left: 1px solid #ebeced;
+                  border-right: 1px solid #ebeced;
+                  & i {
+                    font-size: 16px !important;
+                    font-weight: 300 !important;
+                    color: #5c5c5c;
+                  }
+                }
+              }
+            }
+            & thead {
+              & td.wsNwp {
+                &:nth-child(5) {
+                  display: table-cell !important;
+                }
+                &:nth-child(2),
+                &:nth-child(4) {
+                  display: none;
+                }
+                &:nth-child(3) {
+                  width: 70% !important;
+                  padding-left: 5% !important;
+                  margin: 0 !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .AdminColumns {
+    & div.container-fluid.overview {
+      & div.panels-container {
+        & div.row.no-gutters.max-width {
+          & table.transTable {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            & tr {
+              width: 100%;
+              height: 45px;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+            }
+            & td {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            & thead {
+              & tr {
+                & td.wsNwp {
+                  &:nth-child(5).right {
+                    width: 60% !important;
+                  }
+                }
+              }
+            }
+            & td.wsNwp {
+              &:nth-child(5).importoTd {
+                display: flex !important;
+                width: 30% !important;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
         }
       }
     }

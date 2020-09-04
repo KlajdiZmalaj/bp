@@ -192,10 +192,6 @@
   color: #fff;
 }
 
-.ticketDetails--filters__byTicket .fa-user {
-  color: #578a17;
-}
-
 .ticketDetails--filters__byTicket .fa-user.active, .ticketDetails--filters__byTicket .fa-user:hover {
   background-color: #578a17;
   color: #fff;

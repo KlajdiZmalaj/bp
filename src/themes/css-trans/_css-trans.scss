@@ -296,8 +296,8 @@
   }
 }
 .barcodeBtn {
-  background-color: #edeef0;
-  color: #f36520;
+  background-color: #ffffff;
+  color: #353d45;
   text-transform: capitalize;
   position: relative;
   bottom: 5px;
@@ -311,7 +311,8 @@
   .barcodeBtn {
     position: relative;
     top: 1px;
-    color: #0078ff;
+    background-color: #ffffff;
+    color: #353d45;
   }
 }
 .useCodePopUp {
@@ -336,19 +337,20 @@
 .filesBtns {
   display: flex;
   align-items: center;
-  width: 140px;
+  width: 144px;
   & .ExportToExel {
     width: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #edeef0;
+    border: 1px solid #353d45;
     border-radius: 5px;
     height: 42px;
-    color: #01a81b;
+    color: #353d45;
     & i {
       font-size: 18px;
-      font-weight: 300;
+      color: #353d45;
+      font-weight: 600;
       margin-right: 5px;
     }
     & span:first-child {
@@ -361,14 +363,14 @@
   }
   & .exportPDF {
     margin: 0 10px;
-    width: 60px;
+    width: 64px;
     display: flex;
     align-items: center;
-    border: 1px solid #edeef0;
+    border: 1px solid #353d45;
     border-radius: 5px;
     height: 42px;
     > div {
-      color: rgb(197, 39, 39);
+      color: #353d45;
       cursor: pointer;
       width: 100%;
       height: 100%;
@@ -377,7 +379,10 @@
       align-items: center;
     }
     & i {
-      padding-right: 5px;
+      font-size: 18px;
+      color: #353d45;
+      font-weight: 600;
+      margin-right: 5px;
     }
   }
 }
