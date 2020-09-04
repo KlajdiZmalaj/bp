@@ -1,6 +1,7 @@
 import React from "react";
 import { Tooltip } from "antd";
 import { longestWord, returnNumberThatPasses } from "./HelperFunct";
+import { numberWithCommas } from "utils/HelperFunc";
 
 const SpanFormater = ({
   Word,
@@ -10,8 +11,8 @@ const SpanFormater = ({
   formatWord,
   styles,
   link,
+  type,
 }) => {
-  console.log(Word, link);
   let props = {};
   let updatedWord, mySize, nrOfSpaces, theLongestWord, WordsLength;
   if (Word) {
@@ -28,7 +29,12 @@ const SpanFormater = ({
       props.className = `${myClassName}`;
     }
     if (formatWord === true) {
-      updatedWord = Word.charAt(0).toUpperCase() + Word.slice(1).toLowerCase();
+      if (type === "number") {
+        updatedWord = (numberWithCommas(Word) + "€").toString();
+      } else {
+        updatedWord =
+          Word.charAt(0).toUpperCase() + Word.slice(1).toLowerCase();
+      }
       mySize = mySize + parseInt(mySize / nrOfRows / 7);
     }
   }

@@ -44,9 +44,25 @@ class AdminListaUtenti extends React.Component {
           </span>
           <span
             style={
-              screenWidth <= 1700 &&
-              screenWidth >= 1320 &&
-              this.props.activeSkinId === -1
+              screenWidth <= 400 && this.props.activeSkinId === -1
+                ? {
+                    display: "flex",
+                    width: "45%",
+                    position: "relative",
+                    left: "-6%",
+                  }
+                : screenWidth <= 500 && this.props.activeSkinId === -1
+                ? {
+                    display: "flex",
+                    width: "45%",
+                    position: "relative",
+                    left: "-3%",
+                  }
+                : screenWidth <= 550 && this.props.activeSkinId === -1
+                ? { display: "flex", width: "45%" }
+                : screenWidth <= 1700 &&
+                  screenWidth >= 1320 &&
+                  this.props.activeSkinId === -1
                 ? { width: "10%", justifyContent: "flex-end", left: "0%" }
                 : screenWidth <= 950 && this.props.activeSkinId === -1
                 ? { justifyContent: "flex-end", left: "-3%" }

@@ -23,6 +23,8 @@ import Excel from "./Excel";
 import UseCode from "routes/views/UseCode";
 import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
+import { allRoles } from "config/index";
+
 const { Option } = Select;
 class Transazioni extends React.Component {
   state = {
@@ -41,7 +43,7 @@ class Transazioni extends React.Component {
     modalDetails: "",
     fromLabel: "",
     toLabel: "",
-    perPage: 10,
+    perPage: 25,
     showModalResponsive: false,
     picker: [
       {
@@ -275,15 +277,6 @@ class Transazioni extends React.Component {
     this.setState({ username: value });
   };
   componentDidMount() {
-    // console.log(
-    //   "moment",
-    //   moment().format("D"),
-    //   moment().format(),
-    //   ">>>",
-    //   moment()
-    //     .subtract(parseInt(moment().format("D")), "days")
-    //     .format()
-    // );
     const { username } = this.state;
 
     this.props.forAdmin
@@ -292,14 +285,14 @@ class Transazioni extends React.Component {
           "",
           "",
           1,
-          10,
+          25,
           this.props.activeSkinId
         )
-      : this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
+      : this.props.getPayments(username != "" ? username : "", "", "", 1, 25);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { forAdmin, paymentsForExcel } = this.props;
+    const { forAdmin, paymentsForExcel, screenWidth } = this.props;
     const {
       barcode,
       picker,
@@ -379,30 +372,63 @@ class Transazioni extends React.Component {
                   showModalResponsive: false,
                 });
               }}
+              Header={
+                <React.Fragment>
+                  <i className="fal fa-user-alt" aria-hidden="true"></i>
+                  <span>{modalDetails.agency_name}</span>
+                </React.Fragment>
+              }
+              beforeFooter={null}
+              Footer={null}
               Rows={
                 <React.Fragment>
-                  <ModalRow
-                    title="Date Ora"
-                    data={moment(modalDetails.executed_date).format(
-                      "DD/MM/YYYY HH:mm:ss"
-                    )}
-                  />
-                  <ModalRow title="Barcode" data={modalDetails.barcode} />
-                  <ModalRow title="User" data={modalDetails.agency_name} />
-                  <ModalRow title="Service" data={modalDetails.service_name} />
-                  <ModalRow
-                    title="Importo"
-                    data={numberWithCommas(modalDetails.price1000)}
-                  />
-                  <ModalRow
-                    title="Commissione"
-                    data={modalDetails.commissione}
-                  />
-                  <ModalRow
-                    title="Proviggione"
-                    data={modalDetails.percentage}
-                  />
-                  <ModalRow title="Saldo" data={modalDetails.saldo} />{" "}
+                  <div className="ServiceRow">
+                    <ModalRow
+                      title="Service"
+                      data={modalDetails.service_name}
+                    />
+                  </div>
+                  <div className="DateOraRow">
+                    <ModalRow
+                      title="Date Ora"
+                      data={moment(modalDetails.executed_date).format(
+                        "DD/MM/YYYY HH:mm:ss"
+                      )}
+                    />
+                  </div>
+                  <div className="OtherRow">
+                    <ModalRow
+                      title="Barcode"
+                      data={modalDetails.barcode}
+                      handleClick={() => {
+                        getCodiceTicket(
+                          modalDetails.barcode,
+                          modalDetails.service_name
+                        );
+                        this.showModal(
+                          this.state.index,
+                          modalDetails.barcode,
+                          modalDetails.agency_name,
+                          modalDetails.agency_address,
+                          modalDetails.agency_phone
+                        );
+                      }}
+                    />
+                    <ModalRow title="User" data={modalDetails.agency_name} />
+                    <ModalRow
+                      title="Importo"
+                      data={numberWithCommas(modalDetails.price1000)}
+                    />
+                    <ModalRow
+                      title="Commissione"
+                      data={modalDetails.commissione}
+                    />
+                    <ModalRow
+                      title="Proviggione"
+                      data={modalDetails.percentage}
+                    />
+                    <ModalRow title="Saldo" data={modalDetails.saldo} />
+                  </div>
                 </React.Fragment>
               }
             />
@@ -451,12 +477,7 @@ class Transazioni extends React.Component {
                 />
               )}
               <h1 className="heading-tab">Lista Movimenti</h1>
-              <button
-                onClick={() => this.setState({ hasVPT: true })}
-                className="barcodeBtn"
-              >
-                ricerca movimenti <i className="fal fa-barcode-read"></i>
-              </button>
+
               <div className="datepics ml-auto mr-2">
                 <Form
                   {...formItemLayout}
@@ -597,6 +618,12 @@ class Transazioni extends React.Component {
                       Filter
                     </button>
                   </div>
+                  <button
+                    onClick={() => this.setState({ hasVPT: true })}
+                    className="barcodeBtn"
+                  >
+                    ricerca movimenti <i className="fal fa-barcode-read"></i>
+                  </button>
                   <div className="filesBtns">
                     <Pdf
                       paymentExcelLoading={this.props.paymentExcelLoading}
@@ -625,6 +652,12 @@ class Transazioni extends React.Component {
                   >
                     <i className="fas fa-filter"></i>
                     Filter
+                  </button>
+                  <button
+                    onClick={() => this.setState({ hasVPT: true })}
+                    className="barcodeBtn"
+                  >
+                    ricerca movimenti <i className="fal fa-barcode-read"></i>
                   </button>
                   <div className="filesBtns">
                     <Pdf
@@ -672,6 +705,10 @@ class Transazioni extends React.Component {
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>
                         <td className=" wsNwp right">Saldo</td>
+                        {this.props.screenWidth <= 1050 && forAdmin && (
+                          <td></td>
+                        )}
+
                         {this.props.screenWidth <= 1050 && forAdmin ? (
                           <td className="wsNwp"></td>
                         ) : null}
@@ -749,22 +786,30 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp">
                                   <div className="bc">{item.barcode}</div>
                                 </td>
-                                <td className="wsNwp">
-                                  {" "}
-                                  <i
-                                    className="fal fa-user-alt"
-                                    aria-hidden="true"
-                                  ></i>{" "}
-                                  <Tooltip title={item.agency_name}>
-                                    <SpanFormater
-                                      myClassName="nomeTd"
-                                      Word={item.agency_name}
-                                      size={35}
-                                      nrOfRows={1}
-                                      formatWord={true}
-                                    />
-                                  </Tooltip>
-                                </td>
+                                {screenWidth <= 550 ? (
+                                  <td className="wsNwp">
+                                    <div>{item.agency_name}</div>
+                                    <div>{item.service_name}</div>
+                                  </td>
+                                ) : (
+                                  <td className="wsNwp">
+                                    {" "}
+                                    <i
+                                      className="fal fa-user-alt"
+                                      aria-hidden="true"
+                                    ></i>{" "}
+                                    <Tooltip title={item.agency_name}>
+                                      <SpanFormater
+                                        myClassName="nomeTd"
+                                        Word={item.agency_name}
+                                        size={35}
+                                        nrOfRows={1}
+                                        formatWord={true}
+                                      />
+                                    </Tooltip>
+                                  </td>
+                                )}
+
                                 <td className="wsNwp servizoTd">
                                   {item.service_name}
                                 </td>
@@ -808,10 +853,11 @@ class Transazioni extends React.Component {
                                       this.setState({
                                         showModalResponsive: true,
                                         modalDetails: item,
+                                        index: index,
                                       });
                                     }}
                                   >
-                                    <i className="fal fa-search-plus"></i>
+                                    <i className="fal fa-eye"></i>
                                   </td>
                                 )}
                               </tr>
@@ -851,7 +897,7 @@ class Transazioni extends React.Component {
                   }
                 />
                 <Select
-                  defaultValue="10"
+                  defaultValue="25"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
                     forAdmin
@@ -956,7 +1002,7 @@ class Transazioni extends React.Component {
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />
         </div>
-        {!forAdmin && this.state.hasVPT && (
+        {this.state.hasVPT && (
           <ClickOut
             onClickOut={() => {
               this.setState({ hasVPT: false });
