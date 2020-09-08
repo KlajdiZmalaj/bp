@@ -632,9 +632,9 @@ div.Prenotazioni {
       &--Other--Third {
         margin-bottom: 20px;
         & .Prenotazioni--Statistiche--Box--Informazioni {
-          margin: 0.8% 16px !important;
+          margin: 0.8% 17px !important;
           height: 181px;
-          width: calc(100% - 32px) !important;
+          width: calc(100% - 30px) !important;
           &--Parts {
             padding-right: 32px;
             padding-top: 15px;
@@ -683,7 +683,7 @@ div.Prenotazioni {
         justify-content: flex-start;
         align-items: center;
         padding-left: 8px;
-        width: 100%;
+        width: calc(100% - 13px);
         overflow: auto;
         margin-bottom: 10px;
         &::-webkit-scrollbar {
@@ -699,6 +699,7 @@ div.Prenotazioni {
           align-items: center;
         }
         & div.Right {
+          padding: 16px 13px;
           & div.Prenotazioni--Statistiche--DatePicker,
           div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
             width: 35px;

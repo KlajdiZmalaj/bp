@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import "./adminHeader.css";
 import Chat from "shared-components/Chat/Chat";
+import { Tooltip } from "antd";
 
 class AdminHeader extends React.Component {
   state = {
@@ -15,9 +16,24 @@ class AdminHeader extends React.Component {
       <div className="AdminHeader">
         {!small && (
           <div className="AdminHeader--Title">
-            <span>
-              <i className="fal fa-bars" onClick={this.props.handleClick}></i>
-            </span>
+            {window.innerWidth >= 550 && window.innerWidth <= 1320 ? (
+              <Tooltip title="Impossibile aprire il menu sullo schermo tra 550 px e 1320 px">
+                <span>
+                  <i
+                    className="fal fa-bars"
+                    onClick={this.props.handleClick}
+                  ></i>
+                </span>
+              </Tooltip>
+            ) : (
+              <span>
+                <i
+                  className="fal fa-bars"
+                  style={{ cursor: "pointer" }}
+                  onClick={this.props.handleClick}
+                ></i>
+              </span>
+            )}
             <span>
               {this.props.accountInfo.profile.role.name === "support"
                 ? "Support"

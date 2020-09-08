@@ -167,7 +167,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           <span
             style={
               Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
@@ -179,7 +179,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
               !Special && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}

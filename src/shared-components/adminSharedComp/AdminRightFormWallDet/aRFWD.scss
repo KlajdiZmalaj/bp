@@ -42,9 +42,8 @@
     position: absolute;
     width: calc(100% - 8.25vw);
     z-index: 7;
-    background: #272c31;
+    background: #353d45;
     color: #ffffff;
-    left: 0.1vw;
     display: flex;
     justify-content: flex-start;
     padding-left: 3vw;
@@ -53,7 +52,6 @@
     font-family: "Roboto";
     height: 7vh;
     box-sizing: border-box;
-    border-bottom: 1px solid #c53f3f;
   }
 
   & .Close {

@@ -54,6 +54,7 @@
       opacity: 0.3;
       margin: 0px 1.2px;
       width: 6px;
+
       &:hover {
         background-color: #0578fc;
         opacity: 1;
@@ -107,7 +108,7 @@
     }
   }
   & .AdminRightForm--Box--LeUltime--Dropdown {
-    background-color: #ffffff;
+    background-color: #272c31;
     overflow-y: auto;
     overflow-x: hidden;
     padding-top: 7vh;
@@ -126,15 +127,15 @@
         font-family: "Roboto";
         font-size: calc(1vw + 1vh);
         &.User {
-          color: #727272;
+          color: rgba(255, 255, 255, 0.9);
           font-weight: 400;
         }
         &.Id {
-          color: #4b4b4b;
+          color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
         }
         &.Date {
-          color: #727272;
+          color: #ffffff;
           font-weight: 400;
         }
         &.Price {
@@ -148,8 +149,8 @@
     position: absolute;
     width: calc(100% - 8.25vw);
     z-index: 7;
-    background-color: #ffffff;
-    left: 0.1vw;
+    background: #353d45;
+    color: #ffffff;
     display: flex;
     justify-content: flex-start;
     padding-left: 3vw;
@@ -158,7 +159,6 @@
     font-family: "Roboto";
     height: 7vh;
     box-sizing: border-box;
-    border-bottom: 1px solid #c53f3f;
   }
 
   & .Close {
