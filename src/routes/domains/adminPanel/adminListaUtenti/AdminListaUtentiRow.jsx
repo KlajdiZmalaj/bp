@@ -4,7 +4,6 @@ import AdminListaUtentiRowForLoop from "./AdminListaUtentiRowForLoop";
 import AuthActions from "redux-store/models/auth";
 import { allRoles } from "config/index";
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
-import { numberWithCommas } from "utils/HelperFunc";
 import { switchUserStatus } from "services/auth";
 import MainActions from "redux-store/models/main";
 import { message } from "antd";
@@ -24,6 +23,8 @@ class AdminListaUtentiRow extends React.Component {
       activeSkinId,
     } = this.props;
     const {} = this.state;
+    const Special =
+      activeSkinId === -1 && accountInfo.profile.role.name != "support";
     return (
       <div className="AdminListaUtentiRow--Complete">
         <div
@@ -44,7 +45,7 @@ class AdminListaUtentiRow extends React.Component {
           }}
         >
           <span>{itemList.id}</span>
-          {activeSkinId === -1 && accountInfo.profile.role.name != "support" ? (
+          {Special ? (
             <span>
               <div></div>
               <a
@@ -89,13 +90,21 @@ class AdminListaUtentiRow extends React.Component {
 
           <SpanFormater
             Word={itemList.rag_soc}
-            styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
+            styles={
+              screenWidth <= 1700 && screenWidth >= 1320 && Special
+                ? {
+                    width: "28%",
+                  }
+                : Special
+                ? { width: "16%" }
+                : {}
+            }
             size={
-              this.props.activeSkinId === -1 && screenWidth >= 1600
+              Special && screenWidth >= 1600
                 ? 30
-                : this.props.activeSkinId === -1 && screenWidth >= 1300
+                : Special && screenWidth >= 1300
                 ? 20
-                : this.props.activeSkinId === -1 && screenWidth >= 800
+                : Special && screenWidth >= 800
                 ? 16
                 : screenWidth <= 1120
                 ? 8
@@ -112,7 +121,19 @@ class AdminListaUtentiRow extends React.Component {
           />
           <SpanFormater
             styles={
-              this.props.activeSkinId === -1
+              screenWidth <= 550
+                ? {
+                    width: "20%",
+                    position: "relative",
+                    justifyContent: "flex-end",
+                    paddingRight: "1%",
+                  }
+                : screenWidth <= 1700 && screenWidth >= 1320 && Special
+                ? {
+                    width: "14%",
+                    justifyContent: "flex-end",
+                  }
+                : Special
                 ? {
                     width: "8%",
                     justifyContent: "flex-end",
@@ -126,10 +147,16 @@ class AdminListaUtentiRow extends React.Component {
             formatWord={true}
             nrOfRows={1}
           />
-          {activeSkinId === -1 ? null : (
+          {Special ? null : (
             <SpanFormater
               Word={itemList.city}
-              size={screenWidth <= 1600 ? 8 : 11}
+              size={
+                screenWidth <= 1700 && screenWidth >= 1320
+                  ? 13
+                  : screenWidth <= 1600
+                  ? 8
+                  : 11
+              }
               nrOfRows={1}
               formatWord={true}
             />
@@ -137,35 +164,35 @@ class AdminListaUtentiRow extends React.Component {
 
           <span
             style={
-              this.props.activeSkinId === -1
+              Special
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
-            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
+            className={`${Special ? "none" : ""}`}
           >
             {itemList.last_deposit}
           </span>
           <span
             style={
-              this.props.activeSkinId != -1 && screenWidth <= 950
+              !Special && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
-                : this.props.activeSkinId === -1
+                : Special
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
-            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
+            className={`${Special ? "none" : ""}`}
           >
             {itemList.last_login_time}
           </span>
           <span
             style={
-              this.props.activeSkinId === -1 && screenWidth <= 950
+              Special && screenWidth <= 950
                 ? { width: "38%" }
-                : this.props.activeSkinId === -1
+                : Special
                 ? { width: "24%", justifyContent: "space-around" }
                 : {}
             }
-            className={`${this.props.activeSkinId === -1 ? "activated" : ""}`}
+            className={`${Special ? "activated" : ""}`}
           >
             <button
               onClick={() => {
@@ -194,28 +221,40 @@ class AdminListaUtentiRow extends React.Component {
             <i
               id="lock"
               className={`fal fa-lock${
-                activeSkinId === -1 && itemList.status === 0
+                Special && itemList.status === 0
                   ? "-alt"
-                  : itemList.status === 1 && activeSkinId != -1
+                  : itemList.status === 1 && !Special
                   ? "-alt"
                   : "-open-alt active"
               }`}
               onClick={async () => {
-                const changeStatus = await (activeSkinId === -1 &&
-                itemList.status === 1
+                const changeStatus = await (Special && itemList.status === 1
                   ? 0
-                  : itemList.status === 1 && activeSkinId != -1
+                  : itemList.status === 1 && !Special
                   ? 2
                   : 1);
                 await switchUserStatus(
                   itemList.id,
                   changeStatus,
 
-                  () => {},
+                  () => {
+                    (changeStatus === 0 && Special) ||
+                    (changeStatus === 1 && !Special)
+                      ? message.error(
+                          `lo stato dell${
+                            itemList.username
+                          } ${`è cambiato : 'DISATTIVATO'`}`
+                        )
+                      : message.success(
+                          `lo stato dell${
+                            itemList.username
+                          } ${`è cambiato : 'ATTIVATO'`}`
+                        );
+                  },
                   accountInfo.role,
                   activeSkinId
                 );
-                if (this.props.activeSkinId === -1) {
+                if (Special) {
                   await this.props.getUsers(null, {
                     skin_id: 1,
                   });
@@ -225,18 +264,6 @@ class AdminListaUtentiRow extends React.Component {
                     backoffice: true,
                   });
                 }
-                await ((changeStatus === 0 && activeSkinId === -1) ||
-                (changeStatus === 1 && activeSkinId != -1)
-                  ? message.error(
-                      `lo stato dell${
-                        itemList.username
-                      } ${`è cambiato : 'DISATTIVATO'`}`
-                    )
-                  : message.success(
-                      `lo stato dell${
-                        itemList.username
-                      } ${`è cambiato : 'ATTIVATO'`}`
-                    ));
               }}
             ></i>
             <i
@@ -259,7 +286,7 @@ class AdminListaUtentiRow extends React.Component {
           </span>
           {screenWidth <= 550 && (
             <span
-              style={activeSkinId === -1 ? { marginLeft: "16%" } : {}}
+              style={Special ? { marginLeft: "16%" } : {}}
               onClick={(e) => {
                 editUtentiRespModal({
                   visibility: true,

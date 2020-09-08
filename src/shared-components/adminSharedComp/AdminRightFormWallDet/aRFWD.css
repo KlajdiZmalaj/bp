@@ -21,6 +21,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   z-index: 6;
+  background: #272c31;
 }
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown--Submit {
@@ -31,6 +32,8 @@
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
   margin: 3vh 27px;
   height: 8vh;
+  background: #272c31;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder i.fa-search {
@@ -45,7 +48,8 @@
   position: absolute;
   width: calc(100% - 8.25vw);
   z-index: 7;
-  background-color: #ffffff;
+  background: #272c31;
+  color: #ffffff;
   left: 0.1vw;
   display: -webkit-box;
   display: -ms-flexbox;

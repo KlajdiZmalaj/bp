@@ -273,7 +273,8 @@
   .Admin-Panel .backDrop {
     bottom: 60px;
     top: 101px;
-    left: 50px;
+    left: 0;
+    width: 100vw;
     height: calc(100vh - 161px);
   }
   .Admin-Panel .AdminHeader .AdminHeader--Box {
@@ -293,14 +294,15 @@
     margin-bottom: 100px;
   }
   .Admin-Panel .AdminHeader ~ .AdminHeader {
-    bottom: 0;
+    bottom: auto;
     top: calc(100vh - 60px);
     height: 60px;
   }
   .Admin-Panel .AdminHeader ~ .AdminHeader .AdminHeader--Category,
   .Admin-Panel .AdminHeader ~ .AdminHeader .AdminHeader--Category--Prenotazioni {
     color: #fff;
-    border-color: #0360cc;
+    border: none;
+    border-left: 1px solid #0360cc;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

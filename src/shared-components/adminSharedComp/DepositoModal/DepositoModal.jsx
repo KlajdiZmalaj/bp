@@ -13,7 +13,9 @@ const DepositoModal = ({
   activeSkinId,
   amountGiven,
   getUsers,
+  SecondClose,
 }) => {
+  console.log(SecondClose);
   const amountCheck = amountGiven ? amountGiven : 0;
   const [amount, setAmount] = useState(amountCheck);
   const [message, setMessage] = useState("");
@@ -98,6 +100,9 @@ const DepositoModal = ({
                       skin_id: activeSkinId,
                       backoffice: true,
                     });
+                  }
+                  if (SecondClose) {
+                    SecondClose();
                   }
                 }}
               >

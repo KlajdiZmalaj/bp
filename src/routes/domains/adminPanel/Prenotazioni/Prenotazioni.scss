@@ -26,6 +26,10 @@ div.Prenotazioni {
         background-color: #0578fc;
         opacity: 1;
       }
+      &.active {
+        background-color: #0578fc;
+        opacity: 1;
+      }
     }
     & .Date {
       height: 45px;
@@ -591,64 +595,128 @@ div.Prenotazioni {
     }
   }
 }
-@media (max-width: 520px) {
+@media (max-width: 550px) {
   div.Prenotazioni--Statistiche {
-    width: 100%;
-    &.Minimize {
-      min-height: 120px;
-      height: 120px;
+    & div.Graph {
+      position: relative !important;
+      min-width: auto !important;
+      max-width: auto !important;
+      width: 220px !important;
     }
-    &--Box--PriceBox {
+    & div.Prenotazioni--Statistiche--Box--PriceBox {
+      position: relative !important;
+      width: 190px !important;
+      padding: 0 !important;
+      min-width: auto !important;
+      max-width: auto !important;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       &--Price {
-        font-size: 20px !important;
+        width: 190px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 15px;
       }
-    }
-    & div {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      width: 100%;
+      &--Title {
+        width: 190px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 15px;
+      }
     }
     & .Prenotazioni--Statistiche {
+      &--Other--Third {
+        margin-bottom: 20px;
+        & .Prenotazioni--Statistiche--Box--Informazioni {
+          margin: 0.8% 16px !important;
+          height: 181px;
+          width: calc(100% - 32px) !important;
+          &--Parts {
+            padding-right: 32px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            height: 139px;
+          }
+
+          & .Prenotazioni--Statistiche--Box--Informazioni--Header {
+            padding-right: 0;
+            height: 44px;
+            min-height: 44px;
+            &--TotalInfo {
+              font-size: 20px;
+              & i.fa-angle-down,
+              & i.fa-angle-up {
+                font-size: 20px;
+                width: 32px;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 300;
+                color: #5c5c5c;
+                padding-right: 8px;
+                box-sizing: border-box;
+                font-family: "Font Awesome 5 Pro";
+              }
+            }
+          }
+          &.none {
+            height: 44px;
+            & .Prenotazioni--Statistiche--Box--Informazioni--Header {
+              background: transparent;
+              height: 44px;
+              &--TotalInfo {
+                font-size: 20px;
+                color: #5c5c5c;
+              }
+            }
+          }
+        }
+      }
       &--Other--Second {
-        margin-top: 100px;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 8px;
+        width: 100%;
+        overflow: auto;
+        margin-bottom: 10px;
+        &::-webkit-scrollbar {
+          width: 0px;
+          height: 0px;
+        }
       }
       &--First {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 145px;
-        justify-content: flex-start !important;
         & div.Prenotazioni--Statistiche--TitleHeaderLeft {
-          width: 100%;
-          padding: 20px 5px;
+          padding: 16px 20px !important;
+          min-height: 67px;
           display: flex;
-          justify-content: center;
           align-items: center;
         }
         & div.Right {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 0px 5px;
           & div.Prenotazioni--Statistiche--DatePicker,
           div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
-            width: 60%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-          }
-          & div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
-            width: 100%;
-            justify-content: space-around;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            position: relative;
+            color: transparent;
+            & i {
+              position: absolute;
+              height: 18px;
+              width: 16px;
+              top: calc((100% - 18px) / 2);
+              left: calc((100% - 16px) / 2);
+              color: #5c5c5c;
+            }
           }
         }
       }
-    }
-    & div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
-      font-size: 20px;
     }
   }
 }

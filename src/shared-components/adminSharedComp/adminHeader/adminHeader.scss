@@ -196,7 +196,8 @@
     & .backDrop {
       bottom: 60px;
       top: 101px;
-      left: 50px;
+      left: 0;
+      width: 100vw;
       height: calc(100vh - 161px);
     }
     & .AdminHeader {
@@ -220,13 +221,14 @@
       margin-bottom: 100px;
     }
     & .AdminHeader ~ .AdminHeader {
-      bottom: 0;
+      bottom: auto;
       top: calc(100vh - 60px);
       height: 60px;
       & .AdminHeader--Category,
       & .AdminHeader--Category--Prenotazioni {
         color: #fff;
-        border-color: #0360cc;
+        border: none;
+        border-left: 1px solid #0360cc;
         display: flex;
         justify-content: center;
         align-self: center;
@@ -270,4 +272,6 @@
 .timeH {
   margin-left: 15px !important;
   margin-right: auto !important;
+}
+@media (max-width: 550px) {
 }

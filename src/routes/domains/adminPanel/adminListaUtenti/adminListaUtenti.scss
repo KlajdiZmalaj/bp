@@ -5,7 +5,7 @@ div.Center--Big {
         font-weight: 600 !important;
       }
       & span.Username {
-        left: -12px !important;
+        left: -12px;
         max-width: 62% !important;
         margin: 0 !important;
         height: 51px;
@@ -13,7 +13,7 @@ div.Center--Big {
       }
       &--Child.children {
         & span.Username {
-          left: -12px !important;
+          left: -12px;
           height: 51px;
           max-height: 51px;
         }
@@ -99,7 +99,7 @@ div.Center--Big {
           font-weight: 400 !important;
           width: auto !important;
           position: relative !important;
-          left: -7px !important;
+          left: -7px;
           max-width: 62% !important;
           margin: 0 !important;
           height: 51px;
@@ -120,8 +120,7 @@ div.Center--Big {
             top: 5px;
             height: 51px;
             max-height: 51px;
-
-            left: -10px !important;
+            left: -10px;
           }
           & i.fa-user,
           .fa-store,
@@ -604,6 +603,7 @@ div.AdminColumns {
         &:nth-child(5) {
           width: 18% !important;
         }
+
         &.none {
           display: none;
         }
@@ -792,7 +792,7 @@ div.AdminColumns {
     div.AdminListaUtentiRow--Complete--Main--Child.children
     div
     span:nth-child(2) {
-    margin-right: 17px;
+    margin-right: 44px;
   }
   .AdminListaUtenti {
     & .AdminListaUtentiRow {
