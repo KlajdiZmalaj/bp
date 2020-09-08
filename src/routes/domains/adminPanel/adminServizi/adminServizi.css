@@ -197,6 +197,27 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   }
 }
 
+@media (max-width: 550px) {
+  div.Center .AdminServizi .AdminServiziItem,
+  div.Center--Big .AdminServizi .AdminServiziItem {
+    height: 183px;
+  }
+  div.Center .AdminServizi .AdminServiziItem img,
+  div.Center--Big .AdminServizi .AdminServiziItem img {
+    width: 80px;
+    height: auto;
+    max-height: 80px;
+  }
+  div.Center .AdminServizi .AdminServiziItem--Header--Prenotazione,
+  div.Center--Big .AdminServizi .AdminServiziItem--Header--Prenotazione {
+    font-size: 12px;
+  }
+  div.Center .AdminServizi .AdminServiziItem--Header--Title,
+  div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 450px) {
   div.Center .AdminServizi,
   div.Center--Big .AdminServizi {

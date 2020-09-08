@@ -175,7 +175,7 @@
 }
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown {
-  background-color: #ffffff;
+  background-color: #272c31;
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 7vh;
@@ -207,17 +207,17 @@
 }
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
-  color: #727272;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 400;
 }
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
-  color: #4b4b4b;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
-  color: #727272;
+  color: #ffffff;
   font-weight: 400;
 }
 
@@ -230,8 +230,8 @@
   position: absolute;
   width: calc(100% - 8.25vw);
   z-index: 7;
-  background-color: #ffffff;
-  left: 0.1vw;
+  background: #353d45;
+  color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -247,7 +247,6 @@
   height: 7vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-bottom: 1px solid #c53f3f;
 }
 
 .RightFormModal .Close {

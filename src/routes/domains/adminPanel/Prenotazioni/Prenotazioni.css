@@ -1009,9 +1009,9 @@ div.Prenotazioni .ticketDetails {
     margin-bottom: 20px;
   }
   div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni {
-    margin: 0.8% 16px !important;
+    margin: 0.8% 17px !important;
     height: 181px;
-    width: calc(100% - 32px) !important;
+    width: calc(100% - 30px) !important;
   }
   div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni--Parts {
     padding-right: 32px;
@@ -1074,7 +1074,7 @@ div.Prenotazioni .ticketDetails {
         -ms-flex-align: center;
             align-items: center;
     padding-left: 8px;
-    width: 100%;
+    width: calc(100% - 13px);
     overflow: auto;
     margin-bottom: 10px;
   }
@@ -1091,6 +1091,9 @@ div.Prenotazioni .ticketDetails {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right {
+    padding: 16px 13px;
   }
   div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker,
   div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {

@@ -786,14 +786,6 @@ div.AdminColumns {
   }
 }
 @media (max-width: 550px) {
-  div.AdminColumns
-    div.Center--Big
-    div.AdminListaUtentiRow
-    div.AdminListaUtentiRow--Complete--Main--Child.children
-    div
-    span:nth-child(2) {
-    margin-right: 44px;
-  }
   .AdminListaUtenti {
     & .AdminListaUtentiRow {
       & div.AdminListaUtentiRow--Complete--Main--Child.children {
@@ -802,6 +794,7 @@ div.AdminColumns {
             & span:nth-child(2) {
               width: calc(47% - 40px) !important;
               margin-left: calc(4% + 37px) !important;
+              margin-right: calc(8% + 3px) !important;
             }
           }
           & div.AdminListaUtentiRow--Complete--Main--Child.children {
@@ -810,6 +803,7 @@ div.AdminColumns {
                 & span:nth-child(2) {
                   width: calc(47% - 60px) !important;
                   margin-left: calc(6% + 48px) !important;
+                  margin-right: calc(6% + 12px) !important;
                 }
               }
             }
@@ -824,7 +818,7 @@ div.AdminColumns {
               width: 55%;
               margin-left: 4%;
             }
-            &:nth-child(4) {
+            &:nth-child(4):not(.Username) {
               width: 25%;
             }
             &:nth-child(1),
@@ -833,6 +827,8 @@ div.AdminColumns {
               display: none;
             }
             &:last-child:not(.Username) {
+              position: absolute;
+              right: 0;
               width: 16%;
               border-left: 1px solid #ebeced;
               border-right: 1px solid #ebeced;

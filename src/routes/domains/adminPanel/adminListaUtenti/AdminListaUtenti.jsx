@@ -7,7 +7,10 @@ import { connect } from "react-redux";
 
 class AdminListaUtenti extends React.Component {
   componentDidMount() {
-    if (this.props.activeSkinId === -1) {
+    const Special =
+      this.props.activeSkinId === -1 &&
+      this.props.accountInfo?.profile?.role?.name != "support";
+    if (Special) {
       this.props.getUsers(null, {
         skin_id: 1,
       });
@@ -20,7 +23,10 @@ class AdminListaUtenti extends React.Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.activeSkinId != prevProps.activeSkinId) {
-      if (this.props.activeSkinId === -1) {
+      const Special =
+        this.props.activeSkinId === -1 &&
+        this.props.accountInfo?.profile?.role?.name != "support";
+      if (Special) {
         this.props.getUsers(null, {
           skin_id: 1,
         });
@@ -33,7 +39,15 @@ class AdminListaUtenti extends React.Component {
     }
   }
   render() {
-    const { userList, LoaderAU, screenWidth } = this.props;
+    const {
+      userList,
+      LoaderAU,
+      screenWidth,
+      activeSkinId,
+      accountInfo,
+    } = this.props;
+    const Special =
+      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
     return (
       <div className="AdminListaUtenti">
         <div className="AdminListaUtenti--Header">
@@ -41,13 +55,11 @@ class AdminListaUtenti extends React.Component {
           <span>USERNAME</span>
           <span
             style={
-              screenWidth <= 1700 &&
-              screenWidth >= 1320 &&
-              this.props.activeSkinId === -1
+              screenWidth <= 1700 && screenWidth >= 1320 && Special
                 ? {
                     width: "28%",
                   }
-                : this.props.activeSkinId === -1
+                : Special
                 ? { width: "16%" }
                 : {}
             }
@@ -56,44 +68,32 @@ class AdminListaUtenti extends React.Component {
           </span>
           <span
             style={
-              screenWidth <= 400 && this.props.activeSkinId === -1
-                ? {
-                    display: "flex",
-                    width: "45%",
-                    position: "relative",
-                    left: "-2%",
-                  }
-                : screenWidth <= 500 && this.props.activeSkinId === -1
-                ? {
-                    display: "flex",
-                    width: "45%",
-                    position: "relative",
-                    left: "1%",
-                  }
-                : screenWidth <= 550 && this.props.activeSkinId === -1
-                ? { display: "flex", width: "45%", paddingLeft: "3%" }
-                : screenWidth <= 1700 &&
-                  screenWidth >= 1320 &&
-                  this.props.activeSkinId === -1
+              screenWidth <= 400 && Special
+                ? { paddingLeft: "8%" }
+                : screenWidth <= 500 && Special
+                ? { paddingLeft: "10%" }
+                : screenWidth <= 550 && Special
+                ? { paddingLeft: "12%" }
+                : screenWidth <= 1700 && screenWidth >= 1320 && Special
                 ? {
                     width: "14% !important",
                     justifyContent: "flex-end",
                     left: "0%",
                   }
-                : screenWidth <= 950 && this.props.activeSkinId === -1
+                : screenWidth <= 950 && Special
                 ? { justifyContent: "flex-end", left: "-3%" }
-                : this.props.activeSkinId === -1
+                : Special
                 ? { width: "10%", justifyContent: "flex-end", left: "-2%" }
                 : { justifyContent: "flex-end", left: "-1%" }
             }
           >
             CREDITO
           </span>
-          {this.props.activeSkinId === -1 ? null : <span>CITY</span>}
+          {Special ? null : <span>CITY</span>}
           <span
-            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
+            className={`${Special ? "none" : ""}`}
             style={
-              this.props.activeSkinId === -1
+              Special
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
@@ -101,11 +101,11 @@ class AdminListaUtenti extends React.Component {
             ULTIMO DEPOSIT
           </span>
           <span
-            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
+            className={`${Special ? "none" : ""}`}
             style={
-              this.props.activeSkinId != -1 && screenWidth <= 950
+              !Special && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
-                : this.props.activeSkinId === -1
+                : Special
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
@@ -114,13 +114,13 @@ class AdminListaUtenti extends React.Component {
           </span>
           <span
             style={
-              this.props.activeSkinId === -1 && screenWidth <= 950
+              Special && screenWidth <= 950
                 ? { width: "38%" }
-                : this.props.activeSkinId === -1
+                : Special
                 ? { width: "24%" }
                 : {}
             }
-            className={`${this.props.activeSkinId === -1 ? "activated" : ""}`}
+            className={`${Special ? "activated" : ""}`}
           >
             AZIONI
           </span>
@@ -152,5 +152,6 @@ const mapStateToProps = (state) => ({
   userList: state.main.userList,
   LoaderAU: state.main.LoaderAU,
   screenWidth: state.main.screenWidth,
+  accountInfo: state.auth.accountInfo,
 });
 export default connect(mapStateToProps, { ...MainActions })(AdminListaUtenti);

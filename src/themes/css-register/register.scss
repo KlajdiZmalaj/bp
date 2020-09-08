@@ -552,14 +552,16 @@
     flex-flow: row;
     border-bottom: 1px solid #b8bbc0;
 
-    @media (max-width: 1024px) {
-      flex-flow: column;
+    @media (max-width: 800px) {
+      &:nth-child(2) {
+        flex-flow: column;
+        .newReg--row__col {
+          width: 100% !important;
+        }
+      }
     }
     &__col {
       width: calc(100% / 3);
-      @media (max-width: 1024px) {
-        width: calc(100%);
-      }
       padding: 20px 5px;
       display: flex;
       flex-flow: row wrap;
@@ -870,20 +872,28 @@
   display: flex;
 }
 @media (max-width: 800px) {
-  body .userDetailPopup {
-    width: 100vw;
-    top: 0;
-    left: 0;
-    height: 90vh;
-    margin-left: 0;
+  .ant-select.ant-select-enabled {
+    & div {
+      height: 100%;
+    }
   }
-  .newReg--row {
+  .newReg--row.lastRow {
     display: flex;
-    flex-flow: column;
+    align-items: center;
+    .newReg--row__col {
+      padding: 10px 5px;
+      &:nth-child(1) {
+        padding: 10px 5px;
+        width: 7% !important;
+        min-width: 123px;
+      }
+    }
   }
-  .newReg--row__col {
-    width: 100% !important;
-    height: auto;
+  body .userDetailPopup {
+    width: 96vw;
+    left: 2vw;
+    top: 16%;
+    margin: 0;
   }
 }
 .checkCol {

@@ -35,6 +35,10 @@
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+.bodyAdmin ::-webkit-scrollbar-thumb {
+  background: #0078ff;
+}
+
 .bodyAdmin .calendarWrapper {
   height: 354px;
 }
@@ -1878,7 +1882,7 @@ div.Center--Big tbody .right .Importo i {
     -webkit-box-align: start !important;
         -ms-flex-align: start !important;
             align-items: flex-start !important;
-    width: 70% !important;
+    width: 54% !important;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(3) div {
     width: 100%;
@@ -1916,7 +1920,7 @@ div.Center--Big tbody .right .Importo i {
     display: none;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead td.wsNwp:nth-child(3) {
-    width: 70% !important;
+    width: 54% !important;
     padding-left: 5% !important;
     margin: 0 !important;
   }

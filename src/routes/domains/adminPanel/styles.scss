@@ -26,6 +26,10 @@
   }
 }
 .bodyAdmin {
+  & ::-webkit-scrollbar-thumb {
+    background: #353d45;
+  }
+
   & .calendarWrapper {
     height: 354px;
   }
@@ -79,7 +83,7 @@
   & .userDetailPopup {
     & .newReg--row {
       &::-webkit-scrollbar-thumb {
-        background: #0078ff;
+        background: #353d45;
       }
     }
     & .checkCol button {
@@ -1169,7 +1173,7 @@ div.Center--Big {
                   display: table-cell !important;
                   flex-direction: column;
                   align-items: flex-start !important;
-                  width: 70% !important;
+                  width: 54% !important;
                   & div {
                     width: 100%;
                     overflow: hidden;
@@ -1212,7 +1216,7 @@ div.Center--Big {
                   display: none;
                 }
                 &:nth-child(3) {
-                  width: 70% !important;
+                  width: 54% !important;
                   padding-left: 5% !important;
                   margin: 0 !important;
                 }
@@ -1351,6 +1355,6 @@ body.bodyAdmin,
     height: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #0078ff;
+    background: #353d45;
   }
 }

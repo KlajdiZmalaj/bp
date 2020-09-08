@@ -138,6 +138,29 @@ div.Center--Big {
     }
   }
 }
+@media (max-width: 550px) {
+  div.Center,
+  div.Center--Big {
+    .AdminServizi {
+      .AdminServiziItem {
+        height: 183px;
+        & img {
+          width: 80px;
+          height: auto;
+          max-height: 80px;
+        }
+        &--Header {
+          &--Prenotazione {
+            font-size: 12px;
+          }
+          &--Title {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
 @media (max-width: 450px) {
   div.Center,
   div.Center--Big {

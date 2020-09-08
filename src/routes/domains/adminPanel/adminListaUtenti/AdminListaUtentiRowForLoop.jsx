@@ -24,7 +24,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
     } = this.props;
     const {} = this.state;
     const Special =
-      activeSkinId === -1 && accountInfo.profile.role.name != "support";
+      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
 
     return (
       <div className="AdminListaUtentiRow--Complete">
@@ -167,7 +167,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           <span
             style={
               Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
@@ -179,7 +179,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
               !Special && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
@@ -270,6 +270,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
             ></i>
             <i
               onClick={(e) => {
+                this.props.getAgents(this.props.activeSkinId);
                 e.preventDefault();
                 e.stopPropagation();
                 itemList && itemList.role === "user"

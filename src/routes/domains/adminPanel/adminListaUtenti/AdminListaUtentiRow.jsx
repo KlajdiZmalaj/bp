@@ -24,7 +24,7 @@ class AdminListaUtentiRow extends React.Component {
     } = this.props;
     const {} = this.state;
     const Special =
-      activeSkinId === -1 && accountInfo.profile.role.name != "support";
+      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
     return (
       <div className="AdminListaUtentiRow--Complete">
         <div
@@ -35,7 +35,9 @@ class AdminListaUtentiRow extends React.Component {
             if (
               screenWidth <= 950 &&
               screenWidth >= 550 &&
-              e.target.tagName != "I"
+              e.target.tagName != "I" &&
+              e.target.tagName != "BUTTON" &&
+              e.target.tagName != "A"
             ) {
               editUtentiRespModal({
                 visibility: true,
@@ -165,7 +167,7 @@ class AdminListaUtentiRow extends React.Component {
           <span
             style={
               Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
@@ -177,7 +179,7 @@ class AdminListaUtentiRow extends React.Component {
               !Special && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
@@ -268,6 +270,7 @@ class AdminListaUtentiRow extends React.Component {
             ></i>
             <i
               onClick={(e) => {
+                this.props.getAgents(this.props.activeSkinId);
                 e.preventDefault();
                 e.stopPropagation();
                 itemList && itemList.role === "user"

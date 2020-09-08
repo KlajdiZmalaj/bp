@@ -40,7 +40,6 @@ class AdminRightFormStatisticheDetails extends React.Component {
       ModalOrNo,
       Close,
     } = this.props;
-    console.log(graphData);
     return (
       <React.Fragment>
         {ModalOrNo === true ? (

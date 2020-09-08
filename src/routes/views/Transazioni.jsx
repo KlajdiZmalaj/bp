@@ -500,9 +500,7 @@ class Transazioni extends React.Component {
                   onSubmit={this.handleSubmit}
                   className="filters"
                 >
-                  {(get(accountInfo, "profile.role.name") === "super_admin" ||
-                    get(accountInfo, "profile.role.name") === "agent" ||
-                    get(accountInfo, "profile.role.name") === "main_admin") && (
+                  {
                     <div className="dal">
                       {
                         <Form.Item>
@@ -539,7 +537,7 @@ class Transazioni extends React.Component {
                       }
                       <i className="fal fa-search"></i>
                     </div>
-                  )}
+                  }
 
                   <div
                     className="dal calendar"
@@ -564,12 +562,14 @@ class Transazioni extends React.Component {
                 onChange={(value) => {
                   this.changeSelected(parseInt(value));
                   this.fromFilterTop(false);
-                  console.log(value);
                 }}
               >
                 {filters.map((item, index) => {
                   return (
-                    <Option value={index.toString()}>
+                    <Option
+                      value={index.toString()}
+                      key={(item.name + index).toString()}
+                    >
                       <span
                         style={{
                           width: "100%",
@@ -740,10 +740,10 @@ class Transazioni extends React.Component {
                       {!payments.message &&
                       (paymentsO || []) &&
                       paymentsO.length === 0 ? (
-                        <tr class="NoData">
+                        <tr className="NoData">
                           <td colSpan="8">
                             {" "}
-                            <i class="fal fa-info-circle"></i>
+                            <i className="fal fa-info-circle"></i>
                             <span>No Data</span>
                           </td>
                         </tr>

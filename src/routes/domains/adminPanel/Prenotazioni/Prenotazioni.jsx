@@ -53,7 +53,6 @@ const InformazioniDependeAlStato = ({
   nrOfShopping,
   screenWidth,
 }) => {
-  console.log(screenWidth);
   const [visibility, setVisibility] = useState(true);
   return (
     <div
