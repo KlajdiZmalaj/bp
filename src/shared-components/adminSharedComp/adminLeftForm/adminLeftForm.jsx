@@ -13,8 +13,6 @@ class AdminLeftForm extends React.Component {
     ultModal: false,
   };
   async componentDidMount() {
-    await this.props.getStatistiche(this.props.activeSkinId);
-    await this.props.getWidgetPayments(this.props.activeSkinId);
     await setTimeout(() => {
       const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
       this.props.editStatModal({
@@ -36,8 +34,6 @@ class AdminLeftForm extends React.Component {
   }
   async componentDidUpdate(prevProps) {
     if (this.props.activeSkinId != prevProps.activeSkinId) {
-      await this.props.getStatistiche(this.props.activeSkinId);
-      await this.props.getWidgetPayments(this.props.activeSkinId);
       await setTimeout(() => {
         const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
         this.props.editStatModal({
@@ -169,6 +165,7 @@ class AdminLeftForm extends React.Component {
                   }}
                 >
                   <i className="fal fa-analytics"></i>
+                  {screenWidth <= 550 && <span>STATISTICHE</span>}
                 </div>
                 <div
                   className="AdminLeftForm--LastBox--Box"
@@ -190,6 +187,7 @@ class AdminLeftForm extends React.Component {
                   }}
                 >
                   <i className="fal fa-heart-rate"></i>
+                  {screenWidth <= 550 && <span>TRANSAZIONI</span>}
                 </div>
                 <div
                   className="AdminLeftForm--LastBox--Box"
@@ -211,12 +209,15 @@ class AdminLeftForm extends React.Component {
                   }}
                 >
                   <i className="fal fa-wallet"></i>
+                  {screenWidth <= 550 && <span>DEP / ADDEB</span>}
                 </div>
               </React.Fragment>
             ) : null}
-            <div className="AdminLeftForm--LastBox--Box">
-              <Chat />
-            </div>
+            {!this.props.small && (
+              <div className="AdminLeftForm--LastBox--Box">
+                <Chat />
+              </div>
+            )}
             <div className="AdminLeftForm--LastBox--Box">
               <i className="fal fa-envelope"></i>
               <span>MESSAGGI</span>

@@ -26,7 +26,6 @@ const open = (screenWidth, innerHeight) => {
   printWindow.document.write(htmlPop);
 };
 const Chat = ({ screenWidth }) => {
-  console.log(window.innerHeight);
   return (
     <React.Fragment>
       <div

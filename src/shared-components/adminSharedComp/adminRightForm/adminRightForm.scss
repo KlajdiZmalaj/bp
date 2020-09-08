@@ -5,11 +5,10 @@
   bottom: 0;
   top: 101px;
   min-height: calc(100vh - 101px);
-  background-color: #ffffff;
+  background-color: #272c31;
   overflow: auto;
-  border: 1px solid #ebeced;
   &::-webkit-scrollbar-thumb {
-    background: #0078ff;
+    background: #353d45;
   }
 
   & .Tranzacioni {
@@ -26,18 +25,18 @@
       justify-content: center;
       align-items: center;
       height: 62px;
-      border: 1px solid #ebeced;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
       & span {
         font-weight: 300;
         &:first-child {
           font-family: "Roboto", sans-serif;
           font-size: 10px;
           font-weight: 400;
-          color: #5c5c5c;
+          color: rgba(255, 255, 255, 0.5);
         }
         &:nth-child(2) {
           font-size: 16px;
-          color: #0578fc;
+          color: #ffffff;
           font-family: "Roboto", sans-serif;
         }
       }
@@ -51,16 +50,20 @@
     padding: 0px 5%;
     padding-top: 50px;
     box-sizing: border-box;
-    background-color: #f3f3f4;
+    background-color: #272c31;
     justify-content: flex-end;
     align-items: flex-end;
     position: relative;
     &--Element {
-      background-color: #0377fc;
-      opacity: 0.3;
+      background-color: #ffffff;
+      opacity: 0.2;
       margin: 0px 0.305%;
       width: 2.465%;
       &:hover {
+        background-color: #0578fc;
+        opacity: 1;
+      }
+      &.active {
         background-color: #0578fc;
         opacity: 1;
       }
@@ -87,7 +90,7 @@
             font-family: "Roboto", sans-serif;
             font-size: 31px;
             font-weight: 100;
-            color: #5c5c5c;
+            color: #ffffff;
           }
           &:nth-child(2) {
             display: flex;
@@ -107,6 +110,7 @@
         > i {
           font-size: 12px;
           padding-top: 12px;
+          color: #ffffff;
         }
         padding: 1px 3px;
       }
@@ -139,7 +143,7 @@
     align-items: center;
     min-height: 98vh;
     height: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     position: fixed;
     top: 101px;
     right: 0;
@@ -217,12 +221,11 @@
       margin: 5px auto;
     }
     & div.ContainerOfData:nth-child(1) {
-      zoom: 1;
+      zoom: 0.95;
       overflow: auto;
-
       width: 100%;
       padding: 0;
-      padding-right: 20px;
+      padding-right: 5px;
       margin: 34px 0;
       height: calc(96vh - 145px);
       box-sizing: border-box;
@@ -231,7 +234,7 @@
         height: 4px;
       }
       &::-webkit-scrollbar-thumb {
-        background: #0078ff;
+        background: #353d45;
       }
 
       & .headerModal {
@@ -253,8 +256,8 @@
 
   &--Box {
     font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 13px;
     width: 100%;
     padding: 15px 0;
     padding-right: 5%;
@@ -263,8 +266,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ebeced;
-    color: #5c5c5c;
+    background: #353d45;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     &--LeUltime--Dropdown {
       width: 100%;
       display: flex;
@@ -277,43 +281,51 @@
         height: 40px;
         width: 100%;
         justify-content: space-between;
-        border-bottom: 1px solid #ebeced;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         padding: 0 5px;
         align-items: center;
         &--Data {
           font-size: 11px;
           font-family: "Roboto", sans-serif;
           display: flex;
-          margin: 0 2%;
           box-sizing: border-box;
           align-items: center;
           text-overflow: ellipsis;
           overflow: hidden;
+          margin-left: 1%;
+          margin-right: 0.2%;
+          &:last-child {
+            margin-left: 0.2%;
+            margin-right: 1%;
+          }
           &.Date {
-            color: #727272;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
             font-size: 10px;
-            width: 28%;
+            width: 23.5%;
             justify-content: flex-start;
           }
           &.Id {
-            color: #4b4b4b;
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 500;
-            width: 27%;
+            font-size: 10.5px;
+            width: 30%;
             justify-content: flex-start;
             padding: 0 2px;
           }
           &.User {
-            color: #727272;
+            color: #ffffff;
             font-weight: 400;
-            width: 30%;
+            font-size: 10px;
+            text-transform: uppercase;
+            width: 32%;
             justify-content: flex-start;
             padding: 0 2px;
           }
           &.Price {
             color: #0078ff;
             font-weight: 500;
-            width: 15%;
+            width: 12%;
             justify-content: flex-end;
           }
         }
@@ -363,7 +375,7 @@
         flex-direction: column;
         width: 100%;
         & div.InputHolder {
-          border: 1px solid #ebeced;
+          border: 1px solid rgba(255, 255, 255, 0.1);
           margin: 11px 27px;
           height: 40px;
           box-sizing: border-box;
@@ -389,8 +401,13 @@
             display: flex;
             height: 100%;
             justify-content: center;
+            background: #272c31;
             align-items: center;
             width: 85%;
+            color: #ffffff;
+            &::placeholder {
+              color: #ffffff;
+            }
           }
           > i {
             position: absolute;
@@ -402,9 +419,10 @@
             align-items: center;
             width: 14%;
             font-size: 14px;
+            color: #ffffff;
             &.fa-check {
               color: #00ac5c;
-              border-left: 1px solid #ebeced;
+              border-left: 1px solid rgba(255, 255, 255, 0.1);
               font-size: 15px;
             }
           }
@@ -420,6 +438,7 @@
             font-size: 18px;
             font-weight: 300;
             font-family: "Roboto", sans-serif;
+            color: #ffffff;
           }
         }
         &--Submit {
@@ -449,15 +468,17 @@
             align-items: center;
             padding: 10px 10px;
             border: none;
-            background-color: #ffffff;
+            background-color: #353d45;
             font-size: 14px;
             font-family: "Roboto", sans-serif;
-            border: 1px solid #ebeced;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: bold;
           }
           & button:nth-child(1) {
             border-bottom: 2px solid #00ac5c;
             position: relative;
+            color: #ffffff;
+
             & svg {
               display: none;
             }
@@ -476,6 +497,7 @@
           }
           & button:nth-child(2) {
             border-bottom: 2px solid #ffb100;
+            color: #ffffff;
             position: relative;
             & svg {
               display: none;

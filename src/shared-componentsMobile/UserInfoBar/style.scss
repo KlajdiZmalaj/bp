@@ -1,0 +1,21 @@
+.userBar {
+  background-color: #3c4349;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  height: 36px;
+  justify-content: space-between;
+  padding: 0 25px;
+  > span {
+    text-align: center;
+    justify-self: center;
+    margin: 0 auto;
+  }
+  > div {
+    display: flex;
+  }
+  div > span {
+    color: var(--accent-bg);
+  }
+}

@@ -5,9 +5,42 @@
   background-color: #ffffff;
 }
 
+.Admin-Panel .ant-select.ant-select-enabled:nth-child(3) {
+  border: 1px solid #353d45;
+  height: 35px;
+  border-radius: 4px;
+}
+
+.Admin-Panel .ant-select.ant-select-enabled:nth-child(3) div {
+  height: 100%;
+}
+
+.Admin-Panel .far.fa-comments {
+  padding-right: 10px;
+}
+
+@media (max-width: 1320px) {
+  .Admin-Panel .far.fa-comments {
+    padding-right: 0px;
+  }
+}
+
+.Container .barcodeBtn {
+  height: 100%;
+  top: 0 !important;
+}
+
 .bodyAdmin {
   background-color: #ffffff;
   background-color: rgba(0, 0, 0, 0.03);
+}
+
+.bodyAdmin ::-webkit-scrollbar-thumb {
+  background: #353d45;
+}
+
+.bodyAdmin .calendarWrapper {
+  height: 354px;
 }
 
 .bodyAdmin .exportPDF > div {
@@ -75,7 +108,7 @@
 }
 
 .bodyAdmin .userDetailPopup .newReg--row::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 
 .bodyAdmin .userDetailPopup .checkCol button {
@@ -480,9 +513,30 @@ div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper,
 div.Center--Big .panels-container .sort-annunci .calendarWrapper {
   position: absolute;
   z-index: 3;
-  left: 0;
+  left: 270px;
+  top: 53px;
   -webkit-box-shadow: 0 12px 20px 1px #0000008c;
           box-shadow: 0 12px 20px 1px #0000008c;
+}
+
+@media (max-width: 1650px) {
+  div.Center .container-fluid.overview .sort-annunci .calendarWrapper,
+  div.Center .panels-container .sort-annunci .calendarWrapper,
+  div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper,
+  div.Center--Big .panels-container .sort-annunci .calendarWrapper {
+    top: 40px;
+    left: 120px;
+  }
+}
+
+@media (max-width: 795px) {
+  div.Center .container-fluid.overview .sort-annunci .calendarWrapper,
+  div.Center .panels-container .sort-annunci .calendarWrapper,
+  div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper,
+  div.Center--Big .panels-container .sort-annunci .calendarWrapper {
+    right: 0;
+    left: auto;
+  }
 }
 
 div.Center .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisplay,
@@ -598,8 +652,38 @@ div.Center .container-fluid.overview .sort-annunci .dal,
 div.Center .panels-container .sort-annunci .dal,
 div.Center--Big .container-fluid.overview .sort-annunci .dal,
 div.Center--Big .panels-container .sort-annunci .dal {
+  position: relative;
   border-right: 1px solid #ebeced;
   border-left: 1px solid #ebeced !important;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal i.fal.fa-search,
+div.Center .panels-container .sort-annunci .dal i.fal.fa-search,
+div.Center--Big .container-fluid.overview .sort-annunci .dal i.fal.fa-search,
+div.Center--Big .panels-container .sort-annunci .dal i.fal.fa-search {
+  position: absolute;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 2%;
+  left: 90%;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal .ant-select-selection__placeholder,
+div.Center .panels-container .sort-annunci .dal .ant-select-selection__placeholder,
+div.Center--Big .container-fluid.overview .sort-annunci .dal .ant-select-selection__placeholder,
+div.Center--Big .panels-container .sort-annunci .dal .ant-select-selection__placeholder {
+  padding-left: 10px;
 }
 
 div.Center .container-fluid.overview .sort-annunci .dal div:first-child,
@@ -614,6 +698,40 @@ div.Center--Big .panels-container .sort-annunci .dal div:first-child {
   display: -ms-flexbox;
   display: flex;
   width: 270px;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal.calendar,
+div.Center .panels-container .sort-annunci .dal.calendar,
+div.Center--Big .container-fluid.overview .sort-annunci .dal.calendar,
+div.Center--Big .panels-container .sort-annunci .dal.calendar {
+  position: relative;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal.calendar span,
+div.Center .panels-container .sort-annunci .dal.calendar span,
+div.Center--Big .container-fluid.overview .sort-annunci .dal.calendar span,
+div.Center--Big .panels-container .sort-annunci .dal.calendar span {
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div.Center .container-fluid.overview .sort-annunci .dal.calendar i,
+div.Center .panels-container .sort-annunci .dal.calendar i,
+div.Center--Big .container-fluid.overview .sort-annunci .dal.calendar i,
+div.Center--Big .panels-container .sort-annunci .dal.calendar i {
+  position: absolute;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 98%;
 }
 
 div.Center .container-fluid.overview .sort-annunci .ant-select-selection__rendered,
@@ -967,6 +1085,18 @@ div.Center--Big tbody .right .Importo i {
             justify-content: flex-start;
     padding-right: 0;
   }
+  div.Center .container-fluid.overview .sort-annunci .ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci .ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci .ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci .ant-select.ant-select-enabled {
+    width: 150px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .ant-select.ant-select-enabled div,
+  div.Center .panels-container .sort-annunci .ant-select.ant-select-enabled div,
+  div.Center--Big .container-fluid.overview .sort-annunci .ant-select.ant-select-enabled div,
+  div.Center--Big .panels-container .sort-annunci .ant-select.ant-select-enabled div {
+    width: 100%;
+  }
   div.Center .container-fluid.overview .sort-annunci .filterBtn,
   div.Center .panels-container .sort-annunci .filterBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
@@ -983,40 +1113,25 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .sort-annunci ul li {
     margin: 0 5px;
   }
+  div.Center .container-fluid.overview .sort-annunci .datepics .dal i.fal.fa-search,
+  div.Center .panels-container .sort-annunci .datepics .dal i.fal.fa-search,
+  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal i.fal.fa-search,
+  div.Center--Big .panels-container .sort-annunci .datepics .dal i.fal.fa-search {
+    left: 85%;
+  }
   div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
   div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
   div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
   div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
-    width: 120px;
+    width: 140px;
   }
   div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
   div.Center .panels-container .sort-annunci .datepics .dal.calendar,
   div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
   div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
     padding: 0 10px;
-    min-width: auto;
-  }
-}
-
-@media (max-width: 1400px) {
-  div.Center .container-fluid.overview .sort-annunci ul li,
-  div.Center .panels-container .sort-annunci ul li,
-  div.Center--Big .container-fluid.overview .sort-annunci ul li,
-  div.Center--Big .panels-container .sort-annunci ul li {
-    margin: 0 5px;
-    font-size: 12px;
-  }
-  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
-  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
-  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
-  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
-    width: 120px;
-  }
-  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
-  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
-  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
-  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
-    padding: 0 10px;
+    padding-right: 20px;
+    width: 140px;
     min-width: auto;
   }
 }
@@ -1100,20 +1215,6 @@ div.Center--Big tbody .right .Importo i {
     margin: 0 3px;
     margin-left: 7px;
     width: 82px;
-  }
-  div.Center .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
-  div.Center .panels-container .sort-annunci .datepics .dal div:first-child,
-  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal div:first-child,
-  div.Center--Big .panels-container .sort-annunci .datepics .dal div:first-child {
-    width: 110px;
-    font-size: 12.5px;
-  }
-  div.Center .container-fluid.overview .sort-annunci .datepics .dal.calendar,
-  div.Center .panels-container .sort-annunci .datepics .dal.calendar,
-  div.Center--Big .container-fluid.overview .sort-annunci .datepics .dal.calendar,
-  div.Center--Big .panels-container .sort-annunci .datepics .dal.calendar {
-    padding: 0 10px;
-    min-width: auto;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
@@ -1394,24 +1495,25 @@ div.Center--Big tbody .right .Importo i {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  div.Center .container-fluid.overview .sort-annunci .barcodeBtn,
-  div.Center .panels-container .sort-annunci .barcodeBtn,
-  div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
-  div.Center--Big .panels-container .sort-annunci .barcodeBtn {
-    width: 26%;
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center .panels-container .sort-annunci .barCodeExport,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport {
+    width: auto;
+    left: 39%;
+    position: relative;
     height: 38px;
     margin: 2px 0;
     -ms-flex-item-align: start;
         align-self: flex-start;
   }
-  div.Center .container-fluid.overview .sort-annunci .filesBtns,
-  div.Center .panels-container .sort-annunci .filesBtns,
-  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
-  div.Center--Big .panels-container .sort-annunci .filesBtns {
+  div.Center .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled {
     position: absolute;
-    bottom: 3px;
-    left: calc(32% + 140px);
-    margin-top: 3px;
+    bottom: 3.5px;
+    left: 2%;
   }
   div.Center .container-fluid.overview .sort-annunci .filterBtn,
   div.Center .panels-container .sort-annunci .filterBtn,
@@ -1420,20 +1522,11 @@ div.Center--Big tbody .right .Importo i {
     position: absolute;
     bottom: 2px;
     width: 12%;
-    left: calc(35% + 280px);
+    right: 2%;
     height: 34px;
     border-radius: 5px;
     margin: 1px 0;
     margin-left: 5px;
-  }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
-    position: absolute;
-    bottom: 1px;
-    left: 30%;
-    border: 1px solid #ebeced;
   }
   div.Center .container-fluid.overview .sort-annunci .datepics.ml-auto.mr-2,
   div.Center .panels-container .sort-annunci .datepics.ml-auto.mr-2,
@@ -1722,84 +1815,123 @@ div.Center--Big tbody .right .Importo i {
 }
 
 @media (max-width: 595px) {
-  div.Center .container-fluid.overview .sort-annunci .barcodeBtn,
-  div.Center .panels-container .sort-annunci .barcodeBtn,
-  div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
-  div.Center--Big .panels-container .sort-annunci .barcodeBtn {
-    width: 145px;
-    margin-left: 0;
-  }
-  div.Center .container-fluid.overview .sort-annunci .filesBtns,
-  div.Center .panels-container .sort-annunci .filesBtns,
-  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
-  div.Center--Big .panels-container .sort-annunci .filesBtns {
-    left: 280px;
-    margin: 0;
-  }
   div.Center .container-fluid.overview .sort-annunci .filterBtn,
   div.Center .panels-container .sort-annunci .filterBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
   div.Center--Big .panels-container .sort-annunci .filterBtn {
-    left: 420px;
-  }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
-    left: 150px;
+    left: auto;
+    right: 1%;
   }
 }
 
 @media (max-width: 540px) {
-  div.Center .container-fluid.overview .sort-annunci .barcodeBtn,
-  div.Center .panels-container .sort-annunci .barcodeBtn,
-  div.Center--Big .container-fluid.overview .sort-annunci .barcodeBtn,
-  div.Center--Big .panels-container .sort-annunci .barcodeBtn {
-    width: 50%;
-    margin-left: 0;
-    margin-bottom: 50px;
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center .panels-container .sort-annunci .barCodeExport,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport {
+    left: 37%;
   }
-  div.Center .container-fluid.overview .sort-annunci .filesBtns,
-  div.Center .panels-container .sort-annunci .filesBtns,
-  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns,
-  div.Center--Big .panels-container .sort-annunci .filesBtns {
-    left: 5%;
-    width: 70%;
-    margin: 0;
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .exportPDF div,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns .exportPDF div,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .exportPDF div,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns .exportPDF div {
+    font-size: 13px;
   }
-  div.Center .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
-  div.Center .panels-container .sort-annunci .filesBtns .exportPDF,
-  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .exportPDF,
-  div.Center--Big .panels-container .sort-annunci .filesBtns .exportPDF {
-    width: 30%;
-    margin-right: 20%;
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns .ExportToExel {
+    font-size: 13px;
+    text-transform: uppercase;
   }
-  div.Center .container-fluid.overview .sort-annunci .filesBtns .ExportToExel,
-  div.Center .panels-container .sort-annunci .filesBtns .ExportToExel,
-  div.Center--Big .container-fluid.overview .sort-annunci .filesBtns .ExportToExel,
-  div.Center--Big .panels-container .sort-annunci .filesBtns .ExportToExel {
-    width: 30%;
+  div.Center .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled {
+    left: 1%;
+  }
+}
+
+@media (max-width: 450px) {
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    width: 60px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center .panels-container .sort-annunci .barCodeExport,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport {
+    left: 39.2%;
+  }
+}
+
+@media (max-width: 400px) {
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center .panels-container .sort-annunci .barCodeExport,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport {
+    left: 41%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns {
+    width: 125px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns .ExportToExel {
+    font-size: 10.5px !important;
+    width: 55px !important;
+    margin-left: 5px !important;
+    margin-right: 0 !important;
+  }
+  div.Center .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled {
+    width: 135px;
+    left: 0.5%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled span,
+  div.Center .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled span,
+  div.Center--Big .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled span,
+  div.Center--Big .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled span {
+    font-size: 10.5px;
   }
   div.Center .container-fluid.overview .sort-annunci .filterBtn,
   div.Center .panels-container .sort-annunci .filterBtn,
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
   div.Center--Big .panels-container .sort-annunci .filterBtn {
-    width: 17%;
-    left: 78%;
+    width: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: transparent;
+    right: 0.5%;
   }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
-    left: 52%;
-    bottom: 48px;
-    width: 48%;
-  }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div,
-  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled div {
-    width: 100%;
+  div.Center .container-fluid.overview .sort-annunci .filterBtn i,
+  div.Center .panels-container .sort-annunci .filterBtn i,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn i,
+  div.Center--Big .panels-container .sort-annunci .filterBtn i {
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: calc(0.5% + 14px);
   }
 }
 
@@ -1824,7 +1956,7 @@ div.Center--Big tbody .right .Importo i {
     -webkit-box-align: start !important;
         -ms-flex-align: start !important;
             align-items: flex-start !important;
-    width: 70% !important;
+    width: 54% !important;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable tbody td.wsNwp:nth-child(3) div {
     width: 100%;
@@ -1862,7 +1994,7 @@ div.Center--Big tbody .right .Importo i {
     display: none;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable thead td.wsNwp:nth-child(3) {
-    width: 70% !important;
+    width: 54% !important;
     padding-left: 5% !important;
     margin: 0 !important;
   }
@@ -1870,7 +2002,7 @@ div.Center--Big tbody .right .Importo i {
 
 @media (max-width: 480px) {
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width table.transTable {
-    width: 100%;
+    width: 101%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1981,6 +2113,13 @@ div.Center--Big tbody .right .Importo i {
   top: 52.5px;
 }
 
+@media (max-width: 550px) {
+  .bodyAdmin .backTopTop {
+    bottom: 62px;
+    right: 10px;
+  }
+}
+
 .bodyAdmin .rowPopUp .rowPopUp--header {
   background: #0078ff;
   color: #ffffff;
@@ -2008,6 +2147,6 @@ body.bodyAdmin::-webkit-scrollbar-thumb,
 .AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar-thumb,
 .AdminColumns::-webkit-scrollbar-thumb,
 .TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -52,6 +52,11 @@ div.Prenotazioni .Graph--Element:hover {
   opacity: 1;
 }
 
+div.Prenotazioni .Graph--Element.active {
+  background-color: #0578fc;
+  opacity: 1;
+}
+
 div.Prenotazioni .Graph .Date {
   height: 45px;
   width: 45px;
@@ -947,77 +952,35 @@ div.Prenotazioni .ticketDetails {
   }
 }
 
-@media (max-width: 520px) {
-  div.Prenotazioni--Statistiche {
-    width: 100%;
+@media (max-width: 550px) {
+  div.Prenotazioni--Statistiche div.Graph {
+    position: relative !important;
+    min-width: auto !important;
+    max-width: auto !important;
+    width: 220px !important;
   }
-  div.Prenotazioni--Statistiche.Minimize {
-    min-height: 120px;
-    height: 120px;
-  }
-  div.Prenotazioni--Statistiche--Box--PriceBox--Price {
-    font-size: 20px !important;
-  }
-  div.Prenotazioni--Statistiche div {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 1fr;
-        grid-template-rows: 1fr;
-    width: 100%;
-  }
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Second {
-    margin-top: 100px;
-  }
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox {
+    position: relative !important;
+    width: 190px !important;
+    padding: 0 !important;
+    min-width: auto !important;
+    max-width: auto !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    height: 145px;
-    -webkit-box-pack: start !important;
-        -ms-flex-pack: start !important;
-            justify-content: flex-start !important;
   }
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Prenotazioni--Statistiche--TitleHeaderLeft {
-    width: 100%;
-    padding: 20px 5px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right {
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 0px 5px;
-  }
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker,
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
-    width: 60%;
+  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Price {
+    width: 190px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1027,14 +990,127 @@ div.Prenotazioni .ticketDetails {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    padding-left: 15px;
   }
-  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
-    width: 100%;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Title {
+    width: 190px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 15px;
   }
-  div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third {
+    margin-bottom: 20px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni {
+    margin: 0.8% 17px !important;
+    height: 181px;
+    width: calc(100% - 30px) !important;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni--Parts {
+    padding-right: 32px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 139px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni .Prenotazioni--Statistiche--Box--Informazioni--Header {
+    padding-right: 0;
+    height: 44px;
+    min-height: 44px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni .Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
     font-size: 20px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni .Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo i.fa-angle-down,
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni .Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo i.fa-angle-up {
+    font-size: 20px;
+    width: 32px;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-weight: 300;
+    color: #5c5c5c;
+    padding-right: 8px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: "Font Awesome 5 Pro";
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni.none {
+    height: 44px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni.none .Prenotazioni--Statistiche--Box--Informazioni--Header {
+    background: transparent;
+    height: 44px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Third .Prenotazioni--Statistiche--Box--Informazioni.none .Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo {
+    font-size: 20px;
+    color: #5c5c5c;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Second {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 8px;
+    width: calc(100% - 13px);
+    overflow: auto;
+    margin-bottom: 10px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--Other--Second::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Prenotazioni--Statistiche--TitleHeaderLeft {
+    padding: 16px 20px !important;
+    min-height: 67px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right {
+    padding: 16px 13px;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker,
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: relative;
+    color: transparent;
+  }
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker i,
+  div.Prenotazioni--Statistiche .Prenotazioni--Statistiche--First div.Right div.Prenotazioni--Statistiche--DatePicker-CalendarLabel i {
+    position: absolute;
+    height: 18px;
+    width: 16px;
+    top: calc((100% - 18px) / 2);
+    left: calc((100% - 16px) / 2);
+    color: #5c5c5c;
   }
 }
 

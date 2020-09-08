@@ -3,7 +3,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main i.fa-user
 }
 
 div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span.Username {
-  left: -12px !important;
+  left: -12px;
   max-width: 62% !important;
   margin: 0 !important;
   height: 51px;
@@ -11,7 +11,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span.User
 }
 
 div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children span.Username {
-  left: -12px !important;
+  left: -12px;
   height: 51px;
   max-height: 51px;
 }
@@ -144,7 +144,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   font-weight: 400 !important;
   width: auto !important;
   position: relative !important;
-  left: -7px !important;
+  left: -7px;
   max-width: 62% !important;
   margin: 0 !important;
   height: 51px;
@@ -173,7 +173,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   top: 5px;
   height: 51px;
   max-height: 51px;
-  left: -10px !important;
+  left: -10px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children i.fa-user,
@@ -826,33 +826,29 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
 }
 
 @media (max-width: 550px) {
-  div.AdminColumns
-div.Center--Big
-div.AdminListaUtentiRow
-div.AdminListaUtentiRow--Complete--Main--Child.children
-div
-span:nth-child(2) {
-    margin-right: 17px;
-  }
   .AdminListaUtenti .AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div div span:nth-child(2) {
     width: calc(47% - 40px) !important;
     margin-left: calc(4% + 37px) !important;
+    margin-right: calc(8% + 3px) !important;
   }
   .AdminListaUtenti .AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div div.AdminListaUtentiRow--Complete--Main--Child.children div div span:nth-child(2) {
     width: calc(47% - 60px) !important;
     margin-left: calc(6% + 48px) !important;
+    margin-right: calc(6% + 12px) !important;
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(2) {
     width: 55%;
     margin-left: 4%;
   }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4):not(.Username), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4):not(.Username) {
     width: 25%;
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(8), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(8) {
     display: none;
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child:not(.Username), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child:not(.Username) {
+    position: absolute;
+    right: 0;
     width: 16%;
     border-left: 1px solid #ebeced;
     border-right: 1px solid #ebeced;

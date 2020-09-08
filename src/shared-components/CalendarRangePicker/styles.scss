@@ -100,7 +100,7 @@
     width: 59%;
     font-size: 11px;
     left: -60.5%;
-    top: 59%;
+    top: 65%;
     background-color: transparent;
     min-height: 93px;
     & .rdrDateDisplay {
@@ -125,7 +125,7 @@
 }
 @media (max-width: 550px) {
   .calendarWrapper {
-    height: 280px;
+    height: 280px !important;
     width: 375px;
     & .buttons {
       height: 35px;

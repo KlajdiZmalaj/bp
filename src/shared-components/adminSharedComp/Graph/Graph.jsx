@@ -1,6 +1,9 @@
 import React from "react";
 import { Tooltip } from "antd";
 import moment from "moment";
+import { connect } from "react-redux";
+import AuthActions from "redux-store/models/auth";
+
 const graphForMap = (graphData) => {
   let arrayForMax = [];
   let arrayForMap = [];
@@ -21,7 +24,14 @@ const graphForMap = (graphData) => {
 
   return { max: arrayForMax[arrayForMax.length - 1], arrayForMap };
 };
-const Graph = ({ graphicData, date, setDate }) => {
+const Graph = ({
+  graphicData,
+  date,
+  setDate,
+  getPayments,
+  activeSkinId,
+  setFromDateToDate,
+}) => {
   const max = graphForMap(graphicData).max;
   const arrayForMap = graphForMap(graphicData).arrayForMap;
   return (
@@ -32,7 +42,7 @@ const Graph = ({ graphicData, date, setDate }) => {
           return (
             <Tooltip
               title={graphData.realValue}
-              key={graphData.realValue + graphData.day + graphData.value}
+              key={`${graphData.day}${graphData.month}`}
             >
               <div
                 onMouseEnter={() => {
@@ -44,13 +54,24 @@ const Graph = ({ graphicData, date, setDate }) => {
                     )
                   );
                 }}
-                key={
-                  graphData.realValue +
-                  graphData.day +
-                  graphData.value +
-                  graphData.month
-                }
-                className="Graph--Element"
+                onClick={() => {
+                  if (window.location.href.includes("movimenti")) {
+                    const date = moment(
+                      `${graphData.month}-${
+                        graphData.day
+                      }-${new Date().getFullYear()}`
+                    ).format("YYYY-MM-DD");
+                    getPayments("", date, date, 1, 25, activeSkinId);
+                    setFromDateToDate(date);
+                  }
+                }}
+                key={`${graphData.realValue}${graphData.day}${graphData.month}`}
+                className={`Graph--Element ${
+                  parseInt(graphData.month) === date.getMonth() + 1 &&
+                  parseInt(graphData.day) === date.getDate()
+                    ? "active"
+                    : ""
+                }`}
                 style={{ height: `${(graphData.value / max) * 100}%` }}
               ></div>
             </Tooltip>
@@ -68,4 +89,7 @@ const Graph = ({ graphicData, date, setDate }) => {
     </div>
   );
 };
-export default Graph;
+const mapStateToProps = (state) => ({
+  activeSkinId: state.main.activeSkinId,
+});
+export default connect(mapStateToProps, AuthActions)(Graph);

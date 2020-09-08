@@ -30,6 +30,7 @@
       margin: 0 5px;
       padding-right: 5px;
       cursor: text;
+      color: #ffffff;
     }
   }
   &--Body {
@@ -44,7 +45,7 @@
     background: #ffffff;
     overflow: auto;
     &::-webkit-scrollbar-thumb {
-      background: #0078ff;
+      background: #353d45;
     }
     & div {
       height: 30px;

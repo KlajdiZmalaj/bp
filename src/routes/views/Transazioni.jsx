@@ -107,11 +107,14 @@ class Transazioni extends React.Component {
       visible: false,
     });
   };
-  componentDidUpdate(prevPrps) {
+  componentWillUnmount() {
+    this.props.setFromDateToDate(null);
+  }
+  componentDidUpdate(prevProps) {
     const { username, from, to, perPage } = this.state;
     const { activeSkinId, usernames } = this.props;
     if (
-      this.props.activeSkinId != prevPrps.activeSkinId &&
+      this.props.activeSkinId != prevProps.activeSkinId &&
       this.props.forAdmin
     ) {
       this.props.getPayments(
@@ -122,6 +125,19 @@ class Transazioni extends React.Component {
         perPage ? perPage : 10,
         activeSkinId
       );
+    }
+    if (this.props.fromDate && this.props.fromDate != prevProps.fromDate) {
+      const label = format(
+        moment(this.props.fromDate, "YYYY-MM-DD").toDate(),
+        "dd/MM/yyyy"
+      ).toString();
+      this.setState({
+        from: this.props.fromDate,
+        to: this.props.fromDate,
+        fromLabel: label,
+        toLabel: label,
+        perPage: 25,
+      });
     }
   }
 
@@ -484,9 +500,7 @@ class Transazioni extends React.Component {
                   onSubmit={this.handleSubmit}
                   className="filters"
                 >
-                  {(get(accountInfo, "profile.role.name") === "super_admin" ||
-                    get(accountInfo, "profile.role.name") === "agent" ||
-                    get(accountInfo, "profile.role.name") === "main_admin") && (
+                  {
                     <div className="dal">
                       {
                         <Form.Item>
@@ -510,11 +524,7 @@ class Transazioni extends React.Component {
                               onSearch={this.handleSearch}
                               onChange={this.handleChange}
                               // notFoundContent={null}
-                              placeholder={
-                                this.props.usernames.length > 0
-                                  ? this.props.usernames[0]
-                                  : "Select"
-                              }
+                              placeholder={"Cerca Utente"}
                             >
                               {this.props.usernames &&
                                 this.props.usernames.length > 0 &&
@@ -525,8 +535,9 @@ class Transazioni extends React.Component {
                           )}
                         </Form.Item>
                       }
+                      <i className="fal fa-search"></i>
                     </div>
-                  )}
+                  }
 
                   <div
                     className="dal calendar"
@@ -535,9 +546,12 @@ class Transazioni extends React.Component {
                       this.setCalendar(true);
                     }}
                   >
-                    {fromLabel
-                      ? `${fromLabel} - ${toLabel}`
-                      : "Seleziona la data"}
+                    <span>
+                      {fromLabel
+                        ? `${fromLabel} - ${toLabel}`
+                        : "Seleziona la data"}
+                      <i className="fal fa-calendar-alt"></i>
+                    </span>
                   </div>
                 </Form>
 
@@ -545,15 +559,18 @@ class Transazioni extends React.Component {
               </div>
               <Select
                 defaultValue="3"
+                className="SlectDate"
                 onChange={(value) => {
                   this.changeSelected(parseInt(value));
                   this.fromFilterTop(false);
-                  console.log(value);
                 }}
               >
                 {filters.map((item, index) => {
                   return (
-                    <Option value={index.toString()}>
+                    <Option
+                      value={index.toString()}
+                      key={(item.name + index).toString()}
+                    >
                       <span
                         style={{
                           width: "100%",
@@ -618,29 +635,32 @@ class Transazioni extends React.Component {
                       Filter
                     </button>
                   </div>
-                  <button
-                    onClick={() => this.setState({ hasVPT: true })}
-                    className="barcodeBtn"
-                  >
-                    ricerca movimenti <i className="fal fa-barcode-read"></i>
-                  </button>
-                  <div className="filesBtns">
-                    <Pdf
-                      paymentExcelLoading={this.props.paymentExcelLoading}
-                      username={username}
-                      from={from}
-                      to={to}
-                      perPage={perPage}
-                      payments={paymentsForExcel}
-                      getPaymentsForExcel={this.props.getPaymentsForExcel}
-                    />
-                    <Excel
-                      username={username}
-                      from={from}
-                      to={to}
-                      perPage={perPage}
-                      payments={paymentsForExcel}
-                    />
+                  <div className="barCodeExport">
+                    <button
+                      onClick={() => this.setState({ hasVPT: true })}
+                      className="barcodeBtn"
+                    >
+                      {screenWidth >= 550 ? "ricerca movimenti" : ""}{" "}
+                      <i className="fal fa-barcode-read"></i>
+                    </button>
+                    <div className="filesBtns">
+                      <Pdf
+                        paymentExcelLoading={this.props.paymentExcelLoading}
+                        username={username}
+                        from={from}
+                        to={to}
+                        perPage={perPage}
+                        payments={paymentsForExcel}
+                        getPaymentsForExcel={this.props.getPaymentsForExcel}
+                      />
+                      <Excel
+                        username={username}
+                        from={from}
+                        to={to}
+                        perPage={perPage}
+                        payments={paymentsForExcel}
+                      />
+                    </div>
                   </div>
                 </React.Fragment>
               ) : (
@@ -653,29 +673,32 @@ class Transazioni extends React.Component {
                     <i className="fas fa-filter"></i>
                     Filter
                   </button>
-                  <button
-                    onClick={() => this.setState({ hasVPT: true })}
-                    className="barcodeBtn"
-                  >
-                    ricerca movimenti <i className="fal fa-barcode-read"></i>
-                  </button>
-                  <div className="filesBtns">
-                    <Pdf
-                      paymentExcelLoading={this.props.paymentExcelLoading}
-                      username={username}
-                      from={from}
-                      to={to}
-                      perPage={perPage}
-                      payments={paymentsForExcel}
-                      getPaymentsForExcel={this.props.getPaymentsForExcel}
-                    />
-                    <Excel
-                      username={username}
-                      from={from}
-                      to={to}
-                      perPage={perPage}
-                      payments={paymentsForExcel}
-                    />
+                  <div className="barCodeExport">
+                    <button
+                      onClick={() => this.setState({ hasVPT: true })}
+                      className="barcodeBtn"
+                    >
+                      {screenWidth >= 550 ? "ricerca movimenti" : ""}{" "}
+                      <i className="fal fa-barcode-read"></i>
+                    </button>
+                    <div className="filesBtns">
+                      <Pdf
+                        paymentExcelLoading={this.props.paymentExcelLoading}
+                        username={username}
+                        from={from}
+                        to={to}
+                        perPage={perPage}
+                        payments={paymentsForExcel}
+                        getPaymentsForExcel={this.props.getPaymentsForExcel}
+                      />
+                      <Excel
+                        username={username}
+                        from={from}
+                        to={to}
+                        perPage={perPage}
+                        payments={paymentsForExcel}
+                      />
+                    </div>
                   </div>
                 </React.Fragment>
               )}
@@ -718,10 +741,10 @@ class Transazioni extends React.Component {
                       {!payments.message &&
                       (paymentsO || []) &&
                       paymentsO.length === 0 ? (
-                        <tr class="NoData">
+                        <tr className="NoData">
                           <td colSpan="8">
                             {" "}
-                            <i class="fal fa-info-circle"></i>
+                            <i className="fal fa-info-circle"></i>
                             <span>No Data</span>
                           </td>
                         </tr>
@@ -897,7 +920,7 @@ class Transazioni extends React.Component {
                   }
                 />
                 <Select
-                  defaultValue="25"
+                  defaultValue={25}
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
                     forAdmin
@@ -1037,6 +1060,7 @@ const mapsStateToProps = (state) => ({
   screenWidth: state.main.screenWidth,
   paymentsForExcel: state.auth.paymentsForExcel,
   paymentExcelLoading: state.auth.paymentExcelLoading,
+  fromDate: state.auth.fromDate,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

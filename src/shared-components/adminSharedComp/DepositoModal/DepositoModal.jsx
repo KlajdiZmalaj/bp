@@ -13,6 +13,7 @@ const DepositoModal = ({
   activeSkinId,
   amountGiven,
   getUsers,
+  SecondClose,
 }) => {
   const amountCheck = amountGiven ? amountGiven : 0;
   const [amount, setAmount] = useState(amountCheck);
@@ -99,6 +100,9 @@ const DepositoModal = ({
                       backoffice: true,
                     });
                   }
+                  if (SecondClose) {
+                    SecondClose();
+                  }
                 }}
               >
                 CONFERMA
@@ -107,7 +111,7 @@ const DepositoModal = ({
                 className="DepositoModal--Container--Down--Form--buttons--Cancel"
                 onClick={Close}
               >
-                <i class="fal fa-times"></i>
+                <i className="fal fa-times"></i>
                 <span>CANCELLA</span>
               </button>
             </div>

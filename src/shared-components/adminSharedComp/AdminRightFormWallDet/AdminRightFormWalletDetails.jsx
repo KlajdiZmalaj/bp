@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import SearchSelect from "./SearchSelect";
 import "./aRFWD.css";
 function FindId(object, filterValue) {
-  console.log(object, filterValue);
   for (let i = 0; i < object.length; i++) {
     if (object[i].username == filterValue) {
       return object[i].id;
@@ -27,8 +26,6 @@ const AdminRightFormWalletDetailsHelper = ({
   const [userKey, setUserKey] = useState("");
   const [amount, setAmount] = useState("");
   const [tickOrX, setTickOrX] = useState(true);
-
-  console.log(UsersToSearch);
   return (
     <div
       className="AdminRightForm--Box--Wallet--Dropdown"

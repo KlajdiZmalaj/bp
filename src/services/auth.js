@@ -2,6 +2,8 @@ import request from "utils/request";
 import axios from "axios";
 import { skin } from "config/api";
 import { notification } from "antd";
+import { message } from "antd";
+
 import {
   unSubscribeSocketSupport,
   unSubscribeSocketUser,
@@ -480,10 +482,17 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
       (data) => {
         if (data && data.status === 200) {
           c();
+        } else {
+          console.log("Err");
+          message.error("è successo qualcosa di sbagliato");
         }
       },
       (data) => {}
-    );
+    )
+    .catch((err) => {
+      message.error("è successo qualcosa di sbagliato");
+      console.log("Err");
+    });
 };
 export const transferMoney = (id, amount, type, c, role, backOffice) => {
   axios

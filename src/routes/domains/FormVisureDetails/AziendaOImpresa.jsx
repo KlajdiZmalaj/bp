@@ -71,7 +71,7 @@ class AziendaOImpresaForm extends Component {
       address,
       telefono,
       email,
-      price,
+      parseFloat(price),
       ragione_sociale,
       p_iva,
       comune,

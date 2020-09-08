@@ -88,7 +88,7 @@ class Eventi extends Component {
       name,
       email,
       telefono,
-      price,
+      parseFloat(price),
       this.props.ticketId
     );
   };
@@ -100,8 +100,10 @@ class Eventi extends Component {
       email,
       link,
       name,
+      extra_data,
       descrizione_categoria,
       price,
+      categoria,
     } = this.state;
     return (
       <React.Fragment>
@@ -124,7 +126,7 @@ class Eventi extends Component {
                 onChange={(value) => {
                   this.setState({ categoria: value });
                 }}
-                defaultValue={TicketByTcketId.categoria}
+                defaultValue={TicketByTcketId.categoria.toString()}
               >
                 <Option value="0">Selezionare Evento</Option>
                 <Option value="1">Concerti</Option>
@@ -138,7 +140,15 @@ class Eventi extends Component {
               <div className="inputLabel">Prezzo</div>
               <input className="ant-input" value={price} readOnly />
             </div>
-
+            <MyInput
+              labelName={"Dettagli per il biglietto"}
+              type={"text"}
+              editable={editable}
+              value={extra_data}
+              handleChange={(e) => {
+                this.setState({ extra_data: e.target.value });
+              }}
+            />
             <MyInput
               labelName={"Telefono"}
               type={"text"}

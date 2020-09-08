@@ -1,0 +1,123 @@
+.dashboardMobile {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-top: 70px;
+  padding-bottom: 43px;
+  overflow-y: auto;
+  //remove desktop foter with css
+  + footer {
+    display: none;
+  }
+}
+
+.serviziFilter {
+  display: flex;
+  flex-flow: column;
+  background-color: #272c31;
+  color: #fff;
+  border-top: 1px solid #3c4349;
+  &--search {
+    width: 100%;
+    position: relative;
+    padding: 18px;
+    input {
+      width: 100%;
+      border: 0;
+      color: #fff;
+      background-color: #3c4349;
+      height: 38px;
+      border-bottom: 1px solid var(--accent-bg);
+      padding: 0 15px;
+      &::placeholder {
+        color: #fff;
+      }
+    }
+    i {
+      position: absolute;
+      right: 30px;
+      top: 28px;
+      pointer-events: none;
+    }
+  }
+  &--cards {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+    }
+    &__item {
+      display: flex;
+      align-items: center;
+      flex-flow: column;
+      width: 90px;
+      height: 100px;
+      border-radius: 5px;
+      background-color: #63696d;
+      color: #272c31;
+      text-align: center;
+      text-transform: capitalize;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 0 5px;
+      margin-right: 5px;
+      &.active {
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
+      }
+      i {
+        font-size: 40px;
+      }
+      span {
+        line-height: 15px;
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.mobileServices {
+  display: flex;
+  flex-flow: column;
+  padding-bottom: 60px;
+  &--panel {
+    display: flex;
+    flex-flow: column;
+  }
+  &--header {
+    height: 48px;
+    font-size: 18px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 18px;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e4e5;
+  }
+  &--body {
+    display: flex;
+    flex-flow: column;
+    &__item {
+      height: 48px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 18px;
+      border-bottom: 1px solid #fff;
+      background-color: #e2e4e5;
+      .fa-dot-circle {
+        font-size: 8px;
+        width: 15px;
+      }
+      .fa-star {
+        margin-left: auto;
+      }
+    }
+  }
+}

@@ -22,11 +22,13 @@ import { message } from "antd";
 import "./styles.css";
 import { numberWithCommas } from "utils/HelperFunc";
 import { allRoles } from "config/index";
+import { switchUserStatus } from "services/auth";
+
 const { Option } = Select;
 
 class AdminPanelDom extends React.Component {
   state = {
-    menuSkinVisible: false,
+    menuSkinVisible: window.innerWidth <= 550 ? true : false,
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
@@ -58,26 +60,37 @@ class AdminPanelDom extends React.Component {
       this.props.activeSkinId
     );
   };
-  componentDidMount() {
-    this.props.getSkins();
-    this.props.getAgents(this.props.activeSkinId);
+  async componentDidMount() {
+    await this.props.getSkins();
+    await this.props.getStatistiche(this.props.activeSkinId);
+    await this.props.getWidgetPayments(this.props.activeSkinId);
     document.body.classList.add("bodyAdmin");
+    if (this.props.screenWidth <= 550) {
+      this.setState({ menuSkinVisible: true });
+    } else {
+      this.setState({ menuSkinVisible: false });
+    }
   }
   componentWillUnmount() {
     document.body.classList.remove("bodyAdmin");
   }
   componentDidUpdate(prevProps) {
-    if (this.state.menuSkinVisible === true && this.props.screenWidth <= 1320) {
+    if (
+      this.state.menuSkinVisible === true &&
+      this.props.screenWidth <= 1320 &&
+      this.props.screenWidth > 550
+    ) {
       this.setState({ menuSkinVisible: false });
     }
-    if (this.props.activeSkinId != prevProps.activeSkinId) {
-      this.props.getAgents(this.props.activeSkinId);
+    if (prevProps.screenWidth > 550 && this.props.screenWidth <= 550) {
+      this.setState({ menuSkinVisible: true });
     }
     if (
       this.props.activeSkinId != prevProps.activeSkinId &&
       this.props.screenWidth <= 1320
     ) {
       this.props.getStatistiche(this.props.activeSkinId);
+      this.props.getWidgetPayments(this.props.activeSkinId);
     }
   }
   render() {
@@ -259,6 +272,12 @@ class AdminPanelDom extends React.Component {
                           type: "deposit",
                           username: utentiResModal.data.username,
                           id: utentiResModal.data.id,
+                          Close: () => {
+                            editUtentiRespModal({
+                              visibility: false,
+                              data: "",
+                            });
+                          },
                         });
                       }}
                     >
@@ -271,6 +290,12 @@ class AdminPanelDom extends React.Component {
                           type: "withdraw",
                           username: utentiResModal.data.username,
                           id: utentiResModal.data.id,
+                          Close: () => {
+                            editUtentiRespModal({
+                              visibility: false,
+                              data: "",
+                            });
+                          },
                         });
                       }}
                     >
@@ -294,11 +319,23 @@ class AdminPanelDom extends React.Component {
                             activeSkinId != -1
                           ? 2
                           : 1);
-                        await this.props.switchUserStatus(
+                        await switchUserStatus(
                           utentiResModal.data.id,
                           changeStatus,
-
-                          () => {},
+                          () => {
+                            (changeStatus === 0 && activeSkinId === -1) ||
+                            (changeStatus === 1 && activeSkinId != -1)
+                              ? message.error(
+                                  `lo stato dell${
+                                    utentiResModal.data.username
+                                  } ${`è cambiato : 'DISATTIVATO'`}`
+                                )
+                              : message.success(
+                                  `lo stato dell${
+                                    utentiResModal.data.username
+                                  } ${`è cambiato : 'ATTIVATO'`}`
+                                );
+                          },
                           accountInfo.role,
                           activeSkinId
                         );
@@ -312,18 +349,10 @@ class AdminPanelDom extends React.Component {
                             backoffice: true,
                           });
                         }
-                        await ((changeStatus === 0 && activeSkinId === -1) ||
-                        (changeStatus === 1 && activeSkinId != -1)
-                          ? message.error(
-                              `lo stato dell${
-                                utentiResModal.data.username
-                              } ${`è cambiato : 'DISATTIVATO'`}`
-                            )
-                          : message.success(
-                              `lo stato dell${
-                                utentiResModal.data.username
-                              } ${`è cambiato : 'ATTIVATO'`}`
-                            ));
+                        await editUtentiRespModal({
+                          visibility: false,
+                          data: "",
+                        });
                       }}
                     ></i>
                     {/* <i
@@ -435,7 +464,11 @@ class AdminPanelDom extends React.Component {
               handleClick={() => {
                 this.setState({
                   menuSkinVisible:
-                    screenWidth >= 1320 ? !menuSkinVisible : false,
+                    screenWidth <= 550
+                      ? !menuSkinVisible
+                      : screenWidth >= 1320
+                      ? !menuSkinVisible
+                      : false,
                 });
               }}
               history={this.props.history}
@@ -446,8 +479,7 @@ class AdminPanelDom extends React.Component {
                 small={true}
                 handleClick={() => {
                   this.setState({
-                    menuSkinVisible:
-                      screenWidth >= 1320 ? !menuSkinVisible : false,
+                    menuSkinVisible: false,
                   });
                 }}
                 history={this.props.history}
@@ -457,18 +489,35 @@ class AdminPanelDom extends React.Component {
             <div className="AdminColumns">
               <div
                 className={`${
-                  menuSkinVisible === false && screenWidth <= 1320
-                    ? "Left--Min"
+                  screenWidth <= 550
+                    ? menuSkinVisible === true
+                      ? "Left--Min"
+                      : "Left"
+                    : screenWidth <= 1320
+                    ? menuSkinVisible === false
+                      ? "Left--Min"
+                      : "Left--Min"
                     : menuSkinVisible === true
                     ? "Left--Min"
                     : "Left"
                 }`}
               >
-                <AdminLeftForm visible={menuSkinVisible} />
+                {screenWidth <= 550 && (
+                  <div
+                    className="backDrop LeftFormbD"
+                    onClick={() => {
+                      this.setState({ menuSkinVisible: true });
+                    }}
+                  ></div>
+                )}
+                <AdminLeftForm
+                  visible={menuSkinVisible}
+                  small={screenWidth <= 550 ? true : false}
+                />
               </div>
               <div
                 className={`${
-                  !menuSkinVisible && screenWidth >= 1320
+                  !menuSkinVisible && screenWidth > 1320
                     ? "Center"
                     : screenWidth >= 1320
                     ? "Center--Big"
@@ -491,6 +540,7 @@ class AdminPanelDom extends React.Component {
                         id: "",
                       });
                     }}
+                    SecondClose={adminDepModal.Close}
                   />
                 )}
                 {this.props.component}

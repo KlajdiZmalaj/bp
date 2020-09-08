@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Prenotazioni.css";
 import FormDetails from "../../../views/FormDetails";
 import { Tooltip } from "antd";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
+import { connect } from "react-redux";
 import { format } from "date-fns";
 import {
   graphData,
@@ -50,41 +51,64 @@ const InformazioniDependeAlStato = ({
   nrOfBus,
   nrOfEvent,
   nrOfShopping,
-}) => (
-  <div className="Prenotazioni--Statistiche--Box--Informazioni">
-    <div className="Prenotazioni--Statistiche--Box--Informazioni--Header">
-      <div className="Prenotazioni--Statistiche--Box--Informazioni--Header--Stato">
-        {stato}
+  screenWidth,
+}) => {
+  const [visibility, setVisibility] = useState(true);
+  return (
+    <div
+      className={`Prenotazioni--Statistiche--Box--Informazioni ${
+        visibility ? "" : "none"
+      }`}
+    >
+      <div className="Prenotazioni--Statistiche--Box--Informazioni--Header">
+        <div className="Prenotazioni--Statistiche--Box--Informazioni--Header--Stato">
+          {stato}
+        </div>
+        <div className="Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo">
+          {totalInfo}
+          {screenWidth <= 550 && (
+            <i
+              className={`fal fa-angle-${visibility ? "up" : "down"}`}
+              onClick={() => {
+                setVisibility(!visibility);
+              }}
+            ></i>
+          )}
+        </div>
       </div>
-      <div className="Prenotazioni--Statistiche--Box--Informazioni--Header--TotalInfo">
-        {totalInfo}
-      </div>
+      {(screenWidth <= 550 && visibility === true) || screenWidth >= 550 ? (
+        <div className="Prenotazioni--Statistiche--Box--Informazioni--Parts">
+          <PartsType
+            partType={"Plain"}
+            iconClass={"fas fa-plane"}
+            number={nrOfPlane}
+          />
+          <PartsType
+            partType={"Train"}
+            iconClass={"fas fa-train"}
+            number={nrOfTrain}
+          />
+          <PartsType
+            partType={"Bus"}
+            iconClass={"fas fa-bus"}
+            number={nrOfBus}
+          />
+          <PartsType
+            partType={"Event"}
+            iconClass={"fas fa-ticket-alt"}
+            number={nrOfEvent}
+          />
+          <PartsType
+            partType={"Shopping"}
+            iconClass={"fas fa-shopping-cart"}
+            number={nrOfShopping}
+          />
+        </div>
+      ) : null}
     </div>
-    <div className="Prenotazioni--Statistiche--Box--Informazioni--Parts">
-      <PartsType
-        partType={"Plain"}
-        iconClass={"fas fa-plane"}
-        number={nrOfPlane}
-      />
-      <PartsType
-        partType={"Train"}
-        iconClass={"fas fa-train"}
-        number={nrOfTrain}
-      />
-      <PartsType partType={"Bus"} iconClass={"fas fa-bus"} number={nrOfBus} />
-      <PartsType
-        partType={"Event"}
-        iconClass={"fas fa-ticket-alt"}
-        number={nrOfEvent}
-      />
-      <PartsType
-        partType={"Shopping"}
-        iconClass={"fas fa-shopping-cart"}
-        number={nrOfShopping}
-      />
-    </div>
-  </div>
-);
+  );
+};
+
 const Graph = ({ graphData, month }) => (
   <div className="Graph">
     <div className="Graph--TM">TRANSAZIONI MENSILI</div>
@@ -128,6 +152,7 @@ class Prenotazioni extends React.Component {
     this.setState({ isCalendarOpen: val });
   };
   render() {
+    const { screenWidth } = this.props;
     const {
       dropdownVisibility,
       picker,
@@ -225,6 +250,7 @@ class Prenotazioni extends React.Component {
               nrOfBus={126}
               nrOfEvent={30}
               nrOfShopping={12}
+              screenWidth={screenWidth}
             />
             <InformazioniDependeAlStato
               stato={"IN ATTESA"}
@@ -234,6 +260,7 @@ class Prenotazioni extends React.Component {
               nrOfBus={126}
               nrOfEvent={30}
               nrOfShopping={12}
+              screenWidth={screenWidth}
             />
             <InformazioniDependeAlStato
               stato={"NUOVE RICHIESTE"}
@@ -243,6 +270,7 @@ class Prenotazioni extends React.Component {
               nrOfBus={126}
               nrOfEvent={30}
               nrOfShopping={12}
+              screenWidth={screenWidth}
             />
             <InformazioniDependeAlStato
               stato={"ANNULLATE"}
@@ -252,6 +280,7 @@ class Prenotazioni extends React.Component {
               nrOfBus={126}
               nrOfEvent={30}
               nrOfShopping={12}
+              screenWidth={screenWidth}
             />
           </div>
         </div>
@@ -260,4 +289,7 @@ class Prenotazioni extends React.Component {
     );
   }
 }
-export default Prenotazioni;
+const mapStateToProps = (state) => ({
+  screenWidth: state.main.screenWidth,
+});
+export default connect(mapStateToProps)(Prenotazioni);

@@ -9,9 +9,9 @@ import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightForm
 
 class AdminRightForm extends React.Component {
   state = {
-    dropdownVisibility: false,
-    statisticheDropdownVisibility: false,
-    leUltimeTransazioni: false,
+    dropdownVisibility: true,
+    statisticheDropdownVisibility: true,
+    leUltimeTransazioni: true,
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };

@@ -359,6 +359,7 @@ const { Types, Creators } = createActions({
   registerSkinSucc: ["registerSkinS"],
   getStatistiche: ["skin_id"],
   setStatistiche: ["Statistiche"],
+  setFromDateToDate: ["fromDate"],
 });
 
 export const AuthTypes = Types;
@@ -378,7 +379,7 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  accountInfo: {},
+  accountInfo: JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
   bolletiniBianchi: {},
   bolletiniPremercati: {},
   unauthorizated: true,
@@ -426,6 +427,7 @@ const INITIAL_STATE = {
     addExtraDataSucc: false,
   },
   Statistiche: null,
+  fromDate: null,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -524,7 +526,11 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...INITIAL_STATE,
     skinExtras,
   }),
-  [Types.LOG_OUT]: ({ skinExtras }) => ({ ...INITIAL_STATE, skinExtras }),
+  [Types.LOG_OUT]: ({ skinExtras }) => ({
+    ...INITIAL_STATE,
+    accountInfo: {},
+    skinExtras,
+  }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
     bolletiniBianchi,
@@ -674,5 +680,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_STATISTICHE]: (state, { Statistiche }) => ({
     ...state,
     Statistiche,
+  }),
+  [Types.SET_FROM_DATE_TO_DATE]: (state, { fromDate }) => ({
+    ...state,
+    fromDate,
   }),
 });

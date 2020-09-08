@@ -1,0 +1,199 @@
+.dashboardMobile {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-top: 70px;
+  padding-bottom: 43px;
+  overflow-y: auto;
+}
+
+.dashboardMobile + footer {
+  display: none;
+}
+
+.serviziFilter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background-color: #272c31;
+  color: #fff;
+  border-top: 1px solid #3c4349;
+}
+
+.serviziFilter--search {
+  width: 100%;
+  position: relative;
+  padding: 18px;
+}
+
+.serviziFilter--search input {
+  width: 100%;
+  border: 0;
+  color: #fff;
+  background-color: #3c4349;
+  height: 38px;
+  border-bottom: 1px solid var(--accent-bg);
+  padding: 0 15px;
+}
+
+.serviziFilter--search input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.serviziFilter--search input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.serviziFilter--search input::-ms-input-placeholder {
+  color: #fff;
+}
+
+.serviziFilter--search input::placeholder {
+  color: #fff;
+}
+
+.serviziFilter--search i {
+  position: absolute;
+  right: 30px;
+  top: 28px;
+  pointer-events: none;
+}
+
+.serviziFilter--cards {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 18px;
+  overflow-x: auto;
+}
+
+.serviziFilter--cards::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+.serviziFilter--cards__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 90px;
+  height: 100px;
+  border-radius: 5px;
+  background-color: #63696d;
+  color: #272c31;
+  text-align: center;
+  text-transform: capitalize;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding: 0 5px;
+  margin-right: 5px;
+}
+
+.serviziFilter--cards__item.active {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+}
+
+.serviziFilter--cards__item i {
+  font-size: 40px;
+}
+
+.serviziFilter--cards__item span {
+  line-height: 15px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.mobileServices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding-bottom: 60px;
+}
+
+.mobileServices--panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.mobileServices--header {
+  height: 48px;
+  font-size: 18px;
+  text-transform: capitalize;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 18px;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e4e5;
+}
+
+.mobileServices--body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.mobileServices--body__item {
+  height: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 18px;
+  border-bottom: 1px solid #fff;
+  background-color: #e2e4e5;
+}
+
+.mobileServices--body__item .fa-dot-circle {
+  font-size: 8px;
+  width: 15px;
+}
+
+.mobileServices--body__item .fa-star {
+  margin-left: auto;
+}
+/*# sourceMappingURL=style.css.map */
