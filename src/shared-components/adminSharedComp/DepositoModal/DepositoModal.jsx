@@ -15,7 +15,6 @@ const DepositoModal = ({
   getUsers,
   SecondClose,
 }) => {
-  console.log(SecondClose);
   const amountCheck = amountGiven ? amountGiven : 0;
   const [amount, setAmount] = useState(amountCheck);
   const [message, setMessage] = useState("");
@@ -112,7 +111,7 @@ const DepositoModal = ({
                 className="DepositoModal--Container--Down--Form--buttons--Cancel"
                 onClick={Close}
               >
-                <i class="fal fa-times"></i>
+                <i className="fal fa-times"></i>
                 <span>CANCELLA</span>
               </button>
             </div>

@@ -4,7 +4,7 @@
   top: 101px;
   margin: calc((20vh - 71px) / 2) 10vw;
   height: 80vh;
-  z-index: 5;
+  z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
   & .Header {
     position: absolute;
@@ -136,8 +136,8 @@
 }
 @media (max-width: 550px) {
   .RightFormModal {
-    margin: calc((25vh - 121px) / 2) calc(12.5vw + 15px) !important;
-    width: 75vw;
+    margin: calc((15vh - 60px) / 2) calc((11vw + 15px) / 2) !important;
+    width: 88vw !important;
     height: 75vw;
     & .Statistiche.Dropdown {
       & .Graph {
@@ -174,7 +174,6 @@
         width: 100%;
         height: 15%;
         z-index: 6;
-        background-color: #ffffff;
         & div {
           height: 100%;
           & span {

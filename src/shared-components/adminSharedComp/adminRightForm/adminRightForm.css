@@ -10,7 +10,7 @@
 }
 
 .AdminRightForm::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 
 .AdminRightForm .Tranzacioni {
@@ -333,7 +333,7 @@
 }
 
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1)::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1) .headerModal {

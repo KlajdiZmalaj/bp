@@ -42,7 +42,7 @@ const Graph = ({
           return (
             <Tooltip
               title={graphData.realValue}
-              key={graphData.realValue + graphData.day + graphData.value}
+              key={`${graphData.day}${graphData.month}`}
             >
               <div
                 onMouseEnter={() => {
@@ -55,13 +55,6 @@ const Graph = ({
                   );
                 }}
                 onClick={() => {
-                  console.log(
-                    parseInt(date.getMonth() + 1),
-                    parseInt(date.getDate())
-                  );
-
-                  console.log(graphData.month, graphData.day);
-
                   if (window.location.href.includes("movimenti")) {
                     const date = moment(
                       `${graphData.month}-${
@@ -72,12 +65,7 @@ const Graph = ({
                     setFromDateToDate(date);
                   }
                 }}
-                key={
-                  graphData.realValue +
-                  graphData.day +
-                  graphData.value +
-                  graphData.month
-                }
+                key={`${graphData.realValue}${graphData.day}${graphData.month}`}
                 className={`Graph--Element ${
                   parseInt(graphData.month) === date.getMonth() + 1 &&
                   parseInt(graphData.day) === date.getDate()
@@ -102,6 +90,6 @@ const Graph = ({
   );
 };
 const mapStateToProps = (state) => ({
-  activeSkinId: state.auth.activeSkinId,
+  activeSkinId: state.main.activeSkinId,
 });
 export default connect(mapStateToProps, AuthActions)(Graph);

@@ -274,10 +274,6 @@
   .AdminColumns {
     width: 100vw !important;
   }
-  .Left--Min {
-    display: none !important;
-    transition: 3;
-  }
   .LeftFormbD {
     width: calc(100vw - 200px) !important;
     position: fixed;
@@ -285,11 +281,24 @@
     height: calc(100vh - 161px);
     left: 200px !important;
     bottom: 0;
-    z-index: 3;
+    z-index: 11;
+    transition: 0.5s;
   }
+  .Left--Min {
+    transition: 0.4s;
+    width: 0 !important;
+    visibility: hidden;
+    opacity: 0;
+    & .LeftFormbD {
+      width: 100vw !important;
+      left: 0 !important;
+      transition: 0.4s;
+    }
+  }
+
   .Left,
   .Left--Min {
-    z-index: 3;
+    z-index: 12;
     top: 101px !important;
     height: calc(100vh - 161px) !important;
     left: 0 !important;

@@ -24,7 +24,7 @@ class AdminListaUtentiRow extends React.Component {
     } = this.props;
     const {} = this.state;
     const Special =
-      activeSkinId === -1 && accountInfo.profile.role.name != "support";
+      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
     return (
       <div className="AdminListaUtentiRow--Complete">
         <div
@@ -270,6 +270,7 @@ class AdminListaUtentiRow extends React.Component {
             ></i>
             <i
               onClick={(e) => {
+                this.props.getAgents(this.props.activeSkinId);
                 e.preventDefault();
                 e.stopPropagation();
                 itemList && itemList.role === "user"

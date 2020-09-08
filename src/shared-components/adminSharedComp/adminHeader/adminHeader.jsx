@@ -16,9 +16,9 @@ class AdminHeader extends React.Component {
       <div className="AdminHeader">
         {!small && (
           <div className="AdminHeader--Title">
-            {window.innerWidth >= 550 && window.innerWidth <= 1320 ? (
+            {window.innerWidth > 550 && window.innerWidth <= 1320 ? (
               <Tooltip title="Impossibile aprire il menu sullo schermo tra 550 px e 1320 px">
-                <span>
+                <span style={{ cursor: "pointer" }}>
                   <i
                     className="fal fa-bars"
                     onClick={this.props.handleClick}
@@ -26,12 +26,8 @@ class AdminHeader extends React.Component {
                 </span>
               </Tooltip>
             ) : (
-              <span>
-                <i
-                  className="fal fa-bars"
-                  style={{ cursor: "pointer" }}
-                  onClick={this.props.handleClick}
-                ></i>
+              <span style={{ cursor: "pointer" }}>
+                <i className="fal fa-bars" onClick={this.props.handleClick}></i>
               </span>
             )}
             <span>

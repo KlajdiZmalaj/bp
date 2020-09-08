@@ -28,7 +28,7 @@ const { Option } = Select;
 
 class AdminPanelDom extends React.Component {
   state = {
-    menuSkinVisible: false,
+    menuSkinVisible: window.innerWidth <= 550 ? true : false,
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
@@ -60,9 +60,10 @@ class AdminPanelDom extends React.Component {
       this.props.activeSkinId
     );
   };
-  componentDidMount() {
-    this.props.getSkins();
-    this.props.getAgents(this.props.activeSkinId);
+  async componentDidMount() {
+    await this.props.getSkins();
+    await this.props.getStatistiche(this.props.activeSkinId);
+    await this.props.getWidgetPayments(this.props.activeSkinId);
     document.body.classList.add("bodyAdmin");
     if (this.props.screenWidth <= 550) {
       this.setState({ menuSkinVisible: true });
@@ -77,21 +78,19 @@ class AdminPanelDom extends React.Component {
     if (
       this.state.menuSkinVisible === true &&
       this.props.screenWidth <= 1320 &&
-      this.props.screenWidth >= 550
+      this.props.screenWidth > 550
     ) {
       this.setState({ menuSkinVisible: false });
     }
     if (prevProps.screenWidth > 550 && this.props.screenWidth <= 550) {
       this.setState({ menuSkinVisible: true });
     }
-    if (this.props.activeSkinId != prevProps.activeSkinId) {
-      this.props.getAgents(this.props.activeSkinId);
-    }
     if (
       this.props.activeSkinId != prevProps.activeSkinId &&
       this.props.screenWidth <= 1320
     ) {
       this.props.getStatistiche(this.props.activeSkinId);
+      this.props.getWidgetPayments(this.props.activeSkinId);
     }
   }
   render() {
@@ -120,7 +119,6 @@ class AdminPanelDom extends React.Component {
       accountInfo,
       activeSkinId,
     } = this.props;
-    console.log(menuSkinVisible);
     return (
       <React.Fragment>
         {goToAdminPanelVis === true ? (
@@ -519,7 +517,7 @@ class AdminPanelDom extends React.Component {
               </div>
               <div
                 className={`${
-                  !menuSkinVisible && screenWidth >= 1320
+                  !menuSkinVisible && screenWidth > 1320
                     ? "Center"
                     : screenWidth >= 1320
                     ? "Center--Big"
