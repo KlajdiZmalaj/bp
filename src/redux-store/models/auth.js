@@ -379,7 +379,7 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  accountInfo: {},
+  accountInfo: JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
   bolletiniBianchi: {},
   bolletiniPremercati: {},
   unauthorizated: true,
@@ -526,7 +526,11 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...INITIAL_STATE,
     skinExtras,
   }),
-  [Types.LOG_OUT]: ({ skinExtras }) => ({ ...INITIAL_STATE, skinExtras }),
+  [Types.LOG_OUT]: ({ skinExtras }) => ({
+    ...INITIAL_STATE,
+    accountInfo: {},
+    skinExtras,
+  }),
   [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
     ...state,
     bolletiniBianchi,

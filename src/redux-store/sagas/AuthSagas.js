@@ -98,7 +98,7 @@ export function* logOut() {
   const response = yield call(logoutApi);
 
   if (response) {
-    localStorage.setItem("accountDataB", null);
+    localStorage.setItem("accountDataB", {});
     yield put(AuthActions.setAccountInfo({}));
   }
   // localStorage.setItem("accountDataB", null);

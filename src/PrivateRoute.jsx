@@ -10,6 +10,13 @@ const PrivateRoute = ({
   allowedRoles,
   ...rest
 }) => {
+  console.log(
+    "includes(allowedRoles, role)",
+    isLoggedin,
+    includes(allowedRoles, role),
+    allowedRoles,
+    role
+  );
   return (
     <Route
       {...rest}

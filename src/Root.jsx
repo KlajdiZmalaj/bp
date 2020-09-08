@@ -22,6 +22,7 @@ import {
   Verify,
   Wallet,
 } from "./routes";
+import { DashboardMobile, ConfiguraMobile } from "./routesMobile";
 import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
@@ -102,13 +103,11 @@ class Root extends React.Component {
       this.props.setAccountInfo(data);
     }
   };
-
   render() {
-    let isLoggedin = JSON.parse(localStorage.getItem("accountDataB"))
-      ? true
-      : false;
+    let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
-
+    const isMobile = this.props.screenWidth <= 550;
+    console.log("ca kaa acc", this.props.accountInfo);
     return (
       <React.Fragment>
         <HashRouter>
@@ -168,14 +167,15 @@ class Root extends React.Component {
             />
             <Route
               path="/dashboard"
-              component={Dashboard}
+              // component={Dashboard}
+              component={isMobile ? DashboardMobile : Dashboard}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent"]}
             />
             <PrivateRoute
               path="/configura"
-              component={Configura}
+              component={isMobile ? ConfiguraMobile : Configura}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent"]}
