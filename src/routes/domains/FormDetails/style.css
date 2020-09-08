@@ -884,7 +884,7 @@
   text-align: center;
   -webkit-box-shadow: 0 0 34px -11px black;
           box-shadow: 0 0 34px -11px black;
-  z-index: 3;
+  z-index: 4;
 }
 
 .rowPopUp--header {

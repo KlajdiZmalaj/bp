@@ -359,6 +359,7 @@ const { Types, Creators } = createActions({
   registerSkinSucc: ["registerSkinS"],
   getStatistiche: ["skin_id"],
   setStatistiche: ["Statistiche"],
+  setFromDateToDate: ["fromDate"],
 });
 
 export const AuthTypes = Types;
@@ -426,6 +427,7 @@ const INITIAL_STATE = {
     addExtraDataSucc: false,
   },
   Statistiche: null,
+  fromDate: null,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -674,5 +676,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_STATISTICHE]: (state, { Statistiche }) => ({
     ...state,
     Statistiche,
+  }),
+  [Types.SET_FROM_DATE_TO_DATE]: (state, { fromDate }) => ({
+    ...state,
+    fromDate,
   }),
 });

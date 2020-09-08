@@ -39,7 +39,19 @@ class AdminListaUtenti extends React.Component {
         <div className="AdminListaUtenti--Header">
           <span>USER ID</span>
           <span>USERNAME</span>
-          <span style={this.props.activeSkinId === -1 ? { width: "16%" } : {}}>
+          <span
+            style={
+              screenWidth <= 1700 &&
+              screenWidth >= 1320 &&
+              this.props.activeSkinId === -1
+                ? {
+                    width: "28%",
+                  }
+                : this.props.activeSkinId === -1
+                ? { width: "16%" }
+                : {}
+            }
+          >
             RAG SOCIALE
           </span>
           <span
@@ -49,21 +61,25 @@ class AdminListaUtenti extends React.Component {
                     display: "flex",
                     width: "45%",
                     position: "relative",
-                    left: "-6%",
+                    left: "-2%",
                   }
                 : screenWidth <= 500 && this.props.activeSkinId === -1
                 ? {
                     display: "flex",
                     width: "45%",
                     position: "relative",
-                    left: "-3%",
+                    left: "1%",
                   }
                 : screenWidth <= 550 && this.props.activeSkinId === -1
-                ? { display: "flex", width: "45%" }
+                ? { display: "flex", width: "45%", paddingLeft: "3%" }
                 : screenWidth <= 1700 &&
                   screenWidth >= 1320 &&
                   this.props.activeSkinId === -1
-                ? { width: "10%", justifyContent: "flex-end", left: "0%" }
+                ? {
+                    width: "14% !important",
+                    justifyContent: "flex-end",
+                    left: "0%",
+                  }
                 : screenWidth <= 950 && this.props.activeSkinId === -1
                 ? { justifyContent: "flex-end", left: "-3%" }
                 : this.props.activeSkinId === -1

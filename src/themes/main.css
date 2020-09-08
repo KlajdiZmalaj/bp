@@ -1578,8 +1578,9 @@ i#private {
 
 /*transazioni styles*/
 .sort-annunci {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
 }
 
 .sort-annunci.sort-trasazioni .ml-auto.mr-2 {
@@ -1643,6 +1644,12 @@ i#private {
   width: 100%;
   background: #fff;
   border-collapse: collapse;
+}
+
+@media (max-width: 1050px) {
+  .transTable {
+    width: 103%;
+  }
 }
 
 .transTable .nomeTd {
@@ -1940,8 +1947,20 @@ i#private {
   border: 0;
   padding: 8px 19px;
   margin-left: 12px;
-  border: 1px solid #d2d2d2;
+  border: 1px solid #353d45;
+  border-radius: 5px;
+  height: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   white-space: nowrap;
+  top: -0.5px !important;
+}
+
+@media (max-width: 795px) {
+  .barcodeBtn {
+    top: 0 !important;
+    margin-top: 1.5px;
+  }
 }
 
 .bodyAdmin .barcodeBtn {
@@ -1949,6 +1968,22 @@ i#private {
   top: 1px;
   background-color: #ffffff;
   color: #353d45;
+}
+
+.barCodeExport {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@media (max-width: 1720px) {
+  .barCodeExport {
+    margin-right: 5px;
+  }
 }
 
 .useCodePopUp {

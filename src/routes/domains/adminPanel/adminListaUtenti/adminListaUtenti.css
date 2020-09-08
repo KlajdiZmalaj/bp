@@ -3,7 +3,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main i.fa-user
 }
 
 div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span.Username {
-  left: -12px !important;
+  left: -12px;
   max-width: 62% !important;
   margin: 0 !important;
   height: 51px;
@@ -11,7 +11,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span.User
 }
 
 div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children span.Username {
-  left: -12px !important;
+  left: -12px;
   height: 51px;
   max-height: 51px;
 }
@@ -144,7 +144,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   font-weight: 400 !important;
   width: auto !important;
   position: relative !important;
-  left: -7px !important;
+  left: -7px;
   max-width: 62% !important;
   margin: 0 !important;
   height: 51px;
@@ -173,7 +173,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   top: 5px;
   height: 51px;
   max-height: 51px;
-  left: -10px !important;
+  left: -10px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children i.fa-user,
@@ -832,7 +832,7 @@ div.AdminListaUtentiRow
 div.AdminListaUtentiRow--Complete--Main--Child.children
 div
 span:nth-child(2) {
-    margin-right: 17px;
+    margin-right: 44px;
   }
   .AdminListaUtenti .AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div div span:nth-child(2) {
     width: calc(47% - 40px) !important;

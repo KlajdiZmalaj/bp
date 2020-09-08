@@ -1,4 +1,6 @@
 import React from "react";
+import { numberWithCommas } from "utils/HelperFunc";
+
 import "./aRFUD.css";
 const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
   <div className="AdminRightForm--Box--LeUltime--Dropdown">
@@ -15,7 +17,7 @@ const AdminRightFormUltimeDetailsHelper = ({ leUltimeTransazioniDet }) => (
           {Tranzacioni.user}
         </span>
         <span className="AdminRightForm--Box--LeUltime--Dropdown--Row--Data Price">
-          {Tranzacioni.cost}
+          {(numberWithCommas(Tranzacioni.cost) + "€").toString()}
         </span>
       </div>
     ))}

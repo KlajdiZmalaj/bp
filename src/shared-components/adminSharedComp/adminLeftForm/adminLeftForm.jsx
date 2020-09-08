@@ -141,7 +141,7 @@ class AdminLeftForm extends React.Component {
           </div>
 
           <div className="AdminLeftForm--LastBox">
-            {screenWidth <= 1320 ? (
+            {screenWidth <= 1320 && screenWidth >= 550 ? (
               <React.Fragment>
                 <div
                   className="AdminLeftForm--LastBox--Box"
@@ -214,9 +214,11 @@ class AdminLeftForm extends React.Component {
                 </div>
               </React.Fragment>
             ) : null}
-            <div className="AdminLeftForm--LastBox--Box">
-              <Chat />
-            </div>
+            {!this.props.small && (
+              <div className="AdminLeftForm--LastBox--Box">
+                <Chat />
+              </div>
+            )}
             <div className="AdminLeftForm--LastBox--Box">
               <i className="fal fa-envelope"></i>
               <span>MESSAGGI</span>

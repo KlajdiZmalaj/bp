@@ -4,15 +4,12 @@ import AdminListaUtentiRow from "./AdminListaUtentiRow";
 import AuthActions from "redux-store/models/auth";
 import { allRoles } from "config/index";
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
-import { numberWithCommas } from "utils/HelperFunc";
 import { switchUserStatus } from "services/auth";
 import MainActions from "redux-store/models/main";
 import { message } from "antd";
-
 class AdminListaUtentiRowForLoop extends React.Component {
   state = {
     activateChildren: false,
-    lock: "",
     eyeClicked: false,
     plusVisibility: false,
   };
@@ -22,10 +19,13 @@ class AdminListaUtentiRowForLoop extends React.Component {
       screenWidth,
       editUtentiRespModal,
       setDepositoModalAdmin,
-      activeSkinId,
       accountInfo,
+      activeSkinId,
     } = this.props;
-    const { lock } = this.state;
+    const {} = this.state;
+    const Special =
+      activeSkinId === -1 && accountInfo.profile.role.name != "support";
+
     return (
       <div className="AdminListaUtentiRow--Complete">
         <div
@@ -46,39 +46,96 @@ class AdminListaUtentiRowForLoop extends React.Component {
           }}
         >
           <span>{itemList.id}</span>
-          <span>
-            <i
-              className={`fal fa-${
-                this.state.plusVisibility === false ? "plus" : "minus"
-              }-square`}
-              onClick={() => {
-                this.setState((state) => ({
-                  plusVisibility: !state.plusVisibility,
-                  activateChildren: !state.activateChildren,
-                }));
-              }}
-            ></i>
-            <div className="Link"></div>
-            <i className={`${allRoles[itemList.role]}`} />
-            <SpanFormater
-              myClassName="Username"
-              Word={itemList.username}
-              size={screenWidth <= 1600 ? 12 : 17}
-              nrOfRows={2}
-              formatWord={true}
-            />{" "}
-          </span>
+          {Special ? (
+            <span>
+              <div></div>
+              <a
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingLeft: "10%",
+                  width: "100%",
+                  height: "100%",
+                }}
+                href={itemList.link}
+              >
+                {itemList.username}
+              </a>
+            </span>
+          ) : (
+            <React.Fragment>
+              <span>
+                <i
+                  className={`fal fa-${
+                    this.state.plusVisibility === false ? "plus" : "minus"
+                  }-square`}
+                  onClick={() => {
+                    this.setState((state) => ({
+                      plusVisibility: !state.plusVisibility,
+                      activateChildren: !state.activateChildren,
+                    }));
+                  }}
+                ></i>
+                <div className="Link"></div>
+                <i className={`${allRoles[itemList.role]}`} />
+                <SpanFormater
+                  myClassName="Username"
+                  Word={itemList.username}
+                  size={screenWidth <= 1600 ? 12 : 17}
+                  nrOfRows={2}
+                  formatWord={true}
+                />
+              </span>
+            </React.Fragment>
+          )}
+
           <SpanFormater
             Word={itemList.rag_soc}
-            styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
-            size={17}
+            styles={
+              screenWidth <= 1700 && screenWidth >= 1320 && Special
+                ? {
+                    width: "28%",
+                  }
+                : Special
+                ? { width: "16%" }
+                : {}
+            }
+            size={
+              Special && screenWidth >= 1600
+                ? 30
+                : Special && screenWidth >= 1300
+                ? 20
+                : Special && screenWidth >= 800
+                ? 16
+                : screenWidth <= 1120
+                ? 8
+                : screenWidth <= 1320
+                ? 12
+                : screenWidth <= 1500
+                ? 11
+                : screenWidth <= 1700
+                ? 16
+                : 18
+            }
             nrOfRows={2}
             formatWord={true}
-            link={this.props.activeSkinId === -1 ? true : false}
           />
           <SpanFormater
             styles={
-              this.props.activeSkinId === -1
+              screenWidth <= 550
+                ? {
+                    width: "20%",
+                    left: "-0.2%",
+                    position: "relative",
+                    justifyContent: "flex-end",
+                    paddingRight: "1%",
+                  }
+                : screenWidth <= 1700 && screenWidth >= 1320 && Special
+                ? {
+                    width: "14%",
+                    justifyContent: "flex-end",
+                  }
+                : Special
                 ? {
                     width: "8%",
                     justifyContent: "flex-end",
@@ -88,31 +145,57 @@ class AdminListaUtentiRowForLoop extends React.Component {
             }
             Word={itemList.wallet}
             size={8}
-            nrOfRows={2}
             type={"number"}
             formatWord={true}
+            nrOfRows={1}
           />
-          {activeSkinId === -1 ? null : (
+          {Special ? null : (
             <SpanFormater
               Word={itemList.city}
-              size={screenWidth <= 1600 ? 8 : 11}
+              size={
+                screenWidth <= 1700 && screenWidth >= 1320
+                  ? 13
+                  : screenWidth <= 1600
+                  ? 8
+                  : 11
+              }
               nrOfRows={1}
               formatWord={true}
             />
           )}
-          <span style={{ justifyContent: "center", left: 0 }}>
+
+          <span
+            style={
+              Special
+                ? { width: "14%", justifyContent: "center", left: 0 }
+                : { justifyContent: "center", left: 0 }
+            }
+            className={`${Special ? "none" : ""}`}
+          >
             {itemList.last_deposit}
           </span>
           <span
             style={
-              this.props.activeSkinId != -1 && screenWidth <= 950
+              !Special && screenWidth <= 950
                 ? { justifyContent: "center", left: 0, display: "none" }
+                : Special
+                ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${Special ? "none" : ""}`}
           >
             {itemList.last_login_time}
           </span>
-          <span>
+          <span
+            style={
+              Special && screenWidth <= 950
+                ? { width: "38%" }
+                : Special
+                ? { width: "24%", justifyContent: "space-around" }
+                : {}
+            }
+            className={`${Special ? "activated" : ""}`}
+          >
             <button
               onClick={() => {
                 setDepositoModalAdmin({
@@ -140,27 +223,40 @@ class AdminListaUtentiRowForLoop extends React.Component {
             <i
               id="lock"
               className={`fal fa-lock${
-                activeSkinId === -1 && itemList.status === 0
+                Special && itemList.status === 0
                   ? "-alt"
-                  : itemList.status === 1 && activeSkinId != -1
+                  : itemList.status === 1 && !Special
                   ? "-alt"
                   : "-open-alt active"
               }`}
               onClick={async () => {
-                const changeStatus = await (activeSkinId === -1 &&
-                itemList.status === 1
+                const changeStatus = await (Special && itemList.status === 1
                   ? 0
-                  : itemList.status === 1 && activeSkinId != -1
+                  : itemList.status === 1 && !Special
                   ? 2
                   : 1);
                 await switchUserStatus(
                   itemList.id,
                   changeStatus,
-                  () => {},
+
+                  () => {
+                    (changeStatus === 0 && Special) ||
+                    (changeStatus === 1 && !Special)
+                      ? message.error(
+                          `lo stato dell${
+                            itemList.username
+                          } ${`è cambiato : 'DISATTIVATO'`}`
+                        )
+                      : message.success(
+                          `lo stato dell${
+                            itemList.username
+                          } ${`è cambiato : 'ATTIVATO'`}`
+                        );
+                  },
                   accountInfo.role,
                   activeSkinId
                 );
-                if (this.props.activeSkinId === -1) {
+                if (Special) {
                   await this.props.getUsers(null, {
                     skin_id: 1,
                   });
@@ -170,18 +266,6 @@ class AdminListaUtentiRowForLoop extends React.Component {
                     backoffice: true,
                   });
                 }
-                await ((changeStatus === 0 && activeSkinId === -1) ||
-                (changeStatus === 1 && activeSkinId != -1)
-                  ? message.error(
-                      `lo stato dell${
-                        itemList.username
-                      } ${`è cambiato : 'DISATTIVATO'`}`
-                    )
-                  : message.success(
-                      `lo stato dell${
-                        itemList.username
-                      } ${`è cambiato : 'ATTIVATO'`}`
-                    ));
               }}
             ></i>
             <i
@@ -204,6 +288,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           </span>
           {screenWidth <= 550 && (
             <span
+              style={Special ? { marginLeft: "16%" } : {}}
               onClick={(e) => {
                 editUtentiRespModal({
                   visibility: true,
@@ -216,23 +301,23 @@ class AdminListaUtentiRowForLoop extends React.Component {
           )}
         </div>
         {itemList &&
-          itemList.children?.length > 0 &&
           Array.isArray(itemList.children) &&
+          itemList.children?.length > 0 &&
           this.state.activateChildren === true &&
           itemList.children.map((child, i, arr) =>
             arr.length - 1 === i ? (
               <div
-                className="AdminListaUtentiRow--Complete--Main--Child children Last"
+                className="AdminListaUtentiRow--Complete--Main--Child children last"
                 key={child.id}
               >
-                <AdminListaUtentiRow itemList={child} />
+                <AdminListaUtentiRow itemList={child} last={false} />
               </div>
             ) : (
               <div
-                className="AdminListaUtentiRow--Complete--Main--Child children "
+                className="AdminListaUtentiRow--Complete--Main--Child children"
                 key={child.id}
               >
-                <AdminListaUtentiRow itemList={child} />
+                <AdminListaUtentiRow itemList={child} last={true} />
               </div>
             )
           )}
