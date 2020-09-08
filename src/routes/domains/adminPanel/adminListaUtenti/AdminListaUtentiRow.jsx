@@ -31,7 +31,11 @@ class AdminListaUtentiRow extends React.Component {
             itemList && itemList.children?.length > 0 ? "active" : ""
           }`}
           onClick={(e) => {
-            if (screenWidth <= 950 && e.target.tagName != "I") {
+            if (
+              screenWidth <= 950 &&
+              screenWidth >= 550 &&
+              e.target.tagName != "I"
+            ) {
               editUtentiRespModal({
                 visibility: true,
                 data: { ...itemList },
@@ -40,41 +44,71 @@ class AdminListaUtentiRow extends React.Component {
           }}
         >
           <span>{itemList.id}</span>
-          <span>
-            <i
-              className={`fal fa-${
-                this.state.plusVisibility === false ? "plus" : "minus"
-              }-square`}
-              onClick={() => {
-                this.setState((state) => ({
-                  plusVisibility: !state.plusVisibility,
-                  activateChildren: !state.activateChildren,
-                }));
-              }}
-            ></i>
-            <div className="Link"></div>
-            <i className={`${allRoles[itemList.role]}`} />
-            <SpanFormater
-              myClassName="Username"
-              Word={itemList.username}
-              size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
-              nrOfRows={2}
-              formatWord={true}
-            />
-          </span>
+          {activeSkinId === -1 && accountInfo.profile.role.name != "support" ? (
+            <span>
+              <div></div>
+              <a
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingLeft: "10%",
+                  width: "100%",
+                  height: "100%",
+                }}
+                href={itemList.link}
+              >
+                {itemList.username}
+              </a>
+            </span>
+          ) : (
+            <React.Fragment>
+              <span>
+                <i
+                  className={`fal fa-${
+                    this.state.plusVisibility === false ? "plus" : "minus"
+                  }-square`}
+                  onClick={() => {
+                    this.setState((state) => ({
+                      plusVisibility: !state.plusVisibility,
+                      activateChildren: !state.activateChildren,
+                    }));
+                  }}
+                ></i>
+                <div className="Link"></div>
+                <i className={`${allRoles[itemList.role]}`} />
+                <SpanFormater
+                  myClassName="Username"
+                  Word={itemList.username}
+                  size={screenWidth <= 1600 ? 12 : 17}
+                  nrOfRows={2}
+                  formatWord={true}
+                />
+              </span>
+            </React.Fragment>
+          )}
+
           <SpanFormater
             Word={itemList.rag_soc}
             styles={this.props.activeSkinId === -1 ? { width: "16%" } : {}}
             size={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId === -1 && screenWidth >= 1600
                 ? 30
-                : screenWidth <= 1600
-                ? 13
-                : 17
+                : this.props.activeSkinId === -1 && screenWidth >= 1300
+                ? 20
+                : this.props.activeSkinId === -1 && screenWidth >= 800
+                ? 16
+                : screenWidth <= 1120
+                ? 8
+                : screenWidth <= 1320
+                ? 12
+                : screenWidth <= 1500
+                ? 11
+                : screenWidth <= 1700
+                ? 16
+                : 18
             }
             nrOfRows={2}
             formatWord={true}
-            link={this.props.activeSkinId === -1 ? true : false}
           />
           <SpanFormater
             styles={
@@ -86,8 +120,10 @@ class AdminListaUtentiRow extends React.Component {
                   }
                 : { justifyContent: "flex-end", paddingRight: "1%" }
             }
-            Word={numberWithCommas(itemList.wallet)}
+            Word={itemList.wallet}
             size={8}
+            type={"number"}
+            formatWord={true}
             nrOfRows={1}
           />
           {activeSkinId === -1 ? null : (
@@ -105,24 +141,31 @@ class AdminListaUtentiRow extends React.Component {
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
           >
             {itemList.last_deposit}
           </span>
           <span
             style={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId != -1 && screenWidth <= 950
+                ? { justifyContent: "center", left: 0, display: "none" }
+                : this.props.activeSkinId === -1
                 ? { width: "14%", justifyContent: "center", left: 0 }
                 : { justifyContent: "center", left: 0 }
             }
+            className={`${this.props.activeSkinId === -1 ? "none" : ""}`}
           >
             {itemList.last_login_time}
           </span>
           <span
             style={
-              this.props.activeSkinId === -1
+              this.props.activeSkinId === -1 && screenWidth <= 950
+                ? { width: "38%" }
+                : this.props.activeSkinId === -1
                 ? { width: "24%", justifyContent: "space-around" }
                 : {}
             }
+            className={`${this.props.activeSkinId === -1 ? "activated" : ""}`}
           >
             <button
               onClick={() => {
@@ -214,6 +257,19 @@ class AdminListaUtentiRow extends React.Component {
               // }}
             ></i>
           </span>
+          {screenWidth <= 550 && (
+            <span
+              style={activeSkinId === -1 ? { marginLeft: "16%" } : {}}
+              onClick={(e) => {
+                editUtentiRespModal({
+                  visibility: true,
+                  data: { ...itemList },
+                });
+              }}
+            >
+              <i className="fal fa-eye"> </i>
+            </span>
+          )}
         </div>
         {itemList &&
           Array.isArray(itemList.children) &&

@@ -39,7 +39,10 @@ export const subscribeSocketUser = (userID, props) => {
         data: e.data,
       });
     }
-    if (e.type === "support_popup") {
+    if (
+      e.type === "notification" &&
+      e.data.title === "Il biglietto è stato accettato"
+    ) {
       notification.open({
         message: "Hai ricevuto una notifica",
         description: e.data.title,

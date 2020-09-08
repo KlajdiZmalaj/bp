@@ -48,7 +48,7 @@
     flex-direction: row;
     width: 100%;
     height: 170px;
-    padding: 0px 5px;
+    padding: 0px 5%;
     padding-top: 50px;
     box-sizing: border-box;
     background-color: #f3f3f4;
@@ -58,8 +58,8 @@
     &--Element {
       background-color: #0377fc;
       opacity: 0.3;
-      margin: 0px 1.2px;
-      width: 6px;
+      margin: 0px 0.305%;
+      width: 2.465%;
       &:hover {
         background-color: #0578fc;
         opacity: 1;
@@ -115,7 +115,7 @@
   & .Close {
     position: fixed;
     right: 0;
-    top: 71.5px;
+    top: 101.5px;
     width: 40px;
     height: 30px;
     font-family: "Font Awesome 5 Pro";
@@ -147,7 +147,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 99vh;
+    height: 98vh;
     border: 1px solid #ebeced;
     padding-right: 10px;
     & i {
@@ -165,7 +165,7 @@
       position: absolute;
       width: 100%;
       height: 52px;
-      bottom: 63px;
+      bottom: 80px;
       font-size: 14px;
       font-weight: bold;
       zoom: 1;
@@ -182,7 +182,7 @@
       position: absolute;
       width: 100%;
       height: 52px;
-      bottom: 63px;
+      bottom: 80px;
       font-size: 14px;
       font-weight: bold;
       zoom: 1;
@@ -199,7 +199,7 @@
       position: absolute;
       width: 100%;
       height: 52px;
-      bottom: 63px;
+      bottom: 80px;
       font-size: 14px;
       font-weight: bold;
       zoom: 1;
@@ -224,7 +224,7 @@
       padding: 0;
       padding-right: 20px;
       margin: 34px 0;
-      height: calc(98vh - 145px);
+      height: calc(96vh - 145px);
       box-sizing: border-box;
       &::-webkit-scrollbar {
         width: 4px;
@@ -278,26 +278,43 @@
         width: 100%;
         justify-content: space-between;
         border-bottom: 1px solid #ebeced;
-        padding: 0 14px;
+        padding: 0 5px;
         align-items: center;
         &--Data {
-          font-size: 12px;
+          font-size: 11px;
           font-family: "Roboto", sans-serif;
+          display: flex;
+          margin: 0 2%;
+          box-sizing: border-box;
+          align-items: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
           &.Date {
             color: #727272;
             font-weight: 400;
+            font-size: 10px;
+            width: 28%;
+            justify-content: flex-start;
           }
           &.Id {
             color: #4b4b4b;
             font-weight: 500;
+            width: 27%;
+            justify-content: flex-start;
+            padding: 0 2px;
           }
           &.User {
             color: #727272;
             font-weight: 400;
+            width: 30%;
+            justify-content: flex-start;
+            padding: 0 2px;
           }
           &.Price {
             color: #0078ff;
             font-weight: 500;
+            width: 15%;
+            justify-content: flex-end;
           }
         }
       }

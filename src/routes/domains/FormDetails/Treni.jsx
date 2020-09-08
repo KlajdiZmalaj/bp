@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { notification } from "antd";
-import { DatePicker } from "antd";
+import DatePicker from "shared-components/DatePicker/DatePicker";
 import moment from "moment";
 import MyInput from "./Input";
 import FormSubmiter from "./FormSubmiter";
@@ -172,6 +172,10 @@ class Treni extends Component {
                 />
               </div>
             ) : null}
+            <div className="itemCol full">
+              <div className="inputLabel">Prezzo</div>
+              <input className="ant-input" value={price} readOnly />
+            </div>
 
             <div className="itemCol full Bagalio">
               <div className="inputLabel">Tipologia Biglietto</div>

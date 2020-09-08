@@ -3,15 +3,19 @@ import { CSVLink } from "react-csv";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import { numberWithCommas } from "utils/HelperFunc";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 class Excel extends React.Component {
   csvLink = React.createRef();
 
   state = {
     clickedLink: false,
   };
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (
+      prevProps.paymentExcelLoading === true &&
       this.props.paymentExcelLoading === false &&
       this.state.clickedLink === true &&
       this.props.payments &&
@@ -31,7 +35,6 @@ class Excel extends React.Component {
       username,
     } = this.props;
     const { clickedLink } = this.state;
-    console.log("payments", payments);
     const headers = [
       { label: "Date / Ora", key: "executed_date" },
       { label: "Barcode            ", key: "barcode" },
@@ -86,9 +89,11 @@ class Excel extends React.Component {
             <span>No data For this skin</span>
           ) : (
             <span style={{ cursor: "pointer" }}>
-              {paymentExcelLoading === true && clickedLink === true
-                ? "Aspetti..."
-                : "Esporta Csv"}
+              {paymentExcelLoading === true && clickedLink === true ? (
+                <Spin indicator={antIcon} />
+              ) : (
+                "Csv"
+              )}
             </span>
           )}
         </span>

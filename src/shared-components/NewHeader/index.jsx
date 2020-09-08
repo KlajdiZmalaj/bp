@@ -7,6 +7,7 @@ import MainActions from "redux-store/models/main";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
 import { numberWithCommas } from "utils/HelperFunc";
+import Chat from "shared-components/Chat/Chat";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +51,9 @@ class Header extends Component {
               </div>
             </div>
             <div className="right">
+              <div style={{ marginRight: "15px" }}>
+                <Chat />
+              </div>
               <div className="icons">
                 <div>
                   <i onClick={this.toggleAds} className="fas fa-bell"></i>

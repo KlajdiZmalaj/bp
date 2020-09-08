@@ -2,11 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import "./adminHeader.css";
+import Chat from "shared-components/Chat/Chat";
+
 class AdminHeader extends React.Component {
+  state = {
+    chat: false,
+  };
   render() {
+    const { small } = this.props;
+
     return (
       <div className="AdminHeader">
-        <div className="AdminHeader--Title">ADMIN PANEL</div>
+        {!small && (
+          <div className="AdminHeader--Title">
+            <span>
+              <i className="fal fa-bars" onClick={this.props.handleClick}></i>
+            </span>
+            <span>
+              {this.props.accountInfo.profile.role.name === "support"
+                ? "Support"
+                : "Admin"}
+            </span>
+            <span>Panel</span>
+          </div>
+        )}
+
         <div className="AdminHeader--Box">
           <div
             className={`AdminHeader--Category ${
@@ -22,6 +42,7 @@ class AdminHeader extends React.Component {
               <span>UTENTI</span>
             </div>
           </div>
+
           <div
             className={`AdminHeader--Category ${
               this.props.location.pathname.includes("movimenti") ? "active" : ""
@@ -67,19 +88,25 @@ class AdminHeader extends React.Component {
               <span>PRENOTAZIONI</span>
             </div>
           </div>
-          {/* <div className="AdminHeader--ButtonWrapper">
-            <button
+          {small && (
+            <div
+              className={`AdminHeader--Category `}
               onClick={() => {
-                this.props.logOut();
+                this.setState((state) => ({ chat: !state.chat }));
+                this.props.goToAdminPanel(true);
               }}
             >
-              <span>LOG OUT</span>
-            </button>
-          </div> */}
+              <div>
+                <Chat />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
-
-export default connect(null, AuthActions)(AdminHeader);
+const mapStateToProps = (state) => ({
+  accountInfo: state.auth.accountInfo,
+});
+export default connect(mapStateToProps, AuthActions)(AdminHeader);

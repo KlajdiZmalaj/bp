@@ -3,16 +3,17 @@
   height: calc(100% - 72px);
   position: fixed;
   left: 0;
-  top: 71px;
+  top: 101px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7;
   &--Container {
     width: 350px;
     height: 392px;
     position: fixed;
     background-color: #ffffff;
-    z-index: 4;
+    z-index: 9;
     &--Up {
       height: 73px;
       display: flex;
@@ -86,7 +87,7 @@
             height: 42px;
             display: flex;
             justify-content: space-around;
-            padding: 0 25px;
+            padding: 0 27px;
             align-items: center;
             font-size: 14px;
             font-weight: 500;

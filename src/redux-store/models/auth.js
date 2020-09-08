@@ -314,6 +314,51 @@ const { Types, Creators } = createActions({
   setSkinId: ["newSkinId"],
   getWidgetPayments: ["skin_id"],
   setWidgetPayments: ["leUltimeTransazioniDet"],
+  AddSuperAdmin: [
+    "first_name",
+    "last_name",
+    "gender",
+    "username",
+    "email",
+    "phone",
+    "personal_number",
+    "password",
+    "confirm_password",
+    "address",
+    "city",
+    "comune_code",
+    "cap",
+    "country",
+    "birth_place",
+    "birth_country",
+    "birthday",
+    "a_ragione_sociale",
+    "a_p_iva",
+    "a_codice_fiscale",
+    "skin_id",
+  ],
+  AddExtraData: [
+    "cel",
+    "mail",
+    "address",
+    "link1",
+    "link2",
+    "link3",
+    "link4",
+    "link5",
+    "ig",
+    "pin",
+    "yt",
+    "fb",
+    "bank_name",
+    "account_name",
+    "iban",
+    "main_color",
+    "skin_id",
+  ],
+  registerSkinSucc: ["registerSkinS"],
+  getStatistiche: ["skin_id"],
+  setStatistiche: ["Statistiche"],
 });
 
 export const AuthTypes = Types;
@@ -376,6 +421,11 @@ const INITIAL_STATE = {
   addEditSkin: { skinPannel: false },
   newSkinId: -1,
   leUltimeTransazioniDet: [],
+  registerSkin: {
+    addSkinSucc: false,
+    addExtraDataSucc: false,
+  },
+  Statistiche: null,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -616,5 +666,13 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_SKIN_ID]: (state, { newSkinId }) => ({
     ...state,
     newSkinId,
+  }),
+  [Types.REGISTER_SKIN_SUCC]: (state, { registerSkinS }) => ({
+    ...state,
+    registerSkin: { ...state.registerSkin, ...registerSkinS },
+  }),
+  [Types.SET_STATISTICHE]: (state, { Statistiche }) => ({
+    ...state,
+    Statistiche,
   }),
 });

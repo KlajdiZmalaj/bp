@@ -4,6 +4,7 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import "./adminLeftForm.css";
 import { connect } from "react-redux";
+import Chat from "shared-components/Chat/Chat";
 
 class AdminLeftForm extends React.Component {
   state = {
@@ -11,38 +12,75 @@ class AdminLeftForm extends React.Component {
     wallModal: false,
     ultModal: false,
   };
-
+  async componentDidMount() {
+    await this.props.getStatistiche(this.props.activeSkinId);
+    await this.props.getWidgetPayments(this.props.activeSkinId);
+    await setTimeout(() => {
+      const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
+      this.props.editStatModal({
+        visibility: false,
+        data: {
+          graphData: Statistiche,
+          Tranzacioni: TrCoPro?.importo,
+          Commisione: TrCoPro?.commissione,
+          Proviggioni: TrCoPro?.proviggioni,
+        },
+      });
+      this.props.editUltModal({
+        visibility: false,
+        data: {
+          leUltimeTransazioniDet: leUltimeTransazioniDet,
+        },
+      });
+    }, 600);
+  }
+  async componentDidUpdate(prevProps) {
+    if (this.props.activeSkinId != prevProps.activeSkinId) {
+      await this.props.getStatistiche(this.props.activeSkinId);
+      await this.props.getWidgetPayments(this.props.activeSkinId);
+      await setTimeout(() => {
+        const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
+        this.props.editStatModal({
+          visibility: false,
+          data: {
+            graphData: Statistiche,
+            Tranzacioni: TrCoPro?.importo,
+            Commisione: TrCoPro?.commissione,
+            Proviggioni: TrCoPro?.proviggioni,
+          },
+        });
+        this.props.editUltModal({
+          visibility: false,
+          data: {
+            leUltimeTransazioniDet: leUltimeTransazioniDet,
+          },
+        });
+      }, 600);
+    }
+  }
   render() {
     const {
-      handleClick,
       setActiveSkinId,
-      graphData,
       leUltimeTransazioniDet,
-      Tranzacioni,
-      Proviggioni,
-      Commisione,
       screenWidth,
       editDepModal,
       editStatModal,
       editUltModal,
       skinList,
       activeSkinId,
+      accountInfo,
     } = this.props;
-
     return (
       <React.Fragment>
         <div className="AdminLeftForm">
           <div className="AdminLeftForm--FirstBox">
-            <div className="AdminLeftForm--FirstBox--Box">
-              <div className="Bars">
-                <span>NETWORK</span>
-                <i className="fal fa-bars" onClick={handleClick}></i>
-              </div>
-            </div>
             {skinList &&
               Array.isArray(skinList) &&
               skinList.map((skin) => (
                 <div
+                  onClick={() => {
+                    setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                  }}
                   className={`AdminLeftForm--FirstBox--Box${
                     activeSkinId === skin.id ? "--active" : ""
                   }`}
@@ -64,74 +102,62 @@ class AdminLeftForm extends React.Component {
                       }
                       alt=""
                     />
-                    {/* <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 22 22"
-                    >
-                      <circle className="a" cx="11" cy="11" r="11" />
-                    </svg> */}
-
-                    <span
-                      onClick={() => {
-                        console.log(activeSkinId, skin.id);
-                        setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
-                        this.props.getWidgetPayments(skin.id);
-                      }}
-                    >
-                      {skin.username.toUpperCase()}
-                    </span>
+                    <span>{skin.username.toUpperCase()}</span>
                   </div>
                 </div>
               ))}
-            <div
-              style={{ cursor: "pointer" }}
-              className={`AdminLeftForm--FirstBox--Box`}
-              key={"createSkin"}
-            >
-              <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                >
-                  <circle className="a" cx="11" cy="11" r="11" />
-                </svg>
+            {accountInfo.profile.role.name != "support" && (
+              <div
+                style={{ cursor: "pointer" }}
+                className={`AdminLeftForm--FirstBox--Box`}
+                key={"createSkin"}
+              >
+                <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 22 22"
+                  >
+                    <circle className="a" cx="11" cy="11" r="11" />
+                  </svg>
 
-                <span
-                  onClick={() => {
-                    this.props.goToAdminPanel(false);
-                    this.props.addEditSkinDetails({
-                      skinId: -1,
-                      skinName: "newSkin",
-                      skinPannel: false,
-                      stepNumber: 0,
-                    });
-                  }}
-                >
-                  Create Add Skin
-                </span>
+                  <span
+                    onClick={() => {
+                      this.props.goToAdminPanel(false);
+                      this.props.addEditSkinDetails({
+                        skinId: -1,
+                        skinName: "newSkin",
+                        skinPannel: false,
+                        stepNumber: 0,
+                      });
+                    }}
+                  >
+                    Create Add Skin
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className="AdminLeftForm--LastBox">
-            {screenWidth <= 1050 ? (
+            {screenWidth <= 1320 ? (
               <React.Fragment>
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
+                    const { Statistiche } = this.props;
+                    const { TrCoPro } = this.props;
                     editStatModal({
                       visibility: true,
                       data: {
-                        graphData: graphData,
-                        Tranzacioni: Tranzacioni,
-                        Commisione: Commisione,
-                        Proviggioni: Proviggioni,
+                        graphData: Statistiche,
+                        Tranzacioni: TrCoPro?.importo,
+                        Commisione: TrCoPro?.commissione,
+                        Proviggioni: TrCoPro?.proviggioni,
                       },
                     });
+
                     editUltModal({
                       visibility: false,
                       data: "",
@@ -189,6 +215,9 @@ class AdminLeftForm extends React.Component {
               </React.Fragment>
             ) : null}
             <div className="AdminLeftForm--LastBox--Box">
+              <Chat />
+            </div>
+            <div className="AdminLeftForm--LastBox--Box">
               <i className="fal fa-envelope"></i>
               <span>MESSAGGI</span>
             </div>
@@ -206,5 +235,9 @@ const mstp = (state) => ({
   screenWidth: state.main.screenWidth,
   skinList: state.auth.skinList,
   activeSkinId: state.main.activeSkinId,
+  TrCoPro: state.auth.Statistiche?.total,
+  Statistiche: state.auth.Statistiche?.data,
+  leUltimeTransazioniDet: state.auth.leUltimeTransazioniDet,
+  accountInfo: state.auth.accountInfo,
 });
 export default connect(mstp, { ...MainActions, ...AuthActions })(AdminLeftForm);

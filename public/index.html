@@ -11,8 +11,10 @@
     var root = document.getElementsByTagName("html")[0];
     root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-    if (window.location.href.includes("bpoint") ||
-      window.location.href.includes("local")) {
+    if (
+      window.location.href.includes("bpoint") ||
+      window.location.href.includes("local")
+    ) {
       document.getElementById("lnk").setAttribute("href", `var1.css`);
     } else if (window.location.href.includes("gfb")) {
       document.getElementById("lnk").setAttribute("href", "./var5.css");
@@ -20,9 +22,7 @@
       document.getElementById("lnk").setAttribute("href", "./var4.css");
     } else if (window.location.href.includes("sirpay")) {
       document.getElementById("lnk").setAttribute("href", "./var6.css");
-    } else if (
-      window.location.href.includes("derby")
-    ) {
+    } else if (window.location.href.includes("derby")) {
       document.getElementById("lnk").setAttribute("href", "./var3.css");
     }
     if (window.location.host.split(".")[1]) {
@@ -33,6 +33,19 @@
       document.title = window.location.host + " - Tutto con un click!";
     }
   </script>
+  <!-- <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/5f4e3671f0e7167d000c81cc/default";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script> -->
 </head>
 
 <body>
@@ -76,8 +89,6 @@
       s0.parentNode.insertBefore(s1, s0);
     })();
   </script> -->
-  <script src="//code.tidio.co/phck8i6by9yrbmxqsnxyrqh1q8ljcews.js" async></script>
-
 </body>
 
 </html>

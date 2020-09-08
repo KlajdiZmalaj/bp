@@ -1,118 +1,24 @@
-.ticketDetails--header.--Visura span {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.ticketDetails--header.--Visura span:nth-child(2) {
-  width: 20%;
-}
-
-.ticketDetails--header.--Visura span:nth-child(3) {
-  width: 4%;
-}
-
-.ticketDetails--header.--Visura span:nth-child(4) {
-  width: 14%;
-}
-
-.ticketDetails--header.--Visura span:nth-child(5) {
-  width: 11%;
-}
-
-.ticketDetails--header.--Visura span:nth-child(6) {
-  width: 15%;
-}
-
-.ticketDetails--header.--Visura span:nth-child(7) {
-  width: 10%;
-}
-
 .ticketDetails--row > span {
   padding: 15px;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura .options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 21%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) .new {
+.ticketDetails--row.animated.fadeIn.Visura .new {
   margin-left: 10px;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) {
-  width: 20%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(2) i {
-  width: 15px;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(3) {
-  width: 4%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(4) {
-  width: 14%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(4) i {
-  width: 15px;
-  margin-right: 10px;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(5) {
-  width: 11%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(6) {
-  width: 15%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura > span:nth-child(7) {
-  width: 10%;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura .fal,
-.ticketDetails--row.animated.fadeIn.--Visura .fas {
-  color: #578a17;
-}
-
-.ticketDetails--row.animated.fadeIn.--Visura .fal.a-store,
-.ticketDetails--row.animated.fadeIn.--Visura .fas.a-store {
+.ticketDetails--row.animated.fadeIn.Visura .fal.a-store,
+.ticketDetails--row.animated.fadeIn.Visura .fas.a-store {
   color: #dc3545;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura .fal.fa-building,
-.ticketDetails--row.animated.fadeIn.--Visura .fas.fa-building {
+.ticketDetails--row.animated.fadeIn.Visura .fal.fa-building,
+.ticketDetails--row.animated.fadeIn.Visura .fas.fa-building {
   color: #3d6389;
 }
 
-.ticketDetails--row.animated.fadeIn.--Visura .fal.fa-trash, .ticketDetails--row.animated.fadeIn.--Visura .fal.fa-archive,
-.ticketDetails--row.animated.fadeIn.--Visura .fas.fa-trash,
-.ticketDetails--row.animated.fadeIn.--Visura .fas.fa-archive {
+.ticketDetails--row.animated.fadeIn.Visura .fal.fa-trash, .ticketDetails--row.animated.fadeIn.Visura .fal.fa-archive,
+.ticketDetails--row.animated.fadeIn.Visura .fas.fa-trash,
+.ticketDetails--row.animated.fadeIn.Visura .fas.fa-archive {
   color: #b5b5b5;
 }
 
@@ -283,7 +189,7 @@
 
 .ticketDetails--filters__byTicket .fa-building.active, .ticketDetails--filters__byTicket .fa-building:hover {
   background-color: #3d6389;
-  color: #222;
+  color: #fff;
 }
 
 .ticketDetails--filters__byTicket .fa-user.active, .ticketDetails--filters__byTicket .fa-user:hover {

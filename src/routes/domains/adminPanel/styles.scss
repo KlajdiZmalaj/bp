@@ -3,9 +3,19 @@
   font-family: "Roboto", sans-serif;
   color: #5c5c5c;
   background-color: #ffffff;
+}
+.bodyAdmin {
+  & .exportPDF > div {
+    margin: 0;
+    margin-right: 10px;
+  }
+  & .barcodeBtn {
+    padding: 8px 8px;
+    margin-left: 1%;
+  }
   & .TopHeader {
     height: 30px;
-    background: #0078ffe3;
+    background: #353d45;
     color: #fff;
     width: 100%;
     z-index: 2;
@@ -13,13 +23,28 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 14px;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Roboto";
     span {
       margin-right: 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      &.logOutBtn {
+        border-radius: 0;
+        margin-right: 0;
+        margin-left: 10px;
+        padding: 0 18px;
+        color: #7bb928;
+        font-weight: 600;
+        font-size: 12px;
+        border: none;
+        border-left: 1px solid #ffffff1a;
+      }
     }
   }
-}
-.bodyAdmin {
   & .ExportToExel {
     color: #0078ff;
     padding: 10px;
@@ -73,7 +98,10 @@
     background-color: rgba(0, 0, 0, 0.03);
     margin-bottom: 41px;
     min-height: 550px;
-
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 200px - 400px);
+      transition: 0.5s;
+    }
     &--Big {
       position: relative;
       width: calc(100% - 51px - 400px);
@@ -89,27 +117,29 @@
       background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
       margin-bottom: 41px;
+      & .AdminListaUtenti--Header {
+        width: calc(100% - 51px - 400px);
+        transition: 0.5s;
+      }
     }
   }
   & .Left {
-    border: 1px solid #ebeced;
     width: 200px;
     height: calc(100vh - 101px);
     position: fixed;
     left: 0;
     top: 101px;
-    background-color: #ffffff;
+    background-color: #353d45;
     transition: 0.5s;
     overflow-x: hidden;
 
     &--Min {
-      border: 1px solid #ebeced;
       width: 50px;
       height: calc(100vh - 101px);
       position: fixed;
       left: 0;
       top: 101px;
-      background-color: #ffffff;
+      background-color: #353d45;
       transition: 0.5s;
       overflow-x: hidden;
     }
@@ -132,10 +162,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 350px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 350px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 350px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 350px - 200px);
+      transition: 0.5s;
+    }
   }
 }
 @media (max-width: 1780px) {
@@ -161,10 +199,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 280px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 280px - 51px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 280px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 280px - 200px);
+      transition: 0.5s;
+    }
   }
 }
 @media (max-width: 1550px) {
@@ -197,10 +243,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 260px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 260px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 260px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 260px - 200px);
+      transition: 0.5s;
+    }
   }
   .AdminRightForm--Box {
     padding: 10px 12px;
@@ -236,10 +290,18 @@
   .AdminColumns .Center--Big {
     width: calc(100% - 220px - 51px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 51px - 220px);
+      transition: 0.5s;
+    }
   }
   .AdminColumns .Center {
     width: calc(100% - 220px - 200px);
     transition: 0.5s;
+    & .AdminListaUtenti--Header {
+      width: calc(100% - 220px - 200px);
+      transition: 0.5s;
+    }
   }
 }
 // List Movimenti
@@ -331,6 +393,31 @@ div.Center--Big {
         min-width: 270px;
         box-sizing: border-box;
       }
+      & .filesBtns {
+        & .exportPDF,
+        & .ExportToExel {
+          & div {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 400;
+          }
+          font-size: 15px;
+          font-weight: 400;
+          width: 60px;
+          border: 1px solid #353d45;
+          border-radius: 5px;
+          height: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        & .exportPDF {
+          & div {
+            color: #353d45;
+          }
+          margin-right: 10px;
+        }
+      }
       & .filterBtn {
         position: relative;
         height: 36px;
@@ -343,13 +430,13 @@ div.Center--Big {
         color: #ffffff;
         font-weight: 500;
         background-color: #0078ff;
-        order: 3;
         & i {
           padding-right: 8px;
         }
       }
       & .dal {
         border-right: 1px solid #ebeced;
+        border-left: 1px solid #ebeced !important;
         & div:first-child {
           height: 100%;
           align-items: center;
@@ -753,7 +840,7 @@ div.Center--Big {
                 }
 
                 &:last-child {
-                  width: 2%;
+                  width: 0.1%;
                   & i {
                     color: #000;
                     font-weight: 300;
@@ -785,7 +872,7 @@ div.Center--Big {
     }
   }
 }
-@media (max-width: 1050px) {
+@media (max-width: 1320px) {
   .AdminColumns {
     & .AdminRightForm {
       display: none;
@@ -795,10 +882,14 @@ div.Center--Big {
     & div.Center--Big {
       width: calc(100vw - 51px);
       overflow: hidden;
+      & .AdminListaUtenti--Header {
+        width: calc(100vw - 51px);
+      }
     }
   }
 }
-@media (max-width: 670px) {
+
+@media (max-width: 795px) {
   div.Center,
   div.Center--Big {
     & .container-fluid.overview,
@@ -851,6 +942,34 @@ div.Center--Big {
 
       & .sort-annunci {
         flex-direction: column;
+        & .barcodeBtn {
+          width: 26%;
+          height: 38px;
+          margin: 2px 0;
+          align-self: flex-start;
+        }
+        & .filesBtns {
+          position: absolute;
+          bottom: 3px;
+          left: calc(32% + 140px);
+          margin-top: 3px;
+        }
+        & .filterBtn {
+          position: absolute;
+          bottom: 2px;
+          width: 12%;
+          left: calc(35% + 280px);
+          height: 34px;
+          border-radius: 5px;
+          margin: 1px 0;
+          margin-left: 5px;
+        }
+        & div:nth-child(3).ant-select.ant-select-enabled {
+          position: absolute;
+          bottom: 1px;
+          left: 30%;
+          border: 1px solid #ebeced;
+        }
         & .datepics.ml-auto.mr-2 {
           position: relative;
           width: 100%;
@@ -875,11 +994,7 @@ div.Center--Big {
           border-bottom: 1px solid #ebeced;
         }
         & .filterBtn {
-          width: 100%;
-          border-radius: 0;
-          height: 30px;
           opacity: 0.9;
-          margin: 5px 0;
         }
       }
       & .row.no-gutters.max-width {
@@ -932,6 +1047,194 @@ div.Center--Big {
                 &:nth-child(4) {
                   width: 40%;
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 595px) {
+  div.Center,
+  div.Center--Big {
+    & .container-fluid.overview,
+    & .panels-container {
+      & .sort-annunci {
+        & .barcodeBtn {
+          width: 145px;
+          margin-left: 0;
+        }
+        & .filesBtns {
+          left: 280px;
+          margin: 0;
+        }
+        & .filterBtn {
+          left: 420px;
+        }
+        & div:nth-child(3).ant-select.ant-select-enabled {
+          left: 150px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 540px) {
+  div.Center,
+  div.Center--Big {
+    & .container-fluid.overview,
+    & .panels-container {
+      & .sort-annunci {
+        & .barcodeBtn {
+          width: 50%;
+          margin-left: 0;
+          margin-bottom: 50px;
+        }
+        & .filesBtns {
+          left: 5%;
+          width: 70%;
+          margin: 0;
+          & .exportPDF {
+            width: 30%;
+            margin-right: 20%;
+          }
+          & .ExportToExel {
+            width: 30%;
+          }
+        }
+        & .filterBtn {
+          width: 17%;
+          left: 78%;
+        }
+        & div:nth-child(3).ant-select.ant-select-enabled {
+          left: 52%;
+          bottom: 48px;
+          width: 48%;
+          & div {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .AdminColumns {
+    & div.container-fluid.overview {
+      & div.panels-container {
+        & div.row.no-gutters.max-width {
+          & table.transTable {
+            & tbody {
+              & td.wsNwp {
+                &:nth-child(2),
+                &:nth-child(4) {
+                  display: none;
+                }
+                &:nth-child(5) {
+                  display: table-cell !important;
+                  width: 15% !important;
+                  padding: 0 !important;
+                  & i {
+                    display: none;
+                  }
+                }
+                &:nth-child(3) {
+                  display: table-cell !important;
+                  flex-direction: column;
+                  align-items: flex-start !important;
+                  width: 70% !important;
+                  & div {
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding-left: 5%;
+                    margin: 0 0 !important;
+                    &:first-child {
+                      color: #5c5c5c;
+                      font-weight: 400;
+                      font-size: 14px;
+                      font-family: "Roboto";
+                    }
+                    &:nth-child(2) {
+                      color: #0078ff;
+                      font-weight: 400;
+                      font-size: 14px;
+                      font-family: "Roboto";
+                    }
+                  }
+                }
+                &:last-child {
+                  width: 15% !important;
+                  border-left: 1px solid #ebeced;
+                  border-right: 1px solid #ebeced;
+                  & i {
+                    font-size: 16px !important;
+                    font-weight: 300 !important;
+                    color: #5c5c5c;
+                  }
+                }
+              }
+            }
+            & thead {
+              & td.wsNwp {
+                &:nth-child(5) {
+                  display: table-cell !important;
+                }
+                &:nth-child(2),
+                &:nth-child(4) {
+                  display: none;
+                }
+                &:nth-child(3) {
+                  width: 70% !important;
+                  padding-left: 5% !important;
+                  margin: 0 !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .AdminColumns {
+    & div.container-fluid.overview {
+      & div.panels-container {
+        & div.row.no-gutters.max-width {
+          & table.transTable {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            & tr {
+              width: 100%;
+              height: 45px;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+            }
+            & td {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            & thead {
+              & tr {
+                & td.wsNwp {
+                  &:nth-child(5).right {
+                    width: 60% !important;
+                  }
+                }
+              }
+            }
+            & td.wsNwp {
+              &:nth-child(5).importoTd {
+                display: flex !important;
+                width: 30% !important;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                justify-content: center;
+                align-items: center;
               }
             }
           }

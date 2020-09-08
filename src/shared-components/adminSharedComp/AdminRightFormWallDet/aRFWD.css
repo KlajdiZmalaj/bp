@@ -1,9 +1,9 @@
 .RightFormModal {
   position: fixed;
-  width: 80vw;
-  top: 71px;
-  margin: calc((20vh - 71px) / 2) 10vw;
-  height: 80vh;
+  width: 70vw;
+  top: 101px;
+  margin: calc((30vh - 101px) / 2) 15vw;
+  height: 70vh;
   z-index: 5;
   -webkit-box-shadow: 0 3px 6px 1px #0000008c;
           box-shadow: 0 3px 6px 1px #0000008c;
@@ -24,17 +24,21 @@
 }
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown--Submit {
-  margin-top: 4vh;
+  margin-top: 3vh;
   font-weight: 500;
 }
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
-  margin: 4vh 27px;
-  height: 7vh;
+  margin: 3vh 27px;
+  height: 8vh;
+}
+
+.RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder i.fa-search {
+  margin: 0 calc((14% - 21px) / 2);
 }
 
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
-  margin-top: 7vh;
+  margin-top: 4vh;
 }
 
 .RightFormModal .Header {
@@ -91,7 +95,7 @@
 }
 
 .RightFormModal .backDrop {
-  top: 71px;
+  top: 101px;
   height: calc(100vh - 71px);
   width: calc(100vw - 51px);
   left: 51px;

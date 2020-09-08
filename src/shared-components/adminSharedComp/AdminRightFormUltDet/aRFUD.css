@@ -1,7 +1,7 @@
 .RightFormModal {
   position: fixed;
   width: 80vw;
-  top: 71px;
+  top: 101px;
   margin: calc((20vh - 71px) / 2) 10vw;
   height: 80vh;
   z-index: 5;
@@ -176,7 +176,6 @@
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown {
   background-color: #ffffff;
-  padding: 3vh 2vw;
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 7vh;
@@ -199,11 +198,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: calc(1.2vw + 1.2vh);
+  padding: 3vh 2vw;
 }
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
   font-family: "Roboto";
+  font-size: calc(1vw + 1vh);
 }
 
 .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
@@ -280,7 +280,7 @@
 }
 
 .RightFormModal .backDrop {
-  top: 71px;
+  top: 101px;
   height: calc(100vh - 71px);
   width: calc(100vw - 51px);
   left: 51px;

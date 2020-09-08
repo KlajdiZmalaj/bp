@@ -43,6 +43,9 @@ import {
   printFatturaReq,
   AddSkinReq,
   widgetPaymentsReq,
+  AddExtraDataReq,
+  AddSuperAdminReq,
+  getStatisticheReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -77,6 +80,15 @@ export function* getAgents(params) {
   // console.log("agents res", response);
   if (response.data) {
     yield put(AuthActions.setAgents(response.data.agents));
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
   }
 }
 
@@ -948,6 +960,15 @@ export function* getAgentByUserId(data) {
       yield put(AuthActions.setUserDetail(response.data.user));
     }
   }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
 }
 export function* getUserByUserId(data) {
   const response = yield call(getUserByUserIdReq, data.user_id, data.skin_id);
@@ -957,6 +978,15 @@ export function* getUserByUserId(data) {
       yield put(AuthActions.setUserDetail(response.data.user));
     }
   }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
 }
 export function* getSkins() {
   const response = yield call(getSkinsReq);
@@ -964,6 +994,15 @@ export function* getSkins() {
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.setSkins(response.data.users));
+    }
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
     }
   }
 }
@@ -979,6 +1018,15 @@ export function* getFaturaDetails(params) {
       yield put(AuthActions.setFaturaDetails(response.data));
     }
   }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
 }
 export function* getAllServices({ skin_id }) {
   yield put(AuthActions.setServicesLoading(true));
@@ -986,6 +1034,15 @@ export function* getAllServices({ skin_id }) {
   if (response.data) {
     if (response.status === 200) {
       yield put(AuthActions.setAllServices(response.data.result));
+    }
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
     }
   }
   yield put(AuthActions.setServicesLoading(false));
@@ -1006,6 +1063,15 @@ export function* getAllFaturaBySearch({ username, year, month }) {
       );
     }
   }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
 }
 export function* sendMailFattura({ file_name }) {
   const response = yield call(sendMailFatturaReq, file_name);
@@ -1023,12 +1089,160 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   if (response) {
     // console.log(response.data.skin_id);
     yield put(AuthActions.setSkinId(response.data.skin_id));
+    yield put(AuthActions.registerSkinSucc({ addSkinSucc: true }));
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
   }
 }
 export function* getWidgetPayments({ skin_id }) {
+  console.log(skin_id);
   const response = yield call(widgetPaymentsReq, skin_id);
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
   }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
   // console.log("response wiget payments", response);
+}
+export function* AddSuperAdmin({
+  first_name,
+  last_name,
+  gender,
+  username,
+  email,
+  phone,
+  personal_number,
+  password,
+  confirm_password,
+  address,
+  city,
+  comune_code,
+  cap,
+  country,
+  birth_place,
+  birth_country,
+  birthday,
+  a_ragione_sociale,
+  a_p_iva,
+  a_codice_fiscale,
+  skin_id,
+  c,
+}) {
+  const response = yield call(
+    AddSuperAdminReq,
+    first_name,
+    last_name,
+    gender,
+    username,
+    email,
+    phone,
+    personal_number,
+    password,
+    confirm_password,
+    address,
+    city,
+    comune_code,
+    cap,
+    country,
+    birth_place,
+    birth_country,
+    birthday,
+    a_ragione_sociale,
+    a_p_iva,
+    a_codice_fiscale,
+    skin_id
+  );
+  if (response) {
+    yield call(c);
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
+}
+export function* AddExtraData({
+  cel,
+  mail,
+  address,
+  link1,
+  link2,
+  link3,
+  link4,
+  link5,
+  ig,
+  pin,
+  yt,
+  fb,
+  bank_name,
+  account_name,
+  iban,
+  main_color,
+  skin_id,
+}) {
+  const response = yield call(
+    AddExtraDataReq,
+    cel,
+    mail,
+    address,
+    link1,
+    link2,
+    link3,
+    link4,
+    link5,
+    ig,
+    pin,
+    yt,
+    fb,
+    bank_name,
+    account_name,
+    iban,
+    main_color,
+    skin_id
+  );
+  if (response) {
+    yield put(AuthActions.registerSkinSucc({ addExtraDataSucc: true }));
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
+}
+export function* getStatistiche(params) {
+  const response = yield call(getStatisticheReq, params.skin_id);
+  if (response) {
+    yield put(AuthActions.setStatistiche(response.data));
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
 }

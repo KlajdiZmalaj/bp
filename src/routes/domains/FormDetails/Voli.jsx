@@ -129,6 +129,11 @@ class Voli extends Component {
               </div>
             </div>
             <div className="itemCol full">
+              <div className="inputLabel">Prezzo</div>
+              <input className="ant-input" value={price} readOnly />
+            </div>
+
+            <div className="itemCol full">
               {
                 <div
                   className={

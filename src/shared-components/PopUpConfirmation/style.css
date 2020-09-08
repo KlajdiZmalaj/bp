@@ -40,25 +40,25 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 31px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  min-height: 31px;
   padding: 10px 0px;
   font-size: 16px;
 }
 
 .confirmationPopup--body .NomeEmail .confirmationPopup--body__item span.light {
-  position: absolute;
-  left: 0;
+  position: relative;
   width: 45%;
+  height: 100%;
 }
 
 .confirmationPopup--body .NomeEmail .confirmationPopup--body__item span.dark {
   font-weight: 600;
-  position: absolute;
+  position: relative;
   width: 55%;
-  left: 45%;
+  height: 100%;
 }
 
 .confirmationPopup--body .Others {
@@ -87,25 +87,25 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 31px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  min-height: 31px;
   padding: 10px 0px;
   font-size: 15px;
 }
 
 .confirmationPopup--body .Others .confirmationPopup--body__item span.light {
-  position: absolute;
-  left: 0;
+  position: relative;
   width: 45%;
+  height: 100%;
 }
 
 .confirmationPopup--body .Others .confirmationPopup--body__item span.dark {
   font-weight: 600;
-  position: absolute;
+  position: relative;
   width: 55%;
-  left: 45%;
+  height: 100%;
 }
 
 .confirmationPopup--buttons {

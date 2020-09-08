@@ -1577,6 +1577,15 @@ i#private {
 }
 
 /*transazioni styles*/
+.sort-annunci {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.sort-annunci.sort-trasazioni .ml-auto.mr-2 {
+  margin-left: 0 !important;
+}
+
 .datepics {
   border: 2px solid #edeef0;
   border-radius: 5px;
@@ -1923,8 +1932,8 @@ i#private {
 }
 
 .barcodeBtn {
-  background-color: #edeef0;
-  color: #f36520;
+  background-color: #ffffff;
+  color: #353d45;
   text-transform: capitalize;
   position: relative;
   bottom: 5px;
@@ -1938,7 +1947,8 @@ i#private {
 .bodyAdmin .barcodeBtn {
   position: relative;
   top: 1px;
-  color: #0078ff;
+  background-color: #ffffff;
+  color: #353d45;
 }
 
 .useCodePopUp {
@@ -1969,18 +1979,85 @@ i#private {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 144px;
+}
+
+.filesBtns .ExportToExel {
+  width: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #353d45;
+  border-radius: 5px;
+  height: 42px;
+  color: #353d45;
+}
+
+.filesBtns .ExportToExel i {
+  font-size: 18px;
+  color: #353d45;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.filesBtns .ExportToExel span:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-.exportPDF > div {
-  color: #c52727;
+.filesBtns .exportPDF {
+  margin: 0 10px;
+  width: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #353d45;
+  border-radius: 5px;
+  height: 42px;
+}
+
+.filesBtns .exportPDF > div {
+  color: #353d45;
   cursor: pointer;
-  margin-bottom: 4px;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filesBtns .exportPDF i {
+  font-size: 18px;
+  color: #353d45;
+  font-weight: 600;
+  margin-right: 5px;
 }
 
 .afterprint .tablePrint {
@@ -1991,6 +2068,42 @@ input#write {
   position: fixed;
   z-index: -99;
   opacity: 0;
+}
+
+@media (max-width: 870px) {
+  .sort-annunci.sort-trasazioni .ant-select {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection__rendered {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 0 5px !important;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 135px;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection i,
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection svg {
+    margin-right: 5px !important;
+  }
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection i[data-icon="down"],
+  .sort-annunci.sort-trasazioni .ant-select .ant-select-selection svg[data-icon="down"] {
+    margin-right: 0px !important;
+    position: relative;
+    left: 8px;
+  }
 }
 
 /*adm styles*/
@@ -2317,48 +2430,7 @@ body:not(.bodyAdmin) div.Container .panels-container .max-width {
   max-width: 1371px;
 }
 
-body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel {
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 30px;
-  font-size: 16px;
-  font-weight: 400;
-  font-family: "Roboto";
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #01a81b;
-  margin-bottom: 4px;
-}
-
-body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel i {
-  font-size: 18px;
-  font-weight: 300;
-  margin-right: 10px;
-}
-
-body:not(.bodyAdmin) div.Container .panels-container .max-width .ExportToExel span:first-child {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-body:not(.bodyAdmin) div.Container .panels-container .row.no-gutters.max-width {
+body:not(.bodyAdmin) div.Container .row.no-gutters.max-width {
   max-width: 1371px;
 }
 

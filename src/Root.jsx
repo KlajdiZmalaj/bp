@@ -34,6 +34,7 @@ import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
 import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
 import Fatura from "./routes/views/Fatura";
+
 import {
   subscribeSocketUser,
   socket,
@@ -46,6 +47,13 @@ import {
   PopUpConfirmationVisure,
   Footer,
 } from "shared-components";
+import "moment/locale/it";
+import moment from "moment";
+moment.locale("it", {
+  week: {
+    dow: 1,
+  },
+});
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
@@ -242,13 +250,13 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             />
-            {/* <PrivateRoute
-              path="/fatura"
+            <PrivateRoute
+              path="/fatture"
               component={Fatura}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin", "user", "agency", "support"]}
+              allowedRoles={["super_admin"]}
               role={role}
-            /> */}
+            />
             {/* <PrivateRoute
               path="/login-admin"
               component={loginAdmin}

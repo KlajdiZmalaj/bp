@@ -1,6 +1,7 @@
 import React from "react";
 import { Tooltip } from "antd";
 import { longestWord, returnNumberThatPasses } from "./HelperFunct";
+import { numberWithCommas } from "utils/HelperFunc";
 
 const SpanFormater = ({
   Word,
@@ -10,6 +11,7 @@ const SpanFormater = ({
   formatWord,
   styles,
   link,
+  type,
 }) => {
   let props = {};
   let updatedWord, mySize, nrOfSpaces, theLongestWord, WordsLength;
@@ -27,7 +29,12 @@ const SpanFormater = ({
       props.className = `${myClassName}`;
     }
     if (formatWord === true) {
-      updatedWord = Word.charAt(0).toUpperCase() + Word.slice(1).toLowerCase();
+      if (type === "number") {
+        updatedWord = (numberWithCommas(Word) + "€").toString();
+      } else {
+        updatedWord =
+          Word.charAt(0).toUpperCase() + Word.slice(1).toLowerCase();
+      }
       mySize = mySize + parseInt(mySize / nrOfRows / 7);
     }
   }
@@ -45,7 +52,7 @@ const SpanFormater = ({
           </span>
         ) : (
           <span style={{ ...styles }} {...props}>
-            <a style={{ ...styles }} {...props} href={Word}>
+            <a style={{ ...styles }} {...props} href={link}>
               {updatedWord.substring(0, mySize - 2) + "..."}
             </a>
           </span>
@@ -60,7 +67,7 @@ const SpanFormater = ({
         </span>
       ) : (
         <span style={{ ...styles }} {...props}>
-          <a style={{ ...styles }} {...props} href={Word}>
+          <a style={{ ...styles }} {...props} href={link}>
             {updatedWord}
           </a>
         </span>
@@ -73,7 +80,7 @@ const SpanFormater = ({
           </span>
         ) : (
           <span style={{ ...styles }} {...props}>
-            <a style={{ ...styles }} {...props} href={Word}>
+            <a style={{ ...styles }} {...props} href={link}>
               {updatedWord.substring(0, mySize - 2) + "..."}
             </a>
           </span>

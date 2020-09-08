@@ -53,7 +53,7 @@
       flex-direction: row;
       padding-top: 15px;
       & span {
-        margin: 6.5px 0;
+        margin: 6px 0;
         & div.dropdown:nth-child(2) {
           position: absolute;
           height: 70px;
@@ -135,10 +135,14 @@
       justify-content: center;
       align-items: center;
     }
+    & .colorSkin {
+      position: absolute;
+      left: 3%;
+    }
     & span {
-      height: 42px;
+      height: 38px;
       width: 100%;
-      margin: 6px 0;
+      margin: 5.2px 0;
       position: relative;
       display: flex;
       justify-content: center;
@@ -148,6 +152,11 @@
       font-family: "Roboto";
       border: 1px solid #ebeced;
       border-radius: 6px;
+      &:nth-child(10) input {
+        padding-left: 25px;
+        width: 100%;
+      }
+
       & input {
         width: 85%;
         height: 100%;
@@ -159,6 +168,9 @@
         border: none;
         padding-left: 15px;
         padding-right: 5px;
+        &:nth-child(10) {
+          padding-left: 25px;
+        }
       }
     }
     & svg {
@@ -295,16 +307,19 @@
     left: 0;
     right: 0;
     width: 1030px;
+    height: calc(100vh - 340px);
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    height: auto;
     overflow: auto;
-    top: -125px;
+    top: -150px;
     margin: 0 auto;
     position: absolute;
     left: 0;
+    &::-webkit-scrollbar-thumb {
+      background: #0078ff;
+    }
     &--Back {
       width: 100%;
       display: flex;
@@ -321,7 +336,7 @@
       margin-right: 10px;
       margin-bottom: 5px;
       cursor: pointer;
-      &:nth-child(4),
+      &:nth-child(4n),
       &:last-child {
         margin-right: 0;
         margin-bottom: 5px;

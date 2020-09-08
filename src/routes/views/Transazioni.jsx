@@ -23,6 +23,8 @@ import Excel from "./Excel";
 import UseCode from "routes/views/UseCode";
 import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
+import { allRoles } from "config/index";
+
 const { Option } = Select;
 class Transazioni extends React.Component {
   state = {
@@ -41,7 +43,7 @@ class Transazioni extends React.Component {
     modalDetails: "",
     fromLabel: "",
     toLabel: "",
-    perPage: 10,
+    perPage: 25,
     showModalResponsive: false,
     picker: [
       {
@@ -275,15 +277,6 @@ class Transazioni extends React.Component {
     this.setState({ username: value });
   };
   componentDidMount() {
-    // console.log(
-    //   "moment",
-    //   moment().format("D"),
-    //   moment().format(),
-    //   ">>>",
-    //   moment()
-    //     .subtract(parseInt(moment().format("D")), "days")
-    //     .format()
-    // );
     const { username } = this.state;
 
     this.props.forAdmin
@@ -292,14 +285,14 @@ class Transazioni extends React.Component {
           "",
           "",
           1,
-          10,
+          25,
           this.props.activeSkinId
         )
-      : this.props.getPayments(username != "" ? username : "", "", "", 1, 10);
+      : this.props.getPayments(username != "" ? username : "", "", "", 1, 25);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { forAdmin, paymentsForExcel } = this.props;
+    const { forAdmin, paymentsForExcel, screenWidth } = this.props;
     const {
       barcode,
       picker,
@@ -340,14 +333,13 @@ class Transazioni extends React.Component {
       skinExtras,
       getPayments,
     } = this.props;
-    console.log(
-      "paymentspayments",
-      payments,
-      paymentsForExcel,
-      paymentsFromCode
-    );
 
-    const filters = ["oggi", "ieri", "questa sett", "queste mese"];
+    const filters = [
+      { name: "Oggi", color: "#707070" },
+      { name: "Ieri", color: "#0078f" },
+      { name: "Queste Sett", color: "#00b850" },
+      { name: "Queste Mese", color: "#e30000" },
+    ];
 
     // console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
@@ -380,30 +372,63 @@ class Transazioni extends React.Component {
                   showModalResponsive: false,
                 });
               }}
+              Header={
+                <React.Fragment>
+                  <i className="fal fa-user-alt" aria-hidden="true"></i>
+                  <span>{modalDetails.agency_name}</span>
+                </React.Fragment>
+              }
+              beforeFooter={null}
+              Footer={null}
               Rows={
                 <React.Fragment>
-                  <ModalRow
-                    title="Date Ora"
-                    data={moment(modalDetails.executed_date).format(
-                      "DD/MM/YYYY HH:mm:ss"
-                    )}
-                  />
-                  <ModalRow title="Barcode" data={modalDetails.barcode} />
-                  <ModalRow title="User" data={modalDetails.agency_name} />
-                  <ModalRow title="Service" data={modalDetails.service_name} />
-                  <ModalRow
-                    title="Importo"
-                    data={numberWithCommas(modalDetails.price1000)}
-                  />
-                  <ModalRow
-                    title="Commissione"
-                    data={modalDetails.commissione}
-                  />
-                  <ModalRow
-                    title="Proviggione"
-                    data={modalDetails.percentage}
-                  />
-                  <ModalRow title="Saldo" data={modalDetails.saldo} />{" "}
+                  <div className="ServiceRow">
+                    <ModalRow
+                      title="Service"
+                      data={modalDetails.service_name}
+                    />
+                  </div>
+                  <div className="DateOraRow">
+                    <ModalRow
+                      title="Date Ora"
+                      data={moment(modalDetails.executed_date).format(
+                        "DD/MM/YYYY HH:mm:ss"
+                      )}
+                    />
+                  </div>
+                  <div className="OtherRow">
+                    <ModalRow
+                      title="Barcode"
+                      data={modalDetails.barcode}
+                      handleClick={() => {
+                        getCodiceTicket(
+                          modalDetails.barcode,
+                          modalDetails.service_name
+                        );
+                        this.showModal(
+                          this.state.index,
+                          modalDetails.barcode,
+                          modalDetails.agency_name,
+                          modalDetails.agency_address,
+                          modalDetails.agency_phone
+                        );
+                      }}
+                    />
+                    <ModalRow title="User" data={modalDetails.agency_name} />
+                    <ModalRow
+                      title="Importo"
+                      data={numberWithCommas(modalDetails.price1000)}
+                    />
+                    <ModalRow
+                      title="Commissione"
+                      data={modalDetails.commissione}
+                    />
+                    <ModalRow
+                      title="Proviggione"
+                      data={modalDetails.percentage}
+                    />
+                    <ModalRow title="Saldo" data={modalDetails.saldo} />
+                  </div>
                 </React.Fragment>
               }
             />
@@ -452,14 +477,7 @@ class Transazioni extends React.Component {
                 />
               )}
               <h1 className="heading-tab">Lista Movimenti</h1>
-              {!forAdmin && (
-                <button
-                  onClick={() => this.setState({ hasVPT: true })}
-                  className="barcodeBtn"
-                >
-                  ricerca movimenti <i className="fal fa-barcode-read"></i>
-                </button>
-              )}
+
               <div className="datepics ml-auto mr-2">
                 <Form
                   {...formItemLayout}
@@ -488,7 +506,7 @@ class Transazioni extends React.Component {
                               showSearch
                               defaultActiveFirstOption={false}
                               showArrow={false}
-                              filterOption={false}
+                              filterOption={true}
                               onSearch={this.handleSearch}
                               onChange={this.handleChange}
                               // notFoundContent={null}
@@ -521,80 +539,149 @@ class Transazioni extends React.Component {
                       ? `${fromLabel} - ${toLabel}`
                       : "Seleziona la data"}
                   </div>
-                  {!this.props.forAdmin && (
-                    <div>
-                      <button className="filterBtn" htmltype="submit">
-                        Filter
-                      </button>
-                    </div>
-                  )}
                 </Form>
 
                 <div className="codice"></div>
               </div>
-              <ul className="m-0 p-0">
+              <Select
+                defaultValue="3"
+                onChange={(value) => {
+                  this.changeSelected(parseInt(value));
+                  this.fromFilterTop(false);
+                  console.log(value);
+                }}
+              >
                 {filters.map((item, index) => {
                   return (
-                    <li
-                      key={index}
-                      className={index === selectedFilter ? "active" : ""}
-                      onClick={() => {
-                        this.changeSelected(index);
-                        this.fromFilterTop(false);
-                      }}
-                    >
-                      {forAdmin ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 14 14"
-                        >
-                          <g className="a">
-                            <circle className="b" cx="7" cy="7" r="7" />
-                            <circle className="c" cx="7" cy="7" r="4" />
-                          </g>
-                        </svg>
-                      ) : (
-                        <i className="fas fa-dot-circle"></i>
-                      )}
-                      {item}
-                    </li>
+                    <Option value={index.toString()}>
+                      <span
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          alignItems: "center",
+                          display: "flex",
+                        }}
+                      >
+                        {forAdmin ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            style={{
+                              marginRight: "15px",
+                            }}
+                          >
+                            <g className="a">
+                              <circle
+                                className="b"
+                                cx="7"
+                                cy="7"
+                                r="7"
+                                style={{
+                                  fill: `${item.color}`,
+                                }}
+                              />
+                              <circle
+                                className="c"
+                                cx="7"
+                                cy="7"
+                                r="4"
+                                style={{ fill: "#ffffff" }}
+                              />
+                            </g>
+                          </svg>
+                        ) : (
+                          <i
+                            className="fas fa-dot-circle"
+                            style={{
+                              color: `${item.color}`,
+                              paddingRight: "12px",
+                              fontSize: "13px",
+                            }}
+                          ></i>
+                        )}
+                        {item.name}
+                      </span>
+                    </Option>
                   );
                 })}
-              </ul>
-              {forAdmin && (
-                <button
-                  className="filterBtn"
-                  htmltype="submit"
-                  onClick={this.handleSubmit}
-                >
-                  <i className="fas fa-filter"></i>
-                  Filter
-                </button>
+              </Select>
+              {!this.props.forAdmin ? (
+                <React.Fragment>
+                  <div>
+                    <button
+                      className="filterBtn"
+                      htmltype="submit"
+                      onClick={this.handleSubmit}
+                    >
+                      Filter
+                    </button>
+                  </div>
+                  <button
+                    onClick={() => this.setState({ hasVPT: true })}
+                    className="barcodeBtn"
+                  >
+                    ricerca movimenti <i className="fal fa-barcode-read"></i>
+                  </button>
+                  <div className="filesBtns">
+                    <Pdf
+                      paymentExcelLoading={this.props.paymentExcelLoading}
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                      getPaymentsForExcel={this.props.getPaymentsForExcel}
+                    />
+                    <Excel
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                    />
+                  </div>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <button
+                    className="filterBtn"
+                    htmltype="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    <i className="fas fa-filter"></i>
+                    Filter
+                  </button>
+                  <button
+                    onClick={() => this.setState({ hasVPT: true })}
+                    className="barcodeBtn"
+                  >
+                    ricerca movimenti <i className="fal fa-barcode-read"></i>
+                  </button>
+                  <div className="filesBtns">
+                    <Pdf
+                      paymentExcelLoading={this.props.paymentExcelLoading}
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                      getPaymentsForExcel={this.props.getPaymentsForExcel}
+                    />
+                    <Excel
+                      username={username}
+                      from={from}
+                      to={to}
+                      perPage={perPage}
+                      payments={paymentsForExcel}
+                    />
+                  </div>
+                </React.Fragment>
               )}
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                <div className="filesBtns">
-                  <Pdf
-                    paymentExcelLoading={this.props.paymentExcelLoading}
-                    username={username}
-                    from={from}
-                    to={to}
-                    perPage={perPage}
-                    payments={paymentsForExcel}
-                    getPaymentsForExcel={this.props.getPaymentsForExcel}
-                  />
-                  <Excel
-                    username={username}
-                    from={from}
-                    to={to}
-                    perPage={perPage}
-                    payments={paymentsForExcel}
-                  />
-                </div>
-
                 {payments.message && (
                   <div className="alert alert-danger text-center">
                     {payments.message}
@@ -618,6 +705,10 @@ class Transazioni extends React.Component {
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>
                         <td className=" wsNwp right">Saldo</td>
+                        {this.props.screenWidth <= 1050 && forAdmin && (
+                          <td></td>
+                        )}
+
                         {this.props.screenWidth <= 1050 && forAdmin ? (
                           <td className="wsNwp"></td>
                         ) : null}
@@ -695,22 +786,30 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp">
                                   <div className="bc">{item.barcode}</div>
                                 </td>
-                                <td className="wsNwp">
-                                  {" "}
-                                  <i
-                                    className="fal fa-user-alt"
-                                    aria-hidden="true"
-                                  ></i>{" "}
-                                  <Tooltip title={item.agency_name}>
-                                    <SpanFormater
-                                      myClassName="nomeTd"
-                                      Word={item.agency_name}
-                                      size={35}
-                                      nrOfRows={1}
-                                      formatWord={true}
-                                    />
-                                  </Tooltip>
-                                </td>
+                                {screenWidth <= 550 ? (
+                                  <td className="wsNwp">
+                                    <div>{item.agency_name}</div>
+                                    <div>{item.service_name}</div>
+                                  </td>
+                                ) : (
+                                  <td className="wsNwp">
+                                    {" "}
+                                    <i
+                                      className="fal fa-user-alt"
+                                      aria-hidden="true"
+                                    ></i>{" "}
+                                    <Tooltip title={item.agency_name}>
+                                      <SpanFormater
+                                        myClassName="nomeTd"
+                                        Word={item.agency_name}
+                                        size={35}
+                                        nrOfRows={1}
+                                        formatWord={true}
+                                      />
+                                    </Tooltip>
+                                  </td>
+                                )}
+
                                 <td className="wsNwp servizoTd">
                                   {item.service_name}
                                 </td>
@@ -754,10 +853,11 @@ class Transazioni extends React.Component {
                                       this.setState({
                                         showModalResponsive: true,
                                         modalDetails: item,
+                                        index: index,
                                       });
                                     }}
                                   >
-                                    <i className="fal fa-search-plus"></i>
+                                    <i className="fal fa-eye"></i>
                                   </td>
                                 )}
                               </tr>
@@ -797,7 +897,7 @@ class Transazioni extends React.Component {
                   }
                 />
                 <Select
-                  defaultValue="10"
+                  defaultValue="25"
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
                     forAdmin
@@ -902,7 +1002,7 @@ class Transazioni extends React.Component {
         <div className="chatSticky">
           <img src="img/chatSticky.svg" alt="" />
         </div>
-        {!forAdmin && this.state.hasVPT && (
+        {this.state.hasVPT && (
           <ClickOut
             onClickOut={() => {
               this.setState({ hasVPT: false });

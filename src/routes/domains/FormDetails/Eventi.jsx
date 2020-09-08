@@ -134,6 +134,11 @@ class Eventi extends Component {
                 <Option value="5">Altro</Option>
               </Select>
             </div>
+            <div className="itemCol full">
+              <div className="inputLabel">Prezzo</div>
+              <input className="ant-input" value={price} readOnly />
+            </div>
+
             <MyInput
               labelName={"Telefono"}
               type={"text"}

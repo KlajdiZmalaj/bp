@@ -92,6 +92,7 @@ class FastCarica extends Component {
     } = this.state;
     const allUsers = [...this.props.users];
     let UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
+
     return (
       <div className="fastCarica">
         {confirmTranzacionModal?.visibility === true && (

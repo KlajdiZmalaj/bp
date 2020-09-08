@@ -5,6 +5,15 @@ import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
 import SearchSelect from "./SearchSelect";
 import "./aRFWD.css";
+function FindId(object, filterValue) {
+  console.log(object, filterValue);
+  for (let i = 0; i < object.length; i++) {
+    if (object[i].username == filterValue) {
+      return object[i].id;
+    }
+  }
+  return -1;
+}
 const AdminRightFormWalletDetailsHelper = ({
   handleDepositoVisibility,
   handleDebitoVisibility,
@@ -12,12 +21,14 @@ const AdminRightFormWalletDetailsHelper = ({
   addebitoActiveVisibility,
   UsersToSearch,
   setDepositoModalAdmin,
+  Close,
 }) => {
   const [closeSelect, setcloseSelect] = useState(false);
   const [userKey, setUserKey] = useState("");
   const [amount, setAmount] = useState("");
   const [tickOrX, setTickOrX] = useState(true);
 
+  console.log(UsersToSearch);
   return (
     <div
       className="AdminRightForm--Box--Wallet--Dropdown"
@@ -93,14 +104,17 @@ const AdminRightFormWalletDetailsHelper = ({
 
       <button
         className="AdminRightForm--Box--Wallet--Dropdown--Submit"
-        onClick={() => {
-          setDepositoModalAdmin({
+        onClick={async () => {
+          await setDepositoModalAdmin({
             depositoModalVis: true,
             type: depositoActiveVisibility ? "deposit" : "withdraw",
             username: userKey,
-            id: 1,
+            id: FindId(UsersToSearch, userKey),
             amount: parseInt(amount),
           });
+          if (Close) {
+            await Close();
+          }
         }}
       >
         {`${depositoActiveVisibility ? "DEPOSITO" : "ADDEBITO"}`}
@@ -115,7 +129,27 @@ class AdminRightFormWalletDetails extends React.Component {
     }
   }
   returnAllUsers = (users) => {
-    const allUsers = users;
+    let allUsers = [...users];
+    users.forEach((user) => {
+      if (user?.children && user?.children.length >= 0) {
+        user.children.forEach((child) => {
+          allUsers.push(child);
+          if (child?.children && child?.children.length >= 0) {
+            let arrayToGet = this.checkIfHaveMoreUsers(child.children);
+            if (arrayToGet.length >= 0) {
+              arrayToGet.forEach((element) => {
+                allUsers.push(element);
+              });
+            }
+          }
+        });
+      }
+    });
+    return allUsers;
+  };
+
+  checkIfHaveMoreUsers = (users) => {
+    let allUsers = [...users];
     users.forEach((user) => {
       if (user?.children && user?.children.length >= 0) {
         user.children.forEach((child) => {
@@ -204,6 +238,9 @@ class AdminRightFormWalletDetails extends React.Component {
               addebitoActiveVisibility={addebitoActiveVisibility}
               UsersToSearch={UsersToSearch}
               setDepositoModalAdmin={setDepositoModalAdmin}
+              Close={() => {
+                Close({ visibility: false, data: "" });
+              }}
             />
           </div>
         ) : (

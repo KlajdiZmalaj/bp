@@ -1,7 +1,7 @@
 .RightFormModal {
   position: fixed;
   width: 80vw;
-  top: 71px;
+  top: 101px;
   margin: calc((20vh - 71px) / 2) 10vw;
   height: 80vh;
   z-index: 5;
@@ -46,7 +46,7 @@
     }
   }
   & .backDrop {
-    top: 71px;
+    top: 101px;
     height: calc(100vh - 71px);
     width: calc(100vw - 51px);
     left: 51px;
@@ -66,10 +66,11 @@
       width: 100%;
       height: 85%;
       z-index: 6;
+      padding: 0 5%;
       padding-top: 7vh;
       &--Element {
         margin: 0px 0.5%;
-        width: 1.8%;
+        width: 2%;
       }
     }
     & .Date {
@@ -116,8 +117,11 @@
     }
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .RightFormModal {
+    margin: calc((25vh - 121px) / 2) calc(12.5vw + 15px) !important;
+    width: 75vw;
+    height: 75vw;
     & .Statistiche.Dropdown {
       & .Graph {
         &--Element {

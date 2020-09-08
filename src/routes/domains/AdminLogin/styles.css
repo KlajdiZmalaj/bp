@@ -90,7 +90,7 @@
 }
 
 .AdminLogin--Step1--Step2 span {
-  margin: 6.5px 0;
+  margin: 6px 0;
 }
 
 .AdminLogin--Step1--Step2 span div.dropdown:nth-child(2) {
@@ -206,10 +206,15 @@
           align-items: center;
 }
 
+.AdminLogin--Step1 .colorSkin {
+  position: absolute;
+  left: 3%;
+}
+
 .AdminLogin--Step1 span {
-  height: 42px;
+  height: 38px;
   width: 100%;
-  margin: 6px 0;
+  margin: 5.2px 0;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -225,6 +230,11 @@
   font-family: "Roboto";
   border: 1px solid #ebeced;
   border-radius: 6px;
+}
+
+.AdminLogin--Step1 span:nth-child(10) input {
+  padding-left: 25px;
+  width: 100%;
 }
 
 .AdminLogin--Step1 span input {
@@ -244,6 +254,10 @@
   border: none;
   padding-left: 15px;
   padding-right: 5px;
+}
+
+.AdminLogin--Step1 span input:nth-child(10) {
+  padding-left: 25px;
 }
 
 .AdminLogin--Step1 svg {
@@ -429,6 +443,7 @@
   left: 0;
   right: 0;
   width: 1030px;
+  height: calc(100vh - 340px);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -ms-grid;
@@ -437,12 +452,15 @@
       grid-template-rows: 1fr 1fr 1fr 1fr;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  height: auto;
   overflow: auto;
-  top: -125px;
+  top: -150px;
   margin: 0 auto;
   position: absolute;
   left: 0;
+}
+
+.AdminLogin--LoginForm::-webkit-scrollbar-thumb {
+  background: #0078ff;
 }
 
 .AdminLogin--LoginForm--Back {
@@ -475,7 +493,7 @@
   cursor: pointer;
 }
 
-.AdminLogin--LoginForm div:nth-child(4), .AdminLogin--LoginForm div:last-child {
+.AdminLogin--LoginForm div:nth-child(4n), .AdminLogin--LoginForm div:last-child {
   margin-right: 0;
   margin-bottom: 5px;
 }

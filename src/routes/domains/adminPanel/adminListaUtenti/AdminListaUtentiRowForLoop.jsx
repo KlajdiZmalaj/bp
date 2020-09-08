@@ -33,7 +33,11 @@ class AdminListaUtentiRowForLoop extends React.Component {
             itemList && itemList.children?.length > 0 ? "active" : ""
           }`}
           onClick={(e) => {
-            if (screenWidth <= 950 && e.target.tagName != "I") {
+            if (
+              screenWidth <= 950 &&
+              screenWidth >= 550 &&
+              e.target.tagName != "I"
+            ) {
               editUtentiRespModal({
                 visibility: true,
                 data: { ...itemList },
@@ -59,7 +63,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
             <SpanFormater
               myClassName="Username"
               Word={itemList.username}
-              size={screenWidth <= 420 ? 7 : screenWidth <= 1600 ? 12 : 17}
+              size={screenWidth <= 1600 ? 12 : 17}
               nrOfRows={2}
               formatWord={true}
             />{" "}
@@ -75,12 +79,18 @@ class AdminListaUtentiRowForLoop extends React.Component {
           <SpanFormater
             styles={
               this.props.activeSkinId === -1
-                ? { width: "8%", justifyContent: "flex-end" }
-                : { justifyContent: "flex-end" }
+                ? {
+                    width: "8%",
+                    justifyContent: "flex-end",
+                    paddingRight: "1%",
+                  }
+                : { justifyContent: "flex-end", paddingRight: "1%" }
             }
-            Word={numberWithCommas(itemList.wallet)}
+            Word={itemList.wallet}
             size={8}
             nrOfRows={2}
+            type={"number"}
+            formatWord={true}
           />
           {activeSkinId === -1 ? null : (
             <SpanFormater
@@ -93,7 +103,13 @@ class AdminListaUtentiRowForLoop extends React.Component {
           <span style={{ justifyContent: "center", left: 0 }}>
             {itemList.last_deposit}
           </span>
-          <span style={{ justifyContent: "center", left: 0 }}>
+          <span
+            style={
+              this.props.activeSkinId != -1 && screenWidth <= 950
+                ? { justifyContent: "center", left: 0, display: "none" }
+                : { justifyContent: "center", left: 0 }
+            }
+          >
             {itemList.last_login_time}
           </span>
           <span>
@@ -186,6 +202,18 @@ class AdminListaUtentiRowForLoop extends React.Component {
               // }}
             ></i>
           </span>
+          {screenWidth <= 550 && (
+            <span
+              onClick={(e) => {
+                editUtentiRespModal({
+                  visibility: true,
+                  data: { ...itemList },
+                });
+              }}
+            >
+              <i className="fal fa-eye"> </i>
+            </span>
+          )}
         </div>
         {itemList &&
           itemList.children?.length > 0 &&

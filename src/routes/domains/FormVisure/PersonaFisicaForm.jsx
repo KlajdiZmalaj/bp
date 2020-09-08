@@ -4,7 +4,7 @@ import { AuthActions } from "redux-store/models";
 import { notification } from "antd";
 
 import FormContainerBody from "./FormContainerBody";
-import { DatePicker } from "antd";
+import DatePicker from "shared-components/DatePicker/DatePicker";
 import moment from "moment";
 import "./VisureStyles.css";
 export const InputForForm = ({
@@ -142,12 +142,6 @@ class PersonaFisicaForm extends Component {
                 <DatePicker
                   format={"DD/MM/YYYY"}
                   onChange={(e) => {
-                    console.log(
-                      "DatePicker",
-                      e,
-                      moment(e).format(),
-                      moment(e).format("DD/MM/YYYY")
-                    );
                     this.setState({
                       data_di_nascita: moment(e).format("DD/MM/YYYY"),
                     });
@@ -157,12 +151,6 @@ class PersonaFisicaForm extends Component {
                 <DatePicker
                   format={"DD/MM/YYYY"}
                   onChange={(e) => {
-                    console.log(
-                      "DatePicker",
-                      e,
-                      moment(e).format(),
-                      moment(e).format("DD/MM/YYYY")
-                    );
                     this.setState({
                       data_di_nascita: moment(e).format("DD/MM/YYYY"),
                     });

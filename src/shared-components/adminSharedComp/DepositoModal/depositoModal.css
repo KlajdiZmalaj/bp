@@ -3,7 +3,7 @@
   height: calc(100% - 72px);
   position: fixed;
   left: 0;
-  top: 71px;
+  top: 101px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,6 +13,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 7;
 }
 
 .DepositoModal--Container {
@@ -20,7 +21,7 @@
   height: 392px;
   position: fixed;
   background-color: #ffffff;
-  z-index: 4;
+  z-index: 9;
 }
 
 .DepositoModal--Container--Up {
@@ -136,7 +137,7 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 0 25px;
+  padding: 0 27px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
-import DetailRow from "./DetailRow";
+import DetailRowVisure from "./DetailRow";
 import { Switch, Tooltip } from "antd";
 import "./styles.css";
 import { allRoles } from "config/index";
@@ -176,8 +176,7 @@ class FormDetailsDomain extends Component {
             />
           </div>
         </div>
-
-        <div className="ticketDetails--header --Visura">
+        <div className="ticketDetails--header Visura">
           <span>Stato</span>
           <span>soggetto</span>
           <span>BPoint</span>
@@ -203,7 +202,11 @@ class FormDetailsDomain extends Component {
                 .toString()
                 .toLowerCase()
                 .includes(filterRicercaId.toString().toLowerCase())) && (
-              <DetailRow key={visure.id} Visure={visure} allRoles={allRoles} />
+              <DetailRowVisure
+                key={visure.id}
+                Visure={visure}
+                allRoles={allRoles}
+              />
             )
           );
         })}
@@ -224,7 +227,11 @@ class FormDetailsDomain extends Component {
                 .toString()
                 .toLowerCase()
                 .includes(filterRicercaId.toString().toLowerCase())) && (
-              <DetailRow key={visure.id} Visure={visure} allRoles={allRoles} />
+              <DetailRowVisure
+                key={visure.id}
+                Visure={visure}
+                allRoles={allRoles}
+              />
             )
         )}
         {(visure || []).map(
@@ -241,7 +248,7 @@ class FormDetailsDomain extends Component {
                 .toString()
                 .toLowerCase()
                 .includes(filterRicercaId.toString().toLowerCase())) && (
-              <DetailRow key={vis.id} Visure={vis} allRoles={allRoles} />
+              <DetailRowVisure key={vis.id} Visure={vis} allRoles={allRoles} />
             )
         )}
       </div>
