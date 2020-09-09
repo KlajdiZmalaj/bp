@@ -8,6 +8,7 @@ import { withRouter } from "react-router-dom";
 import { get } from "lodash";
 import { numberWithCommas } from "utils/HelperFunc";
 import Chat from "shared-components/Chat/Chat";
+import { Header as HeaderMob } from "shared-componentsMobile";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -234,85 +235,86 @@ class Header extends Component {
         </nav>
       </header>
     ) : (
-      <header className="mobHeader">
-        <div className="top">
-          <button onClick={this.toggleMobileMeu}>
-            <i className="fal fa-bars"></i>
-          </button>
-          <div
-            className="logo"
-            onClick={() => {
-              this.props.history.push("/dashboard");
-            }}
-          >
-            <img src={images.logo} alt="" />
-          </div>
-          <button
-            onClick={() => {
-              this.props.history.push("/configura");
-            }}
-          >
-            <i className="fal fa-user-circle" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div className={"bottom" + (isMobMenu ? " opened" : "")}>
-          <div className="userinfo">
-            <div className="name">{get(accountInfo, "profile.name")}</div>
-            <div className="money">{get(accountInfo, "profile.wallet")}€</div>
-          </div>
-          <div className="navLinks">
-            <div className="item">
-              <a href={skinExtras.link1}>azienda</a>
-            </div>
-            <div className="item">
-              <a href={skinExtras.link2}>servizi</a>
-            </div>
-            <div className="item">
-              <a href={skinExtras.link3}>area riservata</a>
-            </div>
-            <div className="item">
-              {" "}
-              <a href={skinExtras.link4}>contatti</a>{" "}
-            </div>
-            <div className="item">
-              {" "}
-              <a href={skinExtras.link5}>affilia la tua attivita</a>{" "}
-            </div>
-            <button
-              onClick={() => {
-                this.props.logOut();
-                if (!isLoggedin) {
-                  this.props.history.push("/login");
-                }
-              }}
-            >
-              {isLoggedin ? "LOGOUT" : "LOGIN"}
-            </button>
-          </div>
-          <div className="icons">
-            <div>
-              <i
-                onClick={() => {
-                  this.props.history.push("/annunci");
-                }}
-                className="fas fa-bell"
-              ></i>
-              <span>{ads && ads.length}</span>
-            </div>
-            <div>
-              <i className="fas fa-envelope"></i>
-            </div>
-            <div>
-              <i
-                onClick={() => {
-                  this.props.history.push("/configura");
-                }}
-                className="fas fa-cog"
-              ></i>
-            </div>
-          </div>
-        </div>
-      </header>
+      // <header className="mobHeader">
+      //   <div className="top">
+      //     <button onClick={this.toggleMobileMeu}>
+      //       <i className="fal fa-bars"></i>
+      //     </button>
+      //     <div
+      //       className="logo"
+      //       onClick={() => {
+      //         this.props.history.push("/dashboard");
+      //       }}
+      //     >
+      //       <img src={images.logo} alt="" />
+      //     </div>
+      //     <button
+      //       onClick={() => {
+      //         this.props.history.push("/configura");
+      //       }}
+      //     >
+      //       <i className="fal fa-user-circle" aria-hidden="true"></i>
+      //     </button>
+      //   </div>
+      //   <div className={"bottom" + (isMobMenu ? " opened" : "")}>
+      //     <div className="userinfo">
+      //       <div className="name">{get(accountInfo, "profile.name")}</div>
+      //       <div className="money">{get(accountInfo, "profile.wallet")}€</div>
+      //     </div>
+      //     <div className="navLinks">
+      //       <div className="item">
+      //         <a href={skinExtras.link1}>azienda</a>
+      //       </div>
+      //       <div className="item">
+      //         <a href={skinExtras.link2}>servizi</a>
+      //       </div>
+      //       <div className="item">
+      //         <a href={skinExtras.link3}>area riservata</a>
+      //       </div>
+      //       <div className="item">
+      //         {" "}
+      //         <a href={skinExtras.link4}>contatti</a>{" "}
+      //       </div>
+      //       <div className="item">
+      //         {" "}
+      //         <a href={skinExtras.link5}>affilia la tua attivita</a>{" "}
+      //       </div>
+      //       <button
+      //         onClick={() => {
+      //           this.props.logOut();
+      //           if (!isLoggedin) {
+      //             this.props.history.push("/login");
+      //           }
+      //         }}
+      //       >
+      //         {isLoggedin ? "LOGOUT" : "LOGIN"}
+      //       </button>
+      //     </div>
+      //     <div className="icons">
+      //       <div>
+      //         <i
+      //           onClick={() => {
+      //             this.props.history.push("/annunci");
+      //           }}
+      //           className="fas fa-bell"
+      //         ></i>
+      //         <span>{ads && ads.length}</span>
+      //       </div>
+      //       <div>
+      //         <i className="fas fa-envelope"></i>
+      //       </div>
+      //       <div>
+      //         <i
+      //           onClick={() => {
+      //             this.props.history.push("/configura");
+      //           }}
+      //           className="fas fa-cog"
+      //         ></i>
+      //       </div>
+      //     </div>
+      //   </div>
+      // </header>
+      <HeaderMob />
     );
   }
 }

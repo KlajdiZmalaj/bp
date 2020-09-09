@@ -9,14 +9,6 @@ const Numpad = ({ services, activeService, activeCategory, setService }) => {
       setCost(services[activeCategory][activeService].services[0]);
     }
   }, [services, activeService]);
-  console.log(
-    "numpad activeService",
-    services,
-    activeService,
-    activeCategory,
-    selectedCost
-  );
-
   return (
     <div className="mobileNumPad">
       <div className="mobileNumPad--services">
