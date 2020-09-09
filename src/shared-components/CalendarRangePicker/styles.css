@@ -172,7 +172,7 @@
 
 @media (max-width: 550px) {
   .calendarWrapper {
-    height: 280px;
+    height: 280px !important;
     width: 375px;
   }
   .calendarWrapper .buttons {

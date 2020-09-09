@@ -559,6 +559,7 @@ class Transazioni extends React.Component {
               </div>
               <Select
                 defaultValue="3"
+                className="SlectDate"
                 onChange={(value) => {
                   this.changeSelected(parseInt(value));
                   this.fromFilterTop(false);

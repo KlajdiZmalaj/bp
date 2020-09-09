@@ -36,7 +36,7 @@
 }
 
 .bodyAdmin ::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 
 .bodyAdmin .calendarWrapper {
@@ -108,7 +108,7 @@
 }
 
 .bodyAdmin .userDetailPopup .newReg--row::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 
 .bodyAdmin .userDetailPopup .checkCol button {
@@ -1500,17 +1500,17 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
   div.Center--Big .panels-container .sort-annunci .barCodeExport {
     width: auto;
-    left: 31%;
+    left: 39%;
     position: relative;
     height: 38px;
     margin: 2px 0;
     -ms-flex-item-align: start;
         align-self: flex-start;
   }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
+  div.Center .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled {
     position: absolute;
     bottom: 3.5px;
     left: 2%;
@@ -1844,10 +1844,10 @@ div.Center--Big tbody .right .Importo i {
     font-size: 13px;
     text-transform: uppercase;
   }
-  div.Center .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .container-fluid.overview .sort-annunci div:nth-child(3).ant-select.ant-select-enabled,
-  div.Center--Big .panels-container .sort-annunci div:nth-child(3).ant-select.ant-select-enabled {
+  div.Center .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci div.SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci div.SlectDate.ant-select.ant-select-enabled {
     left: 1%;
   }
 }
@@ -1858,6 +1858,80 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
   div.Center--Big .panels-container .sort-annunci .filterBtn {
     width: 60px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center .panels-container .sort-annunci .barCodeExport,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport {
+    left: 39.2%;
+  }
+}
+
+@media (max-width: 400px) {
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center .panels-container .sort-annunci .barCodeExport,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport {
+    left: 41%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns {
+    width: 125px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center .panels-container .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport .filesBtns .ExportToExel,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns .exportPDF,
+  div.Center--Big .panels-container .sort-annunci .barCodeExport .filesBtns .ExportToExel {
+    font-size: 10.5px !important;
+    width: 55px !important;
+    margin-left: 5px !important;
+    margin-right: 0 !important;
+  }
+  div.Center .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled,
+  div.Center .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled,
+  div.Center--Big .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled {
+    width: 135px;
+    left: 0.5%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled span,
+  div.Center .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled span,
+  div.Center--Big .container-fluid.overview .sort-annunci .SlectDate.ant-select.ant-select-enabled span,
+  div.Center--Big .panels-container .sort-annunci .SlectDate.ant-select.ant-select-enabled span {
+    font-size: 10.5px;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center .panels-container .sort-annunci .filterBtn,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn,
+  div.Center--Big .panels-container .sort-annunci .filterBtn {
+    width: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: transparent;
+    right: 0.5%;
+  }
+  div.Center .container-fluid.overview .sort-annunci .filterBtn i,
+  div.Center .panels-container .sort-annunci .filterBtn i,
+  div.Center--Big .container-fluid.overview .sort-annunci .filterBtn i,
+  div.Center--Big .panels-container .sort-annunci .filterBtn i {
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: calc(0.5% + 14px);
   }
 }
 
@@ -2073,6 +2147,6 @@ body.bodyAdmin::-webkit-scrollbar-thumb,
 .AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar-thumb,
 .AdminColumns::-webkit-scrollbar-thumb,
 .TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
-  background: #0078ff;
+  background: #353d45;
 }
 /*# sourceMappingURL=styles.css.map */
