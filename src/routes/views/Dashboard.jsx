@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
     keyService: "",
     toDisplay: false,
     serviceFilter: "all",
+    serviceSearched: "",
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -33,7 +34,12 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { serviceSelected, keyService, serviceFilter } = this.state;
+    const {
+      serviceSelected,
+      keyService,
+      serviceFilter,
+      serviceSearched,
+    } = this.state;
     const { services, favorites } = this.props;
     let allFavServices = [];
     Object.keys(favorites).forEach((item) => {
@@ -110,6 +116,16 @@ class Dashboard extends React.Component {
                 Prenotazioni
               </div>
             </div>
+            <div className="search-services">
+              <span>{serviceFilter}</span>
+              <input
+                placeholder="Search here..."
+                type="text"
+                onChange={(e) => {
+                  this.setState({ serviceSearched: e.target.value });
+                }}
+              />
+            </div>
             <div className="row no-gutters max-width">
               <div
                 className={`col-md-${
@@ -120,7 +136,7 @@ class Dashboard extends React.Component {
                   const serv = services[item];
                   return (
                     (serv["name"] && serv["name"].toLowerCase()).includes(
-                      this.props.navbarSearch.toLowerCase()
+                      serviceSearched.toLowerCase()
                     ) &&
                     (serviceFilter === "all" ||
                       serv["name"].toLowerCase().includes(serviceFilter)) && (
