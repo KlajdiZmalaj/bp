@@ -93,8 +93,12 @@ const OneTab = ({
                       <div
                         className="mobileServices--body__item"
                         onClick={() => {
-                          setService(serviceI.service_id);
-                          setCategory("PRDPST");
+                          if (accountInfo?.profile) {
+                            setService(serviceI.service_id);
+                            setCategory("PRDPST");
+                          } else {
+                            window.location.hash = "login";
+                          }
                         }}
                         key={serviceI.service_id}
                       >

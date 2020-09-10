@@ -23,6 +23,7 @@ const { Types, Creators } = createActions({
     "citta",
     "provincia",
     "clearFields",
+    "callBack",
   ],
   getBolletiniPremercati: [
     "service_id",
@@ -36,6 +37,7 @@ const { Types, Creators } = createActions({
     "citta",
     "provincia",
     "clearFields",
+    "callBack",
   ],
   setBolletiniBianchi: ["bolletiniBianchi"],
   setBolletiniPremercati: ["bolletiniPremercati"],
@@ -361,6 +363,7 @@ const { Types, Creators } = createActions({
   setStatistiche: ["Statistiche"],
   setFromDateToDate: ["fromDate"],
   setLoadingRecharge: ["loadingRechargeMobile"],
+  setBolletiniLoading: ["bolletiniLoading"],
 });
 
 export const AuthTypes = Types;
@@ -368,6 +371,7 @@ export default Creators;
 
 const INITIAL_STATE = {
   ModalDetails: {},
+  bolletiniLoading: false,
   fatturaPdf: "",
   enableButtons: false,
   popUpData: {},
@@ -433,6 +437,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_BOLLETINI_LOADING]: (state, { bolletiniLoading }) => ({
+    ...state,
+    bolletiniLoading,
+  }),
   [Types.SET_WIDGET_PAYMENTS]: (state, { leUltimeTransazioniDet }) => ({
     ...state,
     leUltimeTransazioniDet,

@@ -48,6 +48,7 @@ const Numpad = ({
             (priceService) => {
               return (
                 <div
+                  key={priceService.service_id}
                   className={`mobileNumPad--services__tab${
                     selectedCost?.service_id === priceService.service_id
                       ? " active"
@@ -75,7 +76,11 @@ const Numpad = ({
       </div>
       <div className="mobileNumPad--numbers">
         {[...new Array(9)].map((a, b) => {
-          return <div onClick={() => setVal(`${inpVal}${b + 1}`)}>{b + 1}</div>;
+          return (
+            <div key={b} onClick={() => setVal(`${inpVal}${b + 1}`)}>
+              {b + 1}
+            </div>
+          );
         })}
         <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
         <div onClick={() => setVal("")}>C</div>
