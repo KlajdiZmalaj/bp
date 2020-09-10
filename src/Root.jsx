@@ -142,7 +142,7 @@ class Root extends React.Component {
               component={Annunci}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency"]}
+              allowedRoles={["super_admin", "agency", "agent"]}
             />
             <PrivateRoute
               path="/use-code"
@@ -163,7 +163,7 @@ class Root extends React.Component {
               component={Transazioni}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <Route
               path="/dashboard"
@@ -171,28 +171,28 @@ class Root extends React.Component {
               component={isMobile ? DashboardMobile : Dashboard}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/configura"
               component={isMobile ? ConfiguraMobile : Configura}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/messages"
               component={Messages}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency"]}
+              allowedRoles={["super_admin", "agency", "user"]}
             />
             <PrivateRoute
               path="/carica-conto"
               component={CaricaConto}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency"]}
+              allowedRoles={["super_admin", "agency", "user"]}
             />
             <PrivateRoute
               path="/registerUser"
