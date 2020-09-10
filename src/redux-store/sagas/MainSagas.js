@@ -34,6 +34,14 @@ export function* getFavorites() {
   const response = yield call(fetchFavorites);
   if (response.data) {
     yield put(MainActions.setFavorites(response.data.favorites));
+  } else if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
   }
 }
 export function* toggleFavorite(params) {

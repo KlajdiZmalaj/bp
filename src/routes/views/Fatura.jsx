@@ -6,7 +6,7 @@ const Fatura = () => (
   <Fragment>
     <Header />
     <div className="azcont">
-      <Azioni active="fatura" />
+      <Azioni active="fatture" />
     </div>
     <FaturaDomain />
   </Fragment>

@@ -70,24 +70,37 @@ class Ticket extends React.Component {
           VIA DEL LAVORO, 29 - IMOLA<br></br>
           Telefono: 335398618<br></br> */}
             </div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html:
-                  paymentsFromCode &&
-                  paymentsFromCode.receipt &&
-                  paymentsFromCode.receipt
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/\t/g, "\u00a0")
-                    .replace(/\n/g, "<br/> ")
-                    .replace(/\+/g, " ")
-                    .replace(/: /g, ":<div class='marginB'></div>")
-                    .replace(
-                      /<div class='marginB'><\/div>([^>]+)<br\/>/g,
-                      "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                    ),
-              }}
-            />
+            {paymentsFromCode && paymentsFromCode.receipt_type === "base64" ? (
+              <div>
+                <iframe
+                  style={{
+                    width: "100%",
+                    height: "443px",
+                  }}
+                  id="iframepdf"
+                  src={`data:application/pdf;base64,${paymentsFromCode.receipt}`}
+                ></iframe>
+              </div>
+            ) : (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html:
+                    paymentsFromCode &&
+                    paymentsFromCode.receipt &&
+                    paymentsFromCode.receipt
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/\t/g, "\u00a0")
+                      .replace(/\n/g, "<br/> ")
+                      .replace(/\+/g, " ")
+                      .replace(/: /g, ":<div class='marginB'></div>")
+                      .replace(
+                        /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                        "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                      ),
+                }}
+              />
+            )}
 
             <img
               className="barcodeModal"

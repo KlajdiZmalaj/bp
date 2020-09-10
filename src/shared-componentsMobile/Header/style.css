@@ -123,7 +123,7 @@
   width: 25px;
 }
 
-.headerMob nav .tabBody--item span {
+.headerMob nav .tabBody--item span:nth-child(3) {
   margin-left: auto;
   font-weight: 500;
   color: var(--accent-bg);
@@ -173,6 +173,14 @@
 .headerMob nav .tabBody--a__b:nth-child(2) {
   background: var(--accent-bg);
   color: var(--accent-txt);
+}
+
+.headerMob .nameUser {
+  white-space: nowrap;
+  max-width: 150px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .logoMob {

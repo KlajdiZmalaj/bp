@@ -1,13 +1,19 @@
 import React from "react";
 import { azioni } from "config";
 import { get, includes } from "lodash";
+import { Tooltip } from "antd";
 export default ({ tab, accountInfo, logOut }) => {
   return tab === 1 ? (
     <div className="tabBody body1">
       {accountInfo?.profile ? (
         <div className="tabBody--item">
           <i className="fal fa-user-circle" aria-hidden="true"></i>
-          {accountInfo?.profile?.name}
+
+          <Tooltip title={accountInfo?.profile?.name}>
+            {" "}
+            <div className="nameUser">{accountInfo?.profile?.name}</div>
+          </Tooltip>
+
           <span>{accountInfo?.profile?.wallet}€</span>
         </div>
       ) : (

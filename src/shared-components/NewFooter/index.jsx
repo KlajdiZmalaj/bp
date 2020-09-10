@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import images from "themes/images";
 // import { skinTexts, skinID } from "config/skinTexts";
 import { connect } from "react-redux";
+import { Footer as FooterMob } from "shared-componentsMobile";
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +10,9 @@ class Footer extends Component {
   }
   //
   render() {
-    const { skinExtras } = this.props;
+    const { skinExtras, screenWidth } = this.props;
     // console.log("skinExtras", skinExtras);
-    return (
+    return screenWidth > 880 ? (
       <footer>
         <div className="top">
           <div className="maxWFooter">
@@ -72,13 +73,16 @@ class Footer extends Component {
           </div>
         </div>
       </footer>
+    ) : (
+      <FooterMob />
     );
   }
 }
 
-const m = ({ auth }) => {
+const m = ({ auth, main }) => {
   return {
     skinExtras: auth.skinExtras,
+    screenWidth: main.screenWidth,
   };
 };
 export default connect(m, null)(Footer);
