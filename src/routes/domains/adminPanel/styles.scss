@@ -214,7 +214,7 @@
     & .printModal {
       width: 340px;
     }
-    width: 280px;
+    width: 300px;
     transition: 0.5s;
   }
   .Tranzacioni div span {
@@ -225,18 +225,18 @@
     width: 5px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 280px - 51px);
+    width: calc(100% - 300px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header {
-      width: calc(100% - 280px - 51px);
+      width: calc(100% - 300px - 51px);
       transition: 0.5s;
     }
   }
   .AdminColumns .Center {
-    width: calc(100% - 280px - 200px);
+    width: calc(100% - 300px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header {
-      width: calc(100% - 280px - 200px);
+      width: calc(100% - 300px - 200px);
       transition: 0.5s;
     }
   }
@@ -249,7 +249,7 @@
       }
     }
 
-    width: 260px;
+    width: 300px;
     transition: 0.5s;
     & .AdminRightForm--Box--LeUltime--Dropdown {
       &--Row {
@@ -269,18 +269,18 @@
     padding-top: 10px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 260px - 51px);
+    width: calc(100% - 300px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header {
-      width: calc(100% - 51px - 260px);
+      width: calc(100% - 51px - 300px);
       transition: 0.5s;
     }
   }
   .AdminColumns .Center {
-    width: calc(100% - 260px - 200px);
+    width: calc(100% - 300px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header {
-      width: calc(100% - 260px - 200px);
+      width: calc(100% - 300px - 200px);
       transition: 0.5s;
     }
   }
@@ -918,16 +918,20 @@ div.Center--Big {
 }
 @media (max-width: 1320px) {
   .AdminColumns {
-    & .AdminRightForm {
+    .AdminRightForm {
       display: none;
     }
-
-    & div.Center,
-    & div.Center--Big {
+    div.Center--Big {
       width: calc(100vw - 51px);
-      overflow: hidden;
-      & .AdminListaUtenti--Header {
+      .AdminListaUtenti--Header {
         width: calc(100vw - 51px);
+      }
+    }
+    div.Center {
+      width: calc(100vw - 200px);
+      overflow: hidden;
+      .AdminListaUtenti--Header {
+        width: calc(100vw - 200px);
       }
     }
   }

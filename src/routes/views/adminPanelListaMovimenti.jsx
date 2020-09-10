@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 
 class AdminPanelListaUtenti extends React.Component {
-  state = {
-    menuSkinVisible: false,
-  };
   componentDidMount() {
     this.props.setActiveSkinId(1);
   }

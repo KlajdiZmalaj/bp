@@ -37,7 +37,7 @@ const Chat = ({ screenWidth }) => {
         <i
           className="far fa-comments"
           style={
-            screenWidth >= 1320
+            screenWidth >= 1024
               ? {
                   paddingRight: "10px",
                   fontSize: "16px",

@@ -52,16 +52,38 @@ class AdminListaUtenti extends React.Component {
       <div className="AdminListaUtenti">
         <div className="AdminListaUtenti--Header">
           <span>USER ID</span>
-          <span>USERNAME</span>
+          <span style={screenWidth <= 850 && Special ? { left: "7%" } : {}}>
+            USERNAME
+          </span>
           <span
             style={
-              screenWidth <= 1700 && screenWidth >= 1320 && Special
+              // screenWidth > 1024 && Special
+              //       ? {
+              //           width: "calc(61% - 210px)",
+              //           marginLeft: "1%",
+              //         }
+              Special && screenWidth <= 1440
                 ? {
-                    width: "28%",
+                    width: "calc(43.5% - 230px)",
+                    left: "0.2%",
+                    marginLeft: "1%",
                   }
                 : Special
-                ? { width: "16%" }
-                : {}
+                ? {
+                    width: "calc(36.5% - 230px)",
+                    marginLeft: "1%",
+                    left: "0.2%",
+                  }
+                : screenWidth > 1440
+                ? {
+                    width: "calc(36.5% - 230px)",
+                    left: "-0.5%",
+                  }
+                : {
+                    width: "calc(36.5% - 230px)",
+                    left: "-0.5%",
+                    marginLeft: "1%",
+                  }
             }
           >
             RAG SOCIALE
@@ -74,52 +96,56 @@ class AdminListaUtenti extends React.Component {
                 ? { paddingLeft: "10%" }
                 : screenWidth <= 550 && Special
                 ? { paddingLeft: "12%" }
-                : screenWidth <= 1700 && screenWidth >= 1320 && Special
-                ? {
-                    width: "14% !important",
-                    justifyContent: "flex-end",
-                    left: "0%",
-                  }
-                : screenWidth <= 950 && Special
+                : // : screenWidth <= 1700 && screenWidth >= 1024 && Special
+                // ? {
+                //     width: "5% !important",
+                //     justifyContent: "flex-end",
+                //   }
+                // :
+                screenWidth <= 850 && Special
                 ? { justifyContent: "flex-end", left: "-3%" }
                 : Special
-                ? { width: "10%", justifyContent: "flex-end", left: "-2%" }
-                : { justifyContent: "flex-end", left: "-1%" }
+                ? {
+                    width: "7.5%",
+                    justifyContent: "flex-end",
+                    marginRight: "1%",
+                  }
+                : {
+                    width: "4%",
+                    justifyContent: "flex-end",
+                    marginRight: "0.8%",
+                  }
             }
           >
             CREDITO
           </span>
-          {Special ? null : <span>CITY</span>}
+          {Special ? null : (
+            <span style={{ width: "7%", left: "0" }}>CITY</span>
+          )}
           <span
-            className={`${Special ? "none" : ""}`}
             style={
               Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
-                : { justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", left: 0 }
+                : { width: "13%", justifyContent: "center", left: 0 }
             }
+            className={`${Special ? "none" : ""}`}
           >
             ULTIMO DEPOSIT
           </span>
           <span
             className={`${Special ? "none" : ""}`}
             style={
-              !Special && screenWidth <= 950
+              !Special && screenWidth <= 850
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
-                ? { width: "14%", justifyContent: "center", left: 0 }
-                : { justifyContent: "center", left: 0 }
+                ? { width: "13%", justifyContent: "center", marginRight: "1%" }
+                : { width: "13%", justifyContent: "center", left: 0 }
             }
           >
             ULTIMO LOGIN
           </span>
           <span
-            style={
-              Special && screenWidth <= 950
-                ? { width: "38%" }
-                : Special
-                ? { width: "24%" }
-                : {}
-            }
+            style={{ width: "210px", justifyContent: "flex-start" }}
             className={`${Special ? "activated" : ""}`}
           >
             AZIONI

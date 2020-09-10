@@ -195,7 +195,7 @@
 }
 @media (max-width: 1240px) {
   body:not(.bodyAdmin) {
-    & .transTable .wsNwp:nth-child(3) {
+    & .transTable.Movimenti .wsNwp:nth-child(3) {
       position: relative;
       text-align: center;
       & i {

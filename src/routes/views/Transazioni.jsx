@@ -717,7 +717,7 @@ class Transazioni extends React.Component {
                     <img className="loader" src={images.loader}></img>
                   ))}
                 {!loadingPayments && (
-                  <table className="transTable">
+                  <table className="transTable Movimenti">
                     <thead>
                       <tr>
                         <td className="wsNwp">Date / Ora</td>

@@ -129,7 +129,7 @@ class AdminLeftForm extends React.Component {
                       });
                     }}
                   >
-                    Create Add Skin
+                    Aggiungi Skin
                   </span>
                 </div>
               </div>
@@ -137,7 +137,7 @@ class AdminLeftForm extends React.Component {
           </div>
 
           <div className="AdminLeftForm--LastBox">
-            {screenWidth <= 1320 ? (
+            {screenWidth < 1024 ? (
               <React.Fragment>
                 <div
                   className="AdminLeftForm--LastBox--Box"
