@@ -360,6 +360,7 @@ const { Types, Creators } = createActions({
   getStatistiche: ["skin_id"],
   setStatistiche: ["Statistiche"],
   setFromDateToDate: ["fromDate"],
+  setAdminPanelClass: ["CenterCls"],
 });
 
 export const AuthTypes = Types;
@@ -428,6 +429,7 @@ const INITIAL_STATE = {
   },
   Statistiche: null,
   fromDate: null,
+  CenterCls: "Center",
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -684,5 +686,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_FROM_DATE_TO_DATE]: (state, { fromDate }) => ({
     ...state,
     fromDate,
+  }),
+  [Types.SET_ADMIN_PANEL_CLASS]: (state, { CenterCls }) => ({
+    ...state,
+    CenterCls,
   }),
 });

@@ -44,6 +44,7 @@
           flex-direction: row;
   padding-top: 10px;
   height: calc(100vh - 240px);
+  max-height: 700px;
 }
 
 .AdminLogin--Step1::-webkit-scrollbar-thumb {
@@ -87,6 +88,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   padding-top: 15px;
+  max-height: 700px;
 }
 
 .AdminLogin--Step1--Step2 span {

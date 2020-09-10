@@ -7,6 +7,8 @@
   z-index: 6;
   -webkit-box-shadow: 0 3px 6px 1px #0000008c;
           box-shadow: 0 3px 6px 1px #0000008c;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 @media only screen and (max-width: 1320px) and (min-width: 1024px) {
@@ -14,11 +16,33 @@
     width: 50vw;
     height: 50vh;
     margin: calc((20vh - 71px) / 2) 25vw;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
 }
 
+.RightFormModal.Big {
+  margin: calc((50vh - 101px) / 2) calc(15vw + 100px) !important;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 1320px) and (min-width: 1024px) {
+  .RightFormModal.Big {
+    margin: calc((50vh - 101px) / 2) calc(25vw + 100px) !important;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+.RightFormModal.Big .backDrop {
+  width: calc(100vw - 200px);
+  left: 200px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .RightFormModal .AdminRightForm--Box--Wallet--Dropdown {
-  background-color: #ffffff;
   padding: 4vh 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -29,6 +53,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   z-index: 6;
+  background: #272c31;
   background: #272c31;
 }
 
@@ -107,8 +132,10 @@
 .RightFormModal .backDrop {
   top: 101px;
   height: calc(100vh - 71px);
-  width: calc(100vw - 51px);
-  left: 51px;
+  width: calc(100vw - 50px);
+  left: 50px;
   z-index: 4;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 /*# sourceMappingURL=aRFWD.css.map */

@@ -109,14 +109,7 @@ class AdminLeftForm extends React.Component {
                 key={"createSkin"}
               >
                 <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                  >
-                    <circle className="a" cx="11" cy="11" r="11" />
-                  </svg>
+                  <i className="fal fa-plus"></i>
 
                   <span
                     onClick={() => {
@@ -137,23 +130,28 @@ class AdminLeftForm extends React.Component {
           </div>
 
           <div className="AdminLeftForm--LastBox">
-            {screenWidth < 1024 ? (
+            {screenWidth <= 1320 ? (
               <React.Fragment>
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
-                    const { Statistiche } = this.props;
-                    const { TrCoPro } = this.props;
-                    editStatModal({
-                      visibility: true,
-                      data: {
-                        graphData: Statistiche,
-                        Tranzacioni: TrCoPro?.importo,
-                        Commisione: TrCoPro?.commissione,
-                        Proviggioni: TrCoPro?.proviggioni,
-                      },
-                    });
-
+                    const { Statistiche, TrCoPro, statModalVis } = this.props;
+                    if (statModalVis) {
+                      editStatModal({
+                        visibility: false,
+                        data: "",
+                      });
+                    } else {
+                      editStatModal({
+                        visibility: true,
+                        data: {
+                          graphData: Statistiche,
+                          Tranzacioni: TrCoPro?.importo,
+                          Commisione: TrCoPro?.commissione,
+                          Proviggioni: TrCoPro?.proviggioni,
+                        },
+                      });
+                    }
                     editUltModal({
                       visibility: false,
                       data: "",
@@ -165,17 +163,25 @@ class AdminLeftForm extends React.Component {
                   }}
                 >
                   <i className="fal fa-analytics"></i>
-                  {screenWidth <= 550 && <span>STATISTICHE</span>}
+                  <span>STATISTICHE</span>
                 </div>
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
-                    editUltModal({
-                      visibility: true,
-                      data: {
-                        leUltimeTransazioniDet: leUltimeTransazioniDet,
-                      },
-                    });
+                    const { ultModalVis } = this.props;
+                    if (ultModalVis) {
+                      editUltModal({
+                        visibility: false,
+                        data: "",
+                      });
+                    } else {
+                      editUltModal({
+                        visibility: true,
+                        data: {
+                          leUltimeTransazioniDet: leUltimeTransazioniDet,
+                        },
+                      });
+                    }
                     editStatModal({
                       visibility: false,
                       data: "",
@@ -187,17 +193,26 @@ class AdminLeftForm extends React.Component {
                   }}
                 >
                   <i className="fal fa-heart-rate"></i>
-                  {screenWidth <= 550 && <span>TRANSAZIONI</span>}
+                  <span>TRANSAZIONI</span>
                 </div>
                 <div
                   className="AdminLeftForm--LastBox--Box"
                   onClick={() => {
-                    editDepModal({
-                      visibility: true,
-                      data: {
-                        graphData: "full",
-                      },
-                    });
+                    const { depModalVis } = this.props;
+                    if (depModalVis) {
+                      editDepModal({
+                        visibility: false,
+                        data: "",
+                      });
+                    } else {
+                      editDepModal({
+                        visibility: true,
+                        data: {
+                          graphData: "full",
+                        },
+                      });
+                    }
+
                     editStatModal({
                       visibility: false,
                       data: "",
@@ -209,7 +224,7 @@ class AdminLeftForm extends React.Component {
                   }}
                 >
                   <i className="fal fa-wallet"></i>
-                  {screenWidth <= 550 && <span>DEP / ADDEB</span>}
+                  <span>DEP / ADDEB</span>
                 </div>
               </React.Fragment>
             ) : null}
@@ -240,5 +255,8 @@ const mstp = (state) => ({
   Statistiche: state.auth.Statistiche?.data,
   leUltimeTransazioniDet: state.auth.leUltimeTransazioniDet,
   accountInfo: state.auth.accountInfo,
+  statModalVis: state.auth.statModal.visibility,
+  ultModalVis: state.auth.ultModal.visibility,
+  depModalVis: state.auth.depModal.visibility,
 });
 export default connect(mstp, { ...MainActions, ...AuthActions })(AdminLeftForm);

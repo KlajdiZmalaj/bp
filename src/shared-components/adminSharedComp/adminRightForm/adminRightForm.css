@@ -13,6 +13,10 @@
   background: #353d45;
 }
 
+.AdminRightForm::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.602);
+}
+
 .AdminRightForm .Tranzacioni {
   height: 62px;
   width: 100%;
@@ -336,6 +340,10 @@
   background: #353d45;
 }
 
+.AdminRightForm .printModal div.ContainerOfData:nth-child(1)::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.602);
+}
+
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1) .headerModal {
   margin: 0;
   width: 100%;
@@ -355,12 +363,11 @@
 .AdminRightForm--Box {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: calc(0.56vh + 0.56vw);
   width: 100%;
-  padding: 1vh 0;
+  font-size: 14px;
+  height: 60px;
   padding-right: 5%;
   padding-left: 7%;
-  height: calc(3.85vh + 1.5vw);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -413,7 +420,7 @@
 }
 
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data {
-  font-size: calc(0.5vh + 0.5vw);
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -437,8 +444,8 @@
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Date {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 400;
-  font-size: calc(0.4vh + 0.4vw);
-  width: 23.5%;
+  font-size: 10px;
+  width: 22%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -447,8 +454,8 @@
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Id {
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
-  font-size: calc(0.42vh + 0.4vw);
-  width: 30%;
+  font-size: 10.5px;
+  width: 29%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -458,9 +465,9 @@
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.User {
   color: #ffffff;
   font-weight: 400;
-  font-size: calc(0.43vh + 0.43vw);
+  font-size: 11.5px;
   text-transform: uppercase;
-  width: 32%;
+  width: 34%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -470,10 +477,11 @@
 .AdminRightForm--Box--LeUltime--Dropdown--Row--Data.Price {
   color: #0078ff;
   font-weight: 500;
-  width: 12%;
+  width: 16%;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  font-size: 11px;
 }
 
 .AdminRightForm--Box > i {
@@ -482,7 +490,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-weight: 300;
-  font-size: calc(0.9vh + 0.9vw);
+  font-size: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -511,7 +519,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-right: 9%;
-  font-size: calc(0.6vh + 0.6vw);
+  font-size: 14px;
   font-weight: 300;
 }
 
@@ -532,7 +540,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-right: 15px;
-  font-size: calc(0.6vh + 0.6vw);
+  font-size: 14px;
   font-weight: 300;
 }
 
@@ -706,6 +714,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button {
@@ -726,6 +735,7 @@
   font-family: "Roboto", sans-serif;
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: bold;
+  height: 100%;
 }
 
 .AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(1) {

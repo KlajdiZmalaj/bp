@@ -52,16 +52,17 @@ class AdminListaUtenti extends React.Component {
       <div className="AdminListaUtenti">
         <div className="AdminListaUtenti--Header">
           <span>USER ID</span>
-          <span style={screenWidth <= 850 && Special ? { left: "7%" } : {}}>
+          <span
+            className={`${Special && screenWidth < 1024 ? "SpecSm" : ""}`}
+            style={screenWidth <= 850 && Special ? { left: "7%" } : {}}
+          >
             USERNAME
           </span>
           <span
+            className={`${
+              Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
+            }`}
             style={
-              // screenWidth > 1024 && Special
-              //       ? {
-              //           width: "calc(61% - 210px)",
-              //           marginLeft: "1%",
-              //         }
               Special && screenWidth <= 1440
                 ? {
                     width: "calc(43.5% - 230px)",
@@ -89,20 +90,22 @@ class AdminListaUtenti extends React.Component {
             RAG SOCIALE
           </span>
           <span
+            className={`${Special && screenWidth < 1024 ? "SpecSm" : ""}`}
             style={
-              screenWidth <= 400 && Special
+              screenWidth >= 2000 && !Special
+                ? {
+                    width: "4%",
+                    justifyContent: "flex-end",
+                    marginRight: "1.5%",
+                    left: "1%",
+                  }
+                : screenWidth <= 400 && Special
                 ? { paddingLeft: "8%" }
                 : screenWidth <= 500 && Special
                 ? { paddingLeft: "10%" }
                 : screenWidth <= 550 && Special
                 ? { paddingLeft: "12%" }
-                : // : screenWidth <= 1700 && screenWidth >= 1024 && Special
-                // ? {
-                //     width: "5% !important",
-                //     justifyContent: "flex-end",
-                //   }
-                // :
-                screenWidth <= 850 && Special
+                : screenWidth <= 850 && Special
                 ? { justifyContent: "flex-end", left: "-3%" }
                 : Special
                 ? {
@@ -128,7 +131,9 @@ class AdminListaUtenti extends React.Component {
                 ? { width: "13%", justifyContent: "center", left: 0 }
                 : { width: "13%", justifyContent: "center", left: 0 }
             }
-            className={`${Special ? "none" : ""}`}
+            className={`${
+              Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
+            }`}
           >
             ULTIMO DEPOSIT
           </span>

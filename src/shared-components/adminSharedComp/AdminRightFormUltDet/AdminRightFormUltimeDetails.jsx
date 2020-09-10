@@ -30,11 +30,20 @@ class AdminRightFormUltimeDetails extends React.Component {
     }
   }
   render() {
-    const { leUltimeTransazioniDet, ModalOrNo, Close } = this.props;
+    const {
+      leUltimeTransazioniDet,
+      ModalOrNo,
+      Close,
+      menuSkinVisible,
+    } = this.props;
     return (
       <React.Fragment>
         {ModalOrNo === true ? (
-          <div className="RightFormModal">
+          <div
+            className={`${
+              !menuSkinVisible ? "RightFormModal Big" : "RightFormModal"
+            }`}
+          >
             <div
               className="backDrop"
               onClick={() => {

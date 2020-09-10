@@ -47,6 +47,10 @@
     &::-webkit-scrollbar-thumb {
       background: #353d45;
     }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.602);
+    }
     & div {
       height: 30px;
       display: flex;

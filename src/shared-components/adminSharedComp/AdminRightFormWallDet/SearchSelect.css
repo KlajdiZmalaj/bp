@@ -66,6 +66,10 @@
   background: #353d45;
 }
 
+.Select--Body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.602);
+}
+
 .Select--Body div {
   height: 30px;
   display: -webkit-box;
