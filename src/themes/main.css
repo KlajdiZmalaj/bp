@@ -1823,11 +1823,11 @@ i#private {
 }
 
 @media (max-width: 1240px) {
-  body:not(.bodyAdmin) .transTable .wsNwp:nth-child(3) {
+  body:not(.bodyAdmin) .transTable.Movimenti .wsNwp:nth-child(3) {
     position: relative;
     text-align: center;
   }
-  body:not(.bodyAdmin) .transTable .wsNwp:nth-child(3) i {
+  body:not(.bodyAdmin) .transTable.Movimenti .wsNwp:nth-child(3) i {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1843,7 +1843,7 @@ i#private {
         -ms-flex-align: center;
             align-items: center;
   }
-  body:not(.bodyAdmin) .transTable .wsNwp:nth-child(3) span {
+  body:not(.bodyAdmin) .transTable.Movimenti .wsNwp:nth-child(3) span {
     overflow: hidden;
     opacity: 0;
     position: absolute;

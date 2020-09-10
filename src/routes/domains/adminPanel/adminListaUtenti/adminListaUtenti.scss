@@ -156,7 +156,7 @@ div.Center--Big {
             }
           }
           & div.backDrop {
-            background-color: rgba(0, 0, 0, 0.349) !important;
+            background-color: rgba(0, 0, 0, 0.649) !important;
           }
           & .active {
             & span:nth-child(2) {
@@ -230,6 +230,15 @@ div.Center--Big {
           max-height: 25px;
           height: 25px;
           color: #5c5c5c;
+          @media (max-width: 1700px) {
+            font-size: 13px;
+          }
+          @media (max-width: 1500px) {
+            font-size: 12px;
+          }
+          @media (max-width: 1395px) and (min-width: 1024px) {
+            font-size: 11px;
+          }
           &:nth-child(1) {
             width: 6%;
             margin-right: 2%;
@@ -280,9 +289,7 @@ div.Center--Big {
             }
             > i {
               background-color: #ffffff;
-
               cursor: pointer;
-
               font-size: 14px;
               font-weight: 300;
               border: 1px solid #5c5c5c;
@@ -294,9 +301,6 @@ div.Center--Big {
               justify-content: center;
               align-items: center;
               padding: 7px 7px;
-              &:last-child {
-                margin-right: 10px;
-              }
               &.active {
                 color: #0078ff;
                 border-color: #0078ff;
@@ -326,6 +330,15 @@ div.Center--Big {
       align-items: center;
       font-family: "Roboto", sans-serif;
       font-size: 14px;
+      @media (max-width: 1700px) {
+        font-size: 13px;
+      }
+      @media (max-width: 1500px) {
+        font-size: 12px;
+      }
+      @media (max-width: 1395px) and (min-width: 1024px) {
+        font-size: 11px;
+      }
       font-weight: bold;
       box-sizing: border-box;
       position: relative;
@@ -588,200 +601,154 @@ div.AdminColumns {
     }
   }
 }
-@media screen and (max-width: 1700px) and (min-width: 1320px) {
-  .AdminListaUtenti {
-    &--Header {
-      & span:not(.activated) {
-        &:nth-child(6),
-        &:nth-child(7) {
-          display: none;
-        }
-        &:nth-child(4) {
-          width: 18% !important;
-          margin: 0 2%;
-        }
-        &:nth-child(5) {
-          width: 18% !important;
-        }
-
-        &.none {
-          display: none;
-        }
-      }
+// @media screen and (max-width: 1700px) and (min-width: 1320px) {
+//   .AdminListaUtenti {
+//     &--Header {
+//       & span:not(.activated) {
+//         &:nth-child(4) {
+//           width: 5% !important;
+//           margin: 0 1%;
+//         }
+//         &:nth-child(5) {
+//           width: 18% !important;
+//         }
+//       }
+//     }
+//     & .AdminListaUtentiRow {
+//       &--Complete {
+//         & span:not(.activated) {
+//           &:nth-child(4) {
+//             width: 5% !important;
+//             margin: 0 1%;
+//           }
+//           &:nth-child(5) {
+//             width: 18% !important;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+@media (max-width: 1024px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span {
+    &:nth-child(6) {
+      display: none;
     }
-    & .AdminListaUtentiRow {
-      &--Complete {
-        & span:not(.activated) {
-          &:nth-child(6),
-          &:nth-child(7) {
-            display: none;
-          }
-          &:nth-child(4) {
-            width: 18% !important;
-            margin: 0 2%;
-          }
-          &:nth-child(5) {
-            width: 18% !important;
-          }
-          &.none {
-            display: none;
-          }
-        }
-      }
+    &:nth-child(4) {
+      width: 9.5% !important;
     }
-  }
-}
-@media (max-width: 1490px) {
-  .AdminListaUtenti {
-    & .AdminListaUtentiRow {
-      &--Complete {
-        & span {
-          &:last-child {
-            & button {
-              background-color: #ffffff;
-              cursor: pointer;
-              font-size: 10px;
-              font-weight: 400;
-              font-family: "Roboto", sans-serif;
-              border: 0.5px solid #5c5c5c;
-              border-radius: 17px;
-              padding: 2px 5px;
-            }
-            > i {
-              background-color: #ffffff;
-              cursor: pointer;
-              font-size: 13px;
-              font-weight: 300;
-              border: 0.5px solid #5c5c5c;
-              box-sizing: border-box;
-              width: 21px;
-              height: 21px;
-              padding: 11px 11px;
-              box-sizing: border-box;
-              border-radius: 50%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              &.active {
-                color: #0078ff;
-                border-color: #0078ff;
-              }
-            }
-          }
-        }
-      }
+    &:nth-child(7) {
+      width: 15% !important;
+    }
+    &:nth-child(5) {
+      width: 8.5% !important;
     }
   }
-}
-@media (max-width: 1200px) {
-  .AdminListaUtenti {
-    & .AdminListaUtentiRow {
-      &--Complete {
-        &--Main,
-        &--Main--Child {
-          & span {
-            &:last-child {
-              & i {
-                border: none;
-                background-color: transparent;
-                width: auto;
-                height: auto;
-                padding: 0;
-              }
-            }
-          }
-        }
-      }
+  .AdminListaUtenti--Header span {
+    &:nth-child(6) {
+      display: none;
+    }
+    &:nth-child(4) {
+      width: 9% !important;
+    }
+    &:nth-child(5) {
+      width: 8.5% !important;
+    }
+    &:nth-child(7) {
+      width: 15% !important;
     }
   }
 }
 @media (max-width: 950px) {
-  .AdminListaUtenti {
-    & .AdminListaUtentiRow {
-      & div.AdminListaUtentiRow--Complete--Main--Child.children {
-        & div {
-          & div {
-            & span:nth-child(2) {
-              width: calc(35% - 40px) !important;
-            }
-          }
-          & div.AdminListaUtentiRow--Complete--Main--Child.children {
-            & div {
-              & div {
-                & span:nth-child(2) {
-                  width: calc(35% - 61.5px) !important;
-                }
-              }
-            }
-          }
-        }
-      }
-      &--Complete {
-        &--Main,
-        &--Main--Child {
-          & span {
-            &:nth-child(5) {
-              display: none;
-            }
-            &:nth-child(3) {
-              display: none;
-            }
-            &:nth-child(6) {
-              display: none;
-            }
-            &:nth-child(1) {
-              width: 15%;
-            }
-            &:nth-child(2) {
-              width: 35%;
-            }
-            &:nth-child(4) {
-              width: 15%;
-            }
-            &:nth-child(8) {
-              width: 35%;
-            }
-            &:last-child {
-              justify-content: space-around;
-              & i {
-                border: 0.5px solid #5c5c5c;
-                background-color: #ffffff;
-                width: 25px;
-                height: 25px;
-                padding: 0;
-              }
-            }
-          }
-        }
-      }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span {
+    &:nth-child(3) {
+      display: none !important;
     }
-    &--Header {
-      & span {
-        &:nth-child(5) {
-          display: none;
-        }
-        &:nth-child(3) {
-          display: none;
-        }
-        &:nth-child(6) {
-          display: none;
-        }
-        &:nth-child(1) {
-          width: 15%;
-        }
-        &:nth-child(2) {
-          width: 35%;
-        }
-        &:nth-child(4) {
-          width: 15%;
-        }
-        &:nth-child(8) {
-          width: 35%;
-        }
-        &:last-child {
-          left: 15px;
-        }
-      }
+    &:nth-child(4) {
+      margin-right: 4% !important;
+    }
+    &:nth-child(5) {
+      width: 11% !important;
+    }
+    &:nth-child(7) {
+      margin-right: 2.5% !important;
+    }
+  }
+  .AdminListaUtenti--Header span {
+    &:nth-child(3) {
+      display: none !important;
+    }
+    &:nth-child(4) {
+      margin-right: 4.8% !important;
+    }
+    &:nth-child(5) {
+      width: 11% !important;
+    }
+    &:nth-child(7) {
+      margin-right: 4% !important;
+    }
+  }
+}
+@media (max-width: 850px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span {
+    &:nth-child(2):not(.Username) {
+      position: relative;
+      right: -4%;
+      margin-right: 4%;
+    }
+    &:nth-child(3) {
+      display: none !important;
+    }
+    &:nth-child(4) {
+      margin-right: 1% !important;
+      width: 14% !important;
+    }
+    &:nth-child(5) {
+      width: 17% !important;
+    }
+    &:nth-child(7) {
+      margin-right: 3% !important;
+      width: 15% !important;
+    }
+  }
+  .AdminListaUtenti--Header span {
+    &:nth-child(2):not(.Username) {
+      left: 5% !important;
+      margin-right: 4%;
+    }
+    &:nth-child(3) {
+      display: none !important;
+    }
+    &:nth-child(4) {
+      margin-right: 1.8% !important;
+      width: 14% !important;
+    }
+    &:nth-child(5) {
+      width: 17% !important;
+    }
+    &:nth-child(7) {
+      margin-right: 3.5% !important;
+      width: 15% !important;
+    }
+  }
+}
+@media (max-width: 750px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span {
+    &:nth-child(5) {
+      display: none !important;
+    }
+    &:nth-child(4) {
+      margin-right: 1.8% !important;
+      width: 27% !important;
+    }
+  }
+  .AdminListaUtenti--Header span {
+    &:nth-child(5) {
+      display: none !important;
+    }
+    &:nth-child(4) {
+      margin-right: 1.8% !important;
+      width: 27% !important;
     }
   }
 }
@@ -815,16 +782,18 @@ div.AdminColumns {
         &--Main--Child {
           & span {
             &:nth-child(2) {
-              width: 55%;
-              margin-left: 4%;
+              width: 55% !important;
+              margin-left: 4% !important;
+              right: 0% !important;
+              margin-right: 0% !important;
             }
             &:nth-child(4):not(.Username) {
-              width: 25%;
+              width: 21% !important;
             }
             &:nth-child(1),
             &:nth-child(7),
             &:nth-child(8) {
-              display: none;
+              display: none !important;
             }
             &:last-child:not(.Username) {
               position: absolute;
@@ -857,13 +826,15 @@ div.AdminColumns {
         &:nth-child(1),
         &:nth-child(7),
         &:nth-child(8) {
-          display: none;
+          display: none !important;
         }
         &:nth-child(2) {
-          width: 55%;
+          width: 55% !important;
+          right: 0% !important;
+          margin-right: 0% !important;
         }
         &:nth-child(4) {
-          width: 25%;
+          width: 25% !important;
         }
       }
     }
@@ -1005,45 +976,42 @@ table.transTable {
     }
   }
 }
-@media only screen and (max-width: 1280px) and (min-width: 955px) {
+@media only screen and (max-width: 1440px) and (min-width: 1024px) {
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(6),
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7),
-  .AdminListaUtenti--Header span:nth-child(6),
-  .AdminListaUtenti--Header span:nth-child(7) {
-    width: 9.5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    right: 0;
-    padding: 0;
-    text-align: center;
-    margin: 0;
+  .AdminListaUtenti--Header span:nth-child(6) {
+    display: none;
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5),
   .AdminListaUtenti--Header span:nth-child(5) {
-    width: 10%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4),
-  .AdminListaUtenti--Header span:nth-child(4) {
-    width: 7%;
+    width: 11% !important;
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3),
   .AdminListaUtenti--Header span:nth-child(3) {
-    width: 16%;
+    &.none {
+      width: calc(43.5% - 230px) !important;
+    }
   }
-  .AdminListaUtenti--Header span:nth-child(5) {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
+  .AdminListaUtenti
+    .AdminListaUtentiRow--Complete--Main
+    span:nth-child(5).none {
+    width: 16% !important;
+  }
+  .AdminListaUtenti--Header span:nth-child(5).none {
+    width: 17% !important;
+  }
+  .AdminListaUtenti
+    .AdminListaUtentiRow--Complete--Main
+    span:nth-child(7):not(.activated),
+  .AdminListaUtenti--Header span:nth-child(7):not(.activated) {
+    width: 14% !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4),
+  .AdminListaUtenti--Header span:nth-child(4) {
+    width: 9% !important;
+    margin-right: 0 !important;
   }
 }
+
 .AdminListaUtentiRow--Complete:nth-child(even)
   .AdminListaUtentiRow--Complete--Main {
   background: #fcfcfc !important;

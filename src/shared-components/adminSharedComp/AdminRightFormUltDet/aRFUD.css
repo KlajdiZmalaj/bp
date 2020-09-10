@@ -4,7 +4,7 @@
   top: 101px;
   margin: calc((20vh - 71px) / 2) 10vw;
   height: 80vh;
-  z-index: 5;
+  z-index: 6;
   -webkit-box-shadow: 0 3px 6px 1px #0000008c;
           box-shadow: 0 3px 6px 1px #0000008c;
 }
@@ -228,7 +228,7 @@
 
 .RightFormModal .Header {
   position: absolute;
-  width: calc(100% - 8.25vw);
+  width: calc(100% - 5.9vw);
   z-index: 7;
   background: #353d45;
   color: #ffffff;
@@ -242,7 +242,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: calc(1.6vw + 1.6vh);
+  font-size: calc(1.5vw + 1.5vh);
   font-family: "Roboto";
   height: 7vh;
   -webkit-box-sizing: border-box;
@@ -253,8 +253,8 @@
   position: absolute;
   z-index: 7;
   background: #c53f3f;
-  left: calc(100% - 8.9vw);
-  width: 9vw;
+  left: calc(100% - 5.9vw);
+  width: 6vw;
   height: 7vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -275,7 +275,7 @@
 .RightFormModal .Close i {
   color: #ffffff;
   font-weight: 400;
-  font-size: calc(1.6vw + 1.6vh);
+  font-size: calc(1.3vw + 1.3vh);
 }
 
 .RightFormModal .backDrop {

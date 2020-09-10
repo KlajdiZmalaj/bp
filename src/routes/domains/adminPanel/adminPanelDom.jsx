@@ -77,7 +77,7 @@ class AdminPanelDom extends React.Component {
   componentDidUpdate(prevProps) {
     if (
       this.state.menuSkinVisible === true &&
-      this.props.screenWidth <= 1320 &&
+      this.props.screenWidth < 1024 &&
       this.props.screenWidth > 550
     ) {
       this.setState({ menuSkinVisible: false });
@@ -87,7 +87,7 @@ class AdminPanelDom extends React.Component {
     }
     if (
       this.props.activeSkinId != prevProps.activeSkinId &&
-      this.props.screenWidth <= 1320
+      this.props.screenWidth < 1024
     ) {
       this.props.getStatistiche(this.props.activeSkinId);
       this.props.getWidgetPayments(this.props.activeSkinId);
@@ -405,7 +405,7 @@ class AdminPanelDom extends React.Component {
                 }
               />
             ) : null}
-            {statModal?.visibility === true && screenWidth <= 1320 && (
+            {statModal?.visibility === true && screenWidth < 1024 && (
               <AdminRightFormStatisticheDetails
                 graphData={statModal.data.graphData}
                 Tranzacioni={numberWithCommas(statModal.data.Tranzacioni)}
@@ -415,16 +415,14 @@ class AdminPanelDom extends React.Component {
                 Close={editStatModal}
               />
             )}
-            {ultModal &&
-              ultModal.visibility === true &&
-              screenWidth <= 1320 && (
-                <AdminRightFormUltimeDetails
-                  leUltimeTransazioniDet={ultModal.data.leUltimeTransazioniDet}
-                  ModalOrNo={true}
-                  Close={editUltModal}
-                />
-              )}
-            {depModal && depModal.visibility === true && screenWidth <= 1320 && (
+            {ultModal && ultModal.visibility === true && screenWidth < 1024 && (
+              <AdminRightFormUltimeDetails
+                leUltimeTransazioniDet={ultModal.data.leUltimeTransazioniDet}
+                ModalOrNo={true}
+                Close={editUltModal}
+              />
+            )}
+            {depModal && depModal.visibility === true && screenWidth < 1024 && (
               <AdminRightFormWalletDetails
                 handleDepositoVisibility={() => {
                   this.setState({
@@ -466,7 +464,7 @@ class AdminPanelDom extends React.Component {
                   menuSkinVisible:
                     screenWidth <= 550
                       ? !menuSkinVisible
-                      : screenWidth >= 1320
+                      : screenWidth >= 1024
                       ? !menuSkinVisible
                       : false,
                 });
@@ -493,7 +491,7 @@ class AdminPanelDom extends React.Component {
                     ? menuSkinVisible === true
                       ? "Left--Min"
                       : "Left"
-                    : screenWidth <= 1320
+                    : screenWidth < 1024
                     ? menuSkinVisible === false
                       ? "Left--Min"
                       : "Left--Min"
@@ -517,9 +515,9 @@ class AdminPanelDom extends React.Component {
               </div>
               <div
                 className={`${
-                  !menuSkinVisible && screenWidth > 1320
+                  !menuSkinVisible && screenWidth >= 1024
                     ? "Center"
-                    : screenWidth >= 1320
+                    : screenWidth > 1024
                     ? "Center--Big"
                     : "Center--Big"
                 }`}

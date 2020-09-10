@@ -7,12 +7,14 @@ import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 import { switchUserStatus } from "services/auth";
 import MainActions from "redux-store/models/main";
 import { message } from "antd";
+import moment from "moment";
 class AdminListaUtentiRow extends React.Component {
   state = {
     activateChildren: false,
     eyeClicked: false,
     plusVisibility: false,
   };
+  componentDidUpdate() {}
   render() {
     const {
       itemList,
@@ -33,7 +35,7 @@ class AdminListaUtentiRow extends React.Component {
           }`}
           onClick={(e) => {
             if (
-              screenWidth <= 950 &&
+              screenWidth <= 850 &&
               screenWidth >= 550 &&
               e.target.tagName != "I" &&
               e.target.tagName != "BUTTON" &&
@@ -93,32 +95,28 @@ class AdminListaUtentiRow extends React.Component {
           <SpanFormater
             Word={itemList.rag_soc}
             styles={
-              screenWidth <= 1700 && screenWidth >= 1320 && Special
-                ? {
-                    width: "28%",
-                  }
+              Special && screenWidth <= 1440
+                ? { width: "calc(43.5% - 230px)", marginLeft: "1%" }
                 : Special
-                ? { width: "16%" }
-                : {}
+                ? { width: "calc(36.5% - 230px)", marginLeft: "1%" }
+                : { width: "calc(36.5% - 230px)" }
             }
             size={
-              Special && screenWidth >= 1600
-                ? 30
-                : Special && screenWidth >= 1300
-                ? 20
-                : Special && screenWidth >= 800
-                ? 16
-                : screenWidth <= 1120
-                ? 8
-                : screenWidth <= 1320
-                ? 12
-                : screenWidth <= 1500
+              screenWidth > 1600
+                ? 32
+                : screenWidth >= 1440 && screenWidth <= 1600
+                ? 17
+                : screenWidth < 1440 && screenWidth > 1280
+                ? 25
+                : screenWidth <= 1280 && screenWidth >= 1100
+                ? 22
+                : screenWidth < 1100
                 ? 11
-                : screenWidth <= 1700
-                ? 16
+                : screenWidth <= 550
+                ? 10
                 : 18
             }
-            nrOfRows={2}
+            nrOfRows={1}
             formatWord={true}
           />
           <SpanFormater
@@ -129,11 +127,6 @@ class AdminListaUtentiRow extends React.Component {
                     position: "relative",
                     justifyContent: "flex-end",
                     paddingRight: "1%",
-                  }
-                : screenWidth <= 1700 && screenWidth >= 1320 && Special
-                ? {
-                    width: "14%",
-                    justifyContent: "flex-end",
                   }
                 : Special
                 ? {
@@ -153,11 +146,11 @@ class AdminListaUtentiRow extends React.Component {
             <SpanFormater
               Word={itemList.city}
               size={
-                screenWidth <= 1700 && screenWidth >= 1320
-                  ? 13
+                screenWidth <= 1700 && screenWidth >= 1024
+                  ? 7
                   : screenWidth <= 1600
-                  ? 8
-                  : 11
+                  ? 6
+                  : 13
               }
               nrOfRows={1}
               formatWord={true}
@@ -168,33 +161,35 @@ class AdminListaUtentiRow extends React.Component {
             style={
               Special
                 ? { width: "13%", justifyContent: "center", left: 0 }
-                : { justifyContent: "center", left: 0 }
+                : { width: "13%", justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
           >
-            {itemList.last_deposit}
+            {!itemList.last_deposit || itemList.last_deposit === "-"
+              ? "-"
+              : moment(itemList.last_deposit, "DD-MM-YYYY hh:mm:ss").format(
+                  "DD/MM/YYYY HH:mm:ss"
+                )}
           </span>
           <span
             style={
-              !Special && screenWidth <= 950
+              !Special && screenWidth <= 850
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
                 ? { width: "13%", justifyContent: "center", left: 0 }
-                : { justifyContent: "center", left: 0 }
+                : { width: "13%", justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
           >
-            {itemList.last_login_time}
+            {!itemList.last_login_time || itemList.last_login_time === "-"
+              ? "-"
+              : moment(itemList.last_login_time, "DD-MM-YYYY hh:mm:ss").format(
+                  "DD/MM/YYYY HH:mm:ss"
+                )}
           </span>
           <span
-            style={
-              Special && screenWidth <= 950
-                ? { width: "38%" }
-                : Special
-                ? { width: "24%", justifyContent: "space-around" }
-                : {}
-            }
             className={`${Special ? "activated" : ""}`}
+            style={{ width: "230px", justifyContent: "space-between" }}
           >
             <button
               onClick={() => {

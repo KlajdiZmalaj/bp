@@ -612,7 +612,7 @@
 
 .backDrop {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.349);
+  background-color: rgba(0, 0, 0, 0.649);
   left: 0;
   top: 0;
   width: 100%;

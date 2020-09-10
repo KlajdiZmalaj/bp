@@ -294,8 +294,8 @@
     margin-bottom: 100px;
   }
   .Admin-Panel .AdminHeader ~ .AdminHeader {
-    bottom: auto;
-    top: calc(100vh - 60px);
+    bottom: 0;
+    top: auto;
     height: 60px;
   }
   .Admin-Panel .AdminHeader ~ .AdminHeader .AdminHeader--Category,

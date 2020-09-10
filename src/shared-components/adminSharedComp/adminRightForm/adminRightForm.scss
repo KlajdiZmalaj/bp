@@ -257,12 +257,12 @@
   &--Box {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    font-size: 13px;
+    font-size: calc(0.56vh + 0.56vw);
     width: 100%;
-    padding: 15px 0;
+    padding: 1vh 0;
     padding-right: 5%;
     padding-left: 7%;
-    height: 64px;
+    height: calc(3.85vh + 1.5vw);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -285,7 +285,7 @@
         padding: 0 5px;
         align-items: center;
         &--Data {
-          font-size: 11px;
+          font-size: calc(0.5vh + 0.5vw);
           font-family: "Roboto", sans-serif;
           display: flex;
           box-sizing: border-box;
@@ -301,14 +301,14 @@
           &.Date {
             color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
-            font-size: 10px;
+            font-size: calc(0.4vh + 0.4vw);
             width: 23.5%;
             justify-content: flex-start;
           }
           &.Id {
             color: rgba(255, 255, 255, 0.7);
             font-weight: 500;
-            font-size: 10.5px;
+            font-size: calc(0.42vh + 0.4vw);
             width: 30%;
             justify-content: flex-start;
             padding: 0 2px;
@@ -316,7 +316,7 @@
           &.User {
             color: #ffffff;
             font-weight: 400;
-            font-size: 10px;
+            font-size: calc(0.43vh + 0.43vw);
             text-transform: uppercase;
             width: 32%;
             justify-content: flex-start;
@@ -336,11 +336,10 @@
       width: 32px;
       box-sizing: border-box;
       font-weight: 300;
-      font-size: 24px;
+      font-size: calc(0.9vh + 0.9vw);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 17px;
     }
     &--Statistic {
       display: flex;
@@ -350,7 +349,7 @@
         width: 32px;
         box-sizing: border-box;
         padding-right: 9%;
-        font-size: 16px;
+        font-size: calc(0.6vh + 0.6vw);
         font-weight: 300;
       }
     }
@@ -362,7 +361,7 @@
         width: 31px;
         box-sizing: border-box;
         padding-right: 15px;
-        font-size: 16px;
+        font-size: calc(0.6vh + 0.6vw);
         font-weight: 300;
       }
     }

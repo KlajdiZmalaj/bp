@@ -3,9 +3,6 @@ import AdminListaUtenti from "../domains/adminPanel/adminListaUtenti/AdminListaU
 import AdminPanelDom from "../domains/adminPanel/adminPanelDom";
 import { connect } from "react-redux";
 class AdminPanelListaUtenti extends React.Component {
-  state = {
-    menuSkinVisible: false,
-  };
   render() {
     return (
       <AdminPanelDom
