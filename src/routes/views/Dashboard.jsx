@@ -126,7 +126,7 @@ class Dashboard extends React.Component {
                   const elFound = document.querySelector(
                     `[id*="${e.target.value.toLowerCase().replace(" ", "_")}"]`
                   );
-                  if (elFound) {
+                  if (elFound && e.target.value.length > 2) {
                     elFound.click();
                   }
                 }}
