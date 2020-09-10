@@ -52,12 +52,13 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 
 .AdminListaUtenti {
   width: 100%;
+  height: 100%;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow {
   position: relative;
   top: 52px;
-  margin-bottom: 115px;
+  margin-bottom: 60px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow .NoData {
@@ -723,8 +724,11 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7) {
     width: 15% !important;
   }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5):not(.SpecSm) {
     width: 8.5% !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5).SpecSm {
+    width: 16% !important;
   }
   .AdminListaUtenti--Header span:nth-child(6) {
     display: none;
@@ -732,8 +736,11 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
   .AdminListaUtenti--Header span:nth-child(4) {
     width: 9% !important;
   }
-  .AdminListaUtenti--Header span:nth-child(5) {
+  .AdminListaUtenti--Header span:nth-child(5):not(.SpecSm) {
     width: 8.5% !important;
+  }
+  .AdminListaUtenti--Header span:nth-child(5).SpecSm {
+    width: 16% !important;
   }
   .AdminListaUtenti--Header span:nth-child(7) {
     width: 15% !important;
@@ -741,28 +748,28 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
 }
 
 @media (max-width: 950px) {
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(3):not(.SpecSm) {
     display: none !important;
   }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4):not(.SpecSm) {
     margin-right: 4% !important;
   }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5):not(.SpecSm) {
     width: 11% !important;
   }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7):not(.SpecSm) {
     margin-right: 2.5% !important;
   }
-  .AdminListaUtenti--Header span:nth-child(3) {
+  .AdminListaUtenti--Header span:nth-child(3):not(.SpecSm) {
     display: none !important;
   }
-  .AdminListaUtenti--Header span:nth-child(4) {
+  .AdminListaUtenti--Header span:nth-child(4):not(.SpecSm) {
     margin-right: 4.8% !important;
   }
-  .AdminListaUtenti--Header span:nth-child(5) {
+  .AdminListaUtenti--Header span:nth-child(5):not(.SpecSm) {
     width: 11% !important;
   }
-  .AdminListaUtenti--Header span:nth-child(7) {
+  .AdminListaUtenti--Header span:nth-child(7):not(.SpecSm) {
     margin-right: 4% !important;
   }
 }
@@ -787,9 +794,15 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
     margin-right: 3% !important;
     width: 15% !important;
   }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5).SpecSm {
+    margin-right: 3%;
+  }
   .AdminListaUtenti--Header span:nth-child(2):not(.Username) {
-    left: 5% !important;
+    left: 7% !important;
     margin-right: 4%;
+  }
+  .AdminListaUtenti--Header span:nth-child(2):not(.Username).SpecSm {
+    left: 7% !important;
   }
   .AdminListaUtenti--Header span:nth-child(3) {
     display: none !important;
@@ -798,8 +811,15 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
     margin-right: 1.8% !important;
     width: 14% !important;
   }
+  .AdminListaUtenti--Header span:nth-child(4).SpecSm {
+    margin-right: 0% !important;
+    width: 17% !important;
+  }
   .AdminListaUtenti--Header span:nth-child(5) {
     width: 17% !important;
+  }
+  .AdminListaUtenti--Header span:nth-child(5).SpecSm {
+    margin-right: 3%;
   }
   .AdminListaUtenti--Header span:nth-child(7) {
     margin-right: 3.5% !important;
@@ -811,16 +831,30 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5) {
     display: none !important;
   }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1) {
+    width: 10% !important;
+  }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4) {
     margin-right: 1.8% !important;
-    width: 27% !important;
+    width: 25% !important;
+  }
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4).SpecSm {
+    margin-right: 1.8% !important;
+    width: calc(59% - 230px) !important;
   }
   .AdminListaUtenti--Header span:nth-child(5) {
     display: none !important;
   }
+  .AdminListaUtenti--Header span:nth-child(1) {
+    width: 12% !important;
+  }
   .AdminListaUtenti--Header span:nth-child(4) {
     margin-right: 1.8% !important;
-    width: 27% !important;
+    width: calc(57% - 230px) !important;
+  }
+  .AdminListaUtenti--Header span:nth-child(4).SpecSm {
+    margin-right: 1.8% !important;
+    width: calc(62% - 230px) !important;
   }
 }
 
@@ -844,7 +878,7 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(4):not(.Username), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(4):not(.Username) {
     width: 21% !important;
   }
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(8), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(8) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(8):not(.SpecSm), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(1), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(7), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(8):not(.SpecSm) {
     display: none !important;
   }
   .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child:not(.Username), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child:not(.Username) {
@@ -875,7 +909,7 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
     font-weight: 300;
     border: none;
   }
-  .AdminListaUtenti--Header span:nth-child(1), .AdminListaUtenti--Header span:nth-child(7), .AdminListaUtenti--Header span:nth-child(8) {
+  .AdminListaUtenti--Header span:nth-child(1), .AdminListaUtenti--Header span:nth-child(7), .AdminListaUtenti--Header span:nth-child(8):not(.SpecSm) {
     display: none !important;
   }
   .AdminListaUtenti--Header span:nth-child(2) {
@@ -883,8 +917,18 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
     right: 0% !important;
     margin-right: 0% !important;
   }
+  .AdminListaUtenti--Header span:nth-child(2).SpecSm {
+    width: 30% !important;
+  }
   .AdminListaUtenti--Header span:nth-child(4) {
     width: 25% !important;
+  }
+  .AdminListaUtenti--Header span:nth-child(4).SpecSm {
+    width: 50% !important;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding-left: 12.5% !important;
   }
 }
 

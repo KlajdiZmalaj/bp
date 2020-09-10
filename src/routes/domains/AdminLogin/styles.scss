@@ -25,6 +25,7 @@
     flex-direction: row;
     padding-top: 10px;
     height: calc(100vh - 240px);
+    max-height: 700px;
     &::-webkit-scrollbar-thumb {
       background: #353d45;
     }
@@ -52,6 +53,7 @@
       justify-content: center;
       flex-direction: row;
       padding-top: 15px;
+      max-height: 700px;
       & span {
         margin: 6px 0;
         & div.dropdown:nth-child(2) {

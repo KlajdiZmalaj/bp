@@ -74,7 +74,7 @@ class AdminPanelDom extends React.Component {
   componentWillUnmount() {
     document.body.classList.remove("bodyAdmin");
   }
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (
       this.state.menuSkinVisible === true &&
       this.props.screenWidth < 1024 &&
@@ -87,10 +87,20 @@ class AdminPanelDom extends React.Component {
     }
     if (
       this.props.activeSkinId != prevProps.activeSkinId &&
-      this.props.screenWidth < 1024
+      this.props.screenWidth <= 1320
     ) {
       this.props.getStatistiche(this.props.activeSkinId);
       this.props.getWidgetPayments(this.props.activeSkinId);
+    }
+    if (
+      this.state.menuSkinVisible != prevState.menuSkinVisible ||
+      this.props.screenWidth != prevProps.screenWidth
+    ) {
+      !this.state.menuSkinVisible && this.props.screenWidth >= 1024
+        ? this.props.setAdminPanelClass("Center")
+        : this.props.screenWidth > 1024
+        ? this.props.setAdminPanelClass("Center--Big")
+        : this.props.setAdminPanelClass("Center--Big");
     }
   }
   render() {
@@ -405,25 +415,42 @@ class AdminPanelDom extends React.Component {
                 }
               />
             ) : null}
-            {statModal?.visibility === true && screenWidth < 1024 && (
+            {statModal?.visibility === true && screenWidth <= 1320 && (
               <AdminRightFormStatisticheDetails
                 graphData={statModal.data.graphData}
                 Tranzacioni={numberWithCommas(statModal.data.Tranzacioni)}
                 Commisione={numberWithCommas(statModal.data.Commisione)}
                 Proviggioni={numberWithCommas(statModal.data.Proviggioni)}
                 ModalOrNo={true}
+                menuSkinVisible={
+                  screenWidth <= 1320 && screenWidth >= 1024
+                    ? menuSkinVisible
+                    : true
+                }
                 Close={editStatModal}
               />
             )}
-            {ultModal && ultModal.visibility === true && screenWidth < 1024 && (
-              <AdminRightFormUltimeDetails
-                leUltimeTransazioniDet={ultModal.data.leUltimeTransazioniDet}
-                ModalOrNo={true}
-                Close={editUltModal}
-              />
-            )}
-            {depModal && depModal.visibility === true && screenWidth < 1024 && (
+            {ultModal &&
+              ultModal.visibility === true &&
+              screenWidth <= 1320 && (
+                <AdminRightFormUltimeDetails
+                  leUltimeTransazioniDet={ultModal.data.leUltimeTransazioniDet}
+                  ModalOrNo={true}
+                  menuSkinVisible={
+                    screenWidth <= 1320 && screenWidth >= 1024
+                      ? menuSkinVisible
+                      : true
+                  }
+                  Close={editUltModal}
+                />
+              )}
+            {depModal && depModal.visibility === true && screenWidth <= 1320 && (
               <AdminRightFormWalletDetails
+                menuSkinVisible={
+                  screenWidth <= 1320 && screenWidth >= 1024
+                    ? menuSkinVisible
+                    : true
+                }
                 handleDepositoVisibility={() => {
                   this.setState({
                     depositoActiveVisibility: true,

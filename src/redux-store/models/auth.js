@@ -362,6 +362,7 @@ const { Types, Creators } = createActions({
   getStatistiche: ["skin_id"],
   setStatistiche: ["Statistiche"],
   setFromDateToDate: ["fromDate"],
+  setAdminPanelClass: ["CenterCls"],
   setLoadingRecharge: ["loadingRechargeMobile"],
   setBolletiniLoading: ["bolletiniLoading"],
 });
@@ -433,6 +434,7 @@ const INITIAL_STATE = {
   },
   Statistiche: null,
   fromDate: null,
+  CenterCls: "Center",
   loadingRechargeMobile: false,
 };
 
@@ -698,5 +700,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_FROM_DATE_TO_DATE]: (state, { fromDate }) => ({
     ...state,
     fromDate,
+  }),
+  [Types.SET_ADMIN_PANEL_CLASS]: (state, { CenterCls }) => ({
+    ...state,
+    CenterCls,
   }),
 });

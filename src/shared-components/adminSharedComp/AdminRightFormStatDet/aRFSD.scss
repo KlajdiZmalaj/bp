@@ -6,7 +6,12 @@
   height: 80vh;
   z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
-
+  &.Big {
+    & .backDrop {
+      width: calc(100vw - 200px);
+      left: 200px;
+    }
+  }
   & .Header {
     position: absolute;
     width: calc(100% - 5.9vw);
@@ -46,12 +51,11 @@
   & .backDrop {
     top: 101px;
     height: calc(100vh - 71px);
-    width: calc(100vw - 51px);
-    left: 51px;
+    width: calc(100vw - 50px);
+    left: 50px;
     z-index: 4;
   }
   & .Statistiche.Dropdown {
-    background-color: #ffffff;
     overflow-y: auto;
     overflow-x: hidden;
     padding-top: 7vh;
@@ -60,6 +64,7 @@
     width: 100%;
     box-sizing: border-box;
     z-index: 6;
+    background: #272c31;
     & .Graph {
       width: 100%;
       height: 85%;

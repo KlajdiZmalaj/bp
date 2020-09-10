@@ -6,7 +6,12 @@
   height: 80vh;
   z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
-
+  &.Big {
+    & .backDrop {
+      width: calc(100vw - 200px);
+      left: 200px;
+    }
+  }
   & .Tranzacioni {
     height: 62px;
     width: 100%;
@@ -46,7 +51,6 @@
     padding: 0px 5px;
     padding-top: 15px;
     box-sizing: border-box;
-    background-color: #f3f3f4;
     justify-content: flex-end;
     align-items: flex-end;
     position: relative;
@@ -186,8 +190,8 @@
   & .backDrop {
     top: 101px;
     height: calc(100vh - 71px);
-    width: calc(100vw - 51px);
-    left: 51px;
+    width: calc(100vw - 50px);
+    left: 50px;
     z-index: 4;
   }
 }

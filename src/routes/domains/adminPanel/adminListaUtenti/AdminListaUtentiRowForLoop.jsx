@@ -14,6 +14,40 @@ class AdminListaUtentiRowForLoop extends React.Component {
     eyeClicked: false,
     plusVisibility: false,
   };
+  CheckClass = (number, CenterCls) => {
+    if (CenterCls === "Center") {
+      return number;
+    } else {
+      return parseInt((10 % number) + number);
+    }
+  };
+  CheckSize = (screenWidth, CenterCls) => {
+    if (screenWidth > 1600) {
+      return this.CheckClass(32, CenterCls);
+    } else {
+      if (screenWidth > 1440 && screenWidth <= 1600) {
+        return this.CheckClass(17, CenterCls);
+      } else {
+        if (screenWidth <= 1440 && screenWidth > 1280) {
+          return this.CheckClass(25, CenterCls);
+        } else {
+          if (screenWidth <= 1280 && screenWidth >= 1100) {
+            return this.CheckClass(22, CenterCls);
+          } else {
+            if (screenWidth < 1100) {
+              return this.CheckClass(11, CenterCls);
+            } else {
+              if (screenWidth <= 550) {
+                return this.CheckClass(11, CenterCls);
+              } else {
+                return this.CheckClass(18, CenterCls);
+              }
+            }
+          }
+        }
+      }
+    }
+  };
   render() {
     const {
       itemList,
@@ -22,6 +56,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
       setDepositoModalAdmin,
       accountInfo,
       activeSkinId,
+      CenterCls,
     } = this.props;
     const {} = this.state;
     const Special =
@@ -92,7 +127,9 @@ class AdminListaUtentiRowForLoop extends React.Component {
 
           <SpanFormater
             Word={itemList.rag_soc}
-            className={`${Special ? "none" : ""}`}
+            myClassName={`${
+              Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
+            }`}
             styles={
               Special && screenWidth <= 1440
                 ? { width: "calc(43.5% - 230px)", marginLeft: "1%" }
@@ -100,21 +137,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
                 ? { width: "calc(36.5% - 230px)", marginLeft: "1%" }
                 : { width: "calc(36.5% - 230px)" }
             }
-            size={
-              screenWidth > 1600
-                ? 32
-                : screenWidth >= 1440 && screenWidth <= 1600
-                ? 17
-                : screenWidth < 1440 && screenWidth > 1280
-                ? 25
-                : screenWidth <= 1280 && screenWidth >= 1100
-                ? 22
-                : screenWidth < 1100
-                ? 11
-                : screenWidth <= 550
-                ? 10
-                : 18
-            }
+            size={this.CheckSize(screenWidth, CenterCls)}
             nrOfRows={1}
             formatWord={true}
           />
@@ -137,6 +160,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
                 : { justifyContent: "flex-end", paddingRight: "1%" }
             }
             Word={itemList.wallet}
+            myClassName={`${Special && screenWidth < 1024 ? "SpecSm" : ""}`}
             size={8}
             type={"number"}
             formatWord={true}
@@ -163,7 +187,9 @@ class AdminListaUtentiRowForLoop extends React.Component {
                 ? { width: "13%", justifyContent: "center", left: 0 }
                 : { width: "13%", justifyContent: "center", left: 0 }
             }
-            className={`${Special ? "none" : ""}`}
+            className={`${
+              Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
+            }`}
           >
             {!itemList.last_deposit || itemList.last_deposit === "-"
               ? "-"
@@ -284,6 +310,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           </span>
           {screenWidth <= 550 && (
             <span
+              className={Special ? "SpecSm" : ""}
               style={Special ? { marginLeft: "16%" } : {}}
               onClick={(e) => {
                 editUtentiRespModal({
@@ -325,6 +352,7 @@ const mstp = (state) => ({
   screenWidth: state.main.screenWidth,
   accountInfo: state.auth.accountInfo,
   activeSkinId: state.main.activeSkinId,
+  CenterCls: state.auth.CenterCls,
 });
 export default connect(mstp, { ...AuthActions, ...MainActions })(
   AdminListaUtentiRowForLoop

@@ -13,7 +13,6 @@ const SpanFormater = ({
   link,
   type,
 }) => {
-  console.log("size", size);
   let props = {};
   let updatedWord, mySize, nrOfSpaces, theLongestWord, WordsLength;
   if (Word) {

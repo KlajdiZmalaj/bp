@@ -122,7 +122,13 @@ class Dashboard extends React.Component {
                 placeholder="Search here..."
                 type="text"
                 onChange={(e) => {
-                  this.setState({ serviceSearched: e.target.value });
+                  // this.setState({ serviceSearched: e.target.value });
+                  const elFound = document.querySelector(
+                    `[id*="${e.target.value.toLowerCase().replace(" ", "_")}"]`
+                  );
+                  if (elFound) {
+                    elFound.click();
+                  }
                 }}
               />
             </div>
@@ -191,6 +197,9 @@ class Dashboard extends React.Component {
                                         ? " clickedItem"
                                         : "")
                                     }
+                                    id={serv[service].name
+                                      .toLowerCase()
+                                      .replace(" ", "_")}
                                   >
                                     <i className="fas fa-dot-circle"></i>
                                     <h4>{serv[service].name} </h4>
