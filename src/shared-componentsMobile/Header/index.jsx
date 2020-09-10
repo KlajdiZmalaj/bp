@@ -7,7 +7,6 @@ import AuthActions from "redux-store/models/auth";
 const Header = ({ accountInfo, logOut }) => {
   const [leftMenu, setMenu] = useState(false);
   const [tab, setTab] = useState(1);
-  console.log("accountInfo", accountInfo);
   return (
     <header className="headerMob">
       <i onClick={() => setMenu(!leftMenu)} className="fal fa-bars"></i>

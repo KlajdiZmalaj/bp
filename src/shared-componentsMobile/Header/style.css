@@ -183,6 +183,61 @@
   text-overflow: ellipsis;
 }
 
+.headerMob + .azcont {
+  display: none;
+}
+
+.headerMob + .azcont + .accountInfo {
+  padding-top: 70px;
+  padding-bottom: 43px;
+}
+
+.headerMob + div:not(.dashBoardContainer) {
+  padding-top: 69px;
+  padding-bottom: 43px;
+}
+
+.headerMob + div:not(.dashBoardContainer) .download-overview {
+  display: none;
+}
+
+.headerMob + div:not(.dashBoardContainer) .sort-annunci ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: scroll;
+}
+
+.headerMob + div:not(.dashBoardContainer) .sort-annunci ul::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+.headerMob + div:not(.dashBoardContainer) .sort-annunci ul li {
+  width: auto !important;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-right: 10px !important;
+}
+
+.headerMob + div:not(.dashBoardContainer) .azioni {
+  display: none;
+}
+
+.headerMob + div + div + .overview {
+  padding-top: 0;
+}
+
+.headerMob + div + div + .overview .azioni,
+.headerMob + div + div + .overview .overviw-line {
+  display: none;
+}
+
+.headerMob + .Container .overview {
+  padding-top: 0;
+}
+
 .logoMob {
   height: 40px;
 }

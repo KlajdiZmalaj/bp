@@ -1419,7 +1419,6 @@ div.Center--Big tbody .right .Importo i {
   }
   .AdminColumns div.Center {
     width: calc(100vw - 200px);
-    overflow: hidden;
   }
   .AdminColumns div.Center .AdminListaUtenti--Header {
     width: calc(100vw - 200px);

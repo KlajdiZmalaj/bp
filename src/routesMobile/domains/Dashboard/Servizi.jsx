@@ -10,6 +10,7 @@ const OneTab = ({
   setPanelOpen,
   setService,
   setCategory,
+  accountInfo,
 }) => {
   console.log("tab", services, serviceCategory);
   const [open, setDD] = useState(false);
@@ -48,8 +49,12 @@ const OneTab = ({
                 serviceId !== "name" && (
                   <div
                     onClick={() => {
-                      setService(serviceId);
-                      setCategory(serviceCategory);
+                      if (accountInfo?.profile) {
+                        setService(serviceId);
+                        setCategory(serviceCategory);
+                      } else {
+                        window.location.hash = "login";
+                      }
                     }}
                     key={serviceId}
                     className="mobileServices--body__item"
@@ -88,8 +93,12 @@ const OneTab = ({
                       <div
                         className="mobileServices--body__item"
                         onClick={() => {
-                          setService(serviceI.service_id);
-                          setCategory("PRDPST");
+                          if (accountInfo?.profile) {
+                            setService(serviceI.service_id);
+                            setCategory("PRDPST");
+                          } else {
+                            window.location.hash = "login";
+                          }
                         }}
                         key={serviceI.service_id}
                       >
@@ -116,9 +125,12 @@ const Servizi = ({
   tab,
   setService,
   setCategory,
+  accountInfo,
 }) => {
   useEffect(() => {
-    getServices();
+    if (Object.keys(services).length === 0) {
+      getServices();
+    }
   }, []);
   const [panelOpen, setPanelOpen] = useState(null);
   return (
@@ -137,6 +149,7 @@ const Servizi = ({
               serviceCategory={serviceCategory}
               services={services}
               setCategory={setCategory}
+              accountInfo={accountInfo}
             />
           )
         );
@@ -144,9 +157,10 @@ const Servizi = ({
     </div>
   );
 };
-const mstp = ({ main: { services } }) => {
+const mstp = ({ main: { services }, auth: { accountInfo } }) => {
   return {
     services,
+    accountInfo,
   };
 };
 export default connect(mstp, MainActions)(Servizi);

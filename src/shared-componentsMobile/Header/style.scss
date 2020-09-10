@@ -129,6 +129,51 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  + .azcont {
+    display: none;
+    + .accountInfo {
+      padding-top: 70px;
+      padding-bottom: 43px;
+    }
+  }
+  + div:not(.dashBoardContainer) {
+    padding-top: 69px;
+    padding-bottom: 43px;
+    .download-overview {
+      display: none;
+    }
+    .sort-annunci {
+      ul {
+        width: 100%;
+        display: flex;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+        }
+        li {
+          width: auto !important;
+          flex-shrink: 0;
+          margin-right: 10px !important;
+        }
+      }
+    }
+    .azioni {
+      display: none;
+    }
+  }
+  + div + div + .overview {
+    padding-top: 0;
+    .azioni,
+    .overviw-line {
+      display: none;
+    }
+  }
+  + .Container {
+    .overview {
+      padding-top: 0;
+    }
+  }
 }
 
 .logoMob {

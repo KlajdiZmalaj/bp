@@ -265,6 +265,7 @@
 @media (max-width: 768px) {
   .formsContainer--body .rightForm--left {
     width: 100%;
+    padding-left: 20px;
   }
 }
 
@@ -285,6 +286,7 @@
 @media (max-width: 768px) {
   .formsContainer--body .rightForm--right {
     width: 100%;
+    padding-right: 20px;
   }
 }
 

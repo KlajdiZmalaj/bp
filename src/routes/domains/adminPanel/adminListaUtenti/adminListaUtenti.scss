@@ -43,14 +43,8 @@ div.Center--Big {
 }
 .AdminListaUtenti {
   width: 100%;
-  height: calc(100vh - 42px);
-  overflow: auto;
-  &::-webkit-scrollbar {
-    background: #212529;
-  }
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.702);
-  }
+  height: 100%;
+
   & .AdminListaUtentiRow {
     position: relative;
     top: 52px;
