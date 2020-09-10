@@ -39,7 +39,7 @@ export const logoutApi = () =>
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -81,7 +81,7 @@ export const fetchBolletiniPremercati = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -116,7 +116,7 @@ export const fetchBolletiniBianchi = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -149,7 +149,7 @@ export const fetchPayments = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -170,7 +170,7 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -199,7 +199,7 @@ export const fetchPostePay = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -227,7 +227,7 @@ export const fetchAds = () =>
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -244,7 +244,7 @@ export const sendCreatedAds = (importance, title, text) =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -306,7 +306,7 @@ export const fetchRegisterAllInfo = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -363,7 +363,7 @@ export const sendChangedPassword = (oldPassword, newPassword) =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -380,7 +380,7 @@ export const fetchConfigura = (id) =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -396,7 +396,7 @@ export const fetchBarcodeData = (barcode) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -414,7 +414,7 @@ export const changeAgentReq = (aaa, agent_id, skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -430,7 +430,7 @@ export const fetchCodice = (barcode, service) =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -448,7 +448,7 @@ export const fetchAgents = (skin_id) =>
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -465,7 +465,7 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -500,7 +500,7 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -544,7 +544,7 @@ export const fetchUserDetails = (user_id, skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -582,7 +582,7 @@ export const updateUsers = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -628,7 +628,7 @@ export const fetchErrors = () => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -646,7 +646,7 @@ export const deleteErrorReq = (id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -684,7 +684,7 @@ export const sendDataFormReq = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -740,7 +740,7 @@ export const getDataFormDetailReq = () => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -757,7 +757,7 @@ export const getDataFormDetailActivesReq = (isVisure) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -774,7 +774,7 @@ export const getTicketByTicketIdReq = (ticket_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -816,7 +816,7 @@ export const updateDataFormReq = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -892,7 +892,7 @@ export const sendVisureDetailsReq = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -949,7 +949,7 @@ export const userConfirmation = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -976,7 +976,7 @@ export const getVisureReq = () => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -994,7 +994,7 @@ export const uploadPdf = (id, document, isVisura) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1024,7 +1024,7 @@ export const getVisureByVisureIdReq = ({ visura_id }) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1061,7 +1061,7 @@ export const updateVisuraReq = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1106,7 +1106,7 @@ export const getAgentByUserIdReq = (user_id, skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1123,7 +1123,7 @@ export const getUserByUserIdReq = (user_id, skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1140,7 +1140,7 @@ export const getSkinsReq = () => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1155,7 +1155,7 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1173,7 +1173,7 @@ export const getAllFaturaBySearchReq = (username, year, month) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1193,7 +1193,7 @@ export const getAllServicesReq = (skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1210,7 +1210,7 @@ export const sendMailFatturaReq = (file_name) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1226,7 +1226,7 @@ export const printFatturaReq = (file_name) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1242,7 +1242,7 @@ export const addLogo = (logo, skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1257,7 +1257,7 @@ export const AddSkinReq = (name, url, email, agency_rent) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1302,7 +1302,7 @@ export const AddExtraDataReq = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1363,7 +1363,7 @@ export const AddSuperAdminReq = (
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1407,7 +1407,7 @@ export const widgetPaymentsReq = (skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })
@@ -1424,7 +1424,7 @@ export const getStatisticheReq = (skin_id) => {
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
         }`,
       },
     })

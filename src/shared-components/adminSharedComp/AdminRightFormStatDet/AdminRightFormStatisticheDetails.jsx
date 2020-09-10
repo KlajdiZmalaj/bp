@@ -39,11 +39,16 @@ class AdminRightFormStatisticheDetails extends React.Component {
       Proviggioni,
       ModalOrNo,
       Close,
+      menuSkinVisible,
     } = this.props;
     return (
       <React.Fragment>
         {ModalOrNo === true ? (
-          <div className="RightFormModal">
+          <div
+            className={`${
+              !menuSkinVisible ? "RightFormModal Big" : "RightFormModal"
+            }`}
+          >
             <div
               className="backDrop"
               onClick={() => {

@@ -1,59 +1,104 @@
 import "./style.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UserInfoBar } from "shared-componentsMobile";
 import Servizi from "./Servizi";
-const Dashboard = () => {
-  const [tab, setTab] = useState(1);
+import { isEqual } from "lodash";
+import MainActions from "redux-store/models/main";
+import { connect } from "react-redux";
+import ServicesForms from "./ServicesForms";
+const Card = ({ setTab, tab, id, name, icon }) => (
+  <div
+    onClick={() => setTab(id)}
+    className={
+      "serviziFilter--cards__item" + (isEqual(tab, id) ? " active" : "")
+    }
+  >
+    <i className={`fal ${icon}`}></i>
+    <span>{name}</span>
+  </div>
+);
+const Dashboard = ({ getFavorites }) => {
+  useEffect(() => {
+    getFavorites();
+  }, []);
+  const [tab, setTab] = useState(0);
+  const [serviceSearched, setSearch] = useState("");
+  const [activeCategory, setCategory] = useState(null);
+  const [activeService, setService] = useState(null);
   return (
     <div className="dashBoardContainer">
       <UserInfoBar />
-      <div className="serviziFilter">
-        <div className="serviziFilter--search">
-          <input type="text" placeholder="Cerca tra i servizi attivi" />
-          <i className="fal fa-search" aria-hidden="true"></i>
-        </div>
-        <div className="serviziFilter--cards">
-          <div
-            onClick={() => setTab(1)}
-            className={
-              "serviziFilter--cards__item" + (tab === 1 ? " active" : "")
-            }
-          >
-            <i className="fal fa-file-alt"></i>
-            <span>Prodotti Postali</span>
+
+      {!activeService ? (
+        <React.Fragment>
+          <div className="serviziFilter">
+            <div className="serviziFilter--search">
+              <input
+                value={serviceSearched}
+                onChange={(e) => setSearch(e.target.value)}
+                type="text"
+                placeholder="Cerca tra i servizi attivi"
+              />
+              <i className="fal fa-search" aria-hidden="true"></i>
+            </div>
+
+            <div className="serviziFilter--cards">
+              <Card
+                id={0}
+                icon="fa-file-alt"
+                tab={tab}
+                setTab={setTab}
+                name="Tutte"
+              />
+              <Card
+                id={["PRDPST"]}
+                icon="fa-file-alt"
+                tab={tab}
+                setTab={setTab}
+                name="Prodotti Postali"
+              />
+              <Card
+                id={["RTELC", "RTELD", "RTELI"]}
+                icon="fa-mobile"
+                tab={tab}
+                setTab={setTab}
+                name="Ricariche Telefoniche"
+              />
+              <Card
+                id={["RTVD", "SCMS"]}
+                icon="fa-tv"
+                tab={tab}
+                setTab={setTab}
+                name="Ricariche Tv Digitali"
+              />
+              <Card
+                icon="fa-user-headset"
+                id={4}
+                tab={tab}
+                setTab={() => {
+                  window.location.hash = "forms";
+                }}
+                name="Servizi su Prenotazione"
+              />
+            </div>
           </div>
-          <div
-            onClick={() => setTab(2)}
-            className={
-              "serviziFilter--cards__item" + (tab === 2 ? " active" : "")
-            }
-          >
-            <i className="fal fa-mobile"></i>
-            <span>Ricariche Telefoniche</span>
-          </div>
-          <div
-            onClick={() => setTab(3)}
-            className={
-              "serviziFilter--cards__item" + (tab === 3 ? " active" : "")
-            }
-          >
-            <i className="fal fa-tv"></i>
-            <span>Ricariche Tv Digitali</span>
-          </div>
-          <div
-            onClick={() => setTab(4)}
-            className={
-              "serviziFilter--cards__item" + (tab === 4 ? " active" : "")
-            }
-          >
-            <i className="fal fa-user-headset"></i>
-            <span>Servizi su Prenotazione</span>
-          </div>
-        </div>
-      </div>
-      <Servizi filter={tab} />
+
+          <Servizi
+            setService={setService}
+            setCategory={setCategory}
+            serviceSearched={serviceSearched}
+            tab={tab}
+          />
+        </React.Fragment>
+      ) : (
+        <ServicesForms
+          setService={setService}
+          activeCategory={activeCategory}
+          activeService={activeService}
+        />
+      )}
     </div>
   );
 };
 
-export default Dashboard;
+export default connect(null, MainActions)(Dashboard);

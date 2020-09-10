@@ -1,4 +1,19 @@
 .sort-annunci {
+  & .MoviFirst {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: auto;
+    align-items: center;
+    height: 100%;
+    & .DateUtent {
+      display: flex;
+      flex-direction: rwo;
+      height: 100%;
+      align-items: center;
+      border-right: 1px solid #ebeced;
+    }
+  }
   justify-content: space-between !important;
   &.sort-trasazioni .ml-auto.mr-2 {
     margin-left: 0 !important;
@@ -195,7 +210,7 @@
 }
 @media (max-width: 1240px) {
   body:not(.bodyAdmin) {
-    & .transTable .wsNwp:nth-child(3) {
+    & .transTable.Movimenti .wsNwp:nth-child(3) {
       position: relative;
       text-align: center;
       & i {

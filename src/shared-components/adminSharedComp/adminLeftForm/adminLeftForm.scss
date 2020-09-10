@@ -30,7 +30,6 @@
         font-weight: 400;
         cursor: pointer;
         &--Skinsvg {
-          min-height: 22px;
           width: 100%;
           height: 100%;
           padding: 7px 20px;
@@ -44,7 +43,6 @@
           font-weight: 600;
           cursor: pointer;
           &--Skinsvg {
-            min-height: 22px;
             width: 100%;
             height: 100%;
             padding: 10px 20px;
@@ -55,18 +53,19 @@
             & span {
               font-weight: 500;
             }
-            & svg {
-              & circle {
-                fill: #dce1e6;
-              }
-              width: 22px;
-              height: 22px;
+            & i {
+              width: 23px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              object-fit: cover;
+              object-position: center;
               margin: 0 6px;
+              color: #fff;
             }
           }
         }
         &--Skinsvg {
-          min-height: 22px;
           display: flex;
           justify-content: flex-start;
           align-items: center;
@@ -87,13 +86,15 @@
             overflow: hidden;
             text-overflow: ellipsis;
           }
-          & svg {
-            & circle {
-              fill: #dce1e6;
-            }
-            width: 22px;
-            height: 22px;
+          & i {
+            width: 23px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: cover;
+            object-position: center;
             margin: 0 6px;
+            color: #fff;
           }
         }
       }
@@ -114,6 +115,7 @@
 
         > i {
           padding-right: 10px;
+          width: 28px;
           font-size: 16px;
           font-weight: 300;
         }
@@ -152,14 +154,9 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-
       &--FirstBox {
         display: flex;
-        padding-top: 15px;
         flex-direction: column;
-        & span {
-          display: none;
-        }
         & .Bars {
           display: flex;
           justify-content: space-between;
@@ -179,36 +176,42 @@
           font-family: "Roboto", sans-serif;
           font-size: 14px;
           font-weight: 400;
+          min-height: 42px;
+          flex-direction: column;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
           cursor: pointer;
           width: 100%;
           &--Skinsvg {
-            min-height: 22px;
+            flex-direction: column;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-around;
             align-items: center;
+            min-height: 42px;
             & img {
+              width: 22px;
+              height: 22px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              object-fit: cover;
+              object-position: center;
+            }
+            & span {
+              font-size: 6px;
+              font-weight: 400;
+              color: #ffffff;
+            }
+            & i {
               width: 23px;
               display: flex;
               align-items: center;
               justify-content: center;
               object-fit: cover;
               object-position: center;
-              margin: 4px 10px;
-            }
-            & span {
-              display: none;
-            }
-            & svg {
-              display: none;
-
-              & circle {
-                fill: #dce1e6;
-                width: 22px;
-                height: 22px;
-              }
-              width: 22px;
-              height: 22px;
               margin: 0 6px;
+              color: #fff;
             }
           }
           &--active {
@@ -216,7 +219,6 @@
             background-color: #272c31;
             font-weight: 500;
             &--Skinsvg {
-              min-height: 22px;
               display: flex;
               justify-content: flex-start;
               align-items: center;
@@ -226,15 +228,15 @@
                 overflow: hidden;
                 white-space: nowrap;
               }
-              & svg {
-                display: none;
-
-                & circle {
-                  fill: #dce1e6;
-                }
-                width: 22px;
-                height: 22px;
+              & i {
+                width: 23px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                object-fit: cover;
+                object-position: center;
                 margin: 0 6px;
+                color: #fff;
               }
             }
           }
@@ -249,16 +251,29 @@
         &--Box {
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: space-around;
           align-items: center;
           border-top: 1px solid #272c31;
           font-family: "Roboto", sans-serif;
           width: 100%;
           font-size: 14px;
           font-weight: 400;
-          padding: 10px 27px;
+          padding: 0 27px;
+          min-height: 42px;
+          & div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+          }
           & span {
-            display: none;
+            font-size: 6px !important;
+          }
+          & .far.fa-comments {
+            padding: 0 !important;
+            font-size: 16px !important;
           }
           > i {
             font-size: 16px;

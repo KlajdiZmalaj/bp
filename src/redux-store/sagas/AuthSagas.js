@@ -49,6 +49,7 @@ import {
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
+import { param } from "jquery";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -125,11 +126,6 @@ export function* getBolletiniBianchi(params) {
       yield put(AuthActions.setBolletiniBianchi(response.data));
       params.clearFields();
     } else if (response.error) {
-      // console.log(
-      //   "errorrrrrrrrrr",
-      //   response.error.response.status,
-      //   response.error.response.data
-      // );
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniBianchi(error));
@@ -138,14 +134,15 @@ export function* getBolletiniBianchi(params) {
           AuthActions.setBolletiniBianchi(response.error.response.data)
         );
       }
-
-      // yield delay(3000);
-      // yield put(AuthActions.setBolletiniBianchi({}));
     }
-  }
-  if (response.error.response.status === 401) {
-    localStorage.clear();
-    // const response = yield call(logoutApi);
+    if (response.error && response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+    params.callBack(false);
   }
 }
 export function* addTicket({ ticket }) {
@@ -190,12 +187,6 @@ export function* getBolletiniPremercati(params) {
       yield put(AuthActions.setBolletiniPremercati(response.data));
       params.clearFields();
     } else if (response.error) {
-      // console.log(
-      //   "errorrrrrrrrrr",
-      //   response.error.response.status,
-      //   response.error.response.data
-      // );
-
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniPremercati(error));
@@ -204,14 +195,21 @@ export function* getBolletiniPremercati(params) {
           AuthActions.setBolletiniPremercati(response.error.response.data)
         );
       }
+      if (
+        response &&
+        response.error &&
+        response.error.response.status === 401
+      ) {
+        const response = yield call(logoutApi);
 
-      // yield delay(3000);
-      // yield put(AuthActions.setBolletiniBianchi({}));
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+        // const response = yield call(logoutApi);
+      }
     }
-  }
-  if (response && response.error && response.error.response.status === 401) {
-    localStorage.clear();
-    // const response = yield call(logoutApi);
+    params.callBack(false);
   }
 }
 
@@ -354,9 +352,17 @@ export function* getRechargeMobile(params) {
         yield put(AuthActions.setRechargeMobile(response.error.response.data));
       }
     }
+    //set loading false
+    params.callBack(false);
   }
   if (response && response.error && response.error.response.status === 401) {
-    localStorage.clear();
+    yield put(AuthActions.setUnauthorization());
+    const response = yield call(logoutApi);
+
+    if (response) {
+      localStorage.setItem("accountDataB", null);
+      yield put(AuthActions.setAccountInfo({}));
+    }
     // const response = yield call(logoutApi);
   }
 }

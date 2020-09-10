@@ -11,6 +11,10 @@
     background: #353d45;
   }
 
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.602);
+  }
+
   & .Tranzacioni {
     height: 62px;
     width: 100%;
@@ -237,6 +241,10 @@
         background: #353d45;
       }
 
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.602);
+      }
+
       & .headerModal {
         margin: 0;
         width: 100%;
@@ -257,12 +265,11 @@
   &--Box {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    font-size: 13px;
     width: 100%;
-    padding: 15px 0;
+    font-size: 14px;
+    height: 60px;
     padding-right: 5%;
     padding-left: 7%;
-    height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -285,7 +292,7 @@
         padding: 0 5px;
         align-items: center;
         &--Data {
-          font-size: 11px;
+          font-size: 14px;
           font-family: "Roboto", sans-serif;
           display: flex;
           box-sizing: border-box;
@@ -302,31 +309,32 @@
             color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
             font-size: 10px;
-            width: 23.5%;
+            width: 22%;
             justify-content: flex-start;
           }
           &.Id {
             color: rgba(255, 255, 255, 0.7);
             font-weight: 500;
             font-size: 10.5px;
-            width: 30%;
+            width: 29%;
             justify-content: flex-start;
             padding: 0 2px;
           }
           &.User {
             color: #ffffff;
             font-weight: 400;
-            font-size: 10px;
+            font-size: 11.5px;
             text-transform: uppercase;
-            width: 32%;
+            width: 34%;
             justify-content: flex-start;
             padding: 0 2px;
           }
           &.Price {
             color: #0078ff;
             font-weight: 500;
-            width: 12%;
+            width: 16%;
             justify-content: flex-end;
+            font-size: 11px;
           }
         }
       }
@@ -336,11 +344,10 @@
       width: 32px;
       box-sizing: border-box;
       font-weight: 300;
-      font-size: 24px;
+      font-size: 14px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 17px;
     }
     &--Statistic {
       display: flex;
@@ -350,7 +357,7 @@
         width: 32px;
         box-sizing: border-box;
         padding-right: 9%;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 300;
       }
     }
@@ -362,7 +369,7 @@
         width: 31px;
         box-sizing: border-box;
         padding-right: 15px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 300;
       }
     }
@@ -461,6 +468,7 @@
           flex-direction: row;
           justify-content: center;
           align-items: center;
+          position: relative;
           & button {
             width: 50%;
             display: flex;
@@ -473,12 +481,12 @@
             font-family: "Roboto", sans-serif;
             border: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: bold;
+            height: 100%;
           }
           & button:nth-child(1) {
             border-bottom: 2px solid #00ac5c;
             position: relative;
             color: #ffffff;
-
             & svg {
               display: none;
             }

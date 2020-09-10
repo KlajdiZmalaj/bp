@@ -4,14 +4,19 @@
   top: 101px;
   margin: calc((20vh - 71px) / 2) 10vw;
   height: 80vh;
-  z-index: 5;
+  z-index: 6;
   -webkit-box-shadow: 0 3px 6px 1px #0000008c;
           box-shadow: 0 3px 6px 1px #0000008c;
 }
 
+.RightFormModal.Big .backDrop {
+  width: calc(100vw - 200px);
+  left: 200px;
+}
+
 .RightFormModal .Header {
   position: absolute;
-  width: calc(100% - 8.25vw);
+  width: calc(100% - 5.9vw);
   z-index: 7;
   background: #353d45;
   color: #ffffff;
@@ -25,7 +30,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: calc(1.6vw + 1.6vh);
+  font-size: calc(1.5vw + 1.5vh);
   font-family: "Roboto";
   height: 7vh;
   -webkit-box-sizing: border-box;
@@ -36,8 +41,8 @@
   position: absolute;
   z-index: 7;
   background: #c53f3f;
-  left: calc(100% - 8.9vw);
-  width: 9vw;
+  left: calc(100% - 5.9vw);
+  width: 6vw;
   height: 7vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,20 +62,19 @@
 
 .RightFormModal .Close i {
   color: #ffffff;
-  font-weight: 400;
-  font-size: calc(1.6vw + 1.6vh);
+  font-weight: 300;
+  font-size: calc(1.3vw + 1.3vh);
 }
 
 .RightFormModal .backDrop {
   top: 101px;
   height: calc(100vh - 71px);
-  width: calc(100vw - 51px);
-  left: 51px;
+  width: calc(100vw - 50px);
+  left: 50px;
   z-index: 4;
 }
 
 .RightFormModal .Statistiche.Dropdown {
-  background-color: #ffffff;
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 7vh;
@@ -80,6 +84,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   z-index: 6;
+  background: #272c31;
 }
 
 .RightFormModal .Statistiche.Dropdown .Graph {
@@ -166,11 +171,77 @@
   color: #ffffff;
 }
 
+@media only screen and (max-width: 1320px) and (min-width: 1024px) {
+  .RightFormModal {
+    width: 50vw;
+    height: 50vh;
+    margin: calc((50vh - 100px) / 2) 25vw !important;
+  }
+  .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown {
+    padding-top: 6vh !important;
+  }
+  .RightFormModal .AdminRightForm--Box--LeUltime--Dropdown .AdminRightForm--Box--LeUltime--Dropdown--Row span {
+    font-size: calc(0.7vw + 0.7vh);
+  }
+  .RightFormModal .AdminRightForm--Box--Wallet--Dropdown {
+    padding-top: 6vh !important;
+  }
+  .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
+    margin: 1vh 27px !important;
+    height: 5vh !important;
+  }
+  .RightFormModal .AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
+    margin-top: 4vh !important;
+  }
+  .RightFormModal .Graph {
+    padding: 0 3% !important;
+  }
+  .RightFormModal .Graph .Date div span:first-child {
+    font-size: calc(1.7vw + 1.7vh) !important;
+    position: relative;
+    top: 0.3vh !important;
+  }
+  .RightFormModal .Graph .Date div span:nth-child(2) {
+    font-size: calc(0.8vw + 0.8vh) !important;
+    top: -1vh !important;
+    left: 1.5vw !important;
+  }
+  .RightFormModal .Graph .Date div i {
+    font-size: calc(1vw + 1vh) !important;
+    left: -2.2vw !important;
+    top: -2.5vh !important;
+  }
+  .RightFormModal .Statistiche.Dropdown,
+  .RightFormModal .Graph {
+    padding-top: 6.5vh !important;
+  }
+  .RightFormModal .Tranzacioni div span:first-child {
+    font-size: calc(0.68vw + 0.68vh) !important;
+  }
+  .RightFormModal .Tranzacioni div span:nth-child(2) {
+    font-size: calc(0.88vw + 0.88vh) !important;
+  }
+  .RightFormModal .Close {
+    height: 6.5vh !important;
+  }
+  .RightFormModal .Header {
+    font-size: calc(1.1vw + 1.1vh) !important;
+    height: 6.5vh !important;
+  }
+}
+
 @media (max-width: 550px) {
   .RightFormModal {
     margin: calc((15vh - 60px) / 2) calc((11vw + 15px) / 2) !important;
     width: 88vw !important;
     height: 75vw;
+  }
+  .RightFormModal .Header {
+    width: calc(100% - 7.9vw) !important;
+  }
+  .RightFormModal .Close {
+    left: calc(100% - 7.9vw) !important;
+    width: 8vw !important;
   }
   .RightFormModal .Statistiche.Dropdown .Graph--Element {
     margin: 0px 0.5%;

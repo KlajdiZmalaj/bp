@@ -57,6 +57,8 @@ export default {
 
   BOLL: require(`../assets/images${skin}/bill-dark.svg`),
   RCPP: require(`../assets/images${skin}/postpayimg.svg`),
+  RPP001: require(`../assets/images${skin}/postpayimg.svg`),
+
   TIM: require(`../assets/images${skin}/TIM_logo_2016.svg`),
   TIMO: require(`../assets/images${skin}/TIM_logo_2016.svg`),
 

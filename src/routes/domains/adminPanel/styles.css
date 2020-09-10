@@ -6,8 +6,7 @@
 }
 
 .Admin-Panel .ant-select.ant-select-enabled:nth-child(3) {
-  border: 1px solid #353d45;
-  height: 35px;
+  height: 100%;
   border-radius: 4px;
 }
 
@@ -37,6 +36,10 @@
 
 .bodyAdmin ::-webkit-scrollbar-thumb {
   background: #353d45;
+}
+
+.bodyAdmin ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.602);
 }
 
 .bodyAdmin .calendarWrapper {
@@ -111,6 +114,10 @@
   background: #353d45;
 }
 
+.bodyAdmin .userDetailPopup .newReg--row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.602);
+}
+
 .bodyAdmin .userDetailPopup .checkCol button {
   background: #0078ff;
 }
@@ -152,6 +159,8 @@
   position: relative;
   top: 101px;
   left: 200px;
+  height: calc(100vh - 43px);
+  overflow-y: auto;
   width: calc(100% - 200px - 400px);
   max-width: auto;
   display: -webkit-box;
@@ -168,6 +177,14 @@
   background-color: rgba(0, 0, 0, 0.03);
   margin-bottom: 41px;
   min-height: 550px;
+}
+
+.AdminColumns .Center::-webkit-scrollbar {
+  background: #212529;
+}
+
+.AdminColumns .Center::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.702);
 }
 
 .AdminColumns .Center .AdminListaUtenti--Header {
@@ -195,9 +212,19 @@
           align-items: flex-start;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  height: calc(100vh - 43px);
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.031);
   min-height: 550px;
   margin-bottom: 41px;
+}
+
+.AdminColumns .Center--Big::-webkit-scrollbar {
+  background: #212529;
+}
+
+.AdminColumns .Center--Big::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.702);
 }
 
 .AdminColumns .Center--Big .AdminListaUtenti--Header {
@@ -266,7 +293,7 @@
 
 @media (max-width: 1780px) {
   .AdminRightForm {
-    width: 280px;
+    width: 300px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -284,22 +311,22 @@
     width: 5px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 280px - 51px);
+    width: calc(100% - 300px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center--Big .AdminListaUtenti--Header {
-    width: calc(100% - 280px - 51px);
+    width: calc(100% - 300px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 280px - 200px);
+    width: calc(100% - 300px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center .AdminListaUtenti--Header {
-    width: calc(100% - 280px - 200px);
+    width: calc(100% - 300px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -307,7 +334,7 @@
 
 @media (max-width: 1550px) {
   .AdminRightForm {
-    width: 260px;
+    width: 300px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -329,29 +356,24 @@
     padding-top: 10px;
   }
   .AdminColumns .Center--Big {
-    width: calc(100% - 260px - 51px);
+    width: calc(100% - 300px - 51px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center--Big .AdminListaUtenti--Header {
-    width: calc(100% - 51px - 260px);
+    width: calc(100% - 51px - 300px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center {
-    width: calc(100% - 260px - 200px);
+    width: calc(100% - 300px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
   .AdminColumns .Center .AdminListaUtenti--Header {
-    width: calc(100% - 260px - 200px);
+    width: calc(100% - 300px - 200px);
     -webkit-transition: 0.5s;
     transition: 0.5s;
-  }
-  .AdminRightForm--Box {
-    padding: 10px 12px;
-    padding-right: 3px;
-    font-weight: 500;
   }
 }
 
@@ -728,6 +750,12 @@ div.Center--Big .panels-container .sort-annunci .dal.calendar i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   top: 0;
   bottom: 0;
   right: 0;
@@ -1246,7 +1274,7 @@ div.Center--Big tbody .right .Importo i {
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1024px) {
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(6), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(7), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(8),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(6),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(7),
@@ -1383,18 +1411,46 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns .AdminRightForm {
     display: none;
   }
-  .AdminColumns div.Center,
   .AdminColumns div.Center--Big {
     width: calc(100vw - 51px);
-    overflow: hidden;
   }
-  .AdminColumns div.Center .AdminListaUtenti--Header,
   .AdminColumns div.Center--Big .AdminListaUtenti--Header {
     width: calc(100vw - 51px);
   }
+  .AdminColumns div.Center {
+    width: calc(100vw - 200px);
+  }
+  .AdminColumns div.Center .AdminListaUtenti--Header {
+    width: calc(100vw - 200px);
+  }
 }
 
-@media (max-width: 795px) {
+@media (max-width: 865px) {
+  div.Center .container-fluid.overview .MoviFirst,
+  div.Center .panels-container .MoviFirst,
+  div.Center--Big .container-fluid.overview .MoviFirst,
+  div.Center--Big .panels-container .MoviFirst {
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .MoviFirst div,
+  div.Center .panels-container .MoviFirst div,
+  div.Center--Big .container-fluid.overview .MoviFirst div,
+  div.Center--Big .panels-container .MoviFirst div {
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .MoviFirst .datepics.ml-auto.mr-2,
+  div.Center .panels-container .MoviFirst .datepics.ml-auto.mr-2,
+  div.Center--Big .container-fluid.overview .MoviFirst .datepics.ml-auto.mr-2,
+  div.Center--Big .panels-container .MoviFirst .datepics.ml-auto.mr-2 {
+    width: 100%;
+  }
+  div.Center .container-fluid.overview .MoviFirst .datepics.ml-auto.mr-2 div.codice,
+  div.Center .panels-container .MoviFirst .datepics.ml-auto.mr-2 div.codice,
+  div.Center--Big .container-fluid.overview .MoviFirst .datepics.ml-auto.mr-2 div.codice,
+  div.Center--Big .panels-container .MoviFirst .datepics.ml-auto.mr-2 div.codice {
+    display: none;
+    width: 0;
+  }
   div.Center .container-fluid.overview .paginationWrapper,
   div.Center .panels-container .paginationWrapper,
   div.Center--Big .container-fluid.overview .paginationWrapper,
@@ -1432,60 +1488,6 @@ div.Center--Big tbody .right .Importo i {
     width: 100%;
     font-size: 13px;
   }
-  div.Center .container-fluid.overview .paginationWrapper ul,
-  div.Center .panels-container .paginationWrapper ul,
-  div.Center--Big .container-fluid.overview .paginationWrapper ul,
-  div.Center--Big .panels-container .paginationWrapper ul {
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 5% !important;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    height: 30px;
-  }
-  div.Center .container-fluid.overview .paginationWrapper ul li,
-  div.Center .panels-container .paginationWrapper ul li,
-  div.Center--Big .container-fluid.overview .paginationWrapper ul li,
-  div.Center--Big .panels-container .paginationWrapper ul li {
-    width: 7%;
-    height: 30px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    font-size: 13px;
-  }
-  div.Center .container-fluid.overview .paginationWrapper ul li a,
-  div.Center .panels-container .paginationWrapper ul li a,
-  div.Center--Big .container-fluid.overview .paginationWrapper ul li a,
-  div.Center--Big .panels-container .paginationWrapper ul li a {
-    width: 100%;
-    height: 30px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    font-size: 13px;
-  }
   div.Center .container-fluid.overview .sort-annunci,
   div.Center .panels-container .sort-annunci,
   div.Center--Big .container-fluid.overview .sort-annunci,
@@ -1500,8 +1502,8 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .container-fluid.overview .sort-annunci .barCodeExport,
   div.Center--Big .panels-container .sort-annunci .barCodeExport {
     width: auto;
-    left: 39%;
     position: relative;
+    left: calc((100% - (16% + 120px)) / 2);
     height: 38px;
     margin: 2px 0;
     -ms-flex-item-align: start;
@@ -1666,7 +1668,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(2),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(2),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(2) {
-    width: 35%;
+    width: 15%;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(3),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(3),
@@ -1694,7 +1696,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td:nth-child(4),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead .wsNwp:nth-child(4),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable thead td.wsNap:nth-child(4) {
-    width: 35%;
+    width: 30%;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td,
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp,
@@ -1711,6 +1713,7 @@ div.Center--Big tbody .right .Importo i {
     margin: 0 !important;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    font-size: 13px !important;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(1), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(5), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(6), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(7), div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(8),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(1),
@@ -1782,21 +1785,39 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(2),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(2),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(2) {
-    width: 40%;
+    width: 15%;
   }
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
-  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3),
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
-  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3),
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
-  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3),
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3),
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3),
-  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) {
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) span,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) span,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) span {
+    opacity: 1;
     width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(3) i,
+  div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(3) i {
+    padding-right: 5px;
   }
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
   div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
@@ -1810,7 +1831,7 @@ div.Center--Big tbody .right .Importo i {
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td:nth-child(4),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody .wsNwp:nth-child(4),
   div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNap:nth-child(4) {
-    width: 40%;
+    width: 30%;
   }
 }
 
@@ -2148,5 +2169,66 @@ body.bodyAdmin::-webkit-scrollbar-thumb,
 .AdminColumns::-webkit-scrollbar-thumb,
 .TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-thumb {
   background: #353d45;
+}
+
+body.bodyAdmin::-webkit-scrollbar-track,
+.ant-modal-wrap::-webkit-scrollbar-track,
+.Left::-webkit-scrollbar-track,
+.Left--Min::-webkit-scrollbar-track,
+.Statistiche.Dropdown::-webkit-scrollbar-track,
+.AdminRightForm--Box--LeUltime--Dropdown::-webkit-scrollbar-track,
+.AdminRightForm--Box--Wallet--Dropdown::-webkit-scrollbar-track,
+.AdminColumns::-webkit-scrollbar-track,
+.TranzacioniModalResponsive--Data--Row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.602);
+}
+
+@media (max-width: 1280px) and (min-width: 1180px) {
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp:nth-child(1) {
+    width: 14%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp:nth-child(2) {
+    width: 11%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp:nth-child(4) {
+    width: 10%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(5), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(6), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(7), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(8) {
+    width: 85px !important;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(1) {
+    width: 14%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(2) {
+    width: 11%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(4) {
+    width: 10%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(5), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(6), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(7), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(8) {
+    width: 85px !important;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(3) {
+    width: 90%;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(3) span.nomeTd {
+    opacity: 1 !important;
+    width: auto !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(3) i {
+    padding-right: 5px;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 1024px) {
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(5), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(6), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(7), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(8) {
+    width: 85px !important;
+  }
+  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(5), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(6), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(7), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(8) {
+    width: 85px !important;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -135,7 +135,7 @@ class FaturaDomain extends React.Component {
                   />
                 )}
                 <div className="FauturaFilter--Header">
-                  <div>Fature</div>
+                  <div>Fatture</div>
                 </div>
                 <div className="FauturaFilter--Options">
                   <div>

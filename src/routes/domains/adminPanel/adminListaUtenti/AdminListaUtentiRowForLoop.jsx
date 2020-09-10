@@ -7,11 +7,46 @@ import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 import { switchUserStatus } from "services/auth";
 import MainActions from "redux-store/models/main";
 import { message } from "antd";
+import moment from "moment";
 class AdminListaUtentiRowForLoop extends React.Component {
   state = {
     activateChildren: false,
     eyeClicked: false,
     plusVisibility: false,
+  };
+  CheckClass = (number, CenterCls) => {
+    if (CenterCls === "Center") {
+      return number;
+    } else {
+      return parseInt((10 % number) + number);
+    }
+  };
+  CheckSize = (screenWidth, CenterCls) => {
+    if (screenWidth > 1600) {
+      return this.CheckClass(32, CenterCls);
+    } else {
+      if (screenWidth > 1440 && screenWidth <= 1600) {
+        return this.CheckClass(17, CenterCls);
+      } else {
+        if (screenWidth <= 1440 && screenWidth > 1280) {
+          return this.CheckClass(25, CenterCls);
+        } else {
+          if (screenWidth <= 1280 && screenWidth >= 1100) {
+            return this.CheckClass(22, CenterCls);
+          } else {
+            if (screenWidth < 1100) {
+              return this.CheckClass(11, CenterCls);
+            } else {
+              if (screenWidth <= 550) {
+                return this.CheckClass(11, CenterCls);
+              } else {
+                return this.CheckClass(18, CenterCls);
+              }
+            }
+          }
+        }
+      }
+    }
   };
   render() {
     const {
@@ -21,6 +56,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
       setDepositoModalAdmin,
       accountInfo,
       activeSkinId,
+      CenterCls,
     } = this.props;
     const {} = this.state;
     const Special =
@@ -34,7 +70,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           }`}
           onClick={(e) => {
             if (
-              screenWidth <= 950 &&
+              screenWidth <= 850 &&
               screenWidth >= 550 &&
               e.target.tagName != "I"
             ) {
@@ -91,33 +127,18 @@ class AdminListaUtentiRowForLoop extends React.Component {
 
           <SpanFormater
             Word={itemList.rag_soc}
+            myClassName={`${
+              Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
+            }`}
             styles={
-              screenWidth <= 1700 && screenWidth >= 1320 && Special
-                ? {
-                    width: "28%",
-                  }
+              Special && screenWidth <= 1440
+                ? { width: "calc(43.5% - 230px)", marginLeft: "1%" }
                 : Special
-                ? { width: "16%" }
-                : {}
+                ? { width: "calc(36.5% - 230px)", marginLeft: "1%" }
+                : { width: "calc(36.5% - 230px)" }
             }
-            size={
-              Special && screenWidth >= 1600
-                ? 30
-                : Special && screenWidth >= 1300
-                ? 20
-                : Special && screenWidth >= 800
-                ? 16
-                : screenWidth <= 1120
-                ? 8
-                : screenWidth <= 1320
-                ? 12
-                : screenWidth <= 1500
-                ? 11
-                : screenWidth <= 1700
-                ? 16
-                : 18
-            }
-            nrOfRows={2}
+            size={this.CheckSize(screenWidth, CenterCls)}
+            nrOfRows={1}
             formatWord={true}
           />
           <SpanFormater
@@ -130,11 +151,6 @@ class AdminListaUtentiRowForLoop extends React.Component {
                     justifyContent: "flex-end",
                     paddingRight: "1%",
                   }
-                : screenWidth <= 1700 && screenWidth >= 1320 && Special
-                ? {
-                    width: "14%",
-                    justifyContent: "flex-end",
-                  }
                 : Special
                 ? {
                     width: "8%",
@@ -144,6 +160,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
                 : { justifyContent: "flex-end", paddingRight: "1%" }
             }
             Word={itemList.wallet}
+            myClassName={`${Special && screenWidth < 1024 ? "SpecSm" : ""}`}
             size={8}
             type={"number"}
             formatWord={true}
@@ -153,7 +170,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
             <SpanFormater
               Word={itemList.city}
               size={
-                screenWidth <= 1700 && screenWidth >= 1320
+                screenWidth <= 1700 && screenWidth >= 1024
                   ? 13
                   : screenWidth <= 1600
                   ? 8
@@ -168,33 +185,37 @@ class AdminListaUtentiRowForLoop extends React.Component {
             style={
               Special
                 ? { width: "13%", justifyContent: "center", left: 0 }
-                : { justifyContent: "center", left: 0 }
+                : { width: "13%", justifyContent: "center", left: 0 }
             }
-            className={`${Special ? "none" : ""}`}
+            className={`${
+              Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
+            }`}
           >
-            {itemList.last_deposit}
+            {!itemList.last_deposit || itemList.last_deposit === "-"
+              ? "-"
+              : moment(itemList.last_deposit, "DD-MM-YYYY hh:mm:ss").format(
+                  "DD/MM/YYYY HH:mm:ss"
+                )}{" "}
           </span>
           <span
             style={
-              !Special && screenWidth <= 950
+              !Special && screenWidth <= 850
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
                 ? { width: "13%", justifyContent: "center", left: 0 }
-                : { justifyContent: "center", left: 0 }
+                : { width: "13%", justifyContent: "center", left: 0 }
             }
             className={`${Special ? "none" : ""}`}
           >
-            {itemList.last_login_time}
+            {!itemList.last_login_time || itemList.last_login_time === "-"
+              ? "-"
+              : moment(itemList.last_login_time, "DD-MM-YYYY hh:mm:ss").format(
+                  "DD/MM/YYYY HH:mm:ss"
+                )}
           </span>
           <span
-            style={
-              Special && screenWidth <= 950
-                ? { width: "38%" }
-                : Special
-                ? { width: "24%", justifyContent: "space-around" }
-                : {}
-            }
             className={`${Special ? "activated" : ""}`}
+            style={{ width: "230px", justifyContent: "space-between" }}
           >
             <button
               onClick={() => {
@@ -289,6 +310,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
           </span>
           {screenWidth <= 550 && (
             <span
+              className={Special ? "SpecSm" : ""}
               style={Special ? { marginLeft: "16%" } : {}}
               onClick={(e) => {
                 editUtentiRespModal({
@@ -330,6 +352,7 @@ const mstp = (state) => ({
   screenWidth: state.main.screenWidth,
   accountInfo: state.auth.accountInfo,
   activeSkinId: state.main.activeSkinId,
+  CenterCls: state.auth.CenterCls,
 });
 export default connect(mstp, { ...AuthActions, ...MainActions })(
   AdminListaUtentiRowForLoop

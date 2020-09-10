@@ -6,6 +6,12 @@
   height: 80vh;
   z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
+  &.Big {
+    & .backDrop {
+      width: calc(100vw - 200px);
+      left: 200px;
+    }
+  }
   & .Tranzacioni {
     height: 62px;
     width: 100%;
@@ -45,7 +51,6 @@
     padding: 0px 5px;
     padding-top: 15px;
     box-sizing: border-box;
-    background-color: #f3f3f4;
     justify-content: flex-end;
     align-items: flex-end;
     position: relative;
@@ -147,7 +152,7 @@
   }
   & .Header {
     position: absolute;
-    width: calc(100% - 8.25vw);
+    width: calc(100% - 5.9vw);
     z-index: 7;
     background: #353d45;
     color: #ffffff;
@@ -155,7 +160,7 @@
     justify-content: flex-start;
     padding-left: 3vw;
     align-items: center;
-    font-size: calc(1.6vw + 1.6vh);
+    font-size: calc(1.5vw + 1.5vh);
     font-family: "Roboto";
     height: 7vh;
     box-sizing: border-box;
@@ -165,8 +170,8 @@
     position: absolute;
     z-index: 7;
     background: #c53f3f;
-    left: calc(100% - 8.9vw);
-    width: 9vw;
+    left: calc(100% - 5.9vw);
+    width: 6vw;
     height: 7vh;
     display: flex;
     justify-content: center;
@@ -178,16 +183,15 @@
 
     & i {
       color: #ffffff;
-
       font-weight: 400;
-      font-size: calc(1.6vw + 1.6vh);
+      font-size: calc(1.3vw + 1.3vh);
     }
   }
   & .backDrop {
     top: 101px;
     height: calc(100vh - 71px);
-    width: calc(100vw - 51px);
-    left: 51px;
+    width: calc(100vw - 50px);
+    left: 50px;
     z-index: 4;
   }
 }

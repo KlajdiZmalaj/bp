@@ -379,7 +379,7 @@ class Transazioni extends React.Component {
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&
-          this.props.screenWidth <= 1050 &&
+          this.props.screenWidth <= 1024 &&
           forAdmin && (
             <ModalResponsiveForTables
               Close={(e) => {
@@ -492,149 +492,161 @@ class Transazioni extends React.Component {
                   handleSubmit={this.handleSubmit}
                 />
               )}
-              <h1 className="heading-tab">Lista Movimenti</h1>
-
-              <div className="datepics ml-auto mr-2">
-                <Form
-                  {...formItemLayout}
-                  onSubmit={this.handleSubmit}
-                  className="filters"
-                >
-                  {
-                    <div className="dal">
-                      {
-                        <Form.Item>
-                          {getFieldDecorator(
-                            "username",
-                            {}
-                          )(
-                            // <Select
-                            //   value={this.state.username}
-                            //   onChange={this.handleCurrencyChange}
-                            // >
-                            //   <Option value="rmb">RMB</Option>
-                            //   <Option value="dollar">Dollar</Option>
-                            // </Select>
-
-                            <Select
-                              showSearch
-                              defaultActiveFirstOption={false}
-                              showArrow={false}
-                              filterOption={true}
-                              onSearch={this.handleSearch}
-                              onChange={this.handleChange}
-                              // notFoundContent={null}
-                              placeholder={"Cerca Utente"}
-                            >
-                              {this.props.usernames &&
-                                this.props.usernames.length > 0 &&
-                                this.props.usernames.map((user) => (
-                                  <Option key={user}>{user}</Option>
-                                ))}
-                            </Select>
-                          )}
-                        </Form.Item>
-                      }
-                      <i className="fal fa-search"></i>
-                    </div>
-                  }
-
-                  <div
-                    className="dal calendar"
-                    type="text"
-                    onClick={() => {
-                      this.setCalendar(true);
-                    }}
-                  >
-                    <span>
-                      {fromLabel
-                        ? `${fromLabel} - ${toLabel}`
-                        : "Seleziona la data"}
-                      <i className="fal fa-calendar-alt"></i>
-                    </span>
-                  </div>
-                </Form>
-
-                <div className="codice"></div>
-              </div>
-              <Select
-                defaultValue="3"
-                className="SlectDate"
-                onChange={(value) => {
-                  this.changeSelected(parseInt(value));
-                  this.fromFilterTop(false);
-                }}
-              >
-                {filters.map((item, index) => {
-                  return (
-                    <Option
-                      value={index.toString()}
-                      key={(item.name + index).toString()}
+              <div className="MoviFirst">
+                <h1 className="heading-tab">Lista Movimenti</h1>
+                <div className="DateUtent">
+                  <div className="datepics ml-auto mr-2">
+                    <Form
+                      {...formItemLayout}
+                      onSubmit={this.handleSubmit}
+                      className="filters"
                     >
-                      <span
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          alignItems: "center",
-                          display: "flex",
+                      {
+                        <div className="dal">
+                          {
+                            <Form.Item>
+                              {getFieldDecorator(
+                                "username",
+                                {}
+                              )(
+                                // <Select
+                                //   value={this.state.username}
+                                //   onChange={this.handleCurrencyChange}
+                                // >
+                                //   <Option value="rmb">RMB</Option>
+                                //   <Option value="dollar">Dollar</Option>
+                                // </Select>
+
+                                <Select
+                                  showSearch
+                                  defaultActiveFirstOption={false}
+                                  showArrow={false}
+                                  filterOption={true}
+                                  onSearch={this.handleSearch}
+                                  onChange={this.handleChange}
+                                  // notFoundContent={null}
+                                  placeholder={"Cerca Utente"}
+                                >
+                                  {this.props.usernames &&
+                                    this.props.usernames.length > 0 &&
+                                    this.props.usernames.map((user) => (
+                                      <Option key={user}>{user}</Option>
+                                    ))}
+                                </Select>
+                              )}
+                            </Form.Item>
+                          }
+                          <i className="fal fa-search"></i>
+                        </div>
+                      }
+
+                      <div
+                        className="dal calendar"
+                        type="text"
+                        onClick={() => {
+                          this.setCalendar(true);
                         }}
                       >
-                        {forAdmin ? (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 14 14"
+                        <span>
+                          {fromLabel
+                            ? `${fromLabel} - ${toLabel}`
+                            : "Seleziona la data"}
+                          <i className="fal fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                    </Form>
+
+                    <div className="codice"></div>
+                  </div>
+                  <Select
+                    defaultValue="3"
+                    className="SlectDate"
+                    onChange={(value) => {
+                      this.changeSelected(parseInt(value));
+                      this.fromFilterTop(false);
+                    }}
+                  >
+                    {filters.map((item, index) => {
+                      return (
+                        <Option
+                          value={index.toString()}
+                          key={(item.name + index).toString()}
+                        >
+                          <span
                             style={{
-                              marginRight: "15px",
+                              width: "100%",
+                              height: "100%",
+                              alignItems: "center",
+                              display: "flex",
                             }}
                           >
-                            <g className="a">
-                              <circle
-                                className="b"
-                                cx="7"
-                                cy="7"
-                                r="7"
+                            {forAdmin ? (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 14 14"
                                 style={{
-                                  fill: `${item.color}`,
+                                  marginRight: "15px",
                                 }}
-                              />
-                              <circle
-                                className="c"
-                                cx="7"
-                                cy="7"
-                                r="4"
-                                style={{ fill: "#ffffff" }}
-                              />
-                            </g>
-                          </svg>
-                        ) : (
-                          <i
-                            className="fas fa-dot-circle"
-                            style={{
-                              color: `${item.color}`,
-                              paddingRight: "12px",
-                              fontSize: "13px",
-                            }}
-                          ></i>
-                        )}
-                        {item.name}
-                      </span>
-                    </Option>
-                  );
-                })}
-              </Select>
+                              >
+                                <g className="a">
+                                  <circle
+                                    className="b"
+                                    cx="7"
+                                    cy="7"
+                                    r="7"
+                                    style={{
+                                      fill: `${item.color}`,
+                                    }}
+                                  />
+                                  <circle
+                                    className="c"
+                                    cx="7"
+                                    cy="7"
+                                    r="4"
+                                    style={{ fill: "#ffffff" }}
+                                  />
+                                </g>
+                              </svg>
+                            ) : (
+                              <i
+                                className="fas fa-dot-circle"
+                                style={{
+                                  color: `${item.color}`,
+                                  paddingRight: "12px",
+                                  fontSize: "13px",
+                                }}
+                              ></i>
+                            )}
+                            {item.name}
+                          </span>
+                        </Option>
+                      );
+                    })}
+                  </Select>
+                </div>
+                {!this.props.forAdmin ? (
+                  <button
+                    className="filterBtn"
+                    htmltype="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    Filter
+                  </button>
+                ) : (
+                  <button
+                    className="filterBtn"
+                    htmltype="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    <i className="fas fa-filter"></i>
+                    Filter
+                  </button>
+                )}
+              </div>
               {!this.props.forAdmin ? (
                 <React.Fragment>
-                  <div>
-                    <button
-                      className="filterBtn"
-                      htmltype="submit"
-                      onClick={this.handleSubmit}
-                    >
-                      Filter
-                    </button>
-                  </div>
                   <div className="barCodeExport">
                     <button
                       onClick={() => this.setState({ hasVPT: true })}
@@ -665,14 +677,6 @@ class Transazioni extends React.Component {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <button
-                    className="filterBtn"
-                    htmltype="submit"
-                    onClick={this.handleSubmit}
-                  >
-                    <i className="fas fa-filter"></i>
-                    Filter
-                  </button>
                   <div className="barCodeExport">
                     <button
                       onClick={() => this.setState({ hasVPT: true })}
@@ -717,7 +721,7 @@ class Transazioni extends React.Component {
                     <img className="loader" src={images.loader}></img>
                   ))}
                 {!loadingPayments && (
-                  <table className="transTable">
+                  <table className="transTable Movimenti">
                     <thead>
                       <tr>
                         <td className="wsNwp">Date / Ora</td>
@@ -728,11 +732,11 @@ class Transazioni extends React.Component {
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>
                         <td className=" wsNwp right">Saldo</td>
-                        {this.props.screenWidth <= 1050 && forAdmin && (
+                        {this.props.screenWidth <= 1024 && forAdmin && (
                           <td></td>
                         )}
 
-                        {this.props.screenWidth <= 1050 && forAdmin ? (
+                        {this.props.screenWidth <= 1024 && forAdmin ? (
                           <td className="wsNwp"></td>
                         ) : null}
                       </tr>
@@ -785,7 +789,7 @@ class Transazioni extends React.Component {
                                       });
                                     }
                                     forAdmin &&
-                                    this.props.screenWidth >= 1050 &&
+                                    this.props.screenWidth > 1024 &&
                                     [...e.target.classList].includes("bc")
                                       ? this.activateModalForAdmin(item, index)
                                       : [...e.target.classList].includes(
@@ -869,7 +873,7 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
-                                {this.props.screenWidth <= 1050 && forAdmin && (
+                                {this.props.screenWidth <= 1024 && forAdmin && (
                                   <td
                                     className=" wsNwp right"
                                     onClick={() => {
@@ -987,24 +991,38 @@ class Transazioni extends React.Component {
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
                   Telefono: 335398618<br></br> */}
                 </div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      paymentsFromCode &&
-                      paymentsFromCode.receipt &&
-                      paymentsFromCode.receipt
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
-                        .replace(/\t/g, "\u00a0")
-                        .replace(/\n/g, "<br/> ")
-                        .replace(/\+/g, " ")
-                        .replace(/: /g, ":<div class='marginB'></div>")
-                        .replace(
-                          /<div class='marginB'><\/div>([^>]+)<br\/>/g,
-                          "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                        ),
-                  }}
-                />
+                {paymentsFromCode &&
+                paymentsFromCode.receipt_type === "base64" ? (
+                  <div>
+                    <iframe
+                      style={{
+                        width: "100%",
+                        height: "443px",
+                      }}
+                      id="iframepdf"
+                      src={`data:application/pdf;base64,${paymentsFromCode.receipt}`}
+                    ></iframe>
+                  </div>
+                ) : (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        paymentsFromCode &&
+                        paymentsFromCode.receipt &&
+                        paymentsFromCode.receipt
+                          .replace(/</g, "&lt;")
+                          .replace(/>/g, "&gt;")
+                          .replace(/\t/g, "\u00a0")
+                          .replace(/\n/g, "<br/> ")
+                          .replace(/\+/g, " ")
+                          .replace(/: /g, ":<div class='marginB'></div>")
+                          .replace(
+                            /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                            "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                          ),
+                    }}
+                  />
+                )}
 
                 <img
                   className="barcodeModal"
