@@ -154,6 +154,7 @@
     justify-content: flex-start;
     width: 100%;
     overflow-x: auto;
+    height: 69px;
     background: #272c31;
     &::-webkit-scrollbar {
       height: 0;
@@ -162,7 +163,7 @@
     &__tab {
       flex-shrink: 0;
       width: 93px;
-      height: 70px;
+      height: 69px;
       background-color: #272c31;
       color: #63696d;
       font-size: 30px;
@@ -174,6 +175,7 @@
       border-right: 1px solid #3c4349;
       border-bottom: 1px solid #3c4349;
       position: relative;
+      overflow: hidden;
       &:nth-child(1) {
         border-left: 1px solid #3c4349;
       }
@@ -242,6 +244,10 @@
       background-color: #fff;
       text-transform: uppercase;
       flex-flow: row wrap;
+      &.disable {
+        background-color: #ccc;
+        pointer-events: none;
+      }
       span {
         margin-top: -25px;
         text-transform: lowercase;
@@ -316,6 +322,33 @@
         background-color: var(--accent-bg);
         color: var(--accent-txt);
       }
+    }
+  }
+  &--ticket {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: 12px;
+    .printModal .btn-group {
+      padding: 25px;
+    }
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    &:after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.493);
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: -1;
     }
   }
 }

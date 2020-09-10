@@ -4,7 +4,7 @@
   top: 101px;
   margin: calc((30vh - 101px) / 2) 15vw;
   height: 70vh;
-  z-index: 5;
+  z-index: 6;
   -webkit-box-shadow: 0 3px 6px 1px #0000008c;
           box-shadow: 0 3px 6px 1px #0000008c;
 }

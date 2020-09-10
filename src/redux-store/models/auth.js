@@ -65,7 +65,7 @@ const { Types, Creators } = createActions({
   setPaymentsForExcel: ["paymentsForExcel"],
 
   setUsernames: ["usernames"],
-  getRechargeMobile: ["service_id", "tel_no"],
+  getRechargeMobile: ["service_id", "tel_no", "callBack"],
   setRechargeMobile: ["rechargeMobile"],
 
   getPostePay: [
@@ -360,6 +360,7 @@ const { Types, Creators } = createActions({
   getStatistiche: ["skin_id"],
   setStatistiche: ["Statistiche"],
   setFromDateToDate: ["fromDate"],
+  setLoadingRecharge: ["loadingRechargeMobile"],
 });
 
 export const AuthTypes = Types;
@@ -428,12 +429,17 @@ const INITIAL_STATE = {
   },
   Statistiche: null,
   fromDate: null,
+  loadingRechargeMobile: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_WIDGET_PAYMENTS]: (state, { leUltimeTransazioniDet }) => ({
     ...state,
     leUltimeTransazioniDet,
+  }),
+  [Types.SET_LOADING_RECHARGE]: (state, { loadingRechargeMobile }) => ({
+    ...state,
+    loadingRechargeMobile,
   }),
   [Types.SET_DATA_FORM_DETAILS_ACTIVES]: (state, { formDetailsActives }) => ({
     ...state,

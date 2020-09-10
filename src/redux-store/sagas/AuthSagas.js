@@ -49,6 +49,7 @@ import {
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
+import { param } from "jquery";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -354,6 +355,8 @@ export function* getRechargeMobile(params) {
         yield put(AuthActions.setRechargeMobile(response.error.response.data));
       }
     }
+    //set loading false
+    params.callBack(false);
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
