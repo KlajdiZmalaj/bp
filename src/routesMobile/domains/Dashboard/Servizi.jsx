@@ -12,7 +12,7 @@ const OneTab = ({
   setCategory,
   accountInfo,
 }) => {
-  console.log("tab", services, serviceCategory);
+  // console.log("tab", services, serviceCategory);
   const [open, setDD] = useState(false);
   useEffect(() => {
     if (panelOpen !== serviceCategory) {
@@ -23,7 +23,8 @@ const OneTab = ({
     services && (
       <div className="mobileServices--panel">
         <div
-          className="mobileServices--header"
+          id={serviceCategory}
+          className={"mobileServices--header" + (open ? " active" : "")}
           onClick={() => {
             if (!open) {
               setPanelOpen(serviceCategory);
