@@ -113,4 +113,5 @@ export default {
   // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 
   faturaBackground: require(`../assets/images/FaturaBackground.png`),
+  mobileLoginGirl: require(`../assets/images/girrrl.jpg`),
 };

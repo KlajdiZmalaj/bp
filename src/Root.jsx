@@ -116,7 +116,7 @@ class Root extends React.Component {
             <Route exact path="/register" component={Register} />
             <PublicRoute
               path="/login"
-              component={Login}
+              component={isMobile ? DashboardMobile : Login}
               isLoggedin={isLoggedin}
               role={role}
             />
