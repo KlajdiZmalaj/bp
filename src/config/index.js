@@ -25,7 +25,7 @@ export const azioni = [
     name: "messaggi",
     link: "annunci",
     i: "fal fa-comment-alt-lines",
-    displayRole: ["super_admin", "agency"],
+    displayRole: ["super_admin", "agency", "agent", "user"],
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ export const azioni = [
     name: "lista movimenti",
     link: "transazioni",
     i: "fal fa-file-invoice-dollar",
-    displayRole: ["super_admin", "agency", "agent"],
+    displayRole: ["super_admin", "agency", "agent", "user"],
   },
   // {
   //   id: 4,
@@ -60,7 +60,7 @@ export const azioni = [
     name: "servizi",
     link: "dashboard",
     i: "fal fa-shopping-cart",
-    displayRole: ["super_admin", "agency", "agent"],
+    displayRole: ["super_admin", "agency", "agent", "user"],
   },
   {
     id: 9,
@@ -88,7 +88,7 @@ export const azioni = [
     name: "carica conto",
     link: "carica-conto",
     i: "fal fa-receipt",
-    displayRole: ["super_admin", "agency"],
+    displayRole: ["super_admin", "agency", "user"],
   },
   {
     id: 10,
