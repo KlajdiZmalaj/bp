@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-const open = (screenWidth, innerHeight) => {
+export const open = (screenWidth, innerHeight) => {
   var winparams =
     "dependent=yes,locationbar=no,scrollbars=yes,menubar=yes," +
     `resizable,screenX=${

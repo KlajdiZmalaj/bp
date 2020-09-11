@@ -33,7 +33,7 @@ class Header extends Component {
   }
   render() {
     const { accountInfo, screenWidth, ads, privMsg, skinExtras } = this.props;
-    const { isMobMenu, isDDopem } = this.state;
+    const { isDDopem } = this.state;
     let isLoggedin = false;
     if (accountInfo.token) {
       isLoggedin = true;

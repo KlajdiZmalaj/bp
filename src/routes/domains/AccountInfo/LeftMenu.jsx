@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { profileLinks } from "config";
 import { connect } from "react-redux";
 import { MainActions } from "redux-store/models";
 
@@ -9,24 +8,7 @@ class LeftMenu extends Component {
     this.state = {};
   }
   render() {
-    return (
-      <div className="leftMenuAcc">
-        {/* {profileLinks.map((item) => {
-          console.log("item.id", item.id);
-          return (
-            <div
-              className={item.id === this.props.activeAccount ? "active" : ""}
-              onClick={() => {
-                this.props.setAccount(item.id);
-              }}
-              key={item.id}
-            >
-              {item.name}
-            </div>
-          );
-        })} */}
-      </div>
-    );
+    return <div className="leftMenuAcc"></div>;
   }
 }
 const mstp = (state) => ({
