@@ -11,6 +11,7 @@ const OneTab = ({
   setService,
   setCategory,
   accountInfo,
+  isFav,
 }) => {
   // console.log("tab", services, serviceCategory);
   const [open, setDD] = useState(false);
@@ -34,7 +35,11 @@ const OneTab = ({
             }
           }}
         >
-          {capitalize(services[serviceCategory].name)}
+          <span>
+            {" "}
+            {isFav && "Preferiti "}
+            {capitalize(services[serviceCategory].name)}
+          </span>
           <i
             className={`fal fa-chevron-${
               open && panelOpen === serviceCategory ? "down" : "up"
@@ -127,6 +132,7 @@ const Servizi = ({
   setService,
   setCategory,
   accountInfo,
+  favorites,
 }) => {
   useEffect(() => {
     if (Object.keys(services).length === 0) {
@@ -155,6 +161,29 @@ const Servizi = ({
           )
         );
       })}
+      <div className="mobileServices--favorites">
+        {favorites &&
+          Object.keys(favorites).map((serviceCategory) => {
+            return (
+              favorites[serviceCategory].name
+                .toLowerCase()
+                .includes(serviceSearched.toLowerCase()) &&
+              (tab === 0 || tab.includes(serviceCategory)) && (
+                <OneTab
+                  setService={setService}
+                  panelOpen={panelOpen}
+                  setPanelOpen={setPanelOpen}
+                  key={serviceCategory}
+                  serviceCategory={serviceCategory}
+                  services={favorites}
+                  setCategory={setCategory}
+                  accountInfo={accountInfo}
+                  isFav
+                />
+              )
+            );
+          })}
+      </div>
     </div>
   );
 };

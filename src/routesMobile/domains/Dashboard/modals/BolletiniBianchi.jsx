@@ -25,6 +25,8 @@ const BolletiniBianchi = ({
   setBolletiniLoading,
   bolletiniLoading,
   setBolletiniBianchi,
+  allFavServices,
+  toggleFavorite,
 }) => {
   const [cc, setCC] = useState("");
   const [euro, setEuro] = useState("");
@@ -49,7 +51,6 @@ const BolletiniBianchi = ({
       });
     }
   }, [bolletiniLoading]);
-  console.log("valuess", cc, euro, intestato, esg, via, cas);
   return (
     <div className="bolletini bianchi">
       <div className="bolletini--services">
@@ -78,7 +79,22 @@ const BolletiniBianchi = ({
             );
           })}
       </div>
-      <div className="bolletini--header">Bolletini Bianchi</div>
+      <div className="bolletini--header">
+        Bolletini Bianchi{" "}
+        <i
+          onClick={() => {
+            if (allFavServices.includes("BOLL")) {
+              toggleFavorite("BOLL", "remove");
+            } else {
+              toggleFavorite("BOLL", "set");
+            }
+          }}
+          className={
+            "fas fa-star" + (allFavServices.includes("BOLL") ? " active" : "")
+          }
+          aria-hidden="true"
+        ></i>{" "}
+      </div>
       <div className="bolletini--subh">
         CONTI CORRENTI POSTALI - Ricevuta di Accredito
       </div>

@@ -2,8 +2,19 @@ import React from "react";
 import NumpadForm from "./modals/NumpadForm";
 import BolletiniBianchi from "./modals/BolletiniBianchi";
 import BolletiniPremercati from "./modals/BolletiniPremercati";
-const ServicesForms = ({ activeService, activeCategory, setService }) => {
-  console.log("activeCategory", activeCategory, activeService);
+const ServicesForms = ({
+  activeService,
+  activeCategory,
+  setService,
+  favorites,
+  toggleFavorite,
+}) => {
+  let allFavServices = [];
+  Object.keys(favorites).forEach((item) => {
+    Object.keys(favorites[item]).forEach((subitem) => {
+      allFavServices.push(subitem);
+    });
+  });
   return (
     <div className="servicesForms">
       {activeCategory === "RTELD" ||
@@ -13,16 +24,22 @@ const ServicesForms = ({ activeService, activeCategory, setService }) => {
           setService={setService}
           activeCategory={activeCategory}
           activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
         />
       ) : activeService === "BOL001" ? (
         <BolletiniBianchi
           setService={setService}
           activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
         />
       ) : activeService === "BOL002" ? (
         <BolletiniPremercati
           setService={setService}
           activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
         />
       ) : (
         <div className="serviceSoon">
@@ -34,4 +51,5 @@ const ServicesForms = ({ activeService, activeCategory, setService }) => {
     </div>
   );
 };
+
 export default ServicesForms;

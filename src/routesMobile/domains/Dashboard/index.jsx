@@ -23,7 +23,7 @@ const Card = ({ setTab, tab, id, name, icon }) => (
     <span>{name}</span>
   </div>
 );
-const Dashboard = ({ getFavorites }) => {
+const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   useEffect(() => {
     getFavorites();
   }, []);
@@ -94,6 +94,7 @@ const Dashboard = ({ getFavorites }) => {
             setCategory={setCategory}
             serviceSearched={serviceSearched}
             tab={tab}
+            favorites={favorites}
           />
         </React.Fragment>
       ) : (
@@ -101,10 +102,13 @@ const Dashboard = ({ getFavorites }) => {
           setService={setService}
           activeCategory={activeCategory}
           activeService={activeService}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
         />
       )}
     </div>
   );
 };
+const mstp = ({ main: { favorites } }) => ({ favorites });
 
-export default connect(null, MainActions)(Dashboard);
+export default connect(mstp, MainActions)(Dashboard);
