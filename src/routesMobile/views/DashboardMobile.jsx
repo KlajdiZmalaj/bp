@@ -56,7 +56,7 @@ const Dashboard = (props) => {
                 <input
                   onKeyDown={(e) => {
                     if (e.keyCode === 13) {
-                      this.handleSubmit(e);
+                      handleSubmit(e);
                     }
                   }}
                   type="password"

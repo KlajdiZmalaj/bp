@@ -851,6 +851,7 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 5px;
+  min-height: 470px;
 }
 
 .loginPopUp--header {
