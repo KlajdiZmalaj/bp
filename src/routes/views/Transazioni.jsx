@@ -732,9 +732,7 @@ class Transazioni extends React.Component {
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>
                         <td className=" wsNwp right">Saldo</td>
-                        {this.props.screenWidth <= 1024 && forAdmin && (
-                          <td></td>
-                        )}
+                        {this.props.screenWidth <= 865 && forAdmin && <td></td>}
 
                         {this.props.screenWidth <= 1024 && forAdmin ? (
                           <td className="wsNwp"></td>
@@ -873,7 +871,7 @@ class Transazioni extends React.Component {
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
-                                {this.props.screenWidth <= 1024 && forAdmin && (
+                                {this.props.screenWidth <= 865 && forAdmin && (
                                   <td
                                     className=" wsNwp right"
                                     onClick={() => {

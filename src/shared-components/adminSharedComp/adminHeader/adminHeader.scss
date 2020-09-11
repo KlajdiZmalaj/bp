@@ -216,9 +216,8 @@
     & .AdminLeftForm {
       height: calc(100% - 60px);
     }
-    & .AdminColumns .Center,
-    & .AdminColumns .Center--Big {
-      margin-bottom: 100px;
+    & .AdminListaUtentiRow {
+      margin-bottom: 120px !important;
     }
     & .AdminHeader ~ .AdminHeader {
       bottom: 0;
