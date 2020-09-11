@@ -178,7 +178,7 @@ class Root extends React.Component {
               component={isMobile ? ConfiguraMobile : Configura}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/messages"
