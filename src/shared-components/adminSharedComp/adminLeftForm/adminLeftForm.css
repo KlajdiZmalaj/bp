@@ -548,7 +548,9 @@
     width: 100% !important;
     left: 0 !important;
   }
-  div.Center--Big .AdminListaUtenti--Header {
+  div.Center--Big .AdminListaUtenti--Header,
+  div.Center--Big .col-md-12,
+  div.Center--Big .paginationWrapper {
     width: 100% !important;
   }
 }

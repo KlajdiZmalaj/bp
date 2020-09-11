@@ -289,9 +289,8 @@
   .Admin-Panel .AdminLeftForm {
     height: calc(100% - 60px);
   }
-  .Admin-Panel .AdminColumns .Center,
-  .Admin-Panel .AdminColumns .Center--Big {
-    margin-bottom: 100px;
+  .Admin-Panel .AdminListaUtentiRow {
+    margin-bottom: 120px !important;
   }
   .Admin-Panel .AdminHeader ~ .AdminHeader {
     bottom: 0;

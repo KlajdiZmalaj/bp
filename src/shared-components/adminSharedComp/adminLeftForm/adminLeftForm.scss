@@ -329,7 +329,9 @@
   div.Center--Big {
     width: 100% !important;
     left: 0 !important;
-    & .AdminListaUtenti--Header {
+    & .AdminListaUtenti--Header,
+    .col-md-12,
+    .paginationWrapper {
       width: 100% !important;
     }
   }
