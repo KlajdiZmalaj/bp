@@ -81,7 +81,7 @@ export const azioni = [
     name: "configura",
     link: "configura",
     i: "fal fa-cogs",
-    displayRole: ["super_admin", "agency", "agent", "user"],
+    displayRole: ["super_admin", "agency", "agent"],
   },
   {
     id: 7,
@@ -51462,3 +51462,4 @@ export const servicesVisure = {
     ],
   },
 };
+

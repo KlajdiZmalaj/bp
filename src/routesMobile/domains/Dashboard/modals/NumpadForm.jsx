@@ -16,6 +16,8 @@ const Numpad = ({
   loadingRechargeMobile,
   setLoadingRecharge,
   skinExtras,
+  allFavServices,
+  toggleFavorite,
 }) => {
   const [selectedCost, setCost] = useState(null);
   const [inpVal, setVal] = useState("");
@@ -66,6 +68,20 @@ const Numpad = ({
       <div className="mobileNumPad--header">
         <img src={images[activeService] || images[activeCategory]} alt="" />
         {selectedCost?.name}
+        <i
+          onClick={() => {
+            if (allFavServices.includes(activeService)) {
+              toggleFavorite(activeService, "remove");
+            } else {
+              toggleFavorite(activeService, "set");
+            }
+          }}
+          className={
+            "fas fa-star" +
+            (allFavServices.includes(activeService) ? " active" : "")
+          }
+          aria-hidden="true"
+        ></i>{" "}
       </div>
       <div className="mobileNumPad--subh">
         INSERIRE IL NUMERO DI TELEFONO DA RICARICARE

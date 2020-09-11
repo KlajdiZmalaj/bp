@@ -85,6 +85,9 @@
   display: flex;
   flex-flow: column;
   padding-bottom: 60px;
+  &--favorites {
+    margin-top: 10px;
+  }
   &--panel {
     display: flex;
     flex-flow: column;
@@ -99,6 +102,15 @@
     padding: 0 18px;
     background-color: #fff;
     border-bottom: 1px solid #e2e4e5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    > span {
+      width: 90%;
+      display: block;
+      text-overflow: hidden;
+      overflow: hidden;
+    }
     &.active {
       color: var(--accent-txt);
       background-color: var(--accent-bg);
@@ -211,6 +223,13 @@
     font-size: 20px;
     text-transform: uppercase;
     padding: 0 18px;
+    > i {
+      margin-left: auto;
+      &.active {
+        color: var(--accent-bg);
+        filter: brightness(2);
+      }
+    }
     > img {
       filter: grayscale(1) brightness(100);
       height: 16px;
@@ -420,6 +439,10 @@
     text-transform: uppercase;
     border-bottom: 1px solid #edeef0;
     color: #32424e;
+    justify-content: space-between;
+    i.active {
+      color: var(--accent-bg);
+    }
   }
   &--subh {
     background-color: #fff;

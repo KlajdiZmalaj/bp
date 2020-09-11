@@ -234,8 +234,39 @@
   display: none;
 }
 
+.headerMob + div + div + .overview .panels-container .DateUtent {
+  border-right: 0;
+}
+
+.headerMob + div + div + .overview .panels-container .filterBtn {
+  height: 40px;
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.headerMob + div + div + .overview .panels-container .MoviFirst,
+.headerMob + div + div + .overview .panels-container .DateUtent {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.headerMob + div + div + .overview .panels-container .wsNwp div {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100px;
+}
+
 .headerMob + .Container .overview {
   padding-top: 0;
+}
+
+.headerMob + .overview {
+  background: #ececed !important;
 }
 
 .logoMob {
