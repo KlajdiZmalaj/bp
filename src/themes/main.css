@@ -1679,12 +1679,6 @@ i#private {
   border-collapse: collapse;
 }
 
-@media (max-width: 1050px) {
-  .transTable {
-    width: 103%;
-  }
-}
-
 .transTable .nomeTd {
   width: auto;
   display: block;
