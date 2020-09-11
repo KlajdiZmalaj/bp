@@ -17,7 +17,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .headerMob > i.active {
@@ -29,7 +29,7 @@
   left: 0;
   width: 80vw;
   background: #ebebeb;
-  height: 100vh;
+  height: 100%;
   z-index: 4;
   top: 0;
   overflow-y: auto;
@@ -234,8 +234,39 @@
   display: none;
 }
 
+.headerMob + div + div + .overview .panels-container .DateUtent {
+  border-right: 0;
+}
+
+.headerMob + div + div + .overview .panels-container .filterBtn {
+  height: 40px;
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.headerMob + div + div + .overview .panels-container .MoviFirst,
+.headerMob + div + div + .overview .panels-container .DateUtent {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.headerMob + div + div + .overview .panels-container .wsNwp div {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100px;
+}
+
 .headerMob + .Container .overview {
   padding-top: 0;
+}
+
+.headerMob + .overview {
+  background: #ececed !important;
 }
 
 .logoMob {

@@ -25,6 +25,8 @@ const BolletiniPremercati = ({
   setBolletiniLoading,
   bolletiniLoading,
   setBolletiniPremercati,
+  allFavServices,
+  toggleFavorite,
 }) => {
   const [cc, setCC] = useState("");
   const [euro, setEuro] = useState("");
@@ -78,7 +80,22 @@ const BolletiniPremercati = ({
             );
           })}
       </div>
-      <div className="bolletini--header">Bolletini Premercati</div>
+      <div className="bolletini--header">
+        Bolletini Premercati{" "}
+        <i
+          onClick={() => {
+            if (allFavServices.includes("BOLL")) {
+              toggleFavorite("BOLL", "remove");
+            } else {
+              toggleFavorite("BOLL", "set");
+            }
+          }}
+          className={
+            "fas fa-star" + (allFavServices.includes("BOLL") ? " active" : "")
+          }
+          aria-hidden="true"
+        ></i>{" "}
+      </div>
       <div className="bolletini--subh">
         CONTI CORRENTI POSTALI - Ricevuta di Accredito
       </div>

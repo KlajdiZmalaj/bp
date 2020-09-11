@@ -2,7 +2,8 @@ let skin = "";
 
 if (
   window.location.href.includes("bpoint") ||
-  window.location.href.includes("localhost")
+  window.location.href.includes("localhost") ||
+  window.location.href.includes("192.168")
 ) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
@@ -113,4 +114,5 @@ export default {
   // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 
   faturaBackground: require(`../assets/images/FaturaBackground.png`),
+  mobileLoginGirl: require(`../assets/images/girrrl.jpg`),
 };

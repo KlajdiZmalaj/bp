@@ -1,7 +1,7 @@
 .dashboardMobile {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding-top: 70px;
   padding-bottom: 43px;
   overflow-y: auto;
@@ -134,6 +134,10 @@
   padding-bottom: 60px;
 }
 
+.mobileServices--favorites {
+  margin-top: 10px;
+}
+
 .mobileServices--panel {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,6 +164,20 @@
   padding: 0 18px;
   background-color: #fff;
   border-bottom: 1px solid #e2e4e5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mobileServices--header > span {
+  width: 90%;
+  display: block;
+  text-overflow: hidden;
+  overflow: hidden;
+}
+
+.mobileServices--header.active {
+  color: var(--accent-txt);
+  background-color: var(--accent-bg);
 }
 
 .mobileServices--body {
@@ -320,6 +338,16 @@
   font-size: 20px;
   text-transform: uppercase;
   padding: 0 18px;
+}
+
+.mobileNumPad--header > i {
+  margin-left: auto;
+}
+
+.mobileNumPad--header > i.active {
+  color: var(--accent-bg);
+  -webkit-filter: brightness(2);
+          filter: brightness(2);
 }
 
 .mobileNumPad--header > img {
@@ -618,6 +646,13 @@
   text-transform: uppercase;
   border-bottom: 1px solid #edeef0;
   color: #32424e;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bolletini--header i.active {
+  color: var(--accent-bg);
 }
 
 .bolletini--subh {
@@ -792,5 +827,137 @@
   text-transform: uppercase;
   padding: 10px 20px;
   margin-top: 10px;
+}
+
+.loginPopUp {
+  position: fixed;
+  width: 90%;
+  height: 70%;
+  margin-left: calc(-45%);
+  margin-top: calc(-50% - 40px);
+  background-color: #fff;
+  z-index: 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  min-height: 470px;
+}
+
+.loginPopUp--header {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.loginPopUp--subheader {
+  font-size: 18px;
+  font-weight: 300;
+  position: relative;
+  bottom: 4px;
+}
+
+.loginPopUp--forms {
+  width: 100%;
+  padding: 0 16px;
+}
+
+.loginPopUp--forms__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin-top: 10px;
+}
+
+.loginPopUp--forms__item .label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #63696d;
+}
+
+.loginPopUp--forms__item input {
+  height: 32px;
+  border-radius: 2px;
+  background-color: #ebebeb;
+  border: 1px solid #bfc3c5;
+  padding: 0 10px;
+  color: #272c31;
+  font-size: 14px;
+}
+
+.loginPopUp--forms__item input::-webkit-input-placeholder {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #272c31;
+}
+
+.loginPopUp--forms__item input:-ms-input-placeholder {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #272c31;
+}
+
+.loginPopUp--forms__item input::-ms-input-placeholder {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #272c31;
+}
+
+.loginPopUp--forms__item input::placeholder {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #272c31;
+}
+
+.loginPopUp--forms__item button {
+  width: 192px;
+  height: 32px;
+  border: 0;
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.loginPopUp--forms__item .helper {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #63696d;
+}
+
+.loginPopUp--forms__item .helper span {
+  color: var(--accent-bg);
+  text-decoration: underline;
+}
+
+.loginPopUp--banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 100%;
+}
+
+.loginPopUp--banner img {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

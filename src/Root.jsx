@@ -27,8 +27,8 @@ import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
 import Visure from "./routes/views/Visure";
-import loginAdmin from "./routes/views/loginAdmin";
-import adminPanel from "./routes/views/adminPanel";
+// import loginAdmin from "./routes/views/loginAdmin";
+// import adminPanel from "./routes/views/adminPanel";
 import VisureDetaggli from "./routes/views/VisureDetaggli";
 import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
 import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
@@ -46,7 +46,7 @@ import {
 import {
   PopUpConfirmation,
   PopUpConfirmationVisure,
-  Footer,
+  // Footer,
 } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
@@ -107,7 +107,7 @@ class Root extends React.Component {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
     const isMobile = this.props.screenWidth <= 550;
-    console.log("ca kaa acc", this.props.accountInfo);
+    // console.log("ca kaa acc", this.props.accountInfo);
     return (
       <React.Fragment>
         <HashRouter>
@@ -116,7 +116,7 @@ class Root extends React.Component {
             <Route exact path="/register" component={Register} />
             <PublicRoute
               path="/login"
-              component={Login}
+              component={isMobile ? DashboardMobile : Login}
               isLoggedin={isLoggedin}
               role={role}
             />
@@ -142,7 +142,7 @@ class Root extends React.Component {
               component={Annunci}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/use-code"
@@ -163,7 +163,7 @@ class Root extends React.Component {
               component={Transazioni}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <Route
               path="/dashboard"
@@ -171,14 +171,14 @@ class Root extends React.Component {
               component={isMobile ? DashboardMobile : Dashboard}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/configura"
               component={isMobile ? ConfiguraMobile : Configura}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent"]}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/messages"
@@ -192,7 +192,7 @@ class Root extends React.Component {
               component={CaricaConto}
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency"]}
+              allowedRoles={["super_admin", "agency", "user"]}
             />
             <PrivateRoute
               path="/registerUser"

@@ -8,7 +8,13 @@ import { connect } from "react-redux";
 import ServicesForms from "./ServicesForms";
 const Card = ({ setTab, tab, id, name, icon }) => (
   <div
-    onClick={() => setTab(id)}
+    onClick={() => {
+      setTab(id);
+      if (id !== 0 && id.includes("PRDPST")) {
+        const el = document.querySelector("#PRDPST");
+        if (el) el.click();
+      }
+    }}
     className={
       "serviziFilter--cards__item" + (isEqual(tab, id) ? " active" : "")
     }
@@ -17,7 +23,7 @@ const Card = ({ setTab, tab, id, name, icon }) => (
     <span>{name}</span>
   </div>
 );
-const Dashboard = ({ getFavorites }) => {
+const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   useEffect(() => {
     getFavorites();
   }, []);
@@ -88,6 +94,7 @@ const Dashboard = ({ getFavorites }) => {
             setCategory={setCategory}
             serviceSearched={serviceSearched}
             tab={tab}
+            favorites={favorites}
           />
         </React.Fragment>
       ) : (
@@ -95,10 +102,13 @@ const Dashboard = ({ getFavorites }) => {
           setService={setService}
           activeCategory={activeCategory}
           activeService={activeService}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
         />
       )}
     </div>
   );
 };
+const mstp = ({ main: { favorites } }) => ({ favorites });
 
-export default connect(null, MainActions)(Dashboard);
+export default connect(mstp, MainActions)(Dashboard);

@@ -6,7 +6,8 @@ export let skin = {
 window.apiUrl = apiUrl;
 if (
   window.location.href.includes("bpoint") ||
-  window.location.href.includes("localhost")
+  window.location.href.includes("localhost") ||
+  window.location.href.includes("192.168")
 ) {
   skin = {
     ...skin,

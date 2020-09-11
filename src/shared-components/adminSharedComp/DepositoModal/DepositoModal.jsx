@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { transferMoney } from "services/auth";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
