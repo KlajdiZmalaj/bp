@@ -168,11 +168,40 @@
     .overviw-line {
       display: none;
     }
+
+    .panels-container {
+      .DateUtent {
+        border-right: 0;
+      }
+      .filterBtn {
+        height: 40px;
+        width: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .MoviFirst,
+      .DateUtent {
+        flex-flow: column;
+      }
+      .wsNwp {
+        div {
+          width: 90%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block;
+          width: 100px;
+        }
+      }
+    }
   }
+
   + .Container {
     .overview {
       padding-top: 0;
     }
+  }
+  + .overview {
+    background: #ececed !important;
   }
 }
 
