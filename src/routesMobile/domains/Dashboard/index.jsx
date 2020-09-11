@@ -8,7 +8,13 @@ import { connect } from "react-redux";
 import ServicesForms from "./ServicesForms";
 const Card = ({ setTab, tab, id, name, icon }) => (
   <div
-    onClick={() => setTab(id)}
+    onClick={() => {
+      setTab(id);
+      if (id !== 0 && id.includes("PRDPST")) {
+        const el = document.querySelector("#PRDPST");
+        if (el) el.click();
+      }
+    }}
     className={
       "serviziFilter--cards__item" + (isEqual(tab, id) ? " active" : "")
     }

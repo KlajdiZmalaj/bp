@@ -1,7 +1,7 @@
 .dashboardMobile {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding-top: 70px;
   padding-bottom: 43px;
   overflow-y: auto;
@@ -160,6 +160,11 @@
   padding: 0 18px;
   background-color: #fff;
   border-bottom: 1px solid #e2e4e5;
+}
+
+.mobileServices--header.active {
+  color: var(--accent-txt);
+  background-color: var(--accent-bg);
 }
 
 .mobileServices--body {
