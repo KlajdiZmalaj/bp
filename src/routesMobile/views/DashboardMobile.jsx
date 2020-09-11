@@ -1,12 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header, Footer } from "shared-componentsMobile";
 import DashboardBody from "../domains/Dashboard";
-export default () => {
+import { subscribeSocketUser, subscribeSocketSupport } from "config/socket.js";
+import { AuthActions, MainActions } from "redux-store/models";
+import { connect } from "react-redux";
+import images from "themes/images";
+const Dashboard = (props) => {
+  const [username, handleChangeUsername] = useState("");
+  const [password, handleChangePassword] = useState("");
+
+  const socketCall = (data) => {
+    subscribeSocketUser(data.id, props);
+    if (data.role.name === "support") {
+      subscribeSocketSupport(props);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.signInByEmail(username, password, socketCall);
+  };
+
   return (
-    <div className="dashboardMobile">
-      <Header />
-      <DashboardBody />
-      <Footer />
-    </div>
+    <React.Fragment>
+      <div className="dashboardMobile">
+        <Header />
+        <DashboardBody />
+        <Footer />
+      </div>
+      {window.location.hash.includes("login") && (
+        <>
+          <div className="loginPopUp animated slideInUp">
+            <div className="loginPopUp--header">Accedi</div>
+            <div className="loginPopUp--subheader">con le tue credenziali</div>
+            <div className="loginPopUp--forms">
+              <div className="loginPopUp--forms__item">
+                <div className="label">Username</div>
+                <input
+                  onKeyDown={(e) => {
+                    if (e.keyCode === 13) {
+                      handleSubmit(e);
+                    }
+                  }}
+                  type="text"
+                  placeholder="Email addres"
+                  name="userName"
+                  onChange={(e) => {
+                    handleChangeUsername(e.target.value);
+                  }}
+                  id="login-name"
+                />
+              </div>
+              <div className="loginPopUp--forms__item">
+                <div className="label">Password</div>
+                <input
+                  onKeyDown={(e) => {
+                    if (e.keyCode === 13) {
+                      handleSubmit(e);
+                    }
+                  }}
+                  type="password"
+                  placeholder="password"
+                  name="password"
+                  id="password"
+                  onChange={(e) => {
+                    handleChangePassword(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="loginPopUp--forms__item">
+                <button
+                  onClick={(e) => {
+                    handleSubmit(e);
+                  }}
+                >
+                  Accedi
+                </button>
+              </div>
+              <div className="loginPopUp--forms__item">
+                <div className="helper">
+                  Non hai un account? <span>Chiedi informazioni</span>
+                </div>
+              </div>
+            </div>
+            <div className="loginPopUp--banner">
+              <img src={images.mobileLoginGirl} alt="" />
+            </div>
+          </div>
+          <div
+            className="backDrop"
+            onClick={() => {
+              window.location.hash = "dashboard";
+            }}
+          ></div>
+        </>
+      )}
+    </React.Fragment>
   );
 };
+
+export default connect(null, { ...AuthActions, ...MainActions })(Dashboard);

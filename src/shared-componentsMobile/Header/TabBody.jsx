@@ -2,6 +2,7 @@ import React from "react";
 import { azioni } from "config";
 import { get, includes } from "lodash";
 import { Tooltip } from "antd";
+import { open } from "shared-components/Chat/Chat";
 export default ({ tab, accountInfo, logOut }) => {
   return tab === 1 ? (
     <div className="tabBody body1">
@@ -43,7 +44,12 @@ export default ({ tab, accountInfo, logOut }) => {
         );
       })}
       <div className="tabBody--a">
-        <div className="tabBody--a__b">
+        <div
+          className="tabBody--a__b"
+          onClick={() => {
+            open(window.innerWidth, window.innerHeight);
+          }}
+        >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
         </div>

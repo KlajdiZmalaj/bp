@@ -6,6 +6,7 @@ import rootSaga from "./redux-store/sagas";
 import { Footer, ModulePopUp } from "./shared-components";
 import images from "themes/images";
 import Root from "./Root";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
 const store = configureStore();
 store.runSaga(rootSaga);
@@ -33,6 +34,16 @@ class App extends React.Component {
         <Footer />
         <ModulePopUp></ModulePopUp>
         <input id="write" />
+        <BarcodeScannerComponent
+          width={500}
+          height={500}
+          onUpdate={(err, result) => {
+            if (result || err) {
+              console.log("result", result, err);
+              // setBarcode(false);
+            }
+          }}
+        />
       </Provider>
     );
   }

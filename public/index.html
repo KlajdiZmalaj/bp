@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Web site created using create-react-app" />
   <link rel="stylesheet" href="./fontAwesome/css/all.min.css" />
   <link id="lnk" rel="stylesheet" href="" />
   <script>
@@ -13,7 +12,8 @@
 
     if (
       window.location.href.includes("bpoint") ||
-      window.location.href.includes("local")
+      window.location.href.includes("local") ||
+      window.location.href.includes("192.168")
     ) {
       document.getElementById("lnk").setAttribute("href", `var1.css`);
     } else if (window.location.href.includes("gfb")) {
@@ -52,43 +52,6 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 
-  <!-- <script id="ze-snippet"
-    src="https://static.zdassets.com/ekr/snippet.js?key=1ac6da84-14c8-47dc-8148-1b636d8b4926"> </script> -->
-  <!-- <script>
-    var xyz = window.location.host;
-
-
-    window.zESettings = {
-      analytics: true,
-      webWidget: {
-        color: {
-          theme: '#ccc',
-          launcher: '#555',
-          launcherText: '#fff',
-          button: '#ccc',
-          resultLists: '#222',
-          header: xyz.includes('local') || xyz.includes('derby') ? '#0b880d' : xyz.includes('bpoint') ? '#F26521' : xyz.includes('gfb') ? '#F4C100' : xyz.includes('planet') ? '#F8C424' : '#ccc',
-          articleLinks: '#333'
-        },
-        offset: { horizontal: '10px', vertical: '10px' },
-        contactForm: {
-          attachments: true
-        }
-      }
-    };
-    window.zE('webWidget', 'prefill', { name: { value: `User from: ${window.location.host.split('.')[false | false]}`, readOnly: true | false } })
-  </script> -->
-  <!-- <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/5d443c5f7d27204601c8f6b8/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script> -->
 </body>
 
 </html>

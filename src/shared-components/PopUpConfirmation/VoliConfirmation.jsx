@@ -32,7 +32,11 @@ const Voli = ({ TicketByTcketId }) => {
           <div className="confirmationPopup--body__item">
             <span className="light">Link</span>
             <span className="dark">
-              <a href={TicketByTcketId.link} target="_blank">
+              <a
+                href={TicketByTcketId.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <SpanFormater
                   Word={TicketByTcketId.link}
                   size={28}
