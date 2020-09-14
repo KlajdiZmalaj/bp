@@ -435,7 +435,7 @@
     }
   }
   &--header {
-    background-color: #fff;
+    background-color: var(--accent-bg);
     padding: 0 18px;
     height: 48px;
     display: flex;
@@ -443,20 +443,21 @@
     font-size: 15px;
     text-transform: uppercase;
     border-bottom: 1px solid #edeef0;
-    color: #32424e;
+    color: var(--accent-txt);
     justify-content: space-between;
     i.active {
       color: var(--accent-bg);
+      filter: brightness(2.5);
     }
   }
   &--subh {
-    background-color: #fff;
+    background-color: #eaebec;
     padding: 0 18px;
     height: 48px;
     display: flex;
     align-items: center;
-    font-size: 14px;
-    color: #32424e;
+    font-size: 16px;
+    color: #272c31;
     border-bottom: 1px solid #edeef0;
   }
   &--buttons {
