@@ -3,16 +3,29 @@ import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
-const Input = ({ label, handler }) => (
-  <div className="bolletini--inputs__item">
+const Input = ({ label, handler, icon, value, iconHandler }) => (
+  <div className={"bolletini--inputs__item" + (icon ? " hasIcon" : "")}>
     <div className="label">{label}</div>
     <input
       type="text"
       onChange={(e) => {
         handler(e.target.value);
       }}
+      value={value && value}
     />
+    {icon && (
+      <i
+        onClick={() => {
+          if (label.includes("Codice")) {
+            //barcode camera to truee
+            iconHandler(true);
+          }
+        }}
+        className={icon}
+      />
+    )}
   </div>
 );
 
@@ -37,6 +50,8 @@ const BolletiniBianchi = ({
   const [cap, setCap] = useState("");
   const [citta, setCitta] = useState("");
   const [prov, setProvi] = useState("");
+  const [barcode, setBarcode] = useState("");
+  const [camera, setCamera] = useState(false);
   useEffect(() => {
     if (Object.values(bolletiniBianchi).length > 0)
       notification[bolletiniBianchi.errors ? "error" : "success"]({
@@ -79,6 +94,16 @@ const BolletiniBianchi = ({
             );
           })}
       </div>
+      {camera && (
+        <BarcodeScannerComponent
+          onUpdate={(err, result) => {
+            if (result) {
+              setBarcode(result.text);
+              setCamera(false);
+            } else setBarcode("Scanning...");
+          }}
+        />
+      )}
       <div className="bolletini--header">
         Bolletini Bianchi{" "}
         <i
@@ -97,8 +122,16 @@ const BolletiniBianchi = ({
       </div>
       <div className="bolletini--subh">
         CONTI CORRENTI POSTALI - Ricevuta di Accredito
+        {barcode}
       </div>
       <div className="bolletini--inputs">
+        <Input
+          icon={"fal fa-question-circle"}
+          label="Scansiona qui il Codice a Barre"
+          handler={setBarcode}
+          value={barcode}
+          iconHandler={setCamera}
+        />
         <Input label="sul C/C n." handler={setCC} />
         <Input label="di Euro" handler={setEuro} />
         <Input label="INTESTATO A" handler={setInt} />
