@@ -1,0 +1,19 @@
+html {
+  --accent-bg: #f9c425;
+  --accent-txt: #504b40;
+
+  --header-bg: #fff;
+  --header-txt: #222;
+
+  --footerTop-bg: #e2b52f;
+  --footerTop-txt: #222;
+}
+.logo img {
+  width: 70px;
+}
+footer .bottom {
+  background-color: #fff;
+}
+footer .mid img {
+  width: 110px !important;
+}
