@@ -63,13 +63,7 @@ class UsersList extends Component {
     );
   };
   render() {
-    const {
-      userList,
-      accountInfo,
-      userDetail,
-      updateMsg,
-      DepositoPopup,
-    } = this.props;
+    const { userList, accountInfo, userDetail, DepositoPopup } = this.props;
     const { valueInput } = this.state;
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
@@ -280,7 +274,6 @@ class UsersList extends Component {
                   handleChange={(name, value) => {
                     this.setState({ [name]: value });
                   }}
-                  updateMsg={updateMsg}
                 />
               ) : userDetail.role === "user" ? (
                 <UserComp
@@ -289,7 +282,6 @@ class UsersList extends Component {
                   handleChange={(name, value) => {
                     this.setState({ [name]: value });
                   }}
-                  updateMsg={updateMsg}
                 />
               ) : (
                 <AdminComp
@@ -298,7 +290,6 @@ class UsersList extends Component {
                   handleChange={(name, value) => {
                     this.setState({ [name]: value });
                   }}
-                  updateMsg={updateMsg}
                 />
               )}
 
@@ -370,7 +361,6 @@ const mapStateToProps = (state) => ({
   userList: state.main.userList,
   accountInfo: state.auth.accountInfo,
   userDetail: state.auth.userDetail,
-  updateMsg: state.auth.updateMsg,
   agents: state.auth.agents,
   DepositoPopup: state.auth.DepositoPopup,
 });

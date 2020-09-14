@@ -2,18 +2,32 @@ import React, { Fragment } from "react";
 import "./adminServizi.css";
 import AdminServiziItem from "./AdminServiziItem";
 import AuthAction from "redux-store/models/auth";
+import MainAction from "redux-store/models/main";
 import { connect } from "react-redux";
 class AdminServizi extends React.Component {
   componentDidMount() {
+    if (this.props.activeSkinId === -1) {
+      this.props.setActiveSkinId(1);
+    }
     this.props.getAllServices(this.props.activeSkinId);
   }
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
+    if (this.props.activeSkinId === -1) {
+      await this.props.setActiveSkinId(1);
+    }
     if (this.props.activeSkinId != prevProps.activeSkinId) {
-      this.props.getAllServices(this.props.activeSkinId);
+      await this.props.getAllServices(
+        this.props.activeSkinId === -1 ? 1 : this.props.activeSkinId
+      );
     }
   }
   render() {
-    const { allServices, servicesLoader } = this.props;
+    const {
+      allServices,
+      servicesLoader,
+      activeSkinId,
+      UpdateServicesChangeStatus,
+    } = this.props;
     return (
       <Fragment>
         {servicesLoader === true ? (
@@ -22,7 +36,15 @@ class AdminServizi extends React.Component {
           <div className="AdminServizi">
             {allServices?.companies && Array.isArray(allServices?.companies) ? (
               allServices.companies.map((itemList, i) => (
-                <AdminServiziItem {...itemList} key={`${itemList.number_id}`} />
+                <AdminServiziItem
+                  {...itemList}
+                  key={`${itemList.number_id} `}
+                  UpdateServicesChangeStatus={UpdateServicesChangeStatus}
+                  activeSkinId={activeSkinId}
+                  getService={() => {
+                    this.props.getAllServices(this.props.activeSkinId);
+                  }}
+                />
               ))
             ) : (
               <div className="NoData">
@@ -40,5 +62,8 @@ const mapStateToProps = (state) => ({
   activeSkinId: state.main.activeSkinId,
   allServices: state.auth.allServices,
   servicesLoader: state.auth.servicesLoader,
+  activeSkinId: state.main.activeSkinId,
 });
-export default connect(mapStateToProps, { ...AuthAction })(AdminServizi);
+export default connect(mapStateToProps, { ...AuthAction, ...MainAction })(
+  AdminServizi
+);

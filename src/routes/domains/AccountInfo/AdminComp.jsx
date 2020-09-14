@@ -28,7 +28,7 @@ export const ItemFull = ({
 );
 class AdminComp extends React.Component {
   render() {
-    const { userDetail, state, handleChange, updateMsg } = this.props;
+    const { userDetail, state, handleChange } = this.props;
     return (
       <div className="newReg--row">
         <div className="newReg--row__col">
@@ -122,6 +122,14 @@ class AdminComp extends React.Component {
             value={
               state.changedpagamento_mensile || userDetail.pagamento_mensile
             }
+          />
+          <ItemFull
+            Class="full"
+            readOnly={false}
+            handleChange={handleChange}
+            changeValue={"email"}
+            title={"Email *"}
+            value={state.email || userDetail.email}
           />
         </div>
         <div className="newReg--row__col">
@@ -238,20 +246,7 @@ class AdminComp extends React.Component {
               format={("DD/MM/YYYY", "DD/MM/YYYY")}
             />
           </div>
-          <div className="itemCol full">
-            {isString(updateMsg) && updateMsg && (
-              <div className="Nmessage S">{updateMsg}</div>
-            )}
-            {updateMsg.errorMsg && (
-              <div className="Nmessage E">{updateMsg.errorMsg}</div>
-            )}
-            {updateMsg.errors &&
-              Object.values(updateMsg.errors).map((error) => (
-                <div className="Nmessage E" key={error.id}>
-                  {error}
-                </div>
-              ))}
-          </div>
+          <div className="itemCol full"></div>
         </div>
       </div>
     );

@@ -1440,3 +1440,29 @@ export const getStatisticheReq = (skin_id) => {
     })
     .catch((error) => ({ error }));
 };
+export const ServiceChangeStatusReq = (
+  name,
+  full_name,
+  company_id,
+  active,
+  skin_id
+) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .post(`/companies/${company_id}/update`, {
+      name,
+      full_name,
+      active,
+      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

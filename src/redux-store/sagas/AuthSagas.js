@@ -46,6 +46,7 @@ import {
   AddExtraDataReq,
   AddSuperAdminReq,
   getStatisticheReq,
+  ServiceChangeStatusReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -647,8 +648,12 @@ export function* updateUserDetail(data) {
     );
   }
   if (response.data) {
+    console.log(response);
     if (response.status === 200) {
-      yield put(AuthActions.updateUserDetailMsg(response.data.message));
+      notification["success"]({
+        message: "Azione completata",
+        description: response.data.message,
+      });
       const ress = yield call(fetchUsers);
       if (ress.data) {
         yield put(MainActions.setUsers(ress.data.users));
@@ -658,18 +663,16 @@ export function* updateUserDetail(data) {
     }
   }
   if (response.error) {
-    // notification.open({
-    //   message: response.error.response.data.message,
-    //   description:
-    //     Object.values(response.error.response.data.errors) || "error",
-    //   icon: ":(",
-    // });
-    yield put(
-      AuthActions.updateUserDetailMsg({
-        errorMsg: response.error.response.data.message,
-        errors: response.error.response.data.errors,
-      })
-    );
+    notification["error"]({
+      message: response.error.response.data.message,
+      description: [
+        response.error.response.data.message,
+        response.error.response.data.errors
+          ? Object.values(response.error.response.data.errors)
+          : "error backend",
+      ],
+    });
+
     yield delay(4000);
     yield put(AuthActions.updateUserDetailMsg(""));
   }
@@ -1241,6 +1244,28 @@ export function* getStatistiche(params) {
   const response = yield call(getStatisticheReq, params.skin_id);
   if (response) {
     yield put(AuthActions.setStatistiche(response.data));
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
+  }
+}
+export function* UpdateServiceChangeStatus(params) {
+  const response = yield call(
+    ServiceChangeStatusReq,
+    params.name,
+    params.full_name,
+    params.company_id,
+    params.active,
+    params.skin_id
+  );
+  if (response) {
+    yield call(params.c);
   }
   if (response.error) {
     if (response.error.response.status === 401) {

@@ -123,7 +123,6 @@ class AdminPanelDom extends React.Component {
       setDepositoModalAdmin,
       userDetail,
       skinList,
-      updateMsg,
       goToAdminPanelVis,
       leUltimeTransazioniDet,
       accountInfo,
@@ -165,7 +164,6 @@ class AdminPanelDom extends React.Component {
                       handleChange={(name, value) => {
                         this.setState({ [name]: value });
                       }}
-                      updateMsg={updateMsg}
                     />
                   ) : userDetail?.role === "user" ? (
                     <UserComp
@@ -174,7 +172,6 @@ class AdminPanelDom extends React.Component {
                       handleChange={(name, value) => {
                         this.setState({ [name]: value });
                       }}
-                      updateMsg={updateMsg}
                     />
                   ) : (
                     <AdminComp
@@ -183,7 +180,6 @@ class AdminPanelDom extends React.Component {
                       handleChange={(name, value) => {
                         this.setState({ [name]: value });
                       }}
-                      updateMsg={updateMsg}
                     />
                   )}
                   <div className="newReg--row lastRow">
@@ -618,7 +614,6 @@ const mapStateToProps = (state) => ({
   adminDepModal: state.auth.adminDepModal,
   userDetail: state.auth.userDetail,
   agents: state.auth.agents,
-  updateMsg: state.auth.updateMsg,
   activeSkinId: state.main.activeSkinId,
   goToAdminPanelVis: state.auth.goToAdminPanelVis,
   skinList: state.auth.skinList,
