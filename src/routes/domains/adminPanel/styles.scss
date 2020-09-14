@@ -31,10 +31,12 @@
   & ::-webkit-scrollbar-track {
     background: hsla(0, 0%, 100%, 0.602);
   }
-
-  // .panels-container {
-  //   padding-bottom: 0 !important;
-  // }
+  .col-md-12.carica-conto {
+    position: relative;
+    top: 0 !important;
+    height: 180px !important;
+    width: 350px !important;
+  }
   .col-md-12 {
     overflow: auto;
     overflow-x: hidden;
@@ -1540,11 +1542,17 @@ div.Center--Big {
     .col-md-12 .transTable thead tr {
       width: 100vw !important;
     }
+    .col-md-12.carica-conto {
+      top: 0 !important;
+      height: 200px !important;
+    }
     & div.container-fluid.overview {
       padding-bottom: 0 !important;
       & div.panels-container {
         & .sort-annunci.sort-trasazioni.max-width.border-0 {
           position: fixed;
+          height: auto;
+          z-index: 2;
         }
         & div.row.no-gutters.max-width {
           .col-md-12 {
@@ -1580,10 +1588,12 @@ div.Center--Big {
               }
             }
             li {
-              font-size: 13px;
+              font-size: 12px;
               font-family: "Roboto";
               font-weight: 400;
-              width: 30px;
+              width: 22px;
+              min-width: 22px;
+              max-width: 22px;
               height: 30px;
               line-height: 30px;
               border-radius: 6px;
@@ -1596,7 +1606,9 @@ div.Center--Big {
                 align-items: center;
                 color: #5c5c5c;
                 height: 100%;
-                width: 30px;
+                width: 22px;
+                min-width: 22px;
+                max-width: 22px;
                 height: 30px;
                 line-height: 30px;
               }

@@ -48,7 +48,7 @@
 }
 
 .AdminLogin--Step1::-webkit-scrollbar-thumb {
-  background: #353d45;
+  background: #0078ff !important;
 }
 
 .AdminLogin--Step1 label {
@@ -76,7 +76,6 @@
 
 .AdminLogin--Step1--Step2 {
   width: 100%;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,6 +88,11 @@
           flex-direction: row;
   padding-top: 15px;
   max-height: 700px;
+  height: auto;
+}
+
+.AdminLogin--Step1--Step2::-webkit-scrollbar-thumb {
+  background: #0078ff !important;
 }
 
 .AdminLogin--Step1--Step2 span {
@@ -462,7 +466,7 @@
 }
 
 .AdminLogin--LoginForm::-webkit-scrollbar-thumb {
-  background: #353d45;
+  background: #0078ff !important;
 }
 
 .AdminLogin--LoginForm--Back {
