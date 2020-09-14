@@ -435,7 +435,7 @@ export function* getAds() {
       )
     );
   }
-  if (response.error && response.error.response.status === 401) {
+  if (response.error && response.error?.response?.status === 401) {
     const response = yield call(logoutApi);
     if (response) {
       localStorage.setItem("accountDataB", null);

@@ -3,16 +3,29 @@ import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
-const Input = ({ label, handler }) => (
-  <div className="bolletini--inputs__item">
+const Input = ({ label, handler, icon, value, iconHandler }) => (
+  <div className={"bolletini--inputs__item" + (icon ? " hasIcon" : "")}>
     <div className="label">{label}</div>
     <input
       type="text"
       onChange={(e) => {
         handler(e.target.value);
       }}
+      value={value && value}
     />
+    {icon && (
+      <i
+        onClick={() => {
+          if (label.includes("Codice")) {
+            //barcode camera to truee
+            iconHandler(true);
+          }
+        }}
+        className={icon}
+      />
+    )}
   </div>
 );
 
@@ -37,6 +50,31 @@ const BolletiniBianchi = ({
   const [cap, setCap] = useState("");
   const [citta, setCitta] = useState("");
   const [prov, setProvi] = useState("");
+  const [barcode, setBarcode] = useState("");
+  const [camera, setCamera] = useState(false);
+
+  let bartcode = barcode;
+
+  const counter1 = bartcode.substring(0, 2); //2shifror
+  const codiceIdf = bartcode.substring(2, 2 + parseInt(counter1));
+
+  const counter2 = bartcode.substring(20, 22); //2shifror
+  const sulCC = bartcode.substring(22, 22 + parseInt(counter2));
+
+  const counter3 = bartcode.substring(34, 36); //2shifror
+  const shuma = bartcode.substring(36, 36 + parseInt(counter3));
+
+  const counter4 = bartcode.substring(46, 47); //1shifror
+  const tipologia = bartcode.substring(47, 47 + parseInt(counter4));
+  const barCodeData = {
+    codice_identificativo: codiceIdf,
+    importo: shuma
+      ? (parseFloat(shuma.toString()) / 100).toString().replace(".", ",")
+      : "",
+    numero_conto_corrente: sulCC,
+    tipologia: tipologia,
+  };
+
   useEffect(() => {
     if (Object.values(bolletiniBianchi).length > 0)
       notification[bolletiniBianchi.errors ? "error" : "success"]({
@@ -54,31 +92,43 @@ const BolletiniBianchi = ({
   return (
     <div className="bolletini bianchi">
       <div className="bolletini--services">
-        {services["PRDPST"] &&
-          Object.keys(services["PRDPST"]).map((keyBolletines) => {
-            return (
-              keyBolletines !== "name" &&
-              services["PRDPST"][keyBolletines].services.map((item) => {
-                return (
-                  <div
-                    key={item.service_id}
-                    onClick={() => {
-                      setService(item?.service_id);
-                      setBolletiniBianchi({});
-                    }}
-                    className={
-                      "bolletini--services__item" +
-                      (activeService === item?.service_id ? " active" : "")
-                    }
-                  >
-                    <img src={images[keyBolletines]} alt="" />
-                    <span>{item.name}</span>
-                  </div>
-                );
-              })
-            );
-          })}
+        <div className="wrapperTop">
+          {services["PRDPST"] &&
+            Object.keys(services["PRDPST"]).map((keyBolletines) => {
+              return (
+                keyBolletines !== "name" &&
+                services["PRDPST"][keyBolletines].services.map((item) => {
+                  return (
+                    <div
+                      key={item.service_id}
+                      onClick={() => {
+                        setService(item?.service_id);
+                        setBolletiniBianchi({});
+                      }}
+                      className={
+                        "bolletini--services__item" +
+                        (activeService === item?.service_id ? " active" : "")
+                      }
+                    >
+                      <img src={images[keyBolletines]} alt="" />
+                      <span>{item.name}</span>
+                    </div>
+                  );
+                })
+              );
+            })}
+        </div>
       </div>
+      {camera && (
+        <BarcodeScannerComponent
+          onUpdate={(err, result) => {
+            if (result) {
+              setBarcode(result.text);
+              setCamera(false);
+            } else setBarcode("Scanning...");
+          }}
+        />
+      )}
       <div className="bolletini--header">
         Bolletini Bianchi{" "}
         <i
@@ -95,12 +145,21 @@ const BolletiniBianchi = ({
           aria-hidden="true"
         ></i>{" "}
       </div>
-      <div className="bolletini--subh">
-        CONTI CORRENTI POSTALI - Ricevuta di Accredito
-      </div>
+      <div className="bolletini--subh">PAGAMENTI</div>
       <div className="bolletini--inputs">
-        <Input label="sul C/C n." handler={setCC} />
-        <Input label="di Euro" handler={setEuro} />
+        <Input
+          icon={"fal fa-barcode-read"}
+          label="Scansiona qui il Codice a Barre"
+          handler={setBarcode}
+          value={barcode}
+          iconHandler={setCamera}
+        />
+        <Input
+          value={barCodeData.numero_conto_corrente}
+          label="sul C/C n."
+          handler={setCC}
+        />
+        <Input value={barCodeData.importo} label="di Euro" handler={setEuro} />
         <Input label="INTESTATO A" handler={setInt} />
         <Input label="CAUSALE" handler={setCasuale} />
         <Input label="ESEGUITO DA" handler={setEsg} />
@@ -110,35 +169,27 @@ const BolletiniBianchi = ({
         <Input label="Provincia" handler={setProvi} />
       </div>
       <div className="bolletini--condition">
-        <div className="bolletini--condition__header">CONDIZIONI</div>
-        <div className="bolletini--condition__area">
-          CONDIZIONI SPECIFICHE DI UTILIZZO DELLA FUNZIONE SERVIZI POSTALI
-          PROFILI NORMATIVI Il pagamento dei bollettini postali è un servizio di
-          pagamento per il cui esercizio professionale è necessaria un'apposita
-          autorizzazione rilasciata dalla Banca d'Italia. In particolare,
-          l'articolo 114-sexies del Testo unico bancario (d.lgs. 385/1993)
-          riserva la prestazione di servizi di pagamento alle banche, agli
-          istituti di moneta elettronica, a Poste Italiane Spa e agli Istituti
-          di Pagamento (c.d. “prestatori di servizi di pagamento”, PSP). I
-          soggetti che offrono alla clientela il servizio “Pagamento bollettini
-          di conto corrente” devono operare o come prestatori di servizi di
-          pagamento oppure sulla base di un contratto con un prestatore di
-          servizi di pagamento autorizzato. Lo stesso vale anche nel caso di
-          soggetti, diversi da Poste Italiane, abilitati all'offerta di servizi
-          postali; la sola autorizzazione e/o la licenza rilasciata dal
-          Ministero dello Sviluppo Economico per i servizi postali non abilita
-          quindi tali soggetti allo svolgimento del servizio 'Pagamento
-          bollettini postali'. 1. OGGETTO E DESCRIZIONE I servizi inclusi nella
-          sezione vengono evasi in collaborazione con Mr.Pay Srl. Il cliente
-          affiliato, una volta attivato l'account a lui riservato, per
-          utilizzare il servizio di pagamento utenze dovrà seguire le istruzioni
-          contenute nella pagina dedicata. La funzione “Prodotti Postali”
-          permette ai Clienti Affiliati, di inviare a Mr.Pay Srl la richiesta di
-          effettuare il pagamento di bollettini postali mediante addebito sul
-          Borsellino Elettronico prepagato dell' importo del bollettino da
-          pagare sommato ai relativi diritti postali e commissioni.
+        <div className="bolletini--condition__check">
+          <label htmlFor="bollo">
+            La persona che hai di fronte non è il intestatario del pagamento del
+            bollo
+          </label>
+
+          <input id="bollo" type="checkbox" />
+          <div></div>
+        </div>
+        <div className="bolletini--condition__orario">
+          <span>ORARI DI SERVIZIO</span>
+          <div>Tutti i giorni dalle ore 6:00 alle ore 00:30</div>
+        </div>
+        <div className="bolletini--condition__warning">
+          <span>
+            Attenzione! I Bolli Auto delle regioni Friuli-Venezia Giulia, Veneto
+            e Sardegna non sono al momento Pagabili.
+          </span>
         </div>
       </div>
+
       <div className="bolletini--buttons">
         <button
           className={`${bolletiniLoading ? "disable" : ""}`}
@@ -162,9 +213,8 @@ const BolletiniBianchi = ({
         >
           Esegui <i className="fal fa-check" aria-hidden="true"></i>
         </button>
-        <button className="disable">
-          Stampa <span>Pre Scontrino</span>
-        </button>
+        <button className="disable">Prenota</button>
+        <button className="disable">Stampa</button>
         <button
           onClick={() => {
             setService(null);
@@ -177,14 +227,14 @@ const BolletiniBianchi = ({
     </div>
   );
 };
-const mstp = ({
-  main: { services },
-  auth: { bolletiniLoading, bolletiniBianchi },
-}) => {
-  return {
-    services,
-    bolletiniLoading,
-    bolletiniBianchi,
-  };
-};
-export default connect(mstp, AuthActions)(BolletiniBianchi);
+
+export default connect(
+  ({ main: { services }, auth: { bolletiniLoading, bolletiniBianchi } }) => {
+    return {
+      services,
+      bolletiniLoading,
+      bolletiniBianchi,
+    };
+  },
+  AuthActions
+)(BolletiniBianchi);

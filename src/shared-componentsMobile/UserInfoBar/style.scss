@@ -7,6 +7,10 @@
   height: 36px;
   justify-content: space-between;
   padding: 0 25px;
+  position: fixed;
+  top: 70px;
+  z-index: 2;
+  width: 100%;
   > span {
     text-align: center;
     justify-self: center;
