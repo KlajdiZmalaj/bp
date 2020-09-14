@@ -661,6 +661,7 @@ export function* updateUserDetail(data) {
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
     }
+    data.resetState();
   }
   if (response.error) {
     notification["error"]({
