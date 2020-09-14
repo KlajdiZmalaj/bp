@@ -196,6 +196,7 @@
   font-weight: 400;
   padding: 10px 27px;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .Left .AdminLeftForm--LastBox--Box > i {
@@ -465,6 +466,7 @@
   font-weight: 400;
   padding: 0 27px;
   min-height: 42px;
+  cursor: pointer;
 }
 
 .Left--Min .AdminLeftForm--LastBox--Box div {

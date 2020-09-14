@@ -84,12 +84,12 @@ class AdminListaUtenti extends React.Component {
     return (
       <div className="AdminListaUtenti">
         <div className="AdminListaUtenti--Header">
-          <span>USER ID</span>
+          <span>ID Utente</span>
           <span
             className={`${Special && screenWidth < 1024 ? "SpecSm" : ""}`}
             style={screenWidth <= 850 && Special ? { left: "7%" } : {}}
           >
-            USERNAME
+            Nome Utente
           </span>
           <span
             className={`${
@@ -111,16 +111,17 @@ class AdminListaUtenti extends React.Component {
                 : screenWidth > 1440
                 ? {
                     width: "calc(36.5% - 230px)",
-                    left: "-0.5%",
+                    left: "-0.8%",
                   }
                 : {
                     width: "calc(36.5% - 230px)",
-                    left: "-0.5%",
-                    marginLeft: "1%",
+                    left: "0.5%",
                   }
             }
           >
-            RAG SOCIALE
+            {screenWidth >= 1024 && screenWidth <= 1080
+              ? "Rag Sociale"
+              : "Ragione Sociale"}
           </span>
           <span
             className={`${Special && screenWidth < 1024 ? "SpecSm" : ""}`}
@@ -153,10 +154,10 @@ class AdminListaUtenti extends React.Component {
                   }
             }
           >
-            CREDITO
+            Credito
           </span>
           {Special ? null : (
-            <span style={{ width: "7%", left: "0" }}>CITY</span>
+            <span style={{ width: "7%", left: "0" }}>Città</span>
           )}
           <span
             style={
@@ -168,7 +169,7 @@ class AdminListaUtenti extends React.Component {
               Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""
             }`}
           >
-            ULTIMO DEPOSIT
+            Ultimo Deposito
           </span>
           <span
             className={`${Special ? "none" : ""}`}
@@ -180,13 +181,13 @@ class AdminListaUtenti extends React.Component {
                 : { width: "13%", justifyContent: "center", left: 0 }
             }
           >
-            ULTIMO LOGIN
+            Ultimo Login
           </span>
           <span
             style={{ width: "210px", justifyContent: "flex-start" }}
             className={`${Special ? "activated" : ""}`}
           >
-            AZIONI
+            Operazioni
           </span>
         </div>
         <div className="AdminListaUtentiRow">

@@ -53,6 +53,7 @@ import {
   AddSuperAdmin,
   AddExtraData,
   getStatistiche,
+  UpdateServiceChangeStatus,
 } from "./AuthSagas";
 
 import {
@@ -68,6 +69,10 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(
+      AuthTypes.UPDATE_SERVICES_CHANGE_STATUS,
+      UpdateServiceChangeStatus
+    ),
     takeLatest(AuthTypes.GET_STATISTICHE, getStatistiche),
     takeLatest(AuthTypes.ADD_EXTRA_DATA, AddExtraData),
     takeLatest(AuthTypes.ADD_SUPER_ADMIN, AddSuperAdmin),

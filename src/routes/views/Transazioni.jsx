@@ -726,8 +726,8 @@ class Transazioni extends React.Component {
                       <tr>
                         <td className="wsNwp">Date / Ora</td>
                         <td className="wsNwp">Barcode</td>
-                        <td className="wsNwp">User</td>
-                        <td className="wsNwp servizoTd">Service</td>
+                        <td className="wsNwp">Utente</td>
+                        <td className="wsNwp servizoTd">Servizio</td>
                         <td className="wsNwp right">Importo</td>
                         <td className="wsNwp right">Commissione</td>
                         <td className=" wsNwp right">Proviggione</td>

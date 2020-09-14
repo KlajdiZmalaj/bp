@@ -171,6 +171,7 @@ const { Types, Creators } = createActions({
     "password",
     "confirm_password",
     "skin_id",
+    "resetState",
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
@@ -365,6 +366,14 @@ const { Types, Creators } = createActions({
   setAdminPanelClass: ["CenterCls"],
   setLoadingRecharge: ["loadingRechargeMobile"],
   setBolletiniLoading: ["bolletiniLoading"],
+  UpdateServicesChangeStatus: [
+    "name",
+    "full_name",
+    "company_id",
+    "active",
+    "skin_id",
+    "c",
+  ],
 });
 
 export const AuthTypes = Types;

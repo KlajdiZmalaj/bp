@@ -10,7 +10,7 @@ const PrivateRoute = ({ component: Component, isLoggedin, role, ...rest }) => {
       render={(props) =>
         !isLoggedin ? (
           <Component {...props} />
-        ) : role === "main_admin" ? (
+        ) : role === "main_admin" || role === "support" ? (
           <Redirect
             to={{
               pathname: "/back-office/utenti",

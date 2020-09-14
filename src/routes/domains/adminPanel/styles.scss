@@ -25,12 +25,6 @@
   }
 }
 .bodyAdmin {
-  & ::-webkit-scrollbar-thumb {
-    background: #353d45;
-  }
-  & ::-webkit-scrollbar-track {
-    background: hsla(0, 0%, 100%, 0.602);
-  }
   .col-md-12.carica-conto {
     position: relative;
     top: 0 !important;
@@ -43,6 +37,12 @@
     height: calc(100vh - 272px);
     position: fixed;
     top: 199px;
+    &::-webkit-scrollbar-thumb {
+      background: #353d45;
+    }
+    &::-webkit-scrollbar-track {
+      background: #aca8a8 !important;
+    }
     thead {
       border-top: 0px solid transparent !important;
       tr {
@@ -82,6 +82,9 @@
             &:nth-child(7),
             &:nth-child(8) {
               width: 105px !important;
+            }
+            &:nth-child(8) {
+              padding-right: 1% !important;
             }
             &:nth-child(5) {
               display: table-cell !important;
@@ -124,6 +127,9 @@
               &:nth-child(8) {
                 width: 105px !important;
               }
+              &:nth-child(8) {
+                padding-right: 1.4% !important;
+              }
             }
           }
         }
@@ -132,7 +138,7 @@
         background: #353d45;
       }
       & ::-webkit-scrollbar-track {
-        background: hsla(0, 0%, 100%, 0.602);
+        background: #aca8a8 !important;
       }
     }
   }
@@ -200,7 +206,7 @@
       }
 
       &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.602);
+        background: #aca8a8 !important;
       }
     }
     & .checkCol button {
@@ -245,11 +251,11 @@
     background-color: rgba(0, 0, 0, 0.03);
     margin-bottom: 41px;
     min-height: 550px;
-    &::-webkit-scrollbar {
+    &::-webkit-scrollbar-thumb {
       background: #212529;
     }
     &::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.702);
+      background: #707070;
     }
     & .AdminListaUtenti--Header,
     .col-md-12,
@@ -275,11 +281,11 @@
       background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
       margin-bottom: 41px;
-      &::-webkit-scrollbar {
+      &::-webkit-scrollbar-thumb {
         background: #212529;
       }
       &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.702);
+        background: #707070;
       }
       & .AdminListaUtenti--Header,
       .col-md-12,
@@ -506,7 +512,7 @@ div.Center--Big {
       & .col-md-12 {
         & .transTable {
           & td.right {
-            text-align: center !important;
+            text-align: right !important;
             width: 105px !important;
           }
           & tbody {
@@ -913,6 +919,48 @@ div.Center--Big {
             &.calendar {
               padding: 0 10px;
               padding-right: 20px;
+              width: 190px;
+              min-width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1400px) and (min-width: 1300px) {
+  div.Center,
+  div.Center--Big {
+    & .container-fluid.overview,
+    .panels-container {
+      & .sort-annunci {
+        & .datepics {
+          & .dal {
+            & div:first-child {
+              width: 140px;
+            }
+            &.calendar {
+              width: 140px;
+              min-width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1100px) {
+  div.Center,
+  div.Center--Big {
+    & .container-fluid.overview,
+    .panels-container {
+      & .sort-annunci {
+        & .datepics {
+          & .dal {
+            & div:first-child {
+              width: 140px;
+            }
+            &.calendar {
               width: 140px;
               min-width: auto;
             }
@@ -992,7 +1040,6 @@ div.Center--Big {
                   width: 85px !important;
                   min-width: 85px !important;
                   margin: 0 !important;
-                  padding-right: 0 !important;
                   max-width: 85px !important;
                 }
                 &:nth-child(4) {
@@ -1019,7 +1066,26 @@ div.Center--Big {
       }
     }
   }
+  div.Center--Big {
+    & .container-fluid.overview,
+    .panels-container {
+      & .row.no-gutters.max-width {
+        & .col-md-12 {
+          & .transTable.Movimenti {
+            & thead {
+              & td.wsNwp {
+                &:nth-child(4) {
+                  left: -3.8%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
 @media (max-width: 1439px) and (min-width: 1320px) {
   div.Center,
   div.Center--Big {
@@ -1038,7 +1104,6 @@ div.Center--Big {
                   width: 80px !important;
                   min-width: 80px !important;
                   margin: 0 !important;
-                  padding-right: 0 !important;
                   max-width: 80px !important;
                 }
                 &:nth-child(3) {
@@ -1062,6 +1127,82 @@ div.Center--Big {
                 &:nth-child(7),
                 &:nth-child(8) {
                   width: 80px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1280px) {
+  div.Center--Big {
+    & .container-fluid.overview,
+    .panels-container {
+      & .row.no-gutters.max-width {
+        & .col-md-12 {
+          & .transTable.Movimenti {
+            & thead {
+              & td.wsNwp {
+                &:nth-child(4) {
+                  left: -3.2%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.Center {
+    & .container-fluid.overview,
+    .panels-container {
+      & .row.no-gutters.max-width {
+        & .col-md-12 {
+          & .transTable.Movimenti {
+            & thead {
+              & td.wsNwp {
+                &:nth-child(4) {
+                  left: -3.8%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  div.Center--Big {
+    & .container-fluid.overview,
+    .panels-container {
+      & .row.no-gutters.max-width {
+        & .col-md-12 {
+          & .transTable.Movimenti {
+            & thead {
+              & td.wsNwp {
+                &:nth-child(4) {
+                  left: 1.4%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.Center {
+    & .container-fluid.overview,
+    .panels-container {
+      & .row.no-gutters.max-width {
+        & .col-md-12 {
+          & .transTable.Movimenti {
+            & thead {
+              & td.wsNwp {
+                &:nth-child(4) {
+                  left: -2%;
                 }
               }
             }
@@ -1089,7 +1230,6 @@ div.Center--Big {
                   width: 80px !important;
                   min-width: 80px !important;
                   margin: 0 !important;
-                  padding-right: 0 !important;
                   max-width: 80px !important;
                 }
                 &:nth-child(3) {
@@ -1106,7 +1246,6 @@ div.Center--Big {
               & td.wsNwp {
                 &:nth-child(4) {
                   width: calc(100% - 610px) !important;
-                  left: 0 !important;
                   padding-left: calc(13% - 79.3px) !important;
                   text-align: start !important;
                 }
@@ -1806,7 +1945,7 @@ body.bodyAdmin,
   }
 
   &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.602);
+    background: #aca8a8 !important;
   }
 }
 @media (max-width: 1280px) and (min-width: 1180px) {

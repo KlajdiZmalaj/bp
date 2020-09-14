@@ -92,30 +92,32 @@ const BolletiniBianchi = ({
   return (
     <div className="bolletini bianchi">
       <div className="bolletini--services">
-        {services["PRDPST"] &&
-          Object.keys(services["PRDPST"]).map((keyBolletines) => {
-            return (
-              keyBolletines !== "name" &&
-              services["PRDPST"][keyBolletines].services.map((item) => {
-                return (
-                  <div
-                    key={item.service_id}
-                    onClick={() => {
-                      setService(item?.service_id);
-                      setBolletiniBianchi({});
-                    }}
-                    className={
-                      "bolletini--services__item" +
-                      (activeService === item?.service_id ? " active" : "")
-                    }
-                  >
-                    <img src={images[keyBolletines]} alt="" />
-                    <span>{item.name}</span>
-                  </div>
-                );
-              })
-            );
-          })}
+        <div className="wrapperTop">
+          {services["PRDPST"] &&
+            Object.keys(services["PRDPST"]).map((keyBolletines) => {
+              return (
+                keyBolletines !== "name" &&
+                services["PRDPST"][keyBolletines].services.map((item) => {
+                  return (
+                    <div
+                      key={item.service_id}
+                      onClick={() => {
+                        setService(item?.service_id);
+                        setBolletiniBianchi({});
+                      }}
+                      className={
+                        "bolletini--services__item" +
+                        (activeService === item?.service_id ? " active" : "")
+                      }
+                    >
+                      <img src={images[keyBolletines]} alt="" />
+                      <span>{item.name}</span>
+                    </div>
+                  );
+                })
+              );
+            })}
+        </div>
       </div>
       {camera && (
         <BarcodeScannerComponent
@@ -211,6 +213,7 @@ const BolletiniBianchi = ({
         >
           Esegui <i className="fal fa-check" aria-hidden="true"></i>
         </button>
+        <button className="disable">Prenota</button>
         <button className="disable">Stampa</button>
         <button
           onClick={() => {

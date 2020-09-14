@@ -165,12 +165,9 @@
     }
 
     &::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.602);
+      background: #aca8a8 !important;
     }
 
-    &::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.602);
-    }
     & .ServiceRow {
       width: 100%;
       height: 22%;
@@ -246,7 +243,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         height: 100%;
         padding: 0.4% 6%;
         &:first-child {

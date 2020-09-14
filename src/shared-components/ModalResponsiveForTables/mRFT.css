@@ -255,11 +255,7 @@
 }
 
 .TrMoRes--Data--Row::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.602);
-}
-
-.TrMoRes--Data--Row::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.602);
+  background: #aca8a8 !important;
 }
 
 .TrMoRes--Data--Row .ServiceRow {
@@ -394,9 +390,9 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
   padding: 0.4% 6%;
 }
