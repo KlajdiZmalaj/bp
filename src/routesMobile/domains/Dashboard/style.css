@@ -584,7 +584,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #272c31;
+  background-color: #fff;
   overflow-y: auto;
   padding: 0 18px;
 }
@@ -595,7 +595,7 @@
 }
 
 .bolletini--services__item {
-  background-color: #63696d;
+  background-color: #eaebec;
   color: #272c31;
   width: 90px;
   -ms-flex-negative: 0;
@@ -738,12 +738,17 @@
 }
 
 .bolletini--buttons button:nth-child(2) {
+  border-color: #299efd;
+  border-left: 1px solid #edeef0;
+}
+
+.bolletini--buttons button:nth-child(3) {
   border-color: #fdaa29;
   border-left: 1px solid #edeef0;
   border-right: 1px solid #edeef0;
 }
 
-.bolletini--buttons button:nth-child(3) {
+.bolletini--buttons button:nth-child(4) {
   border-color: #ea1900;
 }
 
@@ -1079,5 +1084,23 @@
 
 .loginPopUp--banner img {
   width: 100%;
+}
+
+.wrapperTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150%;
+  overflow-x: auto;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.wrapperTop::-webkit-scrollbar {
+  height: 0;
+  width: 0;
 }
 /*# sourceMappingURL=style.css.map */
