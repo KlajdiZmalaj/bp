@@ -589,13 +589,19 @@ div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow
   border-collapse: collapse;
 }
 
-@media (max-width: 545px) {
+@media (max-width: 550px) {
+  div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div.AdminListaUtentiRow--Complete--Main--Child.children div span:nth-child(2):before {
+    left: -29.5px;
+  }
+}
+
+@media (max-width: 509px) {
   div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div.AdminListaUtentiRow--Complete--Main--Child.children div span:nth-child(2):before {
     left: -29px;
   }
 }
 
-@media (max-width: 509px) {
+@media (max-width: 428px) {
   div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div.AdminListaUtentiRow--Complete--Main--Child.children div span:nth-child(2):before {
     left: -28px;
   }

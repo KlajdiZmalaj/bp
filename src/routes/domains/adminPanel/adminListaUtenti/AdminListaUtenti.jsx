@@ -4,7 +4,7 @@ import AdminListaUtentiRow from "./AdminListaUtentiRow";
 import { ListaUtenti } from "../StaticAdminData";
 import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
-
+import moment from "moment";
 class AdminListaUtenti extends React.Component {
   componentDidMount() {
     const Special =
@@ -37,6 +37,39 @@ class AdminListaUtenti extends React.Component {
         });
       }
     }
+  }
+  SortArrayByDate(Array, Order) {
+    const newArray = [...Array];
+    if (Order === "Desc") {
+      newArray.sort((a, b) =>
+        moment(
+          a.last_login_time == "-" ? "01-01-2300 00:00:00" : a.last_login_time,
+          "DD-MM-YYYY HH:mm:ss"
+        ).diff(
+          moment(
+            b.last_login_time == "-"
+              ? "01-01-2300 00:00:00"
+              : b.last_login_time,
+            "DD-MM-YYYY HH:mm:ss"
+          )
+        )
+      );
+    } else {
+      newArray.sort((a, b) =>
+        moment(
+          b.last_login_time == "-" ? "01-01-1800 00:00:00" : b.last_login_time,
+          "DD-MM-YYYY HH:mm:ss"
+        ).diff(
+          moment(
+            a.last_login_time == "-"
+              ? "01-01-1800 00:00:00"
+              : a.last_login_time,
+            "DD-MM-YYYY HH:mm:ss"
+          )
+        )
+      );
+    }
+    return newArray;
   }
   render() {
     const {

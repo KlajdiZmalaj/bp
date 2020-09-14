@@ -27,7 +27,7 @@
     height: calc(100vh - 240px);
     max-height: 700px;
     &::-webkit-scrollbar-thumb {
-      background: #353d45;
+      background: #0078ff !important;
     }
     & label {
       position: absolute;
@@ -48,12 +48,15 @@
     }
     &--Step2 {
       width: 100%;
-      height: 100%;
       display: flex;
       justify-content: center;
       flex-direction: row;
       padding-top: 15px;
       max-height: 700px;
+      height: auto;
+      &::-webkit-scrollbar-thumb {
+        background: #0078ff !important;
+      }
       & span {
         margin: 6px 0;
         & div.dropdown:nth-child(2) {
@@ -320,7 +323,7 @@
     position: absolute;
     left: 0;
     &::-webkit-scrollbar-thumb {
-      background: #353d45;
+      background: #0078ff !important;
     }
     &--Back {
       width: 100%;

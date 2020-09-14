@@ -454,6 +454,7 @@ div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--PriceBox--Titl
 }
 
 div.Prenotazioni--Statistiche div.Prenotazioni--Statistiche--Box--Informazioni {
+  overflow: hidden;
   width: 22.5%;
   min-width: 22.5%;
   -webkit-box-sizing: border-box;

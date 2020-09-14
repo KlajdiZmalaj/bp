@@ -454,10 +454,13 @@ div.AdminColumns {
                   position: absolute;
                   border-left: 1px dotted #0078ff;
                   border-collapse: collapse;
-                  @media (max-width: 545px) {
-                    left: -29px;
+                  @media (max-width: 550px) {
+                    left: -29.5px;
                   }
                   @media (max-width: 509px) {
+                    left: -29px;
+                  }
+                  @media (max-width: 428px) {
                     left: -28px;
                   }
                 }

@@ -495,7 +495,8 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
     });
 };
 export const transferMoney = (id, amount, type, c, role, backOffice) => {
-  axios
+  console.log(backOffice);
+  return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
@@ -511,7 +512,11 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
       {
         ...{ amount },
         ...{ type },
-        ...(backOffice ? (backOffice != -1 ? skin : backOffice) : skin),
+        ...(backOffice
+          ? backOffice != -1
+            ? { skin_id: backOffice }
+            : skin
+          : skin),
       }
     )
     .then(
