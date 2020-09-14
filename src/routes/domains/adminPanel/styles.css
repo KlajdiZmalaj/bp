@@ -42,6 +42,13 @@
   background: rgba(255, 255, 255, 0.602);
 }
 
+.bodyAdmin .col-md-12.carica-conto {
+  position: relative;
+  top: 0 !important;
+  height: 180px !important;
+  width: 350px !important;
+}
+
 .bodyAdmin .col-md-12 {
   overflow: auto;
   overflow-x: hidden;
@@ -2232,11 +2239,17 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns .col-md-12 .transTable thead tr {
     width: 100vw !important;
   }
+  .AdminColumns .col-md-12.carica-conto {
+    top: 0 !important;
+    height: 200px !important;
+  }
   .AdminColumns div.container-fluid.overview {
     padding-bottom: 0 !important;
   }
   .AdminColumns div.container-fluid.overview div.panels-container .sort-annunci.sort-trasazioni.max-width.border-0 {
     position: fixed;
+    height: auto;
+    z-index: 2;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width .col-md-12 {
     width: 100vw;
@@ -2283,10 +2296,12 @@ div.Center--Big tbody .right .Importo i {
             align-items: center;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width .paginationWrapper li {
-    font-size: 13px;
+    font-size: 12px;
     font-family: "Roboto";
     font-weight: 400;
-    width: 30px;
+    width: 22px;
+    min-width: 22px;
+    max-width: 22px;
     height: 30px;
     line-height: 30px;
     border-radius: 6px;
@@ -2310,7 +2325,9 @@ div.Center--Big tbody .right .Importo i {
             align-items: center;
     color: #5c5c5c;
     height: 100%;
-    width: 30px;
+    width: 22px;
+    min-width: 22px;
+    max-width: 22px;
     height: 30px;
     line-height: 30px;
   }

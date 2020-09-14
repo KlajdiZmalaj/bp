@@ -86,22 +86,29 @@ const DepositoModal = ({
             <div className="DepositoModal--Container--Down--Form--buttons">
               <button
                 className="DepositoModal--Container--Down--Form--buttons--Conferma"
-                onClick={() => {
+                onClick={async () => {
                   // api
-                  transferMoney(id, amount, type, () => {}, role, activeSkinId);
-                  Close();
+                  await transferMoney(
+                    id,
+                    amount,
+                    type,
+                    () => {},
+                    role,
+                    activeSkinId
+                  );
+                  await Close();
                   if (activeSkinId === -1) {
-                    getUsers(null, {
+                    await getUsers(null, {
                       skin_id: 1,
                     });
                   } else {
-                    getUsers(null, {
+                    await getUsers(null, {
                       skin_id: activeSkinId,
                       backoffice: true,
                     });
                   }
                   if (SecondClose) {
-                    SecondClose();
+                    await SecondClose();
                   }
                 }}
               >

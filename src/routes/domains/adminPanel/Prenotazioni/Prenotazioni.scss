@@ -281,6 +281,7 @@ div.Prenotazioni {
         }
       }
       &.Prenotazioni--Statistiche--Box--Informazioni {
+        overflow: hidden;
         &:first-child {
           border: 1px solid #2cb850;
           margin-left: 2.8%;

@@ -216,7 +216,8 @@
     & .AdminLeftForm {
       height: calc(100% - 60px);
     }
-    & .AdminListaUtentiRow {
+    & .AdminListaUtentiRow,
+    .AdminServizi {
       margin-bottom: 120px !important;
     }
     & .AdminHeader ~ .AdminHeader {
