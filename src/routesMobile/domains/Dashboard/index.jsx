@@ -10,7 +10,7 @@ const Card = ({ setTab, tab, id, name, icon }) => (
   <div
     onClick={() => {
       setTab(id);
-      if (id !== 0 && id.includes("PRDPST")) {
+      if (id !== "0" && id.includes("PRDPST")) {
         const el = document.querySelector("#PRDPST");
         if (el) el.click();
       }
@@ -27,7 +27,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   useEffect(() => {
     getFavorites();
   }, []);
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState("0");
   const [serviceSearched, setSearch] = useState("");
   const [activeCategory, setCategory] = useState(null);
   const [activeService, setService] = useState(null);
@@ -50,7 +50,14 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
 
             <div className="serviziFilter--cards">
               <Card
-                id={0}
+                id={"fav"}
+                icon="fa-star"
+                tab={tab}
+                setTab={setTab}
+                name="Servizi Preferiti"
+              />
+              <Card
+                id={"0"}
                 icon="fa-file-alt"
                 tab={tab}
                 setTab={setTab}
@@ -79,7 +86,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
               />
               <Card
                 icon="fa-user-headset"
-                id={4}
+                id={"4"}
                 tab={tab}
                 setTab={() => {
                   window.location.hash = "forms";

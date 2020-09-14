@@ -147,7 +147,7 @@ const Servizi = ({
           services[serviceCategory].name
             .toLowerCase()
             .includes(serviceSearched.toLowerCase()) &&
-          (tab === 0 || tab.includes(serviceCategory)) && (
+          (tab === "0" || tab.includes(serviceCategory)) && (
             <OneTab
               setService={setService}
               panelOpen={panelOpen}
@@ -168,7 +168,9 @@ const Servizi = ({
               favorites[serviceCategory].name
                 .toLowerCase()
                 .includes(serviceSearched.toLowerCase()) &&
-              (tab === 0 || tab.includes(serviceCategory)) && (
+              (tab === "0" ||
+                tab.includes(serviceCategory) ||
+                tab === "fav") && (
                 <OneTab
                   setService={setService}
                   panelOpen={panelOpen}

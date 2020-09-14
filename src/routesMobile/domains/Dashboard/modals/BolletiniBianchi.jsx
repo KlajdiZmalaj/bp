@@ -3,16 +3,29 @@ import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
-const Input = ({ label, handler }) => (
-  <div className="bolletini--inputs__item">
+const Input = ({ label, handler, icon, value, iconHandler }) => (
+  <div className={"bolletini--inputs__item" + (icon ? " hasIcon" : "")}>
     <div className="label">{label}</div>
     <input
       type="text"
       onChange={(e) => {
         handler(e.target.value);
       }}
+      value={value && value}
     />
+    {icon && (
+      <i
+        onClick={() => {
+          if (label.includes("Codice")) {
+            //barcode camera to truee
+            iconHandler(true);
+          }
+        }}
+        className={icon}
+      />
+    )}
   </div>
 );
 
@@ -37,6 +50,8 @@ const BolletiniBianchi = ({
   const [cap, setCap] = useState("");
   const [citta, setCitta] = useState("");
   const [prov, setProvi] = useState("");
+  const [barcode, setBarcode] = useState("");
+  const [camera, setCamera] = useState(false);
   useEffect(() => {
     if (Object.values(bolletiniBianchi).length > 0)
       notification[bolletiniBianchi.errors ? "error" : "success"]({
@@ -79,6 +94,16 @@ const BolletiniBianchi = ({
             );
           })}
       </div>
+      {camera && (
+        <BarcodeScannerComponent
+          onUpdate={(err, result) => {
+            if (result) {
+              setBarcode(result.text);
+              setCamera(false);
+            } else setBarcode("Scanning...");
+          }}
+        />
+      )}
       <div className="bolletini--header">
         Bolletini Bianchi{" "}
         <i
@@ -97,8 +122,16 @@ const BolletiniBianchi = ({
       </div>
       <div className="bolletini--subh">
         CONTI CORRENTI POSTALI - Ricevuta di Accredito
+        {barcode}
       </div>
       <div className="bolletini--inputs">
+        <Input
+          icon={"fal fa-question-circle"}
+          label="Scansiona qui il Codice a Barre"
+          handler={setBarcode}
+          value={barcode}
+          iconHandler={setCamera}
+        />
         <Input label="sul C/C n." handler={setCC} />
         <Input label="di Euro" handler={setEuro} />
         <Input label="INTESTATO A" handler={setInt} />
@@ -110,35 +143,27 @@ const BolletiniBianchi = ({
         <Input label="Provincia" handler={setProvi} />
       </div>
       <div className="bolletini--condition">
-        <div className="bolletini--condition__header">CONDIZIONI</div>
-        <div className="bolletini--condition__area">
-          CONDIZIONI SPECIFICHE DI UTILIZZO DELLA FUNZIONE SERVIZI POSTALI
-          PROFILI NORMATIVI Il pagamento dei bollettini postali è un servizio di
-          pagamento per il cui esercizio professionale è necessaria un'apposita
-          autorizzazione rilasciata dalla Banca d'Italia. In particolare,
-          l'articolo 114-sexies del Testo unico bancario (d.lgs. 385/1993)
-          riserva la prestazione di servizi di pagamento alle banche, agli
-          istituti di moneta elettronica, a Poste Italiane Spa e agli Istituti
-          di Pagamento (c.d. “prestatori di servizi di pagamento”, PSP). I
-          soggetti che offrono alla clientela il servizio “Pagamento bollettini
-          di conto corrente” devono operare o come prestatori di servizi di
-          pagamento oppure sulla base di un contratto con un prestatore di
-          servizi di pagamento autorizzato. Lo stesso vale anche nel caso di
-          soggetti, diversi da Poste Italiane, abilitati all'offerta di servizi
-          postali; la sola autorizzazione e/o la licenza rilasciata dal
-          Ministero dello Sviluppo Economico per i servizi postali non abilita
-          quindi tali soggetti allo svolgimento del servizio 'Pagamento
-          bollettini postali'. 1. OGGETTO E DESCRIZIONE I servizi inclusi nella
-          sezione vengono evasi in collaborazione con Mr.Pay Srl. Il cliente
-          affiliato, una volta attivato l'account a lui riservato, per
-          utilizzare il servizio di pagamento utenze dovrà seguire le istruzioni
-          contenute nella pagina dedicata. La funzione “Prodotti Postali”
-          permette ai Clienti Affiliati, di inviare a Mr.Pay Srl la richiesta di
-          effettuare il pagamento di bollettini postali mediante addebito sul
-          Borsellino Elettronico prepagato dell' importo del bollettino da
-          pagare sommato ai relativi diritti postali e commissioni.
+        <div className="bolletini--condition__check">
+          <label htmlFor="bollo">
+            La persona che hai di fronte non è il intestatario del pagamento del
+            bollo
+          </label>
+
+          <input id="bollo" type="checkbox" />
+          <div></div>
+        </div>
+        <div className="bolletini--condition__orario">
+          <span>ORARI DI SERVIZIO</span>
+          <div>Tutti i giorni dalle ore 6:00 alle ore 00:30</div>
+        </div>
+        <div className="bolletini--condition__warning">
+          <span>
+            Attenzione! I Bolli Auto delle regioni Friuli-Venezia Giulia, Veneto
+            e Sardegna non sono al momento Pagabili.
+          </span>
         </div>
       </div>
+
       <div className="bolletini--buttons">
         <button
           className={`${bolletiniLoading ? "disable" : ""}`}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NumpadForm from "./modals/NumpadForm";
 import BolletiniBianchi from "./modals/BolletiniBianchi";
 import BolletiniPremercati from "./modals/BolletiniPremercati";
@@ -42,14 +42,25 @@ const ServicesForms = ({
           allFavServices={allFavServices}
         />
       ) : (
-        <div className="serviceSoon">
-          Servizio {activeService}
-          disponibile a breve{" "}
-          <button onClick={() => setService(null)}>Indietro</button>
-        </div>
+        <RedirectDashboard
+          activeService={activeService}
+          setService={setService}
+        />
       )}
     </div>
   );
 };
-
+const RedirectDashboard = ({ setService, activeService }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      setService(null);
+    }, 3000);
+  }, []);
+  return (
+    <div className="serviceSoon">
+      Servizio {activeService} {` `}disponibile a breve. Reindirizzamento alla
+      schermata iniziale ...
+    </div>
+  );
+};
 export default ServicesForms;
