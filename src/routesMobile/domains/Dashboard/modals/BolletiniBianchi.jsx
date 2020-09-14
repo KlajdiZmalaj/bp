@@ -52,6 +52,29 @@ const BolletiniBianchi = ({
   const [prov, setProvi] = useState("");
   const [barcode, setBarcode] = useState("");
   const [camera, setCamera] = useState(false);
+
+  let bartcode = barcode;
+
+  const counter1 = bartcode.substring(0, 2); //2shifror
+  const codiceIdf = bartcode.substring(2, 2 + parseInt(counter1));
+
+  const counter2 = bartcode.substring(20, 22); //2shifror
+  const sulCC = bartcode.substring(22, 22 + parseInt(counter2));
+
+  const counter3 = bartcode.substring(34, 36); //2shifror
+  const shuma = bartcode.substring(36, 36 + parseInt(counter3));
+
+  const counter4 = bartcode.substring(46, 47); //1shifror
+  const tipologia = bartcode.substring(47, 47 + parseInt(counter4));
+  const barCodeData = {
+    codice_identificativo: codiceIdf,
+    importo: shuma
+      ? (parseFloat(shuma.toString()) / 100).toString().replace(".", ",")
+      : "",
+    numero_conto_corrente: sulCC,
+    tipologia: tipologia,
+  };
+
   useEffect(() => {
     if (Object.values(bolletiniBianchi).length > 0)
       notification[bolletiniBianchi.errors ? "error" : "success"]({
@@ -120,20 +143,21 @@ const BolletiniBianchi = ({
           aria-hidden="true"
         ></i>{" "}
       </div>
-      <div className="bolletini--subh">
-        CONTI CORRENTI POSTALI - Ricevuta di Accredito
-        {barcode}
-      </div>
+      <div className="bolletini--subh">PAGAMENTI</div>
       <div className="bolletini--inputs">
         <Input
-          icon={"fal fa-question-circle"}
+          icon={"fal fa-barcode-read"}
           label="Scansiona qui il Codice a Barre"
           handler={setBarcode}
           value={barcode}
           iconHandler={setCamera}
         />
-        <Input label="sul C/C n." handler={setCC} />
-        <Input label="di Euro" handler={setEuro} />
+        <Input
+          value={barCodeData.numero_conto_corrente}
+          label="sul C/C n."
+          handler={setCC}
+        />
+        <Input value={barCodeData.importo} label="di Euro" handler={setEuro} />
         <Input label="INTESTATO A" handler={setInt} />
         <Input label="CAUSALE" handler={setCasuale} />
         <Input label="ESEGUITO DA" handler={setEsg} />
@@ -187,9 +211,7 @@ const BolletiniBianchi = ({
         >
           Esegui <i className="fal fa-check" aria-hidden="true"></i>
         </button>
-        <button className="disable">
-          Stampa <span>Pre Scontrino</span>
-        </button>
+        <button className="disable">Stampa</button>
         <button
           onClick={() => {
             setService(null);
@@ -202,14 +224,14 @@ const BolletiniBianchi = ({
     </div>
   );
 };
-const mstp = ({
-  main: { services },
-  auth: { bolletiniLoading, bolletiniBianchi },
-}) => {
-  return {
-    services,
-    bolletiniLoading,
-    bolletiniBianchi,
-  };
-};
-export default connect(mstp, AuthActions)(BolletiniBianchi);
+
+export default connect(
+  ({ main: { services }, auth: { bolletiniLoading, bolletiniBianchi } }) => {
+    return {
+      services,
+      bolletiniLoading,
+      bolletiniBianchi,
+    };
+  },
+  AuthActions
+)(BolletiniBianchi);

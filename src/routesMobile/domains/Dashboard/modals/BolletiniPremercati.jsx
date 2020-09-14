@@ -3,16 +3,29 @@ import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
-const Input = ({ label, handler }) => (
-  <div className="bolletini--inputs__item">
+const Input = ({ label, handler, icon, value, iconHandler }) => (
+  <div className={"bolletini--inputs__item" + (icon ? " hasIcon" : "")}>
     <div className="label">{label}</div>
     <input
       type="text"
       onChange={(e) => {
         handler(e.target.value);
       }}
+      value={value && value}
     />
+    {icon && (
+      <i
+        onClick={() => {
+          if (label.includes("Codice")) {
+            //barcode camera to truee
+            iconHandler(true);
+          }
+        }}
+        className={icon}
+      />
+    )}
   </div>
 );
 
@@ -37,6 +50,30 @@ const BolletiniPremercati = ({
   const [citta, setCitta] = useState("");
   const [prov, setProvi] = useState("");
   const [codice, setCodice] = useState("");
+  const [barcode, setBarcode] = useState("");
+  const [camera, setCamera] = useState(false);
+
+  let bartcode = barcode;
+
+  const counter1 = bartcode.substring(0, 2); //2shifror
+  const codiceIdf = bartcode.substring(2, 2 + parseInt(counter1));
+
+  const counter2 = bartcode.substring(20, 22); //2shifror
+  const sulCC = bartcode.substring(22, 22 + parseInt(counter2));
+
+  const counter3 = bartcode.substring(34, 36); //2shifror
+  const shuma = bartcode.substring(36, 36 + parseInt(counter3));
+
+  const counter4 = bartcode.substring(46, 47); //1shifror
+  const tipologiaB = bartcode.substring(47, 47 + parseInt(counter4));
+  const barCodeData = {
+    codice_identificativo: codiceIdf,
+    importo: shuma
+      ? (parseFloat(shuma.toString()) / 100).toString().replace(".", ",")
+      : "",
+    numero_conto_corrente: sulCC,
+    tipologia: tipologiaB,
+  };
 
   useEffect(() => {
     if (Object.values(bolletiniPremercati).length > 0)
@@ -52,6 +89,7 @@ const BolletiniPremercati = ({
       });
     }
   }, [bolletiniLoading]);
+
   return (
     <div className="bolletini premercati">
       <div className="bolletini--services">
@@ -80,6 +118,18 @@ const BolletiniPremercati = ({
             );
           })}
       </div>
+
+      {camera && (
+        <BarcodeScannerComponent
+          onUpdate={(err, result) => {
+            if (result) {
+              setBarcode(result.text);
+              setCamera(false);
+            } else setBarcode("Scanning...");
+          }}
+        />
+      )}
+
       <div className="bolletini--header">
         Bolletini Premercati{" "}
         <i
@@ -96,18 +146,31 @@ const BolletiniPremercati = ({
           aria-hidden="true"
         ></i>{" "}
       </div>
-      <div className="bolletini--subh">
-        CONTI CORRENTI POSTALI - Ricevuta di Accredito
-      </div>
+      <div className="bolletini--subh">PAGAMENTI</div>
       <div className="bolletini--inputs">
-        <Input label="sul C/C n." handler={setCC} />
-        <Input label="di Euro" handler={setEuro} />
-        <Input label="Codice identificativo!" handler={setCodice} />
+        <Input
+          icon={"fal fa-barcode-read"}
+          label="Scansiona qui il Codice a Barre"
+          handler={setBarcode}
+          value={barcode}
+          iconHandler={setCamera}
+        />
+        <Input
+          value={barCodeData.numero_conto_corrente}
+          label="sul C/C n."
+          handler={setCC}
+        />
+        <Input value={barCodeData.importo} label="di Euro" handler={setEuro} />
+        <Input
+          value={barCodeData.codice_identificativo}
+          label="Codice identificativo!"
+          handler={setCodice}
+        />
         <div className="bolletini--inputs__item">
           <div className="label">Tipologia</div>
           <select
             onChange={(e) => setTipologia(e.target.value)}
-            defaultValue="896"
+            value={barCodeData.tipologia || "674"}
           >
             <option value="896">896</option>
             <option value="674">674</option>
@@ -164,9 +227,7 @@ const BolletiniPremercati = ({
         >
           Esegui <i className="fal fa-check" aria-hidden="true"></i>
         </button>
-        <button className="disable">
-          Stampa <span>Pre Scontrino</span>
-        </button>
+        <button className="disable">Stampa</button>
         <button
           onClick={() => {
             setService(null);
