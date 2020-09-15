@@ -23,60 +23,65 @@ const AdminServiziItem = ({
       className="AdminServiziItem--Image"
     />
     <div className="AdminServiziItem--ButtonWrapper">
-      <button
-        onClick={() => {
-          if (active === 0) {
-            UpdateServicesChangeStatus(
-              name,
-              full_name,
-              number_id,
-              true,
-              activeSkinId,
-              async () => {
-                await notification["success"]({
-                  message: "Lo stato viene modificato con successo",
-                  description: "il servizio è attivato",
-                });
-                await getService();
-              }
-            );
-          } else {
-            notification["success"]({
-              message: "Lo stato e gia attivato",
-            });
-          }
-        }}
-        className={`${active === 1 ? "active" : ""}`}
-      >
-        ACTIVE
-      </button>
-      <button
-        onClick={() => {
-          if (active === 1) {
-            UpdateServicesChangeStatus(
-              name,
-              full_name,
-              number_id,
-              false,
-              activeSkinId,
-              async () => {
-                await notification["error"]({
-                  message: "Lo stato viene modificato con successo",
-                  description: "il servizio è disattivato",
-                });
-                await getService();
-              }
-            );
-          } else {
-            notification["error"]({
-              message: "Lo stato e gia disattivato",
-            });
-          }
-        }}
-        className={`${active === 0 ? "active" : ""}`}
-      >
-        INACTIVE
-      </button>
+      <div>
+        <button
+          onClick={() => {
+            if (active === 0) {
+              UpdateServicesChangeStatus(
+                name,
+                full_name,
+                number_id,
+                true,
+                activeSkinId,
+                async () => {
+                  await notification["success"]({
+                    message: "Lo stato viene modificato con successo",
+                    description: "il servizio è attivato",
+                  });
+                  await getService();
+                }
+              );
+            } else {
+              notification["success"]({
+                message: "Lo stato e gia attivato",
+              });
+            }
+          }}
+          className={`${active === 1 ? "active" : ""}`}
+        >
+          ACTIVE
+        </button>
+        <button
+          onClick={() => {
+            if (active === 1) {
+              UpdateServicesChangeStatus(
+                name,
+                full_name,
+                number_id,
+                false,
+                activeSkinId,
+                async () => {
+                  await notification["error"]({
+                    message: "Lo stato viene modificato con successo",
+                    description: "il servizio è disattivato",
+                  });
+                  await getService();
+                }
+              );
+            } else {
+              notification["error"]({
+                message: "Lo stato e gia disattivato",
+              });
+            }
+          }}
+          className={`${active === 0 ? "active" : ""}`}
+        >
+          INACTIVE
+        </button>
+      </div>
+      <div>
+        <i className="fas fa-cog"></i>
+      </div>
     </div>
   </div>
 );

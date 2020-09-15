@@ -71,7 +71,6 @@ class AdminListaUtentiRow extends React.Component {
       activeSkinId,
       CenterCls,
     } = this.props;
-    const {} = this.state;
     const Special =
       activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
     return (

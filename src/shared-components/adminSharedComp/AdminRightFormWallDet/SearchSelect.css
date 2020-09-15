@@ -67,7 +67,7 @@
 }
 
 .Select--Body::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.602);
+  background: #aca8a8 !important;
 }
 
 .Select--Body div {

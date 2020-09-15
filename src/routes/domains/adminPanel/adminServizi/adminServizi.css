@@ -104,7 +104,8 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
 div.Center .AdminServizi .AdminServiziItem--ButtonWrapper,
 div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
   width: 70%;
-  margin: 0 15%;
+  margin: 0 12%;
+  margin-left: 18%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -115,18 +116,53 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
           align-items: center;
 }
 
-div.Center .AdminServizi .AdminServiziItem--ButtonWrapper :first-child.active,
-div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper :first-child.active {
-  border: 1px solid #00b850;
-  color: #00b850;
-  opacity: 1;
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper div,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper div {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-div.Center .AdminServizi .AdminServiziItem--ButtonWrapper :nth-child(2).active,
-div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper :nth-child(2).active {
-  border: 1px solid #e30000;
-  color: #e30000;
-  opacity: 1;
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper div:first-child,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper div:first-child {
+  width: 80%;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper div:nth-child(2),
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper div:nth-child(2) {
+  width: 20%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper div i,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper div i {
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 28px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 30px;
+  color: #484848;
+  cursor: pointer;
 }
 
 div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button,
@@ -135,11 +171,11 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   font-size: 11px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-  border-radius: 100px;
   color: #000000;
   border: 1px solid #000000;
+  padding: 0;
   opacity: 0.3;
-  width: 78px;
+  width: 50%;
   height: 28px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -150,6 +186,31 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button:first-child,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button:first-child {
+  border-radius: 30px 0 0 30px;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button:first-child.active,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button:first-child.active {
+  border: 1px solid #00b850;
+  color: #00b850;
+  opacity: 1;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button:nth-child(2),
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button:nth-child(2) {
+  border-radius: 0 30px 30px 0;
+}
+
+div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button:nth-child(2).active,
+div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button:nth-child(2).active {
+  border: 1px solid #e30000;
+  color: #e30000;
+  opacity: 1;
 }
 
 @media (max-width: 1500px) {
