@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import images from "themes/images";
 import { connect } from "react-redux";
 import TabBody from "./TabBody";
-import AuthActions from "redux-store/models/auth";
-const Header = ({ accountInfo, logOut }) => {
+import { AuthActions, MainActions } from "redux-store/models";
+const Header = ({ accountInfo, logOut, getAllServices, allServices }) => {
   const [leftMenu, setMenu] = useState(false);
   const [tab, setTab] = useState(1);
+
+  useEffect(() => {
+    getAllServices(1);
+  }, []);
   return (
     <header className="headerMob">
       <i onClick={() => setMenu(!leftMenu)} className="fal fa-bars"></i>
@@ -57,7 +61,13 @@ const Header = ({ accountInfo, logOut }) => {
                 <i className="fal fa-store"></i> Servizi
               </div>
             </div>
-            <TabBody logOut={logOut} accountInfo={accountInfo} tab={tab} />
+            <TabBody
+              setMenu={setMenu}
+              allServices={allServices}
+              logOut={logOut}
+              accountInfo={accountInfo}
+              tab={tab}
+            />
           </nav>
           <div
             onClick={() => {
@@ -73,7 +83,8 @@ const Header = ({ accountInfo, logOut }) => {
     </header>
   );
 };
-const mstp = ({ auth: { accountInfo } }) => ({
+const mstp = ({ auth: { accountInfo, allServices } }) => ({
   accountInfo,
+  allServices,
 });
-export default connect(mstp, AuthActions)(Header);
+export default connect(mstp, { ...AuthActions, ...MainActions })(Header);

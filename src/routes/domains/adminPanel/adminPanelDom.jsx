@@ -70,6 +70,7 @@ class AdminPanelDom extends React.Component {
     } else {
       this.setState({ menuSkinVisible: false });
     }
+    document.querySelector("#tabTheme").setAttribute("content", "#0078FF");
   }
   componentWillUnmount() {
     document.body.classList.remove("bodyAdmin");

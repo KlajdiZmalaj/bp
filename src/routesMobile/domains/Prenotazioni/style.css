@@ -62,11 +62,21 @@
 }
 
 .prenotation--services__item img {
-  width: 80%;
+  width: 40%;
   position: relative;
   bottom: 10px;
-  -webkit-filter: invert(1);
-          filter: invert(1);
+}
+
+.prenotation--services__item img.flixbus {
+  width: 70px;
+}
+
+.prenotation--services__item img.stubhub {
+  width: 70px;
+}
+
+.prenotation--services__item img.vivaticket {
+  width: 70px;
 }
 
 .prenotation--services__item span {
@@ -147,9 +157,10 @@
 }
 
 .prenotation .formsContainer--body .rightForm--right {
-  padding: 20px;
+  padding: 0;
   margin-top: 18px;
-  background-color: #eaebec;
+  background-color: #fff;
+  padding-top: 18px;
 }
 
 .prenotation .voli .rightForm--left .formsContainer--body__item:first-child {

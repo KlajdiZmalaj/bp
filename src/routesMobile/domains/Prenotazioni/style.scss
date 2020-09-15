@@ -39,11 +39,20 @@
         border-color: var(--accent-bg);
         border-width: 2px;
       }
+
       img {
-        width: 80%;
+        width: 40%;
         position: relative;
         bottom: 10px;
-        filter: invert(1);
+        &.flixbus {
+          width: 70px;
+        }
+        &.stubhub {
+          width: 70px;
+        }
+        &.vivaticket {
+          width: 70px;
+        }
       }
       span {
         position: absolute;
@@ -111,9 +120,10 @@
     }
   }
   .formsContainer--body .rightForm--right {
-    padding: 20px;
+    padding: 0;
     margin-top: 18px;
-    background-color: #eaebec;
+    background-color: #fff;
+    padding-top: 18px;
   }
   .voli .rightForm--left {
     .formsContainer--body__item:first-child {
