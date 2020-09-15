@@ -1,0 +1,173 @@
+//@at-root
+
+.mobileWrapper.prenotation {
+  padding-top: 106px;
+}
+.prenotation {
+  &--services {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    background-color: #272c31;
+
+    .wrapperServices {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    }
+    &__item {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 5px;
+      background-color: #3c4349;
+      color: #fff;
+      border-radius: 5px;
+      position: relative;
+      border: 1px solid #4d565d;
+      &.active {
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
+        border-color: var(--accent-bg);
+      }
+      img {
+        width: 80%;
+        position: relative;
+        bottom: 10px;
+      }
+      span {
+        position: absolute;
+        bottom: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1.7px;
+      }
+    }
+  }
+  &--view {
+    padding-bottom: 60px;
+  }
+  .formsContainer--body {
+    margin-top: 0;
+  }
+  .formsContainer--body .rightForm--left {
+    padding: 0 !important;
+  }
+  .formsContainer--body__item {
+    padding: 0 18px;
+    flex-flow: column !important;
+    width: 100% !important;
+    .formsContainer--body__item {
+      padding: 0 !important;
+    }
+  }
+  .treni,
+  .eventi {
+    .rightForm--header {
+      margin-bottom: 18px;
+    }
+  }
+  .formsContainer--body .rightForm--header {
+    height: 54px;
+    background-color: var(--accent-bg);
+    color: var(--accent-txt);
+    padding: 0 18px;
+
+    .TitleBack {
+      font-size: 16px;
+    }
+  }
+  .travalersSelector {
+    width: 100%;
+  }
+  .formsContainer--body__item input,
+  .formsContainer--body__item .radioGr,
+  .formsContainer--body__item select,
+  .formsContainer--body__item .ant-select-selection--single {
+    background-color: #fff;
+    border: 1px solid #eaebec;
+  }
+  .adult,
+  .child {
+    .header {
+      height: 48px;
+      background-color: #eaebec;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      margin-top: 18px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  .formsContainer--body .rightForm--right {
+    padding: 20px;
+    margin-top: 18px;
+    background-color: #eaebec;
+  }
+  .voli .rightForm--left {
+    .formsContainer--body__item:first-child {
+      padding: 0 !important;
+      .label {
+        height: 48px;
+        background-color: #eaebec;
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+  .formsContainer--body__item .ant-select-selection--single {
+    background-color: #fff;
+    height: 40px;
+  }
+  .travalersSelector {
+    display: none;
+  }
+  .travalersSelectorDD {
+    position: relative;
+    top: 0;
+    box-shadow: 0 0 black;
+    background: #fff;
+    padding: 0;
+    &--item {
+      padding: 0 18px;
+      height: 50px;
+      font-size: 16px;
+      border-bottom: 1px solid #eaebec;
+      padding-right: 0;
+      > div {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        i {
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-right: 1px solid #eaebec;
+          border-left: 1px solid #eaebec;
+          height: 100%;
+          &:first-child {
+            margin-right: 20px;
+          }
+          &:last-child {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}

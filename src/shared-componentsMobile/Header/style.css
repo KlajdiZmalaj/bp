@@ -82,7 +82,7 @@
       -ms-flex-flow: column;
           flex-flow: column;
   position: relative;
-  height: calc(100vh - 74px);
+  height: calc(100% - 74px);
   overflow-y: auto;
   padding-bottom: 41px;
 }
@@ -192,16 +192,16 @@
   padding-bottom: 43px;
 }
 
-.headerMob + div:not(.dashBoardContainer) {
+.headerMob + div:not(.mobileWrapper) {
   padding-top: 69px;
   padding-bottom: 43px;
 }
 
-.headerMob + div:not(.dashBoardContainer) .download-overview {
+.headerMob + div:not(.mobileWrapper) .download-overview {
   display: none;
 }
 
-.headerMob + div:not(.dashBoardContainer) .sort-annunci ul {
+.headerMob + div:not(.mobileWrapper) .sort-annunci ul {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -209,19 +209,19 @@
   overflow: scroll;
 }
 
-.headerMob + div:not(.dashBoardContainer) .sort-annunci ul::-webkit-scrollbar {
+.headerMob + div:not(.mobileWrapper) .sort-annunci ul::-webkit-scrollbar {
   height: 0;
   width: 0;
 }
 
-.headerMob + div:not(.dashBoardContainer) .sort-annunci ul li {
+.headerMob + div:not(.mobileWrapper) .sort-annunci ul li {
   width: auto !important;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   margin-right: 10px !important;
 }
 
-.headerMob + div:not(.dashBoardContainer) .azioni {
+.headerMob + div:not(.mobileWrapper) .azioni {
   display: none;
 }
 

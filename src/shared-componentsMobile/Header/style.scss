@@ -55,7 +55,7 @@
       display: flex;
       flex-flow: column;
       position: relative;
-      height: calc(100vh - 74px);
+      height: calc(100% - 74px);
       overflow-y: auto;
       padding-bottom: 41px;
       &--item {
@@ -136,7 +136,7 @@
       padding-bottom: 43px;
     }
   }
-  + div:not(.dashBoardContainer) {
+  + div:not(.mobileWrapper) {
     padding-top: 69px;
     padding-bottom: 43px;
     .download-overview {
