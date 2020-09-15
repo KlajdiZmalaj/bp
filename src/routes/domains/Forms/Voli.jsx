@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { notification } from "antd";
 import images from "themes/images";
 import VoliUserFrom from "./VoliUserFrom";
+import { connect } from "react-redux";
+import { AuthActions, MainActions } from "redux-store/models";
 class Voli extends Component {
   state = {
     bagaglio: 1,
@@ -67,7 +69,14 @@ class Voli extends Component {
     });
   };
   render() {
-    const { nome_agenzia, color, accountInfo, goBack } = this.props;
+    const {
+      nome_agenzia,
+      color,
+      accountInfo,
+      goBack,
+      isMobile,
+      activeService,
+    } = this.props;
     const { adults, childrens, hasDD } = this.state;
     // const params = {
     //   spaceBetween: 0,
@@ -79,22 +88,36 @@ class Voli extends Component {
     //   },
     // };
     return (
-      <div className="formsContainer--body animated fadeIn">
-        <div className="leftForm">
-          <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
-          <img
-            src={images[`${nome_agenzia}-logo`]}
-            alt=""
-            className="imgLogo"
-          />
-          <div className="overlayImg" style={{ backgroundColor: color }}></div>
-        </div>
+      <div className="formsContainer--body animated fadeIn voli">
+        {!isMobile && (
+          <div className="leftForm">
+            <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
+            <img
+              src={images[`${nome_agenzia}-logo`]}
+              alt=""
+              className="imgLogo"
+            />
+            <div
+              className="overlayImg"
+              style={{ backgroundColor: color }}
+            ></div>
+          </div>
+        )}
+
         <div className="rightForm">
           <div className="rightForm--header">
-            <div className="TitleBack">
-              <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
-              Prenotazione Biglietti{" "}
-            </div>{" "}
+            {!isMobile && (
+              <div className="TitleBack">
+                <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
+                Prenotazione Biglietti{" "}
+              </div>
+            )}
+            {isMobile && activeService && (
+              <div className="TitleBack">
+                <i className="fa fa-plane" aria-hidden="true"></i>
+                {activeService}
+              </div>
+            )}
             <img src={images[`${nome_agenzia}-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
@@ -106,7 +129,7 @@ class Voli extends Component {
               >
                 <span>{adults}</span> Adulti, <span>{childrens}</span>Bambini
               </div>
-              {hasDD && (
+              {(hasDD || isMobile) && (
                 <div className="travalersSelectorDD">
                   <div className="travalersSelectorDD--item">
                     <span>Adulti</span>
@@ -291,5 +314,9 @@ class Voli extends Component {
     );
   }
 }
-
-export default Voli;
+const mstp = (state) => {
+  return {
+    accountInfo: state.auth.accountInfo,
+  };
+};
+export default connect(mstp, { ...AuthActions, ...MainActions })(Voli);

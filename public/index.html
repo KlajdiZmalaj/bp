@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./fontAwesome/css/all.min.css" />
   <link id="lnk" rel="stylesheet" href="" />
+  <meta id='tabTheme' name="theme-color" content="#f36520" />
+
   <script>
     var root = document.getElementsByTagName("html")[0];
     root.setAttribute("class", `${window.location.host.split(".")[0]}`);
@@ -17,12 +19,16 @@
     ) {
       document.getElementById("lnk").setAttribute("href", `var1.css`);
     } else if (window.location.href.includes("gfb")) {
+      document.querySelector('#tabTheme').setAttribute('content', '#fdaf18')
       document.getElementById("lnk").setAttribute("href", "./var5.css");
     } else if (window.location.href.includes("planet")) {
+      document.querySelector('#tabTheme').setAttribute('content', '#fdaf18')
       document.getElementById("lnk").setAttribute("href", "./var4.css");
     } else if (window.location.href.includes("sirpay")) {
+      document.querySelector('#tabTheme').setAttribute('content', '#222')
       document.getElementById("lnk").setAttribute("href", "./var6.css");
     } else if (window.location.href.includes("derby")) {
+      document.querySelector('#tabTheme').setAttribute('content', '#0da90f')
       document.getElementById("lnk").setAttribute("href", "./var3.css");
     }
     if (window.location.host.split(".")[1]) {

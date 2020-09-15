@@ -14,7 +14,7 @@
 }
 
 .AdminRightForm::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.602);
+  background: #aca8a8 !important;
 }
 
 .AdminRightForm .Tranzacioni {
@@ -341,7 +341,7 @@
 }
 
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1)::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.602);
+  background: #aca8a8 !important;
 }
 
 .AdminRightForm .printModal div.ContainerOfData:nth-child(1) .headerModal {

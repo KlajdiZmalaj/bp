@@ -3,7 +3,8 @@ import { notification } from "antd";
 import moment from "moment";
 import images from "themes/images";
 import DatePicker from "shared-components/DatePicker/DatePicker";
-
+import { connect } from "react-redux";
+import { AuthActions, MainActions } from "redux-store/models";
 class Treni extends Component {
   state = {};
   resetState = (msg) => {
@@ -87,25 +88,41 @@ class Treni extends Component {
     }
   }
   render() {
-    const { nome_agenzia, color, goBack } = this.props;
+    const { nome_agenzia, color, goBack, isMobile, activeService } = this.props;
     console.log(this.state.tipologia_biglietto);
     return (
-      <div className="formsContainer--body animated fadeIn">
-        <div className="leftForm">
-          <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
-          <img
-            src={images[`${nome_agenzia}-logo`]}
-            alt=""
-            className="imgLogo"
-          />
-          <div className="overlayImg" style={{ backgroundColor: color }}></div>
-        </div>
+      <div className="formsContainer--body animated fadeIn treni">
+        {!isMobile && (
+          <div className="leftForm">
+            <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
+            <img
+              src={images[`${nome_agenzia}-logo`]}
+              alt=""
+              className="imgLogo"
+            />
+            <div
+              className="overlayImg"
+              style={{ backgroundColor: color }}
+            ></div>
+          </div>
+        )}
+
         <div className="rightForm">
           <div className="rightForm--header">
-            <div className="TitleBack" onClick={goBack}>
-              <i className="fal fa-chevron-left Arrow"></i>
-              Prenotazione Biglietti{" "}
-            </div>
+            {!isMobile && (
+              <div className="TitleBack" onClick={goBack}>
+                <i className="fal fa-chevron-left Arrow"></i>
+                Prenotazione Biglietti{" "}
+              </div>
+            )}
+            {isMobile && (
+              <div className="TitleBack">
+                {" "}
+                <i className="fa fa-train" aria-hidden="true"></i>{" "}
+                {activeService}{" "}
+              </div>
+            )}
+
             <img src={images[`${nome_agenzia}-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
@@ -361,5 +378,9 @@ class Treni extends Component {
     );
   }
 }
-
-export default Treni;
+const mstp = (state) => {
+  return {
+    accountInfo: state.auth.accountInfo,
+  };
+};
+export default connect(mstp, { ...AuthActions, ...MainActions })(Treni);
