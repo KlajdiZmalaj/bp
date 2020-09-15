@@ -15,7 +15,7 @@ const Item = ({ name, activeService, setService }) => (
       "prenotation--services__item" + (activeService === name ? " active" : "")
     }
   >
-    <img src={images[`${name}-logo`]} alt="" />
+    <img className={name} src={images[`${name}-mobile`]} alt="" />
     <span>{capitalize(name)}</span>
   </div>
 );
