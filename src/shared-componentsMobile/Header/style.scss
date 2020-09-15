@@ -25,7 +25,7 @@
     height: 100%;
     z-index: 4;
     top: 0;
-    overflow-y: auto;
+    overflow: hidden;
     animation-duration: 0.5s !important;
     border-top: 4px solid var(--accent-bg);
     font-size: 16px;

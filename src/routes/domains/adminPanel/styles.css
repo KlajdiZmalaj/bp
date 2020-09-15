@@ -2607,7 +2607,7 @@ body.bodyAdmin::-webkit-scrollbar-track,
 }
 
 @media (max-width: 700px) {
-  .col-md-12 {
+  .bodyAdmin .col-md-12 {
     height: calc(100vh - 344px) !important;
   }
   div.Center--Big div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead td:nth-child(5) {
