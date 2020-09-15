@@ -13,19 +13,7 @@
     margin: calc((20vh - 71px) / 2) 25vw;
     transition: 0.5s;
   }
-  &.Big {
-    margin: calc((50vh - 101px) / 2) calc(15vw + 100px) !important;
-    transition: 0.5s;
-    @media only screen and (max-width: 1320px) and (min-width: 1024px) {
-      margin: calc((50vh - 101px) / 2) calc(25vw + 100px) !important;
-      transition: 0.5s;
-    }
-    & .backDrop {
-      width: calc(100vw - 200px);
-      left: 200px;
-      transition: 0.5s;
-    }
-  }
+
   & .AdminRightForm--Box--Wallet--Dropdown {
     padding: 4vh 0;
     overflow-y: auto;
@@ -99,8 +87,8 @@
   & .backDrop {
     top: 101px;
     height: calc(100vh - 71px);
-    width: calc(100vw - 50px);
-    left: 50px;
+    width: 100vw;
+    left: 0;
     z-index: 4;
     transition: 0.5s;
   }

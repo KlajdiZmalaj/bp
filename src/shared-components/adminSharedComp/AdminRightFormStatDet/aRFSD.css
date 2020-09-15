@@ -9,11 +9,6 @@
           box-shadow: 0 3px 6px 1px #0000008c;
 }
 
-.RightFormModal.Big .backDrop {
-  width: calc(100vw - 200px);
-  left: 200px;
-}
-
 .RightFormModal .Header {
   position: absolute;
   width: calc(100% - 5.9vw);
@@ -69,9 +64,9 @@
 .RightFormModal .backDrop {
   top: 101px;
   height: calc(100vh - 71px);
-  width: calc(100vw - 50px);
-  left: 50px;
+  width: calc(100vw);
   z-index: 4;
+  left: 0;
 }
 
 .RightFormModal .Statistiche.Dropdown {
