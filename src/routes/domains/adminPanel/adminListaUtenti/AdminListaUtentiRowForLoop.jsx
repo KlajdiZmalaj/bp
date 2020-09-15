@@ -215,7 +215,11 @@ class AdminListaUtentiRowForLoop extends React.Component {
           </span>
           <span
             className={`${Special ? "activated" : ""}`}
-            style={{ width: "230px", justifyContent: "space-between" }}
+            style={{
+              width: "220px",
+              justifyContent: "space-between",
+              marginRight: "10px",
+            }}
           >
             <button
               onClick={() => {
