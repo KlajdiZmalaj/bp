@@ -5,7 +5,6 @@ const Prenotazione = () => {
   return (
     <div className="PrenotazioniMob">
       <Header />
-
       <Prenotazionebody />
       <UserInfoBar />
       <Footer />

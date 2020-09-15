@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     padding: 18px;
-    background-color: #272c31;
+    background-color: #fff;
 
     .wrapperServices {
       display: flex;
@@ -28,20 +28,22 @@
       justify-content: center;
       flex-shrink: 0;
       margin-right: 5px;
-      background-color: #3c4349;
       color: #fff;
       border-radius: 5px;
       position: relative;
-      border: 1px solid #4d565d;
+      border: 1px solid #dedede;
+      color: #222;
       &.active {
-        background-color: var(--accent-bg);
-        color: var(--accent-txt);
+        background-color: #eaebec;
+        color: var(--accent-bg);
         border-color: var(--accent-bg);
+        border-width: 2px;
       }
       img {
         width: 80%;
         position: relative;
         bottom: 10px;
+        filter: invert(1);
       }
       span {
         position: absolute;
@@ -171,5 +173,9 @@
         }
       }
     }
+  }
+  .formsContainer--body__item .label {
+    font-size: 16px;
+    font-weight: 500;
   }
 }
