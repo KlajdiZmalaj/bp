@@ -90,27 +90,34 @@ export default {
   "expedia-logo": require(`../assets/images/prenotazioni/expedia.svg`),
   "expedia-bg": require(`../assets/images/prenotazioni/expedia-bg.jpg`),
   "expedia-card": require(`../assets/images/prenotazioni/expedia-card.png`),
+  "expedia-mobile": require(`../assets/images/prenotazioni/expedia-mobile.svg`),
 
   "flixbus-logo": require(`../assets/images/prenotazioni/flixbus.svg`),
   "flixbus-bg": require(`../assets/images/prenotazioni/flixbus-bg.jpg`),
   "flixbus-card": require(`../assets/images/prenotazioni/flixbus-card.png`),
+  "flixbus-mobile": require(`../assets/images/prenotazioni/flixbus-mobile.svg`),
 
   "trenitalia-logo": require(`../assets/images/prenotazioni/trenitalia.svg`),
   "trenitalia-bg": require(`../assets/images/prenotazioni/trenitalia-bg.jpg`),
   "trenitalia-card": require(`../assets/images/prenotazioni/trenitalia-card.png`),
+  "trenitalia-mobile": require(`../assets/images/prenotazioni/trenitalia-mobile.svg`),
 
   "vivaticket-logo": require(`../assets/images/prenotazioni/vivaticket.svg`),
   "vivaticket-bg": require(`../assets/images/prenotazioni/vivaticket-bg.jpg`),
   "vivaticket-card": require(`../assets/images/prenotazioni/vivaticket-card.png`),
+  "trenitalia-mobile": require(`../assets/images/prenotazioni/trenitalia-mobile.svg`),
 
   "ticketing-logo": require(`../assets/images/prenotazioni/ticketing.svg`),
   "ticketing-bg": require(`../assets/images/prenotazioni/ticketing-bg.jpg`),
   "ticketing-card": require(`../assets/images/prenotazioni/ticketing-card.png`),
+  "vivaticket-mobile": require(`../assets/images/prenotazioni/vivaticket-mobile.svg`),
 
   "stubhub-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
   "stubhub-bg": require(`../assets/images/prenotazioni/stubhub-bg.jpg`),
   "stubhub-card": require(`../assets/images/prenotazioni/stubhub-card.png`),
   "visure-card": require(`../assets/images/prenotazioni/stubhub-card.png`),
+  "stubhub-mobile": require(`../assets/images/prenotazioni/stubhub-mobile.svg`),
+
   // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 
   faturaBackground: require(`../assets/images/FaturaBackground.png`),
