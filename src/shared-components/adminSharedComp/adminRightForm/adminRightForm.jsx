@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
+import { MainActions } from "redux-store/models";
 import Ticket from "./Ticket";
 import "./adminRightForm.css";
 import AdminRightFormUltimeDetails from "../AdminRightFormUltDet/AdminRightFormUltimeDetails";
 import AdminRightFormStatisticheDetails from "../AdminRightFormStatDet/AdminRightFormStatisticheDetails";
 import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightFormWalletDetails";
-
+import PrenotazioneBiglietti from "./PrenotazioneBiglietti";
 class AdminRightForm extends React.Component {
   state = {
     dropdownVisibility: true,
@@ -15,27 +16,56 @@ class AdminRightForm extends React.Component {
     depositoActiveVisibility: true,
     addebitoActiveVisibility: false,
   };
+
   componentDidMount() {}
   componentDidUpdate(prevProps, prevState) {
-    const { activeSkinId } = this.props;
-    if (this.state.statisticheDropdownVisibility === true) {
-      if (
-        (this.state.statisticheDropdownVisibility === true &&
-          prevState.statisticheDropdownVisibility === false) ||
-        (this.props.activeSkinId != prevProps.activeSkinId &&
-          this.state.statisticheDropdownVisibility === true)
-      ) {
-        this.props.getStatistiche(activeSkinId);
+    const {
+      activeSkinId,
+      accountInfo,
+      getUsers,
+      getStatistiche,
+      getWidgetPayments,
+    } = this.props;
+    const {
+      statisticheDropdownVisibility,
+      dropdownVisibility,
+      leUltimeTransazioni,
+    } = this.state;
+    if (
+      activeSkinId != prevProps.activeSkinId &&
+      dropdownVisibility === true &&
+      !window.location.href.includes("utenti")
+    ) {
+      const Special =
+        activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
+      if (Special) {
+        getUsers(null, {
+          skin_id: 1,
+        });
+      } else {
+        getUsers(null, {
+          skin_id: activeSkinId,
+          backoffice: true,
+        });
       }
     }
-    if (this.state.leUltimeTransazioni === true) {
+    if (statisticheDropdownVisibility === true) {
       if (
-        (this.state.leUltimeTransazioni === true &&
-          prevState.leUltimeTransazioni === false) ||
-        (this.props.activeSkinId != prevProps.activeSkinId &&
-          this.state.leUltimeTransazioni === true)
+        (statisticheDropdownVisibility === true &&
+          prevState.statisticheDropdownVisibility === false) ||
+        (activeSkinId != prevProps.activeSkinId &&
+          this.state.statisticheDropdownVisibility === true)
       ) {
-        this.props.getWidgetPayments(activeSkinId);
+        getStatistiche(activeSkinId);
+      }
+    }
+    if (leUltimeTransazioni === true) {
+      if (
+        (leUltimeTransazioni === true &&
+          prevState.leUltimeTransazioni === false) ||
+        (activeSkinId != prevProps.activeSkinId && leUltimeTransazioni === true)
+      ) {
+        getWidgetPayments(activeSkinId);
       }
     }
   }
@@ -57,6 +87,7 @@ class AdminRightForm extends React.Component {
     } = this.props;
     return (
       <div className="AdminRightForm">
+        {/* <PrenotazioneBiglietti /> */}
         {screenWidth > 1024 &&
           (openAdminModal === false ? (
             <React.Fragment>
@@ -162,4 +193,6 @@ const mapsStateToProps = (state) => ({
   TrCoPro: state.auth.Statistiche?.total,
   accountInfo: state.auth.accountInfo,
 });
-export default connect(mapsStateToProps, { ...AuthActions })(AdminRightForm);
+export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
+  AdminRightForm
+);

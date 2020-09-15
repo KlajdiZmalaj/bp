@@ -8,6 +8,10 @@
   justify-content: center;
   align-items: center;
   z-index: 7;
+  .backDrop {
+    height: calc(100vh - 101px);
+    top: 101px;
+  }
   &--Container {
     width: 350px;
     height: 392px;
