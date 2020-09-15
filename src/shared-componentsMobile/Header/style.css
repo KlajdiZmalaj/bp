@@ -102,6 +102,39 @@
   -ms-flex-negative: 0;
       flex-shrink: 0;
   position: relative;
+  white-space: nowrap;
+}
+
+.headerMob nav .tabBody--item > span {
+  width: 50vw;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerMob nav .tabBody--item > i:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.headerMob nav .tabBody--item .fa-chevron-right {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .headerMob nav .tabBody--item.active {
@@ -120,13 +153,17 @@
 .headerMob nav .tabBody--item i {
   margin-right: 3px;
   opacity: 0.5;
-  width: 25px;
+  width: 35px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .headerMob nav .tabBody--item span:nth-child(3) {
   margin-left: auto;
   font-weight: 500;
   color: var(--accent-bg);
+  text-align: right;
+  width: 30vw;
 }
 
 .headerMob nav .tabBody--a {
@@ -177,7 +214,7 @@
 
 .headerMob .nameUser {
   white-space: nowrap;
-  max-width: 150px;
+  width: 40vw;
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -295,5 +332,41 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.fal.PRDPST:before, .fal.SND000:before {
+  content: "\f543";
+}
+
+.fal.RTELD:before, .fal.RTELC:before, .fal.RTELI:before {
+  content: "\f10b";
+}
+
+.fal.CCARD:before {
+  content: "\f09d";
+}
+
+.fal.SCMS:before {
+  content: "\f389";
+}
+
+.fal.RTVD:before {
+  content: "\f26c";
+}
+
+.fal.GIFT:before {
+  content: "\f06b";
+}
+
+.fal.ALTRI:before {
+  content: "\f217";
+}
+
+.fal.CRYP:before {
+  content: "\f51e";
+}
+
+.fal.BGLT:before, .fal.VSRE:before {
+  content: "\f570";
 }
 /*# sourceMappingURL=style.css.map */
