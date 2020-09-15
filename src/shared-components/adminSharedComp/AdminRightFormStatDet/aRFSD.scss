@@ -2,8 +2,8 @@
   position: fixed;
   width: 80vw;
   top: 101px;
-  margin: calc((20vh - 71px) / 2) 10vw;
-  height: 80vh;
+  margin: calc((40vh - 101px) / 2) 15vw;
+  height: 60vh;
   z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
 
@@ -53,7 +53,7 @@
   & .Statistiche.Dropdown {
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 7vh;
+    padding-top: 5.5vh;
     position: absolute;
     height: 100%;
     width: 100%;

@@ -16,6 +16,11 @@
   z-index: 7;
 }
 
+.DepositoModal .backDrop {
+  height: calc(100vh - 101px);
+  top: 101px;
+}
+
 .DepositoModal--Container {
   width: 350px;
   height: 392px;
