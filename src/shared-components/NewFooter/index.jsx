@@ -12,7 +12,7 @@ class Footer extends Component {
   render() {
     const { skinExtras, screenWidth } = this.props;
     // console.log("skinExtras", skinExtras);
-    return screenWidth > 880 ? (
+    return screenWidth > 1024 ? (
       <footer>
         <div className="top">
           <div className="maxWFooter">

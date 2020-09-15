@@ -225,9 +225,11 @@
 
 .prenotation .travalersSelectorDD--item > div i:first-child {
   margin-right: 20px;
+  margin-left: 0;
 }
 
 .prenotation .travalersSelectorDD--item > div i:last-child {
   margin-left: 20px;
+  margin-right: 0;
 }
 /*# sourceMappingURL=style.css.map */

@@ -110,7 +110,7 @@ class Root extends React.Component {
   render() {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
-    const isMobile = this.props.screenWidth <= 1024;
+    const isMobile = this.props.screenWidth <= 1025;
     // console.log("ca kaa acc", this.props.accountInfo);
     return (
       <React.Fragment>

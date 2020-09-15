@@ -38,7 +38,7 @@ class Header extends Component {
     if (accountInfo.token) {
       isLoggedin = true;
     }
-    return screenWidth > 860 ? (
+    return screenWidth > 1024 ? (
       <header className="header">
         <div className="headermaxW">
           <div className="topNav">
