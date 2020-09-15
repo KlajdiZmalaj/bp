@@ -88,7 +88,7 @@ const Numpad = ({
       </div>
       <div className="mobileNumPad--input">
         <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
-        <i class="fas fa-address-book"></i>
+        <i className="fas fa-address-book"></i>
       </div>
       <div className="mobileNumPad--numbers">
         {[...new Array(9)].map((a, b) => {

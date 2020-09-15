@@ -22,7 +22,11 @@ import {
   Verify,
   Wallet,
 } from "./routes";
-import { DashboardMobile, ConfiguraMobile } from "./routesMobile";
+import {
+  DashboardMobile,
+  ConfiguraMobile,
+  PrenotazioneMobile,
+} from "./routesMobile";
 import Support from "./routes/views/Support";
 import Forms from "./routes/views/Forms";
 import FormDetails from "./routes/views/FormDetails";
@@ -106,7 +110,7 @@ class Root extends React.Component {
   render() {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
-    const isMobile = this.props.screenWidth <= 550;
+    const isMobile = this.props.screenWidth <= 1025;
     // console.log("ca kaa acc", this.props.accountInfo);
     return (
       <React.Fragment>
@@ -224,7 +228,7 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/forms"
-              component={Forms}
+              component={isMobile ? PrenotazioneMobile : Forms}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency"]}
               role={role}
@@ -269,28 +273,28 @@ class Root extends React.Component {
               path="/back-office/utenti"
               component={AdminPanelListaUtenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin"]}
+              allowedRoles={["main_admin", "support"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/movimenti"
               component={AdminPanelListaMovimenti}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin"]}
+              allowedRoles={["main_admin", "support"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/prenotazioni"
               component={AdminPanelPrenotazioni}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin"]}
+              allowedRoles={["main_admin", "support"]}
               role={role}
             />
             <PrivateRoute
               path="/back-office/servizzi"
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
-              allowedRoles={["main_admin"]}
+              allowedRoles={["main_admin", "support"]}
               role={role}
             />
           </Switch>

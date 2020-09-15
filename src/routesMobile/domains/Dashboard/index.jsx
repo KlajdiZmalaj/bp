@@ -32,7 +32,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   const [activeCategory, setCategory] = useState(null);
   const [activeService, setService] = useState(null);
   return (
-    <div className="dashBoardContainer">
+    <div className="mobileWrapper">
       <UserInfoBar />
 
       {!activeService ? (

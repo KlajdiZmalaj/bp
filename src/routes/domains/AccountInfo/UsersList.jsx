@@ -15,15 +15,15 @@ import UserComp from "./UserComp";
 import { switchUserStatus, transferMoney } from "services/auth";
 
 const { Option } = Select;
-
+const InitialState = {
+  valueInput: "",
+  password: "",
+  confirm_password: "",
+};
 class UsersList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      valueInput: "",
-      password: "",
-      confirm_password: "",
-    };
+    this.state = InitialState;
   }
   componentDidMount() {
     this.props.getUsers();
@@ -34,6 +34,19 @@ class UsersList extends Component {
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
     this.props.getUsers();
+  };
+  resetState = () => {
+    this.setState({
+      changedInsegna: null,
+      changedcomune: null,
+      changedprovincia: null,
+      changedcap: null,
+      changednazione: null,
+      changedpagamento_mensile: null,
+      changedSede_operativa: null,
+      changedCordinate: null,
+      changeda_phone: null,
+    });
   };
   updateUser = () => {
     this.props.updateUserDetail(
@@ -59,7 +72,9 @@ class UsersList extends Component {
       this.state.changedpagamento_mensile ||
         this.props.userDetail.pagamento_mensile,
       this.state.password,
-      this.state.confirm_password
+      this.state.confirm_password,
+      "",
+      this.resetState
     );
   };
   render() {
@@ -68,7 +83,6 @@ class UsersList extends Component {
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
     const role = get(this.props.accountInfo, "profile.role.name");
-    // console.log("userDetail", userDetail);
     return (
       <div className="userList">
         {DepositoPopup?.visibility === true ? (
@@ -251,7 +265,7 @@ class UsersList extends Component {
               style={{ animationDuration: "0.5s" }}
             >
               <div className="newReg--header">
-                punta ancora di {userDetail.username}
+                {userDetail.username}
                 <div
                   className="closeBtn"
                   onClick={() => {

@@ -171,6 +171,7 @@ const { Types, Creators } = createActions({
     "password",
     "confirm_password",
     "skin_id",
+    "resetState",
   ],
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],

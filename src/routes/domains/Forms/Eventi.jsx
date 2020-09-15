@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Select, notification } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import images from "themes/images";
-
+import { connect } from "react-redux";
+import { AuthActions, MainActions } from "redux-store/models";
 const { Option } = Select;
 
 class Eventi extends Component {
@@ -90,26 +91,40 @@ class Eventi extends Component {
     );
   };
   render() {
-    const { nome_agenzia, color, goBack } = this.props;
+    const { nome_agenzia, color, goBack, isMobile, activeService } = this.props;
 
     return (
-      <div className="formsContainer--body animated fadeIn">
-        <div className="leftForm">
-          <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
-          <img
-            src={images[`${nome_agenzia}-logo`]}
-            alt=""
-            className="imgLogo"
-          />
-          <div className="overlayImg" style={{ backgroundColor: color }}></div>
-        </div>
+      <div className="formsContainer--body animated fadeIn eventi">
+        {!isMobile && (
+          <div className="leftForm">
+            <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
+            <img
+              src={images[`${nome_agenzia}-logo`]}
+              alt=""
+              className="imgLogo"
+            />
+            <div
+              className="overlayImg"
+              style={{ backgroundColor: color }}
+            ></div>
+          </div>
+        )}
+
         <div className="rightForm">
           <div className="rightForm--header">
-            <div className="TitleBack">
-              <i class="fal fa-chevron-left Arrow" onClick={goBack}></i>
-              Prenotazione Biglietti{" "}
-            </div>
+            {!isMobile && (
+              <div className="TitleBack">
+                <i class="fal fa-chevron-left Arrow" onClick={goBack}></i>
+                Prenotazione Biglietti{" "}
+              </div>
+            )}
 
+            {isMobile && (
+              <div className="TitleBack">
+                {" "}
+                <i className="fal fa-receipt"></i> {activeService}{" "}
+              </div>
+            )}
             <img src={images[`${nome_agenzia}-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
@@ -231,5 +246,9 @@ class Eventi extends Component {
     );
   }
 }
-
-export default Eventi;
+const mstp = (state) => {
+  return {
+    accountInfo: state.auth.accountInfo,
+  };
+};
+export default connect(mstp, { ...AuthActions, ...MainActions })(Eventi);
