@@ -63,6 +63,7 @@ const OneTab = ({
                       }
                     }}
                     key={serviceId}
+                    data-key={serviceId}
                     className="mobileServices--body__item"
                   >
                     <img

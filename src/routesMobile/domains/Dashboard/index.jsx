@@ -62,7 +62,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="fa-file-alt"
                 tab={tab}
                 setTab={setTab}
-                name="Tutte"
+                name="Tutte Servizi"
               />
               <Card
                 id={["PRDPST"]}
