@@ -169,9 +169,7 @@ const Servizi = ({
               favorites[serviceCategory].name
                 .toLowerCase()
                 .includes(serviceSearched.toLowerCase()) &&
-              (tab === "0" ||
-                tab.includes(serviceCategory) ||
-                tab === "fav") && (
+              tab === "fav" && (
                 <OneTab
                   setService={setService}
                   panelOpen={panelOpen}
