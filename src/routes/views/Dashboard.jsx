@@ -321,10 +321,7 @@ class Dashboard extends React.Component {
                                     scrollView.scrollIntoView();
                                   }}
                                 >
-                                  <img
-                                    src={`http://www.perdemo.it/ricaricheSPS/${item}.png`}
-                                    alt=""
-                                  />
+                                  <img src={images[item]} alt="" />
                                   <span>{favorites[gr][item].name}</span>
                                 </div>
                               )
