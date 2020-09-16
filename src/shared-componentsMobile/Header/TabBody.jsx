@@ -1,6 +1,6 @@
 import React from "react";
 import { azioni } from "config";
-import { get, includes } from "lodash";
+import { capitalize, get, includes } from "lodash";
 import { Tooltip } from "antd";
 import { open } from "shared-components/Chat/Chat";
 export default ({ tab, accountInfo, logOut, services, setMenu }) => {
@@ -46,7 +46,9 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
       <div className="tabBody--a">
         <div
           className="tabBody--a__b"
-          onClick={() => window?.Tawk_API?.toggle()}
+          onClick={() => {
+            open(window.innerWidth, window.innerHeight);
+          }}
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
@@ -123,7 +125,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
             }}
           >
             <i className={`fal ${categoryKey}`} aria-hidden="true"></i>{" "}
-            <span> {services[categoryKey]?.name}</span>
+            <span> {capitalize(services[categoryKey]?.name)}</span>
             <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
           </div>
         ) : (
@@ -159,7 +161,9 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
       <div className="tabBody--a">
         <div
           className="tabBody--a__b"
-          onClick={() => window?.Tawk_API?.toggle()}
+          onClick={() => {
+            open(window.innerWidth, window.innerHeight);
+          }}
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
