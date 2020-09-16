@@ -3,7 +3,8 @@ import { azioni } from "config";
 import { get, includes } from "lodash";
 import { Tooltip } from "antd";
 import { open } from "shared-components/Chat/Chat";
-export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
+export default ({ tab, accountInfo, logOut, services, setMenu }) => {
+  console.log("services", services);
   return tab === 1 ? (
     <div className="tabBody body1">
       {accountInfo?.profile ? (
@@ -11,7 +12,6 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
           <i className="fal fa-user-circle" aria-hidden="true"></i>
 
           <Tooltip title={accountInfo?.profile?.name}>
-            {" "}
             <div className="nameUser">{accountInfo?.profile?.name}</div>
           </Tooltip>
 
@@ -71,7 +71,7 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
     </div>
   ) : (
     <div className="tabBody body2">
-      {accountInfo?.profile ? (
+      {accountInfo?.profile && (
         <div className="tabBody--item">
           <i className="fal fa-user-circle" aria-hidden="true"></i>
 
@@ -82,19 +82,10 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
 
           <span>{accountInfo?.profile?.wallet}€</span>
         </div>
-      ) : (
-        <div
-          onClick={() => {
-            window.location.hash = "login";
-          }}
-          className="tabBody--item active"
-        >
-          <i className="fal fa-sign-in" aria-hidden="true"></i>
-          Login
-        </div>
       )}
-      {(allServices?.categories || []).map((category) =>
-        !category.full_name.includes("TELEFONICHE ") ? (
+
+      {(Object.keys(services) || []).map((categoryKey) =>
+        !services[categoryKey]?.name.includes("TELEFONICHE ") ? (
           <div
             className="tabBody--item"
             onClick={() => {
@@ -116,25 +107,25 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
                 if (tabtutte) {
                   tabtutte.click();
                   setTimeout(() => {
-                    const el = document.querySelector(`#${category.name}`);
+                    const el = document.querySelector(`#${categoryKey}`);
                     funx(el);
                   }, 100);
                 } else {
                   window.location.hash = "dashboard";
                   setTimeout(() => {
-                    const el = document.querySelector(`#${category.name}`);
+                    const el = document.querySelector(`#${categoryKey}`);
                     funx(el);
                   }, 300);
                 }
 
-                if (category.name === "BGLT" || category.name === "VSRE") {
+                if (categoryKey === "BGLT" || categoryKey === "VSRE") {
                   window.location.hash = "forms";
                 }
               }, 500);
             }}
           >
-            <i className={`fal ${category.name}`} aria-hidden="true"></i>{" "}
-            <span> {category.full_name}</span>
+            <i className={`fal ${categoryKey}`} aria-hidden="true"></i>{" "}
+            <span> {services[categoryKey]?.name}</span>
             <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
           </div>
         ) : (
@@ -161,7 +152,7 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
               }, 500);
             }}
           >
-            <i className={`fal ${category.name}`} aria-hidden="true"></i>{" "}
+            <i className={`fal ${categoryKey}`} aria-hidden="true"></i>{" "}
             <span> RICARICHE TELEFONO</span>
             <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
           </div>

@@ -33,7 +33,7 @@ const Dashboard = (props) => {
           <div className="loginPopUp animated slideInUp">
             <div className="loginPopUp--header">Accedi</div>
             <div className="loginPopUp--subheader">con le tue credenziali</div>
-            <div className="loginPopUp--forms">
+            <form className="loginPopUp--forms" action="/">
               <div className="loginPopUp--forms__item">
                 <div className="label">Username</div>
                 <input
@@ -42,25 +42,27 @@ const Dashboard = (props) => {
                       handleSubmit(e);
                     }
                   }}
+                  autocomplete="on"
                   type="text"
-                  placeholder="Email addres"
-                  name="userName"
+                  placeholder="Username"
+                  name="username"
                   onChange={(e) => {
                     handleChangeUsername(e.target.value);
                   }}
-                  id="login-name"
+                  id="loginUserame"
                 />
               </div>
               <div className="loginPopUp--forms__item">
                 <div className="label">Password</div>
                 <input
+                  autocomplete="on"
                   onKeyDown={(e) => {
                     if (e.keyCode === 13) {
                       handleSubmit(e);
                     }
                   }}
                   type="password"
-                  placeholder="password"
+                  placeholder="Password"
                   name="password"
                   id="password"
                   onChange={(e) => {
@@ -70,6 +72,7 @@ const Dashboard = (props) => {
               </div>
               <div className="loginPopUp--forms__item">
                 <button
+                  type="submit"
                   onClick={(e) => {
                     handleSubmit(e);
                   }}
@@ -82,7 +85,7 @@ const Dashboard = (props) => {
                   Non hai un account? <span>Chiedi informazioni</span>
                 </div>
               </div>
-            </div>
+            </form>
             <div className="loginPopUp--banner">
               <img src={images.mobileLoginGirl} alt="" />
             </div>
