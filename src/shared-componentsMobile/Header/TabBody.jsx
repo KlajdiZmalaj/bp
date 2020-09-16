@@ -46,9 +46,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
       <div className="tabBody--a">
         <div
           className="tabBody--a__b"
-          onClick={() => {
-            open(window.innerWidth, window.innerHeight);
-          }}
+          onClick={() => window?.Tawk_API?.toggle()}
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
@@ -158,6 +156,29 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           </div>
         )
       )}
+      <div className="tabBody--a">
+        <div
+          className="tabBody--a__b"
+          onClick={() => window?.Tawk_API?.toggle()}
+        >
+          <i className="fal fa-cog" aria-hidden="true"></i>
+          Helpdesk
+        </div>
+        {accountInfo?.profile ? (
+          <div onClick={() => logOut()} className="tabBody--a__b">
+            LOGOUT <i className="fal fa-sign-out"></i>
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              window.location.hash = "login";
+            }}
+            className="tabBody--a__b"
+          >
+            LOGIN <i className="fal fa-sign-out"></i>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

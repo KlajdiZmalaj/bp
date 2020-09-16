@@ -2209,6 +2209,11 @@ input#write {
   }
 }
 
+html body > div > iframe:nth-child(2) {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
 /*adm styles*/
 .creatutente {
   position: relative;
