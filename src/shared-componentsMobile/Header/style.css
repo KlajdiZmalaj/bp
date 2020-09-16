@@ -379,4 +379,16 @@
 .fal.BGLT:before, .fal.VSRE:before {
   content: "\f570";
 }
+
+@media (max-width: 1024px) {
+  #root * {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10+ and Edge */
+    -moz-user-select: none;
+         user-select: none;
+    /* Standard syntax */
+  }
+}
 /*# sourceMappingURL=style.css.map */

@@ -90,7 +90,7 @@ export default {
   COOPV: require(`../assets/images/COOPV.png`),
   LYCA: require(`../assets/images/LYCA.svg`),
   DTEL: require(`../assets/images/DTEL.jpg`),
-  SATO: require(`../assets/images/SATO.png`),
+  SATO: require(`../assets/images/STPL.png`),
   CHILLI: require(`../assets/images/CHILLI.png`),
   SIMF: require(`../assets/images/SIMF.png`),
   DIGIM: require(`../assets/images/DDIGIM.svg`),
@@ -119,7 +119,7 @@ export default {
   BTFG: require(`../assets/images/BTFG.png`),
   TELC: require(`../assets/images${skin}/TIM_logo_2016.svg`),
   UNOM: require(`../assets/images/UNOM.png`),
-
+  TALKH: require(`../assets/images/TALKH.png`),
   // COOPV: require(`../assets/images${skin}/bill-dark.svg`),
   // DKENA: require(`../assets/images${skin}/bill-dark.svg`),
   // HOX: require(`../assets/images${skin}/bill-dark.svg`),
