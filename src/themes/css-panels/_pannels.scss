@@ -284,6 +284,12 @@ body:not(.bodyAdmin) {
     display: inline-block;
     margin-top: -1px;
     margin-left: -1px;
+    img {
+      width: 80%;
+      height: 40px;
+      object-fit: contain;
+      object-position: left;
+    }
     p {
       position: relative;
       margin: 0;

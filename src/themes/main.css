@@ -2806,6 +2806,15 @@ body:not(.bodyAdmin) div.Container .row.no-gutters.max-width {
   margin-left: -1px;
 }
 
+.panel-services td img {
+  width: 80%;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: left;
+     object-position: left;
+}
+
 .panel-services td p {
   position: relative;
   margin: 0;
@@ -3726,6 +3735,12 @@ span.superSmall {
 .carrierLogo img {
   display: block;
   margin: 0 auto;
+  width: 100%;
+  height: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .carrierLogo:hover {

@@ -49,6 +49,7 @@ class ModulePopUp4 extends React.Component {
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
     const { serviceMobile, tel_no, toPrint } = this.state;
+    console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",
@@ -68,7 +69,7 @@ class ModulePopUp4 extends React.Component {
                     <tbody>
                       <tr>
                         <td className="carrierLogo" colSpan="3">
-                          <img src="img/TIM_logo_2016.svg" alt="" />
+                          <img src={images[service_s?.id]} alt="" />
                         </td>
                       </tr>
                       {(service_s.services || []).map((item, index) => {
