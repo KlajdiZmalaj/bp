@@ -69,6 +69,12 @@
         flex-shrink: 0;
         position: relative;
         white-space: nowrap;
+        &.tel {
+          display: none;
+          &:nth-of-type(3) {
+            display: flex;
+          }
+        }
         > span {
           width: 50vw;
           display: block;

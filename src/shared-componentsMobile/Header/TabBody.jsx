@@ -93,45 +93,80 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
           Login
         </div>
       )}
-      {(allServices?.categories || []).map((category) => (
-        <div
-          className="tabBody--item"
-          onClick={() => {
-            setMenu("out");
-            setTimeout(() => {
-              setMenu(false);
-              const el = document.querySelector(`#${category.name}`);
-              if (category.name === "BGLT" || category.name === "VSRE") {
-                window.location.hash = "forms";
-              } else {
-                if (el) {
+      {(allServices?.categories || []).map((category) =>
+        !category.full_name.includes("TELEFONICHE ") ? (
+          <div
+            className="tabBody--item"
+            onClick={() => {
+              setMenu("out");
+              setTimeout(() => {
+                setMenu(false);
+                const tabtutte = document.getElementById("tab0");
+                function funx(elem) {
+                  if (elem) {
+                    setTimeout(() => {
+                      elem.click();
+                      elem.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                    }, 100);
+                  }
+                }
+
+                if (tabtutte) {
+                  tabtutte.click();
                   setTimeout(() => {
-                    el.click();
-                    el.scrollIntoView({
-                      behavior: "smooth",
-                    });
+                    const el = document.querySelector(`#${category.name}`);
+                    funx(el);
                   }, 100);
                 } else {
                   window.location.hash = "dashboard";
                   setTimeout(() => {
                     const el = document.querySelector(`#${category.name}`);
-                    if (el) {
-                      el.click();
-                      el.scrollIntoView({
-                        behavior: "smooth",
-                      });
-                    }
+                    funx(el);
                   }, 300);
                 }
-              }
-            }, 500);
-          }}
-        >
-          <i className={`fal ${category.name}`} aria-hidden="true"></i>{" "}
-          <span> {category.full_name}</span>
-          <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
-        </div>
-      ))}
+
+                if (category.name === "BGLT" || category.name === "VSRE") {
+                  window.location.hash = "forms";
+                }
+              }, 500);
+            }}
+          >
+            <i className={`fal ${category.name}`} aria-hidden="true"></i>{" "}
+            <span> {category.full_name}</span>
+            <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
+          </div>
+        ) : (
+          <div
+            className="tabBody--item tel"
+            onClick={() => {
+              setMenu("out");
+              setTimeout(() => {
+                setMenu(false);
+                window.location.hash = "dashboard";
+                setTimeout(() => {
+                  const el = document.getElementById("tabRTELC,RTELD,RTELI");
+                  if (el) {
+                    el.click();
+                    el.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                    const panel = document.getElementById("RTELD");
+                    if (panel) {
+                      panel.click();
+                    }
+                  }
+                }, 300);
+              }, 500);
+            }}
+          >
+            <i className={`fal ${category.name}`} aria-hidden="true"></i>{" "}
+            <span> RICARICHE TELEFONO</span>
+            <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
+          </div>
+        )
+      )}
     </div>
   );
 };

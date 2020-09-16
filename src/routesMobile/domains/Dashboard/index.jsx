@@ -15,6 +15,7 @@ const Card = ({ setTab, tab, id, name, icon }) => (
         if (el) el.click();
       }
     }}
+    id={`tab${id}`}
     className={
       "serviziFilter--cards__item" + (isEqual(tab, id) ? " active" : "")
     }
