@@ -186,9 +186,10 @@ class Dashboard extends React.Component {
                                           services[item][service]?.services[0]
                                         );
                                         this.props.togglePopUp(true);
-                                        this.props.setServiceS(
-                                          services[item][service]
-                                        );
+                                        this.props.setServiceS({
+                                          ...services[item][service],
+                                          id: service,
+                                        });
                                       }
                                     }}
                                     className={
