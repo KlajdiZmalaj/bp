@@ -3,7 +3,8 @@ import { azioni } from "config";
 import { get, includes } from "lodash";
 import { Tooltip } from "antd";
 import { open } from "shared-components/Chat/Chat";
-export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
+export default ({ tab, accountInfo, logOut, services, setMenu }) => {
+  console.log("services", services);
   return tab === 1 ? (
     <div className="tabBody body1">
       {accountInfo?.profile ? (
@@ -11,7 +12,6 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
           <i className="fal fa-user-circle" aria-hidden="true"></i>
 
           <Tooltip title={accountInfo?.profile?.name}>
-            {" "}
             <div className="nameUser">{accountInfo?.profile?.name}</div>
           </Tooltip>
 
@@ -71,7 +71,7 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
     </div>
   ) : (
     <div className="tabBody body2">
-      {accountInfo?.profile ? (
+      {accountInfo?.profile && (
         <div className="tabBody--item">
           <i className="fal fa-user-circle" aria-hidden="true"></i>
 
@@ -82,56 +82,82 @@ export default ({ tab, accountInfo, logOut, allServices, setMenu }) => {
 
           <span>{accountInfo?.profile?.wallet}€</span>
         </div>
-      ) : (
-        <div
-          onClick={() => {
-            window.location.hash = "login";
-          }}
-          className="tabBody--item active"
-        >
-          <i className="fal fa-sign-in" aria-hidden="true"></i>
-          Login
-        </div>
       )}
-      {(allServices?.categories || []).map((category) => (
-        <div
-          className="tabBody--item"
-          onClick={() => {
-            setMenu("out");
-            setTimeout(() => {
-              setMenu(false);
-              const el = document.querySelector(`#${category.name}`);
-              if (category.name === "BGLT" || category.name === "VSRE") {
-                window.location.hash = "forms";
-              } else {
-                if (el) {
+
+      {(Object.keys(services) || []).map((categoryKey) =>
+        !services[categoryKey]?.name.includes("TELEFONICHE ") ? (
+          <div
+            className="tabBody--item"
+            onClick={() => {
+              setMenu("out");
+              setTimeout(() => {
+                setMenu(false);
+                const tabtutte = document.getElementById("tab0");
+                function funx(elem) {
+                  if (elem) {
+                    setTimeout(() => {
+                      elem.click();
+                      elem.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                    }, 100);
+                  }
+                }
+
+                if (tabtutte) {
+                  tabtutte.click();
                   setTimeout(() => {
-                    el.click();
-                    el.scrollIntoView({
-                      behavior: "smooth",
-                    });
+                    const el = document.querySelector(`#${categoryKey}`);
+                    funx(el);
                   }, 100);
                 } else {
                   window.location.hash = "dashboard";
                   setTimeout(() => {
-                    const el = document.querySelector(`#${category.name}`);
-                    if (el) {
-                      el.click();
-                      el.scrollIntoView({
-                        behavior: "smooth",
-                      });
-                    }
+                    const el = document.querySelector(`#${categoryKey}`);
+                    funx(el);
                   }, 300);
                 }
-              }
-            }, 500);
-          }}
-        >
-          <i className={`fal ${category.name}`} aria-hidden="true"></i>{" "}
-          <span> {category.full_name}</span>
-          <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
-        </div>
-      ))}
+
+                if (categoryKey === "BGLT" || categoryKey === "VSRE") {
+                  window.location.hash = "forms";
+                }
+              }, 500);
+            }}
+          >
+            <i className={`fal ${categoryKey}`} aria-hidden="true"></i>{" "}
+            <span> {services[categoryKey]?.name}</span>
+            <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
+          </div>
+        ) : (
+          <div
+            className="tabBody--item tel"
+            onClick={() => {
+              setMenu("out");
+              setTimeout(() => {
+                setMenu(false);
+                window.location.hash = "dashboard";
+                setTimeout(() => {
+                  const el = document.getElementById("tabRTELC,RTELD,RTELI");
+                  if (el) {
+                    el.click();
+                    el.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                    const panel = document.getElementById("RTELD");
+                    if (panel) {
+                      panel.click();
+                    }
+                  }
+                }, 300);
+              }, 500);
+            }}
+          >
+            <i className={`fal ${categoryKey}`} aria-hidden="true"></i>{" "}
+            <span> RICARICHE TELEFONO</span>
+            <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
+          </div>
+        )
+      )}
     </div>
   );
 };

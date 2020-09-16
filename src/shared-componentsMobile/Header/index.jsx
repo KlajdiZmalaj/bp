@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import images from "themes/images";
 import { connect } from "react-redux";
 import TabBody from "./TabBody";
 import { AuthActions, MainActions } from "redux-store/models";
-const Header = ({ accountInfo, logOut, getAllServices, allServices }) => {
+const Header = ({ accountInfo, logOut, services }) => {
   const [leftMenu, setMenu] = useState(false);
   const [tab, setTab] = useState(1);
 
-  useEffect(() => {
-    getAllServices(1);
-  }, []);
+  // useEffect(() => {
+  //   getAllServices(1);
+  // }, []);
   return (
     <header className="headerMob">
       <i onClick={() => setMenu(!leftMenu)} className="fal fa-bars"></i>
@@ -63,7 +63,7 @@ const Header = ({ accountInfo, logOut, getAllServices, allServices }) => {
             </div>
             <TabBody
               setMenu={setMenu}
-              allServices={allServices}
+              services={services}
               logOut={logOut}
               accountInfo={accountInfo}
               tab={tab}
@@ -83,8 +83,8 @@ const Header = ({ accountInfo, logOut, getAllServices, allServices }) => {
     </header>
   );
 };
-const mstp = ({ auth: { accountInfo, allServices } }) => ({
+const mstp = ({ auth: { accountInfo }, main: { services } }) => ({
   accountInfo,
-  allServices,
+  services,
 });
 export default connect(mstp, { ...AuthActions, ...MainActions })(Header);

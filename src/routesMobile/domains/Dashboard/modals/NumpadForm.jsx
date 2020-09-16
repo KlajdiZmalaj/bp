@@ -125,7 +125,7 @@ const Numpad = ({
             setPrint(true);
           }}
         >
-          Stampa <span>Pre Scontrino</span>
+          Stampa
         </button>
         <button
           onClick={() => {
