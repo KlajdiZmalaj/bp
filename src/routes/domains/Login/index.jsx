@@ -56,10 +56,10 @@ class Login extends React.Component {
                   }
                 }}
                 type="text"
-                placeholder="Email addres"
-                name="userName"
+                placeholder="Username"
+                name="username"
                 onChange={this.handleChangeUsername}
-                id="login-name"
+                id="loginUserName"
               />
             </li>
             <li>
@@ -70,7 +70,7 @@ class Login extends React.Component {
                   }
                 }}
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 name="password"
                 id="password"
                 onChange={this.handleChangePassword}

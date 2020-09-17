@@ -63,6 +63,7 @@ const OneTab = ({
                       }
                     }}
                     key={serviceId}
+                    data-key={serviceId}
                     className="mobileServices--body__item"
                   >
                     <img
@@ -161,16 +162,81 @@ const Servizi = ({
           )
         );
       })}
-      <div className="mobileServices--favorites">
-        {favorites &&
-          Object.keys(favorites).map((serviceCategory) => {
+
+      {tab === "4" && (
+        <div className="mobileServices--panel">
+          <div id="PRNOT" className="mobileServices--header active">
+            <span>Prenotazioni</span>{" "}
+            <i className="fal fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div className="mobileServices--body animated fadeIn">
+            <div className="mobileServices--body__item">
+              <img
+                src={images["expedia-mobile"]}
+                alt=""
+                onClick={() => {
+                  window.location.hash = "/forms/prenotazioni";
+                }}
+              />
+              <span>Expedia</span>
+            </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/flixbus";
+              }}
+            >
+              <img src={images["flixbus-mobile"]} alt="" />
+              <span>Flixbus</span>
+            </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/trenitalia";
+              }}
+            >
+              <img src={images["trenitalia-mobile"]} alt="" />
+              <span>Trenitalia</span>
+            </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/vivaticket";
+              }}
+            >
+              <img src={images["vivaticket-mobile"]} alt="" />
+              <span>vivaticket</span>
+            </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/ticketone";
+              }}
+            >
+              <img src={images["ticketone-mobile"]} alt="" />
+              <span>ticketone</span>
+            </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/stubhub";
+              }}
+            >
+              <img src={images["stubhub-mobile"]} alt="" />
+              <span>stubhub</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {favorites && (
+        <div className="mobileServices--favorites">
+          {Object.keys(favorites).map((serviceCategory) => {
             return (
               favorites[serviceCategory].name
                 .toLowerCase()
                 .includes(serviceSearched.toLowerCase()) &&
-              (tab === "0" ||
-                tab.includes(serviceCategory) ||
-                tab === "fav") && (
+              tab === "fav" && (
                 <OneTab
                   setService={setService}
                   panelOpen={panelOpen}
@@ -185,7 +251,8 @@ const Servizi = ({
               )
             );
           })}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -68,6 +68,30 @@
         text-transform: capitalize;
         flex-shrink: 0;
         position: relative;
+        white-space: nowrap;
+        &.tel {
+          display: none;
+          &:nth-of-type(3) {
+            display: flex;
+          }
+        }
+        > span {
+          width: 50vw;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        > i:first-child {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .fa-chevron-right {
+          margin-left: auto;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
         &.active {
           background-color: var(--accent-bg) !important;
           color: var(--accent-txt);
@@ -81,12 +105,15 @@
         i {
           margin-right: 3px;
           opacity: 0.5;
-          width: 25px;
+          width: 35px;
+          flex-shrink: 0;
         }
         span:nth-child(3) {
           margin-left: auto;
           font-weight: 500;
           color: var(--accent-bg);
+          text-align: right;
+          width: 30vw;
         }
       }
       &--a {
@@ -124,7 +151,7 @@
   }
   .nameUser {
     white-space: nowrap;
-    max-width: 150px;
+    width: 40vw;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -224,4 +251,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.fal {
+  &.PRDPST,
+  &.SND000 {
+    &:before {
+      content: "\f543";
+    }
+  }
+  &.RTELD:before,
+  &.RTELC:before,
+  &.RTELI:before {
+    content: "\f10b";
+  }
+  &.CCARD:before {
+    content: "\f09d";
+  }
+  &.SCMS:before {
+    content: "\f389";
+  }
+  &.RTVD:before {
+    content: "\f26c";
+  }
+  &.GIFT:before {
+    content: "\f06b";
+  }
+  &.ALTRI:before {
+    content: "\f217";
+  }
+  &.CRYP:before {
+    content: "\f51e";
+  }
+  &.BGLT,
+  &.VSRE {
+    &:before {
+      content: "\f570";
+    }
+  }
+}
+#root {
+  //
+  * {
+    @media (max-width: 1024px) {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ and Edge */
+      user-select: none; /* Standard syntax */
+    }
+  }
 }

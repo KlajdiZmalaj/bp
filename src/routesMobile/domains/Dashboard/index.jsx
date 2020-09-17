@@ -15,6 +15,7 @@ const Card = ({ setTab, tab, id, name, icon }) => (
         if (el) el.click();
       }
     }}
+    id={`tab${id}`}
     className={
       "serviziFilter--cards__item" + (isEqual(tab, id) ? " active" : "")
     }
@@ -61,7 +62,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="fa-file-alt"
                 tab={tab}
                 setTab={setTab}
-                name="Tutte"
+                name={`Tutti${"\n"}Servizi`}
               />
               <Card
                 id={["PRDPST"]}
@@ -88,9 +89,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="fa-user-headset"
                 id={"4"}
                 tab={tab}
-                setTab={() => {
-                  window.location.hash = "forms";
-                }}
+                setTab={setTab}
                 name="Servizi su Prenotazione"
               />
             </div>

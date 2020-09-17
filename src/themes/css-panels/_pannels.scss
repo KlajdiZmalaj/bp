@@ -284,6 +284,12 @@ body:not(.bodyAdmin) {
     display: inline-block;
     margin-top: -1px;
     margin-left: -1px;
+    img {
+      width: 80%;
+      height: 40px;
+      object-fit: contain;
+      object-position: left;
+    }
     p {
       position: relative;
       margin: 0;
@@ -598,7 +604,11 @@ span.superSmall {
       }
       img {
         transition: 0.3s;
-        filter: grayscale(0.9) brightness(1.2);
+        filter: grayscale(0.9);
+        width: 100%;
+        height: 60px;
+        margin: 20px 0;
+        object-fit: contain;
       }
       &:hover {
         > span {
@@ -606,7 +616,7 @@ span.superSmall {
           color: #fff;
         }
         img {
-          filter: grayscale(0) brightness(1);
+          filter: grayscale(0);
         }
       }
       cursor: pointer;

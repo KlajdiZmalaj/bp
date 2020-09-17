@@ -186,9 +186,10 @@ class Dashboard extends React.Component {
                                           services[item][service]?.services[0]
                                         );
                                         this.props.togglePopUp(true);
-                                        this.props.setServiceS(
-                                          services[item][service]
-                                        );
+                                        this.props.setServiceS({
+                                          ...services[item][service],
+                                          id: service,
+                                        });
                                       }
                                     }}
                                     className={
@@ -320,10 +321,7 @@ class Dashboard extends React.Component {
                                     scrollView.scrollIntoView();
                                   }}
                                 >
-                                  <img
-                                    src={`http://www.perdemo.it/ricaricheSPS/${item}.png`}
-                                    alt=""
-                                  />
+                                  <img src={images[item]} alt="" />
                                   <span>{favorites[gr][item].name}</span>
                                 </div>
                               )

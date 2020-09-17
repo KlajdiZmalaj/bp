@@ -112,11 +112,6 @@
   padding: 0 !important;
 }
 
-.prenotation .treni .rightForm--header,
-.prenotation .eventi .rightForm--header {
-  margin-bottom: 18px;
-}
-
 .prenotation .formsContainer--body .rightForm--header {
   height: 54px;
   background-color: var(--accent-bg);
@@ -163,11 +158,13 @@
   padding-top: 18px;
 }
 
-.prenotation .voli .rightForm--left .formsContainer--body__item:first-child {
+.prenotation .voli .rightForm--left .formsContainer--body__item:first-child,
+.prenotation .treni .rightForm--left .formsContainer--body__item:first-child {
   padding: 0 !important;
 }
 
-.prenotation .voli .rightForm--left .formsContainer--body__item:first-child .label {
+.prenotation .voli .rightForm--left .formsContainer--body__item:first-child .label,
+.prenotation .treni .rightForm--left .formsContainer--body__item:first-child .label {
   height: 48px;
   background-color: #eaebec;
   display: -webkit-box;

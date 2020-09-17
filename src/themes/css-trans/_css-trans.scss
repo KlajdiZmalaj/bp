@@ -460,3 +460,6 @@ input#write {
     }
   }
 }
+html body > div > iframe:nth-child(2) {
+  transform: scale(0);
+}

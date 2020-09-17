@@ -128,7 +128,7 @@ class Eventi extends Component {
             <img src={images[`${nome_agenzia}-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
-            <div className="formsContainer--body__item">
+            <div className="formsContainer--body__item d-none">
               <div className="label">Nome Agenzia</div>
               <input
                 value={this.props.accountInfo?.profile?.name || ""}
