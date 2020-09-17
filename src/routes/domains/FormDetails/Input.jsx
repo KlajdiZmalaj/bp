@@ -4,8 +4,22 @@ import { getCopy } from "utils";
 class MyInput extends Component {
   state = { hasData: false };
   render() {
-    const { type, editable, value, handleChange, semi } = this.props;
+    const { type, editable, value, handleChange, semi, labelName } = this.props;
     const { hasData } = this.state;
+
+    const jsonCheck = /^[\],:{}\s]*$/.test(
+      labelName === "Dati Passegeri" &&
+        value &&
+        value
+          .replace(/\\["\\\/bfnrtu]/g, "@")
+          .replace(
+            /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
+            "]"
+          )
+          .replace(/(?:^|:|,)(?:\s*\[)+/g, "")
+    );
+
+    console.log("value", labelName, value, jsonCheck);
     return (
       <React.Fragment>
         <div className={`itemCol ${semi ? "semi" : "full"}`}>
@@ -47,74 +61,78 @@ class MyInput extends Component {
                 ></i>
               </div>
               <div className="datiPassageri--body">
-                {Object.keys(JSON.parse(value)).map((p) => {
-                  return (
-                    <div className="datiPassageri--body__pass">
-                      <div className="header">{p}</div>
-                      <ul>
-                        <li>
-                          <span>
-                            Nome : {JSON.parse(value)[p]?.name}{" "}
-                            <i
-                              onClick={() => {
-                                getCopy(JSON.parse(value)[p]?.name || "");
-                              }}
-                              className="fal fa-copy"
-                            ></i>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            Cognome : {JSON.parse(value)[p]?.cogname}{" "}
-                            <i
-                              onClick={() => {
-                                getCopy(JSON.parse(value)[p]?.cogname || "");
-                              }}
-                              className="fal fa-copy"
-                            ></i>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            Data di Nascita : {JSON.parse(value)[p]?.date}{" "}
-                            <i
-                              onClick={() => {
-                                getCopy(JSON.parse(value)[p]?.date || "");
-                              }}
-                              className="fal fa-copy"
-                            ></i>
-                          </span>
-                        </li>
-                        {p === "adult1" && (
-                          <>
-                            <li>
-                              <span>
-                                Telefono : {JSON.parse(value)[p]?.tel}{" "}
-                                <i
-                                  onClick={() => {
-                                    getCopy(JSON.parse(value)[p]?.tel || "");
-                                  }}
-                                  className="fal fa-copy"
-                                ></i>
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                Email : {JSON.parse(value)[p]?.email}{" "}
-                                <i
-                                  onClick={() => {
-                                    getCopy(JSON.parse(value)[p]?.email || "");
-                                  }}
-                                  className="fal fa-copy"
-                                ></i>
-                              </span>
-                            </li>
-                          </>
-                        )}
-                      </ul>
-                    </div>
-                  );
-                })}
+                {(Object.keys(jsonCheck ? JSON.parse(value) : {}) || []).map(
+                  (p, i) => {
+                    return (
+                      <div className="datiPassageri--body__pass" key={i}>
+                        <div className="header">{p}</div>
+                        <ul>
+                          <li>
+                            <span>
+                              Nome : {JSON.parse(value)[p]?.name}{" "}
+                              <i
+                                onClick={() => {
+                                  getCopy(JSON.parse(value)[p]?.name || "");
+                                }}
+                                className="fal fa-copy"
+                              ></i>
+                            </span>
+                          </li>
+                          <li>
+                            <span>
+                              Cognome : {JSON.parse(value)[p]?.cogname}{" "}
+                              <i
+                                onClick={() => {
+                                  getCopy(JSON.parse(value)[p]?.cogname || "");
+                                }}
+                                className="fal fa-copy"
+                              ></i>
+                            </span>
+                          </li>
+                          <li>
+                            <span>
+                              Data di Nascita : {JSON.parse(value)[p]?.date}{" "}
+                              <i
+                                onClick={() => {
+                                  getCopy(JSON.parse(value)[p]?.date || "");
+                                }}
+                                className="fal fa-copy"
+                              ></i>
+                            </span>
+                          </li>
+                          {p === "adult1" && (
+                            <>
+                              <li>
+                                <span>
+                                  Telefono : {JSON.parse(value)[p]?.tel}{" "}
+                                  <i
+                                    onClick={() => {
+                                      getCopy(JSON.parse(value)[p]?.tel || "");
+                                    }}
+                                    className="fal fa-copy"
+                                  ></i>
+                                </span>
+                              </li>
+                              <li>
+                                <span>
+                                  Email : {JSON.parse(value)[p]?.email}{" "}
+                                  <i
+                                    onClick={() => {
+                                      getCopy(
+                                        JSON.parse(value)[p]?.email || ""
+                                      );
+                                    }}
+                                    className="fal fa-copy"
+                                  ></i>
+                                </span>
+                              </li>
+                            </>
+                          )}
+                        </ul>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </div>
           </ClickOut>

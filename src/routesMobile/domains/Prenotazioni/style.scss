@@ -80,12 +80,7 @@
       padding: 0 !important;
     }
   }
-  .treni,
-  .eventi {
-    .rightForm--header {
-      margin-bottom: 18px;
-    }
-  }
+
   .formsContainer--body .rightForm--header {
     height: 54px;
     background-color: var(--accent-bg);
@@ -125,21 +120,25 @@
     background-color: #fff;
     padding-top: 18px;
   }
-  .voli .rightForm--left {
-    .formsContainer--body__item:first-child {
-      padding: 0 !important;
-      .label {
-        height: 48px;
-        background-color: #eaebec;
-        display: flex;
-        align-items: center;
-        padding: 0 18px;
-        width: 100%;
-        font-size: 16px;
-        font-weight: 500;
+  .voli,
+  .treni {
+    .rightForm--left {
+      .formsContainer--body__item:first-child {
+        padding: 0 !important;
+        .label {
+          height: 48px;
+          background-color: #eaebec;
+          display: flex;
+          align-items: center;
+          padding: 0 18px;
+          width: 100%;
+          font-size: 16px;
+          font-weight: 500;
+        }
       }
     }
   }
+
   .formsContainer--body__item .ant-select-selection--single {
     background-color: #fff;
     height: 40px;

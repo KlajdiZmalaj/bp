@@ -221,7 +221,7 @@ class Voli extends Component {
               })}
           </div>
           <div className="rightForm--right">
-            <div className="formsContainer--body__item">
+            <div className="formsContainer--body__item d-none">
               <div className="label">Nome Agenzia</div>
               <input
                 value={accountInfo?.profile?.name || ""}

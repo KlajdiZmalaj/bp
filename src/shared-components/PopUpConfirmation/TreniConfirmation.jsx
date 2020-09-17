@@ -2,10 +2,16 @@ import React from "react";
 import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 
 const Treni = ({ TicketByTcketId }) => {
-  const extra_data =
-    TicketByTcketId.nome_agenzia === "expedia"
-      ? JSON.parse(TicketByTcketId.extra_data)
-      : TicketByTcketId.extra_data;
+  const isJson = /^[\],:{}\s]*$/.test(
+    TicketByTcketId.extra_data
+      .replace(/\\["\\\/bfnrtu]/g, "@")
+      .replace(
+        /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
+        "]"
+      )
+      .replace(/(?:^|:|,)(?:\s*\[)+/g, "")
+  );
+  console.log("isJson", isJson, TicketByTcketId.extra_data);
   return (
     <div className="confirmationPopup--body ">
       <div className="NomeEmail">
@@ -75,39 +81,45 @@ const Treni = ({ TicketByTcketId }) => {
             <span className="dark">{TicketByTcketId.ritorno_date}</span>
           </div>
         )}
-        {TicketByTcketId.nome_agenzia === "expedia" ? (
-          <div className="NomeEmail">
-            <div className="confirmationPopup--body__item">
-              <span className="light">Extra Dati/Notes</span>
-              <span className="dark">
-                {Object.keys(extra_data).map((key) => (
-                  <span style={{ fontWeight: 600 }}>
-                    {key}
-                    <span>
-                      {Object.keys(extra_data[key]).map((keyMapped) => (
-                        <div>
-                          {" "}
-                          <span style={{ fontWeight: 500 }}>
-                            {keyMapped} :
-                          </span>{" "}
-                          {"  "}
-                          <span style={{ fontWeight: 400 }}>
-                            {extra_data[key][keyMapped]}
-                          </span>
-                        </div>
-                      ))}
-                    </span>
-                  </span>
-                ))}
-              </span>
-            </div>
-          </div>
-        ) : (
+
+        <div className="NomeEmail">
           <div className="confirmationPopup--body__item">
-            <span className="light">Extra Dati/Notes</span>
-            <span className="dark">{extra_data}</span>
+            <span className="light">Dati Passageri</span>
+            <span className="dark">
+              {isJson ? (
+                Object.keys(JSON.parse(TicketByTcketId.extra_data)).map(
+                  (key) => (
+                    <span style={{ fontWeight: 600 }}>
+                      {key}
+                      <span>
+                        {Object.keys(
+                          JSON.parse(TicketByTcketId.extra_data)[key]
+                        ).map((keyMapped) => (
+                          <div>
+                            {" "}
+                            <span style={{ fontWeight: 500 }}>
+                              {keyMapped} :
+                            </span>{" "}
+                            {"  "}
+                            <span style={{ fontWeight: 400 }}>
+                              {
+                                JSON.parse(TicketByTcketId.extra_data)[key][
+                                  keyMapped
+                                ]
+                              }
+                            </span>
+                          </div>
+                        ))}
+                      </span>
+                    </span>
+                  )
+                )
+              ) : (
+                <span>{TicketByTcketId.extra_data}</span>
+              )}
+            </span>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

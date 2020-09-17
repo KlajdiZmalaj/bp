@@ -116,7 +116,7 @@ class Treni extends Component {
               }}
             />
             <MyInput
-              labelName={" Nome passeggeri e dettagli per il biglietto"}
+              labelName={"Dati Passegeri"}
               type={"text"}
               editable={editable}
               value={extra_data}
