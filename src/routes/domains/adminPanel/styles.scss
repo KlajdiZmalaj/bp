@@ -526,9 +526,9 @@ div.Center--Big {
               & i {
                 padding-left: 8%;
                 margin-left: 8px;
-                position: relative;
-                top: 0;
+                position: absolute;
                 left: 0;
+                top: calc(50% - 6.5px);
               }
             }
           }
