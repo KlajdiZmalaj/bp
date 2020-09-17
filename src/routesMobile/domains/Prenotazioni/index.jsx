@@ -76,7 +76,9 @@ const Prenotazione = ({ match: { params } }) => {
             activeService={activeService}
           />
         )}
-        {(activeService === "vivaticket" || activeService === "stubhub") && (
+        {(activeService === "vivaticket" ||
+          activeService === "stubhub" ||
+          activeService === "ticketone") && (
           <Eventi
             nome_agenzia={activeService}
             typee={3}

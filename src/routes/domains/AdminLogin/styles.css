@@ -260,6 +260,7 @@
   border: none;
   padding-left: 15px;
   padding-right: 5px;
+  background: transparent;
 }
 
 .AdminLogin--Step1 span input:nth-child(10) {
