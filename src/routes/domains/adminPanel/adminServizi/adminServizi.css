@@ -76,12 +76,14 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 90%;
+  min-height: 42px;
 }
 
 div.Center .AdminServizi .AdminServiziItem--Header--Prenotazione,
@@ -89,7 +91,19 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header--Prenotazione {
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  width: 100%;
+  line-height: 14px;
+  min-height: 14px;
+  max-height: 28px;
+  text-align: center;
   color: #5c5c5c;
+}
+
+@media (max-width: 1024px) {
+  div.Center .AdminServizi .AdminServiziItem--Header--Prenotazione,
+  div.Center--Big .AdminServizi .AdminServiziItem--Header--Prenotazione {
+    font-size: 13px;
+  }
 }
 
 div.Center .AdminServizi .AdminServiziItem--Header--Title,
@@ -97,8 +111,16 @@ div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+  line-height: 14px;
   text-transform: uppercase;
   color: #000000;
+}
+
+@media (max-width: 1024px) {
+  div.Center .AdminServizi .AdminServiziItem--Header--Title,
+  div.Center--Big .AdminServizi .AdminServiziItem--Header--Title {
+    font-size: 13px;
+  }
 }
 
 div.Center .AdminServizi .AdminServiziItem--ButtonWrapper,
@@ -114,6 +136,20 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 550px) {
+  div.Center .AdminServizi .AdminServiziItem--ButtonWrapper,
+  div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
+    width: 75%;
+  }
+}
+
+@media (max-width: 450px) {
+  div.Center .AdminServizi .AdminServiziItem--ButtonWrapper,
+  div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper {
+    width: 80%;
+  }
 }
 
 div.Center .AdminServizi .AdminServiziItem--ButtonWrapper div,
@@ -266,6 +302,7 @@ div.Center--Big .AdminServizi .AdminServiziItem--ButtonWrapper button:nth-child(
   div.Center .AdminServizi .AdminServiziItem img,
   div.Center--Big .AdminServizi .AdminServiziItem img {
     width: 80px;
+    border: none;
     height: auto;
     max-height: 80px;
   }

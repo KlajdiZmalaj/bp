@@ -54,6 +54,11 @@ class AdminLeftForm extends React.Component {
       }, 600);
     }
   }
+  CloseWindowOnClick = () => {
+    if (this.props.screenWidth <= 550) {
+      this.props.setVisible(!this.props.visible);
+    }
+  };
   render() {
     const {
       setActiveSkinId,
@@ -76,6 +81,7 @@ class AdminLeftForm extends React.Component {
                 <div
                   onClick={() => {
                     setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                    this.CloseWindowOnClick();
                   }}
                   className={`AdminLeftForm--FirstBox--Box${
                     activeSkinId === skin.id ? "--active" : ""
@@ -160,6 +166,7 @@ class AdminLeftForm extends React.Component {
                       visibility: false,
                       data: "",
                     });
+                    this.CloseWindowOnClick();
                   }}
                 >
                   <i className="fal fa-analytics"></i>
@@ -190,6 +197,7 @@ class AdminLeftForm extends React.Component {
                       visibility: false,
                       data: "",
                     });
+                    this.CloseWindowOnClick();
                   }}
                 >
                   <i className="fal fa-heart-rate"></i>
@@ -221,6 +229,7 @@ class AdminLeftForm extends React.Component {
                       visibility: false,
                       data: "",
                     });
+                    this.CloseWindowOnClick();
                   }}
                 >
                   <i className="fal fa-wallet"></i>
@@ -229,15 +238,24 @@ class AdminLeftForm extends React.Component {
               </React.Fragment>
             ) : null}
             {!this.props.small && (
-              <div className="AdminLeftForm--LastBox--Box">
+              <div
+                className="AdminLeftForm--LastBox--Box "
+                onClick={this.CloseWindowOnClick}
+              >
                 <Chat />
               </div>
             )}
-            <div className="AdminLeftForm--LastBox--Box">
+            <div
+              className="AdminLeftForm--LastBox--Box"
+              onClick={this.CloseWindowOnClick}
+            >
               <i className="fal fa-envelope"></i>
               <span>MESSAGGI</span>
             </div>
-            <div className="AdminLeftForm--LastBox--Box">
+            <div
+              className="AdminLeftForm--LastBox--Box"
+              onClick={this.CloseWindowOnClick}
+            >
               <i className="fal fa-cogs"></i>
               <span>SETTINGS</span>
             </div>

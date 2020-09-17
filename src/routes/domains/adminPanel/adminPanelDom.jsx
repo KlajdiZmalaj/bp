@@ -534,6 +534,9 @@ class AdminPanelDom extends React.Component {
                 )}
                 <AdminLeftForm
                   visible={menuSkinVisible}
+                  setVisible={(visible) => {
+                    this.setState({ menuSkinVisible: visible });
+                  }}
                   small={screenWidth <= 550 ? true : false}
                 />
               </div>

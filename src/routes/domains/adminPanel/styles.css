@@ -226,7 +226,7 @@
   margin-right: 0;
   margin-left: 10px;
   padding: 0 18px;
-  color: #7bb928;
+  color: #ffffff;
   font-weight: 600;
   font-size: 12px;
   border: none;
@@ -630,9 +630,9 @@ div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .
 div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i {
   padding-left: 8%;
   margin-left: 8px;
-  position: relative;
-  top: 0;
+  position: absolute;
   left: 0;
+  top: calc(50% - 6.5px);
 }
 
 div.Center .container-fluid.overview .paginationWrapper,
