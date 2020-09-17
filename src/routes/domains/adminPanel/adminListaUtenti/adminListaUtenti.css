@@ -394,7 +394,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   font-size: 11px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-  border: 1px solid #5c5c5c;
+  border: 1px solid #5c5c5c4d;
   border-radius: 17px;
   padding: 5px 12px;
 }
@@ -404,7 +404,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   cursor: pointer;
   font-size: 14px;
   font-weight: 300;
-  border: 1px solid #5c5c5c;
+  border: 1px solid #5c5c5c4d;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 28px;

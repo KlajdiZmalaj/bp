@@ -789,7 +789,7 @@ class Transazioni extends React.Component {
                                       });
                                     }
                                     forAdmin &&
-                                    this.props.screenWidth > 1024 &&
+                                    this.props.screenWidth > 1320 &&
                                     [...e.target.classList].includes("bc")
                                       ? this.activateModalForAdmin(item, index)
                                       : [...e.target.classList].includes(
