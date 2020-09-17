@@ -174,6 +174,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   -webkit-box-shadow: inset 8px 0px 0px -4px #004b9f;
           box-shadow: inset 8px 0px 0px -4px #004b9f;
   background-color: #f3f3f4 !important;
+  border-top: none;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children span.Username, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children span.Username {
