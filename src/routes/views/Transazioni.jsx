@@ -367,7 +367,9 @@ class Transazioni extends React.Component {
     return (
       <div
         className={`${forAdmin === true ? "" : "Container"}`}
-        style={forAdmin === true ? { width: "100%" } : { width: "auto" }}
+        style={
+          forAdmin === true ? { background: "transparent" } : { width: "auto" }
+        }
       >
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
@@ -873,7 +875,8 @@ class Transazioni extends React.Component {
                                 </td>
                                 {this.props.screenWidth <= 865 && forAdmin && (
                                   <td
-                                    className=" wsNwp right"
+                                    className="wsNwp"
+                                    style={{ textAlign: "center" }}
                                     onClick={() => {
                                       this.setState({
                                         showModalResponsive: true,

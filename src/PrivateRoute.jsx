@@ -8,6 +8,7 @@ const PrivateRoute = ({
   isLoggedin,
   role,
   allowedRoles,
+  path,
   ...rest
 }) => {
   // console.log(
@@ -19,6 +20,7 @@ const PrivateRoute = ({
   // );
   return (
     <Route
+      path={`${path}`}
       {...rest}
       render={(props) =>
         isLoggedin && includes(allowedRoles, role) ? (

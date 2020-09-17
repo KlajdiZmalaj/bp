@@ -1,6 +1,7 @@
 import React from "react";
 import { notification } from "antd";
 const AdminServiziItem = ({
+  category_full_name,
   full_name,
   category,
   UpdateServicesChangeStatus,
@@ -13,7 +14,7 @@ const AdminServiziItem = ({
   <div className="AdminServiziItem">
     <div className="AdminServiziItem--Header">
       <div className="AdminServiziItem--Header--Prenotazione">
-        PRENOTAZIONE BIGLIETTI
+        {category_full_name.toUpperCase()}
       </div>
       <div className="AdminServiziItem--Header--Title">{full_name}</div>
     </div>

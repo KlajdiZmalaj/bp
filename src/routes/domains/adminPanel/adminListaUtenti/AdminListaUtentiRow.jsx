@@ -346,14 +346,18 @@ class AdminListaUtentiRow extends React.Component {
           itemList.children.map((child, i, arr) =>
             arr.length - 1 === i ? (
               <div
-                className="AdminListaUtentiRow--Complete--Main--Child children last"
+                className={`AdminListaUtentiRow--Complete--Main--Child children last ${
+                  child?.children?.length > 0 ? "" : "lastNode"
+                }`}
                 key={child.id}
               >
                 <AdminListaUtentiRowForLoop itemList={child} last={false} />
               </div>
             ) : (
               <div
-                className="AdminListaUtentiRow--Complete--Main--Child children"
+                className={`AdminListaUtentiRow--Complete--Main--Child children  ${
+                  child?.children?.length > 0 ? "" : "lastNode"
+                }`}
                 key={child.id}
               >
                 <AdminListaUtentiRowForLoop itemList={child} last={true} />

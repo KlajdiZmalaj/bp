@@ -145,12 +145,12 @@ export default {
   "vivaticket-logo": require(`../assets/images/prenotazioni/vivaticket.svg`),
   "vivaticket-bg": require(`../assets/images/prenotazioni/vivaticket-bg.jpg`),
   "vivaticket-card": require(`../assets/images/prenotazioni/vivaticket-card.png`),
-  "trenitalia-mobile": require(`../assets/images/prenotazioni/trenitalia-mobile.svg`),
+  "vivaticket-mobile": require(`../assets/images/prenotazioni/vivaticket-mobile.svg`),
 
   "ticketing-logo": require(`../assets/images/prenotazioni/ticketing.svg`),
   "ticketing-bg": require(`../assets/images/prenotazioni/ticketing-bg.jpg`),
   "ticketing-card": require(`../assets/images/prenotazioni/ticketing-card.png`),
-  "vivaticket-mobile": require(`../assets/images/prenotazioni/vivaticket-mobile.svg`),
+  "ticketone-mobile": require(`../assets/images/prenotazioni/ticketone-mobile.svg`),
 
   "stubhub-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
   "stubhub-bg": require(`../assets/images/prenotazioni/stubhub-bg.jpg`),

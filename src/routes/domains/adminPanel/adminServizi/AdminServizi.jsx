@@ -38,7 +38,7 @@ class AdminServizi extends React.Component {
               allServices.companies.map((itemList, i) => (
                 <AdminServiziItem
                   {...itemList}
-                  key={`${itemList.number_id} `}
+                  key={`${itemList.number_id}`}
                   UpdateServicesChangeStatus={UpdateServicesChangeStatus}
                   activeSkinId={activeSkinId}
                   getService={() => {
