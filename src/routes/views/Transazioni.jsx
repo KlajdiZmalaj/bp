@@ -732,7 +732,8 @@ class Transazioni extends React.Component {
                         <td className="wsNwp servizoTd">Servizio</td>
                         <td className="wsNwp right">Importo</td>
                         <td className="wsNwp right">Commissione</td>
-                        <td className=" wsNwp right">Proviggione</td>
+                        {accountInfo.profile.role.name !== 'user' &&    <td className=" wsNwp right">Proviggione</td>}
+                     
                         <td className=" wsNwp right">Saldo</td>
                         {this.props.screenWidth <= 865 && forAdmin && <td></td>}
 
@@ -864,12 +865,13 @@ class Transazioni extends React.Component {
                                   {item.commissione}€
                                   {/* {item.commissione ? item.commissione : "-"}{" "} */}
                                 </td>
-                                <td className="wsNwp right">
+                                {accountInfo.profile.role.name !== 'user' &&   <td className="wsNwp right">
                                   {item.percentage}€
                                   {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
-                                </td>
+                                </td> }
+                              
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
