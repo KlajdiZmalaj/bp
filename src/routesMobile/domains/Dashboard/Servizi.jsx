@@ -175,7 +175,7 @@ const Servizi = ({
                 src={images["expedia-mobile"]}
                 alt=""
                 onClick={() => {
-                  window.location.hash = "/forms/prenotazioni";
+                  window.location.hash = "/forms/expedia";
                 }}
               />
               <span>Expedia</span>
