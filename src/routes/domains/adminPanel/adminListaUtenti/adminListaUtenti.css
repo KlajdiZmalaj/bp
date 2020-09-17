@@ -170,6 +170,11 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   left: -2%;
 }
 
+.AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children.lastNode .AdminListaUtentiRow--Complete--Main, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children.lastNode .AdminListaUtentiRow--Complete--Main {
+  -webkit-box-shadow: inset 8px 0px 0px -4px #004b9f;
+          box-shadow: inset 8px 0px 0px -4px #004b9f;
+}
+
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children span.Username, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children span.Username {
   top: 5px;
   height: 51px;
@@ -559,8 +564,6 @@ div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow
 
 div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div.AdminListaUtentiRow--Complete--Main--Child.children div div.AdminListaUtentiRow--Complete--Main {
   background-color: #ebeced;
-  -webkit-box-shadow: inset 8px 0px 0px -4px #004b9f;
-          box-shadow: inset 8px 0px 0px -4px #004b9f;
 }
 
 div.AdminColumns div.Center--Big div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child.children div.AdminListaUtentiRow--Complete--Main--Child.children div span:nth-child(2) {
@@ -666,8 +669,6 @@ div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Com
 
 div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child div.AdminListaUtentiRow--Complete--Main--Child.children div div.AdminListaUtentiRow--Complete--Main {
   background-color: #ebeced;
-  -webkit-box-shadow: inset 8px 0px 0px -4px #004b9f;
-          box-shadow: inset 8px 0px 0px -4px #004b9f;
 }
 
 div.AdminColumns div.Center div.AdminListaUtentiRow div.AdminListaUtentiRow--Complete--Main--Child div.AdminListaUtentiRow--Complete--Main--Child.children div span:nth-child(2) {

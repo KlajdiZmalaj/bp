@@ -2,8 +2,8 @@
   position: fixed;
   width: 70vw;
   top: 101px;
-  margin: calc((40vh - 101px) / 2) 15vw;
-  height: 60vh;
+  margin: calc((50vh - 101px) / 2) 15vw;
+  height: 50vh;
   z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
   transition: 0.5s;
@@ -15,7 +15,7 @@
   }
 
   & .AdminRightForm--Box--Wallet--Dropdown {
-    padding: 4vh 0;
+    padding: 2vh 0;
     overflow-y: auto;
     overflow-x: hidden;
     padding-top: 5.5vh;
@@ -25,19 +25,19 @@
     box-sizing: border-box;
     z-index: 6;
     background: #272c31;
-
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5.5vh;
     &--Submit {
       margin-top: 3vh;
       font-weight: 500;
     }
     background: #272c31;
-
     & div.InputHolder {
-      margin: 3vh 27px;
-      height: 8vh;
+      margin: 1vh 27px;
+      height: 5vh;
       background: #272c31;
       border: 1px solid rgba(255, 255, 255, 0.1);
-
       & i.fa-search {
         margin: 0 calc((14% - 21px) / 2);
       }
@@ -57,8 +57,9 @@
     justify-content: flex-start;
     padding-left: 3vw;
     align-items: center;
-    font-size: calc(1.2vw + 1.2vh);
-    font-weight: 400;
+    font-size: calc(1.25vw + 1.25vh);
+    letter-spacing: 1.3px;
+    font-weight: 300;
     font-family: "Roboto";
     height: 5.5vh;
     box-sizing: border-box;
@@ -74,7 +75,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(1.1vw + 1.1vh);
+    font-size: calc(1vw + 1vh);
     font-weight: 300;
     font-family: "Roboto";
     display: flex;

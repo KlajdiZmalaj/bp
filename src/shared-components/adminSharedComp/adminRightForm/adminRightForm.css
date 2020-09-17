@@ -585,8 +585,14 @@
   padding: 0 20px;
   font-family: "Roboto", sans-serif;
   position: relative;
-  font-size: 13px;
+  font-size: 14px;
   border-radius: 3px;
+}
+
+@media (max-width: 800px) {
+  .AdminRightForm--Box--Wallet--Dropdown div.InputHolder {
+    font-size: 12px;
+  }
 }
 
 .AdminRightForm--Box--Wallet--Dropdown div.InputHolder:nth-child(2) {
@@ -611,8 +617,15 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 14px;
   width: 85%;
   color: #ffffff;
+}
+
+@media (max-width: 800px) {
+  .AdminRightForm--Box--Wallet--Dropdown div.InputHolder input {
+    font-size: 12px;
+  }
 }
 
 .AdminRightForm--Box--Wallet--Dropdown div.InputHolder input::-webkit-input-placeholder {
@@ -648,6 +661,12 @@
   width: 14%;
   font-size: 14px;
   color: #ffffff;
+}
+
+@media (max-width: 800px) {
+  .AdminRightForm--Box--Wallet--Dropdown div.InputHolder > i {
+    font-size: 12px;
+  }
 }
 
 .AdminRightForm--Box--Wallet--Dropdown div.InputHolder > i.fa-check {
@@ -734,8 +753,14 @@
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  font-weight: bold;
+  font-weight: 500;
   height: 100%;
+}
+
+@media (max-width: 800px) {
+  .AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button {
+    font-size: 12px;
+  }
 }
 
 .AdminRightForm--Box--Wallet--Dropdown--ChoseButtons button:nth-child(1) {
