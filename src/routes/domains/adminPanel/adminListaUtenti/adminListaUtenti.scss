@@ -119,6 +119,7 @@ div.Center--Big {
         &.children {
           &.lastNode .AdminListaUtentiRow--Complete--Main {
             box-shadow: inset 8px 0px 0px -4px #004b9f;
+            background-color: #f3f3f4 !important;
           }
           & span.Username {
             top: 5px;

@@ -173,6 +173,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children.lastNode .AdminListaUtentiRow--Complete--Main, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children.lastNode .AdminListaUtentiRow--Complete--Main {
   -webkit-box-shadow: inset 8px 0px 0px -4px #004b9f;
           box-shadow: inset 8px 0px 0px -4px #004b9f;
+  background-color: #f3f3f4 !important;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children span.Username, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children span.Username {
