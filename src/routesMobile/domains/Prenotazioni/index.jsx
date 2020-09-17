@@ -4,7 +4,7 @@ import { capitalize } from "lodash";
 import Voli from "routes/domains/Forms/Voli";
 import Treni from "routes/domains/Forms/Treni";
 import Eventi from "routes/domains/Forms/Eventi";
-
+import { withRouter } from "react-router-dom";
 import "./style.css";
 const Item = ({ name, activeService, setService }) => (
   <div
@@ -20,8 +20,9 @@ const Item = ({ name, activeService, setService }) => (
   </div>
 );
 
-const Prenotazione = () => {
-  const [activeService, setService] = useState("expedia");
+const Prenotazione = ({ match: { params } }) => {
+  const { id } = params;
+  const [activeService, setService] = useState(id || "expedia");
   return (
     <div className="mobileWrapper prenotation">
       <div className="prenotation--services">
@@ -45,6 +46,11 @@ const Prenotazione = () => {
             activeService={activeService}
             setService={setService}
             name="vivaticket"
+          />
+          <Item
+            activeService={activeService}
+            setService={setService}
+            name="ticketone"
           />
           <Item
             activeService={activeService}
@@ -82,4 +88,4 @@ const Prenotazione = () => {
     </div>
   );
 };
-export default Prenotazione;
+export default withRouter(Prenotazione);

@@ -89,9 +89,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="fa-user-headset"
                 id={"4"}
                 tab={tab}
-                setTab={() => {
-                  window.location.hash = "forms";
-                }}
+                setTab={setTab}
                 name="Servizi su Prenotazione"
               />
             </div>

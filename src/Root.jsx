@@ -117,7 +117,7 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
-            <Route exact path="/register" component={Register} />
+            {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
               path="/login"
               component={isMobile ? DashboardMobile : Login}
@@ -227,7 +227,7 @@ class Root extends React.Component {
               role={role}
             />
             <PrivateRoute
-              path="/forms"
+              path="/forms/:id?/"
               component={isMobile ? PrenotazioneMobile : Forms}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency"]}
