@@ -42,20 +42,34 @@ div.Center--Big {
       &--Header {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
+        max-width: 90%;
+        min-height: 42px;
         &--Prenotazione {
           font-size: 14px;
           font-family: "Roboto", sans-serif;
           font-weight: 400;
+          width: 100%;
+          line-height: 14px;
+          min-height: 14px;
+          max-height: 28px;
+          text-align: center;
           color: #5c5c5c;
+          @media (max-width: 1024px) {
+            font-size: 13px;
+          }
         }
         &--Title {
           font-size: 14px;
           font-family: "Roboto", sans-serif;
           font-weight: 500;
+          line-height: 14px;
           text-transform: uppercase;
           color: #000000;
+          @media (max-width: 1024px) {
+            font-size: 13px;
+          }
         }
       }
 
@@ -66,6 +80,12 @@ div.Center--Big {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        @media (max-width: 550px) {
+          width: 75%;
+        }
+        @media (max-width: 450px) {
+          width: 80%;
+        }
         div {
           height: 100%;
           display: flex;
@@ -176,6 +196,7 @@ div.Center--Big {
         height: 183px;
         & img {
           width: 80px;
+          border: none;
           height: auto;
           max-height: 80px;
         }

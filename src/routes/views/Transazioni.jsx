@@ -368,7 +368,9 @@ class Transazioni extends React.Component {
       <div
         className={`${forAdmin === true ? "" : "Container"}`}
         style={
-          forAdmin === true ? { background: "transparent" } : { width: "auto" }
+          forAdmin === true
+            ? { background: "transparent", width: "100%", height: "0px" }
+            : { width: "auto" }
         }
       >
         {this.props.forAdmin === true ? null : (
