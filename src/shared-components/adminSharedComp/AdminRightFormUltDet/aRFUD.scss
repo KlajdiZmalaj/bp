@@ -2,8 +2,8 @@
   position: fixed;
   width: 80vw;
   top: 101px;
-  margin: calc((40vh - 101px) / 2) 15vw;
-  height: 60vh;
+  margin: calc((50vh - 101px) / 2) 15vw;
+  height: 50vh;
   z-index: 6;
   box-shadow: 0 3px 6px 1px #0000008c;
 
@@ -155,9 +155,10 @@
     justify-content: flex-start;
     padding-left: 3vw;
     align-items: center;
-    font-size: calc(1.5vw + 1.5vh);
+    font-size: calc(1.25vw + 1.25vh);
+    letter-spacing: 1.3px;
     font-family: "Roboto";
-    height: 7vh;
+    height: 5.5vh;
     box-sizing: border-box;
   }
 
@@ -167,7 +168,7 @@
     background: #c53f3f;
     left: calc(100% - 5.9vw);
     width: 6vw;
-    height: 7vh;
+    height: 5.5vh;
     display: flex;
     justify-content: center;
     align-items: center;

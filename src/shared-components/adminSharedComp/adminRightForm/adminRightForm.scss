@@ -392,13 +392,15 @@
           padding: 0 20px;
           font-family: "Roboto", sans-serif;
           position: relative;
-          font-size: 13px;
+          font-size: 14px;
+          @media (max-width: 800px) {
+            font-size: 12px;
+          }
           border-radius: 3px;
           &:nth-child(2) {
             margin-top: 28px;
             padding: 0;
           }
-
           & input {
             border: none;
             position: absolute;
@@ -410,6 +412,10 @@
             justify-content: center;
             background: #272c31;
             align-items: center;
+            font-size: 14px;
+            @media (max-width: 800px) {
+              font-size: 12px;
+            }
             width: 85%;
             color: #ffffff;
             &::placeholder {
@@ -426,6 +432,10 @@
             align-items: center;
             width: 14%;
             font-size: 14px;
+            @media (max-width: 800px) {
+              font-size: 12px;
+            }
+
             color: #ffffff;
             &.fa-check {
               color: #00ac5c;
@@ -478,9 +488,12 @@
             border: none;
             background-color: #353d45;
             font-size: 14px;
+            @media (max-width: 800px) {
+              font-size: 12px;
+            }
             font-family: "Roboto", sans-serif;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: bold;
+            font-weight: 500;
             height: 100%;
           }
           & button:nth-child(1) {
