@@ -242,6 +242,23 @@
   margin-right: 4px;
 }
 
+.bodyAdmin div.Admin-Panel div.backDrop {
+  height: calc(100vh - 101px);
+  top: 101px;
+}
+
+.bodyAdmin .userDetailPopup {
+  top: calc(((100vh - 581px) / 2) + 101px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .bodyAdmin .userDetailPopup {
+    top: calc(((100vh - 561px) / 2) + 101px);
+  }
+}
+
 .bodyAdmin .userDetailPopup .newReg--row::-webkit-scrollbar-thumb {
   background: #353d45;
 }
@@ -628,11 +645,22 @@ div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .trans
 div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
 div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i,
 div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd i {
-  padding-left: 8%;
-  margin-left: 8px;
   position: absolute;
   left: 0;
   top: calc(50% - 6.5px);
+}
+
+div.Center .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd span,
+div.Center .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd span,
+div.Center--Big .container-fluid.overview .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd span,
+div.Center--Big .panels-container .row.no-gutters.max-width .col-md-12 .transTable tbody td.wsNwp.right.importoTd span {
+  max-width: 64px;
+  position: absolute;
+  right: 0;
+  height: 18px;
+  top: calc(50% - 8px);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 div.Center .container-fluid.overview .paginationWrapper,

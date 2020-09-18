@@ -34,6 +34,7 @@ const Graph = ({
 }) => {
   const max = graphForMap(graphicData).max;
   const arrayForMap = graphForMap(graphicData).arrayForMap;
+  console.log(max, arrayForMap);
   return (
     <div className="Graph">
       {arrayForMap &&
@@ -72,7 +73,11 @@ const Graph = ({
                     ? "active"
                     : ""
                 }`}
-                style={{ height: `${(graphData.value / max) * 100}%` }}
+                style={{
+                  height: `${
+                    graphData.value === 0 ? 0 : (graphData.value / max) * 100
+                  }%`,
+                }}
               ></div>
             </Tooltip>
           );

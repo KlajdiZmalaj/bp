@@ -855,12 +855,14 @@ class Transazioni extends React.Component {
                                           : "#0da90f",
                                     }}
                                   />
-                                  {numberWithCommas(
-                                    item.price1000
-                                      ? slicedAmount(item.price1000 / 1000)
-                                      : "-"
-                                  )}
-                                  €
+                                  <span>
+                                    {numberWithCommas(
+                                      item.price1000
+                                        ? slicedAmount(item.price1000 / 1000)
+                                        : "-"
+                                    )}
+                                    €
+                                  </span>
                                 </td>
                                 <td className="wsNwp right">
                                   {item.commissione}€
