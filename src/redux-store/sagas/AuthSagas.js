@@ -413,6 +413,7 @@ export function* getPostePay(params) {
         yield put(AuthActions.setPostePay(response.error.response.data));
       }
     }
+    params.setPostePayLoading(false);
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();

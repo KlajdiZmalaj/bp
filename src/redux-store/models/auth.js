@@ -83,9 +83,10 @@ const { Types, Creators } = createActions({
     "imageUrl",
     "imageUrl2",
     "clearFields",
+    "setPostePayLoading",
   ],
   setPostePay: ["postePay"],
-
+  setPostePayLoading: ["postePayLoading"],
   setServiceType: ["serviceType"],
 
   getAds: [],
@@ -404,6 +405,7 @@ const INITIAL_STATE = {
   service_s: [],
   rechargeMobile: {},
   postePay: {},
+  postePayLoading: false,
   ads: [],
   register: {},
   paymentsFromCode: {},
@@ -448,6 +450,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_POSTE_PAY_LOADING]: (state, { postePayLoading }) => ({
+    ...state,
+    postePayLoading,
+  }),
   [Types.SET_BOLLETINI_LOADING]: (state, { bolletiniLoading }) => ({
     ...state,
     bolletiniLoading,
