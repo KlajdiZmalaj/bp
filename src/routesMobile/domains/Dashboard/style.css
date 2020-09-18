@@ -561,7 +561,8 @@
   z-index: -1;
 }
 
-.bolletini {
+.bolletini,
+.postepay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -572,12 +573,14 @@
   padding-bottom: 75px;
 }
 
-.bolletini > video {
+.bolletini > video,
+.postepay > video {
   width: 100%;
   height: 300px;
 }
 
-.bolletini--services {
+.bolletini--services,
+.postepay--services {
   height: 140px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -593,12 +596,14 @@
   padding: 0 18px;
 }
 
-.bolletini--services::-webkit-scrollbar {
+.bolletini--services::-webkit-scrollbar,
+.postepay--services::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-.bolletini--services__item {
+.bolletini--services__item,
+.postepay--services__item {
   background-color: #eaebec;
   color: #272c31;
   width: 90px;
@@ -610,7 +615,8 @@
   position: relative;
 }
 
-.bolletini--services__item img {
+.bolletini--services__item img,
+.postepay--services__item img {
   width: 90%;
   height: 42px;
   display: block;
@@ -619,7 +625,8 @@
   top: 15px;
 }
 
-.bolletini--services__item span {
+.bolletini--services__item span,
+.postepay--services__item span {
   position: absolute;
   bottom: 5px;
   left: 50%;
@@ -631,17 +638,20 @@
   line-height: 15px;
 }
 
-.bolletini--services__item.active {
+.bolletini--services__item.active,
+.postepay--services__item.active {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
 }
 
-.bolletini--services__item.active img {
+.bolletini--services__item.active img,
+.postepay--services__item.active img {
   -webkit-filter: grayscale(1) brightness(100);
           filter: grayscale(1) brightness(100);
 }
 
-.bolletini--header {
+.bolletini--header,
+.postepay--header {
   background-color: var(--accent-bg);
   padding: 0 18px;
   height: 48px;
@@ -660,13 +670,15 @@
           justify-content: space-between;
 }
 
-.bolletini--header i.active {
+.bolletini--header i.active,
+.postepay--header i.active {
   color: var(--accent-bg);
   -webkit-filter: brightness(2.5);
           filter: brightness(2.5);
 }
 
-.bolletini--subh {
+.bolletini--subh,
+.postepay--subh {
   background-color: #eaebec;
   padding: 0 18px;
   height: 48px;
@@ -681,7 +693,8 @@
   border-bottom: 1px solid #edeef0;
 }
 
-.bolletini--buttons {
+.bolletini--buttons,
+.postepay--buttons {
   position: fixed;
   bottom: 0;
   display: -webkit-box;
@@ -699,7 +712,8 @@
           box-shadow: 0 -2px 51px -27px black;
 }
 
-.bolletini--buttons button {
+.bolletini--buttons button,
+.postepay--buttons button {
   width: calc(100% / 3);
   font-size: 14px;
   border: 0;
@@ -722,41 +736,49 @@
           flex-flow: row wrap;
 }
 
-.bolletini--buttons button.disable {
+.bolletini--buttons button.disable,
+.postepay--buttons button.disable {
   background-color: #ccc;
   pointer-events: none;
 }
 
-.bolletini--buttons button span {
+.bolletini--buttons button span,
+.postepay--buttons button span {
   margin-top: -25px;
   text-transform: lowercase;
   font-size: 13px;
 }
 
-.bolletini--buttons button i {
+.bolletini--buttons button i,
+.postepay--buttons button i {
   margin-left: 4px;
 }
 
-.bolletini--buttons button:nth-child(1) {
+.bolletini--buttons button:nth-child(1),
+.postepay--buttons button:nth-child(1) {
   border-color: #2cb850;
 }
 
-.bolletini--buttons button:nth-child(2) {
+.bolletini--buttons button:nth-child(2),
+.postepay--buttons button:nth-child(2) {
   border-color: #299efd;
   border-left: 1px solid #edeef0;
 }
 
-.bolletini--buttons button:nth-child(3) {
+.bolletini--buttons button:nth-child(3),
+.postepay--buttons button:nth-child(3) {
   border-color: #fdaa29;
   border-left: 1px solid #edeef0;
   border-right: 1px solid #edeef0;
 }
 
-.bolletini--buttons button:nth-child(4) {
+.bolletini--buttons button:nth-child(4),
+.postepay--buttons button:nth-child(4) {
   border-color: #ea1900;
 }
 
-.bolletini--inputs {
+.bolletini--inputs,
+.postepay--inputs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -768,7 +790,8 @@
   background-color: #fff;
 }
 
-.bolletini--inputs__item {
+.bolletini--inputs__item,
+.postepay--inputs__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -785,14 +808,17 @@
           align-items: flex-start;
 }
 
-.bolletini--inputs__item .label {
+.bolletini--inputs__item .label,
+.postepay--inputs__item .label {
   width: 40%;
   font-size: 16px;
   white-space: nowrap;
 }
 
 .bolletini--inputs__item input,
-.bolletini--inputs__item select {
+.bolletini--inputs__item select,
+.postepay--inputs__item input,
+.postepay--inputs__item select {
   width: 60%;
   font-weight: 600;
   border: 0;
@@ -803,22 +829,27 @@
 }
 
 .bolletini--inputs__item input,
-.bolletini--inputs__item select {
+.bolletini--inputs__item select,
+.postepay--inputs__item input,
+.postepay--inputs__item select {
   width: 100%;
 }
 
-.bolletini--inputs__item.hasIcon {
+.bolletini--inputs__item.hasIcon,
+.postepay--inputs__item.hasIcon {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
 }
 
-.bolletini--inputs__item.hasIcon input {
+.bolletini--inputs__item.hasIcon input,
+.postepay--inputs__item.hasIcon input {
   width: calc(100% - 55px);
 }
 
-.bolletini--inputs__item.hasIcon i {
+.bolletini--inputs__item.hasIcon i,
+.postepay--inputs__item.hasIcon i {
   width: 55px;
   height: 50px;
   display: -webkit-box;
@@ -836,7 +867,8 @@
   font-size: 16px;
 }
 
-.bolletini--condition {
+.bolletini--condition,
+.postepay--condition {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -848,7 +880,8 @@
   padding: 18px;
 }
 
-.bolletini--condition__check {
+.bolletini--condition__check,
+.postepay--condition__check {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -860,17 +893,20 @@
           justify-content: space-between;
 }
 
-.bolletini--condition__check span {
+.bolletini--condition__check span,
+.postepay--condition__check span {
   color: #6c6c6c;
   font-size: 14px;
   line-height: 16px;
 }
 
-.bolletini--condition__check input {
+.bolletini--condition__check input,
+.postepay--condition__check input {
   display: none;
 }
 
-.bolletini--condition__check input + div {
+.bolletini--condition__check input + div,
+.postepay--condition__check input + div {
   width: 20px;
   height: 20px;
   border: 1px solid #a3a3a3;
@@ -890,18 +926,21 @@
   font-size: 15px;
 }
 
-.bolletini--condition__check input:checked + div {
+.bolletini--condition__check input:checked + div,
+.postepay--condition__check input:checked + div {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
   border: 0;
 }
 
-.bolletini--condition__check input:checked + div:before {
+.bolletini--condition__check input:checked + div:before,
+.postepay--condition__check input:checked + div:before {
   content: "\f00c";
   font-family: "Font Awesome 5 Pro";
 }
 
-.bolletini--condition__orario {
+.bolletini--condition__orario,
+.postepay--condition__orario {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -913,17 +952,20 @@
   font-size: 16px;
 }
 
-.bolletini--condition__orario span {
+.bolletini--condition__orario span,
+.postepay--condition__orario span {
   font-weight: 500;
   color: #272c31;
 }
 
-.bolletini--condition__orario > div {
+.bolletini--condition__orario > div,
+.postepay--condition__orario > div {
   color: #6c6c6c;
   line-height: 14px;
 }
 
-.bolletini--condition__warning {
+.bolletini--condition__warning,
+.postepay--condition__warning {
   margin-top: 18px;
   font-weight: 500;
   font-size: 14px;

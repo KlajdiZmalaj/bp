@@ -31,6 +31,7 @@ class Overview extends Component {
       dashboardData,
       fromFilterTop,
       dashboardFromFilterTop,
+      accountInfo,
     } = this.props;
 
     return (
@@ -123,16 +124,24 @@ class Overview extends Component {
             (showOverview ? "" : "hideWig")
           }
         >
-          <div className=" col-md-4 ">
-            <div className="wig wig1 animated fadeIn">
+          <div
+            className={`col-md-${
+              accountInfo.profile.role.name === "user" ? 6 : 4
+            }`}
+          >
+            <div className="wig wig1 animated fadeIn mx-auto">
               <span>View Details</span>
               <h2>Transazioni</h2>
               <h3>{get(dashboardData, "saldo")}€</h3>
               <i className="fas fa-tag"></i>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="wig wig2  animated fadeIn">
+          <div
+            className={`col-md-${
+              accountInfo.profile.role.name === "user" ? 6 : 4
+            }`}
+          >
+            <div className="wig wig2  animated fadeIn mx-auto">
               <span>View Details</span>
               <h2>Commisione</h2>
               <h3>{get(dashboardData, "commissione") || 0}€</h3>
@@ -140,14 +149,16 @@ class Overview extends Component {
               <i className="fas fa-user-alt"></i>
             </div>
           </div>
-          <div className="col-md-4 ">
-            <div className="wig wig3 animated fadeIn">
-              <span>View Details</span>
-              <h2>Proviggioni</h2>
-              <h3>{get(dashboardData, "proviggioni") || 0}€</h3>
-              <i className="fal fa-arrow-down"></i>
+          {accountInfo.profile.role.name !== "user" && (
+            <div className="col-md-4 ">
+              <div className="wig wig3 animated fadeIn mx-auto">
+                <span>View Details</span>
+                <h2>Proviggioni</h2>
+                <h3>{get(dashboardData, "proviggioni") || 0}€</h3>
+                <i className="fal fa-arrow-down"></i>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </React.Fragment>
     );

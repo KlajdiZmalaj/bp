@@ -143,7 +143,9 @@ export function* getBolletiniBianchi(params) {
         yield put(AuthActions.setAccountInfo({}));
       }
     }
-    params.callBack(false);
+    if (params.callBack) {
+      params.callBack(false);
+    }
   }
 }
 export function* addTicket({ ticket }) {
@@ -210,7 +212,9 @@ export function* getBolletiniPremercati(params) {
         // const response = yield call(logoutApi);
       }
     }
-    params.callBack(false);
+    if (params.callBack) {
+      params.callBack(false);
+    }
   }
 }
 
@@ -354,7 +358,9 @@ export function* getRechargeMobile(params) {
       }
     }
     //set loading false
-    params.callBack(false);
+    if (params.callBack) {
+      params.callBack(false);
+    }
   }
   if (response && response.error && response.error.response.status === 401) {
     yield put(AuthActions.setUnauthorization());
@@ -413,6 +419,7 @@ export function* getPostePay(params) {
         yield put(AuthActions.setPostePay(response.error.response.data));
       }
     }
+    params.setPostePayLoading(false);
   }
   if (response && response.error && response.error.response.status === 401) {
     localStorage.clear();
