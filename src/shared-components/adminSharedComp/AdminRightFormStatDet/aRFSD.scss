@@ -17,7 +17,7 @@
     justify-content: flex-start;
     padding-left: 3vw;
     align-items: center;
-    font-size: calc(1.25vw + 1.25vh);
+    font-size: calc(1.05vw + 1.05vh);
     letter-spacing: 1.3px;
     font-family: "Roboto";
     font-weight: 200;
@@ -35,14 +35,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(1.6vw + 1.6vh);
     font-family: "Roboto";
     display: flex;
     box-sizing: border-box;
     & i {
       color: #ffffff;
       font-weight: 300;
-      font-size: calc(1.3vw + 1.3vh);
+      font-size: calc(1vw + 1vh);
     }
   }
   & .backDrop {
@@ -100,18 +99,21 @@
         }
         &:nth-child(2) {
           position: absolute;
-          right: -0.2vw;
+          right: -0.4vw;
+          @media (max-width: 550px) {
+            right: 1vw;
+          }
           top: -1vh;
           & i {
             top: -0.7vh;
-            font-size: calc(1vw + 1vh);
+            font-size: calc(1.1vw + 1.1vh);
             position: relative;
             color: #ffffff;
           }
         }
         & span {
           &:first-child {
-            font-size: 35px;
+            font-size: 30px;
             font-weight: 300;
             color: #ffffff;
             height: 38px;
@@ -137,7 +139,7 @@
         border: none;
         border-left: 1px solid rgba(255, 255, 255, 0.1);
         & span {
-          font-size: calc(1.15vw + 1.15vh);
+          font-size: calc(1.05vw + 1.05vh);
           &:first-child {
             color: rgba(255, 255, 255, 0.5);
           }

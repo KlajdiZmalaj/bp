@@ -242,6 +242,8 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   width: auto;
   height: auto;
   cursor: pointer;
+  z-index: 1;
+  background: #fff;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.children .active span:nth-child(2) :nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.children .active span:nth-child(2) :nth-child(2) {
@@ -282,6 +284,8 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   left: -6px;
   position: relative;
   cursor: pointer;
+  z-index: 1;
+  background: #fff;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main.active span:nth-child(2) :nth-child(2), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child.active span:nth-child(2) :nth-child(2) {
@@ -327,9 +331,15 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   }
 }
 
-@media (max-width: 1395px) and (min-width: 1024px) {
-  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span {
-    font-size: 11px;
+@media (max-width: 1700px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span .Username, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span .Username {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 1500px) {
+  .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span .Username, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span .Username {
+    font-size: 12px !important;
   }
 }
 
@@ -439,7 +449,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   background-color: #ffffff;
   height: 52px;
   top: 101px;
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
