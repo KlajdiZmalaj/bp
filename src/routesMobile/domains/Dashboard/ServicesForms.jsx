@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import NumpadForm from "./modals/NumpadForm";
 import BolletiniBianchi from "./modals/BolletiniBianchi";
 import BolletiniPremercati from "./modals/BolletiniPremercati";
+import PostePay from "./modals/PostePay";
 const ServicesForms = ({
   activeService,
   activeCategory,
@@ -36,6 +37,13 @@ const ServicesForms = ({
         />
       ) : activeService === "BOL002" ? (
         <BolletiniPremercati
+          setService={setService}
+          activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
+        />
+      ) : activeService === "RPP001" ? (
+        <PostePay
           setService={setService}
           activeService={activeService}
           toggleFavorite={toggleFavorite}

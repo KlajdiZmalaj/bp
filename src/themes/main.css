@@ -2869,6 +2869,7 @@ body:not(.bodyAdmin) div.Container .row.no-gutters.max-width {
 
 .nav-tabs {
   border-bottom: 0;
+  white-space: break-spaces;
 }
 
 .nothinSelected {
