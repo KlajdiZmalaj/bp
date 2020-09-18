@@ -143,7 +143,9 @@ export function* getBolletiniBianchi(params) {
         yield put(AuthActions.setAccountInfo({}));
       }
     }
-    params.callBack(false);
+    if (params.callBack) {
+      params.callBack(false);
+    }
   }
 }
 export function* addTicket({ ticket }) {
@@ -356,7 +358,9 @@ export function* getRechargeMobile(params) {
       }
     }
     //set loading false
-    params.callBack(false);
+    if (params.callBack) {
+      params.callBack(false);
+    }
   }
   if (response && response.error && response.error.response.status === 401) {
     yield put(AuthActions.setUnauthorization());
