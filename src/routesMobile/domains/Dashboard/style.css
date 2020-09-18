@@ -1149,4 +1149,17 @@
   height: 0;
   width: 0;
 }
+
+.dd-options {
+  width: 100%;
+  padding: 11px;
+  background: #eaebec;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
 /*# sourceMappingURL=style.css.map */
