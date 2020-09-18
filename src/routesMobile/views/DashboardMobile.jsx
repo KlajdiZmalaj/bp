@@ -37,6 +37,7 @@ const Dashboard = (props) => {
               <div className="loginPopUp--forms__item">
                 <div className="label">Username</div>
                 <input
+                  value={username}
                   onKeyDown={(e) => {
                     if (e.keyCode === 13) {
                       handleSubmit(e);
@@ -55,6 +56,7 @@ const Dashboard = (props) => {
               <div className="loginPopUp--forms__item">
                 <div className="label">Password</div>
                 <input
+                  value={password}
                   autocomplete="on"
                   onKeyDown={(e) => {
                     if (e.keyCode === 13) {
