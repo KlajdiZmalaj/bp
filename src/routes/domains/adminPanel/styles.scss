@@ -199,7 +199,17 @@
       margin-right: 4px;
     }
   }
+  & div.Admin-Panel div.backDrop {
+    height: calc(100vh - 101px);
+    top: 101px;
+  }
   & .userDetailPopup {
+    top: calc(((100vh - 581px) / 2) + 101px);
+    margin-top: 0;
+    margin-bottom: 0;
+    @media (max-width: 800px) {
+      top: calc(((100vh - 561px) / 2) + 101px);
+    }
     & .newReg--row {
       &::-webkit-scrollbar-thumb {
         background: #353d45;
@@ -524,11 +534,18 @@ div.Center--Big {
               height: 49px;
               align-items: center;
               & i {
-                padding-left: 8%;
-                margin-left: 8px;
                 position: absolute;
                 left: 0;
                 top: calc(50% - 6.5px);
+              }
+              span {
+                max-width: 64px;
+                position: absolute;
+                right: 0;
+                height: 18px;
+                top: calc(50% - 8px);
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
             }
           }

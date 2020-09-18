@@ -176,6 +176,8 @@ div.Center--Big {
                 width: auto;
                 height: auto;
                 cursor: pointer;
+                z-index: 1;
+                background: #fff;
               }
               & :nth-child(2) {
                 position: relative;
@@ -210,6 +212,8 @@ div.Center--Big {
               left: -6px;
               position: relative;
               cursor: pointer;
+              z-index: 1;
+              background: #fff;
             }
             & :nth-child(2) {
               position: relative;
@@ -242,8 +246,14 @@ div.Center--Big {
           @media (max-width: 1500px) {
             font-size: 12px;
           }
-          @media (max-width: 1395px) and (min-width: 1024px) {
-            font-size: 11px;
+
+          .Username {
+            @media (max-width: 1700px) {
+              font-size: 13px !important;
+            }
+            @media (max-width: 1500px) {
+              font-size: 12px !important;
+            }
           }
           &:nth-child(1) {
             width: 6%;
@@ -323,7 +333,7 @@ div.Center--Big {
     background-color: #ffffff;
     height: 52px;
     top: 101px;
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     box-sizing: border-box;
     align-items: center;
