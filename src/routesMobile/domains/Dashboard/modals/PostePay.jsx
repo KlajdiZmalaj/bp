@@ -4,6 +4,30 @@ import images from "themes/images";
 import { AuthActions } from "redux-store/models";
 import { notification } from "antd";
 
+const Input = ({ label, handler, icon, value, iconHandler }) => (
+  <div className={"postepay--inputs__item" + (icon ? " hasIcon" : "")}>
+    <div className="label">{label}</div>
+    <input
+      type="text"
+      onChange={(e) => {
+        handler(e.target.value);
+      }}
+      value={value && value}
+    />
+    {icon && (
+      <i
+        onClick={() => {
+          if (label.includes("Codice")) {
+            //barcode camera to truee
+            iconHandler(true);
+          }
+        }}
+        className={icon}
+      />
+    )}
+  </div>
+);
+
 const PostePay = ({
   setService,
   services,
@@ -15,6 +39,7 @@ const PostePay = ({
   setPostePay,
   setPostePayLoading,
   getPostePay,
+  userList,
 }) => {
   useEffect(() => {
     if (Object.values(postePay).length > 0)
@@ -23,6 +48,34 @@ const PostePay = ({
         description: Object.values(postePay.errors || {}),
       });
   }, [postePay]);
+
+  let options = [];
+  let b = [];
+  let c = [];
+  if (userList && Object.keys(userList).length > 0) {
+    c.concat({ photo: userList["photo"] });
+    c.concat({ no_photo: userList["no_photo"] });
+  }
+
+  if (userList && Object.keys(userList).length > 0) {
+    Object.keys(userList).map((item) => {
+      if (userList[item] && userList[item].length > 0) {
+        b = b.concat(userList[item]);
+
+        options = (b || []).map((i) => {
+          return (
+            <option
+              value={`${i.first_name} ${i.last_name}`}
+              key={JSON.stringify({ [item]: i })}
+            >
+              {i.first_name} {i.last_name}
+            </option>
+          );
+        });
+        return options;
+      }
+    });
+  }
 
   return (
     <div className="postepay">
@@ -70,7 +123,10 @@ const PostePay = ({
           aria-hidden="true"
         ></i>{" "}
       </div>
-
+      <div className="bolletini--subh">PAGAMENTI</div>
+      <div className="bolletini--inputs">
+        <Input icon={"fal fa-barcode-read"} label="Intestazione" />
+      </div>
       <div className="bolletini--condition">
         <div className="bolletini--condition__check">
           <label htmlFor="bollo">
@@ -133,11 +189,15 @@ const PostePay = ({
 };
 
 export default connect(
-  ({ main: { services }, auth: { postePayLoading, postePay } }) => {
+  ({
+    main: { services, userListBySearch },
+    auth: { postePayLoading, postePay },
+  }) => {
     return {
       services,
       postePayLoading,
       postePay,
+      userList: userListBySearch,
     };
   },
   AuthActions

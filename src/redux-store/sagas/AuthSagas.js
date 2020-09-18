@@ -210,7 +210,7 @@ export function* getBolletiniPremercati(params) {
         // const response = yield call(logoutApi);
       }
     }
-    params.callBack(false);
+    params?.callBack(false);
   }
 }
 
