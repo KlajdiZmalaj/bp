@@ -38,7 +38,7 @@ const PostePay = ({
                       key={item.service_id}
                       onClick={() => {
                         setService(item?.service_id);
-                        // setBolletiniBianchi({});
+                        setPostePay({});
                       }}
                       className={
                         "postepay--services__item" +
