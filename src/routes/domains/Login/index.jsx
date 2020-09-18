@@ -42,7 +42,7 @@ class Login extends React.Component {
             <img src={images.logoFooter} alt="" />
           </div>
         </div>
-        <div className="login">
+        <form className="login" method="POST">
           <div className="title">
             <i className="fal fa-user-circle"></i>
             <div>Login</div>
@@ -78,7 +78,7 @@ class Login extends React.Component {
             </li>
             <li>
               <button
-                type="button"
+                type="submit"
                 onClick={this.handleSubmit}
                 className="loginBtn"
               >
@@ -88,7 +88,7 @@ class Login extends React.Component {
           </ul>
 
           {loginMsg && <div className="loginMsg">{loginMsg}</div>}
-        </div>
+        </form>
       </React.Fragment>
     );
   }
