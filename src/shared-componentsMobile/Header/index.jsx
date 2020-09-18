@@ -7,18 +7,52 @@ import { AuthActions, MainActions } from "redux-store/models";
 const Header = ({ accountInfo, logOut, services }) => {
   const [leftMenu, setMenu] = useState(false);
   const [tab, setTab] = useState(1);
-
-  // useEffect(() => {
-  //   getAllServices(1);
-  // }, []);
+  const [initialX, setInitialX] = useState(0);
+  const [transformValue, setTransform] = useState(0);
+  console.log("transformValue", transformValue);
   return (
     <header className="headerMob">
       <i onClick={() => setMenu(!leftMenu)} className="fal fa-bars"></i>
       <img
+        onTouchStart={(e) => {
+          const touch = e?.touches[0]?.clientX;
+          setInitialX(touch);
+        }}
+        onTouchMove={(e) => {
+          const touch = e?.touches[0]?.clientX;
+          if (initialX < touch) {
+            setTransform(30);
+            setTimeout(() => {
+              const el = document.querySelector(".headerMob i:nth-child(3)");
+              if (el) {
+                el.click();
+              }
+            }, 300);
+          }
+          if (initialX > touch) {
+            setTransform(-30);
+            setTimeout(() => {
+              setMenu(true);
+            }, 300);
+          }
+          // setTransform(touch - initialX);
+        }}
+        onTouchEnd={() => {
+          setTransform(0);
+        }}
         onClick={() => {
           window.location.hash = "dashboard";
         }}
         src={images.logo}
+        style={{
+          transform: `translateX(${
+            transformValue > 30
+              ? 30
+              : transformValue < -30
+              ? -30
+              : transformValue
+          }px)`,
+        }}
         alt=""
         className="logoMob"
       />

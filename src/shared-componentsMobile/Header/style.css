@@ -318,6 +318,8 @@
 
 .logoMob {
   height: 40px;
+  -webkit-transition: 0.4s ease-out;
+  transition: 0.4s ease-out;
 }
 
 .footerMob {
