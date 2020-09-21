@@ -226,6 +226,7 @@ class Step1 extends React.Component {
             addEditSkinDetails({
               step1: {
                 ...this.state.step1,
+                upload_logo: "",
               },
               step2: {
                 ...(addEditSkin?.step2 ? addEditSkin.step2 : {}),

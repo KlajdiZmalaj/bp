@@ -39,6 +39,7 @@ import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
 import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
 import Fatura from "./routes/views/Fatura";
+import CreateSkin from "./routes/views/CreateSkin";
 
 import {
   subscribeSocketUser,
@@ -295,6 +296,13 @@ class Root extends React.Component {
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/CreateSkin"
+              component={CreateSkin}
+              isLoggedin={isLoggedin}
+              allowedRoles={["main_admin"]}
               role={role}
             />
           </Switch>
