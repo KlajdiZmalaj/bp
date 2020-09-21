@@ -21,6 +21,7 @@ import {
   Login,
   Verify,
   Wallet,
+  QRDesktop,
 } from "./routes";
 import {
   DashboardMobile,
@@ -39,6 +40,7 @@ import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
 import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
 import Fatura from "./routes/views/Fatura";
+import CreateSkin from "./routes/views/CreateSkin";
 
 import {
   subscribeSocketUser,
@@ -117,6 +119,20 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
+            <PrivateRoute
+              path="/qR/:barcode?/"
+              component={isMobile ? QRDesktop : QRDesktop}
+              isLoggedin={isLoggedin}
+              allowedRoles={[
+                "super_admin",
+                "user",
+                "agency",
+                "main_admin",
+                "support",
+                "agent",
+              ]}
+              role={role}
+            />
             {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
               path="/login"
@@ -295,6 +311,13 @@ class Root extends React.Component {
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/CreateSkin"
+              component={CreateSkin}
+              isLoggedin={isLoggedin}
+              allowedRoles={["main_admin"]}
               role={role}
             />
           </Switch>

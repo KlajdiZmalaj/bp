@@ -119,7 +119,7 @@ class AdminLeftForm extends React.Component {
 
                   <span
                     onClick={() => {
-                      this.props.goToAdminPanel(false);
+                      this.props.history.push("/back-office/CreateSkin");
                       this.props.addEditSkinDetails({
                         skinId: -1,
                         skinName: "newSkin",

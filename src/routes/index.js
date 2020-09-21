@@ -20,3 +20,4 @@ export { default as RegisterAgent } from "./views/RegisterAgent";
 export { default as Login } from "./views/Login";
 export { default as Verify } from "./views/Verify";
 export { default as Wallet } from "./views/Wallet";
+export { default as QRDesktop } from "./views/QRDesktop";

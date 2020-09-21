@@ -312,7 +312,6 @@ const { Types, Creators } = createActions({
   sendMailFattura: ["file_name"],
   setDepositoModalAdmin: ["adminDepModal"],
   setPaymentsExcelLoading: ["paymentExcelLoading"],
-  goToAdminPanel: ["goToAdminPanelVis"],
   addEditSkinDetails: ["addEditSkin"],
   AddSkinNew: ["name", "url", "email", "agency_rent"],
   setSkinId: ["newSkinId"],
@@ -435,7 +434,6 @@ const INITIAL_STATE = {
   adminDepModal: null,
   paymentsForExcel: [],
   paymentExcelLoading: false,
-  goToAdminPanelVis: true,
   addEditSkin: { skinPannel: false },
   newSkinId: -1,
   leUltimeTransazioniDet: [],
@@ -692,10 +690,7 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     paymentExcelLoading,
   }),
-  [Types.GO_TO_ADMIN_PANEL]: (state, { goToAdminPanelVis }) => ({
-    ...state,
-    goToAdminPanelVis,
-  }),
+
   [Types.ADD_EDIT_SKIN_DETAILS]: (state, { addEditSkin }) => ({
     ...state,
     addEditSkin,
