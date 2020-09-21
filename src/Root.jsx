@@ -21,6 +21,7 @@ import {
   Login,
   Verify,
   Wallet,
+  QRDesktop,
 } from "./routes";
 import {
   DashboardMobile,
@@ -117,6 +118,20 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
+            <PrivateRoute
+              path="/qR/:barcode?/"
+              component={isMobile ? QRDesktop : QRDesktop}
+              isLoggedin={isLoggedin}
+              allowedRoles={[
+                "super_admin",
+                "user",
+                "agency",
+                "main_admin",
+                "support",
+                "agent",
+              ]}
+              role={role}
+            />
             {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
               path="/login"
