@@ -184,7 +184,6 @@ class FaturaDomain extends React.Component {
                     </div>
                   </div>
                   <div>
-                    {" "}
                     <div
                       className="FauturaFilter--CalendarLabel"
                       onClick={(e) => {
@@ -199,7 +198,9 @@ class FaturaDomain extends React.Component {
                         ? `${monthChosen.name} / ${yearChosen}`
                         : "Seleziona la data"}
                       <i
-                        class={`fal fa-chevron-${calendarVis ? "up" : "down"}`}
+                        className={`fal fa-chevron-${
+                          calendarVis ? "up" : "down"
+                        }`}
                         onClick={() => {
                           this.setCalendar(!calendarVis);
                         }}
@@ -222,17 +223,17 @@ class FaturaDomain extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="FaturaTable">
-                <table class="transTable">
+                <table className="transTable">
                   <thead>
                     <tr>
-                      <td class="wsNwp">Numero</td>
-                      <td class="wsNwp">Date / Ora</td>
-                      <td class="wsNwp">User</td>
-                      <td class="wsNwp">Descrizione</td>
-                      <td class="wsNwp">Importo</td>
-                      <td class="wsNwp">Commissione</td>
-                      <td class=" wsNwp">Proviggione</td>
-                      <td class=" wsNwp">Operazione</td>
+                      <td className="wsNwp">Numero</td>
+                      <td className="wsNwp">Date / Ora</td>
+                      <td className="wsNwp">User</td>
+                      <td className="wsNwp">Descrizione</td>
+                      <td className="wsNwp">Importo</td>
+                      <td className="wsNwp">Commissione</td>
+                      <td className=" wsNwp">Proviggione</td>
+                      <td className=" wsNwp">Operazione</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -240,19 +241,19 @@ class FaturaDomain extends React.Component {
                       Array.isArray(faturaDet) &&
                       faturaDet.map((fatura) => (
                         <tr>
-                          <td class="wsNwp">{fatura.numero}</td>
-                          <td class="wsNwp">{fatura.time}</td>
-                          <td class="wsNwp">
+                          <td className="wsNwp">{fatura.numero}</td>
+                          <td className="wsNwp">{fatura.time}</td>
+                          <td className="wsNwp">
                             <span>
                               <i className="fal fa-store"></i>
                               {fatura.user}
                             </span>
                           </td>
-                          <td class="wsNwp">{fatura.descrizione}</td>
-                          <td class="wsNwp">{fatura.importo}</td>
-                          <td class="wsNwp">{fatura.commissione}</td>
-                          <td class="wsNwp">{fatura.proviggione}</td>
-                          <td class=" wsNwp">
+                          <td className="wsNwp">{fatura.descrizione}</td>
+                          <td className="wsNwp">{fatura.importo}</td>
+                          <td className="wsNwp">{fatura.commissione}</td>
+                          <td className="wsNwp">{fatura.proviggione}</td>
+                          <td className=" wsNwp">
                             <a
                               href={`https://services-api.bpoint.store/storage/fatture/${fatura.file_name}`}
                               target="_blank"
@@ -270,7 +271,7 @@ class FaturaDomain extends React.Component {
                               style={{ display: "none" }}
                             ></iframe>
                             <i
-                              class="far fa-envelope-open-text"
+                              className="far fa-envelope-open-text"
                               onClick={() => {
                                 this.props.sendMailFattura(fatura.file_name);
                               }}

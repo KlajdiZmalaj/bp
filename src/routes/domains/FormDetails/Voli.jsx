@@ -75,7 +75,7 @@ class Voli extends Component {
       bagaglio_stiva,
       price,
     } = this.state;
-    console.log("ca ka voli ", bagaglio, bagaglio_stiva);
+    // console.log("ca ka voli ", bagaglio, bagaglio_stiva);
     return (
       <React.Fragment>
         <div className="formBody">

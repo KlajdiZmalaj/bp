@@ -49,7 +49,7 @@ class ModulePopUp4 extends React.Component {
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
     const { serviceMobile, tel_no, toPrint } = this.state;
-    console.log("service", service_s, service, serviceMobile);
+    // console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",

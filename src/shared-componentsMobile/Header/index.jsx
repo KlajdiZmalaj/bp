@@ -4,12 +4,12 @@ import images from "themes/images";
 import { connect } from "react-redux";
 import TabBody from "./TabBody";
 import { AuthActions, MainActions } from "redux-store/models";
+
 const Header = ({ accountInfo, logOut, services }) => {
   const [leftMenu, setMenu] = useState(false);
   const [tab, setTab] = useState(1);
   const [initialX, setInitialX] = useState(0);
   const [transformValue, setTransform] = useState(0);
-  console.log("transformValue", transformValue);
   return (
     <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
       <button onClick={() => setMenu(!leftMenu)}>
@@ -120,6 +120,7 @@ const Header = ({ accountInfo, logOut, services }) => {
     </header>
   );
 };
+
 const mstp = ({ auth: { accountInfo }, main: { services } }) => ({
   accountInfo,
   services,
