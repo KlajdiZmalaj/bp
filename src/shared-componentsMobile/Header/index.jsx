@@ -11,8 +11,11 @@ const Header = ({ accountInfo, logOut, services }) => {
   const [transformValue, setTransform] = useState(0);
   console.log("transformValue", transformValue);
   return (
-    <header className="headerMob">
-      <i onClick={() => setMenu(!leftMenu)} className="fal fa-bars"></i>
+    <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
+      <button onClick={() => setMenu(!leftMenu)}>
+        <span></span>
+      </button>
+
       <img
         onTouchStart={(e) => {
           const touch = e?.touches[0]?.clientX;
@@ -111,7 +114,7 @@ const Header = ({ accountInfo, logOut, services }) => {
               }, 500);
             }}
             className="backDrop"
-          ></div>{" "}
+          ></div>
         </>
       )}
     </header>

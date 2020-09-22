@@ -342,6 +342,7 @@
   font-size: 20px;
   text-transform: uppercase;
   padding: 0 18px;
+  white-space: nowrap;
 }
 
 .mobileNumPad--header > i {
@@ -613,6 +614,8 @@
   margin-right: 10px;
   border-radius: 5px;
   position: relative;
+  -webkit-filter: drop-shadow(2px 3px 3px #0004);
+          filter: drop-shadow(2px 3px 3px #0004);
 }
 
 .bolletini--services__item img,
@@ -1143,6 +1146,7 @@
   overflow-x: auto;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  padding: 13px;
 }
 
 .wrapperTop::-webkit-scrollbar {

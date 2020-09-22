@@ -43,7 +43,7 @@ const Dashboard = (props) => {
                       handleSubmit(e);
                     }
                   }}
-                  autocomplete="on"
+                  autoComplete="on"
                   type="text"
                   placeholder="Username"
                   name="username"
@@ -57,7 +57,7 @@ const Dashboard = (props) => {
                 <div className="label">Password</div>
                 <input
                   value={password}
-                  autocomplete="on"
+                  autoComplete="on"
                   onKeyDown={(e) => {
                     if (e.keyCode === 13) {
                       handleSubmit(e);
