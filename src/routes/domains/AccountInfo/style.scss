@@ -284,6 +284,39 @@
     overflow: scroll;
     transition: 0.3s;
     animation: fromDown 0.5s ease-out forwards;
+    display: flex;
+    flex-flow: column;
+    > input {
+      display: none;
+    }
+    > label {
+      width: 100%;
+      max-width: 90%;
+      height: 130px;
+      background-color: #dadada1a;
+      margin: 0 auto;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      flex-shrink: 0;
+      i {
+        font-size: 30px;
+      }
+    }
+    .uplTitle {
+      width: 100%;
+      background-color: #dadada1a;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
     .inpgr {
       display: flex;
       align-items: center;
@@ -371,6 +404,8 @@
     img {
       width: 100%;
       padding: 20px;
+      object-fit: contain;
+      height: 100%;
     }
     // .fa-trash-alt {
     //   position: absolute;
@@ -390,6 +425,9 @@
       padding: 10px 20px;
       text-transform: uppercase;
       transition: 0.4s;
+      width: 70%;
+      margin: 0 auto;
+      margin-top: 100px;
       &.disabled {
         color: #ccc;
         pointer-events: none;

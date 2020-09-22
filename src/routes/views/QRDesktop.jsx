@@ -1,5 +1,10 @@
 import React from "react";
+import { AuthActions } from "redux-store/models";
+import "../domains/QRBarcode/style.css";
+import { connect } from "react-redux";
 
-export default () => {
-  return <div>qr barcode</div>;
-};
+function Main({ getBarcodeData }) {
+  return <div className="qrBarcode">qr barcode</div>;
+}
+
+export default connect(null, { ...AuthActions })(Main);

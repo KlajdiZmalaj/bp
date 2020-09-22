@@ -14,7 +14,7 @@ import {
   Transazioni,
   Messages,
   AccountInfo,
-  Register,
+  // Register,
   RegisterEndUser,
   RegisterAgency,
   RegisterAgent,
@@ -113,7 +113,7 @@ class Root extends React.Component {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
     const isMobile = this.props.screenWidth <= 1025;
-    // console.log("ca kaa acc", this.props.accountInfo);
+    console.log("%c AccountInfo Data", window.log, this.props.accountInfo);
     return (
       <React.Fragment>
         <HashRouter>

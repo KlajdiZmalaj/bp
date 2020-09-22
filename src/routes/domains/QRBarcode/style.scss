@@ -1,0 +1,6 @@
+.qrBarcode {
+  display: flex;
+  + footer {
+    display: none;
+  }
+}

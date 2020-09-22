@@ -227,6 +227,7 @@
     font-size: 20px;
     text-transform: uppercase;
     padding: 0 18px;
+    white-space: nowrap;
     > i {
       margin-left: auto;
       &.active {
@@ -410,7 +411,7 @@
       margin-right: 10px;
       border-radius: 5px;
       position: relative;
-
+      filter: drop-shadow(2px 3px 3px #0004);
       img {
         width: 90%;
         height: 42px;
@@ -737,6 +738,8 @@
   width: 150%;
   overflow-x: auto;
   flex-shrink: 0;
+  padding: 13px;
+
   &::-webkit-scrollbar {
     height: 0;
     width: 0;
