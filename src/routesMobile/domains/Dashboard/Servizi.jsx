@@ -42,7 +42,7 @@ const OneTab = ({
           </span>
           <i
             className={`fal fa-chevron-${
-              open && panelOpen === serviceCategory ? "down" : "up"
+              open && panelOpen === serviceCategory ? "up" : "down"
             }`}
             aria-hidden="true"
           ></i>
