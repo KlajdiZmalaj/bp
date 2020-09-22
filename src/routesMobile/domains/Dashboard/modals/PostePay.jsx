@@ -173,6 +173,7 @@ const PostePay = ({
                 return userList[userType].map((user) => {
                   return (
                     <div
+                      key={user.first_name}
                       onClick={() => {
                         setUser({
                           userType,

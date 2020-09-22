@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
-import { Upload, Icon } from "antd";
+import { Icon } from "antd";
 import { postImages } from "services/main.js";
-import { getBase64, beforeUpload } from "utils";
+import { readFile } from "utils";
 
 class UserDoc extends Component {
   constructor(props) {
@@ -16,33 +16,17 @@ class UserDoc extends Component {
     };
   }
 
-  handleChangeFront = (info) => {
-    if (info.file.status === "uploading") {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, (imageUrl) =>
-        this.setState({
-          imageUrl,
-          loading: false,
-        })
-      );
-    }
+  handleChangeFront = (imageUrl) => {
+    this.setState({
+      imageUrl,
+      loading: false,
+    });
   };
-  handleChangeBack = (info) => {
-    if (info.file.status === "uploading") {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, (imageUrl2) =>
-        this.setState({
-          imageUrl2,
-          loading: false,
-        })
-      );
-    }
+  handleChangeBack = (imageUrl2) => {
+    this.setState({
+      imageUrl2,
+      loading: false,
+    });
   };
   setPopUp = () => {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
@@ -86,54 +70,51 @@ class UserDoc extends Component {
               parseInt(user.document_type) === 3) && (
               <React.Fragment>
                 <span className="uplTitle">Upload Front</span>
-                <Upload
-                  name="avatar"
-                  listType="picture-card"
-                  className="avatar-uploader"
-                  showUploadList={false}
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  beforeUpload={beforeUpload}
-                  onChange={this.handleChangeFront}
-                >
+
+                <input
+                  id={"inp1"}
+                  type="file"
+                  onChange={(e) => {
+                    readFile(e, this.handleChangeFront);
+                  }}
+                />
+                <label htmlFor="inp1">
                   {imageUrl ? (
-                    <img
-                      src={imageUrl}
-                      alt="avatar"
-                      style={{ width: "100%" }}
-                    />
+                    <img src={imageUrl} />
                   ) : (
-                    uploadButton
+                    <>
+                      {" "}
+                      Choose File <i className="fal fa-images"></i>
+                    </>
                   )}
-                </Upload>
+                </label>
               </React.Fragment>
             )}
             {(parseInt(user.document_type) === 1 ||
               parseInt(user.document_type) === 2) && (
               <React.Fragment>
                 <span className="uplTitle">Upload Back</span>
-                <Upload
-                  name="avatar"
-                  listType="picture-card"
-                  className="avatar-uploader"
-                  showUploadList={false}
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  beforeUpload={beforeUpload}
-                  onChange={this.handleChangeBack}
-                >
+                <input
+                  id={"inp2"}
+                  type="file"
+                  onChange={(e) => {
+                    readFile(e, this.handleChangeBack);
+                  }}
+                />
+                <label htmlFor="inp2">
                   {imageUrl2 ? (
-                    <img
-                      src={imageUrl2}
-                      alt="avatar"
-                      style={{ width: "100%" }}
-                    />
+                    <img src={imageUrl2} />
                   ) : (
-                    uploadButton
+                    <>
+                      {" "}
+                      Choose File <i className="fal fa-images"></i>{" "}
+                    </>
                   )}
-                </Upload>
+                </label>
               </React.Fragment>
             )}
             <i
-              class="fal fa-times"
+              className="fal fa-times"
               onClick={() => {
                 this.setPopUp();
               }}

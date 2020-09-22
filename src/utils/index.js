@@ -11,22 +11,30 @@ export const slicedAmount = (text) => {
   return text;
 };
 
-export const getBase64 = (img, callback) => {
+export function getBase64(img, callback) {
   const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
+  reader.addEventListener("load", () => {
+    console.log("img loaded ", reader, reader.result);
+    callback(reader.result);
+  });
   reader.readAsDataURL(img);
-};
-export const beforeUpload = (file) => {
-  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+}
+export function beforeUpload(file) {
+  const isJpgOrPng =
+    file.type === "image/jpg" ||
+    file.type === "image/jpeg" ||
+    file.type === "image/png" ||
+    file.type === "aplication/pdf";
   if (!isJpgOrPng) {
-    message.error("You can only upload JPG/PNG file!");
+    message.error("Solo JPG/PNG/PDF file!");
   }
-  const isLt2M = file.size / 1024 / 1024 < 2;
+  const isLt2M = file.size / 1024 / 1024 < 10;
   if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
+    message.error("Image must smaller than 10MB!");
   }
+  // console.log("filee", file, file.size, isLt2M);
   return isJpgOrPng && isLt2M;
-};
+}
 export const getCopy = (a) => {
   let textDiv = document.querySelector("#write");
   textDiv.value = a;
@@ -34,3 +42,15 @@ export const getCopy = (a) => {
   document.execCommand("copy");
   message.success(`Copiato "${a}" su ClipBoard`);
 };
+
+export function readFile(e, callBack) {
+  const file = e?.target?.files[0];
+  if (file) {
+    var FR = new FileReader();
+
+    FR.addEventListener("load", function (e) {
+      callBack(e.target.result);
+    });
+    FR.readAsDataURL(file);
+  }
+}
