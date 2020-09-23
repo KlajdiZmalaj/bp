@@ -113,7 +113,7 @@ class Root extends React.Component {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
     const isMobile = this.props.screenWidth <= 1025;
-    console.log("%c AccountInfo Data", window.log, this.props.accountInfo);
+    console.log("%c AccountInfo Data", window.log1, this.props.accountInfo);
     return (
       <React.Fragment>
         <HashRouter>

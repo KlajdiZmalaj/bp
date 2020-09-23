@@ -29,7 +29,19 @@ const Header = ({ accountInfo, logOut, services }) => {
   }, [leftMenu]);
   return (
     <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
-      <button onClick={() => setMenu(!leftMenu)}>
+      <button
+        onClick={() => {
+          if (leftMenu === true) {
+            setMenu("out");
+            setTimeout(() => {
+              setMenu(false);
+            }, 500);
+          }
+          if (!leftMenu) {
+            setMenu(true);
+          }
+        }}
+      >
         <span></span>
         <span></span>
         <span></span>
