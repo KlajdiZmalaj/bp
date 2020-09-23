@@ -734,8 +734,10 @@ class Transazioni extends React.Component {
                         <td className="wsNwp servizoTd">Servizio</td>
                         <td className="wsNwp right">Importo</td>
                         <td className="wsNwp right">Commissione</td>
-                        {accountInfo.profile.role.name !== 'user' &&    <td className=" wsNwp right">Proviggione</td>}
-                     
+                        {accountInfo.profile.role.name !== "user" && (
+                          <td className=" wsNwp right">Proviggione</td>
+                        )}
+
                         <td className=" wsNwp right">Saldo</td>
                         {this.props.screenWidth <= 865 && forAdmin && <td></td>}
 
@@ -869,13 +871,15 @@ class Transazioni extends React.Component {
                                   {item.commissione}€
                                   {/* {item.commissione ? item.commissione : "-"}{" "} */}
                                 </td>
-                                {accountInfo.profile.role.name !== 'user' &&   <td className="wsNwp right">
-                                  {item.percentage}€
-                                  {/* {parseInt(item.percentage) > 0
+                                {accountInfo.profile.role.name !== "user" && (
+                                  <td className="wsNwp right">
+                                    {item.percentage}€
+                                    {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
-                                </td> }
-                              
+                                  </td>
+                                )}
+
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>
@@ -1030,7 +1034,11 @@ class Transazioni extends React.Component {
                     }}
                   />
                 )}
-
+                <img
+                  className="qrCodeImg"
+                  src={`https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F${window.location.host}%2F%23%2Fqr%2F${barcode}&size=420x420&margin=10`}
+                  alt=""
+                />
                 <img
                   className="barcodeModal"
                   src={`https://barcode.tec-it.com/barcode.ashx?data=${barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}

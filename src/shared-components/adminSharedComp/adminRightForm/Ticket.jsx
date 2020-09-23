@@ -101,7 +101,11 @@ class Ticket extends React.Component {
                 }}
               />
             )}
-
+            <img
+              className="qrCodeImg"
+              src={`https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F${window.location.host}%2F%23%2Fqr%2F${ModalDetails.barcode}&size=420x420&margin=10`}
+              alt=""
+            />
             <img
               className="barcodeModal"
               src={`https://barcode.tec-it.com/barcode.ashx?data=${ModalDetails.barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
