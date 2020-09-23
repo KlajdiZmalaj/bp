@@ -3287,6 +3287,10 @@ span.superSmall {
   margin: 0 auto;
 }
 
+.qrBarcode .printModal .text-bold + .superSmall {
+  white-space: pre-wrap;
+}
+
 .qrCodeImg {
   width: 210px;
   margin: 0 auto;

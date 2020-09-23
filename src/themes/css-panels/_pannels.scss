@@ -661,6 +661,9 @@ span.superSmall {
     max-width: 420px;
     margin: 0 auto;
   }
+  .printModal .text-bold + .superSmall {
+    white-space: pre-wrap;
+  }
 }
 .qrCodeImg {
   width: 210px;
