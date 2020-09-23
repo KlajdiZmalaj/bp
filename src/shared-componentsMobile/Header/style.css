@@ -42,17 +42,7 @@
   padding: 0;
 }
 
-.headerMob > button span {
-  width: 100%;
-  height: 2px;
-  background-color: #212529;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.headerMob > button span::before, .headerMob > button span::after {
-  content: "";
+.headerMob > button > span {
   width: 100%;
   height: 2px;
   background-color: #212529;
@@ -63,29 +53,29 @@
   display: flex;
 }
 
-.headerMob > button span::before {
+.headerMob > button > span:nth-child(1) {
   position: absolute;
   bottom: 11px;
   left: 0;
 }
 
-.headerMob > button span::after {
+.headerMob > button > span:nth-child(3) {
   position: absolute;
   top: 11px;
   left: 0;
 }
 
-.headerMob.open > button span {
+.headerMob.open > button span:nth-child(2) {
   background-color: transparent;
 }
 
-.headerMob.open > button span::before {
+.headerMob.open > button span:nth-child(1) {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   bottom: 21px;
 }
 
-.headerMob.open > button span::after {
+.headerMob.open > button span:nth-child(3) {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
   top: 16px;

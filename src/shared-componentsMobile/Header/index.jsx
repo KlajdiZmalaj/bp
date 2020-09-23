@@ -14,6 +14,8 @@ const Header = ({ accountInfo, logOut, services }) => {
     <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
       <button onClick={() => setMenu(!leftMenu)}>
         <span></span>
+        <span></span>
+        <span></span>
       </button>
 
       <img
