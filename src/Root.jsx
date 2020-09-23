@@ -117,7 +117,11 @@ class Root extends React.Component {
       <React.Fragment>
         <HashRouter>
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
+            <Route
+              exact
+              path="/"
+              render={() => <Redirect to="/dashboard:id" />}
+            />
             {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
               path="/login"
@@ -171,7 +175,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <Route
-              path="/dashboard"
+              path="/dashboard/:id"
               // component={Dashboard}
               component={isMobile ? DashboardMobile : Dashboard}
               isLoggedin={isLoggedin}

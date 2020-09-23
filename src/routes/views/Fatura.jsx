@@ -5,9 +5,7 @@ import FaturaDomain from "../domains/FaturaDomain/FaturaDomain";
 const Fatura = () => (
   <Fragment>
     <Header />
-    <div className="azcont">
-      <Azioni active="fatture" />
-    </div>
+    <Azioni activeMain="contabilita" active="fatture" />
     <FaturaDomain />
   </Fragment>
 );

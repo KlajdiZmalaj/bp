@@ -376,10 +376,7 @@ class Transazioni extends React.Component {
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
-            <Overview
-              fromFilterTop={this.fromFilterTop}
-              dashboardFromFilterTop={dashboardFromFilterTop}
-            ></Overview>
+         
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&
@@ -468,7 +465,9 @@ class Transazioni extends React.Component {
             />
           )}
         <div className="container-fluid overview ">
-          {!forAdmin && <Azioni active="transazioni"></Azioni>}
+          {!forAdmin && (
+            <Azioni activeMain="contabilita" active="transazioni"></Azioni>
+          )}
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">
@@ -734,8 +733,10 @@ class Transazioni extends React.Component {
                         <td className="wsNwp servizoTd">Servizio</td>
                         <td className="wsNwp right">Importo</td>
                         <td className="wsNwp right">Commissione</td>
-                        {accountInfo.profile.role.name !== 'user' &&    <td className=" wsNwp right">Proviggione</td>}
-                     
+                        {accountInfo.profile.role.name !== "user" && (
+                          <td className=" wsNwp right">Proviggione</td>
+                        )}
+
                         <td className=" wsNwp right">Saldo</td>
                         {this.props.screenWidth <= 865 && forAdmin && <td></td>}
 
@@ -869,13 +870,15 @@ class Transazioni extends React.Component {
                                   {item.commissione}€
                                   {/* {item.commissione ? item.commissione : "-"}{" "} */}
                                 </td>
-                                {accountInfo.profile.role.name !== 'user' &&   <td className="wsNwp right">
-                                  {item.percentage}€
-                                  {/* {parseInt(item.percentage) > 0
+                                {accountInfo.profile.role.name !== "user" && (
+                                  <td className="wsNwp right">
+                                    {item.percentage}€
+                                    {/* {parseInt(item.percentage) > 0
                                 ? item.percentage
                                 : "-"} */}
-                                </td> }
-                              
+                                  </td>
+                                )}
+
                                 <td className="wsNwp right">
                                   {item.saldo !== "-" ? item.saldo + "€" : "-"}
                                 </td>

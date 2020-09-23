@@ -25,6 +25,9 @@
   }
 }
 .bodyAdmin {
+  .chatSticky {
+    background-color: transparent;
+  }
   .col-md-12.carica-conto {
     position: relative;
     top: 0 !important;
@@ -1796,12 +1799,17 @@ div.Center--Big {
                   &:nth-child(4) {
                     display: none;
                   }
-                  &.importoTd {
+                  &.right.importoTd {
                     display: table-cell !important;
                     width: 15% !important;
                     padding-right: 15px !important;
                     & i {
                       display: none;
+                    }
+                    span {
+                      position: relative;
+                      top: auto;
+                      left: auto;
                     }
                   }
                   &:nth-child(3) {

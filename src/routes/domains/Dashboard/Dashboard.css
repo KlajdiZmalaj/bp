@@ -1,0 +1,284 @@
+.DContainer {
+  max-width: 1135px;
+  margin: 20px auto;
+}
+
+@media (max-width: 1150px) {
+  .DContainer {
+    max-width: auto;
+  }
+}
+
+.DContainer .Image {
+  height: 150px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.DContainer .Image.fixed {
+  display: none;
+}
+
+.DContainer .Categories {
+  max-width: 285px;
+  width: 285px;
+  margin-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.DContainer .Categories.fixed {
+  position: fixed;
+  top: 170px;
+  min-height: calc(100vh - 418px);
+  height: calc(100vh - 418px);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.DContainer .Categories div {
+  font-size: 15px;
+  font-weight: 400;
+  width: 100%;
+  color: #3c4349;
+  background: #ffffff;
+  height: 55px;
+  font-family: "Roboto";
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-top: 1px solid #edeef0;
+  cursor: pointer;
+}
+
+.DContainer .Categories div.First {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--accent-bg);
+  height: 60px;
+}
+
+.DContainer .Categories div.Last {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.DContainer .Dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-height: calc(100vh - 700px);
+}
+
+.DContainer .Dashboard.fixed {
+  min-height: calc(100vh - 210px);
+  margin-left: 300px;
+  position: relative;
+  top: 7px;
+}
+
+.DContainer .Dashboard.fixed .CompaniesAndOther {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.DContainer .Dashboard .CompaniesAndOther {
+  width: calc(100% - 300px);
+  max-width: calc(100% - 300px);
+  min-width: calc(100% - 300px);
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Favorites {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 140px;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Favorites::-webkit-scrollbar {
+  width: 0;
+  height: 4px;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Favorites div {
+  width: 140px;
+  min-width: 140px;
+  background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 20px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto";
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Favorites div img {
+  height: 60px;
+  width: 80px;
+  margin-bottom: 12px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: calc(100% - 60px);
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Search {
+  width: 100%;
+  background: #ffffff;
+  position: relative;
+  height: 60px;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Search input {
+  width: 90%;
+  position: absolute;
+  height: 100%;
+  color: #3c4349b3;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 5%;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Search i {
+  font-size: 20px;
+  font-weight: 300;
+  color: #3c4349b3;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 10%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 140px 140px 140px 140px 140px;
+      grid-template-rows: 140px 140px 140px 140px 140px;
+  min-height: calc(100% - 60px);
+  background: #ffffff;
+  border-top: 4px solid var(--accent-bg);
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
+  padding: 20px 0;
+  height: 140px;
+  background: #ffffff;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-left: 1px solid #edeef0;
+  border-bottom: 1px solid #edeef0;
+  cursor: pointer;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:last-child {
+  border: 1px solid #edeef0;
+}
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div img {
+  height: 60px;
+  width: 80px;
+  margin-bottom: 12px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.leftCol_Module {
+  background: #ffffff;
+}
+/*# sourceMappingURL=Dashboard.css.map */

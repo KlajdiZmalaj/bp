@@ -7,11 +7,7 @@ export class VisureDetaggli extends Component {
     return (
       <div className="formsDetails">
         <Header></Header>
-        <div className="overview">
-          <div className="azioni max-width">
-            <Azioni active="dettagli-visure"></Azioni>
-          </div>
-        </div>
+        <Azioni active="dettagli-visure"></Azioni>
         <FormVisureDetails />
       </div>
     );

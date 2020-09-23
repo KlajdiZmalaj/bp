@@ -6,11 +6,7 @@ export class Visure extends Component {
     return (
       <div className="Visure">
         <Header></Header>
-        <div className="overview">
-          <div className="azioni max-width">
-            <Azioni active="visure"></Azioni>
-          </div>
-        </div>
+        <Azioni active="visure"></Azioni>
         <FormVisureDomain />
       </div>
     );

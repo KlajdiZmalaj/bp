@@ -1,0 +1,328 @@
+.Statistiche {
+  height: 244px;
+  background: #272c31;
+}
+
+.Statistiche.min {
+  height: 64px;
+}
+
+.Statistiche div.Categories {
+  max-width: 1135px;
+  margin: 0 auto;
+}
+
+.Statistiche div.Categories.Filters {
+  height: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Statistiche div.Categories.Filters div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.Statistiche div.Categories.Filters div:first-child i {
+  color: #e2e3e3;
+  font-size: 16px;
+  font-weight: 300;
+  padding-right: 10px;
+}
+
+.Statistiche div.Categories.Filters div:first-child span {
+  color: #e2e3e3;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Roboto";
+  text-transform: uppercase;
+}
+
+.Statistiche div.Categories.Filters div:nth-child(2) i {
+  color: #e2e3e3;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0 10px;
+}
+
+.Statistiche div.Categories.Filters div:nth-child(2) i.fa-angle-up,
+.Statistiche div.Categories.Filters div:nth-child(2) i .fa-angle-down {
+  font-size: 24px;
+}
+
+.Statistiche div.Categories.Filters div:nth-child(2) span {
+  color: #e2e3e3;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Roboto";
+}
+
+.Statistiche div.Categories.Filters div:nth-child(2) span.Bordered {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  height: 30px;
+  margin: 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Statistiche div.Categories.Filters div:nth-child(2) span.Bordered:nth-child(2) {
+  width: 30px;
+  height: 30px;
+}
+
+.Statistiche div.Categories.data {
+  height: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Statistiche div.Categories.data .Graph,
+.Statistiche div.Categories.data .Additinal.Statist {
+  width: 280px;
+  height: 150px;
+  background: #3c4349;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:first-child {
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:first-child span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:first-child span:nth-child(1) {
+  font-size: 30px;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  top: 10%;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:first-child span:nth-child(2) {
+  font-size: 10px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) {
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #ffffff1a;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-right: 1px solid #ffffff1a;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div span:nth-child(1) {
+  padding: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24px;
+  font-weight: 100;
+  color: #ffffff;
+  position: relative;
+  top: 13%;
+  font-family: "Roboto";
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div span:nth-child(2) {
+  padding: 0;
+  width: 100%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div span:nth-child(2) span {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #ffffff;
+  font-family: "Roboto";
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: -12%;
+  position: relative;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div span:nth-child(2) span:nth-child(1) {
+  width: 45%;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div span:nth-child(2) span:nth-child(2) {
+  width: 55%;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div span:nth-child(2) i {
+  font-size: 9px;
+  font-weight: 600;
+  color: #ffffff;
+  height: 100%;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: -2px;
+  position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 3.5px;
+}
+
+.Statistiche div.Categories.data .Additinal.Statist div:nth-child(2):not(.agenzie) div:last-child {
+  border: none;
+}
+
+.Statistiche div.Categories.data .Graph {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0 10px;
+  padding-top: 70px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Statistiche div.Categories.data .Graph--Element {
+  background: #ffffff33;
+  width: 5.89px;
+}
+
+.Statistiche div.Categories.data .Graph--Element:hover, .Statistiche div.Categories.data .Graph--Element:focus {
+  background: #f26521;
+}
+/*# sourceMappingURL=Statistiche.css.map */

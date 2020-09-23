@@ -34,49 +34,39 @@ const Graph = ({
 }) => {
   const max = graphForMap(graphicData).max;
   const arrayForMap = graphForMap(graphicData).arrayForMap;
-  console.log(max, arrayForMap);
   return (
     <div className="Graph">
       {arrayForMap &&
         Array.isArray(arrayForMap) &&
         arrayForMap.map((graphData) => {
+          const { realValue, day, month, value } = graphData;
+
           return (
-            <Tooltip
-              title={graphData.realValue}
-              key={`${graphData.day}${graphData.month}`}
-            >
+            <Tooltip title={realValue} key={`${day}${month}`}>
               <div
                 onMouseEnter={() => {
                   setDate(
-                    new Date(
-                      `${graphData.month}-${
-                        graphData.day
-                      }-${new Date().getFullYear()}`
-                    )
+                    new Date(`${month}-${day}-${new Date().getFullYear()}`)
                   );
                 }}
                 onClick={() => {
                   if (window.location.href.includes("movimenti")) {
                     const date = moment(
-                      `${graphData.month}-${
-                        graphData.day
-                      }-${new Date().getFullYear()}`
+                      `${month}-${day}-${new Date().getFullYear()}`
                     ).format("YYYY-MM-DD");
                     getPayments("", date, date, 1, 25, activeSkinId);
                     setFromDateToDate(date);
                   }
                 }}
-                key={`${graphData.realValue}${graphData.day}${graphData.month}`}
+                key={`${realValue}${day}${month}`}
                 className={`Graph--Element ${
-                  parseInt(graphData.month) === date.getMonth() + 1 &&
-                  parseInt(graphData.day) === date.getDate()
+                  parseInt(month) === date.getMonth() + 1 &&
+                  parseInt(day) === date.getDate()
                     ? "active"
                     : ""
                 }`}
                 style={{
-                  height: `${
-                    graphData.value === 0 ? 0 : (graphData.value / max) * 100
-                  }%`,
+                  height: `${value === 0 ? 0 : (value / max) * 100}%`,
                 }}
               ></div>
             </Tooltip>

@@ -34,6 +34,10 @@
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+.bodyAdmin .chatSticky {
+  background-color: transparent;
+}
+
 .bodyAdmin .col-md-12.carica-conto {
   position: relative;
   top: 0 !important;
@@ -2447,13 +2451,18 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp:nth-child(2), .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp:nth-child(4) {
     display: none;
   }
-  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp.importoTd {
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp.right.importoTd {
     display: table-cell !important;
     width: 15% !important;
     padding-right: 15px !important;
   }
-  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp.importoTd i {
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp.right.importoTd i {
     display: none;
+  }
+  .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp.right.importoTd span {
+    position: relative;
+    top: auto;
+    left: auto;
   }
   .AdminColumns div.container-fluid.overview div.panels-container div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody td.wsNwp:nth-child(3) {
     display: table-cell !important;

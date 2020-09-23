@@ -509,9 +509,9 @@
     width: calc(100vw - 200px) !important;
     position: fixed;
     top: 101px;
-    height: calc(100vh - 161px);
+    height: calc(100vh - 162px) !important;
     left: 200px !important;
-    bottom: 0;
+    bottom: 60px;
     z-index: 11;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -533,7 +533,7 @@
   .Left--Min {
     z-index: 12;
     top: 101px !important;
-    height: calc(100vh - 161px) !important;
+    height: calc(100vh - 162px) !important;
     left: 0 !important;
     bottom: 0;
     -webkit-transition: 0.5s;

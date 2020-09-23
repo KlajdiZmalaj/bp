@@ -53,7 +53,9 @@ class Configura extends React.Component {
         {!this.props.isMobile && <Header />}
 
         <div className="container-fluid overview ">
-          {!this.props.isMobile && <Azioni active="configura"></Azioni>}
+          {!this.props.isMobile && (
+            <Azioni activeMain="support" active="configura"></Azioni>
+          )}
 
           <div className="panels-container">
             <div className="row no-gutters max-width">

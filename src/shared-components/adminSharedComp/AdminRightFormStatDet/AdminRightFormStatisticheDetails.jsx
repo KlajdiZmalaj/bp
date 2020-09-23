@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Graph from "../Graph/Graph";
+import Graph from "../../Graph/Graph";
 import "./aRFSD.css";
 const AdminRightFormStatisticheDetailsHelper = ({
   graphData,
