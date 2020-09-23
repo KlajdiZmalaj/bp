@@ -119,18 +119,10 @@ class Root extends React.Component {
         <HashRouter>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
-            <PrivateRoute
+            <PublicRoute
               path="/qR/:barcode?/"
               component={isMobile ? QRDesktop : QRDesktop}
-              isLoggedin={isLoggedin}
-              allowedRoles={[
-                "super_admin",
-                "user",
-                "agency",
-                "main_admin",
-                "support",
-                "agent",
-              ]}
+              isLoggedin={false}
               role={role}
             />
             {/* <Route path="/register/:id" component={Register} /> */}
