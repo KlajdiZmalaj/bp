@@ -375,6 +375,12 @@
   background: #ececed !important;
 }
 
+.mobileWrapper {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  left: 0;
+}
+
 .logoMob {
   height: 40px;
   -webkit-transition: 0.2s ease-in;
@@ -571,5 +577,10 @@
     width: 90%;
     bottom: 21px;
   }
+}
+
+.moveRight {
+  position: relative;
+  left: 60vw;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import images from "themes/images";
 import { connect } from "react-redux";
@@ -10,6 +10,23 @@ const Header = ({ accountInfo, logOut, services }) => {
   const [tab, setTab] = useState(1);
   const [initialX, setInitialX] = useState(0);
   const [transformValue, setTransform] = useState(0);
+  useEffect(() => {
+    const el = document.querySelector(".mobileWrapper");
+    if (leftMenu) {
+      if (el) {
+        el.classList.add("moveRight");
+      }
+    } else {
+      if (el) {
+        el.classList.remove("moveRight");
+      }
+    }
+    if (leftMenu === "out") {
+      if (el) {
+        el.classList.remove("moveRight");
+      }
+    }
+  }, [leftMenu]);
   return (
     <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
       <button onClick={() => setMenu(!leftMenu)}>

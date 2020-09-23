@@ -274,7 +274,10 @@
     background: #ececed !important;
   }
 }
-
+.mobileWrapper {
+  transition: 0.5s;
+  left: 0;
+}
 .logoMob {
   height: 40px;
   transition: 0.2s ease-in;
@@ -393,4 +396,8 @@
     width: 90%;
     bottom: 21px;
   }
+}
+.moveRight {
+  position: relative;
+  left: 60vw;
 }
