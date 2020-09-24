@@ -235,29 +235,30 @@ class SingleUser2 extends Component {
                   }}
                 />
               </div>
-
-              <button
-                className="sendInput"
-                onClick={() => {
-                  transferMoney(
-                    user.id,
-                    valueInput,
-                    val,
-                    this.transferCallback,
-                    role
-                  );
-                }}
-              >
-                <i className="fa fa-check"></i> Conferma
-              </button>
-              <button
-                className="sendInput cancelInput"
-                onClick={() => {
-                  this.setPopUpFalse();
-                }}
-              >
-                <i className="fa fa-times"></i> Cancel
-              </button>
+              <div className="buttons">
+                <button
+                  className="sendInput"
+                  onClick={() => {
+                    transferMoney(
+                      user.id,
+                      valueInput,
+                      val,
+                      this.transferCallback,
+                      role
+                    );
+                  }}
+                >
+                  <i className="fa fa-check"></i> Conferma
+                </button>
+                <button
+                  className="sendInput cancelInput"
+                  onClick={() => {
+                    this.setPopUpFalse();
+                  }}
+                >
+                  <i className="fa fa-times"></i> Cancel
+                </button>
+              </div>
               {user.status === 2 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> L'UTENTE È BLOCCATO

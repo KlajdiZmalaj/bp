@@ -519,25 +519,24 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
           : skin),
       }
     )
-    .then(
-      (data) => {
-        if (data && data.status === 200) {
-          c();
-          notification["success"]({
-            message: "Azione completata",
-            description: data?.data?.message,
-            placement: "bottomRight",
-          });
-          // /skin/transferMoney/{skin_id}
-          // this.setState({ isPopUpActive: false });
-          // this.props.getUsers();
-        }
-      },
-      (data) => {}
-    )
+    .then((data) => {
+      if (data && data.status === 200) {
+        c();
+        notification["success"]({
+          message: "Azione completata",
+          description: data?.data?.message,
+          placement: "bottomRight",
+        });
+        // /skin/transferMoney/{skin_id}
+        // this.setState({ isPopUpActive: false });
+        // this.props.getUsers();
+      }
+    })
     .catch((err) => {
       notification["error"]({
-        message: "Something wrong happened",
+        message: err.response.data.message,
+        description:
+          err.response.data.errors && Object.values(err.response.data.errors),
         placement: "bottomRight",
         duration: "5",
       });

@@ -137,33 +137,34 @@ class UsersList extends Component {
                   }}
                 />
               </div>
-
-              <button
-                className="sendInput"
-                onClick={() => {
-                  transferMoney(
-                    DepositoPopup.data.id,
-                    valueInput,
-                    DepositoPopup.val,
-                    this.switchCallBack,
-                    role
-                  );
-                }}
-              >
-                <i className="fa fa-check"></i> Conferma
-              </button>
-              <button
-                className="sendInput cancelInput"
-                onClick={() => {
-                  this.props.setDepositoPopup({
-                    val: "",
-                    data: "",
-                    visibility: false,
-                  });
-                }}
-              >
-                <i className="fa fa-times"></i> Cancel
-              </button>
+              <div className="buttons">
+                <button
+                  className="sendInput"
+                  onClick={() => {
+                    transferMoney(
+                      DepositoPopup.data.id,
+                      valueInput,
+                      DepositoPopup.val,
+                      this.switchCallBack,
+                      role
+                    );
+                  }}
+                >
+                  <i className="fa fa-check"></i> Conferma
+                </button>
+                <button
+                  className="sendInput cancelInput"
+                  onClick={() => {
+                    this.props.setDepositoPopup({
+                      val: "",
+                      data: "",
+                      visibility: false,
+                    });
+                  }}
+                >
+                  <i className="fa fa-times"></i> Cancel
+                </button>
+              </div>
               {DepositoPopup.data.status === 2 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> L'UTENTE È BLOCCATO
