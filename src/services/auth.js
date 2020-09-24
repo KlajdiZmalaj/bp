@@ -535,7 +535,8 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
     .catch((err) => {
       notification["error"]({
         message: err.response.data.message,
-        description: Object.values(err.response.data.errors),
+        description:
+          err.response.data.errors && Object.values(err.response.data.errors),
         placement: "bottomRight",
         duration: "5",
       });
