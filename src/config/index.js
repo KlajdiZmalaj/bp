@@ -246,7 +246,7 @@ export const acquista = [
   },
   {
     id: 5,
-    name: "ricariche scomesse sportive",
+    name: "ricariche conti online",
     details: [
       {
         id: 51,

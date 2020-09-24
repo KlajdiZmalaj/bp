@@ -90,7 +90,7 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="icon-scomese"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Scomesse"
+                name="Ricariche Conti Online"
               />
               <Card
                 icon="fa-user-headset"
