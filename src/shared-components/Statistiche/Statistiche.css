@@ -12,6 +12,12 @@
   margin: 0 auto;
 }
 
+@media (max-width: 1135px) {
+  .Statistiche div.Categories {
+    max-width: 100%;
+  }
+}
+
 .Statistiche div.Categories.Filters {
   height: 64px;
   display: -webkit-box;
@@ -111,7 +117,7 @@
 
 .Statistiche div.Categories.data .Graph,
 .Statistiche div.Categories.data .Additinal.Statist {
-  width: 280px;
+  width: 24.5%;
   height: 150px;
   background: #3c4349;
 }
@@ -319,7 +325,7 @@
 
 .Statistiche div.Categories.data .Graph--Element {
   background: #ffffff33;
-  width: 5.89px;
+  width: 2.11%;
 }
 
 .Statistiche div.Categories.data .Graph--Element:hover, .Statistiche div.Categories.data .Graph--Element:focus {

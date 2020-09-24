@@ -8,7 +8,11 @@ class Dashboard extends React.Component {
     return (
       <div>
         <Header></Header>
-        <Azioni activeMain="dashboard" active="dashboard"></Azioni>
+        <Azioni
+          activeMain="dashboard"
+          active="ricariche"
+          match={this.props.match}
+        ></Azioni>
         <DashboardDom match={this.props.match} />
       </div>
     );

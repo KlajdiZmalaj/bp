@@ -19,7 +19,7 @@ class MyInput extends Component {
           .replace(/(?:^|:|,)(?:\s*\[)+/g, "")
     );
 
-    console.log("value", labelName, value, jsonCheck);
+    // console.log("value", labelName, value, jsonCheck);
     return (
       <React.Fragment>
         <div className={`itemCol ${semi ? "semi" : "full"}`}>

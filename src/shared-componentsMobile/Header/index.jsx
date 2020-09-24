@@ -1,18 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import images from "themes/images";
 import { connect } from "react-redux";
 import TabBody from "./TabBody";
 import { AuthActions, MainActions } from "redux-store/models";
+
 const Header = ({ accountInfo, logOut, services }) => {
   const [leftMenu, setMenu] = useState(false);
   const [tab, setTab] = useState(1);
   const [initialX, setInitialX] = useState(0);
   const [transformValue, setTransform] = useState(0);
-  console.log("transformValue", transformValue);
+  useEffect(() => {
+    const el = document.querySelector(".mobileWrapper");
+    if (leftMenu) {
+      if (el) {
+        el.classList.add("moveRight");
+      }
+    } else {
+      if (el) {
+        el.classList.remove("moveRight");
+      }
+    }
+    if (leftMenu === "out") {
+      if (el) {
+        el.classList.remove("moveRight");
+      }
+    }
+  }, [leftMenu]);
   return (
-    <header className="headerMob">
-      <i onClick={() => setMenu(!leftMenu)} className="fal fa-bars"></i>
+    <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
+      <button
+        onClick={() => {
+          if (leftMenu === true) {
+            setMenu("out");
+            setTimeout(() => {
+              setMenu(false);
+            }, 500);
+          }
+          if (!leftMenu) {
+            setMenu(true);
+          }
+        }}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <img
         onTouchStart={(e) => {
           const touch = e?.touches[0]?.clientX;
@@ -111,12 +145,13 @@ const Header = ({ accountInfo, logOut, services }) => {
               }, 500);
             }}
             className="backDrop"
-          ></div>{" "}
+          ></div>
         </>
       )}
     </header>
   );
 };
+
 const mstp = ({ auth: { accountInfo }, main: { services } }) => ({
   accountInfo,
   services,

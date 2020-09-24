@@ -26,29 +26,6 @@ function beforeUpload(file) {
   // console.log("filee", file, file.size, isLt2M);
   return isJpgOrPng && isLt2M;
 }
-const Input = ({ label, handler, icon, value, iconHandler }) => (
-  <div className={"postepay--inputs__item" + (icon ? " hasIcon" : "")}>
-    <div className="label">{label}</div>
-    <input
-      type="text"
-      onChange={(e) => {
-        handler(e.target.value);
-      }}
-      value={value && value}
-    />
-    {icon && (
-      <i
-        onClick={() => {
-          if (label.includes("Codice")) {
-            //barcode camera to truee
-            iconHandler(true);
-          }
-        }}
-        className={icon}
-      />
-    )}
-  </div>
-);
 
 const PostePay = ({
   setService,
@@ -70,7 +47,7 @@ const PostePay = ({
   const [intestatario, setintestatario] = useState("");
   const [img1, setImg1] = useState({ loading: false, imageUrl: "" });
   const [img2, setImg2] = useState({ loading: false, imageUrl: "" });
-  const [view, setView] = useState("front");
+  const [view, setView] = useState("1");
 
   const [formData, setFormData] = useState({
     importo: 0,
@@ -173,6 +150,7 @@ const PostePay = ({
                 return userList[userType].map((user) => {
                   return (
                     <div
+                      key={user.first_name}
                       onClick={() => {
                         setUser({
                           userType,

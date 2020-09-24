@@ -1,8 +1,11 @@
+footer {
+  box-shadow: 0 0 0px 20px #ebeced !important;
+}
 .DContainer {
   max-width: 1135px;
   margin: 20px auto;
-  @media (max-width: 1150px) {
-    max-width: auto;
+  @media (max-width: 1135px) {
+    max-width: 100%;
   }
   .Image {
     height: 150px;
@@ -20,12 +23,14 @@
     flex-direction: column;
     position: relative;
     transition: 0.5s;
+    overflow: auto;
     &.fixed {
       position: fixed;
       top: 170px;
-      min-height: calc(100vh - 418px);
-      height: calc(100vh - 418px);
+      min-height: calc(100vh - 183px);
+      height: calc(100vh - 183px);
       transition: 0.5s;
+      overflow: auto;
     }
     div {
       font-size: 15px;
@@ -33,7 +38,8 @@
       width: 100%;
       color: #3c4349;
       background: #ffffff;
-      height: 55px;
+      height: 50px;
+      min-height: 50px;
       font-family: "Roboto";
       padding: 0 20px;
       display: flex;
@@ -45,7 +51,7 @@
         font-size: 17px;
         font-weight: bold;
         color: var(--accent-bg);
-        height: 60px;
+        height: 55px;
       }
       &.Last {
         flex: 1;
@@ -156,6 +162,9 @@
           min-height: calc(100% - 60px);
           background: #ffffff;
           border-top: 4px solid var(--accent-bg);
+          @media (max-width: 1135px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          }
           div {
             padding: 20px 0;
             height: 140px;

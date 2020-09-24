@@ -11,7 +11,7 @@ const Treni = ({ TicketByTcketId }) => {
       )
       .replace(/(?:^|:|,)(?:\s*\[)+/g, "")
   );
-  console.log("isJson", isJson, TicketByTcketId.extra_data);
+  // console.log("isJson", isJson, TicketByTcketId.extra_data);
   return (
     <div className="confirmationPopup--body ">
       <div className="NomeEmail">

@@ -403,6 +403,65 @@
   transition: 0.3s;
   -webkit-animation: fromDown 0.5s ease-out forwards;
           animation: fromDown 0.5s ease-out forwards;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.userList .popUp > input {
+  display: none;
+}
+
+.userList .popUp > label {
+  width: 100%;
+  max-width: 90%;
+  height: 130px;
+  background-color: #dadada1a;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.userList .popUp > label i {
+  font-size: 30px;
+}
+
+.userList .popUp .uplTitle {
+  width: 100%;
+  background-color: #dadada1a;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: uppercase;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .userList .popUp .inpgr {
@@ -530,6 +589,9 @@
 .userList .popUp img {
   width: 100%;
   padding: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
 }
 
 .userList .popUp .uploadSendBtn {
@@ -541,6 +603,9 @@
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 
 .userList .popUp .uploadSendBtn.disabled {

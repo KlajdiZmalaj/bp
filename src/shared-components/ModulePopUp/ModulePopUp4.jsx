@@ -49,7 +49,7 @@ class ModulePopUp4 extends React.Component {
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
     const { serviceMobile, tel_no, toPrint } = this.state;
-    console.log("service", service_s, service, serviceMobile);
+    // console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",
@@ -319,6 +319,11 @@ class ModulePopUp4 extends React.Component {
                               "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
                             ),
                         }}
+                      />
+                      <img
+                        className="qrCodeImg"
+                        src={`https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F${window.location.host}%2F%23%2Fqr%2F${rechargeMobile.barcode}&size=420x420&margin=10`}
+                        alt=""
                       />
                       <img
                         className="barcodeModal"

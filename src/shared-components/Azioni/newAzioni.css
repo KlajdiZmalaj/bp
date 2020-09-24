@@ -2,12 +2,6 @@
   overflow: visible !important;
 }
 
-@media (max-width: 1150px) {
-  #root {
-    overflow: hidden !important;
-  }
-}
-
 .MenuC {
   background: #3c4349;
   width: 100%;
@@ -33,9 +27,9 @@
           align-items: center;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1135px) {
   .Menu {
-    max-width: auto;
+    max-width: 100%;
   }
 }
 
@@ -129,6 +123,12 @@
       -ms-flex-align: center;
           align-items: center;
   background: #f26521;
+}
+
+@media (max-width: 1135px) {
+  .Submenu .MenuS {
+    max-width: 100%;
+  }
 }
 
 .Submenu div,

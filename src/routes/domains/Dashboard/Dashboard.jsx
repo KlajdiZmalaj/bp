@@ -83,8 +83,8 @@ class DashboardDom extends React.Component {
     let scrollPoint = document
       .querySelector("#SpecStatistich")
       .classList.contains("min")
-      ? 175.5
-      : 350.5;
+      ? 174
+      : 357;
     let top =
       (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
     if (menuClassName !== "fixed" && top >= scrollPoint) {

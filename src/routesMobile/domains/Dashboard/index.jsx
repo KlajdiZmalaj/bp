@@ -79,11 +79,18 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 name="Ricariche Telefoniche"
               />
               <Card
-                id={["RTVD", "SCMS"]}
+                id={["RTVD"]}
                 icon="fa-tv"
                 tab={tab}
                 setTab={setTab}
                 name="Ricariche Tv Digitali"
+              />
+              <Card
+                id={["SCMS"]}
+                icon="icon-scomese"
+                tab={tab}
+                setTab={setTab}
+                name="Ricariche Scomesse"
               />
               <Card
                 icon="fa-user-headset"

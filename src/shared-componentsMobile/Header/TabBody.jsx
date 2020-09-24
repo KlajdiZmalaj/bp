@@ -4,7 +4,7 @@ import { capitalize, get, includes } from "lodash";
 import { Tooltip } from "antd";
 import { open } from "shared-components/Chat/Chat";
 export default ({ tab, accountInfo, logOut, services, setMenu }) => {
-  console.log("services", services);
+  // console.log("services", services);
   return tab === 1 ? (
     <div className="tabBody body1">
       {accountInfo?.profile ? (

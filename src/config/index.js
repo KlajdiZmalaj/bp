@@ -25,25 +25,25 @@ export const newAzioniSubmenu = {
       id: 1,
       name: "RICARICHE",
       link: "dashboard/ricariche",
-      displayRole: ["super_admin", "agency", "agent", "user"],
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
       id: 2,
       name: "PAGAMENTI",
       link: "dashboard/prodotti",
-      displayRole: ["super_admin", "agency", "agent", "user"],
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
       id: 3,
       name: "Gift cards",
       link: "dashboard/gift",
-      displayRole: ["super_admin", "agency", "agent", "user"],
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
       id: 4,
       name: "SPEDIZIONI",
       link: "dashboard/spedizioni",
-      displayRole: ["super_admin", "agency", "agent", "user"],
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
       id: 5,
@@ -55,7 +55,7 @@ export const newAzioniSubmenu = {
       id: 6,
       name: "VOUCHER",
       link: "dashboard/voucher",
-      displayRole: ["super_admin", "agency", "agent", "user"],
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
   ],
   support: [
@@ -126,7 +126,7 @@ export const newAzioni = [
     link: `${newAzioniSubmenu["dashboard"][0].link}`,
     active: "dashboard",
     i: "fal fa-list-alt",
-    displayRole: ["super_admin", "agency", "agent", "user"],
+    displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
   },
   {
     id: 2,

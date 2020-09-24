@@ -35,13 +35,14 @@
 .FaturaDomain .panels-container .Chose--Month .Body .active {
   background: var(--accent-bg);
   color: var(--accent-txt);
+  position: relative;
 }
 
 .FaturaDomain .panels-container .Chose--Month .Body .active:after {
   content: "✔";
   color: var(--accent-txt);
   position: absolute;
-  right: 12px;
+  right: 2px;
   font-size: 14px;
 }
 
@@ -71,13 +72,14 @@
 .FaturaDomain .panels-container .Chose--Year .Body .active {
   background: var(--accent-bg);
   color: var(--accent-txt);
+  position: relative;
 }
 
 .FaturaDomain .panels-container .Chose--Year .Body .active:after {
   content: "✔";
   color: var(--accent-txt);
   position: absolute;
-  right: 12px;
+  right: 5px;
   font-size: 14px;
 }
 

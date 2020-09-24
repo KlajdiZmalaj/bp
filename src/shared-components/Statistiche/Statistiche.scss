@@ -6,6 +6,9 @@
   }
   div.Categories {
     max-width: 1135px;
+    @media (max-width: 1135px) {
+      max-width: 100%;
+    }
     margin: 0 auto;
     &.Filters {
       height: 64px;
@@ -74,7 +77,7 @@
       align-items: center;
       .Graph,
       .Additinal.Statist {
-        width: 280px;
+        width: 24.5%;
         height: 150px;
         background: #3c4349;
       }
@@ -196,7 +199,7 @@
         justify-content: space-between;
         &--Element {
           background: #ffffff33;
-          width: 5.89px;
+          width: 2.11%;
           &:hover,
           &:focus {
             background: #f26521;
