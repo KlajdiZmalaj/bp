@@ -248,25 +248,24 @@ class AdminListaUtentiRowForLoop extends React.Component {
             <i
               id="lock"
               className={`fal fa-lock${
-                Special && itemList.status === 0
-                  ? "-alt"
-                  : itemList.status === 1 && !Special
+                itemList.status === 0 || itemList.status === 2
                   ? "-alt"
                   : "-open-alt active"
               }`}
               onClick={async () => {
-                const changeStatus = await (Special && itemList.status === 1
-                  ? 0
-                  : itemList.status === 1 && !Special
-                  ? 2
-                  : 1);
+                const changeStatus =
+                  itemList.status === 0 || itemList.status === 2
+                    ? 1
+                    : Special
+                    ? 0
+                    : 2;
                 await switchUserStatus(
                   itemList.id,
                   changeStatus,
 
                   () => {
                     (changeStatus === 0 && Special) ||
-                    (changeStatus === 1 && !Special)
+                    (changeStatus === 2 && !Special)
                       ? message.error(
                           `lo stato dell${
                             itemList.username

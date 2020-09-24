@@ -1,3 +1,7 @@
+.bodyAdmin #root {
+  overflow: hidden !important;
+}
+
 .Admin-Panel {
   min-width: 700px;
   font-family: "Roboto", sans-serif;
@@ -2730,4 +2734,4 @@ body.bodyAdmin::-webkit-scrollbar-track,
     top: calc(100vh - 85px) !important;
   }
 }
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=adminStyles.css.map */

@@ -116,16 +116,17 @@ class FaturaDomain extends React.Component {
                     }}
                     setMonthChosen={(month) => {
                       this.setState((state) => ({
-                        monthChosen: {
-                          id: month.id,
-                          name: month.name,
-                        },
+                        monthChosen:
+                          month.id === state.monthChosen.id
+                            ? ""
+                            : { id: month.id, name: month.name },
                         monthDropdown: !state.monthDropdown,
                       }));
                     }}
                     setYearChosen={(year) => {
                       this.setState((state) => ({
-                        yearChosen: year.name,
+                        yearChosen:
+                          year.name == state.yearChosen ? "" : year.name,
                         yearDropdown: !state.yearDropdown,
                       }));
                     }}
