@@ -171,7 +171,13 @@ class Transazioni extends React.Component {
       var blobUrl = URL.createObjectURL(myBlob);
       console.log("url", blobUrl);
       if (type === "print") {
-        window.open(blobUrl).print();
+        window
+          .open(
+            blobUrl,
+            "_blank",
+            "toolbar=no,scrollbars=no,resizable=no,top=50,left=500,width=700,height=700"
+          )
+          .print();
       }
       if (type === "download") {
         const linkSource = `data:application/pdf;base64,${data.receipt}`;
