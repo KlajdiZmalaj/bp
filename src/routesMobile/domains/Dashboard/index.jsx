@@ -76,21 +76,21 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="fa-mobile"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Telefoniche"
+                name={`Ricariche${"\n"}Telefoniche`}
               />
               <Card
                 id={["RTVD"]}
                 icon="fa-tv"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Tv Digitali"
+                name={`Ricariche${"\n"}Tv Digitali`}
               />
               <Card
                 id={["SCMS"]}
                 icon="icon-scomese"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Conti Online"
+                name={`Ricariche${"\n"}Conti Online`}
               />
               <Card
                 icon="fa-user-headset"
