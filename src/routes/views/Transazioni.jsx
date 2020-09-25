@@ -140,7 +140,50 @@ class Transazioni extends React.Component {
       });
     }
   }
+  printPdfReceipt = (data, type) => {
+    if (data.receipt_type === "base64") {
+      const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
 
+        for (
+          let offset = 0;
+          offset < byteCharacters.length;
+          offset += sliceSize
+        ) {
+          const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+          const byteNumbers = new Array(slice.length);
+          for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          const byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+
+        const blob = new Blob(byteArrays, {
+          type: contentType,
+        });
+        return blob;
+      };
+      var myBlob = b64toBlob(data.receipt, "application/pdf");
+      var blobUrl = URL.createObjectURL(myBlob);
+      console.log("url", blobUrl);
+      if (type === "print") {
+        window.open(blobUrl).print();
+      }
+      if (type === "download") {
+        const linkSource = `data:application/pdf;base64,${data.receipt}`;
+        const downloadLink = document.createElement("a");
+        const fileName = "Ticket.pdf";
+
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      }
+    }
+  };
   handleCancel = (e) => {
     this.props.setPaymentsFromCode({});
     this.setState({
@@ -1005,14 +1048,31 @@ class Transazioni extends React.Component {
                 {paymentsFromCode &&
                 paymentsFromCode.receipt_type === "base64" ? (
                   <div>
-                    <iframe
+                    {/* <embed
+                      type="application/pdf"
                       style={{
                         width: "100%",
                         height: "443px",
                       }}
                       id="iframepdf"
                       src={`data:application/pdf;base64,${paymentsFromCode.receipt}`}
-                    ></iframe>
+                    ></embed> */}
+                    <div
+                      className="printBtn"
+                      onClick={() => {
+                        this.printPdfReceipt(paymentsFromCode, "print");
+                      }}
+                    >
+                      Print Ticket
+                    </div>
+                    <div
+                      className="printBtn"
+                      onClick={() => {
+                        this.printPdfReceipt(paymentsFromCode, "download");
+                      }}
+                    >
+                      Download Ticket
+                    </div>
                   </div>
                 ) : (
                   <div

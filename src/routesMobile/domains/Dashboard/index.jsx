@@ -35,7 +35,6 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   return (
     <div className="mobileWrapper">
       <UserInfoBar />
-
       {!activeService ? (
         <React.Fragment>
           <div className="serviziFilter">
@@ -48,7 +47,6 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
               />
               <i className="fal fa-search" aria-hidden="true"></i>
             </div>
-
             <div className="serviziFilter--cards">
               <Card
                 id={"fav"}
@@ -101,7 +99,6 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
               />
             </div>
           </div>
-
           <Servizi
             setService={setService}
             setCategory={setCategory}
