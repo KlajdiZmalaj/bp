@@ -6,9 +6,7 @@ export class Support extends Component {
     return (
       <div>
         <Header></Header>
-        <div className="azcont">
-          <Azioni active="support" />
-        </div>
+        <Azioni activeMain="support" active="support"></Azioni>
         <SupportBody />
       </div>
     );

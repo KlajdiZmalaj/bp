@@ -474,8 +474,20 @@ div.AdminColumns {
                   @media (max-width: 509px) {
                     left: -29px;
                   }
+                  @media (max-width: 490px) {
+                    left: -28.5px;
+                  }
+                  @media (max-width: 480px) {
+                    left: -29.5px;
+                  }
                   @media (max-width: 428px) {
                     left: -28px;
+                  }
+                  @media (max-width: 378px) {
+                    left: -27px;
+                  }
+                  @media (max-width: 350px) {
+                    left: -26px;
                   }
                 }
                 & .Link {

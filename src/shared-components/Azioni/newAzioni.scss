@@ -1,0 +1,112 @@
+#root {
+  overflow: visible !important;
+  @media (max-width: 1024px) {
+    overflow: hidden !important;
+  }
+}
+.MenuC {
+  background: #3c4349;
+  width: 100%;
+}
+.Menu {
+  width: 1135px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 110px;
+  max-width: 1135px;
+  @media (max-width: 1135px) {
+    max-width: 100%;
+  }
+  margin: 0 auto;
+  align-items: center;
+  div,
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #3c4349;
+    color: rgba(255, 255, 255, 0.602);
+
+    a {
+      border-left: 1px solid #272c31;
+    }
+    &:last-child {
+      a {
+        border-right: 1px solid #272c31;
+      }
+    }
+    &.active {
+      div {
+        background: #32383c;
+        color: #ffffff;
+      }
+      i {
+        font-size: 32px;
+      }
+    }
+    i {
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      width: 32px;
+      height: 32px;
+    }
+    span {
+      text-decoration: none;
+      font-family: "Roboto";
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+.Submenu {
+  width: 100%;
+  background: #f26521;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 101px;
+  height: auto;
+  z-index: 1;
+  overflow: auto;
+  .MenuS {
+    width: 1135px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 50px;
+    max-width: 1136px;
+    margin: 0 auto;
+    align-items: center;
+    background: #f26521;
+    @media (max-width: 1135px) {
+      max-width: 100%;
+    }
+  }
+  div,
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    .active {
+      background: #d3561a;
+    }
+    a {
+      border-left: 1px solid #de5817;
+    }
+    &:last-child {
+      a {
+        border-right: 1px solid #de5817;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import { printFatturaReq } from "services/auth";
 import DatePicker from "./DatePicker";
+import ClickOut from "react-onclickout";
 
 class FaturaDomain extends React.Component {
   state = {
@@ -115,16 +116,17 @@ class FaturaDomain extends React.Component {
                     }}
                     setMonthChosen={(month) => {
                       this.setState((state) => ({
-                        monthChosen: {
-                          id: month.id,
-                          name: month.name,
-                        },
+                        monthChosen:
+                          month.id === state.monthChosen.id
+                            ? ""
+                            : { id: month.id, name: month.name },
                         monthDropdown: !state.monthDropdown,
                       }));
                     }}
                     setYearChosen={(year) => {
                       this.setState((state) => ({
-                        yearChosen: year.name,
+                        yearChosen:
+                          year.name == state.yearChosen ? "" : year.name,
                         yearDropdown: !state.yearDropdown,
                       }));
                     }}
@@ -158,25 +160,34 @@ class FaturaDomain extends React.Component {
                         value={userName}
                       />
                       {userListShow && (
-                        <div className="Ricerca--UserList">
-                          {Users &&
-                            Array.isArray(Users) &&
-                            Users.filter(
-                              (user) =>
-                                user.includes(userName) || userName === ""
-                            ).map((user) => (
-                              <div
-                                onClick={() => {
-                                  this.setState({
-                                    userName: user,
-                                    userListShow: false,
-                                  });
-                                }}
-                              >
-                                {user}
-                              </div>
-                            ))}
-                        </div>
+                        <ClickOut
+                          onClickOut={() =>
+                            this.setState({ userListShow: false })
+                          }
+                        >
+                          <div className="Ricerca--UserList">
+                            {Users &&
+                              Array.isArray(Users) &&
+                              Users.filter(
+                                (user) =>
+                                  user
+                                    .toLowerCase()
+                                    .includes(userName.toLowerCase()) ||
+                                  userName === ""
+                              ).map((user) => (
+                                <div
+                                  onClick={() => {
+                                    this.setState({
+                                      userName: user,
+                                      userListShow: false,
+                                    });
+                                  }}
+                                >
+                                  {user}
+                                </div>
+                              ))}
+                          </div>
+                        </ClickOut>
                       )}
                     </div>
                     <div className="Search">

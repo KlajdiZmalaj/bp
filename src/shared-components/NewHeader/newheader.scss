@@ -36,9 +36,10 @@ header.header {
   display: flex;
   flex-flow: column;
   background-color: var(--accent-bg);
-
+  position: sticky;
+  top: 0;
   width: 100%;
-
+  z-index: 1;
   .topNav {
     width: 100%;
     color: var(--accent-txt);
@@ -183,7 +184,6 @@ header.header {
     padding: 10px;
     border-bottom: 2px solid var(--accent-bg);
     box-shadow: 1px 18px 20px -22px black;
-
     .logo {
       margin: 0;
       margin-right: auto;

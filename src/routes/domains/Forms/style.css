@@ -36,9 +36,9 @@
   max-width: 1051px;
   margin: 0 auto;
   margin-top: 60px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .formsContainer--cards__item {
@@ -111,7 +111,7 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   margin-top: 60px;
-  max-width: 1371px;
+  max-width: 1135px;
 }
 
 @media (max-width: 768px) {

@@ -7,11 +7,7 @@ export class Forms extends Component {
     return (
       <div className="forms">
         <Header></Header>
-        <div className="overview">
-          <div className="azioni max-width">
-            <Azioni active="forms"></Azioni>
-          </div>
-        </div>
+        <Azioni activeMain="dashboard" active="forms"></Azioni>
         {/* <UserInfoBar /> */}
         <FormsBody />
       </div>

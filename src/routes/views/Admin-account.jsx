@@ -7,7 +7,6 @@ class AdminAccount extends React.Component {
     return (
       <div className="Container">
         <Header></Header>
-        <Overview></Overview>
 
         <div className="container-fluid overview ">
           <Amministrazione active="admin-account"></Amministrazione>

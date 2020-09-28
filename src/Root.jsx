@@ -39,8 +39,10 @@ import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
 import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
 import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
+import adminPanelErrorList from "./routes/views/adminPanelErrorList";
 import Fatura from "./routes/views/Fatura";
 import CreateSkin from "./routes/views/CreateSkin";
+import { Encrypt } from "utils/HelperFunc";
 
 import {
   subscribeSocketUser,
@@ -56,14 +58,20 @@ import {
 } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
+import { TestEncrypt } from "services/auth";
+
 moment.locale("it", {
   week: {
     dow: 1,
   },
 });
+
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
+    //Test
+    // TestEncrypt();
+    // TestEncrypt(Encrypt());
     this.getStoredData();
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
@@ -113,12 +121,17 @@ class Root extends React.Component {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
     const isMobile = this.props.screenWidth <= 1025;
-    console.log("%c AccountInfo Data", window.log1, this.props.accountInfo);
     return (
       <React.Fragment>
         <HashRouter>
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
+              )}
+            />
             <PublicRoute
               path="/qR/:barcode?/"
               component={isMobile ? QRDesktop : QRDesktop}
@@ -178,7 +191,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <Route
-              path="/dashboard"
+              path={`/dashboard${!isMobile ? "/:id" : ""}`}
               // component={Dashboard}
               component={isMobile ? DashboardMobile : Dashboard}
               isLoggedin={isLoggedin}
@@ -303,6 +316,13 @@ class Root extends React.Component {
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/support"
+              component={adminPanelErrorList}
+              isLoggedin={isLoggedin}
+              allowedRoles={["support"]}
               role={role}
             />
             <PrivateRoute

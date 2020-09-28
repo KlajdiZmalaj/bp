@@ -29,11 +29,12 @@
           & .active {
             background: var(--accent-bg);
             color: var(--accent-txt);
+            position: relative;
             &:after {
               content: "✔";
               color: var(--accent-txt);
               position: absolute;
-              right: 12px;
+              right: 2px;
               font-size: 14px;
             }
           }
@@ -60,11 +61,12 @@
           & .active {
             background: var(--accent-bg);
             color: var(--accent-txt);
+            position: relative;
             &:after {
               content: "✔";
               color: var(--accent-txt);
               position: absolute;
-              right: 12px;
+              right: 5px;
               font-size: 14px;
             }
           }

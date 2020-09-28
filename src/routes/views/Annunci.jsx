@@ -61,7 +61,7 @@ class Annunci extends React.Component {
         <Header></Header>
         {/* <Overview></Overview> */}
         <div className="container-fluid overview ">
-          <Azioni active="annunci"></Azioni>
+          <Azioni activeMain="support" active="annunci"></Azioni>
           <div className="panels-container">
             <div className="sort-annunci max-width">
               <h1 className="heading-tab mr-auto">Annunci</h1>

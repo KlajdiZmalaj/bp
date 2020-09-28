@@ -1,122 +1,107 @@
-import React, { Component } from "react";
-
+import React, { Component, Fragment } from "react";
+import { get, includes } from "lodash";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
-import { azioni } from "config";
-import { get, includes } from "lodash";
+import { newAzioni, newAzioniSubmenu } from "config";
 import "swiper/css/swiper.css";
-import Swiper from "react-id-swiper";
-
+import "./newAzioni.css";
+import Statistiche from "../Statistiche/Statistiche";
 class Azioni extends Component {
+  state = {
+    active: { url: "dashboard/ricariche" },
+    className: "",
+    classNameBelongTo: "",
+  };
+  componentDidMount() {
+    let url = window.location.href.slice(
+      window.location.href.indexOf("#/") + "#/".length
+    );
+    this.setState({ active: { ...{ url } } });
+  }
+  componentDidUpdate(prevProps) {
+    const id = this.props?.match?.params.id;
+    const previd = prevProps?.match?.params.id;
+    if (id === "ricariche" && id !== previd) {
+      this.setState({ active: { url: `dashboard/${id}` } });
+    }
+  }
   render() {
-    const { active, accountInfo } = this.props;
-    const params = {
-      mousewheel: true,
-      activeSlideKey: active === "dashboard" ? "0" : active,
-      breakpoints: {
-        // when window width is >= 320px
-        320: {
-          slidesPerView: 1,
-        },
-
-        // when window width is >= 640px
-        640: {
-          slidesPerView: 6,
-        },
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    };
-    const slides = azioni.map((item, ind) => {
-      return includes(
-        item.displayRole,
-        get(accountInfo, "profile.role.name")
-      ) ? (
-        <div key={item.link}>
-          <a href={"#/" + item.link}>
-            <div
-              className={
-                "azioni-tab azioni-tab" +
-                (active === item.link ? " active-tab" : "")
-              }
-            >
-              <i className="fas fa-dot-circle"></i>
-
-              <h2>{item.name}</h2>
-              <i className={`icon ${item.i}`}></i>
-            </div>
-          </a>
-        </div>
-      ) : (
-        <div key={item.id} style={{ display: "none" }}></div>
-      );
-    });
+    const { active, activeMain, accountInfo, screenWidth } = this.props;
+    const userRole = accountInfo?.profile?.role?.name
+      ? accountInfo?.profile?.role?.name
+      : "noUser";
     return (
-      <React.Fragment>
-        <hr className="overviw-line" />
-        {get(accountInfo, "profile.role.name") ? (
-          <div
-            className="row max-width mt-2 azioni"
-            key={Math.random() + slides.id}
-          >
-            <Swiper
-              key={Math.random() + slides.id * 2}
-              activeSlideKey={active}
-              {...params}
-            >
-              {slides}
-            </Swiper>
-          </div>
-        ) : (
-          <div
-            className="row max-width mt-2 azioni py-4"
-            style={{ paddingLeft: "30px" }}
-          >
-            {/* <div className="col-6 col-lg-2 p-0 pl-2 pl-lg-2" key={0}>
-              <a href={"#/login"}>
-                <div className={"azioni-tab azioni-tab"}>
-                  <i className="fas fa-dot-circle"></i>
-
-                  <h2>Login</h2>
-                  <i className="icon fal fa-sign-in"></i>
-                </div>
-              </a>
-            </div> */}
-            {azioni.map((item) => {
-              return (
-                item.id === 5 && (
-                  <div
-                    className="col-6 col-lg-2 p-0 pl-2 pl-lg-2"
-                    key={Math.random() + item.id * 2}
-                  >
-                    <a href={"#/" + item.link}>
+      screenWidth > 1024 && (
+        <Fragment>
+          <Statistiche userRole={userRole} />
+          <div className="MenuC">
+            <div className="Menu">
+              {newAzioni &&
+                Array.isArray(newAzioni) &&
+                newAzioni.map((azioni) => {
+                  return (
+                    includes(azioni.displayRole, userRole) && (
                       <div
-                        className={
-                          "azioni-tab azioni-tab" +
-                          (active === item.link ? " active-tab" : "")
-                        }
+                        key={azioni.id}
+                        className={`${
+                          azioni.active === activeMain ? "active" : "none"
+                        }`}
                       >
-                        <i className="fas fa-dot-circle"></i>
-
-                        <h2>{item.name}</h2>
-                        <i className={`icon ${item.i}`}></i>
+                        <a href={"#/" + azioni.link}>
+                          <div>
+                            <i className={azioni.i} />
+                            <span>{azioni.name}</span>
+                          </div>
+                        </a>
                       </div>
-                    </a>
-                  </div>
-                )
-              );
-            })}
+                    )
+                  );
+                })}
+            </div>
           </div>
-        )}
-      </React.Fragment>
+          <div className="Submenu">
+            <div className="MenuS">
+              {newAzioniSubmenu[activeMain]?.map((item) => {
+                return (
+                  includes(item.displayRole, userRole) && (
+                    <div
+                      id={item.link}
+                      key={item.id}
+                      onClick={() => {
+                        if (activeMain === "dashboard") {
+                          this.setState({ active: { ...{ url: item.link } } });
+                        }
+                      }}
+                      className={`${
+                        activeMain === "dashboard"
+                          ? item.link === this.state.active.url
+                            ? "active"
+                            : "none"
+                          : active === item.link
+                          ? "active"
+                          : "none"
+                      }`}
+                    >
+                      <a href={"#/" + item.link}>
+                        <div>
+                          <span>{item.name}</span>
+                        </div>
+                      </a>
+                    </div>
+                  )
+                );
+              })}
+            </div>
+          </div>
+        </Fragment>
+      )
     );
   }
 }
 
 const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
+  screenWidth: state.main.screenWidth,
 });
 
 export default connect(mapsStateToProps, AuthActions)(Azioni);

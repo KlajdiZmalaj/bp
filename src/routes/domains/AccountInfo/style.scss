@@ -43,7 +43,7 @@
   flex-grow: 1;
   background: #ebeced;
   width: 100%;
-  max-width: 1371px;
+  max-width: 1135px;
   margin: 0 auto;
   .ant-btn {
     border-radius: 0;
@@ -854,7 +854,7 @@ div {
     align-items: center;
     top: calc((100% - 200px) / 2);
     padding: 0;
-    z-index: 3;
+    z-index: 4;
     & .Message {
       display: flex;
       flex-direction: column;
