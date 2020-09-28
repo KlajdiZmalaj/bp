@@ -1,6 +1,107 @@
 .bodyAdmin #root {
   overflow: hidden !important;
 }
+.bodyAdmin {
+  .userList {
+    padding: 0;
+    &--AllUsers {
+      position: relative;
+      top: 41px;
+      padding-bottom: 36px;
+    }
+  }
+  .accountInfo {
+    padding-top: 0;
+    .contentAcc.supportContent {
+      width: 100%;
+      max-width: 100%;
+
+      .header,
+      .body {
+        span {
+          display: flex;
+          align-items: center;
+          padding-left: 2px;
+          padding-right: 2px;
+          @media (max-width: 600px) {
+            margin-left: 4px;
+            margin-right: 4px;
+          }
+          &:nth-child(1) {
+            width: 155px;
+            @media (max-width: 600px) {
+              width: 125px;
+            }
+          }
+          &:nth-child(2) {
+            width: 9%;
+            @media (max-width: 600px) {
+              display: none;
+            }
+          }
+          &:nth-child(3) {
+            width: calc(23% - 70px);
+            @media (max-width: 900px) {
+              display: none;
+            }
+          }
+          &:nth-child(4) {
+            width: calc(26% - 70px);
+            @media (max-width: 900px) {
+              width: calc(46% - 105px);
+            }
+            @media (max-width: 600px) {
+              width: calc(50% - 85px);
+            }
+          }
+          &:nth-child(5) {
+            width: calc(24% - 70px);
+            @media (max-width: 900px) {
+              display: none;
+            }
+          }
+          &:nth-child(6) {
+            width: 18%;
+            @media (max-width: 900px) {
+              width: calc(45% - 105px);
+            }
+            @media (max-width: 600px) {
+              width: calc(50% - 85px);
+            }
+          }
+          &:nth-child(7) {
+            width: 55px !important;
+            @media (max-width: 600px) {
+              width: 45px !important;
+            }
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+
+      .header {
+        border-bottom: 1px solid #ebeced;
+        background: #ffffff;
+        height: 40px;
+        position: fixed;
+        top: 100px;
+        z-index: 1;
+        span {
+          @media (max-width: 600px) {
+            padding-left: 5px;
+            padding-right: 5px;
+            margin: 0;
+          }
+        }
+        padding-right: 5px;
+        & span:nth-child(7) {
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}
 .Admin-Panel {
   min-width: 700px;
   font-family: "Roboto", sans-serif;
@@ -275,6 +376,7 @@
       background: #707070;
     }
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -305,6 +407,7 @@
         background: #707070;
       }
       & .AdminListaUtenti--Header,
+      .accountInfo .contentAcc.supportContent .header,
       .col-md-12,
       .paginationWrapper,
       .transTable.Movimenti thead tr {
@@ -353,6 +456,7 @@
     width: calc(100% - 350px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -364,6 +468,7 @@
     width: calc(100% - 350px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -396,6 +501,7 @@
     width: calc(100% - 300px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -407,6 +513,7 @@
     width: calc(100% - 300px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -446,6 +553,7 @@
     width: calc(100% - 300px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper {
       width: calc(100% - 51px - 300px);
@@ -456,6 +564,7 @@
     width: calc(100% - 300px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -493,6 +602,7 @@
     width: calc(100% - 220px - 51px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -504,6 +614,7 @@
     width: calc(100% - 220px - 200px);
     transition: 0.5s;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .transTable.Movimenti thead tr {
@@ -1401,6 +1512,7 @@ div.Center--Big {
     div.Center--Big {
       width: calc(100vw - 51px);
       .AdminListaUtenti--Header,
+      .accountInfo .contentAcc.supportContent .header,
       .col-md-12,
       .paginationWrapper,
       .transTable.Movimenti thead tr {
@@ -1410,6 +1522,7 @@ div.Center--Big {
     div.Center {
       width: calc(100vw - 200px);
       .AdminListaUtenti--Header,
+      .accountInfo .contentAcc.supportContent .header,
       .col-md-12,
       .paginationWrapper,
       .transTable.Movimenti thead tr {

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tooltip } from "antd";
-
+import moment from "moment";
 const graphForMap = (graphData) => {
   let arrayForMax = [];
   let arrayForMap = [];
@@ -24,10 +24,11 @@ const SimpleGraph = ({
   graphicData,
   handleMouseEntering,
   handleClick,
-  AdditionComp,
+  AdditionalComp,
 }) => {
   const max = graphForMap(graphicData).max;
   const arrayForMap = graphForMap(graphicData).arrayForMap;
+  const [date, setDate] = useState(new Date());
   return (
     <div className="Graph">
       {arrayForMap &&
@@ -39,9 +40,15 @@ const SimpleGraph = ({
               <div
                 onMouseEnter={() => {
                   handleMouseEntering(realValue);
+                  setDate(
+                    new Date(`${month}-${day}-${new Date().getFullYear()}`)
+                  );
                 }}
                 onClick={() => {
                   handleClick(realValue);
+                  setDate(
+                    new Date(`${month}-${day}-${new Date().getFullYear()}`)
+                  );
                 }}
                 key={`${realValue}${day}${month}`}
                 className={"Graph--Element"}
@@ -52,7 +59,15 @@ const SimpleGraph = ({
             </Tooltip>
           );
         })}
-      <div className="Addition">{AdditionComp}</div>
+      <div className="Additional">{AdditionalComp}</div>
+      <div className="Date">
+        <div>
+          <span>{date.getDate()}</span>
+        </div>
+        <div>
+          <i className="fal fa-calendar-alt"></i>
+        </div>
+      </div>
     </div>
   );
 };

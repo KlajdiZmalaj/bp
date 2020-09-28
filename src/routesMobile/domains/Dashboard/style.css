@@ -1026,6 +1026,7 @@
           align-items: center;
   border-radius: 5px;
   min-height: 470px;
+  max-height: 470px;
 }
 
 .loginPopUp--header {

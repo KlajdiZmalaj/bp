@@ -40,7 +40,6 @@ const Graph = ({
         Array.isArray(arrayForMap) &&
         arrayForMap.map((graphData) => {
           const { realValue, day, month, value } = graphData;
-
           return (
             <Tooltip title={realValue} key={`${day}${month}`}>
               <div

@@ -242,26 +242,49 @@ class DashboardDom extends React.Component {
                     (comp) =>
                       Object.keys(comp) &&
                       Array.isArray(Object.keys(comp)) &&
-                      Object.keys(comp).map((key) => (
-                        <div
-                          key={key}
-                          onClick={() => {
-                            this.changeServce(
-                              key,
-                              comp[key].services,
-                              comp[key].name
-                            );
-                            this.togglePopUp(true);
-                            this.setState({
-                              Services: comp[key].services,
-                              serviceSelected: comp[key].services[0],
-                            });
-                          }}
-                        >
-                          <img src={images[key]} alt="" />
-                          <span> {comp[key].name}</span>
-                        </div>
-                      ))
+                      Object.keys(comp).map((key) =>
+                        comp[key].services[0].service_id === "BGM001" &&
+                        this.props.accountInfo?.profile?.role?.name ===
+                          "super_admin" ? (
+                          <div
+                            key={key}
+                            onClick={() => {
+                              this.changeServce(
+                                key,
+                                comp[key].services,
+                                comp[key].name
+                              );
+                              this.togglePopUp(true);
+                              this.setState({
+                                Services: comp[key].services,
+                                serviceSelected: comp[key].services[0],
+                              });
+                            }}
+                          >
+                            <img src={images[key]} alt="" />
+                            <span> {comp[key].name}</span>
+                          </div>
+                        ) : comp[key].services[0].service_id != "BGM001" ? (
+                          <div
+                            key={key}
+                            onClick={() => {
+                              this.changeServce(
+                                key,
+                                comp[key].services,
+                                comp[key].name
+                              );
+                              this.togglePopUp(true);
+                              this.setState({
+                                Services: comp[key].services,
+                                serviceSelected: comp[key].services[0],
+                              });
+                            }}
+                          >
+                            <img src={images[key]} alt="" />
+                            <span> {comp[key].name}</span>
+                          </div>
+                        ) : null
+                      )
                   )}
               </div>
             </div>
@@ -274,6 +297,7 @@ class DashboardDom extends React.Component {
 const mapsStateToProps = (state) => ({
   services: state.main.services,
   favorites: state.main.favorites,
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

@@ -19,7 +19,7 @@ const PrivateRoute = ({ component: Component, isLoggedin, role, ...rest }) => {
         ) : role === "support" ? (
           <Redirect
             to={{
-              pathname: "/dettagli-prenotazioni",
+              pathname: "/back-office/support",
               state: { from: props.location },
             }}
           />

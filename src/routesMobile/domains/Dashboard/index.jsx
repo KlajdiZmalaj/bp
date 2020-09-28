@@ -35,7 +35,6 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   return (
     <div className="mobileWrapper">
       <UserInfoBar />
-
       {!activeService ? (
         <React.Fragment>
           <div className="serviziFilter">
@@ -48,7 +47,6 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
               />
               <i className="fal fa-search" aria-hidden="true"></i>
             </div>
-
             <div className="serviziFilter--cards">
               <Card
                 id={"fav"}
@@ -76,21 +74,21 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
                 icon="fa-mobile"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Telefoniche"
+                name={`Ricariche${"\n"}Telefoniche`}
               />
               <Card
                 id={["RTVD"]}
                 icon="fa-tv"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Tv Digitali"
+                name={`Ricariche${"\n"}Tv Digitali`}
               />
               <Card
                 id={["SCMS"]}
                 icon="icon-scomese"
                 tab={tab}
                 setTab={setTab}
-                name="Ricariche Scomesse"
+                name={`Ricariche${"\n"}Conti Online`}
               />
               <Card
                 icon="fa-user-headset"
@@ -101,7 +99,6 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
               />
             </div>
           </div>
-
           <Servizi
             setService={setService}
             setCategory={setCategory}

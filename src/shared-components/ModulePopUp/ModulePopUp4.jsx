@@ -4,7 +4,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
-
+import { bGameVoucher } from "services/auth";
 class ModulePopUp4 extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +33,11 @@ class ModulePopUp4 extends React.Component {
   };
 
   handleSubmit(service_id, tel_no) {
-    this.props.getRechargeMobile(service_id, tel_no);
+    if (service_id === "BGM001") {
+      bGameVoucher(service_id, tel_no);
+    } else {
+      this.props.getRechargeMobile(service_id, tel_no);
+    }
   }
 
   addNr = (nr) => {
@@ -72,28 +76,30 @@ class ModulePopUp4 extends React.Component {
                           <img src={images[service_s?.id]} alt="" />
                         </td>
                       </tr>
-                      {(service_s.services || []).map((item, index) => {
-                        return (
-                          <tr
-                            key={index}
-                            className={
-                              item.service_id.toString() ===
-                              serviceMobile.service_id.toString()
-                                ? "active"
-                                : ""
-                            }
-                            onClick={() => this.changeService(item)}
-                          >
-                            <td className="CarrierPrice">
-                              {/* 5 <sup>+1</sup> */}
-                              {item.cost}
-                            </td>
-                            <td className="CurrencyTD ">
-                              <p className="Currency">Euro</p>
-                            </td>
-                          </tr>
-                        );
-                      })}
+
+                      {service_s?.id != "BGM001" &&
+                        (service_s.services || []).map((item, index) => {
+                          return (
+                            <tr
+                              key={index}
+                              className={
+                                item.service_id.toString() ===
+                                serviceMobile.service_id.toString()
+                                  ? "active"
+                                  : ""
+                              }
+                              onClick={() => this.changeService(item)}
+                            >
+                              <td className="CarrierPrice">
+                                {/* 5 <sup>+1</sup> */}
+                                {item.cost}
+                              </td>
+                              <td className="CurrencyTD ">
+                                <p className="Currency">Euro</p>
+                              </td>
+                            </tr>
+                          );
+                        })}
                     </tbody>
                   </table>
                 </div>
@@ -134,7 +140,11 @@ class ModulePopUp4 extends React.Component {
 
                     {service.type.toString() === "1" && (
                       <div className="row no-gutters">
-                        <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
+                        <h5>
+                          {serviceMobile.service_id === "BGM001"
+                            ? "Importo"
+                            : `INSERIRE IL NUMERO DI TELEFONO DA RICARICARE`}
+                        </h5>
                       </div>
                     )}
                     {service.type.toString() === "1" && (

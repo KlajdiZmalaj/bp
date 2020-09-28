@@ -1465,3 +1465,26 @@ export const ServiceChangeStatusReq = (
       console.log(error);
     });
 };
+export const bGameVoucher = (service_id, importo) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .post(`/buy/bgameVoucher`, {
+      service_id,
+      importo,
+      ...skin,
+    })
+    .catch((error) => {
+      if (error?.response?.data) {
+        return notification["error"]({
+          message: error?.response?.data?.message,
+        });
+      }
+    });
+};

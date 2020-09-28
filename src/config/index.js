@@ -136,14 +136,14 @@ export const newAzioni = [
     i: "fal fa-user-headset",
     displayRole: ["super_admin", "agency", "agent", "user", "support"],
   },
-  {
-    id: 3,
-    name: "SHOP",
-    link: `${newAzioniSubmenu["shop"][0].link}`,
-    active: "shop",
-    i: "fal fa-store",
-    displayRole: ["super_admin", "agency", "agent", "user"],
-  },
+  // {
+  //   id: 3,
+  //   name: "SHOP",
+  //   link: `${newAzioniSubmenu["shop"][0].link}`,
+  //   active: "shop",
+  //   i: "fal fa-store",
+  //   displayRole: ["super_admin", "agency", "agent", "user"],
+  // },
   {
     id: 4,
     name: "Contabilità",
@@ -397,7 +397,7 @@ export const acquista = [
   },
   {
     id: 5,
-    name: "ricariche scomesse sportive",
+    name: "ricariche conti online",
     details: [
       {
         id: 51,

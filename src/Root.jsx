@@ -39,6 +39,7 @@ import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
 import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
 import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
+import adminPanelErrorList from "./routes/views/adminPanelErrorList";
 import Fatura from "./routes/views/Fatura";
 import CreateSkin from "./routes/views/CreateSkin";
 import { Encrypt } from "utils/HelperFunc";
@@ -315,6 +316,13 @@ class Root extends React.Component {
               component={AdminPanelServizi}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
+              role={role}
+            />
+            <PrivateRoute
+              path="/back-office/support"
+              component={adminPanelErrorList}
+              isLoggedin={isLoggedin}
+              allowedRoles={["support"]}
               role={role}
             />
             <PrivateRoute
