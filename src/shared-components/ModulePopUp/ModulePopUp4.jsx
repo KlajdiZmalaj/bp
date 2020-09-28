@@ -80,24 +80,26 @@ class ModulePopUp4 extends React.Component {
                       {service_s?.id != "BGM001" &&
                         (service_s.services || []).map((item, index) => {
                           return (
-                            <tr
-                              key={index}
-                              className={
-                                item.service_id.toString() ===
-                                serviceMobile.service_id.toString()
-                                  ? "active"
-                                  : ""
-                              }
-                              onClick={() => this.changeService(item)}
-                            >
-                              <td className="CarrierPrice">
-                                {/* 5 <sup>+1</sup> */}
-                                {item.cost}
-                              </td>
-                              <td className="CurrencyTD ">
-                                <p className="Currency">Euro</p>
-                              </td>
-                            </tr>
+                            !serviceMobile.service_id === "BGM001" && (
+                              <tr
+                                key={index}
+                                className={
+                                  item.service_id.toString() ===
+                                  serviceMobile.service_id.toString()
+                                    ? "active"
+                                    : ""
+                                }
+                                onClick={() => this.changeService(item)}
+                              >
+                                <td className="CarrierPrice">
+                                  {/* 5 <sup>+1</sup> */}
+                                  {item.cost}
+                                </td>
+                                <td className="CurrencyTD ">
+                                  <p className="Currency">Euro</p>
+                                </td>
+                              </tr>
+                            )
                           );
                         })}
                     </tbody>
@@ -109,7 +111,10 @@ class ModulePopUp4 extends React.Component {
                       <div className="confermaMsg animated bounce">
                         <div className="info">
                           Stai eseguiendo una ricarica da €
-                          {serviceMobile.cost.toString()}. <br /> Confermi?
+                          {serviceMobile.service_id === "BGM001"
+                            ? tel_no
+                            : serviceMobile.cost.toString()}
+                          . <br /> Confermi?
                         </div>
                         <div className="buttons">
                           <button
@@ -154,7 +159,11 @@ class ModulePopUp4 extends React.Component {
                           className="displayedVal text-center"
                           value={this.state.tel_no}
                           onChange={this.handleChange}
-                          placeholder="_ _ _ _ _ _ _ _ _ "
+                          placeholder={
+                            serviceMobile.service_id === "BGM001"
+                              ? "_ _"
+                              : "_ _ _ _ _ _ "
+                          }
                           // disabled
                         />
                       </div>
