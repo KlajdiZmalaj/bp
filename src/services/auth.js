@@ -1481,6 +1481,7 @@ export const bGameVoucher = (service_id, importo) => {
       ...skin,
     }).then((response)=>{
       if(response){
+      
         console.log(response);
         notification["success"]({
           message: "Azione completata",
