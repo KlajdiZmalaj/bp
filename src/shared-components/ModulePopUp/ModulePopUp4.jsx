@@ -68,17 +68,17 @@ class ModulePopUp4 extends React.Component {
           <div className="row">
             <div className="col-7 leftCol_Module">
               <div className="row">
-                <div className="col-3 p-0">
-                  <table className="LeftSide-BTNs" data-aos="flip-left">
-                    <tbody>
-                      <tr>
-                        <td className="carrierLogo" colSpan="3">
-                          <img src={images[service_s?.id]} alt="" />
-                        </td>
-                      </tr>
+                {service_s?.id != "BGAM" && (
+                  <div className="col-3 p-0">
+                    <table className="LeftSide-BTNs" data-aos="flip-left">
+                      <tbody>
+                        <tr>
+                          <td className="carrierLogo" colSpan="3">
+                            <img src={images[service_s?.id]} alt="" />
+                          </td>
+                        </tr>
 
-                      {service_s?.id != "BGM001" &&
-                        (service_s.services || []).map((item, index) => {
+                        {(service_s.services || []).map((item, index) => {
                           return (
                             <tr
                               key={index}
@@ -100,16 +100,23 @@ class ModulePopUp4 extends React.Component {
                             </tr>
                           );
                         })}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="col-9 ">
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                <div
+                  className={service_s?.id != "BGAM" ? "col-9" : "col-12 p-0"}
+                >
                   <div className="rightCarrierCOL" data-aos="flip-right">
                     {this.state.confermaMsg && (
                       <div className="confermaMsg animated bounce">
                         <div className="info">
                           Stai eseguiendo una ricarica da €
-                          {serviceMobile.cost.toString()}. <br /> Confermi?
+                          {serviceMobile.service_id === "BGM001"
+                            ? tel_no
+                            : serviceMobile.cost.toString()}
+                          . <br /> Confermi?
                         </div>
                         <div className="buttons">
                           <button
@@ -142,7 +149,7 @@ class ModulePopUp4 extends React.Component {
                       <div className="row no-gutters">
                         <h5>
                           {serviceMobile.service_id === "BGM001"
-                            ? "Importo"
+                            ? "IMPORTO"
                             : `INSERIRE IL NUMERO DI TELEFONO DA RICARICARE`}
                         </h5>
                       </div>
@@ -154,7 +161,11 @@ class ModulePopUp4 extends React.Component {
                           className="displayedVal text-center"
                           value={this.state.tel_no}
                           onChange={this.handleChange}
-                          placeholder="_ _ _ _ _ _ _ _ _ "
+                          placeholder={
+                            serviceMobile.service_id === "BGM001"
+                              ? "_ _"
+                              : "_ _ _ _ _ _ "
+                          }
                           // disabled
                         />
                       </div>
