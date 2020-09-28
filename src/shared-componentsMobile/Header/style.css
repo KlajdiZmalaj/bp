@@ -51,6 +51,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
 }
 
 .headerMob > button > span:nth-child(1) {
@@ -77,6 +78,20 @@
 .headerMob.open > button span:nth-child(3) {
   -webkit-animation: animateFirst 0.5s forwards ease-in;
           animation: animateFirst 0.5s forwards ease-in;
+}
+
+.headerMob.closing > button span:nth-child(2) {
+  background-color: transparent;
+}
+
+.headerMob.closing > button span:nth-child(1) {
+  -webkit-animation: animateSecRev 0.5s forwards ease-in;
+          animation: animateSecRev 0.5s forwards ease-in;
+}
+
+.headerMob.closing > button span:nth-child(3) {
+  -webkit-animation: animateFirstRev 0.5s forwards ease-in;
+          animation: animateFirstRev 0.5s forwards ease-in;
 }
 
 .headerMob nav {
@@ -459,6 +474,66 @@
   }
 }
 
+@-webkit-keyframes animateFirstRev {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    top: 16px;
+    width: 90%;
+  }
+  22% {
+    top: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  77% {
+    top: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  100% {
+    top: 11px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+}
+
+@keyframes animateFirstRev {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    top: 16px;
+    width: 90%;
+  }
+  22% {
+    top: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  77% {
+    top: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  100% {
+    top: 11px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+}
+
 @-webkit-keyframes animateFirst {
   0% {
     top: 11px;
@@ -516,6 +591,66 @@
             transform: rotate(-45deg);
     top: 16px;
     width: 90%;
+  }
+}
+
+@-webkit-keyframes animateSecRev {
+  0% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    width: 90%;
+    bottom: 21px;
+  }
+  22% {
+    bottom: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  77% {
+    bottom: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  100% {
+    bottom: 11px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+}
+
+@keyframes animateSecRev {
+  0% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    width: 90%;
+    bottom: 21px;
+  }
+  22% {
+    bottom: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  77% {
+    bottom: 19px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
+  }
+  100% {
+    bottom: 11px;
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    width: 100%;
   }
 }
 

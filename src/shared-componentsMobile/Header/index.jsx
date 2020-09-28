@@ -28,7 +28,16 @@ const Header = ({ accountInfo, logOut, services }) => {
     }
   }, [leftMenu]);
   return (
-    <header className={"headerMob" + (leftMenu ? " open" : " closed")}>
+    <header
+      className={
+        "headerMob" +
+        (leftMenu === true
+          ? " open"
+          : leftMenu === "out"
+          ? " closing"
+          : " closed")
+      }
+    >
       <button
         onClick={() => {
           if (leftMenu === true) {
