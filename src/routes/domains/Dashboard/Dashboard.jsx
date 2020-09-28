@@ -190,8 +190,7 @@ class DashboardDom extends React.Component {
           )}
           <div className="CompaniesAndOther">
             <div className="Favorites">
-              {CompaniesFav &&
-                Array.isArray(CompaniesFav) &&
+              {CompaniesFav && Array.isArray(CompaniesFav) ? (
                 CompaniesFav.map(
                   (comp) =>
                     Object.keys(comp) &&
@@ -217,7 +216,10 @@ class DashboardDom extends React.Component {
                           </div>
                         ))
                     )
-                )}
+                )
+              ) : (
+                <div className="NF">No Favourites</div>
+              )}
             </div>
             <div className="Comp">
               <div className="Search">

@@ -2,6 +2,12 @@
   overflow: visible !important;
 }
 
+@media (max-width: 1024px) {
+  #root {
+    overflow: hidden !important;
+  }
+}
+
 .MenuC {
   background: #3c4349;
   width: 100%;

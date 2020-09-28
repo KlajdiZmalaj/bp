@@ -5,7 +5,7 @@
   padding-left: 15px;
   padding-right: 15px;
   &.max-width {
-    max-width: 1400px !important;
+    max-width: 1135px !important;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #7e8f9f;
@@ -69,7 +69,7 @@
 body:not(.bodyAdmin) {
   div.Container {
     & .max-width.row {
-      max-width: 1371px;
+      max-width: 1135px;
     }
     & .panels-container {
       background: #ececed !important;
@@ -78,11 +78,11 @@ body:not(.bodyAdmin) {
       padding-top: 22px;
       min-height: 500px;
       & .max-width {
-        max-width: 1371px;
+        max-width: 1135px;
       }
     }
     & .row.no-gutters.max-width {
-      max-width: 1371px;
+      max-width: 1135px;
     }
   }
 }
@@ -222,13 +222,12 @@ body:not(.bodyAdmin) {
 
 .heading-tab {
   // font-family: $font1;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: normal;
   color: #32424e;
-  padding-top: 30px;
-  padding-bottom: 0;
   cursor: default;
-  padding-left: 10px;
+  padding: 0 10px;
+  margin-bottom: 0;
   display: flex;
   align-items: center;
 }

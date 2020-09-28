@@ -2608,46 +2608,6 @@ body.bodyAdmin::-webkit-scrollbar-track,
   background: #aca8a8 !important;
 }
 
-@media (max-width: 1280px) and (min-width: 1180px) {
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp:nth-child(1) {
-    width: 14%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp:nth-child(2) {
-    width: 11%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp:nth-child(4) {
-    width: 10%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(5), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(6), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(7), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti thead tr td.wsNwp.right:nth-child(8) {
-    width: 85px !important;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(1) {
-    width: 14%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(2) {
-    width: 11%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(4) {
-    width: 10%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(5), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(6), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(7), div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp.right:nth-child(8) {
-    width: 85px !important;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(3) {
-    width: 90%;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(3) span.nomeTd {
-    opacity: 1 !important;
-    width: auto !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-  }
-  div.container-fluid.overview div.row.no-gutters.max-width div.col-md-12 table.transTable.Movimenti tbody tr td.wsNwp:nth-child(3) i {
-    padding-right: 5px;
-  }
-}
-
 @media (max-width: 700px) {
   .bodyAdmin .col-md-12 {
     height: calc(100vh - 344px) !important;

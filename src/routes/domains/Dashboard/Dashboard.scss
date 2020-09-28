@@ -107,6 +107,15 @@ footer {
           font-family: "Roboto";
           margin-right: 2px;
           cursor: pointer;
+          &.NF {
+            width: 100%;
+            width: 100%;
+            color: #212529;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            cursor: unset;
+          }
           img {
             height: 60px;
             width: 80px;

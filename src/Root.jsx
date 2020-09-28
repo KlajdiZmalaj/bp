@@ -41,6 +41,7 @@ import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 import AdminPanelServizi from "./routes/views/adminPanelServizi";
 import Fatura from "./routes/views/Fatura";
 import CreateSkin from "./routes/views/CreateSkin";
+import { Encrypt } from "utils/HelperFunc";
 
 import {
   subscribeSocketUser,
@@ -56,14 +57,20 @@ import {
 } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
+import { TestEncrypt } from "services/auth";
+
 moment.locale("it", {
   week: {
     dow: 1,
   },
 });
+
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
+    //Test
+    // TestEncrypt();
+    // TestEncrypt(Encrypt());
     this.getStoredData();
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
