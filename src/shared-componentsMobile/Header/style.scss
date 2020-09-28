@@ -29,7 +29,7 @@
       background-color: #3c4349;
       transition: 0.3s;
       display: flex;
-
+      position: absolute;
       &:nth-child(1) {
         position: absolute;
         bottom: 11px;
@@ -42,6 +42,7 @@
       }
     }
   }
+
   &.open {
     > button {
       span {
@@ -53,6 +54,21 @@
         }
         &:nth-child(3) {
           animation: animateFirst 0.5s forwards ease-in;
+        }
+      }
+    }
+  }
+  &.closing {
+    > button {
+      span {
+        &:nth-child(2) {
+          background-color: transparent;
+        }
+        &:nth-child(1) {
+          animation: animateSecRev 0.5s forwards ease-in;
+        }
+        &:nth-child(3) {
+          animation: animateFirstRev 0.5s forwards ease-in;
         }
       }
     }
@@ -346,7 +362,31 @@
     }
   }
 }
-
+@keyframes animateFirstRev {
+  0% {
+    transform: rotate(-45deg);
+    top: 16px;
+    width: 90%;
+  }
+  22% {
+    top: 19px;
+    left: 0;
+    transform: rotate(0);
+    width: 100%;
+  }
+  77% {
+    top: 19px;
+    left: 0;
+    transform: rotate(0);
+    width: 100%;
+  }
+  100% {
+    top: 11px;
+    left: 0;
+    transform: rotate(0);
+    width: 100%;
+  }
+}
 @keyframes animateFirst {
   0% {
     top: 11px;
@@ -370,6 +410,31 @@
     transform: rotate(-45deg);
     top: 16px;
     width: 90%;
+  }
+}
+@keyframes animateSecRev {
+  0% {
+    transform: rotate(45deg);
+    width: 90%;
+    bottom: 21px;
+  }
+  22% {
+    bottom: 19px;
+    left: 0;
+    transform: rotate(0);
+    width: 100%;
+  }
+  77% {
+    bottom: 19px;
+    left: 0;
+    transform: rotate(0);
+    width: 100%;
+  }
+  100% {
+    bottom: 11px;
+    left: 0;
+    transform: rotate(0);
+    width: 100%;
   }
 }
 @keyframes animateSec {

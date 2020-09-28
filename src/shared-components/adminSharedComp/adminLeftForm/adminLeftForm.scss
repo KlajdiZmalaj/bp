@@ -294,9 +294,9 @@
     width: calc(100vw - 200px) !important;
     position: fixed;
     top: 101px;
-    height: calc(100vh - 161px);
+    height: calc(100vh - 162px) !important;
     left: 200px !important;
-    bottom: 0;
+    bottom: 60px;
     z-index: 11;
     transition: 0.5s;
   }
@@ -316,7 +316,7 @@
   .Left--Min {
     z-index: 12;
     top: 101px !important;
-    height: calc(100vh - 161px) !important;
+    height: calc(100vh - 162px) !important;
     left: 0 !important;
     bottom: 0;
     transition: 0.5s;
@@ -331,6 +331,7 @@
     width: 100% !important;
     left: 0 !important;
     & .AdminListaUtenti--Header,
+    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper {
       width: 100% !important;

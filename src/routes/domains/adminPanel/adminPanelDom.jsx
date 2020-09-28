@@ -15,10 +15,9 @@ import AgentComp from "../AccountInfo/AgetnComp";
 import UserComp from "../AccountInfo/UserComp";
 import { Select } from "antd";
 import MainActions from "redux-store/models/main";
-
 import { Time } from "shared-components";
 import { message } from "antd";
-import "./styles.css";
+import "./adminStyles.css";
 import { numberWithCommas } from "utils/HelperFunc";
 import { allRoles } from "config/index";
 import { switchUserStatus } from "services/auth";

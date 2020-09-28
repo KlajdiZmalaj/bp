@@ -9,7 +9,6 @@ class AnnunciAdmin extends React.Component {
     return (
       <div className="Container">
         <Header></Header>
-        <Overview></Overview>
 
         <div className="container-fluid overview ">
           <Amministrazione active="annunci-admin"></Amministrazione>

@@ -34,7 +34,7 @@
   flex-flow: column;
   background-color: #fff;
   width: 100%;
-  max-width: 1371px;
+  max-width: 1135px;
   margin: 30px auto;
   &--filters {
     display: flex;
@@ -670,6 +670,14 @@
       justify-content: space-between;
       padding: 3px 15px;
       border-bottom: 1px solid #ccc;
+      button {
+        border: 0;
+        text-transform: uppercase;
+        font-size: 13px;
+        padding: 4px 10px;
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
+      }
     }
   }
 }

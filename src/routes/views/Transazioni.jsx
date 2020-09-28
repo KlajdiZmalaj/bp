@@ -425,10 +425,7 @@ class Transazioni extends React.Component {
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
-            <Overview
-              fromFilterTop={this.fromFilterTop}
-              dashboardFromFilterTop={dashboardFromFilterTop}
-            ></Overview>
+         
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&
@@ -486,7 +483,7 @@ class Transazioni extends React.Component {
                     <ModalRow title="User" data={modalDetails.agency_name} />
                     <ModalRow
                       title="Importo"
-                      data={numberWithCommas(modalDetails.price1000)}
+                      data={numberWithCommas(modalDetails.price1000 / 1000)}
                     />
                     <ModalRow
                       title="Commissione"
@@ -517,7 +514,9 @@ class Transazioni extends React.Component {
             />
           )}
         <div className="container-fluid overview ">
-          {!forAdmin && <Azioni active="transazioni"></Azioni>}
+          {!forAdmin && (
+            <Azioni activeMain="contabilita" active="transazioni"></Azioni>
+          )}
 
           <div className="panels-container">
             <div className="sort-annunci sort-trasazioni max-width border-0">

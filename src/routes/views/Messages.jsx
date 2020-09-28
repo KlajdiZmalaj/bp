@@ -15,7 +15,7 @@ class Messages extends React.Component {
     return (
       <div className="Container">
         <div className="container-fluid overview ">
-          <Azioni active="annunci"></Azioni>
+          <Azioni activeMain="support" active="annunci"></Azioni>
 
           <div className="panels-container">
             <div className="sort-annunci max-width">

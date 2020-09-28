@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import ClickOut from "react-onclickout";
 
 let years = [];
 for (let i = 2000; i <= new Date().getFullYear(); i++) {
@@ -35,22 +36,26 @@ const DatePicker = ({
         {`${monthChosen?.name ? monthChosen.name : " Chose Month"}`}
       </div>
       {monthDropdown && (
-        <div className="Body">
-          {months.map((month) => {
-            return (
-              <div
-                className="month"
-                onClick={() => {
-                  setMonthChosen(month);
-                }}
-                className={`${monthChosen.name === month.name ? "active" : ""}`}
-                key={month.id}
-              >
-                {month.name}
-              </div>
-            );
-          })}
-        </div>
+        <ClickOut onClickOut={setMonthDropdown}>
+          <div className="Body">
+            {months.map((month) => {
+              return (
+                <div
+                  className="month"
+                  onClick={() => {
+                    setMonthChosen(month);
+                  }}
+                  className={`${
+                    monthChosen.name === month.name ? "active" : ""
+                  }`}
+                  key={month.id}
+                >
+                  {month.name}
+                </div>
+              );
+            })}
+          </div>
+        </ClickOut>
       )}
     </div>
     <div className="Chose--Year">
@@ -58,22 +63,24 @@ const DatePicker = ({
         {`${yearChosen ? yearChosen : " Chose Year"}`}
       </div>
       {yearDropdown && (
-        <div className="Body">
-          {years.map((year) => {
-            return (
-              <div
-                className="year"
-                onClick={() => {
-                  setYearChosen(year);
-                }}
-                className={`${yearChosen === year.name ? "active" : ""}`}
-                key={year.id}
-              >
-                {year.name}
-              </div>
-            );
-          })}
-        </div>
+        <ClickOut onClickOut={setYearDropdown}>
+          <div className="Body">
+            {years.map((year) => {
+              return (
+                <div
+                  className="year"
+                  onClick={() => {
+                    setYearChosen(year);
+                  }}
+                  className={`${yearChosen === year.name ? "active" : ""}`}
+                  key={year.id}
+                >
+                  {year.name}
+                </div>
+              );
+            })}
+          </div>
+        </ClickOut>
       )}
     </div>
   </React.Fragment>

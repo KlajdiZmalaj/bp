@@ -19,10 +19,10 @@
     flex-flow: row wrap;
     align-items: center;
     width: 100%;
-    max-width: 1051px;
+    max-width: 1005px;
     margin: 0 auto;
     margin-top: 60px;
-    justify-content: center;
+    justify-content: flex-start;
 
     &__item {
       display: flex;
@@ -67,7 +67,7 @@
     margin-bottom: 20px;
     align-items: stretch;
     margin-top: 60px;
-    max-width: 1371px;
+    max-width: 1135px;
 
     @media (max-width: 768px) {
       flex-flow: column;

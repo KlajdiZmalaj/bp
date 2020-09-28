@@ -42,6 +42,21 @@ class AdminHeader extends React.Component {
         )}
 
         <div className="AdminHeader--Box">
+          {this.props.accountInfo.profile.role.name === "support" && (
+            <div
+              className={`AdminHeader--Category ${
+                this.props.location.pathname.includes("support") ? "active" : ""
+              }`}
+              onClick={() => {
+                this.props.history.push("/back-office/support");
+              }}
+            >
+              <div>
+                <i className="fal fa-exclamation-circle"></i>
+                <span>Errori</span>
+              </div>
+            </div>
+          )}
           <div
             className={`AdminHeader--Category ${
               this.props.location.pathname.includes("utenti") ? "active" : ""

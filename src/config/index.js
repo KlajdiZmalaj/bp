@@ -19,6 +19,157 @@ export const docType = [
     name: "Passporto",
   },
 ];
+export const newAzioniSubmenu = {
+  dashboard: [
+    {
+      id: 1,
+      name: "RICARICHE",
+      link: "dashboard/ricariche",
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
+    },
+    {
+      id: 2,
+      name: "PAGAMENTI",
+      link: "dashboard/prodotti",
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
+    },
+    {
+      id: 3,
+      name: "Gift cards",
+      link: "dashboard/gift",
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
+    },
+    {
+      id: 4,
+      name: "SPEDIZIONI",
+      link: "dashboard/spedizioni",
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
+    },
+    {
+      id: 5,
+      name: "PRENOTAZIONI",
+      link: "forms",
+      displayRole: ["super_admin", "user", "agency"],
+    },
+    {
+      id: 6,
+      name: "VOUCHER",
+      link: "dashboard/voucher",
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
+    },
+  ],
+  support: [
+    {
+      id: 1,
+      name: "Dettagli prenotazioni",
+      link: "dettagli-prenotazioni",
+      displayRole: ["support", "super_admin", "agency", "user"],
+    },
+    {
+      id: 2,
+      name: "Configura",
+      link: "configura",
+      displayRole: ["super_admin", "agency", "agent", "user"],
+    },
+    {
+      id: 3,
+      name: "Messaggi",
+      link: "annunci",
+      displayRole: ["super_admin", "agency", "agent", "user"],
+    },
+    {
+      id: 4,
+      name: "Support",
+      link: "support",
+      displayRole: ["support"],
+    },
+  ],
+  shop: [
+    {
+      id: 1,
+      name: "E-commerce",
+      link: "Messaggi/e_commerce",
+      displayRole: ["super_admin", "agency", "agent", "user"],
+    },
+  ],
+  contabilita: [
+    {
+      id: 1,
+      name: "Lista Movimenti",
+      link: "transazioni",
+      displayRole: ["super_admin", "agency", "agent", "user"],
+    },
+    {
+      id: 2,
+      name: "Lista Utenti",
+      link: "account-info",
+      displayRole: ["super_admin", "agency", "agent", "main_admin"],
+    },
+    {
+      id: 3,
+      name: "Ricarica Conto",
+      link: "carica-conto",
+      displayRole: ["super_admin", "agency", "user"],
+    },
+    {
+      id: 4,
+      name: "Fatture",
+      link: "fatture",
+      displayRole: ["super_admin"],
+    },
+  ],
+};
+export const newAzioni = [
+  {
+    id: 1,
+    name: "Servizi",
+    link: `${newAzioniSubmenu["dashboard"][0].link}`,
+    active: "dashboard",
+    i: "fal fa-list-alt",
+    displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
+  },
+  {
+    id: 2,
+    name: "SUPPORT",
+    link: `${newAzioniSubmenu["support"][0].link}`,
+    active: "support",
+    i: "fal fa-user-headset",
+    displayRole: ["super_admin", "agency", "agent", "user", "support"],
+  },
+  // {
+  //   id: 3,
+  //   name: "SHOP",
+  //   link: `${newAzioniSubmenu["shop"][0].link}`,
+  //   active: "shop",
+  //   i: "fal fa-store",
+  //   displayRole: ["super_admin", "agency", "agent", "user"],
+  // },
+  {
+    id: 4,
+    name: "Contabilità",
+    link: `${newAzioniSubmenu["contabilita"][0].link}`,
+    active: "contabilita",
+    i: "fal fa-user-headset",
+    displayRole: ["super_admin", "agency", "agent", "user", "main_admin"],
+  },
+  // {
+  //   id: 5,
+  //   name: "Reportistica",
+  //   link: "reportistica",
+  //   active: "reportistica",
+
+  //   i: "fal fa-analytics",
+  //   displayRole: ["super_admin", "agency", "agent", "user"],
+  // },
+  // {
+  //   id: 6,
+  //   name: "AREA DOWNLOAD",
+  //   link: "areaDownload",
+  //   active: "areaDownload",
+  //   i: "fal fa-download",
+  //   displayRole: ["super_admin", "agency", "agent", "user"],
+  // },
+];
 export const azioni = [
   {
     id: 1,
@@ -51462,4 +51613,3 @@ export const servicesVisure = {
     ],
   },
 };
-

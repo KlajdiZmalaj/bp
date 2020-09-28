@@ -67,7 +67,7 @@
           flex-grow: 1;
   background: #ebeced;
   width: 100%;
-  max-width: 1371px;
+  max-width: 1135px;
   margin: 0 auto;
 }
 
@@ -285,8 +285,16 @@
   font-size: 14px;
 }
 
+@media (max-width: 1024px) {
+  .userList--noDoc__user .body span, .userList--Doc__user .body span {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 5px 2px;
+  }
+}
+
 .userList--noDoc__user .body span:nth-child(1), .userList--Doc__user .body span:nth-child(1) {
-  width: 40%;
+  width: 60%;
 }
 
 .userList--noDoc__user .body span:nth-child(2), .userList--Doc__user .body span:nth-child(2) {
@@ -324,14 +332,6 @@
 .userList--noDoc__user .body span:last-child button:hover, .userList--Doc__user .body span:last-child button:hover {
   background-color: #32424e;
   color: #fff;
-}
-
-@media (max-width: 1024px) {
-  .userList--noDoc__user .body span, .userList--Doc__user .body span {
-    text-transform: capitalize;
-    font-size: 12px;
-    padding: 2px;
-  }
 }
 
 .userList--noDoc__user .fa-store,
@@ -392,7 +392,7 @@
   height: 460px;
   max-width: 410px;
   background-color: #fff;
-  z-index: 4;
+  z-index: 5;
   border-radius: 0px;
   left: 50%;
   margin-left: -188px;
@@ -960,7 +960,11 @@
   .userList--noDoc__user .body span:last-child,
   .userList--Doc__user .body span:last-child,
   .userList .header span:last-child {
-    width: 220%;
+    width: 30%;
+  }
+  .userList--noDoc__user .body span:last-child button,
+  .userList--Doc__user .body span:last-child button {
+    display: none;
   }
 }
 
@@ -1059,6 +1063,12 @@ body .userDetailPopup .SubmitButton {
   border-left: 1px dashed #777676;
 }
 
+@media (max-width: 1024px) {
+  .wrapppper .userDropAnch:before {
+    left: 5px;
+  }
+}
+
 .wrapppper .userDropAnch:after {
   content: "";
   position: absolute;
@@ -1125,7 +1135,7 @@ div.level5 .isPlus:before {
           align-items: center;
   top: calc((100% - 200px) / 2);
   padding: 0;
-  z-index: 3;
+  z-index: 4;
 }
 
 .userList .Confirma .Message {
