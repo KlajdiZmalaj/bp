@@ -68,6 +68,7 @@ class Statistiche extends React.Component {
     };
 
     const { minimize, CalendarVis } = this.state;
+    const { userRole } = this.props;
     return (
       <div id="SpecStatistich" className={`Statist ${minimize ? "min" : ""}`}>
         {/* {CalendarVis && (
@@ -145,57 +146,61 @@ class Statistiche extends React.Component {
                 </Fragment>
               }
             />
-            <SimpleGraph
-              graphicData={obj}
-              handleMouseEntering={() => {
-                console.log("enter mouse");
-              }}
-              handleClick={() => {
-                console.log("click with mouse");
-              }}
-              AdditionalComp={
-                <Fragment>
-                  <div>256.66$</div>
-                  <div>Proviggioni</div>
-                </Fragment>
-              }
-            />
-            <div className="Additinal Statist">
-              <div className="saldoRete">
-                <span>256.43</span>
-                <span>Saldo Rete</span>
-              </div>
+            {userRole === "super_admin" && (
+              <SimpleGraph
+                graphicData={obj}
+                handleMouseEntering={() => {
+                  console.log("enter mouse");
+                }}
+                handleClick={() => {
+                  console.log("click with mouse");
+                }}
+                AdditionalComp={
+                  <Fragment>
+                    <div>256.66$</div>
+                    <div>Proviggioni</div>
+                  </Fragment>
+                }
+              />
+            )}
+            {userRole === "super_admin" && (
+              <div className="Additinal Statist">
+                <div className="saldoRete">
+                  <span>256.43</span>
+                  <span>Saldo Rete</span>
+                </div>
 
-              <div>
-                <div className="agenti">
-                  <span>53</span>
-                  <span>
+                <div>
+                  <div className="agenti">
+                    <span>53</span>
                     <span>
-                      <i className="fal fa-user-tie" />
+                      <span>
+                        <i className="fal fa-user-tie" />
+                      </span>
+                      <span>Agenti</span>
                     </span>
-                    <span>Agenti</span>
-                  </span>
-                </div>
-                <div className="agenzie">
-                  <span>256</span>
-                  <span>
+                  </div>
+                  <div className="agenzie">
+                    <span>256</span>
                     <span>
-                      <i className="fal fa-store" />
+                      <span>
+                        <i className="fal fa-store" />
+                      </span>
+                      <span>Agenzie</span>
                     </span>
-                    <span>Agenzie</span>
-                  </span>
-                </div>
-                <div className="utenti">
-                  <span>256</span>
-                  <span>
+                  </div>
+                  <div className="utenti">
+                    <span>256</span>
                     <span>
-                      <i className="fal fa-user " />
+                      <span>
+                        <i className="fal fa-user " />
+                      </span>
+                      <span>Utenti</span>
                     </span>
-                    <span>Utenti</span>
-                  </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}{" "}
           </div>
         )}
       </div>

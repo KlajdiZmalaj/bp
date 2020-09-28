@@ -33,7 +33,7 @@ class Azioni extends Component {
     return (
       screenWidth > 1024 && (
         <Fragment>
-          <Statistiche />
+          <Statistiche userRole={userRole} />
           <div className="MenuC">
             <div className="Menu">
               {newAzioni &&
