@@ -153,7 +153,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
             }}
           >
             <i className={`fal ${categoryKey}`} aria-hidden="true"></i>{" "}
-            <span> RICARICHE TELEFONO</span>
+            <span> Ricariche Telefono</span>
             <i className="fal fa-chevron-right" aria-hidden="true"></i>{" "}
           </div>
         )

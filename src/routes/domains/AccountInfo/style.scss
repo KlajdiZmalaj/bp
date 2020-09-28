@@ -193,8 +193,13 @@
           justify-content: space-between;
           text-transform: capitalize;
           font-size: 14px;
+          @media (max-width: 1024px) {
+            text-transform: capitalize;
+            font-size: 12px;
+            padding: 5px 2px;
+          }
           &:nth-child(1) {
-            width: 40%;
+            width: 60%;
           }
           &:nth-child(2) {
             width: 90%;
@@ -222,11 +227,6 @@
                 color: #fff;
               }
             }
-          }
-          @media (max-width: 1024px) {
-            text-transform: capitalize;
-            font-size: 12px;
-            padding: 2px;
           }
         }
       }
@@ -275,7 +275,7 @@
     height: 460px;
     max-width: 410px;
     background-color: #fff;
-    z-index: 4;
+    z-index: 5;
     border-radius: 0px;
     left: 50%;
     margin-left: -188px;
@@ -687,7 +687,11 @@
   .userList--noDoc__user .body span:last-child,
   .userList--Doc__user .body span:last-child,
   .userList .header span:last-child {
-    width: 220%;
+    width: 30%;
+  }
+  .userList--noDoc__user .body span:last-child button,
+  .userList--Doc__user .body span:last-child button {
+    display: none;
   }
 }
 body .userDetailPopup {
@@ -783,6 +787,9 @@ body .userDetailPopup {
     top: 0;
     left: 3px;
     border-left: 1px dashed #777676;
+    @media (max-width: 1024px) {
+      left: 5px;
+    }
   }
   .userDropAnch:after {
     content: "";

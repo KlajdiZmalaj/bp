@@ -19,6 +19,7 @@ const InitialState = {
   valueInput: "",
   password: "",
   confirm_password: "",
+  mobileRowData: {},
 };
 class UsersList extends Component {
   constructor(props) {
@@ -34,6 +35,9 @@ class UsersList extends Component {
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
     this.props.getUsers();
+  };
+  setRowData = (mobileRowData) => {
+    this.setState({ mobileRowData });
   };
   resetState = () => {
     this.setState({
@@ -79,7 +83,7 @@ class UsersList extends Component {
   };
   render() {
     const { userList, accountInfo, userDetail, DepositoPopup } = this.props;
-    const { valueInput } = this.state;
+    const { valueInput, mobileRowData } = this.state;
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
     const role = get(this.props.accountInfo, "profile.role.name");
@@ -252,7 +256,13 @@ class UsersList extends Component {
             </div>
             {isArray(userList) &&
               (userList || []).map((user) => {
-                return <SingleUser key={user.id} user={user} />;
+                return (
+                  <SingleUser
+                    setRowData={this.setRowData}
+                    key={user.id}
+                    user={user}
+                  />
+                );
               })}
           </div>
         )}
@@ -365,6 +375,77 @@ class UsersList extends Component {
                 }, 500);
               }}
               className="backDrop"
+            ></div>
+          </React.Fragment>
+        )}
+        {Object.keys(mobileRowData).length > 0 && (
+          <React.Fragment>
+            <div className="rowPopUp">
+              <div className="rowPopUp--header">
+                Dettagli
+                <i
+                  onClick={() => {
+                    this.setRowData({});
+                  }}
+                  className="fa lfa-times"
+                  aria-hidden="true"
+                ></i>{" "}
+              </div>
+              <div className="rowPopUp--body">
+                <div className="rowPopUp--body__item">
+                  <span>Username</span>
+                  <span>{mobileRowData.username}</span>
+                </div>
+
+                <div className="rowPopUp--body__item">
+                  <span>Ultimo Login</span>
+                  <span>{mobileRowData.last_login_time}</span>
+                </div>
+                <div className="rowPopUp--body__item">
+                  <span>Ultimo Deposito</span>
+                  <span>{mobileRowData.last_deposit}</span>
+                </div>
+                <div className="rowPopUp--body__item">
+                  <span>Rag Sociale</span>
+                  <span>{mobileRowData.rag_soc}</span>
+                </div>
+                <div className="rowPopUp--body__item">
+                  <span>Cita</span>
+                  <span className="text-right justify-content-start">
+                    {mobileRowData.city}
+                  </span>
+                </div>
+                <div className="rowPopUp--body__item">
+                  <button
+                    onClick={() => {
+                      this.props.setDepositoPopup({
+                        val: "deposit",
+                        data: mobileRowData,
+                        visibility: true,
+                      });
+                    }}
+                  >
+                    Deposito
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.props.setDepositoPopup({
+                        val: "withdraw",
+                        data: mobileRowData,
+                        visibility: true,
+                      });
+                    }}
+                  >
+                    Addebito
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              className="backDrop"
+              onClick={() => {
+                this.setRowData({});
+              }}
             ></div>
           </React.Fragment>
         )}

@@ -54,6 +54,11 @@ class SingleUser extends Component {
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
             (this.state.displayChildren ? " isopenrow" : "")
           }
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.props.setRowData(user);
+          }}
         >
           {" "}
           <div className="body">
@@ -211,6 +216,7 @@ class SingleUser extends Component {
                 {user.children.map((user) => {
                   return (
                     <SingleUser2
+                      setRowData={this.props.setRowData}
                       level={
                         this.props.level ? parseInt(this.props.level) + 1 : 2
                       }

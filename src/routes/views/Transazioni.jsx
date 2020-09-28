@@ -486,7 +486,7 @@ class Transazioni extends React.Component {
                     <ModalRow title="User" data={modalDetails.agency_name} />
                     <ModalRow
                       title="Importo"
-                      data={numberWithCommas(modalDetails.price1000)}
+                      data={numberWithCommas(modalDetails.price1000 / 1000)}
                     />
                     <ModalRow
                       title="Commissione"

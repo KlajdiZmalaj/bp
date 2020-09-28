@@ -50,6 +50,11 @@ class SingleUser2 extends Component {
             (this.state.displayChildren ? " isopenrow" : "") +
             ` level${this.props.level}`
           }
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.props.setRowData(user);
+          }}
         >
           {" "}
           <div className="body">
@@ -210,6 +215,7 @@ class SingleUser2 extends Component {
                     level={parseInt(this.props.level) + 1}
                     user={user}
                     key={user.id}
+                    setRowData={this.props.setRowData}
                   />
                 );
               })}

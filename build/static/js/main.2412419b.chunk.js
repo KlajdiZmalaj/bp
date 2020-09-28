@@ -66613,7 +66613,7 @@
               t.a.createElement(
                 "div",
                 { className: "rowPopUp--header" },
-                "Dettagli della riga",
+                "Dettagli",
                 " ",
                 t.a.createElement("i", {
                   onClick: function () {
@@ -80557,7 +80557,7 @@
                   t.a.createElement(
                     "div",
                     { className: "rowPopUp--header" },
-                    "Dettagli della riga",
+                    "Dettagli",
                     " ",
                     t.a.createElement("i", {
                       onClick: function () {
