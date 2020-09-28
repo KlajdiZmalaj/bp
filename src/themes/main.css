@@ -2672,6 +2672,12 @@ body:not(.bodyAdmin) div.Container .row.no-gutters.max-width {
   padding: 5px 43px;
 }
 
+@media (max-width: 1024px) {
+  .panel-content-annunci {
+    font-size: 13px;
+  }
+}
+
 .star {
   position: absolute;
   right: 16px;

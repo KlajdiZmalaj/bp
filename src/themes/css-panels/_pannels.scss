@@ -161,6 +161,9 @@ body:not(.bodyAdmin) {
   border-left: 2px solid $second;
   border-right: 2px solid $second;
   padding: 5px 43px;
+  @media (max-width: 1024px) {
+    font-size: 13px;
+  }
 }
 .star {
   position: absolute;
