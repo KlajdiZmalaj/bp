@@ -5,7 +5,7 @@ const RowDetailsMobile = ({ mobilePopUp, mobilePopUpData }) => {
     <React.Fragment>
       <div className="rowPopUp ">
         <div className="rowPopUp--header">
-          Dettagli della riga{" "}
+          Dettagli{" "}
           <i
             onClick={() => {
               mobilePopUp({});
