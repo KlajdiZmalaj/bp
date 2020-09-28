@@ -108,7 +108,7 @@ class DashboardDom extends React.Component {
     });
     return response;
   };
-
+  //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
     return (
       Object.keys(object) &&

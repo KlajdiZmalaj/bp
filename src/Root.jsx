@@ -190,6 +190,7 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
+            // :id?/ , me ?/ qe te beje dhe /dashboard render
             <Route
               path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
               // component={Dashboard}
@@ -289,7 +290,6 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "user", "agency", "support"]}
               role={role}
             /> */}
-
             <PrivateRoute
               path="/back-office/utenti"
               component={AdminPanelListaUtenti}
