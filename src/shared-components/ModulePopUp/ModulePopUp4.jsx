@@ -68,44 +68,46 @@ class ModulePopUp4 extends React.Component {
           <div className="row">
             <div className="col-7 leftCol_Module">
               <div className="row">
-                <div className="col-3 p-0">
-                  <table className="LeftSide-BTNs" data-aos="flip-left">
-                    <tbody>
-                      <tr>
-                        <td className="carrierLogo" colSpan="3">
-                          <img src={images[service_s?.id]} alt="" />
-                        </td>
-                      </tr>
+                {service_s?.id != "BGAM" && (
+                  <div className="col-3 p-0">
+                    <table className="LeftSide-BTNs" data-aos="flip-left">
+                      <tbody>
+                        <tr>
+                          <td className="carrierLogo" colSpan="3">
+                            <img src={images[service_s?.id]} alt="" />
+                          </td>
+                        </tr>
 
-                      {service_s?.id != "BGM001" &&
-                        (service_s.services || []).map((item, index) => {
+                        {(service_s.services || []).map((item, index) => {
                           return (
-                            !serviceMobile.service_id === "BGM001" && (
-                              <tr
-                                key={index}
-                                className={
-                                  item.service_id.toString() ===
-                                  serviceMobile.service_id.toString()
-                                    ? "active"
-                                    : ""
-                                }
-                                onClick={() => this.changeService(item)}
-                              >
-                                <td className="CarrierPrice">
-                                  {/* 5 <sup>+1</sup> */}
-                                  {item.cost}
-                                </td>
-                                <td className="CurrencyTD ">
-                                  <p className="Currency">Euro</p>
-                                </td>
-                              </tr>
-                            )
+                            <tr
+                              key={index}
+                              className={
+                                item.service_id.toString() ===
+                                serviceMobile.service_id.toString()
+                                  ? "active"
+                                  : ""
+                              }
+                              onClick={() => this.changeService(item)}
+                            >
+                              <td className="CarrierPrice">
+                                {/* 5 <sup>+1</sup> */}
+                                {item.cost}
+                              </td>
+                              <td className="CurrencyTD ">
+                                <p className="Currency">Euro</p>
+                              </td>
+                            </tr>
                           );
                         })}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="col-9 ">
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                <div
+                  className={service_s?.id != "BGAM" ? "col-9" : "col-12 p-0"}
+                >
                   <div className="rightCarrierCOL" data-aos="flip-right">
                     {this.state.confermaMsg && (
                       <div className="confermaMsg animated bounce">
@@ -147,7 +149,7 @@ class ModulePopUp4 extends React.Component {
                       <div className="row no-gutters">
                         <h5>
                           {serviceMobile.service_id === "BGM001"
-                            ? "Importo"
+                            ? "IMPORTO"
                             : `INSERIRE IL NUMERO DI TELEFONO DA RICARICARE`}
                         </h5>
                       </div>
