@@ -109,7 +109,7 @@ class DashboardDom extends React.Component {
     return response;
   };
 
-  FindArrayOfServicesByValue = (object, value) => {
+  FindArrayOfServicesByValue = (object, value = "ricariche") => {
     return (
       Object.keys(object) &&
       Array.isArray(Object.keys(object)) &&

@@ -191,7 +191,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <Route
-              path={`/dashboard${!isMobile ? "/:id" : ""}`}
+              path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
               // component={Dashboard}
               component={isMobile ? DashboardMobile : Dashboard}
               isLoggedin={isLoggedin}
