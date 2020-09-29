@@ -39,6 +39,10 @@ class Statistiche extends React.Component {
   componentDidMount() {
     this.props.getStatisticheMain();
   }
+  componentDidCatch(error) {
+    console.log(error);
+  }
+
   render() {
     const obj = {
       "8_23": "334,00",
@@ -74,13 +78,14 @@ class Statistiche extends React.Component {
       "9_22": "971,90",
       "9_23": "349,10",
     };
-
     const { minimize, CalendarVis } = this.state;
-    const { userRole, StatisticheMain } = this.props;
-    console.log(StatisticheMain);
+    const { userRole, StatisticheMain, ReportisticaDet } = this.props;
     return (
       StatisticheMain && (
-        <div id="SpecStatistich" className={`Statist ${minimize ? "min" : ""}`}>
+        <div
+          id="SpecStatistich"
+          className={`Statist ${ReportisticaDet ? "min" : ""}`}
+        >
           {CalendarVis && (
             <CalendarRangePicker
               setStateFunc={this.setS}
@@ -123,14 +128,16 @@ class Statistiche extends React.Component {
               <span
                 className="Bordered"
                 onClick={() => {
-                  this.setState({ minimize: !minimize });
+                  this.props.editReportistica(!ReportisticaDet);
                 }}
               >
-                <i className={`fal fa-angle-${minimize ? "up" : "down"}`} />
+                <i
+                  className={`fal fa-angle-${ReportisticaDet ? "up" : "down"}`}
+                />
               </span>
             </div>
           </div>
-          {!minimize && (
+          {!ReportisticaDet && (
             <div className="data Categories">
               <SimpleGraph
                 graphicData={StatisticheMain.data.transazioni}
@@ -142,7 +149,7 @@ class Statistiche extends React.Component {
                 }}
                 AdditionalComp={
                   <Fragment>
-                    <div>{StatisticheMain.total.transazioni}</div>
+                    <div>{StatisticheMain.total.transazioni + "€"}</div>
                     <div>TRANSAZIONI TOTALI</div>
                   </Fragment>
                 }
@@ -157,12 +164,12 @@ class Statistiche extends React.Component {
                 }}
                 AdditionalComp={
                   <Fragment>
-                    <div>{StatisticheMain.total.commissioni}</div>
+                    <div>{StatisticheMain.total.commissioni + "€"}</div>
                     <div>Commisioni</div>
                   </Fragment>
                 }
               />
-              {userRole === "super_admin" && (
+              {userRole !== "user" && (
                 <SimpleGraph
                   graphicData={StatisticheMain.data.proviggioni}
                   handleMouseEntering={() => {
@@ -173,7 +180,7 @@ class Statistiche extends React.Component {
                   }}
                   AdditionalComp={
                     <Fragment>
-                      <div>{StatisticheMain.total.proviggioni}</div>
+                      <div>{StatisticheMain.total.proviggioni + "€"}</div>
                       <div>Proviggioni</div>
                     </Fragment>
                   }
@@ -182,7 +189,7 @@ class Statistiche extends React.Component {
               {userRole === "super_admin" && (
                 <div className="Additinal Statist">
                   <div className="saldoRete">
-                    <span>{StatisticheMain.rete.saldo_rete}</span>
+                    <span>{StatisticheMain.rete.saldo_rete + "€"}</span>
                     <span>Saldo Rete</span>
                   </div>
 
@@ -226,5 +233,6 @@ class Statistiche extends React.Component {
 }
 const mapStateToProps = (state) => ({
   StatisticheMain: state.auth.StatisticheMain,
+  ReportisticaDet: state.auth.ReportisticaDet,
 });
 export default connect(mapStateToProps, AuthAction)(Statistiche);

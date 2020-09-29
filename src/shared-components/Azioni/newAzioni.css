@@ -40,6 +40,7 @@
 }
 
 .Menu div,
+.Menu label,
 .Menu a {
   width: 100%;
   height: 100%;
@@ -58,30 +59,42 @@
           justify-content: center;
   background: #3c4349;
   color: rgba(255, 255, 255, 0.602);
+  cursor: pointer;
 }
 
+.Menu div label,
 .Menu div a,
+.Menu label label,
+.Menu label a,
+.Menu a label,
 .Menu a a {
   border-left: 1px solid #272c31;
 }
 
+.Menu div:last-child label,
 .Menu div:last-child a,
+.Menu label:last-child label,
+.Menu label:last-child a,
+.Menu a:last-child label,
 .Menu a:last-child a {
   border-right: 1px solid #272c31;
 }
 
 .Menu div.active div,
+.Menu label.active div,
 .Menu a.active div {
   background: #32383c;
   color: #ffffff;
 }
 
 .Menu div.active i,
+.Menu label.active i,
 .Menu a.active i {
   font-size: 32px;
 }
 
 .Menu div i,
+.Menu label i,
 .Menu a i {
   text-decoration: none;
   font-size: 30px;
@@ -92,6 +105,7 @@
 }
 
 .Menu div span,
+.Menu label span,
 .Menu a span {
   text-decoration: none;
   font-family: "Roboto";
@@ -138,6 +152,7 @@
 }
 
 .Submenu div,
+.Submenu label,
 .Submenu a {
   width: 100%;
   height: 100%;
@@ -156,16 +171,25 @@
 }
 
 .Submenu div .active,
+.Submenu label .active,
 .Submenu a .active {
   background: #d3561a;
 }
 
+.Submenu div label,
 .Submenu div a,
+.Submenu label label,
+.Submenu label a,
+.Submenu a label,
 .Submenu a a {
   border-left: 1px solid #de5817;
 }
 
+.Submenu div:last-child label,
 .Submenu div:last-child a,
+.Submenu label:last-child label,
+.Submenu label:last-child a,
+.Submenu a:last-child label,
 .Submenu a:last-child a {
   border-right: 1px solid #de5817;
 }

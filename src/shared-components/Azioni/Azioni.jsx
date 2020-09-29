@@ -47,12 +47,27 @@ class Azioni extends Component {
                           azioni.active === activeMain ? "active" : "none"
                         }`}
                       >
-                        <a href={"#/" + azioni.link}>
-                          <div>
-                            <i className={azioni.i} />
-                            <span>{azioni.name}</span>
-                          </div>
-                        </a>
+                        {azioni.type === "span" ? (
+                          <label
+                            onClick={() => {
+                              this.props.editReportistica(
+                                !this.props.ReportisticaDet
+                              );
+                            }}
+                          >
+                            <div>
+                              <i className={azioni.i} />
+                              <span>{azioni.name}</span>
+                            </div>
+                          </label>
+                        ) : (
+                          <a href={"#/" + azioni.link}>
+                            <div>
+                              <i className={azioni.i} />
+                              <span>{azioni.name}</span>
+                            </div>
+                          </a>
+                        )}
                       </div>
                     )
                   );
@@ -82,11 +97,19 @@ class Azioni extends Component {
                           : "none"
                       }`}
                     >
-                      <a href={"#/" + item.link}>
-                        <div>
-                          <span>{item.name}</span>
-                        </div>
-                      </a>
+                      {item.type === "span" ? (
+                        <label>
+                          <div>
+                            <span>{item.name}</span>
+                          </div>
+                        </label>
+                      ) : (
+                        <a href={"#/" + item.link}>
+                          <div>
+                            <span>{item.name}</span>
+                          </div>
+                        </a>
+                      )}
                     </div>
                   )
                 );
@@ -101,6 +124,7 @@ class Azioni extends Component {
 
 const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
+  ReportisticaDet: state.auth.ReportisticaDet,
   screenWidth: state.main.screenWidth,
 });
 

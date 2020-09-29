@@ -86,7 +86,10 @@ export function* getAgents(params) {
     yield put(AuthActions.setAgents(response.data.agents));
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -256,7 +259,10 @@ export function* getPaymentsForExcel(params) {
         yield put(AuthActions.setPaymentsForExcel(response.data.transactions));
       }
     } else if (response.error) {
-      if (response.error.response.status === 401) {
+      if (
+        response.error.response.status === 401 &&
+        localStorage.getItem("accountDataB") != null
+      ) {
         yield put(AuthActions.setUnauthorization());
         const response = yield call(logoutApi);
 
@@ -304,7 +310,10 @@ export function* getPayments(params) {
         }
       }
     } else if (response.error) {
-      if (response.error.response.status === 401) {
+      if (
+        response.error.response.status === 401 &&
+        localStorage.getItem("accountDataB") != null
+      ) {
         yield put(AuthActions.setUnauthorization());
         const response = yield call(logoutApi);
 
@@ -348,7 +357,10 @@ export function* getRechargeMobile(params) {
       }
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
-      if (response.error.response.status === 401) {
+      if (
+        response.error.response.status === 401 &&
+        localStorage.getItem("accountDataB") != null
+      ) {
         const response = yield call(logoutApi);
 
         if (response) {
@@ -980,7 +992,10 @@ export function* getAgentByUserId(data) {
     }
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -998,7 +1013,10 @@ export function* getUserByUserId(data) {
     }
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1016,7 +1034,10 @@ export function* getSkins() {
     }
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1038,7 +1059,10 @@ export function* getFaturaDetails(params) {
     }
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1056,7 +1080,10 @@ export function* getAllServices({ skin_id }) {
     }
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1083,7 +1110,10 @@ export function* getAllFaturaBySearch({ username, year, month }) {
     }
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1111,7 +1141,10 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
     yield put(AuthActions.registerSkinSucc({ addSkinSucc: true }));
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1127,7 +1160,10 @@ export function* getWidgetPayments({ skin_id }) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1189,7 +1225,10 @@ export function* AddSuperAdmin({
     yield call(c);
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1241,7 +1280,10 @@ export function* AddExtraData({
     yield put(AuthActions.registerSkinSucc({ addExtraDataSucc: true }));
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1256,7 +1298,10 @@ export function* getStatistiche(params) {
     yield put(AuthActions.setStatistiche(response.data));
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1278,7 +1323,10 @@ export function* UpdateServiceChangeStatus(params) {
     yield call(params.c);
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -1310,7 +1358,10 @@ export function* getBgameVoucherReq(params) {
       }
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response.error) {
-      if (response.error.response.status === 401) {
+      if (
+        response.error.response.status === 401 &&
+        localStorage.getItem("accountDataB") != null
+      ) {
         const response = yield call(logoutApi);
 
         if (response) {
@@ -1339,7 +1390,7 @@ export function* getBgameVoucherReq(params) {
 }
 export function* getStatisticheMain() {
   const response = yield call(StatisticheMainReq);
-  if (response) {
+  if (response?.data) {
     yield put(
       AuthActions.setStatisticheMain({
         data: response.data.data,
@@ -1349,7 +1400,10 @@ export function* getStatisticheMain() {
     );
   }
   if (response.error) {
-    if (response.error.response.status === 401) {
+    if (
+      response.error.response.status === 401 &&
+      localStorage.getItem("accountDataB") != null
+    ) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);

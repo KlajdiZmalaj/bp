@@ -3,21 +3,23 @@ import MainActions from "../models/main";
 import AuthActions from "../models/auth";
 
 import {
-  fetchServices,
   fetchUsers,
   fetchUsersSimple,
   fetchUsersBySearch,
   updatateOverviewWidget,
   setOnFav,
   fetchFavorites,
+  fetchServices,
 } from "services/main";
 
 import { logoutApi } from "services/auth";
 
 export function* getServices() {
   // console.log("funx callllled");
+  console.log(yield call(fetchServices));
+
   const response = yield call(fetchServices);
-  // console.log("response services", response);
+
   if (response.data) {
     yield put(MainActions.setServices(response.data.all_services));
   } else if (response.error) {

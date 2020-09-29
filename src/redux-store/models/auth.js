@@ -376,6 +376,7 @@ const { Types, Creators } = createActions({
     "skin_id",
     "c",
   ],
+  editReportistica: ["ReportisticaDet"],
 });
 
 export const AuthTypes = Types;
@@ -448,9 +449,14 @@ const INITIAL_STATE = {
   CenterCls: "Center",
   loadingRechargeMobile: false,
   StatisticheMain: null,
+  ReportisticaDet: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.EDIT_REPORTISTICA]: (state, { ReportisticaDet }) => ({
+    ...state,
+    ReportisticaDet,
+  }),
   [Types.SET_STATISTICHE_MAIN]: (state, { StatisticheMain }) => ({
     ...state,
     StatisticheMain,

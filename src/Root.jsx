@@ -42,6 +42,8 @@ import AdminPanelServizi from "./routes/views/adminPanelServizi";
 import adminPanelErrorList from "./routes/views/adminPanelErrorList";
 import Fatura from "./routes/views/Fatura";
 import CreateSkin from "./routes/views/CreateSkin";
+import UnderDevelopment from "./routes/views/UnderDevelopment";
+
 import { Encrypt } from "utils/HelperFunc";
 
 import {
@@ -186,6 +188,13 @@ class Root extends React.Component {
             <PrivateRoute
               path="/transazioni"
               component={Transazioni}
+              isLoggedin={isLoggedin}
+              role={role}
+              allowedRoles={["super_admin", "agency", "agent", "user"]}
+            />
+            <PrivateRoute
+              path="/underDevelopment"
+              component={UnderDevelopment}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
