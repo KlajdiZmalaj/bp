@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import "./Statistiche.css";
 import SimpleGraph from "shared-components/Graph/SimpleGraph";
 import moment from "moment";
+import AuthAction from "redux-store/models/auth";
+import { connect } from "react-redux";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 class Statistiche extends React.Component {
   state = {
@@ -18,6 +20,7 @@ class Statistiche extends React.Component {
       },
     ],
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -33,6 +36,9 @@ class Statistiche extends React.Component {
       toLabel: moment(item.selection.endDate).format("DD/MM/YYYY"),
     });
   };
+  componentDidMount() {
+    this.props.getStatisticheMain();
+  }
   render() {
     const obj = {
       "8_23": "334,00",
@@ -70,91 +76,64 @@ class Statistiche extends React.Component {
     };
 
     const { minimize, CalendarVis } = this.state;
-    const { userRole } = this.props;
+    const { userRole, StatisticheMain } = this.props;
+    console.log(StatisticheMain);
     return (
-      <div id="SpecStatistich" className={`Statist ${minimize ? "min" : ""}`}>
-        {CalendarVis && (
-          <CalendarRangePicker
-            setStateFunc={this.setS}
-            setStateFuncEmpty={() => {
-              this.setState({
-                from: "",
-                to: "",
-                fromLabel: "",
-                toLabel: "",
-              });
-            }}
-            picker={this.state.picker}
-            setCalendar={this.setCalendar}
-            handleSubmit={this.handleSubmit}
-          />
-        )}
-        <div className="Filters Categories">
-          <div>
-            <i className="fal fa-analytics" />
-            <span>Statistiche</span>
-          </div>
-          <div>
-            <span
-              className="Bordered"
-              onClick={() => {
-                this.setState((state) => ({ CalendarVis: !state.CalendarVis }));
+      StatisticheMain && (
+        <div id="SpecStatistich" className={`Statist ${minimize ? "min" : ""}`}>
+          {CalendarVis && (
+            <CalendarRangePicker
+              setStateFunc={this.setS}
+              setStateFuncEmpty={() => {
+                this.setState({
+                  from: "",
+                  to: "",
+                  fromLabel: "",
+                  toLabel: "",
+                });
               }}
-            >
-              <span>
-                {this.state.fromLabel && this.state.toLabel
-                  ? `${this.state.fromLabel}-${this.state.toLabel}`
-                  : "Selezione la data"}
-              </span>
-              <span>
-                <i className="fal fa-calendar-alt" />
-              </span>
-            </span>
-            <span
-              className="Bordered"
-              onClick={() => {
-                this.setState({ minimize: !minimize });
-              }}
-            >
-              <i className={`fal fa-angle-${minimize ? "up" : "down"}`} />
-            </span>
-          </div>
-        </div>
-        {!minimize && (
-          <div className="data Categories">
-            <SimpleGraph
-              graphicData={obj}
-              handleMouseEntering={() => {
-                console.log("enter mouse");
-              }}
-              handleClick={() => {
-                console.log("click with mouse");
-              }}
-              AdditionalComp={
-                <Fragment>
-                  <div>8.258.66$</div>
-                  <div>TRANSAZIONI TOTALI</div>
-                </Fragment>
-              }
+              picker={this.state.picker}
+              setCalendar={this.setCalendar}
+              handleSubmit={this.handleSubmit}
             />
-            <SimpleGraph
-              graphicData={obj}
-              handleMouseEntering={() => {
-                console.log("enter mouse");
-              }}
-              handleClick={() => {
-                console.log("click with mouse");
-              }}
-              AdditionalComp={
-                <Fragment>
-                  <div>568.66$</div>
-                  <div>Commisioni</div>
-                </Fragment>
-              }
-            />
-            {userRole === "super_admin" && (
+          )}
+          <div className="Filters Categories">
+            <div>
+              <i className="fal fa-analytics" />
+              <span>Statistiche</span>
+            </div>
+            <div>
+              <span
+                className="Bordered"
+                onClick={() => {
+                  this.setState((state) => ({
+                    CalendarVis: !state.CalendarVis,
+                  }));
+                }}
+              >
+                <span>
+                  {this.state.fromLabel && this.state.toLabel
+                    ? `${this.state.fromLabel}-${this.state.toLabel}`
+                    : "Selezione la data"}
+                </span>
+                <span>
+                  <i className="fal fa-calendar-alt" />
+                </span>
+              </span>
+              <span
+                className="Bordered"
+                onClick={() => {
+                  this.setState({ minimize: !minimize });
+                }}
+              >
+                <i className={`fal fa-angle-${minimize ? "up" : "down"}`} />
+              </span>
+            </div>
+          </div>
+          {!minimize && (
+            <div className="data Categories">
               <SimpleGraph
-                graphicData={obj}
+                graphicData={StatisticheMain.data.transazioni}
                 handleMouseEntering={() => {
                   console.log("enter mouse");
                 }}
@@ -163,54 +142,89 @@ class Statistiche extends React.Component {
                 }}
                 AdditionalComp={
                   <Fragment>
-                    <div>256.66$</div>
-                    <div>Proviggioni</div>
+                    <div>{StatisticheMain.total.transazioni}</div>
+                    <div>TRANSAZIONI TOTALI</div>
                   </Fragment>
                 }
               />
-            )}
-            {userRole === "super_admin" && (
-              <div className="Additinal Statist">
-                <div className="saldoRete">
-                  <span>256.43</span>
-                  <span>Saldo Rete</span>
-                </div>
+              <SimpleGraph
+                graphicData={StatisticheMain.data.commissioni}
+                handleMouseEntering={() => {
+                  console.log("enter mouse");
+                }}
+                handleClick={() => {
+                  console.log("click with mouse");
+                }}
+                AdditionalComp={
+                  <Fragment>
+                    <div>{StatisticheMain.total.commissioni}</div>
+                    <div>Commisioni</div>
+                  </Fragment>
+                }
+              />
+              {userRole === "super_admin" && (
+                <SimpleGraph
+                  graphicData={StatisticheMain.data.proviggioni}
+                  handleMouseEntering={() => {
+                    console.log("enter mouse");
+                  }}
+                  handleClick={() => {
+                    console.log("click with mouse");
+                  }}
+                  AdditionalComp={
+                    <Fragment>
+                      <div>{StatisticheMain.total.proviggioni}</div>
+                      <div>Proviggioni</div>
+                    </Fragment>
+                  }
+                />
+              )}
+              {userRole === "super_admin" && (
+                <div className="Additinal Statist">
+                  <div className="saldoRete">
+                    <span>{StatisticheMain.rete.saldo_rete}</span>
+                    <span>Saldo Rete</span>
+                  </div>
 
-                <div>
-                  <div className="agenti">
-                    <span>53</span>
-                    <span>
+                  <div>
+                    <div className="agenti">
+                      <span>{StatisticheMain.rete.agenti}</span>
                       <span>
-                        <i className="fal fa-user-tie" />
+                        <span>
+                          <i className="fal fa-user-tie" />
+                        </span>
+                        <span>Agenti</span>
                       </span>
-                      <span>Agenti</span>
-                    </span>
-                  </div>
-                  <div className="agenzie">
-                    <span>256</span>
-                    <span>
+                    </div>
+                    <div className="agenzie">
+                      <span>{StatisticheMain.rete.agencie}</span>
                       <span>
-                        <i className="fal fa-store" />
+                        <span>
+                          <i className="fal fa-store" />
+                        </span>
+                        <span>Agenzie</span>
                       </span>
-                      <span>Agenzie</span>
-                    </span>
-                  </div>
-                  <div className="utenti">
-                    <span>256</span>
-                    <span>
+                    </div>
+                    <div className="utenti">
+                      <span>{StatisticheMain.rete.utenti}</span>
                       <span>
-                        <i className="fal fa-user " />
+                        <span>
+                          <i className="fal fa-user " />
+                        </span>
+                        <span>Utenti</span>
                       </span>
-                      <span>Utenti</span>
-                    </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}{" "}
-          </div>
-        )}
-      </div>
+              )}{" "}
+            </div>
+          )}
+        </div>
+      )
     );
   }
 }
-export default Statistiche;
+const mapStateToProps = (state) => ({
+  StatisticheMain: state.auth.StatisticheMain,
+});
+export default connect(mapStateToProps, AuthAction)(Statistiche);

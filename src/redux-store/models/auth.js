@@ -70,7 +70,8 @@ const { Types, Creators } = createActions({
   getRechargeMobile: ["service_id", "tel_no", "callBack"],
   getBgameVoucherReq: ["service_id", "tel_no", "callBack"],
   setRechargeMobile: ["rechargeMobile"],
-
+  getStatisticheMain: [""],
+  setStatisticheMain: ["StatisticheMain"],
   getPostePay: [
     "service_id",
     "importo",
@@ -446,9 +447,14 @@ const INITIAL_STATE = {
   fromDate: null,
   CenterCls: "Center",
   loadingRechargeMobile: false,
+  StatisticheMain: null,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_STATISTICHE_MAIN]: (state, { StatisticheMain }) => ({
+    ...state,
+    StatisticheMain,
+  }),
   [Types.SET_POSTE_PAY_LOADING]: (state, { postePayLoading }) => ({
     ...state,
     postePayLoading,

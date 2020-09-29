@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
-import { bGameVoucher } from "services/auth";
 class ModulePopUp4 extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +40,12 @@ class ModulePopUp4 extends React.Component {
   }
 
   addNr = (nr) => {
+    console.log(nr);
     this.setState({ tel_no: this.state.tel_no.concat(nr) });
+  };
+  replaceNr = (nr) => {
+    console.log(nr);
+    this.setState({ tel_no: nr.toString() });
   };
   clear = () => {
     this.setState({ tel_no: "" });
@@ -49,6 +53,7 @@ class ModulePopUp4 extends React.Component {
 
   render() {
     const { service_s, rechargeMobile, service } = this.props;
+    console.log(this.state.tel_no);
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
@@ -175,6 +180,50 @@ class ModulePopUp4 extends React.Component {
                         <div className="col-8">
                           <table>
                             <tbody>
+                              {serviceMobile.service_id === "BGM001" && (
+                                <Fragment>
+                                  <tr>
+                                    <td
+                                      id="num1"
+                                      onClick={() => this.replaceNr(10)}
+                                    >
+                                      10
+                                    </td>
+                                    <td
+                                      id="num2"
+                                      onClick={() => this.replaceNr(20)}
+                                    >
+                                      20
+                                    </td>
+                                    <td
+                                      id="num3"
+                                      onClick={() => this.replaceNr(30)}
+                                    >
+                                      30
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td
+                                      id="num1"
+                                      onClick={() => this.replaceNr(50)}
+                                    >
+                                      50
+                                    </td>
+                                    <td
+                                      id="num2"
+                                      onClick={() => this.replaceNr(70)}
+                                    >
+                                      70
+                                    </td>
+                                    <td
+                                      id="num3"
+                                      onClick={() => this.replaceNr(100)}
+                                    >
+                                      100
+                                    </td>
+                                  </tr>
+                                </Fragment>
+                              )}
                               <tr>
                                 <td id="num1" onClick={() => this.addNr(1)}>
                                   1
