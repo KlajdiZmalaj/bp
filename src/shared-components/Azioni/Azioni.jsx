@@ -26,7 +26,13 @@ class Azioni extends Component {
     }
   }
   render() {
-    const { active, activeMain, accountInfo, screenWidth } = this.props;
+    const {
+      active,
+      activeMain,
+      accountInfo,
+      screenWidth,
+      submenu,
+    } = this.props;
     const userRole = accountInfo?.profile?.role?.name
       ? accountInfo?.profile?.role?.name
       : "noUser";
@@ -74,48 +80,52 @@ class Azioni extends Component {
                 })}
             </div>
           </div>
-          <div className="Submenu">
-            <div className="MenuS">
-              {newAzioniSubmenu[activeMain]?.map((item) => {
-                return (
-                  includes(item.displayRole, userRole) && (
-                    <div
-                      id={item.link}
-                      key={item.id}
-                      onClick={() => {
-                        if (activeMain === "dashboard") {
-                          this.setState({ active: { ...{ url: item.link } } });
-                        }
-                      }}
-                      className={`${
-                        activeMain === "dashboard"
-                          ? item.link === this.state.active.url
+          {submenu !== "noSubmenu" && (
+            <div className="Submenu">
+              <div className="MenuS">
+                {newAzioniSubmenu[activeMain]?.map((item) => {
+                  return (
+                    includes(item.displayRole, userRole) && (
+                      <div
+                        id={item.link}
+                        key={item.id}
+                        onClick={() => {
+                          if (activeMain === "dashboard") {
+                            this.setState({
+                              active: { ...{ url: item.link } },
+                            });
+                          }
+                        }}
+                        className={`${
+                          activeMain === "dashboard"
+                            ? item.link === this.state.active.url
+                              ? "active"
+                              : "none"
+                            : active === item.link
                             ? "active"
                             : "none"
-                          : active === item.link
-                          ? "active"
-                          : "none"
-                      }`}
-                    >
-                      {item.type === "span" ? (
-                        <label>
-                          <div>
-                            <span>{item.name}</span>
-                          </div>
-                        </label>
-                      ) : (
-                        <a href={"#/" + item.link}>
-                          <div>
-                            <span>{item.name}</span>
-                          </div>
-                        </a>
-                      )}
-                    </div>
-                  )
-                );
-              })}
+                        }`}
+                      >
+                        {item.type === "span" ? (
+                          <label>
+                            <div>
+                              <span>{item.name}</span>
+                            </div>
+                          </label>
+                        ) : (
+                          <a href={"#/" + item.link}>
+                            <div>
+                              <span>{item.name}</span>
+                            </div>
+                          </a>
+                        )}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
         </Fragment>
       )
     );

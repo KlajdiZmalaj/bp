@@ -6,11 +6,7 @@ class UnderDevelopment extends React.Component {
     return (
       <div className="Container">
         <Header></Header>
-        <Azioni
-          activeMain="dashboard"
-          active="ricariche"
-          match={this.props.match}
-        ></Azioni>
+        <Azioni match={this.props.match} submenu={"noSubmenu"}></Azioni>
         <div>Under Development</div>
       </div>
     );

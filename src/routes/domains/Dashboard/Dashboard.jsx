@@ -40,7 +40,7 @@ class DashboardDom extends React.Component {
     if (favorites != nextProps.favorites) {
       const CategoriesFav = await this.FindArrayOfServicesByValue(
         favorites,
-        " "
+        ""
       );
       let CompaniesFav = await {};
       CompaniesFav = await this.FindServ(CategoriesFav, CompaniesFav);
@@ -56,6 +56,8 @@ class DashboardDom extends React.Component {
         services,
         this.props.match.params.id
       );
+      console.log(await Categories);
+
       let Companies = {};
       Companies = await this.FindServ(Categories, Companies);
 
@@ -105,24 +107,28 @@ class DashboardDom extends React.Component {
   };
   SplitAndCheckIfIncludes = (name, listOfOptions) => {
     let response = false;
-    let newlistOfOptions = listOfOptions.split(",");
-    newlistOfOptions.forEach((option) => {
-      if (name.includes(option)) {
-        response = true;
-        return response;
-      }
-    });
+    if (name) {
+      let newlistOfOptions = listOfOptions.split(",");
+      newlistOfOptions.forEach((option) => {
+        if (name.includes(option) || name === option) {
+          response = true;
+          return response;
+        }
+      });
+      return response;
+    }
     return response;
   };
   //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
+    console.log(object, value);
     return (
       Object.keys(object) &&
       Array.isArray(Object.keys(object)) &&
       Object.keys(object)
         .filter((key) =>
           this.SplitAndCheckIfIncludes(
-            object[key].name.toLowerCase(),
+            object[key]?.group?.toLowerCase(),
             value.toLowerCase()
           )
         )
@@ -130,6 +136,7 @@ class DashboardDom extends React.Component {
     );
   };
   FindServ = (Categories, Companies) => {
+    console.log(Categories, Companies);
     Object.keys(Categories).forEach((id) => {
       Companies[Categories[id].name] = [
         ...Object.keys(Categories[id])
