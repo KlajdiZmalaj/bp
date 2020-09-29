@@ -1482,3 +1482,19 @@ export const bGameVoucher = (service_id, importo) =>
       ...skin,
     })
     .catch((error) => ({ error }));
+export const StatisticheMainReq = () =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .get(`/statisticheMain`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));

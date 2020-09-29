@@ -48,6 +48,7 @@ import {
   getStatisticheReq,
   ServiceChangeStatusReq,
   bGameVoucher,
+  StatisticheMainReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1334,5 +1335,26 @@ export function* getBgameVoucherReq(params) {
       yield put(AuthActions.setAccountInfo({}));
     }
     // const response = yield call(logoutApi);
+  }
+}
+export function* getStatisticheMain() {
+  const response = yield call(StatisticheMainReq);
+  if (response) {
+    yield put(
+      AuthActions.setStatisticheMain({
+        data: response.data.data,
+        rete: response.data.rete,
+        total: response.data.total,
+      })
+    );
+  }
+  if (response.error) {
+    if (response.error.response.status === 401) {
+      const response = yield call(logoutApi);
+      if (response) {
+        localStorage.setItem("accountDataB", null);
+        yield put(AuthActions.setAccountInfo({}));
+      }
+    }
   }
 }
