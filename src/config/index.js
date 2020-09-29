@@ -30,13 +30,13 @@ export const newAzioniSubmenu = {
     {
       id: 2,
       name: "PAGAMENTI",
-      link: "dashboard/prodotti",
+      link: "dashboard/pagamenti",
       displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
       id: 3,
       name: "GIFT CARDS",
-      link: "dashboard/gift",
+      link: "dashboard/gift_cards",
       displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
