@@ -47,6 +47,7 @@ import {
   AddSuperAdminReq,
   getStatisticheReq,
   ServiceChangeStatusReq,
+  bGameVoucher,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1283,5 +1284,55 @@ export function* UpdateServiceChangeStatus(params) {
         yield put(AuthActions.setAccountInfo({}));
       }
     }
+  }
+}
+export function* getBgameVoucherReq(params) {
+  const response = yield call(bGameVoucher, params.service_id, params.tel_no);
+  if (response) {
+    // console.log("response", response);
+    if (response.data) {
+      // console.log("wallet", response.data.wallet);
+      if (response.data.wallet) {
+        const accountData = localStorage.getItem("accountDataB");
+        const data = JSON.parse(accountData);
+
+        const d = {
+          ...data,
+          profile: {
+            ...data.profile,
+            wallet: response.data.wallet,
+          },
+        };
+
+        localStorage.setItem("accountDataB", JSON.stringify(d));
+        yield put(AuthActions.setAccountInfo(d));
+      }
+      yield put(AuthActions.setRechargeMobile(response.data));
+    } else if (response.error) {
+      if (response.error.response.status === 401) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      } else {
+        yield put(AuthActions.setRechargeMobile(response.error.response.data));
+      }
+    }
+    //set loading false
+    if (params.callBack) {
+      params.callBack(false);
+    }
+  }
+  if (response && response.error && response.error.response.status === 401) {
+    yield put(AuthActions.setUnauthorization());
+    const response = yield call(logoutApi);
+
+    if (response) {
+      localStorage.setItem("accountDataB", null);
+      yield put(AuthActions.setAccountInfo({}));
+    }
+    // const response = yield call(logoutApi);
   }
 }

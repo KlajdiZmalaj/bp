@@ -1,6 +1,19 @@
 .Statist {
   height: 244px;
   background: #272c31;
+  position: relative;
+}
+
+.Statist .calendarWrapper {
+  position: absolute;
+  right: calc((100vw - 1135px) / 2);
+  top: 52px;
+}
+
+@media (max-width: 1135px) {
+  .Statist .calendarWrapper {
+    right: 2%;
+  }
 }
 
 .Statist.min {
@@ -91,6 +104,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 
 .Statist div.Categories.Filters div:nth-child(2) span.Bordered:nth-child(2) {

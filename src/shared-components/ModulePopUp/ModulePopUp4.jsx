@@ -34,7 +34,7 @@ class ModulePopUp4 extends React.Component {
 
   handleSubmit(service_id, tel_no) {
     if (service_id === "BGM001") {
-      bGameVoucher(service_id, tel_no);
+      this.props.getBgameVoucherReq(service_id, tel_no);
     } else {
       this.props.getRechargeMobile(service_id, tel_no);
     }

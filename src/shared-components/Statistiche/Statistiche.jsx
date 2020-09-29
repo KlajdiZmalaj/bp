@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import "./Statistiche.css";
 import SimpleGraph from "shared-components/Graph/SimpleGraph";
-import { format } from "moment";
+import moment from "moment";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 class Statistiche extends React.Component {
   state = {
     minimize: false,
     CalendarVis: false,
+    fromLabel: null,
+    toLabel: null,
     picker: [
       {
         startDate: new Date(),
@@ -20,15 +22,15 @@ class Statistiche extends React.Component {
     e.preventDefault();
   };
   setCalendar = (val) => {
-    this.setState({ isCalendarOpen: val });
+    this.setState({ CalendarVis: val });
   };
   setS = (item) => {
     this.setState({
       picker: [item.selection],
-      from: format(item.selection.startDate, "yyyy-MM-dd"),
-      to: format(item.selection.endDate, "yyyy-MM-dd"),
-      fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
-      toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
+      from: moment(item.selection.startDate).format("yyyy-MM-dd"),
+      to: moment(item.selection.endDate).format("yyyy-MM-dd"),
+      fromLabel: moment(item.selection.startDate).format("DD/MM/YYYY"),
+      toLabel: moment(item.selection.endDate).format("DD/MM/YYYY"),
     });
   };
   render() {
@@ -71,7 +73,7 @@ class Statistiche extends React.Component {
     const { userRole } = this.props;
     return (
       <div id="SpecStatistich" className={`Statist ${minimize ? "min" : ""}`}>
-        {/* {CalendarVis && (
+        {CalendarVis && (
           <CalendarRangePicker
             setStateFunc={this.setS}
             setStateFuncEmpty={() => {
@@ -86,7 +88,7 @@ class Statistiche extends React.Component {
             setCalendar={this.setCalendar}
             handleSubmit={this.handleSubmit}
           />
-        )} */}
+        )}
         <div className="Filters Categories">
           <div>
             <i className="fal fa-analytics" />
@@ -99,7 +101,11 @@ class Statistiche extends React.Component {
                 this.setState((state) => ({ CalendarVis: !state.CalendarVis }));
               }}
             >
-              <span>23/06/2020-23/07/2020</span>
+              <span>
+                {this.state.fromLabel && this.state.toLabel
+                  ? `${this.state.fromLabel}-${this.state.toLabel}`
+                  : "Selezione la data"}
+              </span>
               <span>
                 <i className="fal fa-calendar-alt" />
               </span>
