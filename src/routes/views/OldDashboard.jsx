@@ -56,8 +56,6 @@ class Dashboard extends React.Component {
       isLoggedin = true;
     }
     const scrollView = document.getElementsByClassName("panels-container")[0];
-    console.log(services[keyService], "Services", services);
-
     return (
       <div className="Container">
         <Header></Header>

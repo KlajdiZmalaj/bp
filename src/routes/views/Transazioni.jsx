@@ -169,7 +169,6 @@ class Transazioni extends React.Component {
       };
       var myBlob = b64toBlob(data.receipt, "application/pdf");
       var blobUrl = URL.createObjectURL(myBlob);
-      console.log("url", blobUrl);
       if (type === "print") {
         window
           .open(
@@ -425,7 +424,6 @@ class Transazioni extends React.Component {
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
-         
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&

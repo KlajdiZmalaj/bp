@@ -669,7 +669,6 @@ export function* updateUserDetail(data) {
     );
   }
   if (response.data) {
-    console.log(response);
     if (response.status === 200) {
       notification["success"]({
         message: "Azione completata",
@@ -1154,7 +1153,6 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   }
 }
 export function* getWidgetPayments({ skin_id }) {
-  console.log(skin_id);
   const response = yield call(widgetPaymentsReq, skin_id);
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));

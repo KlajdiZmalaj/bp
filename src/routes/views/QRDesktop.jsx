@@ -17,7 +17,6 @@ function Main({
   useEffect(() => {
     getCodiceTicket(barcode, "omeLale");
   }, [barcode]);
-  console.log("%c barcode", window.log3, barcode, paymentsFromCode);
   return (
     <div className="qrBarcode m-auto p-4">
       <button

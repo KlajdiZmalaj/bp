@@ -40,11 +40,9 @@ class ModulePopUp4 extends React.Component {
   }
 
   addNr = (nr) => {
-    console.log(nr);
     this.setState({ tel_no: this.state.tel_no.concat(nr) });
   };
   replaceNr = (nr) => {
-    console.log(nr);
     this.setState({ tel_no: nr.toString() });
   };
   clear = () => {
@@ -53,7 +51,6 @@ class ModulePopUp4 extends React.Component {
 
   render() {
     const { service_s, rechargeMobile, service } = this.props;
-    console.log(this.state.tel_no);
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 

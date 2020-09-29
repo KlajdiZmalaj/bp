@@ -39,10 +39,6 @@ class Statistiche extends React.Component {
   componentDidMount() {
     this.props.getStatisticheMain();
   }
-  componentDidCatch(error) {
-    console.log(error);
-  }
-
   render() {
     const obj = {
       "8_23": "334,00",

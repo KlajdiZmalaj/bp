@@ -56,7 +56,6 @@ class DashboardDom extends React.Component {
         services,
         this.props.match.params.id
       );
-      console.log(await Categories);
 
       let Companies = {};
       Companies = await this.FindServ(Categories, Companies);
@@ -121,7 +120,6 @@ class DashboardDom extends React.Component {
   };
   //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
-    console.log(object, value);
     return (
       Object.keys(object) &&
       Array.isArray(Object.keys(object)) &&
@@ -136,7 +134,6 @@ class DashboardDom extends React.Component {
     );
   };
   FindServ = (Categories, Companies) => {
-    console.log(Categories, Companies);
     Object.keys(Categories).forEach((id) => {
       Companies[Categories[id].name] = [
         ...Object.keys(Categories[id])
@@ -165,7 +162,6 @@ class DashboardDom extends React.Component {
       Companies,
       Services,
     } = this.state;
-    console.log(CompaniesFav);
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}></div>

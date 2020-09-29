@@ -483,7 +483,6 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
         if (data && data.status === 200) {
           c();
         } else {
-          console.log("Err");
           message.error("è successo qualcosa di sbagliato");
         }
       },
@@ -491,11 +490,9 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
     )
     .catch((err) => {
       message.error("è successo qualcosa di sbagliato");
-      console.log("Err");
     });
 };
 export const transferMoney = (id, amount, type, c, role, backOffice) => {
-  console.log(backOffice);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1461,9 +1458,7 @@ export const ServiceChangeStatusReq = (
       active,
       ...(skin_id && skin_id != -1 ? { skin_id } : skin),
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((error) => {});
 };
 
 export const bGameVoucher = (service_id, importo) =>

@@ -14,7 +14,6 @@ export const slicedAmount = (text) => {
 export function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => {
-    console.log("img loaded ", reader, reader.result);
     callback(reader.result);
   });
   reader.readAsDataURL(img);
