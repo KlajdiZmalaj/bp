@@ -65,7 +65,7 @@ export default {
 
   VODA: require(`../assets/images${skin}/vodafone.svg`),
   VODO: require(`../assets/images${skin}/vodafone.svg`),
-
+  BGAM: require(`../assets/images${skin}/bgame.svg`),
   WIND: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
   WINO: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
 

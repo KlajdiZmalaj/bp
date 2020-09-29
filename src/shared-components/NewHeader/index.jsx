@@ -118,7 +118,7 @@ class Header extends Component {
                       this.props.history.push("/registerAgency");
                     }}
                   >
-                    Register Agency
+                    Registra Agenzia
                   </div>
                 )}
                 {get(accountInfo, "profile.role.name") === "agency" && (
@@ -144,8 +144,8 @@ class Header extends Component {
                     className="register"
                   >
                     {this.state.regType === 1
-                      ? "Register Agency"
-                      : "Register Agent"}
+                      ? "Registra Agenzia"
+                      : "Registra Agente"}
                   </div>
                 )}
                 {get(accountInfo, "profile.role.name") === "super_admin" && (

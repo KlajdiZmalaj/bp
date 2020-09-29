@@ -21,6 +21,7 @@
   margin: 0 auto;
   align-items: center;
   div,
+  label,
   a {
     width: 100%;
     height: 100%;
@@ -30,11 +31,13 @@
     justify-content: center;
     background: #3c4349;
     color: rgba(255, 255, 255, 0.602);
-
+    cursor: pointer;
+    label,
     a {
       border-left: 1px solid #272c31;
     }
     &:last-child {
+      label,
       a {
         border-right: 1px solid #272c31;
       }
@@ -88,6 +91,7 @@
     }
   }
   div,
+  label,
   a {
     width: 100%;
     height: 100%;
@@ -100,10 +104,12 @@
     .active {
       background: #d3561a;
     }
+    label,
     a {
       border-left: 1px solid #de5817;
     }
     &:last-child {
+      label,
       a {
         border-right: 1px solid #de5817;
       }

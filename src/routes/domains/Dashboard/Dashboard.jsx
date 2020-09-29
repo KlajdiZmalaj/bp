@@ -11,13 +11,18 @@ class DashboardDom extends React.Component {
     menuClassName: "notFixed",
     toDisplay: false,
     categoriesTypeSelected: "RTELD",
+    categoriesFavTypeSelected: "RTELD",
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
   };
-  changeServce = async (serviceId, services, serviceName) => {
-    await this.props.setServiceType(this.state.categoriesTypeSelected);
-    await this.props.setServiceId(services[0]);
+  changeServce = async (serviceId, services, serviceName, type, special) => {
+    await this.props.setServiceType(
+      type === "fav"
+        ? this.state.categoriesFavTypeSelected
+        : this.state.categoriesTypeSelected
+    );
+    await this.props.setServiceId(special ? special : services[0]);
     await this.props.setServiceS({
       name: serviceName,
       id: serviceId,
@@ -37,12 +42,13 @@ class DashboardDom extends React.Component {
         favorites,
         " "
       );
-      let CompaniesFav = {};
+      let CompaniesFav = await {};
       CompaniesFav = await this.FindServ(CategoriesFav, CompaniesFav);
-      CompaniesFav = await CategoriesFav.map((cat) => CompaniesFav[cat.name]);
-      await this.setState({
-        CategoriesFav: CategoriesFav,
-        CompaniesFav: CompaniesFav,
+      CompaniesFav = await CategoriesFav.map((cat) => {
+        return { key: cat.key, companies: CompaniesFav[cat.name] };
+      });
+      this.setState({
+        CompaniesFav,
       });
     }
     if (services != nextProps.services || this.props.match != nextProps.match) {
@@ -82,7 +88,7 @@ class DashboardDom extends React.Component {
     const { menuClassName } = this.state;
     let scrollPoint = document
       .querySelector("#SpecStatistich")
-      .classList.contains("min")
+      ?.classList?.contains("min")
       ? 174
       : 357;
     let top =
@@ -127,7 +133,7 @@ class DashboardDom extends React.Component {
     Object.keys(Categories).forEach((id) => {
       Companies[Categories[id].name] = [
         ...Object.keys(Categories[id])
-          .filter((key) => key != "name" && key != "key")
+          .filter((key) => key != "name" && key != "group" && key != "key")
           .map((key) => ({
             [key]: {
               ...Categories[id][key],
@@ -152,6 +158,7 @@ class DashboardDom extends React.Component {
       Companies,
       Services,
     } = this.state;
+    console.log(CompaniesFav);
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}></div>
@@ -165,7 +172,8 @@ class DashboardDom extends React.Component {
                   onClick={() => this.ChangeCompanies(cat.name, cat.key)}
                   key={cat.key}
                 >
-                  {cat.name}
+                  {cat.name.charAt(0).toUpperCase() +
+                    cat.name.slice(1).toLowerCase()}
                 </div>
               ))}
             <div className="Last"></div>
@@ -182,7 +190,8 @@ class DashboardDom extends React.Component {
                     onClick={() => this.ChangeCompanies(cat.name, cat.key)}
                     key={cat.key}
                   >
-                    {cat.name}
+                    {cat.name.charAt(0).toUpperCase() +
+                      cat.name.slice(1).toLowerCase()}
                   </div>
                 ))}
               <div className="Last"></div>
@@ -193,26 +202,30 @@ class DashboardDom extends React.Component {
               {CompaniesFav && Array.isArray(CompaniesFav) ? (
                 CompaniesFav.map(
                   (comp) =>
-                    Object.keys(comp) &&
-                    Array.isArray(Object.keys(comp)) &&
-                    Object.keys(comp).map(
+                    Object.keys(comp?.companies) &&
+                    Array.isArray(Object.keys(comp?.companies)) &&
+                    Object.keys(comp?.companies).map(
                       (key) =>
-                        Object.keys(comp[key]) &&
-                        Array.isArray(Object.keys(comp[key])) &&
-                        Object.keys(comp[key]).map((id) => (
+                        Object.keys(comp.companies[key]) &&
+                        Array.isArray(Object.keys(comp.companies[key])) &&
+                        Object.keys(comp.companies[key]).map((id) => (
                           <div
                             key={id}
                             onClick={() => {
+                              this.setState({
+                                categoriesFavTypeSelected: comp.key,
+                              });
                               this.changeServce(
                                 id,
-                                comp[key][id].services,
-                                comp[key][id].name
+                                comp.companies[key][id].services,
+                                comp.companies[key][id].name,
+                                "fav"
                               );
                               this.togglePopUp(true);
                             }}
                           >
                             <img src={images[id]} alt="" />
-                            <span> {comp[key][id].name}</span>
+                            <span> {comp.companies[key][id].name}</span>
                           </div>
                         ))
                     )
@@ -264,6 +277,31 @@ class DashboardDom extends React.Component {
                             <img src={images[key]} alt="" />
                             <span> {comp[key].name}</span>
                           </div>
+                        ) : comp[key].services[0].service_id === "BOL001" ? (
+                          comp[key].services.map((service) => {
+                            return (
+                              <div
+                                key={key}
+                                onClick={() => {
+                                  this.changeServce(
+                                    key,
+                                    comp[key].services,
+                                    comp[key].name,
+                                    "",
+                                    service
+                                  );
+                                  this.togglePopUp(true);
+                                  this.setState({
+                                    Services: comp[key].services,
+                                    serviceSelected: comp[key].services[0],
+                                  });
+                                }}
+                              >
+                                <img src={images[key]} alt="" />
+                                <span> {service.name}</span>
+                              </div>
+                            );
+                          })
                         ) : comp[key].services[0].service_id != "BGM001" ? (
                           <div
                             key={key}
