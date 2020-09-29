@@ -1465,8 +1465,9 @@ export const ServiceChangeStatusReq = (
       console.log(error);
     });
 };
-export const bGameVoucher = (service_id, importo) => {
-  return axios
+
+export const bGameVoucher = (service_id, importo) =>
+  axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
       headers: {
@@ -1476,25 +1477,8 @@ export const bGameVoucher = (service_id, importo) => {
       },
     })
     .post(`/buy/bgameVoucher`, {
-      service_id,
-      importo,
+      ...{ service_id: service_id },
+      ...(importo ? { importo: importo } : {}),
       ...skin,
-    }).then((response)=>{
-      if(response){
-      
-        console.log(response);
-        notification["success"]({
-          message: "Azione completata",
-          description: response?.data?.message,
-          placement: "bottomRight",
-        });
-      }
     })
-    .catch((error) => {
-      if (error?.response?.data) {
-        return notification["error"]({
-          message: error?.response?.data?.message,
-        });
-      }
-    });
-};
+    .catch((error) => ({ error }));

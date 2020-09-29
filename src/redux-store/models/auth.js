@@ -68,6 +68,7 @@ const { Types, Creators } = createActions({
 
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no", "callBack"],
+  getBgameVoucherReq: ["service_id", "tel_no", "callBack"],
   setRechargeMobile: ["rechargeMobile"],
 
   getPostePay: [

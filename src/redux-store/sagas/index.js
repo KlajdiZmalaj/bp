@@ -54,6 +54,7 @@ import {
   AddExtraData,
   getStatistiche,
   UpdateServiceChangeStatus,
+  getBgameVoucherReq,
 } from "./AuthSagas";
 
 import {
@@ -69,6 +70,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(AuthTypes.GET_BGAME_VOUCHER_REQ, getBgameVoucherReq),
     takeLatest(
       AuthTypes.UPDATE_SERVICES_CHANGE_STATUS,
       UpdateServiceChangeStatus
