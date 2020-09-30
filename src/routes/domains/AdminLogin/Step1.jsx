@@ -510,8 +510,8 @@ class Step1 extends React.Component {
               onClick={async (e) => {
                 e.preventDefault();
                 if (
-                  link_servizi.includes("http") &&
-                  link_servizi.includes("://")
+                  link_servizi?.includes("http") &&
+                  link_servizi?.includes("://")
                 ) {
                   await this.props.AddSkinNew(
                     nome_skin,

@@ -128,7 +128,7 @@ class Statistiche extends React.Component {
                 }}
               >
                 <i
-                  className={`fal fa-angle-${ReportisticaDet ? "up" : "down"}`}
+                  className={`fal fa-angle-${ReportisticaDet ? "down" : "up"}`}
                 />
               </span>
             </div>
