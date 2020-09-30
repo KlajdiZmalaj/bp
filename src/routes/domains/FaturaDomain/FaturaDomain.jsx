@@ -5,6 +5,8 @@ import AuthActions from "redux-store/models/auth";
 import { printFatturaReq } from "services/auth";
 import DatePicker from "./DatePicker";
 import ClickOut from "react-onclickout";
+import images from "themes/images";
+
 import { Select, Pagination } from "antd";
 const { Option } = Select;
 class FaturaDomain extends React.Component {
@@ -317,7 +319,7 @@ class FaturaDomain extends React.Component {
                   )}
                 </div>
               ) : (
-                <div className="loader">Loader...</div>
+                <img className="loader" src={images.loader}></img>
               )}
             </div>
           </div>
