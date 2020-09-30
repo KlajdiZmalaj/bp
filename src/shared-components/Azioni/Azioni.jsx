@@ -41,7 +41,10 @@ class Azioni extends Component {
         <Fragment>
           <Statistiche userRole={userRole} />
           <div className="MenuC">
-            <div className="Menu">
+            <div
+              className="Menu"
+              style={userRole === "noUser" ? { display: "none" } : {}}
+            >
               {newAzioni &&
                 Array.isArray(newAzioni) &&
                 newAzioni.map((azioni) => {

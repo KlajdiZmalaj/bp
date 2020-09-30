@@ -26,6 +26,11 @@
     position: relative;
     transition: 0.5s;
     overflow: auto;
+    .active {
+      color: var(--accent-bg);
+      font-weight: bold;
+      letter-spacing: 0.6px;
+    }
     &.fixed {
       position: fixed;
       top: 170px;

@@ -12,6 +12,7 @@ class DashboardDom extends React.Component {
     toDisplay: false,
     categoriesTypeSelected: "RTELD",
     categoriesFavTypeSelected: "RTELD",
+    categoryActive: "RTELC",
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -161,6 +162,7 @@ class DashboardDom extends React.Component {
       CompaniesFav,
       Companies,
       Services,
+      categoryActive,
     } = this.state;
     return (
       <div className="DContainer">
@@ -174,11 +176,14 @@ class DashboardDom extends React.Component {
               Array.isArray(Categories) &&
               Categories.map((cat) => (
                 <div
-                  onClick={() => this.ChangeCompanies(cat.name, cat.key)}
+                  className={`${categoryActive === cat.key ? "active" : ""}`}
+                  onClick={() => {
+                    this.ChangeCompanies(cat.name, cat.key);
+                    this.setState({ categoryActive: cat.key });
+                  }}
                   key={cat.key}
                 >
-                  {cat.name.charAt(0).toUpperCase() +
-                    cat.name.slice(1).toLowerCase()}
+                  {cat.name}
                 </div>
               ))}
             <div className="Last">
@@ -194,14 +199,14 @@ class DashboardDom extends React.Component {
                 Array.isArray(Categories) &&
                 Categories.map((cat) => (
                   <div
+                    className={`${categoryActive === cat.key ? "active" : ""}`}
                     onClick={() => {
                       this.ChangeCompanies(cat.name, cat.key);
-                      console.log(cat);
+                      this.setState({ categoryActive: cat.key });
                     }}
                     key={cat.key}
                   >
-                    {cat.name.charAt(0).toUpperCase() +
-                      cat.name.slice(1).toLowerCase()}
+                    {cat.name}
                   </div>
                 ))}
               <div className="Last">

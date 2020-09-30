@@ -43,6 +43,12 @@
   overflow: auto;
 }
 
+.DContainer .Categories .active {
+  color: var(--accent-bg);
+  font-weight: bold;
+  letter-spacing: 0.6px;
+}
+
 .DContainer .Categories.fixed {
   position: fixed;
   top: 170px;
