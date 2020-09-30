@@ -12,6 +12,7 @@ class DashboardDom extends React.Component {
     toDisplay: false,
     categoriesTypeSelected: "RTELD",
     categoriesFavTypeSelected: "RTELD",
+    categoryActive: "RTELC",
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -56,7 +57,6 @@ class DashboardDom extends React.Component {
         services,
         this.props.match.params.id
       );
-      console.log(await Categories);
 
       let Companies = {};
       Companies = await this.FindServ(Categories, Companies);
@@ -121,7 +121,6 @@ class DashboardDom extends React.Component {
   };
   //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
-    console.log(object, value);
     return (
       Object.keys(object) &&
       Array.isArray(Object.keys(object)) &&
@@ -136,7 +135,6 @@ class DashboardDom extends React.Component {
     );
   };
   FindServ = (Categories, Companies) => {
-    console.log(Categories, Companies);
     Object.keys(Categories).forEach((id) => {
       Companies[Categories[id].name] = [
         ...Object.keys(Categories[id])
@@ -164,11 +162,13 @@ class DashboardDom extends React.Component {
       CompaniesFav,
       Companies,
       Services,
+      categoryActive,
     } = this.state;
-    console.log(CompaniesFav);
     return (
       <div className="DContainer">
-        <div className={`Image  ${menuClassName}`}></div>
+        <div className={`Image  ${menuClassName}`}>
+          <img src={images["baner_servizi_header"]} />
+        </div>
         {menuClassName === "fixed" && (
           <div className={`Categories ${menuClassName}`}>
             <div className="First">SERVIZI</div>
@@ -176,14 +176,19 @@ class DashboardDom extends React.Component {
               Array.isArray(Categories) &&
               Categories.map((cat) => (
                 <div
-                  onClick={() => this.ChangeCompanies(cat.name, cat.key)}
+                  className={`${categoryActive === cat.key ? "active" : ""}`}
+                  onClick={() => {
+                    this.ChangeCompanies(cat.name, cat.key);
+                    this.setState({ categoryActive: cat.key });
+                  }}
                   key={cat.key}
                 >
-                  {cat.name.charAt(0).toUpperCase() +
-                    cat.name.slice(1).toLowerCase()}
+                  {cat.name}
                 </div>
               ))}
-            <div className="Last"></div>
+            <div className="Last">
+              <img src={images["servizi_banner"]} />
+            </div>
           </div>
         )}
         <div className={`Dashboard ${menuClassName}`}>
@@ -194,14 +199,20 @@ class DashboardDom extends React.Component {
                 Array.isArray(Categories) &&
                 Categories.map((cat) => (
                   <div
-                    onClick={() => this.ChangeCompanies(cat.name, cat.key)}
+                    className={`${categoryActive === cat.key ? "active" : ""}`}
+                    onClick={() => {
+                      this.ChangeCompanies(cat.name, cat.key);
+                      this.setState({ categoryActive: cat.key });
+                    }}
                     key={cat.key}
                   >
-                    {cat.name.charAt(0).toUpperCase() +
-                      cat.name.slice(1).toLowerCase()}
+                    {cat.name}
                   </div>
                 ))}
-              <div className="Last"></div>
+              <div className="Last">
+                {" "}
+                <img src={images["servizi_banner"]} />
+              </div>
             </div>
           )}
           <div className="CompaniesAndOther">

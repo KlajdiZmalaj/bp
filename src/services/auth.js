@@ -483,7 +483,6 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
         if (data && data.status === 200) {
           c();
         } else {
-          console.log("Err");
           message.error("è successo qualcosa di sbagliato");
         }
       },
@@ -491,11 +490,9 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
     )
     .catch((err) => {
       message.error("è successo qualcosa di sbagliato");
-      console.log("Err");
     });
 };
 export const transferMoney = (id, amount, type, c, role, backOffice) => {
-  console.log(backOffice);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1171,7 +1168,29 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     })
     .catch((error) => ({ error }));
 };
-export const getAllFaturaBySearchReq = (username, year, month) => {
+export const getAllFaturaBySearchReq = (
+  username,
+  year,
+  month,
+  perPage,
+  page_number
+) => {
+  const paramsToSend = {};
+  if (username) {
+    paramsToSend["username"] = username;
+  }
+  if (year) {
+    paramsToSend["year"] = year;
+  }
+  if (month) {
+    paramsToSend["month"] = month;
+  }
+  if (perPage) {
+    paramsToSend["limit"] = perPage;
+  }
+  if (page_number) {
+    paramsToSend["page_number"] = page_number;
+  }
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1184,9 +1203,7 @@ export const getAllFaturaBySearchReq = (username, year, month) => {
     .get("/fatture", {
       params: {
         ...skin,
-        username: username ? username : null,
-        year: year ? year : null,
-        month: month ? month : null,
+        ...paramsToSend,
       },
     })
     .catch((error) => ({ error }));
@@ -1461,9 +1478,7 @@ export const ServiceChangeStatusReq = (
       active,
       ...(skin_id && skin_id != -1 ? { skin_id } : skin),
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((error) => {});
 };
 
 export const bGameVoucher = (service_id, importo) =>

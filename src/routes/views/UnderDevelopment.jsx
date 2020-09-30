@@ -7,7 +7,9 @@ class UnderDevelopment extends React.Component {
       <div className="Container">
         <Header></Header>
         <Azioni match={this.props.match} submenu={"noSubmenu"}></Azioni>
-        <div>Under Development</div>
+        <div className="DContainer">
+          <span>Under Development ....</span>
+        </div>
       </div>
     );
   }

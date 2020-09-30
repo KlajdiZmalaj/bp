@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
@@ -24,6 +23,7 @@ import UseCode from "routes/views/UseCode";
 import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
 import { allRoles } from "config/index";
+import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 
 const { Option } = Select;
 class Transazioni extends React.Component {
@@ -169,7 +169,6 @@ class Transazioni extends React.Component {
       };
       var myBlob = b64toBlob(data.receipt, "application/pdf");
       var blobUrl = URL.createObjectURL(myBlob);
-      console.log("url", blobUrl);
       if (type === "print") {
         window
           .open(
@@ -425,7 +424,6 @@ class Transazioni extends React.Component {
         {this.props.forAdmin === true ? null : (
           <React.Fragment>
             <Header></Header>
-         
           </React.Fragment>
         )}
         {this.state.showModalResponsive === true &&

@@ -698,7 +698,7 @@ a:hover {
 
 .azioniTabs {
   width: 100%;
-  max-width: 1371px;
+  max-width: 1135px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -756,7 +756,7 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  max-width: 1371px;
+  max-width: 1135px;
   margin: 0 auto;
   padding: 5px;
   margin-top: 18px;

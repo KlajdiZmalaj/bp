@@ -81,8 +81,6 @@ const PostePay = ({
         description: Object.values(postePay.errors || {}),
       });
   }, [postePay]);
-
-  console.log("userList", userList);
   return (
     <div className="postepay">
       <div className="postepay--services">

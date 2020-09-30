@@ -16,8 +16,6 @@ import { logoutApi } from "services/auth";
 
 export function* getServices() {
   // console.log("funx callllled");
-  console.log(yield call(fetchServices));
-
   const response = yield call(fetchServices);
 
   if (response.data) {
@@ -64,7 +62,6 @@ export function* getUsers(params) {
     params.skin_id,
     params.backoffice
   );
-  console.log("getUsers called", response);
   if (response && response.data) {
     yield put(MainActions.setUsers(response.data.users));
     yield put(MainActions.setLoaderForAdminUtenti(false));

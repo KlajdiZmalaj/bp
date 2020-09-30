@@ -5,7 +5,10 @@ import AuthActions from "redux-store/models/auth";
 import { printFatturaReq } from "services/auth";
 import DatePicker from "./DatePicker";
 import ClickOut from "react-onclickout";
+import images from "themes/images";
 
+import { Select, Pagination } from "antd";
+const { Option } = Select;
 class FaturaDomain extends React.Component {
   state = {
     yearDropdown: false,
@@ -15,6 +18,8 @@ class FaturaDomain extends React.Component {
     calendarVis: false,
     userName: "",
     userListShow: false,
+    perPage: 25,
+    page_number: 1,
   };
   setCalendar = (val) => {
     this.setState({ calendarVis: val });
@@ -60,31 +65,11 @@ class FaturaDomain extends React.Component {
       }, 1000);
     });
   }
-  // PreviewPdf(file_name) {
-  //   printFatturaReq(file_name).then(async (response) => {
-  //     var winparams =
-  //       "dependent=yes,locationbar=no,scrollbars=yes,menubar=yes," +
-  //       `resizable,screenX=50,screenY=50,width=${
-  //         this.props.screenWidth < 1000
-  //           ? this.props.screenWidth
-  //           : (this.props.screenWidth * 80) / 100
-  //       },height=900`;
-  //     var htmlPop =
-  //       "<iframe width=100% height=100%" +
-  //       ' type="application/pdf"' +
-  //       ' src="data:application/pdf;base64,' +
-  //       escape(response.data.base64) +
-  //       '"></iframe>';
-
-  //     var printWindow = window.open("", "PDF", winparams);
-  //     printWindow.document.write(htmlPop);
-  //   });
-  // }
   componentDidMount() {
-    this.props.getAllFaturaBySearch(null, null, null);
+    this.props.getAllFaturaBySearch(null, null, null, 25, 1);
   }
   render() {
-    const { Fatture } = this.props;
+    const { faturaDetails, Users, total_pages } = this.props;
     const {
       calendarVis,
       monthDropdown,
@@ -93,9 +78,9 @@ class FaturaDomain extends React.Component {
       yearChosen,
       userName,
       userListShow,
+      perPage,
+      page_number,
     } = this.state;
-    const faturaDet = Fatture?.FaturaDetails;
-    const Users = Fatture?.Users;
     return (
       <div className="Container">
         <div className="FaturaDomain">
@@ -182,6 +167,7 @@ class FaturaDomain extends React.Component {
                                       userListShow: false,
                                     });
                                   }}
+                                  key={user + Math.random()}
                                 >
                                   {user}
                                 </div>
@@ -223,7 +209,9 @@ class FaturaDomain extends React.Component {
                       this.props.getAllFaturaBySearch(
                         userName,
                         monthChosen.id,
-                        yearChosen
+                        yearChosen,
+                        perPage,
+                        page_number
                       );
                     }}
                   >
@@ -233,66 +221,106 @@ class FaturaDomain extends React.Component {
               </div>
             </div>
             <div className="row no-gutters max-width">
-              <div className="FaturaTable">
-                <table className="transTable">
-                  <thead>
-                    <tr>
-                      <td className="wsNwp">Numero</td>
-                      <td className="wsNwp">Date / Ora</td>
-                      <td className="wsNwp">User</td>
-                      <td className="wsNwp">Descrizione</td>
-                      <td className="wsNwp">Importo</td>
-                      <td className="wsNwp">Commissione</td>
-                      <td className=" wsNwp">Proviggione</td>
-                      <td className=" wsNwp">Operazione</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {faturaDet &&
-                      Array.isArray(faturaDet) &&
-                      faturaDet.map((fatura) => (
-                        <tr>
-                          <td className="wsNwp">{fatura.numero}</td>
-                          <td className="wsNwp">{fatura.time}</td>
-                          <td className="wsNwp">
-                            <span>
-                              <i className="fal fa-store"></i>
-                              {fatura.user}
-                            </span>
-                          </td>
-                          <td className="wsNwp">{fatura.descrizione}</td>
-                          <td className="wsNwp">{fatura.importo}</td>
-                          <td className="wsNwp">{fatura.commissione}</td>
-                          <td className="wsNwp">{fatura.proviggione}</td>
-                          <td className=" wsNwp">
-                            <a
-                              href={`https://services-api.bpoint.store/storage/fatture/${fatura.file_name}`}
-                              target="_blank"
-                            >
-                              <i className="fal fa-file-pdf"></i>
-                            </a>
-                            <i
-                              className="far fa-print"
-                              onClick={() => {
-                                this.convertB64ToBolbThenPrnt(fatura.file_name);
-                              }}
-                            ></i>
-                            <iframe
-                              id="pdf-frame"
-                              style={{ display: "none" }}
-                            ></iframe>
-                            <i
-                              className="far fa-envelope-open-text"
-                              onClick={() => {
-                                this.props.sendMailFattura(fatura.file_name);
-                              }}
-                            ></i>
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
+              {!this.props.fattura_loading ? (
+                <div className="FaturaTable">
+                  <table className="transTable">
+                    <thead>
+                      <tr>
+                        <td className="wsNwp">Numero</td>
+                        <td className="wsNwp">Date / Ora</td>
+                        <td className="wsNwp">User</td>
+                        <td className="wsNwp">Descrizione</td>
+                        <td className="wsNwp">Importo</td>
+                        <td className="wsNwp">Commissione</td>
+                        <td className=" wsNwp">Proviggione</td>
+                        <td className=" wsNwp">Operazione</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {faturaDetails &&
+                        Array.isArray(faturaDetails) &&
+                        faturaDetails.map((fatura) => (
+                          <tr key={fatura.user + fatura.numero}>
+                            <td className="wsNwp">{fatura.numero}</td>
+                            <td className="wsNwp">{fatura.time}</td>
+                            <td className="wsNwp">
+                              <span>
+                                <i className="fal fa-store"></i>
+                                {fatura.user}
+                              </span>
+                            </td>
+                            <td className="wsNwp">{fatura.descrizione}</td>
+                            <td className="wsNwp">{fatura.importo}</td>
+                            <td className="wsNwp">{fatura.commissione}</td>
+                            <td className="wsNwp">{fatura.proviggione}</td>
+                            <td className=" wsNwp">
+                              <a
+                                href={`https://services-api.bpoint.store/storage/fatture/${fatura.file_name}`}
+                                target="_blank"
+                              >
+                                <i className="fal fa-file-pdf"></i>
+                              </a>
+                              <i
+                                className="far fa-print"
+                                onClick={() => {
+                                  this.convertB64ToBolbThenPrnt(
+                                    fatura.file_name
+                                  );
+                                }}
+                              ></i>
+                              <iframe
+                                id="pdf-frame"
+                                style={{ display: "none" }}
+                              ></iframe>
+                              <i
+                                className="far fa-envelope-open-text"
+                                onClick={() => {
+                                  this.props.sendMailFattura(fatura.file_name);
+                                }}
+                              ></i>
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                  {total_pages !== 0 && total_pages && (
+                    <div className="paginationWrapper">
+                      <Pagination
+                        onChange={(e) => {
+                          this.props.getAllFaturaBySearch(
+                            userName,
+                            monthChosen.id,
+                            yearChosen,
+                            perPage,
+                            e
+                          );
+                        }}
+                        total={total_pages * 10}
+                      />
+                      <Select
+                        defaultValue={25}
+                        onChange={(e) => {
+                          this.setState({ perPage: parseInt(e) }, () => {
+                            this.props.getAllFaturaBySearch(
+                              userName,
+                              monthChosen.id,
+                              yearChosen,
+                              parseInt(e),
+                              page_number
+                            );
+                          });
+                        }}
+                      >
+                        <Option value={10}>10 / Pagina</Option>
+                        <Option value={25}>25 / Pagina</Option>
+                        <Option value={50}>50 / Pagina</Option>
+                      </Select>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <img className="loader" src={images.loader}></img>
+              )}
             </div>
           </div>
         </div>
@@ -301,9 +329,11 @@ class FaturaDomain extends React.Component {
   }
 }
 const mpst = (state) => ({
-  faturaDetails: state.auth.faturaDetails,
+  faturaDetails: state.auth.Fatture.FaturaDetails,
+  total_pages: state.auth.Fatture.total_pages,
   skinExtras: state.auth.skinExtras,
-  Fatture: state.auth.Fatture,
+  Users: state.auth.Fatture.Users,
   screenWidth: state.main.screenWidth,
+  fattura_loading: state.auth.fattura_loading,
 });
 export default connect(mpst, AuthActions)(FaturaDomain);

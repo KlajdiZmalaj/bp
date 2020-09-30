@@ -69,12 +69,18 @@ const OneTab = ({
                     <img
                       src={
                         images[
-                          services[serviceCategory][serviceId].services[0]
-                            ?.service_id
+                          Array.isArray(services[serviceCategory][serviceId])
+                            ? services[serviceCategory][serviceId].services[0]
+                                ?.service_id
+                            : images["BOLL"]
                         ]
                           ? images[
-                              services[serviceCategory][serviceId].services[0]
-                                ?.service_id
+                              Array.isArray(
+                                services[serviceCategory][serviceId]
+                              )
+                                ? services[serviceCategory][serviceId]
+                                    .services[0]?.service_id
+                                : images["BOLL"]
                             ]
                           : images[serviceId]
                           ? images[serviceId]

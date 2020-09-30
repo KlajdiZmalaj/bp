@@ -669,7 +669,6 @@ export function* updateUserDetail(data) {
     );
   }
   if (response.data) {
-    console.log(response);
     if (response.status === 200) {
       notification["success"]({
         message: "Azione completata",
@@ -1093,21 +1092,38 @@ export function* getAllServices({ skin_id }) {
   }
   yield put(AuthActions.setServicesLoading(false));
 }
-export function* getAllFaturaBySearch({ username, year, month }) {
-  const response = yield call(getAllFaturaBySearchReq, username, year, month);
+export function* getAllFaturaBySearch({
+  username,
+  year,
+  month,
+  perPage,
+  page_number,
+}) {
+  yield put(AuthActions.setFatturaLoading(true));
+  const response = yield call(
+    getAllFaturaBySearchReq,
+    username,
+    year,
+    month,
+    perPage,
+    page_number
+  );
   if (response.data) {
-    let FatturaArray = [];
-    Object.keys(response.data.fatture).map((fatureKey) => {
-      FatturaArray.push(response.data.fatture[fatureKey]);
-    });
+    // let FatturaArray = [];
+    // Object.keys(response.data.fatture).map((fatureKey) => {
+    //   FatturaArray.push(response.data.fatture[fatureKey]);
+    // });
     if (response.status === 200) {
       yield put(
         AuthActions.setAllFaturaBySearch({
-          FaturaDetails: FatturaArray,
+          FaturaDetails: response.data?.fatture,
           Users: response.data?.usernames && response.data?.usernames,
+          total_pages: response.data?.total_pages,
+          total_records: response.data?.total_records,
         })
       );
     }
+    yield put(AuthActions.setFatturaLoading(false));
   }
   if (response.error) {
     if (
@@ -1154,7 +1170,6 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   }
 }
 export function* getWidgetPayments({ skin_id }) {
-  console.log(skin_id);
   const response = yield call(widgetPaymentsReq, skin_id);
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));

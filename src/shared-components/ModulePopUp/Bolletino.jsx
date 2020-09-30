@@ -145,7 +145,17 @@ class Bolletino extends React.Component {
                 <table className="_modulePopUP__table2">
                   <tbody>
                     <tr>
-                      <td onClick={this.handleSubmit} htmltype="submit">
+                      <td
+                        onClick={() => {
+                          if (this.props.accountInfo?.token) {
+                            this.handleSubmit();
+                          } else {
+                            window.location.hash = "login";
+                            this.props.togglePopUp(false);
+                          }
+                        }}
+                        htmltype="submit"
+                      >
                         <h3>esegui</h3>
                         <img src={images.checkSymbol} alt="" />
                       </td>
@@ -516,6 +526,7 @@ const mapsStateToProps = (state) => ({
   bolletiniBianchi: state.auth.bolletiniBianchi,
   barcodeData: state.auth.barcodeData,
   bolletiniPremercati: state.auth.bolletiniPremercati,
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(

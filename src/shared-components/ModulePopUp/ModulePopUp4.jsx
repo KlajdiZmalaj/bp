@@ -40,11 +40,9 @@ class ModulePopUp4 extends React.Component {
   }
 
   addNr = (nr) => {
-    console.log(nr);
     this.setState({ tel_no: this.state.tel_no.concat(nr) });
   };
   replaceNr = (nr) => {
-    console.log(nr);
     this.setState({ tel_no: nr.toString() });
   };
   clear = () => {
@@ -53,7 +51,6 @@ class ModulePopUp4 extends React.Component {
 
   render() {
     const { service_s, rechargeMobile, service } = this.props;
-    console.log(this.state.tel_no);
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
 
@@ -282,7 +279,12 @@ class ModulePopUp4 extends React.Component {
                             <tr>
                               <td
                                 onClick={() => {
-                                  this.setState({ confermaMsg: true });
+                                  if (this.props.accountInfo?.token) {
+                                    this.setState({ confermaMsg: true });
+                                  } else {
+                                    window.location.hash = "login";
+                                    this.props.togglePopUp(false);
+                                  }
                                 }}
                               >
                                 <h3>esegui</h3>
@@ -473,6 +475,7 @@ const mapsStateToProps = (state) => ({
   service_s: state.auth.service_s,
   rechargeMobile: state.auth.rechargeMobile,
   skinExtras: state.auth.skinExtras,
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
