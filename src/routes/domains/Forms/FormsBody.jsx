@@ -7,10 +7,16 @@ import Eventi from "./Eventi";
 import images from "themes/images";
 import "./style.css";
 
-const Card = ({ title, icon, clickHandler }) => {
+const Card = ({ title, icon, clickHandler, accountInfo }) => {
   return (
     <div
-      onClick={clickHandler}
+      onClick={() => {
+        if (accountInfo?.token) {
+          clickHandler();
+        } else {
+          window.location.hash = "login";
+        }
+      }}
       className="formsContainer--cards__item animated fadeIn"
     >
       <div className="titleCard">
@@ -54,6 +60,7 @@ export class FormsBody extends Component {
                 title="expedia"
                 icon={"fas fa-plane"}
                 color="#11375dad"
+                accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() =>
@@ -67,6 +74,7 @@ export class FormsBody extends Component {
                 title="flixbus"
                 icon={"fas fa-subway"}
                 color="#588a17a3"
+                accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() =>
@@ -80,6 +88,7 @@ export class FormsBody extends Component {
                 title="trenitalia"
                 icon={"fas fa-subway"}
                 color="#bf0013b3"
+                accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() =>
@@ -93,6 +102,7 @@ export class FormsBody extends Component {
                 title="vivaticket"
                 icon={"fas fa-receipt"}
                 color="#151515c4"
+                accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() =>
@@ -106,6 +116,7 @@ export class FormsBody extends Component {
                 title="ticketing"
                 icon={"fas fa-receipt"}
                 color="#edbf00bf"
+                accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() =>
@@ -119,12 +130,14 @@ export class FormsBody extends Component {
                 title="stubhub"
                 icon={"fas fa-receipt"}
                 color="#3f1d74b5"
+                accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() => (window.location.hash = "visure")}
                 title="visure"
                 icon={"fal fa-align-right"}
                 color="#277d74b5"
+                accountInfo={accountInfo}
               />
             </div>
           )}

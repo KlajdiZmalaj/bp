@@ -257,11 +257,17 @@ class Root extends React.Component {
               allowedRoles={["support"]}
               role={role}
             />
-            <PrivateRoute
+            <Route
               path="/forms/:id?/"
               component={isMobile ? PrenotazioneMobile : Forms}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin", "user", "agency"]}
+              allowedRoles={[
+                "super_admin",
+                "agency",
+                "agent",
+                "user",
+                "noUser",
+              ]}
               role={role}
             />
             <PrivateRoute

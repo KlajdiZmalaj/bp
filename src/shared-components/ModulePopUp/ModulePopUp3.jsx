@@ -274,7 +274,16 @@ class ModulePopUp3 extends React.Component {
                   <table className="_modulePopUP__table2">
                     <tbody>
                       <tr>
-                        <td onClick={() => this.handleSubmit(service_id)}>
+                        <td
+                          onClick={() => {
+                            if (this.props.accountInfo?.token) {
+                              this.handleSubmit(service_id);
+                            } else {
+                              window.location.hash = "login";
+                              this.props.togglePopUp(false);
+                            }
+                          }}
+                        >
                           <h3>esegui</h3>
                           <img src={images.checkSymbol} alt="" />
                         </td>
@@ -634,6 +643,7 @@ const mapsStateToProps = (state) => ({
   rechargeMobile: state.auth.rechargeMobile,
   userList: state.main.userListBySearch,
   postePay: state.auth.postePay,
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

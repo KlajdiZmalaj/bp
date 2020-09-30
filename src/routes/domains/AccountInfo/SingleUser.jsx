@@ -43,7 +43,7 @@ class SingleUser extends Component {
   };
   componentDidMount() {}
   render() {
-    const { user } = this.props;
+    const { user, screenWidth } = this.props;
     const role = get(this.props.accountInfo, "profile.role.name");
     return (
       <React.Fragment>
@@ -57,7 +57,9 @@ class SingleUser extends Component {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            this.props.setRowData(user);
+            if (screenWidth <= 1024) {
+              this.props.setRowData(user);
+            }
           }}
         >
           {" "}
@@ -235,6 +237,7 @@ class SingleUser extends Component {
 const mstp = (state) => {
   return {
     accountInfo: state.auth.accountInfo,
+    screenWidth: state.main.screenWidth,
   };
 };
 export default connect(mstp, { ...MainActions, ...AuthActions })(SingleUser);

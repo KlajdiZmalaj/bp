@@ -49,7 +49,7 @@ export const newAzioniSubmenu = {
       id: 5,
       name: "PRENOTAZIONI",
       link: "forms",
-      displayRole: ["super_admin", "user", "agency"],
+      displayRole: ["super_admin", "agency", "agent", "user", "noUser"],
     },
     {
       id: 6,

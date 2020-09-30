@@ -38,7 +38,7 @@ class SingleUser2 extends Component {
     this.setState({ isPopUpActive: false });
   };
   render() {
-    const { user } = this.props;
+    const { user, screenWidth } = this.props;
     const { val, isPopUpActive, valueInput } = this.state;
     const role = get(this.props.accountInfo, "profile.role.name");
     return (
@@ -53,7 +53,9 @@ class SingleUser2 extends Component {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            this.props.setRowData(user);
+            if (screenWidth <= 1024) {
+              this.props.setRowData(user);
+            }
           }}
         >
           {" "}
@@ -286,6 +288,7 @@ class SingleUser2 extends Component {
 const mstp = (state) => {
   return {
     accountInfo: state.auth.accountInfo,
+    screenWidth: state.main.screenWidth,
   };
 };
 export default connect(mstp, { ...MainActions, ...AuthActions })(SingleUser2);

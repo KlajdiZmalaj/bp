@@ -279,7 +279,12 @@ class ModulePopUp4 extends React.Component {
                             <tr>
                               <td
                                 onClick={() => {
-                                  this.setState({ confermaMsg: true });
+                                  if (this.props.accountInfo?.token) {
+                                    this.setState({ confermaMsg: true });
+                                  } else {
+                                    window.location.hash = "login";
+                                    this.props.togglePopUp(false);
+                                  }
                                 }}
                               >
                                 <h3>esegui</h3>
@@ -470,6 +475,7 @@ const mapsStateToProps = (state) => ({
   service_s: state.auth.service_s,
   rechargeMobile: state.auth.rechargeMobile,
   skinExtras: state.auth.skinExtras,
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
