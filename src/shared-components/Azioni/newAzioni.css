@@ -142,7 +142,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #f26521;
+  background: var(--accent-bg);
 }
 
 @media (max-width: 1135px) {

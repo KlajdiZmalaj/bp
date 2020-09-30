@@ -16,6 +16,9 @@ if (
   skin = 6;
 }
 export default {
+  baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
+
+  servizi_banner: require(`../assets/images/servizi_banner.png`),
   loader: require(`../assets/images/loader.gif`),
   logo: require(`../assets/images${skin}/logo.svg`),
   logoFooter: require(`../assets/images${skin}/logoFooter.svg`),
@@ -55,24 +58,25 @@ export default {
   print: require(`../assets/images${skin}/print.svg`),
   logoGray: require(`../assets/images${skin}/logoGray.svg`),
   postepayBlue: require(`../assets/images${skin}/postepayBlue.svg`),
-
   BOLL: require(`../assets/images${skin}/bill-dark.svg`),
   RCPP: require(`../assets/images${skin}/postpayimg.svg`),
   RPP001: require(`../assets/images${skin}/postpayimg.svg`),
   PARTYP: require(`../assets/images${skin}/partypoker.svg`),
   TIM: require(`../assets/images${skin}/TIM_logo_2016.svg`),
   TIMO: require(`../assets/images${skin}/TIM_logo_2016.svg`),
-
   VODA: require(`../assets/images${skin}/vodafone.svg`),
   VODO: require(`../assets/images${skin}/vodafone.svg`),
   BGAM: require(`../assets/images${skin}/bgame.svg`),
   WIND: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
   WINO: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
-
+  LMAX: require(`../assets/images${skin}/linkeln.svg`),
+  BSTC: require(`../assets/images${skin}/bestCard.png`),
+  NNET: require(`../assets/images${skin}/on_net.jpg`),
+  IDTB: require(`../assets/images${skin}/IDT.png`),
   TRE: require(`../assets/images${skin}/three-logo.svg`),
   TREO: require(`../assets/images${skin}/three-logo.svg`),
-  SKY: require(`../assets/images${skin}/Sky_Italia_-_Logo_2018.svg`),
-  PMOB: require(`../assets/images${skin}/posteitalia.svg`),
+  SKY: require(`../assets/images${skin}/Sky_Italia_-_Logo_2018.png`),
+  PMOB: require(`../assets/images${skin}/posteitalia.png`),
   CRP00B: require(`../assets/images${skin}/bitcoinorange.svg`),
   CRP0BC: require(`../assets/images${skin}/bitcoingreen.svg`),
   CRP00E: require(`../assets/images${skin}/ethereum.svg`),

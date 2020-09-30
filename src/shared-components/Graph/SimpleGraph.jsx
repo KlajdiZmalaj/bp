@@ -6,9 +6,11 @@ const graphForMap = (graphData) => {
   let arrayForMap = [];
   if (graphData) {
     Object.keys(graphData).forEach((key) => {
-      arrayForMax.push(parseFloat(graphData[key].replace(".", "")));
+      arrayForMax.push(
+        parseFloat(graphData[key].replace(".", "").replace(",", "."))
+      );
       arrayForMap.push({
-        value: parseFloat(graphData[key].replace(".", "")),
+        value: parseFloat(graphData[key].replace(".", "").replace(",", ".")),
         month: parseInt(key.substring(0, key.indexOf("_"))),
         day: parseInt(key.substring(key.indexOf("_") + 1, key.length)),
         realValue: graphData[key] + " €",

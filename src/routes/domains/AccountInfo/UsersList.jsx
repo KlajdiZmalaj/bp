@@ -190,8 +190,9 @@ class UsersList extends Component {
         {get(accountInfo, "profile.role.name") === "agency" ? (
           <React.Fragment>
             <div className="userList--Doc">
-              <div className="title">Utenti con documenti</div>
-              {userWithPhoto && userWithPhoto.length > 0 && (
+              <div className="title">Utenti</div>
+              {((userWithPhoto && userWithPhoto.length > 0) ||
+                (userNoPhoto && userNoPhoto.length > 0)) && (
                 <div className="header">
                   <span className="headerId">Id</span>
                   <span>Name</span>
@@ -202,38 +203,20 @@ class UsersList extends Component {
                 </div>
               )}
 
-              {userWithPhoto && userWithPhoto.length > 0 ? (
-                userWithPhoto.map((user) => {
-                  return <UserDoc key={user.id} user={user} />;
-                })
+              {(userWithPhoto && userWithPhoto.length > 0) ||
+              (userNoPhoto && userNoPhoto.length > 0) ? (
+                <React.Fragment>
+                  {userWithPhoto.map((user) => {
+                    return <UserDoc key={user.id} user={user} />;
+                  })}
+                  {userNoPhoto.map((user) => {
+                    return <UserNoDoc key={user.id} user={user} />;
+                  })}
+                </React.Fragment>
               ) : (
                 <div className="noUsers">
-                  Tutti gli utenti non hanno documenti
+                  No utenti
                   <i className="fal fa-times text-danger ml-1"></i>
-                </div>
-              )}
-            </div>
-            <div className="userList--noDoc">
-              <div className="title"> Tutti gli utenti senza documenti</div>
-              {userNoPhoto && userNoPhoto.length > 0 && (
-                <div className="header">
-                  <span>Id</span>
-                  <span>Name</span>
-                  <span>codice fiscale</span>
-                  <span>creato da</span>
-                  <span>city</span>
-                  <span>comune code</span>
-                </div>
-              )}
-
-              {userNoPhoto && userNoPhoto.length > 0 ? (
-                userNoPhoto.map((user) => {
-                  return <UserNoDoc key={user.id} user={user} />;
-                })
-              ) : (
-                <div className="noUsers">
-                  Tutti gli utenti hanno documenti
-                  <i className="fal fa-check ml-1"></i>
                 </div>
               )}
             </div>

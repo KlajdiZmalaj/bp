@@ -85,7 +85,7 @@
     max-width: 1136px;
     margin: 0 auto;
     align-items: center;
-    background: #f26521;
+    background: var(--accent-bg);
     @media (max-width: 1135px) {
       max-width: 100%;
     }

@@ -90,7 +90,8 @@ class FastCarica extends Component {
       toDisplayUserDD,
       confirmTranzacionModal,
     } = this.state;
-    const allUsers = [...this.props.users];
+    const allUsers =
+      Symbol.iterator in Object(this.props.users) ? [...this.props.users] : [];
     let UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
 
     return (

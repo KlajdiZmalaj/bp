@@ -1168,7 +1168,29 @@ export const getFaturaDetailsReq = (user_id, year, month) => {
     })
     .catch((error) => ({ error }));
 };
-export const getAllFaturaBySearchReq = (username, year, month) => {
+export const getAllFaturaBySearchReq = (
+  username,
+  year,
+  month,
+  perPage,
+  page_number
+) => {
+  const paramsToSend = {};
+  if (username) {
+    paramsToSend["username"] = username;
+  }
+  if (year) {
+    paramsToSend["year"] = year;
+  }
+  if (month) {
+    paramsToSend["month"] = month;
+  }
+  if (perPage) {
+    paramsToSend["limit"] = perPage;
+  }
+  if (page_number) {
+    paramsToSend["page_number"] = page_number;
+  }
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1181,9 +1203,7 @@ export const getAllFaturaBySearchReq = (username, year, month) => {
     .get("/fatture", {
       params: {
         ...skin,
-        username: username ? username : null,
-        year: year ? year : null,
-        month: month ? month : null,
+        ...paramsToSend,
       },
     })
     .catch((error) => ({ error }));

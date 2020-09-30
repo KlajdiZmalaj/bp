@@ -164,7 +164,9 @@ class DashboardDom extends React.Component {
     } = this.state;
     return (
       <div className="DContainer">
-        <div className={`Image  ${menuClassName}`}></div>
+        <div className={`Image  ${menuClassName}`}>
+          <img src={images["baner_servizi_header"]} />
+        </div>
         {menuClassName === "fixed" && (
           <div className={`Categories ${menuClassName}`}>
             <div className="First">SERVIZI</div>
@@ -179,7 +181,9 @@ class DashboardDom extends React.Component {
                     cat.name.slice(1).toLowerCase()}
                 </div>
               ))}
-            <div className="Last"></div>
+            <div className="Last">
+              <img src={images["servizi_banner"]} />
+            </div>
           </div>
         )}
         <div className={`Dashboard ${menuClassName}`}>
@@ -190,14 +194,20 @@ class DashboardDom extends React.Component {
                 Array.isArray(Categories) &&
                 Categories.map((cat) => (
                   <div
-                    onClick={() => this.ChangeCompanies(cat.name, cat.key)}
+                    onClick={() => {
+                      this.ChangeCompanies(cat.name, cat.key);
+                      console.log(cat);
+                    }}
                     key={cat.key}
                   >
                     {cat.name.charAt(0).toUpperCase() +
                       cat.name.slice(1).toLowerCase()}
                   </div>
                 ))}
-              <div className="Last"></div>
+              <div className="Last">
+                {" "}
+                <img src={images["servizi_banner"]} />
+              </div>
             </div>
           )}
           <div className="CompaniesAndOther">

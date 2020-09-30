@@ -65,7 +65,6 @@ const { Types, Creators } = createActions({
   ],
   setPayments: ["payments"],
   setPaymentsForExcel: ["paymentsForExcel"],
-
   setUsernames: ["usernames"],
   getRechargeMobile: ["service_id", "tel_no", "callBack"],
   getBgameVoucherReq: ["service_id", "tel_no", "callBack"],
@@ -309,7 +308,8 @@ const { Types, Creators } = createActions({
   setAllServices: ["allServices"],
   setServicesLoading: ["servicesLoader"],
   setDepositoPopup: ["DepositoPopup"],
-  getAllFaturaBySearch: ["username", "month", "year"],
+  getAllFaturaBySearch: ["username", "month", "year", "perPage", "page_number"],
+  setFatturaLoading: ["fattura_loading"],
   setAllFaturaBySearch: ["Fatture"],
   sendMailFattura: ["file_name"],
   setDepositoModalAdmin: ["adminDepModal"],
@@ -383,6 +383,7 @@ export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  fattura_loading: false,
   ModalDetails: {},
   bolletiniLoading: false,
   fatturaPdf: "",
@@ -453,6 +454,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_FATTURA_LOADING]: (state, { fattura_loading }) => ({
+    ...state,
+    fattura_loading,
+  }),
   [Types.EDIT_REPORTISTICA]: (state, { ReportisticaDet }) => ({
     ...state,
     ReportisticaDet,
