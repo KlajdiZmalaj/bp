@@ -6,7 +6,7 @@ export class Visure extends Component {
     return (
       <div className="Visure">
         <Header></Header>
-        <Azioni active="visure"></Azioni>
+        <Azioni activeMain="dashboard" active="visure"></Azioni>
         <FormVisureDomain />
       </div>
     );
