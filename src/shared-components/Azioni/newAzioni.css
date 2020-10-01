@@ -173,7 +173,7 @@
 .Submenu div .active,
 .Submenu label .active,
 .Submenu a .active {
-  background: #d3561a;
+  background: var(--accent-bg);
 }
 
 .Submenu div label,
@@ -182,7 +182,7 @@
 .Submenu label a,
 .Submenu a label,
 .Submenu a a {
-  border-left: 1px solid #de5817;
+  border-left: 1px solid var(--accent-bg);
 }
 
 .Submenu div:last-child label,
@@ -191,6 +191,6 @@
 .Submenu label:last-child a,
 .Submenu a:last-child label,
 .Submenu a:last-child a {
-  border-right: 1px solid #de5817;
+  border-right: 1px solid var(--accent-bg);
 }
 /*# sourceMappingURL=newAzioni.css.map */
