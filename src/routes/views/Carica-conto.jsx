@@ -3,7 +3,7 @@ import { Azioni, Header } from "shared-components";
 import { connect } from "react-redux";
 class CaricaConto extends React.Component {
   render() {
-    const { skinExtras } = this.props;
+    const { skinExtras, accountInfo } = this.props;
     return (
       <div className="Container">
         <Header />
@@ -41,7 +41,7 @@ class CaricaConto extends React.Component {
                 </p>
                 <p>numero c/c 000100898936</p>
                 <p>BIC/SWIFT UNCRITM1SR2</p>
-                <p>Indicare causale: “Ricarica Borsellino di User …..”</p>
+                <p>Indicare causale: “Ricarica Borsellino di User {accountInfo.profile.username} .”</p>
                 <p>
                   Una volta effettuato il bonifico si prega di inviare la
                   distinta al nostro indirizzo e-mail:
@@ -62,6 +62,7 @@ class CaricaConto extends React.Component {
 const a = (s) => {
   return {
     skinExtras: s.auth.skinExtras,
+    accountInfo: s.auth.accountInfo
   };
 };
 export default connect(a, null)(CaricaConto);
