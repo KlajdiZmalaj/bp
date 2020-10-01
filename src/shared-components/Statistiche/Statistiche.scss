@@ -4,8 +4,7 @@
   position: relative;
   visibility: visible;
   opacity: 1;
-  transition: 0.6s;
-
+  transition: 0.5s;
   .calendarWrapper {
     position: absolute;
     right: calc((100vw - 1135px) / 2);
@@ -19,7 +18,7 @@
     overflow: hidden;
     visibility: hidden;
     opacity: 0;
-    transition: 0.6s;
+    transition: 0.5s;
   }
   div.Categories {
     max-width: 1135px;

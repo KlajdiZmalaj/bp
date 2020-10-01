@@ -69,7 +69,7 @@
 }
 .Submenu {
   width: 100%;
-  background: #f26521;
+  background: var(--accent-bg);
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
