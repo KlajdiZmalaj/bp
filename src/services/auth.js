@@ -1316,7 +1316,8 @@ export const AddExtraDataReq = (
   account_name,
   iban,
   main_color,
-  skin_id
+  skin_id,
+  area_download
 ) => {
   return axios
     .create({
@@ -1344,6 +1345,7 @@ export const AddExtraDataReq = (
       account_name,
       iban,
       main_color,
+      link6: area_download,
     })
     .catch((error) => {
       if (error?.response?.data?.errors) {

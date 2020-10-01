@@ -58,10 +58,10 @@ class AdminPanelDom extends React.Component {
       this.props.activeSkinId
     );
   };
-  async componentDidMount() {
-    await this.props.getSkins();
-    await this.props.getStatistiche(this.props.activeSkinId);
-    await this.props.getWidgetPayments(this.props.activeSkinId);
+  componentDidMount() {
+    this.props.getSkins();
+    this.props.getStatistiche(this.props.activeSkinId);
+    this.props.getWidgetPayments(this.props.activeSkinId);
     document.body.classList.add("bodyAdmin");
     if (this.props.screenWidth <= 550) {
       this.setState({ menuSkinVisible: true });

@@ -360,11 +360,7 @@ class Transazioni extends React.Component {
     const {
       barcode,
       picker,
-      selectedFilter,
-      indexT,
-      usernames,
       isCalendarOpen,
-      dashboardFromFilterTop,
       fromLabel,
       toLabel,
       to,
@@ -372,8 +368,6 @@ class Transazioni extends React.Component {
       username,
       perPage,
       visible,
-      address,
-      name,
       modalDetails,
     } = this.state;
     const formItemLayout = {
@@ -397,7 +391,6 @@ class Transazioni extends React.Component {
       skinExtras,
       getPayments,
     } = this.props;
-
     const filters = [
       { name: "Oggi", color: "#707070" },
       { name: "Ieri", color: "#0078f" },

@@ -379,6 +379,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 200px - 400px);
       transition: 0.5s;
@@ -410,6 +411,7 @@
       .accountInfo .contentAcc.supportContent .header,
       .col-md-12,
       .paginationWrapper,
+      .AdminListaUtentiRow,
       .transTable.Movimenti thead tr {
         width: calc(100% - 51px - 400px);
         transition: 0.5s;
@@ -459,6 +461,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 51px - 350px);
       transition: 0.5s;
@@ -471,6 +474,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 350px - 200px);
       transition: 0.5s;
@@ -504,6 +508,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 300px - 51px);
       transition: 0.5s;
@@ -516,6 +521,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 300px - 200px);
       transition: 0.5s;
@@ -567,6 +573,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 300px - 200px);
       transition: 0.5s;
@@ -605,6 +612,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 51px - 220px);
       transition: 0.5s;
@@ -617,6 +625,7 @@
     .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
+    .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 220px - 200px);
       transition: 0.5s;
@@ -712,7 +721,13 @@ div.Center--Big {
         }
 
         & .rdrDateDisplay {
-          top: 61%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          padding: 0;
+          margin: 0 auto;
         }
       }
       & .dal.calendar {
@@ -1515,6 +1530,7 @@ div.Center--Big {
       .accountInfo .contentAcc.supportContent .header,
       .col-md-12,
       .paginationWrapper,
+      .AdminListaUtentiRow,
       .transTable.Movimenti thead tr {
         width: calc(100vw - 51px);
       }
@@ -1525,6 +1541,7 @@ div.Center--Big {
       .accountInfo .contentAcc.supportContent .header,
       .col-md-12,
       .paginationWrapper,
+      .AdminListaUtentiRow,
       .transTable.Movimenti thead tr {
         width: calc(100vw - 200px);
       }

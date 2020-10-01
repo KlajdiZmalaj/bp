@@ -140,7 +140,7 @@ export const newAzioni = [
     id: 3,
     name: "SHOP",
     link: `underDevelopment`,
-    active: "shop",
+    active: "underDevelopment",
     i: "fal fa-store",
     displayRole: ["super_admin", "agency", "agent", "user"],
   },
@@ -154,7 +154,7 @@ export const newAzioni = [
   },
   {
     id: 5,
-    name: "Reportistica",
+    name: "Statistiche",
     link: "reportistica",
     active: "reportistica",
     type: "span",
@@ -164,10 +164,10 @@ export const newAzioni = [
   {
     id: 6,
     name: "AREA DOWNLOAD",
-    link: "underDevelopment",
+    link: "areaDownload",
     active: "areaDownload",
     i: "fal fa-download",
-    displayRole: ["super_admin", "agency", "agent", "user"],
+    displayRole: ["super_admin", "agency", "agent"],
   },
 ];
 export const azioni = [

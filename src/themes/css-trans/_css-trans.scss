@@ -208,6 +208,11 @@
 .ant-pagination {
   margin-right: 10px;
 }
+.ant-pagination-item-link {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 1100px) {
   body:not(.bodyAdmin) {
     & .transTable.Movimenti .wsNwp:nth-child(3) {

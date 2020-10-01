@@ -107,6 +107,9 @@
           width: 0;
           height: 4px;
         }
+        &::-webkit-scrollbar-thumb {
+          background: #3c4349;
+        }
         div {
           width: 140px;
           min-width: 140px;

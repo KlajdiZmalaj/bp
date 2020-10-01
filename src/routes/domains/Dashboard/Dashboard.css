@@ -166,6 +166,10 @@
   height: 4px;
 }
 
+.DContainer .Dashboard .CompaniesAndOther .Favorites::-webkit-scrollbar-thumb {
+  background: #3c4349;
+}
+
 .DContainer .Dashboard .CompaniesAndOther .Favorites div {
   width: 140px;
   min-width: 140px;

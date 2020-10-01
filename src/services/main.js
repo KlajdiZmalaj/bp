@@ -28,7 +28,13 @@ export const fetchFavorites = () =>
     })
     .catch((error) => ({ error }));
 
-export const fetchUsers = (search_user, skin_id, backoffice) => {
+export const fetchUsers = (
+  search_user,
+  skin_id,
+  backoffice,
+  limit,
+  page_number
+) => {
   const skin_id_to_use = skin_id ? skin_id : { ...skin };
   return axios
     .create({
@@ -40,7 +46,9 @@ export const fetchUsers = (search_user, skin_id, backoffice) => {
       },
     })
     .post(`/users/list`, {
-      ...(search_user ? { search_user: search_user } : {}),
+      ...(search_user ? { search_user } : {}),
+      ...(limit ? { limit } : {}),
+      ...(page_number ? { page_number } : {}),
       ...skin_id_to_use,
       ...(backoffice ? backoffice : {}),
     })

@@ -7,10 +7,11 @@ import UserNoDoc from "./UserNoDoc";
 import SingleUser from "./SingleUser";
 import FastCarica from "./FastCarica";
 import { get, isArray } from "lodash";
-import { Select } from "antd";
 import AdminComp from "./AdminComp";
 import AgentComp from "./AgetnComp";
 import UserComp from "./UserComp";
+import { Select, Pagination } from "antd";
+import images from "themes/images";
 
 import { switchUserStatus, transferMoney } from "services/auth";
 
@@ -20,6 +21,8 @@ const InitialState = {
   password: "",
   confirm_password: "",
   mobileRowData: {},
+  perPage: 25,
+  page_number: 1,
 };
 class UsersList extends Component {
   constructor(props) {
@@ -27,14 +30,14 @@ class UsersList extends Component {
     this.state = InitialState;
   }
   componentDidMount() {
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, 1);
   }
   inpHandler = (e) => {
     this.setState({ valueInput: e.target.value });
   };
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, 1);
   };
   setRowData = (mobileRowData) => {
     this.setState({ mobileRowData });
@@ -82,8 +85,15 @@ class UsersList extends Component {
     );
   };
   render() {
-    const { userList, accountInfo, userDetail, DepositoPopup } = this.props;
-    const { valueInput, mobileRowData } = this.state;
+    const {
+      userList,
+      accountInfo,
+      userDetail,
+      DepositoPopup,
+      total_pages,
+      LoaderAU,
+    } = this.props;
+    const { valueInput, mobileRowData, perPage, page_number } = this.state;
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
     const role = get(this.props.accountInfo, "profile.role.name");
@@ -187,68 +197,94 @@ class UsersList extends Component {
             ></div>
           </React.Fragment>
         ) : null}
-        {get(accountInfo, "profile.role.name") === "agency" ? (
-          <React.Fragment>
-            <div className="userList--Doc">
-              <div className="title">Utenti</div>
-              {((userWithPhoto && userWithPhoto.length > 0) ||
-                (userNoPhoto && userNoPhoto.length > 0)) && (
-                <div className="header">
-                  <span className="headerId">Id</span>
-                  <span>Name</span>
-                  <span>codice fiscale</span>
-                  <span>creato da</span>
-                  <span>city</span>
-                  <span>comune code</span>
-                </div>
-              )}
+        {!LoaderAU ? (
+          get(accountInfo, "profile.role.name") === "agency" ? (
+            <React.Fragment>
+              <div className="userList--Doc">
+                <div className="title">Utenti</div>
+                {((userWithPhoto && userWithPhoto.length > 0) ||
+                  (userNoPhoto && userNoPhoto.length > 0)) && (
+                  <div className="header">
+                    <span className="headerId">Id</span>
+                    <span>Name</span>
+                    <span>codice fiscale</span>
+                    <span>creato da</span>
+                    <span>city</span>
+                    <span>comune code</span>
+                  </div>
+                )}
 
-              {(userWithPhoto && userWithPhoto.length > 0) ||
-              (userNoPhoto && userNoPhoto.length > 0) ? (
-                <React.Fragment>
-                  {userWithPhoto.map((user) => {
-                    return <UserDoc key={user.id} user={user} />;
-                  })}
-                  {userNoPhoto.map((user) => {
-                    return <UserNoDoc key={user.id} user={user} />;
-                  })}
-                </React.Fragment>
-              ) : (
-                <div className="noUsers">
-                  No utenti
-                  <i className="fal fa-times text-danger ml-1"></i>
-                </div>
-              )}
+                {(userWithPhoto && userWithPhoto.length > 0) ||
+                (userNoPhoto && userNoPhoto.length > 0) ? (
+                  <React.Fragment>
+                    {userWithPhoto.map((user) => {
+                      return <UserDoc key={user.id} user={user} />;
+                    })}
+                    {userNoPhoto.map((user) => {
+                      return <UserNoDoc key={user.id} user={user} />;
+                    })}
+                  </React.Fragment>
+                ) : (
+                  <div className="noUsers">
+                    No utenti
+                    <i className="fal fa-times text-danger ml-1"></i>
+                  </div>
+                )}
+              </div>
+            </React.Fragment>
+          ) : (
+            <div className="userList--AllUsers">
+              <div className="title">
+                Agenzie
+                <FastCarica users={userList} />
+              </div>
+              <div className="header">
+                <span>User Id</span>
+                <span>Username</span>
+                <span>Rag.Sociale</span>
+                <span className="text-right">Credito</span>
+                <span className="text-left">City</span>
+                <span>Ultimo Deposit</span>
+                <span>Ultimo Login</span>
+                <span>Azioni</span>
+              </div>
+              {isArray(userList) &&
+                (userList || []).map((user) => {
+                  return (
+                    <SingleUser
+                      setRowData={this.setRowData}
+                      key={user.id}
+                      user={user}
+                    />
+                  );
+                })}
             </div>
-          </React.Fragment>
+          )
         ) : (
-          <div className="userList--AllUsers">
-            <div className="title">
-              Agenzie
-              <FastCarica users={userList} />
-            </div>
-            <div className="header">
-              <span>User Id</span>
-              <span>Username</span>
-              <span>Rag.Sociale</span>
-              <span className="text-right">Credito</span>
-              <span className="text-left">City</span>
-              <span>Ultimo Deposit</span>
-              <span>Ultimo Login</span>
-              <span>Azioni</span>
-            </div>
-            {isArray(userList) &&
-              (userList || []).map((user) => {
-                return (
-                  <SingleUser
-                    setRowData={this.setRowData}
-                    key={user.id}
-                    user={user}
-                  />
-                );
-              })}
-          </div>
+          <img className="loader" src={images.loader}></img>
         )}
+        <div className="paginationWrapper">
+          <Pagination
+            onChange={(e) => {
+              // console.log("ca ka pagination", e);
+              this.props.getUsers(null, null, perPage, e);
+            }}
+            total={total_pages ? total_pages * 10 : 10}
+          />
+          <Select
+            defaultValue={25}
+            onChange={(e) => {
+              this.setState({ perPage: parseInt(e), clickedPage: 1 }, () => {
+                this.props.getUsers(null, null, e, page_number);
+              });
+            }}
+            value={this.state.perPage}
+          >
+            <Option value={10}>10 / Pagina</Option>
+            <Option value={25}>25 / Pagina</Option>
+            <Option value={50}>50 / Pagina</Option>
+          </Select>
+        </div>
         {userDetail && userDetail.username && (
           <React.Fragment>
             <div
@@ -437,10 +473,12 @@ class UsersList extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  userList: state.main.userList,
+  userList: state.main.userList.users,
+  total_pages: state.main.userList.total_pages,
   accountInfo: state.auth.accountInfo,
   userDetail: state.auth.userDetail,
   agents: state.auth.agents,
+  LoaderAU: state.main.LoaderAU,
   DepositoPopup: state.auth.DepositoPopup,
 });
 export default connect(mapStateToProps, { ...MainActions, ...AuthActions })(

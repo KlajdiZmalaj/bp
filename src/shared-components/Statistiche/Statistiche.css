@@ -2,6 +2,10 @@
   height: 244px;
   background: #272c31;
   position: relative;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .Statist .calendarWrapper {
@@ -17,7 +21,12 @@
 }
 
 .Statist.min {
-  height: 64px;
+  height: 0px;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .Statist div.Categories {
