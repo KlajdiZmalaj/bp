@@ -44,10 +44,102 @@ div.Center--Big {
 .AdminListaUtenti {
   width: 100%;
   height: 100%;
+  @media (max-width: 550px) {
+    .paginationWrapper {
+      top: calc(100vh - 135px) !important;
+      div.ant-select-selection__rendered,
+      .ant-select.ant-select-enabled,
+      .ant-select.ant-select-enable {
+        margin-top: 2%;
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        font-family: "Roboto";
+        font-weight: 400;
+        color: #5c5c5c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div {
+          &:first-child {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+      li {
+        font-size: 12px;
+        font-family: "Roboto";
+        font-weight: 400;
+        width: 22px;
+        min-width: 22px;
+        max-width: 22px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 6px;
+        justify-content: center;
+        align-items: center;
+        color: #5c5c5c;
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #5c5c5c;
+          height: 100%;
+          width: 22px;
+          min-width: 22px;
+          max-width: 22px;
+          height: 30px;
+          line-height: 30px;
+        }
+        i {
+          font-family: "Font Awesome 5 Pro";
+          font-size: 12px;
+          font-weight: 300;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #5c5c5c;
 
+          svg {
+            width: 10px;
+            height: 10px;
+            fill: #5c5c5c;
+          }
+        }
+      }
+    }
+  }
   & .AdminListaUtentiRow {
     position: relative;
     top: 52px;
+    margin-bottom: 60px;
+    overflow: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 217px);
+    position: fixed;
+    top: 153px;
+    &::-webkit-scrollbar-thumb {
+      background: #212529;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #707070;
+    }
+    @media (max-width: 700px) {
+      height: calc(100vh - 250px);
+    }
+    @media (max-width: 550px) {
+      height: calc(100vh - 310px);
+      width: 100vw !important;
+    }
     .NoData {
       width: 100%;
       display: flex;

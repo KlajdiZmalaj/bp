@@ -64,6 +64,7 @@ class DashboardDom extends React.Component {
       await this.setState({
         Companies: Companies[Categories[0]?.name],
         Categories: Categories,
+        categoryActive: Categories[0]?.key,
         categoriesTypeSelected: Categories[0]?.key,
       });
     }

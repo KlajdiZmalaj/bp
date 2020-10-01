@@ -196,8 +196,10 @@ class AdminRightFormWalletDetails extends React.Component {
     }
   }
   render() {
-    const allUsers = this.props.userList;
-    const UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
+    const { userList } = this.props;
+    const UsersToSearch = userList
+      ? [...new Set(this.returnAllUsers(userList))]
+      : [];
     const {
       handleDepositoVisibility,
       handleDebitoVisibility,
@@ -260,7 +262,7 @@ class AdminRightFormWalletDetails extends React.Component {
   }
 }
 const mapStateToProps = (state) => ({
-  userList: state.main.userList,
+  userList: state.main.userList.users,
   activeSkinId: state.main.activeSkinId,
 });
 export default connect(mapStateToProps, { ...AuthActions, ...MainActions })(

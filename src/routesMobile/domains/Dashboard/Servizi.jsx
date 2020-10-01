@@ -52,7 +52,8 @@ const OneTab = ({
             {Object.keys(services[serviceCategory]).map((serviceId) => {
               return (
                 serviceCategory !== "PRDPST" &&
-                serviceId !== "name" && (
+                serviceId !== "name" &&
+                serviceId !== "group" && (
                   <div
                     onClick={() => {
                       if (accountInfo?.profile) {

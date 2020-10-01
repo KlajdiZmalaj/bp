@@ -154,7 +154,7 @@ export const newAzioni = [
   },
   {
     id: 5,
-    name: "Reportistica",
+    name: "Statistiche",
     link: "reportistica",
     active: "reportistica",
     type: "span",
@@ -167,7 +167,7 @@ export const newAzioni = [
     link: "underDevelopment",
     active: "areaDownload",
     i: "fal fa-download",
-    displayRole: ["super_admin", "agency", "agent", "user"],
+    displayRole: ["super_admin", "agency", "agent"],
   },
 ];
 export const azioni = [

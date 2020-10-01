@@ -8,7 +8,7 @@ const { Types, Creators } = createActions({
   setAccount: ["activeAccount"],
   setUsers: ["userList"],
   setUsersSimple: ["userListSimple"],
-  getUsers: ["search_user", "skin_id"],
+  getUsers: ["search_user", "skin_id", "limit", "page_number"],
   getUsersSimple: [],
   getUsersBySearch: ["search_user"],
   setUsersBySearch: ["userListBySearch"],

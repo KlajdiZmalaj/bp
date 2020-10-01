@@ -60,10 +60,17 @@ export function* getUsers(params) {
     fetchUsers,
     params.search_user,
     params.skin_id,
-    params.backoffice
+    params.backoffice,
+    params.limit,
+    params.page_number
   );
   if (response && response.data) {
-    yield put(MainActions.setUsers(response.data.users));
+    yield put(
+      MainActions.setUsers({
+        users: response.data.users,
+        total_pages: response.data.total_pages,
+      })
+    );
     yield put(MainActions.setLoaderForAdminUtenti(false));
   } else {
     yield put(MainActions.setLoaderForAdminUtenti(false));

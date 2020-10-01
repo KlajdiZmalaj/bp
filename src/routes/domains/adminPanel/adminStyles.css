@@ -516,6 +516,7 @@
 .AdminColumns .Center .accountInfo .contentAcc.supportContent .header,
 .AdminColumns .Center .col-md-12,
 .AdminColumns .Center .paginationWrapper,
+.AdminColumns .Center .AdminListaUtentiRow,
 .AdminColumns .Center .transTable.Movimenti thead tr {
   width: calc(100% - 200px - 400px);
   -webkit-transition: 0.5s;
@@ -560,6 +561,7 @@
 .AdminColumns .Center--Big .accountInfo .contentAcc.supportContent .header,
 .AdminColumns .Center--Big .col-md-12,
 .AdminColumns .Center--Big .paginationWrapper,
+.AdminColumns .Center--Big .AdminListaUtentiRow,
 .AdminColumns .Center--Big .transTable.Movimenti thead tr {
   width: calc(100% - 51px - 400px);
   -webkit-transition: 0.5s;
@@ -611,6 +613,7 @@
   .AdminColumns .Center--Big .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center--Big .col-md-12,
   .AdminColumns .Center--Big .paginationWrapper,
+  .AdminColumns .Center--Big .AdminListaUtentiRow,
   .AdminColumns .Center--Big .transTable.Movimenti thead tr {
     width: calc(100% - 51px - 350px);
     -webkit-transition: 0.5s;
@@ -625,6 +628,7 @@
   .AdminColumns .Center .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center .col-md-12,
   .AdminColumns .Center .paginationWrapper,
+  .AdminColumns .Center .AdminListaUtentiRow,
   .AdminColumns .Center .transTable.Movimenti thead tr {
     width: calc(100% - 350px - 200px);
     -webkit-transition: 0.5s;
@@ -660,6 +664,7 @@
   .AdminColumns .Center--Big .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center--Big .col-md-12,
   .AdminColumns .Center--Big .paginationWrapper,
+  .AdminColumns .Center--Big .AdminListaUtentiRow,
   .AdminColumns .Center--Big .transTable.Movimenti thead tr {
     width: calc(100% - 300px - 51px);
     -webkit-transition: 0.5s;
@@ -674,6 +679,7 @@
   .AdminColumns .Center .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center .col-md-12,
   .AdminColumns .Center .paginationWrapper,
+  .AdminColumns .Center .AdminListaUtentiRow,
   .AdminColumns .Center .transTable.Movimenti thead tr {
     width: calc(100% - 300px - 200px);
     -webkit-transition: 0.5s;
@@ -726,6 +732,7 @@
   .AdminColumns .Center .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center .col-md-12,
   .AdminColumns .Center .paginationWrapper,
+  .AdminColumns .Center .AdminListaUtentiRow,
   .AdminColumns .Center .transTable.Movimenti thead tr {
     width: calc(100% - 300px - 200px);
     -webkit-transition: 0.5s;
@@ -766,6 +773,7 @@
   .AdminColumns .Center--Big .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center--Big .col-md-12,
   .AdminColumns .Center--Big .paginationWrapper,
+  .AdminColumns .Center--Big .AdminListaUtentiRow,
   .AdminColumns .Center--Big .transTable.Movimenti thead tr {
     width: calc(100% - 51px - 220px);
     -webkit-transition: 0.5s;
@@ -780,6 +788,7 @@
   .AdminColumns .Center .accountInfo .contentAcc.supportContent .header,
   .AdminColumns .Center .col-md-12,
   .AdminColumns .Center .paginationWrapper,
+  .AdminColumns .Center .AdminListaUtentiRow,
   .AdminColumns .Center .transTable.Movimenti thead tr {
     width: calc(100% - 220px - 200px);
     -webkit-transition: 0.5s;
@@ -1976,6 +1985,7 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns div.Center--Big .accountInfo .contentAcc.supportContent .header,
   .AdminColumns div.Center--Big .col-md-12,
   .AdminColumns div.Center--Big .paginationWrapper,
+  .AdminColumns div.Center--Big .AdminListaUtentiRow,
   .AdminColumns div.Center--Big .transTable.Movimenti thead tr {
     width: calc(100vw - 51px);
   }
@@ -1986,6 +1996,7 @@ div.Center--Big tbody .right .Importo i {
   .AdminColumns div.Center .accountInfo .contentAcc.supportContent .header,
   .AdminColumns div.Center .col-md-12,
   .AdminColumns div.Center .paginationWrapper,
+  .AdminColumns div.Center .AdminListaUtentiRow,
   .AdminColumns div.Center .transTable.Movimenti thead tr {
     width: calc(100vw - 200px);
   }

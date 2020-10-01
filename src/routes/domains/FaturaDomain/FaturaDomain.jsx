@@ -20,6 +20,7 @@ class FaturaDomain extends React.Component {
     userListShow: false,
     perPage: 25,
     page_number: 1,
+    clickedPage: 1,
   };
   setCalendar = (val) => {
     this.setState({ calendarVis: val });
@@ -80,6 +81,7 @@ class FaturaDomain extends React.Component {
       userListShow,
       perPage,
       page_number,
+      clickedPage,
     } = this.state;
     return (
       <div className="Container">
@@ -206,6 +208,7 @@ class FaturaDomain extends React.Component {
                   </div>
                   <button
                     onClick={() => {
+                      this.setState({ clickedPage: 1 });
                       this.props.getAllFaturaBySearch(
                         userName,
                         monthChosen.id,
@@ -283,24 +286,27 @@ class FaturaDomain extends React.Component {
                         ))}
                     </tbody>
                   </table>
-                  {total_pages !== 0 && total_pages && (
-                    <div className="paginationWrapper">
-                      <Pagination
-                        onChange={(e) => {
-                          this.props.getAllFaturaBySearch(
-                            userName,
-                            monthChosen.id,
-                            yearChosen,
-                            perPage,
-                            e
-                          );
-                        }}
-                        total={total_pages * 10}
-                      />
-                      <Select
-                        defaultValue={25}
-                        onChange={(e) => {
-                          this.setState({ perPage: parseInt(e) }, () => {
+                  <div className="paginationWrapper">
+                    <Pagination
+                      onChange={(e) => {
+                        this.setState({ clickedPage: e });
+                        this.props.getAllFaturaBySearch(
+                          userName,
+                          monthChosen.id,
+                          yearChosen,
+                          perPage,
+                          e
+                        );
+                      }}
+                      total={total_pages ? total_pages * 10 : 1}
+                      current={clickedPage}
+                    />
+                    <Select
+                      defaultValue={25}
+                      onChange={(e) => {
+                        this.setState(
+                          { perPage: parseInt(e), clickedPage: 1 },
+                          () => {
                             this.props.getAllFaturaBySearch(
                               userName,
                               monthChosen.id,
@@ -308,15 +314,16 @@ class FaturaDomain extends React.Component {
                               parseInt(e),
                               page_number
                             );
-                          });
-                        }}
-                      >
-                        <Option value={10}>10 / Pagina</Option>
-                        <Option value={25}>25 / Pagina</Option>
-                        <Option value={50}>50 / Pagina</Option>
-                      </Select>
-                    </div>
-                  )}
+                          }
+                        );
+                      }}
+                      value={this.state.perPage}
+                    >
+                      <Option value={10}>10 / Pagina</Option>
+                      <Option value={25}>25 / Pagina</Option>
+                      <Option value={50}>50 / Pagina</Option>
+                    </Select>
+                  </div>
                 </div>
               ) : (
                 <img className="loader" src={images.loader}></img>

@@ -5,20 +5,37 @@ import { ListaUtenti } from "../StaticAdminData";
 import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
 import moment from "moment";
+import { Select, Pagination } from "antd";
+
+const { Option } = Select;
 class AdminListaUtenti extends React.Component {
+  state = {
+    perPage: 25,
+    page_number: 1,
+  };
   componentDidMount() {
     const Special =
       this.props.activeSkinId === -1 &&
       this.props.accountInfo?.profile?.role?.name != "support";
     if (Special) {
-      this.props.getUsers(null, {
-        skin_id: 1,
-      });
+      this.props.getUsers(
+        null,
+        {
+          skin_id: 1,
+        },
+        25,
+        1
+      );
     } else {
-      this.props.getUsers(null, {
-        skin_id: this.props.activeSkinId,
-        backoffice: true,
-      });
+      this.props.getUsers(
+        null,
+        {
+          skin_id: this.props.activeSkinId,
+          backoffice: true,
+        },
+        25,
+        1
+      );
     }
   }
   componentDidUpdate(prevProps) {
@@ -27,14 +44,24 @@ class AdminListaUtenti extends React.Component {
         this.props.activeSkinId === -1 &&
         this.props.accountInfo?.profile?.role?.name != "support";
       if (Special) {
-        this.props.getUsers(null, {
-          skin_id: 1,
-        });
+        this.props.getUsers(
+          null,
+          {
+            skin_id: 1,
+          },
+          25,
+          1
+        );
       } else {
-        this.props.getUsers(null, {
-          skin_id: this.props.activeSkinId,
-          backoffice: true,
-        });
+        this.props.getUsers(
+          null,
+          {
+            skin_id: this.props.activeSkinId,
+            backoffice: true,
+          },
+          25,
+          1
+        );
       }
     }
   }
@@ -71,6 +98,7 @@ class AdminListaUtenti extends React.Component {
     }
     return newArray;
   }
+
   render() {
     const {
       userList,
@@ -78,7 +106,9 @@ class AdminListaUtenti extends React.Component {
       screenWidth,
       activeSkinId,
       accountInfo,
+      total_pages,
     } = this.props;
+    const { perPage, page_number } = this.state;
     const Special =
       activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
     return (
@@ -209,12 +239,51 @@ class AdminListaUtenti extends React.Component {
             </div>
           )}
         </div>
+        <div className="paginationWrapper">
+          <Pagination
+            onChange={(e) => {
+              // console.log("ca ka pagination", e);
+              this.props.getUsers(
+                null,
+                {
+                  skin_id: this.props.activeSkinId,
+                  backoffice: true,
+                },
+                perPage,
+                e
+              );
+            }}
+            total={total_pages ? total_pages * 10 : 10}
+          />
+          <Select
+            defaultValue={25}
+            onChange={(e) => {
+              this.setState({ perPage: parseInt(e), clickedPage: 1 }, () => {
+                this.props.getUsers(
+                  null,
+                  {
+                    skin_id: this.props.activeSkinId,
+                    backoffice: true,
+                  },
+                  e,
+                  page_number
+                );
+              });
+            }}
+            value={this.state.perPage}
+          >
+            <Option value={10}>10 / Pagina</Option>
+            <Option value={25}>25 / Pagina</Option>
+            <Option value={50}>50 / Pagina</Option>
+          </Select>
+        </div>
       </div>
     );
   }
 }
 const mapStateToProps = (state) => ({
-  userList: state.main.userList,
+  userList: state.main.userList.users,
+  total_pages: state.main.userList.total_pages,
   LoaderAU: state.main.LoaderAU,
   screenWidth: state.main.screenWidth,
   accountInfo: state.auth.accountInfo,
