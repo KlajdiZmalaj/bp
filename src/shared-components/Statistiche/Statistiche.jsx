@@ -98,7 +98,7 @@ class Statistiche extends React.Component {
               handleSubmit={this.handleSubmit}
             />
           )}
-          <div className="Filters Categories">
+          {/* <div className="Filters Categories">
             <div>
               <i className="fal fa-analytics" />
               <span>Statistiche</span>
@@ -133,6 +133,7 @@ class Statistiche extends React.Component {
               </span>
             </div>
           </div>
+          */}
           {!ReportisticaDet && (
             <div className="data Categories">
               <SimpleGraph
