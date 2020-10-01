@@ -132,7 +132,7 @@
 .FaturaDomain .FauturaFilter button {
   border: none;
   color: #ebeced;
-  background: #f26521;
+  background: var(--accent-bg);
   height: 100%;
   padding: 0 15px;
   font-size: 14px;
@@ -165,7 +165,7 @@
   font-size: 14px;
   font-family: "Roboto";
   font-weight: 500;
-  color: #f26521;
+  color: var(--accent-bg);
   cursor: pointer;
 }
 
