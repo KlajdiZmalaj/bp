@@ -102,16 +102,16 @@
     font-weight: 400;
     color: #ffffff;
     .active {
-      background: #d3561a;
+      background: var(--accent-bg);
     }
     label,
     a {
-      border-left: 1px solid #de5817;
+      border-left: 1px solid var(--accent-bg);
     }
     &:last-child {
       label,
       a {
-        border-right: 1px solid #de5817;
+        border-right: 1px solid var(--accent-bg);
       }
     }
   }

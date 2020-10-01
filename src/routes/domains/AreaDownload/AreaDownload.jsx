@@ -8,9 +8,6 @@ const AreaDownload = ({ link6 }) => {
     <React.Fragment>
       <iframe
         id="the_iframe"
-        onLoad={() => {
-          setShowIframe(true);
-        }}
         onLoadCapture={() => {
           setShowIframe(true);
         }}
