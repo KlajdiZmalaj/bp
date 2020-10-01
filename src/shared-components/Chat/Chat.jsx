@@ -17,9 +17,9 @@ export const open = (screenWidth, innerHeight) => {
         : screenWidth
     },height=600`;
   var htmlPop =
-    "<embed width=100% height=100%" +
-    ' src="https://tawk.to/chat/5f4e3671f0e7167d000c81cc/default' +
-    '"></embed>';
+    "<iframe width=100% height=100%" +
+    ' src="https://tawk.to/chat/5d443c5f7d27204601c8f6b8/default' +
+    '"></iframe>';
 
   var printWindow = window.open("", "PDF", winparams);
   printWindow.document.title = "SUPPORT";
