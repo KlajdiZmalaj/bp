@@ -56,6 +56,7 @@ class Step1 extends React.Component {
         pinterest: "",
         color_skin: "",
         youtube: "",
+        area_download: "",
       },
     };
   }
@@ -85,6 +86,7 @@ class Step1 extends React.Component {
       facebook,
       pinterest,
       youtube,
+      area_download,
     } = step1;
     if (prevProps.newSkinId != newSkinId) {
       try {
@@ -127,7 +129,8 @@ class Step1 extends React.Component {
               nome_skin,
               iban,
               color_skin,
-              newSkinId
+              newSkinId,
+              area_download
             );
           }
           if (upload_logo?.includes(".png")) {
@@ -433,6 +436,16 @@ class Step1 extends React.Component {
               handleChange={(e) => {
                 this.setState({
                   step1: { ...step1, affiliazioni: e.target.value },
+                });
+              }}
+              value={affiliazioni}
+            />
+            <MySpan
+              title="AREA DOWNLOAD"
+              iconClass="fal fa-globe"
+              handleChange={(e) => {
+                this.setState({
+                  step1: { ...step1, area_download: e.target.value },
                 });
               }}
               value={affiliazioni}

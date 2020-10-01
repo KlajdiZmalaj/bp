@@ -948,7 +948,22 @@ div.Center .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisp
 div.Center .panels-container .sort-annunci .calendarWrapper .rdrDateDisplay,
 div.Center--Big .container-fluid.overview .sort-annunci .calendarWrapper .rdrDateDisplay,
 div.Center--Big .panels-container .sort-annunci .calendarWrapper .rdrDateDisplay {
-  top: 61%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
 }
 
 div.Center .container-fluid.overview .sort-annunci .dal.calendar,

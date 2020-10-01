@@ -1270,6 +1270,7 @@ export function* AddExtraData({
   iban,
   main_color,
   skin_id,
+  area_download,
 }) {
   const response = yield call(
     AddExtraDataReq,
@@ -1289,7 +1290,8 @@ export function* AddExtraData({
     account_name,
     iban,
     main_color,
-    skin_id
+    skin_id,
+    area_download
   );
   if (response) {
     yield put(AuthActions.registerSkinSucc({ addExtraDataSucc: true }));

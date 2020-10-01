@@ -360,6 +360,7 @@ const { Types, Creators } = createActions({
     "iban",
     "main_color",
     "skin_id",
+    "area_download",
   ],
   registerSkinSucc: ["registerSkinS"],
   getStatistiche: ["skin_id"],
