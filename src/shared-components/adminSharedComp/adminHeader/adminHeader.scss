@@ -297,3 +297,9 @@
 }
 @media (max-width: 550px) {
 }
+#printWindow {
+  z-index: -99 !important;
+  width: 0 !important;
+  height: 0 !important;
+  transform: scale(0);
+}

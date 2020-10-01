@@ -4,6 +4,9 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import "./Dashboard.css";
 import images from "themes/images";
+import { withRouter } from "react-router-dom";
+import { message } from "antd";
+
 class DashboardDom extends React.Component {
   state = {
     Companies: [],
@@ -122,6 +125,12 @@ class DashboardDom extends React.Component {
   };
   //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
+    if (!this.props.accountInfo?.profile?.role) {
+      if (value !== "ricariche") {
+        this.props.history.push("/dashboard/ricariche");
+        message.info("Per favore fai prima il log in.");
+      }
+    }
     return (
       Object.keys(object) &&
       Array.isArray(Object.keys(object)) &&
@@ -217,42 +226,45 @@ class DashboardDom extends React.Component {
             </div>
           )}
           <div className="CompaniesAndOther">
-            <div className="Favorites">
-              {CompaniesFav && Array.isArray(CompaniesFav) ? (
-                CompaniesFav.map(
-                  (comp) =>
-                    Object.keys(comp?.companies) &&
-                    Array.isArray(Object.keys(comp?.companies)) &&
-                    Object.keys(comp?.companies).map(
-                      (key) =>
-                        Object.keys(comp.companies[key]) &&
-                        Array.isArray(Object.keys(comp.companies[key])) &&
-                        Object.keys(comp.companies[key]).map((id) => (
-                          <div
-                            key={id}
-                            onClick={() => {
-                              this.setState({
-                                categoriesFavTypeSelected: comp.key,
-                              });
-                              this.changeServce(
-                                id,
-                                comp.companies[key][id].services,
-                                comp.companies[key][id].name,
-                                "fav"
-                              );
-                              this.togglePopUp(true);
-                            }}
-                          >
-                            <img src={images[id]} alt="" />
-                            <span> {comp.companies[key][id].name}</span>
-                          </div>
-                        ))
-                    )
-                )
-              ) : (
-                <div className="NF">No Favourites</div>
-              )}
-            </div>
+            {this.props.accountInfo?.profile?.role && (
+              <div className="Favorites">
+                {CompaniesFav && Array.isArray(CompaniesFav) ? (
+                  CompaniesFav.map(
+                    (comp) =>
+                      Object.keys(comp?.companies) &&
+                      Array.isArray(Object.keys(comp?.companies)) &&
+                      Object.keys(comp?.companies).map(
+                        (key) =>
+                          Object.keys(comp.companies[key]) &&
+                          Array.isArray(Object.keys(comp.companies[key])) &&
+                          Object.keys(comp.companies[key]).map((id) => (
+                            <div
+                              key={id}
+                              onClick={() => {
+                                this.setState({
+                                  categoriesFavTypeSelected: comp.key,
+                                });
+                                this.changeServce(
+                                  id,
+                                  comp.companies[key][id].services,
+                                  comp.companies[key][id].name,
+                                  "fav"
+                                );
+                                this.togglePopUp(true);
+                              }}
+                            >
+                              <img src={images[id]} alt="" />
+                              <span> {comp.companies[key][id].name}</span>
+                            </div>
+                          ))
+                      )
+                  )
+                ) : (
+                  <div className="NF">No Favourites</div>
+                )}
+              </div>
+            )}
+
             <div className="Comp">
               <div className="Search">
                 <input
@@ -274,23 +286,27 @@ class DashboardDom extends React.Component {
                     (comp) =>
                       Object.keys(comp) &&
                       Array.isArray(Object.keys(comp)) &&
-                      Object.keys(comp).map((key) =>
+                      Object.keys(comp).map((key, i) =>
                         comp[key].services[0].service_id === "BGM001" &&
                         this.props.accountInfo?.profile?.role?.name ===
                           "super_admin" ? (
                           <div
-                            key={key}
+                            key={key + i}
                             onClick={() => {
-                              this.changeServce(
-                                key,
-                                comp[key].services,
-                                comp[key].name
-                              );
-                              this.togglePopUp(true);
-                              this.setState({
-                                Services: comp[key].services,
-                                serviceSelected: comp[key].services[0],
-                              });
+                              if (!this.props.accountInfo?.profile?.role) {
+                                message.info("Per favore fai prima il log in.");
+                              } else {
+                                this.changeServce(
+                                  key,
+                                  comp[key].services,
+                                  comp[key].name
+                                );
+                                this.togglePopUp(true);
+                                this.setState({
+                                  Services: comp[key].services,
+                                  serviceSelected: comp[key].services[0],
+                                });
+                              }
                             }}
                           >
                             <img src={images[key]} alt="" />
@@ -302,18 +318,24 @@ class DashboardDom extends React.Component {
                               <div
                                 key={key}
                                 onClick={() => {
-                                  this.changeServce(
-                                    key,
-                                    comp[key].services,
-                                    comp[key].name,
-                                    "",
-                                    service
-                                  );
-                                  this.togglePopUp(true);
-                                  this.setState({
-                                    Services: comp[key].services,
-                                    serviceSelected: comp[key].services[0],
-                                  });
+                                  if (!this.props.accountInfo?.profile?.role) {
+                                    message.info(
+                                      "Per favore fai prima il log in."
+                                    );
+                                  } else {
+                                    this.changeServce(
+                                      key,
+                                      comp[key].services,
+                                      comp[key].name,
+                                      "",
+                                      service
+                                    );
+                                    this.togglePopUp(true);
+                                    this.setState({
+                                      Services: comp[key].services,
+                                      serviceSelected: comp[key].services[0],
+                                    });
+                                  }
                                 }}
                               >
                                 <img src={images[key]} alt="" />
@@ -325,16 +347,20 @@ class DashboardDom extends React.Component {
                           <div
                             key={key}
                             onClick={() => {
-                              this.changeServce(
-                                key,
-                                comp[key].services,
-                                comp[key].name
-                              );
-                              this.togglePopUp(true);
-                              this.setState({
-                                Services: comp[key].services,
-                                serviceSelected: comp[key].services[0],
-                              });
+                              if (!this.props.accountInfo?.profile?.role) {
+                                message.info("Per favore fai prima il log in.");
+                              } else {
+                                this.changeServce(
+                                  key,
+                                  comp[key].services,
+                                  comp[key].name
+                                );
+                                this.togglePopUp(true);
+                                this.setState({
+                                  Services: comp[key].services,
+                                  serviceSelected: comp[key].services[0],
+                                });
+                              }
                             }}
                           >
                             <img src={images[key]} alt="" />
@@ -357,6 +383,6 @@ const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
 });
 
-export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
-  DashboardDom
+export default withRouter(
+  connect(mapsStateToProps, { ...MainActions, ...AuthActions })(DashboardDom)
 );
