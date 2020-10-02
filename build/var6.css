@@ -94,7 +94,7 @@ body .tab-content > .tab-pane {
 footer .mid img {
   width: 130px !important;
 }
-.SDHome--Header span,
+.SDHome--Header span:first-child span:nth-child(2),
 .SDHome--Cards--Card h2 {
   color: #fff !important;
 }
