@@ -57,4 +57,30 @@
 body .confirmationDelete {
   top: 30%;
 }
+
+.bodyAdmin .accountInfo {
+  padding-bottom: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: transparent;
+}
+
+.bodyAdmin .accountInfo div {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.bodyAdmin .userList--AllUsers {
+  height: calc(100vh - 217px);
+  overflow: auto;
+  padding-bottom: 0;
+}
+
+.bodyAdmin .userList--AllUsers::-webkit-scrollbar-thumb {
+  background: #212529;
+}
+
+.bodyAdmin .userList--AllUsers::-webkit-scrollbar-track {
+  background: #707070;
+}
 /*# sourceMappingURL=style.css.map */

@@ -17,7 +17,7 @@ export const MySpan = ({
       onChange={(e) => {
         handleChange(e);
       }}
-      value={value}
+      value={value || ""}
     />
     {component ? component : <i className={iconClass} />}
   </span>
@@ -197,7 +197,7 @@ class Step1 extends React.Component {
       newSkinId,
       AddExtraData,
     } = this.props;
-    const { step1, base64 } = this.state;
+    const { step1, base64, area_download } = this.state;
     const {
       nome_skin,
       link_servizi,
@@ -224,7 +224,7 @@ class Step1 extends React.Component {
     return (
       <div className="AdminLogin--Step1">
         <i
-          class="fal fa-long-arrow-left"
+          className="fal fa-long-arrow-left"
           onClick={() => {
             addEditSkinDetails({
               step1: {
@@ -448,7 +448,7 @@ class Step1 extends React.Component {
                   step1: { ...step1, area_download: e.target.value },
                 });
               }}
-              value={affiliazioni}
+              value={area_download}
             />
           </div>
           <div className="AdminLogin--Step1--Left--SocialMedia">
@@ -463,7 +463,7 @@ class Step1 extends React.Component {
                   viewBox="0 0 7.7 15.4"
                 >
                   <path
-                    class="a"
+                    className="a"
                     d="M132.813,5.294V3.369a.963.963,0,0,1,.962-.962h.963V0h-1.925a2.887,2.887,0,0,0-2.887,2.887V5.294H128V7.7h1.925v7.7h2.887V7.7h1.925l.962-2.406Z"
                     transform="translate(-128)"
                   />
@@ -496,7 +496,7 @@ class Step1 extends React.Component {
                   viewBox="0 0 11.704 15.4"
                 >
                   <path
-                    class="a"
+                    className="a"
                     d="M1.832,8.368c.019-.048.212-.789.226-.839a5.175,5.175,0,0,1-.379-3.14c.277-1.767,2.149-2.635,3.916-2.635v0c2.213,0,3.869,1.233,3.871,3.353,0,1.66-1,3.854-2.706,3.854h0A2.435,2.435,0,0,1,5.176,8.41,1.213,1.213,0,0,1,5.008,7.3a14.684,14.684,0,0,0,.733-2.892A1.092,1.092,0,0,0,4.6,3.206,1.621,1.621,0,0,0,3.113,4.321a3,3,0,0,0,.018,2.186,14.207,14.207,0,0,1-.677,2.969C1.98,11.1,1.331,13.155,1.47,14.3L1.6,15.4l.673-.882A22.983,22.983,0,0,0,4.427,9.38a3.454,3.454,0,0,0,2.522,1.01A5.183,5.183,0,0,0,11.7,5.019C11.637,2.279,9.632,0,6.027,0V0C2.6,0,.6,1.833.109,4.145-.34,6.289.658,7.921,1.832,8.368Zm0,0"
                     transform="translate(0.001)"
                   />

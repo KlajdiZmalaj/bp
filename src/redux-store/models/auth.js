@@ -180,7 +180,8 @@ const { Types, Creators } = createActions({
   addPrivateMsg: ["privMsg"],
   getSkinExtras: [""],
   setSkinExtras: ["skinExtras"],
-  getErrors: [""],
+  getErrors: ["limit", "page_number"],
+  setErrorsLoading: ["ErrLoading"],
   setErrors: ["errors"],
   deleteError: ["id", "c"],
   sendDataForm: [
@@ -384,6 +385,7 @@ export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  ErrLoading: false,
   fattura_loading: false,
   ModalDetails: {},
   bolletiniLoading: false,
@@ -455,6 +457,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_ERRORS_LOADING]: (state, { ErrLoading }) => ({
+    ...state,
+    ErrLoading,
+  }),
   [Types.SET_FATTURA_LOADING]: (state, { fattura_loading }) => ({
     ...state,
     fattura_loading,
