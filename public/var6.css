@@ -95,6 +95,7 @@ footer .mid img {
   width: 130px !important;
 }
 .SDHome--Header span:first-child span:nth-child(2),
+.SDHome--Header span:first-child span:first-child,
 .SDHome--Cards--Card h2 {
   color: #fff !important;
 }
