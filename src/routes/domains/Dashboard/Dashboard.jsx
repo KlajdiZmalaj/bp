@@ -91,22 +91,25 @@ class DashboardDom extends React.Component {
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
-    const { menuClassName } = this.state;
-    let scrollPoint = document
-      .querySelector("#SpecStatistich")
-      ?.classList?.contains("min")
-      ? 174
-      : 357;
-    let top =
-      (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
-    if (menuClassName !== "fixed" && top >= scrollPoint) {
-      this.setState({
-        menuClassName: "fixed",
-      });
-    } else if (menuClassName === "fixed" && top < scrollPoint) {
-      this.setState({
-        menuClassName: "notFixed",
-      });
+    if (this.props.accountInfo?.token) {
+      const { menuClassName } = this.state;
+      let scrollPoint = document
+        .querySelector("#SpecStatistich")
+        ?.classList?.contains("min")
+        ? 174
+        : 290;
+      let top =
+        (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
+      console.log(top);
+      if (menuClassName !== "fixed" && top >= scrollPoint) {
+        this.setState({
+          menuClassName: "fixed",
+        });
+      } else if (menuClassName === "fixed" && top < scrollPoint) {
+        this.setState({
+          menuClassName: "notFixed",
+        });
+      }
     }
   };
   SplitAndCheckIfIncludes = (name, listOfOptions) => {

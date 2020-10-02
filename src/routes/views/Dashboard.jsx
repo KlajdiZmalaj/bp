@@ -11,14 +11,14 @@ class Dashboard extends React.Component {
     return (
       <div>
         <Header></Header>
-        {!isLogged && (
+        {isLogged && (
           <Azioni
             activeMain="dashboard"
             active="ricariche"
             match={this.props.match}
           ></Azioni>
         )}
-        {!isLogged ? (
+        {isLogged ? (
           <DashboardDom match={this.props.match} />
         ) : (
           <StaticDefaultHomePage />
