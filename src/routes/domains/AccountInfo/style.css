@@ -179,7 +179,7 @@
 }
 
 .userList .header span:nth-child(1) {
-  width: 40%;
+  width: 60%;
 }
 
 .userList .header span:nth-child(2) {
@@ -190,8 +190,12 @@
   width: 150%;
 }
 
-.userList .header span:last-child {
+.userList .header span:last-child:not(.seeMore) {
   width: 120%;
+}
+
+.userList .header span:last-child.seeMore {
+  width: 45%;
 }
 
 @media (max-width: 1024px) {
@@ -305,7 +309,20 @@
   width: 150%;
 }
 
-.userList--noDoc__user .body span:last-child, .userList--Doc__user .body span:last-child {
+.userList--noDoc__user .body span:last-child.seeMore, .userList--Doc__user .body span:last-child.seeMore {
+  width: 45%;
+}
+
+.userList--noDoc__user .body span:last-child.seeMore i, .userList--Doc__user .body span:last-child.seeMore i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userList--noDoc__user .body span:last-child:not(.seeMore), .userList--Doc__user .body span:last-child:not(.seeMore) {
   width: 120%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -315,11 +332,11 @@
           align-items: center;
 }
 
-.userList--noDoc__user .body span:last-child i, .userList--Doc__user .body span:last-child i {
+.userList--noDoc__user .body span:last-child:not(.seeMore) i, .userList--Doc__user .body span:last-child:not(.seeMore) i {
   width: 15px;
 }
 
-.userList--noDoc__user .body span:last-child button, .userList--Doc__user .body span:last-child button {
+.userList--noDoc__user .body span:last-child:not(.seeMore) button, .userList--Doc__user .body span:last-child:not(.seeMore) button {
   border: 0;
   border-radius: 3px;
   border: 1px solid #32424e;
@@ -329,7 +346,7 @@
   transition: 0.3s;
 }
 
-.userList--noDoc__user .body span:last-child button:hover, .userList--Doc__user .body span:last-child button:hover {
+.userList--noDoc__user .body span:last-child:not(.seeMore) button:hover, .userList--Doc__user .body span:last-child:not(.seeMore) button:hover {
   background-color: #32424e;
   color: #fff;
 }

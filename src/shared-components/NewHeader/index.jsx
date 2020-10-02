@@ -9,6 +9,8 @@ import { get } from "lodash";
 import { numberWithCommas } from "utils/HelperFunc";
 import Chat from "shared-components/Chat/Chat";
 import { Header as HeaderMob } from "shared-componentsMobile";
+import ClickOut from "react-onclickout";
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -59,21 +61,45 @@ class Header extends Component {
                 <div>
                   <i onClick={this.toggleAds} className="fas fa-bell"></i>
                   <span>{ads && ads.length}</span>
-                  <div className={"ads" + (this.state.ads ? " viz" : "")}>
-                    {ads.slice(0, 10).map((add) => {
-                      return (
-                        <div
-                          key={add.id ? add.id : Math.random()}
-                          onClick={() => {
-                            this.toggleAds();
-                            this.props.history.push("/annunci");
-                          }}
-                        >
-                          {add.title}
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {this.state.ads ? (
+                    <ClickOut
+                      onClickOut={() => {
+                        this.setState({ ads: false });
+                      }}
+                    >
+                      <div className={"ads" + (this.state.ads ? " viz" : "")}>
+                        {ads.slice(0, 10).map((add) => {
+                          return (
+                            <div
+                              key={add.id ? add.id : Math.random()}
+                              onClick={() => {
+                                this.toggleAds();
+                                this.props.history.push("/annunci");
+                              }}
+                            >
+                              {add.title}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </ClickOut>
+                  ) : (
+                    <div className={"ads" + (this.state.ads ? " viz" : "")}>
+                      {ads.slice(0, 10).map((add) => {
+                        return (
+                          <div
+                            key={add.id ? add.id : Math.random()}
+                            onClick={() => {
+                              this.toggleAds();
+                              this.props.history.push("/annunci");
+                            }}
+                          >
+                            {add.title}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <i
@@ -87,20 +113,43 @@ class Header extends Component {
                   >
                     {privMsg && privMsg.length}
                   </span>
-                  <div className={"ads" + (this.state.msg ? " viz" : "")}>
-                    {privMsg.slice(0, 10).map((add) => {
-                      return (
-                        <div
-                          key={add.id ? add.id * 2 : Math.random()}
-                          onClick={() => {
-                            this.toggleprivMsgs();
-                          }}
-                        >
-                          {add.title}
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {this.state.msg ? (
+                    <ClickOut
+                      onClickOut={() => {
+                        this.setState({ msg: false });
+                      }}
+                    >
+                      <div className={"ads" + (this.state.msg ? " viz" : "")}>
+                        {privMsg.slice(0, 10).map((add) => {
+                          return (
+                            <div
+                              key={add.id ? add.id * 2 : Math.random()}
+                              onClick={() => {
+                                this.toggleprivMsgs();
+                              }}
+                            >
+                              {add.title}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </ClickOut>
+                  ) : (
+                    <div className={"ads" + (this.state.msg ? " viz" : "")}>
+                      {privMsg.slice(0, 10).map((add) => {
+                        return (
+                          <div
+                            key={add.id ? add.id * 2 : Math.random()}
+                            onClick={() => {
+                              this.toggleprivMsgs();
+                            }}
+                          >
+                            {add.title}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
                 <div
                   onClick={() => {
@@ -143,9 +192,7 @@ class Header extends Component {
                     }}
                     className="register"
                   >
-                    {this.state.regType === 1
-                      ? "Registra Agenzia"
-                      : "Registra Agente"}
+                    Registra
                   </div>
                 )}
                 {get(accountInfo, "profile.role.name") === "super_admin" && (
@@ -163,6 +210,7 @@ class Header extends Component {
                           className="registerDropDown--item"
                           onClick={() => {
                             this.setState({ regType: 1, isDDopem: false });
+                            this.props.history.push("/registerAgency");
                           }}
                         >
                           Agenzia
@@ -171,6 +219,7 @@ class Header extends Component {
                           className="registerDropDown--item"
                           onClick={() => {
                             this.setState({ regType: 2, isDDopem: false });
+                            this.props.history.push("/registerAgent");
                           }}
                         >
                           Agente

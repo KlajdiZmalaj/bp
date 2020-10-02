@@ -52,7 +52,7 @@ class AdminHeader extends React.Component {
           >
             <div>
               <i className="fal fa-exclamation-circle"></i>
-              <span>Errori</span>
+              <span>ERRORI</span>
             </div>
           </div>
           <div

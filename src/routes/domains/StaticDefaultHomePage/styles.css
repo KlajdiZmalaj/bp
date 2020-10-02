@@ -1,7 +1,7 @@
 .SDHome {
   padding: 0 calc((100vw - 1135px) / 2);
-  color: var(--accent-txt);
-  background: var(--accent-bg);
+  color: var(--header-txt);
+  background: var(--header-bg);
   position: relative;
   font-family: "Roboto";
 }
@@ -31,13 +31,13 @@
   font-size: 16px;
   font-weight: 600;
   text-align: center;
-  color: var(--header-txt);
+  color: var(--accent-bg);
   padding: 0 15px;
   padding-bottom: 5px;
 }
 
 .SDHome--Cards--Card p {
-  color: var(--accent-txt);
+  color: var(--header-txt);
   font-size: 12px;
   font-weight: 300;
   letter-spacing: 1.1px;
@@ -93,13 +93,12 @@
 .SDHome--Header span:nth-child(1) {
   font-size: 14px;
   letter-spacing: 1.1px;
-  color: var(--accent-txt);
 }
 
 .SDHome--Header span:nth-child(1) span:first-child {
   font-size: 30px;
   font-weight: 300;
-  color: var(--header-txt);
+  color: var(--accent-bg);
   letter-spacing: 1.1px;
   padding-right: 3px;
 }
@@ -107,7 +106,7 @@
 .SDHome--Header span:nth-child(1) span:nth-child(2) {
   font-size: 30px;
   font-weight: 600;
-  color: var(--header-txt);
+  color: var(--accent-bg);
   letter-spacing: 1.1px;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -211,6 +211,7 @@ class UsersList extends Component {
                     <span>creato da</span>
                     <span>city</span>
                     <span>comune code</span>
+                    <span className="seeMore">Documenti</span>
                   </div>
                 )}
 

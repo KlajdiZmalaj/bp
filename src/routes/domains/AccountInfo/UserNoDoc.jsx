@@ -47,12 +47,7 @@ class UserDoc extends Component {
 
     return (
       <React.Fragment>
-        <div
-          className="userList--noDoc__user"
-          onClick={() => {
-            this.setPopUp();
-          }}
-        >
+        <div className="userList--noDoc__user">
           <div className="body">
             <span>{user.id}</span>
             <span>{user.name}</span>
@@ -60,6 +55,14 @@ class UserDoc extends Component {
             <span>{user.created_at.split("T")[0]}</span>
             <span>{user.city}</span>
             <span>{user.comune_code}</span>
+            <span
+              className="seeMore"
+              onClick={() => {
+                this.setPopUp();
+              }}
+            >
+              <i class="fal fa-plus"></i>
+            </span>
           </div>
         </div>
         {isPopUpOpen && (

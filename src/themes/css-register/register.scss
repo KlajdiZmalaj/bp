@@ -638,6 +638,11 @@
     white-space: pre-wrap;
     font-size: 12px;
     padding-left: 14px;
+    span:nth-child(2):not(.ant-checkbox-inner) {
+      width: 100%;
+      padding: 0;
+      padding-left: 4px;
+    }
   }
   .ant-input,
   .ant-select-selection,

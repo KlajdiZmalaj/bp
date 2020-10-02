@@ -6,6 +6,7 @@ import "./Dashboard.css";
 import images from "themes/images";
 import { withRouter } from "react-router-dom";
 import { message } from "antd";
+import CompaniesCheck from "./CompaniesCheck";
 
 class DashboardDom extends React.Component {
   state = {
@@ -252,20 +253,33 @@ class DashboardDom extends React.Component {
                             <div
                               key={id}
                               onClick={(e) => {
-                                this.setState({
-                                  categoriesFavTypeSelected: comp.key,
-                                });
-                                this.changeServce(
-                                  id,
-                                  comp.companies[key][id].services,
-                                  comp.companies[key][id].name,
-                                  "fav"
-                                );
-                                this.togglePopUp(true);
+                                if (e.target.tagName != "I") {
+                                  this.setState({
+                                    categoriesFavTypeSelected: comp.key,
+                                  });
+                                  this.changeServce(
+                                    id,
+                                    comp.companies[key][id].services,
+                                    comp.companies[key][id].name,
+                                    "fav"
+                                  );
+                                  this.togglePopUp(true);
+                                }
                               }}
                             >
                               <img src={images[id]} alt="" />
                               <span> {comp.companies[key][id].name}</span>
+                              <i
+                                id={`${id}`}
+                                onClick={async () => {
+                                  await this.props.toggleFavorite(id, "remove");
+                                  await setTimeout(() => {
+                                    this.props.getFavorites();
+                                    this.props.getServices();
+                                  }, 100);
+                                }}
+                                className={`fal fa-star favourite`}
+                              ></i>
                             </div>
                           ))
                       )
@@ -301,109 +315,80 @@ class DashboardDom extends React.Component {
                         comp[key].services[0].service_id === "BGM001" &&
                         this.props.accountInfo?.profile?.role?.name ===
                           "super_admin" ? (
-                          <div
-                            key={key + i}
-                            onClick={(e) => {
-                              if (e.target.tagName != "I") {
-                                if (!this.props.accountInfo?.profile?.role) {
-                                  message.info(
-                                    "Per favore fai prima il log in."
-                                  );
-                                } else {
-                                  this.changeServce(
-                                    key,
-                                    comp[key].services,
-                                    comp[key].name
-                                  );
-                                  this.togglePopUp(true);
-                                  this.setState({
-                                    Services: comp[key].services,
-                                    serviceSelected: comp[key].services[0],
-                                  });
-                                }
-                              }
+                          <CompaniesCheck
+                            key={key * Math.random()}
+                            key={key}
+                            changeServce={() => {
+                              this.changeServce(
+                                key,
+                                comp[key].services,
+                                comp[key].name
+                              );
                             }}
-                          >
-                            <img src={images[key]} alt="" />
-                            <span> {comp[key].name}</span>
-                            <i
-                              className={`fal fa-star ${
-                                comp[key].favourite ? "favourite" : ""
-                              }`}
-                            ></i>
-                          </div>
+                            role={this.props.accountInfo?.profile?.role}
+                            togglePopUp={this.togglePopUp}
+                            setState={() => {
+                              this.setState({
+                                Services: comp[key].services,
+                                serviceSelected: comp[key].services[0],
+                              });
+                            }}
+                            Companie={comp[key]}
+                            toggleFavorite={this.props.toggleFavorite}
+                            getServices={this.props.getServices}
+                          />
                         ) : comp[key].services[0].service_id === "BOL001" ? (
                           comp[key].services.map((service) => {
                             return (
-                              <div
-                                key={key}
-                                onClick={(e) => {
-                                  if (e.target.tagName != "I") {
-                                    if (
-                                      !this.props.accountInfo?.profile?.role
-                                    ) {
-                                      message.info(
-                                        "Per favore fai prima il log in."
-                                      );
-                                    } else {
-                                      this.changeServce(
-                                        key,
-                                        comp[key].services,
-                                        comp[key].name,
-                                        "",
-                                        service
-                                      );
-                                      this.togglePopUp(true);
-                                      this.setState({
-                                        Services: comp[key].services,
-                                        serviceSelected: comp[key].services[0],
-                                      });
-                                    }
-                                  }
-                                }}
-                              >
-                                <img src={images[key]} alt="" />
-                                <span> {service.name}</span>
-                                <i
-                                  className={`fal fa-star ${
-                                    comp[key].favourite ? "favourite" : ""
-                                  }`}
-                                ></i>
-                              </div>
-                            );
-                          })
-                        ) : comp[key].services[0].service_id != "BGM001" ? (
-                          <div
-                            key={key}
-                            onClick={(e) => {
-                              if (e.target.tagName != "I") {
-                                if (!this.props.accountInfo?.profile?.role) {
-                                  message.info(
-                                    "Per favore fai prima il log in."
-                                  );
-                                } else {
+                              <CompaniesCheck
+                                key={key * Math.random()}
+                                Key={key}
+                                changeServce={() => {
                                   this.changeServce(
                                     key,
                                     comp[key].services,
-                                    comp[key].name
+                                    comp[key].name,
+                                    "",
+                                    service
                                   );
-                                  this.togglePopUp(true);
+                                }}
+                                role={this.props.accountInfo?.profile?.role}
+                                togglePopUp={this.togglePopUp}
+                                setState={() => {
                                   this.setState({
                                     Services: comp[key].services,
                                     serviceSelected: comp[key].services[0],
                                   });
-                                }
-                              }
+                                }}
+                                Companie={service}
+                                toggleFavorite={this.props.toggleFavorite}
+                                getServices={this.props.getServices}
+                              />
+                            );
+                          })
+                        ) : comp[key].services[0].service_id != "BGM001" ? (
+                          <CompaniesCheck
+                            key={key * Math.random()}
+                            Key={key}
+                            changeServce={() => {
+                              this.changeServce(
+                                key,
+                                comp[key].services,
+                                comp[key].name
+                              );
                             }}
-                          >
-                            <img src={images[key]} alt="" />
-                            <span> {comp[key].name}</span>
-                            <i
-                              className={`fal fa-star ${
-                                comp[key].favourite ? "favourite" : ""
-                              }`}
-                            ></i>
-                          </div>
+                            role={this.props.accountInfo?.profile?.role}
+                            togglePopUp={this.togglePopUp}
+                            setState={() => {
+                              this.setState({
+                                Services: comp[key].services,
+                                serviceSelected: comp[key].services[0],
+                              });
+                            }}
+                            Companie={comp[key]}
+                            toggleFavorite={this.props.toggleFavorite}
+                            getServices={this.props.getServices}
+                          />
                         ) : null
                       )
                   )}
