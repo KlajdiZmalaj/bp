@@ -108,7 +108,7 @@ class StaticDefaultHomePage extends React.Component {
               imageUrl={images["CRY_VAL"]}
             />
             <Card
-              Title={"AVOCATO ONLINE"}
+              Title={"AVVOCATO ONLINE"}
               Info={`Nella gamma dei servizi offerti da ${SkinName}, si aggiunge l'Assistenza Legale. Per qualsiasi
               controversia come Divorzio, Regolamentazione mantenimento e affidamento figli e
               genitori non sposati, Sfratto, Vittime della strada, Infortunistica Stradale, cancellazione
