@@ -17,7 +17,21 @@ if (
 }
 export default {
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
+  //Static home page images
+  SER_POS: require(`../assets/images/servizi_postali.png`),
+  RIC_CEL: require(`../assets/images/richariche_cellulari.png`),
+  RIC_PVR: require(`../assets/images/richariche_pvr.png`),
+  PRE_VOL: require(`../assets/images/prenotazione_biglietti_voli.png`),
+  PRE_TRE: require(`../assets/images/Prenotazione_biglietti_treni.png`),
+  PRE_EVE: require(`../assets/images/prenotazione_biglietti_eventi.png`),
+  ACQ_ONL: require(`../assets/images/aqcquisti_online.png`),
+  RIC_DIG: require(`../assets/images/ricariche_television_digitali.png`),
+  GIF_CAR: require(`../assets/images/gift_card.png`),
+  SPE_DIZ: require(`../assets/images/spedizione.png`),
+  CRY_VAL: require(`../assets/images/crypto_valute.png`),
+  ALT_SER: require(`../assets/images/altri_servizi.png`),
 
+  //*//
   servizi_banner: require(`../assets/images/servizi_banner.png`),
   loader: require(`../assets/images/loader.gif`),
   logo: require(`../assets/images${skin}/logo.svg`),
