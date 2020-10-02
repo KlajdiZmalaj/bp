@@ -197,7 +197,7 @@ class Step1 extends React.Component {
       newSkinId,
       AddExtraData,
     } = this.props;
-    const { step1, base64, area_download } = this.state;
+    const { step1, base64 } = this.state;
     const {
       nome_skin,
       link_servizi,
@@ -220,6 +220,7 @@ class Step1 extends React.Component {
       instagram,
       pinterest,
       youtube,
+      area_download,
     } = step1;
     return (
       <div className="AdminLogin--Step1">
@@ -440,6 +441,7 @@ class Step1 extends React.Component {
               }}
               value={affiliazioni}
             />
+
             <MySpan
               title="AREA DOWNLOAD"
               iconClass="fal fa-globe"

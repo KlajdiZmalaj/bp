@@ -5,6 +5,12 @@ export const fetchServices = () =>
   axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")) &&
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
     })
     .get(`/services`, {
       params: {
