@@ -201,8 +201,25 @@
             border-left: 1px solid #edeef0;
             border-bottom: 1px solid #edeef0;
             cursor: pointer;
+            position: relative;
             &:last-child {
               border: 1px solid #edeef0;
+            }
+            i {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 18%;
+              height: 18%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              transition: 0.5s;
+              &.favourite {
+                color: var(--accent-bg);
+                font-weight: bold;
+                transition: 0.5s;
+              }
             }
             img {
               height: 60px;

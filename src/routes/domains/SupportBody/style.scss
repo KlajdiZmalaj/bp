@@ -44,3 +44,24 @@
 body .confirmationDelete {
   top: 30%;
 }
+.bodyAdmin {
+  .accountInfo {
+    padding-bottom: 0;
+    box-shadow: none;
+    background: transparent;
+    div {
+      box-shadow: none;
+    }
+  }
+  .userList--AllUsers {
+    height: calc(100vh - 217px);
+    overflow: auto;
+    padding-bottom: 0;
+    &::-webkit-scrollbar-thumb {
+      background: #212529;
+    }
+    &::-webkit-scrollbar-track {
+      background: #707070;
+    }
+  }
+}

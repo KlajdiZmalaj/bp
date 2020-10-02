@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import SingleError from "./SingleError";
 import "./style.css";
-
+import { Select, Pagination } from "antd";
+const { Option } = Select;
 export class SupportBody extends Component {
   state = {
     filteredArray: null,
@@ -11,9 +12,12 @@ export class SupportBody extends Component {
     userNameFilter: "",
     utenteFilter: "",
     servizioFilter: "",
+    perPage: 25,
+    page_number: 1,
+    current_page: 1,
   };
   componentDidMount() {
-    this.props.getErrors();
+    this.props.getErrors(25, 1);
   }
 
   filterUsernameByStringValue = (errors, string) => {
@@ -50,11 +54,24 @@ export class SupportBody extends Component {
     return result;
   };
   componentDidUpdate() {
-    if (this.state.filteredArray == null && this.props.errors.length >= 1) {
+    if (
+      this.state.filteredArray == null &&
+      this.props.errors &&
+      Array.isArray(this.props.errors) &&
+      this.props.errors.length >= 1
+    ) {
       this.setState({ filteredArray: this.props.errors });
     }
   }
   render() {
+    const { perPage, page_number, filteredArray, current_page } = this.state;
+    const {
+      deleteError,
+      total_pages,
+      getErrors,
+      errors,
+      ErrLoading,
+    } = this.props;
     return (
       <div className="accountInfo">
         {/* <Select
@@ -70,7 +87,6 @@ export class SupportBody extends Component {
           <Option value="4">Teatro</Option>
           <Option value="5">Altro</Option>
         </Select> */}
-
         {/* <input
           type="text"
           placeholder="username"
@@ -119,31 +135,61 @@ export class SupportBody extends Component {
             });
           }}
         /> */}
+        {!ErrLoading ? (
+          <React.Fragment>
+            <div className="contentAcc supportContent">
+              <div className="userList">
+                <div className="userList--AllUsers">
+                  <div className="header">
+                    <span>Data Ora</span>
+                    <span>Skin</span>
+                    <span>username</span>
+                    <span>utente</span>
 
-        <div className="contentAcc supportContent">
-          <div className="userList">
-            <div className="userList--AllUsers">
-              <div className="header">
-                <span>Data Ora</span>
-                <span>Skin</span>
-                <span>username</span>
-                <span>utente</span>
-
-                <span>Servizio</span>
-                <span>Causale</span>
-                <span className="deleteError">Delete</span>
+                    <span>Servizio</span>
+                    <span>Causale</span>
+                    <span className="deleteError">Delete</span>
+                  </div>
+                  {errors
+                    ? errors.map((error) => (
+                        <SingleError
+                          key={error.id}
+                          deleteError={deleteError}
+                          error={error}
+                        />
+                      ))
+                    : null}
+                </div>
               </div>
-              {this.state.filteredArray
-                ? this.state.filteredArray.map((error) => (
-                    <SingleError
-                      key={error.id}
-                      deleteError={this.props.deleteError}
-                      error={error}
-                    />
-                  ))
-                : null}
             </div>
-          </div>
+          </React.Fragment>
+        ) : (
+          <div className="loaderAdmin">Loading...</div>
+        )}{" "}
+        <div className="paginationWrapper">
+          <Pagination
+            onChange={(e) => {
+              getErrors(perPage, e);
+              this.setState({
+                current_page: e,
+              });
+            }}
+            total={total_pages ? total_pages * 10 : 10}
+            current={current_page}
+          />
+          <Select
+            defaultValue={25}
+            onChange={(e) => {
+              this.setState({ perPage: parseInt(e), clickedPage: 1 }, () => {
+                getErrors(e, page_number);
+              });
+            }}
+            value={perPage}
+          >
+            <Option value={10}>10 / Pagina</Option>
+            <Option value={25}>25 / Pagina</Option>
+            <Option value={50}>50 / Pagina</Option>
+          </Select>
         </div>
       </div>
     );
@@ -151,7 +197,9 @@ export class SupportBody extends Component {
 }
 const _ = (state) => {
   return {
-    errors: state.auth.errors,
+    errors: state.auth.errors.errors,
+    total_pages: state.auth.errors.total_pages,
+    ErrLoading: state.auth.ErrLoading,
   };
 };
 export default connect(_, AuthActions)(SupportBody);

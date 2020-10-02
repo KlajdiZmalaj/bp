@@ -151,7 +151,13 @@ class DashboardDom extends React.Component {
     Object.keys(Categories).forEach((id) => {
       Companies[Categories[id].name] = [
         ...Object.keys(Categories[id])
-          .filter((key) => key != "name" && key != "group" && key != "key")
+          .filter(
+            (key) =>
+              key != "name" &&
+              key != "group" &&
+              key != "key" &&
+              key != "favourite"
+          )
           .map((key) => ({
             [key]: {
               ...Categories[id][key],
@@ -231,7 +237,9 @@ class DashboardDom extends React.Component {
           <div className="CompaniesAndOther">
             {this.props.accountInfo?.profile?.role && (
               <div className="Favorites">
-                {CompaniesFav && Array.isArray(CompaniesFav) ? (
+                {CompaniesFav &&
+                Array.isArray(CompaniesFav) &&
+                CompaniesFav.length >= 1 ? (
                   CompaniesFav.map(
                     (comp) =>
                       Object.keys(comp?.companies) &&
@@ -243,7 +251,7 @@ class DashboardDom extends React.Component {
                           Object.keys(comp.companies[key]).map((id) => (
                             <div
                               key={id}
-                              onClick={() => {
+                              onClick={(e) => {
                                 this.setState({
                                   categoriesFavTypeSelected: comp.key,
                                 });
@@ -263,7 +271,7 @@ class DashboardDom extends React.Component {
                       )
                   )
                 ) : (
-                  <div className="NF">No Favourites</div>
+                  <div className="NF">No Preferiti</div>
                 )}
               </div>
             )}
@@ -295,79 +303,106 @@ class DashboardDom extends React.Component {
                           "super_admin" ? (
                           <div
                             key={key + i}
-                            onClick={() => {
-                              if (!this.props.accountInfo?.profile?.role) {
-                                message.info("Per favore fai prima il log in.");
-                              } else {
-                                this.changeServce(
-                                  key,
-                                  comp[key].services,
-                                  comp[key].name
-                                );
-                                this.togglePopUp(true);
-                                this.setState({
-                                  Services: comp[key].services,
-                                  serviceSelected: comp[key].services[0],
-                                });
+                            onClick={(e) => {
+                              if (e.target.tagName != "I") {
+                                if (!this.props.accountInfo?.profile?.role) {
+                                  message.info(
+                                    "Per favore fai prima il log in."
+                                  );
+                                } else {
+                                  this.changeServce(
+                                    key,
+                                    comp[key].services,
+                                    comp[key].name
+                                  );
+                                  this.togglePopUp(true);
+                                  this.setState({
+                                    Services: comp[key].services,
+                                    serviceSelected: comp[key].services[0],
+                                  });
+                                }
                               }
                             }}
                           >
                             <img src={images[key]} alt="" />
                             <span> {comp[key].name}</span>
+                            <i
+                              className={`fal fa-star ${
+                                comp[key].favourite ? "favourite" : ""
+                              }`}
+                            ></i>
                           </div>
                         ) : comp[key].services[0].service_id === "BOL001" ? (
                           comp[key].services.map((service) => {
                             return (
                               <div
                                 key={key}
-                                onClick={() => {
-                                  if (!this.props.accountInfo?.profile?.role) {
-                                    message.info(
-                                      "Per favore fai prima il log in."
-                                    );
-                                  } else {
-                                    this.changeServce(
-                                      key,
-                                      comp[key].services,
-                                      comp[key].name,
-                                      "",
-                                      service
-                                    );
-                                    this.togglePopUp(true);
-                                    this.setState({
-                                      Services: comp[key].services,
-                                      serviceSelected: comp[key].services[0],
-                                    });
+                                onClick={(e) => {
+                                  if (e.target.tagName != "I") {
+                                    if (
+                                      !this.props.accountInfo?.profile?.role
+                                    ) {
+                                      message.info(
+                                        "Per favore fai prima il log in."
+                                      );
+                                    } else {
+                                      this.changeServce(
+                                        key,
+                                        comp[key].services,
+                                        comp[key].name,
+                                        "",
+                                        service
+                                      );
+                                      this.togglePopUp(true);
+                                      this.setState({
+                                        Services: comp[key].services,
+                                        serviceSelected: comp[key].services[0],
+                                      });
+                                    }
                                   }
                                 }}
                               >
                                 <img src={images[key]} alt="" />
                                 <span> {service.name}</span>
+                                <i
+                                  className={`fal fa-star ${
+                                    comp[key].favourite ? "favourite" : ""
+                                  }`}
+                                ></i>
                               </div>
                             );
                           })
                         ) : comp[key].services[0].service_id != "BGM001" ? (
                           <div
                             key={key}
-                            onClick={() => {
-                              if (!this.props.accountInfo?.profile?.role) {
-                                message.info("Per favore fai prima il log in.");
-                              } else {
-                                this.changeServce(
-                                  key,
-                                  comp[key].services,
-                                  comp[key].name
-                                );
-                                this.togglePopUp(true);
-                                this.setState({
-                                  Services: comp[key].services,
-                                  serviceSelected: comp[key].services[0],
-                                });
+                            onClick={(e) => {
+                              if (e.target.tagName != "I") {
+                                if (!this.props.accountInfo?.profile?.role) {
+                                  message.info(
+                                    "Per favore fai prima il log in."
+                                  );
+                                } else {
+                                  this.changeServce(
+                                    key,
+                                    comp[key].services,
+                                    comp[key].name
+                                  );
+                                  this.togglePopUp(true);
+                                  this.setState({
+                                    Services: comp[key].services,
+                                    serviceSelected: comp[key].services[0],
+                                  });
+                                }
                               }
                             }}
                           >
                             <img src={images[key]} alt="" />
                             <span> {comp[key].name}</span>
+                            <i
+                              className={`fal fa-star ${
+                                comp[key].favourite ? "favourite" : ""
+                              }`}
+                            ></i>
                           </div>
                         ) : null
                       )

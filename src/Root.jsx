@@ -261,7 +261,7 @@ class Root extends React.Component {
               path="/support"
               component={Support}
               isLoggedin={isLoggedin}
-              allowedRoles={["support"]}
+              allowedRoles={["support", "main_admin"]}
               role={role}
             />
             <Route
@@ -344,7 +344,7 @@ class Root extends React.Component {
               path="/back-office/support"
               component={adminPanelErrorList}
               isLoggedin={isLoggedin}
-              allowedRoles={["support"]}
+              allowedRoles={["support", "main_admin"]}
               role={role}
             />
             <PrivateRoute

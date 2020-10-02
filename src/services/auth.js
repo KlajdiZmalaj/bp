@@ -623,7 +623,7 @@ export const fetchSkinExtras = () => {
     })
     .catch((error) => ({ error }));
 };
-export const fetchErrors = () => {
+export const fetchErrors = (limit, page_number) => {
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -636,6 +636,8 @@ export const fetchErrors = () => {
     .get(`/errors`, {
       params: {
         ...skin,
+        ...(limit ? { limit } : {}),
+        ...(page_number ? { page_number } : {}),
       },
     })
     .catch((error) => ({ error }));

@@ -66,7 +66,7 @@ class Step1 extends React.Component {
         step1: {},
         skinId: -1,
         skinName: null,
-        skinPannel: true,
+        skinPannel: false,
         stepNumber: 0,
       });
     }

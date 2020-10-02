@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
-const Step0 = ({ skinList, addEditSkinDetails, addEditSkin }) => {
+const Step0 = ({ skinList, addEditSkinDetails, addEditSkin, getSkins }) => {
+  useEffect(() => {
+    getSkins();
+  }, []);
   return (
     <div className="AdminLogin--LoginForm">
       <div

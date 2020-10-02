@@ -67,7 +67,7 @@ export function* signInByEmail(credencials) {
       yield put(AuthActions.setAccountInfo(response.data));
       credencials.c(response.data.profile);
     }
-    if (response.error) {
+    if (response?.error) {
       yield put(AuthActions.setLoginMsg(response.error.response.data.message));
       yield delay(4000);
       yield put(AuthActions.setLoginMsg(""));
@@ -85,7 +85,7 @@ export function* getAgents(params) {
   if (response.data) {
     yield put(AuthActions.setAgents(response.data.agents));
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -131,7 +131,7 @@ export function* getBolletiniBianchi(params) {
     if (response.data) {
       yield put(AuthActions.setBolletiniBianchi(response.data));
       params.clearFields();
-    } else if (response.error) {
+    } else if (response?.error) {
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniBianchi(error));
@@ -194,7 +194,7 @@ export function* getBolletiniPremercati(params) {
     if (response.data) {
       yield put(AuthActions.setBolletiniPremercati(response.data));
       params.clearFields();
-    } else if (response.error) {
+    } else if (response?.error) {
       if (response.error.response.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniPremercati(error));
@@ -258,7 +258,7 @@ export function* getPaymentsForExcel(params) {
       if (response.data) {
         yield put(AuthActions.setPaymentsForExcel(response.data.transactions));
       }
-    } else if (response.error) {
+    } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
         localStorage.getItem("accountDataB") != null
@@ -309,7 +309,7 @@ export function* getPayments(params) {
           yield put(MainActions.setOverviewDashboard(response.data.balance));
         }
       }
-    } else if (response.error) {
+    } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
         localStorage.getItem("accountDataB") != null
@@ -356,7 +356,7 @@ export function* getRechargeMobile(params) {
         yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setRechargeMobile(response.data));
-    } else if (response.error) {
+    } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
         localStorage.getItem("accountDataB") != null
@@ -422,7 +422,7 @@ export function* getPostePay(params) {
       }
       yield put(AuthActions.setPostePay(response.data));
       params.clearFields();
-    } else if (response.error) {
+    } else if (response?.error) {
       if (response.error.response && response.error.response.status === 401) {
         const response = yield call(logoutApi);
         if (response) {
@@ -525,7 +525,7 @@ export function* getRegister(params) {
     yield put(AuthActions.setRegister(response.data));
     yield delay(6000);
     yield put(AuthActions.setRegister({}));
-  } else if (response.error) {
+  } else if (response?.error) {
     yield put(AuthActions.setRegister(response.error.response.data));
   }
 }
@@ -683,7 +683,7 @@ export function* updateUserDetail(data) {
     }
     data.resetState();
   }
-  if (response.error) {
+  if (response?.error) {
     notification["error"]({
       message: response.error.response.data.message,
       description: [
@@ -707,13 +707,20 @@ export function* getSkinExtras() {
   }
   // console.log("response skin extras", response);
 }
-export function* getErrors() {
-  const response = yield call(fetchErrors);
+export function* getErrors({ limit, page_number }) {
+  yield put(AuthActions.setErrorsLoading(true));
+  const response = yield call(fetchErrors, limit, page_number);
   if (response.data) {
     if (response.status === 200) {
-      yield put(AuthActions.setErrors(response.data?.errors));
+      yield put(
+        AuthActions.setErrors({
+          errors: response.data?.errors,
+          total_pages: response.data?.total_pages,
+        })
+      );
     }
   }
+  yield put(AuthActions.setErrorsLoading(false));
   // console.log("fetchErrors", response);
 }
 export function* deleteError(data) {
@@ -764,7 +771,7 @@ export function* sendDataForm(data) {
       msg: response?.data.message,
     });
   }
-  if (response.error) {
+  if (response?.error) {
     data.callBack({
       error: true,
       msg: [
@@ -870,7 +877,7 @@ export function* updateDataForm(data) {
       yield put(AuthActions.setAccountInfo({}));
     }
   }
-  if (response.error) {
+  if (response?.error) {
     data.callBack({
       error: true,
       msg: [
@@ -909,7 +916,7 @@ export function* sendVisureDetails(data) {
       msg: response?.data.message,
     });
   }
-  if (response.error) {
+  if (response?.error) {
     data.callBack({
       error: true,
       msg: [
@@ -970,7 +977,7 @@ export function* updateVisura(data) {
       msg: response?.data.message,
     });
   }
-  if (response.error) {
+  if (response?.error) {
     data.callBack({
       error: true,
       msg: [
@@ -990,7 +997,7 @@ export function* getAgentByUserId(data) {
       yield put(AuthActions.setUserDetail(response.data.user));
     }
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1011,7 +1018,7 @@ export function* getUserByUserId(data) {
       yield put(AuthActions.setUserDetail(response.data.user));
     }
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1032,7 +1039,7 @@ export function* getSkins() {
       yield put(AuthActions.setSkins(response.data.users));
     }
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1057,7 +1064,7 @@ export function* getFaturaDetails(params) {
       yield put(AuthActions.setFaturaDetails(response.data));
     }
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1078,7 +1085,7 @@ export function* getAllServices({ skin_id }) {
       yield put(AuthActions.setAllServices(response.data.result));
     }
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1125,7 +1132,7 @@ export function* getAllFaturaBySearch({
     }
     yield put(AuthActions.setFatturaLoading(false));
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1150,13 +1157,12 @@ export function* sendMailFattura({ file_name }) {
 }
 export function* AddSkinNew({ name, url, email, agency_rent }) {
   const response = yield call(AddSkinReq, name, url, email, agency_rent);
-
-  if (response) {
+  if (response?.data) {
     // console.log(response.data.skin_id);
     yield put(AuthActions.setSkinId(response.data.skin_id));
     yield put(AuthActions.registerSkinSucc({ addSkinSucc: true }));
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1174,7 +1180,7 @@ export function* getWidgetPayments({ skin_id }) {
   if (response.data) {
     yield put(AuthActions.setWidgetPayments(response.data.payments));
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1238,8 +1244,12 @@ export function* AddSuperAdmin({
   );
   if (response) {
     yield call(c);
+    notification["success"]({
+      message: "Azione completata",
+      description: response.data.message,
+    });
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1296,7 +1306,7 @@ export function* AddExtraData({
   if (response) {
     yield put(AuthActions.registerSkinSucc({ addExtraDataSucc: true }));
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1314,7 +1324,7 @@ export function* getStatistiche(params) {
   if (response) {
     yield put(AuthActions.setStatistiche(response.data));
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1339,7 +1349,7 @@ export function* UpdateServiceChangeStatus(params) {
   if (response) {
     yield call(params.c);
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
@@ -1374,7 +1384,7 @@ export function* getBgameVoucherReq(params) {
         yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setRechargeMobile(response.data));
-    } else if (response.error) {
+    } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
         localStorage.getItem("accountDataB") != null
@@ -1416,7 +1426,7 @@ export function* getStatisticheMain() {
       })
     );
   }
-  if (response.error) {
+  if (response?.error) {
     if (
       response.error.response.status === 401 &&
       localStorage.getItem("accountDataB") != null
