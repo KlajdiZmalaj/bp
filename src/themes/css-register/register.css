@@ -832,6 +832,12 @@
   padding-left: 14px;
 }
 
+.newReg .ant-checkbox-wrapper span:nth-child(2):not(.ant-checkbox-inner) {
+  width: 100%;
+  padding: 0;
+  padding-left: 4px;
+}
+
 .newReg .ant-input,
 .newReg .ant-select-selection,
 .newReg .Select-control {

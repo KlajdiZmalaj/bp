@@ -148,19 +148,7 @@ class SingleUser2 extends Component {
               >
                 Deposit
               </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  this.props.setDepositoPopup({
-                    val: "withdraw",
-                    data: user,
-                    visibility: true,
-                  });
-                }}
-              >
-                Addebito
-              </button>
+
               {user.status == 1 ? (
                 <i
                   className="fal fa-lock-open"

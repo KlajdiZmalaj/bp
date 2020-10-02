@@ -103,6 +103,7 @@
         overflow: auto;
         flex-direction: row;
         margin-bottom: 15px;
+
         &::-webkit-scrollbar {
           width: 0;
           height: 4px;
@@ -121,9 +122,33 @@
           align-items: center;
           font-size: 14px;
           font-weight: 500;
+          position: relative;
           font-family: "Roboto";
           margin-right: 2px;
           cursor: pointer;
+          i {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 21%;
+            height: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 17px;
+            transition: 0.2s;
+            color: #0000004d;
+            &.favourite {
+              color: #ffc107;
+              font-weight: bold;
+              transition: 0.2s;
+              &:hover {
+                color: #0000004d;
+                font-weight: 400;
+                transition: 0.2s;
+              }
+            }
+          }
           &.NF {
             width: 100%;
             width: 100%;
@@ -134,8 +159,9 @@
             cursor: unset;
           }
           img {
-            height: 60px;
-            width: 80px;
+            height: 50px;
+            width: 70px;
+            margin-bottom: 12px;
             object-fit: contain;
           }
         }
@@ -209,22 +235,33 @@
               position: absolute;
               top: 0;
               right: 0;
-              width: 18%;
-              height: 18%;
+              width: 21%;
+              height: 25%;
               display: flex;
               justify-content: center;
               align-items: center;
-              transition: 0.5s;
-              &.favourite {
-                color: var(--accent-bg);
+              transition: 0.2s;
+              color: #0000004d;
+              font-size: 17px;
+              &.hover {
+                color: #ffc107;
                 font-weight: bold;
-                transition: 0.5s;
+              }
+              &.favourite {
+                color: #ffc107;
+                font-weight: bold;
+                transition: 0.2s;
+                &:hover {
+                  font-weight: 400;
+                  color: #0000004d;
+                  transition: 0.2s;
+                }
               }
             }
             img {
-              height: 60px;
-              width: 80px;
-              margin-bottom: 12px;
+              height: 50px;
+              width: 70px;
+              margin-bottom: 20px;
               object-fit: contain;
             }
           }

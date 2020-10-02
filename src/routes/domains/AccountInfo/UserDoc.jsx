@@ -22,12 +22,7 @@ class UserDoc extends Component {
     const { isPopUpOpen } = this.state;
     return (
       <React.Fragment>
-        <div
-          className="userList--Doc__user"
-          onClick={() => {
-            this.setPopUp();
-          }}
-        >
+        <div className="userList--Doc__user">
           <div className="body">
             <span>{user.id}</span>
             <span>{user.name}</span>
@@ -35,6 +30,14 @@ class UserDoc extends Component {
             <span>{user.created_at}</span>
             <span>{user.city}</span>
             <span>{user.comune_code}</span>
+            <span
+              className="seeMore"
+              onClick={() => {
+                this.setPopUp();
+              }}
+            >
+              <i class="fal fa-eye"></i>
+            </span>
           </div>
         </div>
         {isPopUpOpen && (

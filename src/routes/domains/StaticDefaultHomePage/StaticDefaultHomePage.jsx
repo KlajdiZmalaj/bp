@@ -13,6 +13,9 @@ const Card = ({ imageUrl, Title, Info }) => (
 class StaticDefaultHomePage extends React.Component {
   render() {
     const { skinExtras } = this.props;
+    const skinLink = skinExtras.link3
+      ? skinExtras.link3.replace("https://", "")
+      : "";
     const SkinName = skinExtras.name;
     return (
       <div className="Container">
@@ -31,18 +34,23 @@ class StaticDefaultHomePage extends React.Component {
           <div className="SDHome--Cards">
             <Card
               Title={"SERVIZI POSTALI"}
-              Info={`Con ${SkinName} puoi pagare in totale sicurezza tutti i bollettini postali bianchi e premarcati, MAV, RAV, Bollo Auto, etc. Al termine dell’operazione sarà rilasciata una ricevuta dell’avvenuto pagamento.`}
+              Info={`Con ${skinLink} puoi pagare in totale sicurezza tutti i bollettini postali, MAV, RAV, Bollo
+              Auto, F24, PagoPa, etc. Al termine dell’operazione sarà rilasciata una ricevuta
+              dell’avvenuto pagamento.`}
               imageUrl={images["SER_POS"]}
             />
             <Card
               Title={"RICARICHE CELLULARI"}
-              Info={`Ricarica il tuo cellulare nel ${SkinName} più vicino a te, potrai eseguire queste operazioni anche direttamente dal tuo conto direttamente Online. Eroghiamo tutti i tagli di ricarica dei gestori di telefonia mobile tradizionali. Per ricaricare è necessario comunicare il gestore, l’importo della ricarica e il numero di telefono da ricaricare. Bastano un paio di click per eseguire queste operazioni.`}
+              Info={`Ricarica il tuo cellulare nel ${skinLink} più vicino a te o anche direttamente dal tuo conto
+              online. Eroghiamo tutti i tagli di ricarica dei gestori di telefonia mobile tradizionali.
+              Bastano un paio di click per eseguire queste operazioni, communicare il gestore e
+              l’importo.`}
               imageUrl={images["RIC_CEL"]}
             />
             <Card
-              Title={"RICARICHE PVR"}
-              Info={`Ricaricare somme di denaro su un conto gioco, a prescindere dal bookmaker sul quale si è iscritti, è molto semplice. Si potranno effettuare le ricariche dei conti gioco dei più importanti siti di giochi e scommesse online. Al termine dell’operazione, dietro pagamento in contanti al punto vendita, sarà rilasciata una ricevuta con il codice voucher per eseguire la ricarica del tuo conto gioco.`}
-              imageUrl={images["RIC_PVR"]}
+              Title={"RICARICHE TELEVISIONI DIGITALI"}
+              Info={`Nei punti ${SkinName} si possono ricaricare le tessere Sky, Sat+, Dazn, Mediaset Premium. Per le piattaforme che distribuiscono via internet, film, serie tv e altri contenuti multimendiali, come Netlix, Prime Video, etc, offriamo la possibilità di ricariche dei conti.`}
+              imageUrl={images["RIC_DIG"]}
             />
 
             <Card
@@ -57,23 +65,34 @@ class StaticDefaultHomePage extends React.Component {
             />
             <Card
               Title={"PRENOTAZIONE BIGLIETTI EVENTI"}
-              Info={`Grazie al nuovo servizio offerto dai support ${SkinName} si creano nuove opportunità di business nella nostra piattaforma. Il servizio che consente alle nostre agenzie la possibilità di proporre alla clientela il servizio di prenotazione di treni, bus, aerei, nazionali ed internazionali. Questi servizi travel vi ampliaeranno i servizi offerti alla clientela incrementando così i guadagni e migliorando la visibilità della vostro punto.`}
+              Info={`Nei ${skinLink} è attivo il servizio biglietteria eventi su prenotazione.
+              Si potranno acquistare all'interno dei nostri punti: biglietti per eventi sportivi, nazionali
+              ed internazionali ed i biglietti dei più importanti concerti, eventi culturali e teatrali sul
+              territorio italiano.           
+              `}
               imageUrl={images["PRE_EVE"]}
             />
 
             <Card
               Title={"ACQUISTI ONLINE"}
-              Info={`I Vostri clienti possono prenotare un prodotto e pagare direttamente nelle agenzie, usufruendo del servizio di acquisti online. I clienti potranno ritirare il prodotto direttamente nel punto ${SkinName}. Il servizio è usufruibile su qualsiasi sito e-commerce online con la possibilità di guadagnare una commissione su ogni prenotazione.`}
+              Info={`I Vostri clienti possono prenotare qualunque prodotto online e pagare direttamente nelle
+              agenzie dove i potranno anche ritirare il prodotto quando più comoo per loro.
+              Il servizio è usufruibile su qualsiasi sito e-commerce online con la possibilità di
+              guadagnare una commissione su ogni prenotazione.`}
               imageUrl={images["ACQ_ONL"]}
             />
+
             <Card
-              Title={"RICARICHE TELEVISIONI DIGITALI"}
-              Info={`Nei punti ${SkinName} si possono ricaricare le tessere Sky, Sat+, Dazn, Mediaset Premium. Per le piattaforme che distribuiscono via internet, film, serie tv e altri contenuti multimendiali, come Netlix, Prime Video, etc, offriamo la possibilità di ricariche dei conti.`}
-              imageUrl={images["RIC_DIG"]}
-            />
-            <Card
-              Title={"GIFT CARD"}
-              Info={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer`}
+              Title={"NOLEGGIO AUTO"}
+              Info={`Con il servizio puoi offrire alla tua clientela, noleggio auto a lungo termine, moto o veicoli
+              commerciali. Il canone include RCA, Bollo, assicurazione furto e incendio, copertura
+              danni al veicolo, manutenzione ordinaria e straordinaria, traino e soccorso stradale H24
+              e gestione sinistri.
+              Scopri tutti i veicoli disponibili tra automobili, motorini, moto e veicoli commerciali: le
+              proposte hanno una durata da 12 a 60 mesi, i canoni proposti dai nostri broker, sono
+              calcolati con anticipo e senza anticipo e sono tra i più vantaggiosi offerti oggi dal
+              mercato. Richiedi un preventivo personalizzato per i tuoi clienti guadagnando ad
+              contratto chiuso.`}
               imageUrl={images["GIF_CAR"]}
             />
             <Card
@@ -82,14 +101,26 @@ class StaticDefaultHomePage extends React.Component {
               imageUrl={images["SPE_DIZ"]}
             />
             <Card
-              Title={"CRYPTO VALUTE"}
-              Info={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer`}
+              Title={"VISURE"}
+              Info={`Scarica in pochi secondi Visure e Certificati rilasciati dagli Uffici Pubblici, accedi a Camera di
+              Commercio, Catasto, Conservatoria, Tribunale, Anagrafe e Pra. Potrai chiedere qualsiasi
+              documento in modo Veloce, Semplice e Sicuro.`}
               imageUrl={images["CRY_VAL"]}
             />
             <Card
-              Title={"ALTRI SERVIZI"}
-              Info={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer`}
+              Title={"AVOCATO ONLINE"}
+              Info={`Nella gamma dei servizi offerti da ${SkinName}, si aggiunge l'Assistenza Legale. Per qualsiasi
+              controversia come Divorzio, Regolamentazione mantenimento e affidamento figli e
+              genitori non sposati, Sfratto, Vittime della strada, Infortunistica Stradale, cancellazione
+              protesti (gratis per Agenzie Affiliate), rimborso della cessione del quinto, Malasanità,
+              Cartelle Equitalia, Anatocismo Bancario, etc potrai richiedere online la consulenza e
+              offrirla ai tuoi utenti con dei prezzi concorrenziali e un servizio di qualità.`}
               imageUrl={images["ALT_SER"]}
+            />
+            <Card
+              Title={"RICARICHE PVR"}
+              Info={`Ricaricare somme di denaro su un conto gioco, a prescindere dal bookmaker sul quale si è iscritti, è molto semplice. Si potranno effettuare le ricariche dei conti gioco dei più importanti siti di giochi e scommesse online. Al termine dell’operazione, dietro pagamento in contanti al punto vendita, sarà rilasciata una ricevuta con il codice voucher per eseguire la ricarica del tuo conto gioco.`}
+              imageUrl={images["RIC_PVR"]}
             />
           </div>
         </div>

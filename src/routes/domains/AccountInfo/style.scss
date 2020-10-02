@@ -121,7 +121,7 @@
       font-size: 14px;
       text-transform: capitalize;
       &:nth-child(1) {
-        width: 40%;
+        width: 60%;
       }
       &:nth-child(2) {
         width: 90%;
@@ -129,8 +129,11 @@
       &:nth-child(3) {
         width: 150%;
       }
-      &:last-child {
+      &:last-child:not(.seeMore) {
         width: 120%;
+      }
+      &:last-child.seeMore {
+        width: 45%;
       }
       @media (max-width: 1024px) {
         text-transform: capitalize;
@@ -207,7 +210,14 @@
           &:nth-child(3) {
             width: 150%;
           }
-          &:last-child {
+          &:last-child.seeMore {
+            width: 45%;
+            i {
+              display: flex;
+              align-items: center;
+            }
+          }
+          &:last-child:not(.seeMore) {
             width: 120%;
             display: flex;
             align-items: center;
