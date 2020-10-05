@@ -1,0 +1,445 @@
+.Bolletini {
+  width: 870px;
+  height: 732px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Bolletini-Header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 68px;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ebeced;
+  padding: 0 20px;
+  padding-right: 25px;
+}
+
+.Bolletini-Header span {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Lato";
+  color: var(--accent-bg);
+}
+
+.Bolletini-Header img {
+  width: 60px;
+  height: 38px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.Bolletini-Form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.Bolletini-Form form {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  overflow: auto;
+}
+
+.Bolletini-Form form .Left,
+.Bolletini-Form form .Right {
+  width: 50%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #fff;
+  padding: 12px 25px;
+}
+
+.Bolletini-Form form .Left {
+  border-right: 1px solid #ebeced;
+}
+
+.Bolletini-Form form .Condizioni {
+  height: 245px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Bolletini-Form form .Condizioni .contitions-boll,
+.Bolletini-Form form .Condizioni .euroboll {
+  border: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.Bolletini-Form form .Condizioni .contitions-boll {
+  padding: 10px 5px;
+}
+
+.Bolletini-Form form .Condizioni .contitions-boll p {
+  font-size: 11px;
+  font-weight: 400;
+  font-family: "Roboto";
+  color: #32424e;
+}
+
+.Bolletini-Form form .Condizioni .ant-checkbox-wrapper {
+  height: 65px;
+  border: 1px solid #ebeced;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15px;
+}
+
+.Bolletini-Form form .Condizioni .ant-checkbox-wrapper span:not(.ant-checkbox):not(.ant-checkbox-inner) {
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 12px;
+  font-family: "Roboto";
+  color: #6c6c6c;
+}
+
+.Bolletini-Form form .Condizioni .col-12 {
+  height: 145px;
+  min-height: 145px;
+  max-height: 145px;
+  overflow: auto;
+  border: 1px solid #ebeced;
+}
+
+.Bolletini-Form form .Condizioni .col-12::-webkit-scrollbar-thumb {
+  background: #585858;
+}
+
+.Bolletini-Form form .Condizioni.control {
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background: #ebeced;
+  padding: 0 15px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 35px;
+  cursor: pointer;
+}
+
+.Bolletini-Form form .Condizioni.control span {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Roboto";
+  color: #5c5c5c;
+}
+
+.Bolletini-Form form .Condizioni.control i {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.Bolletini-Form form .Actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 78px;
+  margin-top: 33px;
+}
+
+.Bolletini-Form form .Actions .Actions--Item {
+  width: 25%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #ebeced;
+  cursor: pointer;
+}
+
+.Bolletini-Form form .Actions .Actions--Item:first-child {
+  border-bottom: 2px solid #00b850;
+}
+
+.Bolletini-Form form .Actions .Actions--Item:nth-child(2) {
+  border-bottom: 2px solid #0088bb;
+}
+
+.Bolletini-Form form .Actions .Actions--Item:nth-child(3) {
+  border-bottom: 2px solid #ffaa00;
+}
+
+.Bolletini-Form form .Actions .Actions--Item:last-child {
+  border-bottom: 2px solid #ff3400;
+}
+
+.Bolletini-Form form .Actions .Actions--Item h3 {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+  color: #040505;
+  width: 100%;
+  height: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  text-transform: uppercase;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  top: 5px;
+}
+
+.Bolletini-Form form .Actions .Actions--Item p {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 400;
+  color: #040505;
+  width: 100%;
+  height: 19px;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.Bolletini-Form form .Actions .Actions--Item img {
+  width: 25.3px;
+  height: 19px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+
+.Bolletini-Form form div.InputItem {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 13.5px;
+  position: relative;
+}
+
+.Bolletini-Form form div.InputItem span:first-child {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Roboto";
+  height: 18px;
+}
+
+.Bolletini-Form form div.InputItem span:first-child .Red {
+  color: #f26521;
+}
+
+.Bolletini-Form form div.InputItem i:not(.ant-select-arrow-icon) {
+  position: absolute;
+  top: 26.5px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  width: 16px;
+  height: 16px;
+  color: #b5b5b5;
+}
+
+.Bolletini-Form form div.InputItem .ant-radio-group {
+  padding: 0 15px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 32px;
+  background: #ebeced;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Bolletini-Form form div.InputItem .ant-radio-wrapper {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Bolletini-Form form div.InputItem .ant-form-explain {
+  top: -6px;
+  position: relative;
+  font-size: 13px;
+}
+
+.Bolletini-Form form div.InputItem input {
+  height: 31px;
+  background: #ebeced;
+  padding-right: 35px;
+  top: -3px;
+  padding-left: 10px;
+  color: #5c5c5c;
+}
+
+.Bolletini-Form form div.InputItem .ant-select-selection--single {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+}
+
+.Bolletini-Form form div.InputItem .ant-select-selection__rendered {
+  height: 32px;
+  line-height: 32px;
+  background: #ebeced;
+  padding-right: 35px;
+  padding-left: 10px;
+  color: #5c5c5c;
+  width: 100%;
+  margin-left: 0;
+}
+
+.Bolletini-Form form div.InputItem .ant-select-selection__rendered span,
+.Bolletini-Form form div.InputItem .ant-select-selection__rendered div {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+}
+
+div.modulePopUP.modulePopUP1 div.module.container-fluid.max-width_modulePopUP {
+  max-width: 870px;
+}
+
+.inpPopUp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.466);
+  padding: 20px;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.inpPopUp.active {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.inpPopUp input {
+  text-align: center;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  border: 1px solid #edeef0;
+  width: 90%;
+}
+/*# sourceMappingURL=newStyl.css.map */

@@ -11,7 +11,7 @@ class Wallet extends Component {
       <div>
         <Header></Header>
         <div className="azcont">
-          <Azioni active="wallet" />
+          <Azioni active="wallet" activeMain="contabilita" />
         </div>
         <WalletBody />
       </div>

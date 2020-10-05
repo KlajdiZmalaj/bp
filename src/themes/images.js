@@ -16,6 +16,11 @@ if (
   skin = 6;
 }
 export default {
+  //pagamanti logo
+  BOLO_AUTO: require(`../assets/images/boloauto.png`),
+  PAGO_PA: require(`../assets/images/pagopa.png`),
+  BOLLETINO: require(`../assets/images/bolletino.png`),
+
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
   //Static home page images
   SER_POS: require(`../assets/images/servizi_postali.png`),

@@ -1,47 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, Input, message, Checkbox, Row } from "antd";
+import { Form, message, Checkbox } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
 import { Select, Radio } from "antd";
-import { get } from "lodash";
+import "./newStyl.css";
+import { BolletiniRightForm, BolletiniLeftForm } from "./BolletiniForms";
 const { Option } = Select;
-const ReturnFormItem = ({
-  name,
-  message,
-  barcodeData,
-  descName,
-  getFieldDecorator,
-  icon,
-  NotInput,
-  placeholder,
-}) => (
-  <div className="InputItem">
-    <span>
-      {descName} <span className="Red">*</span>
-    </span>
-    <Form.Item>
-      {getFieldDecorator(`${name}`, {
-        rules: [
-          {
-            required: message ? true : false,
-            message: message ? `${message}` : "",
-            whitespace: true,
-          },
-        ],
-        initialValue: get(barcodeData, `data.${name}` || ""),
-      })(
-        NotInput ? (
-          NotInput
-        ) : (
-          <Input placeholder={placeholder ? placeholder : name} />
-        )
-      )}
-    </Form.Item>
-    {icon && icon}
-  </div>
-);
+
 class Bolletino extends React.Component {
   state = {
     confirmDirty: false,
@@ -71,7 +38,13 @@ class Bolletino extends React.Component {
       });
     }, 10);
   };
-
+  // BinputHandler = (e) => {
+  //   this.setState({ BinpVal: e.target.value });
+  //   if (this.state.BinpVal.length >= 40) {
+  //     this.props.getBarcodeData(this.state.BinpVal, this.callback);
+  //     // "18000023200682255466120000420832041000000031603896"
+  //   }
+  // };
   clearFields = () => {
     this.props.form.setFieldsValue({
       numero_conto_corrente: "",
@@ -122,6 +95,7 @@ class Bolletino extends React.Component {
           );
         }
       }
+      // console.log("faturaaaa", this.props.service_id, values);
     });
   };
 
@@ -137,8 +111,13 @@ class Bolletino extends React.Component {
   componentDidMount() {}
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcodeData } = this.props;
-    const { barcodeInput, condizioniShow } = this.state;
+    const {
+      bolletiniBianchi,
+      bolletiniPremercati,
+      service,
+      barcodeData,
+    } = this.props;
+    const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
 
     return (
       <div className="Bolletini">
@@ -179,6 +158,14 @@ class Bolletino extends React.Component {
                     numero_conto_corrente: sulCC,
                     tipologia: tipologia,
                   });
+                  // console.log(
+                  //   "ca ka barcode",
+                  //   bartcode,
+                  //   codiceIdf,
+                  //   sulCC,
+                  //   shuma,
+                  //   tipologia
+                  // );
                 }}
                 type="text"
                 id="barcodeInp"
@@ -186,122 +173,13 @@ class Bolletino extends React.Component {
               />
             </div>
             <div className="Left">
-              <ReturnFormItem
-                descName="Scansiona Qui Il Codice A Barre "
-                name="scansiona"
-                message="Please input your importo!"
+              <BolletiniLeftForm
                 barcodeData={barcodeData}
                 getFieldDecorator={getFieldDecorator}
-                placeholder="(per bollettini di tipo 896)"
-                icon={<i className="fal fa-question-circle" />}
-              />
-              <ReturnFormItem
-                descName="Tipo Veicolo"
-                name="tipo_veicolo"
-                message="Please input your tipo veicolo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                NotInput={
-                  <Select defaultValue="Tipo bollettino">
-                    <Select.Option value="Tipo bollettino">
-                      Tipo bollettino
-                    </Select.Option>
-                  </Select>
-                }
-              />
-              <ReturnFormItem
-                descName="Numero Conto Corrente"
-                name="numero_conto_corrente"
-                message="Please input your Numero Conto!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                icon={<i className="fal fa-search" />}
-              />
-              <ReturnFormItem
-                descName="Text"
-                name="text"
-                message="Please input your text!"
-                placeholder="00,00"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Causale"
-                name="casuale"
-                message="Please input your casuale!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Codice Bollettino"
-                name="codice_bolletino"
-                placeholder="Codice bollettino (per tipi 674 e 896)"
-                message="Please input your Codice Bolletino!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Persona"
-                name="persona"
-                message="Please input your persona tipo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                NotInput={
-                  <Radio.Group>
-                    <Radio value="1">Fisica</Radio>
-                    <Radio value="2">Giuridica</Radio>
-                  </Radio.Group>
-                }
-              />
-              <ReturnFormItem
-                descName="Nome "
-                name="nome"
-                message="Please input your Nome!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Cognome "
-                name="cognome"
-                message="Please input your Cognome!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Codice Fiscale "
-                name="codice_fiscale"
-                message="Please input your Codice Fiscale!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                icon={<i className="fal fa-question-circle" />}
               />
             </div>
-            <div className="Left">
-              <ReturnFormItem
-                descName="Indirizzo"
-                name="indirizzo"
-                message="Please input your indirizzo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Città"
-                name="citta"
-                message="Please input your citta!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Email"
-                name="email"
-                message="Please input your importo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Telefono"
-                name="telefono"
-                message="Please input your importo!"
+            <div className="Right">
+              <BolletiniRightForm
                 barcodeData={barcodeData}
                 getFieldDecorator={getFieldDecorator}
               />

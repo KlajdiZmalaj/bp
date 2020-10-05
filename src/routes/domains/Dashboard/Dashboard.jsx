@@ -224,7 +224,7 @@ class DashboardDom extends React.Component {
                       this.ChangeCompanies(cat.name, cat.key);
                       this.setState({ categoryActive: cat.key });
                     }}
-                    key={cat.key}
+                    key={cat?.key ? cat.key : Math.random()}
                   >
                     {cat.name}
                   </div>
@@ -251,7 +251,7 @@ class DashboardDom extends React.Component {
                           Array.isArray(Object.keys(comp.companies[key])) &&
                           Object.keys(comp.companies[key]).map((id) => (
                             <div
-                              key={id}
+                              key={id ? id : Math.random()}
                               onClick={(e) => {
                                 if (e.target.tagName != "I") {
                                   this.setState({
@@ -316,8 +316,8 @@ class DashboardDom extends React.Component {
                         this.props.accountInfo?.profile?.role?.name ===
                           "super_admin" ? (
                           <CompaniesCheck
-                            key={key * Math.random()}
-                            key={key}
+                            key={key ? `${key}${Math.random()}` : Math.random()}
+                            Key={key}
                             changeServce={() => {
                               this.changeServce(
                                 key,
@@ -341,7 +341,9 @@ class DashboardDom extends React.Component {
                           comp[key].services.map((service) => {
                             return (
                               <CompaniesCheck
-                                key={key * Math.random()}
+                                key={
+                                  key ? `${key}${Math.random()}` : Math.random()
+                                }
                                 Key={key}
                                 changeServce={() => {
                                   this.changeServce(
@@ -368,7 +370,11 @@ class DashboardDom extends React.Component {
                           })
                         ) : comp[key].services[0].service_id != "BGM001" ? (
                           <CompaniesCheck
-                            key={key * Math.random()}
+                            key={
+                              key
+                                ? `${key}${comp[key]?.services[0]?.service_id}`
+                                : Math.random()
+                            }
                             Key={key}
                             changeServce={() => {
                               this.changeServce(
