@@ -122,7 +122,7 @@
   min-height: calc(100vh - 210px);
   margin-left: 300px;
   position: relative;
-  top: 7px;
+  margin-top: 219px;
 }
 
 .DContainer .Dashboard.fixed .CompaniesAndOther {
@@ -321,8 +321,8 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 140px 140px 140px 140px 140px;
-      grid-template-rows: 140px 140px 140px 140px 140px;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   min-height: calc(100% - 60px);
   background: #ffffff;
   border-top: 4px solid var(--accent-bg);
@@ -337,7 +337,7 @@
 
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
   padding: 20px 0;
-  height: 140px;
+  height: 100%;
   background: #ffffff;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -412,6 +412,6 @@
 
 .leftCol_Module {
   background: #ffffff;
-  padding: 0 !important;
+  padding: 0;
 }
 /*# sourceMappingURL=Dashboard.css.map */

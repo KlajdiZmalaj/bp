@@ -97,8 +97,8 @@ class DashboardDom extends React.Component {
       let scrollPoint = document
         .querySelector("#SpecStatistich")
         ?.classList?.contains("min")
-        ? 174
-        : 290;
+        ? 386
+        : 486;
       let top =
         (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
       console.log(top);
@@ -252,18 +252,23 @@ class DashboardDom extends React.Component {
                           Object.keys(comp.companies[key]).map((id) => (
                             <div
                               key={id ? id : Math.random()}
-                              onClick={(e) => {
+                              onClick={async (e) => {
                                 if (e.target.tagName != "I") {
-                                  this.setState({
-                                    categoriesFavTypeSelected: comp.key,
-                                  });
-                                  this.changeServce(
-                                    id,
-                                    comp.companies[key][id].services,
-                                    comp.companies[key][id].name,
-                                    "fav"
-                                  );
-                                  this.togglePopUp(true);
+                                  if (id === "BOLL") {
+                                    window.location.hash =
+                                      "dashboard/pagamenti";
+                                  } else {
+                                    this.setState({
+                                      categoriesFavTypeSelected: comp.key,
+                                    });
+                                    this.changeServce(
+                                      id,
+                                      comp.companies[key][id].services,
+                                      comp.companies[key][id].name,
+                                      "fav"
+                                    );
+                                    this.togglePopUp(true);
+                                  }
                                 }
                               }}
                             >
@@ -276,7 +281,7 @@ class DashboardDom extends React.Component {
                                   await setTimeout(() => {
                                     this.props.getFavorites();
                                     this.props.getServices();
-                                  }, 100);
+                                  }, 300);
                                 }}
                                 className={`fal fa-star favourite`}
                               ></i>
@@ -333,6 +338,7 @@ class DashboardDom extends React.Component {
                                 serviceSelected: comp[key].services[0],
                               });
                             }}
+                            favourite={comp[key].favourite}
                             Companie={comp[key]}
                             toggleFavorite={this.props.toggleFavorite}
                             getServices={this.props.getServices}
@@ -363,6 +369,7 @@ class DashboardDom extends React.Component {
                                   });
                                 }}
                                 Companie={service}
+                                favourite={comp[key].favourite}
                                 toggleFavorite={this.props.toggleFavorite}
                                 getServices={this.props.getServices}
                               />
@@ -392,6 +399,7 @@ class DashboardDom extends React.Component {
                               });
                             }}
                             Companie={comp[key]}
+                            favourite={comp[key].favourite}
                             toggleFavorite={this.props.toggleFavorite}
                             getServices={this.props.getServices}
                           />

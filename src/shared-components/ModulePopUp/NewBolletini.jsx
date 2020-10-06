@@ -1,12 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, message, Checkbox } from "antd";
+import { Form, message, Checkbox, notification } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
 import { Select, Radio } from "antd";
 import "./newStyl.css";
 import { BolletiniRightForm, BolletiniLeftForm } from "./BolletiniForms";
+import { BoloAutoLeftForm, BoloAutoRightForm } from "./BoloAutoForms";
+import { PagoPaLeftForm, PagoPaRightForm } from "./PagoPaForms";
+
 const { Option } = Select;
 
 class Bolletino extends React.Component {
@@ -17,7 +20,7 @@ class Bolletino extends React.Component {
     codInd: "",
     data: {},
     condizioniAgreement: true,
-    condizioniShow: true,
+    condizioniShow: false,
   };
   setbarcodeInp = (e) => {
     this.setState({ barcodeInput: e });
@@ -25,11 +28,8 @@ class Bolletino extends React.Component {
   };
   callback = (data) => {
     this.setState({ data });
-    // console.log("callback", data);
     message.success(data.message);
     setTimeout(() => {
-      // console.log("timeout called");
-
       this.props.form.setFieldsValue({
         codice_identificativo: data.data.codice_identificativo,
         importo: data.data.importo,
@@ -47,53 +47,80 @@ class Bolletino extends React.Component {
   // };
   clearFields = () => {
     this.props.form.setFieldsValue({
-      numero_conto_corrente: "",
-      importo: "",
-      codice_identificativo: "",
-      intestato_a: "",
-      eseguito_da: "",
-      causale: "",
+      person_type: "F",
       via_piazza: "",
       cap: "",
       citta: "",
       provincia: "",
-      tipologia: "",
+      importp: "",
+      tipologia: "123",
+      numero_conto_corrente: "",
+      causale: "",
+      nome: "",
+      cognome: "",
+      codice_fiscale: "",
+      denominazione: "",
+      phone_number: "",
+      email: "",
+      importo: "",
+      partita_iva: "",
     });
   };
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
+      if (!err && this.state.condizioniAgreement) {
         if (this.props.service_id === "BOL001") {
-          this.props.getBolletiniBianchi(
+          this.props.fetchBolletini(
             this.props.service_id,
-            values.numero_conto_corrente.toString(),
-            values.importo,
-            values.intestato_a,
-            values.causale,
-            values.eseguito_da,
+            values.person_type.toString(),
             values.via_piazza,
             values.cap,
             values.citta,
             values.provincia,
+            values.importo.toString(),
+            values.tipologia,
+            values.numero_conto_corrente,
+            values.causale,
+            values.nome,
+            values.cognome,
+            values.codice_fiscale,
+            values.denominazione,
+            values.partita_iva,
+            values.email,
+            values.phone_number,
+            null,
             this.clearFields
           );
         }
         if (this.props.service_id === "BOL002") {
-          this.props.getBolletiniPremercati(
+          this.props.fetchBolletini(
             this.props.service_id,
-            values.numero_conto_corrente.toString(),
-            values.importo,
-            values.codice_identificativo.toString(),
-            parseInt(values.tipologia),
-            values.eseguito_da,
+            values.person_type.toString(),
             values.via_piazza,
             values.cap,
             values.citta,
             values.provincia,
+            values.importo.toString(),
+            values.tipologia,
+            values.numero_conto_corrente,
+            values.causale,
+            values.nome,
+            values.cognome,
+            values.codice_fiscale,
+            values.denominazione,
+            values.partita_iva,
+            values.email,
+            values.phone_number,
+            values.codice_identificativo,
             this.clearFields
           );
         }
+      } else {
+        notification["error"]({
+          message: "Ops...",
+          description: "Controlla le tue caselle vuote o accetta le condizioni",
+        });
       }
       // console.log("faturaaaa", this.props.service_id, values);
     });
@@ -111,20 +138,19 @@ class Bolletino extends React.Component {
   componentDidMount() {}
   render() {
     const { getFieldDecorator } = this.props.form;
-    const {
-      bolletiniBianchi,
-      bolletiniPremercati,
-      service,
-      barcodeData,
-    } = this.props;
+    const { barcodeData } = this.props;
     const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
-
+    let bolletoActive = "BOLLETINO";
     return (
-      <div className="Bolletini">
+      <div
+        className={`Bolletini ${
+          this.props.service_id === "BOL002" ? "Big" : ""
+        }`}
+      >
         <div className="Bolletini-Header">
           <span>BOLLETINI</span>
           <span>
-            <img src={images["BOLO_AUTO"]} />
+            <img src={images[bolletoActive]} />
           </span>
         </div>
         <div className="Bolletini-Form">
@@ -158,31 +184,74 @@ class Bolletino extends React.Component {
                     numero_conto_corrente: sulCC,
                     tipologia: tipologia,
                   });
-                  // console.log(
-                  //   "ca ka barcode",
-                  //   bartcode,
-                  //   codiceIdf,
-                  //   sulCC,
-                  //   shuma,
-                  //   tipologia
-                  // );
                 }}
                 type="text"
                 id="barcodeInp"
                 placeholder="barcode"
               />
             </div>
-            <div className="Left">
-              <BolletiniLeftForm
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
+            <div
+              className={`Left ${
+                bolletoActive === "BOLO_AUTO"
+                  ? "BA"
+                  : bolletoActive === "PAGO_PA"
+                  ? "PA"
+                  : ""
+              }`}
+            >
+              {bolletoActive === "BOLO_AUTO" ? (
+                <BoloAutoLeftForm
+                  barcodeData={barcodeData}
+                  getFieldDecorator={getFieldDecorator}
+                  getFieldValue={this.props.form.getFieldValue}
+                />
+              ) : bolletoActive === "PAGO_PA" ? (
+                <PagoPaLeftForm
+                  barcodeData={barcodeData}
+                  getFieldDecorator={getFieldDecorator}
+                  getFieldValue={this.props.form.getFieldValue}
+                />
+              ) : (
+                <BolletiniLeftForm
+                  barcodeData={barcodeData}
+                  getFieldDecorator={getFieldDecorator}
+                  getFieldValue={this.props.form.getFieldValue}
+                  service_id={this.props.service_id}
+                />
+              )}
             </div>
-            <div className="Right">
-              <BolletiniRightForm
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
+            <div
+              className={`Right ${
+                bolletoActive === "BOLO_AUTO"
+                  ? "BA"
+                  : bolletoActive === "PAGO_PA"
+                  ? "PA"
+                  : ""
+              }`}
+            >
+              <div className="Inputs">
+                {bolletoActive === "BOLO_AUTO" ? (
+                  <BoloAutoRightForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                    getFieldValue={this.props.form.getFieldValue}
+                  />
+                ) : bolletoActive === "PAGO_PA" ? (
+                  <PagoPaRightForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                    getFieldValue={this.props.form.getFieldValue}
+                  />
+                ) : (
+                  <BolletiniRightForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                    getFieldValue={this.props.form.getFieldValue}
+                    service_id={this.props.service_id}
+                  />
+                )}
+              </div>
+
               <div className="Condizioni">
                 <div
                   className="Condizioni control"
@@ -205,9 +274,10 @@ class Bolletino extends React.Component {
                 <Checkbox
                   onChange={(e) => {
                     this.setState({
-                      condizioniAgreement: e.target.value,
+                      condizioniAgreement: e.target.checked,
                     });
                   }}
+                  checked={condizioniAgreement}
                 >
                   La persona che hai di fronte non è il intestatario del
                   pagamento del bollo

@@ -80,7 +80,7 @@
       min-height: calc(100vh - 210px);
       margin-left: 300px;
       position: relative;
-      top: 7px;
+      margin-top: 219px;
       .CompaniesAndOther {
         width: 100%;
         max-width: 100%;
@@ -209,7 +209,7 @@
         .Companies {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-          grid-template-rows: 140px 140px 140px 140px 140px;
+          grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
           min-height: calc(100% - 60px);
           background: #ffffff;
           border-top: 4px solid var(--accent-bg);
@@ -218,7 +218,7 @@
           }
           div {
             padding: 20px 0;
-            height: 140px;
+            height: 100%;
             background: #ffffff;
             justify-content: flex-start;
             align-items: center;

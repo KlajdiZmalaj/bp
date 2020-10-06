@@ -11,6 +11,7 @@ const ReturnFormItem = ({
   icon,
   NotInput,
   placeholder,
+  defaultValue,
 }) => (
   <div className="InputItem">
     <span>
@@ -25,7 +26,9 @@ const ReturnFormItem = ({
             whitespace: true,
           },
         ],
-        initialValue: get(barcodeData, `data.${name}` || ""),
+        initialValue: defaultValue
+          ? defaultValue
+          : get(barcodeData, `data.${name}` || ""),
       })(
         NotInput ? (
           NotInput

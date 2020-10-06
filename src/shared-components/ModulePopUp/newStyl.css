@@ -1,6 +1,23 @@
+.BolletiniWrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .Bolletini {
   width: 870px;
-  height: 732px;
+  height: auto;
+  max-height: 100vh;
+  overflow: auto;
+  position: relative;
   background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,7 +79,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: hidden;
 }
 
 .Bolletini-Form form {
@@ -104,7 +120,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 10px;
+  margin-top: 2px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -177,6 +193,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 35px;
+  min-height: 35px;
   cursor: pointer;
 }
 
@@ -201,7 +218,7 @@
           justify-content: space-between;
   width: 100%;
   height: 78px;
-  margin-top: 33px;
+  margin-bottom: 18px;
 }
 
 .Bolletini-Form form .Actions .Actions--Item {
@@ -307,6 +324,10 @@
   position: relative;
 }
 
+.Bolletini-Form form div.InputItem:last-child {
+  margin-bottom: 18px;
+}
+
 .Bolletini-Form form div.InputItem span:first-child {
   font-size: 12px;
   font-weight: 400;
@@ -365,6 +386,16 @@
   font-size: 13px;
 }
 
+.Bolletini-Form form div.InputItem .ant-select.ant-select-enabled {
+  top: -3px;
+  height: 31px;
+  border-radius: 4px;
+}
+
+.Bolletini-Form form div.InputItem .ant-select.ant-select-enabled div {
+  border-radius: 4px;
+}
+
 .Bolletini-Form form div.InputItem input {
   height: 31px;
   background: #ebeced;
@@ -399,6 +430,36 @@
   padding: 0;
   height: 32px;
   line-height: 32px;
+}
+
+.Bolletini-Form form .Right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Bolletini-Form form .Right.BA .InputItem {
+  margin-bottom: 25px;
+}
+
+.Bolletini-Form form .Right.PA .InputItem {
+  margin-bottom: 18px;
+}
+
+.Bolletini-Form form .Left.BA .InputItem {
+  margin-bottom: 25px;
+}
+
+.Bolletini-Form form .Left.PA .InputItem {
+  margin-bottom: 18px;
+}
+
+.Bolletini-Form form .ant-select-selection__placeholder {
+  top: 0;
+  left: 10px;
 }
 
 div.modulePopUP.modulePopUP1 div.module.container-fluid.max-width_modulePopUP {

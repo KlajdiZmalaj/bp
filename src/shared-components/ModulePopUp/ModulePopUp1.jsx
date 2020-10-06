@@ -1,12 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import PrintTicket from "./PrintTicket";
+import PrintTicketSerap from "./PrintTicketSerap";
+
 import Bolletino from "./Bolletino";
 
 class ModulePopUp1 extends React.Component {
   render() {
     const { bolletiniBianchi, service } = this.props;
+    console.log(bolletiniBianchi);
     return (
       <div className="modulePopUP modulePopUP1">
         <div className="module container-fluid max-width_modulePopUP">
@@ -15,9 +18,16 @@ class ModulePopUp1 extends React.Component {
               service={service}
               service_id={service.service_id}
             ></Bolletino>
-            {bolletiniBianchi[0] && bolletiniBianchi[0].receipt && (
-              <PrintTicket arr={bolletiniBianchi}></PrintTicket>
-            )}
+            {bolletiniBianchi &&
+              JSON.stringify(bolletiniBianchi) !== JSON.stringify({}) && (
+                <Fragment>
+                  {bolletiniBianchi?.receipt_type === "base64" ? (
+                    <PrintTicketSerap bolletiniBianchi={bolletiniBianchi} />
+                  ) : (
+                    <PrintTicket arr={bolletiniBianchi}></PrintTicket>
+                  )}
+                </Fragment>
+              )}
           </div>
         </div>
       </div>

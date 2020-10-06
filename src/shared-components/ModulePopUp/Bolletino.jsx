@@ -1,47 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, Input, message, Checkbox, Row } from "antd";
+import { Form, Input, message } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
-import { Select, Radio } from "antd";
+import { Select } from "antd";
 import { get } from "lodash";
 const { Option } = Select;
-const ReturnFormItem = ({
-  name,
-  message,
-  barcodeData,
-  descName,
-  getFieldDecorator,
-  icon,
-  NotInput,
-  placeholder,
-}) => (
-  <div className="InputItem">
-    <span>
-      {descName} <span className="Red">*</span>
-    </span>
-    <Form.Item>
-      {getFieldDecorator(`${name}`, {
-        rules: [
-          {
-            required: message ? true : false,
-            message: message ? `${message}` : "",
-            whitespace: true,
-          },
-        ],
-        initialValue: get(barcodeData, `data.${name}` || ""),
-      })(
-        NotInput ? (
-          NotInput
-        ) : (
-          <Input placeholder={placeholder ? placeholder : name} />
-        )
-      )}
-    </Form.Item>
-    {icon && icon}
-  </div>
-);
 class Bolletino extends React.Component {
   state = {
     confirmDirty: false,
@@ -49,8 +14,6 @@ class Bolletino extends React.Component {
     BinpVal: "",
     codInd: "",
     data: {},
-    condizioniAgreement: true,
-    condizioniShow: true,
   };
   setbarcodeInp = (e) => {
     this.setState({ barcodeInput: e });
@@ -71,7 +34,13 @@ class Bolletino extends React.Component {
       });
     }, 10);
   };
-
+  // BinputHandler = (e) => {
+  //   this.setState({ BinpVal: e.target.value });
+  //   if (this.state.BinpVal.length >= 40) {
+  //     this.props.getBarcodeData(this.state.BinpVal, this.callback);
+  //     // "18000023200682255466120000420832041000000031603896"
+  //   }
+  // };
   clearFields = () => {
     this.props.form.setFieldsValue({
       numero_conto_corrente: "",
@@ -122,6 +91,7 @@ class Bolletino extends React.Component {
           );
         }
       }
+      // console.log("faturaaaa", this.props.service_id, values);
     });
   };
 
@@ -137,252 +107,414 @@ class Bolletino extends React.Component {
   componentDidMount() {}
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcodeData } = this.props;
-    const { barcodeInput, condizioniShow } = this.state;
+    const {
+      bolletiniBianchi,
+      bolletiniPremercati,
+      service,
+      barcodeData,
+    } = this.props;
+    const { barcodeInput } = this.state;
 
+    // console.log("barcodeData", barcodeData);
     return (
-      <div className="Bolletini">
-        <div className="Bolletini-Header">
-          <span>BOLLETINI</span>
-          <span>
-            <img src={images["BOLO_AUTO"]} />
-          </span>
-        </div>
-        <div className="Bolletini-Form">
-          <Form>
-            <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
-              <input
-                onBlur={(e) => {
-                  let bartcode = e.target.value;
-
-                  const counter1 = bartcode.substring(0, 2); //2shifror
-                  const codiceIdf = bartcode.substring(
-                    2,
-                    2 + parseInt(counter1)
-                  );
-                  const counter2 = bartcode.substring(20, 22); //2shifror
-                  const sulCC = bartcode.substring(22, 22 + parseInt(counter2));
-
-                  const counter3 = bartcode.substring(34, 36); //2shifror
-                  const shuma = bartcode.substring(36, 36 + parseInt(counter3));
-
-                  const counter4 = bartcode.substring(46, 47); //1shifror
-                  const tipologia = bartcode.substring(
-                    47,
-                    47 + parseInt(counter4)
-                  );
-                  this.props.form.setFieldsValue({
-                    codice_identificativo: codiceIdf,
-                    importo: (parseFloat(shuma.toString()) / 100)
-                      .toString()
-                      .replace(".", ","),
-                    numero_conto_corrente: sulCC,
-                    tipologia: tipologia,
-                  });
-                }}
-                type="text"
-                id="barcodeInp"
-                placeholder="barcode"
-              />
+      <div className="bolletino">
+        <Form onSubmit={this.handleSubmit}>
+          <div className="col-12 leftCol_Module">
+            <div className="row no-gutters">
+              <div className="col-12 col-lg-6">
+                <table className="_modulePopUP__table">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div>
+                          <img src={images.billDark} alt="" />
+                          <p>{service.name}</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          Servizio attivo tutti i giorni <br />
+                          feriali dalle 8,30 alle 19,30
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-12 col-lg-6">
+                <table className="_modulePopUP__table2">
+                  <tbody>
+                    <tr>
+                      <td
+                        onClick={() => {
+                          if (this.props.accountInfo?.token) {
+                            this.handleSubmit();
+                          } else {
+                            window.location.hash = "login";
+                            this.props.togglePopUp(false);
+                          }
+                        }}
+                        htmltype="submit"
+                      >
+                        <h3>esegui</h3>
+                        <img src={images.checkSymbol} alt="" />
+                      </td>
+                      <td
+                        onClick={() => {
+                          if (barcodeInput) {
+                            this.setbarcodeInp(false);
+                          } else {
+                            this.setbarcodeInp(true);
+                          }
+                        }}
+                      >
+                        <h3>barcode</h3>
+                        <p>
+                          pagemento <br /> differito
+                        </p>
+                      </td>
+                      <td className="stampCup">
+                        <h3>stampa</h3>
+                        <p>
+                          pre <br /> scontrino
+                        </p>
+                      </td>
+                      <td
+                        className="CancelModule"
+                        onClick={() => this.props.togglePopUp(false)}
+                      >
+                        <h3>anulla</h3>
+                        <img src={images.close} alt="" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div className="Left">
-              <ReturnFormItem
-                descName="Scansiona Qui Il Codice A Barre "
-                name="scansiona"
-                message="Please input your importo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                placeholder="(per bollettini di tipo 896)"
-                icon={<i className="fal fa-question-circle" />}
-              />
-              <ReturnFormItem
-                descName="Tipo Veicolo"
-                name="tipo_veicolo"
-                message="Please input your tipo veicolo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                NotInput={
-                  <Select defaultValue="Tipo bollettino">
-                    <Select.Option value="Tipo bollettino">
-                      Tipo bollettino
-                    </Select.Option>
-                  </Select>
-                }
-              />
-              <ReturnFormItem
-                descName="Numero Conto Corrente"
-                name="numero_conto_corrente"
-                message="Please input your Numero Conto!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                icon={<i className="fal fa-search" />}
-              />
-              <ReturnFormItem
-                descName="Text"
-                name="text"
-                message="Please input your text!"
-                placeholder="00,00"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Causale"
-                name="casuale"
-                message="Please input your casuale!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Codice Bollettino"
-                name="codice_bolletino"
-                placeholder="Codice bollettino (per tipi 674 e 896)"
-                message="Please input your Codice Bolletino!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Persona"
-                name="persona"
-                message="Please input your persona tipo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                NotInput={
-                  <Radio.Group>
-                    <Radio value="1">Fisica</Radio>
-                    <Radio value="2">Giuridica</Radio>
-                  </Radio.Group>
-                }
-              />
-              <ReturnFormItem
-                descName="Nome "
-                name="nome"
-                message="Please input your Nome!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Cognome "
-                name="cognome"
-                message="Please input your Cognome!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Codice Fiscale "
-                name="codice_fiscale"
-                message="Please input your Codice Fiscale!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-                icon={<i className="fal fa-question-circle" />}
-              />
-            </div>
-            <div className="Left">
-              <ReturnFormItem
-                descName="Indirizzo"
-                name="indirizzo"
-                message="Please input your indirizzo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Città"
-                name="citta"
-                message="Please input your citta!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Email"
-                name="email"
-                message="Please input your importo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <ReturnFormItem
-                descName="Telefono"
-                name="telefono"
-                message="Please input your importo!"
-                barcodeData={barcodeData}
-                getFieldDecorator={getFieldDecorator}
-              />
-              <div className="Condizioni">
-                <div
-                  className="Condizioni control"
-                  onClick={() => {
-                    this.setState((state) => ({
-                      condizioniShow: !state.condizioniShow,
-                    }));
-                  }}
-                >
-                  <span>Condizioni d' uso</span>
-                  <span>
-                    <i
-                      className={`fal fa-chevron-${
-                        condizioniShow ? "up" : "down"
-                      }`}
-                    ></i>
-                  </span>
-                </div>
-                {condizioniShow && <Condizioni></Condizioni>}
-                <Checkbox
-                  onChange={(e) => {
-                    this.setState({
-                      condizioniAgreement: e.target.value,
+            <div className="row no-gutters _modulePopUP__body">
+              <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
+                <input
+                  onBlur={(e) => {
+                    // this.BinputHandler(e);
+                    let bartcode = e.target.value;
+
+                    const counter1 = bartcode.substring(0, 2); //2shifror
+                    const codiceIdf = bartcode.substring(
+                      2,
+                      2 + parseInt(counter1)
+                    );
+
+                    const counter2 = bartcode.substring(20, 22); //2shifror
+                    const sulCC = bartcode.substring(
+                      22,
+                      22 + parseInt(counter2)
+                    );
+
+                    const counter3 = bartcode.substring(34, 36); //2shifror
+                    const shuma = bartcode.substring(
+                      36,
+                      36 + parseInt(counter3)
+                    );
+
+                    const counter4 = bartcode.substring(46, 47); //1shifror
+                    const tipologia = bartcode.substring(
+                      47,
+                      47 + parseInt(counter4)
+                    );
+                    this.props.form.setFieldsValue({
+                      codice_identificativo: codiceIdf,
+                      importo: (parseFloat(shuma.toString()) / 100)
+                        .toString()
+                        .replace(".", ","),
+                      numero_conto_corrente: sulCC,
+                      tipologia: tipologia,
                     });
+                    // console.log(
+                    //   "ca ka barcode",
+                    //   bartcode,
+                    //   codiceIdf,
+                    //   sulCC,
+                    //   shuma,
+                    //   tipologia
+                    // );
                   }}
-                >
-                  La persona che hai di fronte non è il intestatario del
-                  pagamento del bollo
-                </Checkbox>
+                  type="text"
+                  id="barcodeInp"
+                  placeholder="barcode"
+                />
               </div>
-              <div className="Actions">
-                <div
-                  className="Actions--Item"
-                  onClick={(e) => {
-                    if (this.props.accountInfo?.token) {
-                      this.handleSubmit(e);
-                    } else {
-                      window.location.hash = "login";
-                      this.props.togglePopUp(false);
-                    }
-                  }}
-                  htmltype="submit"
-                >
-                  <h3>esegui</h3>
-                  <img src={images.checkSymbol} alt="" />
-                </div>
-                <div
-                  className="Actions--Item"
-                  onClick={() => {
-                    if (barcodeInput) {
-                      this.setbarcodeInp(false);
-                    } else {
-                      this.setbarcodeInp(true);
-                    }
-                  }}
-                >
-                  <h3>barcode</h3>
-                  <p>
-                    pagemento <br /> differito
-                  </p>
-                </div>
-                <div className="Actions--Item">
-                  <h3>stampa</h3>
-                  <p>
-                    pre <br /> scontrino
-                  </p>
-                </div>
-                <div
-                  className="Actions--Item"
-                  onClick={() => this.props.togglePopUp(false)}
-                >
-                  <h3>anulla</h3>
-                  <img src={images.close} alt="" />
+              <div className="col-12 col-lg-9 ">
+                <h2>CONTI CORRENTI POSTALI - Ricevuta di Accredito</h2>
+              </div>
+              <div className="col-12 col-lg-3">
+                <img className="bacnoPosta" src="img/bancoposta.svg" alt="" />
+              </div>
+              <div className="col-12 col-lg-7">
+                <div className="euroboll">
+                  <img src={images.euro} alt="" />
+                  <span>sul C/C n.</span>{" "}
+                  <Form.Item>
+                    {getFieldDecorator("numero_conto_corrente", {
+                      initialValue:
+                        get(barcodeData, "data.numero_conto_corrente") || "",
+                    })(<Input />)}
+                  </Form.Item>
                 </div>
               </div>
+              <div className="col-12 col-lg-5 mt-2 mt-lg-0">
+                <div className="euroboll">
+                  <span>di Euro</span>{" "}
+                  <Form.Item>
+                    {getFieldDecorator("importo", {
+                      rules: [
+                        {
+                          required: false,
+                          message: "Please input your importo!",
+                          whitespace: true,
+                        },
+                      ],
+                      initialValue: get(barcodeData, "data.importo") || "",
+                    })(<Input />)}
+                  </Form.Item>
+                </div>
+              </div>
+
+              <div className="col-3 ">
+                <div className="euroboll">
+                  {this.props.service_id === "BOL001" ? (
+                    <span>INTESTATO A</span>
+                  ) : (
+                    <span>CODICE identificativo!</span>
+                  )}
+                </div>
+              </div>
+              <div className="col-9 ">
+                <div className="euroboll">
+                  {this.props.service_id === "BOL001" ? (
+                    <Form.Item>
+                      {getFieldDecorator("intestato_a", {
+                        rules: [
+                          {
+                            required: false,
+                            message: "Please input your intestato_a!",
+                            whitespace: true,
+                          },
+                        ],
+                      })(<Input className="py-4 pl-2 mt-2" />)}
+                    </Form.Item>
+                  ) : (
+                    <Form.Item>
+                      {getFieldDecorator("codice_identificativo", {
+                        initialValue:
+                          get(barcodeData, "data.codice_identificativo") || "",
+                      })(<Input className="py-4 pl-2 mt-2" />)}
+                    </Form.Item>
+                  )}
+                </div>
+              </div>
+
+              <div className="col-3 ">
+                <div className="euroboll">
+                  {this.props.service_id === "BOL001" ? (
+                    <span>CASUALE</span>
+                  ) : (
+                    <span>TIPOLOGIA</span>
+                  )}
+                </div>
+              </div>
+              <div className="col-9 ">
+                <div className="euroboll">
+                  {this.props.service_id === "BOL001" ? (
+                    <Form.Item>
+                      {getFieldDecorator("causale", {
+                        rules: [
+                          {
+                            required: false,
+                            message: "Please input  causale!",
+                            whitespace: true,
+                          },
+                        ],
+                      })(<Input className="py-4 pl-2 mt-3" />)}
+                    </Form.Item>
+                  ) : (
+                    <Form.Item>
+                      {getFieldDecorator("tipologia", {
+                        rules: [
+                          {
+                            required: false,
+                            message: "Per favore seleziona tipologia!",
+                          },
+                        ],
+                        initialValue: get(barcodeData, "data.tipologia") || "",
+                      })(
+                        <Select>
+                          <Option value="896">896</Option>
+                          <Option value="674">674</Option>
+                        </Select>
+                      )}
+                    </Form.Item>
+                  )}
+                </div>
+              </div>
+
+              <div className="col-3 ">
+                <div className="euroboll">
+                  <span>ESEGUITO DA</span>
+                </div>
+              </div>
+              <div className="col-9 ">
+                <div className="euroboll">
+                  <Form.Item>
+                    {getFieldDecorator("eseguito_da", {
+                      rules: [
+                        {
+                          required: false,
+                          message: "Please input eseguito_da!",
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input className="py-1 pl-2 mt-3" />)}
+                  </Form.Item>
+                </div>
+              </div>
+
+              <div className="col-3 ">
+                <div className="euroboll">
+                  <span>VIA-PIAZZA</span>
+                </div>
+              </div>
+              <div className="col-9">
+                <div className="euroboll">
+                  <Form.Item>
+                    {getFieldDecorator("via_piazza", {
+                      rules: [
+                        {
+                          required: false,
+                          message: "Please input via_piazza!",
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="col-3 ">
+                <div className="euroboll">
+                  <span>CAP</span>
+                </div>
+              </div>
+              <div className="col-9">
+                <div className="euroboll">
+                  <Form.Item>
+                    {getFieldDecorator("cap", {
+                      rules: [
+                        {
+                          required: false,
+                          message: "Please input cap!",
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="col-3 ">
+                <div className="euroboll">
+                  <span>CITTA</span>
+                </div>
+              </div>
+              <div className="col-9">
+                <div className="euroboll">
+                  <Form.Item>
+                    {getFieldDecorator("citta", {
+                      rules: [
+                        {
+                          required: false,
+                          message: "Please input citta!",
+                          whitespace: true,
+                        },
+                      ],
+                    })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="col-3 ">
+                <div className="euroboll">
+                  <span>PROVINCIA</span>
+                </div>
+              </div>
+              <div className="col-9">
+                <div className="euroboll">
+                  <Form.Item>
+                    {getFieldDecorator("provincia", {
+                      rules: [
+                        {
+                          required: false,
+                          message: "Please input provincia!",
+                          whitespace: true,
+                          maxLength: 2,
+                        },
+                      ],
+                    })(<Input className="py-1 pl-2 mt-3 mb-3" />)}
+                  </Form.Item>
+                </div>
+              </div>
+              <div className="col-12">
+                <div className="euroboll">
+                  <span>CONDIZIONI</span>
+                </div>
+              </div>
+              <Condizioni></Condizioni>
             </div>
-          </Form>
-        </div>
+            {(bolletiniBianchi.errors || bolletiniBianchi.message) && (
+              <div className="messages">
+                <div className="closeM" onClick={this.hideAlert}>
+                  chiudi messaggi
+                </div>
+                {bolletiniBianchi.errors &&
+                  Object.keys(bolletiniBianchi.errors).map((item, index) => {
+                    return (
+                      <div className="errorM" key={index}>
+                        <i className="fad fa-exclamation text-danger"></i>
+                        {bolletiniBianchi.errors[item]}
+                      </div>
+                    );
+                  })}
+
+                {bolletiniBianchi.message && (
+                  <div className="infoM">
+                    <i className="fad fa-info text-info"></i>{" "}
+                    {bolletiniBianchi.message}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {(bolletiniPremercati.errors || bolletiniPremercati.message) && (
+              <div className="messages">
+                <div className="closeM" onClick={this.hideAlert}>
+                  chiudi messaggi
+                </div>
+                {bolletiniPremercati.errors &&
+                  Object.keys(bolletiniPremercati.errors).map((item, index) => {
+                    return (
+                      <div className="errorM" key={index}>
+                        <i className="fad fa-exclamation text-danger"></i>
+                        {bolletiniPremercati.errors[item]}
+                      </div>
+                    );
+                  })}
+
+                {bolletiniPremercati.message && (
+                  <div className="infoM">
+                    <i className="fad fa-info text-info"></i>{" "}
+                    {bolletiniPremercati.message}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </Form>
       </div>
     );
   }

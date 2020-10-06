@@ -12,6 +12,7 @@ const CompaniesCheck = ({
   Companie,
   toggleFavorite,
   getServices,
+  favourite,
 }) => {
   console.log(Key);
   return (
@@ -31,22 +32,28 @@ const CompaniesCheck = ({
       <img src={images[Key]} alt="" />
       <span> {Companie.name}</span>
       <i
-        id={`${Key}comp`}
         onMouseEnter={() => {
-          document.querySelector(`#${Key}comp`).classList.add("hover");
+          console.log(document.querySelectorAll(`.${Key}comp`));
+
+          document
+            .querySelectorAll(`.${Key}comp`)
+            .forEach((ClassN) => ClassN.classList.add("hover"));
         }}
         onMouseLeave={() => {
-          document.querySelector(`#${Key}comp`).classList.remove("hover");
+          console.log(document.querySelectorAll(`.${Key}comp`));
+          document
+            .querySelectorAll(`.${Key}comp`)
+            .forEach((ClassN) => ClassN?.classList?.remove("hover"));
         }}
         onClick={async () => {
-          await (Companie.favourite
+          await (favourite
             ? toggleFavorite(Key, "remove")
             : toggleFavorite(Key, "set"));
           await setTimeout(() => {
             getServices();
           }, 100);
         }}
-        className={`fal fa-star ${Companie.favourite ? "favourite" : ""}`}
+        className={`${Key}comp fal fa-star ${favourite ? "favourite" : ""}`}
       ></i>
     </div>
   );

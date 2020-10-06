@@ -379,6 +379,27 @@ const { Types, Creators } = createActions({
     "c",
   ],
   editReportistica: ["ReportisticaDet"],
+  fetchBolletini: [
+    "service_id",
+    "person_type",
+    "via_piazza",
+    "cap",
+    "citta",
+    "provincia",
+    "importo",
+    "tipologia",
+    "numero_conto_corrente",
+    "causale",
+    "nome",
+    "cognome",
+    "codice_fiscale",
+    "denominazione",
+    "partita_iva",
+    "email",
+    "phone_number",
+    "codice_identificativo",
+    "clearFields",
+  ],
 });
 
 export const AuthTypes = Types;

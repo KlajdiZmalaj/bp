@@ -22,7 +22,7 @@ export const BoloAutoLeftForm = ({ barcodeData, getFieldDecorator }) => (
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
       NotInput={
-        <Select defaultValue="Tipo bollettino">
+        <Select placeholder="Tipo bollettino">
           <Select.Option value="Tipo bollettino">Tipo veicolo</Select.Option>
         </Select>
       }
