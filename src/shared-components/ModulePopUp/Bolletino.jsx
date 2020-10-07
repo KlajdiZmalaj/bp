@@ -146,9 +146,9 @@ class Bolletino extends React.Component {
                   <tbody>
                     <tr>
                       <td
-                        onClick={(e) => {
+                        onClick={() => {
                           if (this.props.accountInfo?.token) {
-                            this.handleSubmit(e);
+                            this.handleSubmit();
                           } else {
                             window.location.hash = "login";
                             this.props.togglePopUp(false);

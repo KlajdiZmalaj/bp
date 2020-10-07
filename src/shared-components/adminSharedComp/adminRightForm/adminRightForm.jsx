@@ -39,14 +39,24 @@ class AdminRightForm extends React.Component {
       const Special =
         activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
       if (Special) {
-        getUsers(null, {
-          skin_id: 1,
-        });
+        getUsers(
+          null,
+          {
+            skin_id: 1,
+          },
+          25,
+          1
+        );
       } else {
-        getUsers(null, {
-          skin_id: activeSkinId,
-          backoffice: true,
-        });
+        getUsers(
+          null,
+          {
+            skin_id: activeSkinId,
+            backoffice: true,
+          },
+          25,
+          1
+        );
       }
     }
     if (statisticheDropdownVisibility === true) {

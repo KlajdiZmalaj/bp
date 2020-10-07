@@ -89,6 +89,7 @@ const PostePay = ({
             Object.keys(services["PRDPST"]).map((keyBolletines) => {
               return (
                 keyBolletines !== "name" &&
+                keyBolletines !== "group" &&
                 services["PRDPST"][keyBolletines].services.map((item) => {
                   return (
                     <div

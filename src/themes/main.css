@@ -1895,14 +1895,21 @@ i#private {
 
 .loader {
   position: relative;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   opacity: 1;
   margin: 0 auto;
-  display: block;
   /* transform: scale(1) translateX(-50%); */
   width: 180px;
   margin-top: 100px;
   border-radius: 500px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .paginationWrapper {
@@ -2257,6 +2264,24 @@ input#write {
 html body > div > iframe:nth-child(2) {
   -webkit-transform: scale(0);
           transform: scale(0);
+}
+
+.react-pdf__Page > .react-pdf__Page__svg {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.react-pdf__Page__canvas {
+  margin: 0 auto !important;
 }
 
 /*adm styles*/
@@ -3342,10 +3367,16 @@ span.superSmall {
 }
 
 .qrCodeImg {
-  width: 210px;
+  width: 130px;
   margin: 0 auto;
   display: block;
   pointer-events: none;
+  margin-top: 20px;
+}
+
+svg path,
+svg rect {
+  fill: var(--accent-bg);
 }
 
 /*modules*/

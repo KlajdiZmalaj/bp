@@ -9,7 +9,7 @@ import ConfirmPopup from "shared-components/ConfirmPopup/ConfirmPopup";
 
 class FastCarica extends Component {
   state = {
-    type: "deposit",
+    type: false,
     toDisplayUserDD: false,
     valSearched: "",
     userId: "",
@@ -17,13 +17,14 @@ class FastCarica extends Component {
     amountVal: 0,
     notifyUser: true,
     confirmTranzacionModal: { visibility: false, data: "" },
+    isSearching: false,
   };
   toggleNotify = () => {
     this.setState({ notifyUser: !this.state.notifyUser });
   };
   transferCallback = () => {
     this.setState({ confirmTranzacionModal: { visibility: false, data: "" } });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
 
   setUser = (userId, userName) => {
@@ -89,7 +90,9 @@ class FastCarica extends Component {
       amountVal,
       toDisplayUserDD,
       confirmTranzacionModal,
+      isSearching,
     } = this.state;
+    const { searchedVal } = this.props;
     const allUsers =
       Symbol.iterator in Object(this.props.users) ? [...this.props.users] : [];
     let UsersToSearch = [...new Set(this.returnAllUsers(allUsers))];
@@ -126,7 +129,11 @@ class FastCarica extends Component {
         <div className="switchGr">
           <span
             onClick={() => {
-              this.setType("deposit");
+              if (!type || type === "withdraw") {
+                this.setType("deposit");
+              } else {
+                this.setType(false);
+              }
             }}
             className={`${type === "deposit" ? "active" : ""}`}
           >
@@ -135,103 +142,133 @@ class FastCarica extends Component {
           <span className="or">Or</span>
           <span
             onClick={() => {
-              this.setType("withdraw");
+              if (!type || type === "deposit") {
+                this.setType("withdraw");
+              } else {
+                this.setType(false);
+              }
             }}
             className={`${type === "withdraw" ? "active" : ""}`}
           >
             Preleva
           </span>
         </div>
-        <div className="searchUser">
-          <input
-            type="text"
-            placeholder="Search Username"
-            onClick={() => {
-              this.setState({
-                toDisplayUserDD: true,
-              });
-            }}
-            onChange={(e) => {
-              this.inpHandler(e);
-            }}
-            value={userName}
-          />
-          <i className="fal fa-search"></i>
-          {toDisplayUserDD && (
-            <React.Fragment>
-              <div
-                onClick={this.closeUsersDialog}
-                className="backDrop"
-                style={{
-                  background: "transparent",
-                  zIndex: 1,
-
-                  position: "absolute",
-                  top: "35px",
-                  left: "-100px",
-                  padding: "15px",
-                  width: "200%",
-                  height: "500px",
+        {type && (
+          <>
+            <div className="searchUser">
+              <input
+                type="text"
+                placeholder="Search Username"
+                onClick={() => {
+                  this.setState({
+                    toDisplayUserDD: true,
+                  });
                 }}
-              ></div>
-              <div className="ddUsers" style={{ zIndex: 2 }}>
-                {(UsersToSearch || []).map((user) => {
-                  return (
-                    (user?.username
-                      .toLowerCase()
-                      .includes(valSearched.toLowerCase()) ||
-                      valSearched === "") && (
-                      <span
-                        key={user.id}
-                        onClick={() => {
-                          this.setUser(user.id, user.username);
-                          this.closeUsersDialog();
-                        }}
-                      >
-                        {user.username}
-                      </span>
-                    )
-                  );
-                })}
+                onChange={(e) => {
+                  this.inpHandler(e);
+                }}
+                value={userName}
+              />
+              <i className="fal fa-search"></i>
+              {toDisplayUserDD && (
+                <React.Fragment>
+                  <div
+                    onClick={this.closeUsersDialog}
+                    className="backDrop"
+                    style={{
+                      background: "transparent",
+                      zIndex: 1,
+
+                      position: "absolute",
+                      top: "35px",
+                      left: "-100px",
+                      padding: "15px",
+                      width: "200%",
+                      height: "500px",
+                    }}
+                  ></div>
+                  <div className="ddUsers" style={{ zIndex: 2 }}>
+                    {(UsersToSearch || []).map((user) => {
+                      return (
+                        (user?.username
+                          .toLowerCase()
+                          .includes(valSearched.toLowerCase()) ||
+                          valSearched === "") && (
+                          <span
+                            key={user.id}
+                            onClick={() => {
+                              this.setUser(user.id, user.username);
+                              this.closeUsersDialog();
+                            }}
+                          >
+                            {user.username}
+                          </span>
+                        )
+                      );
+                    })}
+                  </div>
+                </React.Fragment>
+              )}
+            </div>
+            <div className="amountGr">
+              <div className="label">Somma</div>
+              <input
+                type="text"
+                placeholder="0.00€"
+                onChange={(e) => {
+                  this.amountHandler(e);
+                }}
+              />
+            </div>
+            <div className="amountGr" onClick={this.toggleNotify}>
+              <div className="label">Notifica all’user</div>
+              <div>
+                <i
+                  className={
+                    "fal fa-" + (this.state.notifyUser ? "check" : "times")
+                  }
+                  aria-hidden="true"
+                ></i>
               </div>
-            </React.Fragment>
-          )}
-        </div>
-        <div className="amountGr">
-          <div className="label">Somma</div>
-          <input
-            type="text"
-            placeholder="0.00€"
-            onChange={(e) => {
-              this.amountHandler(e);
-            }}
-          />
-        </div>
-        <div className="amountGr" onClick={this.toggleNotify}>
-          <div className="label">Notifica all’user</div>
-          <div>
+            </div>
+            <button
+              className="addFounds"
+              onClick={() => {
+                this.setState({
+                  confirmTranzacionModal: {
+                    visibility: true,
+                    data: { amount: amountVal, type: type, userName: userName },
+                  },
+                });
+                // transferMoney(userId, amountVal, type, this.transferCallback);
+              }}
+            >
+              {type == "deposit" ? "Accredita" : "Preleva"}
+            </button>
+          </>
+        )}
+        {!type && (
+          <div className="filterSearch">
+            {isSearching && (
+              <input
+                className="animated slideInLeft"
+                type="text"
+                value={searchedVal}
+                onChange={(e) => {
+                  this.props.handleSearch(e.target.value || "");
+                }}
+              />
+            )}
+
             <i
-              className={
-                "fal fa-" + (this.state.notifyUser ? "check" : "times")
-              }
+              onClick={() => {
+                this.setState({ isSearching: !isSearching });
+              }}
+              className="fal fa-search"
               aria-hidden="true"
             ></i>
           </div>
-        </div>
-        <button
-          className="addFounds"
-          onClick={() => {
-            this.setState({
-              confirmTranzacionModal: {
-                visibility: true,
-                data: { amount: amountVal, type: type, userName: userName },
-              },
-            });
-            // transferMoney(userId, amountVal, type, this.transferCallback);
-          }}
-        >
-          {type == "deposit" ? "Accredita" : "Preleva"}
-        </button>
+        )}
       </div>
     );
   }

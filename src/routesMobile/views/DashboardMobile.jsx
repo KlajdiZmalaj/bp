@@ -5,6 +5,8 @@ import { subscribeSocketUser, subscribeSocketSupport } from "config/socket.js";
 import { AuthActions, MainActions } from "redux-store/models";
 import { connect } from "react-redux";
 import images from "themes/images";
+import StaticDefaultHomePage from "routes/domains/StaticDefaultHomePage/StaticDefaultHomePage";
+
 const Dashboard = (props) => {
   const [username, handleChangeUsername] = useState("");
   const [password, handleChangePassword] = useState("");
@@ -20,14 +22,25 @@ const Dashboard = (props) => {
     event.preventDefault();
     props.signInByEmail(username, password, socketCall);
   };
+  const loggedIn = props?.accountInfo?.profile?.role?.name;
 
   return (
     <React.Fragment>
-      <div className="dashboardMobile">
-        <Header />
-        <DashboardBody />
-        <Footer />
-      </div>
+      {loggedIn ? (
+        <React.Fragment>
+          <div className="dashboardMobile">
+            <Header />
+            <DashboardBody />
+            <Footer />
+          </div>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Header />
+          <StaticDefaultHomePage />
+          <Footer />
+        </React.Fragment>
+      )}
       {window.location.hash.includes("login") && (
         <>
           <div className="loginPopUp animated slideInUp">
@@ -103,5 +116,7 @@ const Dashboard = (props) => {
     </React.Fragment>
   );
 };
-
-export default connect(null, { ...AuthActions, ...MainActions })(Dashboard);
+const mpstp = (state) => ({
+  accountInfo: state.auth.accountInfo,
+});
+export default connect(mpstp, { ...AuthActions, ...MainActions })(Dashboard);

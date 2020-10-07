@@ -1517,3 +1517,52 @@ export const StatisticheMainReq = () =>
       },
     })
     .catch((error) => ({ error }));
+export const fetchBolletiniRequest = (
+  service_id,
+  person_type,
+  via_piazza,
+  cap,
+  citta,
+  provincia,
+  importo,
+  tipologia,
+  numero_conto_corrente,
+  causale,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  email,
+  phone_number,
+  codice_identificativo
+) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .post(`/sepafin/bollettini`, {
+      service_id,
+      person_type,
+      via_piazza,
+      cap,
+      citta,
+      provincia,
+      importo: importo.toString(),
+      tipologia: parseInt(tipologia),
+      numero_conto_corrente,
+      causale,
+      email,
+      phone_number,
+      ...(codice_identificativo ? { codice_identificativo } : {}),
+      ...(person_type === "F"
+        ? { nome, cognome, codice_fiscale }
+        : { denominazione, partita_iva }),
+      ...skin,
+    })
+    .catch((error) => ({ error }));

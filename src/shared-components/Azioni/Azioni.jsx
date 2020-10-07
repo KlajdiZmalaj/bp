@@ -24,6 +24,9 @@ class Azioni extends Component {
     if (id === "ricariche" && id !== previd) {
       this.setState({ active: { url: `dashboard/${id}` } });
     }
+    if (id === "pagamenti" && id !== previd) {
+      this.setState({ active: { url: `dashboard/${id}` } });
+    }
   }
   render() {
     const {

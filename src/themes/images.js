@@ -16,6 +16,11 @@ if (
   skin = 6;
 }
 export default {
+  //pagamanti logo
+  BOLO_AUTO: require(`../assets/images/boloauto.png`),
+  PAGO_PA: require(`../assets/images/pagopa.png`),
+  BOLLETINO: require(`../assets/images/bolletino.png`),
+
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
   //Static home page images
   SER_POS: require(`../assets/images/servizi_postali.png`),
@@ -173,7 +178,14 @@ export default {
   "stubhub-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
   "stubhub-bg": require(`../assets/images/prenotazioni/stubhub-bg.jpg`),
   "stubhub-card": require(`../assets/images/prenotazioni/stubhub-card.png`),
-  "visure-card": require(`../assets/images/prenotazioni/stubhub-card.png`),
+  "stubhub-mobile": require(`../assets/images/prenotazioni/stubhub-mobile.svg`),
+
+  "visure-logo": require(`../assets/images/prenotazioni/visure-logo.svg`),
+  "visure-card": require(`../assets/images/prenotazioni/visure-card.png`),
+  "shop-online-card": require(`../assets/images/prenotazioni/shop-online-card.png`),
+  "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
+  "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
+
   "stubhub-mobile": require(`../assets/images/prenotazioni/stubhub-mobile.svg`),
 
   // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),

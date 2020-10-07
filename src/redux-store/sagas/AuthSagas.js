@@ -48,6 +48,7 @@ import {
   getStatisticheReq,
   ServiceChangeStatusReq,
   bGameVoucher,
+  fetchBolletiniRequest,
   StatisticheMainReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
@@ -576,10 +577,10 @@ export function* getCodiceTicket(data) {
   const response = yield call(fetchCodice, data.barcode, data.service);
   if (response.status === 200) {
     yield put(AuthActions.setPaymentsFromCode(response.data.payment));
-  } else {
-    yield put(AuthActions.setPaymentsFromCode({}));
   }
-  // console.log("ca ka responseeeee codice", response);
+  if (response.error) {
+    yield put(AuthActions.setPaymentsFromCode(response.error.response.data));
+  }
 }
 export function* getBarcodeData(e) {
   const response = yield call(fetchBarcodeData, e.barcode);
@@ -674,10 +675,6 @@ export function* updateUserDetail(data) {
         message: "Azione completata",
         description: response.data.message,
       });
-      const ress = yield call(fetchUsers);
-      if (ress.data) {
-        yield put(MainActions.setUsers(ress.data.users));
-      }
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
     }
@@ -1437,5 +1434,92 @@ export function* getStatisticheMain() {
         yield put(AuthActions.setAccountInfo({}));
       }
     }
+  }
+}
+export function* fetchBolletini({
+  service_id,
+  person_type,
+  via_piazza,
+  cap,
+  citta,
+  provincia,
+  importo,
+  tipologia,
+  numero_conto_corrente,
+  causale,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  email,
+  phone_number,
+  codice_identificativo,
+  clearFields,
+}) {
+  notification["info"]({
+    key: "PaymentLoading",
+    message: "Attendi finché il pagamento non viene elaborato",
+  });
+  const response = yield call(
+    fetchBolletiniRequest,
+    service_id,
+    person_type,
+    via_piazza,
+    cap,
+    citta,
+    provincia,
+    importo,
+    tipologia,
+    numero_conto_corrente,
+    causale,
+    nome,
+    cognome,
+    codice_fiscale,
+    denominazione,
+    partita_iva,
+    email,
+    phone_number,
+    codice_identificativo
+  );
+  if (response) {
+    if (response.data) {
+      notification.close("PaymentLoading");
+      yield put(AuthActions.setBolletiniBianchi(response.data));
+      clearFields();
+      notification["success"]({
+        message: response.data.message,
+      });
+    } else if (response?.error) {
+      notification.close("PaymentLoading");
+
+      notification["error"]({
+        message: response.error.response.data.message,
+        description: [
+          response.error.response.data.message,
+          response.error.response.data.errors
+            ? Object.values(response.error.response.data.errors)
+            : "error backend",
+        ],
+      });
+      if (
+        response &&
+        response.error &&
+        response.error.response.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+        // const response = yield call(logoutApi);
+      }
+    }
+    notification.close("PaymentLoading");
+
+    // if (params.callBack) {
+    //   params.callBack(false);
+    // }
   }
 }

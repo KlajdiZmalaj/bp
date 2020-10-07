@@ -29,7 +29,7 @@ class PrintTicket extends React.Component {
                     .replace(
                       /<div class='marginB'><\/div>([^>]+)<br\/>/g,
                       "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                    )
+                    ),
                 }}
               />
               <span className="__cupon--body__address">
@@ -104,9 +104,9 @@ class PrintTicket extends React.Component {
   }
 }
 
-const mapsStateToProps = state => ({
+const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
-  service_id: state.auth.service_id
+  service_id: state.auth.service_id,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

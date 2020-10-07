@@ -247,7 +247,11 @@
   text-transform: capitalize;
 }
 
-.mobileNumPad {
+.servicesForms {
+  height: calc(100vh - 176px);
+}
+
+.servicesForms .mobileNumPad {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -255,10 +259,13 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding-bottom: 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
 }
 
-.mobileNumPad--services {
+.servicesForms .mobileNumPad--services {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -271,15 +278,18 @@
   width: 100%;
   overflow-x: auto;
   height: 69px;
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
   background: #272c31;
 }
 
-.mobileNumPad--services::-webkit-scrollbar {
+.servicesForms .mobileNumPad--services::-webkit-scrollbar {
   height: 0;
   width: 0;
 }
 
-.mobileNumPad--services__tab {
+.servicesForms .mobileNumPad--services__tab {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   width: 93px;
@@ -304,32 +314,36 @@
   overflow: hidden;
 }
 
-.mobileNumPad--services__tab:nth-child(1) {
+.servicesForms .mobileNumPad--services__tab:nth-child(1) {
   border-left: 1px solid #3c4349;
 }
 
-.mobileNumPad--services__tab span,
-.mobileNumPad--services__tab sup {
+.servicesForms .mobileNumPad--services__tab span,
+.servicesForms .mobileNumPad--services__tab sup {
   position: relative;
   left: 6px;
 }
 
-.mobileNumPad--services__tab.active {
-  color: var(--accent-bg);
+.servicesForms .mobileNumPad--services__tab.active {
+  background: var(--accent-bg);
+  color: #fff;
+  border: none;
 }
 
-.mobileNumPad--services__tab.active:before {
-  content: "\f0d8";
+.servicesForms .mobileNumPad--services__tab.active:before {
+  content: "\f0d7";
   font-family: "Font Awesome 5 Pro";
   font-weight: 900;
   position: absolute;
-  left: 50%;
-  bottom: -19px;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  color: #edeef0;
+  font-size: 35px;
+  width: 52px;
+  left: calc(50% - 26px);
+  top: -22px;
+  z-index: 1;
 }
 
-.mobileNumPad--header {
+.servicesForms .mobileNumPad--header {
   height: 46px;
   background-color: var(--accent-bg);
   color: var(--accent-txt);
@@ -345,24 +359,24 @@
   white-space: nowrap;
 }
 
-.mobileNumPad--header > i {
+.servicesForms .mobileNumPad--header > i {
   margin-left: auto;
 }
 
-.mobileNumPad--header > i.active {
+.servicesForms .mobileNumPad--header > i.active {
   color: var(--accent-bg);
   -webkit-filter: brightness(2);
           filter: brightness(2);
 }
 
-.mobileNumPad--header > img {
+.servicesForms .mobileNumPad--header > img {
   -webkit-filter: grayscale(1) brightness(100);
           filter: grayscale(1) brightness(100);
   height: 16px;
   margin-right: 10px;
 }
 
-.mobileNumPad--subh {
+.servicesForms .mobileNumPad--subh {
   background-color: #fff;
   height: 28px;
   display: -webkit-box;
@@ -378,7 +392,7 @@
   font-size: 14px;
 }
 
-.mobileNumPad--buttons {
+.servicesForms .mobileNumPad--buttons {
   position: fixed;
   bottom: 0;
   display: -webkit-box;
@@ -396,7 +410,7 @@
           box-shadow: 0 -2px 51px -27px black;
 }
 
-.mobileNumPad--buttons button {
+.servicesForms .mobileNumPad--buttons button {
   width: calc(100% / 3);
   font-size: 14px;
   border: 0;
@@ -419,36 +433,36 @@
           flex-flow: row wrap;
 }
 
-.mobileNumPad--buttons button.disable {
+.servicesForms .mobileNumPad--buttons button.disable {
   background-color: #ccc;
   pointer-events: none;
 }
 
-.mobileNumPad--buttons button span {
+.servicesForms .mobileNumPad--buttons button span {
   margin-top: -25px;
   text-transform: lowercase;
   font-size: 13px;
 }
 
-.mobileNumPad--buttons button i {
+.servicesForms .mobileNumPad--buttons button i {
   margin-left: 4px;
 }
 
-.mobileNumPad--buttons button:nth-child(1) {
+.servicesForms .mobileNumPad--buttons button:nth-child(1) {
   border-color: #2cb850;
 }
 
-.mobileNumPad--buttons button:nth-child(2) {
+.servicesForms .mobileNumPad--buttons button:nth-child(2) {
   border-color: #fdaa29;
   border-left: 1px solid #edeef0;
   border-right: 1px solid #edeef0;
 }
 
-.mobileNumPad--buttons button:nth-child(3) {
+.servicesForms .mobileNumPad--buttons button:nth-child(3) {
   border-color: #ea1900;
 }
 
-.mobileNumPad--input {
+.servicesForms .mobileNumPad--input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -466,22 +480,22 @@
   position: relative;
 }
 
-.mobileNumPad--input > span,
-.mobileNumPad--input i {
+.servicesForms .mobileNumPad--input > span,
+.servicesForms .mobileNumPad--input i {
   position: absolute;
   font-size: 30px;
   color: #63696d;
 }
 
-.mobileNumPad--input span {
+.servicesForms .mobileNumPad--input span {
   left: 20px;
 }
 
-.mobileNumPad--input i {
+.servicesForms .mobileNumPad--input i {
   right: 10px;
 }
 
-.mobileNumPad--input input {
+.servicesForms .mobileNumPad--input input {
   height: 100%;
   width: 100%;
   padding-left: 88px;
@@ -490,7 +504,7 @@
   font-size: 30px;
 }
 
-.mobileNumPad--numbers {
+.servicesForms .mobileNumPad--numbers {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,8 +519,8 @@
   margin-top: 0;
 }
 
-.mobileNumPad--numbers > div {
-  width: calc(100% / 4);
+.servicesForms .mobileNumPad--numbers > div {
+  width: calc(100% / 3);
   height: 92px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -526,12 +540,12 @@
   transition: 0.3s;
 }
 
-.mobileNumPad--numbers > div:hover {
+.servicesForms .mobileNumPad--numbers > div:hover {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
 }
 
-.mobileNumPad--ticket {
+.servicesForms .mobileNumPad--ticket {
   position: absolute;
   z-index: 3;
   width: 100%;
@@ -542,16 +556,16 @@
   padding: 12px;
 }
 
-.mobileNumPad--ticket .printModal .btn-group {
+.servicesForms .mobileNumPad--ticket .printModal .btn-group {
   padding: 25px;
 }
 
-.mobileNumPad--ticket::-webkit-scrollbar {
+.servicesForms .mobileNumPad--ticket::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-.mobileNumPad--ticket:after {
+.servicesForms .mobileNumPad--ticket:after {
   content: "";
   background-color: rgba(0, 0, 0, 0.493);
   width: 100%;

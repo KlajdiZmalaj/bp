@@ -32,7 +32,7 @@ class UserDoc extends Component {
     this.setState({ isPopUpOpen: !this.state.isPopUpOpen });
   };
   callBack = () => {
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
   render() {
     const { user } = this.props;

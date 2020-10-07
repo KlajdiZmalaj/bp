@@ -98,14 +98,24 @@ const DepositoModal = ({
                   );
                   await Close();
                   if (activeSkinId === -1) {
-                    await getUsers(null, {
-                      skin_id: 1,
-                    });
+                    await getUsers(
+                      null,
+                      {
+                        skin_id: 1,
+                      },
+                      25,
+                      1
+                    );
                   } else {
-                    await getUsers(null, {
-                      skin_id: activeSkinId,
-                      backoffice: true,
-                    });
+                    await getUsers(
+                      null,
+                      {
+                        skin_id: activeSkinId,
+                        backoffice: true,
+                      },
+                      25,
+                      1
+                    );
                   }
                   if (SecondClose) {
                     await SecondClose();

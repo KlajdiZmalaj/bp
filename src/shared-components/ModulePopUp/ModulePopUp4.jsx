@@ -222,14 +222,14 @@ class ModulePopUp4 extends React.Component {
                                 </Fragment>
                               )}
                               <tr>
-                                <td id="num1" onClick={() => this.addNr(1)}>
-                                  1
+                                <td id="num7" onClick={() => this.addNr(7)}>
+                                  7
                                 </td>
-                                <td id="num2" onClick={() => this.addNr(2)}>
-                                  2
+                                <td id="num8" onClick={() => this.addNr(8)}>
+                                  8
                                 </td>
-                                <td id="num3" onClick={() => this.addNr(3)}>
-                                  3
+                                <td id="num9" onClick={() => this.addNr(9)}>
+                                  9
                                 </td>
                               </tr>
                               <tr>
@@ -244,22 +244,22 @@ class ModulePopUp4 extends React.Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td id="num7" onClick={() => this.addNr(7)}>
-                                  7
+                                <td id="num1" onClick={() => this.addNr(1)}>
+                                  1
                                 </td>
-                                <td id="num8" onClick={() => this.addNr(8)}>
-                                  8
+                                <td id="num2" onClick={() => this.addNr(2)}>
+                                  2
                                 </td>
-                                <td id="num9" onClick={() => this.addNr(9)}>
-                                  9
+                                <td id="num3" onClick={() => this.addNr(3)}>
+                                  3
                                 </td>
                               </tr>
                               <tr>
-                                <td id="num0" onClick={() => this.addNr(0)}>
-                                  0
-                                </td>
                                 <td id="numC" onClick={this.clear}>
                                   C
+                                </td>
+                                <td id="num0" onClick={() => this.addNr(0)}>
+                                  0
                                 </td>
                               </tr>
                             </tbody>

@@ -11,10 +11,21 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    @media (max-width: 1135px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    @media (max-width: 760px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
     border-left: 1px solid rgba(255, 255, 255, 0.15);
     border-right: 1px solid rgba(255, 255, 255, 0.15);
     &--Card {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       h2 {
         font-size: 16px;
         font-weight: 600;
@@ -27,13 +38,12 @@
         color: var(--header-txt);
         font-size: 12px;
         font-weight: 300;
-        letter-spacing: 1.1px;
         text-align: center;
         padding: 0 15px;
         padding-bottom: 30px;
       }
       img {
-        width: 100%;
+        width: 377px;
         height: 200px;
         margin-bottom: 25px;
       }
@@ -50,7 +60,6 @@
     justify-content: center;
     border-left: 1px solid rgba(255, 255, 255, 0.15);
     border-right: 1px solid rgba(255, 255, 255, 0.15);
-
     span {
       display: flex;
       flex-direction: row;

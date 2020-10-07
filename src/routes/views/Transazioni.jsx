@@ -4,7 +4,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
-import { Azioni, Overview, Header } from "shared-components";
+import { Azioni, Overview, Header, Loader } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
@@ -24,6 +24,8 @@ import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
 import { allRoles } from "config/index";
 import { Form, Modal, Select, Tooltip, Pagination } from "antd";
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const { Option } = Select;
 class Transazioni extends React.Component {
@@ -187,8 +189,12 @@ class Transazioni extends React.Component {
         downloadLink.download = fileName;
         downloadLink.click();
       }
+      if (type === "return") {
+        return blobUrl;
+      }
     }
   };
+
   handleCancel = (e) => {
     this.props.setPaymentsFromCode({});
     this.setState({
@@ -398,7 +404,6 @@ class Transazioni extends React.Component {
       { name: "Queste Mese", color: "#e30000" },
     ];
 
-    // console.log("skinExtrasskinExtras", this.props.skinExtras);
     const paymentsO =
       payments &&
       isArray(payments) &&
@@ -757,12 +762,9 @@ class Transazioni extends React.Component {
                     {payments.message}
                   </div>
                 )}
+
                 {loadingPayments &&
-                  (forAdmin ? (
-                    <div className="loaderAdmin"></div>
-                  ) : (
-                    <img className="loader" src={images.loader}></img>
-                  ))}
+                  (forAdmin ? <div className="loaderAdmin"></div> : <Loader />)}
                 {!loadingPayments && (
                   <table className="transTable Movimenti">
                     <thead>
@@ -1053,6 +1055,13 @@ class Transazioni extends React.Component {
                       id="iframepdf"
                       src={`data:application/pdf;base64,${paymentsFromCode.receipt}`}
                     ></embed> */}
+                    <Document
+                      renderMode="canvas"
+                      file={this.printPdfReceipt(paymentsFromCode, "return")}
+                    >
+                      <Page width={380} pageNumber={1} />
+                    </Document>
+
                     <div
                       className="printBtn"
                       onClick={() => {
