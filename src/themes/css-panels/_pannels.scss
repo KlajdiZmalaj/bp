@@ -671,3 +671,7 @@ span.superSmall {
   display: block;
   pointer-events: none;
 }
+svg path,
+svg rect {
+  fill: var(--accent-bg);
+}

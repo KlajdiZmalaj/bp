@@ -1895,14 +1895,21 @@ i#private {
 
 .loader {
   position: relative;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   opacity: 1;
   margin: 0 auto;
-  display: block;
   /* transform: scale(1) translateX(-50%); */
   width: 180px;
   margin-top: 100px;
   border-radius: 500px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .paginationWrapper {
@@ -3346,6 +3353,11 @@ span.superSmall {
   margin: 0 auto;
   display: block;
   pointer-events: none;
+}
+
+svg path,
+svg rect {
+  fill: var(--accent-bg);
 }
 
 /*modules*/

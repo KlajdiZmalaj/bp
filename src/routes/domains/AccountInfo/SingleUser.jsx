@@ -86,7 +86,7 @@ class SingleUser extends Component {
                 paddingLeft: `calc(10px * ${this.props.level || 1})`,
               }}
               className={
-                "text-left justify-content-start userDropAnch" +
+                "text-left justify-content-start userDropAnch text-uppercase" +
                 (user.children &&
                 user.children.length > 0 &&
                 !this.state.displayChildren
@@ -133,7 +133,7 @@ class SingleUser extends Component {
               {numberWithCommas(user.wallet)}€
             </span>
             <span className="text-right justify-content-start">
-              {user.city}
+              {capitalize(user.city)}
             </span>
             <span>{user.last_deposit}</span>
             <span>{user.last_login_time}</span>

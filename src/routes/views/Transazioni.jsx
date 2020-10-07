@@ -4,7 +4,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { get } from "lodash";
-import { Azioni, Overview, Header } from "shared-components";
+import { Azioni, Overview, Header, Loader } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
@@ -757,12 +757,9 @@ class Transazioni extends React.Component {
                     {payments.message}
                   </div>
                 )}
+
                 {loadingPayments &&
-                  (forAdmin ? (
-                    <div className="loaderAdmin"></div>
-                  ) : (
-                    <img className="loader" src={images.loader}></img>
-                  ))}
+                  (forAdmin ? <div className="loaderAdmin"></div> : <Loader />)}
                 {!loadingPayments && (
                   <table className="transTable Movimenti">
                     <thead>

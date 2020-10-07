@@ -577,10 +577,10 @@ export function* getCodiceTicket(data) {
   const response = yield call(fetchCodice, data.barcode, data.service);
   if (response.status === 200) {
     yield put(AuthActions.setPaymentsFromCode(response.data.payment));
-  } else {
-    yield put(AuthActions.setPaymentsFromCode({}));
   }
-  // console.log("ca ka responseeeee codice", response);
+  if (response.error) {
+    yield put(AuthActions.setPaymentsFromCode(response.error.response.data));
+  }
 }
 export function* getBarcodeData(e) {
   const response = yield call(fetchBarcodeData, e.barcode);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import images from "themes/images";
 import { connect } from "react-redux";
+import { Loader } from "shared-components";
 import "./styles.css";
 const AreaDownload = ({ link6 }) => {
   const [showIframe, setShowIframe] = useState(false);
@@ -21,7 +22,7 @@ const AreaDownload = ({ link6 }) => {
       />
       {showIframe === false && (
         <div className="LoadContainer">
-          <img className="loader" src={images.loader}></img>
+          <Loader />
         </div>
       )}
     </React.Fragment>

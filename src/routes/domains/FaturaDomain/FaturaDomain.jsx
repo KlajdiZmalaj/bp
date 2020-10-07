@@ -6,7 +6,7 @@ import { printFatturaReq } from "services/auth";
 import DatePicker from "./DatePicker";
 import ClickOut from "react-onclickout";
 import images from "themes/images";
-
+import { Loader } from "shared-components";
 import { Select, Pagination } from "antd";
 const { Option } = Select;
 class FaturaDomain extends React.Component {
@@ -326,7 +326,7 @@ class FaturaDomain extends React.Component {
                   </div>
                 </div>
               ) : (
-                <img className="loader" src={images.loader}></img>
+                <Loader />
               )}
             </div>
           </div>

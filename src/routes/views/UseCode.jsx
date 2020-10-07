@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-
+import { isEqual } from "lodash";
+import { notification } from "antd";
 class UseCode extends React.Component {
   state = {
     inputVal: "",
@@ -23,8 +24,24 @@ class UseCode extends React.Component {
     let input = document.querySelector(".form-control");
     input.focus();
   }
+  componentDidUpdate(prevProp) {
+    if (
+      !isEqual(prevProp.paymentsFromCode, this.props.paymentsFromCode) &&
+      !this.props.paymentsFromCode.errors &&
+      this.props.paymentsFromCode.agency_name
+    ) {
+      this.props.showModal("", this.state.inputVal);
+    }
+    if (this.props.paymentsFromCode.errors) {
+      notification["error"]({
+        message: this.props.paymentsFromCode.message,
+        description: Object.values(this.props.paymentsFromCode.errors),
+      });
+    }
+  }
   render() {
     const { inputVal } = this.state;
+    const { paymentsFromCode } = this.props;
     return (
       <div className="Container">
         <div className="container-fluid overview ">
@@ -52,7 +69,7 @@ class UseCode extends React.Component {
                     className="input-group-append"
                     onClick={() => {
                       this.props.getCodiceTicket(inputVal, "omeLale");
-                      this.props.showModal("", inputVal);
+
                       // this.togglePopUp(true);
                     }}
                   >
