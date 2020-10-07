@@ -139,7 +139,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  max-height: 710px;
 }
 
 .formsContainer--body .imgLogo {
@@ -425,8 +424,16 @@
   margin-bottom: 0px;
   height: 170px;
   font-size: 14px;
+  padding: 0 15px;
   padding-top: 5px;
   border: none;
+  overflow: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  resize: none;
 }
 
 .formsContainer--body__item.submit {
@@ -874,6 +881,69 @@
           flex-direction: column;
 }
 
+.rightFormOnlShop .rightForm--header {
+  height: 60px;
+  max-height: 60px;
+  min-height: 60px;
+}
+
+.rightFormOnlShop .rightForm--header .TitleBack {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Lato";
+  color: #f26521;
+}
+
+.rightFormOnlShop .rightForm--header .TitleBack i {
+  color: #5c5c5c;
+  font-size: 16px;
+}
+
+.rightFormOnlShop span.red {
+  color: #f26521;
+}
+
+.rightFormOnlShop .ant-radio-group.ant-radio-group-outline {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper {
+  width: 50%;
+  margin-right: 5px;
+  height: 35px;
+  max-width: 175px;
+  background: #ebeced;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10px;
+}
+
+.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: #11375d !important;
+}
+
+.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio-checked .ant-radio-inner:after {
+  background-color: #11375d;
+}
+
+.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio:hover .ant-radio-inner {
+  border-color: #11375d;
+}
+
 .rightFormOnlShop .MainForm {
   height: 241px;
   width: 100%;
@@ -919,7 +989,7 @@
 }
 
 .rightFormOnlShop .MainForm .EuroInput .Euro {
-  width: 37px;
+  width: 48px;
   height: 100%;
   background: #ebeced;
   display: -webkit-box;
@@ -939,8 +1009,23 @@
 }
 
 .rightFormOnlShop .MainForm textarea {
+  border: 0px;
   background: #ebeced;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 170px;
+  font-size: 14px;
+  padding: 0 15px;
+  padding-top: 5px;
   border: none;
+  overflow: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  resize: none;
 }
 
 .rightFormOnlShop .MainForm--left {

@@ -1,10 +1,21 @@
+// @keyframes show {
+//   0% {
+//     opacity: 0;
+//   }
+//   80% {
+//     opacity: 0.8;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
 .Statist {
   height: 180px;
   background: #272c31;
   position: relative;
   visibility: visible;
   opacity: 1;
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
   .calendarWrapper {
     position: absolute;
     right: calc((100vw - 1135px) / 2);

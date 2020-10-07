@@ -16,7 +16,7 @@ class StaticDefaultHomePage extends React.Component {
     const skinLink = skinExtras.link3
       ? skinExtras.link3.replace("https://", "")
       : "";
-    const SkinName = skinExtras.name;
+    const SkinName = skinExtras.name || "";
     return (
       <div className="Container">
         <div className="SDHome">
@@ -34,7 +34,9 @@ class StaticDefaultHomePage extends React.Component {
           <div className="SDHome--Cards">
             <Card
               Title={"SERVIZI POSTALI"}
-              Info={`Con ${skinLink} puoi pagare in totale sicurezza tutti i bollettini postali, MAV, RAV, Bollo
+              Info={`Con ${
+                skinLink || ""
+              } puoi pagare in totale sicurezza tutti i bollettini postali, MAV, RAV, Bollo
               Auto, F24, PagoPa, etc. Al termine dell’operazione sarà rilasciata una ricevuta
               dell’avvenuto pagamento.`}
               imageUrl={images["SER_POS"]}
