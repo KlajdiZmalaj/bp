@@ -101,7 +101,7 @@ class DashboardDom extends React.Component {
         : 486;
       let top =
         (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
-      console.log(top);
+      // console.log(top);
       if (menuClassName !== "fixed" && top >= scrollPoint) {
         this.setState({
           menuClassName: "fixed",

@@ -666,10 +666,11 @@ span.superSmall {
   }
 }
 .qrCodeImg {
-  width: 210px;
+  width: 130px;
   margin: 0 auto;
   display: block;
   pointer-events: none;
+  margin-top: 20px;
 }
 svg path,
 svg rect {
