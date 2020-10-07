@@ -21,11 +21,11 @@ class SingleUser2 extends Component {
   };
   transferCallback = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
 
   inpHandler = (e) => {

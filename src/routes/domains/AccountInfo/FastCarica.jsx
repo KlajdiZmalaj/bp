@@ -23,7 +23,7 @@ class FastCarica extends Component {
   };
   transferCallback = () => {
     this.setState({ confirmTranzacionModal: { visibility: false, data: "" } });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
 
   setUser = (userId, userName) => {

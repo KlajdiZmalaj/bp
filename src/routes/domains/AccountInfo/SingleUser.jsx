@@ -22,11 +22,11 @@ class SingleUser extends Component {
   };
   transferCallback = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
 
   inpHandler = (e) => {
@@ -207,6 +207,7 @@ class SingleUser extends Component {
                   return (
                     <SingleUser2
                       setRowData={this.props.setRowData}
+                      page_number={this.props.page_number}
                       level={
                         this.props.level ? parseInt(this.props.level) + 1 : 2
                       }

@@ -281,14 +281,24 @@ class AdminListaUtentiRowForLoop extends React.Component {
                   activeSkinId
                 );
                 if (Special) {
-                  await this.props.getUsers(null, {
-                    skin_id: 1,
-                  });
+                  await this.props.getUsers(
+                    null,
+                    {
+                      skin_id: 1,
+                    },
+                    25,
+                    1
+                  );
                 } else {
-                  await this.props.getUsers(null, {
-                    skin_id: this.props.activeSkinId,
-                    backoffice: true,
-                  });
+                  await this.props.getUsers(
+                    null,
+                    {
+                      skin_id: this.props.activeSkinId,
+                      backoffice: true,
+                    },
+                    25,
+                    1
+                  );
                 }
               }}
             ></i>

@@ -777,62 +777,6 @@ class RegisterEndUser extends React.Component {
 
               {/* pagamensileInp : '',
               costoanualeInp : '' */}
-              <div className="itemCol semi">
-                <div className="inputLabel">
-                  Calcolo utile agente:<span>*</span>
-                </div>
-
-                <div className="percentageInp">
-                  <div className="percentageInp--wrapper">
-                    <span
-                      onClick={() => {
-                        this.setState({
-                          percentageInp:
-                            (parseInt(this.state.percentageInp) || 0) - 10,
-                        });
-                      }}
-                    >
-                      -
-                    </span>
-                    <input
-                      type="text"
-                      value={
-                        isNaN(this.state.percentageInp)
-                          ? 0
-                          : this.state.percentageInp
-                      }
-                      onChange={(e) => {
-                        this.setState({ percentageInp: e.target.value });
-                      }}
-                    />
-                    <span
-                      onClick={() => {
-                        this.setState({
-                          percentageInp:
-                            (parseInt(this.state.percentageInp) || 0) + 10,
-                        });
-                      }}
-                    >
-                      +
-                    </span>
-                  </div>
-                  <span>
-                    Percentuale del utile calcolato sulle provigioni maturate
-                    dalle agenzie aperte
-                  </span>
-                </div>
-                {/* <Form.Item>
-                  {getFieldDecorator("percentage", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Inserire percentage",
-                        whitespace: true,
-                      },
-                    ],
-                  })(<Input type="number" />)}
-                </Form.Item> */}
-              </div>
               <div className="itemCol full  mt-2">
                 <div className="inputLabel">
                   Indirizzo <span>*</span>
@@ -912,6 +856,62 @@ class RegisterEndUser extends React.Component {
                     ],
                   })(<Input />)}
                 </Form.Item>
+              </div>
+              <div className="itemCol semi">
+                <div className="inputLabel">
+                  Calcolo utile agente:<span>*</span>
+                </div>
+
+                <div className="percentageInp">
+                  <div className="percentageInp--wrapper">
+                    <span
+                      onClick={() => {
+                        this.setState({
+                          percentageInp:
+                            (parseInt(this.state.percentageInp) || 0) - 10,
+                        });
+                      }}
+                    >
+                      -
+                    </span>
+                    <input
+                      type="text"
+                      value={
+                        isNaN(this.state.percentageInp)
+                          ? 0
+                          : this.state.percentageInp
+                      }
+                      onChange={(e) => {
+                        this.setState({ percentageInp: e.target.value });
+                      }}
+                    />
+                    <span
+                      onClick={() => {
+                        this.setState({
+                          percentageInp:
+                            (parseInt(this.state.percentageInp) || 0) + 10,
+                        });
+                      }}
+                    >
+                      +
+                    </span>
+                  </div>
+                  <span>
+                    Percentuale del utile calcolato sulle provigioni maturate
+                    dalle agenzie aperte
+                  </span>
+                </div>
+                {/* <Form.Item>
+                  {getFieldDecorator("percentage", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire percentage",
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input type="number" />)}
+                </Form.Item> */}
               </div>
             </div>
             <div className="newReg--row__col">

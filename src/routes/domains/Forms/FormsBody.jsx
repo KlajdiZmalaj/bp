@@ -4,6 +4,7 @@ import { AuthActions } from "redux-store/models";
 import Voli from "./Voli";
 import Treni from "./Treni";
 import Eventi from "./Eventi";
+import OnlineShop from "./OnlineShop";
 import images from "themes/images";
 import "./style.css";
 
@@ -132,6 +133,20 @@ export class FormsBody extends Component {
                 color="#3f1d74b5"
                 accountInfo={accountInfo}
               />
+              {/* <Card
+                clickHandler={() =>
+                  this.setState({
+                    isSelected: true,
+                    nome_agenzia: "Online Shop",
+                    typee: 4,
+                    color: "#3f1d74b5",
+                  })
+                }
+                title="Online Shop"
+                icon={"fas fa-receipt"}
+                color="#3f1d74b5"
+                accountInfo={accountInfo}
+              /> */}
               <Card
                 clickHandler={() => (window.location.hash = "visure")}
                 title="visure"
@@ -164,6 +179,16 @@ export class FormsBody extends Component {
           )}
           {isSelected && typee === 3 && (
             <Eventi
+              goBack={() => this.setState({ isSelected: false })}
+              nome_agenzia={nome_agenzia}
+              color={color}
+              typee={typee}
+              sendDataForm={this.props.sendDataForm}
+              accountInfo={accountInfo}
+            />
+          )}
+          {isSelected && typee === 4 && (
+            <OnlineShop
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}

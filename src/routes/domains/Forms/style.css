@@ -426,6 +426,7 @@
   height: 170px;
   font-size: 14px;
   padding-top: 5px;
+  border: none;
 }
 
 .formsContainer--body__item.submit {
@@ -860,5 +861,118 @@
   height: calc(650px - 45px);
   overflow: auto;
   position: relative;
+}
+
+.rightFormOnlShop {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.rightFormOnlShop .MainForm {
+  height: 241px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.rightFormOnlShop .MainForm .label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #5c5c5c;
+  font-family: "Roboto";
+}
+
+.rightFormOnlShop .MainForm i {
+  position: absolute;
+  font-size: 15px;
+  font-weight: 300;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  top: 50%;
+}
+
+.rightFormOnlShop .MainForm input.questionInput {
+  padding-right: 35px;
+}
+
+.rightFormOnlShop .MainForm .EuroInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.rightFormOnlShop .MainForm .EuroInput .Euro {
+  width: 37px;
+  height: 100%;
+  background: #ebeced;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Sofia Pro";
+  font-size: 18px;
+  font-weight: 300;
+  color: #6c6c6c;
+  margin-right: 3px;
+}
+
+.rightFormOnlShop .MainForm textarea {
+  background: #ebeced;
+  border: none;
+}
+
+.rightFormOnlShop .MainForm--left {
+  padding: 20px;
+  padding-left: 40px;
+}
+
+.rightFormOnlShop .MainForm--right {
+  padding: 20px;
+  padding-right: 40px;
+}
+
+.rightFormOnlShop .MainForm--left, .rightFormOnlShop .MainForm--right {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.rightFormOnlShop .SubForm {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 /*# sourceMappingURL=style.css.map */

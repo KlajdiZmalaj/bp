@@ -270,6 +270,7 @@
           height: 170px;
           font-size: 14px;
           padding-top: 5px;
+          border: none;
         }
       }
       &.submit {
@@ -579,4 +580,78 @@
   height: calc(650px - 45px);
   overflow: auto;
   position: relative;
+}
+.rightFormOnlShop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .MainForm {
+    height: 241px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    .label {
+      font-size: 12px;
+      font-weight: 400;
+      color: #5c5c5c;
+      font-family: "Roboto";
+    }
+
+    i {
+      position: absolute;
+      font-size: 15px;
+      font-weight: 300;
+      right: 15px;
+      width: 15px;
+      height: 15px;
+      top: 50%;
+    }
+    input.questionInput {
+      padding-right: 35px;
+    }
+
+    .EuroInput {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      .Euro {
+        width: 37px;
+        height: 100%;
+        background: #ebeced;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Sofia Pro";
+        font-size: 18px;
+        font-weight: 300;
+        color: #6c6c6c;
+        margin-right: 3px;
+      }
+    }
+
+    textarea {
+      background: #ebeced;
+      border: none;
+    }
+    &--left {
+      padding: 20px;
+      padding-left: 40px;
+    }
+    &--right {
+      padding: 20px;
+      padding-right: 40px;
+    }
+    &--left,
+    &--right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .SubForm {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
 }
