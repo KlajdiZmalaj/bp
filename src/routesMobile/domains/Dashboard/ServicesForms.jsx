@@ -20,6 +20,8 @@ const ServicesForms = ({
     <div className="servicesForms">
       {activeCategory === "RTELD" ||
       activeCategory === "RTELC" ||
+      activeCategory === "SCMS" ||
+      activeCategory === "CCARD" ||
       activeCategory === "RTELI" ? (
         <NumpadForm
           setService={setService}
