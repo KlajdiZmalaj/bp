@@ -45,6 +45,9 @@ class ModulePopUp4 extends React.Component {
   replaceNr = (nr) => {
     this.setState({ tel_no: nr.toString() });
   };
+  clearOne = () => {
+    this.setState((state) => ({ tel_no: state.tel_no.slice(0, -1) }));
+  };
   clear = () => {
     this.setState({ tel_no: "" });
   };
@@ -66,343 +69,235 @@ class ModulePopUp4 extends React.Component {
     // };
     return (
       <div className="modulePopUP modulePopUP1 telRechanrge">
-        <div className="module container-fluid max-width_modulePopUP max-width_modulePopUP-carrier">
+        <div className="leftCol_Module Popup4">
           <div className="row">
-            <div className="col-7 leftCol_Module">
-              <div className="row">
-                {service_s?.id !== "BGAM" && (
-                  <div className="col-3 p-0">
-                    <table className="LeftSide-BTNs" data-aos="flip-left">
-                      <tbody>
-                        <tr>
-                          <td className="carrierLogo" colSpan="3">
-                            <img src={images[service_s?.id]} alt="" />
-                          </td>
-                        </tr>
-
-                        {(service_s.services || []).map((item, index) => {
-                          return (
-                            <tr
-                              key={index}
-                              className={
-                                item.service_id.toString() ===
-                                serviceMobile.service_id.toString()
-                                  ? "active"
-                                  : ""
-                              }
-                              onClick={() => this.changeService(item)}
-                            >
-                              <td className="CarrierPrice">
-                                {/* 5 <sup>+1</sup> */}
-                                {item.cost}
-                              </td>
-                              <td className="CurrencyTD ">
-                                <p className="Currency">Euro</p>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-
-                <div
-                  className={service_s?.id !== "BGAM" ? "col-9" : "col-12 p-0"}
-                >
-                  <div className="rightCarrierCOL" data-aos="flip-right">
-                    {this.state.confermaMsg && (
-                      <div className="confermaMsg animated bounce">
-                        <div className="info">
-                          Stai eseguiendo una ricarica da €
-                          {serviceMobile.service_id === "BGM001"
-                            ? tel_no
-                            : serviceMobile.cost.toString()}
-                          . <br /> Confermi?
-                        </div>
-                        <div className="buttons">
-                          <button
-                            onClick={() => {
-                              this.handleSubmit(
-                                serviceMobile.service_id,
-                                tel_no
-                              );
-                              this.setPrint(true);
-                              this.setState({ confermaMsg: false });
-                            }}
-                          >
-                            Si
-                          </button>
-                          <button
-                            onClick={() => {
-                              this.setState({ confermaMsg: false });
-                            }}
-                          >
-                            No
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                    <div className="row no-gutters">
-                      <h4>{serviceMobile.name}</h4>
-                    </div>
-
-                    {service.type.toString() === "1" && (
-                      <div className="row no-gutters">
-                        <h5>
-                          {serviceMobile.service_id === "BGM001"
-                            ? "IMPORTO"
-                            : `INSERIRE IL NUMERO DI TELEFONO DA RICARICARE`}
-                        </h5>
-                      </div>
-                    )}
-                    {service.type.toString() === "1" && (
-                      <div className="row no-gutters">
-                        <input
-                          type="text"
-                          className="displayedVal text-center"
-                          value={this.state.tel_no}
-                          onChange={this.handleChange}
-                          placeholder={
-                            serviceMobile.service_id === "BGM001"
-                              ? "_ _"
-                              : "_ _ _ _ _ _ "
-                          }
-                          // disabled
-                        />
-                      </div>
-                    )}
-                    <div className="row numpadCarrier">
-                      {service.type.toString() === "1" && (
-                        <div className="col-8">
-                          <table>
-                            <tbody>
-                              {serviceMobile.service_id === "BGM001" && (
-                                <Fragment>
-                                  <tr>
-                                    <td
-                                      id="num1"
-                                      onClick={() => this.replaceNr(10)}
-                                    >
-                                      10
-                                    </td>
-                                    <td
-                                      id="num2"
-                                      onClick={() => this.replaceNr(20)}
-                                    >
-                                      20
-                                    </td>
-                                    <td
-                                      id="num3"
-                                      onClick={() => this.replaceNr(30)}
-                                    >
-                                      30
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td
-                                      id="num1"
-                                      onClick={() => this.replaceNr(50)}
-                                    >
-                                      50
-                                    </td>
-                                    <td
-                                      id="num2"
-                                      onClick={() => this.replaceNr(70)}
-                                    >
-                                      70
-                                    </td>
-                                    <td
-                                      id="num3"
-                                      onClick={() => this.replaceNr(100)}
-                                    >
-                                      100
-                                    </td>
-                                  </tr>
-                                </Fragment>
-                              )}
-                              <tr>
-                                <td id="num7" onClick={() => this.addNr(7)}>
-                                  7
-                                </td>
-                                <td id="num8" onClick={() => this.addNr(8)}>
-                                  8
-                                </td>
-                                <td id="num9" onClick={() => this.addNr(9)}>
-                                  9
-                                </td>
-                              </tr>
-                              <tr>
-                                <td id="num4" onClick={() => this.addNr(4)}>
-                                  4
-                                </td>
-                                <td id="num5" onClick={() => this.addNr(5)}>
-                                  5
-                                </td>
-                                <td id="num6" onClick={() => this.addNr(6)}>
-                                  6
-                                </td>
-                              </tr>
-                              <tr>
-                                <td id="num1" onClick={() => this.addNr(1)}>
-                                  1
-                                </td>
-                                <td id="num2" onClick={() => this.addNr(2)}>
-                                  2
-                                </td>
-                                <td id="num3" onClick={() => this.addNr(3)}>
-                                  3
-                                </td>
-                              </tr>
-                              <tr>
-                                <td id="numC" onClick={this.clear}>
-                                  C
-                                </td>
-                                <td id="num0" onClick={() => this.addNr(0)}>
-                                  0
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      )}
-
-                      <div
-                        className={
-                          "col-4 " +
-                          (service.type.toString() === "1" ? "" : "notNumbers")
-                        }
-                        style={{ paddingRight: "30px" }}
-                      >
-                        <table className="_modulePopUP__tableCarrier">
-                          <tbody>
-                            <tr>
-                              <td
-                                onClick={() => {
-                                  if (this.props.accountInfo?.token) {
-                                    this.setState({ confermaMsg: true });
-                                  } else {
-                                    window.location.hash = "login";
-                                    this.props.togglePopUp(false);
-                                  }
-                                }}
-                              >
-                                <h3>esegui</h3>
-                                <img src={images.checkSymbol} alt="" />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="stampCup">
-                                <h3>stampa</h3>
-                                <p>
-                                  pre <br /> scontrino
-                                </p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                className="CancelModule"
-                                onClick={() => this.props.togglePopUp(false)}
-                              >
-                                <h3>anulla</h3>
-                                <img src={images.close} alt="" />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+            {this.state.confermaMsg && (
+              <div className="confermaMsg animated bounce">
+                <div className="info">
+                  Stai eseguiendo una ricarica da €
+                  {serviceMobile.service_id === "BGM001"
+                    ? tel_no
+                    : serviceMobile.cost.toString()}
+                  . <br /> Confermi?
                 </div>
-                {(rechargeMobile.errors || rechargeMobile.message) && (
-                  <div className="messages">
-                    <div className="closeM" onClick={this.hideAlert}>
-                      chiudi messaggi
-                    </div>
-                    {rechargeMobile.errors &&
-                      Object.keys(rechargeMobile.errors).map((item, index) => {
-                        return (
-                          <div className="errorM" key={index}>
-                            <i className="fad fa-exclamation text-danger"></i>
-                            {rechargeMobile.errors[item]}
-                          </div>
-                        );
-                      })}
-
-                    {rechargeMobile.message && (
-                      <div className="infoM">
-                        <i className="fad fa-info text-info"></i>{" "}
-                        {rechargeMobile.message}
-                      </div>
-                    )}
-                  </div>
+                <div className="buttons">
+                  <button
+                    onClick={() => {
+                      this.handleSubmit(serviceMobile.service_id, tel_no);
+                      this.setPrint(true);
+                      this.setState({ confermaMsg: false });
+                    }}
+                  >
+                    Si
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.setState({ confermaMsg: false });
+                    }}
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            )}
+            <div className="Close">
+              <span
+                className="CloseButton"
+                onClick={() => this.props.togglePopUp(false)}
+              >
+                <img src={images.close} alt="" />
+              </span>
+            </div>
+            <div className="Logo">
+              <div className="Logo--Help">
+                {service_s?.id !== "BGAM" && (
+                  <img src={images[service_s?.id]} alt="" />
                 )}
               </div>
             </div>
-            {rechargeMobile.receipt && toPrint && (
-              <div className="col-5 rightCol_Module">
-                <div className="row no-gutters">
-                  <div className="">
-                    <div
-                      className="printModal p-2"
-                      ref={(el) => (this.printT = el)}
-                    >
-                      <div className="headerModal">
-                        <img className="logo" src={images.logo} alt="" />
-                        <span className="superSmall text-bold">
-                          MAPE{" "}
-                          <span>di Hristova Mariya Hristova e C.s.a.s.</span>
-                        </span>
-                        <span className="superSmall">
-                          {this.props.skinExtras.address}
-                        </span>
-                        <span className="superSmall link">
-                          {this.props.skinExtras.mail}
-                        </span>
-                        <span className="superSmall ">
-                          Tel: {this.props.skinExtras.cel}
-                        </span>
-                        <span className="superSmall tel">
-                          P.IVA 03852290406
-                        </span>
-                        <span className="fontSmall text-bold">
-                          {rechargeMobile.agency_name}
-                        </span>
-                        <span className="fontSmall address">
-                          {rechargeMobile.agency_address}
-                        </span>
-                        {/* <span className="userCel">
+            <div className="ServiceHeader">
+              <h4>{service_s.name}</h4>
+              {service.type.toString() === "1" && (
+                <h5>
+                  {serviceMobile.service_id === "BGM001"
+                    ? "IMPORTO"
+                    : `INSERIRE IL NUMERO DI TELEFONO DA RICARICARE`}
+                </h5>
+              )}
+            </div>
+            <div className="NumPadContainer">
+              {service.type.toString() === "1" && (
+                <div className="NumPd">
+                  <span>+39</span>{" "}
+                  <input
+                    type="number"
+                    value={this.state.tel_no}
+                    onChange={this.handleChange}
+                  />{" "}
+                  <i className="fas fa-address-book"></i>
+                </div>
+              )}
+              <div className="Numbers">
+                {service.type.toString() === "1" && (
+                  <Fragment>
+                    {serviceMobile.service_id === "BGM001" && (
+                      <Fragment>
+                        {[10, 25, 50, 100].map((num) => (
+                          <span
+                            id={`num${num}`}
+                            key={num}
+                            onClick={() => this.replaceNr(num)}
+                          >
+                            {num}
+                          </span>
+                        ))}
+                      </Fragment>
+                    )}
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
+                      <span
+                        key={num}
+                        id={`num${num}`}
+                        onClick={() =>
+                          num === "CE"
+                            ? this.clear()
+                            : num === "C"
+                            ? this.clearOne()
+                            : this.addNr(num)
+                        }
+                      >
+                        {num}
+                      </span>
+                    ))}
+                  </Fragment>
+                )}
+              </div>
+            </div>
+
+            <div className="TotalServices">
+              {(service_s.services || []).map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`serv ${
+                      item.service_id.toString() ===
+                      serviceMobile.service_id.toString()
+                        ? "active"
+                        : ""
+                    }`}
+                    onClick={() => this.changeService(item)}
+                  >
+                    <span className="Price">{parseInt(item.cost)}</span>
+                    <span className="Euro">€</span>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="Confimation Buttons">
+              <span className="stampCup">
+                <h3>stampa</h3>
+                <i className="fal fa-print" />
+              </span>
+
+              <span
+                onClick={() => {
+                  if (this.props.accountInfo?.token) {
+                    this.setState({ confermaMsg: true });
+                  } else {
+                    window.location.hash = "login";
+                    this.props.togglePopUp(false);
+                  }
+                }}
+              >
+                <h3>esegui</h3>
+                <i className="fal fa-check" />
+              </span>
+            </div>
+            {(rechargeMobile.errors || rechargeMobile.message) && (
+              <div className="messages">
+                <div className="closeM" onClick={this.hideAlert}>
+                  chiudi messaggi
+                </div>
+                {rechargeMobile.errors &&
+                  Object.keys(rechargeMobile.errors).map((item, index) => {
+                    return (
+                      <div className="errorM" key={index}>
+                        <i className="fad fa-exclamation text-danger"></i>
+                        {rechargeMobile.errors[item]}
+                      </div>
+                    );
+                  })}
+
+                {rechargeMobile.message && (
+                  <div className="infoM">
+                    <i className="fad fa-info text-info"></i>{" "}
+                    {rechargeMobile.message}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+        {rechargeMobile.receipt && toPrint && (
+          <div className="col-5 rightCol_Module">
+            <div className=" no-gutters">
+              <div className="">
+                <div
+                  className="printModal p-2"
+                  ref={(el) => (this.printT = el)}
+                >
+                  <div className="headerModal">
+                    <img className="logo" src={images.logo} alt="" />
+                    <span className="superSmall text-bold">
+                      MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
+                    </span>
+                    <span className="superSmall">
+                      {this.props.skinExtras.address}
+                    </span>
+                    <span className="superSmall link">
+                      {this.props.skinExtras.mail}
+                    </span>
+                    <span className="superSmall ">
+                      Tel: {this.props.skinExtras.cel}
+                    </span>
+                    <span className="superSmall tel">P.IVA 03852290406</span>
+                    <span className="fontSmall text-bold">
+                      {rechargeMobile.agency_name}
+                    </span>
+                    <span className="fontSmall address">
+                      {rechargeMobile.agency_address}
+                    </span>
+                    {/* <span className="userCel">
                           {" "}
                           Telefono: <b>{rechargeMobile.agency_phone}</b>{" "}
                         </span> */}
-                        {/* <span>BPOINT</span> */}
-                      </div>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: rechargeMobile.receipt
-                            .replace(/</g, "&lt;")
-                            .replace(/>/g, "&gt;")
-                            .replace(/\t/g, "\u00a0")
-                            .replace(/\n/g, "<br/> ")
-                            .replace(/\+/g, " ")
-                            .replace(/: /g, ":<div class='marginB'></div>")
-                            .replace(
-                              /<div class='marginB'><\/div>([^>]+)<br\/>/g,
-                              "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
-                            ),
-                        }}
-                      />
-                      <img
-                        className="qrCodeImg"
-                        src={`https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F${window.location.host}%2F%23%2Fqr%2F${rechargeMobile.barcode}&size=420x420&margin=10`}
-                        alt=""
-                      />
-                      <img
-                        className="barcodeModal"
-                        src={`https://barcode.tec-it.com/barcode.ashx?data=${rechargeMobile.barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
-                        alt=""
-                      />
-                      {/* <h6>OTC srl</h6>
+                    {/* <span>BPOINT</span> */}
+                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: rechargeMobile.receipt
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/\t/g, "\u00a0")
+                        .replace(/\n/g, "<br/> ")
+                        .replace(/\+/g, " ")
+                        .replace(/: /g, ":<div class='marginB'></div>")
+                        .replace(
+                          /<div class='marginB'><\/div>([^>]+)<br\/>/g,
+                          "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
+                        ),
+                    }}
+                  />
+                  <img
+                    className="qrCodeImg"
+                    src={`https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F${window.location.host}%2F%23%2Fqr%2F${rechargeMobile.barcode}&size=420x420&margin=10`}
+                    alt=""
+                  />
+                  <img
+                    className="barcodeModal"
+                    src={`https://barcode.tec-it.com/barcode.ashx?data=${rechargeMobile.barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
+                    alt=""
+                  />
+                  {/* <h6>OTC srl</h6>
                           <span className="__cupon--body__address">
                             Via Risorgimento n.50 - castel san pietro terme
                           </span>
@@ -411,7 +306,7 @@ class ModulePopUp4 extends React.Component {
                           <h6>
                             Prodotto: TIM <span className="changePrice">30</span> EURO
                           </h6> */}
-                      {/* <div className="col-12 _modulePopUP__cupon--table">
+                  {/* <div className="col-12 _modulePopUP__cupon--table">
                             <table>
                               <tbody>
                                 <tr>
@@ -433,38 +328,36 @@ class ModulePopUp4 extends React.Component {
                               </tbody>
                             </table>
                           </div> */}
-                      <div className="btn-group" role="group">
-                        <ReactToPrint
-                          trigger={() => (
-                            <button type="button" className="stampBtn">
-                              <img src={images.checkSymbol} alt="" />
-                              <br />
-                              Stampa
-                            </button>
-                          )}
-                          content={() => this.printT}
-                          bodyClass="afterprint"
-                          // copyStyles="false"
-                        />
-
-                        <button
-                          type="button"
-                          className="anullaBtn"
-                          onClick={() => {
-                            this.setPrint(false);
-                          }}
-                        >
-                          <img src={images.close} alt="" /> <br />
-                          Anulla
+                  <div className="btn-group" role="group">
+                    <ReactToPrint
+                      trigger={() => (
+                        <button type="button" className="stampBtn">
+                          <img src={images.checkSymbol} alt="" />
+                          <br />
+                          Stampa
                         </button>
-                      </div>
-                    </div>
+                      )}
+                      content={() => this.printT}
+                      bodyClass="afterprint"
+                      // copyStyles="false"
+                    />
+
+                    <button
+                      type="button"
+                      className="anullaBtn"
+                      onClick={() => {
+                        this.setPrint(false);
+                      }}
+                    >
+                      <img src={images.close} alt="" /> <br />
+                      Anulla
+                    </button>
                   </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
