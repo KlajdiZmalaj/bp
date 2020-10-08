@@ -259,10 +259,14 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 100%;
+  height: calc(100% - 70px);
+  overflow-y: auto;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .servicesForms .mobileNumPad--services {
@@ -281,6 +285,9 @@
   -webkit-box-ordinal-group: 6;
       -ms-flex-order: 5;
           order: 5;
+  z-index: 1;
+  position: fixed;
+  bottom: 70px;
   background: #272c31;
 }
 
@@ -330,19 +337,6 @@
   border: none;
 }
 
-.servicesForms .mobileNumPad--services__tab.active:before {
-  content: "\f0d7";
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 900;
-  position: absolute;
-  color: #edeef0;
-  font-size: 35px;
-  width: 52px;
-  left: calc(50% - 26px);
-  top: -22px;
-  z-index: 1;
-}
-
 .servicesForms .mobileNumPad--header {
   height: 46px;
   background-color: var(--accent-bg);
@@ -390,6 +384,14 @@
       -ms-flex-pack: center;
           justify-content: center;
   font-size: 14px;
+  white-space: nowrap;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 18px;
 }
 
 .servicesForms .mobileNumPad--buttons {
