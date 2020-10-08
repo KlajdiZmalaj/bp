@@ -42,13 +42,13 @@ const Numpad = ({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
-  console.log(
-    "services",
-    services,
-    activeCategory,
-    activeService,
-    services[activeCategory][activeService]
-  );
+  // console.log(
+  //   "services",
+  //   services,
+  //   activeCategory,
+  //   activeService,
+  //   services[activeCategory][activeService]
+  // );
   return (
     <div className="mobileNumPad">
       <div className="mobileNumPad--services">
