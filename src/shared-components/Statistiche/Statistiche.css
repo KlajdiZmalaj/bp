@@ -140,6 +140,19 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.Statist div.Categories.data.min {
+  height: 0px;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .Statist div.Categories.data .Graph,
@@ -148,6 +161,20 @@
   margin: 0 0.5%;
   height: 150px;
   background: #3c4349;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.Statist div.Categories.data .Graph.min,
+.Statist div.Categories.data .Additinal.Statist.min {
+  height: 0px;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 .Statist div.Categories.data .Graph:first-child,

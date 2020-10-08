@@ -4,7 +4,6 @@ import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
 import { transferMoney } from "services/auth";
-import { numberWithCommas } from "utils/HelperFunc";
 import ConfirmPopup from "shared-components/ConfirmPopup/ConfirmPopup";
 
 class FastCarica extends Component {
@@ -243,7 +242,7 @@ class FastCarica extends Component {
                 // transferMoney(userId, amountVal, type, this.transferCallback);
               }}
             >
-              {type == "deposit" ? "Accredita" : "Preleva"}
+              {type === "deposit" ? "Accredita" : "Preleva"}
             </button>
           </>
         )}

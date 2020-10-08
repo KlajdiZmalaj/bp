@@ -27,7 +27,9 @@ const Card = ({ setTab, tab, id, name, icon }) => (
 const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   useEffect(() => {
     getFavorites();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const [tab, setTab] = useState("0");
   const [serviceSearched, setSearch] = useState("");
   const [activeCategory, setCategory] = useState(null);

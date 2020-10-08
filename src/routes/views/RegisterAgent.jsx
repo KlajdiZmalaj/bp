@@ -540,7 +540,9 @@ class RegisterEndUser extends React.Component {
                   {getFieldDecorator("birthday", {
                     initialValue:
                       this.state.nascita !== "" &&
-                      moment(this.state.nascita, dateFormat),
+                      moment(this.state.nascita, dateFormat).isValid()
+                        ? moment(this.state.nascita, dateFormat)
+                        : null,
                     rules: [{ required: true }],
                   })(
                     <DatePicker
@@ -1094,7 +1096,12 @@ class RegisterEndUser extends React.Component {
                   Data di rilascio<span>*</span>
                   <Form.Item>
                     {getFieldDecorator("data_di_rilascio", {
-                      initialValue: moment(this.state.nascita, dateFormat),
+                      initialValue: moment(
+                        this.state.nascita,
+                        dateFormat
+                      ).isValid()
+                        ? moment(this.state.nascita, dateFormat)
+                        : null,
                       rules: [{ required: true }],
                     })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
                   </Form.Item>
@@ -1105,7 +1112,12 @@ class RegisterEndUser extends React.Component {
                   Data di scadenza<span>*</span>
                   <Form.Item>
                     {getFieldDecorator("data_di_scadenza", {
-                      initialValue: moment(this.state.nascita, dateFormat),
+                      initialValue: moment(
+                        this.state.nascita,
+                        dateFormat
+                      ).isValid()
+                        ? moment(this.state.nascita, dateFormat)
+                        : null,
                       rules: [{ required: true }],
                     })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
                   </Form.Item>

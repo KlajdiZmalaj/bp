@@ -64,7 +64,7 @@ export class SupportBody extends Component {
     }
   }
   render() {
-    const { perPage, page_number, filteredArray, current_page } = this.state;
+    const { perPage, page_number, current_page } = this.state;
     const {
       deleteError,
       total_pages,

@@ -242,6 +242,7 @@ class ModulePopUp3 extends React.Component {
           });
           return options;
         }
+        return options;
       });
     }
 

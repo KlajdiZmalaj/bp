@@ -11,8 +11,11 @@ class MyInput extends Component {
       labelName === "Dati Passegeri" &&
         value &&
         value
+          // eslint-disable-next-line no-useless-escape
           .replace(/\\["\\\/bfnrtu]/g, "@")
+          // eslint-disable-next-line no-useless-escape
           .replace(
+            // eslint-disable-next-line no-useless-escape
             /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
             "]"
           )

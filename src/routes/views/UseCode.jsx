@@ -41,7 +41,6 @@ class UseCode extends React.Component {
   }
   render() {
     const { inputVal } = this.state;
-    const { paymentsFromCode } = this.props;
     return (
       <div className="Container">
         <div className="container-fluid overview ">

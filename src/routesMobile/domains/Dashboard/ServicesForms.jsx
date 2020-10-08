@@ -63,6 +63,7 @@ const RedirectDashboard = ({ setService, activeService }) => {
     setTimeout(() => {
       setService(null);
     }, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="serviceSoon">

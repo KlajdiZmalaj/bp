@@ -821,10 +821,21 @@
   height: 40px;
 }
 
+.newReg .SubmitButton.Agency {
+  width: 100%;
+}
+
+.newReg--row :nth-child(3).newReg--row__col :last-child.itemCol.full {
+  position: absolute;
+  right: 5px;
+  bottom: -119px;
+}
+
 .newReg .newReg--row__col {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  position: relative;
 }
 
 .newReg .ant-row {

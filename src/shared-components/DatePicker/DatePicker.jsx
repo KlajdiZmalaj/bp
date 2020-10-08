@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import { DatePicker as AntdDatePicker, ConfigProvider } from "antd";
 import locale from "antd/es/locale/it_IT";
 const DatePicker = ({

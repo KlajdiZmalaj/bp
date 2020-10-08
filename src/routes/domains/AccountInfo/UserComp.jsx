@@ -1,6 +1,5 @@
 import React from "react";
 import { Select, DatePicker } from "antd";
-import { isString } from "lodash";
 
 import moment from "moment";
 import { ItemFull } from "./AdminComp";

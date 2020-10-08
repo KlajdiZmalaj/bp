@@ -1,6 +1,6 @@
 import React from "react";
 import { DateRangePicker } from "react-date-range";
-import { subDays, format } from "date-fns";
+import { subDays } from "date-fns";
 import * as locales from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";

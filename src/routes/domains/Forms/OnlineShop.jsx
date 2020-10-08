@@ -18,7 +18,6 @@ class OnlineShop extends Component {
     note_acquisti: "",
     cita: "",
     provincia: "",
-    cognome: "",
     note: "",
     stato: "",
     indirizzo1: "",
@@ -40,7 +39,6 @@ class OnlineShop extends Component {
         note_acquisti: "",
         cita: "",
         provincia: "",
-        cognome: "",
         note: "",
         stato: "",
         indirizzo1: "",
@@ -62,25 +60,25 @@ class OnlineShop extends Component {
     }
   };
   submitData = () => {
-    const {
-      link,
-      prezzo_prodotto,
-      consegna_a,
-      nome,
-      cognome,
-      company_name,
-      destinazione,
-      email,
-      telefono,
-      note_acquisti,
-      cita,
-      provincia,
-      note,
-      stato,
-      indirizzo1,
-      indirizzo2,
-      cap,
-    } = this.state;
+    // const {
+    //   link,
+    //   prezzo_prodotto,
+    //   consegna_a,
+    //   nome,
+    //   cognome,
+    //   company_name,
+    //   destinazione,
+    //   email,
+    //   telefono,
+    //   note_acquisti,
+    //   cita,
+    //   provincia,
+    //   note,
+    //   stato,
+    //   indirizzo1,
+    //   indirizzo2,
+    //   cap,
+    // } = this.state;
     // Send Data
   };
   render() {

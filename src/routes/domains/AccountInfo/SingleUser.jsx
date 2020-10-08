@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
 import { connect } from "react-redux";
-import { switchUserStatus, transferMoney } from "services/auth";
+import { switchUserStatus } from "services/auth";
 import { capitalize, get } from "lodash";
 import { message } from "antd";
 import SingleUser2 from "./SingleUser2";
@@ -75,7 +75,7 @@ class SingleUser extends Component {
                   !e.target.classList.contains("fa-ey") &&
                   !e.target.classList.contains(" fa-lock-open") &&
                   !e.target.classList.contains(" fa-lock") &&
-                  e.target.tagName != "BUTTON"
+                  e.target.tagName !== "BUTTON"
                 ) {
                   this.setState({
                     displayChildren: !this.state.displayChildren,
@@ -153,7 +153,7 @@ class SingleUser extends Component {
                 Deposit
               </button>
 
-              {user.status == 1 ? (
+              {user.status === 1 ? (
                 <i
                   className="fal fa-lock-open"
                   onClick={(e) => {

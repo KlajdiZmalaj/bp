@@ -85,15 +85,15 @@ class AdminPanelDom extends React.Component {
       this.setState({ menuSkinVisible: true });
     }
     if (
-      this.props.activeSkinId != prevProps.activeSkinId &&
+      this.props.activeSkinId !== prevProps.activeSkinId &&
       this.props.screenWidth <= 1320
     ) {
       this.props.getStatistiche(this.props.activeSkinId);
       this.props.getWidgetPayments(this.props.activeSkinId);
     }
     if (
-      this.state.menuSkinVisible != prevState.menuSkinVisible ||
-      this.props.screenWidth != prevProps.screenWidth
+      this.state.menuSkinVisible !== prevState.menuSkinVisible ||
+      this.props.screenWidth !== prevProps.screenWidth
     ) {
       !this.state.menuSkinVisible && this.props.screenWidth >= 1024
         ? this.props.setAdminPanelClass("Center")
@@ -121,7 +121,6 @@ class AdminPanelDom extends React.Component {
       adminDepModal,
       setDepositoModalAdmin,
       userDetail,
-      skinList,
       leUltimeTransazioniDet,
       accountInfo,
       activeSkinId,
@@ -180,7 +179,7 @@ class AdminPanelDom extends React.Component {
                   />
                 )}
                 <div className="newReg--row lastRow">
-                  {userDetail.role != "agent" && userDetail.role != "user" ? (
+                  {userDetail.role !== "agent" && userDetail.role !== "user" ? (
                     <React.Fragment>
                       <div className="newReg--row__col">Cambia Agente</div>
                       <div className="newReg--row__col checkCol">
@@ -309,7 +308,8 @@ class AdminPanelDom extends React.Component {
                     className={`fal fa-lock${
                       activeSkinId === -1 && utentiResModal.data.status === 0
                         ? "-alt"
-                        : utentiResModal.data.status === 1 && activeSkinId != -1
+                        : utentiResModal.data.status === 1 &&
+                          activeSkinId !== -1
                         ? "-alt"
                         : "-open-alt active"
                     }`}
@@ -317,7 +317,8 @@ class AdminPanelDom extends React.Component {
                       const changeStatus = await (activeSkinId === -1 &&
                       utentiResModal.data.status === 1
                         ? 0
-                        : utentiResModal.data.status === 1 && activeSkinId != -1
+                        : utentiResModal.data.status === 1 &&
+                          activeSkinId !== -1
                         ? 2
                         : 1);
                       await switchUserStatus(
@@ -325,7 +326,7 @@ class AdminPanelDom extends React.Component {
                         changeStatus,
                         () => {
                           (changeStatus === 0 && activeSkinId === -1) ||
-                          (changeStatus === 1 && activeSkinId != -1)
+                          (changeStatus === 1 && activeSkinId !== -1)
                             ? message.error(
                                 `lo stato dell${
                                   utentiResModal.data.username
@@ -392,7 +393,7 @@ class AdminPanelDom extends React.Component {
                 <React.Fragment>
                   <ModalRow title="User Id" data={utentiResModal.data.id} />
                   {utentiResModal.data.city &&
-                    utentiResModal.data.city != "-" && (
+                    utentiResModal.data.city !== "-" && (
                       <ModalRow title="City" data={utentiResModal.data.city} />
                     )}
 

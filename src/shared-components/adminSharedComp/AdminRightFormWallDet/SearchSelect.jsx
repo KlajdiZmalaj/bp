@@ -1,8 +1,6 @@
 import React from "react";
-import { Select } from "antd";
 import "./SearchSelect.css";
 import ClickOut from "react-onclickout";
-const { Option } = Select;
 
 class SearchSelect extends React.Component {
   state = {
@@ -10,7 +8,7 @@ class SearchSelect extends React.Component {
   };
   componentDidUpdate(prevProps) {
     if (
-      this.props.closeSelect != prevProps.closeSelect &&
+      this.props.closeSelect !== prevProps.closeSelect &&
       this.props.closeSelect === true
     ) {
       this.setState({ SearchOptions: false });

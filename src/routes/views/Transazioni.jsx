@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import "antd/dist/antd.css";
 import moment from "moment";
-import { get } from "lodash";
-import { Azioni, Overview, Header, Loader } from "shared-components";
+import { Azioni, Header, Loader } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
@@ -22,7 +21,6 @@ import Excel from "./Excel";
 import UseCode from "routes/views/UseCode";
 import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
-import { allRoles } from "config/index";
 import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -79,6 +77,7 @@ class Transazioni extends React.Component {
       this.props.openModalForAdmin(false);
       this.props.editModalDetails({});
     }
+    this.props.setFromDateToDate(null);
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     let { usernames } = prevState;
@@ -109,18 +108,16 @@ class Transazioni extends React.Component {
       visible: false,
     });
   };
-  componentWillUnmount() {
-    this.props.setFromDateToDate(null);
-  }
+
   componentDidUpdate(prevProps) {
     const { username, from, to, perPage } = this.state;
-    const { activeSkinId, usernames } = this.props;
+    const { activeSkinId } = this.props;
     if (
-      this.props.activeSkinId != prevProps.activeSkinId &&
+      this.props.activeSkinId !== prevProps.activeSkinId &&
       this.props.forAdmin
     ) {
       this.props.getPayments(
-        username != "" ? username : "",
+        username !== "" ? username : "",
         from || "",
         to || "",
         1,
@@ -128,7 +125,7 @@ class Transazioni extends React.Component {
         activeSkinId
       );
     }
-    if (this.props.fromDate && this.props.fromDate != prevProps.fromDate) {
+    if (this.props.fromDate && this.props.fromDate !== prevProps.fromDate) {
       const label = format(
         moment(this.props.fromDate, "YYYY-MM-DD").toDate(),
         "dd/MM/yyyy"
@@ -234,7 +231,7 @@ class Transazioni extends React.Component {
       });
       this.props.forAdmin
         ? this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             fromDate,
             fromDate,
             1,
@@ -242,7 +239,7 @@ class Transazioni extends React.Component {
             this.props.activeSkinId
           )
         : this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             fromDate,
             fromDate,
             1,
@@ -261,7 +258,7 @@ class Transazioni extends React.Component {
       });
       this.props.forAdmin
         ? this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             fromDate,
             fromDate,
             1,
@@ -269,7 +266,7 @@ class Transazioni extends React.Component {
             this.props.activeSkinId
           )
         : this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             fromDate,
             toDate,
             1,
@@ -290,7 +287,7 @@ class Transazioni extends React.Component {
       });
       this.props.forAdmin
         ? this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             fromDate,
             toDate,
             1,
@@ -298,7 +295,7 @@ class Transazioni extends React.Component {
             this.props.activeSkinId
           )
         : this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             fromDate,
             toDate,
             1,
@@ -314,7 +311,7 @@ class Transazioni extends React.Component {
       });
       this.props.forAdmin
         ? this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             "",
             "",
             1,
@@ -322,7 +319,7 @@ class Transazioni extends React.Component {
             this.props.activeSkinId
           )
         : this.props.getPayments(
-            username != "" ? username : "",
+            username !== "" ? username : "",
             "",
             "",
             1,
@@ -351,14 +348,14 @@ class Transazioni extends React.Component {
 
     this.props.forAdmin
       ? this.props.getPayments(
-          username != "" ? username : "",
+          username !== "" ? username : "",
           "",
           "",
           1,
           25,
           this.props.activeSkinId
         )
-      : this.props.getPayments(username != "" ? username : "", "", "", 1, 25);
+      : this.props.getPayments(username !== "" ? username : "", "", "", 1, 25);
   }
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -814,7 +811,7 @@ class Transazioni extends React.Component {
                                       item.service_name
                                     );
                                   }
-                                  if (e.target.tagName != "I") {
+                                  if (e.target.tagName !== "I") {
                                     if (
                                       forAdmin &&
                                       this.props.screenWidth <= 402 &&
@@ -954,7 +951,7 @@ class Transazioni extends React.Component {
                     // console.log("ca ka pagination", e);
                     forAdmin
                       ? this.props.getPayments(
-                          username != "" ? username : "",
+                          username !== "" ? username : "",
                           from || "",
                           to || "",
                           e,
@@ -962,7 +959,7 @@ class Transazioni extends React.Component {
                           this.props.activeSkinId
                         )
                       : getPayments(
-                          username != "" ? username : "",
+                          username !== "" ? username : "",
                           from || "",
                           to || "",
                           e,
@@ -981,7 +978,7 @@ class Transazioni extends React.Component {
                     this.setState({ perPage: parseInt(e) });
                     forAdmin
                       ? getPayments(
-                          username != "" ? username : "",
+                          username !== "" ? username : "",
                           from || "",
                           to || "",
                           1,
@@ -989,7 +986,7 @@ class Transazioni extends React.Component {
                           this.props.activeSkinId
                         )
                       : getPayments(
-                          username != "" ? username : "",
+                          username !== "" ? username : "",
                           from || "",
                           to || "",
                           1,

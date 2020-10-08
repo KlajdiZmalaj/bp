@@ -42,7 +42,7 @@ class DashboardDom extends React.Component {
   }
   async componentDidUpdate(nextProps) {
     const { services, favorites } = await this.props;
-    if (favorites != nextProps.favorites) {
+    if (favorites !== nextProps.favorites) {
       const CategoriesFav = await this.FindArrayOfServicesByValue(
         favorites,
         ""
@@ -56,7 +56,10 @@ class DashboardDom extends React.Component {
         CompaniesFav,
       });
     }
-    if (services != nextProps.services || this.props.match != nextProps.match) {
+    if (
+      services !== nextProps.services ||
+      this.props.match !== nextProps.match
+    ) {
       let Categories = await this.FindArrayOfServicesByValue(
         services,
         this.props.match.params.id
@@ -154,10 +157,10 @@ class DashboardDom extends React.Component {
         ...Object.keys(Categories[id])
           .filter(
             (key) =>
-              key != "name" &&
-              key != "group" &&
-              key != "key" &&
-              key != "favourite"
+              key !== "name" &&
+              key !== "group" &&
+              key !== "key" &&
+              key !== "favourite"
           )
           .map((key) => ({
             [key]: {
@@ -181,12 +184,12 @@ class DashboardDom extends React.Component {
       search,
       CompaniesFav,
       Companies,
-      Services,
       categoryActive,
     } = this.state;
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}>
+          {/* eslint-disable-next-line jsx-a11y/alt-text */}
           <img src={images["baner_servizi_header"]} />
         </div>
         <div className={`Dashboard ${menuClassName}`}>
@@ -207,7 +210,7 @@ class DashboardDom extends React.Component {
                 </div>
               ))}
             <div className="Last">
-              {" "}
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img src={images["servizi_banner"]} />
             </div>
           </div>
@@ -229,7 +232,7 @@ class DashboardDom extends React.Component {
                             <div
                               key={id ? id : Math.random()}
                               onClick={async (e) => {
-                                if (e.target.tagName != "I") {
+                                if (e.target.tagName !== "I") {
                                   if (id === "BOLL") {
                                     window.location.hash =
                                       "dashboard/pagamenti";

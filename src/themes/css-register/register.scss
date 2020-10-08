@@ -629,9 +629,18 @@
     border-radius: 0;
     text-transform: uppercase;
     height: 40px;
+    &.Agency {
+      width: 100%;
+    }
+  }
+  &--row :nth-child(3).newReg--row__col :last-child.itemCol.full {
+    position: absolute;
+    right: 5px;
+    bottom: -119px;
   }
   .newReg--row__col {
     justify-content: flex-start;
+    position: relative;
   }
   .ant-row {
     margin: 0;

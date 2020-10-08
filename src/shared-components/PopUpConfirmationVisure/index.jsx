@@ -36,10 +36,10 @@ const PopUpConfirmationVisure = ({
             />
             <span>{`Id :BP- ${VisureByVisureId.id}`}</span>
           </div>
-          {VisureByVisureId.type == 1 && (
+          {VisureByVisureId.type === 1 && (
             <PersonaFisicaConfirmation TicketByTcketId={VisureByVisureId} />
           )}
-          {VisureByVisureId.type == 2 && (
+          {VisureByVisureId.type === 2 && (
             <AziendaOImpresaConfirmation TicketByTcketId={VisureByVisureId} />
           )}
 

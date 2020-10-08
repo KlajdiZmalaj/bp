@@ -7,7 +7,7 @@ import SearchSelect from "./SearchSelect";
 import "./aRFWD.css";
 function FindId(object, filterValue) {
   for (let i = 0; i < object.length; i++) {
-    if (object[i].username == filterValue) {
+    if (object[i].username === filterValue) {
       return object[i].id;
     }
   }
@@ -197,7 +197,7 @@ class AdminRightFormWalletDetails extends React.Component {
       !window.location.href.includes("utenti") &&
       this.props.ModalOrNo === true
     ) {
-      if (this.props.activeSkinId != prevProps.activeSkinId) {
+      if (this.props.activeSkinId !== prevProps.activeSkinId) {
         this.props.getUsers(
           null,
           {

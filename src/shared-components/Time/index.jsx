@@ -11,7 +11,8 @@ export default () => {
     return () => {
       clearInterval(val);
     };
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <span className="timeH">{moment().format("DD/MM/YYYY HH:mm:ss")}</span>

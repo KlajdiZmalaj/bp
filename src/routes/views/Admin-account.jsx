@@ -1,5 +1,5 @@
 import React from "react";
-import { Overview, Header } from "shared-components";
+import { Header } from "shared-components";
 import Amministrazione from "shared-components/Amministrazione/Amministrazione.jsx";
 
 class AdminAccount extends React.Component {

@@ -44,7 +44,6 @@ import Fatura from "./routes/views/Fatura";
 import CreateSkin from "./routes/views/CreateSkin";
 import UnderDevelopment from "./routes/views/UnderDevelopment";
 import AreaDownload from "./routes/views/AreaDownload";
-import { Encrypt } from "utils/HelperFunc";
 
 import {
   subscribeSocketUser,
@@ -60,9 +59,8 @@ import {
 } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
-import { TestEncrypt } from "services/auth";
 
-moment.locale("it", {
+moment.updateLocale("it", {
   week: {
     dow: 1,
   },
@@ -206,7 +204,7 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
-            // :id?/ , me ?/ qe te beje dhe /dashboard render
+            {/* // :id?/ , me ?/ qe te beje dhe /dashboard render */}
             <Route
               path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
               // component={Dashboard}

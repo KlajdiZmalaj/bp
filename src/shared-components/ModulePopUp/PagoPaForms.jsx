@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import ReturnFormItem from "./FormHelperComp";
-import { Select, Radio } from "antd";
+import { Radio } from "antd";
 
 export const PagoPaRightForm = ({ barcodeData, getFieldDecorator }) => (
   <Fragment>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Azioni, Header } from "shared-components";
 import FormDetailsDomain from "../domains/FormDetails/FormDetailsDomain";
-import FormVisureDetails from "../domains/FormVisureDetails/FormVisureDetails";
 
 export class FormDetails extends Component {
   render() {

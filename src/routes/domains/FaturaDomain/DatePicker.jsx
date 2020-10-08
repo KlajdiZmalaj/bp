@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ClickOut from "react-onclickout";
 
 let years = [];
@@ -41,11 +41,10 @@ const DatePicker = ({
             {months.map((month) => {
               return (
                 <div
-                  className="month"
                   onClick={() => {
                     setMonthChosen(month);
                   }}
-                  className={`${
+                  className={`month ${
                     monthChosen.name === month.name ? "active" : ""
                   }`}
                   key={month.id}
@@ -68,11 +67,10 @@ const DatePicker = ({
             {years.map((year) => {
               return (
                 <div
-                  className="year"
                   onClick={() => {
                     setYearChosen(year);
                   }}
-                  className={`${yearChosen === year.name ? "active" : ""}`}
+                  className={`year ${yearChosen === year.name ? "active" : ""}`}
                   key={year.id}
                 >
                   {year.name}

@@ -17,7 +17,7 @@ export const FilterVisureComponent = ({
 }) => (
   <Tooltip
     title={`Filtra ${
-      title === "all" && icon != "shopping-cart"
+      title === "all" && icon !== "shopping-cart"
         ? "Tutti"
         : title === "visura"
         ? "Visura"

@@ -33,7 +33,7 @@ class AdminLeftForm extends React.Component {
     }, 600);
   }
   async componentDidUpdate(prevProps) {
-    if (this.props.activeSkinId != prevProps.activeSkinId) {
+    if (this.props.activeSkinId !== prevProps.activeSkinId) {
       await setTimeout(() => {
         const { Statistiche, TrCoPro, leUltimeTransazioniDet } = this.props;
         this.props.editStatModal({
@@ -80,7 +80,7 @@ class AdminLeftForm extends React.Component {
               skinList.map((skin) => (
                 <div
                   onClick={() => {
-                    setActiveSkinId(activeSkinId == skin.id ? -1 : skin.id);
+                    setActiveSkinId(activeSkinId === skin.id ? -1 : skin.id);
                     this.CloseWindowOnClick();
                   }}
                   className={`AdminLeftForm--FirstBox--Box${
@@ -108,7 +108,7 @@ class AdminLeftForm extends React.Component {
                   </div>
                 </div>
               ))}
-            {accountInfo.profile.role.name != "support" && (
+            {accountInfo.profile.role.name !== "support" && (
               <div
                 style={{ cursor: "pointer" }}
                 className={`AdminLeftForm--FirstBox--Box`}

@@ -18,7 +18,7 @@ const AdminServiziItem = ({
       </div>
       <div className="AdminServiziItem--Header--Title">{full_name}</div>
     </div>
-
+    {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img
       src={`http://www.perdemo.it/ricaricheSPS/${category}.png`}
       className="AdminServiziItem--Image"

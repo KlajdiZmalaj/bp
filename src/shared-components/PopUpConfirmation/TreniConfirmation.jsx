@@ -4,8 +4,10 @@ import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 const Treni = ({ TicketByTcketId }) => {
   const isJson = /^[\],:{}\s]*$/.test(
     TicketByTcketId.extra_data
+      // eslint-disable-next-line  no-useless-escape
       .replace(/\\["\\\/bfnrtu]/g, "@")
       .replace(
+        // eslint-disable-next-line  no-useless-escape
         /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
         "]"
       )
@@ -75,7 +77,7 @@ const Treni = ({ TicketByTcketId }) => {
           <span className="light">Andata</span>
           <span className="dark">{TicketByTcketId.andata_time}</span>
         </div>
-        {TicketByTcketId.tipologia_biglietto == 1 && (
+        {TicketByTcketId.tipologia_biglietto === 1 && (
           <div className="confirmationPopup--body__item">
             <span className="light">Ritorno</span>
             <span className="dark">{TicketByTcketId.ritorno_date}</span>

@@ -32,11 +32,11 @@ export class DetailRow extends Component {
               <Tooltip title={ticket.type}>
                 <i
                   className={`fas fa-${
-                    ticket.type == "Treni"
+                    ticket.type === "Treni"
                       ? "train"
-                      : ticket.type == "Eventi"
+                      : ticket.type === "Eventi"
                       ? "ticket-alt"
-                      : ticket.type == "Voli"
+                      : ticket.type === "Voli"
                       ? "plane"
                       : ""
                   }`}

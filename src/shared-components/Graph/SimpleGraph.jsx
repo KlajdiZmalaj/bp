@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Tooltip } from "antd";
-import moment from "moment";
 const graphForMap = (graphData) => {
   let arrayForMax = [];
   let arrayForMap = [];
@@ -27,12 +26,13 @@ const SimpleGraph = ({
   handleMouseEntering,
   handleClick,
   AdditionalComp,
+  className,
 }) => {
   const max = graphForMap(graphicData).max;
   const arrayForMap = graphForMap(graphicData).arrayForMap;
   const [date, setDate] = useState(new Date());
   return (
-    <div className="Graph">
+    <div className={`Graph ${className ? className : ""}`}>
       {arrayForMap &&
         Array.isArray(arrayForMap) &&
         arrayForMap.map((graphData) => {

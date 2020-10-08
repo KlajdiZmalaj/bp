@@ -69,7 +69,6 @@ class Treni extends Component {
   submitData = () => {
     const {
       link,
-      extra_data,
       partenza,
       partenza_stazione,
       andata_time,
@@ -265,7 +264,7 @@ class Treni extends Component {
               />
             </div>
 
-            {this.state.tipologia_biglietto == 2 ? (
+            {this.state.tipologia_biglietto === 2 ? (
               <div className="formsContainer--body__item semi">
                 <div className="label">Andata</div>
                 <DatePicker
@@ -360,7 +359,7 @@ class Treni extends Component {
                 <div className="radioGr">
                   <span>Andata e ritorno </span>
                   <input
-                    checked={this.state.tipologia_biglietto == 1}
+                    checked={this.state.tipologia_biglietto === 1}
                     onChange={(e) => {
                       if (e.target.checked) {
                         this.setState({ tipologia_biglietto: e.target.value });
@@ -387,7 +386,7 @@ class Treni extends Component {
                     name="bagaglio"
                     value="2"
                     id="bagaglio2"
-                    checked={this.state.tipologia_biglietto == 2}
+                    checked={this.state.tipologia_biglietto === 2}
                   />
                   <label htmlFor="bagaglio2" className="customRadio">
                     <span></span>
@@ -403,7 +402,7 @@ class Treni extends Component {
                   <div className="radioGr">
                     <span>TrenItalia </span>
                     <input
-                      checked={this.state.compagnie == "trenitalia"}
+                      checked={this.state.compagnie === "trenitalia"}
                       onChange={(e) => {
                         if (e.target.checked) {
                           this.setState({ compagnie: "trenitalia" });
@@ -430,7 +429,7 @@ class Treni extends Component {
                       name="c"
                       value="2"
                       id="c2"
-                      checked={this.state.compagnie == "italio"}
+                      checked={this.state.compagnie === "italio"}
                     />
                     <label htmlFor="c2" className="customRadio">
                       <span></span>

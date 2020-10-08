@@ -40,7 +40,7 @@ class Annunci extends React.Component {
   tabExpand = (tab) => {
     if (this.state.expanded.includes(tab)) {
       this.setState({
-        expanded: this.state.expanded.filter((el) => el != tab),
+        expanded: this.state.expanded.filter((el) => el !== tab),
       });
     } else {
       this.setState({ expanded: [...this.state.expanded, tab] });
@@ -125,11 +125,11 @@ class Annunci extends React.Component {
                     <div
                       onClick={() => this.tabExpand(m.id)}
                       className="panel-tab"
-                      aria-expanded={`${
-                        this.state.expanded.find((tab) => tab === m.id) != null
-                          ? "true"
-                          : "false"
-                      }`}
+                      aria-expanded={
+                        this.state.expanded.find((tab) => tab === m.id) !== null
+                          ? true
+                          : false
+                      }
                     >
                       <i
                         id={

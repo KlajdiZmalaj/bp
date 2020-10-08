@@ -72,7 +72,7 @@ class AdminListaUtentiRow extends React.Component {
       CenterCls,
     } = this.props;
     const Special =
-      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
+      activeSkinId === -1 && accountInfo?.profile?.role?.name !== "support";
     return (
       <div className="AdminListaUtentiRow--Complete">
         <div
@@ -83,9 +83,9 @@ class AdminListaUtentiRow extends React.Component {
             if (
               screenWidth <= 850 &&
               screenWidth >= 550 &&
-              e.target.tagName != "I" &&
-              e.target.tagName != "BUTTON" &&
-              e.target.tagName != "A"
+              e.target.tagName !== "I" &&
+              e.target.tagName !== "BUTTON" &&
+              e.target.tagName !== "A"
             ) {
               editUtentiRespModal({
                 visibility: true,

@@ -103,7 +103,6 @@ class Eventi extends Component {
       extra_data,
       descrizione_categoria,
       price,
-      categoria,
     } = this.state;
     return (
       <React.Fragment>
