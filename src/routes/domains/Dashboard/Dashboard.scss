@@ -78,14 +78,8 @@
     min-height: calc(100vh - 700px);
     &.fixed {
       min-height: calc(100vh - 210px);
-      margin-left: 300px;
       position: relative;
       margin-top: 219px;
-      .CompaniesAndOther {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-      }
     }
     .CompaniesAndOther {
       width: calc(100% - 300px);
@@ -95,6 +89,9 @@
       display: flex;
       flex-direction: column;
       min-height: 100%;
+      &.fixed {
+        margin-left: 300px;
+      }
       .Favorites {
         display: flex;
         height: 140px;
@@ -208,9 +205,10 @@
         }
         .Companies {
           display: grid;
+          min-height: 140px;
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
           grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-          min-height: calc(100% - 60px);
+          height: calc(100% - 60px);
           background: #ffffff;
           border-top: 4px solid var(--accent-bg);
           @media (max-width: 1135px) {
@@ -223,6 +221,7 @@
             justify-content: flex-start;
             align-items: center;
             display: flex;
+            min-height: 140px;
             flex-direction: column;
             border-left: 1px solid #edeef0;
             border-bottom: 1px solid #edeef0;
@@ -243,15 +242,17 @@
               transition: 0.2s;
               color: #0000004d;
               font-size: 17px;
+
               &.hover {
                 color: #ffc107;
+                font-weight: 400;
                 font-weight: bold;
               }
               &.favourite {
                 color: #ffc107;
                 font-weight: bold;
                 transition: 0.2s;
-                &:hover {
+                &.hover {
                   font-weight: 400;
                   color: #0000004d;
                   transition: 0.2s;

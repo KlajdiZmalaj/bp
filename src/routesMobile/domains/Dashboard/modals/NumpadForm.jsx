@@ -72,42 +72,46 @@ const Numpad = ({
             }
           )}
       </div>
-      <div className="mobileNumPad--header">
-        <img src={images[activeService] || images[activeCategory]} alt="" />
-        {selectedCost?.name}
-        <i
-          onClick={() => {
-            if (allFavServices.includes(activeService)) {
-              toggleFavorite(activeService, "remove");
-            } else {
-              toggleFavorite(activeService, "set");
+      <div className="mobileNumPad--headsub">
+        <div className="mobileNumPad--header">
+          <img src={images[activeService] || images[activeCategory]} alt="" />
+          {selectedCost?.name}
+          <i
+            onClick={() => {
+              if (allFavServices.includes(activeService)) {
+                toggleFavorite(activeService, "remove");
+              } else {
+                toggleFavorite(activeService, "set");
+              }
+            }}
+            className={
+              "fas fa-star" +
+              (allFavServices.includes(activeService) ? " active" : "")
             }
-          }}
-          className={
-            "fas fa-star" +
-            (allFavServices.includes(activeService) ? " active" : "")
-          }
-          aria-hidden="true"
-        ></i>{" "}
+            aria-hidden="true"
+          ></i>{" "}
+        </div>
+        <div className="mobileNumPad--subh">
+          INSERIRE IL NUMERO DI TELEFONO DA RICARICARE
+        </div>
       </div>
-      <div className="mobileNumPad--subh">
-        INSERIRE IL NUMERO DI TELEFONO DA RICARICARE
-      </div>
+
       <div className="mobileNumPad--input">
         <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
         <i className="fas fa-address-book"></i>
       </div>
       <div className="mobileNumPad--numbers">
-        {[...new Array(9)].map((a, b) => {
+        {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {
           return (
-            <div key={b} onClick={() => setVal(`${inpVal}${b + 1}`)}>
-              {b + 1}
+            <div key={a} onClick={() => setVal(`${inpVal}${a}`)}>
+              {a}
             </div>
           );
         })}
-        <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
         <div onClick={() => setVal("")}>C</div>
+        <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
       </div>
+
       <div className="mobileNumPad--buttons">
         <button
           className={`${loadingRechargeMobile ? "disable" : ""}`}

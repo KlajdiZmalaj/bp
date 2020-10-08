@@ -4,6 +4,7 @@ import { AuthActions } from "redux-store/models";
 import Voli from "./Voli";
 import Treni from "./Treni";
 import Eventi from "./Eventi";
+import OnlineShop from "./OnlineShop";
 import images from "themes/images";
 import "./style.css";
 
@@ -20,7 +21,7 @@ const Card = ({ title, icon, clickHandler, accountInfo }) => {
       className="formsContainer--cards__item animated fadeIn"
     >
       <div className="titleCard">
-        {title} <i className={icon}></i>{" "}
+        {title.replace("-", " ")} <i className={icon}></i>{" "}
       </div>
       <img className="bgImg" src={images[`${title}-card`]} alt="" />
       <div className="imageCard">
@@ -58,7 +59,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="expedia"
-                icon={"fas fa-plane"}
+                icon={"fal fa-plane"}
                 color="#11375dad"
                 accountInfo={accountInfo}
               />
@@ -72,7 +73,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="flixbus"
-                icon={"fas fa-subway"}
+                icon={"fal fa-bus"}
                 color="#588a17a3"
                 accountInfo={accountInfo}
               />
@@ -86,7 +87,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="trenitalia"
-                icon={"fas fa-subway"}
+                icon={"fal fa-subway"}
                 color="#bf0013b3"
                 accountInfo={accountInfo}
               />
@@ -100,7 +101,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="vivaticket"
-                icon={"fas fa-receipt"}
+                icon={"fal fa-ticket-alt"}
                 color="#151515c4"
                 accountInfo={accountInfo}
               />
@@ -114,7 +115,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="ticketing"
-                icon={"fas fa-receipt"}
+                icon={"fal fa-ticket-alt"}
                 color="#edbf00bf"
                 accountInfo={accountInfo}
               />
@@ -128,15 +129,29 @@ export class FormsBody extends Component {
                   })
                 }
                 title="stubhub"
-                icon={"fas fa-receipt"}
+                icon={"fal fa-ticket-alt"}
                 color="#3f1d74b5"
                 accountInfo={accountInfo}
               />
               <Card
                 clickHandler={() => (window.location.hash = "visure")}
                 title="visure"
-                icon={"fal fa-align-right"}
+                icon={"fal fa-file-alt"}
                 color="#277d74b5"
+                accountInfo={accountInfo}
+              />
+              <Card
+                clickHandler={() =>
+                  this.setState({
+                    isSelected: true,
+                    nome_agenzia: "shop-online",
+                    typee: 4,
+                    color: "#F26521",
+                  })
+                }
+                title="shop-online"
+                icon={"fal fa-shopping-cart"}
+                color="#F26521"
                 accountInfo={accountInfo}
               />
             </div>
@@ -164,6 +179,16 @@ export class FormsBody extends Component {
           )}
           {isSelected && typee === 3 && (
             <Eventi
+              goBack={() => this.setState({ isSelected: false })}
+              nome_agenzia={nome_agenzia}
+              color={color}
+              typee={typee}
+              sendDataForm={this.props.sendDataForm}
+              accountInfo={accountInfo}
+            />
+          )}
+          {isSelected && typee === 4 && (
+            <OnlineShop
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}

@@ -675,10 +675,6 @@ export function* updateUserDetail(data) {
         message: "Azione completata",
         description: response.data.message,
       });
-      const ress = yield call(fetchUsers);
-      if (ress.data) {
-        yield put(MainActions.setUsers(ress.data.users));
-      }
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
     }

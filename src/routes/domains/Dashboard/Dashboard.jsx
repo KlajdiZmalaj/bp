@@ -189,7 +189,7 @@ class DashboardDom extends React.Component {
         <div className={`Image  ${menuClassName}`}>
           <img src={images["baner_servizi_header"]} />
         </div>
-        {menuClassName === "fixed" && (
+        <div className={`Dashboard ${menuClassName}`}>
           <div className={`Categories ${menuClassName}`}>
             <div className="First">SERVIZI</div>
             {Categories &&
@@ -201,41 +201,17 @@ class DashboardDom extends React.Component {
                     this.ChangeCompanies(cat.name, cat.key);
                     this.setState({ categoryActive: cat.key });
                   }}
-                  key={cat.key}
+                  key={cat?.key ? cat.key : Math.random()}
                 >
                   {cat.name}
                 </div>
               ))}
             <div className="Last">
+              {" "}
               <img src={images["servizi_banner"]} />
             </div>
           </div>
-        )}
-        <div className={`Dashboard ${menuClassName}`}>
-          {menuClassName === "notFixed" && (
-            <div className={`Categories ${menuClassName}`}>
-              <div className="First">SERVIZI</div>
-              {Categories &&
-                Array.isArray(Categories) &&
-                Categories.map((cat) => (
-                  <div
-                    className={`${categoryActive === cat.key ? "active" : ""}`}
-                    onClick={() => {
-                      this.ChangeCompanies(cat.name, cat.key);
-                      this.setState({ categoryActive: cat.key });
-                    }}
-                    key={cat?.key ? cat.key : Math.random()}
-                  >
-                    {cat.name}
-                  </div>
-                ))}
-              <div className="Last">
-                {" "}
-                <img src={images["servizi_banner"]} />
-              </div>
-            </div>
-          )}
-          <div className="CompaniesAndOther">
+          <div className={`CompaniesAndOther ${menuClassName}`}>
             {this.props.accountInfo?.profile?.role && (
               <div className="Favorites">
                 {CompaniesFav &&
@@ -317,33 +293,7 @@ class DashboardDom extends React.Component {
                       Object.keys(comp) &&
                       Array.isArray(Object.keys(comp)) &&
                       Object.keys(comp).map((key, i) =>
-                        comp[key].services[0].service_id === "BGM001" &&
-                        this.props.accountInfo?.profile?.role?.name ===
-                          "super_admin" ? (
-                          <CompaniesCheck
-                            key={key ? `${key}${Math.random()}` : Math.random()}
-                            Key={key}
-                            changeServce={() => {
-                              this.changeServce(
-                                key,
-                                comp[key].services,
-                                comp[key].name
-                              );
-                            }}
-                            role={this.props.accountInfo?.profile?.role}
-                            togglePopUp={this.togglePopUp}
-                            setState={() => {
-                              this.setState({
-                                Services: comp[key].services,
-                                serviceSelected: comp[key].services[0],
-                              });
-                            }}
-                            favourite={comp[key].favourite}
-                            Companie={comp[key]}
-                            toggleFavorite={this.props.toggleFavorite}
-                            getServices={this.props.getServices}
-                          />
-                        ) : comp[key].services[0].service_id === "BOL001" ? (
+                        comp[key].services[0].service_id === "BOL001" ? (
                           comp[key].services.map((service) => {
                             return (
                               <CompaniesCheck
@@ -375,13 +325,11 @@ class DashboardDom extends React.Component {
                               />
                             );
                           })
-                        ) : comp[key].services[0].service_id != "BGM001" ? (
+                        ) : comp[key].services[0].service_id === "BGM001" &&
+                          this.props.accountInfo?.profile?.role?.name !==
+                            "super_admin" ? null : (
                           <CompaniesCheck
-                            key={
-                              key
-                                ? `${key}${comp[key]?.services[0]?.service_id}`
-                                : Math.random()
-                            }
+                            key={key ? `${key}${Math.random()}` : Math.random()}
                             Key={key}
                             changeServce={() => {
                               this.changeServce(
@@ -398,12 +346,12 @@ class DashboardDom extends React.Component {
                                 serviceSelected: comp[key].services[0],
                               });
                             }}
-                            Companie={comp[key]}
                             favourite={comp[key].favourite}
+                            Companie={comp[key]}
                             toggleFavorite={this.props.toggleFavorite}
                             getServices={this.props.getServices}
                           />
-                        ) : null
+                        )
                       )
                   )}
               </div>

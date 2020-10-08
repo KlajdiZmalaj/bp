@@ -67,7 +67,7 @@ class FaturaDomain extends React.Component {
     });
   }
   componentDidMount() {
-    this.props.getAllFaturaBySearch(null, null, null, 25, 1);
+    this.props.getAllFaturaBySearch(null, null, 25, 1);
   }
   render() {
     const { faturaDetails, Users, total_pages } = this.props;

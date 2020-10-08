@@ -38,7 +38,7 @@ class UsersList extends Component {
   };
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers(null, null, 25, 1);
+    this.props.getUsers(null, null, 25, this.state.page_number);
   };
   setRowData = (mobileRowData) => {
     this.setState({ mobileRowData });
@@ -59,8 +59,8 @@ class UsersList extends Component {
       changeda_phone: null,
     });
   };
-  updateUser = () => {
-    this.props.updateUserDetail(
+  updateUser = async () => {
+    await this.props.updateUserDetail(
       this.props.userDetail.id,
       this.state.changedphone || this.props.userDetail.phone,
       (
@@ -87,6 +87,14 @@ class UsersList extends Component {
       "",
       this.resetState
     );
+    await setTimeout(() => {
+      this.props.userDetail && this.props.userDetail.role === "user"
+        ? this.props.getUserByUserId(this.props.userDetail.id)
+        : this.props.userDetail.role === "agent"
+        ? this.props.getAgentByUserId(this.props.userDetail.id)
+        : this.props.getUserDetail(this.props.userDetail.id);
+      this.props.getUsers(null, null, 25, this.state.page_number);
+    }, 100);
   };
   render() {
     const {
@@ -229,10 +237,22 @@ class UsersList extends Component {
                 (userNoPhoto && userNoPhoto.length > 0) ? (
                   <React.Fragment>
                     {userWithPhoto.map((user) => {
-                      return <UserDoc key={user.id} user={user} />;
+                      return (
+                        <UserDoc
+                          page_number={page_number}
+                          key={user.id}
+                          user={user}
+                        />
+                      );
                     })}
                     {userNoPhoto.map((user) => {
-                      return <UserNoDoc key={user.id} user={user} />;
+                      return (
+                        <UserNoDoc
+                          page_number={page_number}
+                          key={user.id}
+                          user={user}
+                        />
+                      );
                     })}
                   </React.Fragment>
                 ) : (
@@ -251,6 +271,7 @@ class UsersList extends Component {
                   searchedVal={searchedVal}
                   handleSearch={this.handleSearch}
                   users={userList}
+                  page_number={page_number}
                 />
               </div>
               <div className="header">
@@ -273,6 +294,7 @@ class UsersList extends Component {
                         ?.toLowerCase()
                         .includes(searchedVal.toLowerCase())) && (
                       <SingleUser
+                        page_number={page_number}
                         setRowData={this.setRowData}
                         key={user.id}
                         user={user}
@@ -283,20 +305,21 @@ class UsersList extends Component {
             </div>
           )
         ) : (
-        <Loader />
+          <Loader />
         )}
         <div className="paginationWrapper">
           <Pagination
             onChange={(e) => {
-              // console.log("ca ka pagination", e);
-              this.props.getUsers(null, null, perPage, e);
+              this.setState({ page_number: parseInt(e) }, () => {
+                this.props.getUsers(null, null, perPage, e);
+              });
             }}
             total={total_pages ? total_pages * 10 : 10}
           />
           <Select
             defaultValue={25}
             onChange={(e) => {
-              this.setState({ perPage: parseInt(e), clickedPage: 1 }, () => {
+              this.setState({ perPage: parseInt(e) }, () => {
                 this.props.getUsers(null, null, e, page_number);
               });
             }}

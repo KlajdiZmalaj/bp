@@ -14,7 +14,7 @@ class SingleUser extends Component {
   }
   transferCallback = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
   inpHandler = (e) => {
     this.setState({ valueInput: e.target.value });
@@ -27,7 +27,7 @@ class SingleUser extends Component {
   };
   switchCallBack = () => {
     this.setState({ isPopUpActive: false });
-    this.props.getUsers();
+    this.props.getUsers(null, null, 25, this.props.page_number);
   };
   setPopUpFalse = () => {
     this.setState({ isPopUpActive: false });

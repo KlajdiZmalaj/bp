@@ -4,8 +4,8 @@
   position: relative;
   visibility: visible;
   opacity: 1;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .Statist .calendarWrapper {

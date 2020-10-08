@@ -630,6 +630,9 @@
     text-transform: uppercase;
     height: 40px;
   }
+  .newReg--row__col {
+    justify-content: flex-start;
+  }
   .ant-row {
     margin: 0;
     padding: 0;
@@ -854,7 +857,7 @@
     padding: 2px;
     + span {
       white-space: nowrap;
-      font-size: 12px;
+      font-size: 10px;
       position: relative;
       top: 6px;
       left: -3px;

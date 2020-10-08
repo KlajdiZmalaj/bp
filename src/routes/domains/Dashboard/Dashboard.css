@@ -120,15 +120,8 @@
 
 .DContainer .Dashboard.fixed {
   min-height: calc(100vh - 210px);
-  margin-left: 300px;
   position: relative;
   margin-top: 219px;
-}
-
-.DContainer .Dashboard.fixed .CompaniesAndOther {
-  width: 100%;
-  max-width: 100%;
-  min-width: 100%;
 }
 
 .DContainer .Dashboard .CompaniesAndOther {
@@ -144,6 +137,10 @@
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100%;
+}
+
+.DContainer .Dashboard .CompaniesAndOther.fixed {
+  margin-left: 300px;
 }
 
 .DContainer .Dashboard .CompaniesAndOther .Favorites {
@@ -319,11 +316,12 @@
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies {
   display: -ms-grid;
   display: grid;
+  min-height: 140px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  min-height: calc(100% - 60px);
+  height: calc(100% - 60px);
   background: #ffffff;
   border-top: 4px solid var(--accent-bg);
 }
@@ -348,6 +346,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 140px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -385,6 +384,7 @@
 
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i.hover {
   color: #ffc107;
+  font-weight: 400;
   font-weight: bold;
 }
 
@@ -395,7 +395,7 @@
   transition: 0.2s;
 }
 
-.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i.favourite:hover {
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i.favourite.hover {
   font-weight: 400;
   color: #0000004d;
   -webkit-transition: 0.2s;
