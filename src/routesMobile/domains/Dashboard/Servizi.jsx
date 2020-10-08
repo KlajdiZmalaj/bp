@@ -19,7 +19,7 @@ const OneTab = ({
     if (panelOpen !== serviceCategory) {
       setDD(false);
     }
-  }, [panelOpen]);
+  }, [panelOpen, serviceCategory]);
   return (
     services && (
       <div className="mobileServices--panel">
@@ -146,6 +146,7 @@ const Servizi = ({
     if (Object.keys(services).length === 0) {
       getServices();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [panelOpen, setPanelOpen] = useState(null);
   return (

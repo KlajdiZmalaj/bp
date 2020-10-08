@@ -88,7 +88,7 @@ class Step1 extends React.Component {
       youtube,
       area_download,
     } = step1;
-    if (prevProps.newSkinId != newSkinId) {
+    if (prevProps.newSkinId !== newSkinId) {
       try {
         if (newSkinId === -1) {
           await notification["error"]({
@@ -182,7 +182,7 @@ class Step1 extends React.Component {
 
   componentDidMount() {
     if (
-      !JSON.stringify(this.state.step1) !=
+      !JSON.stringify(this.state.step1) !==
       JSON.stringify(this.props.addEditSkin?.step1)
     ) {
       this.setState({
@@ -191,13 +191,8 @@ class Step1 extends React.Component {
     }
   }
   render() {
-    const {
-      addEditSkinDetails,
-      addEditSkin,
-      newSkinId,
-      AddExtraData,
-    } = this.props;
-    const { step1, base64 } = this.state;
+    const { addEditSkinDetails, addEditSkin } = this.props;
+    const { step1 } = this.state;
     const {
       nome_skin,
       link_servizi,

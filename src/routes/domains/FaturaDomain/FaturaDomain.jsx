@@ -5,7 +5,6 @@ import AuthActions from "redux-store/models/auth";
 import { printFatturaReq } from "services/auth";
 import DatePicker from "./DatePicker";
 import ClickOut from "react-onclickout";
-import images from "themes/images";
 import { Loader } from "shared-components";
 import { Select, Pagination } from "antd";
 const { Option } = Select;
@@ -67,7 +66,7 @@ class FaturaDomain extends React.Component {
     });
   }
   componentDidMount() {
-    this.props.getAllFaturaBySearch(null, null, 25, 1);
+    this.props.getAllFaturaBySearch(null, null, null, 25, 1);
   }
   render() {
     const { faturaDetails, Users, total_pages } = this.props;
@@ -113,7 +112,7 @@ class FaturaDomain extends React.Component {
                     setYearChosen={(year) => {
                       this.setState((state) => ({
                         yearChosen:
-                          year.name == state.yearChosen ? "" : year.name,
+                          year.name === state.yearChosen ? "" : year.name,
                         yearDropdown: !state.yearDropdown,
                       }));
                     }}
@@ -186,7 +185,7 @@ class FaturaDomain extends React.Component {
                     <div
                       className="FauturaFilter--CalendarLabel"
                       onClick={(e) => {
-                        if (e.target.tagName != "I") {
+                        if (e.target.tagName !== "I") {
                           this.setCalendar(!calendarVis);
                         }
                       }}
@@ -260,6 +259,7 @@ class FaturaDomain extends React.Component {
                               <a
                                 href={`https://services-api.bpoint.store/storage/fatture/${fatura.file_name}`}
                                 target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 <i className="fal fa-file-pdf"></i>
                               </a>
@@ -273,6 +273,7 @@ class FaturaDomain extends React.Component {
                               ></i>
                               <iframe
                                 id="pdf-frame"
+                                title="pdf-frame-fattura"
                                 style={{ display: "none" }}
                               ></iframe>
                               <i

@@ -13,7 +13,7 @@ import UserComp from "./UserComp";
 import { Select, Pagination } from "antd";
 import { Loader } from "shared-components";
 
-import { switchUserStatus, transferMoney } from "services/auth";
+import { transferMoney } from "services/auth";
 
 const { Option } = Select;
 const InitialState = {
@@ -124,7 +124,7 @@ class UsersList extends Component {
               <div className="title">{DepositoPopup.val}</div>
               <p>
                 Il credito verrà{" "}
-                {DepositoPopup.val == "deposit" ? "aggiunto" : "rimosso"} al{" "}
+                {DepositoPopup.val === "deposit" ? "aggiunto" : "rimosso"} al{" "}
                 <span>
                   {DepositoPopup.data.username}{" "}
                   {DepositoPopup.data.role === "agency" && (
@@ -383,7 +383,7 @@ class UsersList extends Component {
               )}
 
               <div className="newReg--row lastRow">
-                {userDetail.role != "agent" && userDetail.role != "user" ? (
+                {userDetail.role !== "agent" && userDetail.role !== "user" ? (
                   <React.Fragment>
                     <div className="newReg--row__col">Cambia Agente</div>
                     <div className="newReg--row__col checkCol">

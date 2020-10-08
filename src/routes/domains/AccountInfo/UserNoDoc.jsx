@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
-import { Icon } from "antd";
 import { postImages } from "services/main.js";
 import { readFile } from "utils";
 
@@ -38,12 +37,12 @@ class UserDoc extends Component {
     const { user } = this.props;
     const { isPopUpOpen, imageUrl, imageUrl2 } = this.state;
     // console.log("ca jan img", imageUrl, imageUrl2);
-    const uploadButton = (
-      <div>
-        <Icon type={this.state.loading ? "loading" : "plus"} />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
+    // const uploadButton = (
+    //   <div>
+    //     <Icon type={this.state.loading ? "loading" : "plus"} />
+    //     <div className="ant-upload-text">Upload</div>
+    //   </div>
+    // );
 
     return (
       <React.Fragment>
@@ -83,6 +82,7 @@ class UserDoc extends Component {
                 />
                 <label htmlFor="inp1">
                   {imageUrl ? (
+                    // eslint-disable-next-line jsx-a11y/alt-text
                     <img src={imageUrl} />
                   ) : (
                     <>
@@ -106,6 +106,7 @@ class UserDoc extends Component {
                 />
                 <label htmlFor="inp2">
                   {imageUrl2 ? (
+                    // eslint-disable-next-line jsx-a11y/alt-text
                     <img src={imageUrl2} />
                   ) : (
                     <>

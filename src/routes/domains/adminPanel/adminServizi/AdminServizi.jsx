@@ -15,7 +15,7 @@ class AdminServizi extends React.Component {
     if (this.props.activeSkinId === -1) {
       await this.props.setActiveSkinId(1);
     }
-    if (this.props.activeSkinId != prevProps.activeSkinId) {
+    if (this.props.activeSkinId !== prevProps.activeSkinId) {
       await this.props.getAllServices(
         this.props.activeSkinId === -1 ? 1 : this.props.activeSkinId
       );
@@ -62,7 +62,6 @@ const mapStateToProps = (state) => ({
   activeSkinId: state.main.activeSkinId,
   allServices: state.auth.allServices,
   servicesLoader: state.auth.servicesLoader,
-  activeSkinId: state.main.activeSkinId,
 });
 export default connect(mapStateToProps, { ...AuthAction, ...MainAction })(
   AdminServizi

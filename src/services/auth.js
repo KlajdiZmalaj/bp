@@ -420,7 +420,7 @@ export const changeAgentReq = (aaa, agent_id, skin_id) => {
     })
     .post(`/agency/${agent_id}/changeAgent`, {
       agent_id: aaa,
-      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
+      ...(skin_id && skin_id !== -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
 };
@@ -475,7 +475,7 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
         : `/users/${id}/changeStatus`,
       {
         ...{ status },
-        ...(backOffice ? (backOffice != -1 ? skin : backOffice) : skin),
+        ...(backOffice ? (backOffice !== -1 ? skin : backOffice) : skin),
       }
     )
     .then(
@@ -510,7 +510,7 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
         ...{ amount },
         ...{ type },
         ...(backOffice
-          ? backOffice != -1
+          ? backOffice !== -1
             ? { skin_id: backOffice }
             : skin
           : skin),
@@ -551,7 +551,7 @@ export const fetchUserDetails = (user_id, skin_id) => {
     })
     .get(`agency/${user_id}`, {
       params: {
-        ...(skin_id ? (skin_id != -1 ? { skin_id } : skin) : skin),
+        ...(skin_id ? (skin_id !== -1 ? { skin_id } : skin) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -607,7 +607,7 @@ export const updateUsers = (
       a_rent,
       password,
       confirm_password,
-      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
+      ...(skin_id && skin_id !== -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
 };
@@ -1115,7 +1115,7 @@ export const getAgentByUserIdReq = (user_id, skin_id) => {
     })
     .get(`/agent/${user_id}`, {
       params: {
-        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
+        ...(skin_id ? (skin_id !== -1 ? skin : skin_id) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -1132,7 +1132,7 @@ export const getUserByUserIdReq = (user_id, skin_id) => {
     })
     .get(`/user/${user_id}`, {
       params: {
-        ...(skin_id ? (skin_id != -1 ? skin : skin_id) : skin),
+        ...(skin_id ? (skin_id !== -1 ? skin : skin_id) : skin),
       },
     })
     .catch((error) => ({ error }));
@@ -1438,7 +1438,7 @@ export const widgetPaymentsReq = (skin_id) => {
     })
     .get("/widgetPayments", {
       params: {
-        ...(skin_id && skin_id != -1 ? { skin_id } : {}),
+        ...(skin_id && skin_id !== -1 ? { skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));
@@ -1455,7 +1455,7 @@ export const getStatisticheReq = (skin_id) => {
     })
     .get("/statistiche", {
       params: {
-        ...(skin_id && skin_id != -1 ? { skin_id } : {}),
+        ...(skin_id && skin_id !== -1 ? { skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));
@@ -1480,7 +1480,7 @@ export const ServiceChangeStatusReq = (
       name,
       full_name,
       active,
-      ...(skin_id && skin_id != -1 ? { skin_id } : skin),
+      ...(skin_id && skin_id !== -1 ? { skin_id } : skin),
     })
     .catch((error) => {});
 };

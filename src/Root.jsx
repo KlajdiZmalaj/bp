@@ -44,7 +44,6 @@ import Fatura from "./routes/views/Fatura";
 import CreateSkin from "./routes/views/CreateSkin";
 import UnderDevelopment from "./routes/views/UnderDevelopment";
 import AreaDownload from "./routes/views/AreaDownload";
-import { Encrypt } from "utils/HelperFunc";
 
 import {
   subscribeSocketUser,
@@ -60,9 +59,8 @@ import {
 } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
-import { TestEncrypt } from "services/auth";
 
-moment.locale("it", {
+moment.updateLocale("it", {
   week: {
     dow: 1,
   },
@@ -130,9 +128,13 @@ class Root extends React.Component {
             <Route
               exact
               path="/"
-              render={() => (
-                <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
-              )}
+              render={() =>
+                role === "support" || role === "main_admin" ? (
+                  <Redirect to={`/back-office/utenti`} />
+                ) : (
+                  <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
+                )
+              }
             />
             <PublicRoute
               path="/qR/:barcode?/"
@@ -206,7 +208,7 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
-            // :id?/ , me ?/ qe te beje dhe /dashboard render
+            {/* // :id?/ , me ?/ qe te beje dhe /dashboard render */}
             <Route
               path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
               // component={Dashboard}
@@ -281,7 +283,7 @@ class Root extends React.Component {
               path="/dettagli-prenotazioni"
               component={FormDetails}
               isLoggedin={isLoggedin}
-              allowedRoles={["support", "super_admin", "agency", "user"]}
+              allowedRoles={["super_admin", "agency", "user"]}
               role={role}
             />
             <PrivateRoute
@@ -295,7 +297,7 @@ class Root extends React.Component {
               path="/dettagli-visure"
               component={VisureDetaggli}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin", "user", "agency", "support"]}
+              allowedRoles={["super_admin", "user", "agency"]}
               role={role}
             />
             <PrivateRoute

@@ -1,5 +1,4 @@
 import React from "react";
-import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 
 export default ({ TicketByTcketId }) => {
   return (

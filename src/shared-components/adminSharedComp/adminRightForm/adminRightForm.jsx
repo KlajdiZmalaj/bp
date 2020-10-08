@@ -7,7 +7,6 @@ import "./adminRightForm.css";
 import AdminRightFormUltimeDetails from "../AdminRightFormUltDet/AdminRightFormUltimeDetails";
 import AdminRightFormStatisticheDetails from "../AdminRightFormStatDet/AdminRightFormStatisticheDetails";
 import AdminRightFormWalletDetails from "../AdminRightFormWallDet/AdminRightFormWalletDetails";
-import PrenotazioneBiglietti from "./PrenotazioneBiglietti";
 class AdminRightForm extends React.Component {
   state = {
     dropdownVisibility: true,
@@ -32,12 +31,12 @@ class AdminRightForm extends React.Component {
       leUltimeTransazioni,
     } = this.state;
     if (
-      activeSkinId != prevProps.activeSkinId &&
+      activeSkinId !== prevProps.activeSkinId &&
       dropdownVisibility === true &&
       !window.location.href.includes("utenti")
     ) {
       const Special =
-        activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
+        activeSkinId === -1 && accountInfo?.profile?.role?.name !== "support";
       if (Special) {
         getUsers(
           null,
@@ -63,7 +62,7 @@ class AdminRightForm extends React.Component {
       if (
         (statisticheDropdownVisibility === true &&
           prevState.statisticheDropdownVisibility === false) ||
-        (activeSkinId != prevProps.activeSkinId &&
+        (activeSkinId !== prevProps.activeSkinId &&
           this.state.statisticheDropdownVisibility === true)
       ) {
         getStatistiche(activeSkinId);
@@ -73,7 +72,8 @@ class AdminRightForm extends React.Component {
       if (
         (leUltimeTransazioni === true &&
           prevState.leUltimeTransazioni === false) ||
-        (activeSkinId != prevProps.activeSkinId && leUltimeTransazioni === true)
+        (activeSkinId !== prevProps.activeSkinId &&
+          leUltimeTransazioni === true)
       ) {
         getWidgetPayments(activeSkinId);
       }
@@ -148,7 +148,7 @@ class AdminRightForm extends React.Component {
                   leUltimeTransazioniDet={leUltimeTransazioniDet}
                 />
               )}
-              {accountInfo.profile.role.name != "support" && (
+              {accountInfo.profile.role.name !== "support" && (
                 <React.Fragment>
                   <div className="AdminRightForm--Box">
                     <div className="AdminRightForm--Box--Wallet">

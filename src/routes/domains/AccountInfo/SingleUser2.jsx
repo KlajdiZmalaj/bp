@@ -71,7 +71,7 @@ class SingleUser2 extends Component {
                   !e.target.classList.contains("fa-ey") &&
                   !e.target.classList.contains(" fa-lock-open") &&
                   !e.target.classList.contains(" fa-lock") &&
-                  e.target.tagName != "BUTTON"
+                  e.target.tagName !== "BUTTON"
                 ) {
                   this.setState({
                     displayChildren: !this.state.displayChildren,
@@ -149,7 +149,7 @@ class SingleUser2 extends Component {
                 Deposit
               </button>
 
-              {user.status == 1 ? (
+              {user.status === 1 ? (
                 <i
                   className="fal fa-lock-open"
                   onClick={(e) => {
@@ -218,7 +218,7 @@ class SingleUser2 extends Component {
             <div className="popUp">
               <div className="title">{val}</div>
               <p>
-                The amount will be {val == "deposit" ? "added" : "substracted"}{" "}
+                The amount will be {val === "deposit" ? "added" : "substracted"}{" "}
                 to the current balance.
               </p>
               <div className="inpgr">

@@ -202,28 +202,6 @@ class Ticket extends React.Component {
   }
 }
 
-const styles = {
-  printModal: {
-    position: "fixed",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    minHeight: "98vh",
-    height: "100%",
-    padding: " 0 15px",
-    position: "fixed",
-    top: "71px",
-    right: "0",
-    width: "400px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    height: "99vh",
-    border: " 1px solid #ebeced",
-    paddingRight: "10px",
-  },
-};
-
 const mapsStateToProps = (state) => ({
   skinExtras: state.auth.skinExtras,
   paymentsFromCode: state.auth.paymentsFromCode,

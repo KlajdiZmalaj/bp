@@ -99,7 +99,7 @@ class Voli extends Component {
                 <span className="inputLabel">A mano</span>
 
                 <input
-                  checked={bagaglio == 1}
+                  checked={bagaglio === 1}
                   onChange={(e) => {
                     if (e.target.checked) {
                       this.setState({ bagaglio: e.target.value });
@@ -124,7 +124,7 @@ class Voli extends Component {
                   name="bagaglio"
                   value="2"
                   id="bagaglio2"
-                  checked={bagaglio == 2}
+                  checked={bagaglio === 2}
                 />
               </div>
             </div>
@@ -137,7 +137,7 @@ class Voli extends Component {
               {
                 <div
                   className={
-                    "d-flex w-100" + (bagaglio == 2 ? "" : " invisible")
+                    "d-flex w-100" + (bagaglio === 2 ? "" : " invisible")
                   }
                 >
                   <div className="inputLabel">Bagaglio in stiva</div>

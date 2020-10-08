@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 const Step0 = ({ skinList, addEditSkinDetails, addEditSkin, getSkins }) => {
   useEffect(() => {
     getSkins();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="AdminLogin--LoginForm">
@@ -45,6 +46,7 @@ const Step0 = ({ skinList, addEditSkinDetails, addEditSkin, getSkins }) => {
             }}
           >
             <span>
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img
                 src={
                   "https://services-api.bpoint.store/storage/" +

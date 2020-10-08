@@ -47,7 +47,6 @@ import {
   sendMailFattura,
   getAllFaturaBySearch,
   getPaymentsForExcel,
-  getFatturaPdf,
   AddSkinNew,
   getWidgetPayments,
   AddSuperAdmin,

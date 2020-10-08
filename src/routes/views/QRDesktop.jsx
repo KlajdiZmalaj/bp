@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { AuthActions } from "redux-store/models";
 import "../domains/QRBarcode/style.css";
 import { connect } from "react-redux";
@@ -71,7 +71,7 @@ function Main({
   const refElem = useRef({});
   useEffect(() => {
     getCodiceTicket(barcode, "omeLale");
-  }, [barcode]);
+  }, [barcode, getCodiceTicket]);
   return (
     <div className="qrBarcode m-auto p-4">
       <button

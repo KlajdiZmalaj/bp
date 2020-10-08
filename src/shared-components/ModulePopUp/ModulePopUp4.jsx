@@ -70,7 +70,7 @@ class ModulePopUp4 extends React.Component {
           <div className="row">
             <div className="col-7 leftCol_Module">
               <div className="row">
-                {service_s?.id != "BGAM" && (
+                {service_s?.id !== "BGAM" && (
                   <div className="col-3 p-0">
                     <table className="LeftSide-BTNs" data-aos="flip-left">
                       <tbody>
@@ -108,7 +108,7 @@ class ModulePopUp4 extends React.Component {
                 )}
 
                 <div
-                  className={service_s?.id != "BGAM" ? "col-9" : "col-12 p-0"}
+                  className={service_s?.id !== "BGAM" ? "col-9" : "col-12 p-0"}
                 >
                   <div className="rightCarrierCOL" data-aos="flip-right">
                     {this.state.confermaMsg && (

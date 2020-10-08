@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { get, includes } from "lodash";
+import { includes } from "lodash";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import { newAzioni, newAzioniSubmenu } from "config";
@@ -16,7 +16,13 @@ class Azioni extends Component {
     let url = window.location.href.slice(
       window.location.href.indexOf("#/") + "#/".length
     );
-    this.setState({ active: { ...{ url } } });
+    this.setState({
+      active: {
+        ...(this.props?.match?.params.id || url === "forms"
+          ? { url }
+          : { url: "dashboard/ricariche" }),
+      },
+    });
   }
   componentDidUpdate(prevProps) {
     const id = this.props?.match?.params.id;

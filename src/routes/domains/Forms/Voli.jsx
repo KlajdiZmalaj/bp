@@ -250,7 +250,7 @@ class Voli extends Component {
                 <div className="radioGr">
                   <span>A mano</span>
                   <input
-                    checked={this.state.bagaglio == 1}
+                    checked={this.state.bagaglio === 1}
                     onChange={(e) => {
                       if (e.target.checked) {
                         this.setState({ bagaglio: e.target.value });
@@ -277,7 +277,7 @@ class Voli extends Component {
                     name="bagaglio"
                     value="2"
                     id="bagaglio2"
-                    checked={this.state.bagaglio == 2}
+                    checked={this.state.bagaglio === 2}
                   />
                   <label htmlFor="bagaglio2" className="customRadio">
                     <span></span>
@@ -288,7 +288,7 @@ class Voli extends Component {
             <div
               className={
                 "formsContainer--body__item" +
-                (this.state.bagaglio == 2 ? "" : " invisible")
+                (this.state.bagaglio === 2 ? "" : " invisible")
               }
             >
               <div className="label">Bagaglio in stiva</div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import images from "themes/images";
 import { connect } from "react-redux";
 import { Loader } from "shared-components";
 import "./styles.css";
@@ -9,6 +8,7 @@ const AreaDownload = ({ link6 }) => {
     <React.Fragment>
       <iframe
         id="the_iframe"
+        title="area_download_frame"
         onLoadCapture={() => {
           setShowIframe(true);
         }}

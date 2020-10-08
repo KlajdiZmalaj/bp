@@ -6,6 +6,7 @@ import Condizioni from "./Condizioni";
 import images from "themes/images";
 import { Select } from "antd";
 import { get } from "lodash";
+import "./style.css";
 const { Option } = Select;
 class Bolletino extends React.Component {
   state = {
@@ -146,9 +147,9 @@ class Bolletino extends React.Component {
                   <tbody>
                     <tr>
                       <td
-                        onClick={() => {
+                        onClick={(e) => {
                           if (this.props.accountInfo?.token) {
-                            this.handleSubmit();
+                            this.handleSubmit(e);
                           } else {
                             window.location.hash = "login";
                             this.props.togglePopUp(false);

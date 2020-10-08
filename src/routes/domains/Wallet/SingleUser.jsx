@@ -44,7 +44,7 @@ class SingleUser extends Component {
             <i
               className={
                 "fas fa-user-alt pr-2 d-flex align-items-center " +
-                (user.status == 1 ? "text-success" : "text-danger")
+                (user.status === 1 ? "text-success" : "text-danger")
               }
               aria-hidden="true"
             ></i>{" "}
@@ -73,7 +73,7 @@ class SingleUser extends Component {
               Debito
             </button> */}
 
-            {user.status == 1 ? (
+            {user.status === 1 ? (
               <i
                 className="fal fa-lock"
                 onClick={() => {
@@ -133,7 +133,7 @@ class SingleUser extends Component {
             <div className="popUp">
               <div className="title">{val}</div>
               <p>
-                The amount will be {val == "deposit" ? "added" : "substracted"}{" "}
+                The amount will be {val === "deposit" ? "added" : "substracted"}{" "}
                 to the current balance.
               </p>
               <div className="inpgr">

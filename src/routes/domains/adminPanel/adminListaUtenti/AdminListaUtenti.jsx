@@ -1,7 +1,6 @@
 import React from "react";
 import "./adminListaUtenti.css";
 import AdminListaUtentiRow from "./AdminListaUtentiRow";
-import { ListaUtenti } from "../StaticAdminData";
 import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -16,7 +15,7 @@ class AdminListaUtenti extends React.Component {
   componentDidMount() {
     const Special =
       this.props.activeSkinId === -1 &&
-      this.props.accountInfo?.profile?.role?.name != "support";
+      this.props.accountInfo?.profile?.role?.name !== "support";
     if (Special) {
       this.props.getUsers(
         null,
@@ -39,10 +38,10 @@ class AdminListaUtenti extends React.Component {
     }
   }
   componentDidUpdate(prevProps) {
-    if (this.props.activeSkinId != prevProps.activeSkinId) {
+    if (this.props.activeSkinId !== prevProps.activeSkinId) {
       const Special =
         this.props.activeSkinId === -1 &&
-        this.props.accountInfo?.profile?.role?.name != "support";
+        this.props.accountInfo?.profile?.role?.name !== "support";
       if (Special) {
         this.props.getUsers(
           null,
@@ -70,11 +69,11 @@ class AdminListaUtenti extends React.Component {
     if (Order === "Desc") {
       newArray.sort((a, b) =>
         moment(
-          a.last_login_time == "-" ? "01-01-2300 00:00:00" : a.last_login_time,
+          a.last_login_time === "-" ? "01-01-2300 00:00:00" : a.last_login_time,
           "DD-MM-YYYY HH:mm:ss"
         ).diff(
           moment(
-            b.last_login_time == "-"
+            b.last_login_time === "-"
               ? "01-01-2300 00:00:00"
               : b.last_login_time,
             "DD-MM-YYYY HH:mm:ss"
@@ -84,11 +83,11 @@ class AdminListaUtenti extends React.Component {
     } else {
       newArray.sort((a, b) =>
         moment(
-          b.last_login_time == "-" ? "01-01-1800 00:00:00" : b.last_login_time,
+          b.last_login_time === "-" ? "01-01-1800 00:00:00" : b.last_login_time,
           "DD-MM-YYYY HH:mm:ss"
         ).diff(
           moment(
-            a.last_login_time == "-"
+            a.last_login_time === "-"
               ? "01-01-1800 00:00:00"
               : a.last_login_time,
             "DD-MM-YYYY HH:mm:ss"
@@ -110,7 +109,7 @@ class AdminListaUtenti extends React.Component {
     } = this.props;
     const { perPage, page_number } = this.state;
     const Special =
-      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
+      activeSkinId === -1 && accountInfo?.profile?.role?.name !== "support";
     return (
       <div className="AdminListaUtenti">
         <div className="AdminListaUtenti--Header">

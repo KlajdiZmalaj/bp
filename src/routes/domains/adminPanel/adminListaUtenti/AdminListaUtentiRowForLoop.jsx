@@ -58,9 +58,8 @@ class AdminListaUtentiRowForLoop extends React.Component {
       activeSkinId,
       CenterCls,
     } = this.props;
-    const {} = this.state;
     const Special =
-      activeSkinId === -1 && accountInfo?.profile?.role?.name != "support";
+      activeSkinId === -1 && accountInfo?.profile?.role?.name !== "support";
 
     return (
       <div className="AdminListaUtentiRow--Complete">
@@ -72,7 +71,7 @@ class AdminListaUtentiRowForLoop extends React.Component {
             if (
               screenWidth <= 850 &&
               screenWidth >= 550 &&
-              e.target.tagName != "I"
+              e.target.tagName !== "I"
             ) {
               editUtentiRespModal({
                 visibility: true,

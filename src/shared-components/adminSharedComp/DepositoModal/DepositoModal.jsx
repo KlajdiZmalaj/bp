@@ -17,6 +17,7 @@ const DepositoModal = ({
 }) => {
   const amountCheck = amountGiven ? amountGiven : 0;
   const [amount, setAmount] = useState(amountCheck);
+  // eslint-disable-next-line no-unused-vars
   const [message, setMessage] = useState("");
   const [tickOrX, setTickOrX] = useState(true);
   return (

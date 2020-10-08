@@ -1,10 +1,10 @@
 import React from "react";
-import { Header } from "shared-components";
 import images from "themes/images";
 import { connect } from "react-redux";
 import "./styles.css";
 const Card = ({ imageUrl, Title, Info }) => (
   <div className="SDHome--Cards--Card">
+    {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img src={imageUrl} />
     <h2>{Title}</h2>
     <p>{Info}</p>

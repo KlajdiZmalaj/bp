@@ -51,7 +51,7 @@ class Step1 extends React.Component {
   };
   componentDidMount() {
     if (
-      !JSON.stringify(this.state.step2) !=
+      !JSON.stringify(this.state.step2) !==
       JSON.stringify(this.props.addEditSkin?.step2)
     ) {
       this.setState({

@@ -1,5 +1,5 @@
 import { put, call, delay, select } from "redux-saga/effects";
-import AuthActions, { AuthTypes } from "../models/auth";
+import AuthActions from "../models/auth";
 import MainActions from "../models/main";
 import {
   fetchLogin,
@@ -40,7 +40,6 @@ import {
   getAllFaturaBySearchReq,
   getAllServicesReq,
   sendMailFatturaReq,
-  printFatturaReq,
   AddSkinReq,
   widgetPaymentsReq,
   AddExtraDataReq,
@@ -53,7 +52,6 @@ import {
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
-import { param } from "jquery";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -77,7 +75,7 @@ export function* signInByEmail(credencials) {
 }
 export function* getAgents(params) {
   let response;
-  if (params?.skin_id && params?.skin_id != -1) {
+  if (params?.skin_id && params?.skin_id !== -1) {
     response = yield call(fetchAgents, params.skin_id);
   } else {
     response = yield call(fetchAgents);
@@ -89,7 +87,7 @@ export function* getAgents(params) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -262,7 +260,7 @@ export function* getPaymentsForExcel(params) {
     } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
-        localStorage.getItem("accountDataB") != null
+        localStorage.getItem("accountDataB") !== null
       ) {
         yield put(AuthActions.setUnauthorization());
         const response = yield call(logoutApi);
@@ -313,7 +311,7 @@ export function* getPayments(params) {
     } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
-        localStorage.getItem("accountDataB") != null
+        localStorage.getItem("accountDataB") !== null
       ) {
         yield put(AuthActions.setUnauthorization());
         const response = yield call(logoutApi);
@@ -360,7 +358,7 @@ export function* getRechargeMobile(params) {
     } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
-        localStorage.getItem("accountDataB") != null
+        localStorage.getItem("accountDataB") !== null
       ) {
         const response = yield call(logoutApi);
 
@@ -594,7 +592,7 @@ export function* getBarcodeData(e) {
 }
 export function* changeAgent(data) {
   let response;
-  if (data?.skin_id && data?.skin_id != -1) {
+  if (data?.skin_id && data?.skin_id !== -1) {
     response = yield call(changeAgentReq, data.id, data.id2, data.skin_id);
   } else {
     response = yield call(changeAgentReq, data.id, data.id2);
@@ -621,7 +619,7 @@ export function* getUserDetail(data) {
 }
 export function* updateUserDetail(data) {
   let response;
-  if (data?.skin_id && data?.skin_id != -1) {
+  if (data?.skin_id && data?.skin_id !== -1) {
     response = yield call(
       updateUsers,
       data.user_id,
@@ -997,7 +995,7 @@ export function* getAgentByUserId(data) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1018,7 +1016,7 @@ export function* getUserByUserId(data) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1039,7 +1037,7 @@ export function* getSkins() {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1064,7 +1062,7 @@ export function* getFaturaDetails(params) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1085,7 +1083,7 @@ export function* getAllServices({ skin_id }) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1132,7 +1130,7 @@ export function* getAllFaturaBySearch({
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1162,7 +1160,7 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1180,7 +1178,7 @@ export function* getWidgetPayments({ skin_id }) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1249,7 +1247,7 @@ export function* AddSuperAdmin({
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1306,7 +1304,7 @@ export function* AddExtraData({
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1324,7 +1322,7 @@ export function* getStatistiche(params) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1349,7 +1347,7 @@ export function* UpdateServiceChangeStatus(params) {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {
@@ -1384,7 +1382,7 @@ export function* getBgameVoucherReq(params) {
     } else if (response?.error) {
       if (
         response.error.response.status === 401 &&
-        localStorage.getItem("accountDataB") != null
+        localStorage.getItem("accountDataB") !== null
       ) {
         const response = yield call(logoutApi);
 
@@ -1426,7 +1424,7 @@ export function* getStatisticheMain() {
   if (response?.error) {
     if (
       response.error.response.status === 401 &&
-      localStorage.getItem("accountDataB") != null
+      localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
       if (response) {

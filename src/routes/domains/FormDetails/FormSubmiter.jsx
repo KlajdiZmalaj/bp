@@ -179,7 +179,7 @@ export class FormSubmiter extends Component {
             className={"formSubmit--button -s"}
           >
             <span>{`${
-              this.props.accountInfo.profile.role.name != "support"
+              this.props.accountInfo.profile.role.name !== "support"
                 ? "Conferma"
                 : "Eseguito"
             }`}</span>
@@ -197,7 +197,7 @@ export class FormSubmiter extends Component {
             className={"formSubmit--button -c"}
           >
             <span>
-              {this.props.accountInfo.profile.role.name != "support"
+              {this.props.accountInfo.profile.role.name !== "support"
                 ? "Rifiuta"
                 : "Anullato"}
             </span>

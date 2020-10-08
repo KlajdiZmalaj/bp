@@ -1,7 +1,7 @@
 import React from "react";
 
 import Amministrazione from "shared-components/Amministrazione/Amministrazione.jsx";
-import { Overview, Header } from "shared-components";
+import { Header } from "shared-components";
 import images from "themes/images";
 
 class AnnunciAdmin extends React.Component {

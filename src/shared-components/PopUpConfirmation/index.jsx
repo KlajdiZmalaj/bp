@@ -40,13 +40,13 @@ const PopUpConfirmation = ({
             />
             <span>{`Id :BP- ${TicketByTcketId.id}`}</span>
           </div>
-          {TicketByTcketId.type == 3 && (
+          {TicketByTcketId.type === 3 && (
             <EventiConfirmation TicketByTcketId={TicketByTcketId} />
           )}
-          {TicketByTcketId.type == 2 && (
+          {TicketByTcketId.type === 2 && (
             <TreniConfirmation TicketByTcketId={TicketByTcketId} />
           )}
-          {TicketByTcketId.type == 1 && (
+          {TicketByTcketId.type === 1 && (
             <VoliConfirmation TicketByTcketId={TicketByTcketId} />
           )}
           <div className="confirmationPopup--buttons">
