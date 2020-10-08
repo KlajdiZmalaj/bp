@@ -215,6 +215,8 @@
           text-transform: capitalize;
           font-size: 14px;
           flex-shrink: 0;
+          align-items: center;
+
           @media (max-width: 1024px) {
             text-transform: capitalize;
             font-size: 12px;
@@ -271,13 +273,15 @@
       .fa-store,
       .fa-user-tie,
       .fa-user {
-        position: relative;
-        top: 3px;
         margin-right: 2px;
         margin-left: 10px;
       }
     }
   }
+  &--noDoc__user .body span:nth-child(3) {
+    width: 17%;
+  }
+
   .ddItems {
     position: absolute;
     flex-flow: column;
@@ -885,6 +889,7 @@ html body .wrapppper .singleUser:last-child > .body {
 .level1 > .body .isPlus:before {
   display: none;
 }
+
 div {
   &.level2,
   &.level3,
@@ -951,6 +956,26 @@ div {
             }
           }
         }
+      }
+    }
+  }
+}
+html .userList--noDoc__user.singleUser.hasChildren.isopenrow span.isMinus {
+  &:before {
+    height: 100% !important;
+  }
+}
+
+html {
+  .wrapppper .userList--noDoc__user.singleUser:last-child {
+    .body .userDropAnch.isMinus:not(.hasIcon):before {
+      height: 50% !important;
+    }
+  }
+  .isopenrow .userList--noDoc__user.singleUser.hasChildren.isopenrow {
+    .wrapppper .userList--noDoc__user.singleUser:last-child {
+      span.userDropAnch.isMinus:before {
+        height: 100% !important;
       }
     }
   }
