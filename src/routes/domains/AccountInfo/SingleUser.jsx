@@ -54,6 +54,7 @@ class SingleUser extends Component {
             (user.children && user.children.length > 0 ? " hasChildren" : "") +
             (this.state.displayChildren ? " isopenrow" : "")
           }
+          data-level={this.props.level || "1"}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -91,7 +92,13 @@ class SingleUser extends Component {
                 user.children.length > 0 &&
                 !this.state.displayChildren
                   ? " isPlus"
-                  : " isMinus")
+                  : " isMinus") +
+                ((user.children &&
+                  user.children.length > 0 &&
+                  !this.state.displayChildren) ||
+                this.state.displayChildren
+                  ? " hasIcon"
+                  : "")
               }
             >
               {user.children &&

@@ -29,6 +29,7 @@ const Numpad = ({
       setCost(services[activeCategory][activeService].services[0]);
     }
   }, [services, activeService, activeCategory, setCost, selectedCost]);
+
   useEffect(() => {
     if (Object.values(rechargeMobile).length > 0)
       notification[rechargeMobile.errors ? "error" : "success"]({
@@ -36,19 +37,14 @@ const Numpad = ({
         description: Object.values(rechargeMobile.errors || {}),
       });
   }, [rechargeMobile]);
+
   useEffect(() => {
     if (loadingRechargeMobile)
       notification["info"]({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
-  // console.log(
-  //   "services",
-  //   services,
-  //   activeCategory,
-  //   activeService,
-  //   services[activeCategory][activeService]
-  // );
+
   return (
     <div className="mobileNumPad">
       <div className="mobileNumPad--services">
