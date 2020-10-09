@@ -392,6 +392,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 18px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .servicesForms .mobileNumPad--buttons {
@@ -410,6 +412,8 @@
   z-index: 1;
   -webkit-box-shadow: 0 -2px 51px -27px black;
           box-shadow: 0 -2px 51px -27px black;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .servicesForms .mobileNumPad--buttons button {
@@ -480,6 +484,8 @@
   -webkit-box-shadow: 2px 2px 9px 0px #0000003b;
           box-shadow: 2px 2px 9px 0px #0000003b;
   position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .servicesForms .mobileNumPad--input > span,
@@ -519,6 +525,8 @@
           box-shadow: 2px 2px 9px 0px #0000003b;
   margin: 25px;
   margin-top: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .servicesForms .mobileNumPad--numbers > div {
