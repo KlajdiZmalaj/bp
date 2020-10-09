@@ -108,6 +108,58 @@ class Transazioni extends React.Component {
       visible: false,
     });
   };
+  printPdfReceipt = (data, type) => {
+    if (data.receipt_type === "base64") {
+      const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
+
+        for (
+          let offset = 0;
+          offset < byteCharacters.length;
+          offset += sliceSize
+        ) {
+          const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+          const byteNumbers = new Array(slice.length);
+          for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          const byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+
+        const blob = new Blob(byteArrays, {
+          type: contentType,
+        });
+        return blob;
+      };
+      var myBlob = b64toBlob(data.receipt, "application/pdf");
+      var blobUrl = URL.createObjectURL(myBlob);
+      if (type === "print") {
+        window
+          .open(
+            blobUrl,
+            "_blank",
+            "toolbar=no,scrollbars=no,resizable=no,top=50,left=500,width=700,height=700"
+          )
+          .print();
+      }
+      if (type === "download") {
+        const linkSource = `data:application/pdf;base64,${data.receipt}`;
+        const downloadLink = document.createElement("a");
+        const fileName = "Ticket.pdf";
+
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      }
+      if (type === "return") {
+        return blobUrl;
+      }
+    }
+  };
 
   componentDidUpdate(prevProps) {
     const { username, from, to, perPage } = this.state;
