@@ -309,6 +309,9 @@
   font-size: 14px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (max-width: 1024px) {
@@ -384,10 +387,12 @@
 .userList--noDoc__user .fa-user, .userList--Doc__user .fa-store,
 .userList--Doc__user .fa-user-tie,
 .userList--Doc__user .fa-user {
-  position: relative;
-  top: 3px;
   margin-right: 2px;
   margin-left: 10px;
+}
+
+.userList--noDoc__user .body span:nth-child(3) {
+  width: 17%;
 }
 
 .userList .ddItems {
@@ -1271,5 +1276,17 @@ div.level5 .isPlus:before {
   background: #f5222d;
   padding: 6px 20px;
   margin: 0 15px;
+}
+
+html .userList--noDoc__user.singleUser.hasChildren.isopenrow span.isMinus:before {
+  height: 100% !important;
+}
+
+html .wrapppper .userList--noDoc__user.singleUser:last-child .body .userDropAnch.isMinus:not(.hasIcon):before {
+  height: 50% !important;
+}
+
+html .isopenrow .userList--noDoc__user.singleUser.hasChildren.isopenrow .wrapppper .userList--noDoc__user.singleUser:last-child span.userDropAnch.isMinus:before {
+  height: 100% !important;
 }
 /*# sourceMappingURL=style.css.map */

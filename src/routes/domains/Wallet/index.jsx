@@ -22,12 +22,12 @@ class index extends Component {
               <div className="header">
                 <span>User Id</span>
                 <span>Username</span>
-                <span>Nome</span>
+                <span style={{ width: "17%" }}>Nome</span>
                 <span className="text-right">Credito</span>
                 <span>Totale speso</span>
                 <span>Ultimo Deposit</span>
                 <span>Ultimo Login</span>
-                <span style={{ width: "100%" }}>Azioni</span>
+                <span>Azioni</span>
               </div>
               {userListSimple.map((user, key) => {
                 return (

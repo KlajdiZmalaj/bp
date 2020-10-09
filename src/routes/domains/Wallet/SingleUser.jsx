@@ -57,7 +57,7 @@ class SingleUser extends Component {
           <span>{user.totale_speso}</span>
           <span>{user.last_deposit}</span>
           <span>{user.last_login}</span>
-          <span style={{ width: "100%" }}>
+          <span>
             <button
               onClick={() => {
                 this.setTransferItem("deposit");
@@ -147,27 +147,29 @@ class SingleUser extends Component {
                 />
               </div>
 
-              <button
-                className="sendInput"
-                onClick={() => {
-                  transferMoney(
-                    user.id,
-                    valueInput,
-                    val,
-                    this.transferCallback
-                  );
-                }}
-              >
-                <i class="fa fa-check"></i> Conferma
-              </button>
-              <button
-                className="sendInput cancelInput"
-                onClick={() => {
-                  this.setPopUpFalse();
-                }}
-              >
-                <i class="fa fa-times"></i> Cancel
-              </button>
+              <div>
+                <button
+                  className="sendInput"
+                  onClick={() => {
+                    transferMoney(
+                      user.id,
+                      valueInput,
+                      val,
+                      this.transferCallback
+                    );
+                  }}
+                >
+                  <i class="fa fa-check"></i> Conferma
+                </button>
+                <button
+                  className="sendInput cancelInput"
+                  onClick={() => {
+                    this.setPopUpFalse();
+                  }}
+                >
+                  <i class="fa fa-times"></i> Cancel
+                </button>
+              </div>
               {user.status === 2 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> User is locked

@@ -85,6 +85,7 @@
   padding: 6px 15px;
   margin: 0 25px 0px 0px;
   font-size: 14px;
+  width: 133px;
 }
 
 .ticketDetails--filters__byTicket span.status {

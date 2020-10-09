@@ -330,7 +330,9 @@ class DashboardDom extends React.Component {
                           })
                         ) : comp[key].services[0].service_id === "BGM001" &&
                           this.props.accountInfo?.profile?.role?.name !==
-                            "super_admin" ? null : (
+                            "super_admin" &&
+                          this.props.accountInfo?.profile?.name !==
+                            "johny cash" ? null : (
                           <CompaniesCheck
                             key={key ? `${key}${Math.random()}` : Math.random()}
                             Key={key}

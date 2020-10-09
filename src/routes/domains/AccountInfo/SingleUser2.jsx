@@ -50,6 +50,7 @@ class SingleUser2 extends Component {
             (this.state.displayChildren ? " isopenrow" : "") +
             ` level${this.props.level}`
           }
+          data-level={this.props.level}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -84,7 +85,13 @@ class SingleUser2 extends Component {
                 user.children.length > 0 &&
                 !this.state.displayChildren
                   ? " isPlus"
-                  : " isMinus")
+                  : " isMinus") +
+                ((user.children &&
+                  user.children.length > 0 &&
+                  !this.state.displayChildren) ||
+                this.state.displayChildren
+                  ? " hasIcon"
+                  : "")
               }
               style={{
                 paddingLeft: `calc(10px * ${this.props.level || 1})`,
@@ -194,23 +201,23 @@ class SingleUser2 extends Component {
               )}
             </span>
           </div>
+          {this.state.displayChildren &&
+            user.children &&
+            user.children.length > 0 && (
+              <div className={"wrapppper"}>
+                {user.children.map((user) => {
+                  return (
+                    <SingleUser
+                      level={parseInt(this.props.level) + 1}
+                      user={user}
+                      key={user.id}
+                      setRowData={this.props.setRowData}
+                    />
+                  );
+                })}
+              </div>
+            )}
         </div>
-        {this.state.displayChildren &&
-          user.children &&
-          user.children.length > 0 && (
-            <div className={"wrapppper"}>
-              {user.children.map((user) => {
-                return (
-                  <SingleUser
-                    level={parseInt(this.props.level) + 1}
-                    user={user}
-                    key={user.id}
-                    setRowData={this.props.setRowData}
-                  />
-                );
-              })}
-            </div>
-          )}
 
         {isPopUpActive ? (
           <React.Fragment>

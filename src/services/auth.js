@@ -1566,3 +1566,57 @@ export const fetchBolletiniRequest = (
       ...skin,
     })
     .catch((error) => ({ error }));
+
+export const buyTicketOnlineReq = (
+  typee,
+  link,
+  nome_agenzia,
+  extra_data,
+  price,
+  consegna,
+  nome,
+  cognome,
+  email,
+  phone,
+  stato,
+  citta,
+  address1,
+  address2,
+  provincia,
+  cap,
+  note_address
+) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .post(`/buy/ticket`, {
+      ...skin,
+      type: typee,
+      link,
+      nome_agenzia,
+      extra_data,
+      price,
+      consegna,
+      ...(consegna === 2
+        ? {
+            nome,
+            cognome,
+            email,
+            phone,
+            stato,
+            citta,
+            address1,
+            address2,
+            provincia,
+            cap,
+            note_address,
+          }
+        : {}),
+    })
+    .catch((error) => ({ error }));

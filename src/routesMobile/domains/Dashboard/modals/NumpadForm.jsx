@@ -29,6 +29,7 @@ const Numpad = ({
       setCost(services[activeCategory][activeService].services[0]);
     }
   }, [services, activeService, activeCategory, setCost, selectedCost]);
+
   useEffect(() => {
     if (Object.values(rechargeMobile).length > 0)
       notification[rechargeMobile.errors ? "error" : "success"]({
@@ -36,19 +37,14 @@ const Numpad = ({
         description: Object.values(rechargeMobile.errors || {}),
       });
   }, [rechargeMobile]);
+
   useEffect(() => {
     if (loadingRechargeMobile)
       notification["info"]({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
-  // console.log(
-  //   "services",
-  //   services,
-  //   activeCategory,
-  //   activeService,
-  //   services[activeCategory][activeService]
-  // );
+
   return (
     <div className="mobileNumPad">
       <div className="mobileNumPad--services">
@@ -98,7 +94,18 @@ const Numpad = ({
 
       <div className="mobileNumPad--input">
         <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
-        <i className="fas fa-address-book"></i>
+        {('contacts' in navigator && 'ContactsManager' in window) &&   <i onClick={async ()=>{
+            const props = ['tel'];
+            const opts = {multiple: false};
+            
+            try {
+              const contacts = await navigator.contacts.select(props, opts);
+              setVal(contacts[0]?.tel?.[0])
+            } catch (ex) {
+                console.log('ex',ex)
+            }
+        }} className="fas fa-address-book"></i>}
+      
       </div>
       <div className="mobileNumPad--numbers">
         {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {

@@ -51,14 +51,15 @@
           text-transform: uppercase;
         }
       }
-      & input {
+      input {
         border: 0.5px solid #9f9f9f;
         border-radius: 2px;
         padding: 6px 15px;
         margin: 0 25px 0px 0px;
         font-size: 14px;
+        width: 133px;
       }
-      & span.status {
+      span.status {
         cursor: pointer;
         display: flex;
         justify-content: space-between;
