@@ -18,12 +18,21 @@ const ServicesForms = ({
   });
   return (
     <div className="servicesForms">
-      {activeCategory === "RTELD" ||
-      activeCategory === "RTELC" ||
-      activeCategory === "SCMS" ||
-      activeCategory === "CCARD" ||
-      activeCategory === "RTELI" ? (
+      {activeCategory === "RTELD" || activeCategory === "RTELC" ? (
         <NumpadForm
+          setService={setService}
+          activeCategory={activeCategory}
+          activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
+        />
+      ) : activeCategory === "GIFT" ||
+        activeCategory === "SND000" ||
+        activeCategory === "RTELI" ||
+        activeCategory === "CCARD" ||
+        activeCategory === "SCMS" ? (
+        <NumpadForm
+          noNumbers={true}
           setService={setService}
           activeCategory={activeCategory}
           activeService={activeService}
