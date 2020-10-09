@@ -266,7 +266,7 @@
     text-transform: capitalize;
     width: 90%;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 68px;
   }
   .closeM {
     position: absolute;
@@ -333,9 +333,16 @@
   min-width: 338px;
   height: 543px;
   margin: calc((100vh - 543px) / 2) auto;
+  &.small {
+    height: 250px;
+    margin: calc((100vh - 250px) / 2) auto;
+    .row .TotalServices {
+      bottom: 75px;
+    }
+  }
   .row {
-    width: 338px;
-    height: 543px;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
     display: flex;
     justify-content: flex-start;
@@ -371,6 +378,7 @@
         align-items: center;
         font-family: "Roboto";
         margin-top: 5px;
+
         span {
           height: 100%;
           width: 70px;
@@ -390,6 +398,13 @@
           font-size: 21px;
           font-weight: 400;
           color: #25333e;
+        }
+        &.SCMS input {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
         }
         i {
           width: 50px;
@@ -435,18 +450,16 @@
       height: 70px;
       overflow: auto;
       z-index: 1;
+      background: #31373c;
       &::-webkit-scrollbar {
         width: 0;
         height: 5px;
       }
       .serv {
         min-width: 71px;
-        height: 65.5px;
         background: #31373c;
         border-right: 1px solid #474e53;
-        &:last-child {
-          border: none;
-        }
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -460,7 +473,7 @@
             font-family: "Font Awesome 5 Pro";
             font-weight: 900;
             position: absolute;
-            color: #edeef0;
+            color: #fff;
             font-size: 35px;
             width: 52px;
             left: calc(50% - 11px);
@@ -488,12 +501,12 @@
       left: 0;
       width: 100%;
       border-radius: 0 0 10px 10px;
-      border: 2px solid #31373c;
       border-top: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #fff;
+      z-index: 1;
       i {
         font-size: 19px;
         font-weight: 400;
@@ -600,4 +613,11 @@
       }
     }
   }
+}
+.col-5.rightCol_Module {
+  position: fixed;
+  top: 20px;
+  left: calc((100% - 530px) / 2);
+  width: 530px;
+  z-index: 2;
 }

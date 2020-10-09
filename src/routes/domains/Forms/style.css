@@ -954,6 +954,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  height: 100%;
 }
 
 .rightFormOnlShop .MainForm .label {
@@ -1029,12 +1030,14 @@
 }
 
 .rightFormOnlShop .MainForm--left {
-  padding: 20px;
+  margin: 20px 0;
   padding-left: 40px;
+  padding-right: 20px;
 }
 
 .rightFormOnlShop .MainForm--right {
-  padding: 20px;
+  margin: 20px 0;
+  padding-left: 20px;
   padding-right: 40px;
 }
 
@@ -1055,9 +1058,61 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.rightFormOnlShop .SubForm .Top {
+  height: 45px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-top: 1px solid #ebeced;
+}
+
+.rightFormOnlShop .SubForm .Top div {
+  height: 33px;
+  width: 118px;
+  border: 1px solid #ebeced;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Roboto";
+  color: #5c5c5c;
+  border-radius: 0 0 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+}
+
+.rightFormOnlShop .SubForm .Bottom {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.rightFormOnlShop .SubForm .Bottom .L {
+  border-right: 1px solid #ebeced;
 }
 /*# sourceMappingURL=style.css.map */

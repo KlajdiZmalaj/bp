@@ -400,6 +400,26 @@ const { Types, Creators } = createActions({
     "codice_identificativo",
     "clearFields",
   ],
+  buyTicketOnline: [
+    "typee",
+    "link",
+    "nome_agenzia",
+    "extra_data",
+    "price",
+    "consegna",
+    "nome",
+    "cognome",
+    "email",
+    "phone",
+    "stato",
+    "citta",
+    "address1",
+    "address2",
+    "provincia",
+    "cap",
+    "note_address",
+    "callBack",
+  ],
 });
 
 export const AuthTypes = Types;

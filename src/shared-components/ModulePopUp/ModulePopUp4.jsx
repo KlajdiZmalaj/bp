@@ -17,6 +17,30 @@ class ModulePopUp4 extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+  componentDidMount() {
+    if (this.state?.serviceMobile?.service_id.toString() === "BGM001") {
+      if (parseInt(this.state.serviceMobile?.cost) === 0) {
+        this.changeService({
+          cost: "10.00",
+          name: "BGame Voucher",
+          service_id: "BGM001",
+          type: "1",
+        });
+      }
+    }
+  }
+  componentDidUpdate() {
+    if (this.state.serviceMobile?.service_id.toString() === "BGM001") {
+      if (parseInt(this.state.serviceMobile?.cost) === 0) {
+        this.changeService({
+          cost: "10.00",
+          name: "BGame Voucher",
+          service_id: "BGM001",
+          type: "1",
+        });
+      }
+    }
+  }
   hideAlert = () => {
     this.props.setRechargeMobile({});
   };
@@ -56,7 +80,32 @@ class ModulePopUp4 extends React.Component {
     const { service_s, rechargeMobile, service } = this.props;
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
-
+    const BgameServices = [
+      {
+        cost: "10.00",
+        name: "BGame Voucher",
+        service_id: "BGM001",
+        type: "1",
+      },
+      {
+        cost: "25.00",
+        name: "BGame Voucher",
+        service_id: "BGM001",
+        type: "1",
+      },
+      {
+        cost: "50.00",
+        name: "BGame Voucher",
+        service_id: "BGM001",
+        type: "1",
+      },
+      {
+        cost: "100.00",
+        name: "BGame Voucher",
+        service_id: "BGM001",
+        type: "1",
+      },
+    ];
     const { serviceMobile, tel_no, toPrint } = this.state;
     // console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
@@ -69,7 +118,14 @@ class ModulePopUp4 extends React.Component {
     // };
     return (
       <div className="modulePopUP modulePopUP1 telRechanrge">
-        <div className="leftCol_Module Popup4">
+        <div
+          className={`leftCol_Module Popup4 ${
+            service.type.toString() === "0" ||
+            serviceMobile.service_id.toString() === "BGM001"
+              ? "small"
+              : ""
+          }`}
+        >
           <div className="row">
             {this.state.confermaMsg && (
               <div className="confermaMsg animated bounce">
@@ -83,7 +139,14 @@ class ModulePopUp4 extends React.Component {
                 <div className="buttons">
                   <button
                     onClick={() => {
-                      this.handleSubmit(serviceMobile.service_id, tel_no);
+                      this.handleSubmit(
+                        serviceMobile.service_id,
+                        service.type.toString() === "1"
+                          ? serviceMobile.service_id === "BGM001"
+                            ? serviceMobile.cost
+                            : tel_no
+                          : null
+                      );
                       this.setPrint(true);
                       this.setState({ confermaMsg: false });
                     }}
@@ -110,77 +173,61 @@ class ModulePopUp4 extends React.Component {
             </div>
             <div className="Logo">
               <div className="Logo--Help">
-                {service_s?.id !== "BGAM" && (
-                  <img src={images[service_s?.id]} alt="" />
-                )}
+                <img src={images[service_s?.id]} alt="" />
               </div>
             </div>
             <div className="ServiceHeader">
               <h4>{service_s.name}</h4>
-              {service.type.toString() === "1" && (
-                <h5>
-                  {serviceMobile.service_id === "BGM001"
-                    ? "IMPORTO"
-                    : `INSERIRE IL NUMERO DI TELEFONO DA RICARICARE`}
-                </h5>
-              )}
+              {service.type.toString() === "1" &&
+                serviceMobile.service_id.toString() !== "BGM001" && (
+                  <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
+                )}
             </div>
-            <div className="NumPadContainer">
-              {service.type.toString() === "1" && (
-                <div className="NumPd">
-                  <span>+39</span>{" "}
-                  <input
-                    type="number"
-                    value={this.state.tel_no}
-                    onChange={this.handleChange}
-                  />{" "}
-                  <i className="fas fa-address-book"></i>
+            {service.type.toString() === "1" &&
+              serviceMobile.service_id.toString() !== "BGM001" && (
+                <div className="NumPadContainer">
+                  <div className="NumPd">
+                    <span>+39</span>{" "}
+                    <input
+                      type="number"
+                      placeholder="_ _ _ _ _ _ _"
+                      value={this.state.tel_no}
+                      onChange={this.handleChange}
+                    />
+                    <i className="fas fa-address-book"></i>
+                  </div>
+                  <div className="Numbers">
+                    <Fragment>
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
+                        <span
+                          key={num}
+                          id={`num${num}`}
+                          onClick={() =>
+                            num === "CE"
+                              ? this.clear()
+                              : num === "C"
+                              ? this.clearOne()
+                              : this.addNr(num)
+                          }
+                        >
+                          {num}
+                        </span>
+                      ))}
+                    </Fragment>
+                  </div>
                 </div>
               )}
-              <div className="Numbers">
-                {service.type.toString() === "1" && (
-                  <Fragment>
-                    {serviceMobile.service_id === "BGM001" && (
-                      <Fragment>
-                        {[10, 25, 50, 100].map((num) => (
-                          <span
-                            id={`num${num}`}
-                            key={num}
-                            onClick={() => this.replaceNr(num)}
-                          >
-                            {num}
-                          </span>
-                        ))}
-                      </Fragment>
-                    )}
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
-                      <span
-                        key={num}
-                        id={`num${num}`}
-                        onClick={() =>
-                          num === "CE"
-                            ? this.clear()
-                            : num === "C"
-                            ? this.clearOne()
-                            : this.addNr(num)
-                        }
-                      >
-                        {num}
-                      </span>
-                    ))}
-                  </Fragment>
-                )}
-              </div>
-            </div>
 
             <div className="TotalServices">
-              {(service_s.services || []).map((item, index) => {
+              {(serviceMobile.service_id.toString() === "BGM001"
+                ? BgameServices
+                : service_s.services || []
+              ).map((item, index) => {
                 return (
                   <div
                     key={index}
                     className={`serv ${
-                      item.service_id.toString() ===
-                      serviceMobile.service_id.toString()
+                      item.cost.toString() === serviceMobile.cost.toString()
                         ? "active"
                         : ""
                     }`}
@@ -205,6 +252,7 @@ class ModulePopUp4 extends React.Component {
                   } else {
                     window.location.hash = "login";
                     this.props.togglePopUp(false);
+                    this.setPrint(true);
                   }
                 }}
               >
@@ -237,6 +285,7 @@ class ModulePopUp4 extends React.Component {
             )}
           </div>
         </div>
+
         {rechargeMobile.receipt && toPrint && (
           <div className="col-5 rightCol_Module">
             <div className=" no-gutters">
@@ -369,6 +418,7 @@ const mapsStateToProps = (state) => ({
   rechargeMobile: state.auth.rechargeMobile,
   skinExtras: state.auth.skinExtras,
   accountInfo: state.auth.accountInfo,
+  serviceType: state.auth.serviceType,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
