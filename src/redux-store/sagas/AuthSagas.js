@@ -833,6 +833,7 @@ export function* getTicketByTicketId(ticket_id) {
 }
 
 export function* updateDataForm(data) {
+  console.log("data", data.price);
   const response = yield call(
     updateDataFormReq,
     data.typee,
@@ -858,7 +859,18 @@ export function* updateDataForm(data) {
     data.email,
     data.telefono,
     data.price,
-    data.ticket_id
+    data.ticket_id,
+    data.consegna,
+    data.cognome,
+    data.phone,
+    data.stato,
+    data.citta,
+    data.address1,
+    data.address2,
+    data.provincia,
+    data.cap,
+    data.note_address,
+    data.company_name
   );
   if (response?.status === 200) {
     data.callBack({
@@ -1542,6 +1554,7 @@ export function* buyTicketOnline({
   provincia,
   cap,
   note_address,
+  company_name,
   callBack,
 }) {
   const response = yield call(
@@ -1562,7 +1575,8 @@ export function* buyTicketOnline({
     address2,
     provincia,
     cap,
-    note_address
+    note_address,
+    company_name
   );
   if (response?.status === 200) {
     callBack({

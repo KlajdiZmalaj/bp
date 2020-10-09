@@ -4,7 +4,7 @@ export default () => {
   const [a, b] = useState(1);
 
   const val = setInterval(() => {
-    b(1 + a);
+    b(a < 50 ? 1 + a : a - 1);
   }, 1000);
 
   useEffect(() => {

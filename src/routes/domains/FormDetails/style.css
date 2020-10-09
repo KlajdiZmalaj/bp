@@ -1,3 +1,16 @@
+textarea {
+  color: #5c5c5c;
+  font-weight: 600;
+  font-size: 14px;
+  width: 50%;
+  border: 0;
+  padding: 4px 11px;
+  border: none;
+  outline: none;
+  resize: none !important;
+  background: #fff;
+}
+
 .invisible {
   display: none;
   visibility: hidden;
