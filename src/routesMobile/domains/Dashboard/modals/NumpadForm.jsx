@@ -100,7 +100,7 @@ const Numpad = ({
             
             try {
               const contacts = await navigator.contacts.select(props, opts);
-              setVal(contacts[0].tel[0])
+              setVal(contacts[0]?.tel?.[0])
             } catch (ex) {
                 console.log('ex',ex)
             }
