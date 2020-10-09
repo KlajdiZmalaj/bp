@@ -107,7 +107,7 @@ const Numpad = ({
                       props,
                       opts
                     );
-                    setVal(contacts[0]?.tel?.[0]);
+                    setVal((contacts[0]?.tel?.[0] || "").replace("+39", ""));
                   } catch (ex) {
                     console.log("ex", ex);
                   }
