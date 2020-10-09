@@ -94,7 +94,18 @@ const Numpad = ({
 
       <div className="mobileNumPad--input">
         <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
-        <i className="fas fa-address-book"></i>
+        {('contacts' in navigator && 'ContactsManager' in window) &&   <i onClick={async ()=>{
+            const props = ['tel'];
+            const opts = {multiple: false};
+            
+            try {
+              const contacts = await navigator.contacts.select(props, opts);
+              setVal(contacts[0]?.tel?.[0])
+            } catch (ex) {
+                console.log('ex',ex)
+            }
+        }} className="fas fa-address-book"></i>}
+      
       </div>
       <div className="mobileNumPad--numbers">
         {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {
