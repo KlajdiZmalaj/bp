@@ -10,3 +10,4 @@ export { default as Loader } from "./Loader/Loader";
 export { default as PopUpConfirmation } from "./PopUpConfirmation";
 export { default as PopUpConfirmationVisure } from "./PopUpConfirmationVisure";
 export { default as Time } from "./Time";
+export { default as NewBarcodeScanner } from "./NewBarcodeScanner";

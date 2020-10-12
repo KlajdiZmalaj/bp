@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
-import BarcodeScannerComponent from "react-webcam-barcode-scanner";
-
+// import BarcodeScannerComponent from "react-webcam-barcode-scanner";
+import { NewBarcodeScanner as Scanner } from "shared-components";
 const Input = ({ label, handler, icon, value, iconHandler }) => (
   <div className={"bolletini--inputs__item" + (icon ? " hasIcon" : "")}>
     <div className="label">{label}</div>
@@ -121,12 +121,18 @@ const BolletiniBianchi = ({
         </div>
       </div>
       {camera && (
-        <BarcodeScannerComponent
-          onUpdate={(err, result) => {
-            if (result) {
-              setBarcode(result.text);
-              setCamera(false);
-            } else setBarcode("Scanning...");
+        // <BarcodeScannerComponent
+        //   onUpdate={(err, result) => {
+        //     if (result) {
+        //       setBarcode(result.text);
+        //       setCamera(false);
+        //     } else setBarcode("Scanning...");
+        //   }}
+        // />
+        <Scanner
+          onDetected={(e) => {
+            console.log("ca ka detect", e);
+            setBarcode(e.codeResult.code);
           }}
         />
       )}

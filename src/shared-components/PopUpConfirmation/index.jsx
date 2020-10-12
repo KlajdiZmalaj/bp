@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import EventiConfirmation from "./EventiConfirmation";
 import TreniConfirmation from "./TreniConfirmation";
 import VoliConfirmation from "./VoliConfirmation";
+import OnlineShopConfirmation from "./OnlineShopConfirmation";
 import { userConfirmation } from "services/auth";
 import { AuthActions } from "redux-store/models";
 import { connect } from "react-redux";
@@ -40,9 +41,13 @@ const PopUpConfirmation = ({
             />
             <span>{`Id :BP- ${TicketByTcketId.id}`}</span>
           </div>
+          {TicketByTcketId.type === 4 && (
+            <OnlineShopConfirmation TicketByTcketId={TicketByTcketId} />
+          )}
           {TicketByTcketId.type === 3 && (
             <EventiConfirmation TicketByTcketId={TicketByTcketId} />
           )}
+
           {TicketByTcketId.type === 2 && (
             <TreniConfirmation TicketByTcketId={TicketByTcketId} />
           )}

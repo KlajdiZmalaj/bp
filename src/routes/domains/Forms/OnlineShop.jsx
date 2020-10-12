@@ -75,6 +75,7 @@ class OnlineShop extends Component {
       address1,
       address2,
       cap,
+      company_name,
     } = this.state;
     this.props.buyTicketOnline(
       4,
@@ -94,6 +95,7 @@ class OnlineShop extends Component {
       provincia,
       cap,
       note_address,
+      company_name,
       this.resetState
     );
   };
@@ -351,7 +353,7 @@ class OnlineShop extends Component {
                     />
                   </div>
                   <div className="formsContainer--body__item">
-                    <div className="label">note_address </div>
+                    <div className="label">note address </div>
                     <input
                       value={note_address || ""}
                       onChange={(e) => {

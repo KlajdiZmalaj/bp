@@ -812,8 +812,20 @@ export const updateDataFormReq = (
   email,
   telefono,
   price,
-  ticket_id
+  ticket_id,
+  consegna,
+  cognome,
+  phone,
+  stato,
+  citta,
+  address1,
+  address2,
+  provincia,
+  cap,
+  note_address,
+  company_name
 ) => {
+  console.log("auth", price);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -855,7 +867,8 @@ export const updateDataFormReq = (
             ragazzi,
             ritorno_date,
           }
-        : {
+        : typee === 3
+        ? {
             ...skin,
             price,
             type: typee,
@@ -868,6 +881,27 @@ export const updateDataFormReq = (
             name,
             email,
             telefono,
+          }
+        : {
+            ...skin,
+            type: typee,
+            link,
+            nome_agenzia,
+            extra_data,
+            price: parseFloat(price),
+            consegna,
+            nome: name,
+            cognome,
+            email,
+            phone,
+            stato,
+            citta,
+            address1,
+            address2,
+            provincia,
+            cap,
+            note_address,
+            company_name,
           }
     )
     .catch((error) => ({ error }));
@@ -1584,7 +1618,8 @@ export const buyTicketOnlineReq = (
   address2,
   provincia,
   cap,
-  note_address
+  note_address,
+  company_name
 ) =>
   axios
     .create({
@@ -1601,7 +1636,7 @@ export const buyTicketOnlineReq = (
       link,
       nome_agenzia,
       extra_data,
-      price,
+      price: parseFloat(price),
       consegna,
       ...(consegna === 2
         ? {
@@ -1616,6 +1651,7 @@ export const buyTicketOnlineReq = (
             provincia,
             cap,
             note_address,
+            ...(company_name ? { company_name } : {}),
           }
         : {}),
     })

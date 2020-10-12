@@ -47,7 +47,9 @@ function Filter(
   filterSkin,
   filterAgenzie,
   filterRicercaId,
-  nome_agenzia
+  nome_agenzia,
+  Status,
+  filterType
 ) {
   let newNAg = nome_agenzia === "visura" ? "visura" : "Prenotazioni";
   if (
@@ -71,7 +73,9 @@ function Filter(
               .toLowerCase()
               .includes(filterRicercaId.toString().toLowerCase()))
         ) {
-          return true;
+          if (Status === filterType || filterType === "all") {
+            return true;
+          }
         }
       }
     }
@@ -331,6 +335,7 @@ class FormDetailsDomain extends Component {
             <span>Biglietto</span>
           </div>
           {(formDetailsActives.rowsTickets || []).map((ticket) => {
+            console.log(ticket);
             return Filter(
               ticket,
               "visura",
@@ -341,7 +346,9 @@ class FormDetailsDomain extends Component {
               filterSkin,
               filterAgenzie,
               filterRicercaId,
-              ticket.nome_agenzia
+              ticket.nome_agenzia,
+              ticket.status,
+              filterType
             ) ? (
               <DetailRowVisure
                 key={ticket.id}
@@ -358,7 +365,9 @@ class FormDetailsDomain extends Component {
                 filterSkin,
                 filterAgenzie,
                 filterRicercaId,
-                ticket.nome_agenzia
+                ticket.nome_agenzia,
+                ticket.status,
+                filterType
               ) ? (
               <DetailRow
                 mobilePopUp={this.mobilePopUp}
@@ -372,6 +381,8 @@ class FormDetailsDomain extends Component {
           })}
           {my_tickets &&
             (my_tickets || []).map((ticket) => {
+              console.log(ticket);
+
               return Filter(
                 ticket,
                 "visura",
@@ -382,7 +393,9 @@ class FormDetailsDomain extends Component {
                 filterSkin,
                 filterAgenzie,
                 filterRicercaId,
-                ticket.nome_agenzia
+                ticket.nome_agenzia,
+                ticket.status,
+                filterType
               ) ? (
                 <DetailRowVisure
                   key={ticket.id}
@@ -399,7 +412,9 @@ class FormDetailsDomain extends Component {
                   filterSkin,
                   filterAgenzie,
                   filterRicercaId,
-                  ticket.nome_agenzia
+                  ticket.nome_agenzia,
+                  ticket.status,
+                  filterType
                 ) ? (
                 <DetailRow
                   mobilePopUp={this.mobilePopUp}
@@ -413,6 +428,8 @@ class FormDetailsDomain extends Component {
             })}
           {tickets &&
             (tickets || []).map((ticket) => {
+              console.log(ticket);
+
               return Filter(
                 ticket,
                 "visura",
@@ -423,7 +440,9 @@ class FormDetailsDomain extends Component {
                 filterSkin,
                 filterAgenzie,
                 filterRicercaId,
-                ticket.nome_agenzia
+                ticket.nome_agenzia,
+                ticket.status,
+                filterType
               ) ? (
                 <DetailRowVisure
                   key={ticket.id}
@@ -440,7 +459,9 @@ class FormDetailsDomain extends Component {
                   filterSkin,
                   filterAgenzie,
                   filterRicercaId,
-                  ticket.nome_agenzia
+                  ticket.nome_agenzia,
+                  ticket.status,
+                  filterType
                 ) ? (
                 <DetailRow
                   mobilePopUp={this.mobilePopUp}
