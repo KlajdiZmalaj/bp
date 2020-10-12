@@ -1,6 +1,7 @@
+import $ from "jquery";
+
 const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
-import $ from "jquery";
 
 export let skin = {
   skin_id: 0,
