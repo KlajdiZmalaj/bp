@@ -27,6 +27,20 @@ export const PagoPaLeftForm = ({
 }) => (
   <Fragment>
     <ReturnFormItem
+      descName="Mav/Rav"
+      name="mav_rav"
+      message="Please input your persona tipo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+      defaultValue={"1"}
+      NotInput={
+        <Radio.Group>
+          <Radio value="1">MAV</Radio>
+          <Radio value="2">RAV</Radio>
+        </Radio.Group>
+      }
+    />
+    <ReturnFormItem
       descName="Token"
       name="token"
       message="Please input your token!"
@@ -41,9 +55,9 @@ export const PagoPaLeftForm = ({
       getFieldDecorator={getFieldDecorator}
     />
     <ReturnFormItem
-      descName="CF/P.IVA Ente Creditore"
-      name="creditore"
-      message="Please input your Creditore!"
+      descName="Prezzo"
+      name="price"
+      message="Please input your Prezzo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />

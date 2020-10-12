@@ -18,6 +18,7 @@ const Numpad = ({
   skinExtras,
   allFavServices,
   toggleFavorite,
+  noNumbers,
 }) => {
   const [selectedCost, setCost] = useState(null);
   const [inpVal, setVal] = useState("");
@@ -91,22 +92,43 @@ const Numpad = ({
           INSERIRE IL NUMERO DI TELEFONO DA RICARICARE
         </div>
       </div>
+      {!noNumbers && (
+        <>
+          <div className="mobileNumPad--input">
+            <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
+            {"contacts" in navigator && "ContactsManager" in window && (
+              <i
+                onClick={async () => {
+                  const props = ["tel"];
+                  const opts = { multiple: false };
 
-      <div className="mobileNumPad--input">
-        <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
-        <i className="fas fa-address-book"></i>
-      </div>
-      <div className="mobileNumPad--numbers">
-        {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {
-          return (
-            <div key={a} onClick={() => setVal(`${inpVal}${a}`)}>
-              {a}
-            </div>
-          );
-        })}
-        <div onClick={() => setVal("")}>C</div>
-        <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
-      </div>
+                  try {
+                    const contacts = await navigator.contacts.select(
+                      props,
+                      opts
+                    );
+                    setVal((contacts[0]?.tel?.[0] || "").replace("+39", ""));
+                  } catch (ex) {
+                    console.log("ex", ex);
+                  }
+                }}
+                className="fas fa-address-book"
+              ></i>
+            )}
+          </div>
+          <div className="mobileNumPad--numbers">
+            {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {
+              return (
+                <div key={a} onClick={() => setVal(`${inpVal}${a}`)}>
+                  {a}
+                </div>
+              );
+            })}
+            <div onClick={() => setVal("")}>C</div>
+            <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
+          </div>
+        </>
+      )}
 
       <div className="mobileNumPad--buttons">
         <button
@@ -115,7 +137,7 @@ const Numpad = ({
             setLoadingRecharge(true);
             getRechargeMobile(
               selectedCost?.service_id,
-              `39${inpVal}`,
+              noNumbers ? null : `39${inpVal}`,
               setLoadingRecharge
             );
           }}

@@ -7,50 +7,49 @@ import { AuthActions, MainActions } from "redux-store/models";
 class OnlineShop extends Component {
   state = {
     link: "",
-    prezzo_prodotto: "",
-    consegna_a: "Nome Agenzia",
+    price: "",
+    consegna: 2,
     nome: "",
     cognome: "",
-    company_name: "",
-    destinazione: "",
     email: "",
-    telefono: "",
-    note_acquisti: "",
-    cita: "",
+    phone: "",
+    extra_data: "",
+    citta: "",
     provincia: "",
-    note: "",
+    note_address: "",
     stato: "",
-    indirizzo1: "",
-    indirizzo2: "",
+    address1: "",
+    address2: "",
     cap: "",
   };
   resetState = (msg) => {
     if (!msg.error) {
       this.setState({
         link: "",
-        prezzo_prodotto: "",
-        consegna_a: "Nome Agenzia",
+        price: "",
+        consegna: 2,
         nome: "",
         cognome: "",
-        company_name: "",
-        destinazione: "",
         email: "",
-        telefono: "",
-        note_acquisti: "",
-        cita: "",
+        phone: "",
+        extra_data: "",
+        citta: "",
         provincia: "",
-        note: "",
+        note_address: "",
         stato: "",
-        indirizzo1: "",
-        indirizzo2: "",
+        address1: "",
+        address2: "",
         cap: "",
       });
+      console.log("succ", msg, msg?.err);
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
         placement: "bottomRight",
       });
     } else {
+      console.log("err", msg, msg?.err);
+
       notification["error"]({
         message: msg.msg[0],
         description: msg.msg[1],
@@ -60,44 +59,63 @@ class OnlineShop extends Component {
     }
   };
   submitData = () => {
-    // const {
-    //   link,
-    //   prezzo_prodotto,
-    //   consegna_a,
-    //   nome,
-    //   cognome,
-    //   company_name,
-    //   destinazione,
-    //   email,
-    //   telefono,
-    //   note_acquisti,
-    //   cita,
-    //   provincia,
-    //   note,
-    //   stato,
-    //   indirizzo1,
-    //   indirizzo2,
-    //   cap,
-    // } = this.state;
-    // Send Data
+    const {
+      link,
+      price,
+      consegna,
+      nome,
+      cognome,
+      email,
+      phone,
+      extra_data,
+      citta,
+      provincia,
+      note_address,
+      stato,
+      address1,
+      address2,
+      cap,
+      company_name,
+    } = this.state;
+    this.props.buyTicketOnline(
+      4,
+      link,
+      "shop-online",
+      extra_data,
+      price,
+      consegna,
+      nome,
+      cognome,
+      email,
+      phone,
+      stato,
+      citta,
+      address1,
+      address2,
+      provincia,
+      cap,
+      note_address,
+      company_name,
+      this.resetState
+    );
   };
   render() {
     const {
       link,
-      prezzo_prodotto,
-      consegna_a,
+      price,
+      consegna,
       nome,
       cognome,
       company_name,
       email,
-      telefono,
-      note_acquisti,
-      cita,
+      phone,
+      extra_data,
+      citta,
       provincia,
-      note,
+      note_address,
       stato,
-      indirizzo1,
-      indirizzo2,
+      address1,
+      address2,
       cap,
     } = this.state;
     const { nome_agenzia, color, goBack } = this.props;
@@ -118,7 +136,7 @@ class OnlineShop extends Component {
           <div className="rightForm--header">
             {true && (
               <div className="TitleBack">
-                <i class="fal fa-chevron-left Arrow" onClick={goBack}></i>
+                <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
                 ONLINE SHOP
               </div>
             )}
@@ -151,10 +169,10 @@ class OnlineShop extends Component {
                 <div className="EuroInput">
                   <span className="Euro">€</span>
                   <input
-                    value={prezzo_prodotto || ""}
+                    value={price || ""}
                     className="questionInput"
                     onChange={(e) => {
-                      this.setState({ prezzo_prodotto: e.target.value });
+                      this.setState({ price: e.target.value });
                     }}
                     type="text"
                   />{" "}
@@ -167,171 +185,191 @@ class OnlineShop extends Component {
                 <Radio.Group
                   onChange={(e) => {
                     this.setState({
-                      consegna_a: e.target.value,
+                      consegna: e.target.value,
                     });
                   }}
-                  value={consegna_a}
+                  value={consegna}
                 >
-                  <Radio value={"Nome Agenzia"}>Nome Agenzia</Radio>
-                  <Radio value={"Indirizzo Cliente"}>Indirizzo Cliente</Radio>
+                  <Radio value={1}>Nome Agenzia</Radio>
+                  <Radio value={2}>Indirizzo Cliente</Radio>
                 </Radio.Group>
               </div>
             </div>
             <div className="MainForm--right">
-              <div className="label">Note acquisti</div>
+              <div className="label">Note Acquisti</div>
               <textarea
                 onChange={(e) => {
-                  this.setState({ note_acquisti: e.target.value });
+                  this.setState({ extra_data: e.target.value });
                 }}
-                value={note_acquisti || ""}
+                value={extra_data || ""}
               />
+              {consegna === 1 && (
+                <div className="formsContainer--body__item submit">
+                  <button
+                    style={{ backgroundColor: color }}
+                    onClick={this.submitData}
+                  >
+                    Invia
+                  </button>
+                </div>
+              )}
             </div>
           </div>
-          {consegna_a === "Nome Agenzia" && (
+          {consegna === 2 && (
             <div className="SubForm">
-              <div className="MainForm--left">
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Nome <span className="red">*</span>
-                  </div>
-                  <input
-                    value={nome || ""}
-                    onChange={(e) => {
-                      this.setState({ nome: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Cognome <span className="red">*</span>
-                  </div>
-                  <input
-                    value={cognome || ""}
-                    onChange={(e) => {
-                      this.setState({ cognome: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">Company Name </div>
-                  <input
-                    value={company_name || ""}
-                    onChange={(e) => {
-                      this.setState({ company_name: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Email <span className="red">*</span>
-                  </div>
-                  <input
-                    value={email || ""}
-                    onChange={(e) => {
-                      this.setState({ email: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Telefono <span className="red">*</span>
-                  </div>
-                  <input
-                    value={telefono || ""}
-                    onChange={(e) => {
-                      this.setState({ telefono: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Stato <span className="red">*</span>
-                  </div>
-                  <input
-                    value={stato || ""}
-                    onChange={(e) => {
-                      this.setState({ stato: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Cita <span className="red">*</span>
-                  </div>
-                  <input
-                    value={cita || ""}
-                    onChange={(e) => {
-                      this.setState({ cita: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
+              <div className="Top">
+                <div>Consegna a:</div>
               </div>
-              <div className="MainForm--right">
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Indirizzo 1 <span className="red">*</span>
+              <div className="Bottom">
+                <div className="MainForm--left L">
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      Nome <span className="red">*</span>
+                    </div>
+                    <input
+                      value={nome || ""}
+                      onChange={(e) => {
+                        this.setState({ nome: e.target.value });
+                      }}
+                      type="text"
+                    />
                   </div>
-                  <input
-                    value={indirizzo1 || ""}
-                    onChange={(e) => {
-                      this.setState({ indirizzo1: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">Indirizzo 2 </div>
-                  <input
-                    value={indirizzo2 || ""}
-                    onChange={(e) => {
-                      this.setState({ indirizzo2: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    CAP <span className="red">*</span>
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      Cognome <span className="red">*</span>
+                    </div>
+                    <input
+                      value={cognome || ""}
+                      onChange={(e) => {
+                        this.setState({ cognome: e.target.value });
+                      }}
+                      type="text"
+                    />
                   </div>
-                  <input
-                    value={cap || ""}
-                    onChange={(e) => {
-                      this.setState({ cap: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">
-                    Provincia <span className="red">*</span>
+                  <div className="formsContainer--body__item">
+                    <div className="label">Company Name </div>
+                    <input
+                      value={company_name || ""}
+                      onChange={(e) => {
+                        this.setState({ company_name: e.target.value });
+                      }}
+                      type="text"
+                    />
                   </div>
-                  <input
-                    value={provincia || ""}
-                    onChange={(e) => {
-                      this.setState({ provincia: e.target.value });
-                    }}
-                    type="text"
-                  />
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      Email <span className="red">*</span>
+                    </div>
+                    <input
+                      value={email || ""}
+                      onChange={(e) => {
+                        this.setState({ email: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      phone <span className="red">*</span>
+                    </div>
+                    <input
+                      value={phone || ""}
+                      onChange={(e) => {
+                        this.setState({ phone: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      Stato <span className="red">*</span>
+                    </div>
+                    <input
+                      value={stato || ""}
+                      onChange={(e) => {
+                        this.setState({ stato: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      citta <span className="red">*</span>
+                    </div>
+                    <input
+                      value={citta || ""}
+                      onChange={(e) => {
+                        this.setState({ citta: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
                 </div>
-                <div className="formsContainer--body__item">
-                  <div className="label">Note </div>
-                  <input
-                    value={note || ""}
-                    onChange={(e) => {
-                      this.setState({ note: e.target.value });
-                    }}
-                    type="text"
-                  />
-                </div>
-                <div class="formsContainer--body__item submit">
-                  <button style={{ backgroundColor: color }}>Invia</button>
+                <div className="MainForm--right">
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      Indirizzo 1 <span className="red">*</span>
+                    </div>
+                    <input
+                      value={address1 || ""}
+                      onChange={(e) => {
+                        this.setState({ address1: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">Indirizzo 2 </div>
+                    <input
+                      value={address2 || ""}
+                      onChange={(e) => {
+                        this.setState({ address2: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      CAP <span className="red">*</span>
+                    </div>
+                    <input
+                      value={cap || ""}
+                      onChange={(e) => {
+                        this.setState({ cap: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">
+                      Provincia <span className="red">*</span>
+                    </div>
+                    <input
+                      value={provincia || ""}
+                      onChange={(e) => {
+                        this.setState({ provincia: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item">
+                    <div className="label">note address </div>
+                    <input
+                      value={note_address || ""}
+                      onChange={(e) => {
+                        this.setState({ note_address: e.target.value });
+                      }}
+                      type="text"
+                    />
+                  </div>
+                  <div className="formsContainer--body__item submit">
+                    <button
+                      style={{ backgroundColor: color }}
+                      onClick={this.submitData}
+                    >
+                      Invia
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

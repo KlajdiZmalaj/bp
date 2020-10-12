@@ -49,6 +49,7 @@ import {
   bGameVoucher,
   fetchBolletiniRequest,
   StatisticheMainReq,
+  buyTicketOnlineReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -832,6 +833,7 @@ export function* getTicketByTicketId(ticket_id) {
 }
 
 export function* updateDataForm(data) {
+  console.log("data", data.price);
   const response = yield call(
     updateDataFormReq,
     data.typee,
@@ -857,7 +859,18 @@ export function* updateDataForm(data) {
     data.email,
     data.telefono,
     data.price,
-    data.ticket_id
+    data.ticket_id,
+    data.consegna,
+    data.cognome,
+    data.phone,
+    data.stato,
+    data.citta,
+    data.address1,
+    data.address2,
+    data.provincia,
+    data.cap,
+    data.note_address,
+    data.company_name
   );
   if (response?.status === 200) {
     data.callBack({
@@ -1381,7 +1394,7 @@ export function* getBgameVoucherReq(params) {
       yield put(AuthActions.setRechargeMobile(response.data));
     } else if (response?.error) {
       if (
-        response.error.response.status === 401 &&
+        response?.error?.response?.status === 401 &&
         localStorage.getItem("accountDataB") !== null
       ) {
         const response = yield call(logoutApi);
@@ -1391,7 +1404,9 @@ export function* getBgameVoucherReq(params) {
           yield put(AuthActions.setAccountInfo({}));
         }
       } else {
-        yield put(AuthActions.setRechargeMobile(response.error.response.data));
+        yield put(
+          AuthActions.setRechargeMobile(response?.error?.response?.data)
+        );
       }
     }
     //set loading false
@@ -1519,5 +1534,65 @@ export function* fetchBolletini({
     // if (params.callBack) {
     //   params.callBack(false);
     // }
+  }
+}
+export function* buyTicketOnline({
+  typee,
+  link,
+  nome_agenzia,
+  extra_data,
+  price,
+  consegna,
+  nome,
+  cognome,
+  email,
+  phone,
+  stato,
+  citta,
+  address1,
+  address2,
+  provincia,
+  cap,
+  note_address,
+  company_name,
+  callBack,
+}) {
+  const response = yield call(
+    buyTicketOnlineReq,
+    typee,
+    link,
+    nome_agenzia,
+    extra_data,
+    price,
+    consegna,
+    nome,
+    cognome,
+    email,
+    phone,
+    stato,
+    citta,
+    address1,
+    address2,
+    provincia,
+    cap,
+    note_address,
+    company_name
+  );
+  if (response?.status === 200) {
+    callBack({
+      error: false,
+      msg: response?.data.message,
+    });
+  }
+  if (response?.error) {
+    callBack({
+      error: true,
+      msg: [
+        response.error.response.data.message,
+        response.error.response.data.errors
+          ? Object.values(response.error.response.data.errors)
+          : "error backend",
+      ],
+    });
   }
 }

@@ -5,14 +5,17 @@ import { MainActions, AuthActions } from "redux-store/models";
 class PrintTicket extends React.Component {
   render() {
     const { arr } = this.props;
+    const barcode = Array.isArray(arr) ? arr[0]?.barcode : arr?.barcode;
+    const receipt = Array.isArray(arr) ? arr[0]?.receipt : arr?.receipt;
     return (
-      !arr?.errors && (
+      barcode &&
+      receipt && (
         <div className="col-5 rightCol_Module">
           <div className="row no-gutters">
             <div className="_modulePopUP__cupon">
               <div className="_modulePopUP__cupon--header">
                 <img src="img/print.svg" alt="" />
-                <h3>Stampa dello scontrino {arr[0].barcode}</h3>
+                <h3>Stampa dello scontrino {barcode}</h3>
               </div>
               <div className="_modulePopUP__cupon--body">
                 <img src="img/logoGray.svg" alt="" />
@@ -20,7 +23,7 @@ class PrintTicket extends React.Component {
 
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: arr[0].receipt
+                    __html: receipt
                       .replace(/</g, "&lt;")
                       .replace(/>/g, "&gt;")
                       .replace(/\t/g, "\u00a0")
