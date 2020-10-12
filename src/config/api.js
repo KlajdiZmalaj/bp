@@ -16,6 +16,7 @@ if (
     ...skin,
     skin_id: 1,
   };
+  //google analytics to header
   $("head").append(
     `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172416989-1"></script>`
   );
@@ -27,6 +28,7 @@ if (
     ...skin,
     skin_id: 3,
   };
+  //google analytics to header
   $("head").append(
     `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172416989-6"></script>`
   );
@@ -38,6 +40,7 @@ if (
     ...skin,
     skin_id: 4,
   };
+  //google analytics to header
   $("head").append(
     `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172416989-2"></script>`
   );
@@ -49,6 +52,7 @@ if (
     ...skin,
     skin_id: 5,
   };
+  //google analytics to header
   $("head").append(
     `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172416989-5"></script>`
   );
