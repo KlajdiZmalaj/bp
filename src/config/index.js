@@ -50981,7 +50981,7 @@ export const countriesArray = [
   },
 ];
 export const servicesVisure = {
-  "Servizi Ufficio Catasto": {
+  " Catasto": {
     services: [
       {
         name: "Visura Catastale",
@@ -51037,7 +51037,7 @@ export const servicesVisure = {
       { name: "Voltura Catastale", price: 149, sco: "35", time: "40 giorni" },
     ],
   },
-  "Servizi Ufficio Camera di Commercio": {
+  " Camera di Commercio": {
     services: [
       {
         name: "Report Azienda Full",
@@ -51143,7 +51143,7 @@ export const servicesVisure = {
       { name: "Report su Persona", price: 15, sco: "25", time: "2 ore" },
     ],
   },
-  "Servizi Ufficio Conservatoria": {
+  " Conservatoria": {
     services: [
       {
         name: "Visura Ipotecaria",
@@ -51168,7 +51168,7 @@ export const servicesVisure = {
       { name: "Copia Atto Notarile", price: 98, sco: "35", time: "3 ettimane" },
     ],
   },
-  "Servizi Ufficio P.R.A. e Pratiche Veicoli": {
+  " P.R.A. e Pratiche Veicoli": {
     services: [
       {
         name: "Visura Targa PRA",
@@ -51236,7 +51236,7 @@ export const servicesVisure = {
       },
     ],
   },
-  "Servizi Ufficio Anagrafe / Comune": {
+  " Anagrafe / Comune": {
     services: [
       {
         name: "Estratto di Nascita Multilingua",
@@ -51332,7 +51332,7 @@ export const servicesVisure = {
       },
     ],
   },
-  "Servizi Ufficio Altri Uffici": {
+  " Altri Uffici": {
     services: [
       {
         name: "Estratto Conto Riscossione (ex Equitalia)",
@@ -51366,7 +51366,7 @@ export const servicesVisure = {
       },
     ],
   },
-  "Servizi Ufficio Agenzia delle Entrate": {
+  " Agenzia delle Entrate": {
     services: [
       {
         name: "Certificato di Residenza Fiscale",
@@ -51388,12 +51388,12 @@ export const servicesVisure = {
       },
     ],
   },
-  "Servizi Ufficio Fatturazione Elettronica": {
+  " Fatturazione Elettronica": {
     services: [
       { name: "Fatturazione Elettronica", price: 25, sco: "28", time: "8 ore" },
     ],
   },
-  "Servizi Ufficio Prefettura": {
+  " Prefettura": {
     services: [
       {
         name: "Certificato Apostillato",
@@ -51404,7 +51404,7 @@ export const servicesVisure = {
       { name: "Estratto Apostillato", price: 32, sco: "78", time: "20 giorni" },
     ],
   },
-  "Servizi Ufficio Tribunale": {
+  " Tribunale": {
     services: [
       {
         name: "Casellario Giudiziale",

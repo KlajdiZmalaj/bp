@@ -57,6 +57,7 @@ import {
   getStatisticheMain,
   fetchBolletini,
   buyTicketOnline,
+  setPagoPa,
 } from "./AuthSagas";
 
 import {
@@ -72,6 +73,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(AuthTypes.SET_PAGO_PA, setPagoPa),
     takeLatest(AuthTypes.BUY_TICKET_ONLINE, buyTicketOnline),
     takeLatest(AuthTypes.FETCH_BOLLETINI, fetchBolletini),
     takeLatest(AuthTypes.GET_STATISTICHE_MAIN, getStatisticheMain),

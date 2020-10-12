@@ -50,6 +50,7 @@ import {
   fetchBolletiniRequest,
   StatisticheMainReq,
   buyTicketOnlineReq,
+  pagoPaRequest,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1472,7 +1473,7 @@ export function* fetchBolletini({
 }) {
   notification["info"]({
     key: "PaymentLoading",
-    message: "Attendi finché il pagamento non viene elaborato",
+    message: "Attendere, transazione in corso",
   });
   const response = yield call(
     fetchBolletiniRequest,
@@ -1594,5 +1595,89 @@ export function* buyTicketOnline({
           : "error backend",
       ],
     });
+  }
+}
+export function* setPagoPa({
+  service_id,
+  person_type,
+  via_piazza,
+  cap,
+  citta,
+  provincia,
+  email,
+  phone_number,
+  tipologia,
+  codice_fiscale_bol,
+  codice_aviso,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  clearFields,
+}) {
+  console.log("response");
+
+  notification["info"]({
+    key: "pagoPaPayment",
+    message: "Attendere, transazione in corso",
+  });
+  const response = yield call(
+    pagoPaRequest,
+    service_id,
+    person_type,
+    via_piazza,
+    citta,
+    email,
+    phone_number,
+    tipologia,
+    codice_fiscale_bol,
+    codice_aviso,
+    nome,
+    cognome,
+    codice_fiscale,
+    denominazione,
+    partita_iva
+  );
+  console.log(response);
+  if (response) {
+    if (response.data) {
+      notification.close("pagoPaPayment");
+      yield put(AuthActions.setBolletiniBianchi(response.data));
+      clearFields();
+      notification["success"]({
+        message: response.data.message,
+      });
+    } else if (response?.error) {
+      notification.close("pagoPaPayment");
+
+      notification["error"]({
+        message: response.error.response.data.message,
+        description: [
+          response.error.response.data.message,
+          response.error.response.data.errors
+            ? Object.values(response.error.response.data.errors)
+            : "error backend",
+        ],
+      });
+      if (
+        response &&
+        response.error &&
+        response.error.response.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+        // const response = yield call(logoutApi);
+      }
+    }
+    notification.close("PaymentLoading");
+
+    // if (params.callBack) {
+    //   params.callBack(false);
+    // }
   }
 }

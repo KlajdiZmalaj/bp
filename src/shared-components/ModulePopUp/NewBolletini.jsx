@@ -61,66 +61,102 @@ class Bolletino extends React.Component {
       email: "",
       importo: "",
       partita_iva: "",
+      codice_aviso: "",
+      codice_fiscale_bol: "",
     });
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err && this.state.condizioniAgreement) {
-        if (this.props.service_id === "BOL001") {
-          this.props.fetchBolletini(
-            this.props.service_id,
-            values.person_type.toString(),
-            values.via_piazza,
-            values.cap,
-            values.citta,
-            values.provincia,
-            values.importo.toString(),
-            values.tipologia,
-            values.numero_conto_corrente,
-            values.causale,
-            values.nome,
-            values.cognome,
-            values.codice_fiscale,
-            values.denominazione,
-            values.partita_iva,
-            values.email,
-            values.phone_number,
-            null,
+    let bolletoActive = "PAGO_PA";
+    if (bolletoActive === "PAGO_PA") {
+      this.props.form.validateFieldsAndScroll((err, values) => {
+        if (!err && this.state.condizioniAgreement) {
+          console.log("PAgoPA");
+          this.props.setPagoPa(
+            "PPA001",
+            values?.person_type,
+            values?.via_piazza,
+            values?.citta,
+            values?.email,
+            values?.phone_number,
+            "pa",
+            values?.codice_fiscale_bol,
+            values?.codice_aviso,
+            values?.nome,
+            values?.cognome,
+            values?.codice_fiscale,
+            values?.denominazione,
+            values?.partita_iva,
             this.clearFields
           );
+        } else {
+          notification["error"]({
+            message: "Ops...",
+            description:
+              "Controlla le tue caselle vuote o accetta le condizioni",
+          });
         }
-        if (this.props.service_id === "BOL002") {
-          this.props.fetchBolletini(
-            this.props.service_id,
-            values.person_type.toString(),
-            values.via_piazza,
-            values.cap,
-            values.citta,
-            values.provincia,
-            values.importo.toString(),
-            values.tipologia,
-            values.numero_conto_corrente,
-            values.causale,
-            values.nome,
-            values.cognome,
-            values.codice_fiscale,
-            values.denominazione,
-            values.partita_iva,
-            values.email,
-            values.phone_number,
-            values.codice_identificativo,
-            this.clearFields
-          );
+        // console.log("faturaaaa", this.props.service_id, values);
+      });
+    } else {
+      this.props.form.validateFieldsAndScroll((err, values) => {
+        if (!err && this.state.condizioniAgreement) {
+          if (this.props.service_id === "BOL001") {
+            this.props.fetchBolletini(
+              this.props.service_id,
+              values.person_type.toString(),
+              values.via_piazza,
+              values.cap,
+              values.citta,
+              values.provincia,
+              values.importo.toString(),
+              values.tipologia,
+              values.numero_conto_corrente,
+              values.causale,
+              values.nome,
+              values.cognome,
+              values.codice_fiscale,
+              values.denominazione,
+              values.partita_iva,
+              values.email,
+              values.phone_number,
+              null,
+              this.clearFields
+            );
+          }
+          if (this.props.service_id === "BOL002") {
+            this.props.fetchBolletini(
+              this.props.service_id,
+              values.person_type.toString(),
+              values.via_piazza,
+              values.cap,
+              values.citta,
+              values.provincia,
+              values.importo.toString(),
+              values.tipologia,
+              values.numero_conto_corrente,
+              values.causale,
+              values.nome,
+              values.cognome,
+              values.codice_fiscale,
+              values.denominazione,
+              values.partita_iva,
+              values.email,
+              values.phone_number,
+              values.codice_identificativo,
+              this.clearFields
+            );
+          }
+        } else {
+          notification["error"]({
+            message: "Ops...",
+            description:
+              "Controlla le tue caselle vuote o accetta le condizioni",
+          });
         }
-      } else {
-        notification["error"]({
-          message: "Ops...",
-          description: "Controlla le tue caselle vuote o accetta le condizioni",
-        });
-      }
-      // console.log("faturaaaa", this.props.service_id, values);
-    });
+        // console.log("faturaaaa", this.props.service_id, values);
+      });
+    }
   };
 
   handleConfirmBlur = (e) => {
@@ -137,7 +173,7 @@ class Bolletino extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { barcodeData } = this.props;
     const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
-    let bolletoActive = "BOLLETINO";
+    let bolletoActive = "PAGO_PA";
     return (
       <div
         className={`Bolletini ${
