@@ -29,6 +29,7 @@ const ServicesForms = ({
       ) : activeCategory === "GIFT" ||
         activeCategory === "SND000" ||
         activeCategory === "RTELI" ||
+        activeCategory === "RTVD" ||
         activeCategory === "CCARD" ||
         activeCategory === "SCMS" ? (
         <NumpadForm

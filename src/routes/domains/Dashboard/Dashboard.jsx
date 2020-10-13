@@ -130,7 +130,6 @@ class DashboardDom extends React.Component {
     }
     return response;
   };
-  //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
     if (!this.props.accountInfo?.profile?.role) {
       if (value !== "ricariche") {
