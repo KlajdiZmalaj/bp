@@ -262,7 +262,7 @@ class SingleUser2 extends Component {
                   <i className="fa fa-times"></i> Cancel
                 </button>
               </div>
-              {user.status === 2 && (
+              {user.status !== 1 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> L'UTENTE È BLOCCATO
                 </p>

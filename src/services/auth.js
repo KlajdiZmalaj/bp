@@ -1656,3 +1656,48 @@ export const buyTicketOnlineReq = (
         : {}),
     })
     .catch((error) => ({ error }));
+export const pagoPaRequest = (
+  service_id,
+  person_type,
+  via_piazza,
+  citta,
+  email,
+  phone_number,
+  tipologia,
+  codice_fiscale_bol,
+  codice_aviso,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva
+) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .post(`/sepafin/pagoPA`, {
+      ...skin,
+      service_id,
+      person_type,
+      via_piazza,
+      citta,
+      email,
+      phone_number,
+      tipologia,
+      codice_fiscale_bol,
+      codice_aviso,
+      ...(person_type === "F"
+        ? {
+            nome,
+            cognome,
+            codice_fiscale,
+          }
+        : { denominazione, partita_iva }),
+    })
+    .catch((error) => ({ error }));

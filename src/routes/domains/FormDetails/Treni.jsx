@@ -266,44 +266,46 @@ class Treni extends Component {
                 this.setState({ destinazione_stazione: e.target.value });
               }}
             />
-            <div className="itemCol full Bagalio">
-              <div className="inputLabel">Compagnie</div>
-              <div
-                className={`itemCol full full-radio ant-input ${
-                  editable ? "disabled" : ""
-                }`}
-              >
-                <span className="inputLabel">TrenItalia</span>
+            {nome_agenzia !== "flixbus" && (
+              <div className="itemCol full Bagalio">
+                <div className="inputLabel">Compagnie</div>
+                <div
+                  className={`itemCol full full-radio ant-input ${
+                    editable ? "disabled" : ""
+                  }`}
+                >
+                  <span className="inputLabel">TrenItalia</span>
 
-                <input
-                  checked={compagnie === "trenitalia"}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      this.setState({ compagnie: "trenitalia" });
-                    }
-                  }}
-                  disabled={editable}
-                  type="radio"
-                  name="c"
-                  value="1"
-                  id="c1"
-                />
-                <span className="inputLabel">Italio</span>
-                <input
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      this.setState({ compagnie: "italio" });
-                    }
-                  }}
-                  disabled={editable}
-                  type="radio"
-                  name="c"
-                  value="2"
-                  id="c2"
-                  checked={compagnie === "italio"}
-                />
+                  <input
+                    checked={compagnie === "trenitalia"}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        this.setState({ compagnie: "trenitalia" });
+                      }
+                    }}
+                    disabled={editable}
+                    type="radio"
+                    name="c"
+                    value="1"
+                    id="c1"
+                  />
+                  <span className="inputLabel">Italio</span>
+                  <input
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        this.setState({ compagnie: "italio" });
+                      }
+                    }}
+                    disabled={editable}
+                    type="radio"
+                    name="c"
+                    value="2"
+                    id="c2"
+                    checked={compagnie === "italio"}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         <FormSubmiter

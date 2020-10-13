@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Modal } from "antd";
 import ReactToPrint from "react-to-print";
 import AuthActions from "redux-store/models/auth";
+import { Document, Page, pdfjs } from "react-pdf";
 
 class PrintTicketSerap extends React.Component {
   state = {
@@ -56,6 +57,9 @@ class PrintTicketSerap extends React.Component {
         downloadLink.download = fileName;
         downloadLink.click();
       }
+      if (type === "return") {
+        return blobUrl;
+      }
     }
   };
 
@@ -95,6 +99,12 @@ class PrintTicketSerap extends React.Component {
             </div>
             {bolletiniBianchi && bolletiniBianchi.receipt_type === "base64" ? (
               <div>
+                <Document
+                  renderMode="canvas"
+                  file={this.printPdfReceipt(bolletiniBianchi, "return")}
+                >
+                  <Page width={380} pageNumber={1} />
+                </Document>
                 <div
                   className="printBtn"
                   onClick={() => {
