@@ -449,6 +449,22 @@ const { Types, Creators } = createActions({
     "partita_iva",
     "clearFields",
   ],
+  setMavRav: [
+    "service_id",
+    "person_type",
+    "via_piazza",
+    "citta",
+    "email",
+    "phone_number",
+    "importo",
+    "codice",
+    "nome",
+    "cognome",
+    "codice_fiscale",
+    "denominazione",
+    "partita_iva",
+    "clearFields",
+  ],
 });
 
 export const AuthTypes = Types;

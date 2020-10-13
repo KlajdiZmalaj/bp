@@ -228,6 +228,8 @@ class AdminListaUtenti extends React.Component {
                 <AdminListaUtentiRow
                   itemList={itemList}
                   key={itemList.id + i}
+                  perPage={perPage}
+                  page_number={page_number}
                 />
               );
             })
@@ -241,7 +243,7 @@ class AdminListaUtenti extends React.Component {
         <div className="paginationWrapper">
           <Pagination
             onChange={(e) => {
-              // console.log("ca ka pagination", e);
+              this.setState({ page_number: e });
               this.props.getUsers(
                 null,
                 {

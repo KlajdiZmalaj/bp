@@ -33,7 +33,6 @@ class Azioni extends Component {
     if (id === "pagamenti" && id !== previd) {
       this.setState({ active: { url: `dashboard/${id}` } });
     }
-    if (typeof id === "undefined" && typeof id === "undefined") console.log(id);
   }
   render() {
     const {
@@ -110,7 +109,11 @@ class Azioni extends Component {
                           }
                         }}
                         className={`${
-                          activeMain === "dashboard"
+                          active === "visure" && item.name === "PRENOTAZIONI"
+                            ? "active"
+                            : active === "visure"
+                            ? "none"
+                            : activeMain === "dashboard"
                             ? item.link === this.state.active.url
                               ? "active"
                               : "none"

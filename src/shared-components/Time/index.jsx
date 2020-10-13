@@ -4,7 +4,7 @@ export default () => {
   const [a, b] = useState(1);
 
   const val = setInterval(() => {
-    b(a < 50 ? 1 + a : a - 1);
+    b(a === 1 ? 2 : 1);
   }, 1000);
 
   useEffect(() => {
@@ -12,8 +12,7 @@ export default () => {
       clearInterval(val);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [val]);
   return (
     <span className="timeH">{moment().format("DD/MM/YYYY HH:mm:ss")}</span>
   );

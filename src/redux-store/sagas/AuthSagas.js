@@ -51,6 +51,7 @@ import {
   StatisticheMainReq,
   buyTicketOnlineReq,
   pagoPaRequest,
+  mavRavRequest,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -834,7 +835,6 @@ export function* getTicketByTicketId(ticket_id) {
 }
 
 export function* updateDataForm(data) {
-  console.log("data", data.price);
   const response = yield call(
     updateDataFormReq,
     data.typee,
@@ -1374,9 +1374,7 @@ export function* UpdateServiceChangeStatus(params) {
 export function* getBgameVoucherReq(params) {
   const response = yield call(bGameVoucher, params.service_id, params.tel_no);
   if (response) {
-    // console.log("response", response);
     if (response.data) {
-      // console.log("wallet", response.data.wallet);
       if (response.data.wallet) {
         const accountData = localStorage.getItem("accountDataB");
         const data = JSON.parse(accountData);
@@ -1410,7 +1408,6 @@ export function* getBgameVoucherReq(params) {
         );
       }
     }
-    //set loading false
     if (params.callBack) {
       params.callBack(false);
     }
@@ -1423,7 +1420,6 @@ export function* getBgameVoucherReq(params) {
       localStorage.setItem("accountDataB", null);
       yield put(AuthActions.setAccountInfo({}));
     }
-    // const response = yield call(logoutApi);
   }
 }
 export function* getStatisticheMain() {
@@ -1473,6 +1469,7 @@ export function* fetchBolletini({
 }) {
   notification["info"]({
     key: "PaymentLoading",
+    duration: 0,
     message: "Attendere, transazione in corso",
   });
   const response = yield call(
@@ -1527,14 +1524,9 @@ export function* fetchBolletini({
           localStorage.setItem("accountDataB", null);
           yield put(AuthActions.setAccountInfo({}));
         }
-        // const response = yield call(logoutApi);
       }
     }
     notification.close("PaymentLoading");
-
-    // if (params.callBack) {
-    //   params.callBack(false);
-    // }
   }
 }
 export function* buyTicketOnline({
@@ -1601,9 +1593,7 @@ export function* setPagoPa({
   service_id,
   person_type,
   via_piazza,
-  cap,
   citta,
-  provincia,
   email,
   phone_number,
   tipologia,
@@ -1616,10 +1606,9 @@ export function* setPagoPa({
   partita_iva,
   clearFields,
 }) {
-  console.log("response");
-
   notification["info"]({
     key: "pagoPaPayment",
+    duration: 0,
     message: "Attendere, transazione in corso",
   });
   const response = yield call(
@@ -1639,7 +1628,6 @@ export function* setPagoPa({
     denominazione,
     partita_iva
   );
-  console.log(response);
   if (response) {
     if (response.data) {
       notification.close("pagoPaPayment");
@@ -1671,13 +1659,82 @@ export function* setPagoPa({
           localStorage.setItem("accountDataB", null);
           yield put(AuthActions.setAccountInfo({}));
         }
-        // const response = yield call(logoutApi);
       }
     }
     notification.close("PaymentLoading");
+  }
+}
+export function* setMavRav({
+  service_id,
+  person_type,
+  via_piazza,
+  citta,
+  email,
+  phone_number,
+  importo,
+  codice,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  clearFields,
+}) {
+  notification["info"]({
+    key: "mavRavPayment",
+    message: "Attendere, transazione in corso",
+    duration: 0,
+  });
+  const response = yield call(
+    mavRavRequest,
+    service_id,
+    person_type,
+    via_piazza,
+    citta,
+    email,
+    phone_number,
+    importo,
+    codice,
+    nome,
+    cognome,
+    codice_fiscale,
+    denominazione,
+    partita_iva
+  );
+  console.log(response);
+  if (response) {
+    if (response.data) {
+      notification.close("mavRavPayment");
+      yield put(AuthActions.setBolletiniBianchi(response.data));
+      clearFields();
+      notification["success"]({
+        message: response.data.message,
+      });
+    } else if (response?.error) {
+      notification.close("mavRavPayment");
 
-    // if (params.callBack) {
-    //   params.callBack(false);
-    // }
+      notification["error"]({
+        message: response.error.response.data.message,
+        description: [
+          response.error.response.data.message,
+          response.error.response.data.errors
+            ? Object.values(response.error.response.data.errors)
+            : "error backend",
+        ],
+      });
+      if (
+        response &&
+        response.error &&
+        response.error.response.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      }
+    }
+    notification.close("PaymentLoading");
   }
 }

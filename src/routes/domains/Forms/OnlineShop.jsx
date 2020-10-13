@@ -41,15 +41,12 @@ class OnlineShop extends Component {
         address2: "",
         cap: "",
       });
-      console.log("succ", msg, msg?.err);
       notification["success"]({
         message: "Azione completata",
         description: msg.msg,
         placement: "bottomRight",
       });
     } else {
-      console.log("err", msg, msg?.err);
-
       notification["error"]({
         message: msg.msg[0],
         description: msg.msg[1],

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import ReturnFormItem from "./FormHelperComp";
 import { Radio } from "antd";
 
-export const PagoPaRightForm = ({ barcodeData, getFieldDecorator }) => (
+export const MavRavRightForm = ({ barcodeData, getFieldDecorator }) => (
   <Fragment>
     <ReturnFormItem
       descName="Email"
@@ -13,17 +13,26 @@ export const PagoPaRightForm = ({ barcodeData, getFieldDecorator }) => (
     />
     <ReturnFormItem
       descName="Telefono"
-      name="telefono"
+      name="phone_number"
       message="Please input your telefono!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
+    <ReturnFormItem
+      descName="Città"
+      name="citta"
+      message="Please input your  Città!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
   </Fragment>
 );
-export const PagoPaLeftForm = ({
+export const MavRavLeftForm = ({
   barcodeData,
   getFieldDecorator,
   getFieldValue,
+  setServiceID,
+  service_s,
 }) => (
   <Fragment>
     <ReturnFormItem
@@ -34,19 +43,21 @@ export const PagoPaLeftForm = ({
       getFieldDecorator={getFieldDecorator}
       defaultValue={"1"}
       NotInput={
-        <Radio.Group>
+        <Radio.Group
+          onChange={(e) => {
+            setServiceID(
+              e.target.value === "1"
+                ? service_s.services[0]
+                : service_s.services[1]
+            );
+          }}
+        >
           <Radio value="1">MAV</Radio>
           <Radio value="2">RAV</Radio>
         </Radio.Group>
       }
     />
-    <ReturnFormItem
-      descName="Token"
-      name="token"
-      message="Please input your token!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
+
     <ReturnFormItem
       descName="Codice Avviso"
       name="codice_avviso"
@@ -56,28 +67,43 @@ export const PagoPaLeftForm = ({
     />
     <ReturnFormItem
       descName="Prezzo"
-      name="price"
+      name="importo"
       message="Please input your Prezzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
+    <ReturnFormItem
+      descName={`Codice ${getFieldValue("mav_rav") === "1" ? "Mav" : "Rav"}`}
+      name="codice"
+      message="Please input your Prezzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
+    <ReturnFormItem
+      descName="Indirizzo"
+      name="via_piazza"
+      message="Please input your Indirizzo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
 
     <ReturnFormItem
       descName="Persona"
-      name="persona"
+      name="person_type"
       message="Please input your persona tipo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
-      defaultValue={"1"}
+      defaultValue={"F"}
       NotInput={
         <Radio.Group>
-          <Radio value="1">Fisica</Radio>
-          <Radio value="2">Giuridica</Radio>
+          <Radio value="F">Fisica</Radio>
+          <Radio value="G">Giuridica</Radio>
         </Radio.Group>
       }
     />
-    {getFieldValue("persona") === "1" ||
-    typeof getFieldValue("persona") === "undefined" ? (
+
+    {getFieldValue("person_type") === "F" ||
+    typeof getFieldValue("person_type") === "undefined" ? (
       <Fragment>
         <ReturnFormItem
           descName="Nome"
@@ -100,13 +126,6 @@ export const PagoPaLeftForm = ({
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
-        <ReturnFormItem
-          descName="Indirizzo"
-          name="indirizzo"
-          message="Please input your  indirizzo!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
       </Fragment>
     ) : (
       <Fragment>
@@ -120,22 +139,8 @@ export const PagoPaLeftForm = ({
         />
         <ReturnFormItem
           descName="Partiva IVA"
-          name="part_iva"
+          name="partita_iva"
           message="Please input your Partiva IVA!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
-        <ReturnFormItem
-          descName="Indirizzo"
-          name="indirizzo"
-          message="Please input your Indirizzo!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
-        <ReturnFormItem
-          descName="Città"
-          name="citta"
-          message="Please input your  Città!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />

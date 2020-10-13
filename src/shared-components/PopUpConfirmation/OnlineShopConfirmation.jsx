@@ -1,7 +1,5 @@
 import React from "react";
 const OnlineShopConfirmation = ({ TicketByTcketId }) => {
-  console.log(TicketByTcketId);
-
   return (
     <div className="confirmationPopup--body ">
       <div className="NomeEmail">

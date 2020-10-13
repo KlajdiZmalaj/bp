@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Modal } from "antd";
 import ReactToPrint from "react-to-print";
 import AuthActions from "redux-store/models/auth";
-import { Document, Page, pdfjs } from "react-pdf";
+import { Document, Page } from "react-pdf";
 
 class PrintTicketSerap extends React.Component {
   state = {

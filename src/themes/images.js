@@ -20,6 +20,10 @@ export default {
   BOLO_AUTO: require(`../assets/images/boloauto.png`),
   PAGO_PA: require(`../assets/images/pagopa.png`),
   BOLLETINO: require(`../assets/images/bolletino.png`),
+  "BOLO_AUTO-logo": require(`../assets/images/boloauto.svg`),
+  "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
+  "BOLLETINO-logo": require(`../assets/images/bolletini.svg`),
+  "f24-logo": require(`../assets/images/f24.svg`),
 
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
   //Static home page images

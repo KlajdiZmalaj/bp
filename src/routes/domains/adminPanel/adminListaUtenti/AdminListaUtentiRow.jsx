@@ -60,7 +60,6 @@ class AdminListaUtentiRow extends React.Component {
       }
     }
   };
-  componentDidUpdate() {}
   render() {
     const {
       itemList,
@@ -70,6 +69,8 @@ class AdminListaUtentiRow extends React.Component {
       accountInfo,
       activeSkinId,
       CenterCls,
+      perPage,
+      page_number,
     } = this.props;
     const Special =
       activeSkinId === -1 && accountInfo?.profile?.role?.name !== "support";
@@ -262,50 +263,41 @@ class AdminListaUtentiRow extends React.Component {
               className={`fal fa-lock${
                 itemList.status !== 1 ? "-alt" : "-open-alt active"
               }`}
-              onClick={async () => {
-                const changeStatus =
+              onClick={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const changedStatus =
                   itemList.status !== 1 ? 1 : Special ? 0 : 3;
-                await switchUserStatus(
+                switchUserStatus(
                   itemList.id,
-                  changeStatus,
-
+                  changedStatus,
                   () => {
-                    (changeStatus === 0 && Special) ||
-                    (changeStatus === 3 && !Special)
-                      ? message.error(
-                          `lo stato dell${
-                            itemList.username
-                          } ${`è cambiato : 'DISATTIVATO'`}`
-                        )
-                      : message.success(
+                    changedStatus === 1
+                      ? message.success(
                           `lo stato dell${
                             itemList.username
                           } ${`è cambiato : 'ATTIVATO'`}`
+                        )
+                      : message.error(
+                          `lo stato dell${
+                            itemList.username
+                          } ${`è cambiato : 'DISATTIVATO'`}`
                         );
+                    this.props.getUsers(
+                      null,
+                      Special
+                        ? { skin_id: 1 }
+                        : {
+                            skin_id: this.props.activeSkinId,
+                            backoffice: true,
+                          },
+                      perPage,
+                      page_number
+                    );
                   },
                   accountInfo.role,
                   activeSkinId
                 );
-                if (Special) {
-                  await this.props.getUsers(
-                    null,
-                    {
-                      skin_id: 1,
-                    },
-                    25,
-                    1
-                  );
-                } else {
-                  await this.props.getUsers(
-                    null,
-                    {
-                      skin_id: this.props.activeSkinId,
-                      backoffice: true,
-                    },
-                    25,
-                    1
-                  );
-                }
               }}
             ></i>
             <i
@@ -354,7 +346,12 @@ class AdminListaUtentiRow extends React.Component {
                 }`}
                 key={child.id}
               >
-                <AdminListaUtentiRowForLoop itemList={child} last={false} />
+                <AdminListaUtentiRowForLoop
+                  itemList={child}
+                  last={false}
+                  perPage={perPage}
+                  page_number={page_number}
+                />
               </div>
             ) : (
               <div
@@ -363,7 +360,12 @@ class AdminListaUtentiRow extends React.Component {
                 }`}
                 key={child.id}
               >
-                <AdminListaUtentiRowForLoop itemList={child} last={true} />
+                <AdminListaUtentiRowForLoop
+                  itemList={child}
+                  last={true}
+                  perPage={perPage}
+                  page_number={page_number}
+                />
               </div>
             )
           )}

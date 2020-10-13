@@ -335,7 +335,6 @@ class FormDetailsDomain extends Component {
             <span>Biglietto</span>
           </div>
           {(formDetailsActives.rowsTickets || []).map((ticket) => {
-            console.log(ticket);
             return Filter(
               ticket,
               "visura",
@@ -381,8 +380,6 @@ class FormDetailsDomain extends Component {
           })}
           {my_tickets &&
             (my_tickets || []).map((ticket) => {
-              console.log(ticket);
-
               return Filter(
                 ticket,
                 "visura",
@@ -428,8 +425,6 @@ class FormDetailsDomain extends Component {
             })}
           {tickets &&
             (tickets || []).map((ticket) => {
-              console.log(ticket);
-
               return Filter(
                 ticket,
                 "visura",

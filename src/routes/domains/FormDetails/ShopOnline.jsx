@@ -153,7 +153,6 @@ class ShopOnline extends Component {
       cap,
       company_name,
     } = this.state;
-    console.log(price);
     return (
       <React.Fragment>
         <div className="formBody">

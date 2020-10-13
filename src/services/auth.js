@@ -825,7 +825,6 @@ export const updateDataFormReq = (
   note_address,
   company_name
 ) => {
-  console.log("auth", price);
   return axios
     .create({
       baseURL: "https://services-api.bpoint.store/api",
@@ -1693,11 +1692,50 @@ export const pagoPaRequest = (
       codice_fiscale_bol,
       codice_aviso,
       ...(person_type === "F"
-        ? {
-            nome,
-            cognome,
-            codice_fiscale,
-          }
+        ? { nome, cognome, codice_fiscale }
+        : { denominazione, partita_iva }),
+    })
+    .catch((error) => ({ error }));
+
+export const mavRavRequest = (
+  service_id,
+  person_type,
+  via_piazza,
+  citta,
+  email,
+  phone_number,
+  importo,
+  codice,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva
+) =>
+  axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB"))?.token
+        }`,
+      },
+    })
+    .post(`/sepafin/mavrav`, {
+      ...skin,
+      service_id,
+      person_type,
+      via_piazza,
+      citta,
+      email,
+      phone_number,
+      importo,
+      codice,
+      ...(service_id === "BOL003"
+        ? { tipologia: "rav" }
+        : { tipologia: "mav" }),
+      ...(person_type === "F"
+        ? { nome, cognome, codice_fiscale }
         : { denominazione, partita_iva }),
     })
     .catch((error) => ({ error }));

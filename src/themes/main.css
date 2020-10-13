@@ -3374,8 +3374,8 @@ span.superSmall {
   margin-top: 20px;
 }
 
-svg path,
-svg rect {
+.loader svg path,
+.loader svg rect {
   fill: var(--accent-bg);
 }
 

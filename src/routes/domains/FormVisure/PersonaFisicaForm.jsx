@@ -66,8 +66,7 @@ class PersonaFisicaForm extends Component {
       province_of_birth,
       gender,
     } = this.state;
-    if (this.state.codice_fiscale !== prevState.codice_fiscale) {
-      const { codice_fiscale } = this.state;
+    if (codice_fiscale !== prevState.codice_fiscale) {
       if (codice_fiscale.length === 16) {
         try {
           var cf = new CodiceFiscale(codice_fiscale);
@@ -169,19 +168,10 @@ class PersonaFisicaForm extends Component {
         ...mycf,
       });
       const isValidCf = CodiceFiscale.check(cf?.code);
-      console.log(cf, isValidCf);
       if (isValidCf) {
         this.setState({ codice_fiscale: cf.code });
       }
     } catch (error) {
-      console.log(
-        nome,
-        cognome,
-        gender,
-        data_di_nascita,
-        luogo_di_nascita,
-        province_of_birth
-      );
       notification["error"]({
         message: "I dati non sono validi per generare il codice fiscale",
         description:
@@ -231,6 +221,7 @@ class PersonaFisicaForm extends Component {
       email,
       gender,
       province_of_birth,
+      butonVisibility,
     } = this.state;
     return (
       <FormContainerBody
@@ -242,7 +233,7 @@ class PersonaFisicaForm extends Component {
           price: activeService.price,
           sc: activeService.sco,
         }}
-        visButton={this.state.butonVisibility}
+        visButton={butonVisibility}
         type={1}
         headerTitle={"INDICA I DATI DELLA PERSONA"}
         leftForm={

@@ -321,8 +321,10 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  height: calc(100% - 60px);
+  grid-gap: 0 !important;
   background: #ffffff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-top: 4px solid var(--accent-bg);
 }
 
@@ -334,8 +336,10 @@
 }
 
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
-  padding: 20px 0;
-  height: 100%;
+  padding: 18px 0;
+  height: 140px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: #ffffff;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -347,18 +351,40 @@
   display: -ms-flexbox;
   display: flex;
   min-height: 140px;
+  max-height: 140px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-left: 1px solid #edeef0;
-  border-bottom: 1px solid #edeef0;
+  -webkit-box-shadow: inset 0px 0px 1px 1px #edeef0;
+          box-shadow: inset 0px 0px 1px 1px #edeef0;
   cursor: pointer;
   position: relative;
 }
 
-.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:last-child {
-  border: 1px solid #edeef0;
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div h3 {
+  height: 20px;
+  background: var(--accent-bg);
+  width: calc(100% - 2px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Roboto";
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  margin: 0 !important;
+  padding: 0;
+  left: 1px;
 }
 
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i {
@@ -405,7 +431,8 @@
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div img {
   height: 50px;
   width: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   -o-object-fit: contain;
      object-fit: contain;
 }
