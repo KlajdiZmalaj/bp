@@ -4,7 +4,7 @@ import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
 import ReactToPrint from "react-to-print";
-
+import { BannerColors } from "config/index";
 const Numpad = ({
   services,
   activeService,
@@ -45,7 +45,7 @@ const Numpad = ({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
-
+  console.log(selectedCost);
   return (
     <div className="mobileNumPad">
       <div className="mobileNumPad--services">
@@ -89,10 +89,12 @@ const Numpad = ({
           ></i>{" "}
         </div>
         <div className="mobileNumPad--subh">
-          INSERIRE IL NUMERO DI TELEFONO DA RICARICARE
+          {!noNumbers
+            ? "INSERIRE IL NUMERO DI TELEFONO DA RICARICARE"
+            : "SELEZIONA LE RICARICHE IN BASSO EF ESEGUI"}
         </div>
       </div>
-      {!noNumbers && (
+      {!noNumbers ? (
         <>
           <div className="mobileNumPad--input">
             <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
@@ -128,6 +130,21 @@ const Numpad = ({
             <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
           </div>
         </>
+      ) : (
+        <div className="GamingBanner">
+          <div
+            className="img"
+            style={{
+              background: `${
+                BannerColors[selectedCost?.service_id.substring(0, 3)]
+              }`,
+            }}
+          >
+            <img
+              src={images[`Service${selectedCost?.service_id.substring(0, 3)}`]}
+            />
+          </div>
+        </div>
       )}
 
       <div className="mobileNumPad--buttons">

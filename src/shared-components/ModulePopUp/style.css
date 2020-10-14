@@ -403,6 +403,11 @@
   bottom: 75px;
 }
 
+.leftCol_Module.Popup4.game {
+  height: 628px;
+  margin: calc((100vh - 628px) / 2) auto;
+}
+
 .leftCol_Module.Popup4 .row {
   width: 100%;
   height: 100%;
@@ -720,6 +725,24 @@
 
 .leftCol_Module.Popup4 .row .Confimation.Buttons span:nth-child(2) h3 {
   color: #2cb850;
+}
+
+.leftCol_Module.Popup4 .row .GamingBanner {
+  width: 100%;
+  height: calc(100% - 240px);
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+
+.leftCol_Module.Popup4 .row .GamingBanner .img {
+  width: 100%;
+  height: 100%;
+}
+
+.leftCol_Module.Popup4 .row .GamingBanner .img img {
+  width: 100%;
+  height: auto;
 }
 
 .leftCol_Module.Popup4 .row .ServiceHeader {

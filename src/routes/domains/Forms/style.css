@@ -395,6 +395,24 @@
   font-size: 14px;
 }
 
+.formsContainer--body__item textarea {
+  border: 0px;
+  background: #ebeced;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 95px;
+  font-size: 14px;
+  padding: 0 15px;
+  padding-top: 5px;
+  color: #6c6c6c;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
 .formsContainer--body__item .ant-btn.ant-dropdown-trigger {
   min-width: 95%;
   min-height: 61%;
@@ -414,26 +432,6 @@
 
 .formsContainer--body__item .ant-btn.ant-dropdown-trigger.dropdownMenu {
   top: 10px;
-}
-
-.formsContainer--body__item.datiPass textarea {
-  border: 0px;
-  background: #ebeced;
-  width: 100%;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  height: 170px;
-  font-size: 14px;
-  padding: 0 15px;
-  padding-top: 5px;
-  border: none;
-  overflow: none;
-  border: none;
-  overflow: auto;
-  outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  resize: none;
 }
 
 .formsContainer--body__item.submit {
@@ -870,40 +868,31 @@
   position: relative;
 }
 
-.rightFormOnlShop {
-  width: 100%;
+div.OnlineShopM div.rightFormOnlShop {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background: #edeef0;
 }
 
-.rightFormOnlShop .rightForm--header {
-  height: 60px;
-  max-height: 60px;
-  min-height: 60px;
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item {
+  padding: 0;
 }
 
-.rightFormOnlShop .rightForm--header .TitleBack {
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Lato";
-  color: #f26521;
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item button {
+  margin-bottom: 5px;
 }
 
-.rightFormOnlShop .rightForm--header .TitleBack i {
-  color: #5c5c5c;
-  font-size: 16px;
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item:last-child {
+  margin-bottom: 0;
 }
 
-.rightFormOnlShop span.red {
-  color: #f26521;
-}
-
-.rightFormOnlShop .ant-radio-group.ant-radio-group-outline {
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .ant-radio-group {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -917,7 +906,219 @@
           justify-content: space-between;
 }
 
-.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper {
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .ant-radio-group .ant-radio-checked .ant-radio-inner {
+  border-color: #009840 !important;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .ant-radio-group .ant-radio-checked .ant-radio-inner:after {
+  background-color: #009840;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .ant-radio-group .ant-radio:hover .ant-radio-inner {
+  border-color: #009840;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .ant-radio-group .ant-radio-wrapper {
+  width: 49%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  border: 1px solid #eaebec;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item i,
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .Euro {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 300;
+  color: #838383;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item i {
+  right: 0;
+  top: 10px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .EuroInput {
+  width: 100%;
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .EuroInput .Euro {
+  top: 34px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  border-right: 1px solid #eaebec;
+  height: calc(100% - 34px);
+}
+
+div.OnlineShopM div.rightFormOnlShop .formsContainer--body__item .EuroInput input {
+  width: 100%;
+  padding-left: 65px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .AfterTitleBack {
+  padding: 15px 25px;
+  border: 1px solid #eaebec;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #eaebec;
+  color: #272c31;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm {
+  padding: 15px 25px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm .label {
+  display: none;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm .MainForm--right {
+  margin-top: 9px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm .MainForm--right textarea {
+  color: #6c6c6c;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  background: #fff;
+  padding: 5px 15px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm .MainForm--right .formsContainer--body__item:nth-child(5) {
+  margin-bottom: 10px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm .MainForm--left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.OnlineShopM div.rightFormOnlShop .SubForm .formsContainer--body__item.M {
+  width: 50% !important;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6c6c6c;
+}
+
+div.OnlineShopM div.rightFormOnlShop .Top div {
+  color: #272c31;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 5px 0;
+  padding: 0 1px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .MainForm {
+  padding: 15px 25px;
+  background: #fff;
+}
+
+div.OnlineShopM div.rightFormOnlShop .MainForm textarea {
+  height: 90px;
+  border: 1px solid #eaebec;
+  color: #6c6c6c;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  padding: 5px 15px;
+}
+
+div.OnlineShopM div.rightFormOnlShop .MainForm .label {
+  color: #272c31;
+  font-size: 16px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+
+div.OnlineShop .rightFormOnlShop {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+div.OnlineShop .rightFormOnlShop .rightForm--header {
+  height: 60px;
+  max-height: 60px;
+  min-height: 60px;
+}
+
+div.OnlineShop .rightFormOnlShop .rightForm--header .TitleBack {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Lato";
+  color: #f26521;
+}
+
+div.OnlineShop .rightFormOnlShop .rightForm--header .TitleBack i {
+  color: #5c5c5c;
+  font-size: 16px;
+}
+
+div.OnlineShop .rightFormOnlShop span.red {
+  color: #f26521;
+}
+
+div.OnlineShop .rightFormOnlShop .ant-radio-group.ant-radio-group-outline {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.OnlineShop .rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper {
   width: 50%;
   margin-right: 5px;
   height: 35px;
@@ -932,19 +1133,24 @@
   padding: 0 10px;
 }
 
-.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+div.OnlineShop .rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper:last-child {
+  margin-left: 5px;
+  margin-right: 0;
+}
+
+div.OnlineShop .rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
   border-color: #11375d !important;
 }
 
-.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio-checked .ant-radio-inner:after {
+div.OnlineShop .rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio-checked .ant-radio-inner:after {
   background-color: #11375d;
 }
 
-.rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio:hover .ant-radio-inner {
+div.OnlineShop .rightFormOnlShop .ant-radio-group.ant-radio-group-outline .ant-radio-wrapper .ant-radio:hover .ant-radio-inner {
   border-color: #11375d;
 }
 
-.rightFormOnlShop .MainForm {
+div.OnlineShop .rightFormOnlShop .MainForm {
   height: 241px;
   width: 100%;
   display: -webkit-box;
@@ -957,14 +1163,14 @@
   height: 100%;
 }
 
-.rightFormOnlShop .MainForm .label {
+div.OnlineShop .rightFormOnlShop .MainForm .label {
   font-size: 12px;
   font-weight: 400;
   color: #5c5c5c;
   font-family: "Roboto";
 }
 
-.rightFormOnlShop .MainForm i {
+div.OnlineShop .rightFormOnlShop .MainForm i {
   position: absolute;
   font-size: 15px;
   font-weight: 300;
@@ -974,11 +1180,11 @@
   top: 50%;
 }
 
-.rightFormOnlShop .MainForm input.questionInput {
+div.OnlineShop .rightFormOnlShop .MainForm input.questionInput {
   padding-right: 35px;
 }
 
-.rightFormOnlShop .MainForm .EuroInput {
+div.OnlineShop .rightFormOnlShop .MainForm .EuroInput {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -989,7 +1195,7 @@
   width: 100%;
 }
 
-.rightFormOnlShop .MainForm .EuroInput .Euro {
+div.OnlineShop .rightFormOnlShop .MainForm .EuroInput .Euro {
   width: 48px;
   height: 100%;
   background: #ebeced;
@@ -1009,39 +1215,37 @@
   margin-right: 3px;
 }
 
-.rightFormOnlShop .MainForm textarea {
+div.OnlineShop .rightFormOnlShop .MainForm textarea {
   border: 0px;
   background: #ebeced;
   width: 100%;
   margin-top: 0px;
   margin-bottom: 0px;
-  height: 170px;
+  height: 156px;
   font-size: 14px;
   padding: 0 15px;
   padding-top: 5px;
+  color: #6c6c6c;
+  font-size: 16px;
+  font-weight: 400;
   border: none;
-  overflow: none;
-  border: none;
-  overflow: auto;
   outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
   resize: none;
 }
 
-.rightFormOnlShop .MainForm--left {
+div.OnlineShop .rightFormOnlShop .MainForm--left {
   margin: 20px 0;
   padding-left: 40px;
   padding-right: 20px;
 }
 
-.rightFormOnlShop .MainForm--right {
+div.OnlineShop .rightFormOnlShop .MainForm--right {
   margin: 20px 0;
   padding-left: 20px;
   padding-right: 40px;
 }
 
-.rightFormOnlShop .MainForm--left, .rightFormOnlShop .MainForm--right {
+div.OnlineShop .rightFormOnlShop .MainForm--left, div.OnlineShop .rightFormOnlShop .MainForm--right {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1052,7 +1256,7 @@
           flex-direction: column;
 }
 
-.rightFormOnlShop .SubForm {
+div.OnlineShop .rightFormOnlShop .SubForm {
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -1064,7 +1268,7 @@
           flex-direction: column;
 }
 
-.rightFormOnlShop .SubForm .Top {
+div.OnlineShop .rightFormOnlShop .SubForm .Top {
   height: 45px;
   width: 100%;
   display: -webkit-box;
@@ -1079,7 +1283,7 @@
   border-top: 1px solid #ebeced;
 }
 
-.rightFormOnlShop .SubForm .Top div {
+div.OnlineShop .rightFormOnlShop .SubForm .Top div {
   height: 33px;
   width: 118px;
   border: 1px solid #ebeced;
@@ -1100,7 +1304,7 @@
   text-transform: uppercase;
 }
 
-.rightFormOnlShop .SubForm .Bottom {
+div.OnlineShop .rightFormOnlShop .SubForm .Bottom {
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -1112,7 +1316,7 @@
           flex-direction: row;
 }
 
-.rightFormOnlShop .SubForm .Bottom .L {
+div.OnlineShop .rightFormOnlShop .SubForm .Bottom .L {
   border-right: 1px solid #ebeced;
 }
 /*# sourceMappingURL=style.css.map */

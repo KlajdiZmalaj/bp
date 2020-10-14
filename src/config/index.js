@@ -5,6 +5,16 @@ export const allRoles = {
   agent: "fas fa-user-tie",
   super_admin: "fas fa-store",
 };
+export const BannerColors={
+  BET:'#042842',
+  BGM:'#ed4d1d',
+  BWN:'#fec90b',
+  PKS:'#d70909',
+  PPB:'#e44b23',
+  STC:'#00bfd2',
+  WHL:'#01153a'
+
+}
 export const docType = [
   {
     id: 1,

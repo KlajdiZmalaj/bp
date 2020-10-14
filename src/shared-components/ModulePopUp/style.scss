@@ -340,6 +340,10 @@
       bottom: 75px;
     }
   }
+  &.game {
+    height: 628px;
+    margin: calc((100vh - 628px) / 2) auto;
+  }
   .row {
     width: 100%;
     height: 100%;
@@ -545,6 +549,21 @@
             color: #2cb850;
           }
           color: #2cb850;
+        }
+      }
+    }
+    .GamingBanner {
+      width: 100%;
+      height: calc(100% - 240px);
+      position: absolute;
+      top: 110px;
+      left: 0;
+      .img {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: auto;
         }
       }
     }

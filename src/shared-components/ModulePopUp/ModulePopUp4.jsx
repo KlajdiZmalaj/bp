@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
+import { BannerColors } from "config/index";
 
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
@@ -120,8 +121,10 @@ class ModulePopUp4 extends React.Component {
       <div className="modulePopUP modulePopUP1 telRechanrge">
         <div
           className={`leftCol_Module Popup4 ${
-            service.type.toString() === "0" ||
-            serviceMobile.service_id.toString() === "BGM001"
+            this.props.serviceType === "SCMS"
+              ? "game"
+              : service.type.toString() === "0" ||
+                serviceMobile.service_id.toString() === "BGM001"
               ? "small"
               : ""
           }`}
@@ -179,44 +182,69 @@ class ModulePopUp4 extends React.Component {
             <div className="ServiceHeader">
               <h4>{service_s.name}</h4>
               {service.type.toString() === "1" &&
-                serviceMobile.service_id.toString() !== "BGM001" && (
-                  <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
-                )}
+              serviceMobile.service_id.toString() !== "BGM001" ? (
+                <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
+              ) : (
+                this.props.serviceType === "SCMS" && (
+                  <h5>SELEZIONA LE RICARICHE IN BASSO EF ESEGUI</h5>
+                )
+              )}
             </div>
             {service.type.toString() === "1" &&
-              serviceMobile.service_id.toString() !== "BGM001" && (
-                <div className="NumPadContainer">
-                  <div className="NumPd">
-                    <span>+39</span>{" "}
-                    <input
-                      type="number"
-                      placeholder="_ _ _ _ _ _ _"
-                      value={this.state.tel_no}
-                      onChange={this.handleChange}
+            serviceMobile.service_id.toString() !== "BGM001" ? (
+              <div className="NumPadContainer">
+                <div className="NumPd">
+                  <span>+39</span>{" "}
+                  <input
+                    type="number"
+                    placeholder="_ _ _ _ _ _ _"
+                    value={this.state.tel_no}
+                    onChange={this.handleChange}
+                  />
+                  <i className="fas fa-address-book"></i>
+                </div>
+                <div className="Numbers">
+                  <Fragment>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
+                      <span
+                        key={num}
+                        id={`num${num}`}
+                        onClick={() =>
+                          num === "CE"
+                            ? this.clear()
+                            : num === "C"
+                            ? this.clearOne()
+                            : this.addNr(num)
+                        }
+                      >
+                        {num}
+                      </span>
+                    ))}
+                  </Fragment>
+                </div>
+              </div>
+            ) : (
+              this.props.serviceType === "SCMS" && (
+                <div className="GamingBanner">
+                  <div
+                    className="img"
+                    style={{
+                      background: `${
+                        BannerColors[serviceMobile?.service_id.substring(0, 3)]
+                      }`,
+                    }}
+                  >
+                    <img
+                      src={
+                        images[
+                          `Service${serviceMobile?.service_id.substring(0, 3)}`
+                        ]
+                      }
                     />
-                    <i className="fas fa-address-book"></i>
-                  </div>
-                  <div className="Numbers">
-                    <Fragment>
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
-                        <span
-                          key={num}
-                          id={`num${num}`}
-                          onClick={() =>
-                            num === "CE"
-                              ? this.clear()
-                              : num === "C"
-                              ? this.clearOne()
-                              : this.addNr(num)
-                          }
-                        >
-                          {num}
-                        </span>
-                      ))}
-                    </Fragment>
                   </div>
                 </div>
-              )}
+              )
+            )}
 
             <div className="TotalServices">
               {(serviceMobile.service_id.toString() === "BGM001"
@@ -227,7 +255,8 @@ class ModulePopUp4 extends React.Component {
                   <div
                     key={index}
                     className={`serv ${
-                      item.cost.toString() === serviceMobile.cost.toString()
+                      item.service_id.toString() ===
+                      serviceMobile.service_id.toString()
                         ? "active"
                         : ""
                     }`}

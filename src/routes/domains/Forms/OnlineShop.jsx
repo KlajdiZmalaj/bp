@@ -115,10 +115,14 @@ class OnlineShop extends Component {
       address2,
       cap,
     } = this.state;
-    const { nome_agenzia, color, goBack } = this.props;
+    const { nome_agenzia, color, goBack, isMobile } = this.props;
     return (
-      <div className="formsContainer--body animated fadeIn OnlineShop">
-        {true && (
+      <div
+        className={`formsContainer--body animated fadeIn OnlineShop${
+          isMobile ? "M" : ""
+        }`}
+      >
+        {!isMobile && (
           <div className="leftForm">
             <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
             <img
@@ -131,10 +135,16 @@ class OnlineShop extends Component {
 
         <div className="rightFormOnlShop">
           <div className="rightForm--header">
-            {true && (
+            {!isMobile && (
               <div className="TitleBack">
                 <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
                 ONLINE SHOP
+              </div>
+            )}
+            {isMobile && (
+              <div className="TitleBack">
+                {" "}
+                <i className="fal fa-shopping-bag"></i> {nome_agenzia}{" "}
               </div>
             )}
 
@@ -146,6 +156,7 @@ class OnlineShop extends Component {
             )}  *
             {/ *<img src={images[`${nome_agenzia}-logo`]} alt="" />  */}
           </div>
+          {isMobile && <div className="AfterTitleBack">Online Shop</div>}
 
           <div className="MainForm">
             <div className="MainForm--left">
@@ -157,6 +168,7 @@ class OnlineShop extends Component {
                   onChange={(e) => {
                     this.setState({ link: e.target.value });
                   }}
+                  placeholder="Link"
                   type="text"
                 />
                 <i className="fal fa-question-circle" />
@@ -171,6 +183,7 @@ class OnlineShop extends Component {
                     onChange={(e) => {
                       this.setState({ price: e.target.value });
                     }}
+                    placeholder="Prezzo Prodotto"
                     type="text"
                   />{" "}
                 </div>
@@ -198,6 +211,7 @@ class OnlineShop extends Component {
                 onChange={(e) => {
                   this.setState({ extra_data: e.target.value });
                 }}
+                placeholder="Note (opzionali)"
                 value={extra_data || ""}
               />
               {consegna === 1 && (
@@ -219,7 +233,11 @@ class OnlineShop extends Component {
               </div>
               <div className="Bottom">
                 <div className="MainForm--left L">
-                  <div className="formsContainer--body__item">
+                  <div
+                    className={`formsContainer--body__item ${
+                      isMobile ? "M" : ""
+                    }`}
+                  >
                     <div className="label">
                       Nome <span className="red">*</span>
                     </div>
@@ -228,10 +246,15 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ nome: e.target.value });
                       }}
+                      placeholder="Nome"
                       type="text"
                     />
                   </div>
-                  <div className="formsContainer--body__item">
+                  <div
+                    className={`formsContainer--body__item ${
+                      isMobile ? "M" : ""
+                    }`}
+                  >
                     <div className="label">
                       Cognome <span className="red">*</span>
                     </div>
@@ -240,16 +263,18 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ cognome: e.target.value });
                       }}
+                      placeholder="Cognome"
                       type="text"
                     />
                   </div>
                   <div className="formsContainer--body__item">
-                    <div className="label">Company Name </div>
+                    <div className="label">Nome agenzia</div>
                     <input
                       value={company_name || ""}
                       onChange={(e) => {
                         this.setState({ company_name: e.target.value });
                       }}
+                      placeholder="Nome agenzia"
                       type="text"
                     />
                   </div>
@@ -262,18 +287,20 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ email: e.target.value });
                       }}
+                      placeholder="Email"
                       type="text"
                     />
                   </div>
                   <div className="formsContainer--body__item">
                     <div className="label">
-                      phone <span className="red">*</span>
+                      Telefono <span className="red">*</span>
                     </div>
                     <input
                       value={phone || ""}
                       onChange={(e) => {
                         this.setState({ phone: e.target.value });
                       }}
+                      placeholder="Telefono"
                       type="text"
                     />
                   </div>
@@ -286,6 +313,7 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ stato: e.target.value });
                       }}
+                      placeholder="Italia"
                       type="text"
                     />
                   </div>
@@ -298,6 +326,7 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ citta: e.target.value });
                       }}
+                      placeholder="Citta"
                       type="text"
                     />
                   </div>
@@ -312,6 +341,7 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ address1: e.target.value });
                       }}
+                      placeholder=" Indirizzo 1"
                       type="text"
                     />
                   </div>
@@ -322,10 +352,15 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ address2: e.target.value });
                       }}
+                      placeholder=" Indirizzo 2"
                       type="text"
                     />
                   </div>
-                  <div className="formsContainer--body__item">
+                  <div
+                    className={`formsContainer--body__item ${
+                      isMobile ? "M" : ""
+                    }`}
+                  >
                     <div className="label">
                       CAP <span className="red">*</span>
                     </div>
@@ -334,10 +369,15 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ cap: e.target.value });
                       }}
+                      placeholder="Cap"
                       type="text"
                     />
                   </div>
-                  <div className="formsContainer--body__item">
+                  <div
+                    className={`formsContainer--body__item ${
+                      isMobile ? "M" : ""
+                    }`}
+                  >
                     <div className="label">
                       Provincia <span className="red">*</span>
                     </div>
@@ -346,16 +386,18 @@ class OnlineShop extends Component {
                       onChange={(e) => {
                         this.setState({ provincia: e.target.value });
                       }}
+                      placeholder=" Provincia"
                       type="text"
                     />
                   </div>
                   <div className="formsContainer--body__item">
                     <div className="label">note address </div>
-                    <input
+                    <textarea
                       value={note_address || ""}
                       onChange={(e) => {
                         this.setState({ note_address: e.target.value });
                       }}
+                      placeholder="Note (opzionali)"
                       type="text"
                     />
                   </div>

@@ -281,7 +281,7 @@ class DashboardDom extends React.Component {
                                   await setTimeout(() => {
                                     this.props.getFavorites();
                                     this.props.getServices();
-                                  }, 300);
+                                  }, 200);
                                 }}
                                 className={`fal fa-star favourite`}
                               ></i>
@@ -350,10 +350,10 @@ class DashboardDom extends React.Component {
                             );
                           })
                         ) : comp[key].services[0].service_id === "BGM001" &&
-                          this.props.accountInfo?.profile?.role?.name !==
-                            "super_admin" &&
-                          this.props.accountInfo?.profile?.name !==
-                            "johny cash" ? null : (
+                          (this.props.accountInfo?.profile?.role?.name !==
+                            "super_admin" ||
+                            this.props.accountInfo?.profile?.name !==
+                              "johny cash") ? null : (
                           <CompaniesCheck
                             key={key ? `${key}${Math.random()}` : Math.random()}
                             Key={key}

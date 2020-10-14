@@ -51,7 +51,7 @@ const CompaniesCheck = ({
             : toggleFavorite(Key, "set"));
           await setTimeout(() => {
             getServices();
-          }, 100);
+          }, 200);
         }}
         className={`${Key}comp fal fa-star ${favourite ? "favourite" : ""}`}
       ></i>

@@ -245,6 +245,23 @@
         font-weight: 400;
         font-size: 14px;
       }
+      textarea {
+        border: 0px;
+        background: #ebeced;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 95px;
+        font-size: 14px;
+        padding: 0 15px;
+        padding-top: 5px;
+        color: #6c6c6c;
+        font-size: 16px;
+        font-weight: 400;
+        border: none;
+        outline: none;
+        resize: none;
+      }
       .ant-btn.ant-dropdown-trigger {
         min-width: 95%;
         min-height: 61%;
@@ -259,26 +276,7 @@
       .ant-btn.ant-dropdown-trigger.dropdownMenu {
         top: 10px;
       }
-      &.datiPass {
-        textarea {
-          border: 0px;
-          background: #ebeced;
-          width: 100%;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          height: 170px;
-          font-size: 14px;
-          padding: 0 15px;
-          padding-top: 5px;
-          border: none;
-          overflow: none;
-          border: none;
-          overflow: auto;
-          outline: none;
-          box-shadow: none;
-          resize: none;
-        }
-      }
+
       &.submit {
         margin-top: auto;
       }
@@ -587,170 +585,317 @@
   overflow: auto;
   position: relative;
 }
-
-.rightFormOnlShop {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  .rightForm--header {
-    height: 60px;
-    max-height: 60px;
-    min-height: 60px;
-    .TitleBack {
-      font-size: 18px;
-      font-weight: 500;
-      font-family: "Lato";
-      color: #f26521;
-      i {
-        color: #5c5c5c;
-        font-size: 16px;
-      }
-    }
-  }
-  span.red {
-    color: #f26521;
-  }
-  .ant-radio-group.ant-radio-group-outline {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .ant-radio-wrapper {
-      width: 50%;
-      margin-right: 5px;
-      height: 35px;
-      max-width: 175px;
-      background: #ebeced;
+div.OnlineShop {
+  &M {
+    div.rightFormOnlShop {
       display: flex;
-      align-items: center;
-      padding: 0 10px;
-      .ant-radio-checked .ant-radio-inner {
-        border-color: #11375d !important ;
-      }
-
-      .ant-radio-checked .ant-radio-inner:after {
-        background-color: #11375d;
-      }
-
-      .ant-radio:hover .ant-radio-inner {
-        border-color: #11375d;
-      }
-    }
-  }
-  .MainForm {
-    height: 241px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    .label {
-      font-size: 12px;
-      font-weight: 400;
-      color: #5c5c5c;
-      font-family: "Roboto";
-    }
-
-    i {
-      position: absolute;
-      font-size: 15px;
-      font-weight: 300;
-      right: 15px;
-      width: 15px;
-      height: 15px;
-      top: 50%;
-    }
-    input.questionInput {
-      padding-right: 35px;
-    }
-
-    .EuroInput {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      .Euro {
-        width: 48px;
-        height: 100%;
-        background: #ebeced;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Sofia Pro";
-        font-size: 18px;
-        font-weight: 300;
-        color: #6c6c6c;
-        margin-right: 3px;
-      }
-    }
-
-    textarea {
-      border: 0px;
-      background: #ebeced;
-      width: 100%;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      height: 170px;
-      font-size: 14px;
-      padding: 0 15px;
-      padding-top: 5px;
-      border: none;
-      overflow: none;
-      border: none;
-      overflow: auto;
-      outline: none;
-      box-shadow: none;
-      resize: none;
-    }
-    &--left {
-      margin: 20px 0;
-      padding-left: 40px;
-      padding-right: 20px;
-    }
-    &--right {
-      margin: 20px 0;
-      padding-left: 20px;
-      padding-right: 40px;
-    }
-    &--left,
-    &--right {
-      width: 50%;
-      display: flex;
+      height: 100%;
       flex-direction: column;
+      background: #edeef0;
+      .formsContainer--body__item {
+        button {
+          margin-bottom: 5px;
+        }
+        padding: 0;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .ant-radio-group {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .ant-radio-checked .ant-radio-inner {
+            border-color: #009840 !important ;
+          }
+
+          .ant-radio-checked .ant-radio-inner:after {
+            background-color: #009840;
+          }
+
+          .ant-radio:hover .ant-radio-inner {
+            border-color: #009840;
+          }
+          .ant-radio-wrapper {
+            width: 49%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            border: 1px solid #eaebec;
+          }
+        }
+        i,
+        .Euro {
+          position: absolute;
+          font-size: 20px;
+          font-weight: 300;
+          color: #838383;
+        }
+        i {
+          right: 0;
+          top: 10px;
+        }
+        .EuroInput {
+          width: 100%;
+          .Euro {
+            top: 34px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            border-right: 1px solid #eaebec;
+            height: calc(100% - 34px);
+          }
+          input {
+            width: 100%;
+            padding-left: 65px;
+          }
+        }
+      }
+      .AfterTitleBack {
+        padding: 15px 25px;
+        border: 1px solid #eaebec;
+        display: flex;
+        align-items: center;
+        background: #eaebec;
+        color: #272c31;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .SubForm {
+        padding: 15px 25px;
+        .label {
+          display: none;
+        }
+        .MainForm--right {
+          margin-top: 9px;
+          display: flex;
+          flex-flow: row wrap;
+          textarea {
+            color: #6c6c6c;
+            font-size: 16px;
+            font-weight: 400;
+            width: 100%;
+            background: #fff;
+            padding: 5px 15px;
+          }
+          .formsContainer--body__item:nth-child(5) {
+            margin-bottom: 10px;
+          }
+        }
+        .MainForm--left {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-between;
+        }
+
+        .formsContainer--body__item.M {
+          width: 50% !important;
+          margin-top: 10px;
+          font-size: 14px;
+          font-weight: 400;
+          color: #6c6c6c;
+        }
+      }
+      .Top {
+        div {
+          color: #272c31;
+          font-size: 16px;
+          font-weight: 500;
+          margin: 5px 0;
+          padding: 0 1px;
+        }
+      }
+      .MainForm {
+        padding: 15px 25px;
+        background: #fff;
+        textarea {
+          height: 90px;
+          border: 1px solid #eaebec;
+          color: #6c6c6c;
+          font-size: 16px;
+          font-weight: 400;
+          width: 100%;
+          padding: 5px 15px;
+        }
+        .label {
+          color: #272c31;
+          font-size: 16px;
+          font-weight: 500;
+          padding-top: 10px;
+        }
+      }
     }
   }
-  .SubForm {
-    height: 100%;
+  .rightFormOnlShop {
     width: 100%;
     display: flex;
     flex-direction: column;
-    .Top {
-      height: 45px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      border-top: 1px solid #ebeced;
-      div {
-        height: 33px;
-        width: 118px;
-        border: 1px solid #ebeced;
-        font-size: 13px;
+    .rightForm--header {
+      height: 60px;
+      max-height: 60px;
+      min-height: 60px;
+      .TitleBack {
+        font-size: 18px;
         font-weight: 500;
-        font-family: "Roboto";
-        color: #5c5c5c;
-        border-radius: 0 0 10px 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-transform: uppercase;
+        font-family: "Lato";
+        color: #f26521;
+        i {
+          color: #5c5c5c;
+          font-size: 16px;
+        }
       }
     }
-    .Bottom {
-      height: 100%;
+    span.red {
+      color: #f26521;
+    }
+    .ant-radio-group.ant-radio-group-outline {
       width: 100%;
       display: flex;
       flex-direction: row;
-      .L {
-        border-right: 1px solid #ebeced;
+      justify-content: space-between;
+      .ant-radio-wrapper {
+        width: 50%;
+        margin-right: 5px;
+        height: 35px;
+        max-width: 175px;
+        background: #ebeced;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        &:last-child {
+          margin-left: 5px;
+          margin-right: 0;
+        }
+        .ant-radio-checked .ant-radio-inner {
+          border-color: #11375d !important ;
+        }
+
+        .ant-radio-checked .ant-radio-inner:after {
+          background-color: #11375d;
+        }
+
+        .ant-radio:hover .ant-radio-inner {
+          border-color: #11375d;
+        }
+      }
+    }
+    .MainForm {
+      height: 241px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      .label {
+        font-size: 12px;
+        font-weight: 400;
+        color: #5c5c5c;
+        font-family: "Roboto";
+      }
+
+      i {
+        position: absolute;
+        font-size: 15px;
+        font-weight: 300;
+        right: 15px;
+        width: 15px;
+        height: 15px;
+        top: 50%;
+      }
+      input.questionInput {
+        padding-right: 35px;
+      }
+
+      .EuroInput {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .Euro {
+          width: 48px;
+          height: 100%;
+          background: #ebeced;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: "Sofia Pro";
+          font-size: 18px;
+          font-weight: 300;
+          color: #6c6c6c;
+          margin-right: 3px;
+        }
+      }
+      textarea {
+        border: 0px;
+        background: #ebeced;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 156px;
+        font-size: 14px;
+        padding: 0 15px;
+        padding-top: 5px;
+        color: #6c6c6c;
+        font-size: 16px;
+        font-weight: 400;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+      &--left {
+        margin: 20px 0;
+        padding-left: 40px;
+        padding-right: 20px;
+      }
+      &--right {
+        margin: 20px 0;
+        padding-left: 20px;
+        padding-right: 40px;
+      }
+      &--left,
+      &--right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .SubForm {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .Top {
+        height: 45px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        border-top: 1px solid #ebeced;
+        div {
+          height: 33px;
+          width: 118px;
+          border: 1px solid #ebeced;
+          font-size: 13px;
+          font-weight: 500;
+          font-family: "Roboto";
+          color: #5c5c5c;
+          border-radius: 0 0 10px 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-transform: uppercase;
+        }
+      }
+      .Bottom {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        .L {
+          border-right: 1px solid #ebeced;
+        }
       }
     }
   }
