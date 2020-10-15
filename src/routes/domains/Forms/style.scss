@@ -466,6 +466,7 @@
     margin-right: 5px;
     display: flex;
     flex-flow: column;
+
     &__item {
       display: flex;
       flex-flow: column;
@@ -479,6 +480,7 @@
           z-index: 1;
         }
       }
+
       .header {
         padding: 0 15px;
         height: 45px;

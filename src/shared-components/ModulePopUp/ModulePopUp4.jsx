@@ -18,6 +18,13 @@ class ModulePopUp4 extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+  range(start, end) {
+    var array = [];
+    for (var i = start; i <= end; i++) {
+      array.push(i);
+    }
+    return array;
+  }
   componentDidMount() {
     if (this.state?.serviceMobile?.service_id.toString() === "BGM001") {
       if (parseInt(this.state.serviceMobile?.cost) === 0) {
@@ -247,27 +254,57 @@ class ModulePopUp4 extends React.Component {
             )}
 
             <div className="TotalServices">
-              {(serviceMobile.service_id.toString() === "BGM001"
-                ? BgameServices
-                : service_s.services || []
-              ).map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={`serv ${
-                      item.service_id.toString() ===
-                      serviceMobile.service_id.toString()
-                        ? "active"
-                        : ""
-                    }`}
-                    onClick={() => this.changeService(item)}
-                  >
-                    <span className="Price">{parseInt(item.cost)}</span>
-                    <span className="Euro">€</span>
-                  </div>
-                );
-              })}
+              <React.Fragment>
+                {(serviceMobile.service_id.toString() === "BGM001"
+                  ? BgameServices
+                  : service_s.services || []
+                ).map((item, index) => {
+                  return item.service_id.toString() ===
+                    serviceMobile.service_id.toString() ? (
+                    <div
+                      key={`${item.service_id}${index}`}
+                      className={`serv ${
+                        item.service_id.toString() ===
+                        serviceMobile.service_id.toString()
+                          ? "active"
+                          : ""
+                      }`}
+                      onClick={() => this.changeService(item)}
+                    >
+                      <div className="Upper">
+                        <div className="Upper--Left"></div>
+                        <div className="Upper--Right"></div>
+                      </div>
+                      <div className="Bottom">
+                        <span className="Price">{parseInt(item.cost)}</span>
+                        <span className="Euro">€</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      key={`${item.service_id}${index}`}
+                      className={`serv ${
+                        item.service_id.toString() ===
+                        serviceMobile.service_id.toString()
+                          ? "active"
+                          : ""
+                      }`}
+                      onClick={() => this.changeService(item)}
+                    >
+                      <span className="Price">{parseInt(item.cost)}</span>
+                      <span className="Euro">€</span>
+                    </div>
+                  );
+                })}
+                {service_s.services &&
+                  Array.isArray(service_s.services) &&
+                  service_s.services.length < 5 &&
+                  this.range(service_s.services.length + 1, 5).map((item) => {
+                    return <div key={item} className="serv noborder"></div>;
+                  })}
+              </React.Fragment>
             </div>
+
             <div className="Confimation Buttons">
               <span className="stampCup">
                 <h3>stampa</h3>

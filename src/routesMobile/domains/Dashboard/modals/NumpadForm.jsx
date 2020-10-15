@@ -5,6 +5,13 @@ import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
 import ReactToPrint from "react-to-print";
 import { BannerColors } from "config/index";
+const range = (start, end) => {
+  var array = [];
+  for (var i = start; i <= end; i++) {
+    array.push(i);
+  }
+  return array;
+};
 const Numpad = ({
   services,
   activeService,
@@ -48,7 +55,7 @@ const Numpad = ({
   console.log(selectedCost);
   return (
     <div className="mobileNumPad">
-      <div className="mobileNumPad--services">
+      {/* <div className="mobileNumPad--services">
         {services &&
           services[activeCategory][activeService].services.map(
             (priceService) => {
@@ -68,7 +75,54 @@ const Numpad = ({
               );
             }
           )}
+          </div>*/}
+      <div className="mobileNumPad--services">
+        <React.Fragment>
+          {services[activeCategory][activeService].services.map(
+            (item, index) => {
+              return selectedCost?.service_id === item.service_id ? (
+                <div
+                  key={index}
+                  className={`serv ${
+                    selectedCost?.service_id === item.service_id ? "active" : ""
+                  }`}
+                  onClick={() => setCost(item)}
+                >
+                  <div className="Upper">
+                    <div className="Upper--Left"></div>
+                    <div className="Upper--Right"></div>
+                  </div>
+                  <div className="Bottom">
+                    <span className="Price">{parseInt(item.cost)}</span>
+                    <span className="Euro">€</span>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  key={index}
+                  className={`serv ${
+                    selectedCost?.service_id === item.service_id ? "active" : ""
+                  }`}
+                  onClick={() => setCost(item)}
+                >
+                  <span className="Price">{parseInt(item.cost)}</span>
+                  <span className="Euro">€</span>
+                </div>
+              );
+            }
+          )}
+          {services[activeCategory][activeService].services &&
+            Array.isArray(services[activeCategory][activeService].services) &&
+            services[activeCategory][activeService].services.length < 5 &&
+            range(
+              services[activeCategory][activeService].services.length + 1,
+              5
+            ).map((item) => {
+              return <div key={item} className="serv noborder"></div>;
+            })}
+        </React.Fragment>
       </div>
+
       <div className="mobileNumPad--headsub">
         <div className="mobileNumPad--header">
           <img src={images[activeService] || images[activeCategory]} alt="" />
