@@ -23,6 +23,41 @@ import {
 //   });
 // }
 
+const instanceAxios = axios.create({
+  baseURL: "https://services-api.bpoint.store/api",
+});
+const handleError = (error) => {
+  if (error.error?.response?.status === 401) {
+    //logout
+  } else {
+    notification["error"]({
+      message: error.response.data.message,
+      description:
+        error.response.data.errors && Object.values(error.response.data.errors),
+      placement: "bottomRight",
+      duration: "5",
+    });
+  }
+  return Promise.reject(error);
+};
+instanceAxios.interceptors.request.use(
+  async (config) => {
+    const value = await localStorage.getItem("accountDataB");
+    const keys = JSON.parse(value);
+    config.headers = {
+      Authorization: `Bearer ${keys.token}`,
+      Accept: "application/json",
+    };
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  }
+);
+instanceAxios.interceptors.response.use(
+  (response) => response,
+  (error) => handleError(error)
+);
 export const fetchLogin = (email, password) =>
   request
     .post(`/users/login`, {
@@ -76,15 +111,7 @@ export const fetchBolletiniPremercati = (
   citta,
   provincia
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
       ...{ numero_conto_corrente: numero_conto_corrente },
@@ -111,15 +138,7 @@ export const fetchBolletiniBianchi = (
   citta,
   provincia
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
       ...{ numero_conto_corrente: numero_conto_corrente },
@@ -144,15 +163,7 @@ export const fetchPayments = (
   skin_id,
   excel
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/users/payments`, {
       ...(username ? { username: username } : {}),
       ...(from ? { from } : null),
@@ -165,15 +176,7 @@ export const fetchPayments = (
     .catch((error) => ({ error }));
 };
 export const fetchRechargeMobile = (service_id, tel_no) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/test/recharge`, {
       ...{ service_id: service_id },
       ...(tel_no ? { tel_no: tel_no } : {}),
@@ -194,15 +197,7 @@ export const fetchPostePay = (
   imageUrl,
   imageUrl2
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/test/rechargeBOL`, {
       ...{ service_id: service_id },
       ...{ importo: importo.toString() },
@@ -239,15 +234,7 @@ export const fetchAds = () =>
     .catch((error) => ({ error }));
 
 export const sendCreatedAds = (importance, title, text) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/messages`, {
       ...{ importance: importance },
       ...{ title: title },
@@ -301,15 +288,7 @@ export const fetchRegisterAllInfo = (
   recieve_emails,
   percentage
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/users/create`, {
       ...{ first_name: first_name },
       ...{ last_name: last_name },
@@ -358,15 +337,7 @@ export const fetchRegisterAllInfo = (
     .catch((error) => ({ data: error.response.data }));
 
 export const sendChangedPassword = (oldPassword, newPassword) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/users/changePassword`, {
       ...{ old_password: oldPassword },
       ...{ password: newPassword },
@@ -375,15 +346,7 @@ export const sendChangedPassword = (oldPassword, newPassword) =>
     })
     .catch((error) => ({ error }));
 export const fetchConfigura = (id) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .get(`/users/${id}`, {
       params: {
         ...skin,
@@ -391,15 +354,7 @@ export const fetchConfigura = (id) =>
     })
     .catch((error) => ({ error }));
 export const fetchBarcodeData = (barcode) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get("/bollettino", {
       params: {
         barcode,
@@ -409,15 +364,7 @@ export const fetchBarcodeData = (barcode) => {
     .catch((error) => ({ error }));
 };
 export const changeAgentReq = (aaa, agent_id, skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/agency/${agent_id}/changeAgent`, {
       agent_id: aaa,
       ...(skin_id && skin_id !== -1 ? { skin_id } : skin),
@@ -425,15 +372,7 @@ export const changeAgentReq = (aaa, agent_id, skin_id) => {
     .catch((error) => ({ error }));
 };
 export const fetchCodice = (barcode, service) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .get("/payment", {
       params: {
         barcode: barcode,
@@ -443,15 +382,7 @@ export const fetchCodice = (barcode, service) =>
     })
     .catch((error) => ({ error }));
 export const fetchAgents = (skin_id) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .get("/agents", {
       params: {
         ...(skin_id ? { skin_id } : skin),
@@ -460,15 +391,7 @@ export const fetchAgents = (skin_id) =>
     .catch((error) => ({ error }));
 
 export const switchUserStatus = (id, status, c, role, backOffice) => {
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(
       (role === "main_admin" && !backOffice) || backOffice === -1
         ? `/skins/${id}/changeStatus`
@@ -493,15 +416,7 @@ export const switchUserStatus = (id, status, c, role, backOffice) => {
     });
 };
 export const transferMoney = (id, amount, type, c, role, backOffice) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(
       (role === "main_admin" && !backOffice) || backOffice === -1
         ? `/skin/transferMoney/${id}`
@@ -529,26 +444,10 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
         // this.props.getUsers();
       }
     })
-    .catch((err) => {
-      notification["error"]({
-        message: err.response.data.message,
-        description:
-          err.response.data.errors && Object.values(err.response.data.errors),
-        placement: "bottomRight",
-        duration: "5",
-      });
-    });
+    .catch((error) => ({ error }));
 };
 export const fetchUserDetails = (user_id, skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`agency/${user_id}`, {
       params: {
         ...(skin_id ? (skin_id !== -1 ? { skin_id } : skin) : skin),
@@ -578,15 +477,7 @@ export const updateUsers = (
   confirm_password,
   skin_id
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/users/update`, {
       user_id,
       phone,
@@ -624,15 +515,7 @@ export const fetchSkinExtras = () => {
     .catch((error) => ({ error }));
 };
 export const fetchErrors = (limit, page_number) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/errors`, {
       params: {
         ...skin,
@@ -644,15 +527,7 @@ export const fetchErrors = (limit, page_number) => {
 };
 
 export const deleteErrorReq = (id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/error/${id}/delete`, {
       ...skin,
     })
@@ -682,15 +557,7 @@ export const sendDataFormReq = (
   email,
   telefono
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(
       `/buy/ticket`,
       typee === 1
@@ -738,15 +605,7 @@ export const sendDataFormReq = (
     .catch((error) => ({ error }));
 };
 export const getDataFormDetailReq = () => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/tickets`, {
       params: {
         ...skin,
@@ -755,15 +614,7 @@ export const getDataFormDetailReq = () => {
     .catch((error) => ({ error }));
 };
 export const getDataFormDetailActivesReq = (isVisure) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/${isVisure ? "visure" : "tickets"}/completed`, {
       params: {
         ...skin,
@@ -772,15 +623,7 @@ export const getDataFormDetailActivesReq = (isVisure) => {
     .catch((error) => ({ error }));
 };
 export const getTicketByTicketIdReq = (ticket_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/ticket/${ticket_id}`, {
       params: {
         ...skin,
@@ -825,15 +668,7 @@ export const updateDataFormReq = (
   note_address,
   company_name
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(
       `/ticket/${ticket_id}/update`,
       typee === 1
@@ -923,15 +758,7 @@ export const sendVisureDetailsReq = (
   price,
   sc
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(
       "/buy/visure",
       type === 1
@@ -980,15 +807,7 @@ export const userConfirmation = (
   document,
   isVisure
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/${isVisure ? "visura" : "ticket"}/${ticket_id}/changeStatus`, {
       ...skin,
       status,
@@ -1007,15 +826,7 @@ export const userConfirmation = (
     });
 };
 export const getVisureReq = () => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/visure`, {
       params: {
         ...skin,
@@ -1025,15 +836,7 @@ export const getVisureReq = () => {
     .catch((error) => ({ error }));
 };
 export const uploadPdf = (id, document, isVisura) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
 
     .post(`/${isVisura ? "visura" : "ticket"}/${id}/addDocument`, {
       ...skin,
@@ -1055,15 +858,7 @@ export const uploadPdf = (id, document, isVisura) => {
     });
 };
 export const getVisureByVisureIdReq = ({ visura_id }) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/visura/${visura_id}`, {
       params: {
         ...skin,
@@ -1092,15 +887,7 @@ export const updateVisuraReq = (
   luogo_di_nascita,
   servizi
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(
       `/visura/${visura_id}/update`,
       type === 1
@@ -1137,15 +924,7 @@ export const updateVisuraReq = (
     .catch((error) => ({ error }));
 };
 export const getAgentByUserIdReq = (user_id, skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/agent/${user_id}`, {
       params: {
         ...(skin_id ? (skin_id !== -1 ? skin : skin_id) : skin),
@@ -1154,15 +933,7 @@ export const getAgentByUserIdReq = (user_id, skin_id) => {
     .catch((error) => ({ error }));
 };
 export const getUserByUserIdReq = (user_id, skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get(`/user/${user_id}`, {
       params: {
         ...(skin_id ? (skin_id !== -1 ? skin : skin_id) : skin),
@@ -1171,30 +942,14 @@ export const getUserByUserIdReq = (user_id, skin_id) => {
     .catch((error) => ({ error }));
 };
 export const getSkinsReq = () => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get("/skins", {
       ...skin,
     })
     .catch((error) => ({ error }));
 };
 export const getFaturaDetailsReq = (user_id, year, month) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post("/users/report", {
       ...skin,
       user_id,
@@ -1226,15 +981,7 @@ export const getAllFaturaBySearchReq = (
   if (page_number) {
     paramsToSend["page_number"] = page_number;
   }
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get("/fatture", {
       params: {
         ...skin,
@@ -1244,15 +991,7 @@ export const getAllFaturaBySearchReq = (
     .catch((error) => ({ error }));
 };
 export const getAllServicesReq = (skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get("/allServices", {
       params: {
         skin_id,
@@ -1261,15 +1000,7 @@ export const getAllServicesReq = (skin_id) => {
     .catch((error) => ({ error }));
 };
 export const sendMailFatturaReq = (file_name) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post("/mailFattura", {
       ...skin,
       file_name,
@@ -1277,15 +1008,7 @@ export const sendMailFatturaReq = (file_name) => {
     .catch((error) => ({ error }));
 };
 export const printFatturaReq = (file_name) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post("/printFattura", {
       ...skin,
       file_name,
@@ -1293,46 +1016,21 @@ export const printFatturaReq = (file_name) => {
     .catch((error) => ({ error }));
 };
 export const addLogo = (logo, skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/skins/${skin_id}/addLogo`, {
       logo,
     })
     .catch((error) => ({ error }));
 };
 export const AddSkinReq = (name, url, email, agency_rent) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/skins`, {
       name,
       url,
       email,
       agency_rent,
     })
-    .catch((error) => {
-      if (error?.response?.data?.errors) {
-        Object.keys(error?.response?.data?.errors).forEach((key) => {
-          return notification["error"]({
-            message: error.response.data.message,
-            description: error.response.data.errors[key][0],
-          });
-        });
-      }
-    });
+    .catch((error) => ({ error }));
 };
 export const AddExtraDataReq = (
   cel,
@@ -1354,15 +1052,7 @@ export const AddExtraDataReq = (
   skin_id,
   area_download
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/skins/${skin_id}/updateExtra`, {
       cel,
       mail,
@@ -1382,16 +1072,7 @@ export const AddExtraDataReq = (
       main_color,
       link6: area_download,
     })
-    .catch((error) => {
-      if (error?.response?.data?.errors) {
-        Object.keys(error?.response?.data?.errors).forEach((key) => {
-          return notification["error"]({
-            message: error.response.data.message,
-            description: error.response.data.errors[key][0],
-          });
-        });
-      }
-    });
+    .catch((error) => ({ error }));
 };
 export const AddSuperAdminReq = (
   first_name,
@@ -1416,15 +1097,7 @@ export const AddSuperAdminReq = (
   a_codice_fiscale,
   skin_id
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/skins/${skin_id}/addSuperAdmin`, {
       first_name,
       last_name,
@@ -1448,27 +1121,10 @@ export const AddSuperAdminReq = (
       a_codice_fiscale,
     })
 
-    .catch((error) => {
-      if (error?.response?.data?.errors) {
-        Object.keys(error?.response?.data?.errors).forEach((key) => {
-          return notification["error"]({
-            message: error.response.data.message,
-            description: error.response.data.errors[key][0],
-          });
-        });
-      }
-    });
+    .catch((error) => ({ error }));
 };
 export const widgetPaymentsReq = (skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get("/widgetPayments", {
       params: {
         ...(skin_id && skin_id !== -1 ? { skin_id } : {}),
@@ -1477,15 +1133,7 @@ export const widgetPaymentsReq = (skin_id) => {
     .catch((error) => ({ error }));
 };
 export const getStatisticheReq = (skin_id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .get("/statistiche", {
       params: {
         ...(skin_id && skin_id !== -1 ? { skin_id } : {}),
@@ -1500,15 +1148,7 @@ export const ServiceChangeStatusReq = (
   active,
   skin_id
 ) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  return instanceAxios
     .post(`/companies/${company_id}/update`, {
       name,
       full_name,
@@ -1519,15 +1159,7 @@ export const ServiceChangeStatusReq = (
 };
 
 export const bGameVoucher = (service_id, importo) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/buy/bgameVoucher`, {
       ...{ service_id: service_id },
       ...(importo ? { importo: importo } : {}),
@@ -1535,15 +1167,7 @@ export const bGameVoucher = (service_id, importo) =>
     })
     .catch((error) => ({ error }));
 export const StatisticheMainReq = () =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .get(`/statisticheMain`, {
       params: {
         ...skin,
@@ -1570,15 +1194,7 @@ export const fetchBolletiniRequest = (
   phone_number,
   codice_identificativo
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/sepafin/bollettini`, {
       service_id,
       person_type,
@@ -1620,15 +1236,7 @@ export const buyTicketOnlineReq = (
   note_address,
   company_name
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/buy/ticket`, {
       ...skin,
       type: typee,
@@ -1671,15 +1279,7 @@ export const pagoPaRequest = (
   denominazione,
   partita_iva
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/sepafin/pagoPA`, {
       ...skin,
       service_id,
@@ -1712,15 +1312,7 @@ export const mavRavRequest = (
   denominazione,
   partita_iva
 ) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/sepafin/mavrav`, {
       ...skin,
       service_id,

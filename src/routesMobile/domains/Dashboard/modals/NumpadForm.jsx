@@ -190,12 +190,14 @@ const Numpad = ({
             className="img"
             style={{
               background: `${
-                BannerColors[selectedCost?.service_id.substring(0, 3)]
+                BannerColors?.[selectedCost?.service_id.substring(0, 3)]
               }`,
             }}
           >
             <img
-              src={images[`Service${selectedCost?.service_id.substring(0, 3)}`]}
+              src={
+                images?.[`Service${selectedCost?.service_id.substring(0, 3)}`]
+              }
             />
           </div>
         </div>

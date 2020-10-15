@@ -149,12 +149,24 @@ textarea {
   }
 }
 
-.ticketDetails--header > span:nth-child(1), .ticketDetails--header > span:nth-child(3), .ticketDetails--header > span:nth-child(4), .ticketDetails--header > span:nth-child(5), .ticketDetails--header > span:nth-child(6) {
-  width: 10%;
+.ticketDetails--header > span:nth-child(4) {
+  width: 18%;
+}
+
+.ticketDetails--header > span:nth-child(5) {
+  width: 8%;
+}
+
+.ticketDetails--header > span:nth-child(6) {
+  width: 14%;
+}
+
+.ticketDetails--header > span:nth-child(3) {
+  width: 6%;
 }
 
 .ticketDetails--header > span:nth-child(2) {
-  width: 20%;
+  width: 24%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -236,12 +248,29 @@ textarea {
   }
 }
 
-.ticketDetails--row > span:nth-child(1), .ticketDetails--row > span:nth-child(3), .ticketDetails--row > span:nth-child(4), .ticketDetails--row > span:nth-child(5), .ticketDetails--row > span:nth-child(6) {
-  width: 10%;
+.ticketDetails--row > span:nth-child(4) {
+  width: 18%;
+}
+
+.ticketDetails--row > span:nth-child(5) {
+  width: 8%;
+}
+
+.ticketDetails--row > span:nth-child(6) {
+  width: 14%;
+}
+
+.ticketDetails--row > span:nth-child(3) {
+  width: 6%;
+}
+
+.ticketDetails--row > span:nth-child(1) {
+  text-align: center;
+  width: 1%;
 }
 
 .ticketDetails--row > span:nth-child(2) {
-  width: 20%;
+  width: 24%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -818,6 +847,10 @@ textarea {
   color: #fff;
 }
 
+.ticketDetails i[aria-hidden="true"].fa-shopping-bag {
+  color: #3d6389;
+}
+
 .ticketDetails i[aria-hidden="true"].fa-bus {
   color: #578a17;
 }
@@ -1056,5 +1089,25 @@ input[value="Visualizzare i dati"]:hover {
 .datiPassageri--body__pass li {
   border-bottom: 1px solid #b5b5b5;
   padding: 0 10px;
+}
+
+.ticketDetails--header span:nth-child(3), .ticketDetails--header span:nth-child(4) {
+  display: none;
+}
+
+.ticketDetails--row span:nth-child(3), .ticketDetails--row span:nth-child(4) {
+  display: none;
+}
+
+.bodyAdmin .ticketDetails--header span:nth-child(3), .bodyAdmin .ticketDetails--header span:nth-child(4) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bodyAdmin .ticketDetails--row span:nth-child(3), .bodyAdmin .ticketDetails--row span:nth-child(4) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */

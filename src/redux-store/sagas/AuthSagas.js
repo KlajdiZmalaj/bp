@@ -556,12 +556,10 @@ export function* getChangedPassword(data) {
     data.oldPassword,
     data.newPassword
   );
-  if (response.message) {
-    AuthActions.setChangePasswordError(response.message);
-  } else {
-    yield put(
-      AuthActions.setChangePasswordError(response.error.response.data.errors)
-    );
+  if (response?.message) {
+    notification["success"]({
+      message: response?.data?.message,
+    });
   }
   // console.log("ca ka responseeeee", response, response.message);
 }
@@ -682,16 +680,6 @@ export function* updateUserDetail(data) {
     data.resetState();
   }
   if (response?.error) {
-    notification["error"]({
-      message: response.error.response.data.message,
-      description: [
-        response.error.response.data.message,
-        response.error.response.data.errors
-          ? Object.values(response.error.response.data.errors)
-          : "error backend",
-      ],
-    });
-
     yield delay(4000);
     yield put(AuthActions.updateUserDetailMsg(""));
   }
@@ -1503,16 +1491,6 @@ export function* fetchBolletini({
       });
     } else if (response?.error) {
       notification.close("PaymentLoading");
-
-      notification["error"]({
-        message: response.error.response.data.message,
-        description: [
-          response.error.response.data.message,
-          response.error.response.data.errors
-            ? Object.values(response.error.response.data.errors)
-            : "error backend",
-        ],
-      });
       if (
         response &&
         response.error &&
@@ -1639,15 +1617,6 @@ export function* setPagoPa({
     } else if (response?.error) {
       notification.close("pagoPaPayment");
 
-      notification["error"]({
-        message: response.error.response.data.message,
-        description: [
-          response.error.response.data.message,
-          response.error.response.data.errors
-            ? Object.values(response.error.response.data.errors)
-            : "error backend",
-        ],
-      });
       if (
         response &&
         response.error &&
@@ -1712,16 +1681,6 @@ export function* setMavRav({
       });
     } else if (response?.error) {
       notification.close("mavRavPayment");
-
-      notification["error"]({
-        message: response.error.response.data.message,
-        description: [
-          response.error.response.data.message,
-          response.error.response.data.errors
-            ? Object.values(response.error.response.data.errors)
-            : "error backend",
-        ],
-      });
       if (
         response &&
         response.error &&

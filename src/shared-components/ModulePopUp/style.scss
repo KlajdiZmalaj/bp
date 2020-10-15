@@ -341,8 +341,8 @@
     }
   }
   &.game {
-    height: 616px;
-    top: calc((100vh - 571px) / 2);
+    height: 627px;
+    top: calc((100vh - 580px) / 2);
     margin: 0 auto;
     position: relative;
   }
@@ -641,6 +641,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-transform: uppercase;
       }
       h4 {
         font-size: 19px;
