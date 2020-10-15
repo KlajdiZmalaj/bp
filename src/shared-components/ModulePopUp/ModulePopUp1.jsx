@@ -9,7 +9,6 @@ import Bolletino from "./Bolletino";
 class ModulePopUp1 extends React.Component {
   render() {
     const { bolletiniBianchi, service } = this.props;
-    console.log(bolletiniBianchi);
     return (
       <div className="modulePopUP modulePopUP1">
         <div className="module container-fluid max-width_modulePopUP">

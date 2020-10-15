@@ -4,7 +4,14 @@ import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
 import ReactToPrint from "react-to-print";
-
+import { BannerColors } from "config/index";
+const range = (start, end) => {
+  var array = [];
+  for (var i = start; i <= end; i++) {
+    array.push(i);
+  }
+  return array;
+};
 const Numpad = ({
   services,
   activeService,
@@ -45,10 +52,10 @@ const Numpad = ({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
-
+  console.log(selectedCost);
   return (
     <div className="mobileNumPad">
-      <div className="mobileNumPad--services">
+      {/* <div className="mobileNumPad--services">
         {services &&
           services[activeCategory][activeService].services.map(
             (priceService) => {
@@ -68,7 +75,54 @@ const Numpad = ({
               );
             }
           )}
+          </div>*/}
+      <div className="mobileNumPad--services">
+        <React.Fragment>
+          {services[activeCategory][activeService].services.map(
+            (item, index) => {
+              return selectedCost?.service_id === item.service_id ? (
+                <div
+                  key={index}
+                  className={`serv ${
+                    selectedCost?.service_id === item.service_id ? "active" : ""
+                  }`}
+                  onClick={() => setCost(item)}
+                >
+                  <div className="Upper">
+                    <div className="Upper--Left"></div>
+                    <div className="Upper--Right"></div>
+                  </div>
+                  <div className="Bottom">
+                    <span className="Price">{parseInt(item.cost)}</span>
+                    <span className="Euro">€</span>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  key={index}
+                  className={`serv ${
+                    selectedCost?.service_id === item.service_id ? "active" : ""
+                  }`}
+                  onClick={() => setCost(item)}
+                >
+                  <span className="Price">{parseInt(item.cost)}</span>
+                  <span className="Euro">€</span>
+                </div>
+              );
+            }
+          )}
+          {services[activeCategory][activeService].services &&
+            Array.isArray(services[activeCategory][activeService].services) &&
+            services[activeCategory][activeService].services.length < 5 &&
+            range(
+              services[activeCategory][activeService].services.length + 1,
+              5
+            ).map((item) => {
+              return <div key={item} className="serv noborder"></div>;
+            })}
+        </React.Fragment>
       </div>
+
       <div className="mobileNumPad--headsub">
         <div className="mobileNumPad--header">
           <img src={images[activeService] || images[activeCategory]} alt="" />
@@ -89,10 +143,12 @@ const Numpad = ({
           ></i>{" "}
         </div>
         <div className="mobileNumPad--subh">
-          INSERIRE IL NUMERO DI TELEFONO DA RICARICARE
+          {!noNumbers
+            ? "INSERIRE IL NUMERO DI TELEFONO DA RICARICARE"
+            : "SELEZIONA LE RICARICHE IN BASSO EF ESEGUI"}
         </div>
       </div>
-      {!noNumbers && (
+      {!noNumbers ? (
         <>
           <div className="mobileNumPad--input">
             <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
@@ -128,6 +184,21 @@ const Numpad = ({
             <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
           </div>
         </>
+      ) : (
+        <div className="GamingBanner">
+          <div
+            className="img"
+            style={{
+              background: `${
+                BannerColors[selectedCost?.service_id.substring(0, 3)]
+              }`,
+            }}
+          >
+            <img
+              src={images[`Service${selectedCost?.service_id.substring(0, 3)}`]}
+            />
+          </div>
+        </div>
       )}
 
       <div className="mobileNumPad--buttons">

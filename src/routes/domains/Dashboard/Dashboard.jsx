@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 import AuthActions from "redux-store/models/auth";
@@ -53,7 +53,7 @@ class DashboardDom extends React.Component {
         return { key: cat.key, companies: CompaniesFav[cat.name] };
       });
       this.setState({
-        CompaniesFav,
+        CompaniesFav: CompaniesFav,
       });
     }
     if (
@@ -67,12 +67,33 @@ class DashboardDom extends React.Component {
 
       let Companies = {};
       Companies = await this.FindServ(Categories, Companies);
+      let doesCategoryExist = false;
+      const categoryActive = this.state.categoryActive;
+      let findCategoryByKey = "";
+      Categories.forEach((cat) => {
+        if (categoryActive && categoryActive === cat?.key) {
+          doesCategoryExist = true;
+          findCategoryByKey = cat.name;
+        }
+      });
+      const CatActiveForState =
+        categoryActive && !doesCategoryExist
+          ? Categories[0]?.key
+          : categoryActive
+          ? categoryActive
+          : Categories[0]?.key;
+      const CompanieCategoryForState =
+        categoryActive && !doesCategoryExist
+          ? Categories[0]?.name
+          : findCategoryByKey
+          ? findCategoryByKey
+          : Categories[0]?.name;
 
       await this.setState({
-        Companies: Companies[Categories[0]?.name],
+        Companies: Companies[CompanieCategoryForState],
         Categories: Categories,
-        categoryActive: Categories[0]?.key,
-        categoriesTypeSelected: Categories[0]?.key,
+        categoryActive: CatActiveForState,
+        categoriesTypeSelected: CatActiveForState,
       });
     }
   }
@@ -130,7 +151,6 @@ class DashboardDom extends React.Component {
     }
     return response;
   };
-  //value = "ricariche" default , se root /dashboard only jep error
   FindArrayOfServicesByValue = (object, value = "ricariche") => {
     if (!this.props.accountInfo?.profile?.role) {
       if (value !== "ricariche") {
@@ -185,6 +205,7 @@ class DashboardDom extends React.Component {
       CompaniesFav,
       Companies,
       categoryActive,
+      categoriesTypeSelected,
     } = this.state;
     return (
       <div className="DContainer">
@@ -260,7 +281,7 @@ class DashboardDom extends React.Component {
                                   await setTimeout(() => {
                                     this.props.getFavorites();
                                     this.props.getServices();
-                                  }, 300);
+                                  }, 200);
                                 }}
                                 className={`fal fa-star favourite`}
                               ></i>
@@ -329,10 +350,10 @@ class DashboardDom extends React.Component {
                             );
                           })
                         ) : comp[key].services[0].service_id === "BGM001" &&
-                          this.props.accountInfo?.profile?.role?.name !==
-                            "super_admin" &&
-                          this.props.accountInfo?.profile?.name !==
-                            "johny cash" ? null : (
+                          (this.props.accountInfo?.profile?.role?.name !==
+                            "super_admin" ||
+                            this.props.accountInfo?.profile?.name !==
+                              "johny cash") ? null : (
                           <CompaniesCheck
                             key={key ? `${key}${Math.random()}` : Math.random()}
                             Key={key}
@@ -359,6 +380,81 @@ class DashboardDom extends React.Component {
                         )
                       )
                   )}
+                {/*Static Services presto Online  */}
+                {categoriesTypeSelected === "PRDPST" && (
+                  <Fragment>
+                    <div
+                    // onClick={() => {
+                    //   this.changeServce(
+                    //     "PPA001",
+                    //     [{ service_id: "PPA001", name: "Pago Pa" }],
+                    //     "Pago Pa",
+                    //     "1",
+                    //     { service_id: "PPA001", name: "Pago Pa" }
+                    //   );
+                    //   this.togglePopUp(true);
+                    // }}
+                    >
+                      {" "}
+                      <h3> Presto Online</h3>
+                      <img src={images["PAGO_PA-logo"]} alt="" />
+                      <span> Pago PA</span>
+                    </div>
+                    <div
+                    // onClick={() => {
+                    //   this.changeServce(
+                    //     "BOL004",
+                    //     [
+                    //       { service_id: "BOL004", name: "MAV" },
+                    //       { service_id: "BOL003", name: "RAV" },
+                    //     ],
+                    //     "MAV/RAV",
+                    //     "1",
+                    //     { service_id: "BOL004", name: "MAV" }
+                    //   );
+                    //   this.togglePopUp(true);
+                    // }}
+                    >
+                      {" "}
+                      <h3> Presto Online</h3>
+                      <img src={images["BOLLETINO-logo"]} alt="" />
+                      <span> MAV/RAV</span>
+                    </div>
+                    <div
+                    // onClick={() => {
+                    //   this.changeServce(
+                    //     "BOL006",
+                    //     [{ service_id: "BOL006", name: "BOLO AUTO" }],
+                    //     "BOLO AUTO",
+                    //     "1",
+                    //     { service_id: "BOL006", name: "BOLO AUTO" }
+                    //   );
+                    //   this.togglePopUp(true);
+                    // }}
+                    >
+                      <h3> Presto Online</h3>
+                      <img src={images["BOLO_AUTO-logo"]} alt="" />
+                      <span> BOLO AUTO</span>
+                    </div>
+                    <div
+                    // onClick={() => {
+                    //   this.changeServce(
+                    //     "BOL006",
+                    //     [{ service_id: "BOL006", name: "BOLO AUTO" }],
+                    //     "BOLO AUTO",
+                    //     "1",
+                    //     { service_id: "BOL006", name: "BOLO AUTO" }
+                    //   );
+                    //   this.togglePopUp(true);
+                    // }}
+                    >
+                      <h3> Presto Online</h3>
+                      <img src={images["f24-logo"]} alt="" />
+                      <span> F24</span>
+                    </div>
+                  </Fragment>
+                )}
+                {/* End of Statoc Cpde */}
               </div>
             </div>
           </div>

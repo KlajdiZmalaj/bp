@@ -131,11 +131,11 @@ class AdminPanelDom extends React.Component {
           {userDetail && Object.keys(userDetail).length > 0 && (
             <React.Fragment>
               <div
+                style={{ animationDuration: "0.5s" }}
                 className={
                   "newReg userDetailPopup animated bounceIn" +
-                  (this.state.isClosing ? " bounceOut" : "")
+                  (this.state.isClosing ? "bounceOut" : "")
                 }
-                style={{ animationDuration: "0.5s" }}
               >
                 <div className="newReg--header">
                   punta ancora di {userDetail.username}

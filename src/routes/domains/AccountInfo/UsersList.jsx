@@ -197,7 +197,7 @@ class UsersList extends Component {
                   <i className="fa fa-times"></i> Cancel
                 </button>
               </div>
-              {DepositoPopup.data.status === 2 && (
+              {DepositoPopup.data.status !== 2 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> L'UTENTE È BLOCCATO
                 </p>

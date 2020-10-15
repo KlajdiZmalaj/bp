@@ -133,8 +133,6 @@ const BolletiniPremercati = ({
         // />
         <Scanner
           onDetected={(e) => {
-            console.log("ca ka detect", e);
-
             if (e?.codeResult?.code?.length > 1) {
               setBarcode(e.codeResult.code);
               setCamera(false);

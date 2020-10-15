@@ -13,7 +13,7 @@ export const PagoPaRightForm = ({ barcodeData, getFieldDecorator }) => (
     />
     <ReturnFormItem
       descName="Telefono"
-      name="telefono"
+      name="phone_number"
       message="Please input your telefono!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
@@ -27,43 +27,49 @@ export const PagoPaLeftForm = ({
 }) => (
   <Fragment>
     <ReturnFormItem
-      descName="Token"
-      name="token"
-      message="Please input your token!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
-    <ReturnFormItem
       descName="Codice Avviso"
-      name="codice_avviso"
+      name="codice_aviso"
       message="Please input your Codice Avviso!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
     <ReturnFormItem
       descName="CF/P.IVA Ente Creditore"
-      name="creditore"
+      name="codice_fiscale_bol"
       message="Please input your Creditore!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
-
+    <ReturnFormItem
+      descName="Città"
+      name="citta"
+      message="Please input your  Città!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />{" "}
+    <ReturnFormItem
+      descName="Indirizzo"
+      name="via_piazza"
+      message="Please input your Indirizzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
     <ReturnFormItem
       descName="Persona"
-      name="persona"
+      name="person_type"
       message="Please input your persona tipo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
-      defaultValue={"1"}
+      defaultValue={"F"}
       NotInput={
         <Radio.Group>
-          <Radio value="1">Fisica</Radio>
-          <Radio value="2">Giuridica</Radio>
+          <Radio value="F">Fisica</Radio>
+          <Radio value="G">Giuridica</Radio>
         </Radio.Group>
       }
     />
-    {getFieldValue("persona") === "1" ||
-    typeof getFieldValue("persona") === "undefined" ? (
+    {getFieldValue("person_type") === "F" ||
+    typeof getFieldValue("person_type") === "undefined" ? (
       <Fragment>
         <ReturnFormItem
           descName="Nome"
@@ -86,13 +92,6 @@ export const PagoPaLeftForm = ({
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
-        <ReturnFormItem
-          descName="Indirizzo"
-          name="indirizzo"
-          message="Please input your  indirizzo!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
       </Fragment>
     ) : (
       <Fragment>
@@ -108,20 +107,6 @@ export const PagoPaLeftForm = ({
           descName="Partiva IVA"
           name="part_iva"
           message="Please input your Partiva IVA!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
-        <ReturnFormItem
-          descName="Indirizzo"
-          name="indirizzo"
-          message="Please input your Indirizzo!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
-        <ReturnFormItem
-          descName="Città"
-          name="citta"
-          message="Please input your  Città!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />

@@ -13,7 +13,7 @@ export const socket = () => {
 
 export const subscribeSocketUser = (userID, props) => {
   window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
-    console.log("subscribed listening...", userID, props, e);
+    // console.log("subscribed listening...", userID, props, e);
     if (e.type === "payment") {
       props.addPrivateMsg(e.data);
     }
@@ -55,8 +55,6 @@ export const subscribeSocketUser = (userID, props) => {
 
 export const subscribeSocketSupport = (props) => {
   window["echo"].channel(`bpoint_cache_support`).listen(".support", (e) => {
-    console.log("subscribed listening support...", props, e);
-
     if (e.type === "notification") {
       notification.open({
         message: "Hai ricevuto una notifica",

@@ -33,7 +33,7 @@ const ReturnFormItem = ({
         NotInput ? (
           NotInput
         ) : (
-          <Input placeholder={placeholder ? placeholder : name} />
+          <Input placeholder={placeholder ? placeholder : descName} />
         )
       )}
     </Form.Item>

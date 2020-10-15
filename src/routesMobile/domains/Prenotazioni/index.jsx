@@ -4,9 +4,12 @@ import { capitalize } from "lodash";
 import Voli from "routes/domains/Forms/Voli";
 import Treni from "routes/domains/Forms/Treni";
 import Eventi from "routes/domains/Forms/Eventi";
+import OnlineShop from "routes/domains/Forms/OnlineShop";
+
 import { withRouter } from "react-router-dom";
 import "./style.css";
-const Item = ({ name, activeService, setService }) => (
+import ShopOnline from "../../../routes/domains/FormDetails/ShopOnline";
+const Item = ({ name, activeService, setService, priorityName }) => (
   <div
     onClick={() => {
       setService(name);
@@ -16,7 +19,7 @@ const Item = ({ name, activeService, setService }) => (
     }
   >
     <img className={name} src={images[`${name}-mobile`]} alt="" />
-    <span>{capitalize(name)}</span>
+    <span>{priorityName ? priorityName : capitalize(name)}</span>
   </div>
 );
 
@@ -57,6 +60,12 @@ const Prenotazione = ({ match: { params } }) => {
             setService={setService}
             name="stubhub"
           />
+          <Item
+            activeService={activeService}
+            setService={setService}
+            name="shop-online"
+            priorityName="Online Shop"
+          />
         </div>
       </div>
       <div className="prenotation--view">
@@ -82,6 +91,14 @@ const Prenotazione = ({ match: { params } }) => {
           <Eventi
             nome_agenzia={activeService}
             typee={3}
+            isMobile
+            activeService={activeService}
+          />
+        )}
+        {activeService === "shop-online" && (
+          <OnlineShop
+            nome_agenzia={"Online Shop"}
+            typee={4}
             isMobile
             activeService={activeService}
           />

@@ -18,12 +18,8 @@ class Statistiche extends React.Component {
           <div className={`data Categories ${ReportisticaDet ? "min" : ""}`}>
             <SimpleGraph
               graphicData={StatisticheMain.data.transazioni}
-              handleMouseEntering={() => {
-                console.log("enter mouse");
-              }}
-              handleClick={() => {
-                console.log("click with mouse");
-              }}
+              handleMouseEntering={() => {}}
+              handleClick={() => {}}
               AdditionalComp={
                 <Fragment>
                   <div>{StatisticheMain.total.transazioni + "€"}</div>
@@ -34,12 +30,8 @@ class Statistiche extends React.Component {
             />
             <SimpleGraph
               graphicData={StatisticheMain.data.commissioni}
-              handleMouseEntering={() => {
-                console.log("enter mouse");
-              }}
-              handleClick={() => {
-                console.log("click with mouse");
-              }}
+              handleMouseEntering={() => {}}
+              handleClick={() => {}}
               AdditionalComp={
                 <Fragment>
                   <div>{StatisticheMain.total.commissioni + "€"}</div>
@@ -51,12 +43,8 @@ class Statistiche extends React.Component {
             {userRole !== "user" && (
               <SimpleGraph
                 graphicData={StatisticheMain.data.proviggioni}
-                handleMouseEntering={() => {
-                  console.log("enter mouse");
-                }}
-                handleClick={() => {
-                  console.log("click with mouse");
-                }}
+                handleMouseEntering={() => {}}
+                handleClick={() => {}}
                 className={`${ReportisticaDet ? "min" : ""}`}
                 AdditionalComp={
                   <Fragment>

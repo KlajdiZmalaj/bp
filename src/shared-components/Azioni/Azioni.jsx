@@ -109,7 +109,11 @@ class Azioni extends Component {
                           }
                         }}
                         className={`${
-                          activeMain === "dashboard"
+                          active === "visure" && item.name === "PRENOTAZIONI"
+                            ? "active"
+                            : active === "visure"
+                            ? "none"
+                            : activeMain === "dashboard"
                             ? item.link === this.state.active.url
                               ? "active"
                               : "none"

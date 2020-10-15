@@ -20,6 +20,10 @@ export default {
   BOLO_AUTO: require(`../assets/images/boloauto.png`),
   PAGO_PA: require(`../assets/images/pagopa.png`),
   BOLLETINO: require(`../assets/images/bolletino.png`),
+  "BOLO_AUTO-logo": require(`../assets/images/boloauto.svg`),
+  "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
+  "BOLLETINO-logo": require(`../assets/images/bolletini.svg`),
+  "f24-logo": require(`../assets/images/f24.svg`),
 
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
   //Static home page images
@@ -179,12 +183,22 @@ export default {
   "stubhub-bg": require(`../assets/images/prenotazioni/stubhub-bg.jpg`),
   "stubhub-card": require(`../assets/images/prenotazioni/stubhub-card.png`),
   "stubhub-mobile": require(`../assets/images/prenotazioni/stubhub-mobile.svg`),
+  "shop-online-mobile": require(`../assets/images/prenotazioni/online-shop-mobile.svg`),
 
   "visure-logo": require(`../assets/images/prenotazioni/visure-logo.svg`),
+
   "visure-card": require(`../assets/images/prenotazioni/visure-card.png`),
   "shop-online-card": require(`../assets/images/prenotazioni/shop-online-card.png`),
   "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
   "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
+
+  ServiceBET: require(`../assets/images/ServiceBET.jpg`),
+  ServiceBGM: require(`../assets/images/ServiceBGM.jpg`),
+  ServiceBWN: require(`../assets/images/ServiceBWN.jpg`),
+  ServicePKS: require(`../assets/images/ServicePKS.jpg`),
+  ServicePPB: require(`../assets/images/ServicePPB.jpg`),
+  ServiceSTC: require(`../assets/images/ServiceSTC.jpg`),
+  ServiceWHL: require(`../assets/images/ServiceWHL.jpg`),
 
   // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 

@@ -170,7 +170,7 @@ class SingleUser extends Component {
                   <i class="fa fa-times"></i> Cancel
                 </button>
               </div>
-              {user.status === 2 && (
+              {user.status !== 2 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> User is locked
                 </p>

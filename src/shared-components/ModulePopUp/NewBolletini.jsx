@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, message, Checkbox, notification } from "antd";
+import { Form, Checkbox, notification } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
 import "./newStyl.css";
 import { BolletiniRightForm, BolletiniLeftForm } from "./BolletiniForms";
 import { BoloAutoLeftForm, BoloAutoRightForm } from "./BoloAutoForms";
 import { PagoPaLeftForm, PagoPaRightForm } from "./PagoPaForms";
+import { MavRavLeftForm, MavRavRightForm } from "./MavRavForm";
 
 class Bolletino extends React.Component {
   state = {
@@ -23,95 +24,98 @@ class Bolletino extends React.Component {
     this.setState({ barcodeInput: e });
     document.getElementById("barcodeInp").focus();
   };
-  callback = (data) => {
-    this.setState({ data });
-    message.success(data.message);
-    setTimeout(() => {
-      this.props.form.setFieldsValue({
-        codice_identificativo: data.data.codice_identificativo,
-        importo: data.data.importo,
-        numero_conto_corrente: data.data.numero_conto_corrente,
-        tipologia: data.data.tipologia,
-      });
-    }, 10);
-  };
-  // BinputHandler = (e) => {
-  //   this.setState({ BinpVal: e.target.value });
-  //   if (this.state.BinpVal.length >= 40) {
-  //     this.props.getBarcodeData(this.state.BinpVal, this.callback);
-  //     // "18000023200682255466120000420832041000000031603896"
-  //   }
-  // };
   clearFields = () => {
-    this.props.form.setFieldsValue({
-      person_type: "F",
-      via_piazza: "",
-      cap: "",
-      citta: "",
-      provincia: "",
-      importp: "",
-      tipologia: "123",
-      numero_conto_corrente: "",
-      causale: "",
-      nome: "",
-      cognome: "",
-      codice_fiscale: "",
-      denominazione: "",
-      phone_number: "",
-      email: "",
-      importo: "",
-      partita_iva: "",
-    });
+    this.props.form.resetFields();
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    const { service_id } = this.props;
     this.props.form.validateFieldsAndScroll((err, values) => {
+      this.clearFields();
       if (!err && this.state.condizioniAgreement) {
-        if (this.props.service_id === "BOL001") {
-          this.props.fetchBolletini(
-            this.props.service_id,
-            values.person_type.toString(),
-            values.via_piazza,
-            values.cap,
-            values.citta,
-            values.provincia,
-            values.importo.toString(),
-            values.tipologia,
-            values.numero_conto_corrente,
-            values.causale,
-            values.nome,
-            values.cognome,
-            values.codice_fiscale,
-            values.denominazione,
-            values.partita_iva,
-            values.email,
-            values.phone_number,
-            null,
+        if (service_id === "BOL003" || service_id === "BOL004") {
+          this.props.setMavRav(
+            service_id,
+            values?.person_type,
+            values?.via_piazza,
+            values?.citta,
+            values?.email,
+            values?.phone_number,
+            values?.importo,
+            values?.codice,
+            values?.nome,
+            values?.cognome,
+            values?.codice_fiscale,
+            values?.denominazione,
+            values?.partita_iva,
             this.clearFields
           );
-        }
-        if (this.props.service_id === "BOL002") {
-          this.props.fetchBolletini(
-            this.props.service_id,
-            values.person_type.toString(),
-            values.via_piazza,
-            values.cap,
-            values.citta,
-            values.provincia,
-            values.importo.toString(),
-            values.tipologia,
-            values.numero_conto_corrente,
-            values.causale,
-            values.nome,
-            values.cognome,
-            values.codice_fiscale,
-            values.denominazione,
-            values.partita_iva,
-            values.email,
-            values.phone_number,
-            values.codice_identificativo,
+        } else if (service_id === "PPA001") {
+          this.props.setPagoPa(
+            service_id,
+            values?.person_type,
+            values?.via_piazza,
+            values?.citta,
+            values?.email,
+            values?.phone_number,
+            "pa",
+            values?.codice_fiscale_bol,
+            values?.codice_aviso,
+            values?.nome,
+            values?.cognome,
+            values?.codice_fiscale,
+            values?.denominazione,
+            values?.partita_iva,
             this.clearFields
           );
+        } else if (service_id === "BOL006") {
+        } else {
+          if (this.props.service_id === "BOL001") {
+            this.props.fetchBolletini(
+              service_id,
+              values.person_type.toString(),
+              values.via_piazza,
+              values.cap,
+              values.citta,
+              values.provincia,
+              values.importo.toString(),
+              values.tipologia,
+              values.numero_conto_corrente,
+              values.causale,
+              values.nome,
+              values.cognome,
+              values.codice_fiscale,
+              values.denominazione,
+              values.partita_iva,
+              values.email,
+              values.phone_number,
+              null,
+              this.clearFields
+            );
+          }
+          if (this.props.service_id === "BOL002") {
+            this.props.fetchBolletini(
+              service_id,
+              values.person_type.toString(),
+              values.via_piazza,
+              values.cap,
+              values.citta,
+              values.provincia,
+              values.importo.toString(),
+              values.tipologia,
+              values.numero_conto_corrente,
+              values.causale,
+              values.nome,
+              values.cognome,
+              values.codice_fiscale,
+              values.denominazione,
+              values.partita_iva,
+              values.email,
+              values.phone_number,
+              values.codice_identificativo,
+              this.clearFields
+            );
+          }
         }
       } else {
         notification["error"]({
@@ -119,36 +123,33 @@ class Bolletino extends React.Component {
           description: "Controlla le tue caselle vuote o accetta le condizioni",
         });
       }
-      // console.log("faturaaaa", this.props.service_id, values);
     });
   };
-
-  handleConfirmBlur = (e) => {
-    const { value } = e.target;
-    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-  };
-
-  hideAlert = () => {
-    this.props.setBolletiniBianchi({});
-    this.props.setBolletiniPremercati({});
-  };
-  componentDidMount() {}
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcodeData } = this.props;
+    const { barcodeData, service_id, service_s } = this.props;
     const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
-    let bolletoActive = "BOLLETINO";
+    let imageLogo =
+      service_id === "PPA001"
+        ? "PAGO_PA"
+        : service_id === "BOL006"
+        ? "BOLO_AUTO"
+        : "BOLLETINO";
     return (
-      <div
-        className={`Bolletini ${
-          this.props.service_id === "BOL002" ? "Big" : ""
-        }`}
-      >
+      <div className="Bolletini">
         <div className="Bolletini-Header">
-          <span>BOLLETINI</span>
+          <span>
+            {service_id === "BOL003" || service_id === "BOL004"
+              ? "MAV/RAV"
+              : service_id === "PPA001"
+              ? "PAGO PA"
+              : service_id === "BOL006"
+              ? "BOLO AUTO"
+              : "BOLLETINI"}
+          </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <img src={images[bolletoActive]} />
+            <img src={images[imageLogo]} />
           </span>
         </div>
         <div className="Bolletini-Form">
@@ -157,7 +158,6 @@ class Bolletino extends React.Component {
               <input
                 onBlur={(e) => {
                   let bartcode = e.target.value;
-
                   const counter1 = bartcode.substring(0, 2); //2shifror
                   const codiceIdf = bartcode.substring(
                     2,
@@ -168,7 +168,6 @@ class Bolletino extends React.Component {
 
                   const counter3 = bartcode.substring(34, 36); //2shifror
                   const shuma = bartcode.substring(36, 36 + parseInt(counter3));
-
                   const counter4 = bartcode.substring(46, 47); //1shifror
                   const tipologia = bartcode.substring(
                     47,
@@ -190,20 +189,28 @@ class Bolletino extends React.Component {
             </div>
             <div
               className={`Left ${
-                bolletoActive === "BOLO_AUTO"
+                service_id === "BOL006"
                   ? "BA"
-                  : bolletoActive === "PAGO_PA"
+                  : service_id === "PPA001"
                   ? "PA"
                   : ""
               }`}
             >
-              {bolletoActive === "BOLO_AUTO" ? (
+              {service_id === "BOL003" || service_id === "BOL004" ? (
+                <MavRavLeftForm
+                  barcodeData={barcodeData}
+                  getFieldDecorator={getFieldDecorator}
+                  getFieldValue={this.props.form.getFieldValue}
+                  setServiceID={this.props.setServiceId}
+                  service_s={service_s}
+                />
+              ) : service_id === "BOL006" ? (
                 <BoloAutoLeftForm
                   barcodeData={barcodeData}
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
                 />
-              ) : bolletoActive === "PAGO_PA" ? (
+              ) : service_id === "PPA001" ? (
                 <PagoPaLeftForm
                   barcodeData={barcodeData}
                   getFieldDecorator={getFieldDecorator}
@@ -214,27 +221,33 @@ class Bolletino extends React.Component {
                   barcodeData={barcodeData}
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
-                  service_id={this.props.service_id}
+                  service_id={service_id}
                 />
               )}
             </div>
             <div
               className={`Right ${
-                bolletoActive === "BOLO_AUTO"
+                service_id === "BOL006"
                   ? "BA"
-                  : bolletoActive === "PAGO_PA"
+                  : service_id === "PPA001"
                   ? "PA"
                   : ""
               }`}
             >
               <div className="Inputs">
-                {bolletoActive === "BOLO_AUTO" ? (
+                {service_id === "BOL003" || service_id === "BOL004" ? (
+                  <MavRavRightForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                    getFieldValue={this.props.form.getFieldValue}
+                  />
+                ) : service_id === "BOL006" ? (
                   <BoloAutoRightForm
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
                   />
-                ) : bolletoActive === "PAGO_PA" ? (
+                ) : service_id === "PPA001" ? (
                   <PagoPaRightForm
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
@@ -245,7 +258,7 @@ class Bolletino extends React.Component {
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
-                    service_id={this.props.service_id}
+                    service_id={service_id}
                   />
                 )}
               </div>
@@ -341,6 +354,7 @@ const mapsStateToProps = (state) => ({
   barcodeData: state.auth.barcodeData,
   bolletiniPremercati: state.auth.bolletiniPremercati,
   accountInfo: state.auth.accountInfo,
+  service_s: state.auth.service_s,
 });
 
 export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
