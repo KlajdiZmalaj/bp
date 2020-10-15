@@ -39,6 +39,8 @@ export class DetailRow extends Component {
                       ? "ticket-alt"
                       : ticket.type === "Voli"
                       ? "plane"
+                      : ticket.type === "Shop"
+                      ? "shopping-bag"
                       : ""
                   }`}
                   aria-hidden="true"

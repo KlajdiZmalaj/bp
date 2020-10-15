@@ -237,13 +237,15 @@ class ModulePopUp4 extends React.Component {
                     className="img"
                     style={{
                       background: `${
-                        BannerColors[serviceMobile?.service_id.substring(0, 3)]
+                        BannerColors?.[
+                          serviceMobile?.service_id.substring(0, 3)
+                        ]
                       }`,
                     }}
                   >
                     <img
                       src={
-                        images[
+                        images?.[
                           `Service${serviceMobile?.service_id.substring(0, 3)}`
                         ]
                       }
