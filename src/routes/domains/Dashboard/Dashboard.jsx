@@ -349,7 +349,8 @@ class DashboardDom extends React.Component {
                               />
                             );
                           })
-                        ) : comp[key].services[0].service_id === "BGM001" &&
+                        ) : comp[key].services[0].service_id ===
+                            "BGM001-remove_me" &&
                           (this.props.accountInfo?.profile?.role?.name !==
                             "super_admin" ||
                             this.props.accountInfo?.profile?.name !==

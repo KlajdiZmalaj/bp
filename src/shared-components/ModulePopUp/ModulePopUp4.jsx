@@ -64,7 +64,7 @@ class ModulePopUp4 extends React.Component {
   };
 
   handleSubmit(service_id, tel_no) {
-    if (service_id === "BGM001") {
+    if (this.props.service_s.id === "BGAM") {
       this.props.getBgameVoucherReq(service_id, tel_no);
     } else {
       this.props.getRechargeMobile(service_id, tel_no);
@@ -98,24 +98,24 @@ class ModulePopUp4 extends React.Component {
       {
         cost: "25.00",
         name: "BGame Voucher",
-        service_id: "BGM001",
+        service_id: "BGM002",
         type: "1",
       },
       {
         cost: "50.00",
         name: "BGame Voucher",
-        service_id: "BGM001",
+        service_id: "BGM003",
         type: "1",
       },
       {
         cost: "100.00",
         name: "BGame Voucher",
-        service_id: "BGM001",
+        service_id: "BGM004",
         type: "1",
       },
     ];
     const { serviceMobile, tel_no, toPrint } = this.state;
-    // console.log("service", service_s, service, serviceMobile);
+    //console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",
@@ -130,8 +130,7 @@ class ModulePopUp4 extends React.Component {
           className={`leftCol_Module Popup4 ${
             this.props.serviceType === "SCMS"
               ? "game"
-              : service.type.toString() === "0" ||
-                serviceMobile.service_id.toString() === "BGM001"
+              : service.type.toString() === "0" || service_s.id === "BGAM"
               ? "small"
               : ""
           }`}
@@ -141,7 +140,7 @@ class ModulePopUp4 extends React.Component {
               <div className="confermaMsg animated bounce">
                 <div className="info">
                   Stai eseguiendo una ricarica da €
-                  {serviceMobile.service_id === "BGM001"
+                  {service_s.id === "BGAM"
                     ? tel_no
                     : serviceMobile.cost.toString()}
                   . <br /> Confermi?
@@ -152,7 +151,7 @@ class ModulePopUp4 extends React.Component {
                       this.handleSubmit(
                         serviceMobile.service_id,
                         service.type.toString() === "1"
-                          ? serviceMobile.service_id === "BGM001"
+                          ? service_s.id === "BGAM"
                             ? serviceMobile.cost
                             : tel_no
                           : null
@@ -188,8 +187,7 @@ class ModulePopUp4 extends React.Component {
             </div>
             <div className="ServiceHeader">
               <h4>{service_s.name}</h4>
-              {service.type.toString() === "1" &&
-              serviceMobile.service_id.toString() !== "BGM001" ? (
+              {service.type.toString() === "1" && service_s.id !== "BGAM" ? (
                 <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
               ) : (
                 this.props.serviceType === "SCMS" && (
@@ -197,8 +195,7 @@ class ModulePopUp4 extends React.Component {
                 )
               )}
             </div>
-            {service.type.toString() === "1" &&
-            serviceMobile.service_id.toString() !== "BGM001" ? (
+            {service.type.toString() === "1" && service_s.id !== "BGAM" ? (
               <div className="NumPadContainer">
                 <div className="NumPd">
                   <span>+39</span>{" "}
@@ -258,10 +255,11 @@ class ModulePopUp4 extends React.Component {
 
             <div className="TotalServices">
               <React.Fragment>
-                {(serviceMobile.service_id.toString() === "BGM001"
+                {(service_s.id === "BGAM"
                   ? BgameServices
                   : service_s.services || []
                 ).map((item, index) => {
+                  console.log("item", item);
                   return item.service_id.toString() ===
                     serviceMobile.service_id.toString() ? (
                     <div
