@@ -193,7 +193,7 @@ class ModulePopUp4 extends React.Component {
                 <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
               ) : (
                 this.props.serviceType === "SCMS" && (
-                  <h5>SELEZIONA LE RICARICHE IN BASSO EF ESEGUI</h5>
+                  <h5>SELEZIONA LE RICARICHE IN BASSO ED ESEGUI</h5>
                 )
               )}
             </div>
@@ -243,6 +243,7 @@ class ModulePopUp4 extends React.Component {
                       }`,
                     }}
                   >
+                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
                     <img
                       src={
                         images?.[
@@ -298,12 +299,18 @@ class ModulePopUp4 extends React.Component {
                     </div>
                   );
                 })}
-                {service_s.services &&
+                {serviceMobile.service_id.toString() === "BGM001" ? (
+                  <div className="serv">
+                    <span>+</span>
+                  </div>
+                ) : (
+                  service_s.services &&
                   Array.isArray(service_s.services) &&
                   service_s.services.length < 5 &&
                   this.range(service_s.services.length + 1, 5).map((item) => {
                     return <div key={item} className="serv noborder"></div>;
-                  })}
+                  })
+                )}
               </React.Fragment>
             </div>
 

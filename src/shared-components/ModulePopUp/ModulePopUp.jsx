@@ -28,6 +28,7 @@ class ModulePopUp extends React.Component {
       "BOL006",
       "BOL004",
       "BOL003",
+      "PAGF24",
     ];
     return isShowing ? (
       <Fragment>

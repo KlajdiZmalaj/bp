@@ -33,90 +33,27 @@ class Bolletino extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       this.clearFields();
       if (!err && this.state.condizioniAgreement) {
-        if (service_id === "BOL003" || service_id === "BOL004") {
-          this.props.setMavRav(
-            service_id,
-            values?.person_type,
-            values?.via_piazza,
-            values?.citta,
-            values?.email,
-            values?.phone_number,
-            values?.importo,
-            values?.codice,
-            values?.nome,
-            values?.cognome,
-            values?.codice_fiscale,
-            values?.denominazione,
-            values?.partita_iva,
-            this.clearFields
-          );
-        } else if (service_id === "PPA001") {
-          this.props.setPagoPa(
-            service_id,
-            values?.person_type,
-            values?.via_piazza,
-            values?.citta,
-            values?.email,
-            values?.phone_number,
-            "pa",
-            values?.codice_fiscale_bol,
-            values?.codice_aviso,
-            values?.nome,
-            values?.cognome,
-            values?.codice_fiscale,
-            values?.denominazione,
-            values?.partita_iva,
-            this.clearFields
-          );
-        } else if (service_id === "BOL006") {
-        } else {
-          if (this.props.service_id === "BOL001") {
-            this.props.fetchBolletini(
-              service_id,
-              values.person_type.toString(),
-              values.via_piazza,
-              values.cap,
-              values.citta,
-              values.provincia,
-              values.importo.toString(),
-              values.tipologia,
-              values.numero_conto_corrente,
-              values.causale,
-              values.nome,
-              values.cognome,
-              values.codice_fiscale,
-              values.denominazione,
-              values.partita_iva,
-              values.email,
-              values.phone_number,
-              null,
-              this.clearFields
-            );
-          }
-          if (this.props.service_id === "BOL002") {
-            this.props.fetchBolletini(
-              service_id,
-              values.person_type.toString(),
-              values.via_piazza,
-              values.cap,
-              values.citta,
-              values.provincia,
-              values.importo.toString(),
-              values.tipologia,
-              values.numero_conto_corrente,
-              values.causale,
-              values.nome,
-              values.cognome,
-              values.codice_fiscale,
-              values.denominazione,
-              values.partita_iva,
-              values.email,
-              values.phone_number,
-              values.codice_identificativo,
-              this.clearFields
-            );
-          }
-        }
+        // this.props.fetchBolletini(
+        //   service_id,
+        //   values.person_type.toString(),
+        //   values.via_piazza,
+        //   values.cap,
+        //   values.citta,
+        //   values.provincia,
+        //   values.importo.toString(),
+        //   values.tipologia,
+        //   values.numero_conto_corrente,
+        //   values.causale,
+        //   values.nome,
+        //   values.cognome,
+        //   values.codice_fiscale,
+        //   values.denominazione,
+        //   values.partita_iva,
+        //   values.email,
+        //   values.phone_number,
+        //   values.codice_identificativo,
+        //   this.clearFields
+        // );
       } else {
         notification["error"]({
           message: "Ops...",
@@ -129,12 +66,6 @@ class Bolletino extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { barcodeData, service_id, service_s } = this.props;
     const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
-    let imageLogo =
-      service_id === "PPA001"
-        ? "PAGO_PA"
-        : service_id === "BOL006"
-        ? "BOLO_AUTO"
-        : "BOLLETINO";
     return (
       <div className="Bolletini">
         <div className="Bolletini-Header">
@@ -149,7 +80,7 @@ class Bolletino extends React.Component {
           </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <img src={images[imageLogo]} />
+            {/* <img src={images[imageLogo]} /> */}
           </span>
         </div>
         <div className="Bolletini-Form">

@@ -194,6 +194,7 @@ const Numpad = ({
               }`,
             }}
           >
+            {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img
               src={
                 images?.[`Service${selectedCost?.service_id.substring(0, 3)}`]
