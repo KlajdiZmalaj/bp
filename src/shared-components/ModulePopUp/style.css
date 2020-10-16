@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .bolletino {
   background: #fff;
 }
@@ -459,6 +460,39 @@
           justify-content: center;
 }
 
+.leftCol_Module.Popup4 .row .NumPadContainer.bgm {
+  height: 330px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 20px 0;
+  margin-bottom: 30px;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer.bgm .NumPd {
+  position: relative;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer.bgm .NumPd::before {
+  content: "€";
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  width: calc(20% + 2px);
+  height: calc(100% + 4px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 400;
+  color: #25333e;
+  font-size: 21px;
+}
+
 .leftCol_Module.Popup4 .row .NumPadContainer .NumPd {
   height: 62px;
   width: 98.5%;
@@ -504,6 +538,29 @@
   font-size: 21px;
   font-weight: 400;
   color: #25333e;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .NumPd input.bgm {
+  width: 80%;
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .NumPd input.bgm::-webkit-input-placeholder {
+  letter-spacing: 3px;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .NumPd input.bgm:-ms-input-placeholder {
+  letter-spacing: 3px;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .NumPd input.bgm::-ms-input-placeholder {
+  letter-spacing: 3px;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .NumPd input.bgm::placeholder {
+  letter-spacing: 3px;
 }
 
 .leftCol_Module.Popup4 .row .NumPadContainer .NumPd.SCMS input {

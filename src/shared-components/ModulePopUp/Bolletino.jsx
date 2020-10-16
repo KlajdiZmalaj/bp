@@ -6,7 +6,7 @@ import Condizioni from "./Condizioni";
 import images from "themes/images";
 import { Select } from "antd";
 import { get } from "lodash";
-import "./style.css";
+import "./newStyl.css";
 const { Option } = Select;
 class Bolletino extends React.Component {
   state = {

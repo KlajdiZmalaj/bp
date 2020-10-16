@@ -14,6 +14,7 @@ class ModulePopUp4 extends React.Component {
       barcode: "21312",
       toPrint: false,
       confermaMsg: false,
+      changeInput: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -83,7 +84,9 @@ class ModulePopUp4 extends React.Component {
   clear = () => {
     this.setState({ tel_no: "" });
   };
-
+  componentWillUnmount() {
+    this.setState({ changeInput: false });
+  }
   render() {
     const { service_s, rechargeMobile, service } = this.props;
     // const {serviceType}=this.props;
@@ -98,23 +101,23 @@ class ModulePopUp4 extends React.Component {
       {
         cost: "25.00",
         name: "BGame Voucher",
-        service_id: "BGM002",
+        service_id: "BGM001",
         type: "1",
       },
       {
         cost: "50.00",
         name: "BGame Voucher",
-        service_id: "BGM003",
+        service_id: "BGM001",
         type: "1",
       },
       {
         cost: "100.00",
         name: "BGame Voucher",
-        service_id: "BGM004",
+        service_id: "BGM001",
         type: "1",
       },
     ];
-    const { serviceMobile, tel_no, toPrint } = this.state;
+    const { serviceMobile, tel_no, toPrint, changeInput } = this.state;
     //console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
     // const arr = {
@@ -141,8 +144,10 @@ class ModulePopUp4 extends React.Component {
                 <div className="info">
                   Stai eseguiendo una ricarica da €
                   {service_s.id === "BGAM"
-                    ? tel_no
-                    : serviceMobile.cost.toString()}
+                    ? !this.state.changeInput
+                      ? serviceMobile.cost
+                      : tel_no
+                    : serviceMobile.cost}
                   . <br /> Confermi?
                 </div>
                 <div className="buttons">
@@ -151,7 +156,7 @@ class ModulePopUp4 extends React.Component {
                       this.handleSubmit(
                         serviceMobile.service_id,
                         service.type.toString() === "1"
-                          ? service_s.id === "BGAM"
+                          ? service_s.id === "BGAM" && !this.state.changeInput
                             ? serviceMobile.cost
                             : tel_no
                           : null
@@ -191,21 +196,23 @@ class ModulePopUp4 extends React.Component {
                 <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
               ) : (
                 this.props.serviceType === "SCMS" && (
-                  <h5>SELEZIONA LE RICARICHE IN BASSO EF ESEGUI</h5>
+                  <h5>SELEZIONA LE RICARICHE IN BASSO ED ESEGUI</h5>
                 )
               )}
             </div>
-            {service.type.toString() === "1" && service_s.id !== "BGAM" ? (
-              <div className="NumPadContainer">
+            {(service.type.toString() === "1" && service_s.id !== "BGAM") ||
+            changeInput === true ? (
+              <div className={`NumPadContainer ${changeInput ? "bgm" : ""}`}>
                 <div className="NumPd">
-                  <span>+39</span>{" "}
+                  {!changeInput && <span>+39</span>}
                   <input
+                    className={`${changeInput ? "bgm" : ""}`}
                     type="number"
                     placeholder="_ _ _ _ _ _ _"
                     value={this.state.tel_no}
                     onChange={this.handleChange}
                   />
-                  <i className="fas fa-address-book"></i>
+                  {!changeInput && <i className="fas fa-address-book"></i>}
                 </div>
                 <div className="Numbers">
                   <Fragment>
@@ -240,6 +247,7 @@ class ModulePopUp4 extends React.Component {
                       }`,
                     }}
                   >
+                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
                     <img
                       src={
                         images?.[
@@ -264,8 +272,13 @@ class ModulePopUp4 extends React.Component {
                     <div
                       key={`${item.service_id}${index}`}
                       className={`serv ${
-                        item.service_id.toString() ===
-                        serviceMobile.service_id.toString()
+                        (
+                          service_s.id === "BGAM"
+                            ? parseFloat(item?.cost) ===
+                              parseFloat(serviceMobile.cost)
+                            : item.service_id.toString() ===
+                              serviceMobile.service_id.toString()
+                        )
                           ? "active"
                           : ""
                       }`}
@@ -296,12 +309,34 @@ class ModulePopUp4 extends React.Component {
                     </div>
                   );
                 })}
-                {service_s.services &&
+                {serviceMobile.service_id.toString() === "BGM001" ? (
+                  changeInput ? (
+                    <div
+                      className="serv"
+                      onClick={() => {
+                        this.setState({ changeInput: false });
+                      }}
+                    >
+                      <span>Hide</span>
+                    </div>
+                  ) : (
+                    <div
+                      className="serv"
+                      onClick={() => {
+                        this.setState({ changeInput: true });
+                      }}
+                    >
+                      <span>+</span>
+                    </div>
+                  )
+                ) : (
+                  service_s.services &&
                   Array.isArray(service_s.services) &&
                   service_s.services.length < 5 &&
                   this.range(service_s.services.length + 1, 5).map((item) => {
                     return <div key={item} className="serv noborder"></div>;
-                  })}
+                  })
+                )}
               </React.Fragment>
             </div>
 

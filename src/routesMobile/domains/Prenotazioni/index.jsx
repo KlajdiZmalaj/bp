@@ -5,10 +5,8 @@ import Voli from "routes/domains/Forms/Voli";
 import Treni from "routes/domains/Forms/Treni";
 import Eventi from "routes/domains/Forms/Eventi";
 import OnlineShop from "routes/domains/Forms/OnlineShop";
-
 import { withRouter } from "react-router-dom";
 import "./style.css";
-import ShopOnline from "../../../routes/domains/FormDetails/ShopOnline";
 const Item = ({ name, activeService, setService, priorityName }) => (
   <div
     onClick={() => {

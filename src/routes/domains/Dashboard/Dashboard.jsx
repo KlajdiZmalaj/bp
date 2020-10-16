@@ -438,16 +438,16 @@ class DashboardDom extends React.Component {
                       <span> BOLO AUTO</span>
                     </div>
                     <div
-                    // onClick={() => {
-                    //   this.changeServce(
-                    //     "BOL006",
-                    //     [{ service_id: "BOL006", name: "BOLO AUTO" }],
-                    //     "BOLO AUTO",
-                    //     "1",
-                    //     { service_id: "BOL006", name: "BOLO AUTO" }
-                    //   );
-                    //   this.togglePopUp(true);
-                    // }}
+                      onClick={() => {
+                        // this.changeServce(
+                        //   "PAGF24",
+                        //   [{ service_id: "PAGF24", name: "F24" }],
+                        //   "F24",
+                        //   "1",
+                        //   { service_id: "PAGF24", name: "F24" }
+                        // );
+                        // this.togglePopUp(true);
+                      }}
                     >
                       <h3> Presto Online</h3>
                       <img src={images["f24-logo"]} alt="" />
