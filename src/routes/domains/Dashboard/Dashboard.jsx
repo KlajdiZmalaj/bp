@@ -439,14 +439,14 @@ class DashboardDom extends React.Component {
                     </div>
                     <div
                       onClick={() => {
-                        this.changeServce(
-                          "PAGF24",
-                          [{ service_id: "PAGF24", name: "F24" }],
-                          "F24",
-                          "1",
-                          { service_id: "PAGF24", name: "F24" }
-                        );
-                        this.togglePopUp(true);
+                        // this.changeServce(
+                        //   "PAGF24",
+                        //   [{ service_id: "PAGF24", name: "F24" }],
+                        //   "F24",
+                        //   "1",
+                        //   { service_id: "PAGF24", name: "F24" }
+                        // );
+                        // this.togglePopUp(true);
                       }}
                     >
                       <h3> Presto Online</h3>

@@ -9,16 +9,69 @@ import { BolletiniRightForm, BolletiniLeftForm } from "./BolletiniForms";
 import { BoloAutoLeftForm, BoloAutoRightForm } from "./BoloAutoForms";
 import { PagoPaLeftForm, PagoPaRightForm } from "./PagoPaForms";
 import { MavRavLeftForm, MavRavRightForm } from "./MavRavForm";
-
+const SeperateInputs = ({ number, word, setStateValue, value }) => {
+  return [...new Array(number)].map((input, key) => {
+    return (
+      <input
+        key={key}
+        maxLength="1"
+        id={`${word}${key}`}
+        type="text"
+        onChange={(e) => {
+          console.log(e.target.value, e.target.id);
+        }}
+        onKeyDown={(e) => {
+          const previnp = document.getElementById(`${word}${key - 1}`);
+          const inp = document.getElementById(`${word}${key}`);
+          const nextinp = document.getElementById(`${word}${key + 1}`);
+          var keyy = e.keyCode || e.charCode;
+          if (keyy !== 8 && keyy !== 9) {
+            inp.value = String.fromCharCode(keyy);
+            if (nextinp && !nextinp.value) {
+              nextinp.focus();
+            }
+            if (previnp && !previnp.value) {
+              inp.value = "";
+              previnp.focus();
+            } else {
+              if (inp.value && inp.value.length > 0) {
+                nextinp && nextinp.focus();
+              }
+            }
+          }
+          if (keyy === 8) {
+            inp.value = "";
+            if (previnp) {
+              previnp.focus();
+            }
+          }
+        }}
+        className={`inputCodice`}
+        onPaste={() => {
+          navigator.clipboard
+            .readText()
+            .then((codFisInps) => {
+              console.log(codFisInps);
+              setStateValue(codFisInps);
+            })
+            .catch((err) => {
+              console.error("Failed to read clipboard contents: ", err);
+            });
+        }}
+        value={value}
+      />
+    );
+  });
+};
 class Bolletino extends React.Component {
   state = {
-    confirmDirty: false,
-    barcodeInput: false,
-    BinpVal: "",
-    codInd: "",
-    data: {},
     condizioniAgreement: true,
     condizioniShow: false,
+    motivo_del_pagamento: false,
+    codice_fiscale_atto: false,
+    codFisInps: "asdasdasd",
+    codice_atto: "",
+    codice_uffico: "",
   };
   setbarcodeInp = (e) => {
     this.setState({ barcodeInput: e });
@@ -65,23 +118,33 @@ class Bolletino extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { barcodeData, service_id, service_s } = this.props;
-    const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
+    const {
+      barcodeInput,
+      condizioniShow,
+      condizioniAgreement,
+      motivo_del_pagamento,
+      codice_fiscale_atto,
+      codice_uffico,
+    } = this.state;
     return (
-      <div className="Bolletini">
+      <div className="Bolletini F24">
         <div className="Bolletini-Header">
+          <span>Pagamento deleghe f24</span>
           <span>
-            {service_id === "BOL003" || service_id === "BOL004"
-              ? "MAV/RAV"
-              : service_id === "PPA001"
-              ? "PAGO PA"
-              : service_id === "BOL006"
-              ? "BOLO AUTO"
-              : "BOLLETINI"}
+            {/* eslint-disable-next-line jsx-a11y/alt-text */}
+            {/* <img src=src /> */}
+          </span>
+        </div>
+        <div className="Bolletini-AfterHeader">
+          <span>
+            <h4>Modello di pagamento unificato</h4>
+            <h5>Per l’accredito alla tesoreria competente</h5>
           </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            {/* <img src={images[imageLogo]} /> */}
+            {/* <img src={/*src/> */}
           </span>
+          <span>Delega irrevocabile a</span>
         </div>
         <div className="Bolletini-Form">
           <Form>
@@ -118,74 +181,38 @@ class Bolletino extends React.Component {
                 placeholder="barcode"
               />
             </div>
-            <div
-              className={`Left ${
-                service_id === "BOL006"
-                  ? "BA"
-                  : service_id === "PPA001"
-                  ? "PA"
-                  : ""
-              }`}
-            >
-              {service_id === "BOL003" || service_id === "BOL004" ? (
-                <MavRavLeftForm
-                  barcodeData={barcodeData}
-                  getFieldDecorator={getFieldDecorator}
-                  getFieldValue={this.props.form.getFieldValue}
-                  setServiceID={this.props.setServiceId}
-                  service_s={service_s}
-                />
-              ) : service_id === "BOL006" ? (
-                <BoloAutoLeftForm
-                  barcodeData={barcodeData}
-                  getFieldDecorator={getFieldDecorator}
-                  getFieldValue={this.props.form.getFieldValue}
-                />
-              ) : service_id === "PPA001" ? (
-                <PagoPaLeftForm
-                  barcodeData={barcodeData}
-                  getFieldDecorator={getFieldDecorator}
-                  getFieldValue={this.props.form.getFieldValue}
-                />
-              ) : (
-                <BolletiniLeftForm
-                  barcodeData={barcodeData}
-                  getFieldDecorator={getFieldDecorator}
-                  getFieldValue={this.props.form.getFieldValue}
-                  service_id={service_id}
-                />
-              )}
-            </div>
-            <div
-              className={`Right ${
-                service_id === "BOL006"
-                  ? "BA"
-                  : service_id === "PPA001"
-                  ? "PA"
-                  : ""
-              }`}
-            >
-              <div className="Inputs">
+            <div className="F24--Top">
+              <div
+                className={`Left ${
+                  service_id === "BOL006"
+                    ? "BA"
+                    : service_id === "PPA001"
+                    ? "PA"
+                    : ""
+                }`}
+              >
                 {service_id === "BOL003" || service_id === "BOL004" ? (
-                  <MavRavRightForm
+                  <MavRavLeftForm
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
+                    setServiceID={this.props.setServiceId}
+                    service_s={service_s}
                   />
                 ) : service_id === "BOL006" ? (
-                  <BoloAutoRightForm
+                  <BoloAutoLeftForm
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
                   />
                 ) : service_id === "PPA001" ? (
-                  <PagoPaRightForm
+                  <PagoPaLeftForm
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
                   />
                 ) : (
-                  <BolletiniRightForm
+                  <BolletiniLeftForm
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
@@ -193,82 +220,156 @@ class Bolletino extends React.Component {
                   />
                 )}
               </div>
+              <div
+                className={`Right ${
+                  service_id === "BOL006"
+                    ? "BA"
+                    : service_id === "PPA001"
+                    ? "PA"
+                    : ""
+                }`}
+              >
+                <div className="Inputs">
+                  {service_id === "BOL003" || service_id === "BOL004" ? (
+                    <MavRavRightForm
+                      barcodeData={barcodeData}
+                      getFieldDecorator={getFieldDecorator}
+                      getFieldValue={this.props.form.getFieldValue}
+                    />
+                  ) : service_id === "BOL006" ? (
+                    <BoloAutoRightForm
+                      barcodeData={barcodeData}
+                      getFieldDecorator={getFieldDecorator}
+                      getFieldValue={this.props.form.getFieldValue}
+                    />
+                  ) : service_id === "PPA001" ? (
+                    <PagoPaRightForm
+                      barcodeData={barcodeData}
+                      getFieldDecorator={getFieldDecorator}
+                      getFieldValue={this.props.form.getFieldValue}
+                    />
+                  ) : (
+                    <BolletiniRightForm
+                      barcodeData={barcodeData}
+                      getFieldDecorator={getFieldDecorator}
+                      getFieldValue={this.props.form.getFieldValue}
+                      service_id={service_id}
+                    />
+                  )}
+                </div>
 
-              <div className="Condizioni">
-                <div
-                  className="Condizioni control"
-                  onClick={() => {
-                    this.setState((state) => ({
-                      condizioniShow: !state.condizioniShow,
-                    }));
-                  }}
-                >
-                  <span>Condizioni d' uso</span>
-                  <span>
-                    <i
-                      className={`fal fa-chevron-${
-                        condizioniShow ? "up" : "down"
-                      }`}
-                    ></i>
-                  </span>
+                <div className="Condizioni">
+                  <div
+                    className="Condizioni control"
+                    onClick={() => {
+                      this.setState((state) => ({
+                        condizioniShow: !state.condizioniShow,
+                      }));
+                    }}
+                  >
+                    <span>Condizioni d' uso</span>
+                    <span>
+                      <i
+                        className={`fal fa-chevron-${
+                          condizioniShow ? "up" : "down"
+                        }`}
+                      ></i>
+                    </span>
+                  </div>
+                  {condizioniShow && <Condizioni></Condizioni>}
+                  <Checkbox
+                    onChange={(e) => {
+                      this.setState({
+                        condizioniAgreement: e.target.checked,
+                      });
+                    }}
+                    checked={condizioniAgreement}
+                  >
+                    La persona che hai di fronte non è il intestatario del
+                    pagamento del bollo
+                  </Checkbox>
                 </div>
-                {condizioniShow && <Condizioni></Condizioni>}
-                <Checkbox
-                  onChange={(e) => {
-                    this.setState({
-                      condizioniAgreement: e.target.checked,
-                    });
-                  }}
-                  checked={condizioniAgreement}
-                >
-                  La persona che hai di fronte non è il intestatario del
-                  pagamento del bollo
-                </Checkbox>
               </div>
-              <div className="Actions">
-                <div
-                  className="Actions--Item"
-                  onClick={(e) => {
-                    if (this.props.accountInfo?.token) {
-                      this.handleSubmit(e);
-                    } else {
-                      window.location.hash = "login";
-                      this.props.togglePopUp(false);
-                    }
-                  }}
-                  htmltype="submit"
-                >
-                  <h3>esegui</h3>
-                  <img src={images.checkSymbol} alt="" />
+            </div>
+            <div className="F24--Middle">
+              <div>
+                <span></span>
+                <span>
+                  {" "}
+                  <i
+                    className={`fal fa-chevron-${
+                      codice_fiscale_atto ? "down" : "up"
+                    }`}
+                  />
+                </span>
+              </div>
+              <div
+                className={`F24--Middle-Inputs ${
+                  codice_fiscale_atto ? "none" : ""
+                }`}
+              >
+                <div>
+                  {" "}
+                  <span>Codice ufficio</span> <span>Codice atto</span>
                 </div>
-                <div
-                  className="Actions--Item"
-                  onClick={() => {
-                    if (barcodeInput) {
-                      this.setbarcodeInp(false);
-                    } else {
-                      this.setbarcodeInp(true);
-                    }
-                  }}
-                >
-                  <h3>barcode</h3>
-                  <p>
-                    pagemento <br /> differito
-                  </p>
+                <div className="Inputs">
+                  <SeperateInputs
+                    number={3}
+                    word="codice_uffico"
+                    setStateValue={(value) => {
+                      this.setState({ codice_uffico: value });
+                    }}
+                    value={codice_uffico}
+                  />
                 </div>
-                <div className="Actions--Item">
-                  <h3>stampa</h3>
-                  <p>
-                    pre <br /> scontrino
-                  </p>
-                </div>
-                <div
-                  className="Actions--Item"
-                  onClick={() => this.props.togglePopUp(false)}
-                >
-                  <h3>anulla</h3>
-                  <img src={images.close} alt="" />
-                </div>
+              </div>
+            </div>
+            <div className="F24--Bottom"></div>
+            <div className="F24--Footer"></div>
+
+            <div className="Actions">
+              <div
+                className="Actions--Item"
+                onClick={(e) => {
+                  if (this.props.accountInfo?.token) {
+                    this.handleSubmit(e);
+                  } else {
+                    window.location.hash = "login";
+                    this.props.togglePopUp(false);
+                  }
+                }}
+                htmltype="submit"
+              >
+                <h3>esegui</h3>
+                <img src={images.checkSymbol} alt="" />
+              </div>
+              <div
+                className="Actions--Item"
+                onClick={() => {
+                  if (barcodeInput) {
+                    this.setbarcodeInp(false);
+                  } else {
+                    this.setbarcodeInp(true);
+                  }
+                }}
+              >
+                <h3>barcode</h3>
+                <p>
+                  pagemento <br /> differito
+                </p>
+              </div>
+              <div className="Actions--Item">
+                <h3>stampa</h3>
+                <p>
+                  pre <br /> scontrino
+                </p>
+              </div>
+              <div
+                className="Actions--Item"
+                onClick={() => this.props.togglePopUp(false)}
+              >
+                <h3>anulla</h3>
+                <img src={images.close} alt="" />
               </div>
             </div>
           </Form>
@@ -291,3 +392,59 @@ const mapsStateToProps = (state) => ({
 export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
   CenterAccountMenuu
 );
+
+{
+  /* <div className={"inpssWrapper"}>
+  {[...new Array(16)].map((input, key) => {
+    return (
+      <input
+        key={key}
+        maxLength="1"
+        id={`inp${key}`}
+        type="text"
+        onKeyDown={(e) => {
+          // console.log("keydown", e.keyCode || e.charCode);
+          const previnp = document.getElementById(`inp${key - 1}`);
+          const inp = document.getElementById(`inp${key}`);
+          const nextinp = document.getElementById(`inp${key + 1}`);
+          var keyy = e.keyCode || e.charCode;
+          if (keyy !== 8 && keyy !== 9) {
+            inp.value = String.fromCharCode(keyy);
+
+            if (nextinp && !nextinp.value) {
+              nextinp.focus();
+            }
+            if (previnp && !previnp.value) {
+              inp.value = "";
+              previnp.focus();
+            } else {
+              if (inp.value && inp.value.length > 0) {
+                nextinp && nextinp.focus();
+              }
+            }
+          }
+          if (keyy === 8) {
+            inp.value = "";
+            if (previnp) {
+              previnp.focus();
+            }
+          }
+          this.getValues();
+        }}
+        className={`inputCodice`}
+        onPaste={() => {
+          navigator.clipboard
+            .readText()
+            .then((codFisInps) => {
+              this.setState({ codFisInps });
+            })
+            .catch((err) => {
+              console.error("Failed to read clipboard contents: ", err);
+            });
+        }}
+        value={this.state.codFisInps.split("")[key]}
+      />
+    );
+  })}
+</div>; */
+}

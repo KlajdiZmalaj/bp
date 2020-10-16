@@ -145,7 +145,7 @@ const Numpad = ({
         <div className="mobileNumPad--subh">
           {!noNumbers
             ? "INSERIRE IL NUMERO DI TELEFONO DA RICARICARE"
-            : "SELEZIONA LE RICARICHE IN BASSO EF ESEGUI"}
+            : "SELEZIONA LE RICARICHE IN BASSO ED ESEGUI"}
         </div>
       </div>
       {!noNumbers ? (
