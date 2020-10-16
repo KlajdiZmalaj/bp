@@ -100,7 +100,7 @@ export function getScale(page, container) {
     page.attr(
       "style",
       "-webkit-transform:scale(" +
-        (basePage.scale >= 1 ? 1 : basePage.scale) +
+        (basePage.scale >= 1 ? basePage.scale : basePage.scale) +
         ");left:" +
         newLeftPos +
         "px;top:" +
