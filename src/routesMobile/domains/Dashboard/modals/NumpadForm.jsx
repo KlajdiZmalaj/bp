@@ -5,6 +5,7 @@ import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
 import ReactToPrint from "react-to-print";
 import { BannerColors } from "config/index";
+import { getScale } from "utils/HelperFunc";
 const range = (start, end) => {
   var array = [];
   for (var i = start; i <= end; i++) {
@@ -52,6 +53,9 @@ const Numpad = ({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
+  useEffect(() => {
+    getScale(".img.Page", ".GamingBanner.mobile");
+  }, []);
   console.log(selectedCost);
   return (
     <div className="mobileNumPad">
@@ -185,21 +189,22 @@ const Numpad = ({
           </div>
         </>
       ) : (
-        <div className="GamingBanner">
-          <div
-            className="img"
-            style={{
-              background: `${
-                BannerColors?.[selectedCost?.service_id.substring(0, 3)]
-              }`,
-            }}
-          >
+        <div
+          className="GamingBanner mobile"
+          style={{
+            background: `${
+              BannerColors?.[selectedCost?.service_id.substring(0, 3)]
+            }`,
+          }}
+        >
+          <div className="img Page">
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img
               src={
                 images?.[`Service${selectedCost?.service_id.substring(0, 3)}`]
               }
             />
+            <span>{selectedCost?.cost}€</span>
           </div>
         </div>
       )}
