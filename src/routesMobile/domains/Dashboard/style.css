@@ -301,8 +301,8 @@
 .servicesForms .mobileNumPad .GamingBanner .img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
 }
 
@@ -321,8 +321,8 @@
 
 .servicesForms .mobileNumPad .GamingBanner.mobile .img span {
   position: absolute;
-  left: 87px;
-  top: 89px;
+  left: 77px;
+  top: 73px;
   color: #ffffffcf;
   font-size: 30px;
   font-weight: 500;
