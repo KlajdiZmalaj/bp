@@ -5,6 +5,7 @@ import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
 import ReactToPrint from "react-to-print";
 import { BannerColors } from "config/index";
+import { getScale } from "utils/HelperFunc";
 const range = (start, end) => {
   var array = [];
   for (var i = start; i <= end; i++) {
@@ -12,6 +13,32 @@ const range = (start, end) => {
   }
   return array;
 };
+const BgameServices = [
+  {
+    cost: "10.00",
+    name: "BGame Voucher",
+    service_id: "BGM001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BGame Voucher",
+    service_id: "BGM002",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BGame Voucher",
+    service_id: "BGM003",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BGame Voucher",
+    service_id: "BGM004",
+    type: "1",
+  },
+];
 const Numpad = ({
   services,
   activeService,
@@ -52,7 +79,11 @@ const Numpad = ({
         message: "Transazione di caricamento...",
       });
   }, [loadingRechargeMobile]);
-  console.log(selectedCost);
+  useEffect(() => {
+    getScale(".img.Page", ".GamingBanner.mobile");
+  }, []);
+
+  console.log("services", services, activeCategory, activeService);
   return (
     <div className="mobileNumPad">
       {/* <div className="mobileNumPad--services">
@@ -78,39 +109,40 @@ const Numpad = ({
           </div>*/}
       <div className="mobileNumPad--services">
         <React.Fragment>
-          {services[activeCategory][activeService].services.map(
-            (item, index) => {
-              return selectedCost?.service_id === item.service_id ? (
-                <div
-                  key={index}
-                  className={`serv ${
-                    selectedCost?.service_id === item.service_id ? "active" : ""
-                  }`}
-                  onClick={() => setCost(item)}
-                >
-                  <div className="Upper">
-                    <div className="Upper--Left"></div>
-                    <div className="Upper--Right"></div>
-                  </div>
-                  <div className="Bottom">
-                    <span className="Price">{parseInt(item.cost)}</span>
-                    <span className="Euro">€</span>
-                  </div>
+          {(activeService !== "BGAM"
+            ? services[activeCategory][activeService].services
+            : BgameServices
+          ).map((item, index) => {
+            return selectedCost?.service_id === item.service_id ? (
+              <div
+                key={index}
+                className={`serv ${
+                  selectedCost?.service_id === item.service_id ? "active" : ""
+                }`}
+                onClick={() => setCost(item)}
+              >
+                <div className="Upper">
+                  <div className="Upper--Left"></div>
+                  <div className="Upper--Right"></div>
                 </div>
-              ) : (
-                <div
-                  key={index}
-                  className={`serv ${
-                    selectedCost?.service_id === item.service_id ? "active" : ""
-                  }`}
-                  onClick={() => setCost(item)}
-                >
+                <div className="Bottom">
                   <span className="Price">{parseInt(item.cost)}</span>
                   <span className="Euro">€</span>
                 </div>
-              );
-            }
-          )}
+              </div>
+            ) : (
+              <div
+                key={index}
+                className={`serv ${
+                  selectedCost?.service_id === item.service_id ? "active" : ""
+                }`}
+                onClick={() => setCost(item)}
+              >
+                <span className="Price">{parseInt(item.cost)}</span>
+                <span className="Euro">€</span>
+              </div>
+            );
+          })}
           {services[activeCategory][activeService].services &&
             Array.isArray(services[activeCategory][activeService].services) &&
             services[activeCategory][activeService].services.length < 5 &&
@@ -185,21 +217,22 @@ const Numpad = ({
           </div>
         </>
       ) : (
-        <div className="GamingBanner">
-          <div
-            className="img"
-            style={{
-              background: `${
-                BannerColors?.[selectedCost?.service_id.substring(0, 3)]
-              }`,
-            }}
-          >
+        <div
+          className="GamingBanner mobile"
+          style={{
+            background: `${
+              BannerColors?.[selectedCost?.service_id.substring(0, 3)]
+            }`,
+          }}
+        >
+          <div className="img Page">
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img
               src={
                 images?.[`Service${selectedCost?.service_id.substring(0, 3)}`]
               }
             />
+            <span>{selectedCost?.cost}€</span>
           </div>
         </div>
       )}

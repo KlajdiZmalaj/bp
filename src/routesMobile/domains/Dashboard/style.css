@@ -272,8 +272,15 @@
 .servicesForms .mobileNumPad .GamingBanner {
   height: calc(75vh - 105px);
   width: 100%;
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .servicesForms .mobileNumPad .GamingBanner .img {
@@ -294,9 +301,31 @@
 .servicesForms .mobileNumPad .GamingBanner .img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
+}
+
+.servicesForms .mobileNumPad .GamingBanner.mobile .img {
+  position: relative;
+  width: 470px;
+  height: 490px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+}
+
+.servicesForms .mobileNumPad .GamingBanner.mobile .img span {
+  position: absolute;
+  left: 77px;
+  top: 73px;
+  color: #ffffffcf;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .servicesForms .mobileNumPad--services {

@@ -1,4 +1,6 @@
 import moment from "moment";
+import { debounce } from "lodash";
+import $ from "jquery";
 export function numberWithCommas(text) {
   if (text !== undefined && text !== "0") {
     return text.toLocaleString("it-IT", { minimumFractionDigits: 2 });
@@ -49,4 +51,61 @@ export function Encrypt() {
         randomString(5)
     )
   );
+}
+
+var pageWidth, pageHeight;
+var basePage = {
+  width: 470,
+  height: 490,
+  scale: 1,
+  scaleX: 1,
+  scaleY: 1,
+};
+export function getScale(page, container) {
+  // ".casinoIframe--game"
+  var $page = $(`${page}`);
+
+  getPageSize();
+  scalePages($page, pageWidth, pageHeight);
+
+  $(window).resize(
+    debounce(function () {
+      getPageSize();
+      scalePages($page, pageWidth, pageHeight);
+    }, 150)
+  );
+
+  function getPageSize() {
+    pageHeight = $(`${container}`).height();
+    pageWidth = $(`${container}`).width();
+    console.log("sizes", pageWidth, pageHeight);
+  }
+
+  function scalePages(page, maxWidth, maxHeight) {
+    var scaleX = 1,
+      scaleY = 1;
+    scaleX = maxWidth / basePage.width;
+    scaleY = maxHeight / basePage.height;
+    basePage.scaleX = scaleX;
+    basePage.scaleY = scaleY;
+    basePage.scale = scaleX > scaleY ? scaleY : scaleX;
+
+    var newLeftPos = Math.abs(
+      Math.floor((basePage.width * basePage.scale - maxWidth) / 2)
+    );
+    var newTopPos = Math.abs(
+      Math.floor((basePage.height * basePage.scale - maxHeight) / 2)
+    );
+
+    page.attr(
+      "style",
+      "-webkit-transform:scale(" +
+        (basePage.scale >= 1 ? basePage.scale : basePage.scale) +
+        ");left:" +
+        newLeftPos +
+        "px;top:" +
+        newTopPos +
+        "px;"
+    );
+  }
 }
