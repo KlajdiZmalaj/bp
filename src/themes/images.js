@@ -19,6 +19,8 @@ export default {
   //pagamanti logo
   BOLO_AUTO: require(`../assets/images/boloauto.png`),
   PAGO_PA: require(`../assets/images/pagopa.png`),
+  agenzia_entrata: require(`../assets/images/agenzia_entrata.png`),
+
   BOLLETINO: require(`../assets/images/bolletino.png`),
   "BOLO_AUTO-logo": require(`../assets/images/boloauto.svg`),
   "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
@@ -81,7 +83,7 @@ export default {
   print: require(`../assets/images${skin}/print.svg`),
   logoGray: require(`../assets/images${skin}/logoGray.svg`),
   postepayBlue: require(`../assets/images${skin}/postepayBlue.svg`),
-  BOLL: require(`../assets/images${skin}/bill-dark.svg`),
+  BOLL: require(`../assets/images/bolletino.png`),
   RCPP: require(`../assets/images${skin}/postpayimg.svg`),
   RPP001: require(`../assets/images${skin}/postpayimg.svg`),
   PARTYP: require(`../assets/images${skin}/partypoker.svg`),

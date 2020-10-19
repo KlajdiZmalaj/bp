@@ -1670,8 +1670,7 @@ export function* setMavRav({
     denominazione,
     partita_iva
   );
-  console.log(response);
-  if (response) {
+  if (response?.status === 200) {
     if (response.data) {
       notification.close("mavRavPayment");
       yield put(AuthActions.setBolletiniBianchi(response.data));

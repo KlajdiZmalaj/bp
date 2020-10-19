@@ -112,6 +112,17 @@ class DashboardDom extends React.Component {
     }
     return FilterCompanies;
   };
+  checkIfInlcudes = (mainWord, WordToCheck) => {
+    return (
+      mainWord
+        .toString()
+        .toLowerCase()
+        .includes(WordToCheck.toString().toLowerCase()) ||
+      WordToCheck.toString()
+        .toLowerCase()
+        .includes(mainWord.toString().toLowerCase())
+    );
+  };
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
@@ -207,6 +218,7 @@ class DashboardDom extends React.Component {
       categoryActive,
       categoriesTypeSelected,
     } = this.state;
+    console.log(search);
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}>
@@ -438,16 +450,16 @@ class DashboardDom extends React.Component {
                       <span> BOLO AUTO</span>
                     </div>
                     <div
-                      onClick={() => {
-                        // this.changeServce(
-                        //   "PAGF24",
-                        //   [{ service_id: "PAGF24", name: "F24" }],
-                        //   "F24",
-                        //   "1",
-                        //   { service_id: "PAGF24", name: "F24" }
-                        // );
-                        // this.togglePopUp(true);
-                      }}
+                    // onClick={() => {
+                    //   this.changeServce(
+                    //     "PAGF24",
+                    //     [{ service_id: "PAGF24", name: "F24" }],
+                    //     "F24",
+                    //     "1",
+                    //     { service_id: "PAGF24", name: "F24" }
+                    //   );
+                    //   this.togglePopUp(true);
+                    // }}
                     >
                       <h3> Presto Online</h3>
                       <img src={images["f24-logo"]} alt="" />

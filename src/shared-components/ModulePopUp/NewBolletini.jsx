@@ -31,7 +31,6 @@ class Bolletino extends React.Component {
     e.preventDefault();
     const { service_id } = this.props;
     this.props.form.validateFieldsAndScroll((err, values) => {
-      this.clearFields();
       if (!err && this.state.condizioniAgreement) {
         if (service_id === "BOL003" || service_id === "BOL004") {
           this.props.setMavRav(

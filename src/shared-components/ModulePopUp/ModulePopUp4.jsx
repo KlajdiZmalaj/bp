@@ -73,7 +73,15 @@ class ModulePopUp4 extends React.Component {
   }
 
   addNr = (nr) => {
-    this.setState({ tel_no: this.state.tel_no.concat(nr) });
+    if (nr === ".") {
+      this.setState({
+        tel_no: this.state.tel_no.includes(",")
+          ? this.state.tel_no
+          : this.state.tel_no.concat(","),
+      });
+    } else {
+      this.setState({ tel_no: this.state.tel_no.concat(nr) });
+    }
   };
   replaceNr = (nr) => {
     this.setState({ tel_no: nr.toString() });
@@ -91,6 +99,7 @@ class ModulePopUp4 extends React.Component {
     const { service_s, rechargeMobile, service } = this.props;
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
+    console.log(this.state.tel_no);
     const BgameServices = [
       {
         cost: "10.00",
@@ -207,31 +216,57 @@ class ModulePopUp4 extends React.Component {
                   {!changeInput && <span>+39</span>}
                   <input
                     className={`${changeInput ? "bgm" : ""}`}
-                    type="number"
+                    type="text"
                     placeholder="_ _ _ _ _ _ _"
-                    value={this.state.tel_no}
+                    value={
+                      changeInput ? `${this.state.tel_no}` : this.state.tel_no
+                    }
                     onChange={this.handleChange}
                   />
                   {!changeInput && <i className="fas fa-address-book"></i>}
                 </div>
                 <div className="Numbers">
-                  <Fragment>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
-                      <span
-                        key={num}
-                        id={`num${num}`}
-                        onClick={() =>
-                          num === "CE"
-                            ? this.clear()
-                            : num === "C"
-                            ? this.clearOne()
-                            : this.addNr(num)
-                        }
-                      >
-                        {num}
-                      </span>
-                    ))}
-                  </Fragment>
+                  {service_s.id === "BGAM" ? (
+                    <Fragment>
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, ".", "0", "x"].map((num) => (
+                        <span
+                          key={num}
+                          id={`num${num}`}
+                          className={`bgm ${num === "x" ? "x" : ""}`}
+                          onClick={() =>
+                            num === "x" ? this.clearOne() : this.addNr(num)
+                          }
+                        >
+                          {num === "x" ? (
+                            <span>
+                              <i className="fal fa-times" />
+                              <div className="triangle"></div>
+                            </span>
+                          ) : (
+                            num
+                          )}
+                        </span>
+                      ))}
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "CE"].map((num) => (
+                        <span
+                          key={num}
+                          id={`num${num}`}
+                          onClick={() =>
+                            num === "CE"
+                              ? this.clear()
+                              : num === "C"
+                              ? this.clearOne()
+                              : this.addNr(num)
+                          }
+                        >
+                          {num}
+                        </span>
+                      ))}
+                    </Fragment>
+                  )}
                 </div>
               </div>
             ) : (
@@ -267,8 +302,13 @@ class ModulePopUp4 extends React.Component {
                   : service_s.services || []
                 ).map((item, index) => {
                   console.log("item", item);
-                  return item.service_id.toString() ===
-                    serviceMobile.service_id.toString() ? (
+                  return (
+                    service_s.id === "BGAM"
+                      ? parseFloat(item?.cost) ===
+                        parseFloat(serviceMobile.cost)
+                      : item.service_id.toString() ===
+                        serviceMobile.service_id.toString()
+                  ) ? (
                     <div
                       key={`${item.service_id}${index}`}
                       className={`serv ${
@@ -297,8 +337,13 @@ class ModulePopUp4 extends React.Component {
                     <div
                       key={`${item.service_id}${index}`}
                       className={`serv ${
-                        item.service_id.toString() ===
-                        serviceMobile.service_id.toString()
+                        (
+                          service_s.id === "BGAM"
+                            ? parseFloat(item?.cost) ===
+                              parseFloat(serviceMobile.cost)
+                            : item.service_id.toString() ===
+                              serviceMobile.service_id.toString()
+                        )
                           ? "active"
                           : ""
                       }`}
@@ -317,7 +362,7 @@ class ModulePopUp4 extends React.Component {
                         this.setState({ changeInput: false });
                       }}
                     >
-                      <span>Hide</span>
+                      <span>X</span>
                     </div>
                   ) : (
                     <div

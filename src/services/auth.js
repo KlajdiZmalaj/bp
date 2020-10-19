@@ -1280,7 +1280,7 @@ export const pagoPaRequest = (
   partita_iva
 ) =>
   instanceAxios
-    .post(`/sepafin/pagoPA`, {
+    .post(`/sepafin/bookPagoPA`, {
       ...skin,
       service_id,
       person_type,

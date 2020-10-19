@@ -7,20 +7,30 @@ import F24 from "./F24";
 import Bolletino from "./Bolletino";
 
 class ModulePopUp1 extends React.Component {
+  componentDidMount() {
+    document.body.style.overflow = "hidden";
+  }
+  componentWillUnmount() {
+    document.body.style.removeProperty("overflow");
+  }
   render() {
     const { bolletiniBianchi, service } = this.props;
     return (
-      <div className="modulePopUP modulePopUP1">
+      <div
+        className={`modulePopUP modulePopUP1 ${
+          service.service_id === "PAGF24" ? "" : "flex"
+        }`}
+      >
         <div className="module container-fluid max-width_modulePopUP">
           <div className="row">
-            {/* {service.service_id === "PAGF24" ? (
+            {service.service_id === "PAGF24" ? (
               <F24 />
-            ) : ( */}
-            <Bolletino
-              service={service}
-              service_id={service.service_id}
-            ></Bolletino>
-            {/* // )} */}
+            ) : (
+              <Bolletino
+                service={service}
+                service_id={service.service_id}
+              ></Bolletino>
+            )}
             {bolletiniBianchi &&
               JSON.stringify(bolletiniBianchi) !== JSON.stringify({}) && (
                 <Fragment>

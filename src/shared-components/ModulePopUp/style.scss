@@ -341,8 +341,8 @@
     }
   }
   &.game {
-    height: 627px;
-    top: calc((100vh - 580px) / 2);
+    height: 670px;
+    top: calc((100vh - 620px) / 2);
     margin: 0 auto;
     position: relative;
   }
@@ -473,6 +473,37 @@
           font-weight: 300;
           color: #677e90;
           z-index: 1;
+          &.bgm {
+            width: 33.333%;
+            &.x {
+              .triangle {
+                width: 0;
+                height: 0;
+                border-top: 12.5px solid transparent;
+                border-right: 10px solid #ebebeb;
+                border-bottom: 12.5px solid transparent;
+                border-radius: 4px;
+                position: absolute;
+                left: -7.5px;
+                top: 0;
+              }
+              span {
+                width: 25px;
+                height: 25px;
+                border: none;
+                background: #ebebeb;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                border-radius: 4px;
+                i {
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+              }
+            }
+          }
           cursor: pointer;
         }
       }
@@ -555,6 +586,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            padding-top: 5%;
             &::after {
               content: "";
               width: 100%;
@@ -579,15 +611,24 @@
           //   z-index: 1;
           // }
         }
+
         span {
           color: #ffffff;
-          font-size: 23px;
+          font-size: 21px;
           font-weight: 300;
           font-family: "Roboto";
           &:nth-child(2) {
-            top: -8px;
-            left: 1px;
+            top: -5px;
+            font-size: 17px;
+            left: 2px;
             position: relative;
+          }
+        }
+        .Bottom {
+          span {
+            &:nth-child(2) {
+              top: -2.9px;
+            }
           }
         }
       }

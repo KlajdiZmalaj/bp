@@ -59,13 +59,6 @@ export const MavRavLeftForm = ({
     />
 
     <ReturnFormItem
-      descName="Codice Avviso"
-      name="codice_avviso"
-      message="Please input your Codice Avviso!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
-    <ReturnFormItem
       descName="Prezzo"
       name="importo"
       message="Please input your Prezzo!"
