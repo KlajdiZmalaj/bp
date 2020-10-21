@@ -21,6 +21,9 @@ const ServicesForms = ({
     accountInfo.profile.username === "mynewagency" &&
     accountInfo.profile.role.name === "agency" &&
     accountInfo.profile.role.id === 11;
+  const isSepaUser =
+    accountInfo.profile.username === "sepa_agency" ||
+    accountInfo.profile.username === "sepa_user";
   let allFavServices = [];
   Object.keys(favorites).forEach((item) => {
     Object.keys(favorites[item]).forEach((subitem) => {
@@ -52,7 +55,7 @@ const ServicesForms = ({
           allFavServices={allFavServices}
         />
       ) : activeService === "BOL001" ? (
-        isTestAcc ? (
+        isTestAcc || isSepaUser ? (
           <NewBolletiniBianchi
             setService={setService}
             activeService={activeService}
@@ -68,7 +71,7 @@ const ServicesForms = ({
           />
         )
       ) : activeService === "BOL002" ? (
-        isTestAcc ? (
+        isTestAcc || isSepaUser ? (
           <NewBolletiniPremercati
             setService={setService}
             activeService={activeService}
@@ -97,7 +100,7 @@ const ServicesForms = ({
           toggleFavorite={toggleFavorite}
           allFavServices={allFavServices}
         />
-      ) : activeService === "PAGF24" ? (
+      ) : activeService === "PAGF24" && isTestAcc ? (
         <BolletiniPremercati
           setService={setService}
           activeService={activeService}
