@@ -1,0 +1,137 @@
+.pagoPaConfirm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pagoPaConfirm i {
+  width: 13%;
+  font-size: 35px;
+  font-weight: 400;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 5px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 1%;
+  color: #1890ff;
+}
+
+.pagoPaConfirm .Buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  margin-top: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.pagoPaConfirm .Buttons h2 {
+  font-size: 18px;
+  color: #5c5c5c;
+  font-weight: 600;
+  font-family: "Roboto";
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  margin-right: 15px;
+}
+
+.pagoPaConfirm .Buttons button {
+  border: none;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  padding: 2px;
+  color: #fff;
+}
+
+.pagoPaConfirm .Buttons button:nth-child(2) {
+  background: #52c41a;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.pagoPaConfirm .Buttons button:nth-child(3) {
+  background: #ff4d4f;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+.pagoPaConfirm .Info {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.pagoPaConfirm .Info div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+  width: 84%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pagoPaConfirm .Info div span {
+  font-size: 14px;
+  color: #5c5c5c;
+  font-weight: 400;
+  font-family: "Roboto";
+  margin-right: 8px;
+}
+
+.pagoPaConfirm .Info div span:first-child {
+  font-weight: bold;
+}
+
+.ant-modal.Conferma {
+  max-width: 380px;
+}
+/*# sourceMappingURL=pagoPaConfirm.css.map */

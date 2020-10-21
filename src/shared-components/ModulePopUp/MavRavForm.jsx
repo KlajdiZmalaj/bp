@@ -33,6 +33,7 @@ export const MavRavLeftForm = ({
   getFieldValue,
   setServiceID,
   service_s,
+  mobile,
 }) => (
   <Fragment>
     <ReturnFormItem
@@ -47,7 +48,11 @@ export const MavRavLeftForm = ({
           onChange={(e) => {
             setServiceID(
               e.target.value === "1"
-                ? service_s.services[0]
+                ? mobile
+                  ? service_s.services[0].service_id
+                  : service_s.services[0]
+                : mobile
+                ? service_s.services[1].service_id
                 : service_s.services[1]
             );
           }}

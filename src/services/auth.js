@@ -35,7 +35,7 @@ const handleError = (error) => {
       description:
         error.response.data.errors && Object.values(error.response.data.errors),
       placement: "bottomRight",
-      duration: "5",
+      duration: 5,
     });
   }
   return Promise.reject(error);
@@ -1277,10 +1277,12 @@ export const pagoPaRequest = (
   cognome,
   codice_fiscale,
   denominazione,
-  partita_iva
+  partita_iva,
+  tipo_veicolo,
+  targa
 ) =>
   instanceAxios
-    .post(`/sepafin/bookPagoPA`, {
+    .post(`/sepafin/book${service_id === "PPA001" ? "PagoPA" : "Auto"}`, {
       ...skin,
       service_id,
       person_type,
@@ -1289,8 +1291,9 @@ export const pagoPaRequest = (
       email,
       phone_number,
       tipologia,
-      codice_fiscale_bol,
-      codice_aviso,
+      ...(service_id === "PPA001"
+        ? { codice_fiscale_bol, codice_aviso }
+        : { tipo_veicolo: parseInt(tipo_veicolo), targa }),
       ...(person_type === "F"
         ? { nome, cognome, codice_fiscale }
         : { denominazione, partita_iva }),
@@ -1329,5 +1332,78 @@ export const mavRavRequest = (
       ...(person_type === "F"
         ? { nome, cognome, codice_fiscale }
         : { denominazione, partita_iva }),
+    })
+    .catch((error) => ({ error }));
+
+export const payPagoPaReq = (
+  service_id,
+  total_amount,
+  fee_amount,
+  pagamento_id
+) =>
+  instanceAxios
+    .post(`/sepafin/pay${service_id === "PPA001" ? "PagoPA" : "Auto"}`, {
+      ...skin,
+      service_id,
+      total_amount,
+      fee_amount,
+      pagamento_id,
+    })
+    .catch((error) => ({ error }));
+
+export const bokkingF24Req = (
+  service_id,
+  person_type,
+  via_piazza,
+  citta,
+  provincia,
+  gender,
+  vat,
+  codice_ufficio,
+  codice_atto,
+  data_pagamento,
+  importo,
+  taxes_array,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  email,
+  phone_number,
+  codice_fiscale_optional
+) =>
+  instanceAxios
+    .post(`/sepafin/bookF24`, {
+      ...skin,
+      service_id,
+      person_type,
+      via_piazza,
+      citta,
+      provincia,
+      gender,
+      vat,
+      codice_ufficio,
+      codice_atto,
+      data_pagamento,
+      importo,
+      taxes_array,
+      ...(person_type === "F"
+        ? { nome, cognome, codice_fiscale }
+        : { denominazione, partita_iva }),
+      email,
+      phone_number,
+      codice_fiscale_optional,
+    })
+    .catch((error) => ({ error }));
+
+export const payFReq = (service_id, importo, fee, pagamento_id) =>
+  instanceAxios
+    .post(`/sepafin/payF24`, {
+      ...skin,
+      service_id,
+      importo,
+      fee,
+      pagamento_id,
     })
     .catch((error) => ({ error }));

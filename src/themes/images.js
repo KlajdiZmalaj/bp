@@ -26,6 +26,15 @@ export default {
   "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
   "BOLLETINO-logo": require(`../assets/images/bolletini.svg`),
   "f24-logo": require(`../assets/images/f24.svg`),
+  //mobile-pagamenti
+  "BOL006-White-Mobile": require(`../assets/images/BOL006-White.png`),
+  "PPA001-White-Mobile": require(`../assets/images/PPA-White.png`),
+  "PAGF24-White-Mobile": require(`../assets/images/PAGF24-White.png`),
+  "BOLL-White-Mobile": require(`../assets/images/BOLL-White.png`),
+  "BOL006-Black-Mobile": require(`../assets/images/BOL006-Black.png`),
+  "PPA001-Black-Mobile": require(`../assets/images/PPA-Black.png`),
+  "PAGF24-Black-Mobile": require(`../assets/images/PAGF24-Black.png`),
+  "BOLL-Black-Mobile": require(`../assets/images/BOLL-Black.png`),
 
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
   //Static home page images
@@ -41,7 +50,6 @@ export default {
   SPE_DIZ: require(`../assets/images/spedizione.png`),
   CRY_VAL: require(`../assets/images/crypto_valute.png`),
   ALT_SER: require(`../assets/images/altri_servizi.png`),
-
   //*//
   servizi_banner: require(`../assets/images/servizi_banner.png`),
   loader: require(`../assets/images/loader.gif`),

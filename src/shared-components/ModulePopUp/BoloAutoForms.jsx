@@ -6,7 +6,7 @@ export const BoloAutoRightForm = ({ barcodeData, getFieldDecorator }) => (
   <Fragment>
     <ReturnFormItem
       descName="Telefono"
-      name="telefono"
+      name="phone_number"
       message="Please input your telefono!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
@@ -32,9 +32,11 @@ export const BoloAutoLeftForm = ({
       message="Please input your tipo veicolo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
+      defaultValue={"1"}
       NotInput={
         <Select placeholder="Tipo bollettino">
-          <Select.Option value="Tipo bollettino">Tipo veicolo</Select.Option>
+          <Select.Option value={"1"}>Auto</Select.Option>
+          <Select.Option value={"4"}>Motociclo</Select.Option>
         </Select>
       }
     />
@@ -48,7 +50,7 @@ export const BoloAutoLeftForm = ({
 
     <ReturnFormItem
       descName="Indirizzo"
-      name="indirizzo"
+      name="via_piazza"
       message="Please input your  indirizzo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
@@ -63,19 +65,19 @@ export const BoloAutoLeftForm = ({
     />
     <ReturnFormItem
       descName="Persona"
-      name="persona"
+      name="person_type"
       message="Please input your persona tipo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
-      defaultValue="1"
+      defaultValue="F"
       NotInput={
         <Radio.Group>
-          <Radio value="1">Fisica</Radio>
-          <Radio value="2">Giuridica</Radio>
+          <Radio value="F">Fisica</Radio>
+          <Radio value="G">Giuridica</Radio>
         </Radio.Group>
       }
     />
-    {getFieldValue("persona") === "1" ||
+    {getFieldValue("persona") === "F" ||
     typeof getFieldValue("persona") === "undefined" ? (
       <Fragment>
         <ReturnFormItem

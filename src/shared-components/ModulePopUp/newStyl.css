@@ -498,6 +498,20 @@
 
 div.modulePopUP.modulePopUP1 div.module.container-fluid.max-width_modulePopUP {
   max-width: 870px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+div.modulePopUP.modulePopUP1.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .inpPopUp {
@@ -745,6 +759,10 @@ div.modulePopUP.modulePopUP1 div.module.container-fluid.max-width_modulePopUP {
   opacity: 1;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+.F24--Bottom .Table--Row .ant-form-explain {
+  display: none;
 }
 
 .F24--Bottom .Table--Row .InputItem {
@@ -1140,10 +1158,16 @@ div.modulePopUP.modulePopUP1 div.module.container-fluid.max-width_modulePopUP {
   font-size: 14px;
   border: none;
   text-align: center;
-  margin-right: 1px;
+  margin-right: 3px;
+  border-radius: 4px;
   opacity: 1;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+.F24--Middle div:nth-child(2).F24--Middle-Inputs div:nth-child(2).Inputs span input.codice:invalid {
+  border: 0.5px solid #f5222d;
+  margin-right: 4px;
 }
 
 .F24--Middle div:nth-child(2).F24--Middle-Inputs div:nth-child(2).Inputs span:first-child {

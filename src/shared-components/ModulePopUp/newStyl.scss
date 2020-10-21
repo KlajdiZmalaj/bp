@@ -349,14 +349,14 @@
 div.modulePopUP.modulePopUP1 {
   div.module.container-fluid.max-width_modulePopUP {
     max-width: 870px;
-    // padding-top: 0;
-    // padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
-  // &.flex {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
+  &.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .inpPopUp {
   position: absolute;
@@ -521,6 +521,9 @@ div.modulePopUP.modulePopUP1 {
         z-index: 1;
         opacity: 1;
         transition: 0.5s;
+        .ant-form-explain {
+          display: none;
+        }
         .InputItem {
           margin: 0;
           .ant-checkbox-checked .ant-checkbox-inner {
@@ -782,9 +785,16 @@ div.modulePopUP.modulePopUP1 {
                 font-size: 14px;
                 border: none;
                 text-align: center;
-                margin-right: 1px;
+                margin-right: 3px;
+                border-radius: 4px;
                 opacity: 1;
                 transition: 0.5s;
+                &.codice {
+                  &:invalid {
+                    border: 0.5px solid #f5222d;
+                    margin-right: 4px;
+                  }
+                }
               }
               &:first-child {
                 width: 25%;

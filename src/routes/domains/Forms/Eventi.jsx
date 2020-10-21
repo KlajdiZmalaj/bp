@@ -49,7 +49,7 @@ class Eventi extends Component {
         message: msg.msg[0],
         description: msg.msg[1],
         placement: "bottomRight",
-        duration: "5",
+        duration: 5,
       });
     }
   };

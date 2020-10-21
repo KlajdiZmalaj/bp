@@ -99,11 +99,11 @@ const OneTab = ({
               );
             })}
             {serviceCategory === "PRDPST" &&
-              Object.values(services["PRDPST"]).map((item) => {
-                return (
-                  item.services &&
-                  item.services.map((serviceI) => {
-                    return (
+              Object.keys(services["PRDPST"]).map((item) => {
+                return item !== "name" &&
+                  item !== "group" &&
+                  services["PRDPST"][item].services[0].service_id === "BOL001"
+                  ? services["PRDPST"][item].services.map((serviceI) => (
                       <div
                         className="mobileServices--body__item"
                         onClick={() => {
@@ -117,14 +117,49 @@ const OneTab = ({
                         key={serviceI.service_id}
                       >
                         <img
-                          src={images[serviceI.service_id] || images["BOLL"]}
+                          src={
+                            serviceI.service_id === "BOL006" ||
+                            serviceI.service_id === "PPA001" ||
+                            serviceI.service_id === "PAGF24"
+                              ? images[`${serviceI.service_id}-Black-Mobile`]
+                              : images[`BOLL-Black-Mobile`]
+                          }
                           alt={serviceI.service_id}
                         />
                         <span>{serviceI.name} </span>
                       </div>
+                    ))
+                  : item !== "name" && item !== "group" && (
+                      <div
+                        className="mobileServices--body__item"
+                        onClick={() => {
+                          if (accountInfo?.profile) {
+                            setService(
+                              services["PRDPST"][item].services[0].service_id
+                            );
+                            setCategory("PRDPST");
+                          } else {
+                            window.location.hash = "login";
+                          }
+                        }}
+                        key={services["PRDPST"][item].services[0].service_id}
+                      >
+                        <img
+                          src={
+                            images[
+                              services["PRDPST"][item].services[0]
+                                .service_id === "PPA001"
+                                ? `${services["PRDPST"][item].services[0].service_id}-Black-Mobile`
+                                : `${item === "RCPP" ? "RCPP" : "BOLL"}${
+                                    item === "RCPP" ? "" : "-Black-Mobile"
+                                  }`
+                            ]
+                          }
+                          alt={services["PRDPST"][item].services[0].service_id}
+                        />
+                        <span>{services["PRDPST"][item].name} </span>
+                      </div>
                     );
-                  })
-                );
               })}
           </div>
         )}

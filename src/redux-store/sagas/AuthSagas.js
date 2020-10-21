@@ -52,6 +52,9 @@ import {
   buyTicketOnlineReq,
   pagoPaRequest,
   mavRavRequest,
+  payPagoPaReq,
+  bokkingF24Req,
+  payFReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1504,8 +1507,8 @@ export function* fetchBolletini({
         }
       }
     }
-    notification.close("PaymentLoading");
   }
+  notification.close("PaymentLoading");
 }
 export function* buyTicketOnline({
   typee,
@@ -1583,12 +1586,15 @@ export function* setPagoPa({
   denominazione,
   partita_iva,
   clearFields,
+  tipo_veicolo,
+  targa,
 }) {
   notification["info"]({
     key: "pagoPaPayment",
     duration: 0,
     message: "Attendere, transazione in corso",
   });
+
   const response = yield call(
     pagoPaRequest,
     service_id,
@@ -1604,12 +1610,14 @@ export function* setPagoPa({
     cognome,
     codice_fiscale,
     denominazione,
-    partita_iva
+    partita_iva,
+    tipo_veicolo,
+    targa
   );
   if (response) {
     if (response.data) {
       notification.close("pagoPaPayment");
-      yield put(AuthActions.setBolletiniBianchi(response.data));
+      yield put(AuthActions.setBolletiniBianchi(response.data.data));
       clearFields();
       notification["success"]({
         message: response.data.message,
@@ -1630,8 +1638,8 @@ export function* setPagoPa({
         }
       }
     }
-    notification.close("PaymentLoading");
   }
+  notification.close("pagoPaPayment");
 }
 export function* setMavRav({
   service_id,
@@ -1693,6 +1701,161 @@ export function* setMavRav({
         }
       }
     }
-    notification.close("PaymentLoading");
   }
+  notification.close("mavRavPayment");
+}
+
+export function* payPagoPa({
+  service_id,
+  total_amount,
+  fee_amount,
+  pagamento_id,
+}) {
+  notification["info"]({
+    key: "payPagoPA",
+    message: "Attendere, transazione in corso",
+    duration: 0,
+  });
+  const response = yield call(
+    payPagoPaReq,
+    service_id,
+    total_amount,
+    fee_amount,
+    pagamento_id
+  );
+  if (response?.status === 200) {
+    if (response.data) {
+      notification.close("payPagoPA");
+      yield put(AuthActions.setBolletiniBianchi(response.data));
+      notification["success"]({
+        message: response.data.message,
+      });
+    } else if (response?.error) {
+      notification.close("payPagoPA");
+      if (
+        response &&
+        response.error &&
+        response.error.response.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      }
+    }
+  }
+  notification.close("payPagoPA");
+}
+export function* setBokingSep({
+  service_id,
+  person_type,
+  via_piazza,
+  citta,
+  provincia,
+  gender,
+  vat,
+  codice_ufficio,
+  codice_atto,
+  data_pagamento,
+  importo,
+  taxes_array,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  email,
+  phone_number,
+  codice_fiscale_optional,
+  clearFields,
+}) {
+  notification["info"]({
+    key: "bokkingF24",
+    message: "Attendere, transazione in corso",
+    duration: 0,
+  });
+  const response = yield call(
+    bokkingF24Req,
+    service_id,
+    person_type,
+    via_piazza,
+    citta,
+    provincia,
+    gender,
+    vat,
+    codice_ufficio,
+    codice_atto,
+    data_pagamento,
+    importo,
+    taxes_array,
+    nome,
+    cognome,
+    codice_fiscale,
+    denominazione,
+    partita_iva,
+    email,
+    phone_number,
+    codice_fiscale_optional
+  );
+  if (response?.status === 200) {
+    if (response?.data) {
+      notification.close("bokkingF24");
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
+      if (clearFields) {
+        clearFields();
+      }
+      notification["success"]({
+        message: response?.data?.message,
+      });
+    } else if (response?.error) {
+      notification.close("bokkingF24");
+      if (
+        response &&
+        response?.error &&
+        response?.error?.response?.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      }
+    }
+  }
+  notification.close("bokkingF24");
+}
+export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
+  notification["info"]({
+    key: "payF24",
+    message: "Attendere, transazione in corso",
+    duration: 0,
+  });
+  const response = yield call(payFReq, service_id, importo, fee, pagamento_id);
+  if (response?.status === 200) {
+    if (response.data) {
+      notification.close("payF24");
+      yield put(AuthActions.setBolletiniBianchi(response.data));
+      notification["success"]({
+        message: response.data.message,
+      });
+    } else if (response?.error) {
+      notification.close("payF24");
+      if (
+        response &&
+        response.error &&
+        response.error.response.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      }
+    }
+  }
+  notification.close("payF24");
 }

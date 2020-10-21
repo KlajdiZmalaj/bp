@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import { Form, Checkbox, notification } from "antd";
 import Condizioni from "./Condizioni";
+import moment from "moment";
 import images from "themes/images";
 import "./newStyl.css";
 import { F24LeftForm, F24RightForm, LineTable, LastPartForm } from "./F24Forms";
@@ -12,13 +13,16 @@ const SeperateInputs = ({
   setStateValue,
   setValues,
   returnCodice,
+  setStateClass,
+  classNameVal,
 }) => {
   return [...new Array(number)].map((input, key) => {
     return (
       <input
-        className="inputSeperate"
+        className={`inputSeperate ${classNameVal ? classNameVal : ""}`}
         key={`${word}${key}`}
         maxLength="1"
+        required
         id={`${word}${key}`}
         type="text"
         onKeyDown={(e) => {
@@ -46,6 +50,9 @@ const SeperateInputs = ({
           }, 100);
         }}
         onChange={(e) => {
+          if (!classNameVal) {
+            setStateClass(word.substring(0, 6));
+          }
           if (
             e.target.value !== "" &&
             e.target.value &&
@@ -82,7 +89,9 @@ class F24 extends React.Component {
     nrOfRows: 4,
     codFisInps: "asdasdasd",
     codice_atto: "",
-    codice_uffico: "",
+    codice_ufficio: "",
+    classNameAtto: null,
+    classNameUfficio: null,
   };
   setbarcodeInp = (e) => {
     this.setState({ barcodeInput: e });
@@ -96,17 +105,17 @@ class F24 extends React.Component {
       let objectFieldValues = [];
       objectFieldValues[`sezione${id}`] = "";
       objectFieldValues[`cod_tributo${id}`] = "";
-      objectFieldValues[`cod_ente_com${id}`] = "";
+      objectFieldValues[`codice_ente${id}`] = "";
       objectFieldValues[`ravv${id}`] = false;
-      objectFieldValues[`im_variati${id}`] = false;
+      objectFieldValues[`imm_varianti${id}`] = false;
       objectFieldValues[`acc${id}`] = false;
       objectFieldValues[`saldo${id}`] = false;
       objectFieldValues[`num_imm${id}`] = "";
       objectFieldValues[`rat_mese${id}`] = "";
-      objectFieldValues[`anno_di_riferimento${id}`] = "";
+      objectFieldValues[`anno_rif${id}`] = "";
       objectFieldValues[`detrazione${id}`] = "";
-      objectFieldValues[`importo_a_debito_versati${id}`] = "";
-      objectFieldValues[`importi_a_credito_compensati${id}`] = "";
+      objectFieldValues[`importo_vers${id}`] = "";
+      objectFieldValues[`importo_com${id}`] = "";
       this.props.form.setFieldsValue({
         ...objectFieldValues,
       });
@@ -115,29 +124,43 @@ class F24 extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
-      this.clearFields();
-      if (!err && this.state.condizioniAgreement) {
-        // this.props.fetchBolletini(
-        //   service_id,
-        //   values.person_type.toString(),
-        //   values.via_piazza,
-        //   values.cap,
-        //   values.citta,
-        //   values.provincia,
-        //   values.importo.toString(),
-        //   values.tipologia,
-        //   values.numero_conto_corrente,
-        //   values.causale,
-        //   values.nome,
-        //   values.cognome,
-        //   values.codice_fiscale,
-        //   values.denominazione,
-        //   values.partita_iva,
-        //   values.email,
-        //   values.phone_number,
-        //   values.codice_identificativo,
-        //   this.clearFields
-        // );
+      let coUf = this.returnCodice(3, "codice_ufficio");
+      let coAt = this.returnCodice(11, "codice_atto");
+      if (
+        !err &&
+        this.state.condizioniAgreement &&
+        coUf &&
+        coAt &&
+        coUf.length >= 3 &&
+        coAt >= 11
+      ) {
+        this.props.setBokingSep(
+          this.props?.service_id,
+          values?.person_type,
+          values?.via_piazza,
+          values?.citta,
+          values?.provincia,
+          values?.gender,
+          values?.vat,
+          coUf,
+          coAt,
+          moment(values?.data_pagamento)?.format("YYYY-MM-DD")
+            ? moment(values?.data_pagamento).format("YYYY-MM-DD")
+            : null,
+          document.querySelector("#saldo_finale")?.value
+            ? document.querySelector("#saldo_finale")?.value
+            : null,
+          JSON.stringify(this.returnMotivoDelPagamentoList()),
+          values?.nome,
+          values?.cognome,
+          values?.codice_fiscale,
+          values?.denominazione,
+          values?.partita_iva,
+          values?.email,
+          values?.phone_number,
+          values?.codice_fiscale_optional,
+          this.clearFields
+        );
       } else {
         notification["error"]({
           message: "Ops...",
@@ -161,31 +184,66 @@ class F24 extends React.Component {
       inp.value = fullValue.substring(index, index + 1);
     });
   };
-  returnMotivoDelPagamentoList = (nrOfRows) => {
+  calculateSaldoVal = () => {
+    let Saldo = 0;
+    const getVal = this.props.form.getFieldValue;
+    [...new Array(this.state.nrOfRows)].forEach((item, index) => {
+      if (
+        getVal(`detrazione${index}`) &&
+        getVal(`importo_vers${index}`) &&
+        getVal(`importo_com${index}`)
+      ) {
+        Saldo =
+          Saldo +
+          parseFloat(getVal(`importo_vers${index}`)) -
+          parseFloat(getVal(`detrazione${index}`)) -
+          parseFloat(getVal(`importo_com${index}`));
+      }
+    });
+    return Saldo;
+  };
+  returnMotivoDelPagamentoList = () => {
     let arrayMPL = [];
     const getVal = this.props.form.getFieldValue;
     [...new Array(this.state.nrOfRows)].forEach((item, index) => {
       let objectRow = {
         sezione: getVal(`sezione${index}`),
         cod_tributo: getVal(`cod_tributo${index}`),
-        cod_ente_com: getVal(`cod_ente_com${index}`),
+        codice_ente: getVal(`codice_ente${index}`),
         ravv: getVal(`ravv${index}`),
-        im_variati: getVal(`im_variati${index}`),
+        imm_varianti: getVal(`imm_varianti${index}`),
         acc: getVal(`acc${index}`),
         saldo: getVal(`saldo${index}`),
         num_imm: getVal(`num_imm${index}`),
         rat_mese: getVal(`rat_mese${index}`),
-        anno_di_riferimento: getVal(`anno_di_riferimento${index}`),
+        anno_rif: getVal(`anno_rif${index}`),
         detrazione: getVal(`detrazione${index}`),
-        importo_a_debito_versati: getVal(`importo_a_debito_versati${index}`),
-        importi_a_credito_compensati: getVal(
-          `importi_a_credito_compensati${index}`
-        ),
+        importo_vers: getVal(`importo_vers${index}`),
+        importo_com: getVal(`importo_com${index}`),
       };
-      arrayMPL.push(objectRow);
+      if (this.isEmptyObject(objectRow)) {
+        arrayMPL.push(objectRow);
+      }
     });
     return arrayMPL;
   };
+  isEmptyObject(o) {
+    let find = true;
+    Object.keys(o).forEach(function (x) {
+      if (typeof o[`${x}`] === "undefined" || o[`${x}`] || o[`${x}`] === "") {
+        find = false;
+      }
+    });
+    return find;
+  }
+  componentDidUpdate(prevProps) {
+    const element = document.querySelector("#saldo_finale");
+    let saldo = this.calculateSaldoVal();
+    console.log(saldo);
+    if (saldo) {
+      element.value = saldo;
+    }
+  }
   render() {
     const { getFieldDecorator } = this.props.form;
     const { barcodeData, service_s } = this.props;
@@ -195,10 +253,7 @@ class F24 extends React.Component {
       condizioniAgreement,
       motivo_del_pagamento,
       codice_fiscale_atto,
-      codice_atto,
-      codice_uffico,
     } = this.state;
-    console.log(codice_uffico, codice_atto);
     return (
       <div className="F24">
         <div className="F24-Header">
@@ -331,12 +386,16 @@ class F24 extends React.Component {
                   <span>
                     <SeperateInputs
                       number={3}
-                      word="codice_uffico"
+                      word="codice_ufficio"
                       setStateValue={(value) => {
-                        this.setState({ codice_uffico: value });
+                        this.setState({ codice_ufficio: value });
                       }}
                       setValues={this.setValues}
                       returnCodice={this.returnCodice}
+                      setStateClass={(value) => {
+                        this.setState({ classNameUfficio: value });
+                      }}
+                      classNameVal={this.state.classNameUfficio}
                     />
                   </span>
                   <span>
@@ -348,6 +407,10 @@ class F24 extends React.Component {
                         this.setState({ codice_atto: value });
                       }}
                       returnCodice={this.returnCodice}
+                      setStateClass={(value) => {
+                        this.setState({ classNameAtto: value });
+                      }}
+                      classNameVal={this.state.classNameAtto}
                     />
                   </span>
                 </div>
@@ -431,12 +494,12 @@ class F24 extends React.Component {
                   <div
                     className="Actions--Item"
                     onClick={(e) => {
-                      // if (this.props.accountInfo?.token) {
-                      //   this.handleSubmit(e);
-                      // } else {
-                      //   window.location.hash = "login";
-                      //   this.props.togglePopUp(false);
-                      // }
+                      if (this.props.accountInfo?.token) {
+                        this.handleSubmit(e);
+                      } else {
+                        window.location.hash = "login";
+                        this.props.togglePopUp(false);
+                      }
                     }}
                     htmltype="submit"
                   >
