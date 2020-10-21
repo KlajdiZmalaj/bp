@@ -95,7 +95,7 @@ class Step1 extends React.Component {
             message: "Ops...",
             description:
               "I tuoi dati per la creazione della skin sono sbagliati",
-            duration: "5",
+            duration: 5,
           });
         } else {
           let ifempty = false;
@@ -109,7 +109,7 @@ class Step1 extends React.Component {
               message: "Ops...",
               description:
                 "Non puoi continuare al secondo step ,completi tutti i dati prima",
-              duration: "5",
+              duration: 5,
             });
           } else {
             await AddExtraData(
@@ -156,7 +156,7 @@ class Step1 extends React.Component {
             await notification["error"]({
               message: "Ops...",
               description: "Il formato dell'immagine dovrebbe essere png",
-              duration: "5",
+              duration: 5,
             });
           }
         }
@@ -167,14 +167,14 @@ class Step1 extends React.Component {
           await notification["success"]({
             message: "Molto Bene",
             description: "la pelle viene creata con successo",
-            duration: "5",
+            duration: 5,
           });
         }
       } catch (error) {
         notification["error"]({
           message: "Ops..",
           description: "Something wrong happened please contact administrator",
-          duration: "5",
+          duration: 5,
         });
       }
     }
@@ -533,7 +533,7 @@ class Step1 extends React.Component {
                   await notification["error"]({
                     message: "Ops...",
                     description: "Link Servizzi should be link type 'http://",
-                    duration: "5",
+                    duration: 5,
                   });
                 }
               }}

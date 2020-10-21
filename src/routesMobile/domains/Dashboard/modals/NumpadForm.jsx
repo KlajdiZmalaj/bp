@@ -13,6 +13,32 @@ const range = (start, end) => {
   }
   return array;
 };
+const BgameServices = [
+  {
+    cost: "10.00",
+    name: "BGame Voucher",
+    service_id: "BGM001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BGame Voucher",
+    service_id: "BGM002",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BGame Voucher",
+    service_id: "BGM003",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BGame Voucher",
+    service_id: "BGM004",
+    type: "1",
+  },
+];
 const Numpad = ({
   services,
   activeService,
@@ -56,7 +82,8 @@ const Numpad = ({
   useEffect(() => {
     getScale(".img.Page", ".GamingBanner.mobile");
   }, []);
-  console.log(selectedCost);
+
+  console.log("services", services, activeCategory, activeService);
   return (
     <div className="mobileNumPad">
       {/* <div className="mobileNumPad--services">
@@ -82,39 +109,40 @@ const Numpad = ({
           </div>*/}
       <div className="mobileNumPad--services">
         <React.Fragment>
-          {services[activeCategory][activeService].services.map(
-            (item, index) => {
-              return selectedCost?.service_id === item.service_id ? (
-                <div
-                  key={index}
-                  className={`serv ${
-                    selectedCost?.service_id === item.service_id ? "active" : ""
-                  }`}
-                  onClick={() => setCost(item)}
-                >
-                  <div className="Upper">
-                    <div className="Upper--Left"></div>
-                    <div className="Upper--Right"></div>
-                  </div>
-                  <div className="Bottom">
-                    <span className="Price">{parseInt(item.cost)}</span>
-                    <span className="Euro">€</span>
-                  </div>
+          {(activeService !== "BGAM"
+            ? services[activeCategory][activeService].services
+            : BgameServices
+          ).map((item, index) => {
+            return selectedCost?.service_id === item.service_id ? (
+              <div
+                key={index}
+                className={`serv ${
+                  selectedCost?.service_id === item.service_id ? "active" : ""
+                }`}
+                onClick={() => setCost(item)}
+              >
+                <div className="Upper">
+                  <div className="Upper--Left"></div>
+                  <div className="Upper--Right"></div>
                 </div>
-              ) : (
-                <div
-                  key={index}
-                  className={`serv ${
-                    selectedCost?.service_id === item.service_id ? "active" : ""
-                  }`}
-                  onClick={() => setCost(item)}
-                >
+                <div className="Bottom">
                   <span className="Price">{parseInt(item.cost)}</span>
                   <span className="Euro">€</span>
                 </div>
-              );
-            }
-          )}
+              </div>
+            ) : (
+              <div
+                key={index}
+                className={`serv ${
+                  selectedCost?.service_id === item.service_id ? "active" : ""
+                }`}
+                onClick={() => setCost(item)}
+              >
+                <span className="Price">{parseInt(item.cost)}</span>
+                <span className="Euro">€</span>
+              </div>
+            );
+          })}
           {services[activeCategory][activeService].services &&
             Array.isArray(services[activeCategory][activeService].services) &&
             services[activeCategory][activeService].services.length < 5 &&
@@ -227,7 +255,7 @@ const Numpad = ({
           onClick={() => {
             if (!rechargeMobile.receipt) {
               notification["warning"]({
-                message: "Ticket non e generata",
+                message: "Ticket non compilato",
               });
             }
             setPrint(true);

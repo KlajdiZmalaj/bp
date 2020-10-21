@@ -386,7 +386,7 @@ class Step1 extends React.Component {
                     message: "Ops...",
                     description:
                       "Non puoi continuare al  ,completi tutti i dati prima",
-                    duration: "5",
+                    duration: 5,
                   });
                 } else {
                   await AddSuperAdmin(

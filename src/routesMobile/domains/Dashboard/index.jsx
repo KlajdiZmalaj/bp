@@ -24,7 +24,12 @@ const Card = ({ setTab, tab, id, name, icon }) => (
     <span>{name}</span>
   </div>
 );
-const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
+const Dashboard = ({
+  getFavorites,
+  favorites,
+  toggleFavorite,
+  accountInfo,
+}) => {
   useEffect(() => {
     getFavorites();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,6 +39,8 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
   const [serviceSearched, setSearch] = useState("");
   const [activeCategory, setCategory] = useState(null);
   const [activeService, setService] = useState(null);
+  console.log(activeService);
+
   return (
     <div className="mobileWrapper">
       <UserInfoBar />
@@ -116,11 +123,15 @@ const Dashboard = ({ getFavorites, favorites, toggleFavorite }) => {
           activeService={activeService}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
+          accountInfo={accountInfo}
         />
       )}
     </div>
   );
 };
-const mstp = ({ main: { favorites } }) => ({ favorites });
+const mstp = ({ main: { favorites }, auth: { accountInfo } }) => ({
+  favorites,
+  accountInfo,
+});
 
 export default connect(mstp, MainActions)(Dashboard);

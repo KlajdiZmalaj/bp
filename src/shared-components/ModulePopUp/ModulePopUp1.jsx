@@ -5,27 +5,51 @@ import PrintTicket from "./PrintTicket";
 import PrintTicketSerap from "./PrintTicketSerap";
 import F24 from "./F24";
 import Bolletino from "./Bolletino";
+import NewBolletino from "./NewBolletini";
 
 class ModulePopUp1 extends React.Component {
+  componentDidMount() {
+    document.body.style.overflow = "hidden";
+  }
+  componentWillUnmount() {
+    document.body.style.removeProperty("overflow");
+  }
   render() {
-    const { bolletiniBianchi, service } = this.props;
+    const { bolletiniBianchi, service, accountInfo } = this.props;
+    const isSepaUser =
+      accountInfo.profile.username === "sepa_agency" ||
+      accountInfo.profile.username === "sepa_user";
     return (
-      <div className="modulePopUP modulePopUP1">
+      <div
+        className={`modulePopUP modulePopUP1 ${
+          service.service_id === "PAGF24" ? "" : isSepaUser ? "flex" : ""
+        }`}
+      >
         <div className="module container-fluid max-width_modulePopUP">
           <div className="row">
-            {/* {service.service_id === "PAGF24" ? (
-              <F24 />
-            ) : ( */}
-            <Bolletino
-              service={service}
-              service_id={service.service_id}
-            ></Bolletino>
-            {/* // )} */}
+            {service.service_id === "PAGF24" ? (
+              <F24 service_id={service.service_id} />
+            ) : isSepaUser ? (
+              <Bolletino
+                service={service}
+                service_id={service.service_id}
+              ></Bolletino>
+            ) : (
+              <NewBolletino
+                service={service}
+                service_id={service.service_id}
+              ></NewBolletino>
+            )}
             {bolletiniBianchi &&
               JSON.stringify(bolletiniBianchi) !== JSON.stringify({}) && (
                 <Fragment>
-                  {bolletiniBianchi?.receipt_type === "base64" ? (
-                    <PrintTicketSerap bolletiniBianchi={bolletiniBianchi} />
+                  {bolletiniBianchi?.receipt_type === "base64" ||
+                  bolletiniBianchi?.CheckVerificationDebtPositionId ||
+                  service.service_id === "PAGF24" ? (
+                    <PrintTicketSerap
+                      bolletiniBianchi={bolletiniBianchi}
+                      service_id={service.service_id}
+                    />
                   ) : (
                     <PrintTicket arr={bolletiniBianchi}></PrintTicket>
                   )}
@@ -41,6 +65,7 @@ class ModulePopUp1 extends React.Component {
 const mapsStateToProps = (state) => ({
   isShowing: state.main.isShowing,
   service: state.auth.service_id,
+  accountInfo: state.auth.accountInfo,
 });
 
 export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(

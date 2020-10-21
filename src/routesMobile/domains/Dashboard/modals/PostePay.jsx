@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import images from "themes/images";
 import { AuthActions, MainActions } from "redux-store/models";
 import { notification, message, Upload, Icon } from "antd";
-
+import TopWrapper from "./TopWrapper";
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
@@ -84,33 +83,11 @@ const PostePay = ({
   return (
     <div className="postepay">
       <div className="postepay--services">
-        <div className="wrapperTop">
-          {services["PRDPST"] &&
-            Object.keys(services["PRDPST"]).map((keyBolletines) => {
-              return (
-                keyBolletines !== "name" &&
-                keyBolletines !== "group" &&
-                services["PRDPST"][keyBolletines].services.map((item) => {
-                  return (
-                    <div
-                      key={item.service_id}
-                      onClick={() => {
-                        setService(item?.service_id);
-                        setPostePay({});
-                      }}
-                      className={
-                        "postepay--services__item" +
-                        (activeService === item?.service_id ? " active" : "")
-                      }
-                    >
-                      <img src={images[keyBolletines]} alt="" />
-                      <span>{item.name}</span>
-                    </div>
-                  );
-                })
-              );
-            })}
-        </div>
+        <TopWrapper
+          activeService={activeService}
+          setService={setService}
+          services={services}
+        />
       </div>
       <div className="bolletini--header">
         PostePay{" "}
