@@ -99,3 +99,110 @@ footer .mid img {
 .SDHome--Cards--Card h2 {
   color: #fff !important;
 }
+body .DContainer .Categories div.First {
+  background: #222;
+  border-color: #4f4f4f;
+  color: #fff;
+}
+body .DContainer .Categories div {
+  border-top: 1px solid #424242;
+  background: #2d2d2d;
+  color: #a0a0a0 !important;
+}
+body .DContainer .Dashboard .CompaniesAndOther .Favorites div {
+  background: #1d1d1d;
+  color: #fff;
+}
+body .DContainer .Dashboard .CompaniesAndOther .Comp .Companies {
+  background: #494949;
+}
+body .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
+  background: #2d2d2d;
+  color: #fff;
+  box-shadow: inset 0px 0px 1px 1px #363636;
+}
+body .DContainer .Dashboard .CompaniesAndOther .Comp .Search input,
+body .DContainer .Dashboard .CompaniesAndOther .Comp .Search {
+  background: #222;
+}
+body .DContainer .Dashboard .CompaniesAndOther .Comp .Search i {
+  color: #fff;
+}
+body .ticketDetails {
+  background-color: #383838;
+  color: #fff;
+}
+body .ticketDetails--row,
+body .ticketDetails--header,
+body .ticketDetails--row .options > span:not(.toggler),
+body .ticketDetails--row .toggler {
+  border-color: #595959;
+}
+body .ticketDetails--header > span {
+  color: #fff;
+}
+
+body .ticketDetails--infos {
+  background-color: #272727;
+}
+
+body .ticketDetails--row > span:nth-child(2) div:not(.new) {
+  color: #e5ca1b;
+}
+
+html body:not(.bodyAdmin) div.Container .panels-container {
+  background: #272727 !important;
+}
+body .FaturaDomain .FauturaFilter--Header {
+  color: #fff;
+}
+body .newReg {
+  background-color: #272727;
+  color: #fff;
+}
+body .newReg .inputLabel {
+  color: #cacaca;
+}
+body .newReg--header,
+body .ant-checkbox-wrapper {
+  color: #fff;
+}
+
+.newReg .ant-input,
+.newReg .ant-select-selection,
+.newReg .Select-control,
+.inpssWrapper,
+.Select-clear-zone,
+.Select-arrow-zone,
+.Select-placeholder,
+.Select-input,
+.Select.is-focused:not(.is-open) > .Select-control,
+.newReg .piva .ant-form-item-children {
+  background-color: #181818 !important;
+  border: 1px solid #343434 !important;
+  color: #fff !important;
+}
+body .newReg--row {
+  border-bottom: 1px solid #000000;
+}
+body .configura {
+  background: #313131;
+  color: #fff;
+}
+body .inputsConf label {
+  color: inherit;
+}
+
+body .inputsConf input[disabled] {
+  border: 1px solid #404040;
+  color: #c6c6c6;
+  background: #212121;
+}
+body .titleConf {
+  background: #212121;
+  color: #fff;
+}
+.titleConf h5,
+.titleConf i {
+  color: inherit !important;
+}
