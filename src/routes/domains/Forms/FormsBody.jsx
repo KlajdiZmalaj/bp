@@ -206,7 +206,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="assicurazioni"
-                icon={"fal fa-futbol"}
+                icon={"fal fa-file-alt"}
                 accountInfo={accountInfo}
                 name="ASSICURAZIONI"
                 prestoOnline
@@ -221,7 +221,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="energia"
-                icon={"fal fa-futbol"}
+                icon={"fal fa-lightbulb-on"}
                 accountInfo={accountInfo}
                 name="ENERGIA"
                 prestoOnline
