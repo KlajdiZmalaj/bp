@@ -92,6 +92,29 @@
   transition: 0.3s;
 }
 
+.formsContainer--cards .imageCard .coomingsoon {
+  position: absolute;
+  bottom: 0;
+  background: #ffffff4d;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  font-size: 8px;
+  font-weight: 500;
+  font-family: "Roboto";
+  width: 90px;
+  height: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 0.3px;
+}
+
 .formsContainer--body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -239,12 +262,50 @@
   -webkit-filter: brightness(0.8);
           filter: brightness(0.8);
   width: 120px;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 @media (max-width: 768px) {
   .formsContainer--body .rightForm--header img {
     display: none;
   }
+}
+
+.formsContainer--body .rightForm--header img.bgame {
+  width: 80px;
+  height: 44px;
+}
+
+.formsContainer--body .rightForm--header img.expedia {
+  width: 113px;
+  height: 32px;
+}
+
+.formsContainer--body .rightForm--header img.flixbus {
+  width: 145.8px;
+  height: 26px;
+}
+
+.formsContainer--body .rightForm--header img.stubhub {
+  width: 80px;
+  height: 36.19px;
+}
+
+.formsContainer--body .rightForm--header img.ticketing {
+  width: 95px;
+  height: 42.2px;
+}
+
+.formsContainer--body .rightForm--header img.vivaticket {
+  width: 167.3px;
+  height: 18px;
+}
+
+.formsContainer--body .rightForm--header img.trenitalia {
+  width: 110px;
+  height: 35.05px;
 }
 
 .formsContainer--body .rightForm--left {
@@ -339,6 +400,43 @@
   position: relative;
 }
 
+.formsContainer--body__item .inputI {
+  position: absolute;
+  width: 10%;
+  height: 40px;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 0;
+  z-index: 1;
+  color: #b5b5b5;
+}
+
+.formsContainer--body__item .Select-control {
+  height: 40px;
+}
+
+.formsContainer--body__item .Select-control div {
+  height: 38px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #5c5c5c;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Roboto";
+}
+
 .formsContainer--body__item:first-child {
   margin-top: 0;
 }
@@ -393,6 +491,10 @@
 .formsContainer--body__item .label {
   font-weight: 400;
   font-size: 14px;
+}
+
+.formsContainer--body__item .label .Red {
+  color: #f26521;
 }
 
 .formsContainer--body__item textarea {
@@ -1096,7 +1198,6 @@ div.OnlineShop .rightFormOnlShop .rightForm--header .TitleBack {
 }
 
 div.OnlineShop .rightFormOnlShop .rightForm--header .TitleBack i {
-  color: #5c5c5c;
   font-size: 16px;
 }
 
@@ -1318,5 +1419,249 @@ div.OnlineShop .rightFormOnlShop .SubForm .Bottom {
 
 div.OnlineShop .rightFormOnlShop .SubForm .Bottom .L {
   border-right: 1px solid #ebeced;
+}
+
+.formsContainer--body.auto .rightForm.auto .label {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Roboto";
+  color: #5c5c5c;
+}
+
+.formsContainer--body.auto .rightForm.auto .label .Red {
+  color: #f26521;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__semiCont {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 58px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__semiCont .formsContainer--body__item.semi {
+  margin-top: 0;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item.semi {
+  width: 49%;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item.Ali .ant-radio-group {
+  background: #ebeced;
+  padding-right: 10px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item.Ali .ant-radio-group .ant-radio-wrapper {
+  width: auto;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item.Ali .ant-radio-group .ant-radio-wrapper span:not(.ant-radio):not(.ant-radio-inner) {
+  padding: 0;
+  padding-left: 5px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-group {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-wrapper {
+  width: 49%;
+  height: 100%;
+  background: #ebeced;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: #5c5c5c;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-wrapper span:not(.ant-radio):not(.ant-radio-inner) {
+  height: 19px;
+  padding-left: 10px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: #22a094 !important;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-wrapper .ant-radio-checked .ant-radio-inner:after {
+  background-color: #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-wrapper .ant-radio:hover .ant-radio-inner {
+  border-color: #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .formsContainer--body__item .ant-radio-wrapper .ant-radio-wrapper {
+  width: 14px;
+  height: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  border: 1px solid #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .label {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: "Roboto";
+  color: #5c5c5c;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 18px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .Container {
+  background: #ebeced;
+  margin: 0;
+  height: 40px;
+  width: 100%;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .ant-slider {
+  background: #ebeced;
+  margin: 0;
+  height: 35px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .ant-slider .ant-slider-rail,
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .ant-slider .ant-slider-track {
+  height: 3px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .ant-slider .ant-slider-track {
+  background: #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--right .Slider .ant-slider .ant-slider-handle {
+  width: 12px;
+  height: 12px;
+  top: 16px;
+  border: 2px solid #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-group {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-wrapper {
+  width: 49%;
+  height: 100%;
+  background: #ebeced;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: #5c5c5c;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-wrapper span:not(.ant-radio):not(.ant-radio-inner) {
+  height: 19px;
+  padding-left: 10px;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: #22a094 !important;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-wrapper .ant-radio-checked .ant-radio-inner:after {
+  background-color: #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-wrapper .ant-radio:hover .ant-radio-inner {
+  border-color: #22a094;
+}
+
+.formsContainer--body.auto .rightForm.auto .rightForm--left .formsContainer--body__item .ant-radio-wrapper .ant-radio-wrapper {
+  width: 14px;
+  height: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  border: 1px solid #22a094;
 }
 /*# sourceMappingURL=style.css.map */

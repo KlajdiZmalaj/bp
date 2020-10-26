@@ -8,6 +8,7 @@ import PostePay from "./modals/PostePay";
 import BolloAuto from "./modals/BolloAuto";
 import PagoPa from "./modals/PagoPa";
 import MavRav from "./modals/MavRav";
+import F24 from "./modals/F24";
 
 const ServicesForms = ({
   activeService,
@@ -30,6 +31,7 @@ const ServicesForms = ({
       allFavServices.push(subitem);
     });
   });
+
   return (
     <div className="servicesForms">
       {activeCategory === "RTELD" || activeCategory === "RTELC" ? (
@@ -100,8 +102,8 @@ const ServicesForms = ({
           toggleFavorite={toggleFavorite}
           allFavServices={allFavServices}
         />
-      ) : activeService === "PAGF24" && isTestAcc ? (
-        <BolletiniPremercati
+      ) : activeService === "PAGF24" ? (
+        <F24
           setService={setService}
           activeService={activeService}
           toggleFavorite={toggleFavorite}

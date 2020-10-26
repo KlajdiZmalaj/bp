@@ -95,6 +95,7 @@ const BolletinoPremarcati = ({
           <div className="bolletini--inputs">
             <BolletiniLeftForm
               barcodeData={barcode}
+              mobile
               getFieldDecorator={form.getFieldDecorator}
               getFieldValue={form.getFieldValue}
               service_id={activeService}
@@ -102,8 +103,6 @@ const BolletinoPremarcati = ({
             <BolletiniRightForm
               barcodeData={barcode}
               getFieldDecorator={form.getFieldDecorator}
-              getFieldValue={form.getFieldValue}
-              service_id={activeService}
             />
           </div>
         </Form>

@@ -99,7 +99,6 @@ class ModulePopUp4 extends React.Component {
     const { service_s, rechargeMobile, service } = this.props;
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
-    console.log(this.state.tel_no);
     const BgameServices = [
       {
         cost: "10.00",
@@ -301,7 +300,6 @@ class ModulePopUp4 extends React.Component {
                   ? BgameServices
                   : service_s.services || []
                 ).map((item, index) => {
-                  console.log("item", item);
                   return (
                     service_s.id === "BGAM"
                       ? parseFloat(item?.cost) ===

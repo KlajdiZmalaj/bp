@@ -55,6 +55,8 @@ import {
   payPagoPaReq,
   bokkingF24Req,
   payFReq,
+  getRegistrazioneDataReq,
+  createUserBgameReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -1858,4 +1860,67 @@ export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
     }
   }
   notification.close("payF24");
+}
+export function* getRegistrazioneData() {
+  const response = yield call(getRegistrazioneDataReq);
+  if (response.data) {
+    yield put(AuthActions.setRegistrazioneData(response?.data?.data));
+  }
+}
+export function* createUserBgame({
+  nome,
+  cognome,
+  data_nascita,
+  sesso,
+  id_nazione_nascita,
+  id_comune_nascita,
+  codice_fiscale,
+  id_comune_residenza,
+  indirizzo,
+  cap,
+  telefono,
+  cellulare,
+  email,
+  id_tipo_documento,
+  documento,
+  rilasciato_da,
+  data_rilascio,
+  data_scadenza,
+  id_nazione_cittadinanza,
+  nick,
+  password,
+  question,
+  answer,
+}) {
+  const response = yield call(
+    createUserBgameReq,
+    nome,
+    cognome,
+    data_nascita,
+    sesso,
+    id_nazione_nascita,
+    id_comune_nascita,
+    codice_fiscale,
+    id_comune_residenza,
+    indirizzo,
+    cap,
+    telefono,
+    cellulare,
+    email,
+    id_tipo_documento,
+    documento,
+    rilasciato_da,
+    data_rilascio,
+    data_scadenza,
+    id_nazione_cittadinanza,
+    nick,
+    password,
+    question,
+    answer
+  );
+  if (response?.message) {
+    notification["success"]({
+      message: response?.data?.message,
+    });
+  }
 }

@@ -72,7 +72,7 @@ const PagoPa = ({
         />
       )}
       <div className="bolletini--header">
-        Bolletini Bianchi{" "}
+        PAGO PA
         <i
           onClick={() => {
             if (allFavServices.includes("BOLL")) {
@@ -92,15 +92,13 @@ const PagoPa = ({
         <div className="bolletini--inputs">
           <PagoPaLeftForm
             barcodeData={barcode}
+            mobile
             getFieldDecorator={form.getFieldDecorator}
             getFieldValue={form.getFieldValue}
-            service_id={"PPA001"}
           />
           <PagoPaRightForm
             barcodeData={barcode}
             getFieldDecorator={form.getFieldDecorator}
-            getFieldValue={form.getFieldValue}
-            service_id={"PPA001"}
           />
         </div>
       </Form>
@@ -148,7 +146,6 @@ const PagoPa = ({
         <button
           onClick={() => {
             setService(null);
-            setBolletiniBianchi({});
           }}
         >
           Anulla <i className="fal fa-times" aria-hidden="true"></i>

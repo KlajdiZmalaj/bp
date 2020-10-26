@@ -8,7 +8,6 @@ export const handleSubmit = (
   fetchBolletini,
   clearFields
 ) => {
-  console.log(service_id);
   e.preventDefault();
   form.validateFieldsAndScroll((err, values) => {
     if (!err) {

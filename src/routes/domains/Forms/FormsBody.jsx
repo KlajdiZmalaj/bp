@@ -5,10 +5,20 @@ import Voli from "./Voli";
 import Treni from "./Treni";
 import Eventi from "./Eventi";
 import OnlineShop from "./OnlineShop";
+import Bgame from "./Bgame";
+import Auto from "./Auto";
+
 import images from "themes/images";
 import "./style.css";
 
-const Card = ({ title, icon, clickHandler, accountInfo }) => {
+const Card = ({
+  title,
+  icon,
+  clickHandler,
+  accountInfo,
+  name,
+  prestoOnline,
+}) => {
   return (
     <div
       onClick={() => {
@@ -21,11 +31,12 @@ const Card = ({ title, icon, clickHandler, accountInfo }) => {
       className="formsContainer--cards__item animated fadeIn"
     >
       <div className="titleCard">
-        {title.replace("-", " ")} <i className={icon}></i>{" "}
+        {name ? name : title.replace("-", " ")} <i className={icon}></i>{" "}
       </div>
       <img className="bgImg" src={images[`${title}-card`]} alt="" />
       <div className="imageCard">
         <img className="logoImg" src={images[`${title}-logo`]} alt="" />
+        {prestoOnline && <div className="coomingsoon">COMMING SOON</div>}
       </div>
     </div>
   );
@@ -154,6 +165,67 @@ export class FormsBody extends Component {
                 color="#F26521"
                 accountInfo={accountInfo}
               />
+              <Card
+                clickHandler={() =>
+                  this.setState({
+                    isSelected: true,
+                    nome_agenzia: "bgame",
+                    typee: 5,
+                    color: "#F26521",
+                  })
+                }
+                title="bgame"
+                icon={"fal fa-futbol"}
+                color="#F26521"
+                accountInfo={accountInfo}
+                name="REGISTRA BGAME"
+              />
+              <Card
+                clickHandler={() =>
+                  this.setState({
+                    isSelected: false,
+                    nome_agenzia: "auto",
+                    typee: 6,
+                    color: "#22A094",
+                  })
+                }
+                title="auto"
+                icon={"fal fa-futbol"}
+                color="#22A094"
+                accountInfo={accountInfo}
+                name="NOLEGGIO AUTO"
+                prestoOnline
+              />
+              <Card
+                clickHandler={() =>
+                  this.setState({
+                    isSelected: false,
+                    nome_agenzia: "assicurazioni",
+                    typee: 7,
+                    color: "#22A094",
+                  })
+                }
+                title="assicurazioni"
+                icon={"fal fa-futbol"}
+                accountInfo={accountInfo}
+                name="ASSICURAZIONI"
+                prestoOnline
+              />
+              <Card
+                clickHandler={() =>
+                  this.setState({
+                    isSelected: false,
+                    nome_agenzia: "energia",
+                    typee: 8,
+                    color: "#22A094",
+                  })
+                }
+                title="energia"
+                icon={"fal fa-futbol"}
+                accountInfo={accountInfo}
+                name="ENERGIA"
+                prestoOnline
+              />
             </div>
           )}
 
@@ -189,6 +261,26 @@ export class FormsBody extends Component {
           )}
           {isSelected && typee === 4 && (
             <OnlineShop
+              goBack={() => this.setState({ isSelected: false })}
+              nome_agenzia={nome_agenzia}
+              color={color}
+              typee={typee}
+              sendDataForm={this.props.sendDataForm}
+              accountInfo={accountInfo}
+            />
+          )}
+          {isSelected && typee === 5 && (
+            <Bgame
+              goBack={() => this.setState({ isSelected: false })}
+              nome_agenzia={nome_agenzia}
+              color={color}
+              typee={typee}
+              sendDataForm={this.props.sendDataForm}
+              accountInfo={accountInfo}
+            />
+          )}
+          {isSelected && typee === 6 && (
+            <Auto
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}

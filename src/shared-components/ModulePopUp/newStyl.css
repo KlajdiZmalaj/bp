@@ -496,7 +496,7 @@
   left: 10px;
 }
 
-div.modulePopUP.modulePopUP1 div.module.container-fluid.max-width_modulePopUP {
+div.modulePopUP.modulePopUP1.test div.module.container-fluid.max-width_modulePopUP {
   max-width: 870px;
   padding-top: 0;
   padding-bottom: 0;
@@ -891,6 +891,7 @@ div.modulePopUP.modulePopUP1.flex {
 
 .F24--Footer--Foot .Data .InputItem {
   margin-right: 15px;
+  min-height: 59px;
 }
 
 .F24--Footer--Foot .Data .InputItem .ant-row.ant-form-item {
@@ -914,6 +915,7 @@ div.modulePopUP.modulePopUP1.flex {
   font-size: 14px;
   font-weight: 400;
   border: none;
+  min-height: 38px;
   border-bottom: 3px solid #ebeced;
 }
 
@@ -1034,21 +1036,27 @@ div.modulePopUP.modulePopUP1.flex {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 132px;
+  visibility: visible;
+  opacity: 1;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 .F24--Middle.none {
   height: 33px;
+  min-height: 33px;
   overflow: hidden;
+  margin: 0 35px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.F24--Middle.none .F24--Middle-Inputs,
-.F24--Middle.none .Inputs {
-  height: 0;
-  opacity: 0;
+.F24--Middle.none div:nth-child(2).F24--Middle-Inputs,
+.F24--Middle.none div:nth-child(2).F24--Middle-Inputs div.Inputs {
+  height: 0 !important;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -1187,6 +1195,13 @@ div.modulePopUP.modulePopUP1.flex {
       -ms-flex-direction: row;
           flex-direction: row;
   padding: 5px 35px;
+}
+
+.F24--Top .ant-select-selection {
+  background: #ebeced;
+  color: #5c5c5c;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .F24--Top .ant-form-item-children {

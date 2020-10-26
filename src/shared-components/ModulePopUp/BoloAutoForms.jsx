@@ -24,6 +24,7 @@ export const BoloAutoLeftForm = ({
   barcodeData,
   getFieldDecorator,
   getFieldValue,
+  mobile,
 }) => (
   <Fragment>
     <ReturnFormItem
@@ -47,22 +48,7 @@ export const BoloAutoLeftForm = ({
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
-
-    <ReturnFormItem
-      descName="Indirizzo"
-      name="via_piazza"
-      message="Please input your  indirizzo!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
-
-    <ReturnFormItem
-      descName="Citta"
-      name="citta"
-      message="Please input your Citta!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
+    {mobile && <div className="DatiPagatori">DATI PAGATORE</div>}
     <ReturnFormItem
       descName="Persona"
       name="person_type"
@@ -76,7 +62,7 @@ export const BoloAutoLeftForm = ({
           <Radio value="G">Giuridica</Radio>
         </Radio.Group>
       }
-    />
+    />{" "}
     {getFieldValue("persona") === "F" ||
     typeof getFieldValue("persona") === "undefined" ? (
       <Fragment>
@@ -121,5 +107,19 @@ export const BoloAutoLeftForm = ({
         />
       </Fragment>
     )}
+    <ReturnFormItem
+      descName="Indirizzo"
+      name="via_piazza"
+      message="Please input your  indirizzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
+    <ReturnFormItem
+      descName="Citta"
+      name="citta"
+      message="Please input your Citta!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
   </Fragment>
 );

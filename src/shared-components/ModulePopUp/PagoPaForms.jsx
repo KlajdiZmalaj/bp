@@ -24,6 +24,7 @@ export const PagoPaLeftForm = ({
   barcodeData,
   getFieldDecorator,
   getFieldValue,
+  mobile,
 }) => (
   <Fragment>
     <ReturnFormItem
@@ -39,21 +40,8 @@ export const PagoPaLeftForm = ({
       message="Please input your Creditore!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
-    />
-    <ReturnFormItem
-      descName="Città"
-      name="citta"
-      message="Please input your  Città!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
     />{" "}
-    <ReturnFormItem
-      descName="Indirizzo"
-      name="via_piazza"
-      message="Please input your Indirizzo!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
+    {mobile && <div className="DatiPagatori">DATI PAGATORE</div>}
     <ReturnFormItem
       descName="Persona"
       name="person_type"
@@ -112,5 +100,19 @@ export const PagoPaLeftForm = ({
         />
       </Fragment>
     )}
+    <ReturnFormItem
+      descName="Città"
+      name="citta"
+      message="Please input your  Città!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />{" "}
+    <ReturnFormItem
+      descName="Indirizzo"
+      name="via_piazza"
+      message="Please input your Indirizzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
   </Fragment>
 );

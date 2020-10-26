@@ -164,6 +164,18 @@ export default {
   // ILIO: require(`../assets/images${skin}/bill-dark.svg`)
   "google-authenticator": require(`../assets/images/google-authenticator-2.svg`),
   //prenotazioni images
+  "bgame-logo": require(`../assets/images/prenotazioni/bgame-logo.svg`),
+  "bgame-bg": require(`../assets/images/prenotazioni/bgame-bg.jpg`),
+  "bgame-card": require(`../assets/images/prenotazioni/bgame-card.png`),
+
+  "auto-logo": require(`../assets/images/prenotazioni/auto-logo.svg`),
+  "auto-card": require(`../assets/images/prenotazioni/auto-card.png`),
+  "auto-bg": require(`../assets/images/prenotazioni/auto-bg.jpg`),
+  "assicurazioni-logo": require(`../assets/images/prenotazioni/assicurazioni-logo.svg`),
+  "assicurazioni-card": require(`../assets/images/prenotazioni/assicurazioni-card.jpg`),
+  "energia-logo": require(`../assets/images/prenotazioni/energia-logo.svg`),
+  "energia-card": require(`../assets/images/prenotazioni/energia-card.png`),
+
   "expedia-logo": require(`../assets/images/prenotazioni/expedia.svg`),
   "expedia-bg": require(`../assets/images/prenotazioni/expedia-bg.jpg`),
   "expedia-card": require(`../assets/images/prenotazioni/expedia-card.png`),
