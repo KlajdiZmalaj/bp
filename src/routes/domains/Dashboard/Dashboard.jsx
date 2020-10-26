@@ -112,6 +112,17 @@ class DashboardDom extends React.Component {
     }
     return FilterCompanies;
   };
+  checkIfInlcudes = (mainWord, WordToCheck) => {
+    return (
+      mainWord
+        .toString()
+        .toLowerCase()
+        .includes(WordToCheck.toString().toLowerCase()) ||
+      WordToCheck.toString()
+        .toLowerCase()
+        .includes(mainWord.toString().toLowerCase())
+    );
+  };
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
@@ -207,6 +218,14 @@ class DashboardDom extends React.Component {
       categoryActive,
       categoriesTypeSelected,
     } = this.state;
+    const { accountInfo } = this.props;
+    const isSepaUser =
+      accountInfo.profile.username === "sepa_agency" ||
+      accountInfo.profile.username === "sepa_user";
+    const isTestAcc =
+      accountInfo.profile.username === "mynewagency" &&
+      accountInfo.profile.role.name === "agency" &&
+      accountInfo.profile.role.id === 11;
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}>
@@ -334,6 +353,13 @@ class DashboardDom extends React.Component {
                                     service
                                   );
                                 }}
+                                image={
+                                  service.service_id === "BOL006" ||
+                                  service.service_id === "PPA001" ||
+                                  service.service_id === "PAGF24"
+                                    ? `${service.service_id}-Black-Mobile`
+                                    : `BOLL-Black-Mobile`
+                                }
                                 role={this.props.accountInfo?.profile?.role}
                                 togglePopUp={this.togglePopUp}
                                 setState={() => {
@@ -382,19 +408,21 @@ class DashboardDom extends React.Component {
                       )
                   )}
                 {/*Static Services presto Online  */}
-                {categoriesTypeSelected === "PRDPST" && (
+                {!isSepaUser && categoriesTypeSelected === "PRDPST" && (
                   <Fragment>
                     <div
-                    // onClick={() => {
-                    //   this.changeServce(
-                    //     "PPA001",
-                    //     [{ service_id: "PPA001", name: "Pago Pa" }],
-                    //     "Pago Pa",
-                    //     "1",
-                    //     { service_id: "PPA001", name: "Pago Pa" }
-                    //   );
-                    //   this.togglePopUp(true);
-                    // }}
+                      onClick={() => {
+                        if (isTestAcc) {
+                          this.changeServce(
+                            "PPA001",
+                            [{ service_id: "PPA001", name: "Pago Pa" }],
+                            "Pago Pa",
+                            "1",
+                            { service_id: "PPA001", name: "Pago Pa" }
+                          );
+                          this.togglePopUp(true);
+                        }
+                      }}
                     >
                       {" "}
                       <h3> Presto Online</h3>
@@ -402,19 +430,21 @@ class DashboardDom extends React.Component {
                       <span> Pago PA</span>
                     </div>
                     <div
-                    // onClick={() => {
-                    //   this.changeServce(
-                    //     "BOL004",
-                    //     [
-                    //       { service_id: "BOL004", name: "MAV" },
-                    //       { service_id: "BOL003", name: "RAV" },
-                    //     ],
-                    //     "MAV/RAV",
-                    //     "1",
-                    //     { service_id: "BOL004", name: "MAV" }
-                    //   );
-                    //   this.togglePopUp(true);
-                    // }}
+                      onClick={() => {
+                        if (isTestAcc) {
+                          this.changeServce(
+                            "BOL004",
+                            [
+                              { service_id: "BOL004", name: "MAV" },
+                              { service_id: "BOL003", name: "RAV" },
+                            ],
+                            "MAV/RAV",
+                            "1",
+                            { service_id: "BOL004", name: "MAV" }
+                          );
+                          this.togglePopUp(true);
+                        }
+                      }}
                     >
                       {" "}
                       <h3> Presto Online</h3>
@@ -422,16 +452,18 @@ class DashboardDom extends React.Component {
                       <span> MAV/RAV</span>
                     </div>
                     <div
-                    // onClick={() => {
-                    //   this.changeServce(
-                    //     "BOL006",
-                    //     [{ service_id: "BOL006", name: "BOLO AUTO" }],
-                    //     "BOLO AUTO",
-                    //     "1",
-                    //     { service_id: "BOL006", name: "BOLO AUTO" }
-                    //   );
-                    //   this.togglePopUp(true);
-                    // }}
+                      onClick={() => {
+                        if (isTestAcc) {
+                          this.changeServce(
+                            "BOL006",
+                            [{ service_id: "BOL006", name: "BOLO AUTO" }],
+                            "BOLO AUTO",
+                            "1",
+                            { service_id: "BOL006", name: "BOLO AUTO" }
+                          );
+                          this.togglePopUp(true);
+                        }
+                      }}
                     >
                       <h3> Presto Online</h3>
                       <img src={images["BOLO_AUTO-logo"]} alt="" />
@@ -439,14 +471,16 @@ class DashboardDom extends React.Component {
                     </div>
                     <div
                       onClick={() => {
-                        // this.changeServce(
-                        //   "PAGF24",
-                        //   [{ service_id: "PAGF24", name: "F24" }],
-                        //   "F24",
-                        //   "1",
-                        //   { service_id: "PAGF24", name: "F24" }
-                        // );
-                        // this.togglePopUp(true);
+                        if (isTestAcc) {
+                          this.changeServce(
+                            "PAGF24",
+                            [{ service_id: "PAGF24", name: "F24" }],
+                            "F24",
+                            "1",
+                            { service_id: "PAGF24", name: "F24" }
+                          );
+                          this.togglePopUp(true);
+                        }
                       }}
                     >
                       <h3> Presto Online</h3>

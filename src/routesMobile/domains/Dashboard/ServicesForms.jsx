@@ -1,15 +1,29 @@
 import React, { useEffect } from "react";
 import NumpadForm from "./modals/NumpadForm";
+import NewBolletiniBianchi from "./modals/NewBolletiniBianchi";
+import NewBolletiniPremercati from "./modals/NewBolletiniPremercati";
 import BolletiniBianchi from "./modals/BolletiniBianchi";
-import BolletiniPremercati from "./modals/BolletiniPremercati";
+import BolletiniPremercati from "./modals/BolletiniPremarcati";
 import PostePay from "./modals/PostePay";
+import BolloAuto from "./modals/BolloAuto";
+import PagoPa from "./modals/PagoPa";
+import MavRav from "./modals/MavRav";
+
 const ServicesForms = ({
   activeService,
   activeCategory,
   setService,
   favorites,
   toggleFavorite,
+  accountInfo,
 }) => {
+  const isTestAcc =
+    accountInfo.profile.username === "mynewagency" &&
+    accountInfo.profile.role.name === "agency" &&
+    accountInfo.profile.role.id === 11;
+  const isSepaUser =
+    accountInfo.profile.username === "sepa_agency" ||
+    accountInfo.profile.username === "sepa_user";
   let allFavServices = [];
   Object.keys(favorites).forEach((item) => {
     Object.keys(favorites[item]).forEach((subitem) => {
@@ -41,14 +55,60 @@ const ServicesForms = ({
           allFavServices={allFavServices}
         />
       ) : activeService === "BOL001" ? (
-        <BolletiniBianchi
+        isTestAcc || isSepaUser ? (
+          <NewBolletiniBianchi
+            setService={setService}
+            activeService={activeService}
+            toggleFavorite={toggleFavorite}
+            allFavServices={allFavServices}
+          />
+        ) : (
+          <BolletiniBianchi
+            setService={setService}
+            activeService={activeService}
+            toggleFavorite={toggleFavorite}
+            allFavServices={allFavServices}
+          />
+        )
+      ) : activeService === "BOL002" ? (
+        isTestAcc || isSepaUser ? (
+          <NewBolletiniPremercati
+            setService={setService}
+            activeService={activeService}
+            toggleFavorite={toggleFavorite}
+            allFavServices={allFavServices}
+          />
+        ) : (
+          <BolletiniPremercati
+            setService={setService}
+            activeService={activeService}
+            toggleFavorite={toggleFavorite}
+            allFavServices={allFavServices}
+          />
+        )
+      ) : activeService === "BOL004" || activeService === "BOL003" ? (
+        <MavRav
           setService={setService}
           activeService={activeService}
           toggleFavorite={toggleFavorite}
           allFavServices={allFavServices}
         />
-      ) : activeService === "BOL002" ? (
+      ) : activeService === "PPA001" ? (
+        <PagoPa
+          setService={setService}
+          activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
+        />
+      ) : activeService === "PAGF24" && isTestAcc ? (
         <BolletiniPremercati
+          setService={setService}
+          activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
+        />
+      ) : activeService === "BOL006" ? (
+        <BolloAuto
           setService={setService}
           activeService={activeService}
           toggleFavorite={toggleFavorite}

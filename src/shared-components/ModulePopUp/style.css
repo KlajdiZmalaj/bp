@@ -405,8 +405,8 @@
 }
 
 .leftCol_Module.Popup4.game {
-  height: 627px;
-  top: calc((100vh - 580px) / 2);
+  height: 670px;
+  top: calc((100vh - 620px) / 2);
   margin: 0 auto;
   position: relative;
 }
@@ -627,6 +627,45 @@
   cursor: pointer;
 }
 
+.leftCol_Module.Popup4 .row .NumPadContainer .Numbers span.bgm {
+  width: 33.333%;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .Numbers span.bgm.x .triangle {
+  width: 0;
+  height: 0;
+  border-top: 12.5px solid transparent;
+  border-right: 10px solid #ebebeb;
+  border-bottom: 12.5px solid transparent;
+  border-radius: 4px;
+  position: absolute;
+  left: -7.5px;
+  top: 0;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .Numbers span.bgm.x span {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: #ebebeb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  border-radius: 4px;
+}
+
+.leftCol_Module.Popup4 .row .NumPadContainer .Numbers span.bgm.x span i {
+  font-size: 17px;
+  font-weight: 300;
+}
+
 .leftCol_Module.Popup4 .row .TotalServices {
   width: 100%;
   display: -webkit-box;
@@ -740,6 +779,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-top: 5%;
 }
 
 .leftCol_Module.Popup4 .row .TotalServices .serv.active .Bottom::after {
@@ -755,15 +795,20 @@
 
 .leftCol_Module.Popup4 .row .TotalServices .serv span {
   color: #ffffff;
-  font-size: 23px;
+  font-size: 21px;
   font-weight: 300;
   font-family: "Roboto";
 }
 
 .leftCol_Module.Popup4 .row .TotalServices .serv span:nth-child(2) {
-  top: -8px;
-  left: 1px;
+  top: -5px;
+  font-size: 17px;
+  left: 2px;
   position: relative;
+}
+
+.leftCol_Module.Popup4 .row .TotalServices .serv .Bottom span:nth-child(2) {
+  top: -2.9px;
 }
 
 .leftCol_Module.Popup4 .row .Confimation.Buttons {

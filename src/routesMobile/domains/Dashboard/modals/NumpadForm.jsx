@@ -255,7 +255,7 @@ const Numpad = ({
           onClick={() => {
             if (!rechargeMobile.receipt) {
               notification["warning"]({
-                message: "Ticket non e generata",
+                message: "Ticket non compilato",
               });
             }
             setPrint(true);

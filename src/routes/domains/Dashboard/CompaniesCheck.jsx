@@ -13,8 +13,9 @@ const CompaniesCheck = ({
   toggleFavorite,
   getServices,
   favourite,
+  image,
 }) => {
-  // console.log(Key);
+  console.log(Key);
   return (
     <div
       onClick={() => {
@@ -27,7 +28,16 @@ const CompaniesCheck = ({
         }
       }}
     >
-      <img src={images[Key]} alt="" />
+      <img
+        src={
+          image
+            ? images[image]
+            : images[
+                Key === "BOLMR" || Key === "PPA" ? "BOLL-Black-Mobile" : Key
+              ]
+        }
+        alt=""
+      />
       <span> {Companie.name}</span>
       <i
         onMouseEnter={() => {

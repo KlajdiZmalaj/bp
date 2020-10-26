@@ -19,11 +19,22 @@ export default {
   //pagamanti logo
   BOLO_AUTO: require(`../assets/images/boloauto.png`),
   PAGO_PA: require(`../assets/images/pagopa.png`),
+  agenzia_entrata: require(`../assets/images/agenzia_entrata.png`),
+
   BOLLETINO: require(`../assets/images/bolletino.png`),
   "BOLO_AUTO-logo": require(`../assets/images/boloauto.svg`),
   "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
   "BOLLETINO-logo": require(`../assets/images/bolletini.svg`),
   "f24-logo": require(`../assets/images/f24.svg`),
+  //mobile-pagamenti
+  "BOL006-White-Mobile": require(`../assets/images/BOL006-White.png`),
+  "PPA001-White-Mobile": require(`../assets/images/PPA-White.png`),
+  "PAGF24-White-Mobile": require(`../assets/images/PAGF24-White.png`),
+  "BOLL-White-Mobile": require(`../assets/images/BOLL-White.png`),
+  "BOL006-Black-Mobile": require(`../assets/images/BOL006-Black.png`),
+  "PPA001-Black-Mobile": require(`../assets/images/PPA-Black.png`),
+  "PAGF24-Black-Mobile": require(`../assets/images/PAGF24-Black.png`),
+  "BOLL-Black-Mobile": require(`../assets/images/BOLL-Black.png`),
 
   baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
   //Static home page images
@@ -39,7 +50,6 @@ export default {
   SPE_DIZ: require(`../assets/images/spedizione.png`),
   CRY_VAL: require(`../assets/images/crypto_valute.png`),
   ALT_SER: require(`../assets/images/altri_servizi.png`),
-
   //*//
   servizi_banner: require(`../assets/images/servizi_banner.png`),
   loader: require(`../assets/images/loader.gif`),
@@ -81,7 +91,7 @@ export default {
   print: require(`../assets/images${skin}/print.svg`),
   logoGray: require(`../assets/images${skin}/logoGray.svg`),
   postepayBlue: require(`../assets/images${skin}/postepayBlue.svg`),
-  BOLL: require(`../assets/images${skin}/bill-dark.svg`),
+  BOLL: require(`../assets/images/bolletino.png`),
   RCPP: require(`../assets/images${skin}/postpayimg.svg`),
   RPP001: require(`../assets/images${skin}/postpayimg.svg`),
   PARTYP: require(`../assets/images${skin}/partypoker.svg`),

@@ -3,75 +3,95 @@ import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import { Form, Checkbox, notification } from "antd";
 import Condizioni from "./Condizioni";
+import moment from "moment";
 import images from "themes/images";
 import "./newStyl.css";
-import { BolletiniRightForm, BolletiniLeftForm } from "./BolletiniForms";
-import { BoloAutoLeftForm, BoloAutoRightForm } from "./BoloAutoForms";
-import { PagoPaLeftForm, PagoPaRightForm } from "./PagoPaForms";
-import { MavRavLeftForm, MavRavRightForm } from "./MavRavForm";
-const SeperateInputs = ({ number, word, setStateValue, value }) => {
+import { F24LeftForm, F24RightForm, LineTable, LastPartForm } from "./F24Forms";
+const SeperateInputs = ({
+  number,
+  word,
+  setStateValue,
+  setValues,
+  returnCodice,
+  setStateClass,
+  classNameVal,
+}) => {
   return [...new Array(number)].map((input, key) => {
     return (
       <input
-        key={key}
+        className={`inputSeperate ${classNameVal ? classNameVal : ""}`}
+        key={`${word}${key}`}
         maxLength="1"
+        required
         id={`${word}${key}`}
         type="text"
-        onChange={(e) => {
-          console.log(e.target.value, e.target.id);
-        }}
         onKeyDown={(e) => {
-          const previnp = document.getElementById(`${word}${key - 1}`);
-          const inp = document.getElementById(`${word}${key}`);
-          const nextinp = document.getElementById(`${word}${key + 1}`);
           var keyy = e.keyCode || e.charCode;
-          if (keyy !== 8 && keyy !== 9) {
-            inp.value = String.fromCharCode(keyy);
-            if (nextinp && !nextinp.value) {
-              nextinp.focus();
-            }
-            if (previnp && !previnp.value) {
-              inp.value = "";
-              previnp.focus();
-            } else {
-              if (inp.value && inp.value.length > 0) {
-                nextinp && nextinp.focus();
+          setTimeout(() => {
+            const previnp = document.getElementById(`${word}${key - 1}`);
+            const inp = document.getElementById(`${word}${key}`);
+            const nextinp = document.getElementById(`${word}${key + 1}`);
+            if (keyy !== 8 && keyy !== 9) {
+              if (nextinp && !nextinp.value) {
+                nextinp.focus();
+              } else if (previnp && !previnp.value) {
+                previnp.focus();
+              } else {
+                if (inp.value && inp.value.length > 0) {
+                  nextinp && nextinp.focus();
+                }
               }
             }
-          }
-          if (keyy === 8) {
-            inp.value = "";
-            if (previnp) {
-              previnp.focus();
+            if (keyy === 8) {
+              if (previnp) {
+                previnp.focus();
+              }
             }
+          }, 100);
+        }}
+        onChange={(e) => {
+          if (!classNameVal) {
+            setStateClass(word.substring(0, 6));
+          }
+          if (
+            e.target.value !== "" &&
+            e.target.value &&
+            e.target.value.length <= 1
+          ) {
+            document.getElementById(e.target.id).value = e.target.value;
+            setStateValue(returnCodice(number, word));
+          } else if (e.target.value === "") {
+            document.getElementById(e.target.id).value = e.target.value;
+            setStateValue(returnCodice(number, word));
           }
         }}
-        className={`inputCodice`}
         onPaste={() => {
           navigator.clipboard
             .readText()
             .then((codFisInps) => {
-              console.log(codFisInps);
-              setStateValue(codFisInps);
+              setStateValue(codFisInps.substring(0, number));
+              setValues(number, word, codFisInps);
             })
             .catch((err) => {
               console.error("Failed to read clipboard contents: ", err);
             });
         }}
-        value={value}
       />
     );
   });
 };
-class Bolletino extends React.Component {
+class F24 extends React.Component {
   state = {
     condizioniAgreement: true,
     condizioniShow: false,
     motivo_del_pagamento: false,
     codice_fiscale_atto: false,
+    nrOfRows: 4,
     codFisInps: "asdasdasd",
     codice_atto: "",
-    codice_uffico: "",
+    codice_ufficio: "",
+    classNameAtto: null,
+    classNameUfficio: null,
   };
   setbarcodeInp = (e) => {
     this.setState({ barcodeInput: e });
@@ -80,33 +100,67 @@ class Bolletino extends React.Component {
   clearFields = () => {
     this.props.form.resetFields();
   };
+  clearLineTables = () => {
+    [...new Array(this.state.nrOfRows)].forEach((item, id) => {
+      let objectFieldValues = [];
+      objectFieldValues[`sezione${id}`] = "";
+      objectFieldValues[`cod_tributo${id}`] = "";
+      objectFieldValues[`codice_ente${id}`] = "";
+      objectFieldValues[`ravv${id}`] = false;
+      objectFieldValues[`imm_varianti${id}`] = false;
+      objectFieldValues[`acc${id}`] = false;
+      objectFieldValues[`saldo${id}`] = false;
+      objectFieldValues[`num_imm${id}`] = "";
+      objectFieldValues[`rat_mese${id}`] = "";
+      objectFieldValues[`anno_rif${id}`] = "";
+      objectFieldValues[`detrazione${id}`] = "";
+      objectFieldValues[`importo_vers${id}`] = "";
+      objectFieldValues[`importo_com${id}`] = "";
+      this.props.form.setFieldsValue({
+        ...objectFieldValues,
+      });
+    });
+  };
   handleSubmit = (e) => {
     e.preventDefault();
-    const { service_id } = this.props;
     this.props.form.validateFieldsAndScroll((err, values) => {
-      this.clearFields();
-      if (!err && this.state.condizioniAgreement) {
-        // this.props.fetchBolletini(
-        //   service_id,
-        //   values.person_type.toString(),
-        //   values.via_piazza,
-        //   values.cap,
-        //   values.citta,
-        //   values.provincia,
-        //   values.importo.toString(),
-        //   values.tipologia,
-        //   values.numero_conto_corrente,
-        //   values.causale,
-        //   values.nome,
-        //   values.cognome,
-        //   values.codice_fiscale,
-        //   values.denominazione,
-        //   values.partita_iva,
-        //   values.email,
-        //   values.phone_number,
-        //   values.codice_identificativo,
-        //   this.clearFields
-        // );
+      let coUf = this.returnCodice(3, "codice_ufficio");
+      let coAt = this.returnCodice(11, "codice_atto");
+      if (
+        !err &&
+        this.state.condizioniAgreement &&
+        coUf &&
+        coAt &&
+        coUf.length >= 3 &&
+        coAt >= 11
+      ) {
+        this.props.setBokingSep(
+          this.props?.service_id,
+          values?.person_type,
+          values?.via_piazza,
+          values?.citta,
+          values?.provincia,
+          values?.gender,
+          values?.vat,
+          coUf,
+          coAt,
+          moment(values?.data_pagamento)?.format("YYYY-MM-DD")
+            ? moment(values?.data_pagamento).format("YYYY-MM-DD")
+            : null,
+          document.querySelector("#saldo_finale")?.value
+            ? document.querySelector("#saldo_finale")?.value
+            : null,
+          JSON.stringify(this.returnMotivoDelPagamentoList()),
+          values?.nome,
+          values?.cognome,
+          values?.codice_fiscale,
+          values?.denominazione,
+          values?.partita_iva,
+          values?.email,
+          values?.phone_number,
+          values?.codice_fiscale_optional,
+          this.clearFields
+        );
       } else {
         notification["error"]({
           message: "Ops...",
@@ -115,38 +169,112 @@ class Bolletino extends React.Component {
       }
     });
   };
+  returnCodice = (number, word) => {
+    var returnCodice = "";
+    [...new Array(number)].forEach((input, index) => {
+      const inp = document.getElementById(`${word}${index}`);
+
+      returnCodice = returnCodice.concat(inp?.value.toString());
+    });
+    return returnCodice;
+  };
+  setValues = (number, word, fullValue) => {
+    [...new Array(number)].forEach((input, index) => {
+      var inp = document.getElementById(`${word}${index}`);
+      inp.value = fullValue.substring(index, index + 1);
+    });
+  };
+  calculateSaldoVal = () => {
+    let Saldo = 0;
+    const getVal = this.props.form.getFieldValue;
+    [...new Array(this.state.nrOfRows)].forEach((item, index) => {
+      if (
+        getVal(`detrazione${index}`) &&
+        getVal(`importo_vers${index}`) &&
+        getVal(`importo_com${index}`)
+      ) {
+        Saldo =
+          Saldo +
+          parseFloat(getVal(`importo_vers${index}`)) -
+          parseFloat(getVal(`detrazione${index}`)) -
+          parseFloat(getVal(`importo_com${index}`));
+      }
+    });
+    return Saldo;
+  };
+  returnMotivoDelPagamentoList = () => {
+    let arrayMPL = [];
+    const getVal = this.props.form.getFieldValue;
+    [...new Array(this.state.nrOfRows)].forEach((item, index) => {
+      let objectRow = {
+        sezione: getVal(`sezione${index}`),
+        cod_tributo: getVal(`cod_tributo${index}`),
+        codice_ente: getVal(`codice_ente${index}`),
+        ravv: getVal(`ravv${index}`),
+        imm_varianti: getVal(`imm_varianti${index}`),
+        acc: getVal(`acc${index}`),
+        saldo: getVal(`saldo${index}`),
+        num_imm: getVal(`num_imm${index}`),
+        rat_mese: getVal(`rat_mese${index}`),
+        anno_rif: getVal(`anno_rif${index}`),
+        detrazione: getVal(`detrazione${index}`),
+        importo_vers: getVal(`importo_vers${index}`),
+        importo_com: getVal(`importo_com${index}`),
+      };
+      if (this.isEmptyObject(objectRow)) {
+        arrayMPL.push(objectRow);
+      }
+    });
+    return arrayMPL;
+  };
+  isEmptyObject(o) {
+    let find = true;
+    Object.keys(o).forEach(function (x) {
+      if (typeof o[`${x}`] === "undefined" || o[`${x}`] || o[`${x}`] === "") {
+        find = false;
+      }
+    });
+    return find;
+  }
+  componentDidUpdate(prevProps) {
+    const element = document.querySelector("#saldo_finale");
+    let saldo = this.calculateSaldoVal();
+    console.log(saldo);
+    if (saldo) {
+      element.value = saldo;
+    }
+  }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcodeData, service_id, service_s } = this.props;
+    const { barcodeData, service_s } = this.props;
     const {
       barcodeInput,
       condizioniShow,
       condizioniAgreement,
       motivo_del_pagamento,
       codice_fiscale_atto,
-      codice_uffico,
     } = this.state;
     return (
-      <div className="Bolletini F24">
-        <div className="Bolletini-Header">
+      <div className="F24">
+        <div className="F24-Header">
           <span>Pagamento deleghe f24</span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            {/* <img src=src /> */}
+            <img src={images["BOLLETINO"]} />
           </span>
         </div>
-        <div className="Bolletini-AfterHeader">
+        <div className="F24-AfterHeader">
           <span>
             <h4>Modello di pagamento unificato</h4>
             <h5>Per l’accredito alla tesoreria competente</h5>
           </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            {/* <img src={/*src/> */}
+            <img src={images["agenzia_entrata"]} />
           </span>
           <span>Delega irrevocabile a</span>
         </div>
-        <div className="Bolletini-Form">
+        <div className="F24-Form">
           <Form>
             <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
               <input
@@ -182,82 +310,23 @@ class Bolletino extends React.Component {
               />
             </div>
             <div className="F24--Top">
-              <div
-                className={`Left ${
-                  service_id === "BOL006"
-                    ? "BA"
-                    : service_id === "PPA001"
-                    ? "PA"
-                    : ""
-                }`}
-              >
-                {service_id === "BOL003" || service_id === "BOL004" ? (
-                  <MavRavLeftForm
-                    barcodeData={barcodeData}
-                    getFieldDecorator={getFieldDecorator}
-                    getFieldValue={this.props.form.getFieldValue}
-                    setServiceID={this.props.setServiceId}
-                    service_s={service_s}
-                  />
-                ) : service_id === "BOL006" ? (
-                  <BoloAutoLeftForm
-                    barcodeData={barcodeData}
-                    getFieldDecorator={getFieldDecorator}
-                    getFieldValue={this.props.form.getFieldValue}
-                  />
-                ) : service_id === "PPA001" ? (
-                  <PagoPaLeftForm
-                    barcodeData={barcodeData}
-                    getFieldDecorator={getFieldDecorator}
-                    getFieldValue={this.props.form.getFieldValue}
-                  />
-                ) : (
-                  <BolletiniLeftForm
-                    barcodeData={barcodeData}
-                    getFieldDecorator={getFieldDecorator}
-                    getFieldValue={this.props.form.getFieldValue}
-                    service_id={service_id}
-                  />
-                )}
+              <div className="Left">
+                <F24LeftForm
+                  barcodeData={barcodeData}
+                  getFieldDecorator={getFieldDecorator}
+                  getFieldValue={this.props.form.getFieldValue}
+                  setServiceID={this.props.setServiceId}
+                  service_s={service_s}
+                />
               </div>
-              <div
-                className={`Right ${
-                  service_id === "BOL006"
-                    ? "BA"
-                    : service_id === "PPA001"
-                    ? "PA"
-                    : ""
-                }`}
-              >
+              <div className="Right">
                 <div className="Inputs">
-                  {service_id === "BOL003" || service_id === "BOL004" ? (
-                    <MavRavRightForm
-                      barcodeData={barcodeData}
-                      getFieldDecorator={getFieldDecorator}
-                      getFieldValue={this.props.form.getFieldValue}
-                    />
-                  ) : service_id === "BOL006" ? (
-                    <BoloAutoRightForm
-                      barcodeData={barcodeData}
-                      getFieldDecorator={getFieldDecorator}
-                      getFieldValue={this.props.form.getFieldValue}
-                    />
-                  ) : service_id === "PPA001" ? (
-                    <PagoPaRightForm
-                      barcodeData={barcodeData}
-                      getFieldDecorator={getFieldDecorator}
-                      getFieldValue={this.props.form.getFieldValue}
-                    />
-                  ) : (
-                    <BolletiniRightForm
-                      barcodeData={barcodeData}
-                      getFieldDecorator={getFieldDecorator}
-                      getFieldValue={this.props.form.getFieldValue}
-                      service_id={service_id}
-                    />
-                  )}
+                  <F24RightForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                    getFieldValue={this.props.form.getFieldValue}
+                  />
                 </div>
-
                 <div className="Condizioni">
                   <div
                     className="Condizioni control"
@@ -291,11 +360,16 @@ class Bolletino extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="F24--Middle">
-              <div>
-                <span></span>
+            <div className={`F24--Middle ${codice_fiscale_atto ? "none" : ""}`}>
+              <div
+                onClick={() => {
+                  this.setState((state) => ({
+                    codice_fiscale_atto: !state.codice_fiscale_atto,
+                  }));
+                }}
+              >
+                <span>Sezione erario ed altro</span>
                 <span>
-                  {" "}
                   <i
                     className={`fal fa-chevron-${
                       codice_fiscale_atto ? "down" : "up"
@@ -303,73 +377,164 @@ class Bolletino extends React.Component {
                   />
                 </span>
               </div>
-              <div
-                className={`F24--Middle-Inputs ${
-                  codice_fiscale_atto ? "none" : ""
-                }`}
-              >
+              <div className="F24--Middle-Inputs">
                 <div>
                   {" "}
                   <span>Codice ufficio</span> <span>Codice atto</span>
                 </div>
                 <div className="Inputs">
-                  <SeperateInputs
-                    number={3}
-                    word="codice_uffico"
-                    setStateValue={(value) => {
-                      this.setState({ codice_uffico: value });
-                    }}
-                    value={codice_uffico}
-                  />
+                  <span>
+                    <SeperateInputs
+                      number={3}
+                      word="codice_ufficio"
+                      setStateValue={(value) => {
+                        this.setState({ codice_ufficio: value });
+                      }}
+                      setValues={this.setValues}
+                      returnCodice={this.returnCodice}
+                      setStateClass={(value) => {
+                        this.setState({ classNameUfficio: value });
+                      }}
+                      classNameVal={this.state.classNameUfficio}
+                    />
+                  </span>
+                  <span>
+                    <SeperateInputs
+                      setValues={this.setValues}
+                      number={11}
+                      word="codice_atto"
+                      setStateValue={(value) => {
+                        this.setState({ codice_atto: value });
+                      }}
+                      returnCodice={this.returnCodice}
+                      setStateClass={(value) => {
+                        this.setState({ classNameAtto: value });
+                      }}
+                      classNameVal={this.state.classNameAtto}
+                    />
+                  </span>
                 </div>
               </div>
             </div>
-            <div className="F24--Bottom"></div>
-            <div className="F24--Footer"></div>
-
-            <div className="Actions">
+            <div
+              className={`F24--Bottom ${motivo_del_pagamento ? "none" : ""}`}
+            >
               <div
-                className="Actions--Item"
-                onClick={(e) => {
-                  if (this.props.accountInfo?.token) {
-                    this.handleSubmit(e);
-                  } else {
-                    window.location.hash = "login";
-                    this.props.togglePopUp(false);
-                  }
-                }}
-                htmltype="submit"
-              >
-                <h3>esegui</h3>
-                <img src={images.checkSymbol} alt="" />
-              </div>
-              <div
-                className="Actions--Item"
+                className="TableVis"
                 onClick={() => {
-                  if (barcodeInput) {
-                    this.setbarcodeInp(false);
-                  } else {
-                    this.setbarcodeInp(true);
-                  }
+                  this.setState((state) => ({
+                    motivo_del_pagamento: !state.motivo_del_pagamento,
+                  }));
                 }}
               >
-                <h3>barcode</h3>
-                <p>
-                  pagemento <br /> differito
-                </p>
+                <span>Motivo del pagamento</span>
+                <span>
+                  <i
+                    className={`fal fa-chevron-${
+                      motivo_del_pagamento ? "down" : "up"
+                    }`}
+                  />
+                </span>
               </div>
-              <div className="Actions--Item">
-                <h3>stampa</h3>
-                <p>
-                  pre <br /> scontrino
-                </p>
+              <div className="Table">
+                <div className="Table--Header">
+                  <span>Sezione</span>
+                  <span>Cod. Tributo</span>
+                  <span>Cod. ente/com</span>
+                  <span>Ravv.</span>
+                  <span>Imm. variati</span>
+                  <span>Acc</span>
+                  <span>Saldo</span>
+                  <span>Num. Imm</span>
+                  <span>Rat/mese</span>
+                  <span>Anno di riferimento</span>
+                  <span>Detrazione</span>
+                  <span>Importo a debito versati</span>
+                  <span>Importi a credito compensati</span>
+                </div>
+                <div className="RowContainer">
+                  {[...new Array(this.state.nrOfRows)].map((item, index) => (
+                    <div className="Table--Row" key={index}>
+                      <LineTable
+                        id={index}
+                        barcodeData={barcodeData}
+                        getFieldDecorator={getFieldDecorator}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div
-                className="Actions--Item"
-                onClick={() => this.props.togglePopUp(false)}
-              >
-                <h3>anulla</h3>
-                <img src={images.close} alt="" />
+              <div className="TableActions">
+                <div onClick={this.clearLineTables}>
+                  <i className="fal fa-trash-alt" />
+                  <span>Svuota tutti i campi</span>
+                </div>
+                <div
+                  onClick={() => {
+                    this.setState((state) => ({
+                      nrOfRows: state.nrOfRows + 1,
+                    }));
+                  }}
+                >
+                  <span>Aggiungi Riga</span>
+                  <i className="fal fa-plus" />
+                </div>
+              </div>
+            </div>
+            <div className="F24--Footer">
+              <div className="F24--Footer--Head">Estremi del versamento</div>
+              <div className="F24--Footer--Foot">
+                <div className="Data">
+                  <LastPartForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                  />
+                </div>
+                <div className="Actions">
+                  <div
+                    className="Actions--Item"
+                    onClick={(e) => {
+                      if (this.props.accountInfo?.token) {
+                        this.handleSubmit(e);
+                      } else {
+                        window.location.hash = "login";
+                        this.props.togglePopUp(false);
+                      }
+                    }}
+                    htmltype="submit"
+                  >
+                    <h3>esegui</h3>
+                    <img src={images.checkSymbol} alt="" />
+                  </div>
+                  <div
+                    className="Actions--Item"
+                    onClick={() => {
+                      if (barcodeInput) {
+                        this.setbarcodeInp(false);
+                      } else {
+                        this.setbarcodeInp(true);
+                      }
+                    }}
+                  >
+                    <h3>barcode</h3>
+                    <p>
+                      pagemento <br /> differito
+                    </p>
+                  </div>
+                  <div className="Actions--Item">
+                    <h3>stampa</h3>
+                    <p>
+                      pre <br /> scontrino
+                    </p>
+                  </div>
+                  <div
+                    className="Actions--Item"
+                    onClick={() => this.props.togglePopUp(false)}
+                  >
+                    <h3>anulla</h3>
+                    <img src={images.close} alt="" />
+                  </div>
+                </div>
               </div>
             </div>
           </Form>
@@ -379,7 +544,7 @@ class Bolletino extends React.Component {
   }
 }
 
-const CenterAccountMenuu = Form.create({ name: "bolletino" })(Bolletino);
+const CenterAccountMenuu = Form.create({ name: "f24" })(F24);
 
 const mapsStateToProps = (state) => ({
   bolletiniBianchi: state.auth.bolletiniBianchi,
@@ -392,59 +557,3 @@ const mapsStateToProps = (state) => ({
 export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
   CenterAccountMenuu
 );
-
-{
-  /* <div className={"inpssWrapper"}>
-  {[...new Array(16)].map((input, key) => {
-    return (
-      <input
-        key={key}
-        maxLength="1"
-        id={`inp${key}`}
-        type="text"
-        onKeyDown={(e) => {
-          // console.log("keydown", e.keyCode || e.charCode);
-          const previnp = document.getElementById(`inp${key - 1}`);
-          const inp = document.getElementById(`inp${key}`);
-          const nextinp = document.getElementById(`inp${key + 1}`);
-          var keyy = e.keyCode || e.charCode;
-          if (keyy !== 8 && keyy !== 9) {
-            inp.value = String.fromCharCode(keyy);
-
-            if (nextinp && !nextinp.value) {
-              nextinp.focus();
-            }
-            if (previnp && !previnp.value) {
-              inp.value = "";
-              previnp.focus();
-            } else {
-              if (inp.value && inp.value.length > 0) {
-                nextinp && nextinp.focus();
-              }
-            }
-          }
-          if (keyy === 8) {
-            inp.value = "";
-            if (previnp) {
-              previnp.focus();
-            }
-          }
-          this.getValues();
-        }}
-        className={`inputCodice`}
-        onPaste={() => {
-          navigator.clipboard
-            .readText()
-            .then((codFisInps) => {
-              this.setState({ codFisInps });
-            })
-            .catch((err) => {
-              console.error("Failed to read clipboard contents: ", err);
-            });
-        }}
-        value={this.state.codFisInps.split("")[key]}
-      />
-    );
-  })}
-</div>; */
-}
