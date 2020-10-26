@@ -206,3 +206,7 @@ body .titleConf {
 .titleConf i {
   color: inherit !important;
 }
+body .ticketDetails--filters__byTicket input {
+  background: #222;
+  color: #fff;
+}
