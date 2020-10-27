@@ -70,21 +70,26 @@ class PersonaFisicaForm extends Component {
       if (codice_fiscale.length === 16) {
         try {
           var cf = new CodiceFiscale(codice_fiscale);
-          this.setState((state) => ({
-            gender: state.gender ? state.gender : cf.toJSON().gender,
-            data_di_nascita: state.data_di_nascita
-              ? state.data_di_nascita
-              : moment(
-                  `${cf.toJSON().day}/${cf.toJSON().month}/${cf.toJSON().year}`,
-                  "DD/MM/YYYY"
-                ),
-            luogo_di_nascita: state.luogo_di_nascita
-              ? state.luogo_di_nascita
-              : cf.birthplace.nome,
-            province_of_birth: state.province_of_birth
-              ? state.province_of_birth
-              : cf.birthplace.prov,
-          }));
+          const isValidCf = CodiceFiscale.check(cf?.code);
+          if (isValidCf) {
+            this.setState((state) => ({
+              gender: state.gender ? state.gender : cf.toJSON().gender,
+              data_di_nascita: state.data_di_nascita
+                ? state.data_di_nascita
+                : moment(
+                    `${cf.toJSON().day}/${cf.toJSON().month}/${
+                      cf.toJSON().year
+                    }`,
+                    "DD/MM/YYYY"
+                  ),
+              luogo_di_nascita: state.luogo_di_nascita
+                ? state.luogo_di_nascita
+                : cf.birthplace.nome,
+              province_of_birth: state.province_of_birth
+                ? state.province_of_birth
+                : cf.birthplace.prov,
+            }));
+          }
         } catch (error) {
           notification["error"]({
             message: "Codice fiscale non e valido",
@@ -127,9 +132,7 @@ class PersonaFisicaForm extends Component {
               this.setState({ butonVisibility: false });
             }
           }
-        } catch (error) {
-          console.log("err");
-        }
+        } catch (error) {}
       }
     }
   }

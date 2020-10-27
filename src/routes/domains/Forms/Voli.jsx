@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 class Voli extends Component {
   state = {
-    bagaglio: 1,
+    bagaglio: "1",
     adults: 1,
     childrens: 0,
     hasDD: false,
@@ -107,7 +107,7 @@ class Voli extends Component {
         <div className="rightForm">
           <div className="rightForm--header">
             {!isMobile && (
-              <div className="TitleBack">
+              <div className="TitleBack" style={{ color: color }}>
                 <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
                 Prenotazione Biglietti{" "}
               </div>
@@ -118,7 +118,11 @@ class Voli extends Component {
                 {activeService}
               </div>
             )}
-            <img src={images[`${nome_agenzia}-logo`]} alt="" />
+            <img
+              className={nome_agenzia}
+              src={images[`${nome_agenzia}-logo`]}
+              alt=""
+            />
           </div>
           <div className="rightForm--left">
             <div className="formsContainer--body__item">
@@ -250,11 +254,9 @@ class Voli extends Component {
                 <div className="radioGr">
                   <span>A mano</span>
                   <input
-                    checked={this.state.bagaglio === 1}
+                    checked={this.state.bagaglio === "1"}
                     onChange={(e) => {
-                      if (e.target.checked) {
-                        this.setState({ bagaglio: e.target.value });
-                      }
+                      this.setState({ bagaglio: e.target.value });
                     }}
                     type="radio"
                     name="bagaglio"
@@ -269,15 +271,13 @@ class Voli extends Component {
                   <span>In stiva</span>
                   <input
                     onChange={(e) => {
-                      if (e.target.checked) {
-                        this.setState({ bagaglio: e.target.value });
-                      }
+                      this.setState({ bagaglio: e.target.value });
                     }}
                     type="radio"
                     name="bagaglio"
                     value="2"
                     id="bagaglio2"
-                    checked={this.state.bagaglio === 2}
+                    checked={this.state.bagaglio === "2"}
                   />
                   <label htmlFor="bagaglio2" className="customRadio">
                     <span></span>
@@ -288,7 +288,7 @@ class Voli extends Component {
             <div
               className={
                 "formsContainer--body__item" +
-                (this.state.bagaglio === 2 ? "" : " invisible")
+                (this.state.bagaglio === "2" ? "" : " invisible")
               }
             >
               <div className="label">Bagaglio in stiva</div>

@@ -29,7 +29,6 @@ const MavRav = ({
 }) => {
   const [barcode, setBarcode] = useState("");
   const [camera, setCamera] = useState(false);
-  console.log(services["PRDPST"]["BOLMR"]);
   useEffect(() => {
     if (Object.values(bolletiniBianchi).length > 0)
       notification[bolletiniBianchi.errors ? "error" : "success"]({
@@ -72,7 +71,7 @@ const MavRav = ({
         />
       )}
       <div className="bolletini--header">
-        Bolletini Bianchi{" "}
+        MAV/RAV
         <i
           onClick={() => {
             if (allFavServices.includes("BOLL")) {
@@ -107,8 +106,7 @@ const MavRav = ({
       <div className="bolletini--condition">
         <div className="bolletini--condition__check">
           <label htmlFor="bollo">
-            La persona che hai di fronte non è il intestatario del pagamento del
-            bollo
+            La persona che hai di fronte non è il pagatore Del Mav/Rav
           </label>
 
           <input id="bollo" type="checkbox" />
@@ -148,7 +146,6 @@ const MavRav = ({
         <button
           onClick={() => {
             setService(null);
-            setBolletiniBianchi({});
           }}
         >
           Anulla <i className="fal fa-times" aria-hidden="true"></i>

@@ -19,21 +19,24 @@
     flex-flow: row wrap;
     align-items: center;
     width: 100%;
-    max-width: 1005px;
+    max-width: 1150px;
     margin: 0 auto;
     margin-top: 60px;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     &__item {
       display: flex;
       flex-flow: column;
       width: 100%;
-      max-width: 330px;
+      max-width: 380px;
       position: relative;
       cursor: pointer;
       margin-right: 5px;
       margin-top: 5px;
       flex-grow: 1;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
       &:hover {
         .imageCard {
           backdrop-filter: blur(5px);
@@ -55,6 +58,22 @@
       align-items: center;
       justify-content: center;
       transition: 0.3s;
+      .coomingsoon {
+        position: absolute;
+        bottom: 0;
+        background: #ffffff4d;
+        color: #fff;
+        border-radius: 5px 5px 0 0;
+        font-size: 8px;
+        font-weight: 500;
+        font-family: "Roboto";
+        width: 90px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 0.3px;
+      }
     }
   }
   &--body {
@@ -87,6 +106,7 @@
       left: 0;
       top: 0;
     }
+
     .imgLogo {
       position: absolute;
       z-index: 1;
@@ -127,6 +147,7 @@
         font-size: 18px;
         border-bottom: 2px solid #ebeced;
         height: 67px;
+
         & div.TitleBack {
           display: flex;
           align-items: center;
@@ -143,8 +164,38 @@
         img {
           filter: brightness(0.8);
           width: 120px;
+          height: auto;
+          object-fit: contain;
           @media (max-width: 768px) {
             display: none;
+          }
+          &.bgame {
+            width: 80px;
+            height: 44px;
+          }
+          &.expedia {
+            width: 113px;
+            height: 32px;
+          }
+          &.flixbus {
+            width: 145.8px;
+            height: 26px;
+          }
+          &.stubhub {
+            width: 80px;
+            height: 36.19px;
+          }
+          &.ticketing {
+            width: 95px;
+            height: 42.2px;
+          }
+          &.vivaticket {
+            width: 167.3px;
+            height: 18px;
+          }
+          &.trenitalia {
+            width: 110px;
+            height: 35.05px;
           }
         }
       }
@@ -197,6 +248,30 @@
       justify-content: center;
       margin-top: 10px;
       position: relative;
+      .inputI {
+        position: absolute;
+        width: 10%;
+        height: 40px;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 0;
+        z-index: 1;
+        color: #b5b5b5;
+      }
+      .Select-control {
+        height: 40px;
+        div {
+          height: 38px;
+          display: flex;
+          align-items: center;
+          color: #5c5c5c;
+          font-size: 14px;
+          font-weight: 300;
+          font-family: "Roboto";
+        }
+      }
       &:first-child {
         margin-top: 0;
       }
@@ -244,6 +319,9 @@
       .label {
         font-weight: 400;
         font-size: 14px;
+        .Red {
+          color: #f26521;
+        }
       }
       textarea {
         border: 0px;
@@ -740,13 +818,13 @@ div.OnlineShop {
       height: 60px;
       max-height: 60px;
       min-height: 60px;
+
       .TitleBack {
         font-size: 18px;
         font-weight: 500;
         font-family: "Lato";
         color: #f26521;
         i {
-          color: #5c5c5c;
           font-size: 16px;
         }
       }
@@ -897,6 +975,189 @@ div.OnlineShop {
         flex-direction: row;
         .L {
           border-right: 1px solid #ebeced;
+        }
+      }
+    }
+  }
+}
+.formsContainer--body.auto {
+  .rightForm.auto {
+    .label {
+      font-size: 12px;
+      font-weight: 400;
+      font-family: "Roboto";
+      color: #5c5c5c;
+      .Red {
+        color: #f26521;
+      }
+    }
+    .rightForm {
+      &--right {
+        .formsContainer--body {
+          &__semiCont {
+            flex-direction: row;
+            display: flex;
+            height: 58px;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            .formsContainer--body__item.semi {
+              margin-top: 0;
+            }
+          }
+          &__item {
+            &.semi {
+              width: 49%;
+            }
+            &.Ali {
+              .ant-radio-group {
+                background: #ebeced;
+                padding-right: 10px;
+                .ant-radio-wrapper {
+                  width: auto;
+                  span:not(.ant-radio):not(.ant-radio-inner) {
+                    padding: 0;
+                    padding-left: 5px;
+                  }
+                }
+              }
+            }
+            .ant-radio-group {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 40px;
+            }
+            .ant-radio-wrapper {
+              width: 49%;
+              height: 100%;
+              background: #ebeced;
+              display: flex;
+              align-items: center;
+              padding-left: 10px;
+              margin: 0;
+              font-size: 14px;
+              font-weight: 300;
+              color: #5c5c5c;
+              span:not(.ant-radio):not(.ant-radio-inner) {
+                height: 19px;
+                padding-left: 10px;
+              }
+              .ant-radio-checked .ant-radio-inner {
+                border-color: #22a094 !important ;
+              }
+
+              .ant-radio-checked .ant-radio-inner:after {
+                background-color: #22a094;
+              }
+
+              .ant-radio:hover .ant-radio-inner {
+                border-color: #22a094;
+              }
+              .ant-radio-wrapper {
+                width: 14px;
+                height: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                border: 1px solid #22a094;
+              }
+            }
+          }
+        }
+        .Slider {
+          .label {
+            font-size: 10px;
+            font-weight: 400;
+            font-family: "Roboto";
+            color: #5c5c5c;
+            align-items: center;
+            display: flex;
+            height: 18px;
+          }
+          .Container {
+            background: #ebeced;
+            margin: 0;
+            height: 40px;
+            width: 100%;
+            padding: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+          }
+          .ant-slider {
+            background: #ebeced;
+            margin: 0;
+            height: 35px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .ant-slider-rail,
+            .ant-slider-track {
+              height: 3px;
+            }
+            .ant-slider-track {
+              background: #22a094;
+            }
+            .ant-slider-handle {
+              width: 12px;
+              height: 12px;
+              top: 16px;
+              border: 2px solid #22a094;
+            }
+          }
+        }
+      }
+      &--left {
+        .formsContainer--body__item {
+          .ant-radio-group {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+          }
+          .ant-radio-wrapper {
+            width: 49%;
+            height: 100%;
+            background: #ebeced;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 300;
+            color: #5c5c5c;
+            span:not(.ant-radio):not(.ant-radio-inner) {
+              height: 19px;
+              padding-left: 10px;
+            }
+            .ant-radio-checked .ant-radio-inner {
+              border-color: #22a094 !important ;
+            }
+
+            .ant-radio-checked .ant-radio-inner:after {
+              background-color: #22a094;
+            }
+
+            .ant-radio:hover .ant-radio-inner {
+              border-color: #22a094;
+            }
+            .ant-radio-wrapper {
+              width: 14px;
+              height: 14px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0;
+              border: 1px solid #22a094;
+            }
+          }
         }
       }
     }

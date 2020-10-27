@@ -13,6 +13,7 @@ class Treni extends Component {
     childrens: 0,
     hasDD: false,
     travalers: {},
+    tipologia_biglietto: "1",
   };
   resetState = (msg) => {
     if (!msg.error) {
@@ -140,7 +141,11 @@ class Treni extends Component {
         <div className="rightForm">
           <div className="rightForm--header">
             {!isMobile && (
-              <div className="TitleBack" onClick={goBack}>
+              <div
+                className="TitleBack"
+                style={{ color: color }}
+                onClick={goBack}
+              >
                 <i className="fal fa-chevron-left Arrow"></i>
                 Prenotazione Biglietti{" "}
               </div>
@@ -153,7 +158,11 @@ class Treni extends Component {
               </div>
             )}
 
-            <img src={images[`${nome_agenzia}-logo`]} alt="" />
+            <img
+              className={nome_agenzia}
+              src={images[`${nome_agenzia}-logo`]}
+              alt=""
+            />
           </div>
           <div className="rightForm--left">
             <div className="formsContainer--body__item">
@@ -264,13 +273,12 @@ class Treni extends Component {
               />
             </div>
 
-            {this.state.tipologia_biglietto === 2 ? (
+            {this.state.tipologia_biglietto === "2" ? (
               <div className="formsContainer--body__item semi">
                 <div className="label">Andata</div>
                 <DatePicker
                   showTime
                   onChange={(e) => {
-                    //   console.log("ca ka picker", moment(e).format());
                     this.setState({ andata_time: moment(e).format() });
                   }}
                 />
@@ -282,7 +290,6 @@ class Treni extends Component {
                   <DatePicker
                     showTime
                     onChange={(e) => {
-                      //   console.log("ca ka picker", moment(e).format());
                       this.setState({ andata_time: moment(e).format() });
                     }}
                   />
@@ -359,7 +366,7 @@ class Treni extends Component {
                 <div className="radioGr">
                   <span>Andata e ritorno </span>
                   <input
-                    checked={this.state.tipologia_biglietto === 1}
+                    checked={this.state.tipologia_biglietto === "1"}
                     onChange={(e) => {
                       if (e.target.checked) {
                         this.setState({ tipologia_biglietto: e.target.value });
@@ -386,7 +393,7 @@ class Treni extends Component {
                     name="bagaglio"
                     value="2"
                     id="bagaglio2"
-                    checked={this.state.tipologia_biglietto === 2}
+                    checked={this.state.tipologia_biglietto === "2"}
                   />
                   <label htmlFor="bagaglio2" className="customRadio">
                     <span></span>

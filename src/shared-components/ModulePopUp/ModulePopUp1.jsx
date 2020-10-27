@@ -16,20 +16,30 @@ class ModulePopUp1 extends React.Component {
   }
   render() {
     const { bolletiniBianchi, service, accountInfo } = this.props;
+    const isTestAcc =
+      accountInfo.profile.username === "mynewagency" &&
+      accountInfo.profile.role.name === "agency" &&
+      accountInfo.profile.role.id === 11;
     const isSepaUser =
       accountInfo.profile.username === "sepa_agency" ||
       accountInfo.profile.username === "sepa_user";
     return (
       <div
         className={`modulePopUP modulePopUP1 ${
-          service.service_id === "PAGF24" ? "" : isSepaUser ? "flex" : ""
+          service.service_id === "PAGF24"
+            ? isSepaUser || isTestAcc
+              ? "test"
+              : ""
+            : isSepaUser || isTestAcc
+            ? "test flex"
+            : ""
         }`}
       >
         <div className="module container-fluid max-width_modulePopUP">
           <div className="row">
             {service.service_id === "PAGF24" ? (
               <F24 service_id={service.service_id} />
-            ) : isSepaUser ? (
+            ) : isSepaUser || isTestAcc ? (
               <Bolletino
                 service={service}
                 service_id={service.service_id}

@@ -347,10 +347,12 @@
   }
 }
 div.modulePopUP.modulePopUP1 {
-  div.module.container-fluid.max-width_modulePopUP {
-    max-width: 870px;
-    padding-top: 0;
-    padding-bottom: 0;
+  &.test {
+    div.module.container-fluid.max-width_modulePopUP {
+      max-width: 870px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
   &.flex {
     display: flex;
@@ -610,6 +612,7 @@ div.modulePopUP.modulePopUP1 {
       align-items: center;
       .InputItem {
         margin-right: 15px;
+        min-height: 59px;
         .ant-row.ant-form-item {
           margin-bottom: 0;
         }
@@ -628,6 +631,7 @@ div.modulePopUP.modulePopUP1 {
           font-size: 14px;
           font-weight: 400;
           border: none;
+          min-height: 38px;
           border-bottom: 3px solid #ebeced;
         }
       }
@@ -704,15 +708,21 @@ div.modulePopUP.modulePopUP1 {
     display: flex;
     flex-direction: column;
     height: 132px;
+    visibility: visible;
+    opacity: 1;
     transition: 0.5s;
     &.none {
       height: 33px;
+      min-height: 33px;
       overflow: hidden;
+      margin: 0 35px;
       transition: 0.5s;
-      .F24--Middle-Inputs,
-      .Inputs {
-        height: 0;
-        opacity: 0;
+      div:nth-child(2).F24--Middle-Inputs,
+      div:nth-child(2).F24--Middle-Inputs div.Inputs {
+        height: 0 !important;
+        min-height: 0;
+        padding: 0;
+        margin: 0;
         transition: 0.5s;
       }
     }
@@ -812,6 +822,12 @@ div.modulePopUP.modulePopUP1 {
     display: flex;
     flex-direction: row;
     padding: 5px 35px;
+    .ant-select-selection {
+      background: #ebeced;
+      color: #5c5c5c;
+      font-size: 14px;
+      font-weight: 300;
+    }
     .ant-form-item-children {
       width: 100%;
       div {

@@ -71,19 +71,18 @@ export const MavRavLeftForm = ({
       getFieldDecorator={getFieldDecorator}
     />
     <ReturnFormItem
-      descName={`Codice ${getFieldValue("mav_rav") === "1" ? "Mav" : "Rav"}`}
+      descName={`Codice ${
+        getFieldValue("mav_rav") === "1" ||
+        typeof getFieldValue("mav_rav") === "undefined"
+          ? "Mav"
+          : "Rav"
+      }`}
       name="codice"
       message="Please input your Prezzo!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
-    <ReturnFormItem
-      descName="Indirizzo"
-      name="via_piazza"
-      message="Please input your Indirizzo!"
-      barcodeData={barcodeData}
-      getFieldDecorator={getFieldDecorator}
-    />
+    {mobile && <div className="DatiPagatori">DATI PAGATORE</div>}
 
     <ReturnFormItem
       descName="Persona"
@@ -144,5 +143,12 @@ export const MavRavLeftForm = ({
         />
       </Fragment>
     )}
+    <ReturnFormItem
+      descName="Indirizzo"
+      name="via_piazza"
+      message="Please input your Indirizzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
   </Fragment>
 );

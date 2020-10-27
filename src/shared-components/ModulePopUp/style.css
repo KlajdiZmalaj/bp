@@ -405,8 +405,8 @@
 }
 
 .leftCol_Module.Popup4.game {
-  height: 670px;
-  top: calc((100vh - 620px) / 2);
+  height: 628px;
+  top: calc((100vh - 603px) / 2);
   margin: 0 auto;
   position: relative;
 }
@@ -898,7 +898,7 @@
 
 .leftCol_Module.Popup4 .row .GamingBanner {
   width: 100%;
-  height: calc(100% - 240px);
+  height: calc(94% - 240px);
   position: absolute;
   top: 110px;
   left: 0;

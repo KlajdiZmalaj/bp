@@ -39,7 +39,6 @@ const Dashboard = ({
   const [serviceSearched, setSearch] = useState("");
   const [activeCategory, setCategory] = useState(null);
   const [activeService, setService] = useState(null);
-  console.log(activeService);
 
   return (
     <div className="mobileWrapper">

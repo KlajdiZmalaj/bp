@@ -71,7 +71,7 @@ class Header extends Component {
                         {ads.slice(0, 10).map((add) => {
                           return (
                             <div
-                              key={add.id ? add.id : Math.random()}
+                              key={add.id}
                               onClick={() => {
                                 this.toggleAds();
                                 this.props.history.push("/annunci");
@@ -88,7 +88,7 @@ class Header extends Component {
                       {ads.slice(0, 10).map((add) => {
                         return (
                           <div
-                            key={add.id ? add.id : Math.random()}
+                            key={add.id}
                             onClick={() => {
                               this.toggleAds();
                               this.props.history.push("/annunci");
@@ -123,7 +123,7 @@ class Header extends Component {
                         {privMsg.slice(0, 10).map((add) => {
                           return (
                             <div
-                              key={add.id ? add.id * 2 : Math.random()}
+                              key={add.id}
                               onClick={() => {
                                 this.toggleprivMsgs();
                               }}
@@ -136,10 +136,10 @@ class Header extends Component {
                     </ClickOut>
                   ) : (
                     <div className={"ads" + (this.state.msg ? " viz" : "")}>
-                      {privMsg.slice(0, 10).map((add) => {
+                      {privMsg.slice(0, 10).map((add, index) => {
                         return (
                           <div
-                            key={add.id ? add.id * 2 : Math.random()}
+                            key={`${add.id}${index}`}
                             onClick={() => {
                               this.toggleprivMsgs();
                             }}

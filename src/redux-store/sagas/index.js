@@ -62,6 +62,8 @@ import {
   payPagoPa,
   setBokingSep,
   setPayFSaga,
+  getRegistrazioneData,
+  createUserBgame,
 } from "./AuthSagas";
 
 import {
@@ -77,6 +79,8 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(AuthTypes.CREATE_USER_BGAME, createUserBgame),
+    takeLatest(AuthTypes.GET_REGISTRAZIONE_DATA, getRegistrazioneData),
     takeLatest(AuthTypes.SET_PAY_F_SAGA, setPayFSaga),
     takeLatest(AuthTypes.SET_BOKING_SEP, setBokingSep),
     takeLatest(AuthTypes.PAY_PAGO_PA, payPagoPa),

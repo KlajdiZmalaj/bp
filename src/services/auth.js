@@ -1407,3 +1407,65 @@ export const payFReq = (service_id, importo, fee, pagamento_id) =>
       pagamento_id,
     })
     .catch((error) => ({ error }));
+export const createUserBgameReq = (
+  nome,
+  cognome,
+  data_nascita,
+  sesso,
+  id_nazione_nascita,
+  id_comune_nascita,
+  codice_fiscale,
+  id_comune_residenza,
+  indirizzo,
+  cap,
+  telefono,
+  cellulare,
+  email,
+  id_tipo_documento,
+  documento,
+  rilasciato_da,
+  data_rilascio,
+  data_scadenza,
+  id_nazione_cittadinanza,
+  nick,
+  password,
+  question,
+  answer
+) =>
+  instanceAxios
+    .post(`/bgame/createUser`, {
+      ...skin,
+      nome,
+      cognome,
+      data_nascita,
+      sesso,
+      id_nazione_nascita: parseInt(id_nazione_nascita),
+      id_comune_nascita: parseInt(id_comune_nascita),
+      codice_fiscale,
+      id_comune_residenza: parseInt(id_comune_residenza),
+      indirizzo,
+      cap,
+      telefono,
+      cellulare,
+      email,
+      id_tipo_documento: parseInt(id_tipo_documento),
+      documento,
+      rialsciato_da: rilasciato_da,
+      data_rilascio,
+      data_scadenza,
+      id_nazione_cittadinanza: parseInt(id_nazione_cittadinanza),
+      nick,
+      password,
+      question,
+      answer,
+    })
+    .catch((error) => ({ error }));
+
+export const getRegistrazioneDataReq = () =>
+  instanceAxios
+    .get(`/bgame/registrazioneData`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));

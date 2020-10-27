@@ -72,7 +72,7 @@ const BolloAuto = ({
         />
       )}
       <div className="bolletini--header">
-        Bolletini Bianchi{" "}
+        BOLO AUTO
         <i
           onClick={() => {
             if (allFavServices.includes("BOLL")) {
@@ -94,13 +94,11 @@ const BolloAuto = ({
             barcodeData={barcode}
             getFieldDecorator={form.getFieldDecorator}
             getFieldValue={form.getFieldValue}
-            service_id={activeService}
+            mobile
           />
           <BoloAutoRightForm
             barcodeData={barcode}
             getFieldDecorator={form.getFieldDecorator}
-            getFieldValue={form.getFieldValue}
-            service_id={activeService}
           />
         </div>
       </Form>
@@ -148,7 +146,6 @@ const BolloAuto = ({
         <button
           onClick={() => {
             setService(null);
-            setBolletiniBianchi({});
           }}
         >
           Anulla <i className="fal fa-times" aria-hidden="true"></i>

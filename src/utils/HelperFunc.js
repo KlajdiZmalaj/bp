@@ -78,7 +78,6 @@ export function getScale(page, container) {
   function getPageSize() {
     pageHeight = $(`${container}`).height();
     pageWidth = $(`${container}`).width();
-    console.log("sizes", pageWidth, pageHeight);
   }
 
   function scalePages(page, maxWidth, maxHeight) {
