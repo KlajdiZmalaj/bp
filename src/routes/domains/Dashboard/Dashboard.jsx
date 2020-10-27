@@ -286,7 +286,7 @@ class DashboardDom extends React.Component {
                     this.ChangeCompanies(cat.name, cat.key);
                     this.setState({ categoryActive: cat.key });
                   }}
-                  key={cat?.key ? cat.key : Math.random()}
+                  key={cat?.key}
                 >
                   {cat.name}
                 </div>
@@ -312,7 +312,7 @@ class DashboardDom extends React.Component {
                           Array.isArray(Object.keys(comp.companies[key])) &&
                           Object.keys(comp.companies[key]).map((id) => (
                             <div
-                              key={id ? id : Math.random()}
+                              key={id}
                               onClick={async (e) => {
                                 if (e.target.tagName !== "I") {
                                   if (id === "BOLL") {
@@ -386,11 +386,7 @@ class DashboardDom extends React.Component {
                                 search
                               ) && (
                                 <CompaniesCheck
-                                  key={
-                                    key
-                                      ? `${key}${Math.random()}`
-                                      : Math.random()
-                                  }
+                                  key={key}
                                   Key={key}
                                   changeServce={() => {
                                     this.changeServce(
@@ -431,7 +427,7 @@ class DashboardDom extends React.Component {
                             this.props.accountInfo?.profile?.name !==
                               "johny cash") ? null : (
                           <CompaniesCheck
-                            key={key ? `${key}${Math.random()}` : Math.random()}
+                            key={key}
                             Key={key}
                             changeServce={() => {
                               this.changeServce(

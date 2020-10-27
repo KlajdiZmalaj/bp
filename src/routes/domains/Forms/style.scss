@@ -19,21 +19,24 @@
     flex-flow: row wrap;
     align-items: center;
     width: 100%;
-    max-width: 1005px;
+    max-width: 1150px;
     margin: 0 auto;
     margin-top: 60px;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     &__item {
       display: flex;
       flex-flow: column;
       width: 100%;
-      max-width: 330px;
+      max-width: 380px;
       position: relative;
       cursor: pointer;
       margin-right: 5px;
       margin-top: 5px;
       flex-grow: 1;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
       &:hover {
         .imageCard {
           backdrop-filter: blur(5px);

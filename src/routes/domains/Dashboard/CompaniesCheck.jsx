@@ -15,7 +15,6 @@ const CompaniesCheck = ({
   favourite,
   image,
 }) => {
-  console.log(Key);
   return (
     <div
       onClick={() => {
