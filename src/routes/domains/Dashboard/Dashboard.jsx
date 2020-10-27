@@ -17,6 +17,7 @@ class DashboardDom extends React.Component {
     categoriesTypeSelected: "RTELD",
     categoriesFavTypeSelected: "RTELD",
     categoryActive: "RTELC",
+    snap: false,
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -128,6 +129,13 @@ class DashboardDom extends React.Component {
   }
   handleScroll = () => {
     if (this.props.accountInfo?.token) {
+      let catInst = document.querySelector(".Dashboard > .Categories");
+      catInst.style.height =
+        catInst.getBoundingClientRect().height -
+        (catInst.getBoundingClientRect().height +
+          186 -
+          document.querySelector("footer").getBoundingClientRect().y) +
+        "px";
       const { menuClassName } = this.state;
       let scrollPoint = document
         .querySelector("#SpecStatistich")
@@ -244,7 +252,7 @@ class DashboardDom extends React.Component {
                     this.ChangeCompanies(cat.name, cat.key);
                     this.setState({ categoryActive: cat.key });
                   }}
-                  key={cat?.key ? cat.key : Math.random()}
+                  key={cat?.key}
                 >
                   {cat.name}
                 </div>
@@ -270,8 +278,8 @@ class DashboardDom extends React.Component {
                           Array.isArray(Object.keys(comp.companies[key])) &&
                           Object.keys(comp.companies[key]).map((id) => (
                             <div
-                              key={id ? id : Math.random()}
-                              onClick={async (e) => {
+                              key={id}
+                              onClick={(e) => {
                                 if (e.target.tagName !== "I") {
                                   if (id === "BOLL") {
                                     window.location.hash =
@@ -340,9 +348,7 @@ class DashboardDom extends React.Component {
                           comp[key].services.map((service) => {
                             return (
                               <CompaniesCheck
-                                key={
-                                  key ? `${key}${Math.random()}` : Math.random()
-                                }
+                                key={key}
                                 Key={key}
                                 changeServce={() => {
                                   this.changeServce(
@@ -382,7 +388,7 @@ class DashboardDom extends React.Component {
                             this.props.accountInfo?.profile?.name !==
                               "johny cash") ? null : (
                           <CompaniesCheck
-                            key={key ? `${key}${Math.random()}` : Math.random()}
+                            key={key}
                             Key={key}
                             changeServce={() => {
                               this.changeServce(
