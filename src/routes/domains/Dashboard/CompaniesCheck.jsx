@@ -14,6 +14,7 @@ const CompaniesCheck = ({
   getServices,
   favourite,
   image,
+  editClass,
 }) => {
   return (
     <div
@@ -26,6 +27,7 @@ const CompaniesCheck = ({
           setState();
         }
       }}
+      className={editClass ? editClass : ""}
     >
       <img
         src={

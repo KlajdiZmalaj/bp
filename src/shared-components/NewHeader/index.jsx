@@ -136,10 +136,10 @@ class Header extends Component {
                     </ClickOut>
                   ) : (
                     <div className={"ads" + (this.state.msg ? " viz" : "")}>
-                      {privMsg.slice(0, 10).map((add) => {
+                      {privMsg.slice(0, 10).map((add, index) => {
                         return (
                           <div
-                            key={add.id}
+                            key={`${add.id}${index}`}
                             onClick={() => {
                               this.toggleprivMsgs();
                             }}

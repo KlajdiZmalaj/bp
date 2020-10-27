@@ -214,3 +214,7 @@ div.forms--body > div > div > div > div.titleCard {
   background: #2d2d2d;
   color: #fff;
 }
+.Companies .Pagamenti img,
+.Favorites .Pagamenti img {
+  filter: invert(1) brightness(10);
+}
