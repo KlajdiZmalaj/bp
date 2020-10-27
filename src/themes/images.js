@@ -161,6 +161,8 @@ export default {
   "google-authenticator": require(`../assets/images/google-authenticator-2.svg`),
   //prenotazioni images
   "bgame-logo": require(`../assets/images/prenotazioni/bgame-logo.svg`),
+  "bgame-mobile": require(`../assets/images/bgame-mobile.svg`),
+
   "bgame-bg": require(`../assets/images/prenotazioni/bgame-bg.jpg`),
   "bgame-card": require(`../assets/images/prenotazioni/bgame-card.png`),
 
