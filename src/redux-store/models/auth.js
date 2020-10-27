@@ -185,6 +185,7 @@ const { Types, Creators } = createActions({
   setErrors: ["errors"],
   deleteError: ["id", "c"],
   sendDataForm: [
+    "prezzo",
     "typee",
     "link",
     "nome_agenzia",

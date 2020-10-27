@@ -5,7 +5,7 @@ import FormSubmiter from "./FormSubmiter";
 class Voli extends Component {
   state = {
     price: this.props.TicketByTcketId.total_cost,
-    bagaglio: this.props.TicketByTcketId.bagaglio || "1",
+    bagaglio: this.props.TicketByTcketId.bagaglio || 1,
     link: this.props.TicketByTcketId.link,
     nome_agenzia: this.props.TicketByTcketId.nome_agenzia,
     extra_data: this.props.TicketByTcketId.extra_data,
@@ -99,13 +99,13 @@ class Voli extends Component {
                 <span className="inputLabel">A mano</span>
 
                 <input
-                  checked={bagaglio === "1"}
+                  checked={bagaglio === 1}
                   onChange={(e) => {
                     if (e.target.checked) {
                       this.setState({ bagaglio: e.target.value });
                     }
                   }}
-                  disabled={editable}
+                  disabled={true}
                   type="radio"
                   name="bagaglio"
                   value="1"
@@ -119,12 +119,12 @@ class Voli extends Component {
                       this.setState({ bagaglio: e.target.value });
                     }
                   }}
-                  disabled={editable}
+                  disabled={true}
                   type="radio"
                   name="bagaglio"
                   value="2"
                   id="bagaglio2"
-                  checked={bagaglio === "2"}
+                  checked={bagaglio === 2}
                 />
               </div>
             </div>
@@ -137,7 +137,7 @@ class Voli extends Component {
               {
                 <div
                   className={
-                    "d-flex w-100" + (bagaglio === "2" ? "" : " invisible")
+                    "d-flex w-100" + (bagaglio === 2 ? "" : " invisible")
                   }
                 >
                   <div className="inputLabel">Bagaglio in stiva</div>

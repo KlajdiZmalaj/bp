@@ -149,7 +149,17 @@ class Annunci extends React.Component {
                       <span className="date-pane">
                         {moment(m.updated_at).format("DD/MM/YYYY HH:mm")}
                       </span>
-                      <img src={images.uparrow} alt="" />
+                      <img
+                        src={images.uparrow}
+                        alt=""
+                        style={{
+                          transform:
+                            this.state.expanded.find((tab) => tab === m.id) !=
+                            null
+                              ? "rotate(0)"
+                              : "rotate(180deg)",
+                        }}
+                      />
                     </div>
                     <div
                       className={`nav nav-tabs panel-content panel-content-annunci collapse ${

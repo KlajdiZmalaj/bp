@@ -27,6 +27,7 @@ class Eventi extends Component {
       "5",
       "6+(specificare su note)",
     ],
+    prezzo: null,
   };
   resetState = (msg) => {
     if (!msg.error) {
@@ -38,6 +39,7 @@ class Eventi extends Component {
         name: "",
         email: "",
         telefono: "",
+        prezzo: null,
       });
       notification["success"]({
         message: "Azione completata",
@@ -65,6 +67,8 @@ class Eventi extends Component {
       telefono,
     } = this.state;
     this.props.sendDataForm(
+      this.state.prezzo,
+
       this.props.typee,
       link,
       this.props.nome_agenzia,
@@ -146,6 +150,16 @@ class Eventi extends Component {
                 value={this.state.link || ""}
                 onChange={(e) => {
                   this.setState({ link: e.target.value });
+                }}
+                type="text"
+              />
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Prezzo </div>
+              <input
+                value={this.state.prezzo || ""}
+                onChange={(e) => {
+                  this.setState({ prezzo: e.target.value });
                 }}
                 type="text"
               />

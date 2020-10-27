@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import moment from "moment";
 import { Tooltip } from "antd";
 const graphForMap = (graphData) => {
   let arrayForMax = [];
@@ -62,6 +63,7 @@ const SimpleGraph = ({
           );
         })}
       <div className="Additional">{AdditionalComp}</div>
+      <span className="Month">{moment(date).format("MMMM")}</span>
       <div className="Date">
         <div>
           <span>{date.getDate()}</span>

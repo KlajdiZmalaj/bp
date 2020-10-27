@@ -11,6 +11,7 @@ class Voli extends Component {
     childrens: 0,
     hasDD: false,
     travalers: {},
+    Prezzo: null,
   };
   resetState = (msg) => {
     if (!msg.error) {
@@ -20,6 +21,7 @@ class Voli extends Component {
         extra_data: "",
         bagaglio: 1,
         bagaglio_stiva: "",
+        Prezzo: null,
       });
       notification["success"]({
         message: "Azione completata",
@@ -38,6 +40,8 @@ class Voli extends Component {
   submitData = () => {
     const { link, bagaglio, bagaglio_stiva } = this.state;
     this.props.sendDataForm(
+      this.state.prezzo,
+
       this.props.typee,
       link,
       this.props.nome_agenzia,
@@ -247,7 +251,16 @@ class Voli extends Component {
                 type="text"
               />
             </div>
-
+            <div className="formsContainer--body__item">
+              <div className="label">Prezzo</div>
+              <input
+                value={this.state.prezzo || ""}
+                onChange={(e) => {
+                  this.setState({ prezzo: e.target.value });
+                }}
+                type="text"
+              />
+            </div>
             <div className="formsContainer--body__item">
               <div className="label">Massimo Bagaglio A Mano (8Kg)</div>
               <div className="radioWrapper">

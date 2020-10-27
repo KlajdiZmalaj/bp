@@ -761,7 +761,8 @@ export function* sendDataForm(data) {
     data.quantity,
     data.name,
     data.email,
-    data.telefono
+    data.telefono,
+    data.prezzo
   );
   if (response?.status === 200) {
     data.callBack({
