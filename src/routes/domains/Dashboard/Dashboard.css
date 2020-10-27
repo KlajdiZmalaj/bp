@@ -13,6 +13,8 @@
 .DContainer .Image {
   width: 100%;
   margin: 10px 0;
+  -webkit-transform: 0.1s;
+          transform: 0.1s;
 }
 
 .DContainer .Image img {
@@ -38,8 +40,8 @@
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
   overflow: auto;
 }
 
@@ -51,11 +53,10 @@
 
 .DContainer .Categories.fixed {
   position: fixed;
-  top: 170px;
-  min-height: calc(100vh - 183px);
+  top: 153px;
   height: calc(100vh - 183px);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
   overflow: auto;
 }
 
@@ -116,12 +117,14 @@
       -ms-flex-direction: row;
           flex-direction: row;
   min-height: calc(100vh - 700px);
+  -webkit-transform: 0.1s;
+          transform: 0.1s;
 }
 
 .DContainer .Dashboard.fixed {
   min-height: calc(100vh - 210px);
   position: relative;
-  margin-top: 219px;
+  margin-top: 197px;
 }
 
 .DContainer .Dashboard .CompaniesAndOther {
@@ -137,6 +140,8 @@
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100%;
+  -webkit-transform: 0.1s;
+          transform: 0.1s;
 }
 
 .DContainer .Dashboard .CompaniesAndOther.fixed {

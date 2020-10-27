@@ -17,6 +17,7 @@ class DashboardDom extends React.Component {
     categoriesTypeSelected: "RTELD",
     categoriesFavTypeSelected: "RTELD",
     categoryActive: "RTELC",
+    snap: false,
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -171,6 +172,13 @@ class DashboardDom extends React.Component {
   }
   handleScroll = () => {
     if (this.props.accountInfo?.token) {
+      let catInst = document.querySelector(".Dashboard > .Categories");
+      catInst.style.height =
+        catInst.getBoundingClientRect().height -
+        (catInst.getBoundingClientRect().height +
+          186 -
+          document.querySelector("footer").getBoundingClientRect().y) +
+        "px";
       const { menuClassName } = this.state;
       let scrollPoint = document
         .querySelector("#SpecStatistich")
