@@ -178,7 +178,7 @@ export class FormsBody extends Component {
                 icon={"fal fa-futbol"}
                 color="#F26521"
                 accountInfo={accountInfo}
-                name="REGISTRA BGAME"
+                name="REGISTRAZIONE CONTI GIOCO ONLINE"
               />
               <Card
                 clickHandler={() =>
@@ -190,7 +190,7 @@ export class FormsBody extends Component {
                   })
                 }
                 title="auto"
-                icon={"fal fa-futbol"}
+                icon={"fal fa-car"}
                 color="#22A094"
                 accountInfo={accountInfo}
                 name="NOLEGGIO AUTO"
@@ -223,7 +223,7 @@ export class FormsBody extends Component {
                 title="energia"
                 icon={"fal fa-lightbulb-on"}
                 accountInfo={accountInfo}
-                name="ENERGIA"
+                name={`CONTRATTI LUCE & GAS`}
                 prestoOnline
               />
             </div>

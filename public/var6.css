@@ -210,3 +210,7 @@ body .ticketDetails--filters__byTicket input {
   background: #222;
   color: #fff;
 }
+div.forms--body > div > div > div > div.titleCard {
+  background: #2d2d2d;
+  color: #fff;
+}
