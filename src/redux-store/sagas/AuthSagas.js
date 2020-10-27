@@ -770,17 +770,7 @@ export function* sendDataForm(data) {
       msg: response?.data.message,
     });
   }
-  if (response?.error) {
-    data.callBack({
-      error: true,
-      msg: [
-        response?.error.response?.data.message,
-        response?.error.response?.data.errors
-          ? Object.values(response?.error.response?.data.errors)
-          : "error backend",
-      ],
-    });
-  }
+
   // console.log("ca ka response", data, response);
 }
 export function* getDataFormDetails() {
