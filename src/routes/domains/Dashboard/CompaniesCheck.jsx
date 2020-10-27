@@ -14,8 +14,8 @@ const CompaniesCheck = ({
   getServices,
   favourite,
   image,
+  editClass,
 }) => {
-  console.log(Key);
   return (
     <div
       onClick={() => {
@@ -27,6 +27,7 @@ const CompaniesCheck = ({
           setState();
         }
       }}
+      className={editClass ? editClass : ""}
     >
       <img
         src={

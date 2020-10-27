@@ -168,7 +168,7 @@ class FaturaDomain extends React.Component {
                                       userListShow: false,
                                     });
                                   }}
-                                  key={user + Math.random()}
+                                  key={user}
                                 >
                                   {user}
                                 </div>

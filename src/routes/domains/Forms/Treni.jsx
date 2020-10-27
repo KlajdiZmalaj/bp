@@ -14,6 +14,7 @@ class Treni extends Component {
     hasDD: false,
     travalers: {},
     tipologia_biglietto: "1",
+    prezzo: null,
   };
   resetState = (msg) => {
     if (!msg.error) {
@@ -31,6 +32,7 @@ class Treni extends Component {
         adulti: "",
         ragazzi: "",
         ritorno_date: "",
+        prezzo: null,
       });
       notification["success"]({
         message: "Azione completata",
@@ -84,6 +86,7 @@ class Treni extends Component {
       childrens,
     } = this.state;
     this.props.sendDataForm(
+      this.state.prezzo,
       this.props.typee,
       link,
       this.props.nome_agenzia,
@@ -314,6 +317,16 @@ class Treni extends Component {
                 value={this.state.link || ""}
                 onChange={(e) => {
                   this.setState({ link: e.target.value });
+                }}
+                type="text"
+              />
+            </div>
+            <div className="formsContainer--body__item">
+              <div className="label">Prezzo</div>
+              <input
+                value={this.state.prezzo || ""}
+                onChange={(e) => {
+                  this.setState({ prezzo: e.target.value });
                 }}
                 type="text"
               />

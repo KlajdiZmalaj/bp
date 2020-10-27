@@ -157,7 +157,7 @@ class Treni extends Component {
                 }}
               />
             </div>
-            {tipologia_biglietto === "1" ? (
+            {tipologia_biglietto === 1 ? (
               <div className="itemCol full">
                 <label className="inputLabel">Ritorno</label>
 
@@ -187,14 +187,14 @@ class Treni extends Component {
                 <span className="inputLabel">Andata e ritorno</span>
 
                 <input
-                  checked={tipologia_biglietto === "1"}
+                  checked={tipologia_biglietto === 1}
                   onChange={(e) => {
                     if (e.target.checked) {
                       this.setState({ tipologia_biglietto: e.target.value });
                     }
                   }}
                   type="radio"
-                  disabled={editable}
+                  disabled={true}
                   name="bagaglio"
                   value="1"
                   id="bagaglio1"
@@ -202,7 +202,7 @@ class Treni extends Component {
                 <span className="inputLabel">Solo Andata</span>
 
                 <input
-                  checked={tipologia_biglietto === "2"}
+                  checked={tipologia_biglietto === 2}
                   onChange={(e) => {
                     if (e.target.checked) {
                       this.setState({ tipologia_biglietto: e.target.value });
@@ -210,7 +210,7 @@ class Treni extends Component {
                   }}
                   type="radio"
                   name="bagaglio"
-                  disabled={editable}
+                  disabled={true}
                   value="2"
                   id="bagaglio2"
                 />

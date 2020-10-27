@@ -5,6 +5,8 @@ import Voli from "routes/domains/Forms/Voli";
 import Treni from "routes/domains/Forms/Treni";
 import Eventi from "routes/domains/Forms/Eventi";
 import OnlineShop from "routes/domains/Forms/OnlineShop";
+import Bgame from "routes/domains/Forms/Bgame";
+
 import { withRouter } from "react-router-dom";
 import "./style.css";
 const Item = ({ name, activeService, setService, priorityName }) => (
@@ -64,6 +66,12 @@ const Prenotazione = ({ match: { params } }) => {
             name="shop-online"
             priorityName="Online Shop"
           />
+          <Item
+            activeService={activeService}
+            setService={setService}
+            name="bgame"
+            priorityName="Registrazione"
+          />
         </div>
       </div>
       <div className="prenotation--view">
@@ -97,6 +105,14 @@ const Prenotazione = ({ match: { params } }) => {
           <OnlineShop
             nome_agenzia={"Online Shop"}
             typee={4}
+            isMobile
+            activeService={activeService}
+          />
+        )}
+        {activeService === "bgame" && (
+          <Bgame
+            nome_agenzia={"bgame"}
+            typee={5}
             isMobile
             activeService={activeService}
           />

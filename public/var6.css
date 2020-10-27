@@ -173,8 +173,6 @@ body .ant-checkbox-wrapper {
 .newReg .Select-control,
 .inpssWrapper,
 .Select-clear-zone,
-.Select-arrow-zone,
-.Select-placeholder,
 .Select-input,
 .Select.is-focused:not(.is-open) > .Select-control,
 .newReg .piva .ant-form-item-children {
@@ -209,4 +207,21 @@ body .titleConf {
 body .ticketDetails--filters__byTicket input {
   background: #222;
   color: #fff;
+}
+div.forms--body > div > div > div > div.titleCard {
+  background: #2d2d2d;
+  color: #fff;
+}
+.Companies .Pagamenti img,
+.Favorites .Pagamenti img {
+  filter: invert(1) brightness(10);
+}
+div.Select-placeholder,
+span.Select-arrow-zone {
+  background: #ffffff !important;
+  border: none !important;
+  color: #5c5c55 !important;
+}
+.Select-control {
+  border-color: #eaebec !important;
 }

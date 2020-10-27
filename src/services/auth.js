@@ -555,7 +555,8 @@ export const sendDataFormReq = (
   quantity,
   name,
   email,
-  telefono
+  telefono,
+  prezzo
 ) => {
   return instanceAxios
     .post(
@@ -569,6 +570,7 @@ export const sendDataFormReq = (
             extra_data,
             bagaglio,
             bagaglio_stiva,
+            price: parseFloat(prezzo),
           }
         : typee === 2
         ? {
@@ -587,6 +589,7 @@ export const sendDataFormReq = (
             adulti,
             ragazzi,
             ritorno_date,
+            price: parseFloat(prezzo),
           }
         : {
             ...skin,
@@ -600,6 +603,7 @@ export const sendDataFormReq = (
             name,
             email,
             telefono,
+            price: parseFloat(prezzo),
           }
     )
     .catch((error) => ({ error }));

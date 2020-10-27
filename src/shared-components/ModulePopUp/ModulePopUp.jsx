@@ -10,7 +10,7 @@ import "./style.css";
 class ModulePopUp extends React.Component {
   render() {
     const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
-    const service_id = service && service.service_id;
+    const service_id = service && service?.service_id;
 
     // const arr = [
     //   {

@@ -17,6 +17,7 @@ class DashboardDom extends React.Component {
     categoriesTypeSelected: "RTELD",
     categoriesFavTypeSelected: "RTELD",
     categoryActive: "RTELC",
+    snap: false,
   };
   togglePopUp = (val) => {
     this.setState({ toDisplay: val });
@@ -171,6 +172,13 @@ class DashboardDom extends React.Component {
   }
   handleScroll = () => {
     if (this.props.accountInfo?.token) {
+      let catInst = document.querySelector(".Dashboard > .Categories");
+      catInst.style.height =
+        catInst.getBoundingClientRect().height -
+        (catInst.getBoundingClientRect().height +
+          186 -
+          document.querySelector("footer").getBoundingClientRect().y) +
+        "px";
       const { menuClassName } = this.state;
       let scrollPoint = document
         .querySelector("#SpecStatistich")
@@ -286,7 +294,7 @@ class DashboardDom extends React.Component {
                     this.ChangeCompanies(cat.name, cat.key);
                     this.setState({ categoryActive: cat.key });
                   }}
-                  key={cat?.key ? cat.key : Math.random()}
+                  key={cat?.key}
                 >
                   {cat.name}
                 </div>
@@ -312,7 +320,15 @@ class DashboardDom extends React.Component {
                           Array.isArray(Object.keys(comp.companies[key])) &&
                           Object.keys(comp.companies[key]).map((id) => (
                             <div
-                              key={id ? id : Math.random()}
+                              key={id}
+                              className={`${
+                                id === "BOLL" ||
+                                id === "BOLMR" ||
+                                id === "PPA" ||
+                                id === "RCPP"
+                                  ? "Pagamenti"
+                                  : ""
+                              }`}
                               onClick={async (e) => {
                                 if (e.target.tagName !== "I") {
                                   if (id === "BOLL") {
@@ -377,8 +393,8 @@ class DashboardDom extends React.Component {
                     (comp) =>
                       Object.keys(comp) &&
                       Array.isArray(Object.keys(comp)) &&
-                      Object.keys(comp).map((key, i) =>
-                        comp[key].services[0].service_id === "BOL001" ? (
+                      Object.keys(comp).map((key, i) => {
+                        return comp[key].services[0].service_id === "BOL001" ? (
                           comp[key].services.map((service) => {
                             return (
                               this.compareIfAreSimilar(
@@ -386,11 +402,7 @@ class DashboardDom extends React.Component {
                                 search
                               ) && (
                                 <CompaniesCheck
-                                  key={
-                                    key
-                                      ? `${key}${Math.random()}`
-                                      : Math.random()
-                                  }
+                                  key={service.service_id}
                                   Key={key}
                                   changeServce={() => {
                                     this.changeServce(
@@ -420,6 +432,14 @@ class DashboardDom extends React.Component {
                                   favourite={comp[key].favourite}
                                   toggleFavorite={this.props.toggleFavorite}
                                   getServices={this.props.getServices}
+                                  editClass={
+                                    key === "BOLL" ||
+                                    key === "BOLMR" ||
+                                    key === "PPA" ||
+                                    key === "RCPP"
+                                      ? "Pagamenti"
+                                      : ""
+                                  }
                                 />
                               )
                             );
@@ -431,7 +451,7 @@ class DashboardDom extends React.Component {
                             this.props.accountInfo?.profile?.name !==
                               "johny cash") ? null : (
                           <CompaniesCheck
-                            key={key ? `${key}${Math.random()}` : Math.random()}
+                            key={comp[key]?.services[0]?.service_id}
                             Key={key}
                             changeServce={() => {
                               this.changeServce(
@@ -452,9 +472,17 @@ class DashboardDom extends React.Component {
                             Companie={comp[key]}
                             toggleFavorite={this.props.toggleFavorite}
                             getServices={this.props.getServices}
+                            editClass={
+                              key === "BOLL" ||
+                              key === "BOLMR" ||
+                              key === "PPA" ||
+                              key === "RCPP"
+                                ? "Pagamenti"
+                                : ""
+                            }
                           />
-                        )
-                      )
+                        );
+                      })
                   )}
                 {/*Static Services presto Online  */}
                 {!isSepaUser && categoriesTypeSelected === "PRDPST" && (

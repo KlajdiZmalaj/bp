@@ -69,13 +69,15 @@ export function* signInByEmail(credencials) {
   );
 
   if (response) {
-    if (response.data) {
-      localStorage.setItem("accountDataB", JSON.stringify(response.data));
-      yield put(AuthActions.setAccountInfo(response.data));
-      credencials.c(response.data.profile);
+    if (response?.data) {
+      localStorage.setItem("accountDataB", JSON.stringify(response?.data));
+      yield put(AuthActions.setAccountInfo(response?.data));
+      credencials.c(response?.data.profile);
     }
     if (response?.error) {
-      yield put(AuthActions.setLoginMsg(response.error.response.data.message));
+      yield put(
+        AuthActions.setLoginMsg(response?.error.response?.data.message)
+      );
       yield delay(4000);
       yield put(AuthActions.setLoginMsg(""));
     }
@@ -89,12 +91,12 @@ export function* getAgents(params) {
     response = yield call(fetchAgents);
   }
   // console.log("agents res", response);
-  if (response.data) {
-    yield put(AuthActions.setAgents(response.data.agents));
+  if (response?.data) {
+    yield put(AuthActions.setAgents(response?.data.agents));
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -133,22 +135,22 @@ export function* getBolletiniBianchi(params) {
     params.citta,
     params.provincia
   );
-  if (response) {
+  if (response?.data) {
     // console.log("response", response);
-    if (response.data) {
-      yield put(AuthActions.setBolletiniBianchi(response.data));
+    if (response?.data) {
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
       params.clearFields();
     } else if (response?.error) {
-      if (response.error.response.status === 444) {
+      if (response?.error.response?.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniBianchi(error));
       } else {
         yield put(
-          AuthActions.setBolletiniBianchi(response.error.response.data)
+          AuthActions.setBolletiniBianchi(response?.error.response?.data)
         );
       }
     }
-    if (response.error && response.error.response.status === 401) {
+    if (response?.error && response?.error.response?.status === 401) {
       const response = yield call(logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
@@ -198,22 +200,22 @@ export function* getBolletiniPremercati(params) {
   // console.log("response", response);
 
   if (response) {
-    if (response.data) {
-      yield put(AuthActions.setBolletiniPremercati(response.data));
+    if (response?.data) {
+      yield put(AuthActions.setBolletiniPremercati(response?.data));
       params.clearFields();
     } else if (response?.error) {
-      if (response.error.response.status === 444) {
+      if (response?.error.response?.status === 444) {
         const error = { errors: { notCorrect: ["data are not corrected."] } };
         yield put(AuthActions.setBolletiniPremercati(error));
       } else {
         yield put(
-          AuthActions.setBolletiniPremercati(response.error.response.data)
+          AuthActions.setBolletiniPremercati(response?.error.response?.data)
         );
       }
       if (
         response &&
-        response.error &&
-        response.error.response.status === 401
+        response?.error &&
+        response?.error.response?.status === 401
       ) {
         const response = yield call(logoutApi);
 
@@ -261,13 +263,13 @@ export function* getPaymentsForExcel(params) {
     params.excel
   );
   if (response) {
-    if (response.status === 200) {
-      if (response.data) {
-        yield put(AuthActions.setPaymentsForExcel(response.data.transactions));
+    if (response?.status === 200) {
+      if (response?.data) {
+        yield put(AuthActions.setPaymentsForExcel(response?.data.transactions));
       }
     } else if (response?.error) {
       if (
-        response.error.response.status === 401 &&
+        response?.error.response?.status === 401 &&
         localStorage.getItem("accountDataB") !== null
       ) {
         yield put(AuthActions.setUnauthorization());
@@ -278,7 +280,7 @@ export function* getPaymentsForExcel(params) {
           yield put(AuthActions.setAccountInfo({}));
         }
       } else {
-        yield put(AuthActions.setPayments(response.error.response.data));
+        yield put(AuthActions.setPayments(response?.error.response?.data));
       }
     }
   }
@@ -299,26 +301,26 @@ export function* getPayments(params) {
     params.excel
   );
   if (response) {
-    if (response.status === 200) {
-      if (response.data) {
-        yield put(AuthActions.setPayments(response.data.transactions));
+    if (response?.status === 200) {
+      if (response?.data) {
+        yield put(AuthActions.setPayments(response?.data.transactions));
         yield put(
           AuthActions.setPaymentsPages({
-            total_pages: response.data.total_pages,
-            total_records: response.data.total_records,
+            total_pages: response?.data.total_pages,
+            total_records: response?.data.total_records,
           })
         );
 
-        if (response.data.usernames) {
-          yield put(AuthActions.setUsernames(response.data.usernames));
+        if (response?.data.usernames) {
+          yield put(AuthActions.setUsernames(response?.data.usernames));
         }
-        if (response.data.balance) {
-          yield put(MainActions.setOverviewDashboard(response.data.balance));
+        if (response?.data.balance) {
+          yield put(MainActions.setOverviewDashboard(response?.data.balance));
         }
       }
     } else if (response?.error) {
       if (
-        response.error.response.status === 401 &&
+        response?.error.response?.status === 401 &&
         localStorage.getItem("accountDataB") !== null
       ) {
         yield put(AuthActions.setUnauthorization());
@@ -329,7 +331,7 @@ export function* getPayments(params) {
           yield put(AuthActions.setAccountInfo({}));
         }
       } else {
-        yield put(AuthActions.setPayments(response.error.response.data));
+        yield put(AuthActions.setPayments(response?.error.response?.data));
       }
     }
   }
@@ -345,9 +347,9 @@ export function* getRechargeMobile(params) {
   );
   if (response) {
     // console.log("response", response);
-    if (response.data) {
-      // console.log("wallet", response.data.wallet);
-      if (response.data.wallet) {
+    if (response?.data) {
+      // console.log("wallet", response?.data.wallet);
+      if (response?.data.wallet) {
         const accountData = localStorage.getItem("accountDataB");
         const data = JSON.parse(accountData);
 
@@ -355,17 +357,17 @@ export function* getRechargeMobile(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet,
+            wallet: response?.data.wallet,
           },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));
         yield put(AuthActions.setAccountInfo(d));
       }
-      yield put(AuthActions.setRechargeMobile(response.data));
+      yield put(AuthActions.setRechargeMobile(response?.data));
     } else if (response?.error) {
       if (
-        response.error.response.status === 401 &&
+        response?.error.response?.status === 401 &&
         localStorage.getItem("accountDataB") !== null
       ) {
         const response = yield call(logoutApi);
@@ -375,7 +377,9 @@ export function* getRechargeMobile(params) {
           yield put(AuthActions.setAccountInfo({}));
         }
       } else {
-        yield put(AuthActions.setRechargeMobile(response.error.response.data));
+        yield put(
+          AuthActions.setRechargeMobile(response?.error.response?.data)
+        );
       }
     }
     //set loading false
@@ -383,7 +387,7 @@ export function* getRechargeMobile(params) {
       params.callBack(false);
     }
   }
-  if (response && response.error && response.error.response.status === 401) {
+  if (response && response?.error && response?.error.response?.status === 401) {
     yield put(AuthActions.setUnauthorization());
     const response = yield call(logoutApi);
 
@@ -411,8 +415,8 @@ export function* getPostePay(params) {
     params.imageUrl2
   );
   if (response) {
-    if (response.data) {
-      if (response.data.wallet) {
+    if (response?.data) {
+      if (response?.data.wallet) {
         const accountData = localStorage.getItem("accountDataB");
         const data = JSON.parse(accountData);
 
@@ -420,29 +424,32 @@ export function* getPostePay(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet,
+            wallet: response?.data.wallet,
           },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));
         yield put(AuthActions.setAccountInfo(d));
       }
-      yield put(AuthActions.setPostePay(response.data));
+      yield put(AuthActions.setPostePay(response?.data));
       params.clearFields();
     } else if (response?.error) {
-      if (response.error.response && response.error.response.status === 401) {
+      if (
+        response?.error.response &&
+        response?.error.response?.status === 401
+      ) {
         const response = yield call(logoutApi);
         if (response) {
           localStorage.setItem("accountDataB", null);
           yield put(AuthActions.setAccountInfo({}));
         }
       } else {
-        yield put(AuthActions.setPostePay(response.error.response.data));
+        yield put(AuthActions.setPostePay(response?.error.response?.data));
       }
     }
     if (params.setPostePayLoading) params.setPostePayLoading(false);
   }
-  if (response && response.error && response.error.response.status === 401) {
+  if (response && response?.error && response?.error.response?.status === 401) {
     localStorage.clear();
     // const response = yield call(logoutApi);
   }
@@ -450,20 +457,20 @@ export function* getPostePay(params) {
 
 export function* getAds() {
   const response = yield call(fetchAds);
-  if (response.status === 200) {
-    yield put(AuthActions.setAds(response.data.messages));
+  if (response?.status === 200) {
+    yield put(AuthActions.setAds(response?.data.messages));
     yield put(
       AuthActions.setPrivateMsg(
-        response.data.ticket_messages
+        response?.data.ticket_messages
           ? [
-              ...response.data.private_messages,
-              ...response.data.ticket_messages,
+              ...response?.data.private_messages,
+              ...response?.data.ticket_messages,
             ]
-          : response.data.private_messages
+          : response?.data.private_messages
       )
     );
   }
-  if (response.error && response.error?.response?.status === 401) {
+  if (response?.error && response?.error?.response?.status === 401) {
     const response = yield call(logoutApi);
     if (response) {
       localStorage.setItem("accountDataB", null);
@@ -528,12 +535,12 @@ export function* getRegister(params) {
     params.percentage
   );
 
-  if (response.data) {
-    yield put(AuthActions.setRegister(response.data));
+  if (response?.data) {
+    yield put(AuthActions.setRegister(response?.data));
     yield delay(6000);
     yield put(AuthActions.setRegister({}));
   } else if (response?.error) {
-    yield put(AuthActions.setRegister(response.error.response.data));
+    yield put(AuthActions.setRegister(response?.error.response?.data));
   }
 }
 
@@ -542,13 +549,13 @@ export function* createAds({ data }) {
   yield put(AuthActions.createAdsResponse(true, null));
   const response = yield call(sendCreatedAds, importance, title, text);
   if (response) {
-    if (response.status === 200) {
-      yield put(AuthActions.createAdsResponse(false, response.data));
+    if (response?.status === 200) {
+      yield put(AuthActions.createAdsResponse(false, response?.data));
       yield delay(3000);
       yield put(AuthActions.createAdsResponse(false, null));
     } else {
       yield put(
-        AuthActions.createAdsResponse(false, response.error.response.data)
+        AuthActions.createAdsResponse(false, response?.error.response?.data)
       );
       yield delay(3000);
       yield put(AuthActions.createAdsResponse(false, null));
@@ -566,12 +573,12 @@ export function* getChangedPassword(data) {
       message: response?.data?.message,
     });
   }
-  // console.log("ca ka responseeeee", response, response.message);
+  // console.log("ca ka responseeeee", response, response?.message);
 }
 export function* getConfigura(data) {
   const response = yield call(fetchConfigura, data.id);
-  if (response.status === 200) {
-    yield put(AuthActions.setConfiguraData(response.data.user));
+  if (response?.status === 200) {
+    yield put(AuthActions.setConfiguraData(response?.data.user));
   } else {
     yield put(AuthActions.setConfiguraData({}));
   }
@@ -579,21 +586,21 @@ export function* getConfigura(data) {
 }
 export function* getCodiceTicket(data) {
   const response = yield call(fetchCodice, data.barcode, data.service);
-  if (response.status === 200) {
-    yield put(AuthActions.setPaymentsFromCode(response.data.payment));
+  if (response?.status === 200) {
+    yield put(AuthActions.setPaymentsFromCode(response?.data.payment));
   }
-  if (response.error) {
-    yield put(AuthActions.setPaymentsFromCode(response.error.response.data));
+  if (response?.error) {
+    yield put(AuthActions.setPaymentsFromCode(response?.error.response?.data));
   }
 }
 export function* getBarcodeData(e) {
   const response = yield call(fetchBarcodeData, e.barcode);
-  if (response.status === 200) {
-    yield put(AuthActions.setBarcodeData(response.data));
-    e.callback(response.data);
+  if (response?.status === 200) {
+    yield put(AuthActions.setBarcodeData(response?.data));
+    e.callback(response?.data);
   } else {
-    yield put(AuthActions.setBarcodeData(response.message));
-    e.callback(response.data);
+    yield put(AuthActions.setBarcodeData(response?.message));
+    e.callback(response?.data);
   }
 }
 export function* changeAgent(data) {
@@ -604,8 +611,8 @@ export function* changeAgent(data) {
     response = yield call(changeAgentReq, data.id, data.id2);
   }
   if (response) {
-    if (response.status === 200) {
-      yield put(AuthActions.setUserDetail(response.data.user));
+    if (response?.status === 200) {
+      yield put(AuthActions.setUserDetail(response?.data.user));
       const ress = yield call(fetchUsers);
       if (ress.data) {
         yield put(MainActions.setUsers(ress.data.users));
@@ -617,8 +624,8 @@ export function* changeAgent(data) {
 export function* getUserDetail(data) {
   const response = yield call(fetchUserDetails, data.id, data.skin_id);
   if (response) {
-    if (response.status === 200) {
-      yield put(AuthActions.setUserDetail(response.data.user));
+    if (response?.status === 200) {
+      yield put(AuthActions.setUserDetail(response?.data.user));
     }
   }
   // console.log("response get users details", data, response);
@@ -673,11 +680,11 @@ export function* updateUserDetail(data) {
       data.confirm_password
     );
   }
-  if (response.data) {
-    if (response.status === 200) {
+  if (response?.data) {
+    if (response?.status === 200) {
       notification["success"]({
         message: "Azione completata",
-        description: response.data.message,
+        description: response?.data.message,
       });
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
@@ -691,9 +698,9 @@ export function* updateUserDetail(data) {
 }
 export function* getSkinExtras() {
   const response = yield call(fetchSkinExtras);
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setSkinExtras(response.data.skin));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setSkinExtras(response?.data.skin));
     }
   }
   // console.log("response skin extras", response);
@@ -701,12 +708,12 @@ export function* getSkinExtras() {
 export function* getErrors({ limit, page_number }) {
   yield put(AuthActions.setErrorsLoading(true));
   const response = yield call(fetchErrors, limit, page_number);
-  if (response.data) {
-    if (response.status === 200) {
+  if (response?.data) {
+    if (response?.status === 200) {
       yield put(
         AuthActions.setErrors({
-          errors: response.data?.errors,
-          total_pages: response.data?.total_pages,
+          errors: response?.data?.errors,
+          total_pages: response?.data?.total_pages,
         })
       );
     }
@@ -716,12 +723,12 @@ export function* getErrors({ limit, page_number }) {
 }
 export function* deleteError(data) {
   const response = yield call(deleteErrorReq, data.id);
-  if (response.data) {
-    if (response.status === 200) {
+  if (response?.data) {
+    if (response?.status === 200) {
       const response = yield call(fetchErrors);
-      if (response.data) {
-        if (response.status === 200) {
-          yield put(AuthActions.setErrors(response.data?.errors));
+      if (response?.data) {
+        if (response?.status === 200) {
+          yield put(AuthActions.setErrors(response?.data?.errors));
           data.c();
         }
       }
@@ -754,7 +761,8 @@ export function* sendDataForm(data) {
     data.quantity,
     data.name,
     data.email,
-    data.telefono
+    data.telefono,
+    data.prezzo
   );
   if (response?.status === 200) {
     data.callBack({
@@ -762,26 +770,16 @@ export function* sendDataForm(data) {
       msg: response?.data.message,
     });
   }
-  if (response?.error) {
-    data.callBack({
-      error: true,
-      msg: [
-        response.error.response.data.message,
-        response.error.response.data.errors
-          ? Object.values(response.error.response.data.errors)
-          : "error backend",
-      ],
-    });
-  }
+
   // console.log("ca ka response", data, response);
 }
 export function* getDataFormDetails() {
   const response = yield call(getDataFormDetailReq);
 
-  if (response.data) {
-    if (response.status === 200) {
+  if (response?.data) {
+    if (response?.status === 200) {
       yield put(
-        AuthActions.setDataFormDetails(response.data ? response.data : null)
+        AuthActions.setDataFormDetails(response?.data ? response?.data : null)
       );
     }
   }
@@ -789,8 +787,8 @@ export function* getDataFormDetails() {
 export function* getDataFormDetailsActives(data) {
   const response = yield call(getDataFormDetailActivesReq, data.isVisure);
 
-  if (response.data) {
-    if (response.status === 200) {
+  if (response?.data) {
+    if (response?.status === 200) {
       const activeTickets = yield select(
         (state) => state.auth.formDetailsActives.rowsTickets
       );
@@ -801,7 +799,7 @@ export function* getDataFormDetailsActives(data) {
       if (data.isVisure) {
         yield put(
           AuthActions.setDataFormDetailsActives({
-            rowsVisure: response.data.visure,
+            rowsVisure: response?.data.visure,
             rowsTickets: [...activeTickets],
           })
         );
@@ -809,7 +807,7 @@ export function* getDataFormDetailsActives(data) {
         yield put(
           AuthActions.setDataFormDetailsActives({
             rowsVisure: [...activeVisure],
-            rowsTickets: response.data.tickets,
+            rowsTickets: response?.data.tickets,
           })
         );
       }
@@ -819,9 +817,9 @@ export function* getDataFormDetailsActives(data) {
 export function* getTicketByTicketId(ticket_id) {
   const response = yield call(getTicketByTicketIdReq, ticket_id.ticket_id);
 
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setTicketByTicketId(response.data.data));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setTicketByTicketId(response?.data.data));
     }
   }
   // console.log("fetchErrors", response);
@@ -883,9 +881,9 @@ export function* updateDataForm(data) {
     data.callBack({
       error: true,
       msg: [
-        response.error.response.data.message,
-        response.error.response.data.errors
-          ? Object.values(response.error.response.data.errors)
+        response?.error.response?.data.message,
+        response?.error.response?.data.errors
+          ? Object.values(response?.error.response?.data.errors)
           : "error backend",
       ],
     });
@@ -922,9 +920,9 @@ export function* sendVisureDetails(data) {
     data.callBack({
       error: true,
       msg: [
-        response.error.response.data.message,
-        response.error.response.data.errors
-          ? Object.values(response.error.response.data.errors)
+        response?.error.response?.data.message,
+        response?.error.response?.data.errors
+          ? Object.values(response?.error.response?.data.errors)
           : "error backend",
       ],
     });
@@ -933,9 +931,9 @@ export function* sendVisureDetails(data) {
 export function* getVisure() {
   const response = yield call(getVisureReq);
 
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setVisure(response.data));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setVisure(response?.data));
     }
   }
   // console.log("fetchErrors", response);
@@ -943,9 +941,9 @@ export function* getVisure() {
 export function* getVisureByVisureId(visura_id) {
   const response = yield call(getVisureByVisureIdReq, visura_id);
 
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setVisureByVisureId(response.data.data));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setVisureByVisureId(response?.data.data));
     }
   }
 }
@@ -983,9 +981,9 @@ export function* updateVisura(data) {
     data.callBack({
       error: true,
       msg: [
-        response.error.response.data.message,
-        response.error.response.data.errors
-          ? Object.values(response.error.response.data.errors)
+        response?.error.response?.data.message,
+        response?.error.response?.data.errors
+          ? Object.values(response?.error.response?.data.errors)
           : "error backend",
       ],
     });
@@ -994,14 +992,14 @@ export function* updateVisura(data) {
 export function* getAgentByUserId(data) {
   const response = yield call(getAgentByUserIdReq, data.user_id, data.skin_id);
 
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setUserDetail(response.data.user));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setUserDetail(response?.data.user));
     }
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1015,14 +1013,14 @@ export function* getAgentByUserId(data) {
 export function* getUserByUserId(data) {
   const response = yield call(getUserByUserIdReq, data.user_id, data.skin_id);
 
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setUserDetail(response.data.user));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setUserDetail(response?.data.user));
     }
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1036,14 +1034,14 @@ export function* getUserByUserId(data) {
 export function* getSkins() {
   const response = yield call(getSkinsReq);
 
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setSkins(response.data.users));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setSkins(response?.data.users));
     }
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1061,14 +1059,14 @@ export function* getFaturaDetails(params) {
     params.year,
     params.month
   );
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setFaturaDetails(response.data));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setFaturaDetails(response?.data));
     }
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1082,14 +1080,14 @@ export function* getFaturaDetails(params) {
 export function* getAllServices({ skin_id }) {
   yield put(AuthActions.setServicesLoading(true));
   const response = yield call(getAllServicesReq, skin_id);
-  if (response.data) {
-    if (response.status === 200) {
-      yield put(AuthActions.setAllServices(response.data.result));
+  if (response?.data) {
+    if (response?.status === 200) {
+      yield put(AuthActions.setAllServices(response?.data.result));
     }
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1117,18 +1115,18 @@ export function* getAllFaturaBySearch({
     perPage,
     page_number
   );
-  if (response.data) {
+  if (response?.data) {
     // let FatturaArray = [];
-    // Object.keys(response.data.fatture).map((fatureKey) => {
-    //   FatturaArray.push(response.data.fatture[fatureKey]);
+    // Object.keys(response?.data.fatture).map((fatureKey) => {
+    //   FatturaArray.push(response?.data.fatture[fatureKey]);
     // });
-    if (response.status === 200) {
+    if (response?.status === 200) {
       yield put(
         AuthActions.setAllFaturaBySearch({
-          FaturaDetails: response.data?.fatture,
-          Users: response.data?.usernames && response.data?.usernames,
-          total_pages: response.data?.total_pages,
-          total_records: response.data?.total_records,
+          FaturaDetails: response?.data?.fatture,
+          Users: response?.data?.usernames && response?.data?.usernames,
+          total_pages: response?.data?.total_pages,
+          total_records: response?.data?.total_records,
         })
       );
     }
@@ -1136,7 +1134,7 @@ export function* getAllFaturaBySearch({
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1152,7 +1150,7 @@ export function* sendMailFattura({ file_name }) {
   if (response) {
     notification["success"]({
       message: "Azione completata",
-      description: response.data.message,
+      description: response?.data.message,
       placement: "bottomRight",
     });
   }
@@ -1160,13 +1158,13 @@ export function* sendMailFattura({ file_name }) {
 export function* AddSkinNew({ name, url, email, agency_rent }) {
   const response = yield call(AddSkinReq, name, url, email, agency_rent);
   if (response?.data) {
-    // console.log(response.data.skin_id);
-    yield put(AuthActions.setSkinId(response.data.skin_id));
+    // console.log(response?.data.skin_id);
+    yield put(AuthActions.setSkinId(response?.data.skin_id));
     yield put(AuthActions.registerSkinSucc({ addSkinSucc: true }));
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1179,12 +1177,12 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
 }
 export function* getWidgetPayments({ skin_id }) {
   const response = yield call(widgetPaymentsReq, skin_id);
-  if (response.data) {
-    yield put(AuthActions.setWidgetPayments(response.data.payments));
+  if (response?.data) {
+    yield put(AuthActions.setWidgetPayments(response?.data.payments));
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1248,12 +1246,12 @@ export function* AddSuperAdmin({
     yield call(c);
     notification["success"]({
       message: "Azione completata",
-      description: response.data.message,
+      description: response?.data.message,
     });
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1310,7 +1308,7 @@ export function* AddExtraData({
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1324,11 +1322,11 @@ export function* AddExtraData({
 export function* getStatistiche(params) {
   const response = yield call(getStatisticheReq, params.skin_id);
   if (response) {
-    yield put(AuthActions.setStatistiche(response.data));
+    yield put(AuthActions.setStatistiche(response?.data));
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1353,7 +1351,7 @@ export function* UpdateServiceChangeStatus(params) {
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1367,8 +1365,8 @@ export function* UpdateServiceChangeStatus(params) {
 export function* getBgameVoucherReq(params) {
   const response = yield call(bGameVoucher, params.service_id, params.tel_no);
   if (response) {
-    if (response.data) {
-      if (response.data.wallet) {
+    if (response?.data) {
+      if (response?.data.wallet) {
         const accountData = localStorage.getItem("accountDataB");
         const data = JSON.parse(accountData);
 
@@ -1376,14 +1374,14 @@ export function* getBgameVoucherReq(params) {
           ...data,
           profile: {
             ...data.profile,
-            wallet: response.data.wallet,
+            wallet: response?.data.wallet,
           },
         };
 
         localStorage.setItem("accountDataB", JSON.stringify(d));
         yield put(AuthActions.setAccountInfo(d));
       }
-      yield put(AuthActions.setRechargeMobile(response.data));
+      yield put(AuthActions.setRechargeMobile(response?.data));
     } else if (response?.error) {
       if (
         response?.error?.response?.status === 401 &&
@@ -1405,7 +1403,7 @@ export function* getBgameVoucherReq(params) {
       params.callBack(false);
     }
   }
-  if (response && response.error && response.error.response.status === 401) {
+  if (response && response?.error && response?.error.response?.status === 401) {
     yield put(AuthActions.setUnauthorization());
     const response = yield call(logoutApi);
 
@@ -1420,15 +1418,15 @@ export function* getStatisticheMain() {
   if (response?.data) {
     yield put(
       AuthActions.setStatisticheMain({
-        data: response.data.data,
-        rete: response.data.rete,
-        total: response.data.total,
+        data: response?.data.data,
+        rete: response?.data.rete,
+        total: response?.data.total,
       })
     );
   }
   if (response?.error) {
     if (
-      response.error.response.status === 401 &&
+      response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
       const response = yield call(logoutApi);
@@ -1487,19 +1485,19 @@ export function* fetchBolletini({
     codice_identificativo
   );
   if (response) {
-    if (response.data) {
+    if (response?.data) {
       notification.close("PaymentLoading");
-      yield put(AuthActions.setBolletiniBianchi(response.data));
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
       clearFields();
       notification["success"]({
-        message: response.data.message,
+        message: response?.data.message,
       });
     } else if (response?.error) {
       notification.close("PaymentLoading");
       if (
         response &&
-        response.error &&
-        response.error.response.status === 401
+        response?.error &&
+        response?.error.response?.status === 401
       ) {
         const response = yield call(logoutApi);
 
@@ -1564,9 +1562,9 @@ export function* buyTicketOnline({
     callBack({
       error: true,
       msg: [
-        response.error.response.data.message,
-        response.error.response.data.errors
-          ? Object.values(response.error.response.data.errors)
+        response?.error.response?.data.message,
+        response?.error.response?.data.errors
+          ? Object.values(response?.error.response?.data.errors)
           : "error backend",
       ],
     });
@@ -1617,20 +1615,20 @@ export function* setPagoPa({
     targa
   );
   if (response) {
-    if (response.data) {
+    if (response?.data) {
       notification.close("pagoPaPayment");
-      yield put(AuthActions.setBolletiniBianchi(response.data.data));
+      yield put(AuthActions.setBolletiniBianchi(response?.data.data));
       clearFields();
       notification["success"]({
-        message: response.data.message,
+        message: response?.data.message,
       });
     } else if (response?.error) {
       notification.close("pagoPaPayment");
 
       if (
         response &&
-        response.error &&
-        response.error.response.status === 401
+        response?.error &&
+        response?.error.response?.status === 401
       ) {
         const response = yield call(logoutApi);
 
@@ -1681,19 +1679,19 @@ export function* setMavRav({
     partita_iva
   );
   if (response?.status === 200) {
-    if (response.data) {
+    if (response?.data) {
       notification.close("mavRavPayment");
-      yield put(AuthActions.setBolletiniBianchi(response.data));
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
       clearFields();
       notification["success"]({
-        message: response.data.message,
+        message: response?.data.message,
       });
     } else if (response?.error) {
       notification.close("mavRavPayment");
       if (
         response &&
-        response.error &&
-        response.error.response.status === 401
+        response?.error &&
+        response?.error.response?.status === 401
       ) {
         const response = yield call(logoutApi);
 
@@ -1726,18 +1724,18 @@ export function* payPagoPa({
     pagamento_id
   );
   if (response?.status === 200) {
-    if (response.data) {
+    if (response?.data) {
       notification.close("payPagoPA");
-      yield put(AuthActions.setBolletiniBianchi(response.data));
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
       notification["success"]({
-        message: response.data.message,
+        message: response?.data.message,
       });
     } else if (response?.error) {
       notification.close("payPagoPA");
       if (
         response &&
-        response.error &&
-        response.error.response.status === 401
+        response?.error &&
+        response?.error.response?.status === 401
       ) {
         const response = yield call(logoutApi);
 
@@ -1837,18 +1835,18 @@ export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
   });
   const response = yield call(payFReq, service_id, importo, fee, pagamento_id);
   if (response?.status === 200) {
-    if (response.data) {
+    if (response?.data) {
       notification.close("payF24");
-      yield put(AuthActions.setBolletiniBianchi(response.data));
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
       notification["success"]({
-        message: response.data.message,
+        message: response?.data.message,
       });
     } else if (response?.error) {
       notification.close("payF24");
       if (
         response &&
-        response.error &&
-        response.error.response.status === 401
+        response?.error &&
+        response?.error.response?.status === 401
       ) {
         const response = yield call(logoutApi);
 
@@ -1863,7 +1861,7 @@ export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
 }
 export function* getRegistrazioneData() {
   const response = yield call(getRegistrazioneDataReq);
-  if (response.data) {
+  if (response?.data) {
     yield put(AuthActions.setRegistrazioneData(response?.data?.data));
   }
 }

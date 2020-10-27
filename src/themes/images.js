@@ -27,10 +27,6 @@ export default {
   "BOLLETINO-logo": require(`../assets/images/bolletini.svg`),
   "f24-logo": require(`../assets/images/f24.svg`),
   //mobile-pagamenti
-  "BOL006-White-Mobile": require(`../assets/images/BOL006-White.png`),
-  "PPA001-White-Mobile": require(`../assets/images/PPA-White.png`),
-  "PAGF24-White-Mobile": require(`../assets/images/PAGF24-White.png`),
-  "BOLL-White-Mobile": require(`../assets/images/BOLL-White.png`),
   "BOL006-Black-Mobile": require(`../assets/images/BOL006-Black.png`),
   "PPA001-Black-Mobile": require(`../assets/images/PPA-Black.png`),
   "PAGF24-Black-Mobile": require(`../assets/images/PAGF24-Black.png`),
@@ -91,7 +87,7 @@ export default {
   print: require(`../assets/images${skin}/print.svg`),
   logoGray: require(`../assets/images${skin}/logoGray.svg`),
   postepayBlue: require(`../assets/images${skin}/postepayBlue.svg`),
-  BOLL: require(`../assets/images/bolletino.png`),
+  BOLL: require(`../assets/images/BOLL-Black.png`),
   RCPP: require(`../assets/images${skin}/postpayimg.svg`),
   RPP001: require(`../assets/images${skin}/postpayimg.svg`),
   PARTYP: require(`../assets/images${skin}/partypoker.svg`),
@@ -165,6 +161,8 @@ export default {
   "google-authenticator": require(`../assets/images/google-authenticator-2.svg`),
   //prenotazioni images
   "bgame-logo": require(`../assets/images/prenotazioni/bgame-logo.svg`),
+  "bgame-mobile": require(`../assets/images/bgame-mobile.svg`),
+
   "bgame-bg": require(`../assets/images/prenotazioni/bgame-bg.jpg`),
   "bgame-card": require(`../assets/images/prenotazioni/bgame-card.png`),
 
