@@ -38,6 +38,7 @@ export const BolletiniLeftForm = ({
   getFieldDecorator,
   getFieldValue,
   service_id,
+  mobile,
 }) => {
   return (
     <Fragment>
@@ -93,21 +94,8 @@ export const BolletiniLeftForm = ({
         barcodeData={barcodeData}
         getFieldDecorator={getFieldDecorator}
       />
-      <ReturnFormItem
-        descName="Indirizzo"
-        name="via_piazza"
-        placeholder="Indirizzo"
-        message="Please input your indirizzo!"
-        barcodeData={barcodeData}
-        getFieldDecorator={getFieldDecorator}
-      />{" "}
-      <ReturnFormItem
-        descName="Cap"
-        name="cap"
-        message="Please input your Cap!"
-        barcodeData={barcodeData}
-        getFieldDecorator={getFieldDecorator}
-      />
+      {mobile && <div className="DatiPagatori">DATI PAGATORE</div>}
+
       <ReturnFormItem
         descName="Persona"
         name="person_type"
@@ -166,6 +154,21 @@ export const BolletiniLeftForm = ({
           />
         </Fragment>
       )}
+      <ReturnFormItem
+        descName="Indirizzo"
+        name="via_piazza"
+        placeholder="Indirizzo"
+        message="Please input your indirizzo!"
+        barcodeData={barcodeData}
+        getFieldDecorator={getFieldDecorator}
+      />
+      <ReturnFormItem
+        descName="Cap"
+        name="cap"
+        message="Please input your Cap!"
+        barcodeData={barcodeData}
+        getFieldDecorator={getFieldDecorator}
+      />
     </Fragment>
   );
 };

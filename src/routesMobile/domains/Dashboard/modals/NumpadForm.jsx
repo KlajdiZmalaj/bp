@@ -38,6 +38,12 @@ const BgameServices = [
     service_id: "BGM004",
     type: "1",
   },
+  {
+    cost: "+",
+    name: "BGame Voucher",
+    service_id: "BGM005",
+    type: "+",
+  },
 ];
 const Numpad = ({
   services,
@@ -57,8 +63,9 @@ const Numpad = ({
   const [selectedCost, setCost] = useState(null);
   const [inpVal, setVal] = useState("");
   const [toPrint, setPrint] = useState(false);
-  const printT = useRef();
+  const [bgamePad, setBgamePad] = useState(false);
 
+  const printT = useRef();
   useEffect(() => {
     if (!selectedCost) {
       setCost(services[activeCategory][activeService].services[0]);
@@ -72,6 +79,13 @@ const Numpad = ({
         description: Object.values(rechargeMobile.errors || {}),
       });
   }, [rechargeMobile]);
+  useEffect(() => {
+    if (selectedCost?.service_id === "BGM005") {
+      setBgamePad(true);
+    } else if (bgamePad === true) {
+      setBgamePad(false);
+    }
+  }, [bgamePad, selectedCost, setBgamePad]);
 
   useEffect(() => {
     if (loadingRechargeMobile)
@@ -83,7 +97,6 @@ const Numpad = ({
     getScale(".img.Page", ".GamingBanner.mobile");
   }, []);
 
-  console.log("services", services, activeCategory, activeService);
   return (
     <div className="mobileNumPad">
       {/* <div className="mobileNumPad--services">
@@ -113,6 +126,8 @@ const Numpad = ({
             ? services[activeCategory][activeService].services
             : BgameServices
           ).map((item, index) => {
+            let bgamePadCondition =
+              item.cost === "+" && item.service_id === "BGM005";
             return selectedCost?.service_id === item.service_id ? (
               <div
                 key={index}
@@ -126,8 +141,10 @@ const Numpad = ({
                   <div className="Upper--Right"></div>
                 </div>
                 <div className="Bottom">
-                  <span className="Price">{parseInt(item.cost)}</span>
-                  <span className="Euro">€</span>
+                  <span className="Price">
+                    {bgamePadCondition ? item.cost : parseInt(item.cost)}
+                  </span>
+                  {!bgamePadCondition && <span className="Euro">€</span>}
                 </div>
               </div>
             ) : (
@@ -138,8 +155,10 @@ const Numpad = ({
                 }`}
                 onClick={() => setCost(item)}
               >
-                <span className="Price">{parseInt(item.cost)}</span>
-                <span className="Euro">€</span>
+                <span className="Price">
+                  {bgamePadCondition ? item.cost : parseInt(item.cost)}
+                </span>
+                {!bgamePadCondition && <span className="Euro">€</span>}
               </div>
             );
           })}
@@ -180,10 +199,23 @@ const Numpad = ({
             : "SELEZIONA LE RICARICHE IN BASSO ED ESEGUI"}
         </div>
       </div>
-      {!noNumbers ? (
+      {!noNumbers || bgamePad === true ? (
         <>
           <div className="mobileNumPad--input">
-            <span>+39</span> <input value={inpVal} type="text" readOnly />{" "}
+            {!bgamePad && <span>+39</span>}{" "}
+            <input
+              value={
+                bgamePad === true
+                  ? inpVal
+                    ? parseFloat(inpVal).toLocaleString("it-IT", {
+                        minimumFractionDigits: 2,
+                      })
+                    : "0,00"
+                  : inpVal
+              }
+              type="text"
+              readOnly
+            />{" "}
             {"contacts" in navigator && "ContactsManager" in window && (
               <i
                 onClick={async () => {
@@ -196,22 +228,48 @@ const Numpad = ({
                       opts
                     );
                     setVal((contacts[0]?.tel?.[0] || "").replace("+39", ""));
-                  } catch (ex) {
-                    console.log("ex", ex);
-                  }
+                  } catch (ex) {}
                 }}
                 className="fas fa-address-book"
               ></i>
             )}
           </div>
           <div className="mobileNumPad--numbers">
-            {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {
-              return (
-                <div key={a} onClick={() => setVal(`${inpVal}${a}`)}>
-                  {a}
-                </div>
-              );
-            })}
+            {bgamePad === true
+              ? [1, 2, 3, 4, 5, 6, 7, 8, 9, ".", "0", "x"].map((num) => (
+                  <div
+                    key={num}
+                    id={`num${num}`}
+                    className={`bgm ${num === "x" ? "x" : ""}`}
+                    onClick={() =>
+                      num === "x"
+                        ? inpVal.charAt(inpVal.length - 1) === "."
+                          ? setVal(inpVal.slice(0, -2))
+                          : setVal(inpVal.slice(0, -1))
+                        : num === "."
+                        ? inpVal.includes(".")
+                          ? setVal(inpVal)
+                          : setVal(`${inpVal}.`)
+                        : setVal(`${inpVal}${num}`)
+                    }
+                  >
+                    {num === "x" ? (
+                      <span>
+                        <i className="fal fa-times" />
+                        <div className="triangle"></div>
+                      </span>
+                    ) : (
+                      num
+                    )}
+                  </div>
+                ))
+              : [7, 8, 9, 4, 5, 6, 1, 2, 3].map((a) => {
+                  return (
+                    <div key={a} onClick={() => setVal(`${inpVal}${a}`)}>
+                      {a}
+                    </div>
+                  );
+                })}
             <div onClick={() => setVal("")}>C</div>
             <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
           </div>
@@ -243,8 +301,16 @@ const Numpad = ({
           onClick={() => {
             setLoadingRecharge(true);
             getRechargeMobile(
-              selectedCost?.service_id,
-              noNumbers ? null : `39${inpVal}`,
+              selectedCost?.service_id
+                ? selectedCost?.service_id.includes("BGM00")
+                  ? "BGM001"
+                  : selectedCost?.service_id
+                : selectedCost?.service_id,
+              noNumbers
+                ? selectedCost?.service_id.includes("BGM00")
+                  ? inpVal
+                  : null
+                : `39${inpVal}`,
               setLoadingRecharge
             );
           }}

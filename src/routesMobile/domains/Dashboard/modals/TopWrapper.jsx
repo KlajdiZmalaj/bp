@@ -24,20 +24,8 @@ const TopWrapper = ({ services, setService, activeService }) => (
                       item?.service_id === "BOL006" ||
                       item?.service_id === "PPA001" ||
                       item?.service_id === "PAGF24"
-                        ? images[
-                            `${item.service_id}-${
-                              activeService === item.service_id
-                                ? "White"
-                                : "Black"
-                            }-Mobile`
-                          ]
-                        : images[
-                            `BOLL-${
-                              activeService === item.service_id
-                                ? "White"
-                                : "Black"
-                            }-Mobile`
-                          ]
+                        ? images[`${item.service_id}-Black-Mobile`]
+                        : images[`BOLL-Black-Mobile`]
                     }
                     alt=""
                   />
@@ -70,31 +58,9 @@ const TopWrapper = ({ services, setService, activeService }) => (
                     images[
                       services["PRDPST"][keyBolletines].services[0]
                         .service_id === "PPA001"
-                        ? `${
-                            services["PRDPST"][keyBolletines].services[0]
-                              .service_id
-                          }-${
-                            activeService ===
-                            services["PRDPST"][keyBolletines].services[0]
-                              .service_id
-                              ? "White"
-                              : "Black"
-                          }-Mobile`
+                        ? `${services["PRDPST"][keyBolletines].services[0].service_id}-Black-Mobile`
                         : `${keyBolletines === "RCPP" ? "RCPP" : "BOLL"}${
-                            keyBolletines === "RCPP"
-                              ? ""
-                              : `-${
-                                  (activeService === "BOL003" ||
-                                    activeService === "BOL004") &&
-                                  services["PRDPST"][keyBolletines].services[0]
-                                    .service_id === "BOL004"
-                                    ? "White"
-                                    : activeService ===
-                                      services["PRDPST"][keyBolletines]
-                                        .services[0].service_id
-                                    ? "White"
-                                    : "Black"
-                                }-Mobile`
+                            keyBolletines === "RCPP" ? "" : `-Black-Mobile`
                           }`
                     ]
                   }

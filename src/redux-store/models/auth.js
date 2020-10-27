@@ -492,12 +492,40 @@ const { Types, Creators } = createActions({
     "ClearFields",
   ],
   setPayFSaga: ["service_id", "importo", "fee", "pagamento_id"],
+  getRegistrazioneData: [],
+  setRegistrazioneData: ["SelectData"],
+  createUserBgame: [
+    "nome",
+    "cognome",
+    "data_nascita",
+    "sesso",
+    "id_nazione_nascita",
+    "id_comune_nascita",
+    "codice_fiscale",
+    "id_comune_residenza",
+    "indirizzo",
+    "cap",
+    "telefono",
+    "cellulare",
+    "email",
+    "id_tipo_documento",
+    "documento",
+    "rilasciato_da",
+    "data_rilascio",
+    "data_scadenza",
+    "id_nazione_cittadinanza",
+    "nick",
+    "password",
+    "question",
+    "answer",
+  ],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  SelectData: null,
   ErrLoading: false,
   fattura_loading: false,
   ModalDetails: {},
@@ -570,6 +598,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_REGISTRAZIONE_DATA]: (state, { SelectData }) => ({
+    ...state,
+    SelectData,
+  }),
   [Types.SET_ERRORS_LOADING]: (state, { ErrLoading }) => ({
     ...state,
     ErrLoading,

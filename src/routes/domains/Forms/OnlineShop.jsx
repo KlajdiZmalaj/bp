@@ -136,7 +136,7 @@ class OnlineShop extends Component {
         <div className="rightFormOnlShop">
           <div className="rightForm--header">
             {!isMobile && (
-              <div className="TitleBack">
+              <div className="TitleBack" style={{ color: color }}>
                 <i className="fal fa-chevron-left Arrow" onClick={goBack}></i>
                 ONLINE SHOP
               </div>

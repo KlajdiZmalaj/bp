@@ -99,18 +99,61 @@ class DashboardDom extends React.Component {
   }
   FilterCompanies = (Companies, search) => {
     const FilterCompanies = [];
+    let pushed = false;
     if (search === "" || !search || !Companies) {
       return Companies;
     } else {
       Companies.map((comp) =>
         Object.keys(comp).forEach((key) => {
-          if (comp[key].name.toLowerCase().includes(search.toLowerCase())) {
-            FilterCompanies.push(comp);
+          if (key === "BOLL") {
+            comp[key].services.forEach((service) => {
+              if (
+                pushed === false &&
+                this.compareIfAreSimilar(service.name, search)
+              ) {
+                pushed = true;
+                FilterCompanies.push(comp);
+              }
+            });
+          } else {
+            if (this.compareIfAreSimilar(comp[key].name, search)) {
+              FilterCompanies.push(comp);
+            }
           }
         })
       );
     }
     return FilterCompanies;
+  };
+  compareIfAreSimilar = (firstWord, secondWord) => {
+    let similar = true;
+    if (firstWord && secondWord && secondWord !== "") {
+      let newFWord = this.removeDuplicate(
+        firstWord.toLowerCase().replace(" ", "")
+      );
+      let newSWord = this.removeDuplicate(
+        secondWord.toLowerCase().replace(" ", "")
+      );
+
+      if (newFWord.includes(newSWord)) {
+        similar = true;
+      } else {
+        similar = false;
+      }
+    }
+    return similar;
+  };
+  removeDuplicate = (str) => {
+    let last = "";
+    let result = "";
+    for (let i = 0; i < str.length; i++) {
+      let char = str.charAt(i);
+      if (char !== last) {
+        result += char;
+        last = char;
+      }
+    }
+    return result;
   };
   checkIfInlcudes = (mainWord, WordToCheck) => {
     return (
@@ -136,7 +179,6 @@ class DashboardDom extends React.Component {
         : 486;
       let top =
         (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
-      // console.log(top);
       if (menuClassName !== "fixed" && top >= scrollPoint) {
         this.setState({
           menuClassName: "fixed",
@@ -339,40 +381,47 @@ class DashboardDom extends React.Component {
                         comp[key].services[0].service_id === "BOL001" ? (
                           comp[key].services.map((service) => {
                             return (
-                              <CompaniesCheck
-                                key={
-                                  key ? `${key}${Math.random()}` : Math.random()
-                                }
-                                Key={key}
-                                changeServce={() => {
-                                  this.changeServce(
-                                    key,
-                                    comp[key].services,
-                                    comp[key].name,
-                                    "",
-                                    service
-                                  );
-                                }}
-                                image={
-                                  service.service_id === "BOL006" ||
-                                  service.service_id === "PPA001" ||
-                                  service.service_id === "PAGF24"
-                                    ? `${service.service_id}-Black-Mobile`
-                                    : `BOLL-Black-Mobile`
-                                }
-                                role={this.props.accountInfo?.profile?.role}
-                                togglePopUp={this.togglePopUp}
-                                setState={() => {
-                                  this.setState({
-                                    Services: comp[key].services,
-                                    serviceSelected: comp[key].services[0],
-                                  });
-                                }}
-                                Companie={service}
-                                favourite={comp[key].favourite}
-                                toggleFavorite={this.props.toggleFavorite}
-                                getServices={this.props.getServices}
-                              />
+                              this.compareIfAreSimilar(
+                                service.name,
+                                search
+                              ) && (
+                                <CompaniesCheck
+                                  key={
+                                    key
+                                      ? `${key}${Math.random()}`
+                                      : Math.random()
+                                  }
+                                  Key={key}
+                                  changeServce={() => {
+                                    this.changeServce(
+                                      key,
+                                      comp[key].services,
+                                      comp[key].name,
+                                      "",
+                                      service
+                                    );
+                                  }}
+                                  image={
+                                    service.service_id === "BOL006" ||
+                                    service.service_id === "PPA001" ||
+                                    service.service_id === "PAGF24"
+                                      ? `${service.service_id}-Black-Mobile`
+                                      : `BOLL-Black-Mobile`
+                                  }
+                                  role={this.props.accountInfo?.profile?.role}
+                                  togglePopUp={this.togglePopUp}
+                                  setState={() => {
+                                    this.setState({
+                                      Services: comp[key].services,
+                                      serviceSelected: comp[key].services[0],
+                                    });
+                                  }}
+                                  Companie={service}
+                                  favourite={comp[key].favourite}
+                                  toggleFavorite={this.props.toggleFavorite}
+                                  getServices={this.props.getServices}
+                                />
+                              )
                             );
                           })
                         ) : comp[key].services[0].service_id ===

@@ -113,7 +113,7 @@ class Eventi extends Component {
         <div className="rightForm">
           <div className="rightForm--header">
             {!isMobile && (
-              <div className="TitleBack">
+              <div className="TitleBack" style={{ color: color }}>
                 <i class="fal fa-chevron-left Arrow" onClick={goBack}></i>
                 Prenotazione Biglietti{" "}
               </div>
@@ -125,7 +125,11 @@ class Eventi extends Component {
                 <i className="fal fa-receipt"></i> {activeService}{" "}
               </div>
             )}
-            <img src={images[`${nome_agenzia}-logo`]} alt="" />
+            <img
+              className={nome_agenzia}
+              src={images[`${nome_agenzia}-logo`]}
+              alt=""
+            />
           </div>
           <div className="rightForm--left">
             <div className="formsContainer--body__item d-none">

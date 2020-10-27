@@ -177,73 +177,71 @@ class ShopOnline extends Component {
               }}
             />
 
-            {this.state.consegna === 2 && (
-              <Fragment>
-                <MyInput
-                  labelName={"Nome"}
-                  type={"text"}
-                  editable={editable}
-                  value={nome}
-                  handleChange={(e) => {
-                    this.setState({ nome: e.target.value });
-                  }}
-                />
-                <MyInput
-                  labelName={"Cognome"}
-                  type={"text"}
-                  editable={editable}
-                  value={cognome}
-                  handleChange={(e) => {
-                    this.setState({ cognome: e.target.value });
-                  }}
-                />
-                <MyInput
-                  labelName={"Company Name"}
-                  type={"text"}
-                  editable={editable}
-                  value={company_name}
-                  handleChange={(e) => {
-                    this.setState({ company_name: e.target.value });
-                  }}
-                />
-                <MyInput
-                  labelName={"Email"}
-                  type={"text"}
-                  editable={editable}
-                  value={email}
-                  handleChange={(e) => {
-                    this.setState({ email: e.target.value });
-                  }}
-                />
-                <MyInput
-                  labelName={"Telefono"}
-                  type={"text"}
-                  editable={editable}
-                  value={phone}
-                  handleChange={(e) => {
-                    this.setState({ phone: e.target.value });
-                  }}
-                />
-                <MyInput
-                  labelName={"Stato"}
-                  type={"text"}
-                  editable={editable}
-                  value={stato}
-                  handleChange={(e) => {
-                    this.setState({ stato: e.target.value });
-                  }}
-                />
-                <MyInput
-                  labelName={"Citta"}
-                  type={"text"}
-                  editable={editable}
-                  value={citta}
-                  handleChange={(e) => {
-                    this.setState({ citta: e.target.value });
-                  }}
-                />
-              </Fragment>
-            )}
+            <Fragment>
+              <MyInput
+                labelName={"Nome"}
+                type={"text"}
+                editable={editable}
+                value={nome}
+                handleChange={(e) => {
+                  this.setState({ nome: e.target.value });
+                }}
+              />
+              <MyInput
+                labelName={"Cognome"}
+                type={"text"}
+                editable={editable}
+                value={cognome}
+                handleChange={(e) => {
+                  this.setState({ cognome: e.target.value });
+                }}
+              />
+              <MyInput
+                labelName={"Company Name"}
+                type={"text"}
+                editable={editable}
+                value={company_name}
+                handleChange={(e) => {
+                  this.setState({ company_name: e.target.value });
+                }}
+              />
+              <MyInput
+                labelName={"Email"}
+                type={"text"}
+                editable={editable}
+                value={email}
+                handleChange={(e) => {
+                  this.setState({ email: e.target.value });
+                }}
+              />
+              <MyInput
+                labelName={"Telefono"}
+                type={"text"}
+                editable={editable}
+                value={phone}
+                handleChange={(e) => {
+                  this.setState({ phone: e.target.value });
+                }}
+              />
+              <MyInput
+                labelName={"Stato"}
+                type={"text"}
+                editable={editable}
+                value={stato}
+                handleChange={(e) => {
+                  this.setState({ stato: e.target.value });
+                }}
+              />
+              <MyInput
+                labelName={"Citta"}
+                type={"text"}
+                editable={editable}
+                value={citta}
+                handleChange={(e) => {
+                  this.setState({ citta: e.target.value });
+                }}
+              />
+            </Fragment>
           </div>
           <div className="formBody--col">
             <div className="itemCol full">
@@ -254,6 +252,7 @@ class ShopOnline extends Component {
                     consegna: e.target.value,
                   });
                 }}
+                disabled
                 value={consegna}
               >
                 <Radio value={1}>Nome Agenzia</Radio>

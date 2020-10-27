@@ -16,7 +16,7 @@ class Treni extends Component {
     andata_time: this.props.TicketByTcketId.andata_time,
     destinazione: this.props.TicketByTcketId.destinazione,
     destinazione_stazione: this.props.TicketByTcketId.destinazione_stazione,
-    tipologia_biglietto: this.props.TicketByTcketId.tipologia_biglietto,
+    tipologia_biglietto: this.props.TicketByTcketId.tipologia_biglietto || "1",
     compagnie: this.props.TicketByTcketId.compagnie,
     adulti: this.props.TicketByTcketId.adulti,
     ragazzi: this.props.TicketByTcketId.ragazzi,
@@ -157,7 +157,7 @@ class Treni extends Component {
                 }}
               />
             </div>
-            {tipologia_biglietto === 1 ? (
+            {tipologia_biglietto === "1" ? (
               <div className="itemCol full">
                 <label className="inputLabel">Ritorno</label>
 
@@ -187,7 +187,7 @@ class Treni extends Component {
                 <span className="inputLabel">Andata e ritorno</span>
 
                 <input
-                  checked={tipologia_biglietto === 1}
+                  checked={tipologia_biglietto === "1"}
                   onChange={(e) => {
                     if (e.target.checked) {
                       this.setState({ tipologia_biglietto: e.target.value });
@@ -202,7 +202,7 @@ class Treni extends Component {
                 <span className="inputLabel">Solo Andata</span>
 
                 <input
-                  checked={tipologia_biglietto === 2}
+                  checked={tipologia_biglietto === "2"}
                   onChange={(e) => {
                     if (e.target.checked) {
                       this.setState({ tipologia_biglietto: e.target.value });

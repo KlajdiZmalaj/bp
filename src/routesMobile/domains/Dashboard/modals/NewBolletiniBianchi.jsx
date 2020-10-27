@@ -94,12 +94,11 @@ const BolletiniBianchi = ({
             getFieldDecorator={form.getFieldDecorator}
             getFieldValue={form.getFieldValue}
             service_id={activeService}
+            mobile
           />
           <BolletiniRightForm
             barcodeData={barcode}
             getFieldDecorator={form.getFieldDecorator}
-            getFieldValue={form.getFieldValue}
-            service_id={activeService}
           />
         </div>
       </Form>
@@ -147,7 +146,6 @@ const BolletiniBianchi = ({
         <button
           onClick={() => {
             setService(null);
-            setBolletiniBianchi({});
           }}
         >
           Anulla <i className="fal fa-times" aria-hidden="true"></i>
