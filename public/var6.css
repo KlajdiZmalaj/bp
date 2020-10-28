@@ -233,3 +233,13 @@ body:not(.bodyAdmin) .Companies .Pagamenti img,
 body:not(.bodyAdmin) .Favorites .Pagamenti img {
   filter: invert(1) brightness(10);
 }
+.headerMob nav .tabBody--item.active,
+.headerMob nav .tabs > div.active,
+.serviziFilter--cards__item.active,
+.mobileServices--header.active,
+.headerMob nav .tabBody--a__b:nth-child(2) {
+  background: #ffe01a !important;
+  background-color: #ffe01a !important;
+  color: #212121 !important;
+  border-color: transparent #212121;
+}

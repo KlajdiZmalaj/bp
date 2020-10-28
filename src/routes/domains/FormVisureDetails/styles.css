@@ -112,7 +112,7 @@
   border: 1.5px solid #000000;
 }
 
-.ticketDetails--filters__byTicket span.status[data-status="Nuova Richiesta"].active {
+.ticketDetails--filters__byTicket span.status[data-status="Nuove Richieste"].active, .ticketDetails--filters__byTicket span.status[data-status="Nuove Offerte"].active {
   border: 1.5px solid #238be7;
 }
 
@@ -148,11 +148,11 @@
   background-color: #fff;
 }
 
-.ticketDetails--filters__byTicket span.status div[data-status="Nuova Richiesta"].active {
+.ticketDetails--filters__byTicket span.status div[data-status="Nuove Richieste"].active, .ticketDetails--filters__byTicket span.status div[data-status="Nuove Offerte"].active {
   background-color: #238be7;
 }
 
-.ticketDetails--filters__byTicket span.status div[data-status="Nuova Richiesta"] span.active {
+.ticketDetails--filters__byTicket span.status div[data-status="Nuove Richieste"] span.active, .ticketDetails--filters__byTicket span.status div[data-status="Nuove Offerte"] span.active {
   background-color: #fff;
 }
 

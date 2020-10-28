@@ -73,7 +73,8 @@
             border: 1.5px solid #000000;
           }
         }
-        &[data-status="Nuova Richiesta"] {
+        &[data-status="Nuove Richieste"],
+        &[data-status="Nuove Offerte"] {
           &.active {
             border: 1.5px solid #238be7;
           }
@@ -111,7 +112,8 @@
               background-color: #fff;
             }
           }
-          &[data-status="Nuova Richiesta"] {
+          &[data-status="Nuove Richieste"],
+          &[data-status="Nuove Offerte"] {
             &.active {
               background-color: #238be7;
             }

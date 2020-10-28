@@ -1670,6 +1670,15 @@ i#private {
   height: 100%;
 }
 
+@media (max-width: 1024px) {
+  .sort-annunci .MoviFirst {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .sort-annunci .MoviFirst .DateUtent {
   display: -webkit-box;
   display: -ms-flexbox;

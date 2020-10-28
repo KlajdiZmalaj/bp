@@ -154,7 +154,7 @@
           align-items: center;
         }
         &.active {
-          background-color: var(--accent-bg) !important;
+          background-color: var(--accent-bg);
           color: var(--accent-txt);
           i {
             opacity: 1;
