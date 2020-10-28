@@ -360,7 +360,7 @@ class ModulePopUp4 extends React.Component {
                         this.setState({ changeInput: false });
                       }}
                     >
-                      <span>X</span>
+                      <span>x</span>
                     </div>
                   ) : (
                     <div

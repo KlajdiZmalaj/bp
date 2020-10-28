@@ -1750,6 +1750,83 @@
   background-color: #fff;
 }
 
+.bolletini--inputs__item,
+.postepay--inputs__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.bolletini--inputs__item .label,
+.postepay--inputs__item .label {
+  width: 40%;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.bolletini--inputs__item input,
+.bolletini--inputs__item select,
+.postepay--inputs__item input,
+.postepay--inputs__item select {
+  width: 60%;
+  font-weight: 600;
+  border: 0;
+  border: 1px solid #edeef0;
+  padding: 3px 10px;
+  font-size: 14px;
+  height: 50px;
+}
+
+.bolletini--inputs__item input,
+.bolletini--inputs__item select,
+.postepay--inputs__item input,
+.postepay--inputs__item select {
+  width: 100%;
+}
+
+.bolletini--inputs__item.hasIcon,
+.postepay--inputs__item.hasIcon {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.bolletini--inputs__item.hasIcon input,
+.postepay--inputs__item.hasIcon input {
+  width: calc(100% - 55px);
+}
+
+.bolletini--inputs__item.hasIcon i,
+.postepay--inputs__item.hasIcon i {
+  width: 55px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #edeef0;
+  border-left: 0;
+  color: #838383;
+  font-size: 16px;
+}
+
 .bolletini--inputs .InputItem,
 .postepay--inputs .InputItem {
   height: 90px;
