@@ -5,7 +5,6 @@ import images from "themes/images";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import VirtualizedSelect from "react-virtualized-select";
-import { countriesArray } from "config";
 import CodiceFiscale from "codice-fiscale-js";
 const { Option } = Select;
 
@@ -303,18 +302,12 @@ class Eventi extends Component {
       tipo_documenta,
       documento,
       rilasciato_da,
-      data_rilascio,
-      data_scadenza,
       nnome,
       pword,
       domanda_segreta,
       risposta_segreta,
       provincia_nascita,
       nazione_cittadinanza,
-      id_nazione_cittadinanza,
-      nazione_nascita_id,
-      comune_nascita_id,
-      comune_residenca_id,
     } = this.state;
     return (
       <div className="formsContainer--body animated fadeIn eventi">

@@ -233,12 +233,3 @@ body:not(.bodyAdmin) .Companies .Pagamenti img,
 body:not(.bodyAdmin) .Favorites .Pagamenti img {
   filter: invert(1) brightness(10);
 }
-body:not(.bodyAdmin) div.Select-placeholder,
-body:not(.bodyAdmin) span.Select-arrow-zone {
-  background: #ffffff !important;
-  border: none !important;
-  color: #5c5c55 !important;
-}
-body:not(.bodyAdmin) .Select-control {
-  border-color: #eaebec !important;
-}
