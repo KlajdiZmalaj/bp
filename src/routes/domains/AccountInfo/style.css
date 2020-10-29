@@ -175,6 +175,8 @@
   text-transform: capitalize;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  text-transform: capitalize;
+  padding: 5px 2px;
 }
 
 .userList .header span:nth-child(1) {
@@ -222,10 +224,21 @@
 }
 
 @media (max-width: 1024px) {
-  .userList .header span {
-    text-transform: capitalize;
-    font-size: 12px;
-    padding: 2px;
+  .userList .header span:nth-child(1) {
+    width: 20%;
+  }
+  .userList .header span:nth-child(2) {
+    width: 35%;
+    min-width: 40%;
+  }
+  .userList .header span:last-child:not(.seeMore) {
+    width: 9%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .userList .header span:nth-child(4) {
+    width: 20%;
+    margin-right: 12%;
   }
 }
 
@@ -314,14 +327,6 @@
           align-items: center;
 }
 
-@media (max-width: 1024px) {
-  .userList--noDoc__user .body span, .userList--Doc__user .body span {
-    text-transform: capitalize;
-    font-size: 12px;
-    padding: 5px 2px;
-  }
-}
-
 .userList--noDoc__user .body span:nth-child(1), .userList--Doc__user .body span:nth-child(1) {
   width: 8%;
 }
@@ -380,6 +385,30 @@
 .userList--noDoc__user .body span:last-child:not(.seeMore) button:hover, .userList--Doc__user .body span:last-child:not(.seeMore) button:hover {
   background-color: #32424e;
   color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .userList--noDoc__user .body span, .userList--Doc__user .body span {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 5px 2px;
+  }
+  .userList--noDoc__user .body span:nth-child(1), .userList--Doc__user .body span:nth-child(1) {
+    width: 20%;
+  }
+  .userList--noDoc__user .body span:nth-child(2), .userList--Doc__user .body span:nth-child(2) {
+    width: 35%;
+    min-width: 40%;
+  }
+  .userList--noDoc__user .body span:last-child:not(.seeMore), .userList--Doc__user .body span:last-child:not(.seeMore) {
+    width: 9%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .userList--noDoc__user .body span:nth-child(4), .userList--Doc__user .body span:nth-child(4) {
+    width: 20%;
+    margin-right: 12%;
+  }
 }
 
 .userList--noDoc__user .fa-store,
@@ -1284,5 +1313,25 @@ html .wrapppper .userList--noDoc__user.singleUser:last-child .body .userDropAnch
 
 html .isopenrow .userList--noDoc__user.singleUser.hasChildren.isopenrow .wrapppper .userList--noDoc__user.singleUser:last-child span.userDropAnch.isMinus:before {
   height: 100% !important;
+}
+
+@media (max-width: 1024px) {
+  .userList .header span:nth-child(3), .userList .header span:nth-child(5), .userList .header span:nth-child(6) {
+    display: none;
+  }
+  .userList .header span:last-child.seeMore {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    width: 15%;
+    position: relative;
+    right: 5%;
+  }
+  .userList--noDoc__user .body span:nth-child(3), .userList--noDoc__user .body span:nth-child(5), .userList--noDoc__user .body span:nth-child(6),
+  .userList--Doc__user .body span:nth-child(3),
+  .userList--Doc__user .body span:nth-child(5),
+  .userList--Doc__user .body span:nth-child(6) {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
