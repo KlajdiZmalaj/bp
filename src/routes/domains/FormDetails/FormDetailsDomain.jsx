@@ -8,6 +8,7 @@ import DetailRow from "./DetailRow";
 import DetailRowVisure from "../FormVisureDetails/DetailRow";
 
 import { allRoles } from "config/index";
+import AccountInfo from "../../views/AccountInfo";
 export const FilterVisureComponent = ({
   filterVisure,
   title,
@@ -82,38 +83,42 @@ function Filter(
   }
   return false;
 }
-export const FilterTypeComponent = ({ filterType, handleClick, title }) => (
-  <Tooltip title={`Filtra per ${title === "all" ? "Tutti" : title}`}>
-    <span
-      className={`status ${filterType === title ? " active" : ""}`}
-      data-status={title}
-      onClick={handleClick}
-    >
-      <div
-        className={filterType === title ? " active" : ""}
-        aria-hidden="true"
+export const FilterTypeComponent = ({ filterType, handleClick, title }) => {
+  const active =
+    (filterType === "Nuova Richiesta" && title === "Nuove Richieste") ||
+    (filterType === "Nuova Offerta" && title === "Nuove Offerte") ||
+    filterType === title;
+  return (
+    <Tooltip title={`Filtra per ${title === "all" ? "Tutti" : title}`}>
+      <span
+        className={`status ${active ? " active" : ""}`}
         data-status={title}
+        onClick={handleClick}
       >
-        <span className={filterType === title ? " active" : ""}></span>
-      </div>
-      <span>
-        {title === "all"
-          ? "Tutti"
-          : title === "Nuova Richiesta"
-          ? "nuove richieste"
-          : title === "Eseguibile"
-          ? "Eseguibili"
-          : title === "In Attesa"
-          ? "In Attesa"
-          : title === "Completato"
-          ? "Completati"
-          : title === "Cancellato"
-          ? "Cancellati"
-          : title}
+        <div
+          className={active ? " active" : ""}
+          aria-hidden="true"
+          data-status={title}
+        >
+          <span className={active ? " active" : ""}></span>
+        </div>
+        <span>
+          {title === "all"
+            ? "Tutti"
+            : title === "Eseguibile"
+            ? "Eseguibili"
+            : title === "In Attesa"
+            ? "In Attesa"
+            : title === "Completato"
+            ? "Completati"
+            : title === "Cancellato"
+            ? "Cancellati"
+            : title}
+        </span>
       </span>
-    </span>
-  </Tooltip>
-);
+    </Tooltip>
+  );
+};
 class FormDetailsDomain extends Component {
   state = {
     filterTickets: "all",
@@ -134,7 +139,7 @@ class FormDetailsDomain extends Component {
     this.props.getDataFormDetails();
   }
   render() {
-    const { formDetails, formDetailsActives } = this.props;
+    const { formDetails, formDetailsActives, accountInfo } = this.props;
     const {
       filterTickets,
       statusRows,
@@ -306,17 +311,28 @@ class FormDetailsDomain extends Component {
                 <FilterTypeComponent
                   filterType={filterType}
                   handleClick={() =>
-                    this.setState({ filterType: "Nuova Richiesta" })
+                    this.setState({
+                      filterType:
+                        accountInfo?.profile?.role?.name === "support"
+                          ? "Nuova Richiesta"
+                          : "Nuova Offerta",
+                    })
                   }
-                  title="Nuova Richiesta"
-                />
-                <FilterTypeComponent
-                  filterType={filterType}
-                  handleClick={() =>
-                    this.setState({ filterType: "Eseguibile" })
+                  title={
+                    accountInfo?.profile?.role?.name === "support"
+                      ? "Nuove Richieste"
+                      : "Nuove Offerte"
                   }
-                  title="Eseguibile"
                 />
+                {accountInfo?.profile?.role?.name === "support" && (
+                  <FilterTypeComponent
+                    filterType={filterType}
+                    handleClick={() =>
+                      this.setState({ filterType: "Eseguibile" })
+                    }
+                    title="Eseguibile"
+                  />
+                )}
                 <FilterTypeComponent
                   filterType={filterType}
                   handleClick={() => this.setState({ filterType: "In Attesa" })}
@@ -482,6 +498,7 @@ const mstp = (state) => {
     formDetails: state.auth.formDetails,
     formDetailsActives: state.auth.formDetailsActives,
     TicketByTcketId: state.auth.TicketByTcketId,
+    accountInfo: state.auth.accountInfo,
   };
 };
 export default connect(mstp, AuthActions)(FormDetailsDomain);

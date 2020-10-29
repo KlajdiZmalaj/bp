@@ -64,42 +64,31 @@ class Eventi extends Component {
     }
   };
   submitData = () => {
-    const {
-      tipologia,
-      nome,
-      cognome,
-      codice_fiscale,
-      indirizo_residenca,
-      p_iva,
-      email,
-      telefono,
-      canone_mensile,
-      marca,
-      modello,
-      alimentazione,
-      cambio,
-      percorrenza,
-      ragione_sociale,
-      colore,
-      note,
-    } = this.state;
+    // const {
+    //   tipologia,
+    //   nome,
+    //   cognome,
+    //   codice_fiscale,
+    //   indirizo_residenca,
+    //   p_iva,
+    //   email,
+    //   telefono,
+    //   canone_mensile,
+    //   marca,
+    //   modello,
+    //   alimentazione,
+    //   cambio,
+    //   percorrenza,
+    //   ragione_sociale,
+    //   colore,
+    //   note,
+    // } = this.state;
     // this.props.createUserBgame(
-
     // );
   };
 
   render() {
-    const {
-      nome_agenzia,
-      color,
-      goBack,
-      isMobile,
-      activeService,
-      comuni,
-      nazioni,
-      province,
-      tipi_documento,
-    } = this.props;
+    const { nome_agenzia, color, goBack, isMobile, activeService } = this.props;
     const {
       tipologia,
       nome,

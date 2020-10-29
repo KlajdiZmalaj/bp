@@ -154,10 +154,24 @@
         width: auto;
         flex-grow: 1;
       }
+      text-transform: capitalize;
+      padding: 5px 2px;
       @media (max-width: 1024px) {
-        text-transform: capitalize;
-        font-size: 12px;
-        padding: 2px;
+        &:nth-child(1) {
+          width: 20%;
+        }
+        &:nth-child(2) {
+          width: 35%;
+          min-width: 40%;
+        }
+        &:last-child:not(.seeMore) {
+          width: 9%;
+          justify-content: space-around;
+        }
+        &:nth-child(4) {
+          width: 20%;
+          margin-right: 12%;
+        }
       }
     }
   }
@@ -216,13 +230,6 @@
           font-size: 14px;
           flex-shrink: 0;
           align-items: center;
-
-          @media (max-width: 1024px) {
-            text-transform: capitalize;
-            font-size: 12px;
-            padding: 5px 2px;
-          }
-
           &:nth-child(1) {
             width: 8%;
           }
@@ -268,8 +275,29 @@
               }
             }
           }
+          @media (max-width: 1024px) {
+            text-transform: capitalize;
+            font-size: 12px;
+            padding: 5px 2px;
+            &:nth-child(1) {
+              width: 20%;
+            }
+            &:nth-child(2) {
+              width: 35%;
+              min-width: 40%;
+            }
+            &:last-child:not(.seeMore) {
+              width: 9%;
+              justify-content: space-around;
+            }
+            &:nth-child(4) {
+              width: 20%;
+              margin-right: 12%;
+            }
+          }
         }
       }
+
       .fa-store,
       .fa-user-tie,
       .fa-user {
@@ -277,9 +305,6 @@
         margin-left: 10px;
       }
     }
-  }
-  &--noDoc__user .body span:nth-child(3) {
-    width: 17%;
   }
 
   .ddItems {
@@ -976,6 +1001,37 @@ html {
     .wrapppper .userList--noDoc__user.singleUser:last-child {
       span.userDropAnch.isMinus:before {
         height: 100% !important;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .userList {
+    .header {
+      span {
+        &:nth-child(3),
+        &:nth-child(5),
+        &:nth-child(6) {
+          display: none;
+        }
+        &:last-child.seeMore {
+          display: flex !important;
+          width: 15%;
+          position: relative;
+          right: 5%;
+        }
+      }
+    }
+  }
+  .userList--noDoc__user,
+  .userList--Doc__user {
+    .body {
+      span {
+        &:nth-child(3),
+        &:nth-child(5),
+        &:nth-child(6) {
+          display: none;
+        }
       }
     }
   }

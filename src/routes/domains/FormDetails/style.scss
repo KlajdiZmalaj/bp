@@ -298,16 +298,18 @@ textarea {
         background-color: rgb(235, 104, 16);
       }
     }
-    [data-status="Nuova Richiesta"] {
+    [data-status="Nuove Offerte"],
+    [data-status="Nuove Richieste"] {
       border: 1px solid #238be7;
       span {
         background-color: #238be7;
       }
     }
-    [data-status="Nuova Offerta"] {
-      border: 1px solid #00ac56;
+    [data-status="Nuova Offerta"],
+    [data-status="Nuova Richiesta"] {
+      border: 1px solid #238be7;
       span {
-        background-color: #00ac56;
+        background-color: #238be7;
       }
     }
     [data-status="Completato"] {

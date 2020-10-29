@@ -421,20 +421,24 @@ textarea {
   background-color: #eb6810;
 }
 
+.ticketDetails .status [data-status="Nuove Offerte"],
+.ticketDetails .status [data-status="Nuove Richieste"] {
+  border: 1px solid #238be7;
+}
+
+.ticketDetails .status [data-status="Nuove Offerte"] span,
+.ticketDetails .status [data-status="Nuove Richieste"] span {
+  background-color: #238be7;
+}
+
+.ticketDetails .status [data-status="Nuova Offerta"],
 .ticketDetails .status [data-status="Nuova Richiesta"] {
   border: 1px solid #238be7;
 }
 
+.ticketDetails .status [data-status="Nuova Offerta"] span,
 .ticketDetails .status [data-status="Nuova Richiesta"] span {
   background-color: #238be7;
-}
-
-.ticketDetails .status [data-status="Nuova Offerta"] {
-  border: 1px solid #00ac56;
-}
-
-.ticketDetails .status [data-status="Nuova Offerta"] span {
-  background-color: #00ac56;
 }
 
 .ticketDetails .status [data-status="Completato"] {

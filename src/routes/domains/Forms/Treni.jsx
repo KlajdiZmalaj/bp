@@ -275,19 +275,8 @@ class Treni extends Component {
                 disabled
               />
             </div>
-
-            {this.state.tipologia_biglietto === "2" ? (
-              <div className="formsContainer--body__item semi">
-                <div className="label">Andata</div>
-                <DatePicker
-                  showTime
-                  onChange={(e) => {
-                    this.setState({ andata_time: moment(e).format() });
-                  }}
-                />
-              </div>
-            ) : (
-              <React.Fragment>
+            <div className="addPadding">
+              {this.state.tipologia_biglietto === "2" ? (
                 <div className="formsContainer--body__item semi">
                   <div className="label">Andata</div>
                   <DatePicker
@@ -297,17 +286,29 @@ class Treni extends Component {
                     }}
                   />
                 </div>
-                <div className="formsContainer--body__item semi">
-                  <div className="label">Ritorno</div>
-                  <DatePicker
-                    showTime
-                    onChange={(e) => {
-                      this.setState({ ritorno_date: moment(e).format() });
-                    }}
-                  />
-                </div>
-              </React.Fragment>
-            )}
+              ) : (
+                <React.Fragment>
+                  <div className="formsContainer--body__item semi">
+                    <div className="label">Andata</div>
+                    <DatePicker
+                      showTime
+                      onChange={(e) => {
+                        this.setState({ andata_time: moment(e).format() });
+                      }}
+                    />
+                  </div>
+                  <div className="formsContainer--body__item semi">
+                    <div className="label">Ritorno</div>
+                    <DatePicker
+                      showTime
+                      onChange={(e) => {
+                        this.setState({ ritorno_date: moment(e).format() });
+                      }}
+                    />
+                  </div>
+                </React.Fragment>
+              )}
+            </div>
           </div>
 
           <div className="rightForm--right">

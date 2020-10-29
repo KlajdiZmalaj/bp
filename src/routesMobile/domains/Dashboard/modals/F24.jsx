@@ -20,7 +20,14 @@ import images from "themes/images";
 import { notification, Form } from "antd";
 
 import TopWrapper from "./TopWrapper";
-const handleSubmit = (e, form, setBokingSep, nrOfRows) => {
+const handleSubmit = (
+  e,
+  form,
+  setBokingSep,
+  nrOfRows,
+  CodiceUfficio,
+  CodiceAtto
+) => {
   e.preventDefault();
   form.validateFieldsAndScroll((err, values) => {
     let coUf = returnCodice(3, "codice_ufficio");
@@ -34,8 +41,8 @@ const handleSubmit = (e, form, setBokingSep, nrOfRows) => {
         values?.provincia,
         values?.gender,
         values?.vat,
-        coUf,
-        coAt,
+        coUf ? coUf : CodiceUfficio,
+        coAt ? coAt : CodiceAtto,
         moment(values?.data_pagamento)?.format("YYYY-MM-DD")
           ? moment(values?.data_pagamento).format("YYYY-MM-DD")
           : null,
@@ -155,7 +162,7 @@ const F24 = ({
           <span>F24</span>
         </div>
         <div>
-          <img src={images["agenzia_entrata"]} />
+          <img src={images["agenzia_entrata"]} alt="" />
         </div>
         <div>
           <span>Modello di pagamento unificato</span>
@@ -320,7 +327,14 @@ const F24 = ({
         <button
           className={`${bolletiniLoading ? "disable" : ""}`}
           onClick={(e) => {
-            handleSubmit(e, form, setBokingSep, pagamentoRows);
+            handleSubmit(
+              e,
+              form,
+              setBokingSep,
+              pagamentoRows,
+              CodiceUfficio,
+              CodiceAtto
+            );
           }}
         >
           Esegui <i className="fal fa-check" aria-hidden="true"></i>

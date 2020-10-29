@@ -6,6 +6,9 @@
     width: auto;
     align-items: center;
     height: 100%;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
     & .DateUtent {
       display: flex;
       flex-direction: rwo;

@@ -566,7 +566,7 @@
 .postepay {
   display: flex;
   flex-flow: column;
-  padding-bottom: 120px;
+  padding-bottom: 113px;
   > video {
     width: 100%;
     height: 300px;
@@ -1131,6 +1131,49 @@
     flex-flow: column;
     padding: 0;
     background-color: #fff;
+    &__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      flex-flow: column;
+      align-items: flex-start;
+      .label {
+        width: 40%;
+        font-size: 16px;
+        white-space: nowrap;
+      }
+      input,
+      select {
+        width: 60%;
+        font-weight: 600;
+        border: 0;
+        border: 1px solid #edeef0;
+        padding: 3px 10px;
+        font-size: 14px;
+        height: 50px;
+      }
+      input,
+      select {
+        width: 100%;
+      }
+      &.hasIcon {
+        flex-flow: row wrap;
+        input {
+          width: calc(100% - 55px);
+        }
+        i {
+          width: 55px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #edeef0;
+          border-left: 0;
+          color: #838383;
+          font-size: 16px;
+        }
+      }
+    }
     .InputItem {
       height: 90px;
       display: flex;

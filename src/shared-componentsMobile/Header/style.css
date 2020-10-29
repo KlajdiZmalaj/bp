@@ -224,7 +224,7 @@
 }
 
 .headerMob nav .tabBody--item.active {
-  background-color: var(--accent-bg) !important;
+  background-color: var(--accent-bg);
   color: var(--accent-txt);
 }
 

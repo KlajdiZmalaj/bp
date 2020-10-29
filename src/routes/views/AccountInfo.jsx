@@ -11,7 +11,12 @@ class AccountInfo extends Component {
     this.state = {};
   }
   componentDidMount() {
-    this.props.getAgents();
+    if (
+      this.props?.accountInfo?.profile?.role?.name !== "agency" &&
+      this.props?.accountInfo?.profile?.role?.name !== "user"
+    ) {
+      this.props.getAgents();
+    }
   }
   render() {
     return (
@@ -27,4 +32,7 @@ class AccountInfo extends Component {
     );
   }
 }
-export default connect(null, AuthActions)(AccountInfo);
+const mpStP = (state) => ({
+  accountInfo: state.auth.accountInfo,
+});
+export default connect(mpStP, AuthActions)(AccountInfo);

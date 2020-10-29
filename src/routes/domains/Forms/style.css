@@ -425,6 +425,7 @@
 
 .formsContainer--body__item .Select-control {
   height: 40px;
+  background: #ebeced;
 }
 
 .formsContainer--body__item .Select-control div {
@@ -436,6 +437,7 @@
       -ms-flex-align: center;
           align-items: center;
   color: #5c5c5c;
+  background: #ebeced !important;
   font-size: 14px;
   font-weight: 300;
   font-family: "Roboto";
@@ -1667,5 +1669,9 @@ div.OnlineShop .rightFormOnlShop .SubForm .Bottom .L {
           align-items: center;
   margin: 0;
   border: 1px solid #22a094;
+}
+
+.addPadding {
+  padding: 9px;
 }
 /*# sourceMappingURL=style.css.map */
