@@ -19,11 +19,10 @@ if (window.location.href.includes("bpoint")) {
 }
 export default {
   //pagamanti logo
-  BOLO_AUTO: require(`../assets/images/boloauto.svg`),
-  PAGO_PA: require(`../assets/images/pagopa.svg`),
+  BOLO_AUTO: require(`../assets/images/boloAuto-form.svg`),
+  PAGO_PA: require(`../assets/images/pagoPa-form.svg`),
   agenzia_entrata: require(`../assets/images/agenzia_entrata.png`),
-
-  BOLLETINO: require(`../assets/images/BOLL-Black.svg`),
+  BOLLETINO: require(`../assets/images/bolletino-form.svg`),
   "BOLO_AUTO-logo": require(`../assets/images/boloauto.svg`),
   "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
   "BOLLETINO-logo": require(`../assets/images/BOLL-Black.svg`),
