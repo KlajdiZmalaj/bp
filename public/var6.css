@@ -243,3 +243,12 @@ body:not(.bodyAdmin) .Favorites .Pagamenti img {
   color: #212121 !important;
   border-color: transparent #212121;
 }
+.login ul li .loginBtn {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+.Statist div.Categories.data .Graph--Element:hover,
+.Statist div.Categories.data .Graph--Element:focus {
+  background: #ffc107 !important;
+}
