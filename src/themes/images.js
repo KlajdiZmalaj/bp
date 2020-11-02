@@ -1,5 +1,5 @@
 let skin = "";
-
+//
 if (window.location.href.includes("bpoint")) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
@@ -8,12 +8,14 @@ if (window.location.href.includes("bpoint")) {
   skin = 3;
 } else if (window.location.href.includes("planet")) {
   skin = 4;
+} else if (window.location.href.includes("sirpay")) {
+  skin = 6;
 } else if (
-  window.location.href.includes("sirpay") ||
+  window.location.href.includes("imperialpay") ||
   window.location.href.includes("localhost") ||
   window.location.href.includes("192.168")
 ) {
-  skin = 6;
+  skin = 7;
 }
 export default {
   //pagamanti logo

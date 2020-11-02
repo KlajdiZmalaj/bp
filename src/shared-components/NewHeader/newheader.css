@@ -58,6 +58,7 @@ header.header {
   top: 0;
   width: 100%;
   z-index: 3;
+  height: 100px;
 }
 
 header.header .topNav {
@@ -262,6 +263,7 @@ header.header nav {
   border-bottom: 2px solid var(--accent-bg);
   -webkit-box-shadow: 1px 18px 20px -22px black;
           box-shadow: 1px 18px 20px -22px black;
+  height: 100%;
 }
 
 header.header nav .logo {
