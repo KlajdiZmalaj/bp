@@ -1,5 +1,5 @@
 let skin = "";
-
+//
 if (window.location.href.includes("bpoint")) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
@@ -8,20 +8,21 @@ if (window.location.href.includes("bpoint")) {
   skin = 3;
 } else if (window.location.href.includes("planet")) {
   skin = 4;
+} else if (window.location.href.includes("sirpay")) {
+  skin = 6;
 } else if (
-  window.location.href.includes("sirpay") ||
+  window.location.href.includes("imperialpay") ||
   window.location.href.includes("localhost") ||
   window.location.href.includes("192.168")
 ) {
-  skin = 6;
+  skin = 7;
 }
 export default {
   //pagamanti logo
-  BOLO_AUTO: require(`../assets/images/boloauto.svg`),
-  PAGO_PA: require(`../assets/images/pagopa.svg`),
+  BOLO_AUTO: require(`../assets/images/boloAuto-form.svg`),
+  PAGO_PA: require(`../assets/images/pagoPa-form.svg`),
   agenzia_entrata: require(`../assets/images/agenzia_entrata.png`),
-
-  BOLLETINO: require(`../assets/images/BOLL-Black.svg`),
+  BOLLETINO: require(`../assets/images/bolletino-form.svg`),
   "BOLO_AUTO-logo": require(`../assets/images/boloauto.svg`),
   "PAGO_PA-logo": require(`../assets/images/pagopa.svg`),
   "BOLLETINO-logo": require(`../assets/images/BOLL-Black.svg`),
