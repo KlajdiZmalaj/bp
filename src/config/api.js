@@ -64,8 +64,12 @@ if (
     ...skin,
     skin_id: 8,
   };
+} else if (window.location.href.includes("imperial")) {
+  skin = {
+    ...skin,
+    skin_id: 51,
+  };
 }
-
 export default {
   endpoint,
   baseUrl: apiUrl,
