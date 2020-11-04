@@ -252,3 +252,9 @@ body:not(.bodyAdmin) .Favorites .Pagamenti img {
 .Statist div.Categories.data .Graph--Element:focus {
   background: #ffc107 !important;
 }
+.logoMob {
+  width: 200px;
+}
+.userBar div > span {
+  color: #fff !important;
+}
