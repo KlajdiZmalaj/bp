@@ -393,7 +393,7 @@ class Dashboard extends React.Component {
                             </p>
                           </td>
                           <td className="CancelModule">
-                            <h3>anulla</h3>
+                            <h3>Annulla</h3>
                             <img src="img/close.svg" alt="" />
                           </td>
                         </tr>
@@ -664,7 +664,7 @@ class Dashboard extends React.Component {
                         </button>
                         <button type="button" className="btn btn-secondary">
                           <img src="img/close.svg" alt="" /> <br />
-                          Anulla
+                          Annulla
                         </button>
                       </div>
                     </div>
@@ -720,7 +720,7 @@ class Dashboard extends React.Component {
                             </p>
                           </td>
                           <td className="CancelModule">
-                            <h3>anulla</h3>
+                            <h3>Annulla</h3>
                             <img src="img/close.svg" alt="" />
                           </td>
                         </tr>
@@ -894,7 +894,7 @@ class Dashboard extends React.Component {
                         </button>
                         <button type="button" className="btn btn-secondary">
                           <img src="img/close.svg" alt="" /> <br />
-                          Anulla
+                          Annulla
                         </button>
                       </div>
                     </div>
@@ -1031,7 +1031,7 @@ class Dashboard extends React.Component {
                               </tr>
                               <tr>
                                 <td className="CancelModule">
-                                  <h3>anulla</h3>
+                                  <h3>Annulla</h3>
                                   <img src="img/close.svg" alt="" />
                                 </td>
                               </tr>
@@ -1092,7 +1092,7 @@ class Dashboard extends React.Component {
                         </button>
                         <button type="button" className="btn btn-secondary">
                           <img src="img/close.svg" alt="" /> <br />
-                          Anulla
+                          Annulla
                         </button>
                       </div>
                     </div>

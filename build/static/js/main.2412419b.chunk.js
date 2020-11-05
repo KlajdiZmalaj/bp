@@ -60600,7 +60600,7 @@
                             }),
                             " ",
                             t.a.createElement("br", null),
-                            "Anulla"
+                            "Annulla"
                           )
                         )
                       )
@@ -60901,7 +60901,7 @@
                                         return e.props.togglePopUp(!1);
                                       },
                                     },
-                                    t.a.createElement("h3", null, "anulla"),
+                                    t.a.createElement("h3", null, "Annulla"),
                                     t.a.createElement("img", {
                                       src: nn.close,
                                       alt: "",
@@ -61798,7 +61798,11 @@
                                             return e.props.togglePopUp(!1);
                                           },
                                         },
-                                        t.a.createElement("h3", null, "anulla"),
+                                        t.a.createElement(
+                                          "h3",
+                                          null,
+                                          "Annulla"
+                                        ),
                                         t.a.createElement("img", {
                                           src: nn.close,
                                           alt: "",
@@ -62668,7 +62672,7 @@
                                             t.a.createElement(
                                               "h3",
                                               null,
-                                              "anulla"
+                                              "Annulla"
                                             ),
                                             t.a.createElement("img", {
                                               src: nn.close,
@@ -62843,7 +62847,7 @@
                                       "button",
                                       {
                                         type: "button",
-                                        className: "anullaBtn",
+                                        className: "AnnullaBtn",
                                         onClick: function () {
                                           e.setPrint(!1);
                                         },
@@ -62854,7 +62858,7 @@
                                       }),
                                       " ",
                                       t.a.createElement("br", null),
-                                      "Anulla"
+                                      "Annulla"
                                     )
                                   )
                                 )
@@ -64720,7 +64724,7 @@
                                                 t.a.createElement(
                                                   "h3",
                                                   null,
-                                                  "anulla"
+                                                  "Annulla"
                                                 ),
                                                 t.a.createElement("img", {
                                                   src: "img/close.svg",
@@ -65231,7 +65235,7 @@
                                             }),
                                             " ",
                                             t.a.createElement("br", null),
-                                            "Anulla"
+                                            "Annulla"
                                           )
                                         )
                                       )
@@ -77586,7 +77590,7 @@
                       o(null), r({});
                     },
                   },
-                  "Anulla ",
+                  "Annulla ",
                   t.a.createElement("i", {
                     className: "fal fa-times",
                     "aria-hidden": "true",
@@ -77701,7 +77705,7 @@
                         "button",
                         {
                           type: "button",
-                          className: "anullaBtn",
+                          className: "AnnullaBtn",
                           onClick: function () {
                             K(!1);
                           },
@@ -77709,7 +77713,7 @@
                         t.a.createElement("img", { src: nn.close, alt: "" }),
                         " ",
                         t.a.createElement("br", null),
-                        "Anulla"
+                        "Annulla"
                       )
                     )
                   )
@@ -77934,7 +77938,7 @@
                       a(null), s({});
                     },
                   },
-                  "Anulla ",
+                  "Annulla ",
                   t.a.createElement("i", {
                     className: "fal fa-times",
                     "aria-hidden": "true",
@@ -78179,7 +78183,7 @@
                       a(null), s({});
                     },
                   },
-                  "Anulla ",
+                  "Annulla ",
                   t.a.createElement("i", {
                     className: "fal fa-times",
                     "aria-hidden": "true",
@@ -81096,7 +81100,7 @@
                                 ? ""
                                 : " dissableBtn"),
                           },
-                          t.a.createElement("span", null, "Anullato")
+                          t.a.createElement("span", null, "Annullato")
                         )
                       )
                     : "Nuova Offerta" === A.status &&
@@ -81148,7 +81152,7 @@
                               "support" !=
                                 this.props.accountInfo.profile.role.name
                                 ? "Rifiuta"
-                                : "Anullato"
+                                : "Annullato"
                             )
                           )
                         );
@@ -82539,7 +82543,7 @@
                                 ? ""
                                 : " dissableBtn"),
                           },
-                          t.a.createElement("span", null, "Anullato")
+                          t.a.createElement("span", null, "Annullato")
                         )
                       )
                     : "Nuova Offerta" === n.status &&
@@ -82580,7 +82584,7 @@
                               },
                               className: "formSubmit--button -c",
                             },
-                            t.a.createElement("span", null, "Anullato")
+                            t.a.createElement("span", null, "Annullato")
                           )
                         );
                 },

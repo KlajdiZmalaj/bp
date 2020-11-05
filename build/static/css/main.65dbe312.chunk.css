@@ -1,7 +1,12 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap);
+@import url(
+  https://fonts.googleapis.com/css?family=Roboto:300,
+  400,
+  500,
+  700&display=swap
+);
 @import url(https://fonts.googleapis.com/css?family=Rubik&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400, 700);
 @import url(//db.onlinewebfonts.com/c/b2e75c336df191233b3096682c9ee6be?family=PixelarRegularW01-Regular);
 @import url(https://fonts.googleapis.com/css?family=Lato&display=swap);
 body {
@@ -6895,7 +6900,7 @@ div.level5 .isPlus:before {
 }
 .mobileNumPad--services__tab.active:before {
   content: "\f0d8";
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   font-weight: 900;
   position: absolute;
   left: 50%;
@@ -7596,7 +7601,7 @@ body .confirmationDelete {
   text-transform: capitalize;
 }
 .formsContainer--body__item.hasInfo:before {
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   position: absolute;
   left: 4px;
   top: 28px;
@@ -8961,7 +8966,7 @@ input[value="Visualizzare i dati"]:hover {
   top: 101.5px;
   width: 40px;
   height: 30px;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   border: 1px solid #f3f3f4;
   display: flex;
   justify-content: center;
@@ -8970,7 +8975,7 @@ input[value="Visualizzare i dati"]:hover {
   cursor: pointer;
 }
 .AdminRightForm .Close i {
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   color: #e30000;
   font-weight: 500;
   font-size: 18px;
@@ -8992,7 +8997,7 @@ input[value="Visualizzare i dati"]:hover {
 .AdminRightForm .printModal i {
   font-size: 14px;
   font-weight: 300;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   zoom: 1;
 }
 .AdminRightForm .printModal button {
@@ -10828,7 +10833,7 @@ input[value="Visualizzare i dati"]:hover {
 }
 .AdminLogin--Step1 i {
   font-size: 16px;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   font-weight: 300;
   position: absolute;
   width: 12%;
@@ -10946,7 +10951,7 @@ input[value="Visualizzare i dati"]:hover {
 }
 .AdminLogin--Step1--Left--SocialMedia i {
   font-weight: 700;
-  font-family: Font Awesome\5 Brands;
+  font-family: Font awesome\5 Brands;
   color: #5c5c5c;
   position: absolute;
 }
@@ -11049,7 +11054,7 @@ input[value="Visualizzare i dati"]:hover {
   font-weight: 300;
   color: #bfbfbf;
   cursor: pointer;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   -webkit-text-stroke-width: 9px;
   -webkit-text-stroke-color: #fff;
 }
@@ -11691,7 +11696,7 @@ div.Center--Big .panels-container .sort-annunci .dal i.fal.fa-search,
 div.Center .container-fluid.overview .sort-annunci .dal i.fal.fa-search,
 div.Center .panels-container .sort-annunci .dal i.fal.fa-search {
   position: absolute;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   font-size: 18px;
   display: flex;
   justify-content: center;
@@ -11751,7 +11756,7 @@ div.Center--Big .panels-container .sort-annunci .dal.calendar i,
 div.Center .container-fluid.overview .sort-annunci .dal.calendar i,
 div.Center .panels-container .sort-annunci .dal.calendar i {
   position: absolute;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   font-size: 18px;
   display: flex;
   justify-content: center;
@@ -18512,7 +18517,7 @@ div.Prenotazioni .ticketDetails {
     color: #5c5c5c;
     padding-right: 8px;
     box-sizing: border-box;
-    font-family: Font Awesome\5 Pro;
+    font-family: Font awesome\5 Pro;
   }
   div.Prenotazioni--Statistiche
     .Prenotazioni--Statistiche--Other--Third
@@ -19085,7 +19090,7 @@ div.Center .AdminServizi .AdminServiziItem--ButtonWrapper button {
   font-size: 24px;
   top: 0;
   color: #32424e;
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
 }
 .FaturaDomain div.FaturaTable table.transTable tbody .wsNwp:nth-child(3) i {
   color: #28a745;
@@ -19669,7 +19674,7 @@ a:hover {
 }
 .azioniTabs > div.active:before {
   content: "\f0d9";
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
   font-weight: 900;
   position: absolute;
   bottom: -15px;
@@ -21567,7 +21572,7 @@ span.superSmall {
   color: #000;
   border: 1px solid #3dad3d;
 }
-.anullaBtn {
+.AnnullaBtn {
   color: #000;
   border: 1px solid #ad3d3d;
 }

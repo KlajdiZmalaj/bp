@@ -157,7 +157,7 @@ class Service extends React.Component {
                               className="CancelModule"
                               onClick={this.closeModalHandler}
                             >
-                              <h3>anulla</h3>
+                              <h3>Annulla</h3>
                               <img src="img/close.svg" alt="" />
                             </td>
                           </tr>
@@ -398,7 +398,7 @@ class Service extends React.Component {
                         </button>
                         <button type="button" className="btn btn-secondary">
                           <img src="img/close.svg" alt="" /> <br />
-                          Anulla
+                          Annulla
                         </button>
                       </div>
                     </div>

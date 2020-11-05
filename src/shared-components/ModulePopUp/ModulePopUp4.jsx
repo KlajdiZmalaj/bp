@@ -537,13 +537,13 @@ class ModulePopUp4 extends React.Component {
 
                     <button
                       type="button"
-                      className="anullaBtn"
+                      className="AnnullaBtn"
                       onClick={() => {
                         this.setPrint(false);
                       }}
                     >
                       <img src={images.close} alt="" /> <br />
-                      Anulla
+                      Annulla
                     </button>
                   </div>
                 </div>

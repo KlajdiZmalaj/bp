@@ -305,7 +305,7 @@ class ModulePopUp3 extends React.Component {
                           className="CancelModule"
                           onClick={() => this.props.togglePopUp(false)}
                         >
-                          <h3>anulla</h3>
+                          <h3>Annulla</h3>
                           <img src={images.close} alt="" />
                         </td>
                       </tr>
@@ -622,7 +622,7 @@ class ModulePopUp3 extends React.Component {
                       </button>
                       <button type="button" className="btn btn-secondary">
                         <img src={images.close} alt="" /> <br />
-                        Anulla
+                        Annulla
                       </button>
                     </div>
                   </div>

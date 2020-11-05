@@ -405,7 +405,7 @@ class F24 extends React.Component {
                     className="Actions--Item"
                     onClick={() => togglePopUp(false)}
                   >
-                    <h3>anulla</h3>
+                    <h3>Annulla</h3>
                     <img src={images.close} alt="" />
                   </div>
                 </div>
