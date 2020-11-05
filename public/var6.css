@@ -250,11 +250,110 @@ body:not(.bodyAdmin) .Favorites .Pagamenti img {
 
 .Statist div.Categories.data .Graph--Element:hover,
 .Statist div.Categories.data .Graph--Element:focus {
-  background: #ffc107 !important;
+  background: #bbbbbb !important;
 }
 .logoMob {
   width: 200px;
 }
 .userBar div > span {
   color: #fff !important;
+}
+body .transTable thead tr td {
+  color: #ffffff;
+  background: #545454;
+  border-color: #3c4349 !important;
+}
+body .transTable tr:nth-child(even) {
+  background: #535353;
+  color: #fff;
+}
+body .transTable tr:nth-child(odd) {
+  background: #414141;
+  color: #fff;
+}
+.transTable th,
+.transTable td {
+  border-color: #767e85 !important;
+}
+body .transTable tbody tr:hover {
+  color: #fff !important;
+}
+.filesBtns .exportPDF > div,
+.filesBtns .ExportToExel,
+.filesBtns div i,
+.filesBtns .ExportToExel i {
+  color: #fff !important;
+}
+.filesBtns .exportPDF,
+.filesBtns .ExportToExel {
+  border-color: #fff !important;
+}
+.sort-annunci .MoviFirst .DateUtent {
+  border-right: 0 !important;
+}
+.contentAcc {
+  background: #272727 !important;
+  color: #fff !important;
+}
+
+body .fastCarica .switchGr,
+body .fastCarica .switchGr > span.or {
+  border-color: #3c4349 !important;
+  background-color: #212121;
+}
+.fastCarica .switchGr > span:first-child {
+  border-color: #3c4349 !important;
+}
+.userList .title {
+  color: inherit !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid #4f4f4f;
+  position: relative;
+  z-index: 1;
+}
+body .userList .header span {
+  border-left: 1px solid #3c4349;
+  color: #ffffff;
+  background-color: #3c3c3c;
+}
+.userList--noDoc__user,
+.userList--Doc__user {
+  background-color: #4f4f4f !important;
+  border-bottom: 1px solid #3c3c3c !important;
+}
+.userList--noDoc__user:nth-child(even),
+.userList--Doc__user:nth-child(even) {
+  background-color: #626262 !important;
+}
+body .mpIcon {
+  background: transparent;
+  color: #ffffff;
+}
+.fastCarica .amountGr,
+.fastCarica .searchUser {
+  filter: invert(1) grayscale(1);
+  color: #222;
+}
+.userList .popUp {
+  color: #222;
+  filter: grayscale(1) invert(0.9);
+}
+.FaturaDomain div.FaturaTable table.transTable .wsNwp i {
+  color: #fff !important;
+}
+.datepics {
+  border: 2px solid #656565 !important;
+}
+body .ant-select-selection--single,
+body .barcodeBtn,
+body .filterBtn {
+  background: #363636;
+  color: white;
+}
+.sort-annunci .dal.calendar {
+  border-left: 2px solid #656565 !important;
+}
+.ant-pagination {
+  filter: grayscale(1) invert(0.8);
 }
