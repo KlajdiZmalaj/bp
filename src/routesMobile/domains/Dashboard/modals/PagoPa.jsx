@@ -148,7 +148,7 @@ const PagoPa = ({
             setService(null);
           }}
         >
-          Anulla <i className="fal fa-times" aria-hidden="true"></i>
+          Annulla <i className="fal fa-times" aria-hidden="true"></i>
         </button>
       </div>
     </div>

@@ -145,7 +145,7 @@ export class FormSubmiter extends Component {
               : " dissableBtn")
           }
         >
-          <span>Eseguito</span>
+          <span>Esegui</span>
         </div>
         <div
           onClick={() => {
@@ -168,7 +168,7 @@ export class FormSubmiter extends Component {
               : " dissableBtn")
           }
         >
-          <span>Anullato</span>
+          <span>Annulla</span>
         </div>
       </div>
     ) : (
@@ -188,7 +188,7 @@ export class FormSubmiter extends Component {
             }}
             className={"formSubmit--button -s"}
           >
-            <span>Eseguito</span>
+            <span>Esegui</span>
           </div>
           <div
             onClick={() => {
@@ -204,7 +204,7 @@ export class FormSubmiter extends Component {
             }}
             className={"formSubmit--button -c"}
           >
-            <span>Anullato</span>
+            <span>Annulla</span>
           </div>
         </div>
       )

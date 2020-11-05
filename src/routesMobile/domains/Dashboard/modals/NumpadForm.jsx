@@ -335,7 +335,7 @@ const Numpad = ({
             setRechargeMobile({});
           }}
         >
-          Anulla <i className="fal fa-times" aria-hidden="true"></i>
+          Annulla <i className="fal fa-times" aria-hidden="true"></i>
         </button>
       </div>
       {rechargeMobile.receipt && toPrint && (
@@ -406,13 +406,13 @@ const Numpad = ({
 
               <button
                 type="button"
-                className="anullaBtn"
+                className="AnnullaBtn"
                 onClick={() => {
                   setPrint(false);
                 }}
               >
                 <img src={images.close} alt="" /> <br />
-                Anulla
+                Annulla
               </button>
             </div>
           </div>

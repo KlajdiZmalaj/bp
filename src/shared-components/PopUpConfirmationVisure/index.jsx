@@ -52,13 +52,13 @@ const PopUpConfirmationVisure = ({
                   popUpDataVisure.id,
                   role === "support" ? 4 : 3,
                   setState,
-                  getVisureByVisureId,
+                  () => {},
                   null,
                   true
                 );
               }}
             >
-              ESEGUITO{" "}
+              ESEGUI{" "}
             </button>
             <button
               className="Annullato"
@@ -68,14 +68,14 @@ const PopUpConfirmationVisure = ({
                   popUpDataVisure.id,
                   5,
                   () => {},
-                  getVisureByVisureId,
+                  () => {},
                   null,
                   true
                 );
                 setState(false);
               }}
             >
-              ANNULLATO{" "}
+              ANNULLA{" "}
             </button>
           </div>
         </div>

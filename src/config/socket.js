@@ -75,7 +75,7 @@ export const subscribeSocketSupport = (props) => {
 
       audio = new Audio("notification_sound.mp3");
       audio.play();
-      props.addVisure(e.instance);
+      props.addTicket(e.instance);
     }
   });
 };

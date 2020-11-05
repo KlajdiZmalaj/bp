@@ -184,7 +184,7 @@ class Bolletino extends React.Component {
                         className="CancelModule"
                         onClick={() => this.props.togglePopUp(false)}
                       >
-                        <h3>anulla</h3>
+                        <h3>Annulla</h3>
                         <img src={images.close} alt="" />
                       </td>
                     </tr>

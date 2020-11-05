@@ -1746,7 +1746,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding: 0;
+  padding: 18px;
   background-color: #fff;
 }
 
