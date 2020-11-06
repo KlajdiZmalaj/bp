@@ -75,6 +75,7 @@ import {
   toggleFavorite,
   getFavorites,
   getUserPhotos,
+  getSearchedUsers,
 } from "./MainSagas";
 
 export default function* root() {
@@ -149,6 +150,7 @@ export default function* root() {
     takeLatest(AuthTypes.DELETE_ERROR, deleteError),
     // MAIN
 
+    takeLatest(MainTypes.GET_SEARCHED_USERS, getSearchedUsers),
     takeLatest(MainTypes.GET_USER_PHOTOS, getUserPhotos),
     takeLatest(MainTypes.GET_SERVICES, getServices),
     takeLatest(MainTypes.GET_USERS, getUsers),

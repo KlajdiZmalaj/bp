@@ -12,12 +12,12 @@ const rootReducer = combineReducers({
 export default function configureStore() {
   const loggerMiddleware = (store) => (next) => (action) => {
     const returnValue = next(action);
-    // if (console.group) {
-    //   console.group(action.type);
-    //   console.log("%c action", "color: #03A9F4", action);
-    //   console.log("%c newState", "color: #03A9F4", store.getState());
-    //   console.groupEnd();
-    // }
+    if (console.group) {
+      console.group(action.type);
+      console.log("%c action", "color: #03A9F4", action);
+      console.log("%c newState", "color: #03A9F4", store.getState());
+      console.groupEnd();
+    }
     return returnValue;
   };
   const sagaMiddleware = createSagaMiddleware();
