@@ -18,8 +18,9 @@ class UserDoc extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { user, userPhotos } = this.props;
     const { isPopUpOpen } = this.state;
+    console.log("userPhotos", userPhotos);
     return (
       <React.Fragment>
         <div className="userList--Doc__user">
@@ -33,10 +34,11 @@ class UserDoc extends Component {
             <span
               className="seeMore"
               onClick={() => {
+                this.props.getUserPhotos(user.id);
                 this.setPopUp();
               }}
             >
-              <i class="fal fa-eye"></i>
+              <i className="fal fa-eye"></i>
             </span>
           </div>
         </div>
@@ -46,15 +48,13 @@ class UserDoc extends Component {
               className="fal fa-times"
               onClick={() => {
                 this.setPopUp();
+                this.props.setUserPhotos({});
               }}
             ></i>
             <div className="title">Images</div>
             {user.document_front && (
               <img
-                src={
-                  "https://services-api.bpoint.store/storage/users/" +
-                  user.document_front
-                }
+                src={userPhotos.front}
                 onClick={() => {
                   window.open(
                     "https://services-api.bpoint.store/storage/users/" +
@@ -74,10 +74,7 @@ class UserDoc extends Component {
                     "_blank"
                   );
                 }}
-                src={
-                  "https://services-api.bpoint.store/storage/users/" +
-                  user.document_back
-                }
+                src={userPhotos.back}
                 alt={user.document_back}
               />
             )}
@@ -98,6 +95,7 @@ class UserDoc extends Component {
             className="backDrop"
             onClick={() => {
               this.setPopUp();
+              this.props.setUserPhotos({});
             }}
           ></div>
         )}
@@ -105,5 +103,7 @@ class UserDoc extends Component {
     );
   }
 }
-
-export default connect(null, { ...MainActions })(UserDoc);
+const m = (state) => ({
+  userPhotos: state.main.userPhotos,
+});
+export default connect(m, { ...MainActions })(UserDoc);

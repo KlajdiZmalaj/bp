@@ -10,6 +10,7 @@ import {
   setOnFav,
   fetchFavorites,
   fetchServices,
+  fetchphotos,
 } from "services/main";
 
 import { logoutApi } from "services/auth";
@@ -94,5 +95,12 @@ export function* getOverviewDashboard(data) {
   const response = yield call(updatateOverviewWidget, data.period);
   if (response.data) {
     yield put(MainActions.setOverviewDashboard(response.data.balance));
+  }
+}
+
+export function* getUserPhotos({ id }) {
+  const response = yield call(fetchphotos, id);
+  if (response.data) {
+    yield put(MainActions.setUserPhotos(response.data));
   }
 }
