@@ -21,12 +21,15 @@ const { Types, Creators } = createActions({
   toggleFavorite: ["id", "sType"],
   setActiveSkinId: ["activeSkinId"],
   setLoaderForAdminUtenti: ["LoaderAU"],
+  getUserPhotos: ["id"],
+  setUserPhotos: ["userPhotos"],
 });
 
 export const MainTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  userPhotos: {},
   favorites: [],
   services: {},
   showOverview: true,
@@ -43,6 +46,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SET_USER_PHOTOS]: (state, { userPhotos }) => ({
+    ...state,
+    userPhotos,
+  }),
   [Types.SET_FAVORITES]: (state, { favorites }) => ({
     ...state,
     favorites,

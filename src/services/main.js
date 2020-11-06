@@ -174,3 +174,20 @@ export const setOnFav = (id, type) =>
       ...skin,
     })
     .catch((error) => ({ error }));
+
+export const fetchphotos = (id) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api/",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`user/${id}/photos`, {
+      params: {
+        ...skin,
+      },
+    });
+};
