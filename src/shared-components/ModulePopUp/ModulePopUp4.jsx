@@ -468,8 +468,8 @@ class ModulePopUp4 extends React.Component {
                   <div
                     dangerouslySetInnerHTML={{
                       __html: rechargeMobile.receipt
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
+                        // .replace(/</g, "&lt;")
+                        // .replace(/>/g, "&gt;")
                         .replace(/\t/g, "\u00a0")
                         .replace(/\n/g, "<br/> ")
                         .replace(/\+/g, " ")

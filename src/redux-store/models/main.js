@@ -23,6 +23,7 @@ const { Types, Creators } = createActions({
   setLoaderForAdminUtenti: ["LoaderAU"],
   getUserPhotos: ["id"],
   setUserPhotos: ["userPhotos"],
+  getSearchedUsers: ["search_user"],
 });
 
 export const MainTypes = Types;

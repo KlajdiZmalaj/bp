@@ -18,7 +18,7 @@ class StaticDefaultHomePage extends React.Component {
       : "";
     const SkinName = skinExtras.name || "";
     return (
-      <div className="Container">
+      <div className="Container animated fadeIn">
         <div className="SDHome">
           <div className="SDHome--Header">
             <span>

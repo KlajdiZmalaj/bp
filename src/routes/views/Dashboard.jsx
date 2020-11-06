@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
     const { accountInfo } = this.props;
     const isLogged = accountInfo?.token;
     return (
-      <div>
+      <div className="animated fadeIn">
         <Header></Header>
         {isLogged && (
           <Azioni

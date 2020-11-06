@@ -20,7 +20,6 @@ class UserDoc extends Component {
   render() {
     const { user, userPhotos } = this.props;
     const { isPopUpOpen } = this.state;
-    console.log("userPhotos", userPhotos);
     return (
       <React.Fragment>
         <div className="userList--Doc__user">

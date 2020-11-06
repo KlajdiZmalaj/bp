@@ -10,6 +10,7 @@ import {
   setOnFav,
   fetchFavorites,
   fetchServices,
+  fetchSearchedUsers,
   fetchphotos,
 } from "services/main";
 
@@ -77,6 +78,25 @@ export function* getUsers(params) {
     yield put(MainActions.setLoaderForAdminUtenti(false));
   }
 }
+
+export function* getSearchedUsers({ search_user }) {
+  yield put(MainActions.setLoaderForAdminUtenti(true));
+  const response = yield call(fetchSearchedUsers, search_user);
+
+  console.log("response", response.data);
+  if (response && response.data) {
+    yield put(
+      MainActions.setUsers({
+        users: response.data.users,
+        total_pages: 1,
+      })
+    );
+    yield put(MainActions.setLoaderForAdminUtenti(false));
+  } else {
+    yield put(MainActions.setLoaderForAdminUtenti(false));
+  }
+}
+
 export function* getUsersSimple() {
   const response = yield call(fetchUsersSimple);
   // console.log("getUsers called", response);

@@ -134,8 +134,8 @@ class PrintTicketSerap extends React.Component {
                       bolletiniBianchi &&
                       bolletiniBianchi.receipt &&
                       bolletiniBianchi.receipt
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
+                        // .replace(/</g, "&lt;")
+                        // .replace(/>/g, "&gt;")
                         .replace(/\t/g, "\u00a0")
                         .replace(/\n/g, "<br/> ")
                         .replace(/\+/g, " ")

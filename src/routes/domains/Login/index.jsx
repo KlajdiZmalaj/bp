@@ -37,12 +37,12 @@ class Login extends React.Component {
     // console.log("loginMsg", loginMsg);
     return (
       <React.Fragment>
-        <div className="leftLogin">
+        <div className="leftLogin animated fadeIn">
           <div className="logoLogin">
             <img src={images.logoFooter} alt="" />
           </div>
         </div>
-        <form className="login" method="POST">
+        <form className="login animated fadeIn" method="POST">
           <div className="title">
             <i className="fal fa-user-circle"></i>
             <div>Login</div>

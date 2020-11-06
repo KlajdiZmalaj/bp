@@ -126,8 +126,9 @@ function Main({
                   paymentsFromCode &&
                   paymentsFromCode.receipt &&
                   paymentsFromCode.receipt
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
+                    // .replace(/</g, "&lt;")
+                    // .replace(/>/g, "&gt;")
+                    .replace(/(?=<a).*(?=a>)a>/g, "")
                     .replace(/\t/g, "\u00a0")
                     .replace(/\n/g, "<br/> ")
                     .replace(/\+/g, " ")
@@ -137,7 +138,25 @@ function Main({
                       "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
                     ),
               }}
-            />
+            >
+              {paymentsFromCode.receipt &&
+                paymentsFromCode.receipt
+                  .match(/(?=<a).*(?=a>)a>/g)
+                  .match(/(?=href\=").*(?="\>)/gm)
+                  .split('href="')[1] && (
+                  <Document
+                    renderMode="canvas"
+                    file={
+                      paymentsFromCode.receipt
+                        .match(/(?=<a).*(?=a>)a>/g)
+                        .match(/(?=href\=").*(?="\>)/gm)
+                        .split('href="')[1]
+                    }
+                  >
+                    <Page width={380} pageNumber={1} />
+                  </Document>
+                )}
+            </div>
           )}
 
           <img
