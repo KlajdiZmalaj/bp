@@ -367,8 +367,8 @@ const Numpad = ({
                 __html:
                   rechargeMobile.receipt &&
                   rechargeMobile.receipt
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
+                    // .replace(/</g, "&lt;")
+                    // .replace(/>/g, "&gt;")
                     .replace(/\t/g, "\u00a0")
                     .replace(/\n/g, "<br/> ")
                     .replace(/\+/g, " ")
