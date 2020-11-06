@@ -4,6 +4,10 @@
   margin-bottom: 20px;
 }
 
+.DContainer img {
+  pointer-events: none;
+}
+
 @media (max-width: 1135px) {
   .DContainer {
     max-width: 100%;

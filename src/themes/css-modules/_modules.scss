@@ -7,6 +7,9 @@
   width: 100%;
   height: 100%;
   backdrop-filter: blur(9px);
+  img {
+    pointer-events: none;
+  }
 }
 .modulePopUP3 {
   .payThumb {

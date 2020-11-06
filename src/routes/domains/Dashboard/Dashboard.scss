@@ -2,6 +2,9 @@
   max-width: 1135px;
   margin: 10px auto;
   margin-bottom: 20px;
+  img {
+    pointer-events: none;
+  }
   @media (max-width: 1135px) {
     max-width: 100%;
   }
