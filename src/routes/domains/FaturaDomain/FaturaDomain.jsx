@@ -28,7 +28,7 @@ class FaturaDomain extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
   };
-  convertB64ToBolbThenPrnt(file_name) {
+  convertB64ToBolbThenPrnt(file_name, open) {
     printFatturaReq(file_name).then(async (response) => {
       const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
         const byteCharacters = atob(b64Data);
@@ -59,10 +59,19 @@ class FaturaDomain extends React.Component {
       var objectURL = URL.createObjectURL(myBlob);
       document.querySelector("#pdf-frame").src = "";
       document.querySelector("#pdf-frame").src = objectURL;
+
+      if (open) {
+        window.open(
+          objectURL,
+          "_blank",
+          "toolbar=no,scrollbars=no,resizable=no,top=50,left=500,width=1024,height=700"
+        );
+      } else {
+        window.setTimeout(function () {
+          document.querySelector("#pdf-frame").contentWindow.print();
+        }, 1000);
+      }
       objectURL = URL.revokeObjectURL(myBlob);
-      window.setTimeout(function () {
-        document.querySelector("#pdf-frame").contentWindow.print();
-      }, 1000);
     });
   }
   componentDidMount() {
@@ -256,13 +265,22 @@ class FaturaDomain extends React.Component {
                             <td className="wsNwp">{fatura.commissione}</td>
                             <td className="wsNwp">{fatura.proviggione}</td>
                             <td className=" wsNwp">
-                              <a
+                              {/* <a
                                 href={`https://services-api.bpoint.store/storage/fatture/${fatura.file_name}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 <i className="fal fa-file-pdf"></i>
-                              </a>
+                              </a> */}
+                              <i
+                                onClick={() => {
+                                  this.convertB64ToBolbThenPrnt(
+                                    fatura.file_name,
+                                    "open"
+                                  );
+                                }}
+                                className="fal fa-file-pdf"
+                              ></i>
                               <i
                                 className="far fa-print"
                                 onClick={() => {

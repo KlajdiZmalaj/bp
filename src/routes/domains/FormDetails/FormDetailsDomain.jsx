@@ -394,8 +394,8 @@ class FormDetailsDomain extends Component {
               />
             ) : null;
           })}
-          {my_tickets &&
-            (my_tickets || []).map((ticket) => {
+          {tickets &&
+            (tickets || []).map((ticket) => {
               return Filter(
                 ticket,
                 "visura",
@@ -439,8 +439,9 @@ class FormDetailsDomain extends Component {
                 />
               ) : null;
             })}
-          {tickets &&
-            (tickets || []).map((ticket) => {
+
+          {my_tickets &&
+            (my_tickets || []).map((ticket) => {
               return Filter(
                 ticket,
                 "visura",
