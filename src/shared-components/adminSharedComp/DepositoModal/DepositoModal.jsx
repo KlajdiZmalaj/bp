@@ -20,7 +20,7 @@ const DepositoModal = ({
   // eslint-disable-next-line no-unused-vars
   const [message, setMessage] = useState("");
   const [tickOrX, setTickOrX] = useState(true);
-  console.log("activeSkinId", activeSkinId);
+  // console.log("activeSkinId", activeSkinId);
   return (
     <div className="DepositoModal">
       <div className="backDrop" style={{ zIndex: 8 }} onClick={Close}></div>

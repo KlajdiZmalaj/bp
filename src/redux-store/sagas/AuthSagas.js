@@ -51,6 +51,7 @@ import {
   StatisticheMainReq,
   buyTicketOnlineReq,
   pagoPaRequest,
+  frecciaRequest,
   mavRavRequest,
   payPagoPaReq,
   bokkingF24Req,
@@ -1640,6 +1641,91 @@ export function* setPagoPa({
     }
   }
   notification.close("pagoPaPayment");
+}
+export function* setFreccia({
+  service_id,
+  importo,
+  causale,
+  person_type,
+  via_piazza,
+  cap,
+
+  citta,
+  provincia,
+  email,
+  phone_number,
+  identificativo_pagamento,
+  iban,
+  cin_importo,
+
+  cin_intermedio,
+  cin_complessivo,
+  codice_esenzione,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva,
+  callBack,
+}) {
+  notification["info"]({
+    key: "frecciaPayment",
+    duration: 0,
+    message: "Attendere, transazione in corso",
+  });
+
+  const response = yield call(
+    frecciaRequest,
+    service_id,
+    importo,
+    causale,
+    person_type,
+    via_piazza,
+    cap,
+
+    citta,
+    provincia,
+    email,
+    phone_number,
+    identificativo_pagamento,
+    iban,
+    cin_importo,
+
+    cin_intermedio,
+    cin_complessivo,
+    codice_esenzione,
+    nome,
+    cognome,
+    codice_fiscale,
+    denominazione,
+    partita_iva
+  );
+  if (response) {
+    if (response?.data) {
+      notification.close("frecciaPayment");
+      yield put(AuthActions.setBolletiniBianchi(response?.data.data));
+      callBack();
+      notification["success"]({
+        message: response?.data.message,
+      });
+    } else if (response?.error) {
+      notification.close("frecciaPayment");
+
+      if (
+        response &&
+        response?.error &&
+        response?.error.response?.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      }
+    }
+  }
+  notification.close("frecciaPayment");
 }
 export function* setMavRav({
   service_id,

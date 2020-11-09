@@ -26,6 +26,7 @@ class ModulePopUp extends React.Component {
       "BOL002",
       "PPA001",
       "BOL006",
+      "BOL007",
       "BOL004",
       "BOL003",
       "PAGF24",

@@ -64,6 +64,7 @@ import {
   setPayFSaga,
   getRegistrazioneData,
   createUserBgame,
+  setFreccia,
 } from "./AuthSagas";
 
 import {
@@ -88,6 +89,7 @@ export default function* root() {
     takeLatest(AuthTypes.PAY_PAGO_PA, payPagoPa),
     takeLatest(AuthTypes.SET_MAV_RAV, setMavRav),
     takeLatest(AuthTypes.SET_PAGO_PA, setPagoPa),
+    takeLatest(AuthTypes.SET_FRECCIA, setFreccia),
     takeLatest(AuthTypes.BUY_TICKET_ONLINE, buyTicketOnline),
     takeLatest(AuthTypes.FETCH_BOLLETINI, fetchBolletini),
     takeLatest(AuthTypes.GET_STATISTICHE_MAIN, getStatisticheMain),

@@ -1303,7 +1303,59 @@ export const pagoPaRequest = (
         : { denominazione, partita_iva }),
     })
     .catch((error) => ({ error }));
+export const frecciaRequest = (
+  service_id,
+  importo,
+  causale,
+  person_type,
+  via_piazza,
+  cap,
 
+  citta,
+  provincia,
+  email,
+  phone_number,
+  identificativo_pagamento,
+  iban,
+  cin_importo,
+
+  cin_intermedio,
+  cin_complessivo,
+  codice_esenzione,
+  nome,
+  cognome,
+  codice_fiscale,
+  denominazione,
+  partita_iva
+) =>
+  instanceAxios
+    .post(`/sepafin/payFreccia`, {
+      ...skin,
+      service_id,
+      importo,
+      causale,
+      person_type,
+      via_piazza,
+      cap,
+
+      citta,
+      provincia,
+      email,
+      phone_number,
+      identificativo_pagamento,
+      iban,
+      cin_importo,
+
+      cin_intermedio,
+      cin_complessivo,
+      codice_esenzione,
+      nome,
+      cognome,
+      codice_fiscale,
+      denominazione,
+      partita_iva,
+    })
+    .catch((error) => ({ error }));
 export const mavRavRequest = (
   service_id,
   person_type,
