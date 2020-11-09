@@ -9,6 +9,7 @@ import { BolletiniRightForm, BolletiniLeftForm } from "./BolletiniForms";
 import { BoloAutoLeftForm, BoloAutoRightForm } from "./BoloAutoForms";
 import { PagoPaLeftForm, PagoPaRightForm } from "./PagoPaForms";
 import { MavRavLeftForm, MavRavRightForm } from "./MavRavForm";
+import { LeftFreccia, RightFreccia } from "./BoloFrecciaForms";
 
 class Bolletino extends React.Component {
   state = {
@@ -35,57 +36,84 @@ class Bolletino extends React.Component {
         if (service_id === "BOL003" || service_id === "BOL004") {
           this.props.setMavRav(
             service_id,
-            values?.person_type,
-            values?.via_piazza,
-            values?.citta,
-            values?.email,
-            values?.phone_number,
-            values?.importo,
-            values?.codice,
-            values?.nome,
-            values?.cognome,
-            values?.codice_fiscale,
-            values?.denominazione,
-            values?.partita_iva,
+            values.person_type,
+            values.via_piazza,
+            values.citta,
+            values.email,
+            values.phone_number,
+            values.importo,
+            values.codice,
+            values.nome,
+            values.cognome,
+            values.codice_fiscale,
+            values.denominazione,
+            values.partita_iva,
             this.clearFields
           );
         } else if (service_id === "PPA001") {
           this.props.setPagoPa(
             service_id,
-            values?.person_type,
-            values?.via_piazza,
-            values?.citta,
-            values?.email,
-            values?.phone_number,
+            values.person_type,
+            values.via_piazza,
+            values.citta,
+            values.email,
+            values.phone_number,
             "pa",
-            values?.codice_fiscale_bol,
-            values?.codice_aviso,
-            values?.nome,
-            values?.cognome,
-            values?.codice_fiscale,
-            values?.denominazione,
-            values?.partita_iva,
+            values.codice_fiscale_bol,
+            values.codice_aviso,
+            values.nome,
+            values.cognome,
+            values.codice_fiscale,
+            values.denominazione,
+            values.partita_iva,
             this.clearFields
           );
         } else if (service_id === "BOL006") {
           this.props.setPagoPa(
             service_id,
-            values?.person_type,
-            values?.via_piazza,
-            values?.citta,
-            values?.email,
-            values?.phone_number,
+            values.person_type,
+            values.via_piazza,
+            values.citta,
+            values.email,
+            values.phone_number,
             "auto",
             null,
             null,
-            values?.nome,
-            values?.cognome,
-            values?.codice_fiscale,
-            values?.denominazione,
-            values?.partita_iva,
+            values.nome,
+            values.cognome,
+            values.codice_fiscale,
+            values.denominazione,
+            values.partita_iva,
             this.clearFields,
-            values?.tipo_veicolo,
-            values?.targa
+            values.tipo_veicolo,
+            values.targa
+          );
+        } else if (service_id === "BOL007") {
+          this.props.setFreccia(
+            service_id,
+            values.importo,
+            values.causale,
+            values.person_type,
+            values.via_piazza,
+            values.cap,
+
+            values.citta,
+            values.provincia,
+            values.email,
+            values.phone_number,
+            values.identificativo_pagamento,
+            values.iban,
+            values.cin_importo,
+
+            values.cin_intermedio,
+            values.cin_complessivo,
+            values.codice_esenzione,
+            values.nome,
+            values.cognome,
+            values.codice_fiscale,
+            values.denominazione,
+            values.partita_iva,
+            this.clearFields
           );
         } else {
           if (this.props.service_id === "BOL001") {
@@ -147,6 +175,7 @@ class Bolletino extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { barcodeData, service_id, service_s } = this.props;
     const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
+    // console.log("service_s", service_s);
     let imageLogo =
       service_id === "PPA001"
         ? "PAGO_PA"
@@ -163,11 +192,13 @@ class Bolletino extends React.Component {
               ? "PAGO PA"
               : service_id === "BOL006"
               ? "BOLO AUTO"
+              : service_id === "BOL007"
+              ? "BOLO FRECCIA"
               : "BOLLETINI"}
           </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <img src={images[imageLogo]} />
+            <img src={images[imageLogo]} alt={imageLogo} />
           </span>
         </div>
         <div className="Bolletini-Form">
@@ -234,6 +265,12 @@ class Bolletino extends React.Component {
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
                 />
+              ) : service_id === "BOL007" ? (
+                <LeftFreccia
+                  barcodeData={barcodeData}
+                  getFieldDecorator={getFieldDecorator}
+                  getFieldValue={this.props.form.getFieldValue}
+                />
               ) : (
                 <BolletiniLeftForm
                   barcodeData={barcodeData}
@@ -261,6 +298,12 @@ class Bolletino extends React.Component {
                   />
                 ) : service_id === "BOL006" ? (
                   <BoloAutoRightForm
+                    barcodeData={barcodeData}
+                    getFieldDecorator={getFieldDecorator}
+                    getFieldValue={this.props.form.getFieldValue}
+                  />
+                ) : service_id === "BOL007" ? (
+                  <RightFreccia
                     barcodeData={barcodeData}
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}

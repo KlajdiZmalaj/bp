@@ -17,12 +17,12 @@ class ModulePopUp1 extends React.Component {
   render() {
     const { bolletiniBianchi, service, accountInfo } = this.props;
     const isTestAcc =
-      accountInfo.profile.username === "mynewagency" &&
-      accountInfo.profile.role.name === "agency" &&
-      accountInfo.profile.role.id === 11;
+      accountInfo?.profile?.username === "mynewagency" &&
+      accountInfo?.profile?.role?.name === "agency" &&
+      accountInfo?.profile?.role?.id === 11;
     const isSepaUser =
-      accountInfo.profile.username === "sepa_agency" ||
-      accountInfo.profile.username === "sepa_user";
+      accountInfo?.profile?.username === "sepa_agency" ||
+      accountInfo?.profile?.username === "sepa_user";
     return (
       <div
         className={`modulePopUP modulePopUP1 ${

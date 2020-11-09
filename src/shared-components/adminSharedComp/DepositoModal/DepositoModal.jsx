@@ -20,6 +20,7 @@ const DepositoModal = ({
   // eslint-disable-next-line no-unused-vars
   const [message, setMessage] = useState("");
   const [tickOrX, setTickOrX] = useState(true);
+  // console.log("activeSkinId", activeSkinId);
   return (
     <div className="DepositoModal">
       <div className="backDrop" style={{ zIndex: 8 }} onClick={Close}></div>
@@ -43,7 +44,7 @@ const DepositoModal = ({
           </div>
         </div>
         <div className="DepositoModal--Container--Down">
-          <form className="DepositoModal--Container--Down--Form">
+          <div className="DepositoModal--Container--Down--Form">
             <div className="DepositoModal--Container--Down--Form--AmountLine">
               {" "}
               <span className="DepositoModal--Container--Down--Form--AmountLine--Amount">
@@ -133,7 +134,7 @@ const DepositoModal = ({
                 <span>CANCELLA</span>
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

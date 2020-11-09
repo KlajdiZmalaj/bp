@@ -452,6 +452,32 @@ const { Types, Creators } = createActions({
     "tipo_veicolo",
     "targa",
   ],
+  setFreccia: [
+    "service_id",
+    "importo",
+    "causale",
+    "person_type",
+    "via_piazza",
+    "cap",
+
+    "citta",
+    "provincia",
+    "email",
+    "phone_number",
+    "identificativo_pagamento",
+    "iban",
+    "cin_importo",
+
+    "cin_intermedio",
+    "cin_complessivo",
+    "codice_esenzione",
+    "nome",
+    "cognome",
+    "codice_fiscale",
+    "denominazione",
+    "partita_iva",
+    "callBack",
+  ],
   setMavRav: [
     "service_id",
     "person_type",
@@ -543,7 +569,9 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  accountInfo: JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
+  accountInfo: localStorage.getItem("accountDataB")?.includes("Object")
+    ? {}
+    : JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
   bolletiniBianchi: {},
   bolletiniPremercati: {},
   unauthorizated: true,

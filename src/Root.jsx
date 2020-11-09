@@ -89,9 +89,9 @@ class Root extends React.Component {
       }
     });
     socket(this.props);
-    if (get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")) {
+    if (get(this.props.accountInfo, "profile.id")) {
       subscribeSocketUser(
-        get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id"),
+        get(this.props.accountInfo, "profile.id"),
         this.props
       );
       if (
@@ -105,14 +105,12 @@ class Root extends React.Component {
     }
   }
   componentWillUnmount() {
-    unSubscribeSocketUser(
-      get(JSON.parse(localStorage.getItem("accountDataB")), "profile.id")
-    );
+    unSubscribeSocketUser(get(this.props.accountInfo, "profile.id"));
     unSubscribeSocketSupport();
   }
   getStoredData = () => {
     const accountData = localStorage.getItem("accountDataB");
-    const data = JSON.parse(accountData);
+    const data = accountData?.includes("Object") ? {} : JSON.parse(accountData);
     if (data) {
       this.props.setAccountInfo(data);
     }
