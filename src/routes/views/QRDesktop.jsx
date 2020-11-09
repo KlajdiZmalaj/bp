@@ -138,25 +138,7 @@ function Main({
                       "<div class='marginB'></div><div class='marginC'>$1</div><br/>"
                     ),
               }}
-            >
-              {paymentsFromCode.receipt &&
-                paymentsFromCode.receipt
-                  .match(/(?=<a).*(?=a>)a>/g)
-                  .match(/(?=href\=").*(?="\>)/gm)
-                  .split('href="')[1] && (
-                  <Document
-                    renderMode="canvas"
-                    file={
-                      paymentsFromCode.receipt
-                        .match(/(?=<a).*(?=a>)a>/g)
-                        .match(/(?=href\=").*(?="\>)/gm)
-                        .split('href="')[1]
-                    }
-                  >
-                    <Page width={380} pageNumber={1} />
-                  </Document>
-                )}
-            </div>
+            ></div>
           )}
 
           <img

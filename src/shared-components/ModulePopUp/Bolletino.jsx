@@ -147,6 +147,7 @@ class Bolletino extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { barcodeData, service_id, service_s } = this.props;
     const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
+    console.log("service_s", service_s);
     let imageLogo =
       service_id === "PPA001"
         ? "PAGO_PA"
@@ -167,7 +168,7 @@ class Bolletino extends React.Component {
           </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <img src={images[imageLogo]} />
+            <img src={images[imageLogo]} alt={imageLogo} />
           </span>
         </div>
         <div className="Bolletini-Form">
