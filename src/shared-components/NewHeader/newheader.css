@@ -59,6 +59,7 @@ header.header {
   width: 100%;
   z-index: 3;
   height: 100px;
+  overflow: hidden;
 }
 
 header.header .topNav {
@@ -259,7 +260,6 @@ header.header nav {
           align-items: center;
   background-color: var(--header-bg);
   color: var(--header-txt);
-  padding: 10px;
   border-bottom: 2px solid var(--accent-bg);
   -webkit-box-shadow: 1px 18px 20px -22px black;
           box-shadow: 1px 18px 20px -22px black;
@@ -269,7 +269,23 @@ header.header nav {
 header.header nav .logo {
   margin: 0;
   margin-right: auto;
-  height: auto;
+}
+
+header.header nav .logo img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  height: 55px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
 }
 
 header.header .chatSticky {
