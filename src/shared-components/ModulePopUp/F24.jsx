@@ -127,7 +127,19 @@ class F24 extends React.Component {
     return (
       <div className="F24">
         <div className="F24-Header">
-          <span>Pagamento deleghe f24</span>
+          <span
+            onClick={() => {
+              console.log(
+                "dataaaa",
+                returnMotivoDelPagamentoList(
+                  this.props.form.getFieldValue,
+                  this.state.nrOfRows
+                )
+              );
+            }}
+          >
+            Pagamento deleghe f24
+          </span>
           <span>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img src={images["BOLLETINO"]} />

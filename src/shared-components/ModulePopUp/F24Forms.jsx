@@ -396,6 +396,7 @@ export const calculateSaldoVal = (nrOfRows, getVal) => {
 };
 export const returnMotivoDelPagamentoList = (getVal, nrOfRows) => {
   let arrayMPL = [];
+
   [...new Array(nrOfRows)].forEach((item, index) => {
     let objectRow = {
       sezione: getVal(`sezione${index}`),
@@ -416,12 +417,13 @@ export const returnMotivoDelPagamentoList = (getVal, nrOfRows) => {
       arrayMPL.push(objectRow);
     }
   });
+  console.log("nrOfRows", nrOfRows, getVal(`sezione${0}`), arrayMPL);
   return arrayMPL;
 };
 export function isEmptyObject(o) {
   let find = true;
   Object.keys(o).forEach(function (x) {
-    if (typeof o[`${x}`] === "undefined" || o[`${x}`] || o[`${x}`] === "") {
+    if (typeof o[`${x}`] === "undefined" || !o[`${x}`] || o[`${x}`] === "") {
       find = false;
     }
   });
