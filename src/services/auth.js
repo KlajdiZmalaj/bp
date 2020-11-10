@@ -1303,6 +1303,14 @@ export const pagoPaRequest = (
         : { denominazione, partita_iva }),
     })
     .catch((error) => ({ error }));
+export const pagoTicketReq = (barcode) =>
+  instanceAxios
+    .post(`/sepafin/payBollettini`, {
+      ...skin,
+      barcode,
+    })
+    .catch((error) => ({ error }));
+
 export const frecciaRequest = (
   service_id,
   importo,

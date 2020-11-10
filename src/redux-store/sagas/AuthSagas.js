@@ -58,6 +58,7 @@ import {
   payFReq,
   getRegistrazioneDataReq,
   createUserBgameReq,
+  pagoTicketReq,
 } from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
@@ -172,6 +173,55 @@ export function* addTicket({ ticket }) {
       tickets: tickets ? [ticket, ...tickets] : [ticket],
     })
   );
+}
+
+export function* pagoTicket({ barcode }) {
+  notification["info"]({
+    key: "PaymentLoading",
+    duration: 0,
+    message: "Attendere, transazione in corso",
+  });
+  const response = yield call(pagoTicketReq, barcode);
+
+  if (response) {
+    if (response?.data) {
+      notification.close("PaymentLoading");
+      yield put(AuthActions.setBolletiniBianchi(response?.data));
+      notification["success"]({
+        message: response?.data.message,
+      });
+      if (response?.data.wallet) {
+        const accountData = localStorage.getItem("accountDataB");
+        const data = JSON.parse(accountData);
+
+        const d = {
+          ...data,
+          profile: {
+            ...data.profile,
+            wallet: response?.data.wallet,
+          },
+        };
+
+        localStorage.setItem("accountDataB", JSON.stringify(d));
+        yield put(AuthActions.setAccountInfo(d));
+      }
+    } else if (response?.error) {
+      notification.close("PaymentLoading");
+      if (
+        response &&
+        response?.error &&
+        response?.error.response?.status === 401
+      ) {
+        const response = yield call(logoutApi);
+
+        if (response) {
+          localStorage.setItem("accountDataB", null);
+          yield put(AuthActions.setAccountInfo({}));
+        }
+      }
+    }
+  }
+  notification.close("PaymentLoading");
 }
 export function* addVisure({ singleVisure }) {
   const my_visure = yield select((state) => state.auth.Visure.my_visure);
@@ -1493,6 +1543,21 @@ export function* fetchBolletini({
       notification["success"]({
         message: response?.data.message,
       });
+      if (response?.data.wallet) {
+        const accountData = localStorage.getItem("accountDataB");
+        const data = JSON.parse(accountData);
+
+        const d = {
+          ...data,
+          profile: {
+            ...data.profile,
+            wallet: response?.data.wallet,
+          },
+        };
+
+        localStorage.setItem("accountDataB", JSON.stringify(d));
+        yield put(AuthActions.setAccountInfo(d));
+      }
     } else if (response?.error) {
       notification.close("PaymentLoading");
       if (

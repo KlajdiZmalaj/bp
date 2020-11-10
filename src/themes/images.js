@@ -1,12 +1,12 @@
 let skin = "";
 //
-if (
-  window.location.href.includes("bpoint") ||
+if (window.location.href.includes("bpoint")) {
+  skin = 1;
+} else if (
+  window.location.href.includes("gfb") ||
   window.location.href.includes("192.168") ||
   window.location.href.includes("localhost")
 ) {
-  skin = 1;
-} else if (window.location.href.includes("gfb")) {
   skin = 5;
 } else if (window.location.href.includes("derby")) {
   skin = 3;

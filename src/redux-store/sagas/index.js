@@ -65,6 +65,7 @@ import {
   getRegistrazioneData,
   createUserBgame,
   setFreccia,
+  pagoTicket,
 } from "./AuthSagas";
 
 import {
@@ -82,6 +83,7 @@ import {
 export default function* root() {
   yield all([
     // AUTH
+    takeLatest(AuthTypes.PAGO_TICKET, pagoTicket),
     takeLatest(AuthTypes.CREATE_USER_BGAME, createUserBgame),
     takeLatest(AuthTypes.GET_REGISTRAZIONE_DATA, getRegistrazioneData),
     takeLatest(AuthTypes.SET_PAY_F_SAGA, setPayFSaga),
