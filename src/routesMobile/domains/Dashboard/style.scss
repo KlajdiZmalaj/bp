@@ -1129,7 +1129,7 @@
   &--inputs {
     display: flex;
     flex-flow: column;
-    padding: 18px;
+    // padding: 18px;
     background-color: #fff;
     &__item {
       display: flex;
@@ -1137,6 +1137,7 @@
       margin-bottom: 15px;
       flex-flow: column;
       align-items: flex-start;
+      padding: 0 18px;
       .label {
         width: 40%;
         font-size: 16px;

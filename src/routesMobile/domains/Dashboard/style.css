@@ -1746,7 +1746,6 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding: 18px;
   background-color: #fff;
 }
 
@@ -1766,6 +1765,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding: 0 18px;
 }
 
 .bolletini--inputs__item .label,
