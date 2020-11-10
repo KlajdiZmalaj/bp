@@ -162,6 +162,16 @@ class PrintTicketSerap extends React.Component {
                 content={() => this.componentRef}
                 bodyClass="afterprint"
               />
+              {bolletiniBianchi.message?.includes("Prenotazione") && (
+                <div
+                  onClick={() => {
+                    this.props.pagoTicket(bolletiniBianchi.barcode);
+                  }}
+                  className="printBtn"
+                >
+                  Pago
+                </div>
+              )}
             </div>
           ) : (
             <div className="pagoPaConfirm">

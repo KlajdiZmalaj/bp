@@ -559,7 +559,7 @@ div.modulePopUP.modulePopUP1.flex {
 }
 
 .F24 {
-  width: 100%;
+  width: auto;
   background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;

@@ -93,7 +93,7 @@ export const PagoPaLeftForm = ({
         />
         <ReturnFormItem
           descName="Partiva IVA"
-          name="part_iva"
+          name="partita_iva"
           message="Please input your Partiva IVA!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}

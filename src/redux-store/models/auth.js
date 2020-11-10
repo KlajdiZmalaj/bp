@@ -546,6 +546,7 @@ const { Types, Creators } = createActions({
     "question",
     "answer",
   ],
+  pagoTicket: ["barcode"],
 });
 
 export const AuthTypes = Types;
