@@ -6,7 +6,8 @@ export const handleSubmit = (
   setMavRav,
   setPagoPa,
   fetchBolletini,
-  clearFields
+  clearFields,
+  setFreccia
 ) => {
   e.preventDefault();
   form.validateFieldsAndScroll((err, values) => {
@@ -65,6 +66,33 @@ export const handleSubmit = (
           clearFields,
           values?.tipo_veicolo,
           values?.targa
+        );
+      } else if (service_id === "BOL007") {
+        setFreccia(
+          service_id,
+          values.importo,
+          values.causale,
+          values.person_type,
+          values.via_piazza,
+          values.cap,
+
+          values.citta,
+          values.provincia,
+          values.email,
+          values.phone_number,
+          values.identificativo_pagamento,
+          values.iban,
+          values.cin_importo,
+
+          values.cin_intermedio,
+          values.cin_complessivo,
+          values.codice_esenzione,
+          values.nome,
+          values.cognome,
+          values.codice_fiscale,
+          values.denominazione,
+          values.partita_iva,
+          clearFields
         );
       } else {
         if (service_id === "BOL001") {

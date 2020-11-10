@@ -191,9 +191,9 @@ class Bolletino extends React.Component {
               : service_id === "PPA001"
               ? "PAGO PA"
               : service_id === "BOL006"
-              ? "BOLO AUTO"
+              ? "BOLLETINI AUTO"
               : service_id === "BOL007"
-              ? "BOLO FRECCIA"
+              ? "BOLLETINI FRECCIA"
               : "BOLLETINI"}
           </span>
           <span>
@@ -259,14 +259,14 @@ class Bolletino extends React.Component {
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
                 />
-              ) : service_id === "PPA001" ? (
-                <PagoPaLeftForm
+              ) : service_id === "BOL007" ? (
+                <LeftFreccia
                   barcodeData={barcodeData}
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
                 />
-              ) : service_id === "BOL007" ? (
-                <LeftFreccia
+              ) : service_id === "PPA001" ? (
+                <PagoPaLeftForm
                   barcodeData={barcodeData}
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
@@ -382,9 +382,7 @@ class Bolletino extends React.Component {
                   }}
                 >
                   <h3>barcode</h3>
-                  <p>
-                    pagemento <br /> differito
-                  </p>
+                  <p>Scansione del barcode</p>
                 </div>
                 <div className="Actions--Item">
                   <h3>stampa</h3>
