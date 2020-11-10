@@ -92,7 +92,7 @@ const BolletinoPremarcati = ({
       <div className="bolletini--subh">PAGAMENTI</div>
       <div className="bolletini--inputs">
         <Form>
-          <div className="bolletini--inputs">
+          <div>
             <BolletiniLeftForm
               barcodeData={barcode}
               mobile

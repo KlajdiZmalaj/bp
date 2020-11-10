@@ -74,14 +74,14 @@ const MavRav = ({
         MAV/RAV
         <i
           onClick={() => {
-            if (allFavServices.includes("BOLL")) {
-              toggleFavorite("BOLL", "remove");
+            if (allFavServices.includes("BOLMR")) {
+              toggleFavorite("BOLMR", "remove");
             } else {
-              toggleFavorite("BOLL", "set");
+              toggleFavorite("BOLMR", "set");
             }
           }}
           className={
-            "fas fa-star" + (allFavServices.includes("BOLL") ? " active" : "")
+            "fas fa-star" + (allFavServices.includes("BOLMR") ? " active" : "")
           }
           aria-hidden="true"
         ></i>{" "}

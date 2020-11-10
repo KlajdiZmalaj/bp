@@ -544,7 +544,7 @@ class DashboardDom extends React.Component {
                     >
                       <h3> Presto Online</h3>
                       <img src={images["BOLO_AUTO-logo"]} alt="" />
-                      <span> BOLO AUTO</span>
+                      <span> BOLLO AUTO</span>
                     </div>
                     <div
                       onClick={() => {
@@ -563,6 +563,24 @@ class DashboardDom extends React.Component {
                       <h3> Presto Online</h3>
                       <img src={images["f24-logo"]} alt="" />
                       <span> F24</span>
+                    </div>
+                    <div
+                      onClick={() => {
+                        if (isTestAcc) {
+                          this.changeServce(
+                            "BOL007",
+                            [{ service_id: "BOL007", name: "BOLO FRECCIA" }],
+                            "BOLO FRECCIA",
+                            "1",
+                            { service_id: "BOL007", name: "BOLO FRECCIA" }
+                          );
+                          this.togglePopUp(true);
+                        }
+                      }}
+                    >
+                      <h3> Presto Online</h3>
+                      <img src={images["BOLLETINO-logo"]} alt="" />
+                      <span> BOLLO FRECCIA</span>
                     </div>
                   </Fragment>
                 )}

@@ -4,28 +4,25 @@ import AuthActions from "redux-store/models/auth";
 // import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import { NewBarcodeScanner as Scanner } from "shared-components";
 import {
-  PagoPaLeftForm,
-  PagoPaRightForm,
-} from "shared-components/ModulePopUp/PagoPaForms";
+  LeftFreccia,
+  RightFreccia,
+} from "shared-components/ModulePopUp/BoloFrecciaForms";
 
 import { notification, Form } from "antd";
 import { handleSubmit } from "./SubmitFunct";
 
 import TopWrapper from "./TopWrapper";
 
-const PagoPa = ({
+const Freccia = ({
   setService,
   activeService,
   services,
-  setMavRav,
-  setPagoPa,
-  fetchBolletini,
   bolletiniBianchi,
   bolletiniLoading,
-  setBolletiniBianchi,
   allFavServices,
   toggleFavorite,
   form,
+  setFreccia,
 }) => {
   const [barcode, setBarcode] = useState("");
   const [camera, setCamera] = useState(false);
@@ -72,17 +69,17 @@ const PagoPa = ({
         />
       )}
       <div className="bolletini--header">
-        PAGO PA
+        BOLLETINI FRECCIA
         <i
           onClick={() => {
-            if (allFavServices.includes("PPA")) {
-              toggleFavorite("PPA", "remove");
+            if (allFavServices.includes("BOLL")) {
+              toggleFavorite("BOLL", "remove");
             } else {
-              toggleFavorite("PPA", "set");
+              toggleFavorite("BOLL", "set");
             }
           }}
           className={
-            "fas fa-star" + (allFavServices.includes("PPA") ? " active" : "")
+            "fas fa-star" + (allFavServices.includes("BOLL") ? " active" : "")
           }
           aria-hidden="true"
         ></i>{" "}
@@ -90,13 +87,13 @@ const PagoPa = ({
       <div className="bolletini--subh">PAGAMENTI</div>
       <Form>
         <div className="bolletini--inputs">
-          <PagoPaLeftForm
+          <LeftFreccia
             barcodeData={barcode}
             mobile
             getFieldDecorator={form.getFieldDecorator}
             getFieldValue={form.getFieldValue}
           />
-          <PagoPaRightForm
+          <RightFreccia
             barcodeData={barcode}
             getFieldDecorator={form.getFieldDecorator}
           />
@@ -130,12 +127,13 @@ const PagoPa = ({
           onClick={(e) => {
             handleSubmit(
               e,
-              "PPA001",
+              "BOL007",
               form,
-              setMavRav,
-              setPagoPa,
-              fetchBolletini,
-              form.resetFields
+              "",
+              "",
+              "",
+              form.resetFields,
+              setFreccia
             );
           }}
         >
@@ -154,7 +152,7 @@ const PagoPa = ({
     </div>
   );
 };
-const PagoPaForm = Form.create({ name: "PagoPa" })(PagoPa);
+const FrecciaForm = Form.create({ name: "Freccia" })(Freccia);
 
 export default connect(
   ({ main: { services }, auth: { bolletiniLoading, bolletiniBianchi } }) => {
@@ -165,4 +163,4 @@ export default connect(
     };
   },
   AuthActions
-)(PagoPaForm);
+)(FrecciaForm);

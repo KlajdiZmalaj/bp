@@ -9,7 +9,7 @@ import BolloAuto from "./modals/BolloAuto";
 import PagoPa from "./modals/PagoPa";
 import MavRav from "./modals/MavRav";
 import F24 from "./modals/F24";
-
+import Freccia from "./modals/Freccia";
 const ServicesForms = ({
   activeService,
   activeCategory,
@@ -111,6 +111,13 @@ const ServicesForms = ({
         />
       ) : activeService === "BOL006" ? (
         <BolloAuto
+          setService={setService}
+          activeService={activeService}
+          toggleFavorite={toggleFavorite}
+          allFavServices={allFavServices}
+        />
+      ) : activeService === "BOL007" ? (
+        <Freccia
           setService={setService}
           activeService={activeService}
           toggleFavorite={toggleFavorite}
