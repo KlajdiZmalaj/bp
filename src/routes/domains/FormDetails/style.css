@@ -738,6 +738,24 @@ textarea {
   width: 100%;
 }
 
+.ticketDetails .formSubmit--download.toWarn {
+  background-color: #f3b50b !important;
+  color: #222 !important;
+}
+
+.ticketDetails .formSubmit--download.toWarn div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
 .ticketDetails .formSubmit--download:hover {
   background-color: var(--accent-bg);
   color: var(--accent-txt);
@@ -860,7 +878,12 @@ textarea {
 }
 
 .ticketDetails i[aria-hidden="true"].fa-shopping-bag {
-  color: #3d6389;
+  color: #893d83;
+}
+
+.ticketDetails i[aria-hidden="true"].fa-shopping-bag:hover, .ticketDetails i[aria-hidden="true"].fa-shopping-bag.active {
+  background-color: #893d83;
+  color: #fff;
 }
 
 .ticketDetails i[aria-hidden="true"].fa-bus {

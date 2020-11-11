@@ -505,6 +505,16 @@ textarea {
           width: 100%;
         }
       }
+      &.toWarn {
+        background-color: #f3b50b !important;
+        color: #222 !important;
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+      }
       &:hover {
         background-color: var(--accent-bg);
         color: var(--accent-txt);
@@ -607,7 +617,12 @@ textarea {
       }
     }
     &.fa-shopping-bag {
-      color: #3d6389;
+      color: #893d83;
+      &:hover,
+      &.active {
+        background-color: #893d83;
+        color: #fff;
+      }
     }
     &.fa-bus {
       color: #578a17;

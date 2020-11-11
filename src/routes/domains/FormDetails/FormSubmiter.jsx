@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { userConfirmation, uploadPdf } from "services/auth";
 import { AuthActions } from "redux-store/models";
 import { downloadFile as downloadApi } from "services/main";
+import { notification } from "antd";
 
 export const downloadFile = (fileName) => {
   downloadApi(fileName);
@@ -29,6 +30,7 @@ export class FormSubmiter extends Component {
     };
     file instanceof Blob && reader.readAsDataURL(file);
     let fileType = file && file.name.split(".")[1];
+    // console.log("fileType", file, fileType);
     this.setState({
       file: file,
       fileType: fileType,
@@ -91,7 +93,11 @@ export class FormSubmiter extends Component {
               enableButtons
                 ? ""
                 : " dissableBtn") +
-              (this.state.base64 ? " toUpload" : "")
+              (this.state.base64
+                ? this.state.fileType === "pdf"
+                  ? " toUpload"
+                  : " toWarn"
+                : "")
             }
           >
             {this.state.base64 ? (
@@ -114,7 +120,13 @@ export class FormSubmiter extends Component {
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
-                      uploadPdf(TicketByTcketId.id, this.state.base64);
+                      if (this.state.fileType === "pdf") {
+                        uploadPdf(TicketByTcketId.id, this.state.base64);
+                      } else {
+                        notification["warning"]({
+                          message: "Il documento deve essere pdf",
+                        });
+                      }
                     }}
                     className="fal fa-check-circle"
                   ></i>
