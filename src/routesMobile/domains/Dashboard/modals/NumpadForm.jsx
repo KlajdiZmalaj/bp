@@ -279,7 +279,8 @@ const Numpad = ({
           className="GamingBanner mobile"
           style={{
             background: `${
-              BannerColors?.[selectedCost?.service_id.substring(0, 3)]
+              BannerColors?.[selectedCost?.service_id.substring(0, 3)] ||
+              "#03312E"
             }`,
           }}
         >
@@ -287,7 +288,9 @@ const Numpad = ({
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img
               src={
-                images?.[`Service${selectedCost?.service_id.substring(0, 3)}`]
+                images?.[
+                  `Service${selectedCost?.service_id.substring(0, 3)}`
+                ] || images["ServiceDefault"]
               }
             />
             <span>{selectedCost?.cost}€</span>
