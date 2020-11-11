@@ -22,18 +22,29 @@ import {
 //     }
 //   });
 // }
-
+//
+//
 const instanceAxios = axios.create({
   baseURL: "https://services-api.bpoint.store/api",
 });
 const handleError = (error) => {
-  if (error.error?.response?.status === 401) {
+  // console.log(
+  //   "error handler",
+  //   error,
+  //   error.response.status,
+  //   error.error?.response?.status
+  // );
+  if (
+    error.error?.response?.status === 401 ||
+    error?.response?.status === 401
+  ) {
     //logout
   } else {
     notification["error"]({
-      message: error.response.data.message,
+      message: error?.response?.data?.message,
       description:
-        error.response.data.errors && Object.values(error.response.data.errors),
+        error?.response?.data?.errors &&
+        Object.values(error.response.data.errors),
       placement: "bottomRight",
       duration: 4,
     });
@@ -45,7 +56,7 @@ instanceAxios.interceptors.request.use(
     const value = await localStorage.getItem("accountDataB");
     const keys = JSON.parse(value);
     config.headers = {
-      Authorization: `Bearer ${keys.token}`,
+      Authorization: `Bearer ${keys?.token}`,
       Accept: "application/json",
     };
     return config;
@@ -68,16 +79,7 @@ export const fetchLogin = (email, password) =>
     .catch((error) => ({ error }));
 
 export const logoutApi = () =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .post(`/users/logout`, {
       ...skin,
     })
@@ -216,16 +218,7 @@ export const fetchPostePay = (
     .catch((error) => ({ error }));
 
 export const fetchAds = () =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api",
-      headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB"))?.token
-        }`,
-      },
-    })
+  instanceAxios
     .get("/messages", {
       params: {
         ...skin,
@@ -528,8 +521,9 @@ export const fetchErrors = (limit, page_number) => {
 
 export const deleteErrorReq = (id) => {
   return instanceAxios
-    .post(`/error/${id}/delete`, {
+    .post(`/error/${id}/changeStatus`, {
       ...skin,
+      status: 4,
     })
     .catch((error) => ({ error }));
 };

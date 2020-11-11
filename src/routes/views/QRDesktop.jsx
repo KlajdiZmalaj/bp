@@ -70,8 +70,9 @@ function Main({
   const barcode = params.barcode;
   const refElem = useRef({});
   useEffect(() => {
+    console.log("ca ka", barcode, getCodiceTicket);
     getCodiceTicket(barcode, "omeLale");
-  }, [barcode, getCodiceTicket]);
+  }, [barcode]);
   return (
     <div className="qrBarcode m-auto p-4">
       <button

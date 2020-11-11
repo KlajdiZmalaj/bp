@@ -633,10 +633,9 @@ export function* getConfigura(data) {
   } else {
     yield put(AuthActions.setConfiguraData({}));
   }
-  // console.log("ca ka responseeeee configura", response);
 }
-export function* getCodiceTicket(data) {
-  const response = yield call(fetchCodice, data.barcode, data.service);
+export function* getCodiceTicket({ barcode, service }) {
+  const response = yield call(fetchCodice, barcode, service);
   if (response?.status === 200) {
     yield put(AuthActions.setPaymentsFromCode(response?.data.payment));
   }
@@ -756,8 +755,11 @@ export function* getSkinExtras() {
   }
   // console.log("response skin extras", response);
 }
-export function* getErrors({ limit, page_number }) {
-  yield put(AuthActions.setErrorsLoading(true));
+export function* getErrors({ limit, page_number, DONT_LOAD }) {
+  if (!DONT_LOAD) {
+    yield put(AuthActions.setErrorsLoading(true));
+  }
+
   const response = yield call(fetchErrors, limit, page_number);
   if (response?.data) {
     if (response?.status === 200) {
@@ -776,12 +778,12 @@ export function* deleteError(data) {
   const response = yield call(deleteErrorReq, data.id);
   if (response?.data) {
     if (response?.status === 200) {
-      const response = yield call(fetchErrors);
-      if (response?.data) {
-        if (response?.status === 200) {
-          yield put(AuthActions.setErrors(response?.data?.errors));
-          data.c();
-        }
+      notification["success"]({
+        message: `Error con id ${data.id} [DELETED]`,
+        placement: "topRight",
+      });
+      if (data.c) {
+        data.c();
       }
     }
   }

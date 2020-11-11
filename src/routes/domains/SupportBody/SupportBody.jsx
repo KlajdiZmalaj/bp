@@ -155,6 +155,9 @@ export class SupportBody extends Component {
                         <SingleError
                           key={error.id}
                           deleteError={deleteError}
+                          getErrors={getErrors}
+                          perPage={perPage}
+                          page_number={page_number}
                           error={error}
                         />
                       ))

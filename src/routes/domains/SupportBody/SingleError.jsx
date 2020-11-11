@@ -1,6 +1,12 @@
 import React, { useState, Fragment } from "react";
 
-const SingleError = ({ error, deleteError }) => {
+const SingleError = ({
+  error,
+  deleteError,
+  getErrors,
+  perPage,
+  page_number,
+}) => {
   const [isHover, setHover] = useState(false);
   const [hasPopup, setPopUp] = useState(false);
   const formatString = (string) => {
@@ -53,7 +59,10 @@ const SingleError = ({ error, deleteError }) => {
             <div>
               <button
                 onClick={() => {
-                  deleteError(error.id, setPopUp(false));
+                  deleteError(error.id, () => {
+                    getErrors(perPage, page_number, "DONT_LOAD");
+                    setPopUp(false);
+                  });
                 }}
               >
                 Yes
