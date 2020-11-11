@@ -57,7 +57,11 @@ export function* toggleFavorite(params) {
   }
 }
 export function* getUsers(params) {
-  yield put(MainActions.setLoaderForAdminUtenti(true));
+  if (params.LOAD_FALSE) {
+    //dont load
+  } else {
+    yield put(MainActions.setLoaderForAdminUtenti(true));
+  }
   const response = yield call(
     fetchUsers,
     params.search_user,
@@ -73,6 +77,7 @@ export function* getUsers(params) {
         total_pages: response.data.total_pages,
       })
     );
+
     yield put(MainActions.setLoaderForAdminUtenti(false));
   } else {
     yield put(MainActions.setLoaderForAdminUtenti(false));

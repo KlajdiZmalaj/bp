@@ -8,36 +8,39 @@ import DetailRow from "./DetailRow";
 import DetailRowVisure from "../FormVisureDetails/DetailRow";
 
 import { allRoles } from "config/index";
-import AccountInfo from "../../views/AccountInfo";
+// import AccountInfo from "../../views/AccountInfo";
 export const FilterVisureComponent = ({
   filterVisure,
   title,
   handleClick,
   icon,
   type,
-}) => (
-  <Tooltip
-    title={`Filtra ${
-      title === "all" && icon !== "shopping-cart"
-        ? "Tutti"
-        : title === "visura"
-        ? "Visura"
-        : title === "all" && icon === "shopping-cart"
-        ? `Tutti ${type}`
-        : title === "Treni1"
-        ? "FlixBus"
-        : title === "Treni2"
-        ? "Trenitalia"
-        : title
-    }`}
-  >
-    <i
-      onClick={handleClick}
-      className={`fa fa-${icon}` + (filterVisure === title ? " active" : "")}
-      aria-hidden="true"
-    ></i>
-  </Tooltip>
-);
+}) => {
+  // console.log("ca ka filter", filterVisure, title);
+  return (
+    <Tooltip
+      title={`Filtra ${
+        title === "all" && icon !== "shopping-cart"
+          ? "Tutti"
+          : title === "visura"
+          ? "Visura"
+          : title === "all" && icon === "shopping-cart"
+          ? `Tutti ${type}`
+          : title === "Treni1"
+          ? "FlixBus"
+          : title === "Treni2"
+          ? "Trenitalia"
+          : title
+      }`}
+    >
+      <i
+        onClick={handleClick}
+        className={`fa fa-${icon}` + (filterVisure === title ? " active" : "")}
+        aria-hidden="true"
+      ></i>
+    </Tooltip>
+  );
+};
 function Filter(
   ticket,
   type,
@@ -192,7 +195,13 @@ class FormDetailsDomain extends Component {
               />
               <FilterVisureComponent
                 filterVisure={MainFilter}
-                handleClick={() => this.setState({ MainFilter: "all" })}
+                handleClick={() =>
+                  this.setState({
+                    MainFilter: "all",
+                    filterTickets: "all",
+                    filterVisure: "all",
+                  })
+                }
                 title={"all"}
                 icon={"list"}
               />
@@ -210,72 +219,104 @@ class FormDetailsDomain extends Component {
                 title={"visura"}
                 icon={"ballot-check"}
               />
-              {(MainFilter === "visura" || MainFilter === "all") && (
+              {MainFilter === "visura" && (
                 <React.Fragment>
                   <FilterVisureComponent
                     filterVisure={filterVisure}
-                    handleClick={() =>
-                      this.setState({ filterVisure: "Persona Fisica" })
-                    }
+                    handleClick={() => {
+                      const f = "Persona Fisica";
+                      this.setState((state) => ({
+                        filterVisure: state.filterVisure === f ? "all" : f,
+                      }));
+                    }}
                     title={"Persona Fisica"}
-                    icon={"user"}
+                    icon={"user sub"}
                   />
                   <FilterVisureComponent
                     filterVisure={filterVisure}
-                    handleClick={() =>
-                      this.setState({ filterVisure: "Azienda o Impresa" })
-                    }
+                    handleClick={() => {
+                      const f = "Azienda o Impresa";
+                      this.setState((state) => ({
+                        filterVisure: state.filterVisure === f ? "all" : f,
+                      }));
+                    }}
                     title={"Azienda o Impresa"}
-                    icon={"building"}
+                    icon={"building sub"}
                   />
-                  <FilterVisureComponent
+                  {/* <FilterVisureComponent
                     filterVisure={filterVisure}
                     handleClick={() => this.setState({ filterVisure: "all" })}
                     title={"all"}
                     type={"Visura"}
                     icon={"shopping-cart"}
-                  />
+                  /> */}
                 </React.Fragment>
               )}
-              {(MainFilter === "Prenotazioni" || MainFilter === "all") && (
+              {MainFilter === "Prenotazioni" && (
                 <React.Fragment>
                   <FilterVisureComponent
                     filterVisure={filterTickets}
-                    handleClick={() => this.setState({ filterTickets: "Voli" })}
+                    handleClick={() => {
+                      const f = "Voli";
+                      this.setState((state) => ({
+                        filterTickets: state.filterTickets === f ? "all" : f,
+                      }));
+                    }}
                     title={"Voli"}
-                    icon={"plane"}
+                    icon={"plane sub"}
                   />
                   <FilterVisureComponent
                     filterVisure={filterTickets}
-                    handleClick={() =>
-                      this.setState({ filterTickets: "Treni1" })
-                    }
+                    handleClick={() => {
+                      const f = "Treni1";
+                      this.setState((state) => ({
+                        filterTickets: state.filterTickets === f ? "all" : f,
+                      }));
+                    }}
                     title={"Treni1"}
-                    icon={"bus"}
+                    icon={"bus sub"}
                   />
                   <FilterVisureComponent
                     filterVisure={filterTickets}
-                    handleClick={() =>
-                      this.setState({ filterTickets: "Treni2" })
-                    }
+                    handleClick={() => {
+                      const f = "Treni2";
+                      this.setState((state) => ({
+                        filterTickets: state.filterTickets === f ? "all" : f,
+                      }));
+                    }}
                     title={"Treni2"}
-                    icon={"train"}
+                    icon={"train sub"}
+                  />
+
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() => {
+                      const f = "Eventi";
+                      this.setState((state) => ({
+                        filterTickets: state.filterTickets === f ? "all" : f,
+                      }));
+                    }}
+                    title={"Eventi"}
+                    icon={"ticket-alt sub"}
                   />
                   <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() => {
+                      const f = "Shop";
+                      this.setState((state) => ({
+                        filterTickets: state.filterTickets === f ? "all" : f,
+                      }));
+                    }}
+                    title={"Shop"}
+                    icon={"shopping-bag sub"}
+                  />
+                  {/* <FilterVisureComponent
                     filterVisure={filterTickets}
                     handleClick={() => this.setState({ filterTickets: "all" })}
                     title={"all"}
                     icon={"shopping-cart"}
                     type={"Prenotazioni"}
-                  />
-                  <FilterVisureComponent
-                    filterVisure={filterTickets}
-                    handleClick={() =>
-                      this.setState({ filterTickets: "Eventi" })
-                    }
-                    title={"Eventi"}
-                    icon={"ticket-alt"}
-                  />
+                  /> */}
                 </React.Fragment>
               )}
             </div>

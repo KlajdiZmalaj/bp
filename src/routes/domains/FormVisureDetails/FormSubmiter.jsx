@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userConfirmation, uploadPdf } from "services/auth";
 import { AuthActions } from "redux-store/models";
-
+import { downloadFile as downloadApi } from "services/main";
+import { notification } from "antd";
+export const downloadFile = (fileName) => {
+  downloadApi(fileName);
+};
 export class FormSubmiter extends Component {
   constructor() {
     super();
@@ -69,14 +73,16 @@ export class FormSubmiter extends Component {
           onChange={(e) => this.fileUpInput(e)}
         />
         {VisureByVisureId.document ? (
-          <a
-            href={`https://services-api.bpoint.store/storage/payments/${VisureByVisureId.document}`}
-            download={`${VisureByVisureId.document}`}
+          <div
+            onClick={() => {
+              downloadFile(VisureByVisureId.document);
+            }}
             className="formSubmit--download"
+            data-file={VisureByVisureId.document}
           >
             <i className="fal fa-download" aria-hidden="true"></i>
             Download Documenti
-          </a>
+          </div>
         ) : (
           <label
             htmlFor="doc"
@@ -87,7 +93,11 @@ export class FormSubmiter extends Component {
               enableButtons
                 ? " "
                 : " dissableBtn") +
-              (this.state.base64 ? " toUpload" : "")
+              (this.state.base64
+                ? this.state.fileType === "pdf"
+                  ? " toUpload"
+                  : " toWarn"
+                : "")
             }
           >
             {this.state.base64 ? (

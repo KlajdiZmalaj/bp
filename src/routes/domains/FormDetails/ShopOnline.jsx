@@ -43,22 +43,7 @@ class ShopOnline extends Component {
       });
     }
   }
-  resetState = (msg) => {
-    if (!msg.error) {
-      notification["success"]({
-        message: "Azione completata",
-        description: msg.msg,
-        placement: "bottomRight",
-      });
-    } else {
-      notification["error"]({
-        message: msg.msg[0],
-        description: msg.msg[1],
-        placement: "bottomRight",
-        duration: 5,
-      });
-    }
-  };
+
   resetState = (msg) => {
     if (!msg.error) {
       notification["success"]({

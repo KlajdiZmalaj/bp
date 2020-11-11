@@ -35,7 +35,7 @@ const handleError = (error) => {
       description:
         error.response.data.errors && Object.values(error.response.data.errors),
       placement: "bottomRight",
-      duration: 5,
+      duration: 4,
     });
   }
   return Promise.reject(error);
@@ -853,12 +853,6 @@ export const uploadPdf = (id, document, isVisura) => {
           description: res.data.message,
         });
       }
-    })
-    .catch(function (error) {
-      notification.open({
-        message: "Failed while uploading!",
-        description: "",
-      });
     });
 };
 export const getVisureByVisureIdReq = ({ visura_id }) => {
