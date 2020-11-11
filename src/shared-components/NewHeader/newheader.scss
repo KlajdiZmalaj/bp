@@ -41,6 +41,7 @@ header.header {
   width: 100%;
   z-index: 3;
   height: 100px;
+  overflow: hidden;
   .topNav {
     width: 100%;
     color: var(--accent-txt);
@@ -183,14 +184,22 @@ header.header {
     align-items: center;
     background-color: var(--header-bg);
     color: var(--header-txt);
-    padding: 10px;
+    // padding: 10px;
     border-bottom: 2px solid var(--accent-bg);
     box-shadow: 1px 18px 20px -22px black;
     height: 100%;
+
     .logo {
       margin: 0;
       margin-right: auto;
-      height: auto;
+      img {
+        display: flex;
+        flex-grow: 0;
+        height: 55px;
+        align-items: center;
+        object-fit: contain;
+        object-position: center;
+      }
     }
   }
   .chatSticky {

@@ -417,7 +417,7 @@ export const returnMotivoDelPagamentoList = (getVal, nrOfRows) => {
       arrayMPL.push(objectRow);
     }
   });
-  console.log("nrOfRows", nrOfRows, getVal(`sezione${0}`), arrayMPL);
+  // console.log("nrOfRows", nrOfRows, getVal(`sezione${0}`), arrayMPL);
   return arrayMPL;
 };
 export function isEmptyObject(o) {

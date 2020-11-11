@@ -1,12 +1,12 @@
 let skin = "";
 //
-if (window.location.href.includes("bpoint")) {
-  skin = 1;
-} else if (
-  window.location.href.includes("gfb") ||
+if (
+  window.location.href.includes("bpoint") ||
   window.location.href.includes("192.168") ||
   window.location.href.includes("localhost")
 ) {
+  skin = 1;
+} else if (window.location.href.includes("gfb")) {
   skin = 5;
 } else if (window.location.href.includes("derby")) {
   skin = 3;
@@ -107,6 +107,8 @@ export default {
   TREO: require(`../assets/images${skin}/three-logo.svg`),
   SKY: require(`../assets/images${skin}/Sky_Italia_-_Logo_2018.png`),
   PMOB: require(`../assets/images${skin}/posteitalia.png`),
+  STBT: require(`../assets/images/stbt.svg`),
+
   CRP00B: require(`../assets/images${skin}/bitcoinorange.svg`),
   CRP0BC: require(`../assets/images${skin}/bitcoingreen.svg`),
   CRP00E: require(`../assets/images${skin}/ethereum.svg`),
