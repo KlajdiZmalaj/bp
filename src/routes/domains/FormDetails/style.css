@@ -108,6 +108,13 @@ textarea {
   margin-right: 5px;
 }
 
+.ticketDetails--filters__byTicket > i.sub {
+  -webkit-box-shadow: 9px 1px 12px -12px #000000;
+          box-shadow: 9px 1px 12px -12px #000000;
+  position: relative;
+  left: 15px;
+}
+
 .ticketDetails--filters__byTicket > i:nth-child(1) {
   margin-left: auto;
 }
