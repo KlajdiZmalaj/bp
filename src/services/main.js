@@ -210,3 +210,42 @@ export const fetchphotos = (id) => {
       },
     });
 };
+
+export const downloadFile = (document_name) => {
+  return axios
+    .create({
+      baseURL: "https://services-api.bpoint.store/api/",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("accountDataB")).token
+        }`,
+      },
+    })
+    .get(`ticketDocument`, {
+      params: {
+        ...skin,
+        document_name,
+      },
+    })
+    .then((data) => {
+      console.log("ca ka download", data);
+      const docBack = data?.data?.files?.document_back;
+      const docFront = data?.data?.files?.document_front;
+      if (docBack) {
+        const downloadLink = document.createElement("a");
+        const fileName = "Document.pdf";
+
+        downloadLink.href = docBack;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      }
+      if (docFront) {
+        const downloadLink = document.createElement("a");
+        const fileName = "Document.pdf";
+
+        downloadLink.href = docFront;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      }
+    });
+};

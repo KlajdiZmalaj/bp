@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userConfirmation, uploadPdf } from "services/auth";
 import { AuthActions } from "redux-store/models";
+import { downloadFile as downloadApi } from "services/main";
 
+export const downloadFile = (fileName) => {
+  downloadApi(fileName);
+};
 export class FormSubmiter extends Component {
   constructor() {
     super();
@@ -67,14 +71,16 @@ export class FormSubmiter extends Component {
           onChange={(e) => this.fileUpInput(e)}
         />
         {TicketByTcketId.document ? (
-          <a
-            href={`https://services-api.bpoint.store/storage/payments/${TicketByTcketId.document}`}
-            download={`${TicketByTcketId.document}`}
+          <div
+            onClick={() => {
+              downloadFile(TicketByTcketId.document);
+            }}
             className="formSubmit--download"
+            data-file={TicketByTcketId.document}
           >
             <i className="fal fa-download" aria-hidden="true"></i>
             Download Documenti
-          </a>
+          </div>
         ) : (
           <label
             htmlFor="doc"
