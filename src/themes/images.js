@@ -107,6 +107,8 @@ export default {
   TREO: require(`../assets/images${skin}/three-logo.svg`),
   SKY: require(`../assets/images${skin}/Sky_Italia_-_Logo_2018.png`),
   PMOB: require(`../assets/images${skin}/posteitalia.png`),
+  STBT: require(`../assets/images/stbt.svg`),
+
   CRP00B: require(`../assets/images${skin}/bitcoinorange.svg`),
   CRP0BC: require(`../assets/images${skin}/bitcoingreen.svg`),
   CRP00E: require(`../assets/images${skin}/ethereum.svg`),

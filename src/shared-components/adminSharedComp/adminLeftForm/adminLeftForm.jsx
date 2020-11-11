@@ -96,9 +96,10 @@ class AdminLeftForm extends React.Component {
                         skin.id === 4 ||
                         skin.id === 5 ||
                         skin.id === 6 ||
-                        skin.id === 8
+                        skin.id === 8 ||
+                        skin.id === 51
                           ? require(`../../../assets/images${
-                              skin.id === 8 ? 6 : skin.id
+                              skin.id === 8 ? 6 : skin.id === 51 ? 7 : skin.id
                             }/favicon-32x32.svg`)
                           : require(`../../../assets/images${1}/favicon-32x32.svg`)
                       }
