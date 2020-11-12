@@ -39,6 +39,11 @@ const handleError = (error) => {
     error?.response?.status === 401
   ) {
     //logout
+  } else if (
+    error.error?.response?.status === 445 ||
+    error?.response?.status === 445
+  ) {
+    //skin id wrong
   } else {
     notification["error"]({
       message: error?.response?.data?.message,

@@ -12,7 +12,7 @@ class Time extends React.Component {
     clearInterval(this.val);
   }
   render() {
-    console.log("redneerr");
+    // console.log("redneerr");
     return (
       <span className="timeH">{moment().format("DD/MM/YYYY HH:mm:ss")}</span>
     );
