@@ -495,9 +495,15 @@ textarea {
       transition: 0.3s;
       justify-content: center;
       margin-bottom: 0;
+
       &.toUpload {
         background-color: #00ac56 !important;
         color: #fff !important;
+        i.fal.fa-check-circle {
+          &:hover {
+            color: #0fff87;
+          }
+        }
         div {
           display: flex;
           justify-content: space-between;
@@ -508,6 +514,11 @@ textarea {
       &.toWarn {
         background-color: #f3b50b !important;
         color: #222 !important;
+        i.wobble {
+          &:hover {
+            color: #e9ff25;
+          }
+        }
         div {
           display: flex;
           justify-content: space-between;

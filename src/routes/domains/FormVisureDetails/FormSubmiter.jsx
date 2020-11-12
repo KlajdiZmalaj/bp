@@ -122,7 +122,12 @@ export class FormSubmiter extends Component {
                       e.preventDefault();
                       uploadPdf(VisureByVisureId.id, this.state.base64, true);
                     }}
-                    className="fal fa-check-circle"
+                    className={`fal animated fa-${
+                      this.state.fileType === "pdf"
+                        ? "check-circle heartBeat"
+                        : "exclamation-circle wobble "
+                    }`}
+                    style={{ animationIterationCount: "infinite" }}
                   ></i>
                 )}
               </div>
