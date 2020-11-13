@@ -120,7 +120,13 @@ export class FormSubmiter extends Component {
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
-                      uploadPdf(VisureByVisureId.id, this.state.base64, true);
+                      if (this.state.fileType === "pdf") {
+                        uploadPdf(VisureByVisureId.id, this.state.base64, true);
+                      } else {
+                        notification["warning"]({
+                          message: "Il documento deve essere pdf",
+                        });
+                      }
                     }}
                     className={`fal animated fa-${
                       this.state.fileType === "pdf"
