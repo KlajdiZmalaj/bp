@@ -228,7 +228,7 @@ export const downloadFile = (document_name) => {
       },
     })
     .then((data) => {
-      console.log("ca ka download", data);
+      // console.log("ca ka download", data);
       const docBack = data?.data?.files?.document_back;
       const docFront = data?.data?.files?.document_front;
       if (docBack) {

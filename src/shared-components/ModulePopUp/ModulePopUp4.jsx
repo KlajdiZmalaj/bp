@@ -5,7 +5,7 @@ import { BannerColors } from "config/index";
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
 import { BgameServices, BbetServices } from "config";
-
+import { notification } from "antd";
 class ModulePopUp4 extends React.Component {
   constructor(props) {
     super(props);
@@ -76,7 +76,16 @@ class ModulePopUp4 extends React.Component {
       this.props.service_s.id === "BGAM" ||
       this.props.service_s.id === "BBET"
     ) {
-      this.props.getCustomVoucherReq(service_id, tel_no);
+      if (tel_no && tel_no < 5) {
+        notification["warning"]({
+          message: "Warning !",
+          description: `l'importo dovrebbe essere superiore a 4 euro`,
+          placement: "topRight",
+          duration: 4,
+        });
+      } else {
+        this.props.getCustomVoucherReq(service_id, tel_no);
+      }
     } else {
       this.props.getRechargeMobile(service_id, tel_no);
     }
@@ -110,7 +119,13 @@ class ModulePopUp4 extends React.Component {
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
     const { serviceMobile, tel_no, toPrint, changeInput } = this.state;
-    console.log("service", service_s, service, serviceMobile);
+    console.log(
+      "service",
+      service_s,
+      service,
+      serviceMobile,
+      this.props.serviceType
+    );
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",
