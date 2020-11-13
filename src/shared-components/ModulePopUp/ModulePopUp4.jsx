@@ -2,9 +2,10 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import { BannerColors } from "config/index";
-
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
+import { BgameServices, BbetServices } from "config";
+
 class ModulePopUp4 extends React.Component {
   constructor(props) {
     super(props);
@@ -27,24 +28,30 @@ class ModulePopUp4 extends React.Component {
     return array;
   }
   componentDidMount() {
-    if (this.state?.serviceMobile?.service_id.toString() === "BGM001") {
+    if (
+      this.state?.serviceMobile?.service_id.toString() === "BGM001" ||
+      this.state?.serviceMobile?.service_id.toString() === "BBT001"
+    ) {
       if (parseInt(this.state.serviceMobile?.cost) === 0) {
         this.changeService({
           cost: "10.00",
-          name: "BGame Voucher",
-          service_id: "BGM001",
+          name: `${this.state?.serviceMobile?.service_id.toString()} Voucher`,
+          service_id: this.state?.serviceMobile?.service_id.toString(),
           type: "1",
         });
       }
     }
   }
   componentDidUpdate() {
-    if (this.state.serviceMobile?.service_id.toString() === "BGM001") {
+    if (
+      this.state.serviceMobile?.service_id.toString() === "BGM001" ||
+      this.state?.serviceMobile?.service_id.toString() === "BBT001"
+    ) {
       if (parseInt(this.state.serviceMobile?.cost) === 0) {
         this.changeService({
           cost: "10.00",
-          name: "BGame Voucher",
-          service_id: "BGM001",
+          name: `${this.state?.serviceMobile?.service_id.toString()} Voucher`,
+          service_id: this.state?.serviceMobile?.service_id.toString(),
           type: "1",
         });
       }
@@ -65,8 +72,11 @@ class ModulePopUp4 extends React.Component {
   };
 
   handleSubmit(service_id, tel_no) {
-    if (this.props.service_s.id === "BGAM") {
-      this.props.getBgameVoucherReq(service_id, tel_no);
+    if (
+      this.props.service_s.id === "BGAM" ||
+      this.props.service_s.id === "BBET"
+    ) {
+      this.props.getCustomVoucherReq(service_id, tel_no);
     } else {
       this.props.getRechargeMobile(service_id, tel_no);
     }
@@ -99,34 +109,8 @@ class ModulePopUp4 extends React.Component {
     const { service_s, rechargeMobile, service } = this.props;
     // const {serviceType}=this.props;
     // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
-    const BgameServices = [
-      {
-        cost: "10.00",
-        name: "BGame Voucher",
-        service_id: "BGM001",
-        type: "1",
-      },
-      {
-        cost: "25.00",
-        name: "BGame Voucher",
-        service_id: "BGM001",
-        type: "1",
-      },
-      {
-        cost: "50.00",
-        name: "BGame Voucher",
-        service_id: "BGM001",
-        type: "1",
-      },
-      {
-        cost: "100.00",
-        name: "BGame Voucher",
-        service_id: "BGM001",
-        type: "1",
-      },
-    ];
     const { serviceMobile, tel_no, toPrint, changeInput } = this.state;
-    //console.log("service", service_s, service, serviceMobile);
+    console.log("service", service_s, service, serviceMobile);
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",
@@ -141,7 +125,9 @@ class ModulePopUp4 extends React.Component {
           className={`leftCol_Module Popup4 ${
             this.props.serviceType === "SCMS"
               ? "game"
-              : service.type.toString() === "0" || service_s.id === "BGAM"
+              : service.type.toString() === "0" ||
+                service_s.id === "BGAM" ||
+                service_s.id === "BBET"
               ? "small"
               : ""
           }`}
@@ -151,7 +137,7 @@ class ModulePopUp4 extends React.Component {
               <div className="confermaMsg animated bounce">
                 <div className="info">
                   Stai eseguiendo una ricarica da €
-                  {service_s.id === "BGAM"
+                  {service_s.id === "BGAM" || service_s.id === "BBET"
                     ? !this.state.changeInput
                       ? serviceMobile.cost
                       : tel_no
@@ -164,7 +150,9 @@ class ModulePopUp4 extends React.Component {
                       this.handleSubmit(
                         serviceMobile.service_id,
                         service.type.toString() === "1"
-                          ? service_s.id === "BGAM" && !this.state.changeInput
+                          ? (service_s.id === "BGAM" ||
+                              service_s.id === "BBET") &&
+                            !this.state.changeInput
                             ? serviceMobile.cost
                             : tel_no
                           : null
@@ -200,7 +188,9 @@ class ModulePopUp4 extends React.Component {
             </div>
             <div className="ServiceHeader">
               <h4>{service_s.name}</h4>
-              {service.type.toString() === "1" && service_s.id !== "BGAM" ? (
+              {service.type.toString() === "1" &&
+              service_s.id !== "BGAM" &&
+              service_s.id !== "BBET" ? (
                 <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
               ) : (
                 this.props.serviceType === "SCMS" && (
@@ -208,7 +198,9 @@ class ModulePopUp4 extends React.Component {
                 )
               )}
             </div>
-            {(service.type.toString() === "1" && service_s.id !== "BGAM") ||
+            {(service.type.toString() === "1" &&
+              service_s.id !== "BGAM" &&
+              service_s.id !== "BBET") ||
             changeInput === true ? (
               <div className={`NumPadContainer ${changeInput ? "bgm" : ""}`}>
                 <div className="NumPd">
@@ -225,7 +217,7 @@ class ModulePopUp4 extends React.Component {
                   {!changeInput && <i className="fas fa-address-book"></i>}
                 </div>
                 <div className="Numbers">
-                  {service_s.id === "BGAM" ? (
+                  {service_s.id === "BGAM" || service_s.id === "BBET" ? (
                     <Fragment>
                       {[1, 2, 3, 4, 5, 6, 7, 8, 9, ".", "0", "x"].map((num) => (
                         <span
@@ -288,6 +280,10 @@ class ModulePopUp4 extends React.Component {
                           `Service${serviceMobile?.service_id.substring(0, 3)}`
                         ]
                       }
+                      alt={`Service${serviceMobile?.service_id.substring(
+                        0,
+                        3
+                      )}`}
                     />
                   </div>
                 </div>
@@ -298,10 +294,12 @@ class ModulePopUp4 extends React.Component {
               <React.Fragment>
                 {(service_s.id === "BGAM"
                   ? BgameServices
+                  : service_s.id === "BBET"
+                  ? BbetServices
                   : service_s.services || []
                 ).map((item, index) => {
                   return (
-                    service_s.id === "BGAM"
+                    service_s.id === "BGAM" || service_s.id === "BBET"
                       ? parseFloat(item?.cost) ===
                         parseFloat(serviceMobile.cost)
                       : item.service_id.toString() ===
@@ -309,9 +307,11 @@ class ModulePopUp4 extends React.Component {
                   ) ? (
                     <div
                       key={`${item.service_id}${index}`}
-                      className={`serv ${
+                      className={`${parseFloat(item?.cost)} ${parseFloat(
+                        serviceMobile.cost
+                      )} serv ${
                         (
-                          service_s.id === "BGAM"
+                          service_s.id === "BGAM" || service_s.id === "BBET"
                             ? parseFloat(item?.cost) ===
                               parseFloat(serviceMobile.cost)
                             : item.service_id.toString() ===
@@ -334,9 +334,11 @@ class ModulePopUp4 extends React.Component {
                   ) : (
                     <div
                       key={`${item.service_id}${index}`}
-                      className={`serv ${
+                      className={`2t ${parseFloat(item?.cost)} ${parseFloat(
+                        serviceMobile.cost
+                      )} serv ${
                         (
-                          service_s.id === "BGAM"
+                          service_s.id === "BGAM" || service_s.id === "BBET"
                             ? parseFloat(item?.cost) ===
                               parseFloat(serviceMobile.cost)
                             : item.service_id.toString() ===
@@ -352,7 +354,8 @@ class ModulePopUp4 extends React.Component {
                     </div>
                   );
                 })}
-                {serviceMobile.service_id.toString() === "BGM001" ? (
+                {serviceMobile.service_id.toString() === "BGM001" ||
+                serviceMobile.service_id.toString() === "BBT001" ? (
                   changeInput ? (
                     <div
                       className="serv"

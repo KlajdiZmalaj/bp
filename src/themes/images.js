@@ -96,7 +96,8 @@ export default {
   TIMO: require(`../assets/images${skin}/TIM_logo_2016.svg`),
   VODA: require(`../assets/images${skin}/vodafone.svg`),
   VODO: require(`../assets/images${skin}/vodafone.svg`),
-  BGAM: require(`../assets/images${skin}/bgame.svg`),
+  BGAM: require(`../assets/images/bgame.svg`),
+  BBET: require(`../assets/images/bbet.svg`),
   WIND: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
   WINO: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
   LMAX: require(`../assets/images${skin}/linkeln.svg`),
@@ -217,13 +218,13 @@ export default {
 
   ServiceDefault: require(`../assets/images/ServiceDefault.jpg`),
   ServiceBET: require(`../assets/images/ServiceBET.jpg`),
-  ServiceBGM: require(`../assets/images/ServiceBGM.jpg`),
+  ServiceBGM: require(`../assets/images/ServiceDefault.jpg`),
   ServiceBWN: require(`../assets/images/ServiceBWN.jpg`),
   ServicePKS: require(`../assets/images/ServicePKS.jpg`),
   ServicePPB: require(`../assets/images/ServicePPB.jpg`),
   ServiceSTC: require(`../assets/images/ServiceSTC.jpg`),
   ServiceWHL: require(`../assets/images/ServiceWHL.jpg`),
-
+  ServiceBBT: require(`../assets/images/ServiceBGM.jpg`),
   // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 
   faturaBackground: require(`../assets/images/FaturaBackground.png`),

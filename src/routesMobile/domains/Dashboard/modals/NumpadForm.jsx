@@ -45,12 +45,45 @@ const BgameServices = [
     type: "+",
   },
 ];
+const BbetServices = [
+  {
+    cost: "10.00",
+    name: "BGame Voucher",
+    service_id: "BBT001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BGame Voucher",
+    service_id: "BBT002",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BGame Voucher",
+    service_id: "BBT003",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BGame Voucher",
+    service_id: "BBT004",
+    type: "1",
+  },
+  {
+    cost: "+",
+    name: "BGame Voucher",
+    service_id: "BBT005",
+    type: "+",
+  },
+];
 const Numpad = ({
   services,
   activeService,
   activeCategory,
   setService,
   getRechargeMobile,
+  getCustomVoucherReq,
   setRechargeMobile,
   rechargeMobile,
   loadingRechargeMobile,
@@ -67,8 +100,15 @@ const Numpad = ({
 
   const printT = useRef();
   useEffect(() => {
+    // console.log("ca ka", services, activeService, activeCategory, selectedCost);
     if (!selectedCost) {
-      setCost(services[activeCategory][activeService].services[0]);
+      if (activeService === "BGAM") {
+        setCost(BgameServices[0]);
+      } else if (activeService === "BBET") {
+        setCost(BbetServices[0]);
+      } else {
+        setCost(services[activeCategory][activeService].services[0]);
+      }
     }
   }, [services, activeService, activeCategory, setCost, selectedCost]);
 
@@ -80,7 +120,10 @@ const Numpad = ({
       });
   }, [rechargeMobile]);
   useEffect(() => {
-    if (selectedCost?.service_id === "BGM005") {
+    if (
+      selectedCost?.service_id === "BGM005" ||
+      selectedCost?.service_id === "BBT005"
+    ) {
       setBgamePad(true);
     } else if (bgamePad === true) {
       setBgamePad(false);
@@ -95,39 +138,21 @@ const Numpad = ({
   }, [loadingRechargeMobile]);
   useEffect(() => {
     getScale(".img.Page", ".GamingBanner.mobile");
-  }, []);
+  }, [bgamePad]);
 
   return (
     <div className="mobileNumPad">
-      {/* <div className="mobileNumPad--services">
-        {services &&
-          services[activeCategory][activeService].services.map(
-            (priceService) => {
-              return (
-                <div
-                  key={priceService.service_id}
-                  className={`mobileNumPad--services__tab${
-                    selectedCost?.service_id === priceService.service_id
-                      ? " active"
-                      : ""
-                  }`}
-                  onClick={() => setCost(priceService)}
-                >
-                  <span>{priceService.cost.split(".")[0]}</span>
-                  <sup>€</sup>
-                </div>
-              );
-            }
-          )}
-          </div>*/}
       <div className="mobileNumPad--services">
         <React.Fragment>
-          {(activeService !== "BGAM"
-            ? services[activeCategory][activeService].services
-            : BgameServices
+          {(activeService === "BGAM"
+            ? BgameServices
+            : activeService === "BBET"
+            ? BbetServices
+            : services[activeCategory][activeService].services
           ).map((item, index) => {
             let bgamePadCondition =
-              item.cost === "+" && item.service_id === "BGM005";
+              item.cost === "+" &&
+              (item.service_id === "BGM005" || item.service_id === "BBT005");
             return selectedCost?.service_id === item.service_id ? (
               <div
                 key={index}
@@ -283,6 +308,7 @@ const Numpad = ({
               "#03312E"
             }`,
           }}
+          alt={[selectedCost?.service_id.substring(0, 3)]}
         >
           <div className="img Page">
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -303,19 +329,28 @@ const Numpad = ({
           className={`${loadingRechargeMobile ? "disable" : ""}`}
           onClick={() => {
             setLoadingRecharge(true);
-            getRechargeMobile(
-              selectedCost?.service_id
-                ? selectedCost?.service_id.includes("BGM00")
+
+            if (
+              selectedCost?.service_id.includes("BGM00") ||
+              selectedCost?.service_id.includes("BBT00")
+            ) {
+              console.log("inpVal", inpVal, selectedCost);
+              getCustomVoucherReq(
+                selectedCost?.service_id.includes("BGM00")
                   ? "BGM001"
-                  : selectedCost?.service_id
-                : selectedCost?.service_id,
-              noNumbers
-                ? selectedCost?.service_id.includes("BGM00")
-                  ? inpVal
-                  : null
-                : `39${inpVal}`,
-              setLoadingRecharge
-            );
+                  : selectedCost?.service_id.includes("BBT00")
+                  ? "BBT001"
+                  : "",
+                inpVal || selectedCost?.cost,
+                setLoadingRecharge
+              );
+            } else {
+              getRechargeMobile(
+                selectedCost?.service_id,
+                `39${inpVal}`,
+                setLoadingRecharge
+              );
+            }
           }}
         >
           Esegui <i className="fal fa-check" aria-hidden="true"></i>

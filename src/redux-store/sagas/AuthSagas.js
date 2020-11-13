@@ -46,7 +46,7 @@ import {
   AddSuperAdminReq,
   getStatisticheReq,
   ServiceChangeStatusReq,
-  bGameVoucher,
+  customVoucher,
   fetchBolletiniRequest,
   StatisticheMainReq,
   buyTicketOnlineReq,
@@ -1415,8 +1415,8 @@ export function* UpdateServiceChangeStatus(params) {
     }
   }
 }
-export function* getBgameVoucherReq(params) {
-  const response = yield call(bGameVoucher, params.service_id, params.tel_no);
+export function* getCustomVoucherReq(params) {
+  const response = yield call(customVoucher, params.service_id, params.tel_no);
   if (response) {
     if (response?.data) {
       if (response?.data.wallet) {
