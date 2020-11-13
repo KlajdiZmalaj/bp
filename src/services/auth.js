@@ -39,6 +39,11 @@ const handleError = (error) => {
     error?.response?.status === 401
   ) {
     //logout
+  } else if (
+    error.error?.response?.status === 445 ||
+    error?.response?.status === 445
+  ) {
+    //skin id wrong
   } else {
     notification["error"]({
       message: error?.response?.data?.message,
@@ -1150,9 +1155,9 @@ export const ServiceChangeStatusReq = (
     .catch((error) => {});
 };
 
-export const bGameVoucher = (service_id, importo) =>
+export const customVoucher = (service_id, importo) =>
   instanceAxios
-    .post(`/buy/bgameVoucher`, {
+    .post(`/buy/${service_id === "BBT001" ? "bbetVoucher" : "bgameVoucher"}`, {
       ...{ service_id: service_id },
       ...(importo ? { importo: importo } : {}),
       ...skin,

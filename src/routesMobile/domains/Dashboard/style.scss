@@ -172,7 +172,7 @@
     justify-content: flex-start;
     align-items: stretch;
     .GamingBanner {
-      height: calc(75vh - 105px);
+      height: calc(75vh - 104px);
       width: 100%;
       display: flex;
       align-items: center;
@@ -533,14 +533,14 @@
       }
     }
     &--ticket {
-      position: absolute;
+      position: fixed;
       z-index: 3;
       width: 100%;
       height: 100vh;
       top: 0;
       left: 0;
       overflow-y: auto;
-      padding: 12px;
+      padding: 22px;
       .printModal .btn-group {
         padding: 25px;
       }

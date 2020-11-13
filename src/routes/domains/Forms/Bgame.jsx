@@ -84,7 +84,8 @@ class Eventi extends Component {
       });
     }
   };
-  submitData = () => {
+  submitData = (e) => {
+    e.preventDefault();
     const {
       nome,
       data_nascita,

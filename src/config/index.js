@@ -7,7 +7,8 @@ export const allRoles = {
 };
 export const BannerColors = {
   BET: "#042842",
-  BGM: "#ed4d1d",
+  BGM: "#03312E",
+  BBT: "#ed4d1d",
   BWN: "#fec90b",
   PKS: "#d70909",
   PPB: "#e44b23",
@@ -50990,572 +50991,625 @@ export const countriesArray = [
   },
 ];
 export const servicesVisure = {
-  "Catasto": {
-    "services": [
+  Catasto: {
+    services: [
       {
-        "name": "Visura Catastale",
-        "price": 13,
-        "sco": "40",
-        "time": "in pochi secondi"
+        name: "Visura Catastale",
+        price: 13,
+        sco: "40",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura per soggetto storica",
-        "price": 13,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Visura per soggetto storica",
+        price: 13,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Planimetria Catastale",
-        "price": 29,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Planimetria Catastale",
+        price: 29,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Mappa Catastale / Estratto di Mappa",
-        "price": 13,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Mappa Catastale / Estratto di Mappa",
+        price: 13,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Elenco Imobili",
-        "price": 9,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Elenco Imobili",
+        price: 9,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Mappa Edificio / Elaborato Planimetrico",
-        "price": 13,
-        "sco": "35",
-        "time": "4 ore"
+        name: "Mappa Edificio / Elaborato Planimetrico",
+        price: 13,
+        sco: "35",
+        time: "4 ore",
       },
       {
-        "name": "Rendita catastale",
-        "price": 5,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Rendita catastale",
+        price: 5,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Reddito dominicale e reddito agrario",
-        "price": 5,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Reddito dominicale e reddito agrario",
+        price: 5,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Certificato Castale",
-        "price": 28,
-        "sco": "35",
-        "time": "2 giorni"
+        name: "Certificato Castale",
+        price: 28,
+        sco: "35",
+        time: "2 giorni",
       },
       {
-        "name": "Calcolo della Superficie da Planimetria",
-        "price": 40,
-        "sco": "35",
-        "time": "2 ore"
+        name: "Calcolo della Superficie da Planimetria",
+        price: 40,
+        sco: "35",
+        time: "2 ore",
       },
       {
-        "name": "Correzione Visura Catastale",
-        "price": 29,
-        "sco": "35",
-        "time": "40 giorni"
+        name: "Correzione Visura Catastale",
+        price: 29,
+        sco: "35",
+        time: "40 giorni",
       },
       {
-        "name": "Voltura Catastale",
-        "price": 149,
-        "sco": "35",
-        "time": "40 giorni"
-      }
-    ]
+        name: "Voltura Catastale",
+        price: 149,
+        sco: "35",
+        time: "40 giorni",
+      },
+    ],
   },
   "Camera di Commercio": {
-    "services": [
+    services: [
       {
-        "name": "Report Azienda Full",
-        "price": 19,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Report Azienda Full",
+        price: 19,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Report Azienda Light",
-        "price": 14,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Report Azienda Light",
+        price: 14,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura Camerale",
-        "price": 15,
-        "sco": "40",
-        "time": "in pochi secondi"
+        name: "Visura Camerale",
+        price: 15,
+        sco: "40",
+        time: "in pochi secondi",
       },
       {
-        "name": "Bilancio Aziendale",
-        "price": 13,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Bilancio Aziendale",
+        price: 13,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Visura Protesti",
-        "price": 6,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Visura Protesti",
+        price: 6,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Analisi bilancio",
-        "price": 13,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Analisi bilancio",
+        price: 13,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Certificato Camerale",
-        "price": 29,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Certificato Camerale",
+        price: 29,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Certificato camerale ordinario",
-        "price": 29,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Certificato camerale ordinario",
+        price: 29,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Certificato camerale storico",
-        "price": 29,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Certificato camerale storico",
+        price: 29,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Scheda Persona",
-        "price": 16,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Scheda Persona",
+        price: 16,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Certificato di Vigenza",
-        "price": 29,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Certificato di Vigenza",
+        price: 29,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Cariche Aziendali",
-        "price": 9,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Cariche Aziendali",
+        price: 9,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Elenco Soci Azienda",
-        "price": 9,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Elenco Soci Azienda",
+        price: 9,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura Amministratori",
-        "price": 9,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Visura Amministratori",
+        price: 9,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura Camerale in Inglese",
-        "price": 15,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Visura Camerale in Inglese",
+        price: 15,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Carta cronotachigrafica",
-        "price": 59,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Carta cronotachigrafica",
+        price: 59,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Visura Procedure in corso",
-        "price": 12,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Visura Procedure in corso",
+        price: 12,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura Statuto / Patti Sociali",
-        "price": 12,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Visura Statuto / Patti Sociali",
+        price: 12,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Scheda Partecipazioni in Società",
-        "price": 10,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Scheda Partecipazioni in Società",
+        price: 10,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura Sede ed Unità locali",
-        "price": 5,
-        "sco": "25",
-        "time": "in pochi secondi"
+        name: "Visura Sede ed Unità locali",
+        price: 5,
+        sco: "25",
+        time: "in pochi secondi",
       },
       {
-        "name": "Atto in Camera di Commercio",
-        "price": 11,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Atto in Camera di Commercio",
+        price: 11,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Report su Persona",
-        "price": 15,
-        "sco": "25",
-        "time": "2 ore"
-      }
-    ]
+        name: "Report su Persona",
+        price: 15,
+        sco: "25",
+        time: "2 ore",
+      },
+    ],
   },
-  "Conservatoria": {
-    "services": [
+  Conservatoria: {
+    services: [
       {
-        "name": "Visura Ipotecaria",
-        "price": 39,
-        "sco": "35",
-        "time": "in pochi secondi"
+        name: "Visura Ipotecaria",
+        price: 39,
+        sco: "35",
+        time: "in pochi secondi",
       },
       {
-        "name": "Ispezione Nazionale in Conservatoria",
-        "price": 35,
-        "sco": "35",
-        "time": "4 ore"
+        name: "Ispezione Nazionale in Conservatoria",
+        price: 35,
+        sco: "35",
+        time: "4 ore",
       },
       {
-        "name": "Visura Ipoteche e Compravendite",
-        "price": 39,
-        "sco": "35",
-        "time": "in pochi secondi"
+        name: "Visura Ipoteche e Compravendite",
+        price: 39,
+        sco: "35",
+        time: "in pochi secondi",
       },
       {
-        "name": "Visura per Nota",
-        "price": 18,
-        "sco": "35",
-        "time": "4 ore"
+        name: "Visura per Nota",
+        price: 18,
+        sco: "35",
+        time: "4 ore",
       },
       {
-        "name": "Visura Pregiudizievoli",
-        "price": 29,
-        "sco": "35",
-        "time": "4 ore"
+        name: "Visura Pregiudizievoli",
+        price: 29,
+        sco: "35",
+        time: "4 ore",
       },
       {
-        "name": "Copia Atto Notarile",
-        "price": 98,
-        "sco": "35",
-        "time": "3 ettimane"
-      }
-    ]
+        name: "Copia Atto Notarile",
+        price: 98,
+        sco: "35",
+        time: "3 ettimane",
+      },
+    ],
   },
   "P.R.A. e Pratiche Veicoli": {
-    "services": [
+    services: [
       {
-        "name": "Visura Targa PRA",
-        "price": 18,
-        "sco": "50",
-        "time": "in pochi secondi"
+        name: "Visura Targa PRA",
+        price: 18,
+        sco: "50",
+        time: "in pochi secondi",
       },
       {
-        "name": "Aggiornamento indirizzo su Libretto Veicolo",
-        "price": 49,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Aggiornamento indirizzo su Libretto Veicolo",
+        price: 49,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Visura Targa in Motorizzazione",
-        "price": 29,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Visura Targa in Motorizzazione",
+        price: 29,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Perdita di possesso motociclo",
-        "price": 49,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Perdita di possesso motociclo",
+        price: 49,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Certificato Cronologico PRA",
-        "price": 45,
-        "sco": "35",
-        "time": "15 giorni"
+        name: "Certificato Cronologico PRA",
+        price: 45,
+        sco: "35",
+        time: "15 giorni",
       },
       {
-        "name": "Visura Proprietari PRA",
-        "price": 13,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Visura Proprietari PRA",
+        price: 13,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Visura Telaio PRA",
-        "price": 13,
-        "sco": "25",
-        "time": "2 ore"
+        name: "Visura Telaio PRA",
+        price: 13,
+        sco: "25",
+        time: "2 ore",
       },
       {
-        "name": "Visura Bolli",
-        "price": 19,
-        "sco": "25",
-        "time": "3 giorni"
+        name: "Visura Bolli",
+        price: 19,
+        sco: "25",
+        time: "3 giorni",
       },
       {
-        "name": "Visura veicoli intestati",
-        "price": 29,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Visura veicoli intestati",
+        price: 29,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Copia atto di vendita PRA",
-        "price": 55,
-        "sco": "30",
-        "time": "15 giorni"
+        name: "Copia atto di vendita PRA",
+        price: 55,
+        sco: "30",
+        time: "15 giorni",
       },
       {
-        "name": "Copia Certificato Proprietà Veicolo",
-        "price": 49,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Copia Certificato Proprietà Veicolo",
+        price: 49,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Perdita Possesso Veicolo",
-        "price": 49,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Perdita Possesso Veicolo",
+        price: 49,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Rientro in Possesso",
-        "price": 49,
-        "sco": "25",
-        "time": "15 giorni"
+        name: "Rientro in Possesso",
+        price: 49,
+        sco: "25",
+        time: "15 giorni",
       },
       {
-        "name": "Duplicato Carta Circolazione",
-        "price": 49,
-        "sco": "25",
-        "time": "15 giorni"
-      }
-    ]
+        name: "Duplicato Carta Circolazione",
+        price: 49,
+        sco: "25",
+        time: "15 giorni",
+      },
+    ],
   },
   "Anagrafe / Comune": {
-    "services": [
+    services: [
       {
-        "name": "Estratto di Nascita Multilingua",
-        "price": 34,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Estratto di Nascita Multilingua",
+        price: 34,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Estratto di Matrimonio Multilingua",
-        "price": 34,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Estratto di Matrimonio Multilingua",
+        price: 34,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Estratto di Morte Multilingua",
-        "price": 34,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Estratto di Morte Multilingua",
+        price: 34,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato Aire",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato Aire",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato / Estratto di Nascita",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato / Estratto di Nascita",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato / Estratto di Matrimonio",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato / Estratto di Matrimonio",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato di Residenza",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato di Residenza",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato Stato di Famiglia",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato Stato di Famiglia",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato / Estratto di Morte",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato / Estratto di Morte",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato Contestuale",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato Contestuale",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato di Stato Libero",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato di Stato Libero",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato di Esistenza in Vita",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato di Esistenza in Vita",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato di Battesimo",
-        "price": 39,
-        "sco": "30",
-        "time": "20 giorni"
+        name: "Certificato di Battesimo",
+        price: 39,
+        sco: "30",
+        time: "20 giorni",
       },
       {
-        "name": "Certificato di Cittadinanza",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
+        name: "Certificato di Cittadinanza",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
       },
       {
-        "name": "Certificato di Cresima",
-        "price": 39,
-        "sco": "30",
-        "time": "20 giorni"
+        name: "Certificato di Cresima",
+        price: 39,
+        sco: "30",
+        time: "20 giorni",
       },
       {
-        "name": "Certificato Storico",
-        "price": 39,
-        "sco": "30",
-        "time": "20 giorni"
+        name: "Certificato Storico",
+        price: 39,
+        sco: "30",
+        time: "20 giorni",
       },
       {
-        "name": "Certificato Godimento dei Diritti Politici",
-        "price": 29,
-        "sco": "30",
-        "time": "10 giorni"
-      }
-    ]
+        name: "Certificato Godimento dei Diritti Politici",
+        price: 29,
+        sco: "30",
+        time: "10 giorni",
+      },
+    ],
   },
   "Altri Uffici": {
-    "services": [
+    services: [
       {
-        "name": "Estratto Conto Riscossione (ex Equitalia)",
-        "price": 59,
-        "sco": "25",
-        "time": "5 giorni"
+        name: "Estratto Conto Riscossione (ex Equitalia)",
+        price: 59,
+        sco: "25",
+        time: "5 giorni",
       },
       {
-        "name": "Certificato Iscrizione Albo",
-        "price": 39,
-        "sco": "25",
-        "time": "10 giorni"
+        name: "Certificato Iscrizione Albo",
+        price: 39,
+        sco: "25",
+        time: "10 giorni",
       },
       {
-        "name": "Visura Centrale Rischi",
-        "price": 39,
-        "sco": "25",
-        "time": "20 giorni"
+        name: "Visura Centrale Rischi",
+        price: 39,
+        sco: "25",
+        time: "20 giorni",
       },
       {
-        "name": "Certificato di Laurea",
-        "price": 39,
-        "sco": "25",
-        "time": "20 giorni"
+        name: "Certificato di Laurea",
+        price: 39,
+        sco: "25",
+        time: "20 giorni",
       },
       {
-        "name": "Posta Elettronica Certificata - PEC Aruba",
-        "price": 5,
-        "sco": "30",
-        "time": "3 ore"
-      }
-    ]
+        name: "Posta Elettronica Certificata - PEC Aruba",
+        price: 5,
+        sco: "30",
+        time: "3 ore",
+      },
+    ],
   },
   "Agenzia delle Entrate": {
-    "services": [
+    services: [
       {
-        "name": "Certificato di Residenza Fiscale",
-        "price": 39,
-        "sco": "25",
-        "time": "30 giorni"
+        name: "Certificato di Residenza Fiscale",
+        price: 39,
+        sco: "25",
+        time: "30 giorni",
       },
       {
-        "name": "Certificato contro le doppie imposizioni",
-        "price": 39,
-        "sco": "25",
-        "time": "30 giorni"
+        name: "Certificato contro le doppie imposizioni",
+        price: 39,
+        sco: "25",
+        time: "30 giorni",
       },
       {
-        "name": "Certificato di Attribuzione/Cessazione Partita IVA",
-        "price": 39,
-        "sco": "25",
-        "time": "30 giorni"
-      }
-    ]
+        name: "Certificato di Attribuzione/Cessazione Partita IVA",
+        price: 39,
+        sco: "25",
+        time: "30 giorni",
+      },
+    ],
   },
   "Fatturazione Elettronica": {
-    "services": [
+    services: [
       {
-        "name": "Fatturazione Elettronica",
-        "price": 25,
-        "sco": "28",
-        "time": "8 ore"
-      }
-    ]
+        name: "Fatturazione Elettronica",
+        price: 25,
+        sco: "28",
+        time: "8 ore",
+      },
+    ],
   },
-  "Prefettura": {
-    "services": [
+  Prefettura: {
+    services: [
       {
-        "name": "Certificato Apostillato",
-        "price": 32,
-        "sco": "78",
-        "time": "20 giorni"
+        name: "Certificato Apostillato",
+        price: 32,
+        sco: "78",
+        time: "20 giorni",
       },
       {
-        "name": "Estratto Apostillato",
-        "price": 32,
-        "sco": "78",
-        "time": "20 giorni"
-      }
-    ]
+        name: "Estratto Apostillato",
+        price: 32,
+        sco: "78",
+        time: "20 giorni",
+      },
+    ],
   },
-  "Tribunale": {
-    "services": [
+  Tribunale: {
+    services: [
       {
-        "name": "Casellario Giudiziale",
-        "price": 49,
-        "sco": "25",
-        "time": "7 giorni"
+        name: "Casellario Giudiziale",
+        price: 49,
+        sco: "25",
+        time: "7 giorni",
       },
       {
-        "name": "Certificato Carichi Pendenti",
-        "price": 49,
-        "sco": "25",
-        "time": "12 giorni"
+        name: "Certificato Carichi Pendenti",
+        price: 49,
+        sco: "25",
+        time: "12 giorni",
       },
       {
-        "name": "Certificato dell'anagrafe delle sanzioni amministrative",
-        "price": 49,
-        "sco": "25",
-        "time": "7 giorni"
+        name: "Certificato dell'anagrafe delle sanzioni amministrative",
+        price: 49,
+        sco: "25",
+        time: "7 giorni",
       },
       {
-        "name": "Carichi Pendenti degli illeciti amministrativi ",
-        "price": 49,
-        "sco": "25",
-        "time": "12 giorni"
+        name: "Carichi Pendenti degli illeciti amministrativi ",
+        price: 49,
+        sco: "25",
+        time: "12 giorni",
       },
       {
-        "name": "Certificato Antipedofilia",
-        "price": 49,
-        "sco": "25",
-        "time": "7 giorni"
+        name: "Certificato Antipedofilia",
+        price: 49,
+        sco: "25",
+        time: "7 giorni",
       },
       {
-        "name": "Certificato Fallimentare",
-        "price": 59,
-        "sco": "25",
-        "time": "20 giorni"
-      }
-    ]
-  }
-}
+        name: "Certificato Fallimentare",
+        price: 59,
+        sco: "25",
+        time: "20 giorni",
+      },
+    ],
+  },
+};
+export const BgameServices = [
+  {
+    cost: "10.00",
+    name: "BGame Voucher",
+    service_id: "BGM001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BGame Voucher",
+    service_id: "BGM001",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BGame Voucher",
+    service_id: "BGM001",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BGame Voucher",
+    service_id: "BGM001",
+    type: "1",
+  },
+];
+
+export const BbetServices = [
+  {
+    cost: "10.00",
+    name: "BBet Voucher",
+    service_id: "BBT001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BBet Voucher",
+    service_id: "BBT001",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BBet Voucher",
+    service_id: "BBT001",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BBet Voucher",
+    service_id: "BBT001",
+    type: "1",
+  },
+];

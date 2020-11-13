@@ -15,7 +15,6 @@ class DashboardDom extends React.Component {
     menuClassName: "notFixed",
     toDisplay: false,
     categoriesTypeSelected: "RTELD",
-    categoriesFavTypeSelected: "RTELD",
     categoryActive: "RTELC",
     snap: false,
   };
@@ -23,11 +22,11 @@ class DashboardDom extends React.Component {
     this.setState({ toDisplay: val });
   };
   changeServce = async (serviceId, services, serviceName, type, special) => {
-    await this.props.setServiceType(
-      type === "fav"
-        ? this.state.categoriesFavTypeSelected
-        : this.state.categoriesTypeSelected
-    );
+    if (type === "fav") {
+    } else {
+      await this.props.setServiceType(this.state.categoriesTypeSelected);
+    }
+
     await this.props.setServiceId(special ? special : services[0]);
     await this.props.setServiceS({
       name: serviceName,
@@ -331,13 +330,12 @@ class DashboardDom extends React.Component {
                               }`}
                               onClick={async (e) => {
                                 if (e.target.tagName !== "I") {
+                                  // console.log("clicked", comp);
+                                  this.props.setServiceType(comp.key);
                                   if (id === "BOLL") {
                                     window.location.hash =
                                       "dashboard/pagamenti";
                                   } else {
-                                    this.setState({
-                                      categoriesFavTypeSelected: comp.key,
-                                    });
                                     this.changeServce(
                                       id,
                                       comp.companies[key][id].services,

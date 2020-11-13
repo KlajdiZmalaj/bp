@@ -128,7 +128,12 @@ export class FormSubmiter extends Component {
                         });
                       }
                     }}
-                    className="fal fa-check-circle"
+                    className={`fal animated fa-${
+                      this.state.fileType === "pdf"
+                        ? "check-circle heartBeat"
+                        : "exclamation-circle wobble "
+                    }`}
+                    style={{ animationIterationCount: "infinite" }}
                   ></i>
                 )}
               </div>

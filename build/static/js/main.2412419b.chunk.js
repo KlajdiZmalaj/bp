@@ -2518,7 +2518,7 @@
           setPaymentsForExcel: ["paymentsForExcel"],
           setUsernames: ["usernames"],
           getRechargeMobile: ["service_id", "tel_no", "callBack"],
-          getBgameVoucherReq: ["rechargeMobile"],
+          getCustomVoucherReq : ["rechargeMobile"],
           getPostePay: [
             "service_id",
             "importo",

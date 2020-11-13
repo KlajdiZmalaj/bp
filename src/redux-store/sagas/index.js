@@ -53,7 +53,7 @@ import {
   AddExtraData,
   getStatistiche,
   UpdateServiceChangeStatus,
-  getBgameVoucherReq,
+  getCustomVoucherReq,
   getStatisticheMain,
   fetchBolletini,
   buyTicketOnline,
@@ -95,7 +95,7 @@ export default function* root() {
     takeLatest(AuthTypes.BUY_TICKET_ONLINE, buyTicketOnline),
     takeLatest(AuthTypes.FETCH_BOLLETINI, fetchBolletini),
     takeLatest(AuthTypes.GET_STATISTICHE_MAIN, getStatisticheMain),
-    takeLatest(AuthTypes.GET_BGAME_VOUCHER_REQ, getBgameVoucherReq),
+    takeLatest(AuthTypes.GET_CUSTOM_VOUCHER_REQ, getCustomVoucherReq),
     takeLatest(
       AuthTypes.UPDATE_SERVICES_CHANGE_STATUS,
       UpdateServiceChangeStatus

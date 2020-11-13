@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 const { Option } = Select;
 
-class Eventi extends Component {
+class Auto extends Component {
   state = {
     tipologia: "1",
     nome: "",
@@ -357,7 +357,8 @@ class Eventi extends Component {
                 defaultValue={"Colore"}
                 value={colore}
               >
-                <Option value="Colore">Colore</Option>
+                <Option value="light">Light</Option>
+                <Option value="dark">Dark</Option>
               </Select>
             </div>
             <div className="formsContainer--body__item ">
@@ -391,4 +392,4 @@ const mstp = (state) => ({
   province: state.auth.SelectData?.province,
   comuni: state.auth.SelectData?.comuni,
 });
-export default connect(mstp, { ...AuthActions, ...MainActions })(Eventi);
+export default connect(mstp, { ...AuthActions, ...MainActions })(Auto);

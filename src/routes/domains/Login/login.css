@@ -83,6 +83,33 @@
   margin-top: 4px;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.login ul li .loginBtn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: var(--accent-bg);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.login ul li .loginBtn:hover {
+  color: #fff;
+}
+
+.login ul li .loginBtn:hover:before {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .verifyAcc {
