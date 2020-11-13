@@ -7,7 +7,7 @@ export const allRoles = {
 };
 export const BannerColors = {
   BET: "#042842",
-  BGM: "#ed4d1d",
+  BGM: "#03312E",
   BBT: "#ed4d1d",
   BWN: "#fec90b",
   PKS: "#d70909",

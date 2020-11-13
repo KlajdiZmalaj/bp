@@ -270,7 +270,7 @@
 }
 
 .servicesForms .mobileNumPad .GamingBanner {
-  height: calc(75vh - 105px);
+  height: calc(75vh - 104px);
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
