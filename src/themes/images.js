@@ -199,6 +199,7 @@ export default {
   "vivaticket-mobile": require(`../assets/images/prenotazioni/vivaticket-mobile.svg`),
 
   "ticketing-logo": require(`../assets/images/prenotazioni/ticketing.svg`),
+  "ticketone-logo": require(`../assets/images/prenotazioni/ticketing.svg`),
   "ticketing-bg": require(`../assets/images/prenotazioni/ticketing-bg.jpg`),
   "ticketing-card": require(`../assets/images/prenotazioni/ticketing-card.png`),
   "ticketone-mobile": require(`../assets/images/prenotazioni/ticketone-mobile.svg`),
