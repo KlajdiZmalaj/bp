@@ -1,7 +1,0 @@
-<svg id="dashcoin" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-  <circle id="Ellipse_18" data-name="Ellipse 18" cx="20" cy="20" r="20" fill="#2573c2"/>
-  <g id="Group_189" data-name="Group 189" transform="translate(6.908 12.291)">
-    <path id="Path_187" data-name="Path 187" d="M400.356,616.978a2.873,2.873,0,0,0-.384-1.272,1.821,1.821,0,0,0-.972-.872,2.87,2.87,0,0,0-1.368-.3H379.88l-1.272,3.812h16.084l-2.54,7.792h-16.08L374.8,629.95h17.836a4.927,4.927,0,0,0,1.556-.3,10.519,10.519,0,0,0,1.556-.972,7.655,7.655,0,0,0,1.272-1.272,8.643,8.643,0,0,0,.784-1.468l2.356-7.408A2.747,2.747,0,0,0,400.356,616.978Z" transform="translate(-374.212 -614.533)" fill="#fff"/>
-    <path id="Path_188" data-name="Path 188" d="M356.136,911.6h-9.464l-1.272,3.524h9.56Z" transform="translate(-345.4 -905.659)" fill="#fff"/>
-  </g>
-</svg>

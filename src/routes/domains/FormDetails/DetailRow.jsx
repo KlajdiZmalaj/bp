@@ -46,7 +46,7 @@ export class DetailRow extends Component {
                   aria-hidden="true"
                 ></i>
               </Tooltip>
-              Prenotazione biglieto <div>{ticket.nome_agenzia}</div>{" "}
+              Prenotazione <div>{ticket.nome_agenzia}</div>{" "}
               {ticket.status === "Nuova Richiesta" && (
                 <div className="new">New</div>
               )}

@@ -33,8 +33,7 @@ const RowDetailsMobile = ({ mobilePopUp, mobilePopUpData }) => {
           <div className="rowPopUp--body__item">
             <span>Soggetto</span>
             <span>
-              Prenotazione Biglieto {mobilePopUpData.type}{" "}
-              {mobilePopUpData.nome_agenzia}
+              Prenotazione {mobilePopUpData.type} {mobilePopUpData.nome_agenzia}
             </span>
           </div>
 
