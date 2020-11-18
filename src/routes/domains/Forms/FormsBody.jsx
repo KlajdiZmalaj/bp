@@ -10,6 +10,7 @@ import Auto from "./Auto";
 import Energia from "./Energia";
 import images from "themes/images";
 import "./style.css";
+import { stubFalse } from "lodash";
 
 const Card = ({
   title,
@@ -44,11 +45,11 @@ const Card = ({
 
 export class FormsBody extends Component {
   state = {
-    isSelected: true,
-    typee: 8,
+    isSelected: false,
+    typee: 1,
     bagaglio: 1,
-    nome_agenzia: "energia",
-    color: "#18819B",
+    nome_agenzia: "",
+    color: "",
   };
   render() {
     const { accountInfo } = this.props;

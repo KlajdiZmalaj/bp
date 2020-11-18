@@ -530,12 +530,6 @@
   position: relative;
 }
 
-.formsContainer--body__item > i {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-}
-
 .formsContainer--body__item .inputI {
   position: absolute;
   width: 10%;

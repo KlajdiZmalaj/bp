@@ -283,7 +283,9 @@ class Auto extends Component {
             <Item
               label="Telefono"
               value={tel}
-              Icon={() => <i className="fal fa-phone" aria-hidden="true"></i>}
+              Icon={() => (
+                <i className="fal fa-phone inputI" aria-hidden="true"></i>
+              )}
               handleChange={(e) => {
                 this.setState({ tel: e });
               }}
@@ -292,7 +294,7 @@ class Auto extends Component {
               label="E-mail"
               value={mail}
               Icon={() => (
-                <i className="fal fa-envelope" aria-hidden="true"></i>
+                <i className="fal fa-envelope inputI" aria-hidden="true"></i>
               )}
               handleChange={(e) => {
                 this.setState({ mail: e });
