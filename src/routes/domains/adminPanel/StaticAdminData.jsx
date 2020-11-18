@@ -32,6 +32,6 @@ export const graphData = [
   { height: 70 },
   { height: 40 },
 ];
-export const Tranzacioni = "2586.66";
-export const Commisione = "2586.66";
-export const Proviggioni = "2586.66";
+export const Tranzacioni = "0";
+export const Commisione = "0";
+export const Proviggioni = "0";
