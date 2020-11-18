@@ -30,7 +30,7 @@ class AdminComp extends React.Component {
     const { userDetail, state, handleChange } = this.props;
     return (
       <div className="newReg--row">
-        <div className="newReg--row__col">
+        <div className="newReg--row__col admcomp">
           <ItemFull
             Class={"full"}
             readOnly={true}

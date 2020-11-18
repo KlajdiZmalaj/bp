@@ -125,6 +125,7 @@ class AdminPanelDom extends React.Component {
       accountInfo,
       activeSkinId,
     } = this.props;
+    console.log("accountInfo accountInfo", accountInfo);
     return (
       <React.Fragment>
         <div className="Admin-Panel">
@@ -138,7 +139,7 @@ class AdminPanelDom extends React.Component {
                 }
               >
                 <div className="newReg--header">
-                  punta ancora di {userDetail.username}
+                  {userDetail.username}
                   <div
                     className="closeBtn"
                     onClick={() => {
@@ -155,6 +156,7 @@ class AdminPanelDom extends React.Component {
                 </div>
                 {userDetail?.role === "agent" ? (
                   <AgentComp
+                    accountInfo={accountInfo}
                     state={this.state}
                     userDetail={userDetail}
                     handleChange={(name, value) => {

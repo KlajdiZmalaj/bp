@@ -1040,7 +1040,7 @@ class Transazioni extends React.Component {
                     Telefono: <b>{this.state.phone}</b>{" "}
                   </span> */}
                   {/* BPOINT<br></br>
-                  PUNTA ANCORA DI GALASSI GABRIELE<br></br>
+                    GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
                   Telefono: 335398618<br></br> */}
                 </div>

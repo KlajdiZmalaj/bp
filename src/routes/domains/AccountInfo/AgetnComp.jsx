@@ -7,13 +7,15 @@ const { Option } = Select;
 
 class AgentComp extends React.Component {
   render() {
-    const { userDetail, state, handleChange } = this.props;
+    const { userDetail, state, handleChange, accountInfo } = this.props;
+    const isMainAdm = accountInfo.profile.role.name === "main_admin" || false;
+    console.log("accountInfo", accountInfo, isMainAdm);
     return (
       <div className="newReg--row">
-        <div className="newReg--row__col">
+        <div className="newReg--row__col agentcomp">
           <ItemFull
             Class={"full"}
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={null}
             changeValue={null}
             title={"Ragione Sociale"}
@@ -22,15 +24,15 @@ class AgentComp extends React.Component {
 
           <ItemFull
             Class="full"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"address"}
             title={"Address"}
             value={state.address || userDetail.address}
           />
           <ItemFull
-            Class="semi"
-            readOnly={true}
+            Class="full"
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"birth_comune_code"}
             title={"Codice comune di nascita"}
@@ -38,7 +40,7 @@ class AgentComp extends React.Component {
           />
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"first_name"}
             title={"First Name"}
@@ -46,7 +48,15 @@ class AgentComp extends React.Component {
           />
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
+            handleChange={handleChange}
+            changeValue={"last_name"}
+            title={"Last Name"}
+            value={state.last_name || userDetail.last_name}
+          />
+          <ItemFull
+            Class="semi"
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"birth_country"}
             title={"Nazione di residenza: *"}
@@ -54,7 +64,7 @@ class AgentComp extends React.Component {
           />
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"birth_place"}
             title={"Provincia di residenza: *"}
@@ -62,7 +72,7 @@ class AgentComp extends React.Component {
           />
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"birthday"}
             title={"Compleanno"}
@@ -70,7 +80,7 @@ class AgentComp extends React.Component {
           />
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"changedcap"}
             title={"Cap"}
@@ -79,7 +89,7 @@ class AgentComp extends React.Component {
           <ItemFull
             Class="semi"
             changeValue={"city"}
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             title={"Citta"}
             value={state.city || userDetail.city}
@@ -87,7 +97,7 @@ class AgentComp extends React.Component {
 
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"country"}
             title={"Nazione"}
@@ -96,23 +106,15 @@ class AgentComp extends React.Component {
           <ItemFull
             Class="full"
             changeValue={"p_iva"}
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             title={"P.Iva: *"}
             value={state.p_iva || userDetail.p_iva}
           />
 
           <ItemFull
-            Class="semi"
-            readOnly={true}
-            handleChange={handleChange}
-            changeValue={"last_name"}
-            title={"Last Name"}
-            value={state.last_name || userDetail.last_name}
-          />
-          <ItemFull
-            Class="semi"
-            readOnly={true}
+            Class="full"
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"gender"}
             title={"Gender"}
@@ -120,7 +122,7 @@ class AgentComp extends React.Component {
           />
           <ItemFull
             Class="full"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"email"}
             title={"Email"}
@@ -130,7 +132,7 @@ class AgentComp extends React.Component {
         <div className="newReg--row__col">
           <ItemFull
             Class="full"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={null}
             changeValue={"null"}
             title={"Soprannome"}
@@ -138,41 +140,17 @@ class AgentComp extends React.Component {
           />
 
           <ItemFull
-            Class="semi"
-            readOnly={true}
-            handleChange={handleChange}
-            changeValue={"luogo_di_rilascio"}
-            title={"Luogo Di Rilascio"}
-            value={state.luogo_di_rilascio || userDetail.luogo_di_rilascio}
-          />
-          <ItemFull
-            Class="semi"
-            readOnly={true}
-            handleChange={handleChange}
-            changeValue={"wallet"}
-            title={"Wallet"}
-            value={state.wallet || userDetail.wallet}
-          />
-          <ItemFull
             Class="full"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"personal_number"}
             title={"Personal Number"}
             value={state.personal_number || userDetail.personal_number}
           />
-          <ItemFull
-            Class="full"
-            readOnly={true}
-            handleChange={handleChange}
-            changeValue={"ragione_sociale"}
-            title={"Ragionale Sociale"}
-            value={state.ragione_sociale || userDetail.ragione_sociale}
-          />
 
           <ItemFull
             Class="full"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"changedphone"}
             title={"Cellulare"}
@@ -199,7 +177,7 @@ class AgentComp extends React.Component {
           </div>
           <ItemFull
             Class="full"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"changeddocument_number"}
             title={"Numero Documento"}
@@ -229,7 +207,7 @@ class AgentComp extends React.Component {
           </div>
           <ItemFull
             Class="semi"
-            readOnly={true}
+            readOnly={!isMainAdm}
             handleChange={handleChange}
             changeValue={"luogo_di_rilascio"}
             title={"Luogo di rilascio"}

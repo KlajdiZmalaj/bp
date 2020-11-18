@@ -47,7 +47,7 @@ class FatturaDetails extends React.Component {
                   <span className="Prepagato">Prepagato</span>
                 </div>
                 <div className="Fatura--Body--TopPart--Right">
-                  <span className="head">{`PUNTA ANCORA DI ${faturaDetails?.user_data?.full_name?.toUpperCase()}`}</span>
+                  <span className="head">{`  ${faturaDetails?.user_data?.full_name?.toUpperCase()}`}</span>
                   <span className="data">
                     {`Via del Lavoro: ${faturaDetails?.user_data?.address?.toUpperCase()}-${
                       faturaDetails?.user_data?.cap
