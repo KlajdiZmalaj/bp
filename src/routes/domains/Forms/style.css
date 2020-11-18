@@ -263,8 +263,8 @@
 }
 
 .formsContainer--body .rightForm--header img {
-  -webkit-filter: brightness(0.8);
-          filter: brightness(0.8);
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
   width: 120px;
   height: auto;
   -o-object-fit: contain;
@@ -354,6 +354,132 @@
   }
 }
 
+.formsContainer--body .rightForm--subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  margin-top: 12px;
+  font-weight: 400;
+}
+
+.formsContainer--body .rightForm--subtitle > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.formsContainer--body .rightForm--subtitle > div span {
+  font-size: 10px;
+  color: #5c5c5c;
+}
+
+.formsContainer--body .rightForm--subtitle .right {
+  margin-left: auto;
+  color: #a5a5a5;
+  font-size: 11px;
+}
+
+.formsContainer--body .rightForm--categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 18px;
+}
+
+.formsContainer--body .rightForm--categories__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 118px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 32%;
+  border: 1px solid #ebeced;
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.formsContainer--body .rightForm--categories__item span {
+  font-size: 12px;
+  margin: auto;
+  text-align: center;
+  color: #5c5c5c;
+}
+
+.formsContainer--body .rightForm--categories__item > div:nth-child(3) {
+  font-size: 14px;
+  font-weight: 500;
+  height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+  color: #18819b;
+  border-top: 1px solid #ebeced;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.formsContainer--body .rightForm--categories__item svg {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  color: #18819b;
+}
+
+.formsContainer--body .rightForm--categories__item svg.fire-bulb {
+  width: 73px;
+}
+
+.formsContainer--body .rightForm--categories__item:hover, .formsContainer--body .rightForm--categories__item.active {
+  background-color: #18819b;
+}
+
+.formsContainer--body .rightForm--categories__item:hover *, .formsContainer--body .rightForm--categories__item.active * {
+  color: #fff !important;
+}
+
+.formsContainer--body .rightForm--categories__item:hover > div:nth-child(3), .formsContainer--body .rightForm--categories__item.active > div:nth-child(3) {
+  border-top: 1px solid #117088;
+}
+
 .formsContainer--body .formsItemTogether {
   width: 100%;
   display: -webkit-box;
@@ -402,6 +528,12 @@
           justify-content: center;
   margin-top: 10px;
   position: relative;
+}
+
+.formsContainer--body__item > i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
 }
 
 .formsContainer--body__item .inputI {
@@ -635,6 +767,99 @@
   height: 10px;
   background-color: #ccc;
   border-radius: 10px;
+}
+
+.formsContainer--body__checks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 54px;
+  background-color: #ebeced;
+  color: #5c5c5c;
+  margin-bottom: 2px;
+}
+
+.formsContainer--body__checks2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 35px;
+  background-color: #ebeced;
+  color: #18819b;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 7px 10px;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.formsContainer--body__checks2 i {
+  margin-left: auto;
+  color: #b5b5b5;
+}
+
+.formsContainer--body__checks2 i.far.fa-check-square {
+  color: #18819b;
+}
+
+.formsContainer--body__checks > span {
+  width: 70%;
+  border-right: 2px solid #fff;
+  font-size: 12px;
+  padding: 7px 10px;
+}
+
+.formsContainer--body__checks > .btns {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.formsContainer--body__checks > .btns > div {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.formsContainer--body__checks > .btns > div i {
+  font-size: 13px;
+  position: relative;
+  bottom: 1px;
+  margin-right: 2px;
+}
+
+.formsContainer--body__checks > .btns > div i.fa-dot-circle {
+  color: #18819b;
+}
+
+.formsContainer--body__semiCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.formsContainer--body__semiCont .semi {
+  width: calc(100% / 2 - 5px);
+  margin: 0;
 }
 
 .formsContainer--body .radioWrapper {
@@ -1673,5 +1898,36 @@ div.OnlineShop .rightFormOnlShop .SubForm .Bottom .L {
 
 .addPadding {
   padding: 9px;
+}
+
+.download-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 35px;
+  background-color: #ebeced;
+  color: #222;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 5px 10px;
+  margin-bottom: 2px;
+}
+
+.download-bar span {
+  font-size: 12px;
+}
+
+.download-bar i:nth-child(1) {
+  color: #18819b;
+  margin-right: 5px;
+}
+
+.download-bar i:last-child {
+  margin-left: auto;
+  color: #b5b5b5;
 }
 /*# sourceMappingURL=style.css.map */

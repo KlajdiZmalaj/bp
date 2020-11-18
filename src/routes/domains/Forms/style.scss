@@ -224,6 +224,88 @@
           padding-right: 20px;
         }
       }
+      &--subtitle {
+        font-size: 12px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 12px;
+        font-weight: 400;
+        > div {
+          display: flex;
+          flex-flow: column;
+          span {
+            font-size: 10px;
+            color: #5c5c5c;
+          }
+        }
+        .right {
+          margin-left: auto;
+          color: #a5a5a5;
+          font-size: 11px;
+        }
+      }
+      &--categories {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 18px;
+        &__item {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          height: 118px;
+          justify-content: flex-start;
+          width: 32%;
+          border: 1px solid #ebeced;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: 0.3s;
+
+          span {
+            font-size: 12px;
+            margin: auto;
+            text-align: center;
+            color: #5c5c5c;
+          }
+          > div:nth-child(3) {
+            font-size: 14px;
+            font-weight: 500;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+            color: #18819b;
+            border-top: 1px solid #ebeced;
+            transition: 0.3s;
+          }
+          svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 15px;
+            color: #18819b;
+            &.fire-bulb {
+              width: 73px;
+            }
+          }
+          &:hover,
+          &.active {
+            background-color: #18819b;
+            * {
+              color: #fff !important;
+            }
+
+            > div:nth-child(3) {
+              border-top: 1px solid #117088;
+            }
+          }
+        }
+      }
     }
     .formsItemTogether {
       width: 100%;
@@ -248,6 +330,11 @@
       justify-content: center;
       margin-top: 10px;
       position: relative;
+      > i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+      }
       .inputI {
         position: absolute;
         width: 10%;
@@ -433,6 +520,68 @@
             }
           }
         }
+      }
+    }
+    &__checks {
+      display: flex;
+      height: 54px;
+      background-color: #ebeced;
+      color: #5c5c5c;
+      margin-bottom: 2px;
+      &2 {
+        display: flex;
+        height: 35px;
+        background-color: #ebeced;
+        color: #18819b;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 7px 10px;
+        font-size: 13px;
+        margin-bottom: 2px;
+        i {
+          margin-left: auto;
+          color: #b5b5b5;
+          &.far.fa-check-square {
+            color: #18819b;
+          }
+        }
+      }
+      > span {
+        width: 70%;
+        border-right: 2px solid #fff;
+        font-size: 12px;
+        padding: 7px 10px;
+      }
+      > .btns {
+        width: 30%;
+        display: flex;
+        > div {
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 15px;
+          text-transform: uppercase;
+          i {
+            font-size: 13px;
+            position: relative;
+            bottom: 1px;
+            margin-right: 2px;
+            &.fa-dot-circle {
+              color: #18819b;
+            }
+          }
+        }
+      }
+    }
+    &__semiCont {
+      display: flex;
+      justify-content: space-between;
+      .semi {
+        width: calc(100% / 2 - 5px);
+        margin: 0;
       }
     }
     .radioWrapper {
@@ -1167,4 +1316,25 @@ div.OnlineShop {
 }
 .addPadding {
   padding: 9px;
+}
+.download-bar {
+  display: flex;
+  height: 35px;
+  background-color: #ebeced;
+  color: #222;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 10px;
+  margin-bottom: 2px;
+  span {
+    font-size: 12px;
+  }
+  i:nth-child(1) {
+    color: #18819b;
+    margin-right: 5px;
+  }
+  i:last-child {
+    margin-left: auto;
+    color: #b5b5b5;
+  }
 }

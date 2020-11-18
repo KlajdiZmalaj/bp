@@ -25,9 +25,7 @@ class Auto extends Component {
     colore: "Colore",
     note: "",
   };
-  componentDidMount() {
-    this.props.getRegistrazioneData();
-  }
+
   resetState = (msg) => {
     if (!msg.error) {
       this.setState({

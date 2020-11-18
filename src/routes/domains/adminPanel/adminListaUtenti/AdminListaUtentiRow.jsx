@@ -292,7 +292,8 @@ class AdminListaUtentiRow extends React.Component {
                             backoffice: true,
                           },
                       perPage,
-                      page_number
+                      page_number,
+                      true
                     );
                   },
                   accountInfo.role,

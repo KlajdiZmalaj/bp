@@ -7,7 +7,7 @@ import Eventi from "./Eventi";
 import OnlineShop from "./OnlineShop";
 import Bgame from "./Bgame";
 import Auto from "./Auto";
-
+import Energia from "./Energia";
 import images from "themes/images";
 import "./style.css";
 
@@ -44,11 +44,11 @@ const Card = ({
 
 export class FormsBody extends Component {
   state = {
-    isSelected: false,
-    typee: 1,
+    isSelected: true,
+    typee: 8,
     bagaglio: 1,
-    nome_agenzia: "",
-    color: "",
+    nome_agenzia: "energia",
+    color: "#18819B",
   };
   render() {
     const { accountInfo } = this.props;
@@ -183,7 +183,7 @@ export class FormsBody extends Component {
               <Card
                 clickHandler={() =>
                   this.setState({
-                    isSelected: false,
+                    isSelected: true,
                     nome_agenzia: "auto",
                     typee: 6,
                     color: "#22A094",
@@ -214,10 +214,10 @@ export class FormsBody extends Component {
               <Card
                 clickHandler={() =>
                   this.setState({
-                    isSelected: false,
+                    isSelected: true,
                     nome_agenzia: "energia",
                     typee: 8,
-                    color: "#22A094",
+                    color: "#18819B",
                   })
                 }
                 title="energia"
@@ -281,6 +281,16 @@ export class FormsBody extends Component {
           )}
           {isSelected && typee === 6 && (
             <Auto
+              goBack={() => this.setState({ isSelected: false })}
+              nome_agenzia={nome_agenzia}
+              color={color}
+              typee={typee}
+              sendDataForm={this.props.sendDataForm}
+              accountInfo={accountInfo}
+            />
+          )}
+          {isSelected && typee === 8 && (
+            <Energia
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
               color={color}

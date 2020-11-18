@@ -217,6 +217,8 @@ export default {
   "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
   "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
 
+  "energia-bg": require(`../assets/images/prenotazioni/energia.png`),
+
   ServiceDefault: require(`../assets/images/ServiceDefault.jpg`),
   ServiceBET: require(`../assets/images/ServiceBET.jpg`),
   ServiceBGM: require(`../assets/images/ServiceDefault.jpg`),

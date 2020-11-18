@@ -14,6 +14,7 @@ export const BannerColors = {
   PPB: "#e44b23",
   STC: "#00bfd2",
   WHL: "#01153a",
+  default : 'var(--accent-bg)'
 };
 export const docType = [
   {
