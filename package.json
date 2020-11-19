@@ -6,6 +6,7 @@
     "@ant-design/icons": "^4.2.1",
     "antd": "^3.26.7",
     "aos": "^2.3.4",
+    "api-trenitalia": "^2.0.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "codice-fiscale-js": "^2.3.6",

@@ -34,10 +34,10 @@ class AdminComp extends React.Component {
           <ItemFull
             Class={"full"}
             readOnly={true}
-            handleChange={null}
-            changeValue={null}
+            handleChange={handleChange}
+            changeValue={"a_ragione_sociale"}
             title={"Ragione Sociale"}
-            value={userDetail.ragione_sociale}
+            value={state.a_ragione_sociale || userDetail.ragione_sociale}
           />
           <ItemFull
             Class="semi"
@@ -106,11 +106,11 @@ class AdminComp extends React.Component {
           />
           <ItemFull
             Class="semi"
-            changeValue={"p_iva"}
+            changeValue={"a_iva"}
             readOnly={false}
             handleChange={handleChange}
             title={"P.Iva: *"}
-            value={state.p_iva || userDetail.p_iva}
+            value={state.a_iva || userDetail.p_iva}
           />
           <ItemFull
             Class="semi"
@@ -134,9 +134,9 @@ class AdminComp extends React.Component {
         <div className="newReg--row__col">
           <ItemFull
             Class="full"
-            readOnly={true}
-            handleChange={null}
-            changeValue={"null"}
+            readOnly={false}
+            handleChange={handleChange}
+            changeValue={"username"}
             title={"Nickname"}
             value={userDetail.username}
           />

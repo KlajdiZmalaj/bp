@@ -46,8 +46,12 @@ class AdminPanelDom extends React.Component {
       this.state.changedInsegna || this.props.userDetail.insegna,
       this.state.changedCordinate || this.props.userDetail.cordinate,
       this.state.changeda_phone || this.props.userDetail.a_phone,
-      this.state.changedSede_operativa || this.props.userDetail.sede_operativa,
-      this.state.changedcomune || this.props.userDetail.comune,
+      this.state.changedSede_operativa ||
+        this.props.userDetail.a_address ||
+        this.props.userDetail.sede_operativa,
+      this.state.changedcomune ||
+        this.props.userDetail.a_city ||
+        this.props.userDetail.comune,
       this.state.changedprovincia || this.props.userDetail.provincia,
       this.state.changedcap || this.props.userDetail.cap,
       this.state.changednazione || this.props.userDetail.nazione,
@@ -55,7 +59,33 @@ class AdminPanelDom extends React.Component {
         this.props.userDetail.pagamento_mensile,
       this.state.password,
       this.state.confirm_password,
-      this.props.activeSkinId
+      this.props.activeSkinId,
+      () => {},
+      {
+        username: this.state.username || this.props.userDetail.username,
+        email: this.state.email || this.props.userDetail.email,
+        a_ragione_sociale:
+          this.state.a_ragione_sociale || this.props.userDetail.ragione_sociale,
+        a_iva: this.state.a_iva || this.props.userDetail.p_iva,
+        first_name: this.state.first_name || this.props.userDetail.first_name,
+        last_name: this.state.last_name || this.props.userDetail.last_name,
+        birth_comune_code:
+          this.state.birth_comune_code ||
+          this.props.userDetail.birth_comune_code,
+        birth_country:
+          this.state.birth_country || this.props.userDetail.birth_country,
+        birth_place:
+          this.state.birth_place || this.props.userDetail.birth_place,
+        birthday: this.state.birthday || this.props.userDetail.birthday,
+        city: this.state.city || this.props.userDetail.city,
+        gender: this.state.gender || this.props.userDetail.gender,
+        personal_number:
+          this.state.personal_number || this.props.userDetail.personal_number,
+        ragione_sociale:
+          this.state.ragione_sociale || this.props.userDetail.ragione_sociale,
+        p_iva: this.state.p_iva || this.props.userDetail.p_iva,
+        country: this.state.country || this.props.userDetail.country,
+      }
     );
   };
   componentDidMount() {
@@ -159,6 +189,7 @@ class AdminPanelDom extends React.Component {
                     accountInfo={accountInfo}
                     state={this.state}
                     userDetail={userDetail}
+                    updateUser={this.updateUser}
                     handleChange={(name, value) => {
                       this.setState({ [name]: value });
                     }}

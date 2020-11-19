@@ -6,6 +6,7 @@ import DatePicker from "shared-components/DatePicker/DatePicker";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import TreniUserFrom from "./VoliUserFrom";
+// const Trenitalia = require("api-trenitalia");
 
 class Treni extends Component {
   state = {
@@ -142,7 +143,28 @@ class Treni extends Component {
         )}
 
         <div className="rightForm">
-          <div className="rightForm--header">
+          <div
+            className="rightForm--header"
+            // onClick={async () => {
+            //   console.log("clicked");
+            //   const t = new Trenitalia();
+            //   const stations_from = await t.autocomplete("milano");
+            //   const station_from = stations_from[0].name;
+            //   const stations_to = await t.autocomplete("bari");
+            //   const station_to = stations_to[0].name;
+
+            //   const date = moment().add(3, "months").format("DD/MM/YYYY");
+            //   const solutions = await t.getOneWaySolutions(
+            //     station_from,
+            //     station_to,
+            //     date,
+            //     "13",
+            //     2,
+            //     0
+            //   );
+            //   console.log("solutions", solutions);
+            // }}
+          >
             {!isMobile && (
               <div
                 className="TitleBack"
