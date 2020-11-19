@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.34f4d31e.chunk.css",
-    "main.js": "/static/js/main.1e8a9f9a.chunk.js",
-    "main.js.map": "/static/js/main.1e8a9f9a.chunk.js.map",
+    "main.css": "/static/css/main.ec471fe6.chunk.css",
+    "main.js": "/static/js/main.cb16c219.chunk.js",
+    "main.js.map": "/static/js/main.cb16c219.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c66f21da.js",
     "runtime-main.js.map": "/static/js/runtime-main.c66f21da.js.map",
     "static/css/2.ebbedc22.chunk.css": "/static/css/2.ebbedc22.chunk.css",
-    "static/js/2.34db9c6d.chunk.js": "/static/js/2.34db9c6d.chunk.js",
-    "static/js/2.34db9c6d.chunk.js.map": "/static/js/2.34db9c6d.chunk.js.map",
+    "static/js/2.9f638fcb.chunk.js": "/static/js/2.9f638fcb.chunk.js",
+    "static/js/2.9f638fcb.chunk.js.map": "/static/js/2.9f638fcb.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.ac2f282b54094c590c94bcadc1a1fa1d.js": "/precache-manifest.ac2f282b54094c590c94bcadc1a1fa1d.js",
+    "precache-manifest.72d80275105e3cb4e6c12808f3588c78.js": "/precache-manifest.72d80275105e3cb4e6c12808f3588c78.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.ebbedc22.chunk.css.map": "/static/css/2.ebbedc22.chunk.css.map",
-    "static/css/main.34f4d31e.chunk.css.map": "/static/css/main.34f4d31e.chunk.css.map",
-    "static/js/2.34db9c6d.chunk.js.LICENSE.txt": "/static/js/2.34db9c6d.chunk.js.LICENSE.txt",
+    "static/css/main.ec471fe6.chunk.css.map": "/static/css/main.ec471fe6.chunk.css.map",
+    "static/js/2.9f638fcb.chunk.js.LICENSE.txt": "/static/js/2.9f638fcb.chunk.js.LICENSE.txt",
     "static/media/AMZNP.svg": "/static/media/AMZNP.0083a3b2.svg",
     "static/media/styles.css": "/static/media/AdminSkinListBackground.d5e4bc18.png",
     "static/media/BOL006-Black.svg": "/static/media/BOL006-Black.bba0b42f.svg",
@@ -47,6 +47,7 @@
     "static/media/ServiceBET.jpg": "/static/media/ServiceBET.28f3393d.jpg",
     "static/media/ServiceBGM.jpg": "/static/media/ServiceBGM.657e74aa.jpg",
     "static/media/ServiceBWN.jpg": "/static/media/ServiceBWN.cd8a8960.jpg",
+    "static/media/ServiceDefault.jpg": "/static/media/ServiceDefault.98ebfb5f.jpg",
     "static/media/ServicePKS.jpg": "/static/media/ServicePKS.e646779f.jpg",
     "static/media/ServicePPB.jpg": "/static/media/ServicePPB.adf55721.jpg",
     "static/media/ServiceSTC.jpg": "/static/media/ServiceSTC.039d92ae.jpg",
@@ -72,6 +73,7 @@
     "static/media/auto-card.png": "/static/media/auto-card.62db8820.png",
     "static/media/auto-logo.svg": "/static/media/auto-logo.9ae5ff04.svg",
     "static/media/baner_servizi_header.png": "/static/media/baner_servizi_header.5874427d.png",
+    "static/media/bbet.svg": "/static/media/bbet.3f7a13e8.svg",
     "static/media/bgame-bg.jpg": "/static/media/bgame-bg.caf40a4d.jpg",
     "static/media/bgame-card.png": "/static/media/bgame-card.b5e45fc5.png",
     "static/media/bgame-logo.svg": "/static/media/bgame-logo.e16411fb.svg",
@@ -140,6 +142,7 @@
     "static/media/shop-online-card.png": "/static/media/shop-online-card.ab36f3ac.png",
     "static/media/shop-online-logo.svg": "/static/media/shop-online-logo.81e667d7.svg",
     "static/media/spedizione.png": "/static/media/spedizione.07296f23.png",
+    "static/media/stbt.svg": "/static/media/stbt.ee2b910c.svg",
     "static/media/stubhub-bg.jpg": "/static/media/stubhub-bg.7a6e719e.jpg",
     "static/media/stubhub-card.png": "/static/media/stubhub-card.3e06554f.png",
     "static/media/stubhub-mobile.svg": "/static/media/stubhub-mobile.53beb146.svg",
@@ -167,8 +170,8 @@
   "entrypoints": [
     "static/js/runtime-main.c66f21da.js",
     "static/css/2.ebbedc22.chunk.css",
-    "static/js/2.34db9c6d.chunk.js",
-    "static/css/main.34f4d31e.chunk.css",
-    "static/js/main.1e8a9f9a.chunk.js"
+    "static/js/2.9f638fcb.chunk.js",
+    "static/css/main.ec471fe6.chunk.css",
+    "static/js/main.cb16c219.chunk.js"
   ]
 }
