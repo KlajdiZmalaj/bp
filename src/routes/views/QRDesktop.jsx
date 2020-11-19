@@ -72,7 +72,7 @@ function Main({
   useEffect(() => {
     console.log("ca ka", barcode, getCodiceTicket);
     getCodiceTicket(barcode, "omeLale");
-  }, [barcode]);
+  }, [barcode, getCodiceTicket]);
   return (
     <div className="qrBarcode m-auto p-4">
       <button
@@ -107,7 +107,7 @@ function Main({
                     Telefono: <b>{this.state.phone}</b>{" "}
                   </span> */}
             {/* BPOINT<br></br>
-                  PUNTA ANCORA DI GALASSI GABRIELE<br></br>
+                    GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
                   Telefono: 335398618<br></br> */}
           </div>

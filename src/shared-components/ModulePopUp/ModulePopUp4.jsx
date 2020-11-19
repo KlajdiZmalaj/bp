@@ -284,7 +284,7 @@ class ModulePopUp4 extends React.Component {
                       background: `${
                         BannerColors?.[
                           serviceMobile?.service_id.substring(0, 3)
-                        ]
+                        ] || BannerColors?.["default"]
                       }`,
                     }}
                   >
@@ -293,12 +293,9 @@ class ModulePopUp4 extends React.Component {
                       src={
                         images?.[
                           `Service${serviceMobile?.service_id.substring(0, 3)}`
-                        ]
+                        ] || ""
                       }
-                      alt={`Service${serviceMobile?.service_id.substring(
-                        0,
-                        3
-                      )}`}
+                      alt={``}
                     />
                   </div>
                 </div>

@@ -9,7 +9,7 @@ class UserComp extends React.Component {
   render() {
     const { userDetail, state, handleChange } = this.props;
     return (
-      <div className="newReg--row">
+      <div className="newReg--row usercomp">
         <div className="newReg--row__col">
           <ItemFull
             Class="semi"

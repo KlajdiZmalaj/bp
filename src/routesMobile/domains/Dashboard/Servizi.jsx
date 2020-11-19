@@ -266,6 +266,24 @@ const Servizi = ({
               <img src={images["stubhub-mobile"]} alt="" />
               <span>stubhub</span>
             </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/shop-online";
+              }}
+            >
+              <img src={images["shop-online-mobile"]} alt="" />
+              <span>Online Shop</span>
+            </div>
+            <div
+              className="mobileServices--body__item"
+              onClick={() => {
+                window.location.hash = "/forms/bgame";
+              }}
+            >
+              <img src={images["bgame-mobile"]} alt="" />
+              <span>Registrazione</span>
+            </div>
           </div>
         </div>
       )}

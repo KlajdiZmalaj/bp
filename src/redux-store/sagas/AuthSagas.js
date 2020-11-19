@@ -682,54 +682,32 @@ export function* getUserDetail(data) {
 }
 export function* updateUserDetail(data) {
   let response;
-  if (data?.skin_id && data?.skin_id !== -1) {
-    response = yield call(
-      updateUsers,
-      data.user_id,
-      data.phone,
-      data.document_type,
-      data.document_number,
-      data.rilasciato_da,
-      data.luogo_di_rilascio,
-      data.data_di_rilascio,
-      data.data_di_scadenza,
-      data.a_insegna,
-      data.a_cordinate,
-      data.a_phone,
-      data.a_address,
-      data.a_city,
-      data.a_comune_code,
-      data.a_cap,
-      data.a_country,
-      data.a_rent,
-      data.password,
-      data.confirm_password,
-      data.skin_id
-    );
-  } else {
-    response = yield call(
-      updateUsers,
-      data.user_id,
-      data.phone,
-      data.document_type,
-      data.document_number,
-      data.rilasciato_da,
-      data.luogo_di_rilascio,
-      data.data_di_rilascio,
-      data.data_di_scadenza,
-      data.a_insegna,
-      data.a_cordinate,
-      data.a_phone,
-      data.a_address,
-      data.a_city,
-      data.a_comune_code,
-      data.a_cap,
-      data.a_country,
-      data.a_rent,
-      data.password,
-      data.confirm_password
-    );
-  }
+
+  response = yield call(
+    updateUsers,
+    data.user_id,
+    data.phone,
+    data.document_type,
+    data.document_number,
+    data.rilasciato_da,
+    data.luogo_di_rilascio,
+    data.data_di_rilascio,
+    data.data_di_scadenza,
+    data.a_insegna,
+    data.a_cordinate,
+    data.a_phone,
+    data.a_address,
+    data.a_city,
+    data.a_comune_code,
+    data.a_cap,
+    data.a_country,
+    data.a_rent,
+    data.password,
+    data.confirm_password,
+    data?.skin_id && data?.skin_id !== -1 ? data?.skin_id : null,
+    data.mainAdminObj
+  );
+
   if (response?.data) {
     if (response?.status === 200) {
       notification["success"]({

@@ -211,16 +211,18 @@ class Prenotazioni extends React.Component {
                   <i className="fal fa-calendar-alt"></i>
                 </div>
               </div>
-              <div className="Prenotazioni--Statistiche--Arrow">
+              <div
+                className="Prenotazioni--Statistiche--Arrow"
+                onClick={() =>
+                  this.setState({
+                    dropdownVisibility: !this.state.dropdownVisibility,
+                  })
+                }
+              >
                 <i
                   className={`far fa-angle-${
                     dropdownVisibility === false ? "down" : "up"
                   }`}
-                  onClick={() =>
-                    this.setState((state) => ({
-                      dropdownVisibility: !state.dropdownVisibility,
-                    }))
-                  }
                 ></i>
               </div>
             </div>

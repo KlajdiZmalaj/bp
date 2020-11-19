@@ -11,3 +11,4 @@ export { default as PopUpConfirmation } from "./PopUpConfirmation";
 export { default as PopUpConfirmationVisure } from "./PopUpConfirmationVisure";
 export { default as Time } from "./Time";
 export { default as NewBarcodeScanner } from "./NewBarcodeScanner";
+export { default as Font } from "./Font";

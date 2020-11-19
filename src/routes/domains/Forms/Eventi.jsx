@@ -132,7 +132,7 @@ class Eventi extends Component {
             <img
               className={nome_agenzia}
               src={images[`${nome_agenzia}-logo`]}
-              alt=""
+              alt={[`${nome_agenzia}-logo`]}
             />
           </div>
           <div className="rightForm--left">

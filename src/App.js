@@ -3,10 +3,9 @@ import { Provider } from "react-redux";
 
 import configureStore from "./redux-store/store";
 import rootSaga from "./redux-store/sagas";
-import { Footer, ModulePopUp } from "./shared-components";
+import { Font, Footer, ModulePopUp } from "./shared-components";
 import images from "themes/images";
 import Root from "./Root";
-
 const store = configureStore();
 store.runSaga(rootSaga);
 
@@ -29,6 +28,7 @@ class App extends React.Component {
       <Provider store={store}>
         {/* <Header /> */}
         {/* <Overview /> */}
+        <Font />
         <Root />
         <Footer />
         <ModulePopUp></ModulePopUp>

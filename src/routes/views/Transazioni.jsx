@@ -865,7 +865,11 @@ class Transazioni extends React.Component {
                                   <td className="wsNwp">
                                     {" "}
                                     <i
-                                      className="fal fa-user-alt"
+                                      className={`fal fa-${
+                                        item.user_role === "agency"
+                                          ? "store"
+                                          : "user-alt"
+                                      }`}
                                       aria-hidden="true"
                                     ></i>{" "}
                                     <Tooltip title={item.agency_name}>
@@ -1036,7 +1040,7 @@ class Transazioni extends React.Component {
                     Telefono: <b>{this.state.phone}</b>{" "}
                   </span> */}
                   {/* BPOINT<br></br>
-                  PUNTA ANCORA DI GALASSI GABRIELE<br></br>
+                    GALASSI GABRIELE<br></br>
                   VIA DEL LAVORO, 29 - IMOLA<br></br>
                   Telefono: 335398618<br></br> */}
                 </div>

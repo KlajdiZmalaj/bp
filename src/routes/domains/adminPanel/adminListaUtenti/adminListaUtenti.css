@@ -436,7 +436,6 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-left: 3px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -498,9 +497,9 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(5), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(5) {
   width: 7%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:nth-child(6), .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:nth-child(6) {
@@ -536,7 +535,7 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
   font-family: "Roboto", sans-serif;
   border: 1px solid #5c5c5c4d;
   border-radius: 17px;
-  padding: 5px 12px;
+  padding: 5px 6px;
 }
 
 .AdminListaUtenti .AdminListaUtentiRow--Complete--Main span:last-child > i, .AdminListaUtenti .AdminListaUtentiRow--Complete--Main--Child span:last-child > i {
@@ -650,9 +649,9 @@ div.Center--Big .AdminListaUtenti .AdminListaUtentiRow--Complete--Main .fa-user-
 
 .AdminListaUtenti--Header span:nth-child(5) {
   width: 7%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .AdminListaUtenti--Header span:nth-child(6) {

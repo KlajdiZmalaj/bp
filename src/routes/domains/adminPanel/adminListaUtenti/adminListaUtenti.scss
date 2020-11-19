@@ -324,7 +324,7 @@ div.Center--Big {
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          margin-left: 3px;
+          // margin-left: 3px;
           font-family: "Roboto", sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -369,7 +369,7 @@ div.Center--Big {
           }
           &:nth-child(5) {
             width: 7%;
-            justify-content: center;
+            justify-content: flex-start;
           }
           &:nth-child(6) {
             width: 13%;
@@ -393,7 +393,7 @@ div.Center--Big {
               font-family: "Roboto", sans-serif;
               border: 1px solid #5c5c5c4d;
               border-radius: 17px;
-              padding: 5px 12px;
+              padding: 5px 6px;
             }
             > i {
               background-color: #ffffff;
@@ -472,7 +472,7 @@ div.Center--Big {
       }
       &:nth-child(5) {
         width: 7%;
-        justify-content: center;
+        justify-content: flex-start;
       }
       &:nth-child(6) {
         width: 13%;

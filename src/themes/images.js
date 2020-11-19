@@ -102,8 +102,8 @@ export default {
   WINO: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
   LMAX: require(`../assets/images${skin}/linkeln.svg`),
   BSTC: require(`../assets/images${skin}/bestCard.png`),
-  NNET: require(`../assets/images${skin}/on_net.jpg`),
-  IDTB: require(`../assets/images${skin}/IDT.png`),
+  NNET: require(`../assets/images/on_net.svg`),
+  IDTB: require(`../assets/images/IDTB.svg`),
   TRE: require(`../assets/images${skin}/three-logo.svg`),
   TREO: require(`../assets/images${skin}/three-logo.svg`),
   SKY: require(`../assets/images${skin}/Sky_Italia_-_Logo_2018.png`),
@@ -199,6 +199,7 @@ export default {
   "vivaticket-mobile": require(`../assets/images/prenotazioni/vivaticket-mobile.svg`),
 
   "ticketing-logo": require(`../assets/images/prenotazioni/ticketing.svg`),
+  "ticketone-logo": require(`../assets/images/prenotazioni/ticketing.svg`),
   "ticketing-bg": require(`../assets/images/prenotazioni/ticketing-bg.jpg`),
   "ticketing-card": require(`../assets/images/prenotazioni/ticketing-card.png`),
   "ticketone-mobile": require(`../assets/images/prenotazioni/ticketone-mobile.svg`),
@@ -215,6 +216,8 @@ export default {
   "shop-online-card": require(`../assets/images/prenotazioni/shop-online-card.png`),
   "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
   "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
+
+  "energia-bg": require(`../assets/images/prenotazioni/energia.png`),
 
   ServiceDefault: require(`../assets/images/ServiceDefault.jpg`),
   ServiceBET: require(`../assets/images/ServiceBET.jpg`),

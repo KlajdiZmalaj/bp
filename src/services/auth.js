@@ -473,7 +473,8 @@ export const updateUsers = (
   a_rent,
   password,
   confirm_password,
-  skin_id
+  skin_id,
+  mainAdminObj
 ) => {
   return instanceAxios
     .post(`/users/update`, {
@@ -496,6 +497,24 @@ export const updateUsers = (
       a_rent,
       password,
       confirm_password,
+
+      username: mainAdminObj.username,
+      email: mainAdminObj.email,
+      a_ragione_sociale: mainAdminObj.a_ragione_sociale,
+      a_iva: mainAdminObj.a_iva,
+      first_name: mainAdminObj.first_name,
+      last_name: mainAdminObj.last_name,
+      birth_comune_code: mainAdminObj.birth_comune_code,
+      birth_country: mainAdminObj.birth_country,
+      country: mainAdminObj.country,
+      birth_place: mainAdminObj.birth_place,
+      birthday: mainAdminObj.birthday,
+      city: mainAdminObj.city,
+      comune_code: mainAdminObj.comune_code,
+      gender: mainAdminObj.gender,
+      personal_number: mainAdminObj.personal_number,
+      ragione_sociale: mainAdminObj.ragione_sociale,
+      p_iva: mainAdminObj.p_iva,
       ...(skin_id && skin_id !== -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));

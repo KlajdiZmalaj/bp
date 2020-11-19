@@ -126,7 +126,7 @@ class AdminRightFormWalletDetails extends React.Component {
     }
   }
   returnAllUsers = (users) => {
-    let allUsers = [...users];
+    let allUsers = users && [...users];
     users.forEach((user) => {
       if (user?.children && user?.children.length >= 0) {
         user.children.forEach((child) => {
