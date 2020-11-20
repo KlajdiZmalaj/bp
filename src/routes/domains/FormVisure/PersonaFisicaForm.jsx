@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import { notification, Select } from "antd";
-import { countriesArray } from "config";
+import countriesArray from "config/countryArr";
 import VirtualizedSelect from "react-virtualized-select";
 
 import FormContainerBody from "./FormContainerBody";

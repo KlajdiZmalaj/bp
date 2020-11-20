@@ -18,7 +18,7 @@ import { withRouter } from "react-router-dom";
 import AuthActions from "redux-store/models/auth";
 
 import "../../themes/css-register/register.css";
-import { countriesArray } from "config";
+import countriesArray from "config/countryArr";
 
 import VirtualizedSelect from "react-virtualized-select";
 import { Header } from "shared-components";

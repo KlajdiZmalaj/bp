@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { numberWithCommas } from "utils/HelperFunc";
 import ReactToPrint from "react-to-print";
 import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 
 const antIcon = (
   <i
