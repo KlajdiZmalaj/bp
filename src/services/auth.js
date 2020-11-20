@@ -515,6 +515,8 @@ export const updateUsers = (
       personal_number: mainAdminObj.personal_number,
       ragione_sociale: mainAdminObj.ragione_sociale,
       p_iva: mainAdminObj.p_iva,
+      address: mainAdminObj.address,
+      cap: mainAdminObj.cap,
       ...(skin_id && skin_id !== -1 ? { skin_id } : skin),
     })
     .catch((error) => ({ error }));
