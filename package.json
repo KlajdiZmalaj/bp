@@ -3,14 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "@ant-design/icons": "^4.2.1",
-    "antd": "^3.26.18",
-    "aos": "^2.3.4",
-    "api-trenitalia": "^2.0.2",
-=======
     "antd": "^3.26.7",
->>>>>>> 75805bc7e34e61f2fdbb4d86d2b8fecbd2b866e0
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "codice-fiscale-js": "^2.3.6",
@@ -38,12 +31,8 @@
     "reduxsauce": "^1.1.0",
     "reselect": "^4.0.0",
     "socket.io-client": "^2.3.0",
-<<<<<<< HEAD
-    "swiper": "^5.4.5"
-=======
     "source-map-explorer": "^2.5.0",
     "swiper": "^5.3.1"
->>>>>>> 75805bc7e34e61f2fdbb4d86d2b8fecbd2b866e0
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-scripts start",
