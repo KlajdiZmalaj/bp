@@ -12,7 +12,7 @@ import AgentComp from "./AgetnComp";
 import UserComp from "./UserComp";
 import { Select, Pagination } from "antd";
 import { Loader } from "shared-components";
-
+import { resetUserStateChangeFields } from "config";
 import { transferMoney } from "services/auth";
 
 const { Option } = Select;
@@ -24,6 +24,7 @@ const InitialState = {
   perPage: 25,
   page_number: 1,
   searchedVal: "",
+  ...resetUserStateChangeFields,
 };
 class UsersList extends Component {
   constructor(props) {
@@ -53,69 +54,54 @@ class UsersList extends Component {
     }
   };
   resetState = () => {
-    this.setState({
-      changedInsegna: null,
-      changedcomune: null,
-      changedprovincia: null,
-      changedcap: null,
-      changednazione: null,
-      changedpagamento_mensile: null,
-      changedSede_operativa: null,
-      changedCordinate: null,
-      changeda_phone: null,
-    });
+    this.setState(resetUserStateChangeFields);
   };
   updateUser = async () => {
+    //s val from state , one that changed, p val from get request from registration form
+    const s = this.state;
+    const p = this.props.userDetail;
     await this.props.updateUserDetail(
-      this.props.userDetail.id,
-      this.state.changedphone || this.props.userDetail.phone,
-      (
-        this.state.changeddocument_type || this.props.userDetail.document_type
-      ).toString(),
-      this.state.changeddocument_number ||
-        this.props.userDetail.document_number,
-      this.state.rilasciato_da || this.props.userDetail.rilasciato_da,
-      this.state.luogo_di_rilascio || this.props.userDetail.luogo_di_rilascio,
-      this.state.data_di_rilascio || this.props.userDetail.data_di_rilascio,
-      this.state.data_di_scadenza || this.props.userDetail.data_di_scadenza,
-      this.state.changedInsegna || this.props.userDetail.insegna,
-      this.state.changedCordinate || this.props.userDetail.cordinate,
-      this.state.changeda_phone || this.props.userDetail.a_phone,
-      this.state.changedSede_operativa || this.props.userDetail.sede_operativa,
-      this.state.changedcomune || this.props.userDetail.comune,
-      this.state.changedprovincia || this.props.userDetail.provincia,
-      this.state.changedcap || this.props.userDetail.cap,
-      this.state.changednazione || this.props.userDetail.nazione,
-      this.state.changedpagamento_mensile ||
-        this.props.userDetail.pagamento_mensile,
-      this.state.password,
-      this.state.confirm_password,
+      p.id,
+      s.changedphone || p.phone,
+      (s.changeddocument_type || p.document_type).toString(),
+      s.changeddocument_number || p.document_number,
+      s.rilasciato_da || p.rilasciato_da,
+      s.luogo_di_rilascio || p.luogo_di_rilascio,
+      s.data_di_rilascio || p.data_di_rilascio,
+      s.data_di_scadenza || p.data_di_scadenza,
+      s.changedInsegna || p.insegna,
+      s.changedCordinate || p.cordinate,
+      s.changeda_phone || p.a_phone,
+      s.changedSede_operativa || p.sede_operativa,
+      s.changedcomune || p.comune,
+      s.changedprovincia || p.provincia,
+      s.changedcap || p.cap,
+      s.changednazione || p.nazione,
+      s.changedpagamento_mensile || p.pagamento_mensile,
+      s.password,
+      s.confirm_password,
       "",
       this.resetState,
       {
-        username: this.state.username || this.props.userDetail.username,
-        email: this.state.email || this.props.userDetail.email,
-        a_ragione_sociale:
-          this.state.a_ragione_sociale || this.props.userDetail.ragione_sociale,
-        a_iva: this.state.a_iva || this.props.userDetail.p_iva,
-        first_name: this.state.first_name || this.props.userDetail.first_name,
-        last_name: this.state.last_name || this.props.userDetail.last_name,
-        birth_comune_code:
-          this.state.birth_comune_code ||
-          this.props.userDetail.birth_comune_code,
-        birth_country:
-          this.state.birth_country || this.props.userDetail.birth_country,
-        birth_place:
-          this.state.birth_place || this.props.userDetail.birth_place,
-        birthday: this.state.birthday || this.props.userDetail.birthday,
-        city: this.state.city || this.props.userDetail.city,
-        gender: this.state.gender || this.props.userDetail.gender,
-        personal_number:
-          this.state.personal_number || this.props.userDetail.personal_number,
-        ragione_sociale:
-          this.state.ragione_sociale || this.props.userDetail.ragione_sociale,
-        p_iva: this.state.p_iva || this.props.userDetail.p_iva,
-        country: this.state.country || this.props.userDetail.country,
+        username: s.username || p.username,
+        email: s.email || p.email,
+        a_ragione_sociale: s.a_ragione_sociale || p.ragione_sociale,
+        a_iva: s.a_iva || p.p_iva,
+        first_name: s.first_name || p.first_name,
+        last_name: s.last_name || p.last_name,
+        birth_comune_code: s.birth_comune_code || p.birth_comune_code,
+        birth_country: s.birth_country || p.birth_country,
+        birth_place: s.birth_place || p.birth_place,
+        birthday: s.birthday || p.birthday,
+        city: s.city || p.city,
+        gender: s.gender || p.gender,
+        personal_number: s.personal_number || p.personal_number,
+        ragione_sociale: s.ragione_sociale || p.ragione_sociale,
+        p_iva: s.p_iva || p.p_iva,
+        country: s.country || p.country,
+        address: s.address || p.address,
+        cap: s.cap || p.cap,
+        comune_code: s.comune_code || p.comune_code,
       }
     );
     await setTimeout(() => {
@@ -393,6 +379,7 @@ class UsersList extends Component {
                 />
               ) : userDetail.role === "user" ? (
                 <UserComp
+                  updateUser={this.updateUser}
                   state={this.state}
                   userDetail={userDetail}
                   handleChange={(name, value) => {

@@ -1,10 +1,2 @@
-.qrBarcode {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.qrBarcode + footer {
-  display: none;
-}
+.qrBarcode{display:flex}.qrBarcode+footer{display:none}
 /*# sourceMappingURL=style.css.map */

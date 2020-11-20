@@ -14,7 +14,7 @@ export const BannerColors = {
   PPB: "#e44b23",
   STC: "#00bfd2",
   WHL: "#01153a",
-  default : 'var(--accent-bg)'
+  default: "var(--accent-bg)",
 };
 export const docType = [
   {
@@ -51614,3 +51614,44 @@ export const BbetServices = [
     type: "1",
   },
 ];
+
+//http://prntscr.com/vmqp68  reset state so other has clean state for next popup
+export const resetUserStateChangeFields = {
+  changedphone: "",
+  changeddocument_type: "",
+  changeddocument_number: "",
+  rilasciato_da: "",
+  luogo_di_rilascio: "",
+  data_di_rilascio: "",
+  data_di_scadenza: "",
+  changedInsegna: "",
+  changedCordinate: "",
+  changeda_phone: "",
+  changedSede_operativa: "",
+  changedcomune: "",
+  changedprovincia: "",
+  changedcap: "",
+  changednazione: "",
+  changedpagamento_mensile: "",
+  password: "",
+  confirm_password: "",
+  username: "",
+  email: "",
+  a_ragione_sociale: "",
+  a_iva: "",
+  first_name: "",
+  last_name: "",
+  birth_comune_code: "",
+  birth_country: "",
+  birth_place: "",
+  birthday: "",
+  city: "",
+  gender: "",
+  personal_number: "",
+  ragione_sociale: "",
+  p_iva: "",
+  country: "",
+  address: "",
+  cap: "",
+  comune_code: "",
+};

@@ -19,8 +19,8 @@ class AgentComp extends React.Component {
     // console.log("state", state, userDetail);
     return (
       <React.Fragment>
-        <div className="newReg--row">
-          <div className="newReg--row__col agentcomp">
+        <div className="newReg--row agentcomp">
+          <div className="newReg--row__col ">
             <ItemFull
               Class={"full"}
               readOnly={!isMainAdm}
@@ -29,7 +29,6 @@ class AgentComp extends React.Component {
               title={"Ragione Sociale"}
               value={state.ragione_sociale || userDetail.ragione_sociale}
             />
-
             <ItemFull
               Class="full"
               readOnly={!isMainAdm}

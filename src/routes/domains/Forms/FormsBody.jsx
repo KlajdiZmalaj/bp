@@ -10,7 +10,6 @@ import Auto from "./Auto";
 import Energia from "./Energia";
 import images from "themes/images";
 import "./style.css";
-import { stubFalse } from "lodash";
 
 const Card = ({
   title,
