@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import AuthActions from "redux-store/models/auth";
 import { numberWithCommas } from "utils/HelperFunc";
 import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const antIcon = (
+  <i style={{ fontSize: 24 }} className="fad fa-spinner-third fa-spin"></i>
+);
 class Excel extends React.Component {
   csvLink = React.createRef();
 

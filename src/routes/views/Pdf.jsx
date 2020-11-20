@@ -5,7 +5,10 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const antIcon = (
-  <LoadingOutlined style={{ fontSize: 24, color: "#c52727" }} spin />
+  <i
+    style={{ fontSize: 24, color: "#c52727" }}
+    className="fad fa-spinner-third fa-spin"
+  ></i>
 );
 export default ({
   getPaymentsForExcel,

@@ -12,7 +12,7 @@ import {
   Category,
 } from "./FormsComponents";
 
-class Auto extends Component {
+class Energia extends Component {
   state = {
     tipologia: "2",
     offerta: 1,
@@ -79,7 +79,7 @@ class Auto extends Component {
     const { nome_agenzia, color, goBack, isMobile, activeService } = this.props;
     const {
       tipologia,
-      offerta,
+      // offerta,
       lastname,
       name,
       tel,
@@ -422,4 +422,4 @@ const mstp = (state) => ({
   province: state.auth.SelectData?.province,
   comuni: state.auth.SelectData?.comuni,
 });
-export default connect(mstp, { ...AuthActions, ...MainActions })(Auto);
+export default connect(mstp, { ...AuthActions, ...MainActions })(Energia);
