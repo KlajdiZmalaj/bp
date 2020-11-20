@@ -4,7 +4,7 @@ import { skin } from "config/api";
 export const fetchServices = () =>
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: "https://services-api.bpoint.store/apia",
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("accountDataB")) &&

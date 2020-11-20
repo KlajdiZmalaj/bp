@@ -629,185 +629,185 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_REGISTRAZIONE_DATA]: (state, { SelectData }) => ({
+  ["SET_REGISTRAZIONE_DATA"]: (state, { SelectData }) => ({
     ...state,
     SelectData,
   }),
-  [Types.SET_ERRORS_LOADING]: (state, { ErrLoading }) => ({
+  ["SET_ERRORS_LOADING"]: (state, { ErrLoading }) => ({
     ...state,
     ErrLoading,
   }),
-  [Types.SET_FATTURA_LOADING]: (state, { fattura_loading }) => ({
+  ["SET_FATTURA_LOADING"]: (state, { fattura_loading }) => ({
     ...state,
     fattura_loading,
   }),
-  [Types.EDIT_REPORTISTICA]: (state, { ReportisticaDet }) => ({
+  ["EDIT_REPORTISTICA"]: (state, { ReportisticaDet }) => ({
     ...state,
     ReportisticaDet,
   }),
-  [Types.SET_STATISTICHE_MAIN]: (state, { StatisticheMain }) => ({
+  ["SET_STATISTICHE_MAIN"]: (state, { StatisticheMain }) => ({
     ...state,
     StatisticheMain,
   }),
-  [Types.SET_POSTE_PAY_LOADING]: (state, { postePayLoading }) => ({
+  ["SET_POSTE_PAY_LOADING"]: (state, { postePayLoading }) => ({
     ...state,
     postePayLoading,
   }),
-  [Types.SET_BOLLETINI_LOADING]: (state, { bolletiniLoading }) => ({
+  ["SET_BOLLETINI_LOADING"]: (state, { bolletiniLoading }) => ({
     ...state,
     bolletiniLoading,
   }),
-  [Types.SET_WIDGET_PAYMENTS]: (state, { leUltimeTransazioniDet }) => ({
+  ["SET_WIDGET_PAYMENTS"]: (state, { leUltimeTransazioniDet }) => ({
     ...state,
     leUltimeTransazioniDet,
   }),
-  [Types.SET_LOADING_RECHARGE]: (state, { loadingRechargeMobile }) => ({
+  ["SET_LOADING_RECHARGE"]: (state, { loadingRechargeMobile }) => ({
     ...state,
     loadingRechargeMobile,
   }),
-  [Types.SET_DATA_FORM_DETAILS_ACTIVES]: (state, { formDetailsActives }) => ({
+  ["SET_DATA_FORM_DETAILS_ACTIVES"]: (state, { formDetailsActives }) => ({
     ...state,
     formDetailsActives,
   }),
-  [Types.SET_BUTTONS_SUPPORT]: (state, { enableButtons }) => ({
+  ["SET_BUTTONS_SUPPORT"]: (state, { enableButtons }) => ({
     ...state,
     enableButtons,
   }),
-  [Types.BIGLIETTO_POP_UP]: (state, { popUpData }) => ({
+  ["BIGLIETTO_POP_UP"]: (state, { popUpData }) => ({
     ...state,
     popUpData,
   }),
-  [Types.BIGLIETTO_POP_UP_VISURE]: (state, { popUpDataVisure }) => ({
+  ["BIGLIETTO_POP_UP_VISURE"]: (state, { popUpDataVisure }) => ({
     ...state,
     popUpDataVisure,
   }),
-  [Types.SET_PAYMENTS_PAGES]: (state, { paymentsPages }) => ({
+  ["SET_PAYMENTS_PAGES"]: (state, { paymentsPages }) => ({
     ...state,
     paymentsPages,
   }),
-  [Types.SET_PAYMENTS_LOADING]: (state, { loadingPayments }) => ({
+  ["SET_PAYMENTS_LOADING"]: (state, { loadingPayments }) => ({
     ...state,
     loadingPayments,
   }),
-  [Types.SET_ERRORS]: (state, { errors }) => ({
+  ["SET_ERRORS"]: (state, { errors }) => ({
     ...state,
     errors,
   }),
-  [Types.SET_SKIN_EXTRAS]: (state, { skinExtras }) => ({
+  ["SET_SKIN_EXTRAS"]: (state, { skinExtras }) => ({
     ...state,
     skinExtras,
   }),
-  [Types.SET_AGENTS]: (state, { agents }) => ({
+  ["SET_AGENTS"]: (state, { agents }) => ({
     ...state,
     agents,
   }),
-  [Types.SET_PRIVATE_MSG]: (state, { privMsg }) => ({
+  ["SET_PRIVATE_MSG"]: (state, { privMsg }) => ({
     ...state,
     privMsg,
   }),
-  [Types.UPDATE_USER_DETAIL_MSG]: (state, { updateMsg }) => ({
+  ["UPDATE_USER_DETAIL_MSG"]: (state, { updateMsg }) => ({
     ...state,
     updateMsg,
   }),
-  [Types.SET_USER_DETAIL]: (state, { userDetail }) => ({
+  ["SET_USER_DETAIL"]: (state, { userDetail }) => ({
     ...state,
     userDetail,
   }),
-  [Types.SET_LOGIN_MSG]: (state, { loginMsg }) => ({
+  ["SET_LOGIN_MSG"]: (state, { loginMsg }) => ({
     ...state,
     loginMsg,
   }),
-  [Types.SIGN_IN_BY_EMAIL]: (state) => ({
+  ["SIGN_IN_BY_EMAIL"]: (state) => ({
     ...state,
     loading: true,
     unauthorizated: false,
   }),
-  [Types.SET_BARCODE_DATA]: (state, { barcodeData }) => ({
+  ["SET_BARCODE_DATA"]: (state, { barcodeData }) => ({
     ...state,
     barcodeData,
   }),
-  [Types.SET_PAYMENTS_FROM_CODE]: (state, { paymentsFromCode }) => ({
+  ["SET_PAYMENTS_FROM_CODE"]: (state, { paymentsFromCode }) => ({
     ...state,
     paymentsFromCode,
   }),
-  [Types.SET_CHANGE_PASSWORD_ERROR]: (state, { pwError }) => ({
+  ["SET_CHANGE_PASSWORD_ERROR"]: (state, { pwError }) => ({
     ...state,
     pwError,
   }),
-  [Types.SET_CONFIGURA_DATA]: (state, { usersConfigura }) => ({
+  ["SET_CONFIGURA_DATA"]: (state, { usersConfigura }) => ({
     ...state,
     usersConfigura,
   }),
-  [Types.SET_ACCOUNT_INFO]: (state, { accountInfo }) => ({
+  ["SET_ACCOUNT_INFO"]: (state, { accountInfo }) => ({
     ...state,
     accountInfo,
   }),
-  [Types.AUTH_SUCCESS]: (state, { user }) => ({
+  ["AUTH_SUCCESS"]: (state, { user }) => ({
     ...state,
     user,
     loading: false,
   }),
-  [Types.AUTH_FAILURE]: (state, { error }) => ({
+  ["AUTH_FAILURE"]: (state, { error }) => ({
     ...state,
     error,
     loading: false,
   }),
-  [Types.SET_UNAUTHORIZATION]: ({ skinExtras }) => ({
+  ["SET_UNAUTHORIZATION"]: ({ skinExtras }) => ({
     ...INITIAL_STATE,
     skinExtras,
   }),
-  [Types.LOG_OUT]: ({ skinExtras }) => ({
+  ["LOG_OUT"]: ({ skinExtras }) => ({
     ...INITIAL_STATE,
     accountInfo: {},
     skinExtras,
   }),
-  [Types.SET_BOLLETINI_BIANCHI]: (state, { bolletiniBianchi }) => ({
+  ["SET_BOLLETINI_BIANCHI"]: (state, { bolletiniBianchi }) => ({
     ...state,
     bolletiniBianchi,
   }),
-  [Types.SET_BOLLETINI_PREMERCATI]: (state, { bolletiniPremercati }) => ({
+  ["SET_BOLLETINI_PREMERCATI"]: (state, { bolletiniPremercati }) => ({
     ...state,
     bolletiniPremercati,
   }),
-  [Types.SET_SERVICE_ID]: (state, { service_id }) => ({
+  ["SET_SERVICE_ID"]: (state, { service_id }) => ({
     ...state,
     service_id,
   }),
-  [Types.SET_SERVICE_S]: (state, { service_s }) => ({
+  ["SET_SERVICE_S"]: (state, { service_s }) => ({
     ...state,
     service_s,
   }),
-  [Types.SET_PAYMENTS]: (state, { payments }) => ({
+  ["SET_PAYMENTS"]: (state, { payments }) => ({
     ...state,
     payments,
   }),
-  [Types.SET_USERNAMES]: (state, { usernames }) => ({
+  ["SET_USERNAMES"]: (state, { usernames }) => ({
     ...state,
     usernames,
   }),
-  [Types.SET_RECHARGE_MOBILE]: (state, { rechargeMobile }) => ({
+  ["SET_RECHARGE_MOBILE"]: (state, { rechargeMobile }) => ({
     ...state,
     rechargeMobile,
   }),
-  [Types.SET_POSTE_PAY]: (state, { postePay }) => ({
+  ["SET_POSTE_PAY"]: (state, { postePay }) => ({
     ...state,
     postePay,
   }),
-  [Types.SET_SERVICE_TYPE]: (state, { serviceType }) => ({
+  ["SET_SERVICE_TYPE"]: (state, { serviceType }) => ({
     ...state,
     serviceType,
   }),
-  [Types.SET_ADS]: (state, { ads }) => ({
+  ["SET_ADS"]: (state, { ads }) => ({
     ...state,
     ads,
   }),
-  [Types.SET_UNAUTHORIZATION]: () => ({ ...INITIAL_STATE }),
+  ["SET_UNAUTHORIZATION"]: () => ({ ...INITIAL_STATE }),
 
-  [Types.SET_REGISTER]: (state, { register }) => ({
+  ["SET_REGISTER"]: (state, { register }) => ({
     ...state,
     register,
   }),
-  [Types.CREATE_ADS_RESPONSE]: (
+  ["CREATE_ADS_RESPONSE"]: (
     state,
     { adsCreationgLoading, adsCreationgMess }
   ) => ({
@@ -815,104 +815,104 @@ export const reducer = createReducer(INITIAL_STATE, {
     adsCreationgLoading,
     adsCreationgMess,
   }),
-  [Types.SET_DATA_FORM_DETAILS]: (state, { formDetails }) => ({
+  ["SET_DATA_FORM_DETAILS"]: (state, { formDetails }) => ({
     ...state,
     formDetails,
   }),
-  [Types.SET_TICKET_BY_TICKET_ID]: (state, { TicketByTcketId }) => ({
+  ["SET_TICKET_BY_TICKET_ID"]: (state, { TicketByTcketId }) => ({
     ...state,
     TicketByTcketId,
   }),
-  [Types.SET_VISURE]: (state, { Visure }) => ({
+  ["SET_VISURE"]: (state, { Visure }) => ({
     ...state,
     Visure,
   }),
-  [Types.SET_VISURE_BY_VISURE_ID]: (state, { VisureByVisureId }) => ({
+  ["SET_VISURE_BY_VISURE_ID"]: (state, { VisureByVisureId }) => ({
     ...state,
     VisureByVisureId,
   }),
-  [Types.OPEN_MODAL_FOR_ADMIN]: (state, { openAdminModal }) => ({
+  ["OPEN_MODAL_FOR_ADMIN"]: (state, { openAdminModal }) => ({
     ...state,
     openAdminModal,
   }),
-  [Types.EDIT_MODAL_DETAILS]: (state, { ModalDetails }) => ({
+  ["EDIT_MODAL_DETAILS"]: (state, { ModalDetails }) => ({
     ...state,
     ModalDetails,
   }),
-  [Types.EDIT_STAT_MODAL]: (state, { statModal }) => ({
+  ["EDIT_STAT_MODAL"]: (state, { statModal }) => ({
     ...state,
     statModal,
   }),
-  [Types.EDIT_ULT_MODAL]: (state, { ultModal }) => ({
+  ["EDIT_ULT_MODAL"]: (state, { ultModal }) => ({
     ...state,
     ultModal,
   }),
-  [Types.EDIT_DEP_MODAL]: (state, { depModal }) => ({
+  ["EDIT_DEP_MODAL"]: (state, { depModal }) => ({
     ...state,
     depModal,
   }),
-  [Types.EDIT_UTENTI_RESP_MODAL]: (state, { utentiResModal }) => ({
+  ["EDIT_UTENTI_RESP_MODAL"]: (state, { utentiResModal }) => ({
     ...state,
     utentiResModal,
   }),
-  [Types.SET_SKINS]: (state, { skinList }) => ({
+  ["SET_SKINS"]: (state, { skinList }) => ({
     ...state,
     skinList,
   }),
-  [Types.SET_FATURA_DETAILS]: (state, { faturaDetails }) => ({
+  ["SET_FATURA_DETAILS"]: (state, { faturaDetails }) => ({
     ...state,
     faturaDetails,
   }),
-  [Types.SET_ALL_SERVICES]: (state, { allServices }) => ({
+  ["SET_ALL_SERVICES"]: (state, { allServices }) => ({
     ...state,
     allServices,
   }),
-  [Types.SET_SERVICES_LOADING]: (state, { servicesLoader }) => ({
+  ["SET_SERVICES_LOADING"]: (state, { servicesLoader }) => ({
     ...state,
     servicesLoader,
   }),
-  [Types.SET_DEPOSITO_POPUP]: (state, { DepositoPopup }) => ({
+  ["SET_DEPOSITO_POPUP"]: (state, { DepositoPopup }) => ({
     ...state,
     DepositoPopup,
   }),
-  [Types.SET_ALL_FATURA_BY_SEARCH]: (state, { Fatture }) => ({
+  ["SET_ALL_FATURA_BY_SEARCH"]: (state, { Fatture }) => ({
     ...state,
     Fatture,
   }),
-  [Types.SET_DEPOSITO_MODAL_ADMIN]: (state, { adminDepModal }) => ({
+  ["SET_DEPOSITO_MODAL_ADMIN"]: (state, { adminDepModal }) => ({
     ...state,
     adminDepModal,
   }),
-  [Types.SET_PAYMENTS_FOR_EXCEL]: (state, { paymentsForExcel }) => ({
+  ["SET_PAYMENTS_FOR_EXCEL"]: (state, { paymentsForExcel }) => ({
     ...state,
     paymentsForExcel,
   }),
-  [Types.SET_PAYMENTS_EXCEL_LOADING]: (state, { paymentExcelLoading }) => ({
+  ["SET_PAYMENTS_EXCEL_LOADING"]: (state, { paymentExcelLoading }) => ({
     ...state,
     paymentExcelLoading,
   }),
 
-  [Types.ADD_EDIT_SKIN_DETAILS]: (state, { addEditSkin }) => ({
+  ["ADD_EDIT_SKIN_DETAILS"]: (state, { addEditSkin }) => ({
     ...state,
     addEditSkin,
   }),
-  [Types.SET_SKIN_ID]: (state, { newSkinId }) => ({
+  ["SET_SKIN_ID"]: (state, { newSkinId }) => ({
     ...state,
     newSkinId,
   }),
-  [Types.REGISTER_SKIN_SUCC]: (state, { registerSkinS }) => ({
+  ["REGISTER_SKIN_SUCC"]: (state, { registerSkinS }) => ({
     ...state,
     registerSkin: { ...state.registerSkin, ...registerSkinS },
   }),
-  [Types.SET_STATISTICHE]: (state, { Statistiche }) => ({
+  ["SET_STATISTICHE"]: (state, { Statistiche }) => ({
     ...state,
     Statistiche,
   }),
-  [Types.SET_FROM_DATE_TO_DATE]: (state, { fromDate }) => ({
+  ["SET_FROM_DATE_TO_DATE"]: (state, { fromDate }) => ({
     ...state,
     fromDate,
   }),
-  [Types.SET_ADMIN_PANEL_CLASS]: (state, { CenterCls }) => ({
+  ["SET_ADMIN_PANEL_CLASS"]: (state, { CenterCls }) => ({
     ...state,
     CenterCls,
   }),

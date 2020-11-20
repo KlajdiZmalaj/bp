@@ -1,71 +1,13 @@
 import { put, call, delay, select } from "redux-saga/effects";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
-import {
-  fetchLogin,
-  logoutApi,
-  // fetchAccountInfo,
-  fetchBolletiniBianchi,
-  fetchBolletiniPremercati,
-  fetchPayments,
-  fetchRechargeMobile,
-  fetchPostePay,
-  fetchAds,
-  sendCreatedAds,
-  fetchRegisterAllInfo,
-  sendChangedPassword,
-  fetchConfigura,
-  fetchCodice,
-  fetchBarcodeData,
-  fetchUserDetails,
-  updateUsers,
-  changeAgentReq,
-  fetchAgents,
-  fetchSkinExtras,
-  fetchErrors,
-  deleteErrorReq,
-  sendDataFormReq,
-  getDataFormDetailReq,
-  getTicketByTicketIdReq,
-  getVisureReq,
-  updateDataFormReq,
-  getDataFormDetailActivesReq,
-  sendVisureDetailsReq,
-  getVisureByVisureIdReq,
-  updateVisuraReq,
-  getAgentByUserIdReq,
-  getUserByUserIdReq,
-  getSkinsReq,
-  getFaturaDetailsReq,
-  getAllFaturaBySearchReq,
-  getAllServicesReq,
-  sendMailFatturaReq,
-  AddSkinReq,
-  widgetPaymentsReq,
-  AddExtraDataReq,
-  AddSuperAdminReq,
-  getStatisticheReq,
-  ServiceChangeStatusReq,
-  customVoucher,
-  fetchBolletiniRequest,
-  StatisticheMainReq,
-  buyTicketOnlineReq,
-  pagoPaRequest,
-  frecciaRequest,
-  mavRavRequest,
-  payPagoPaReq,
-  bokkingF24Req,
-  payFReq,
-  getRegistrazioneDataReq,
-  createUserBgameReq,
-  pagoTicketReq,
-} from "services/auth";
+import * as AuthRequest from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
-    fetchLogin,
+    AuthRequest.fetchLogin,
     credencials.email,
     credencials.password
   );
@@ -88,9 +30,9 @@ export function* signInByEmail(credencials) {
 export function* getAgents(params) {
   let response;
   if (params?.skin_id && params?.skin_id !== -1) {
-    response = yield call(fetchAgents, params.skin_id);
+    response = yield call(AuthRequest.fetchAgents, params.skin_id);
   } else {
-    response = yield call(fetchAgents);
+    response = yield call(AuthRequest.fetchAgents);
   }
   // console.log("agents res", response);
   if (response?.data) {
@@ -101,7 +43,7 @@ export function* getAgents(params) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -113,7 +55,7 @@ export function* getAgents(params) {
 export function* getAccountInfo() {}
 
 export function* logOut() {
-  const response = yield call(logoutApi);
+  const response = yield call(AuthRequest.logoutApi);
 
   if (response) {
     localStorage.setItem("accountDataB", {});
@@ -125,7 +67,7 @@ export function* logOut() {
 
 export function* getBolletiniBianchi(params) {
   const response = yield call(
-    fetchBolletiniBianchi,
+    AuthRequest.fetchBolletiniBianchi,
     params.service_id,
     params.numero_conto_corrente,
     params.importo,
@@ -153,7 +95,7 @@ export function* getBolletiniBianchi(params) {
       }
     }
     if (response?.error && response?.error.response?.status === 401) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -181,7 +123,7 @@ export function* pagoTicket({ barcode }) {
     duration: 0,
     message: "Attendere, transazione in corso",
   });
-  const response = yield call(pagoTicketReq, barcode);
+  const response = yield call(AuthRequest.pagoTicketReq, barcode);
 
   if (response) {
     if (response?.data) {
@@ -212,7 +154,7 @@ export function* pagoTicket({ barcode }) {
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -236,7 +178,7 @@ export function* addVisure({ singleVisure }) {
 }
 export function* getBolletiniPremercati(params) {
   const response = yield call(
-    fetchBolletiniPremercati,
+    AuthRequest.fetchBolletiniPremercati,
     params.service_id,
     params.numero_conto_corrente,
     params.importo,
@@ -268,13 +210,13 @@ export function* getBolletiniPremercati(params) {
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
           yield put(AuthActions.setAccountInfo({}));
         }
-        // const response = yield call(logoutApi);
+        // const response = yield call(AuthRequest.logoutApi);
       }
     }
     if (params.callBack) {
@@ -304,7 +246,7 @@ export function* getBolletiniPremercati(params) {
 export function* getPaymentsForExcel(params) {
   yield put(AuthActions.setPaymentsExcelLoading(true));
   const response = yield call(
-    fetchPayments,
+    AuthRequest.fetchPayments,
     params.username,
     params.from,
     params.to,
@@ -324,7 +266,7 @@ export function* getPaymentsForExcel(params) {
         localStorage.getItem("accountDataB") !== null
       ) {
         yield put(AuthActions.setUnauthorization());
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -342,7 +284,7 @@ export function* getPaymentsForExcel(params) {
 export function* getPayments(params) {
   yield put(AuthActions.setPaymentsLoading(true));
   const response = yield call(
-    fetchPayments,
+    AuthRequest.fetchPayments,
     params.username,
     params.from,
     params.to,
@@ -375,7 +317,7 @@ export function* getPayments(params) {
         localStorage.getItem("accountDataB") !== null
       ) {
         yield put(AuthActions.setUnauthorization());
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -392,7 +334,7 @@ export function* getPayments(params) {
 
 export function* getRechargeMobile(params) {
   const response = yield call(
-    fetchRechargeMobile,
+    AuthRequest.fetchRechargeMobile,
     params.service_id,
     params.tel_no
   );
@@ -421,7 +363,7 @@ export function* getRechargeMobile(params) {
         response?.error.response?.status === 401 &&
         localStorage.getItem("accountDataB") !== null
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -440,19 +382,19 @@ export function* getRechargeMobile(params) {
   }
   if (response && response?.error && response?.error.response?.status === 401) {
     yield put(AuthActions.setUnauthorization());
-    const response = yield call(logoutApi);
+    const response = yield call(AuthRequest.logoutApi);
 
     if (response) {
       localStorage.setItem("accountDataB", null);
       yield put(AuthActions.setAccountInfo({}));
     }
-    // const response = yield call(logoutApi);
+    // const response = yield call(AuthRequest.logoutApi);
   }
 }
 
 export function* getPostePay(params) {
   const response = yield call(
-    fetchPostePay,
+    AuthRequest.fetchPostePay,
     params.service_id,
     params.importo,
     params.user_id,
@@ -489,7 +431,7 @@ export function* getPostePay(params) {
         response?.error.response &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
         if (response) {
           localStorage.setItem("accountDataB", null);
           yield put(AuthActions.setAccountInfo({}));
@@ -502,12 +444,12 @@ export function* getPostePay(params) {
   }
   if (response && response?.error && response?.error.response?.status === 401) {
     localStorage.clear();
-    // const response = yield call(logoutApi);
+    // const response = yield call(AuthRequest.logoutApi);
   }
 }
 
 export function* getAds() {
-  const response = yield call(fetchAds);
+  const response = yield call(AuthRequest.fetchAds);
   if (response?.status === 200) {
     yield put(AuthActions.setAds(response?.data.messages));
     yield put(
@@ -522,7 +464,7 @@ export function* getAds() {
     );
   }
   if (response?.error && response?.error?.response?.status === 401) {
-    const response = yield call(logoutApi);
+    const response = yield call(AuthRequest.logoutApi);
     if (response) {
       localStorage.setItem("accountDataB", null);
       yield put(AuthActions.setAccountInfo({}));
@@ -540,7 +482,7 @@ export function* addPrivateMsg(msg) {
 
 export function* getRegister(params) {
   const response = yield call(
-    fetchRegisterAllInfo,
+    AuthRequest.fetchRegisterAllInfo,
     params.first_name,
     params.last_name,
     params.nickname, // for username
@@ -598,7 +540,12 @@ export function* getRegister(params) {
 export function* createAds({ data }) {
   let { importance, title, text } = data;
   yield put(AuthActions.createAdsResponse(true, null));
-  const response = yield call(sendCreatedAds, importance, title, text);
+  const response = yield call(
+    AuthRequest.sendCreatedAds,
+    importance,
+    title,
+    text
+  );
   if (response) {
     if (response?.status === 200) {
       yield put(AuthActions.createAdsResponse(false, response?.data));
@@ -615,7 +562,7 @@ export function* createAds({ data }) {
 }
 export function* getChangedPassword(data) {
   const response = yield call(
-    sendChangedPassword,
+    AuthRequest.sendChangedPassword,
     data.oldPassword,
     data.newPassword
   );
@@ -627,7 +574,7 @@ export function* getChangedPassword(data) {
   // console.log("ca ka responseeeee", response, response?.message);
 }
 export function* getConfigura(data) {
-  const response = yield call(fetchConfigura, data.id);
+  const response = yield call(AuthRequest.fetchConfigura, data.id);
   if (response?.status === 200) {
     yield put(AuthActions.setConfiguraData(response?.data.user));
   } else {
@@ -635,7 +582,7 @@ export function* getConfigura(data) {
   }
 }
 export function* getCodiceTicket({ barcode, service }) {
-  const response = yield call(fetchCodice, barcode, service);
+  const response = yield call(AuthRequest.fetchCodice, barcode, service);
   if (response?.status === 200) {
     yield put(AuthActions.setPaymentsFromCode(response?.data.payment));
   }
@@ -644,7 +591,7 @@ export function* getCodiceTicket({ barcode, service }) {
   }
 }
 export function* getBarcodeData(e) {
-  const response = yield call(fetchBarcodeData, e.barcode);
+  const response = yield call(AuthRequest.fetchBarcodeData, e.barcode);
   if (response?.status === 200) {
     yield put(AuthActions.setBarcodeData(response?.data));
     e.callback(response?.data);
@@ -656,9 +603,14 @@ export function* getBarcodeData(e) {
 export function* changeAgent(data) {
   let response;
   if (data?.skin_id && data?.skin_id !== -1) {
-    response = yield call(changeAgentReq, data.id, data.id2, data.skin_id);
+    response = yield call(
+      AuthRequest.changeAgentReq,
+      data.id,
+      data.id2,
+      data.skin_id
+    );
   } else {
-    response = yield call(changeAgentReq, data.id, data.id2);
+    response = yield call(AuthRequest.changeAgentReq, data.id, data.id2);
   }
   if (response) {
     if (response?.status === 200) {
@@ -672,7 +624,11 @@ export function* changeAgent(data) {
   // console.log("response changeAgent", data, response);
 }
 export function* getUserDetail(data) {
-  const response = yield call(fetchUserDetails, data.id, data.skin_id);
+  const response = yield call(
+    AuthRequest.fetchUserDetails,
+    data.id,
+    data.skin_id
+  );
   if (response) {
     if (response?.status === 200) {
       yield put(AuthActions.setUserDetail(response?.data.user));
@@ -684,7 +640,7 @@ export function* updateUserDetail(data) {
   let response;
 
   response = yield call(
-    updateUsers,
+    AuthRequest.updateUsers,
     data.user_id,
     data.phone,
     data.document_type,
@@ -725,7 +681,7 @@ export function* updateUserDetail(data) {
   }
 }
 export function* getSkinExtras() {
-  const response = yield call(fetchSkinExtras);
+  const response = yield call(AuthRequest.fetchSkinExtras);
   if (response?.data) {
     if (response?.status === 200) {
       yield put(AuthActions.setSkinExtras(response?.data.skin));
@@ -738,7 +694,7 @@ export function* getErrors({ limit, page_number, DONT_LOAD }) {
     yield put(AuthActions.setErrorsLoading(true));
   }
 
-  const response = yield call(fetchErrors, limit, page_number);
+  const response = yield call(AuthRequest.fetchErrors, limit, page_number);
   if (response?.data) {
     if (response?.status === 200) {
       yield put(
@@ -753,7 +709,7 @@ export function* getErrors({ limit, page_number, DONT_LOAD }) {
   // console.log("fetchErrors", response);
 }
 export function* deleteError(data) {
-  const response = yield call(deleteErrorReq, data.id);
+  const response = yield call(AuthRequest.deleteErrorReq, data.id);
   if (response?.data) {
     if (response?.status === 200) {
       notification["success"]({
@@ -770,7 +726,7 @@ export function* deleteError(data) {
 
 export function* sendDataForm(data) {
   const response = yield call(
-    sendDataFormReq,
+    AuthRequest.sendDataFormReq,
     data.typee,
     data.link,
     data.nome_agenzia,
@@ -805,7 +761,7 @@ export function* sendDataForm(data) {
   // console.log("ca ka response", data, response);
 }
 export function* getDataFormDetails() {
-  const response = yield call(getDataFormDetailReq);
+  const response = yield call(AuthRequest.getDataFormDetailReq);
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -816,7 +772,10 @@ export function* getDataFormDetails() {
   }
 }
 export function* getDataFormDetailsActives(data) {
-  const response = yield call(getDataFormDetailActivesReq, data.isVisure);
+  const response = yield call(
+    AuthRequest.getDataFormDetailActivesReq,
+    data.isVisure
+  );
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -846,7 +805,10 @@ export function* getDataFormDetailsActives(data) {
   }
 }
 export function* getTicketByTicketId(ticket_id) {
-  const response = yield call(getTicketByTicketIdReq, ticket_id.ticket_id);
+  const response = yield call(
+    AuthRequest.getTicketByTicketIdReq,
+    ticket_id.ticket_id
+  );
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -858,7 +820,7 @@ export function* getTicketByTicketId(ticket_id) {
 
 export function* updateDataForm(data) {
   const response = yield call(
-    updateDataFormReq,
+    AuthRequest.updateDataFormReq,
     data.typee,
     data.link,
     data.nome_agenzia,
@@ -902,7 +864,7 @@ export function* updateDataForm(data) {
     });
   }
   if (response?.status === 401) {
-    const response = yield call(logoutApi);
+    const response = yield call(AuthRequest.logoutApi);
     if (response) {
       localStorage.setItem("accountDataB", null);
       yield put(AuthActions.setAccountInfo({}));
@@ -923,7 +885,7 @@ export function* updateDataForm(data) {
 }
 export function* sendVisureDetails(data) {
   const response = yield call(
-    sendVisureDetailsReq,
+    AuthRequest.sendVisureDetailsReq,
     data.typee,
     data.codice_fiscale,
     data.provincia,
@@ -960,7 +922,7 @@ export function* sendVisureDetails(data) {
   }
 }
 export function* getVisure() {
-  const response = yield call(getVisureReq);
+  const response = yield call(AuthRequest.getVisureReq);
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -970,7 +932,7 @@ export function* getVisure() {
   // console.log("fetchErrors", response);
 }
 export function* getVisureByVisureId(visura_id) {
-  const response = yield call(getVisureByVisureIdReq, visura_id);
+  const response = yield call(AuthRequest.getVisureByVisureIdReq, visura_id);
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -981,7 +943,7 @@ export function* getVisureByVisureId(visura_id) {
 
 export function* updateVisura(data) {
   const response = yield call(
-    updateVisuraReq,
+    AuthRequest.updateVisuraReq,
     //same
     data.visura_id,
     data.typee,
@@ -1021,7 +983,11 @@ export function* updateVisura(data) {
   }
 }
 export function* getAgentByUserId(data) {
-  const response = yield call(getAgentByUserIdReq, data.user_id, data.skin_id);
+  const response = yield call(
+    AuthRequest.getAgentByUserIdReq,
+    data.user_id,
+    data.skin_id
+  );
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -1033,7 +999,7 @@ export function* getAgentByUserId(data) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1042,7 +1008,11 @@ export function* getAgentByUserId(data) {
   }
 }
 export function* getUserByUserId(data) {
-  const response = yield call(getUserByUserIdReq, data.user_id, data.skin_id);
+  const response = yield call(
+    AuthRequest.getUserByUserIdReq,
+    data.user_id,
+    data.skin_id
+  );
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -1054,7 +1024,7 @@ export function* getUserByUserId(data) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1063,7 +1033,7 @@ export function* getUserByUserId(data) {
   }
 }
 export function* getSkins() {
-  const response = yield call(getSkinsReq);
+  const response = yield call(AuthRequest.getSkinsReq);
 
   if (response?.data) {
     if (response?.status === 200) {
@@ -1075,7 +1045,7 @@ export function* getSkins() {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1085,7 +1055,7 @@ export function* getSkins() {
 }
 export function* getFaturaDetails(params) {
   const response = yield call(
-    getFaturaDetailsReq,
+    AuthRequest.getFaturaDetailsReq,
     params.user_id,
     params.year,
     params.month
@@ -1100,7 +1070,7 @@ export function* getFaturaDetails(params) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1110,7 +1080,7 @@ export function* getFaturaDetails(params) {
 }
 export function* getAllServices({ skin_id }) {
   yield put(AuthActions.setServicesLoading(true));
-  const response = yield call(getAllServicesReq, skin_id);
+  const response = yield call(AuthRequest.getAllServicesReq, skin_id);
   if (response?.data) {
     if (response?.status === 200) {
       yield put(AuthActions.setAllServices(response?.data.result));
@@ -1121,7 +1091,7 @@ export function* getAllServices({ skin_id }) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1139,7 +1109,7 @@ export function* getAllFaturaBySearch({
 }) {
   yield put(AuthActions.setFatturaLoading(true));
   const response = yield call(
-    getAllFaturaBySearchReq,
+    AuthRequest.getAllFaturaBySearchReq,
     username,
     year,
     month,
@@ -1168,7 +1138,7 @@ export function* getAllFaturaBySearch({
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1177,7 +1147,7 @@ export function* getAllFaturaBySearch({
   }
 }
 export function* sendMailFattura({ file_name }) {
-  const response = yield call(sendMailFatturaReq, file_name);
+  const response = yield call(AuthRequest.sendMailFatturaReq, file_name);
   if (response) {
     notification["success"]({
       message: "Azione completata",
@@ -1187,7 +1157,13 @@ export function* sendMailFattura({ file_name }) {
   }
 }
 export function* AddSkinNew({ name, url, email, agency_rent }) {
-  const response = yield call(AddSkinReq, name, url, email, agency_rent);
+  const response = yield call(
+    AuthRequest.AddSkinReq,
+    name,
+    url,
+    email,
+    agency_rent
+  );
   if (response?.data) {
     // console.log(response?.data.skin_id);
     yield put(AuthActions.setSkinId(response?.data.skin_id));
@@ -1198,7 +1174,7 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1207,7 +1183,7 @@ export function* AddSkinNew({ name, url, email, agency_rent }) {
   }
 }
 export function* getWidgetPayments({ skin_id }) {
-  const response = yield call(widgetPaymentsReq, skin_id);
+  const response = yield call(AuthRequest.widgetPaymentsReq, skin_id);
   if (response?.data) {
     yield put(AuthActions.setWidgetPayments(response?.data.payments));
   }
@@ -1216,7 +1192,7 @@ export function* getWidgetPayments({ skin_id }) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1250,7 +1226,7 @@ export function* AddSuperAdmin({
   c,
 }) {
   const response = yield call(
-    AddSuperAdminReq,
+    AuthRequest.AddSuperAdminReq,
     first_name,
     last_name,
     gender,
@@ -1285,7 +1261,7 @@ export function* AddSuperAdmin({
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1314,7 +1290,7 @@ export function* AddExtraData({
   area_download,
 }) {
   const response = yield call(
-    AddExtraDataReq,
+    AuthRequest.AddExtraDataReq,
     cel,
     mail,
     address,
@@ -1342,7 +1318,7 @@ export function* AddExtraData({
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1351,7 +1327,7 @@ export function* AddExtraData({
   }
 }
 export function* getStatistiche(params) {
-  const response = yield call(getStatisticheReq, params.skin_id);
+  const response = yield call(AuthRequest.getStatisticheReq, params.skin_id);
   if (response) {
     yield put(AuthActions.setStatistiche(response?.data));
   }
@@ -1360,7 +1336,7 @@ export function* getStatistiche(params) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1370,7 +1346,7 @@ export function* getStatistiche(params) {
 }
 export function* UpdateServiceChangeStatus(params) {
   const response = yield call(
-    ServiceChangeStatusReq,
+    AuthRequest.ServiceChangeStatusReq,
     params.name,
     params.full_name,
     params.company_id,
@@ -1385,7 +1361,7 @@ export function* UpdateServiceChangeStatus(params) {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1394,7 +1370,11 @@ export function* UpdateServiceChangeStatus(params) {
   }
 }
 export function* getCustomVoucherReq(params) {
-  const response = yield call(customVoucher, params.service_id, params.tel_no);
+  const response = yield call(
+    AuthRequest.customVoucher,
+    params.service_id,
+    params.tel_no
+  );
   if (response) {
     if (response?.data) {
       if (response?.data.wallet) {
@@ -1418,7 +1398,7 @@ export function* getCustomVoucherReq(params) {
         response?.error?.response?.status === 401 &&
         localStorage.getItem("accountDataB") !== null
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1436,7 +1416,7 @@ export function* getCustomVoucherReq(params) {
   }
   if (response && response?.error && response?.error.response?.status === 401) {
     yield put(AuthActions.setUnauthorization());
-    const response = yield call(logoutApi);
+    const response = yield call(AuthRequest.logoutApi);
 
     if (response) {
       localStorage.setItem("accountDataB", null);
@@ -1445,7 +1425,7 @@ export function* getCustomVoucherReq(params) {
   }
 }
 export function* getStatisticheMain() {
-  const response = yield call(StatisticheMainReq);
+  const response = yield call(AuthRequest.StatisticheMainReq);
   if (response?.data) {
     yield put(
       AuthActions.setStatisticheMain({
@@ -1460,7 +1440,7 @@ export function* getStatisticheMain() {
       response?.error.response?.status === 401 &&
       localStorage.getItem("accountDataB") !== null
     ) {
-      const response = yield call(logoutApi);
+      const response = yield call(AuthRequest.logoutApi);
       if (response) {
         localStorage.setItem("accountDataB", null);
         yield put(AuthActions.setAccountInfo({}));
@@ -1495,7 +1475,7 @@ export function* fetchBolletini({
     message: "Attendere, transazione in corso",
   });
   const response = yield call(
-    fetchBolletiniRequest,
+    AuthRequest.fetchBolletiniRequest,
     service_id,
     person_type,
     via_piazza,
@@ -1545,7 +1525,7 @@ export function* fetchBolletini({
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1578,7 +1558,7 @@ export function* buyTicketOnline({
   callBack,
 }) {
   const response = yield call(
-    buyTicketOnlineReq,
+    AuthRequest.buyTicketOnlineReq,
     typee,
     link,
     nome_agenzia,
@@ -1642,7 +1622,7 @@ export function* setPagoPa({
   });
 
   const response = yield call(
-    pagoPaRequest,
+    AuthRequest.pagoPaRequest,
     service_id,
     person_type,
     via_piazza,
@@ -1676,7 +1656,7 @@ export function* setPagoPa({
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1720,7 +1700,7 @@ export function* setFreccia({
   });
 
   const response = yield call(
-    frecciaRequest,
+    AuthRequest.frecciaRequest,
     service_id,
     importo,
     causale,
@@ -1761,7 +1741,7 @@ export function* setFreccia({
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1794,7 +1774,7 @@ export function* setMavRav({
     duration: 0,
   });
   const response = yield call(
-    mavRavRequest,
+    AuthRequest.mavRavRequest,
     service_id,
     person_type,
     via_piazza,
@@ -1824,7 +1804,7 @@ export function* setMavRav({
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1848,7 +1828,7 @@ export function* payPagoPa({
     duration: 0,
   });
   const response = yield call(
-    payPagoPaReq,
+    AuthRequest.payPagoPaReq,
     service_id,
     total_amount,
     fee_amount,
@@ -1868,7 +1848,7 @@ export function* payPagoPa({
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1908,7 +1888,7 @@ export function* setBokingSep({
     duration: 0,
   });
   const response = yield call(
-    bokkingF24Req,
+    AuthRequest.bokkingF24Req,
     service_id,
     person_type,
     via_piazza,
@@ -1947,7 +1927,7 @@ export function* setBokingSep({
         response?.error &&
         response?.error?.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1964,7 +1944,13 @@ export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
     message: "Attendere, transazione in corso",
     duration: 0,
   });
-  const response = yield call(payFReq, service_id, importo, fee, pagamento_id);
+  const response = yield call(
+    AuthRequest.payFReq,
+    service_id,
+    importo,
+    fee,
+    pagamento_id
+  );
   if (response?.status === 200) {
     if (response?.data) {
       notification.close("payF24");
@@ -1979,7 +1965,7 @@ export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
         response?.error &&
         response?.error.response?.status === 401
       ) {
-        const response = yield call(logoutApi);
+        const response = yield call(AuthRequest.logoutApi);
 
         if (response) {
           localStorage.setItem("accountDataB", null);
@@ -1991,7 +1977,7 @@ export function* setPayFSaga({ service_id, importo, fee, pagamento_id }) {
   notification.close("payF24");
 }
 export function* getRegistrazioneData() {
-  const response = yield call(getRegistrazioneDataReq);
+  const response = yield call(AuthRequest.getRegistrazioneDataReq);
   if (response?.data) {
     yield put(AuthActions.setRegistrazioneData(response?.data?.data));
   }
@@ -2022,7 +2008,7 @@ export function* createUserBgame({
   answer,
 }) {
   const response = yield call(
-    createUserBgameReq,
+    AuthRequest.createUserBgameReq,
     nome,
     cognome,
     data_nascita,

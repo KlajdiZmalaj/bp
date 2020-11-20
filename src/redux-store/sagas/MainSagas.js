@@ -2,23 +2,12 @@ import { put, call } from "redux-saga/effects";
 import MainActions from "../models/main";
 import AuthActions from "../models/auth";
 
-import {
-  fetchUsers,
-  fetchUsersSimple,
-  fetchUsersBySearch,
-  updatateOverviewWidget,
-  setOnFav,
-  fetchFavorites,
-  fetchServices,
-  fetchSearchedUsers,
-  fetchphotos,
-} from "services/main";
-
+import * as MainRequest from "services/main";
 import { logoutApi } from "services/auth";
 
 export function* getServices() {
   // console.log("funx callllled");
-  const response = yield call(fetchServices);
+  const response = yield call(MainRequest.fetchServices);
 
   if (response.data) {
     yield put(MainActions.setServices(response.data.all_services));
@@ -33,7 +22,7 @@ export function* getServices() {
   }
 }
 export function* getFavorites() {
-  const response = yield call(fetchFavorites);
+  const response = yield call(MainRequest.fetchFavorites);
   if (response.data) {
     yield put(MainActions.setFavorites(response.data.favorites));
   } else if (response.error) {
@@ -47,10 +36,10 @@ export function* getFavorites() {
   }
 }
 export function* toggleFavorite(params) {
-  const response = yield call(setOnFav, params.id, params.sType);
+  const response = yield call(MainRequest.setOnFav, params.id, params.sType);
   // console.log("responseeee", response);
   if (response.status === 200) {
-    const response = yield call(fetchFavorites);
+    const response = yield call(MainRequest.fetchFavorites);
     if (response.data) {
       yield put(MainActions.setFavorites(response.data.favorites));
     }
@@ -63,7 +52,7 @@ export function* getUsers(params) {
     yield put(MainActions.setLoaderForAdminUtenti(true));
   }
   const response = yield call(
-    fetchUsers,
+    MainRequest.fetchUsers,
     params.search_user,
     params.skin_id,
     params.backoffice,
@@ -86,7 +75,7 @@ export function* getUsers(params) {
 
 export function* getSearchedUsers({ search_user }) {
   yield put(MainActions.setLoaderForAdminUtenti(true));
-  const response = yield call(fetchSearchedUsers, search_user);
+  const response = yield call(MainRequest.fetchSearchedUsers, search_user);
 
   console.log("response", response.data);
   if (response && response.data) {
@@ -103,28 +92,31 @@ export function* getSearchedUsers({ search_user }) {
 }
 
 export function* getUsersSimple() {
-  const response = yield call(fetchUsersSimple);
+  const response = yield call(MainRequest.fetchUsersSimple);
   // console.log("getUsers called", response);
   if (response.data) {
     yield put(MainActions.setUsersSimple(response.data.users));
   }
 }
 export function* getUsersBySearch(params) {
-  const response = yield call(fetchUsersBySearch, params.search_user);
+  const response = yield call(
+    MainRequest.fetchUsersBySearch,
+    params.search_user
+  );
   if (response.data) {
     yield put(MainActions.setUsersBySearch(response.data.users));
   }
 }
 
 export function* getOverviewDashboard(data) {
-  const response = yield call(updatateOverviewWidget, data.period);
+  const response = yield call(MainRequest.updatateOverviewWidget, data.period);
   if (response.data) {
     yield put(MainActions.setOverviewDashboard(response.data.balance));
   }
 }
 
 export function* getUserPhotos({ id }) {
-  const response = yield call(fetchphotos, id);
+  const response = yield call(MainRequest.fetchphotos, id);
   if (response.data) {
     yield put(MainActions.setUserPhotos(response.data));
   }
