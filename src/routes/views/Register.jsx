@@ -11,7 +11,7 @@ import AuthActions from "redux-store/models/auth";
 // import "../register.css";
 // import "../anim.css";
 import "../../themes/css-register/register.css";
-import { countriesArray } from "config";
+import countriesArray from "config/countryArr";
 
 // import "react-select/dist/react-select.css";
 import "react-virtualized/styles.css";

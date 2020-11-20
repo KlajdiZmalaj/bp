@@ -5,7 +5,7 @@ import images from "themes/images";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import VirtualizedSelect from "react-virtualized-select";
-import { countriesArray } from "config";
+import countriesArray from "config/countryArr";
 const { Option } = Select;
 
 class Eventi extends Component {

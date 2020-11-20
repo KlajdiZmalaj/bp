@@ -1,12 +1,11 @@
 import React from "react";
 import { DateRangePicker } from "react-date-range";
-import { subDays } from "date-fns";
 import * as locales from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import "./styles.css";
 import ClickOut from "react-onclickout";
-
+import moment from "moment";
 const renderStaticRangeLabel = (e) => (
   <CustomStaticRangeLabelContent text={e} />
 );
@@ -71,7 +70,7 @@ const CalendarRangePicker = ({
               hasCustomRendering: true,
               range: () => ({
                 endDate: new Date(),
-                startDate: subDays(new Date(), 6),
+                startDate: moment(new Date()).subtract(6, "days").toDate(),
               }),
               isSelected() {
                 return false;
@@ -82,7 +81,7 @@ const CalendarRangePicker = ({
               hasCustomRendering: true,
               range: () => ({
                 endDate: new Date(),
-                startDate: subDays(new Date(), 29),
+                startDate: moment(new Date()).subtract(29, "days").toDate(),
               }),
               isSelected() {
                 return false;
@@ -93,7 +92,7 @@ const CalendarRangePicker = ({
               hasCustomRendering: true,
               range: () => ({
                 endDate: new Date(),
-                startDate: subDays(new Date(), 89),
+                startDate: moment(new Date()).subtract(89, "days").toDate(),
               }),
               isSelected() {
                 return false;

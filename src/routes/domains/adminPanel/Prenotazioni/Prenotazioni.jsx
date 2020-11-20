@@ -4,7 +4,6 @@ import FormDetails from "../../../views/FormDetails";
 import { Tooltip } from "antd";
 import CalendarRangePicker from "shared-components/CalendarRangePicker/CalendarRangePicker";
 import { connect } from "react-redux";
-import { format } from "date-fns";
 import {
   graphData,
   Tranzacioni,
@@ -12,7 +11,7 @@ import {
   Proviggioni,
 } from "../StaticAdminData";
 import { numberWithCommas } from "utils/HelperFunc";
-
+import moment from "moment";
 const PartsType = ({ partType, iconClass, number }) => (
   <div
     className={`Prenotazioni--Statistiche--Box--Informazioni--Parts--${partType}`}
@@ -167,10 +166,12 @@ class Prenotazioni extends React.Component {
             setStateFunc={(item) => {
               this.setState({
                 picker: [item.selection],
-                from: format(item.selection.startDate, "yyyy-MM-dd"),
-                to: format(item.selection.endDate, "yyyy-MM-dd"),
-                fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
-                toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
+                from: moment(item.selection.startDate).format("YYYY-MM-DD"),
+                to: moment(item.selection.endDate).format("YYYY-MM-DD"),
+                fromLabel: moment(item.selection.startDate).format(
+                  "DD/MM/YYYY"
+                ),
+                toLabel: moment(item.selection.endDate).format("DD/MM/YYYY"),
               });
             }}
             setStateFuncEmpty={() => {

@@ -7,7 +7,6 @@ import { Azioni, Header, Loader } from "shared-components";
 import { slicedAmount } from "utils";
 import ReactToPrint from "react-to-print";
 import images from "themes/images";
-import { format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { isArray } from "lodash";
@@ -178,10 +177,8 @@ class Transazioni extends React.Component {
       );
     }
     if (this.props.fromDate && this.props.fromDate !== prevProps.fromDate) {
-      const label = format(
-        moment(this.props.fromDate, "YYYY-MM-DD").toDate(),
-        "dd/MM/yyyy"
-      ).toString();
+      const label = moment(this.props.fromDate, "DD/MM/YYYY");
+
       this.setState({
         from: this.props.fromDate,
         to: this.props.fromDate,
@@ -518,10 +515,16 @@ class Transazioni extends React.Component {
                   setStateFunc={(item) => {
                     this.setState({
                       picker: [item.selection],
-                      from: format(item.selection.startDate, "yyyy-MM-dd"),
-                      to: format(item.selection.endDate, "yyyy-MM-dd"),
-                      fromLabel: format(item.selection.startDate, "dd/MM/yyyy"),
-                      toLabel: format(item.selection.endDate, "dd/MM/yyyy"),
+                      from: moment(item.selection.startDate).format(
+                        "YYYY-MM-DD"
+                      ),
+                      to: moment(item.selection.endDate).format("YYYY-MM-DD"),
+                      fromLabel: moment(item.selection.startDate).format(
+                        "DD/MM/YYYY"
+                      ),
+                      toLabel: moment(item.selection.endDate).format(
+                        "DD/MM/YYYY"
+                      ),
                     });
                   }}
                   setStateFuncEmpty={() => {
