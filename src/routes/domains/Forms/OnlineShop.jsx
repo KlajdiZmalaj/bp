@@ -3,7 +3,7 @@ import { Radio, notification } from "antd";
 import images from "themes/images";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-
+import { Item } from "./FormsComponents";
 class OnlineShop extends Component {
   state = {
     link: "",
@@ -160,19 +160,16 @@ class OnlineShop extends Component {
 
           <div className="MainForm">
             <div className="MainForm--left">
-              <div className="formsContainer--body__item">
-                <div className="label">Link Prodotto</div>
-                <input
-                  className="questionInput"
-                  value={link || ""}
-                  onChange={(e) => {
-                    this.setState({ link: e.target.value });
-                  }}
-                  placeholder="Link"
-                  type="text"
-                />
-                <i className="fal fa-question-circle" />
-              </div>
+              <Item
+                label="Link Prodotto"
+                value={link}
+                // type="radio"
+                handleChange={(e) => {
+                  this.setState({ link: e });
+                }}
+                Icon={() => <i className="fal fa-question-circle" />}
+              />
+
               <div className="formsContainer--body__item">
                 <div className="label">Prezzo Prodotto</div>
                 <div className="EuroInput">
@@ -190,20 +187,22 @@ class OnlineShop extends Component {
 
                 <i className="fal fa-question-circle" />
               </div>
-              <div className="formsContainer--body__item">
-                <div className="label">Consegna a:</div>
-                <Radio.Group
-                  onChange={(e) => {
-                    this.setState({
-                      consegna: e.target.value,
-                    });
-                  }}
-                  value={consegna}
-                >
-                  <Radio value={1}>Nome Agenzia</Radio>
-                  <Radio value={2}>Indirizzo Cliente</Radio>
-                </Radio.Group>
-              </div>
+              <Item
+                label="Consegna a:"
+                type="radio"
+                value={consegna}
+                // type="radio"
+                handleChange={(e) => {
+                  this.setState({ consegna: e });
+                }}
+                JSX={() => (
+                  <>
+                    <Radio value={1}>Nome Agenzia</Radio>
+                    <Radio value={2}>Indirizzo Cliente</Radio>
+                  </>
+                )}
+                Icon={() => <i className="fal fa-question-circle" />}
+              />
             </div>
             <div className="MainForm--right">
               <div className="label">Note Acquisti</div>
@@ -267,95 +266,65 @@ class OnlineShop extends Component {
                       type="text"
                     />
                   </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">Nome agenzia</div>
-                    <input
-                      value={company_name || ""}
-                      onChange={(e) => {
-                        this.setState({ company_name: e.target.value });
-                      }}
-                      placeholder="Nome agenzia"
-                      type="text"
-                    />
-                  </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">
-                      Email <span className="red">*</span>
-                    </div>
-                    <input
-                      value={email || ""}
-                      onChange={(e) => {
-                        this.setState({ email: e.target.value });
-                      }}
-                      placeholder="Email"
-                      type="text"
-                    />
-                  </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">
-                      Telefono <span className="red">*</span>
-                    </div>
-                    <input
-                      value={phone || ""}
-                      onChange={(e) => {
-                        this.setState({ phone: e.target.value });
-                      }}
-                      placeholder="Telefono"
-                      type="text"
-                    />
-                  </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">
-                      Stato <span className="red">*</span>
-                    </div>
-                    <input
-                      value={stato || ""}
-                      onChange={(e) => {
-                        this.setState({ stato: e.target.value });
-                      }}
-                      placeholder="Italia"
-                      type="text"
-                    />
-                  </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">
-                      citta <span className="red">*</span>
-                    </div>
-                    <input
-                      value={citta || ""}
-                      onChange={(e) => {
-                        this.setState({ citta: e.target.value });
-                      }}
-                      placeholder="Citta"
-                      type="text"
-                    />
-                  </div>
+                  <Item
+                    label="Nome agenzia"
+                    value={company_name}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ company_name: e });
+                    }}
+                  />
+                  <Item
+                    label="Email"
+                    value={email}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ email: e });
+                    }}
+                  />
+                  <Item
+                    label="Telefono"
+                    value={phone}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ phone: e });
+                    }}
+                  />
+                  <Item
+                    label="Stato"
+                    value={stato}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ stato: e });
+                    }}
+                  />
+                  <Item
+                    label="Citta"
+                    value={citta}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ citta: e });
+                    }}
+                  />
                 </div>
                 <div className="MainForm--right">
-                  <div className="formsContainer--body__item">
-                    <div className="label">
-                      Indirizzo 1 <span className="red">*</span>
-                    </div>
-                    <input
-                      value={address1 || ""}
-                      onChange={(e) => {
-                        this.setState({ address1: e.target.value });
-                      }}
-                      placeholder=" Indirizzo 1"
-                      type="text"
-                    />
-                  </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">Indirizzo 2 </div>
-                    <input
-                      value={address2 || ""}
-                      onChange={(e) => {
-                        this.setState({ address2: e.target.value });
-                      }}
-                      placeholder=" Indirizzo 2"
-                      type="text"
-                    />
-                  </div>
+                  <Item
+                    label="Indirizzo 1"
+                    value={address1}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ address1: e });
+                    }}
+                  />
+                  <Item
+                    label="Indirizzo 2 "
+                    value={address2}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ address2: e });
+                    }}
+                  />
+
                   <div
                     className={`formsContainer--body__item ${
                       isMobile ? "M" : ""
@@ -390,17 +359,16 @@ class OnlineShop extends Component {
                       type="text"
                     />
                   </div>
-                  <div className="formsContainer--body__item">
-                    <div className="label">note address </div>
-                    <textarea
-                      value={note_address || ""}
-                      onChange={(e) => {
-                        this.setState({ note_address: e.target.value });
-                      }}
-                      placeholder="Note (opzionali)"
-                      type="text"
-                    />
-                  </div>
+                  <Item
+                    label="Note address"
+                    type="note"
+                    value={note_address}
+                    // type="radio"
+                    handleChange={(e) => {
+                      this.setState({ note_address: e });
+                    }}
+                  />
+
                   <div className="formsContainer--body__item submit">
                     <button
                       style={{ backgroundColor: color }}
