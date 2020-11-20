@@ -136,7 +136,7 @@ class AdminPanelDom extends React.Component {
       depositoActiveVisibility,
       addebitoActiveVisibility,
     } = this.state;
-    console.log("ca ngel state", this.state);
+    // console.log("ca ngel state", this.state);
     const {
       statModal,
       ultModal,
@@ -154,7 +154,6 @@ class AdminPanelDom extends React.Component {
       accountInfo,
       activeSkinId,
     } = this.props;
-    console.log("accountInfo accountInfo", accountInfo);
     return (
       <React.Fragment>
         <div className="Admin-Panel">

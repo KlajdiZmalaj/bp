@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Select, notification, Radio, Slider } from "antd";
+import { notification, Radio, DatePicker } from "antd";
 import images from "themes/images";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-const { Option } = Select;
 
 const SubTitle = ({ title, color, right, down }) => {
   return (
@@ -18,19 +17,56 @@ const SubTitle = ({ title, color, right, down }) => {
     </div>
   );
 };
-const Item = ({ label, value, handleChange, Icon }) => {
-  return (
+const Item = ({ label, value, handleChange, Icon, type, JSX }) => {
+  return type === "date" ? (
     <div className="formsContainer--body__item">
       <div className="label">
         {label} <span className="Red">*</span>
       </div>
-      <input
-        type="text"
-        value={value}
+      <DatePicker
+        format="DD/MM/YYYY"
+        onChange={(e) => {
+          handleChange(e);
+        }}
+      />
+    </div>
+  ) : type === "radio" ? (
+    <div className="formsContainer--body__item ">
+      <div className="label">
+        {label} <span className="Red">*</span>
+      </div>
+      <Radio.Group
         onChange={(e) => {
           handleChange(e.target.value);
         }}
-      />
+        value={value}
+      >
+        {<JSX />}
+      </Radio.Group>
+    </div>
+  ) : (
+    <div className="formsContainer--body__item">
+      <div className="label">
+        {label} <span className="Red">*</span>
+      </div>
+      {type === "notes" ? (
+        <textarea
+          type="textarea"
+          value={value}
+          onChange={(e) => {
+            handleChange(e.target.value);
+          }}
+        />
+      ) : (
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => {
+            handleChange(e.target.value);
+          }}
+        />
+      )}
+
       <Icon />
     </div>
   );
@@ -81,6 +117,20 @@ const Download = ({ title, link }) => (
     <span> {title}</span>
     <i className="fal fa-download" aria-hidden="true"></i>
   </a>
+);
+const Category = ({ handleChange, offerta, category, svg, desc, name }) => (
+  <div
+    onClick={handleChange}
+    className={
+      "rightForm--categories__item" + (offerta === category ? " active" : "")
+    }
+  >
+    <svg className={`svgFont ${svg}`}>
+      <use xlinkHref={`#${svg}`}></use>
+    </svg>
+    <span>{desc}</span>
+    <div>{name}</div>
+  </div>
 );
 class Auto extends Component {
   state = {
@@ -195,67 +245,58 @@ class Auto extends Component {
             )}
           </div>
           <div className="rightForm--left">
-            <div className="formsContainer--body__item ">
-              <div className="label">
-                Tipologia <span className="Red">*</span>
-              </div>
-              <Radio.Group
-                onChange={(e) => {
-                  this.setState({
-                    tipologia: e.target.value,
-                  });
-                }}
-                value={tipologia}
-              >
-                <Radio value={"2"}>Persona</Radio>
-                <Radio value={"1"}>Business</Radio>
-              </Radio.Group>
-            </div>
+            <Item
+              type="radio"
+              label="Tipologia"
+              value={tipologia}
+              handleChange={(e) => {
+                this.setState({ tipologia: e });
+              }}
+              JSX={() => (
+                <>
+                  <Radio value={"2"}>Persona</Radio>
+                  <Radio value={"1"}>Business</Radio>
+                </>
+              )}
+            />
             <SubTitle title="OFFERTA BUSINESS" color={color} />
             <div className="rightForm--categories">
-              <div
-                onClick={() => this.setState({ offerta: 1 })}
-                className={
-                  "rightForm--categories__item" +
-                  (offerta === 1 ? " active" : "")
-                }
-              >
-                <svg className={`svgFont bulb`}>
-                  <use xlinkHref={`#bulb`}></use>
-                </svg>
-                <span>0,0765€/kWh</span>
-                <div>LUCE</div>
-              </div>
-              <div
-                className="rightForm--categories__item"
-                onClick={() => this.setState({ offerta: 2 })}
-                className={
-                  "rightForm--categories__item" +
-                  (offerta === 2 ? " active" : "")
-                }
-              >
-                <svg className={`svgFont fire`}>
-                  <use xlinkHref={`#fire`}></use>
-                </svg>
-                <span>0,25€/Smc</span>
-                <div>GAS</div>
-              </div>
-              <div
-                className="rightForm--categories__item"
-                onClick={() => this.setState({ offerta: 3 })}
-                className={
-                  "rightForm--categories__item" +
-                  (offerta === 3 ? " active" : "")
-                }
-              >
-                <svg className={`svgFont fire-bulb`}>
-                  <use xlinkHref={`#fire-bulb`}></use>
-                </svg>
-                <span>
-                  0,0765€/kWh <br /> 0,25€/Smc
-                </span>
-                <div>LUCE+GAS</div>
-              </div>
+              <Category
+                handleChange={() => {
+                  this.setState({ offerta: 1 });
+                }}
+                offerta={this.state.offerta}
+                category={1}
+                desc={"0,0765€/kWh"}
+                name={"LUCE"}
+                svg="bulb"
+              />
+              <Category
+                handleChange={() => {
+                  this.setState({ offerta: 2 });
+                }}
+                offerta={this.state.offerta}
+                category={2}
+                desc={"0,25€/Smc"}
+                name={"GAS"}
+                svg="fire"
+              />
+              <Category
+                handleChange={() => {
+                  this.setState({ offerta: 3 });
+                }}
+                offerta={this.state.offerta}
+                category={3}
+                desc={[
+                  <>
+                    0,0765€/kWh
+                    <br />
+                    0,25€/Smc
+                  </>,
+                ]}
+                name={"LUCE+GAS"}
+                svg="fire-bulb"
+              />
             </div>
             <SubTitle title="DATI INTESTATARIO BOLLETTA" color={color} />
             <div className="formsContainer--body__semiCont mt-2">
@@ -311,6 +352,7 @@ class Auto extends Component {
             <Item
               label="Data Di Nascita"
               value={datanascita}
+              type="date"
               Icon={() => null}
               handleChange={(e) => {
                 this.setState({ datanascita: e });
@@ -475,6 +517,7 @@ class Auto extends Component {
               label="Notes"
               value={note}
               Icon={() => null}
+              type="notes"
               handleChange={(e) => {
                 this.setState({ note: e });
               }}
