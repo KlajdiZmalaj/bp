@@ -232,10 +232,12 @@ class RegisterEndUser extends React.Component {
         (comune) => comune.codeKey.toString() === fiscalCodeKey.toString()
       )
       .map((comune) => {
-        // this.setState({ comuniSelected: comune });
-        this.setState({ nazione: comune.nazione });
-        this.setState({ province_of_birth: comune.sigla });
-        this.setState({ city_of_birth: comune.provincia });
+        this.setState({
+          // comuniSelected: comune,
+          nazione: comune.nazione,
+          province_of_birth: comune.sigla,
+          city_of_birth: comune.provincia,
+        });
 
         return comune;
       });
