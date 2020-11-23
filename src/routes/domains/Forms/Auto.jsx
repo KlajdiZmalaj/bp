@@ -3,8 +3,9 @@ import { Select, notification, Radio, Slider } from "antd";
 import images from "themes/images";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
+import { autoConfig } from "config";
+import { Item } from "./FormsComponents";
 const { Option } = Select;
-
 class Auto extends Component {
   state = {
     tipologia: "1",
@@ -17,12 +18,12 @@ class Auto extends Component {
     email: "",
     telefono: "",
     canone_mensile: 400,
-    marca: "Fiat",
-    modello: "500XL",
+    marca: Object.keys(autoConfig)[0],
+    modello: Object.values(autoConfig)[0].models[0],
     alimentazione: "1",
     cambio: "1",
     percorrenza: "",
-    colore: "Colore",
+    colore: Object.values(autoConfig)[0].colors[0],
     note: "",
   };
 
@@ -39,12 +40,12 @@ class Auto extends Component {
         email: "",
         telefono: "",
         canone_mensile: 400,
-        marca: "Fiat",
-        modello: "500XL",
+        marca: 0,
+        modello: "",
         alimentazione: "1",
         cambio: "1",
         percorrenza: "",
-        colore: "Colore",
+        colore: "",
         note: "",
       });
       notification["success"]({
@@ -62,27 +63,7 @@ class Auto extends Component {
     }
   };
   submitData = () => {
-    // const {
-    //   tipologia,
-    //   nome,
-    //   cognome,
-    //   codice_fiscale,
-    //   indirizo_residenca,
-    //   p_iva,
-    //   email,
-    //   telefono,
-    //   canone_mensile,
-    //   marca,
-    //   modello,
-    //   alimentazione,
-    //   cambio,
-    //   percorrenza,
-    //   ragione_sociale,
-    //   colore,
-    //   note,
-    // } = this.state;
-    // this.props.createUserBgame(
-    // );
+    //
   };
 
   render() {
@@ -130,124 +111,98 @@ class Auto extends Component {
             )}
           </div>
           <div className="rightForm--left">
-            <div className="formsContainer--body__item ">
-              <div className="label">
-                Tipologia <span className="Red">*</span>
-              </div>
-              <Radio.Group
-                onChange={(e) => {
+            <Item
+              type="radio"
+              label="Tipologia"
+              value={tipologia}
+              handleChange={(e) => {
+                this.setState({
+                  tipologia: e,
+                });
+              }}
+              JSX={() => (
+                <>
+                  <Radio value={"1"}>Business</Radio>
+                  <Radio value={"2"}>Persona</Radio>
+                </>
+              )}
+            />
+            <Item
+              label="Nome"
+              value={nome}
+              handleChange={(e) => {
+                this.setState({
+                  nome: e,
+                });
+              }}
+            />
+            <Item
+              label="Cognome"
+              value={cognome}
+              handleChange={(e) => {
+                this.setState({
+                  cognome: e,
+                });
+              }}
+            />
+
+            {parseInt(tipologia) === 2 && (
+              <Item
+                label="Codice Fiscale"
+                value={codice_fiscale}
+                handleChange={(e) => {
                   this.setState({
-                    tipologia: e.target.value,
+                    codice_fiscale: e,
                   });
                 }}
-                value={tipologia}
-              >
-                <Radio value={"1"}>Business</Radio>
-                <Radio value={"2"}>Persona</Radio>
-              </Radio.Group>
-            </div>
-            <div className="formsContainer--body__item ">
-              <div className="label">
-                Nome <span className="Red">*</span>
-              </div>
-              <input
-                value={nome}
-                type="text"
-                placeholder="Nome"
-                onChange={(e) => {
-                  this.setState({ nome: e.target.value });
-                }}
               />
-            </div>
-            <div className="formsContainer--body__item">
-              <div className="label">
-                Cognome <span className="Red">*</span>
-              </div>
-              <input
-                value={cognome}
-                placeholder="Cognome"
-                onChange={(e) => {
-                  this.setState({ cognome: e.target.value });
-                }}
-                type="text"
-              />
-            </div>
-            <div className="formsContainer--body__item datiPass">
-              <div className="label"> Codice Fiscale</div>
-              <input
-                value={codice_fiscale}
-                type="text"
-                placeholder="Codice Fiscale"
-                onChange={(e) => {
-                  this.setState({ codice_fiscale: e.target.value });
-                }}
-              />
-            </div>
-            <div className="formsContainer--body__item semi">
-              <div className="label">
-                Indirizzo Residenza <span className="Red">*</span>
-              </div>
-              <input
-                value={indirizo_residenca}
-                type="text"
-                placeholder="Indirizo Residenza"
-                onChange={(e) => {
-                  this.setState({ indirizo_residenca: e.target.value });
-                }}
-              />{" "}
-            </div>
-            <div className="formsContainer--body__item semi">
-              <div className="label">Ragione Sociale</div>
-              <input
-                value={ragione_sociale}
-                placeholder="Ragione Sociale"
-                type="text"
-                onChange={(e) => {
-                  this.setState({ ragione_sociale: e.target.value });
-                }}
-              />{" "}
-            </div>{" "}
-            <div className="formsContainer--body__item">
-              <div className="label">
-                P.IVA <span className="Red">*</span>
-              </div>
-              <input
-                value={p_iva}
-                placeholder="P IVA"
-                type="text"
-                onChange={(e) => {
-                  this.setState({ p_iva: e.target.value });
-                }}
-              />
-            </div>
-            <div className="formsContainer--body__item semi">
-              <div className="label">
-                Email <span className="Red">*</span>
-              </div>
-              <input
-                value={email}
-                type="text"
-                placeholder="Email"
-                onChange={(e) => {
-                  this.setState({ email: e.target.value });
-                }}
-              />
-              <i className="fal fa-envelope inputI" />
-            </div>
-            <div className="formsContainer--body__item">
-              <div className="label">
-                Telefono <span className="Red">*</span>
-              </div>
-              <input
-                value={telefono}
-                placeholder="Telefono"
-                type="text"
-                onChange={(e) => {
-                  this.setState({ telefono: e.target.value });
-                }}
-              />
-              <i className="fal fa-phone inputI" />
-            </div>
+            )}
+            <Item
+              label="Indirizzo Residenza"
+              value={indirizo_residenca}
+              handleChange={(e) => {
+                this.setState({
+                  indirizo_residenca: e,
+                });
+              }}
+            />
+            <Item
+              label="Ragione Sociale"
+              value={ragione_sociale}
+              handleChange={(e) => {
+                this.setState({
+                  ragione_sociale: e,
+                });
+              }}
+            />
+            <Item
+              label="P.IVA"
+              value={p_iva}
+              handleChange={(e) => {
+                this.setState({
+                  p_iva: e,
+                });
+              }}
+            />
+            <Item
+              label="Email"
+              value={email}
+              handleChange={(e) => {
+                this.setState({
+                  email: e,
+                });
+              }}
+            />
+            <Item
+              label="Telefono"
+              value={telefono}
+              handleChange={(e) => {
+                this.setState({
+                  telefono: e,
+                });
+              }}
+              Icon={() => <i className="fal fa-phone inputI" />}
+            />
           </div>
 
           <div className="rightForm--right">
@@ -274,12 +229,22 @@ class Auto extends Component {
                 </div>
                 <Select
                   onChange={(value) => {
-                    this.setState({ marca: value });
+                    this.setState({
+                      marca: value,
+                      modello: autoConfig[value].models[0],
+                      colore: autoConfig[value].colors[0],
+                    });
                   }}
-                  defaultValue={"Fiat"}
-                  value={marca}
+                  defaultValue={autoConfig[marca].name}
+                  value={autoConfig[marca].name}
                 >
-                  <Option value="Fiat">Fiat</Option>
+                  {Object.keys(autoConfig).map((carId) => {
+                    return (
+                      <Option value={carId} key={carId}>
+                        {autoConfig[carId].name}
+                      </Option>
+                    );
+                  })}
                 </Select>
               </div>
               <div className="formsContainer--body__item semi">
@@ -290,13 +255,20 @@ class Auto extends Component {
                   onChange={(value) => {
                     this.setState({ modello: value });
                   }}
-                  defaultValue={"500XL"}
+                  defaultValue={""}
                   value={modello}
                 >
-                  <Option value="500XL">500XL</Option>
+                  {autoConfig[marca].models.map((model) => {
+                    return (
+                      <Option value={model} key={model}>
+                        {model}
+                      </Option>
+                    );
+                  })}
                 </Select>
               </div>
             </div>
+
             <div className="formsContainer--body__item Ali">
               <div className="label">
                 Alimentazione<span className="Red">*</span>
@@ -315,35 +287,32 @@ class Auto extends Component {
                 <Radio value={"4"}>Elettrica</Radio>
               </Radio.Group>
             </div>
-            <div className="formsContainer--body__item ">
-              <div className="label">
-                Cambio<span className="Red">*</span>
-              </div>
-              <Radio.Group
-                onChange={(e) => {
-                  this.setState({
-                    cambio: e.target.value,
-                  });
-                }}
-                value={cambio}
-              >
-                <Radio value={"1"}>Manuale</Radio>
-                <Radio value={"2"}>Automatico</Radio>
-              </Radio.Group>
-            </div>
-            <div className="formsContainer--body__item ">
-              <div className="label">
-                Percorrenza (Km/Anno) <span className="Red">*</span>
-              </div>
-              <input
-                value={percorrenza}
-                placeholder="Percorrenza"
-                type="text"
-                onChange={(e) => {
-                  this.setState({ percorrenza: e.target.value });
-                }}
-              />
-            </div>
+            <Item
+              type="radio"
+              label="Cambio"
+              value={cambio}
+              handleChange={(e) => {
+                this.setState({
+                  cambio: e,
+                });
+              }}
+              JSX={() => (
+                <>
+                  <Radio value={"1"}>Manuale</Radio>
+                  <Radio value={"2"}>Automatico</Radio>
+                </>
+              )}
+            />
+            <Item
+              label="Percorrenza (Km/Anno)"
+              value={percorrenza}
+              handleChange={(e) => {
+                this.setState({
+                  percorrenza: e,
+                });
+              }}
+            />
+
             <div className="formsContainer--body__item ">
               <div className="label">
                 Preferenza Colore <span className="Red">*</span>
@@ -352,24 +321,29 @@ class Auto extends Component {
                 onChange={(value) => {
                   this.setState({ colore: value });
                 }}
-                defaultValue={"Colore"}
+                defaultValue={""}
                 value={colore}
               >
-                <Option value="light">Light</Option>
-                <Option value="dark">Dark</Option>
+                {autoConfig[marca].colors.map((color) => {
+                  return (
+                    <Option value={color} key={color}>
+                      {color}
+                    </Option>
+                  );
+                })}
               </Select>
             </div>
-            <div className="formsContainer--body__item ">
-              <div className="label">NOTE</div>
-              <textarea
-                value={note}
-                type="text"
-                placeholder="Note"
-                onChange={(e) => {
-                  this.setState({ note: e.target.value });
-                }}
-              />
-            </div>
+            <Item
+              label="NOTE"
+              value={note}
+              handleChange={(e) => {
+                this.setState({
+                  note: e,
+                });
+              }}
+              type="notes"
+            />
+
             <div className="formsContainer--body__item submit">
               <button
                 style={{ backgroundColor: color }}

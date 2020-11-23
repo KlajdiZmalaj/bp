@@ -985,3 +985,16 @@ export const resetUserStateChangeFields = {
 };
 
 //
+
+export const autoConfig = {
+  "0": {
+    name: "Fiat",
+    models: ["Fiat 500", "Fiat500X", "Fiat124"],
+    colors: ["Tech House Grey", "Glam Coral", "Pasodoble Red", "Epic Blue"],
+  },
+  "1": {
+    name: "Citroen",
+    models: ["c1", "c2", "c4"],
+    colors: ["red", "green", "blue"],
+  },
+};

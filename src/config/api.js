@@ -1,8 +1,13 @@
 import $ from "jquery";
 
-const endpoint = "https://services-api.bpoint.store/api";
+export const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
-
+export const getToken = () => {
+  const value = localStorage.getItem("accountDataB");
+  const keys = JSON.parse(value);
+  return `Bearer ${keys?.token}`;
+};
+//
 export let skin = {
   skin_id: 0,
 };

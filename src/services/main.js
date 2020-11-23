@@ -1,15 +1,12 @@
 import axios from "axios";
-import { skin } from "config/api";
+import { skin, getToken, endpoint } from "config/api";
 
 export const fetchServices = () =>
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/apia",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .get(`/services`, {
@@ -21,12 +18,9 @@ export const fetchServices = () =>
 export const fetchFavorites = () =>
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")) &&
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/favorites`, {
@@ -44,11 +38,9 @@ export const fetchUsers = (
   const skin_id_to_use = skin_id ? skin_id : { ...skin };
   return axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/list`, {
@@ -63,11 +55,9 @@ export const fetchUsers = (
 export const fetchUsersSimple = () =>
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .get(`/simpleUsers`, {
@@ -80,11 +70,9 @@ export const fetchUsersSimple = () =>
 export const fetchUsersBySearch = (search_user) =>
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/findUser`, {
@@ -99,11 +87,9 @@ export const fetchUsersBySearch = (search_user) =>
 export const fetchSearchedUsers = (search_user) =>
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/search`, {
@@ -118,11 +104,9 @@ export const fetchSearchedUsers = (search_user) =>
 export const postImages = (user_id, imgFront, imgBack, callback) => {
   axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/updateDocument`, {
@@ -145,9 +129,7 @@ export const deleteImages = (user_id, callback) => {
     .create({
       baseURL: "https://services-api.bpoint.store/api/",
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/deleteDocument`, {
@@ -167,9 +149,7 @@ export const updatateOverviewWidget = (period) =>
     .create({
       baseURL: "https://services-api.bpoint.store/api/",
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/balance`, {
@@ -183,9 +163,7 @@ export const setOnFav = (id, type) =>
     .create({
       baseURL: "https://services-api.bpoint.store/api/",
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .post(`/users/${type === "set" ? "addFavorite" : "removeFavorite"}`, {
@@ -199,9 +177,7 @@ export const fetchphotos = (id) => {
     .create({
       baseURL: "https://services-api.bpoint.store/api/",
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .get(`user/${id}/photos`, {
@@ -216,9 +192,7 @@ export const downloadFile = (document_name) => {
     .create({
       baseURL: "https://services-api.bpoint.store/api/",
       headers: {
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("accountDataB")).token
-        }`,
+        Authorization: getToken(),
       },
     })
     .get(`ticketDocument`, {

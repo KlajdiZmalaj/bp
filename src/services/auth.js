@@ -1,6 +1,6 @@
 import request from "utils/request";
 import axios from "axios";
-import { skin } from "config/api";
+import { skin, getToken, endpoint } from "config/api";
 import { notification } from "antd";
 import { message } from "antd";
 
@@ -16,7 +16,7 @@ import {
 // let req;
 // if (data) {
 //   req = axios.create({
-//     baseURL: "https://services-api.bpoint.store/api",
+//     baseURL: endpoint,
 //     headers: {
 //       Authorization: `Bearer ${data.token}`
 //     }
@@ -25,7 +25,7 @@ import {
 //
 //
 const instanceAxios = axios.create({
-  baseURL: "https://services-api.bpoint.store/api",
+  baseURL: endpoint,
 });
 const handleError = (error) => {
   // console.log(
@@ -40,6 +40,7 @@ const handleError = (error) => {
   ) {
     //logout
   } else if (
+    error.error?.response?.status === 444 ||
     error.error?.response?.status === 445 ||
     error?.response?.status === 445
   ) {
@@ -58,11 +59,8 @@ const handleError = (error) => {
 };
 instanceAxios.interceptors.request.use(
   async (config) => {
-    const value = await localStorage.getItem("accountDataB");
-    const keys = JSON.parse(value);
     config.headers = {
-      Authorization: `Bearer ${keys?.token}`,
-      Accept: "application/json",
+      Authorization: getToken(),
     };
     return config;
   },
@@ -105,7 +103,7 @@ export const logoutApi = () =>
       }
     })
     .catch((error) => ({ error }));
-
+//
 export const fetchBolletiniPremercati = (
   service_id,
   numero_conto_corrente,
@@ -120,16 +118,16 @@ export const fetchBolletiniPremercati = (
 ) =>
   instanceAxios
     .post(`/test/rechargeBOL`, {
-      ...{ service_id: service_id },
-      ...{ numero_conto_corrente: numero_conto_corrente },
-      ...{ importo: importo.toString() },
-      ...{ codice_identificativo: codice_identificativo },
-      ...{ tipologia: tipologia },
-      ...{ eseguito_da: eseguito_da },
-      ...{ via_piazza: via_piazza },
-      ...{ cap: cap },
-      ...{ citta: citta },
-      ...{ provincia: provincia },
+      service_id: service_id,
+      numero_conto_corrente: numero_conto_corrente,
+      importo: importo.toString(),
+      codice_identificativo: codice_identificativo,
+      tipologia: tipologia,
+      eseguito_da: eseguito_da,
+      via_piazza: via_piazza,
+      cap: cap,
+      citta: citta,
+      provincia: provincia,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -524,7 +522,7 @@ export const updateUsers = (
 export const fetchSkinExtras = () => {
   return axios
     .create({
-      baseURL: "https://services-api.bpoint.store/api",
+      baseURL: endpoint,
     })
     .get(`/skin/extra`, {
       params: {
