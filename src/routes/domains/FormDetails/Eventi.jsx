@@ -29,7 +29,7 @@ class Eventi extends Component {
     nome_agenzia: this.props.TicketByTcketId.nome_agenzia,
     extra_data: this.props.TicketByTcketId.extra_data,
     categoria: this.props.TicketByTcketId.categoria,
-    descrizione_categoria: this.props.TicketByTcketId.link,
+    descrizione_categoria: this.props.TicketByTcketId.descrizione_categoria,
     quantity: this.props.TicketByTcketId.quantity,
     name: this.props.TicketByTcketId.name,
     email: this.props.TicketByTcketId.email,
