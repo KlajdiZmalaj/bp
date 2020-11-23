@@ -27,24 +27,34 @@ import {
 const instanceAxios = axios.create({
   baseURL: endpoint,
 });
+const hasCode = (error, status) => {
+  if (
+    error?.response?.status === parseInt(status) ||
+    error.error?.response?.status === parseInt(status) ||
+    error?.response?.status === parseInt(status)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
 const handleError = (error) => {
   console.log(
     "error handler",
     error,
     error.response.status,
-    error.error?.response?.status
+    error.error?.response?.status,
+    hasCode(error, 403)
   );
-  if (
-    error.error?.response?.status === 401 ||
-    error?.response?.status === 401
-  ) {
+  if (hasCode(error, 401)) {
     //logout
-  } else if (
-    error?.response?.status === 444 ||
-    error.error?.response?.status === 445 ||
-    error?.response?.status === 445
-  ) {
+  } else if (hasCode(error, 444) || hasCode(error, 445)) {
     //skin id wrong
+  } else if (hasCode(error, 403)) {
+    //forbiden , kryesisht > prenotazione
+    notification["warning"]({
+      message: `Azione completata una volta`,
+    });
   } else {
     notification["error"]({
       message: error?.response?.data?.message,
