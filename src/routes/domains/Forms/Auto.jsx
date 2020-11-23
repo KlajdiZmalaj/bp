@@ -6,6 +6,7 @@ import { AuthActions, MainActions } from "redux-store/models";
 import { autoConfig } from "config";
 import { Item } from "./FormsComponents";
 import { GenerateCF } from "shared-components";
+import { Portal } from "shared-components/GenerateCF";
 const { Option } = Select;
 class Auto extends Component {
   state = {
@@ -361,7 +362,20 @@ class Auto extends Component {
             </div>
           </div>
         </div>
-        {this.state.CFPopUp && <GenerateCF />}
+        {this.state.CFPopUp && (
+          <Portal>
+            <GenerateCF
+              color1="rgb(34, 160, 148)"
+              color2="#fff"
+              setCF={(cf) => {
+                this.setState({ codice_fiscale: cf });
+              }}
+              closeBox={() => {
+                this.setState({ CFPopUp: false });
+              }}
+            />
+          </Portal>
+        )}
       </div>
     );
   }

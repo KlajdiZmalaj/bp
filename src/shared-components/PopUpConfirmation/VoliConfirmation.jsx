@@ -1,5 +1,4 @@
 import React from "react";
-import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 
 const Voli = ({ TicketByTcketId }) => {
   const extra_data =
@@ -37,12 +36,7 @@ const Voli = ({ TicketByTcketId }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <SpanFormater
-                  Word={TicketByTcketId.link}
-                  size={28}
-                  nrOfRows={1}
-                  formatWord={false}
-                />
+                {TicketByTcketId.link}
               </a>
             </span>
           </div>

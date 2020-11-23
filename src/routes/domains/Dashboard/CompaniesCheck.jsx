@@ -37,7 +37,7 @@ const CompaniesCheck = ({
                 Key === "BOLMR" || Key === "PPA" ? "BOLL-Black-Mobile" : Key
               ]
         }
-        alt=""
+        alt={image || Key}
       />
       <span> {Companie.name}</span>
       <i

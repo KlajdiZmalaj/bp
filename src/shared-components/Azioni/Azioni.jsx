@@ -66,7 +66,7 @@ class Azioni extends Component {
                         }`}
                       >
                         {azioni.type === "span" ? (
-                          <label
+                          <a
                             onClick={() => {
                               this.props.editReportistica(
                                 !this.props.ReportisticaDet
@@ -77,7 +77,7 @@ class Azioni extends Component {
                               <i className={azioni.i} />
                               <span>{azioni.name}</span>
                             </div>
-                          </label>
+                          </a>
                         ) : (
                           <a href={"#/" + azioni.link}>
                             <div>

@@ -501,7 +501,7 @@ class DashboardDom extends React.Component {
                     >
                       {" "}
                       <h3> Presto Online</h3>
-                      <img src={images["PAGO_PA-logo"]} alt="" />
+                      <img src={images["PAGO_PA-logo"]} alt="pago_pa" />
                       <span> Pago PA</span>
                     </div>
                     <div
@@ -523,7 +523,7 @@ class DashboardDom extends React.Component {
                     >
                       {" "}
                       <h3> Presto Online</h3>
-                      <img src={images["BOLLETINO-logo"]} alt="" />
+                      <img src={images["BOLLETINO-logo"]} alt="mav_rav" />
                       <span> MAV/RAV</span>
                     </div>
                     <div
@@ -541,7 +541,7 @@ class DashboardDom extends React.Component {
                       }}
                     >
                       <h3> Presto Online</h3>
-                      <img src={images["BOLO_AUTO-logo"]} alt="" />
+                      <img src={images["BOLO_AUTO-logo"]} alt="bolo_auto" />
                       <span> BOLLO AUTO</span>
                     </div>
                     <div
@@ -559,7 +559,7 @@ class DashboardDom extends React.Component {
                       }}
                     >
                       <h3> Presto Online</h3>
-                      <img src={images["f24-logo"]} alt="" />
+                      <img src={images["f24-logo"]} alt="f24" />
                       <span> F24</span>
                     </div>
                     <div
@@ -577,7 +577,7 @@ class DashboardDom extends React.Component {
                       }}
                     >
                       <h3> Presto Online</h3>
-                      <img src={images["BOLLETINO-logo"]} alt="" />
+                      <img src={images["BOLLETINO-logo"]} alt="freccia" />
                       <span> BOLLO FRECCIA</span>
                     </div>
                   </Fragment>

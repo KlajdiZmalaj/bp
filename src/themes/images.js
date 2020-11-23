@@ -1,10 +1,6 @@
 let skin = "";
 //
-if (
-  window.location.href.includes("bpoint") ||
-  window.location.href.includes("192.168") ||
-  window.location.href.includes("localhost")
-) {
+if (window.location.href.includes("bpoint")) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;
@@ -14,7 +10,11 @@ if (
   skin = 4;
 } else if (window.location.href.includes("sirpay")) {
   skin = 6;
-} else if (window.location.href.includes("imperialpay")) {
+} else if (
+  window.location.href.includes("imperialpay") ||
+  window.location.href.includes("192.168") ||
+  window.location.href.includes("localhost")
+) {
   skin = 7;
 }
 export default {

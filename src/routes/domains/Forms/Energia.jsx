@@ -11,7 +11,8 @@ import {
   Download,
   Category,
 } from "./FormsComponents";
-
+import { GenerateCF } from "shared-components";
+import { Portal } from "shared-components/GenerateCF";
 class Energia extends Component {
   state = {
     tipologia: "2",
@@ -241,11 +242,18 @@ class Energia extends Component {
             <Item
               label="Codice Fiscale"
               value={codfisc}
-              Icon={() => null}
               handleChange={(e) => {
-                this.setState({ codfisc: e });
+                this.setState({
+                  codfisc: e,
+                });
+              }}
+              isCF
+              CFPopUp={this.state.CFPopUp}
+              openCF={(CFPopUp) => {
+                this.setState({ CFPopUp });
               }}
             />
+
             <SubTitle title="INDIRIZZO DI RESIDENZA" color={color} />
             <Item
               label="Indirizo Residenza"
@@ -412,6 +420,20 @@ class Energia extends Component {
             </div>
           </div>
         </div>
+        {this.state.CFPopUp && (
+          <Portal>
+            <GenerateCF
+              color1="rgb(24, 129, 155)"
+              color2="#fff"
+              setCF={(cf) => {
+                this.setState({ codfisc: cf });
+              }}
+              closeBox={() => {
+                this.setState({ CFPopUp: false });
+              }}
+            />
+          </Portal>
+        )}
       </div>
     );
   }

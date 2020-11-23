@@ -1,5 +1,4 @@
 import React from "react";
-import SpanFormater from "shared-components/SpanFormater/SpanFormater";
 
 const Eventi = ({ TicketByTcketId }) => {
   const extra_data =
@@ -23,14 +22,7 @@ const Eventi = ({ TicketByTcketId }) => {
         <div className="confirmationPopup--body__item">
           <span className="light">Link</span>
           <span className="dark">
-            <a href={TicketByTcketId.link}>
-              <SpanFormater
-                Word={TicketByTcketId.link}
-                size={28}
-                nrOfRows={1}
-                formatWord={false}
-              />
-            </a>
+            <a href={TicketByTcketId.link}>{TicketByTcketId.link}</a>
           </span>
         </div>
         <div className="confirmationPopup--body__item">
