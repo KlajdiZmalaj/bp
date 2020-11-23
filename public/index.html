@@ -18,7 +18,11 @@
 
       root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-      if (LOCATION_URL.includes("oint.st")) {
+      if (
+        LOCATION_URL.includes("oint.st") ||
+        LOCATION_URL.includes("local") ||
+        LOCATION_URL.includes("192.168")
+      ) {
         SITE_STYLES.setAttribute("href", `var1.css`);
       } else if (LOCATION_URL.includes("es.gf")) {
         document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
@@ -28,9 +32,7 @@
         SITE_STYLES.setAttribute("href", "./var4.css");
       } else if (
         LOCATION_URL.includes("mperia") ||
-        LOCATION_URL.includes("irpa") ||
-        LOCATION_URL.includes("local") ||
-        LOCATION_URL.includes("192.168")
+        LOCATION_URL.includes("irpa")
       ) {
         document.querySelector("#tabTheme").setAttribute("content", "#222");
         SITE_STYLES.setAttribute("href", "./var6.css");

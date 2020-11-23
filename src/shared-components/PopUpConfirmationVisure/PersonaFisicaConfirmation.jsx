@@ -20,7 +20,7 @@ export default ({ TicketByTcketId }) => {
         </div>
         <div className="confirmationPopup--body__item">
           <span className="light"> Cognome</span>
-          <span className="dark">{TicketByTcketId.lastname}</span>
+          <span className="dark">{TicketByTcketId.last_name}</span>
         </div>
 
         <div className="confirmationPopup--body__item">

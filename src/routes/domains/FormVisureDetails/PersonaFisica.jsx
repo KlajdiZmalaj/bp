@@ -20,8 +20,8 @@ const InputForForm = ({ labelName, value, handleChange, type }) => {
 };
 class PersonaFisica extends Component {
   state = {
-    nome: this.props.VisureById.nome,
-    cognome: this.props.VisureById.cognome,
+    nome: this.props.VisureById.name,
+    cognome: this.props.VisureById.last_name,
     codice_fiscale: this.props.VisureById.codice_fiscale,
     data_di_nascita: this.props.VisureById.data_di_nascita,
     luogo_di_nascita: this.props.VisureById.luogo_di_nascita,
