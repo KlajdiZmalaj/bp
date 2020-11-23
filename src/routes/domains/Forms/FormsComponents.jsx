@@ -14,7 +14,17 @@ export const SubTitle = ({ title, color, right, down }) => {
     </div>
   );
 };
-export const Item = ({ label, value, handleChange, Icon, type, JSX }) => {
+export const Item = ({
+  label,
+  value,
+  handleChange,
+  Icon,
+  type,
+  JSX,
+  isCF,
+  openCF,
+  CFPopUp,
+}) => {
   return type === "date" ? (
     <div className="formsContainer--body__item">
       <div className="label">
@@ -35,6 +45,7 @@ export const Item = ({ label, value, handleChange, Icon, type, JSX }) => {
       <Radio.Group
         onChange={(e) => {
           handleChange(e.target.value);
+          console.log("e", e);
         }}
         value={value}
       >
@@ -64,6 +75,20 @@ export const Item = ({ label, value, handleChange, Icon, type, JSX }) => {
         />
       )}
       {Icon && <Icon />}
+      {isCF && (
+        <button
+          className="genCF"
+          onClick={() => {
+            if (CFPopUp) {
+              openCF(false);
+            } else {
+              openCF(true);
+            }
+          }}
+        >
+          Genera
+        </button>
+      )}
     </div>
   );
 };

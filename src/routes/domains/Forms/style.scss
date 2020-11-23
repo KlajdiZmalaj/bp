@@ -1335,3 +1335,14 @@ div.OnlineShop {
     color: #b5b5b5;
   }
 }
+.genCF {
+  position: absolute;
+  right: 0;
+  height: 40px;
+  bottom: 0;
+  border: 0;
+  background: var(--accent-bg);
+  color: var(--accent-txt);
+  font-size: 13px;
+  text-transform: uppercase;
+}

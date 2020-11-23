@@ -1,4 +1,7 @@
 // import images from "themes/images";
+import React from "react";
+import { Select } from "antd";
+const { Option } = Select;
 export const allRoles = {
   user: "fal fa-user",
   agency: "fas fa-store",

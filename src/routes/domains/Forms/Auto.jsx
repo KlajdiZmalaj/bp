@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import { autoConfig } from "config";
 import { Item } from "./FormsComponents";
+import { GenerateCF } from "shared-components";
 const { Option } = Select;
 class Auto extends Component {
   state = {
@@ -25,6 +26,7 @@ class Auto extends Component {
     percorrenza: "",
     colore: Object.values(autoConfig)[0].colors[0],
     note: "",
+    CFPopUp: false,
   };
 
   resetState = (msg) => {
@@ -154,6 +156,11 @@ class Auto extends Component {
                   this.setState({
                     codice_fiscale: e,
                   });
+                }}
+                isCF
+                CFPopUp={this.state.CFPopUp}
+                openCF={(CFPopUp) => {
+                  this.setState({ CFPopUp });
                 }}
               />
             )}
@@ -354,6 +361,7 @@ class Auto extends Component {
             </div>
           </div>
         </div>
+        {this.state.CFPopUp && <GenerateCF />}
       </div>
     );
   }

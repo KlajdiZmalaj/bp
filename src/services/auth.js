@@ -28,19 +28,19 @@ const instanceAxios = axios.create({
   baseURL: endpoint,
 });
 const handleError = (error) => {
-  // console.log(
-  //   "error handler",
-  //   error,
-  //   error.response.status,
-  //   error.error?.response?.status
-  // );
+  console.log(
+    "error handler",
+    error,
+    error.response.status,
+    error.error?.response?.status
+  );
   if (
     error.error?.response?.status === 401 ||
     error?.response?.status === 401
   ) {
     //logout
   } else if (
-    error.error?.response?.status === 444 ||
+    error?.response?.status === 444 ||
     error.error?.response?.status === 445 ||
     error?.response?.status === 445
   ) {
