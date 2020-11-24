@@ -53,7 +53,16 @@ class UsersList extends Component {
       this.props.getUsers(null, null, 25, 1);
     }
   };
-  resetState = () => {
+  resetState = async (id) => {
+    const role = this.props.userDetail.role;
+    if (role === "user") {
+      await this.props.getUserByUserId(id);
+    } else if (role === "agency") {
+      await this.props.getUserDetail(id);
+    } else if (role === "agent") {
+      await this.props.getAgentByUserId(id);
+    }
+
     this.setState(resetUserStateChangeFields);
   };
   updateUser = async () => {

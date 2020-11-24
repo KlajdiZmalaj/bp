@@ -32,7 +32,15 @@ const INITIAL_STATE = {
 
 class AdminPanelDom extends React.Component {
   state = INITIAL_STATE;
-  resetState = () => {
+  resetState = async (id) => {
+    const role = this.props.userDetail.role;
+    if (role === "user") {
+      await this.props.getUserByUserId(id);
+    } else if (role === "agency") {
+      await this.props.getUserDetail(id);
+    } else if (role === "agent") {
+      await this.props.getAgentByUserId(id);
+    }
     this.setState(resetUserStateChangeFields);
   };
   updateUser = () => {
@@ -60,9 +68,7 @@ class AdminPanelDom extends React.Component {
       s.password,
       s.confirm_password,
       this.props.activeSkinId,
-      () => {
-        this.resetState();
-      },
+      this.resetState,
       {
         username: s.username || p.username,
         email: s.email || p.email,

@@ -6,8 +6,10 @@ import RowDetailsMobile from "./RowDetailsMobile";
 import "./style.scss";
 import DetailRow from "./DetailRow";
 import DetailRowVisure from "../FormVisureDetails/DetailRow";
-
 import { allRoles } from "config/index";
+import { Select, Pagination } from "antd";
+const { Option } = Select;
+
 // import AccountInfo from "../../views/AccountInfo";
 export const FilterVisureComponent = ({
   filterVisure,
@@ -132,6 +134,8 @@ class FormDetailsDomain extends Component {
     filterRicercaId: "",
     filterVisure: "all",
     MainFilter: "all",
+    perPage: 25,
+    page_number: 1,
     mobilePopUpData: {},
   };
   mobilePopUp = (mobilePopUpData) => {
@@ -152,9 +156,10 @@ class FormDetailsDomain extends Component {
       filterType,
       MainFilter,
       filterVisure,
+      page_number,
+      perPage,
     } = this.state;
-    const { my_tickets } = formDetails;
-    const { tickets } = formDetails;
+    const { my_tickets, total_pages, tickets } = formDetails;
 
     return (
       <React.Fragment>
@@ -527,6 +532,36 @@ class FormDetailsDomain extends Component {
               ) : null;
             })}
         </div>
+        <div className="paginationWrapper">
+          <Pagination
+            onChange={(e) => {
+              this.setState({ page_number: parseInt(e) }, () => {
+                if (statusRows === "active") {
+                } else {
+                  this.props.getDataFormDetails(perPage, e);
+                }
+              });
+            }}
+            total={total_pages ? total_pages * 10 : 10}
+          />
+          <Select
+            defaultValue={25}
+            onChange={(e) => {
+              this.setState({ perPage: parseInt(e) }, () => {
+                if (statusRows === "active") {
+                } else {
+                  this.props.getDataFormDetails(e, page_number);
+                }
+              });
+            }}
+            value={perPage}
+          >
+            <Option value={10}>10 / Pagina</Option>
+            <Option value={25}>25 / Pagina</Option>
+            <Option value={50}>50 / Pagina</Option>
+          </Select>
+        </div>
+
         <RowDetailsMobile
           mobilePopUpData={this.state.mobilePopUpData}
           mobilePopUp={this.mobilePopUp}

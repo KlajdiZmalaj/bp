@@ -614,7 +614,9 @@ export function* changeAgent(data) {
   }
   if (response) {
     if (response?.status === 200) {
-      yield put(AuthActions.setUserDetail(response?.data.user));
+      yield put(
+        AuthActions.setUserDetail({ ...response?.data.user, role: "agent" })
+      );
       const ress = yield call(fetchUsers);
       if (ress.data) {
         yield put(MainActions.setUsers(ress.data.users));
@@ -631,7 +633,9 @@ export function* getUserDetail(data) {
   );
   if (response) {
     if (response?.status === 200) {
-      yield put(AuthActions.setUserDetail(response?.data.user));
+      yield put(
+        AuthActions.setUserDetail({ ...response?.data.user, role: "agency" })
+      );
     }
   }
   // console.log("response get users details", data, response);
@@ -673,7 +677,7 @@ export function* updateUserDetail(data) {
       yield delay(4000);
       yield put(AuthActions.updateUserDetailMsg(""));
     }
-    data.resetState();
+    data.resetState(data.user_id);
   }
   if (response?.error) {
     yield delay(4000);
@@ -760,21 +764,25 @@ export function* sendDataForm(data) {
 
   // console.log("ca ka response", data, response);
 }
-export function* getDataFormDetails() {
-  const response = yield call(AuthRequest.getDataFormDetailReq);
+export function* getDataFormDetails({ limit, page_number }) {
+  const response = yield call(
+    AuthRequest.getDataFormDetailReq,
+    limit,
+    page_number
+  );
 
   if (response?.data) {
     if (response?.status === 200) {
-      yield put(
-        AuthActions.setDataFormDetails(response?.data ? response?.data : null)
-      );
+      yield put(AuthActions.setDataFormDetails(response?.data));
     }
   }
 }
 export function* getDataFormDetailsActives(data) {
   const response = yield call(
     AuthRequest.getDataFormDetailActivesReq,
-    data.isVisure
+    data.isVisure,
+    data.limit,
+    data.page_number
   );
 
   if (response?.data) {
@@ -991,7 +999,9 @@ export function* getAgentByUserId(data) {
 
   if (response?.data) {
     if (response?.status === 200) {
-      yield put(AuthActions.setUserDetail(response?.data.user));
+      yield put(
+        AuthActions.setUserDetail({ ...response?.data.user, role: "agent" })
+      );
     }
   }
   if (response?.error) {
@@ -1016,7 +1026,9 @@ export function* getUserByUserId(data) {
 
   if (response?.data) {
     if (response?.status === 200) {
-      yield put(AuthActions.setUserDetail(response?.data.user));
+      yield put(
+        AuthActions.setUserDetail({ ...response?.data.user, role: "user" })
+      );
     }
   }
   if (response?.error) {

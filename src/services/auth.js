@@ -642,20 +642,24 @@ export const sendDataFormReq = (
     )
     .catch((error) => ({ error }));
 };
-export const getDataFormDetailReq = () => {
+export const getDataFormDetailReq = (limit, page_number) => {
   return instanceAxios
     .get(`/tickets`, {
       params: {
         ...skin,
+        limit,
+        page_number,
       },
     })
     .catch((error) => ({ error }));
 };
-export const getDataFormDetailActivesReq = (isVisure) => {
+export const getDataFormDetailActivesReq = (isVisure, limit, page_number) => {
   return instanceAxios
     .get(`/${isVisure ? "visure" : "tickets"}/completed`, {
       params: {
         ...skin,
+        limit,
+        page_number,
       },
     })
     .catch((error) => ({ error }));
