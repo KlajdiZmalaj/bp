@@ -112,6 +112,7 @@ class Auto extends Component {
                 <i className="fal fa-receipt"></i> {activeService}{" "}
               </div>
             )}
+            <img className={"auto"} src={images[`auto-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
             <Item

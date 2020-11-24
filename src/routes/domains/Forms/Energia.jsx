@@ -101,6 +101,8 @@ class Energia extends Component {
       personalData,
       terziCon,
       marketingCon,
+      codfisc_reppresentante,
+      name_lastname_reppresentante,
     } = this.state;
     return (
       <div className="formsContainer--body animated fadeIn auto">
@@ -124,6 +126,7 @@ class Energia extends Component {
                 <i className="fal fa-receipt"></i> {activeService}{" "}
               </div>
             )}
+            <img className={"energia"} src={images[`energia-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
             <Item
@@ -180,28 +183,33 @@ class Energia extends Component {
               />
             </div>
             <SubTitle title="DATI INTESTATARIO BOLLETTA" color={color} />
-            <div className="formsContainer--body__semiCont mt-2">
-              <div className="formsContainer--body__item semi">
-                <div className="label">
-                  Nome <span className="Red">*</span>
+            {parseInt(tipologia) === 2 && (
+              <div className="formsContainer--body__semiCont mt-2">
+                <div className="formsContainer--body__item semi">
+                  <div className="label">
+                    Nome <span className="Red">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => this.setState({ name: e.target.value })}
+                  />
                 </div>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => this.setState({ name: e.target.value })}
-                />
-              </div>
-              <div className="formsContainer--body__item semi">
-                <div className="label">
-                  Cognome <span className="Red">*</span>
+                <div className="formsContainer--body__item semi">
+                  <div className="label">
+                    Cognome <span className="Red">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    value={lastname}
+                    onChange={(e) =>
+                      this.setState({ lastname: e.target.value })
+                    }
+                  />
                 </div>
-                <input
-                  type="text"
-                  value={lastname}
-                  onChange={(e) => this.setState({ lastname: e.target.value })}
-                />
               </div>
-            </div>
+            )}
+
             <Item
               label="Telefono"
               value={tel}
@@ -222,37 +230,67 @@ class Energia extends Component {
                 this.setState({ mail: e });
               }}
             />
-            <Item
-              label="Luogo Di Nascita"
-              value={nascita}
-              Icon={() => null}
-              handleChange={(e) => {
-                this.setState({ nascita: e });
-              }}
-            />
-            <Item
-              label="Data Di Nascita"
-              value={datanascita}
-              type="date"
-              Icon={() => null}
-              handleChange={(e) => {
-                this.setState({ datanascita: e });
-              }}
-            />
-            <Item
-              label="Codice Fiscale"
-              value={codfisc}
-              handleChange={(e) => {
-                this.setState({
-                  codfisc: e,
-                });
-              }}
-              isCF
-              CFPopUp={this.state.CFPopUp}
-              openCF={(CFPopUp) => {
-                this.setState({ CFPopUp });
-              }}
-            />
+            {parseInt(tipologia) === 2 ? (
+              <>
+                <Item
+                  label="Luogo Di Nascita"
+                  value={nascita}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ nascita: e });
+                  }}
+                />
+                <Item
+                  label="Data Di Nascita"
+                  value={datanascita}
+                  type="date"
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ datanascita: e });
+                  }}
+                />
+                <Item
+                  label="Codice Fiscale"
+                  value={codfisc}
+                  handleChange={(e) => {
+                    this.setState({
+                      codfisc: e,
+                    });
+                  }}
+                  isCF
+                  CFPopUp={this.state.CFPopUp}
+                  openCF={(CFPopUp) => {
+                    this.setState({ CFPopUp });
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Item
+                  label="Nome e Cognome del Legale Rappresentante"
+                  value={name_lastname_reppresentante}
+                  type="date"
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ name_lastname_reppresentante: e });
+                  }}
+                />
+                <Item
+                  label="Codice Fiscale del Legale Rappresentante"
+                  value={codfisc_reppresentante}
+                  handleChange={(e) => {
+                    this.setState({
+                      codfisc_reppresentante: e,
+                    });
+                  }}
+                  isCF
+                  CFPopUp={this.state.CFPopUp}
+                  openCF={(CFPopUp) => {
+                    this.setState({ CFPopUp });
+                  }}
+                />
+              </>
+            )}
 
             <SubTitle title="INDIRIZZO DI RESIDENZA" color={color} />
             <Item

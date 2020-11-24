@@ -27,32 +27,32 @@ const generateCodiceFiscale = (
   },
   callBack
 ) => {
-  var mycf = {
-    name: nome
-      ? nome.toString().charAt(0).toUpperCase() + nome.substring(1)
-      : null,
-    surname: cognome
-      ? cognome.toString().charAt(0).toUpperCase() + cognome.substring(1)
-      : null,
-    gender: gender,
-
-    day: parseInt(moment(data_di_nascita, "DD/MM/YYYY").format("DD")),
-    month: parseInt(moment(data_di_nascita, "DD/MM/YYYY").format("MM")),
-    year: parseInt(moment(data_di_nascita, "DD/MM/YYYY").format("YYYY")),
-    birthplace: luogo_di_nascita
-      ? luogo_di_nascita.toString().charAt(0).toUpperCase() +
-        luogo_di_nascita.substring(1)
-      : null,
-    birthplaceProvincia: province_of_birth
-      ? province_of_birth.toUpperCase()
-      : null,
-  };
   try {
+    var mycf = {
+      name: nome
+        ? nome.toString().charAt(0).toUpperCase() + nome.substring(1)
+        : null,
+      surname: cognome
+        ? cognome.toString().charAt(0).toUpperCase() + cognome.substring(1)
+        : null,
+      gender: gender,
+
+      day: parseInt(moment(data_di_nascita, "DD/MM/YYYY").format("DD")),
+      month: parseInt(moment(data_di_nascita, "DD/MM/YYYY").format("MM")),
+      year: parseInt(moment(data_di_nascita, "DD/MM/YYYY").format("YYYY")),
+      birthplace: luogo_di_nascita
+        ? luogo_di_nascita.toString().charAt(0).toUpperCase() +
+          luogo_di_nascita.substring(1)
+        : null,
+      birthplaceProvincia: province_of_birth
+        ? province_of_birth.toUpperCase()
+        : null,
+    };
     const cf = new CodiceFiscale({
       ...mycf,
     });
     const isValidCf = CodiceFiscale.check(cf?.code);
-    console.log("cf", cf, isValidCf, cf.code);
+    // console.log("cf", cf, isValidCf, cf.code);
     if (isValidCf) {
       callBack("set");
       return cf.code;
@@ -155,7 +155,7 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
                 value: country.provincia,
               }))}
               onChange={(luogo_di_nascita) => {
-                setForm({ ...form, luogo_di_nascita });
+                setForm({ ...form, luogo_di_nascita: luogo_di_nascita.value });
               }}
               value={form.luogo_di_nascita}
               maxHeight={100}
@@ -170,7 +170,10 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
                 value: country.sigla,
               }))}
               onChange={(province_of_birth) => {
-                setForm({ ...form, province_of_birth });
+                setForm({
+                  ...form,
+                  province_of_birth: province_of_birth.value,
+                });
               }}
               value={form.province_of_birth}
               maxHeight={100}

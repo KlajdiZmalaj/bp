@@ -148,13 +148,11 @@ class OnlineShop extends Component {
               </div>
             )}
 
-            {/* {isMobile && (
-              <div className="TitleBack">
-                {" "}
-                <i className="fal fa-receipt"></i> {activeService}{" "}
-              </div>
-            )}  *
-            {/ *<img src={images[`${nome_agenzia}-logo`]} alt="" />  */}
+            <img
+              className={"shop-logo"}
+              src={images[`shop-online-logo`]}
+              alt=""
+            />
           </div>
           {isMobile && <div className="AfterTitleBack">Online Shop</div>}
 
