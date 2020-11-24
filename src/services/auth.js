@@ -1,9 +1,9 @@
 import request from "utils/request";
 import axios from "axios";
-import { skin, getToken, endpoint } from "config/api";
+import { skin, endpoint } from "config/api";
 import { notification } from "antd";
 import { message } from "antd";
-import configureStore from "redux-store/store";
+
 import {
   unSubscribeSocketSupport,
   unSubscribeSocketUser,
@@ -24,7 +24,6 @@ import {
 // }
 //
 //
-const store = configureStore();
 const instanceAxios = axios.create({
   baseURL: endpoint,
 });
@@ -44,8 +43,7 @@ const handleError = (error) => {
     "error handler",
     error,
     error.response.status,
-    error.error?.response?.status,
-    hasCode(error, 403)
+    error.error?.response?.status
   );
   if (hasCode(error, 401)) {
     //logout
@@ -53,8 +51,8 @@ const handleError = (error) => {
     //skin id wrong
   } else if (hasCode(error, 440)) {
     localStorage.setItem("accountDataB", null);
-    store.dispatch({ type: "SET_ACCOUNT_INFO", accountInfo: {} });
-    window.location.hash = "login";
+  } else if (hasCode(error, 429)) {
+    console.log("to many request");
   } else if (hasCode(error, 403)) {
     //forbiden , kryesisht > prenotazione
     notification["warning"]({
@@ -74,8 +72,11 @@ const handleError = (error) => {
 };
 instanceAxios.interceptors.request.use(
   async (config) => {
+    const value = await localStorage.getItem("accountDataB");
+    const keys = JSON.parse(value);
     config.headers = {
-      Authorization: getToken(),
+      Authorization: `Bearer ${keys.token}`,
+      Accept: "application/json",
     };
     return config;
   },

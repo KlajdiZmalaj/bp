@@ -47,59 +47,59 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  ["SET_USER_PHOTOS"]: (state, { userPhotos }) => ({
+  SET_USER_PHOTOS: (state, { userPhotos }) => ({
     ...state,
     userPhotos,
   }),
-  ["SET_FAVORITES"]: (state, { favorites }) => ({
+  SET_FAVORITES: (state, { favorites }) => ({
     ...state,
     favorites,
   }),
-  ["SET_NAVBAR_SEARCH"]: (state, { navbarSearch }) => ({
+  SET_NAVBAR_SEARCH: (state, { navbarSearch }) => ({
     ...state,
     navbarSearch,
   }),
-  ["SET_SCREEN_W"]: (state, { screenWidth }) => ({
+  SET_SCREEN_W: (state, { screenWidth }) => ({
     ...state,
     screenWidth,
   }),
-  ["SET_OVERVIEW_DASHBOARD"]: (state, { dashboardData }) => ({
+  SET_OVERVIEW_DASHBOARD: (state, { dashboardData }) => ({
     ...state,
     dashboardData,
   }),
-  ["TOGGLE_OVERVIEW"]: (state, { showOverview }) => ({
+  TOGGLE_OVERVIEW: (state, { showOverview }) => ({
     ...state,
     showOverview,
   }),
-  ["SET_ACCOUNT"]: (state, { activeAccount }) => ({
+  SET_ACCOUNT: (state, { activeAccount }) => ({
     ...state,
     activeAccount,
   }),
-  ["SET_SERVICES"]: (state, { services }) => ({
+  SET_SERVICES: (state, { services }) => ({
     ...state,
     services,
   }),
-  ["SET_USERS"]: (state, { userList }) => ({
+  SET_USERS: (state, { userList }) => ({
     ...state,
     userList,
   }),
-  ["SET_USERS_SIMPLE"]: (state, { userListSimple }) => ({
+  SET_USERS_SIMPLE: (state, { userListSimple }) => ({
     ...state,
     userListSimple,
   }),
-  ["SET_USERS_BY_SEARCH"]: (state, { userListBySearch }) => ({
+  SET_USERS_BY_SEARCH: (state, { userListBySearch }) => ({
     ...state,
     userListBySearch,
   }),
-  ["TOGGLE_POP_UP"]: (state, { isShowing }) => ({
+  TOGGLE_POP_UP: (state, { isShowing }) => ({
     ...state,
     isShowing,
   }),
-  ["SET_ACTIVE_SKIN_ID"]: (state, { activeSkinId }) => ({
+  SET_ACTIVE_SKIN_ID: (state, { activeSkinId }) => ({
     ...state,
     activeSkinId,
   }),
-  ["SET_LOADER_FOR_ADMIN_UTENTI"]: (state, { LoaderAU }) => ({
+  SET_LOADER_FOR_ADMIN_UTENTI: (state, { LoaderAU }) => ({
     ...state,
     LoaderAU,
   }),
