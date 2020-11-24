@@ -3,7 +3,7 @@ import axios from "axios";
 import { skin, getToken, endpoint } from "config/api";
 import { notification } from "antd";
 import { message } from "antd";
-
+import configureStore from "redux-store/store";
 import {
   unSubscribeSocketSupport,
   unSubscribeSocketUser,
@@ -24,6 +24,7 @@ import {
 // }
 //
 //
+const store = configureStore();
 const instanceAxios = axios.create({
   baseURL: endpoint,
 });
@@ -48,8 +49,12 @@ const handleError = (error) => {
   );
   if (hasCode(error, 401)) {
     //logout
-  } else if (hasCode(error, 444) || hasCode(error, 445)) {
+  } else if (hasCode(error, 445)) {
     //skin id wrong
+  } else if (hasCode(error, 440)) {
+    localStorage.setItem("accountDataB", null);
+    store.dispatch({ type: "SET_ACCOUNT_INFO", accountInfo: {} });
+    window.location.hash = "login";
   } else if (hasCode(error, 403)) {
     //forbiden , kryesisht > prenotazione
     notification["warning"]({
