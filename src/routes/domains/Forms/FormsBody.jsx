@@ -44,8 +44,8 @@ const Card = ({
 
 export class FormsBody extends Component {
   state = {
-    isSelected: true,
-    typee: 8,
+    isSelected: false,
+    typee: 0,
     bagaglio: 1,
     nome_agenzia: "",
     color: "",

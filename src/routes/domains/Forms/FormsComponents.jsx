@@ -24,9 +24,10 @@ export const Item = ({
   isCF,
   openCF,
   CFPopUp,
+  extraClass,
 }) => {
   return type === "date" ? (
-    <div className="formsContainer--body__item">
+    <div className={`formsContainer--body__item ${extraClass}`}>
       <div className="label">
         {label} <span className="Red">*</span>
       </div>
@@ -38,7 +39,7 @@ export const Item = ({
       />
     </div>
   ) : type === "radio" ? (
-    <div className="formsContainer--body__item ">
+    <div className={`formsContainer--body__item ${extraClass}`}>
       <div className="label">
         {label} <span className="Red">*</span>
       </div>
@@ -53,7 +54,7 @@ export const Item = ({
       </Radio.Group>
     </div>
   ) : (
-    <div className="formsContainer--body__item">
+    <div className={`formsContainer--body__item ${extraClass}`}>
       <div className="label">
         {label} <span className="Red">*</span>
       </div>

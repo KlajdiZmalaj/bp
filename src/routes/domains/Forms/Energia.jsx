@@ -355,38 +355,46 @@ class Energia extends Component {
                 this.setState({ address: e });
               }}
             />
-            <Item
-              label="Cap"
-              value={cap}
-              Icon={() => null}
-              handleChange={(e) => {
-                this.setState({ cap: e });
-              }}
-            />
-            <Item
-              label="Civico"
-              value={civico}
-              Icon={() => null}
-              handleChange={(e) => {
-                this.setState({ civico: e });
-              }}
-            />
-            <Item
-              label="Citta"
-              value={city}
-              Icon={() => null}
-              handleChange={(e) => {
-                this.setState({ city: e });
-              }}
-            />
-            <Item
-              label="Provincia"
-              value={province}
-              Icon={() => null}
-              handleChange={(e) => {
-                this.setState({ province: e });
-              }}
-            />
+            <div className="formsContainer--body__semiCont mt-2">
+              <Item
+                label="Cap"
+                value={cap}
+                Icon={() => null}
+                extraClass="semi"
+                handleChange={(e) => {
+                  this.setState({ cap: e });
+                }}
+              />
+              <Item
+                label="Civico"
+                value={civico}
+                extraClass="semi"
+                Icon={() => null}
+                handleChange={(e) => {
+                  this.setState({ civico: e });
+                }}
+              />
+            </div>
+            <div className="formsContainer--body__semiCont mt-2">
+              <Item
+                label="Citta"
+                extraClass="semi"
+                value={city}
+                Icon={() => null}
+                handleChange={(e) => {
+                  this.setState({ city: e });
+                }}
+              />
+              <Item
+                label="Provincia"
+                extraClass="semi"
+                value={province}
+                Icon={() => null}
+                handleChange={(e) => {
+                  this.setState({ province: e });
+                }}
+              />
+            </div>
           </div>
 
           <div className="rightForm--right">
