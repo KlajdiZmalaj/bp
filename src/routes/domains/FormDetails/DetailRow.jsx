@@ -6,6 +6,7 @@ import Voli from "./Voli";
 import Treni from "./Treni";
 import Eventi from "./Eventi";
 import ShopOnline from "./ShopOnline";
+import Energia from "./Energia";
 import { Tooltip } from "antd";
 export class DetailRow extends Component {
   render() {
@@ -146,6 +147,15 @@ export class DetailRow extends Component {
                 )}
                 {TicketByTcketId && TicketByTcketId.type === 4 && (
                   <ShopOnline
+                    TicketByTcketId={TicketByTcketId}
+                    typee={this.props.TicketByTcketId.type}
+                    updateDataForm={this.props.updateDataForm}
+                    ticketId={TicketByTcketId.id}
+                    editable={this.props.editable}
+                  />
+                )}
+                {TicketByTcketId && TicketByTcketId.type === 0 && (
+                  <Energia
                     TicketByTcketId={TicketByTcketId}
                     typee={this.props.TicketByTcketId.type}
                     updateDataForm={this.props.updateDataForm}
