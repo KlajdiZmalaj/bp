@@ -787,28 +787,7 @@ export function* getDataFormDetailsActives(data) {
 
   if (response?.data) {
     if (response?.status === 200) {
-      const activeTickets = yield select(
-        (state) => state.auth.formDetailsActives.rowsTickets
-      );
-      const activeVisure = yield select(
-        (state) => state.auth.formDetailsActives.rowsVisure
-      );
-
-      if (data.isVisure) {
-        yield put(
-          AuthActions.setDataFormDetailsActives({
-            rowsVisure: response?.data.visure,
-            rowsTickets: [...activeTickets],
-          })
-        );
-      } else {
-        yield put(
-          AuthActions.setDataFormDetailsActives({
-            rowsVisure: [...activeVisure],
-            rowsTickets: response?.data.tickets,
-          })
-        );
-      }
+      yield put(AuthActions.setDataFormDetailsActives(response?.data));
     }
   }
 }

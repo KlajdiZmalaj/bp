@@ -143,7 +143,7 @@ class FormDetailsDomain extends Component {
   };
   componentDidMount() {
     this.props.setTicketByTicketId({ data: null });
-    this.props.getDataFormDetails();
+    this.props.getDataFormDetails(25, 1);
   }
   render() {
     const { formDetails, formDetailsActives, accountInfo } = this.props;
@@ -169,10 +169,10 @@ class FormDetailsDomain extends Component {
               <Switch
                 onChange={(on) => {
                   if (on) {
-                    this.props.getDataFormDetailsActives();
+                    this.props.getDataFormDetailsActives(null, 25, 1);
                     this.setState({ statusRows: "active" });
                   } else {
-                    this.props.getDataFormDetails();
+                    this.props.getDataFormDetails(25, 1);
                     this.setState({ statusRows: "all" });
                   }
                 }}
@@ -396,7 +396,7 @@ class FormDetailsDomain extends Component {
             <span>Data</span>
             <span>Biglietto</span>
           </div>
-          {(formDetailsActives.rowsTickets || []).map((ticket) => {
+          {(formDetailsActives.tickets || []).map((ticket) => {
             return Filter(
               ticket,
               "visura",
@@ -532,23 +532,32 @@ class FormDetailsDomain extends Component {
               ) : null;
             })}
         </div>
-        <div className="paginationWrapper">
+        <div
+          className="paginationWrapper"
+          style={{ bottom: 0, top: "auto", background: "#fff" }}
+        >
           <Pagination
             onChange={(e) => {
               this.setState({ page_number: parseInt(e) }, () => {
                 if (statusRows === "active") {
+                  this.props.getDataFormDetailsActives(null, perPage, e);
                 } else {
                   this.props.getDataFormDetails(perPage, e);
                 }
               });
             }}
-            total={total_pages ? total_pages * 10 : 10}
+            total={
+              statusRows === "active"
+                ? formDetailsActives?.total_pages * 10 || 10
+                : total_pages * 10 || 10
+            }
           />
           <Select
             defaultValue={25}
             onChange={(e) => {
               this.setState({ perPage: parseInt(e) }, () => {
                 if (statusRows === "active") {
+                  this.props.getDataFormDetailsActives(null, e, page_number);
                 } else {
                   this.props.getDataFormDetails(e, page_number);
                 }

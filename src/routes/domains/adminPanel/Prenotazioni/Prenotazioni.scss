@@ -542,12 +542,14 @@ div.Prenotazioni {
     }
   }
 
-  & .ticketDetails {
+  .ticketDetails {
     margin: 0;
     margin: 0 auto;
     width: 100%;
     padding-bottom: 76px;
     max-width: 100%;
+    height: calc(100vh - 232px);
+    overflow-y: auto;
   }
 }
 @media (max-width: 1370px) {
