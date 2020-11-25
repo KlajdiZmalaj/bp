@@ -315,6 +315,17 @@ class FormDetailsDomain extends Component {
                     title={"Shop"}
                     icon={"shopping-bag sub"}
                   />
+                  <FilterVisureComponent
+                    filterVisure={filterTickets}
+                    handleClick={() => {
+                      const f = "Luce & Gas";
+                      this.setState((state) => ({
+                        filterTickets: state.filterTickets === f ? "all" : f,
+                      }));
+                    }}
+                    title={"Luce & Gas"}
+                    icon={"lightbulb sub"}
+                  />
                   {/* <FilterVisureComponent
                     filterVisure={filterTickets}
                     handleClick={() => this.setState({ filterTickets: "all" })}

@@ -41,6 +41,8 @@ export class DetailRow extends Component {
                       ? "plane"
                       : ticket.type === "Shop"
                       ? "shopping-bag"
+                      : ticket.type === "Luce & Gas"
+                      ? "lightbulb"
                       : ""
                   }`}
                   aria-hidden="true"

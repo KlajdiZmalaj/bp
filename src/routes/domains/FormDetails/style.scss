@@ -692,6 +692,14 @@ textarea {
         color: #fff;
       }
     }
+    &.fa-lightbulb {
+      color: #9aac00;
+      &:hover,
+      &.active {
+        background-color: #9aac00;
+        color: #222;
+      }
+    }
   }
   &--row {
     .fas:hover {
