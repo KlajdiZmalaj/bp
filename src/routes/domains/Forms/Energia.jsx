@@ -15,66 +15,102 @@ import { GenerateCF } from "shared-components";
 import { Portal } from "shared-components/GenerateCF";
 class Energia extends Component {
   state = {
-    tipologia: "2",
+    tipologia: 1,
     offerta: 1,
     corrispondenza: {
       title: `L’indirizzo per invio di corrispondenza
         coincide con la sede di residenza?`,
-      status: false,
+      status: true,
     },
     fornitura: {
       title: `L’indirizzo di fornitura coincide con la
         sede di residenza?`,
-      status: false,
+      status: true,
     },
     fornituraCon: {
       title: `Condizioni di fornitura*`,
-      status: false,
+      status: true,
     },
     economicCon: {
       title: `Condizioni economiche*`,
-      status: false,
+      status: true,
     },
     notaInfo: {
       title: `Nota informativa e info`,
-      status: false,
+      status: true,
     },
     personalData: {
       title: `Conferma presa visione informativa tutela dati personali`,
-      status: false,
+      status: true,
     },
     marketingCon: {
       title: `Acconsento al trattamento dati per
         attività di marketing`,
-      status: false,
+      status: true,
     },
     terziCon: {
       title: `Acconsento alla comunicazione di dati
         personali a terzi`,
-      status: false,
+      status: true,
     },
   };
 
-  resetState = (msg) => {
-    if (!msg.error) {
-      this.setState({
-        tipologia: "1",
-      });
-      notification["success"]({
-        message: "Azione completata",
-        description: msg.msg,
-        placement: "bottomRight",
-      });
-    } else {
-      notification["error"]({
-        message: msg.msg[0],
-        description: msg.msg[1],
-        placement: "bottomRight",
-        duration: 5,
-      });
-    }
+  resetState = () => {};
+  submitData = () => {
+    const s = this.state;
+    this.props.sendPrenotazione(
+      {
+        type: 8,
+        // ========== luce / gas -> start ==========
+        tipologia_persona: s.tipologia,
+        tipologia_contratto: s.offerta,
+
+        nome_cognome_consulento: "nome_cognome_consulento",
+        codice_consulento: "adadadadad",
+
+        telefono: s.tel,
+        email: s.mail,
+        conferma_email: s.mail,
+        //tipologia_persona === 1
+        nome: s.name,
+        cognome: s.lastname,
+        luogo_nascita: s.nascita,
+        data_nascita: s.datanascita,
+        codice_fiscale: s.codfisc,
+        //tipologia_persona else
+        ragione_sociale: s.ragsc,
+        p_iva: s.piva,
+        nome_cognome_rappresentante: s.name_lastname_reppresentante,
+        codice_rappresentante: s.codfisc_reppresentante,
+        //
+        residenza_comune: s.city,
+        residenza_indirizzo: s.address,
+        residenza_civico: s.civico,
+        residenza_cap: s.cap,
+        corrispondenza: s.corrispondenza.status ? 1 : 2,
+        //corrispondenza  === 2
+        corrispondenza_comune: "null",
+        corrispondenza_indirizzo: "null",
+        corrispondenza_civico: "null",
+        corrispondenza_cap: "null",
+        //
+        fornitura: s.fornitura.status ? 1 : 2,
+        //fornitura ===2
+        fornitura_comune: "null",
+        fornitura_indirizzo: "null",
+        fornitura_civico: "null",
+        fornitura_cap: "null",
+        //
+        confermo_fornitura: s.fornituraCon.status.toString(),
+        confermo_econimoche: s.economicCon.status.toString(),
+        confermo_informativa: s.notaInfo.status.toString(),
+        confermo_presa_visione: s.personalData.status.toString(),
+        marketing: s.marketingCon.status,
+        dati_personali: s.terziCon.status,
+      },
+      this.resetState
+    );
   };
-  submitData = () => {};
 
   render() {
     const { nome_agenzia, color, goBack, isMobile, activeService } = this.props;
@@ -103,6 +139,9 @@ class Energia extends Component {
       marketingCon,
       codfisc_reppresentante,
       name_lastname_reppresentante,
+      ragsc,
+      piva,
+      civico,
     } = this.state;
     return (
       <div className="formsContainer--body animated fadeIn auto">
@@ -138,8 +177,8 @@ class Energia extends Component {
               }}
               JSX={() => (
                 <>
-                  <Radio value={"2"}>Persona</Radio>
-                  <Radio value={"1"}>Business</Radio>
+                  <Radio value={1}>Persona</Radio>
+                  <Radio value={2}>Business</Radio>
                 </>
               )}
             />
@@ -183,7 +222,7 @@ class Energia extends Component {
               />
             </div>
             <SubTitle title="DATI INTESTATARIO BOLLETTA" color={color} />
-            {parseInt(tipologia) === 2 && (
+            {parseInt(tipologia) === 1 && (
               <div className="formsContainer--body__semiCont mt-2">
                 <div className="formsContainer--body__item semi">
                   <div className="label">
@@ -230,7 +269,7 @@ class Energia extends Component {
                 this.setState({ mail: e });
               }}
             />
-            {parseInt(tipologia) === 2 ? (
+            {parseInt(tipologia) === 1 ? (
               <>
                 <Item
                   label="Luogo Di Nascita"
@@ -267,9 +306,24 @@ class Energia extends Component {
             ) : (
               <>
                 <Item
+                  label="Ragione sociale"
+                  value={ragsc}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ ragsc: e });
+                  }}
+                />
+                <Item
+                  label="Partita IVA"
+                  value={piva}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ piva: e });
+                  }}
+                />
+                <Item
                   label="Nome e Cognome del Legale Rappresentante"
                   value={name_lastname_reppresentante}
-                  type="date"
                   Icon={() => null}
                   handleChange={(e) => {
                     this.setState({ name_lastname_reppresentante: e });
@@ -307,6 +361,14 @@ class Energia extends Component {
               Icon={() => null}
               handleChange={(e) => {
                 this.setState({ cap: e });
+              }}
+            />
+            <Item
+              label="Civico"
+              value={civico}
+              Icon={() => null}
+              handleChange={(e) => {
+                this.setState({ civico: e });
               }}
             />
             <Item

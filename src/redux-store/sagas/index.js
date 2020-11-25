@@ -90,5 +90,6 @@ export default function* root() {
     takeLatest("GET_OVERVIEW_DASHBOARD", MainGenerators.getOverviewDashboard),
     takeLatest("TOGGLE_FAVORITE", MainGenerators.toggleFavorite),
     takeLatest("GET_FAVORITES", MainGenerators.getFavorites),
+    takeLatest("SEND_PRENOTAZIONE", MainGenerators.sendPrenotazione),
   ]);
 }

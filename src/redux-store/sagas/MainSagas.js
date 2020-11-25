@@ -4,7 +4,22 @@ import AuthActions from "../models/auth";
 
 import * as MainRequest from "services/main";
 import { logoutApi } from "services/auth";
-
+import { notification } from "antd";
+export function* sendPrenotazione({ objectData }, resetState) {
+  const response = yield call(MainRequest.createPrenotazione, objectData);
+  if (response.data) {
+    resetState();
+    console.log("got response ", response, objectData);
+    notification["success"]({
+      title: response.data.message,
+    });
+  } else if (response.error) {
+    notification["error"]({
+      title: response.error.response.data.message,
+      message: Object.values(response.error.response.data.errors),
+    });
+  }
+}
 export function* getServices() {
   // console.log("funx callllled");
   const response = yield call(MainRequest.fetchServices);

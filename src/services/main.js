@@ -1,6 +1,111 @@
 import axios from "axios";
 import { skin, getToken, endpoint } from "config/api";
 
+export const createPrenotazione = ({
+  type,
+  // ========== luce / gas -> start ==========
+  tipologia_persona,
+  tipologia_contratto,
+  nome_cognome_consulento,
+  codice_consulento,
+  telefono,
+  email,
+  conferma_email,
+  //tipologia_persona === 1
+  nome,
+  cognome,
+  luogo_nascita,
+  data_nascita,
+  codice_fiscale,
+  //tipologia_persona else
+  ragione_sociale,
+  p_iva,
+  nome_cognome_rappresentante,
+  codice_rappresentante,
+  //
+  residenza_comune,
+  residenza_indirizzo,
+  residenza_civico,
+  residenza_cap,
+  corrispondenza,
+  //corrispondenza  === 2
+  corrispondenza_comune,
+  corrispondenza_indirizzo,
+  corrispondenza_civico,
+  corrispondenza_cap,
+  //
+  fornitura,
+  //fornitura ===2
+  fornitura_comune,
+  fornitura_indirizzo,
+  fornitura_civico,
+  fornitura_cap,
+  //
+  confermo_fornitura,
+  confermo_econimoche,
+  confermo_informativa,
+  confermo_presa_visione,
+  marketing,
+  dati_personali,
+}) => {
+  return axios
+    .create({
+      baseURL: endpoint,
+      headers: {
+        Authorization: getToken(),
+        Accept: "application/json",
+      },
+    })
+    .post(`/prenotazione/create`, {
+      ...skin,
+      type,
+      // ========== luce / gas -> start ==========
+      tipologia_persona,
+      tipologia_contratto,
+      nome_cognome_consulento,
+      codice_consulento,
+      telefono,
+      email,
+      conferma_email,
+      //tipologia_persona === 1
+      nome,
+      cognome,
+      luogo_nascita,
+      data_nascita,
+      codice_fiscale,
+      //tipologia_persona else
+      ragione_sociale,
+      p_iva,
+      nome_cognome_rappresentante,
+      codice_rappresentante,
+      //
+      residenza_comune,
+      residenza_indirizzo,
+      residenza_civico,
+      residenza_cap,
+      corrispondenza,
+      //corrispondenza  === 2
+      corrispondenza_comune,
+      corrispondenza_indirizzo,
+      corrispondenza_civico,
+      corrispondenza_cap,
+      //
+      fornitura,
+      //fornitura ===2
+      fornitura_comune,
+      fornitura_indirizzo,
+      fornitura_civico,
+      fornitura_cap,
+      //
+      confermo_fornitura,
+      confermo_econimoche,
+      confermo_informativa,
+      confermo_presa_visione,
+      marketing,
+      dati_personali,
+    })
+    .catch((error) => ({ error }));
+};
 export const fetchServices = () =>
   axios
     .create({
