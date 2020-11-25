@@ -65,8 +65,8 @@ class Energia extends Component {
         tipologia_persona: s.tipologia,
         tipologia_contratto: s.offerta,
 
-        nome_cognome_consulento: "nome_cognome_consulento",
-        codice_consulento: "adadadadad",
+        nome_cognome_consulento: s.nome_cognome_consulento,
+        codice_consulento: s.codice_consulento,
 
         telefono: s.tel,
         email: s.mail,
@@ -142,6 +142,8 @@ class Energia extends Component {
       ragsc,
       piva,
       civico,
+      nome_cognome_consulento,
+      codice_consulento,
     } = this.state;
     return (
       <div className="formsContainer--body animated fadeIn auto">
@@ -168,6 +170,20 @@ class Energia extends Component {
             <img className={"energia"} src={images[`energia-logo`]} alt="" />
           </div>
           <div className="rightForm--left">
+            <Item
+              label="Nome e Cognome Consulente"
+              value={nome_cognome_consulento}
+              handleChange={(e) => {
+                this.setState({ nome_cognome_consulento: e });
+              }}
+            />
+            <Item
+              label="Codice Consulente"
+              value={codice_consulento}
+              handleChange={(e) => {
+                this.setState({ codice_consulento: e });
+              }}
+            />
             <Item
               type="radio"
               label="Tipologia"
