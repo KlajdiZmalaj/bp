@@ -11,7 +11,9 @@
       window.log1 = "color: lime;font-size: 20px;background: #222";
       window.log2 = "color: red;font-size: 20px;background: #222";
       window.log3 = "color: lightblue;font-size: 20px;background: #222";
-
+      if (localStorage.getItem("accountDataB")?.includes("object")) {
+        localStorage.setItem("accountDataB", null);
+      }
       var LOCATION_URL = window.location.href;
       var SITE_STYLES = document.getElementById("lnk");
       var root = document.getElementsByTagName("html")[0];
