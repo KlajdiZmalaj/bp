@@ -20,6 +20,16 @@ export function* sendPrenotazione({ objectData }, resetState) {
     });
   }
 }
+export function* forgotPassword({ email }) {
+  const response = yield call(MainRequest.forgotPasswordReq, email);
+
+  if (response.data) {
+    notification["success"]({
+      message: response.data.message,
+    });
+  }
+  console.log("response", response.data, response.data.message);
+}
 export function* getServices() {
   // console.log("funx callllled");
   const response = yield call(MainRequest.fetchServices);

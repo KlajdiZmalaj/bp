@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { skin } from "config/api";
 import AuthActions from "redux-store/models/auth";
 import axios from "axios";
+import { notification } from "antd";
 class Verify extends Component {
   state = {
     password: "",
@@ -26,7 +27,7 @@ class Verify extends Component {
         .create({
           baseURL: "https://services-api.bpoint.store/api",
         })
-        .post(`/users/verify`, {
+        .post(`/users/resetPassword`, {
           token,
           password,
           confirm_password: password2,
@@ -46,7 +47,10 @@ class Verify extends Component {
             }, 2000);
           },
           (error) => {
-            // console.log("response", error);
+            console.log("response", error);
+            notification["error"]({
+              message: Object.values(error.response.data.errors),
+            });
             this.setState({ hasError: true });
           }
         );
@@ -58,7 +62,10 @@ class Verify extends Component {
     const { hasError } = this.state;
 
     return (
-      <div className="verifyAcc login">
+      <div
+        className="verifyAcc login"
+        style={{ top: "50%", transform: "translate(-50%,-50%)" }}
+      >
         <div className="title">
           {hasError === 0 ? (
             <i className="fas fa-check-circle"></i>
@@ -68,7 +75,7 @@ class Verify extends Component {
             <i className="fas fa-check-circle text-success animated tada"></i>
           )}
 
-          <div>Verify Account</div>
+          <div>Reset Password</div>
           <ul>
             <li>
               <input
@@ -104,7 +111,7 @@ class Verify extends Component {
                   this.submitVals();
                 }}
               >
-                Verify
+                Reset
               </button>
             </li>
           </ul>

@@ -11,6 +11,7 @@ class Login extends React.Component {
   state = {
     userName: "",
     password: "",
+    isForgot: false,
   };
 
   handleChangeUsername = (event) => {
@@ -28,11 +29,16 @@ class Login extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    const { userName, password } = this.state;
-    this.props.signInByEmail(userName, password, this.socketCall);
+    const { userName, password, email, isForgot } = this.state;
+    if (isForgot) {
+      this.props.forgotPassword(email);
+    } else {
+      this.props.signInByEmail(userName, password, this.socketCall);
+    }
   };
 
   render() {
+    const { isForgot } = this.state;
     const { loginMsg } = this.props;
     // console.log("loginMsg", loginMsg);
     return (
@@ -48,42 +54,67 @@ class Login extends React.Component {
             <div>Login</div>
           </div>
           <ul>
-            <li>
-              <input
-                onKeyDown={(e) => {
-                  if (e.keyCode === 13) {
-                    this.handleSubmit(e);
-                  }
-                }}
-                type="text"
-                placeholder="Username"
-                name="username"
-                onChange={this.handleChangeUsername}
-                id="loginUserName"
-              />
-            </li>
-            <li>
-              <input
-                onKeyDown={(e) => {
-                  if (e.keyCode === 13) {
-                    this.handleSubmit(e);
-                  }
-                }}
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-                onChange={this.handleChangePassword}
-              />
-            </li>
+            {isForgot ? (
+              <li>
+                <input
+                  onKeyDown={(e) => {
+                    if (e.keyCode === 13) {
+                      this.handleSubmit(e);
+                    }
+                  }}
+                  type="text"
+                  placeholder="E-mail"
+                  name="email"
+                  onChange={(e) => {
+                    this.setState({ email: e.target.value });
+                  }}
+                  id="loginEmail"
+                />
+              </li>
+            ) : (
+              <>
+                <li>
+                  <input
+                    onKeyDown={(e) => {
+                      if (e.keyCode === 13) {
+                        this.handleSubmit(e);
+                      }
+                    }}
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    onChange={this.handleChangeUsername}
+                    id="loginUserName"
+                  />
+                </li>
+                <li>
+                  <input
+                    onKeyDown={(e) => {
+                      if (e.keyCode === 13) {
+                        this.handleSubmit(e);
+                      }
+                    }}
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="password"
+                    onChange={this.handleChangePassword}
+                  />
+                </li>
+              </>
+            )}
+
             <li>
               <button
                 type="submit"
                 onClick={this.handleSubmit}
                 className="loginBtn"
               >
-                Login
+                {isForgot ? "Vai" : "Login"}
               </button>
+              <span onClick={() => this.setState({ isForgot: !isForgot })}>
+                {!isForgot ? "Password dimenticata?" : "Accedi"}
+              </span>
             </li>
           </ul>
 

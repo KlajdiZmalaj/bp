@@ -80,6 +80,7 @@ export default function* root() {
     takeLatest("DELETE_ERROR", AuthGenerators.deleteError),
     // MAIN
 
+    takeLatest("FORGOT_PASSWORD", MainGenerators.forgotPassword),
     takeLatest("GET_SEARCHED_USERS", MainGenerators.getSearchedUsers),
     takeLatest("GET_USER_PHOTOS", MainGenerators.getUserPhotos),
     takeLatest("GET_SERVICES", MainGenerators.getServices),

@@ -25,6 +25,7 @@ const { Types, Creators } = createActions({
   setUserPhotos: ["userPhotos"],
   getSearchedUsers: ["search_user"],
   sendPrenotazione: ["objectData", "resetState"],
+  forgotPassword: ["email"],
 });
 
 export const MainTypes = Types;

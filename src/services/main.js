@@ -10,10 +10,9 @@ instanceAxios.interceptors.request.use(
     console.log("req config", config);
     var Auth = true;
     if (
-      config.url.includes("/users/login") ||
-      config.url.includes("/skin/extra") ||
       //barkkodi qe hapet me qr pa token param omelale
-      config.url === "/payment"
+      config.url === "/payment" ||
+      config.url === "/users/forgotPassword"
     ) {
       //api -> without token
       Auth = false;
@@ -37,6 +36,14 @@ instanceAxios.interceptors.response.use(
   },
   (error) => handleError(error)
 );
+export const forgotPasswordReq = (email) => {
+  return instanceAxios
+    .post("/users/forgotPassword", {
+      ...skin,
+      email,
+    })
+    .catch((error) => ({ error }));
+};
 export const createPrenotazione = ({
   type,
   // ========== luce / gas -> start ==========
