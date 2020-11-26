@@ -1,6 +1,6 @@
 import $ from "jquery";
 import { notification } from "antd";
-
+import { unSubscribeSocketUser, unSubscribeSocketSupport } from "config/socket";
 export const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
 export const getToken = () => {
@@ -24,12 +24,32 @@ export const handleError = (error) => {
   console.log("error handler", error, error.response, error.error);
   if (hasCode(error, 401)) {
     //loged out
+    unSubscribeSocketUser(
+      JSON.parse(localStorage.getItem("accountDataB")).profile.id
+    );
+    if (
+      JSON.parse(localStorage.getItem("accountDataB")).profile.role.name ===
+      "support"
+    ) {
+      unSubscribeSocketSupport();
+    }
     localStorage.setItem("accountDataB", null);
     window.setUnauthorization();
+    console.log(
+      "token cleared 401",
+      localStorage.getItem("accountDataB"),
+      window.setUnauthorization
+    );
   } else if (hasCode(error, 445)) {
     //skin id wrong
   } else if (hasCode(error, 440)) {
-    localStorage.setItem("accountDataB", null);
+    localStorage.setItem("'accountDataB'", null);
+    window.setUnauthorization();
+    console.log(
+      "token cleared 440",
+      localStorage.getItem("accountDataB"),
+      window.setUnauthorization
+    );
   } else if (hasCode(error, 429)) {
     console.log("to many request");
   } else if (hasCode(error, 403)) {

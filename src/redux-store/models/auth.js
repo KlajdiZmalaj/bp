@@ -753,6 +753,7 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_UNAUTHORIZATION: ({ skinExtras }) => ({
     ...INITIAL_STATE,
     skinExtras,
+    accountInfo: {},
   }),
   LOG_OUT: ({ skinExtras }) => ({
     ...INITIAL_STATE,

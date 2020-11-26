@@ -6,6 +6,12 @@ import AuthActions from "redux-store/models/auth";
 import LoginComponent from "routes/domains/Login";
 
 class Login extends React.Component {
+  componentDidMount() {
+    if (localStorage.getItem("accountDataB")?.includes("object")) {
+      localStorage.setItem("accountDataB", null);
+    }
+  }
+
   render() {
     return <LoginComponent></LoginComponent>;
   }

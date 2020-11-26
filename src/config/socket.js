@@ -51,6 +51,23 @@ export const subscribeSocketUser = (userID, props) => {
       });
       props.setButtonsSupport({ status: true, instance: e.instance_id });
     }
+    if (
+      e.type === "token_expired" &&
+      e.instance ===
+        JSON.parse(localStorage.getItem("accountDataB")?.token_id || "{}")
+    ) {
+      unSubscribeSocketUser(
+        JSON.parse(localStorage.getItem("accountDataB")).profile.id
+      );
+      if (
+        JSON.parse(localStorage.getItem("accountDataB")).profile.role.name ===
+        "support"
+      ) {
+        unSubscribeSocketSupport();
+      }
+      localStorage.setItem("accountDataB", null);
+      window.setUnauthorization();
+    }
   });
 };
 

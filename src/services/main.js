@@ -7,7 +7,7 @@ export const instanceAxios = axios.create({
 
 instanceAxios.interceptors.request.use(
   async (config) => {
-    console.log("req config", config);
+    // console.log("req config", config);
     var Auth = true;
     if (
       //barkkodi qe hapet me qr pa token param omelale

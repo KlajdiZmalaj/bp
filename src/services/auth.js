@@ -42,8 +42,8 @@ instanceAxios.interceptors.response.use(
 export const fetchLogin = (email, password) =>
   instanceAxios
     .post(`/users/login`, {
-      ...{ username: email },
-      ...{ password: password },
+      username: email,
+      password: password,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -112,16 +112,16 @@ export const fetchBolletiniBianchi = (
 ) =>
   instanceAxios
     .post(`/test/rechargeBOL`, {
-      ...{ service_id: service_id },
-      ...{ numero_conto_corrente: numero_conto_corrente },
-      ...{ importo: importo.toString() },
-      ...{ intestato_a: intestato_a },
-      ...{ causale: causale },
-      ...{ eseguito_da: eseguito_da },
-      ...{ via_piazza: via_piazza },
-      ...{ cap: cap },
-      ...{ citta: citta },
-      ...{ provincia: provincia },
+      service_id,
+      numero_conto_corrente,
+      importo: importo.toString(),
+      intestato_a,
+      causale,
+      eseguito_da,
+      via_piazza,
+      cap,
+      citta,
+      provincia,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -137,11 +137,11 @@ export const fetchPayments = (
 ) => {
   return instanceAxios
     .post(`/users/payments`, {
-      ...(username ? { username: username } : {}),
-      ...(from ? { from } : null),
-      ...(to ? { to } : null),
-      ...(page_number ? { page_number } : {}),
-      ...(limit ? { limit } : {}),
+      ...(username ? username : null),
+      ...(from ? from : null),
+      ...(to ? to : null),
+      page_number,
+      limit,
       ...(skin_id ? { skin_id } : { ...skin }),
       ...(excel === "special" ? { excel } : {}),
     })
@@ -150,8 +150,8 @@ export const fetchPayments = (
 export const fetchRechargeMobile = (service_id, tel_no) =>
   instanceAxios
     .post(`/test/recharge`, {
-      ...{ service_id: service_id },
-      ...(tel_no ? { tel_no: tel_no } : {}),
+      service_id,
+      tel_no,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -171,16 +171,15 @@ export const fetchPostePay = (
 ) =>
   instanceAxios
     .post(`/test/rechargeBOL`, {
-      ...{ service_id: service_id },
-      ...{ importo: importo.toString() },
-      ...(user_id ? { user_id: user_id } : {}),
-      ...{ intestazione: intestazione },
-      ...{ codice_fiscale_intestatario: codice_fiscale_intestatario },
-      ...{ ordinante: ordinante },
-      ...{ codice_fiscale_ordinante: codice_fiscale_ordinante },
-      ...{ numero_postepay: numero_postepay },
-
-      ...(document_type ? { document_type: document_type } : {}),
+      service_id,
+      importo: importo.toString(),
+      user_id,
+      intestazione,
+      codice_fiscale_intestatario,
+      ordinante,
+      codice_fiscale_ordinante,
+      numero_postepay,
+      document_type,
       ...(imageUrl ? { document_front: imageUrl } : {}),
       ...(imageUrl2 ? { document_back: imageUrl2 } : {}),
       ...skin,
@@ -199,9 +198,9 @@ export const fetchAds = () =>
 export const sendCreatedAds = (importance, title, text) =>
   instanceAxios
     .post(`/messages`, {
-      ...{ importance: importance },
-      ...{ title: title },
-      ...{ text: text },
+      importance,
+      title,
+      text,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -253,48 +252,48 @@ export const fetchRegisterAllInfo = (
 ) =>
   instanceAxios
     .post(`/users/create`, {
-      ...{ first_name: first_name },
-      ...{ last_name: last_name },
-      ...{ username: nickname },
-      ...{ email: email },
-      ...{ gender: gender },
-      ...{ personal_number: personal_number },
-      ...{ birthday: birthday },
-      ...{ birth_country: nazione },
-      ...{ birth_comune_code: province_of_birth },
-      ...{ birth_place: city_of_birth },
-      ...{ country: nazioneDiResidenca },
-      ...{ comune_code: residence_province },
-      ...{ city: residence_city },
-      ...{ address: address },
-      ...{ cap: cap },
-      ...{ document_number: identity_id },
-      ...{ document_type: identity_type },
-      ...{ phone: number_prefix + number },
-      ...{ document_front: frontImg },
-      ...{ document_back: backImg },
-      ...{ role: role },
-      ...{ a_ragione_sociale: aRagSoc },
-      ...{ a_insegna: aInsegna },
-      ...{ a_phone: aPhone },
-      ...{ a_address: aAdress },
-      ...{ a_city: aCity },
-      ...{ a_comune_code: aComcode },
-      ...{ a_cap: aCap },
-      ...{ a_p_iva: aPiva },
-      ...{ a_codice_fiscale: aFcode },
-      ...{ password: password },
-      ...{ confirm_password: confirm_password },
-      ...{ rilasciato_da: rilasciato_da },
-      ...{ luogo_di_rilascio: luogo_di_rilascio },
-      ...{ data_di_rilascio: data_di_rilascio },
-      ...{ data_di_scadenza: data_di_scadenza },
-      ...{ a_cordinate },
-      ...{ a_contry },
-      ...{ rent },
-      ...{ privacy_policy },
-      ...{ recieve_emails },
-      ...{ percentage },
+      first_name,
+      last_name,
+      username: nickname,
+      email,
+      gender,
+      personal_number,
+      birthday,
+      birth_country: nazione,
+      birth_comune_code: province_of_birth,
+      birth_place: city_of_birth,
+      country: nazioneDiResidenca,
+      comune_code: residence_province,
+      city: residence_city,
+      address,
+      cap,
+      document_number: identity_id,
+      document_type: identity_type,
+      phone: number_prefix + number,
+      document_front: frontImg,
+      document_back: backImg,
+      role,
+      a_ragione_sociale: aRagSoc,
+      a_insegna: aInsegna,
+      a_phone: aPhone,
+      a_address: aAdress,
+      a_city: aCity,
+      a_comune_code: aComcode,
+      a_cap: aCap,
+      a_p_iva: aPiva,
+      a_codice_fiscale: aFcode,
+      password,
+      confirm_password,
+      rilasciato_da,
+      luogo_di_rilascio,
+      data_di_rilascio,
+      data_di_scadenza,
+      a_cordinate,
+      a_contry,
+      rent,
+      privacy_policy,
+      recieve_emails,
+      percentage,
       ...skin,
     })
     .catch((error) => ({ data: error.response.data }));
@@ -302,9 +301,9 @@ export const fetchRegisterAllInfo = (
 export const sendChangedPassword = (oldPassword, newPassword) =>
   instanceAxios
     .post(`/users/changePassword`, {
-      ...{ old_password: oldPassword },
-      ...{ password: newPassword },
-      ...{ confirm_password: newPassword },
+      old_password: oldPassword,
+      password: newPassword,
+      confirm_password: newPassword,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -385,8 +384,8 @@ export const transferMoney = (id, amount, type, c, role, backOffice) => {
         ? `/skin/transferMoney/${id}`
         : `/users/${id}/transfer`,
       {
-        ...{ amount },
-        ...{ type },
+        amount,
+        type,
         ...(backOffice
           ? backOffice !== -1
             ? { skin_id: backOffice }
@@ -1145,8 +1144,8 @@ export const ServiceChangeStatusReq = (
 export const customVoucher = (service_id, importo) =>
   instanceAxios
     .post(`/buy/${service_id === "BBT001" ? "bbetVoucher" : "bgameVoucher"}`, {
-      ...{ service_id: service_id },
-      ...(importo ? { importo: importo } : {}),
+      service_id,
+      importo,
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -1192,7 +1191,7 @@ export const fetchBolletiniRequest = (
       causale,
       email,
       phone_number,
-      ...(codice_identificativo ? { codice_identificativo } : {}),
+      codice_identificativo,
       ...(person_type === "F"
         ? { nome, cognome, codice_fiscale }
         : { denominazione, partita_iva }),
