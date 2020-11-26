@@ -15,12 +15,7 @@ instanceAxios.interceptors.request.use(
   async (config) => {
     // console.log("req config", config);
     var Auth = true;
-    if (
-      config.url.includes("/users/login") ||
-      config.url.includes("/skin/extra") ||
-      //barkkodi qe hapet me qr pa token param omelale
-      config.url === "/payment"
-    ) {
+    if (config.url === "/users/login" || config.url === "/skin/extra") {
       //api -> without token
       Auth = false;
     }

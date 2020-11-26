@@ -28,7 +28,7 @@ export function* forgotPassword({ email }) {
       message: response.data.message,
     });
   }
-  console.log("response", response.data, response.data.message);
+  // console.log("response", response.data, response.data.message);
 }
 export function* getServices() {
   // console.log("funx callllled");
