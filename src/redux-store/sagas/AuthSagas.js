@@ -463,6 +463,13 @@ export function* getAds() {
       )
     );
   }
+  if (response?.error && response?.error?.response?.status === 401) {
+    const response = yield call(AuthRequest.logoutApi);
+    if (response) {
+      localStorage.setItem("accountDataB", null);
+      yield put(AuthActions.setAccountInfo({}));
+    }
+  }
 }
 
 export function* addPrivateMsg(msg) {
