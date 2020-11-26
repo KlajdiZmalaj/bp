@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { notification } from "antd";
 
 export const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
@@ -6,6 +7,45 @@ export const getToken = () => {
   const value = localStorage.getItem("accountDataB");
   const keys = JSON.parse(value);
   return `Bearer ${keys?.token}`;
+};
+
+const hasCode = (error, status) => {
+  if (
+    error?.response?.status === parseInt(status) ||
+    error.error?.response?.status === parseInt(status) ||
+    error?.response?.status === parseInt(status)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+export const handleError = (error) => {
+  console.log("error handler", error, error.response, error.error);
+  if (hasCode(error, 401)) {
+    //logout
+  } else if (hasCode(error, 445)) {
+    //skin id wrong
+  } else if (hasCode(error, 440)) {
+    localStorage.setItem("accountDataB", null);
+  } else if (hasCode(error, 429)) {
+    console.log("to many request");
+  } else if (hasCode(error, 403)) {
+    //forbiden , kryesisht > prenotazione
+    notification["warning"]({
+      message: `Azione completata una volta`,
+    });
+  } else {
+    notification["error"]({
+      message: error?.response?.data?.message,
+      description:
+        error?.response?.data?.errors &&
+        Object.values(error.response.data.errors),
+      placement: "bottomRight",
+      duration: 4,
+    });
+  }
+  return Promise.reject(error);
 };
 
 export let skin = {

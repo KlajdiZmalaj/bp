@@ -801,7 +801,6 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     ads,
   }),
-  SET_UNAUTHORIZATION: () => ({ ...INITIAL_STATE }),
 
   SET_REGISTER: (state, { register }) => ({
     ...state,

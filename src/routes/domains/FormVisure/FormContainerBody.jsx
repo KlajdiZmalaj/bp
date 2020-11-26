@@ -60,7 +60,6 @@ class FormContainerBody extends Component {
                   backgroundColor: "var(--accent-bg)",
                   color: "var(--accent-txt)",
                 }}
-                disabled={this.props.visButton}
               >
                 Invia
               </button>
