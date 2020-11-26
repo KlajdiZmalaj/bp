@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { docType } from "config";
 
 import {
   Form,
@@ -673,9 +674,13 @@ class RegisterEndUser extends React.Component {
                       // placeholder="Tipo documento*"
                       onChange={this.onChangeIdentity}
                     >
-                      <Option value="1">Carta di identita</Option>
-                      <Option value="2">Patenta di guida</Option>
-                      <Option value="3">Passaporto</Option>
+                      {docType.map((doc) => {
+                        return (
+                          <Option key={doc.id} value={doc.id}>
+                            {doc.name}
+                          </Option>
+                        );
+                      })}
                     </Select>
                   )}
                 </Form.Item>

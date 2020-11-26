@@ -1,5 +1,6 @@
 import React from "react";
 import { Select, DatePicker } from "antd";
+import { docType } from "config";
 
 import moment from "moment";
 import { ItemFull } from "./AdminComp";
@@ -177,9 +178,13 @@ class AgentComp extends React.Component {
                     userDetail.document_type.toString())
                 }
               >
-                <Option value="1">Carta di identita</Option>
-                <Option value="2">Patenta di guida</Option>
-                <Option value="3">Passaporto</Option>
+                {docType.map((doc) => {
+                  return (
+                    <Option key={doc.id} value={doc.id}>
+                      {doc.name}
+                    </Option>
+                  );
+                })}
               </Select>
             </div>
             <ItemFull

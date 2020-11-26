@@ -1,7 +1,3 @@
-// import images from "themes/images";
-import React from "react";
-import { Select } from "antd";
-const { Option } = Select;
 export const allRoles = {
   user: "fal fa-user",
   agency: "fas fa-store",
@@ -313,13 +309,6 @@ export const administrazioni = [
     name: "impostazioni",
     link: "impostazioni",
   },
-];
-export const profileLinks = [
-  {
-    id: 1,
-    name: "Cambia Password",
-  },
-  { id: 2, name: "Tutti Utenti" },
 ];
 
 export const servicesVisure = {
@@ -946,7 +935,7 @@ export const BbetServices = [
   },
 ];
 
-//http://prntscr.com/vmqp68  reset state so other has clean state for next popup
+//http://prntscr.com/vmqp68  reset state so next popup states are cleaned
 export const resetUserStateChangeFields = {
   changedphone: "",
   changeddocument_type: "",

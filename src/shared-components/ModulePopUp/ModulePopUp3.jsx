@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
 import { Form, Select, Upload, Icon, message } from "antd";
+import { docType } from "config";
 
 const { Option } = Select;
 
@@ -376,9 +377,13 @@ class ModulePopUp3 extends React.Component {
                               placeholder="Document Type"
                               onChange={this.onChangeTypeView.bind(this)}
                             >
-                              <Option value="1">Carta di identita</Option>
-                              <Option value="2">Patenta di guida</Option>
-                              <Option value="3">Passporto</Option>
+                              {docType.map((doc) => {
+                                return (
+                                  <Option key={doc.id} value={doc.id}>
+                                    {doc.name}
+                                  </Option>
+                                );
+                              })}
                             </Select>
                           )}
                         </Form.Item>

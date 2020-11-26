@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import images from "themes/images";
-// import { skinTexts, skinID } from "config/skinTexts";
 import { connect } from "react-redux";
 import { Footer as FooterMob } from "shared-componentsMobile";
 class Footer extends Component {
