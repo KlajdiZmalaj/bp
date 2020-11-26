@@ -53,8 +53,8 @@ export const subscribeSocketUser = (userID, props) => {
     }
     if (
       e.type === "token_expired" &&
-      e.instance ===
-        JSON.parse(localStorage.getItem("accountDataB")?.token_id || "{}")
+      e.instance_id ===
+        JSON.parse(localStorage.getItem("accountDataB"))?.token_id
     ) {
       unSubscribeSocketUser(
         JSON.parse(localStorage.getItem("accountDataB")).profile.id
