@@ -1,5 +1,4 @@
-import axios from "axios";
-import { skin, getToken, endpoint } from "config/api";
+import { skin, instanceAxios } from "config/api";
 
 export const createPrenotazione = ({
   type,
@@ -48,14 +47,7 @@ export const createPrenotazione = ({
   marketing,
   dati_personali,
 }) => {
-  return axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-        Accept: "application/json",
-      },
-    })
+  return instanceAxios
     .post(`/prenotazione/create`, {
       ...skin,
       type,
@@ -107,13 +99,7 @@ export const createPrenotazione = ({
     .catch((error) => ({ error }));
 };
 export const fetchServices = () =>
-  axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .get(`/services`, {
       params: {
         ...skin,
@@ -121,13 +107,7 @@ export const fetchServices = () =>
     })
     .catch((error) => ({ error }));
 export const fetchFavorites = () =>
-  axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/favorites`, {
       ...skin,
     })
@@ -141,13 +121,7 @@ export const fetchUsers = (
   page_number
 ) => {
   const skin_id_to_use = skin_id ? skin_id : { ...skin };
-  return axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  return instanceAxios
     .post(`/users/list`, {
       ...(search_user ? { search_user } : {}),
       ...(limit ? { limit } : {}),
@@ -158,13 +132,7 @@ export const fetchUsers = (
     .catch((error) => ({ error }));
 };
 export const fetchUsersSimple = () =>
-  axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .get(`/simpleUsers`, {
       params: {
         ...skin,
@@ -173,13 +141,7 @@ export const fetchUsersSimple = () =>
     .catch((error) => ({ error }));
 
 export const fetchUsersBySearch = (search_user) =>
-  axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/findUser`, {
       ...(search_user ? { search_user: search_user } : {}),
       ...skin,
@@ -190,13 +152,7 @@ export const fetchUsersBySearch = (search_user) =>
     .catch((error) => ({ error }));
 
 export const fetchSearchedUsers = (search_user) =>
-  axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/search`, {
       search_user,
       ...skin,
@@ -207,13 +163,7 @@ export const fetchSearchedUsers = (search_user) =>
     .catch((error) => ({ error }));
 
 export const postImages = (user_id, imgFront, imgBack, callback) => {
-  axios
-    .create({
-      baseURL: endpoint,
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/updateDocument`, {
       ...{ user_id: user_id },
       ...{ document_front: imgFront },
@@ -230,13 +180,7 @@ export const postImages = (user_id, imgFront, imgBack, callback) => {
 };
 
 export const deleteImages = (user_id, callback) => {
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api/",
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/deleteDocument`, {
       ...{ user_id: user_id },
       ...skin,
@@ -250,13 +194,7 @@ export const deleteImages = (user_id, callback) => {
 };
 
 export const updatateOverviewWidget = (period) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api/",
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/balance`, {
       ...{ period: period },
       ...skin,
@@ -264,13 +202,7 @@ export const updatateOverviewWidget = (period) =>
     .catch((error) => ({ error }));
 
 export const setOnFav = (id, type) =>
-  axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api/",
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  instanceAxios
     .post(`/users/${type === "set" ? "addFavorite" : "removeFavorite"}`, {
       ...{ company_id: id },
       ...skin,
@@ -278,28 +210,15 @@ export const setOnFav = (id, type) =>
     .catch((error) => ({ error }));
 
 export const fetchphotos = (id) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api/",
-      headers: {
-        Authorization: getToken(),
-      },
-    })
-    .get(`user/${id}/photos`, {
-      params: {
-        ...skin,
-      },
-    });
+  return instanceAxios.get(`user/${id}/photos`, {
+    params: {
+      ...skin,
+    },
+  });
 };
 
 export const downloadFile = (document_name) => {
-  return axios
-    .create({
-      baseURL: "https://services-api.bpoint.store/api/",
-      headers: {
-        Authorization: getToken(),
-      },
-    })
+  return instanceAxios
     .get(`ticketDocument`, {
       params: {
         ...skin,

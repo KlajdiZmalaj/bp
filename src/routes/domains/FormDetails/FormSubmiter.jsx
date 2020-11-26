@@ -90,7 +90,8 @@ export class FormSubmiter extends Component {
               "formSubmit--download" +
               (this.props.TicketByTcketId.status === "Eseguibile" ||
               this.props.TicketByTcketId.status === "Completato" ||
-              enableButtons
+              (enableButtons.status &&
+                TicketByTcketId.id.includes(enableButtons.instance))
                 ? ""
                 : " dissableBtn") +
               (this.state.base64
@@ -112,7 +113,8 @@ export class FormSubmiter extends Component {
                   className="fal fa-trash-alt"
                 ></i>{" "}
                 {this.state.file.name}{" "}
-                {enableButtons ||
+                {(enableButtons.status &&
+                  TicketByTcketId.id.includes(enableButtons.instance)) ||
                 this.props.TicketByTcketId.status === "Eseguibile" ? (
                   ""
                 ) : (
@@ -159,7 +161,9 @@ export class FormSubmiter extends Component {
           }}
           className={
             "formSubmit--button -s" +
-            (enableButtons || this.props.TicketByTcketId.status === "Eseguibile"
+            ((enableButtons.status &&
+              TicketByTcketId.id.includes(enableButtons.instance)) ||
+            this.props.TicketByTcketId.status === "Eseguibile"
               ? ""
               : " dissableBtn")
           }
@@ -178,7 +182,9 @@ export class FormSubmiter extends Component {
           }}
           className={
             "formSubmit--button -c" +
-            (enableButtons || this.props.TicketByTcketId.status === "Eseguibile"
+            ((enableButtons.status &&
+              TicketByTcketId.id.includes(enableButtons.instance)) ||
+            this.props.TicketByTcketId.status === "Eseguibile"
               ? ""
               : " dissableBtn")
           }

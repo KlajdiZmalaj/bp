@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import { toggleOverviewSelector } from "selectors/main";
 import "./Overview.styles.scss";
 import { get } from "lodash";
 import "./anim.css";
@@ -166,7 +165,7 @@ class Overview extends Component {
 }
 
 const mapsStateToProps = (state) => ({
-  showOverview: toggleOverviewSelector(state),
+  showOverview: state.main.showOverview,
   services: state.services,
   accountInfo: state.auth.accountInfo,
   dashboardData: state.main.dashboardData,

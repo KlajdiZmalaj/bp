@@ -1,6 +1,4 @@
-import request from "utils/request";
-import axios from "axios";
-import { skin, endpoint } from "config/api";
+import { skin, instanceAxios } from "config/api";
 import { notification } from "antd";
 import { message } from "antd";
 
@@ -9,87 +7,8 @@ import {
   unSubscribeSocketUser,
 } from "config/socket.js";
 
-//import api from "config/api";
-
-// const accountData = localStorage.getItem("accountDataB");
-// const data = JSON.parse(accountData);
-// let req;
-// if (data) {
-//   req = axios.create({
-//     baseURL: endpoint,
-//     headers: {
-//       Authorization: `Bearer ${data.token}`
-//     }
-//   });
-// }
-//
-//
-const instanceAxios = axios.create({
-  baseURL: endpoint,
-});
-const hasCode = (error, status) => {
-  if (
-    error?.response?.status === parseInt(status) ||
-    error.error?.response?.status === parseInt(status) ||
-    error?.response?.status === parseInt(status)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-const handleError = (error) => {
-  console.log(
-    "error handler",
-    error,
-    error.response.status,
-    error.error?.response?.status
-  );
-  if (hasCode(error, 401)) {
-    //logout
-  } else if (hasCode(error, 445)) {
-    //skin id wrong
-  } else if (hasCode(error, 440)) {
-    localStorage.setItem("accountDataB", null);
-  } else if (hasCode(error, 429)) {
-    console.log("to many request");
-  } else if (hasCode(error, 403)) {
-    //forbiden , kryesisht > prenotazione
-    notification["warning"]({
-      message: `Azione completata una volta`,
-    });
-  } else {
-    notification["error"]({
-      message: error?.response?.data?.message,
-      description:
-        error?.response?.data?.errors &&
-        Object.values(error.response.data.errors),
-      placement: "bottomRight",
-      duration: 4,
-    });
-  }
-  return Promise.reject(error);
-};
-instanceAxios.interceptors.request.use(
-  async (config) => {
-    const value = await localStorage.getItem("accountDataB");
-    const keys = JSON.parse(value);
-    config.headers = {
-      Authorization: `Bearer ${keys.token}`,
-      Accept: "application/json",
-    };
-    return config;
-  },
-  (error) => {
-    Promise.reject(error);
-  }
-);
-instanceAxios.interceptors.response.use(
-  (response) => response,
-  (error) => handleError(error)
-);
 export const fetchLogin = (email, password) =>
-  request
+  instanceAxios
     .post(`/users/login`, {
       ...{ username: email },
       ...{ password: password },
@@ -536,10 +455,7 @@ export const updateUsers = (
     .catch((error) => ({ error }));
 };
 export const fetchSkinExtras = () => {
-  return axios
-    .create({
-      baseURL: endpoint,
-    })
+  return instanceAxios
     .get(`/skin/extra`, {
       params: {
         ...skin,
@@ -857,7 +773,7 @@ export const userConfirmation = (
     })
     .then((res) => {
       if (res.status === 200 && c) {
-        setButtonsSupport(false);
+        setButtonsSupport({ status: false, instance: null });
         c(false);
         notification.open({
           message: "Hai ricevuto una notifica",

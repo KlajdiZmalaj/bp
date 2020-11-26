@@ -41,14 +41,15 @@ export const subscribeSocketUser = (userID, props) => {
     }
     if (
       e.type === "notification" &&
-      e.data.title === "Il biglietto è stato accettato"
+      (e.data.title === "Il biglietto è stato accettato" ||
+        e.data.title === "La prenotazione è stata accettata")
     ) {
       notification.open({
         message: "Hai ricevuto una notifica",
         description: e.data.title,
         icon: <i className="fal fa-smile-beam"></i>,
       });
-      props.setButtonsSupport(true);
+      props.setButtonsSupport({ status: true, instance: e.instance_id });
     }
   });
 };

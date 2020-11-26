@@ -560,7 +560,7 @@ const INITIAL_STATE = {
   ModalDetails: {},
   bolletiniLoading: false,
   fatturaPdf: "",
-  enableButtons: false,
+  enableButtons: { status: false, instance: null },
   popUpData: {},
   paymentsPages: 0,
   loadingPayments: true,
