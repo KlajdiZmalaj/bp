@@ -757,9 +757,9 @@ class Transazioni extends React.Component {
             </div>
             <div className="row no-gutters max-width">
               <div className="col-md-12">
-                {payments.message && (
+                {payments?.message && (
                   <div className="alert alert-danger text-center">
-                    {payments.message}
+                    {payments?.message}
                   </div>
                 )}
 
@@ -788,9 +788,9 @@ class Transazioni extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {!payments.message &&
+                      {!payments?.message &&
                       (paymentsO || []) &&
-                      paymentsO.length === 0 ? (
+                      paymentsO?.length === 0 ? (
                         <tr className="NoData">
                           <td colSpan="8">
                             {" "}

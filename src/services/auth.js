@@ -1,11 +1,90 @@
-import { skin, instanceAxios } from "config/api";
+import { skin, endpoint } from "config/api";
 import { notification } from "antd";
 import { message } from "antd";
-
+import axios from "axios";
 import {
   unSubscribeSocketSupport,
   unSubscribeSocketUser,
 } from "config/socket.js";
+
+export const instanceAxios = axios.create({
+  baseURL: endpoint,
+});
+const hasCode = (error, status) => {
+  if (
+    error?.response?.status === parseInt(status) ||
+    error.error?.response?.status === parseInt(status) ||
+    error?.response?.status === parseInt(status)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+const handleError = (error) => {
+  console.log(
+    "error handler authJS",
+    error,
+    error.response.status,
+    error.error?.response?.status
+  );
+  if (hasCode(error, 401)) {
+    //logout
+  } else if (hasCode(error, 445)) {
+    //skin id wrong
+  } else if (hasCode(error, 440)) {
+    localStorage.setItem("accountDataB", null);
+  } else if (hasCode(error, 429)) {
+    console.log("to many request");
+  } else if (hasCode(error, 403)) {
+    //forbiden , kryesisht > prenotazione
+    notification["warning"]({
+      message: `Azione completata una volta`,
+    });
+  } else {
+    notification["error"]({
+      message: error?.response?.data?.message,
+      description:
+        error?.response?.data?.errors &&
+        Object.values(error.response.data.errors),
+      placement: "bottomRight",
+      duration: 4,
+    });
+  }
+  return Promise.reject(error);
+};
+instanceAxios.interceptors.request.use(
+  async (config) => {
+    console.log("req config", config);
+    var Auth = true;
+    if (
+      config.url.includes("/users/login") ||
+      config.url.includes("/skin/extra") ||
+      //barkkodi qe hapet me qr pa token param omelale
+      config.url === "/payment"
+    ) {
+      //api -> without token
+      Auth = false;
+    }
+    const value = await localStorage.getItem("accountDataB");
+    const keys = JSON.parse(value);
+    config.headers = {
+      ...(Auth ? { Authorization: `Bearer ${keys.token}` } : {}),
+      Accept: "application/json",
+    };
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  }
+);
+instanceAxios.interceptors.response.use(
+  (response) => {
+    // console.log("response", response);
+    return response;
+  },
+  (error) => handleError(error)
+);
 
 export const fetchLogin = (email, password) =>
   instanceAxios
