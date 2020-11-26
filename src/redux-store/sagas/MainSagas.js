@@ -1,9 +1,6 @@
 import { put, call } from "redux-saga/effects";
 import MainActions from "../models/main";
-import AuthActions from "../models/auth";
-
 import * as MainRequest from "services/main";
-import { logoutApi } from "services/auth";
 import { notification } from "antd";
 export function* sendPrenotazione({ objectData }, resetState) {
   const response = yield call(MainRequest.createPrenotazione, objectData);
@@ -36,28 +33,12 @@ export function* getServices() {
 
   if (response.data) {
     yield put(MainActions.setServices(response.data.all_services));
-  } else if (response.error) {
-    if (response.error.response.status === 401) {
-      const response = yield call(logoutApi);
-      if (response) {
-        localStorage.setItem("accountDataB", null);
-        yield put(AuthActions.setAccountInfo({}));
-      }
-    }
   }
 }
 export function* getFavorites() {
   const response = yield call(MainRequest.fetchFavorites);
   if (response.data) {
     yield put(MainActions.setFavorites(response.data.favorites));
-  } else if (response.error) {
-    if (response.error.response.status === 401) {
-      const response = yield call(logoutApi);
-      if (response) {
-        localStorage.setItem("accountDataB", null);
-        yield put(AuthActions.setAccountInfo({}));
-      }
-    }
   }
 }
 export function* toggleFavorite(params) {

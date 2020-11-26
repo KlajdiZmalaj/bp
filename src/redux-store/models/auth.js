@@ -571,9 +571,7 @@ const INITIAL_STATE = {
   user: null,
   loading: false,
   error: null,
-  accountInfo: localStorage.getItem("accountDataB")?.includes("Object")
-    ? {}
-    : JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
+  accountInfo: JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
   bolletiniBianchi: {},
   bolletiniPremercati: {},
   unauthorizated: true,

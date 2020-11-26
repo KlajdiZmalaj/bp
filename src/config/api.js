@@ -23,7 +23,9 @@ const hasCode = (error, status) => {
 export const handleError = (error) => {
   console.log("error handler", error, error.response, error.error);
   if (hasCode(error, 401)) {
-    //logout
+    //loged out
+    localStorage.setItem("accountDataB", null);
+    window.setUnauthorization();
   } else if (hasCode(error, 445)) {
     //skin id wrong
   } else if (hasCode(error, 440)) {
@@ -62,12 +64,14 @@ if (
     skin_id: 1,
   };
   //google analytics to header
-  $("head").append(
-    `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172416989-1"></script>`
-  );
-  $("head").append(
-    `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172416989-1');</script>`
-  );
+  if (window.location.href.includes("bpoint")) {
+    $("head").append(
+      `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172416989-1"></script>`
+    );
+    $("head").append(
+      `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172416989-1');</script>`
+    );
+  }
 } else if (window.location.href.includes("derby")) {
   skin = {
     ...skin,
