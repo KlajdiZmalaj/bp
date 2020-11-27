@@ -17,15 +17,15 @@ export const BannerColors = {
 };
 export const docType = [
   {
-    id: 1,
+    id: "1",
     name: "Carta di identita",
   },
   {
-    id: 2,
+    id: "2",
     name: "Patenta di guida",
   },
   {
-    id: 3,
+    id: "3",
     name: "Passporto",
   },
 ];
