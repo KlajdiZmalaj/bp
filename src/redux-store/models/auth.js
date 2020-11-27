@@ -574,7 +574,6 @@ const INITIAL_STATE = {
   accountInfo: JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
   bolletiniBianchi: {},
   bolletiniPremercati: {},
-  unauthorizated: true,
   service_id: null,
   payments: [],
   usernames: [],
@@ -718,7 +717,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   SIGN_IN_BY_EMAIL: (state) => ({
     ...state,
     loading: true,
-    unauthorizated: false,
   }),
   SET_BARCODE_DATA: (state, { barcodeData }) => ({
     ...state,

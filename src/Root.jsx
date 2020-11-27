@@ -390,7 +390,6 @@ class Root extends React.Component {
 
 const mapsStateToProps = (state) => ({
   accountInfo: state.auth.accountInfo,
-  unauthorizated: state.auth.unauthorizated,
   screenWidth: state.main.screenWidth,
   privMsg: state.auth.privMsg,
   popUpData: state.auth.popUpData,
