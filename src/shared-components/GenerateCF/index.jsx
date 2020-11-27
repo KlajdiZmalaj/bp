@@ -14,6 +14,7 @@ const INITIAL_VAL = {
   gender: "M",
   country: "",
   province: "",
+  sigla: "",
 };
 
 const generateCodiceFiscale = (
@@ -91,7 +92,7 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
         className="generateCodiceFiscale--header"
         style={{ background: `${color1}`, color: `${color2}` }}
       >
-        Fiscal Code Pop Up
+        CALCOLO DEL CODICE FISCALE
       </div>
       {codeFound ? (
         <div className="generateCodiceFiscale--body animated fadeIn">
@@ -105,6 +106,7 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
           <div className="generateCodiceFiscale--body__item">
             <span>Cognome*</span>
             <input
+              placeholder={"Cognome"}
               type="text"
               value={form.cognome}
               onChange={(e) => {
@@ -115,6 +117,7 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
           <div className="generateCodiceFiscale--body__item">
             <span>Nome*</span>
             <input
+              placeholder={"Nome"}
               type="text"
               value={form.nome}
               onChange={(e) => {
@@ -125,6 +128,7 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
           <div className="generateCodiceFiscale--body__item">
             <span>Data di nascita*</span>
             <DatePicker
+              placeholder={"Data di nascita"}
               onChange={(e) => {
                 setForm({
                   ...form,
@@ -151,33 +155,41 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
             <span>LUOGO DI NASCITA*</span>
             <VirtualizedSelect
               options={countriesArray.map((country) => ({
-                label: country.provincia,
+                label: `${country.provincia} (${country.sigla}) (${country.nazione})`,
                 value: country.provincia,
+                sigla: country.sigla,
               }))}
-              onChange={(luogo_di_nascita) => {
-                setForm({ ...form, luogo_di_nascita: luogo_di_nascita.value });
+              onChange={(e) => {
+                console.log("ca ka e", e);
+                setForm({
+                  ...form,
+                  luogo_di_nascita: e?.value,
+                  sigla: e?.sigla,
+                });
               }}
               value={form.luogo_di_nascita}
               maxHeight={100}
-              placeholder={"Select"}
+              placeholder={"Luogo di nascita"}
             />
           </div>
           <div className="generateCodiceFiscale--body__item">
             <span>Provincia*</span>
             <VirtualizedSelect
-              options={countriesArray.map((country) => ({
-                label: country.sigla,
-                value: country.sigla,
-              }))}
-              onChange={(province_of_birth) => {
+              options={countriesArray
+                .filter((e) => form.sigla === e.sigla)
+                .map((country) => ({
+                  label: `${country.provincia} (${country.sigla})`,
+                  value: country.sigla,
+                }))}
+              onChange={(e) => {
                 setForm({
                   ...form,
-                  province_of_birth: province_of_birth.value,
+                  province_of_birth: e?.value,
                 });
               }}
               value={form.province_of_birth}
               maxHeight={100}
-              placeholder={"Select"}
+              placeholder={"Provincia"}
             />
           </div>
         </div>
