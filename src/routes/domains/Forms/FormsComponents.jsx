@@ -46,7 +46,6 @@ export const Item = ({
       <Radio.Group
         onChange={(e) => {
           handleChange(e.target.value);
-          console.log("e", e);
         }}
         value={value}
       >
