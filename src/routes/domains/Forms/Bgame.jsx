@@ -6,6 +6,10 @@ import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import VirtualizedSelect from "react-virtualized-select";
 import CodiceFiscale from "codice-fiscale-js";
+import { Item } from "./FormsComponents";
+import { GenerateCF } from "shared-components";
+import { Portal } from "shared-components/GenerateCF";
+
 const { Option } = Select;
 
 class Eventi extends Component {
@@ -317,7 +321,7 @@ class Eventi extends Component {
             <img src={images[`${nome_agenzia}-bg`]} alt="" className="imgBg" />
           </div>
         )}
-        <form autoComplete="off" autoSave="off" autoCorrect="off">
+        <div>
           <div className="rightForm">
             <div className="rightForm--header">
               {!isMobile && (
@@ -478,7 +482,22 @@ class Eventi extends Component {
                   placeholder={"Select"}
                 />
               </div>
-              <div className="formsContainer--body__item datiPass">
+              <Item
+                label="Codice Fiscale"
+                value={codice_fiscale}
+                handleChange={(e) => {
+                  this.setState({
+                    codice_fiscale: e,
+                  });
+                }}
+                isCF
+                extraClass="datiPass"
+                CFPopUp={this.state.CFPopUp}
+                openCF={(CFPopUp) => {
+                  this.setState({ CFPopUp });
+                }}
+              />
+              {/* <div className="formsContainer--body__item datiPass">
                 <div className="label">
                   {" "}
                   Codice Fiscale <span className="Red">*</span>
@@ -491,7 +510,7 @@ class Eventi extends Component {
                     this.setState({ codice_fiscale: e.target.value });
                   }}
                 />
-              </div>
+              </div> */}
               <div className="formsContainer--body__item">
                 <div className="label">
                   Comune Residenca <span className="Red">*</span>
@@ -760,7 +779,23 @@ class Eventi extends Component {
               </div>
             </div>
           </div>
-        </form>
+        </div>
+        {this.state.CFPopUp && (
+          <Portal>
+            <GenerateCF
+              color1="#f36520"
+              color2="#fff"
+              name={this.state.nome}
+              lastName={this.state.cognome}
+              setCF={(cf) => {
+                this.setState({ codice_fiscale: cf });
+              }}
+              closeBox={() => {
+                this.setState({ CFPopUp: false });
+              }}
+            />
+          </Portal>
+        )}
       </div>
     );
   }

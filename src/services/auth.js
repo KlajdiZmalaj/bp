@@ -151,7 +151,7 @@ export const fetchRechargeMobile = (service_id, tel_no) =>
   instanceAxios
     .post(`/test/recharge`, {
       service_id,
-      tel_no,
+      ...(tel_no ? { tel_no: tel_no } : {}),
       ...skin,
     })
     .catch((error) => ({ error }));
@@ -171,15 +171,16 @@ export const fetchPostePay = (
 ) =>
   instanceAxios
     .post(`/test/rechargeBOL`, {
-      service_id,
-      importo: importo.toString(),
-      user_id,
-      intestazione,
-      codice_fiscale_intestatario,
-      ordinante,
-      codice_fiscale_ordinante,
-      numero_postepay,
-      document_type,
+      ...{ service_id: service_id },
+      ...{ importo: importo.toString() },
+      ...(user_id ? { user_id: user_id } : {}),
+      ...{ intestazione: intestazione },
+      ...{ codice_fiscale_intestatario: codice_fiscale_intestatario },
+      ...{ ordinante: ordinante },
+      ...{ codice_fiscale_ordinante: codice_fiscale_ordinante },
+      ...{ numero_postepay: numero_postepay },
+
+      ...(document_type ? { document_type: document_type } : {}),
       ...(imageUrl ? { document_front: imageUrl } : {}),
       ...(imageUrl2 ? { document_back: imageUrl2 } : {}),
       ...skin,
@@ -1145,7 +1146,7 @@ export const customVoucher = (service_id, importo) =>
   instanceAxios
     .post(`/buy/${service_id === "BBT001" ? "bbetVoucher" : "bgameVoucher"}`, {
       service_id,
-      importo,
+      ...(importo ? { importo: importo } : {}),
       ...skin,
     })
     .catch((error) => ({ error }));

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { notification, Radio } from "antd";
+import { Radio } from "antd";
 import images from "themes/images";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
