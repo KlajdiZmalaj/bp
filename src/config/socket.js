@@ -56,6 +56,17 @@ export const subscribeSocketUser = (userID, props) => {
       e.instance_id ===
         JSON.parse(localStorage.getItem("accountDataB"))?.token_id
     ) {
+      notification.open({
+        message: "Hai ricevuto una notifica",
+        description: "Perfavore re loggati",
+        icon: <i className="fal fa-smile-beam"></i>,
+        onClose: () => {
+          if (window.location.hash.includes("login")) {
+          } else {
+            window.location.hash = "login";
+          }
+        },
+      });
       unSubscribeSocketUser(
         JSON.parse(localStorage.getItem("accountDataB")).profile.id
       );
