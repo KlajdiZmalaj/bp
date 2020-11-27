@@ -39,6 +39,7 @@ const CalendarRangePicker = ({
             e.stopPropagation();
           }}
           onChange={(item) => {
+            console.log("item", item);
             setStateFunc(item);
           }}
           locale={locales["it"]}

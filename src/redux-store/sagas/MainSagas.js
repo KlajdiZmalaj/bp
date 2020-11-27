@@ -5,15 +5,17 @@ import { notification } from "antd";
 export function* sendPrenotazione({ objectData }, resetState) {
   const response = yield call(MainRequest.createPrenotazione, objectData);
   if (response.data) {
-    resetState();
+    if (resetState) {
+      resetState();
+    }
     console.log("got response ", response, objectData);
     notification["success"]({
-      title: response.data.message,
+      message: response.data.message,
     });
   } else if (response.error) {
     notification["error"]({
-      title: response.error.response.data.message,
-      message: Object.values(response.error.response.data.errors),
+      message: response.error.response.data.message,
+      description: Object.values(response.error.response.data.errors),
     });
   }
 }

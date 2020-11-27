@@ -55,6 +55,84 @@ class Energia extends Component {
     },
   };
 
+  fillFields = () => {
+    //for test purpose
+    this.setState({
+      tipologia: "test",
+      offerta: 1,
+
+      nome_cognome_consulento: "test",
+      codice_consulento: "test",
+
+      tel: "3254234",
+      mail: "test@adada.adad",
+      tipologia: 1,
+      //tipologia_persona === 1
+      name: "test",
+      lastname: "test",
+      nascita: "test",
+      datanascita: new Date(),
+      codfisc: "1234567891234567",
+      //tipologia_persona else
+      ragsc: "test",
+      piva: "test",
+      name_lastname_reppresentante: "test",
+      codfisc_reppresentante: "test",
+      //
+      city: "test",
+      address: "test",
+      civico: "test",
+      cap: "12345",
+      province: "test",
+      corrispondenza: {
+        title: `L’indirizzo per invio di corrispondenza
+          coincide con la sede di residenza?`,
+        status: true,
+      },
+      fornitura: {
+        title: `L’indirizzo di fornitura coincide con la
+          sede di residenza?`,
+        status: true,
+      },
+      fornituraCon: {
+        title: `Condizioni di fornitura*`,
+        status: true,
+      },
+      economicCon: {
+        title: `Condizioni economiche*`,
+        status: true,
+      },
+      notaInfo: {
+        title: `Nota informativa e info`,
+        status: true,
+      },
+      personalData: {
+        title: `Conferma presa visione informativa tutela dati personali`,
+        status: true,
+      },
+      marketingCon: {
+        title: `Acconsento al trattamento dati per
+          attività di marketing`,
+        status: true,
+      },
+      terziCon: {
+        title: `Acconsento alla comunicazione di dati
+          personali a terzi`,
+        status: true,
+      },
+      //corrispondenza  === 2
+      corrispondenza_comune: "null",
+      corrispondenza_indirizzo: "null",
+      corrispondenza_civico: "null",
+      corrispondenza_cap: "null",
+      //
+      //fornitura ===2
+      fornitura_comune: "null",
+      fornitura_indirizzo: "null",
+      fornitura_civico: "null",
+      fornitura_cap: "null",
+    });
+  };
   resetState = () => {};
   submitData = () => {
     const s = this.state;
@@ -167,7 +245,12 @@ class Energia extends Component {
                 <i className="fal fa-receipt"></i> {activeService}{" "}
               </div>
             )}
-            <img className={"energia"} src={images[`energia-logo`]} alt="" />
+            <img
+              className={"energia"}
+              src={images[`energia-logo`]}
+              alt=""
+              onClick={this.fillFields}
+            />
           </div>
           <div className="rightForm--left">
             <Item
