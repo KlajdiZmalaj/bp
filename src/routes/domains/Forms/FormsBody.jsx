@@ -223,7 +223,7 @@ export class FormsBody extends Component {
                 title="energia"
                 icon={"fal fa-lightbulb-on"}
                 accountInfo={accountInfo}
-                name={`CONTRATTI LUCE & GAS`}
+                name={`CONTRATTI Luce / Gas`}
                 prestoOnline
               />
             </div>

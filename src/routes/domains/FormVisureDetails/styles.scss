@@ -99,6 +99,11 @@
             border: 1.5px solid #00ac2b;
           }
         }
+        &[data-status="Contratto Creato"] {
+          &.active {
+            border: 1.5px solid #ac009e;
+          }
+        }
         & div {
           margin-right: 5px;
           &[data-status="all"] {
@@ -121,9 +126,18 @@
               background-color: #fff;
             }
           }
+
           &[data-status="In Attesa"] {
             &.active {
               background-color: #eb6810;
+            }
+            & span.active {
+              background-color: #fff;
+            }
+          }
+          &[data-status="Contratto Creato"] {
+            &.active {
+              background-color: #ac009e;
             }
             & span.active {
               background-color: #fff;

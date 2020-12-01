@@ -318,12 +318,12 @@ class FormDetailsDomain extends Component {
                   <FilterVisureComponent
                     filterVisure={filterTickets}
                     handleClick={() => {
-                      const f = "Luce & Gas";
+                      const f = "Luce / Gas";
                       this.setState((state) => ({
                         filterTickets: state.filterTickets === f ? "all" : f,
                       }));
                     }}
-                    title={"Luce & Gas"}
+                    title={"Luce / Gas"}
                     icon={"lightbulb sub"}
                   />
                   {/* <FilterVisureComponent
@@ -394,6 +394,13 @@ class FormDetailsDomain extends Component {
                   filterType={filterType}
                   handleClick={() => this.setState({ filterType: "In Attesa" })}
                   title="In Attesa"
+                />
+                <FilterTypeComponent
+                  filterType={filterType}
+                  handleClick={() =>
+                    this.setState({ filterType: "Contratto Creato" })
+                  }
+                  title="Contratto Creato"
                 />
               </div>
             )}
@@ -545,7 +552,12 @@ class FormDetailsDomain extends Component {
         </div>
         <div
           className="paginationWrapper"
-          style={{ bottom: 0, top: "auto", background: "#fff" }}
+          style={{
+            bottom: 0,
+            top: "auto",
+            background: "#fff",
+            borderTop: "1px solid #ccc",
+          }}
         >
           <Pagination
             onChange={(e) => {

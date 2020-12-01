@@ -42,7 +42,7 @@ export class DetailRow extends Component {
                       ? "plane"
                       : ticket.type === "Shop"
                       ? "shopping-bag"
-                      : ticket.type === "Luce & Gas"
+                      : ticket.type === "Luce / Gas"
                       ? "lightbulb"
                       : ""
                   }`}
@@ -154,7 +154,7 @@ export class DetailRow extends Component {
                     editable={this.props.editable}
                   />
                 )}
-                {TicketByTcketId && TicketByTcketId.type === 0 && (
+                {TicketByTcketId && TicketByTcketId.type === 8 && (
                   <Energia
                     TicketByTcketId={TicketByTcketId}
                     typee={this.props.TicketByTcketId.type}

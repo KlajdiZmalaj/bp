@@ -1,10 +1,16 @@
-import React, { Component, Fragment } from "react";
-import { notification } from "antd";
+import React, { Component } from "react";
 import MyInput from "./Input";
-import FormSubmiter from "./FormSubmiter";
-import { Radio, Select } from "antd";
+import { Select } from "antd";
+import { connect } from "react-redux";
+import {
+  userConfirmation,
+  // , uploadPdf
+} from "services/auth";
+import { AuthActions } from "redux-store/models";
+
 const { Option } = Select;
-class ShopOnline extends Component {
+
+class Energia extends Component {
   state = {
     formData: {},
   };
@@ -28,7 +34,12 @@ class ShopOnline extends Component {
     this.props.updateDataForm();
   };
   render() {
-    const { editable } = this.props;
+    const {
+      editable,
+      TicketByTcketId,
+      accountInfo,
+      getDataFormDetails,
+    } = this.props;
     const {
       tipologia_persona,
       tipologia_contratto,
@@ -73,6 +84,10 @@ class ShopOnline extends Component {
       marketing,
       dati_personali,
     } = this.state;
+    console.log("TicketByTcketId", TicketByTcketId);
+    const isAdmOrSuport =
+      accountInfo?.profile?.role?.name === "support" ||
+      accountInfo?.profile?.role?.name === "main_admin";
     return (
       <React.Fragment>
         <div className="formBody">
@@ -105,8 +120,8 @@ class ShopOnline extends Component {
                 }}
                 value={tipologia_persona}
               >
-                <Option value={1}>Persona</Option>
-                <Option value={2}>Business</Option>
+                <Option value={"1"}>Persona</Option>
+                <Option value={"2"}>Business</Option>
               </Select>
             </div>
             <div className="itemCol full">
@@ -119,9 +134,9 @@ class ShopOnline extends Component {
                 }}
                 value={tipologia_contratto}
               >
-                <Option value={1}>Luce</Option>
-                <Option value={2}>Gas</Option>
-                <Option value={3}>Luce & Gas</Option>
+                <Option value={"1"}>Luce</Option>
+                <Option value={"2"}>Gas</Option>
+                <Option value={"3"}>Luce / Gas</Option>
               </Select>
             </div>
             {parseInt(tipologia_persona || "0") === 1 && (
@@ -274,27 +289,209 @@ class ShopOnline extends Component {
             />
           </div>
           <div className="formBody--col">
-            <MyInput
-              labelName={"Comune di residenza:"}
-              type={"text"}
-              editable={editable}
-              value={residenza_comune}
-              handleChange={(e) => {
-                this.setState({ residenza_comune: e.target.value });
-              }}
-            />
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">
+                L’indirizzo per invio di corrispondenza coincide con la sede di
+                residenza?
+              </label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    corrispondenza: e,
+                  });
+                }}
+                value={corrispondenza}
+              >
+                <Option value={"1"}>Si</Option>
+                <Option value={"2"}>No</Option>
+              </Select>
+            </div>
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">Condizioni di fornitura</label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    confermo_fornitura: e,
+                  });
+                }}
+                value={confermo_fornitura}
+              >
+                <Option value={"true"}>Confermo</Option>
+                <Option value={"false"}>Annulla</Option>
+              </Select>
+            </div>
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">Condizioni economiche</label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    confermo_econimoche: e,
+                  });
+                }}
+                value={confermo_econimoche}
+              >
+                <Option value={"true"}>Confermo</Option>
+                <Option value={"false"}>Annulla</Option>
+              </Select>
+            </div>
+
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">
+                Conferma presa visione informativa tutela dati personali
+              </label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    confermo_presa_visione: e,
+                  });
+                }}
+                value={confermo_presa_visione}
+              >
+                <Option value={"true"}>Confermo</Option>
+                <Option value={"false"}>Annulla</Option>
+              </Select>
+            </div>
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">Nota informativa e info</label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    confermo_informativa: e,
+                  });
+                }}
+                value={confermo_informativa}
+              >
+                <Option value={"true"}>Confermo</Option>
+                <Option value={"false"}>Annulla</Option>
+              </Select>
+            </div>
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">
+                Acconsento al trattamento dati per attività di marketing
+              </label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    marketing: e,
+                  });
+                }}
+                value={marketing}
+              >
+                <Option value={"1"}>Si</Option>
+                <Option value={"2"}>No</Option>
+              </Select>
+            </div>
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">
+                Acconsento alla comunicazione di dati personali a terzi
+              </label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    dati_personali: e,
+                  });
+                }}
+                value={dati_personali}
+              >
+                <Option value={"1"}>Si</Option>
+                <Option value={"2"}>No</Option>
+              </Select>
+            </div>
           </div>
         </div>
-        <FormSubmiter
-          price={0}
-          priceChange={(e) => {
-            this.setState({ price: e });
-          }}
-          sendOffert={this.submitData}
-        />
+        <div className="formStatus">
+          <div className="formStatus--btns">
+            {isAdmOrSuport ? (
+              <div
+                className={`formStatus--btns__item${
+                  TicketByTcketId.status === "Nuova Richiesta" ||
+                  TicketByTcketId.status === "Contratto Creato" ||
+                  TicketByTcketId.status === "Pagamento Completato" ||
+                  TicketByTcketId.status === "Provviggione Approvato"
+                    ? " active"
+                    : ""
+                }`}
+              >
+                Nuova Richiesta <span></span>
+              </div>
+            ) : (
+              <div
+                className={`formStatus--btns__item${
+                  TicketByTcketId.status === "In Attesa" ||
+                  TicketByTcketId.status === "Contratto Creato" ||
+                  TicketByTcketId.status === "Pagamento Completato" ||
+                  TicketByTcketId.status === "Provviggione Approvato"
+                    ? " active"
+                    : ""
+                }`}
+              >
+                In Attesa <span></span>
+              </div>
+            )}
+
+            <div
+              className={`formStatus--btns__item${
+                TicketByTcketId.status === "Contratto Creato" ||
+                TicketByTcketId.status === "Pagamento Completato" ||
+                TicketByTcketId.status === "Provviggione Approvato"
+                  ? " active"
+                  : ""
+              }`}
+            >
+              Contratto Creato <span></span>
+            </div>
+            <div
+              className={`formStatus--btns__item${
+                TicketByTcketId.status === "Pagamento Completato" ||
+                TicketByTcketId.status === "Provviggione Approvato"
+                  ? " active"
+                  : ""
+              }`}
+            >
+              Pagamento Completato <span></span>
+            </div>
+            <div
+              className={`formStatus--btns__item${
+                TicketByTcketId.status === "Provviggione Approvato"
+                  ? " active"
+                  : ""
+              }`}
+            >
+              Provviggione Approvato <span></span>
+            </div>
+          </div>
+          {isAdmOrSuport && (
+            <div
+              className={
+                "formSubmit--button -c" +
+                (TicketByTcketId.status === "Nuova Richiesta" ||
+                TicketByTcketId.status === "In Attesa" ||
+                TicketByTcketId.status === "Contratto Creato"
+                  ? " "
+                  : " dissableBtn")
+              }
+              onClick={() => {
+                userConfirmation(
+                  () => {},
+                  TicketByTcketId.id,
+                  5,
+                  () => {},
+                  getDataFormDetails,
+                  null
+                );
+              }}
+            >
+              <span>ANNULLATO</span>
+            </div>
+          )}
+        </div>
       </React.Fragment>
     );
   }
 }
 
-export default ShopOnline;
+export default connect((state) => {
+  return {
+    accountInfo: state.auth.accountInfo,
+  };
+}, AuthActions)(Energia);

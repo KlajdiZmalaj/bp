@@ -330,6 +330,12 @@ textarea {
         background-color: #c91d1d;
       }
     }
+    [data-status="Contratto Creato"] {
+      border: 1px solid #ac009e;
+      span {
+        background-color: #ac009e;
+      }
+    }
     div {
       width: 15px;
       height: 15px;
@@ -406,6 +412,82 @@ textarea {
             margin-left: 2px;
           }
         }
+      }
+      &.luceCheck {
+        .ant-select-selection-selected-value {
+          float: right;
+          padding-right: 7px;
+        }
+        .inputLabel {
+          width: 80%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .ant-select {
+          width: 20%;
+          flex-grow: 0;
+          &-selection--single {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .formStatus {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    color: #5c5c5c;
+    align-items: flex-end;
+    margin-top: 10px;
+    &--btns {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__item {
+        width: calc(100% / 4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        border-right: 1px solid #ebeced;
+        position: relative;
+        cursor: default;
+        border-bottom: 2px solid #fff;
+        &.active {
+          border-bottom: 2px solid #32cc67;
+          span:after {
+            background-color: #32cc67;
+          }
+        }
+
+        span {
+          width: 16px;
+          height: 16px;
+          display: flex;
+          position: absolute;
+          border-radius: 16px;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 50%);
+          border: 2px solid #dbdbdb;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          &:after {
+            content: " ";
+            width: 6px;
+            height: 6px;
+            display: block;
+            background-color: #dbdbdb;
+            border-radius: 6px;
+          }
+        }
+      }
+      &:first-child {
+        width: 80%;
       }
     }
   }
