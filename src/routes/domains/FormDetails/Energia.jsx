@@ -125,7 +125,7 @@ class Energia extends Component {
       marketing,
       dati_personali,
     } = this.state;
-    console.log("TicketByTcketId", TicketByTcketId);
+    // console.log("TicketByTcketId", TicketByTcketId);
     const isAdmOrSuport =
       accountInfo?.profile?.role?.name === "support" ||
       accountInfo?.profile?.role?.name === "main_admin";
@@ -416,10 +416,10 @@ class Energia extends Component {
                     marketing: e,
                   });
                 }}
-                value={marketing}
+                value={`${marketing}`}
               >
-                <Option value={true}>Si</Option>
-                <Option value={false}>No</Option>
+                <Option value={"true"}>Si</Option>
+                <Option value={"false"}>No</Option>
               </Select>
             </div>
             <div className="itemCol full luceCheck">
@@ -432,10 +432,10 @@ class Energia extends Component {
                     dati_personali: e,
                   });
                 }}
-                value={dati_personali}
+                value={`${dati_personali}`}
               >
-                <Option value={true}>Si</Option>
-                <Option value={false}>No</Option>
+                <Option value={"true"}>Si</Option>
+                <Option value={"false"}>No</Option>
               </Select>
             </div>
           </div>
