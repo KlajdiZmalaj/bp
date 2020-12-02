@@ -34,22 +34,12 @@ export const handleError = (error) => {
       unSubscribeSocketSupport();
     }
     localStorage.setItem("accountDataB", null);
-    window.setUnauthorization();
-    console.log(
-      "token cleared 401",
-      localStorage.getItem("accountDataB"),
-      window.setUnauthorization
-    );
+    window.store.dispatch({ type: "SET_UNAUTHORIZATION" });
   } else if (hasCode(error, 445)) {
     //skin id wrong
   } else if (hasCode(error, 440)) {
-    localStorage.setItem("'accountDataB'", null);
-    window.setUnauthorization();
-    console.log(
-      "token cleared 440",
-      localStorage.getItem("accountDataB"),
-      window.setUnauthorization
-    );
+    localStorage.setItem("accountDataB", null);
+    window.store.dispatch({ type: "SET_UNAUTHORIZATION" });
   } else if (hasCode(error, 429)) {
     console.log("to many request");
   } else if (hasCode(error, 403)) {

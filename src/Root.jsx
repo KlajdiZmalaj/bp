@@ -69,7 +69,6 @@ moment.updateLocale("it", {
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
-    window.setUnauthorization = this.props.setUnauthorization;
     this.getStoredData();
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
