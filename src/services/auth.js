@@ -656,7 +656,8 @@ export const updateDataFormReq = (
   provincia,
   cap,
   note_address,
-  company_name
+  company_name,
+  energiaObj
 ) => {
   return instanceAxios
     .post(
@@ -705,6 +706,54 @@ export const updateDataFormReq = (
             name,
             email,
             telefono,
+          }
+        : typee === 8
+        ? {
+            ...skin,
+            price: 0,
+            type: typee,
+            tipologia_persona: energiaObj.tipologia_persona,
+            tipologia_contratto: energiaObj.tipologia_contratto,
+            nome_cognome_consulento: energiaObj.nome_cognome_consulento,
+            codice_consulento: energiaObj.codice_consulento,
+            telefono: energiaObj.telefono,
+            email: energiaObj.email,
+            //tipologia_persona === 1
+            nome: energiaObj.nome,
+            cognome: energiaObj.cognome,
+            luogo_nascita: energiaObj.luogo_nascita,
+            data_nascita: energiaObj.data_nascita,
+            codice_fiscale: energiaObj.codice_fiscale,
+            //tipologia_persona else
+            ragione_sociale: energiaObj.ragione_sociale,
+            p_iva: energiaObj.p_iva,
+            nome_cognome_rappresentante: energiaObj.nome_cognome_rappresentante,
+            codice_rappresentante: energiaObj.codice_rappresentante,
+            //
+            residenza_comune: energiaObj.residenza_comune,
+            residenza_indirizzo: energiaObj.residenza_indirizzo,
+            residenza_civico: energiaObj.residenza_civico,
+            residenza_cap: energiaObj.residenza_cap,
+            corrispondenza: energiaObj.corrispondenza,
+            //corrispondenza  === 2
+            corrispondenza_comune: energiaObj.corrispondenza_comune,
+            corrispondenza_indirizzo: energiaObj.corrispondenza_indirizzo,
+            corrispondenza_civico: energiaObj.corrispondenza_civico,
+            corrispondenza_cap: energiaObj.corrispondenza_cap,
+            //
+            fornitura: energiaObj.fornitura,
+            //fornitura ===2
+            fornitura_comune: energiaObj.fornitura_comune,
+            fornitura_indirizzo: energiaObj.fornitura_indirizzo,
+            fornitura_civico: energiaObj.fornitura_civico,
+            fornitura_cap: energiaObj.fornitura_cap,
+            //
+            confermo_fornitura: energiaObj.confermo_fornitura,
+            confermo_econimoche: energiaObj.confermo_econimoche,
+            confermo_informativa: energiaObj.confermo_informativa,
+            confermo_presa_visione: energiaObj.confermo_presa_visione,
+            marketing: energiaObj.marketing,
+            dati_personali: energiaObj.dati_personali,
           }
         : {
             ...skin,

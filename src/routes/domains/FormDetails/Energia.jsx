@@ -10,6 +10,7 @@ import { AuthActions } from "redux-store/models";
 
 const { Option } = Select;
 
+const checkStatuses = () => {};
 class Energia extends Component {
   state = {
     formData: {},
@@ -31,7 +32,47 @@ class Energia extends Component {
 
   resetState = () => {};
   submitData = () => {
-    this.props.updateDataForm();
+    this.props.updateDataForm(
+      8,
+      "",
+      "",
+      "",
+      "",
+      "",
+      () => {
+        this.props.getTicketByTicketId(this.props.TicketByTcketId.id);
+      },
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      this.props.TicketByTcketId.id,
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      { ...this.state }
+    );
   };
   render() {
     const {
@@ -377,8 +418,8 @@ class Energia extends Component {
                 }}
                 value={marketing}
               >
-                <Option value={"1"}>Si</Option>
-                <Option value={"2"}>No</Option>
+                <Option value={true}>Si</Option>
+                <Option value={false}>No</Option>
               </Select>
             </div>
             <div className="itemCol full luceCheck">
@@ -393,47 +434,38 @@ class Energia extends Component {
                 }}
                 value={dati_personali}
               >
-                <Option value={"1"}>Si</Option>
-                <Option value={"2"}>No</Option>
+                <Option value={true}>Si</Option>
+                <Option value={false}>No</Option>
               </Select>
             </div>
           </div>
         </div>
         <div className="formStatus">
           <div className="formStatus--btns">
-            {isAdmOrSuport ? (
-              <div
-                className={`formStatus--btns__item${
-                  TicketByTcketId.status === "Nuova Richiesta" ||
-                  TicketByTcketId.status === "Contratto Creato" ||
-                  TicketByTcketId.status === "Pagamento Completato" ||
-                  TicketByTcketId.status === "Provviggione Approvato"
-                    ? " active"
-                    : ""
-                }`}
-              >
-                Nuova Richiesta <span></span>
-              </div>
-            ) : (
-              <div
-                className={`formStatus--btns__item${
-                  TicketByTcketId.status === "In Attesa" ||
-                  TicketByTcketId.status === "Contratto Creato" ||
-                  TicketByTcketId.status === "Pagamento Completato" ||
-                  TicketByTcketId.status === "Provviggione Approvato"
-                    ? " active"
-                    : ""
-                }`}
-              >
-                In Attesa <span></span>
-              </div>
-            )}
-
             <div
               className={`formStatus--btns__item${
-                TicketByTcketId.status === "Contratto Creato" ||
-                TicketByTcketId.status === "Pagamento Completato" ||
-                TicketByTcketId.status === "Provviggione Approvato"
+                TicketByTcketId.status_num === 1 ||
+                TicketByTcketId.status_num === 3 ||
+                (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
+                (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
+                  ? " active"
+                  : ""
+              }`}
+            >
+              {isAdmOrSuport ? "Nuova Richiesta" : "In Attesa"}
+              <span></span>
+            </div>
+
+            <div
+              onClick={() => {
+                if (TicketByTcketId.status_num === 1) {
+                  this.submitData();
+                }
+              }}
+              className={`formStatus--btns__item${
+                TicketByTcketId.status_num === 3 ||
+                (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
+                (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
                   ? " active"
                   : ""
               }`}
@@ -441,9 +473,21 @@ class Energia extends Component {
               Contratto Creato <span></span>
             </div>
             <div
+              onClick={() => {
+                if (TicketByTcketId.status_num === 3) {
+                  userConfirmation(
+                    () => {},
+                    TicketByTcketId.id,
+                    4,
+                    () => {},
+                    getDataFormDetails,
+                    null
+                  );
+                }
+              }}
               className={`formStatus--btns__item${
-                TicketByTcketId.status === "Pagamento Completato" ||
-                TicketByTcketId.status === "Provviggione Approvato"
+                (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
+                (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
                   ? " active"
                   : ""
               }`}
@@ -452,7 +496,7 @@ class Energia extends Component {
             </div>
             <div
               className={`formStatus--btns__item${
-                TicketByTcketId.status === "Provviggione Approvato"
+                TicketByTcketId.status_num === 4 && TicketByTcketId.paid
                   ? " active"
                   : ""
               }`}
@@ -464,9 +508,8 @@ class Energia extends Component {
             <div
               className={
                 "formSubmit--button -c" +
-                (TicketByTcketId.status === "Nuova Richiesta" ||
-                TicketByTcketId.status === "In Attesa" ||
-                TicketByTcketId.status === "Contratto Creato"
+                (TicketByTcketId.status_num === 1 ||
+                TicketByTcketId.status_num === 3
                   ? " "
                   : " dissableBtn")
               }

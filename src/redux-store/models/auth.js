@@ -255,6 +255,8 @@ const { Types, Creators } = createActions({
     "cap",
     "note_address",
     "company_name",
+
+    "energiaObj",
   ],
   updateVisura: [
     "visura_id",

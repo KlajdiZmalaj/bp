@@ -727,7 +727,8 @@ export function* updateDataForm(data) {
     data.provincia,
     data.cap,
     data.note_address,
-    data.company_name
+    data.company_name,
+    data.energiaObj
   );
   if (response?.status === 200) {
     data.callBack({
