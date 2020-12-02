@@ -5,8 +5,6 @@ import { reducer as AuthReducer } from "./models/auth";
 import { reducer as MainReducer } from "./models/main";
 import rootSaga from "./sagas";
 
-console.log("store file activated");
-
 const rootReducer = combineReducers({
   auth: AuthReducer,
   main: MainReducer,

@@ -67,6 +67,7 @@ class Azioni extends Component {
                       >
                         {azioni.type === "span" ? (
                           <a
+                            href={window.location.hash}
                             onClick={() => {
                               this.props.editReportistica(
                                 !this.props.ReportisticaDet

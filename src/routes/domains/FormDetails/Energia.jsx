@@ -106,17 +106,17 @@ class Energia extends Component {
       residenza_cap,
       corrispondenza,
       //corrispondenza  === 2
-      corrispondenza_comune,
-      corrispondenza_indirizzo,
-      corrispondenza_civico,
-      corrispondenza_cap,
-      //
-      fornitura,
-      //fornitura ===2
-      fornitura_comune,
-      fornitura_indirizzo,
-      fornitura_civico,
-      fornitura_cap,
+      // corrispondenza_comune,
+      // corrispondenza_indirizzo,
+      // corrispondenza_civico,
+      // corrispondenza_cap,
+      // //
+      // fornitura,
+      // //fornitura ===2
+      // fornitura_comune,
+      // fornitura_indirizzo,
+      // fornitura_civico,
+      // fornitura_cap,
       //
       confermo_fornitura,
       confermo_econimoche,

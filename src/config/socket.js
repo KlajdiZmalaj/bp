@@ -12,7 +12,6 @@ export const socket = () => {
 };
 
 export const subscribeSocketUser = (userID, props) => {
-  console.log("props", props);
   window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
     // console.log("subscribed listening...", userID, props, e);
     if (e.type === "payment") {

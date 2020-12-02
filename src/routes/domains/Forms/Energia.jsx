@@ -58,12 +58,9 @@ class Energia extends Component {
   fillFields = () => {
     //for test purpose
     this.setState({
-      tipologia: "test",
       offerta: 1,
-
       nome_cognome_consulento: "test",
       codice_consulento: "test",
-
       tel: "3254234",
       mail: "test@adada.adad",
       tipologia: 1,
