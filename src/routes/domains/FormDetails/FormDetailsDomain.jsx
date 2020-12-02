@@ -171,9 +171,13 @@ class FormDetailsDomain extends Component {
                   if (on) {
                     this.props.getDataFormDetailsActives(null, 25, 1);
                     this.setState({ statusRows: "active" });
+                    this.props.setTicketByTicketId({});
+                    this.props.setVisureByVisureId({});
                   } else {
                     this.props.getDataFormDetails(25, 1);
                     this.setState({ statusRows: "all" });
+                    this.props.setTicketByTicketId({});
+                    this.props.setVisureByVisureId({});
                   }
                 }}
                 checkedChildren={"Finita"}

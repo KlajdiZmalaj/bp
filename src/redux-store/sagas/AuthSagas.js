@@ -4,7 +4,6 @@ import MainActions from "../models/main";
 import * as AuthRequest from "services/auth";
 import { fetchUsers } from "services/main";
 import { notification } from "antd";
-// const delay = ms => new Promise(res => setTimeout(res, ms));
 export function* signInByEmail(credencials) {
   const response = yield call(
     AuthRequest.fetchLogin,
@@ -34,7 +33,6 @@ export function* getAgents(params) {
   } else {
     response = yield call(AuthRequest.fetchAgents);
   }
-  // console.log("agents res", response);
   if (response?.data) {
     yield put(AuthActions.setAgents(response?.data.agents));
   }
@@ -49,8 +47,6 @@ export function* logOut() {
     localStorage.setItem("accountDataB", {});
     yield put(AuthActions.setAccountInfo({}));
   }
-  // localStorage.setItem("accountDataB", null);
-  // yield put(AuthActions.setAccountInfo({}));
 }
 
 export function* getBolletiniBianchi(params) {
@@ -68,7 +64,6 @@ export function* getBolletiniBianchi(params) {
     params.provincia
   );
   if (response?.data) {
-    // console.log("response", response);
     if (response?.data) {
       yield put(AuthActions.setBolletiniBianchi(response?.data));
       params.clearFields();
@@ -182,24 +177,6 @@ export function* getBolletiniPremercati(params) {
   }
 }
 
-// function* modifyAccountData(wallet) {
-//   const accountData = localStorage.getItem("accountDataB");
-//   const data = JSON.parse(accountData);
-
-//   const d = {
-//     ...data,
-//     profile: {
-//       ...data.profile,
-//       wallet: wallet,
-//     },
-//   };
-
-//   localStorage.setItem("accountDataB", JSON.stringify(d));
-//   yield put(AuthActions.setAccountInfo(d));
-
-//   // console.log("data", data, d);
-// }
-
 export function* getPaymentsForExcel(params) {
   yield put(AuthActions.setPaymentsExcelLoading(true));
   const response = yield call(
@@ -270,9 +247,7 @@ export function* getRechargeMobile(params) {
     params.tel_no
   );
   if (response) {
-    // console.log("response", response);
     if (response?.data) {
-      // console.log("wallet", response?.data.wallet);
       if (response?.data.wallet) {
         const accountData = localStorage.getItem("accountDataB");
         const data = JSON.parse(accountData);
@@ -736,19 +711,6 @@ export function* updateDataForm(data) {
       msg: response?.data.message,
     });
   }
-
-  // if (response?.error) {
-  //   data.callBack({
-  //     error: true,
-  //     msg: [
-  //       response?.error.response?.data.message,
-  //       response?.error.response?.data.errors
-  //         ? Object.values(response?.error.response?.data.errors)
-  //         : "error backend",
-  //     ],
-  //   });
-  // }
-  // console.log("ca ka response", data, response);
 }
 export function* sendVisureDetails(data) {
   const response = yield call(
@@ -776,17 +738,6 @@ export function* sendVisureDetails(data) {
       msg: response?.data.message,
     });
   }
-  // if (response?.error) {
-  //   data.callBack({
-  //     error: true,
-  //     msg: [
-  //       response?.error.response?.data.message,
-  //       response?.error.response?.data.errors
-  //         ? Object.values(response?.error.response?.data.errors)
-  //         : "error backend",
-  //     ],
-  //   });
-  // }
 }
 export function* getVisure() {
   const response = yield call(AuthRequest.getVisureReq);
@@ -796,7 +747,6 @@ export function* getVisure() {
       yield put(AuthActions.setVisure(response?.data));
     }
   }
-  // console.log("fetchErrors", response);
 }
 export function* getVisureByVisureId(visura_id) {
   const response = yield call(AuthRequest.getVisureByVisureIdReq, visura_id);
@@ -837,17 +787,6 @@ export function* updateVisura(data) {
       msg: response?.data.message,
     });
   }
-  // if (response?.error) {
-  //   data.callBack({
-  //     error: true,
-  //     msg: [
-  //       response?.error.response?.data.message,
-  //       response?.error.response?.data.errors
-  //         ? Object.values(response?.error.response?.data.errors)
-  //         : "error backend",
-  //     ],
-  //   });
-  // }
 }
 export function* getAgentByUserId(data) {
   const response = yield call(
@@ -929,10 +868,6 @@ export function* getAllFaturaBySearch({
     page_number
   );
   if (response?.data) {
-    // let FatturaArray = [];
-    // Object.keys(response?.data.fatture).map((fatureKey) => {
-    //   FatturaArray.push(response?.data.fatture[fatureKey]);
-    // });
     if (response?.status === 200) {
       yield put(
         AuthActions.setAllFaturaBySearch({
@@ -1266,17 +1201,6 @@ export function* buyTicketOnline({
       msg: response?.data.message,
     });
   }
-  // if (response?.error) {
-  //   callBack({
-  //     error: true,
-  //     msg: [
-  //       response?.error.response?.data.message,
-  //       response?.error.response?.data.errors
-  //         ? Object.values(response?.error.response?.data.errors)
-  //         : "error backend",
-  //     ],
-  //   });
-  // }
 }
 export function* setPagoPa({
   service_id,
