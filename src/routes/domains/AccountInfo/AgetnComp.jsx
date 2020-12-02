@@ -7,6 +7,7 @@ import { ItemFull } from "./AdminComp";
 const { Option } = Select;
 
 class AgentComp extends React.Component {
+  state = {};
   render() {
     const {
       userDetail,
@@ -260,16 +261,47 @@ class AgentComp extends React.Component {
         </div>
         {isMainAdm && (
           <div className="newReg--row lastRow">
-            <div className="newReg--row__col submitcol ml-auto">
-              <button
-                onClick={() => {
-                  updateUser();
-                }}
-                className="SubmitButton"
-              >
-                Salva
-              </button>
-            </div>
+            <React.Fragment>
+              <div className="newReg--row__col">Cambia Skin</div>
+              <div className="newReg--row__col checkCol">
+                {this.props.skinList && (
+                  <React.Fragment>
+                    <Select
+                      defaultValue={userDetail.skin_id}
+                      onChange={(e) => {
+                        this.setState({ skinSelected: e });
+                      }}
+                    >
+                      {(this.props.skinList || []).map((skin, id) => (
+                        <Option key={id} value={skin.id}>
+                          {`${skin.username}`}
+                        </Option>
+                      ))}
+                    </Select>
+                    <button
+                      onClick={() => {
+                        this.props.changeAgentSkin(
+                          userDetail.id,
+                          this.state.skinSelected
+                        );
+                      }}
+                    >
+                      <i className="fal fa-check" aria-hidden="true"></i>
+                    </button>{" "}
+                  </React.Fragment>
+                )}
+              </div>
+              <div className="newReg--row__col submitcol ml-auto">
+                <button
+                  onClick={() => {
+                    updateUser();
+                  }}
+                  className="SubmitButton"
+                >
+                  Salva
+                </button>
+              </div>
+            </React.Fragment>
           </div>
         )}
       </React.Fragment>

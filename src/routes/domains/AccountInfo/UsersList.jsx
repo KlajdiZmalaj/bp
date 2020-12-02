@@ -379,6 +379,8 @@ class UsersList extends Component {
 
               {userDetail.role === "agent" ? (
                 <AgentComp
+                  changeAgentSkin={this.props.changeAgentSkin}
+                  skinList={this.props.skinList}
                   state={this.state}
                   userDetail={userDetail}
                   updateUser={this.updateUser}

@@ -23,7 +23,7 @@ class AdminListaUtenti extends React.Component {
           skin_id: 1,
         },
         25,
-        2
+        1
       );
     } else {
       this.props.getUsers(
@@ -33,7 +33,7 @@ class AdminListaUtenti extends React.Component {
           backoffice: true,
         },
         25,
-        2
+        1
       );
     }
   }

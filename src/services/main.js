@@ -164,6 +164,7 @@ export const fetchUsers = (
   limit,
   page_number
 ) => {
+  console.log("ca ka", search_user, skin_id, backoffice, limit, page_number);
   const skin_id_to_use = skin_id ? skin_id : { ...skin };
   return instanceAxios
     .post(`/users/list`, {

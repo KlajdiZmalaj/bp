@@ -190,6 +190,8 @@ class AdminPanelDom extends React.Component {
                 </div>
                 {userDetail?.role === "agent" ? (
                   <AgentComp
+                    changeAgentSkin={this.props.changeAgentSkin}
+                    skinList={this.props.skinList}
                     accountInfo={accountInfo}
                     state={this.state}
                     userDetail={userDetail}

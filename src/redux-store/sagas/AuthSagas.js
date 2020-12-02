@@ -485,6 +485,22 @@ export function* changeAgent(data) {
   }
   // console.log("response changeAgent", data, response);
 }
+export function* changeAgentSkin({ agent_id, new_skin_id }) {
+  const response = yield call(
+    AuthRequest.changeAgentSkinReq,
+    agent_id,
+    new_skin_id
+  );
+  if (response) {
+    if (response?.status === 200) {
+      notification["success"]({
+        message: response.data.message,
+      });
+      yield put(AuthActions.setUserDetail({}));
+      yield put(MainActions.setActiveSkinId(new_skin_id));
+    }
+  }
+}
 export function* getUserDetail(data) {
   const response = yield call(
     AuthRequest.fetchUserDetails,

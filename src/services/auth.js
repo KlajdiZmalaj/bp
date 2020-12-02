@@ -334,6 +334,15 @@ export const changeAgentReq = (aaa, agent_id, skin_id) => {
     })
     .catch((error) => ({ error }));
 };
+export const changeAgentSkinReq = (agent_id, new_skin_id) => {
+  return instanceAxios
+    .post(`/agent/changeSkin`, {
+      agent_id,
+      new_skin_id,
+      ...skin,
+    })
+    .catch((error) => ({ error }));
+};
 export const fetchCodice = (barcode, service) =>
   instanceAxios
     .get("/payment", {
