@@ -10,7 +10,6 @@ import { AuthActions } from "redux-store/models";
 
 const { Option } = Select;
 
-const checkStatuses = () => {};
 class Energia extends Component {
   state = {
     formData: {},
@@ -39,8 +38,9 @@ class Energia extends Component {
       "",
       "",
       "",
-      () => {
-        this.props.getTicketByTicketId(this.props.TicketByTcketId.id);
+      async () => {
+        await this.props.getTicketByTicketId(this.props.TicketByTcketId.id);
+        this.props.getDataFormDetails();
       },
       "",
       "",

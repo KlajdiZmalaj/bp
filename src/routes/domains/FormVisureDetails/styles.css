@@ -1,2 +1,195 @@
-.ticketDetails--row>span{padding:15px}.ticketDetails--row.animated.fadeIn.Visura .new{margin-left:10px}.ticketDetails--row.animated.fadeIn.Visura .fal.a-store,.ticketDetails--row.animated.fadeIn.Visura .fas.a-store{color:#dc3545}.ticketDetails--row.animated.fadeIn.Visura .fal.fa-building,.ticketDetails--row.animated.fadeIn.Visura .fas.fa-building{color:#3d6389}.ticketDetails--row.animated.fadeIn.Visura .fal.fa-trash,.ticketDetails--row.animated.fadeIn.Visura .fal.fa-archive,.ticketDetails--row.animated.fadeIn.Visura .fas.fa-trash,.ticketDetails--row.animated.fadeIn.Visura .fas.fa-archive{color:#b5b5b5}.ticketDetails--filters{padding:10px 20px;display:flex;flex-direction:column;align-items:flex-start}.ticketDetails--filters__byTicket{margin:10px 15px;flex-direction:row;align-items:center;justify-content:flex-start}@media (max-width: 768px){.ticketDetails--filters__byTicket{flex-flow:column;align-items:center;margin:0}.ticketDetails--filters__byTicket>i{margin-top:5px !important}.ticketDetails--filters__byTicket input{width:100%;margin:0 !important;margin-top:5px !important}.ticketDetails--filters__byTicket span.status{width:162px;font-size:12px;justify-content:flex-start !important;text-transform:uppercase}}.ticketDetails--filters__byTicket input{border:0.5px solid #9f9f9f;border-radius:2px;padding:6px 15px;margin:0 25px 0px 0px;font-size:14px;width:133px}.ticketDetails--filters__byTicket span.status{cursor:pointer;display:flex;justify-content:space-between;align-items:center;flex-direction:row;padding:6px 10px;margin:0px 2px;border-radius:6px}.ticketDetails--filters__byTicket span.status[data-status="all"].active{border:1.5px solid #000000}.ticketDetails--filters__byTicket span.status[data-status="Nuove Richieste"].active,.ticketDetails--filters__byTicket span.status[data-status="Nuove Offerte"].active{border:1.5px solid #238be7}.ticketDetails--filters__byTicket span.status[data-status="In Attesa"].active{border:1.5px solid #eb6810}.ticketDetails--filters__byTicket span.status[data-status="Cancellato"].active{border:1.5px solid #c91d1d}.ticketDetails--filters__byTicket span.status[data-status="Eseguibile"].active{border:1.5px solid #00ac56}.ticketDetails--filters__byTicket span.status[data-status="Completato"].active{border:1.5px solid #00ac2b}.ticketDetails--filters__byTicket span.status[data-status="Contratto Creato"].active{border:1.5px solid #ac009e}.ticketDetails--filters__byTicket span.status div{margin-right:5px}.ticketDetails--filters__byTicket span.status div[data-status="all"] span{background-color:#000000}.ticketDetails--filters__byTicket span.status div[data-status="all"].active{background-color:#000000}.ticketDetails--filters__byTicket span.status div[data-status="all"] span.active{background-color:#fff}.ticketDetails--filters__byTicket span.status div[data-status="Nuove Richieste"].active,.ticketDetails--filters__byTicket span.status div[data-status="Nuove Offerte"].active{background-color:#238be7}.ticketDetails--filters__byTicket span.status div[data-status="Nuove Richieste"] span.active,.ticketDetails--filters__byTicket span.status div[data-status="Nuove Offerte"] span.active{background-color:#fff}.ticketDetails--filters__byTicket span.status div[data-status="In Attesa"].active{background-color:#eb6810}.ticketDetails--filters__byTicket span.status div[data-status="In Attesa"] span.active{background-color:#fff}.ticketDetails--filters__byTicket span.status div[data-status="Contratto Creato"].active{background-color:#ac009e}.ticketDetails--filters__byTicket span.status div[data-status="Contratto Creato"] span.active{background-color:#fff}.ticketDetails--filters__byTicket span.status div[data-status="Cancellato"].active{background-color:#c91d1d}.ticketDetails--filters__byTicket span.status div[data-status="Cancellato"] span.active{background-color:#fff}.ticketDetails--filters__byTicket span.status div[data-status="Eseguibile"].active{background-color:#00ac56}.ticketDetails--filters__byTicket span.status div[data-status="Eseguibile"] span.active{background-color:#fff}.ticketDetails--filters__byTicket span.status div[data-status="Completato"].active{background-color:#00ac2b}.ticketDetails--filters__byTicket span.status div[data-status="Completato"] span.active{background-color:#fff}.ticketDetails--filters__byTicket .fa-building.active,.ticketDetails--filters__byTicket .fa-building:hover{background-color:#3d6389;color:#fff}.ticketDetails--filters__byTicket .fa-user.active,.ticketDetails--filters__byTicket .fa-user:hover{background-color:#578a17;color:#fff}
+.ticketDetails--row > span {
+  padding: 15px;
+}
+.ticketDetails--row.animated.fadeIn.Visura .new {
+  margin-left: 10px;
+}
+.ticketDetails--row.animated.fadeIn.Visura .fal.a-store,
+.ticketDetails--row.animated.fadeIn.Visura .fas.a-store {
+  color: #dc3545;
+}
+.ticketDetails--row.animated.fadeIn.Visura .fal.fa-building,
+.ticketDetails--row.animated.fadeIn.Visura .fas.fa-building {
+  color: #3d6389;
+}
+.ticketDetails--row.animated.fadeIn.Visura .fal.fa-trash,
+.ticketDetails--row.animated.fadeIn.Visura .fal.fa-archive,
+.ticketDetails--row.animated.fadeIn.Visura .fas.fa-trash,
+.ticketDetails--row.animated.fadeIn.Visura .fas.fa-archive {
+  color: #b5b5b5;
+}
+.ticketDetails--filters {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ticketDetails--filters__byTicket {
+  margin: 10px 15px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+@media (max-width: 768px) {
+  .ticketDetails--filters__byTicket {
+    flex-flow: column;
+    align-items: center;
+    margin: 0;
+  }
+  .ticketDetails--filters__byTicket > i {
+    margin-top: 5px !important;
+  }
+  .ticketDetails--filters__byTicket input {
+    width: 100%;
+    margin: 0 !important;
+    margin-top: 5px !important;
+  }
+  .ticketDetails--filters__byTicket span.status {
+    width: 162px;
+    font-size: 12px;
+    justify-content: flex-start !important;
+    text-transform: uppercase;
+  }
+}
+.ticketDetails--filters__byTicket input {
+  border: 0.5px solid #9f9f9f;
+  border-radius: 2px;
+  padding: 6px 15px;
+  margin: 0 25px 0px 0px;
+  font-size: 14px;
+  width: 133px;
+}
+.ticketDetails--filters__byTicket span.status {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 6px 10px;
+  margin: 0px 2px;
+  border-radius: 6px;
+}
+.ticketDetails--filters__byTicket span.status[data-status="all"].active {
+  border: 1.5px solid #000000;
+}
+.ticketDetails--filters__byTicket
+  span.status[data-status="Nuove Richieste"].active,
+.ticketDetails--filters__byTicket
+  span.status[data-status="Nuove Offerte"].active {
+  border: 1.5px solid #238be7;
+}
+.ticketDetails--filters__byTicket span.status[data-status="In Attesa"].active {
+  border: 1.5px solid #eb6810;
+}
+.ticketDetails--filters__byTicket span.status[data-status="Cancellato"].active {
+  border: 1.5px solid #c91d1d;
+}
+.ticketDetails--filters__byTicket span.status[data-status="Eseguibile"].active {
+  border: 1.5px solid #00ac56;
+}
+.ticketDetails--filters__byTicket span.status[data-status="Completato"].active {
+  border: 1.5px solid #00ac2b;
+}
+.ticketDetails--filters__byTicket
+  span.status[data-status="Contratto Creato"].active {
+  border: 1.5px solid #47d795;
+}
+.ticketDetails--filters__byTicket span.status div {
+  margin-right: 5px;
+}
+.ticketDetails--filters__byTicket span.status div[data-status="all"] span {
+  background-color: #000000;
+}
+.ticketDetails--filters__byTicket span.status div[data-status="all"].active {
+  background-color: #000000;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="all"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Nuove Richieste"].active,
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Nuove Offerte"].active {
+  background-color: #238be7;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Nuove Richieste"]
+  span.active,
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Nuove Offerte"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="In Attesa"].active {
+  background-color: #eb6810;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="In Attesa"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Contratto Creato"].active {
+  background-color: #47d795;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Contratto Creato"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Cancellato"].active {
+  background-color: #c91d1d;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Cancellato"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Eseguibile"].active {
+  background-color: #00ac56;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Eseguibile"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Completato"].active {
+  background-color: #00ac2b;
+}
+.ticketDetails--filters__byTicket
+  span.status
+  div[data-status="Completato"]
+  span.active {
+  background-color: #fff;
+}
+.ticketDetails--filters__byTicket .fa-building.active,
+.ticketDetails--filters__byTicket .fa-building:hover {
+  background-color: #3d6389;
+  color: #fff;
+}
+.ticketDetails--filters__byTicket .fa-user.active,
+.ticketDetails--filters__byTicket .fa-user:hover {
+  background-color: #578a17;
+  color: #fff;
+}
 /*# sourceMappingURL=styles.css.map */
