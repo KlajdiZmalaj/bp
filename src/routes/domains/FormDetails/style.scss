@@ -455,14 +455,30 @@ textarea {
         position: relative;
         cursor: pointer;
         border-bottom: 2px solid #fff;
+        &:before {
+          content: "";
+          height: 2px;
+          display: block;
+          width: 0;
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          z-index: 1;
+          background-color: #32cc67;
+          transition: 0.3s width;
+        }
         &.active {
-          border-bottom: 2px solid #32cc67;
+          border-bottom: 2px solid #fff;
+          &:before {
+            width: 100%;
+          }
           span:after {
             background-color: #32cc67;
           }
         }
 
         span {
+          z-index: 1;
           width: 16px;
           height: 16px;
           display: flex;
