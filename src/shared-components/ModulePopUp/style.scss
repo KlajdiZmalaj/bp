@@ -687,6 +687,24 @@
         }
       }
     }
+    .infoRicariche {
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      bottom: 127px;
+      width: 100%;
+      background-color: #fff;
+      color: #25333e;
+      left: 0;
+      padding: 6px;
+      opacity: 0.9;
+      font-size: 13px;
+      text-transform: uppercase;
+      i {
+        color: #2c6db8;
+        margin-right: 5px;
+      }
+    }
     .GamingBanner {
       width: 100%;
       height: calc(94% - 240px);

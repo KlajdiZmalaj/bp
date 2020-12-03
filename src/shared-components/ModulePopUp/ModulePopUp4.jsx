@@ -301,6 +301,12 @@ class ModulePopUp4 extends React.Component {
                 </div>
               )
             )}
+            {(service_s.id === "BGAM" || service_s.id === "BBET") && (
+              <div className="infoRicariche">
+                <i className="fal fa-info-circle"></i>
+                Ricariche solo conti utenti
+              </div>
+            )}
 
             <div className="TotalServices">
               <React.Fragment>
