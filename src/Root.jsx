@@ -5,45 +5,8 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import { get } from "lodash";
-import {
-  Annunci,
-  Dashboard,
-  CaricaConto,
-  Configura,
-  UseCode,
-  Transazioni,
-  Messages,
-  AccountInfo,
-  // Register,
-  RegisterEndUser,
-  RegisterAgency,
-  RegisterAgent,
-  Login,
-  Verify,
-  Wallet,
-  QRDesktop,
-} from "./routes";
-import {
-  DashboardMobile,
-  ConfiguraMobile,
-  PrenotazioneMobile,
-} from "./routesMobile";
-import Support from "./routes/views/Support";
-import Forms from "./routes/views/Forms";
-import FormDetails from "./routes/views/FormDetails";
-import Visure from "./routes/views/Visure";
-// import loginAdmin from "./routes/views/loginAdmin";
-// import adminPanel from "./routes/views/adminPanel";
-import VisureDetaggli from "./routes/views/VisureDetaggli";
-import AdminPanelListaMovimenti from "./routes/views/adminPanelListaMovimenti";
-import AdminPanelListaUtenti from "./routes/views/adminPanelListaUtenti";
-import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
-import AdminPanelServizi from "./routes/views/adminPanelServizi";
-import adminPanelErrorList from "./routes/views/adminPanelErrorList";
-import Fatura from "./routes/views/Fatura";
-import CreateSkin from "./routes/views/CreateSkin";
-import UnderDevelopment from "./routes/views/UnderDevelopment";
-import AreaDownload from "./routes/views/AreaDownload";
+import * as DesktopView from "routes";
+import * as MobileViews from "./routesMobile";
 
 import {
   subscribeSocketUser,
@@ -52,11 +15,7 @@ import {
   subscribeSocketSupport,
   unSubscribeSocketSupport,
 } from "config/socket";
-import {
-  PopUpConfirmation,
-  PopUpConfirmationVisure,
-  // Footer,
-} from "shared-components";
+import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
 
@@ -65,11 +24,9 @@ moment.updateLocale("it", {
     dow: 1,
   },
 });
-
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
-    this.getStoredData();
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
     });
@@ -91,12 +48,7 @@ class Root extends React.Component {
         get(this.props.accountInfo, "profile.id"),
         this.props
       );
-      if (
-        get(
-          JSON.parse(localStorage.getItem("accountDataB")),
-          "profile.role.name"
-        ) === "support"
-      ) {
+      if (get(this.props.accountInfo, "profile.role.name") === "support") {
         subscribeSocketSupport(this.props);
       }
     }
@@ -105,14 +57,6 @@ class Root extends React.Component {
     unSubscribeSocketUser(get(this.props.accountInfo, "profile.id"));
     unSubscribeSocketSupport();
   }
-  getStoredData = () => {
-    const accountData = localStorage.getItem("accountDataB");
-    const data = accountData?.includes("Object") ? {} : JSON.parse(accountData);
-    if (data) {
-      this.props.setAccountInfo(data);
-    }
-  };
-
   render() {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
@@ -128,11 +72,7 @@ class Root extends React.Component {
               path="/"
               render={() =>
                 role === "support" || role === "main_admin" ? (
-                  profile.username === "support_prenotazioni" ? (
-                    <Redirect to={`/back-office/prenotazioni`} />
-                  ) : (
-                    <Redirect to={`/back-office/utenti`} />
-                  )
+                  <Redirect to={`/back-office/utenti`} />
                 ) : (
                   <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
                 )
@@ -140,72 +80,74 @@ class Root extends React.Component {
             />
             <PublicRoute
               path="/qR/:barcode?/"
-              component={isMobile ? QRDesktop : QRDesktop}
+              component={DesktopView.QRDesktop}
               isLoggedin={false}
               role={role}
             />
             {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
               path="/login"
-              component={isMobile ? DashboardMobile : Login}
+              component={
+                isMobile ? MobileViews.DashboardMobile : DesktopView.Login
+              }
               isLoggedin={isLoggedin}
               role={role}
             />
             <PublicRoute
               path="/verify?token="
-              component={Verify}
+              component={DesktopView.Verify}
               isLoggedin={isLoggedin}
             />
             <PublicRoute
               path="/verify"
-              component={Verify}
+              component={DesktopView.Verify}
               isLoggedin={isLoggedin}
             />
             <PrivateRoute
               path="/account-info"
-              component={AccountInfo}
+              component={DesktopView.AccountInfo}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "main_admin"]}
             />
             <PrivateRoute
               path="/annunci"
-              component={Annunci}
+              component={DesktopView.Annunci}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/use-code"
-              component={UseCode}
+              component={DesktopView.UseCode}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency"]}
             />
             <PrivateRoute
               path="/wallet"
-              component={Wallet}
+              component={DesktopView.Wallet}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["agency"]}
             />
             <PrivateRoute
               path="/transazioni"
-              component={Transazioni}
+              component={DesktopView.Transazioni}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/underDevelopment"
-              component={UnderDevelopment}
+              component={DesktopView.UnderDevelopment}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/areaDownload"
-              component={AreaDownload}
+              component={DesktopView.AreaDownload}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
@@ -214,63 +156,69 @@ class Root extends React.Component {
             <Route
               path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
               // component={Dashboard}
-              component={isMobile ? DashboardMobile : Dashboard}
+              component={
+                isMobile ? MobileViews.DashboardMobile : DesktopView.Dashboard
+              }
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/configura"
-              component={isMobile ? ConfiguraMobile : Configura}
+              component={
+                isMobile ? MobileViews.ConfiguraMobile : DesktopView.Configura
+              }
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/messages"
-              component={Messages}
+              component={DesktopView.Messages}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency"]}
             />
             <PrivateRoute
               path="/carica-conto"
-              component={CaricaConto}
+              component={DesktopView.CaricaConto}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["super_admin", "agency", "user"]}
             />
             <PrivateRoute
               path="/registerUser"
-              component={RegisterEndUser}
+              component={DesktopView.RegisterEndUser}
               isLoggedin={isLoggedin}
               role={role}
               allowedRoles={["agency"]}
             />
             <PrivateRoute
               path="/registerAgency"
-              component={RegisterAgency}
+              component={DesktopView.RegisterAgency}
               role={role}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "agent"]}
             />
             <PrivateRoute
               path="/registerAgent"
-              component={RegisterAgent}
+              component={DesktopView.RegisterAgent}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin"]}
               role={role}
             />
             <PrivateRoute
               path="/support"
-              component={Support}
+              component={DesktopView.Support}
               isLoggedin={isLoggedin}
               allowedRoles={["support", "main_admin"]}
               role={role}
             />
             <Route
               path="/forms/:id?/"
-              component={isMobile ? PrenotazioneMobile : Forms}
+              component={
+                isMobile ? MobileViews.PrenotazioneMobile : DesktopView.Forms
+              }
               isLoggedin={isLoggedin}
               allowedRoles={[
                 "super_admin",
@@ -283,28 +231,28 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/dettagli-prenotazioni"
-              component={FormDetails}
+              component={DesktopView.FormDetails}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "agency", "user"]}
               role={role}
             />
             <PrivateRoute
               path="/visure"
-              component={Visure}
+              component={DesktopView.Visure}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency"]}
               role={role}
             />
             <PrivateRoute
               path="/dettagli-visure"
-              component={VisureDetaggli}
+              component={DesktopView.VisureDetaggli}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin", "user", "agency"]}
               role={role}
             />
             <PrivateRoute
               path="/fatture"
-              component={Fatura}
+              component={DesktopView.Fatura}
               isLoggedin={isLoggedin}
               allowedRoles={["super_admin"]}
               role={role}
@@ -318,7 +266,7 @@ class Root extends React.Component {
             /> */}
             <PrivateRoute
               path="/back-office/utenti"
-              component={AdminPanelListaUtenti}
+              component={DesktopView.AdminPanelListaUtenti}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
@@ -326,7 +274,7 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/back-office/movimenti"
-              component={AdminPanelListaMovimenti}
+              component={DesktopView.AdminPanelListaMovimenti}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
@@ -334,7 +282,7 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/back-office/prenotazioni"
-              component={AdminPanelPrenotazioni}
+              component={DesktopView.AdminPanelPrenotazioni}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
@@ -342,7 +290,7 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/back-office/servizzi"
-              component={AdminPanelServizi}
+              component={DesktopView.AdminPanelServizi}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
@@ -350,7 +298,7 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/back-office/support"
-              component={adminPanelErrorList}
+              component={DesktopView.AdminPanelErrorList}
               isLoggedin={isLoggedin}
               allowedRoles={["support", "main_admin"]}
               role={role}
@@ -358,7 +306,7 @@ class Root extends React.Component {
             />
             <PrivateRoute
               path="/back-office/CreateSkin"
-              component={CreateSkin}
+              component={DesktopView.CreateSkin}
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin"]}
               role={role}

@@ -2,7 +2,7 @@ import React from "react";
 // import { azioni } from "config";
 import { Redirect, Route } from "react-router-dom";
 import { includes } from "lodash";
-import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
+import { AdminPanelPrenotazioni } from "routes";
 
 const PrivateRoute = ({
   component: Component,
@@ -27,7 +27,7 @@ const PrivateRoute = ({
       {...rest}
       render={(props) =>
         isLoggedin && includes(allowedRoles, role) ? (
-          profile.username === "support_prenotazioni" ? (
+          profile?.username === "support_prenotazioni" ? (
             <AdminPanelPrenotazioni {...props} />
           ) : (
             <Component {...props} />

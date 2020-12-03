@@ -137,7 +137,7 @@ export const fetchPayments = (
 ) => {
   return instanceAxios
     .post(`/users/payments`, {
-      ...(username ? username : null),
+      ...(username ? { username } : null),
       ...(from ? { from } : null),
       ...(to ? { to } : null),
       page_number,
