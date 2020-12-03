@@ -11,7 +11,7 @@ class UnderDevelopment extends React.Component {
           submenu={"noSubmenu"}
           activeMain="underDevelopment"
         ></Azioni>
-        <div className="DContainer">
+        <div className="DContainer" style={{ height: "500px" }}>
           <span>Under Development ....</span>
         </div>
       </div>

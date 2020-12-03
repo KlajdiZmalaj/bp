@@ -6,7 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import { get } from "lodash";
 import * as DesktopView from "routes";
-import * as MobileViews from "./routesMobile";
+import * as MobileViews from "routesMobile";
 
 import {
   subscribeSocketUser,
