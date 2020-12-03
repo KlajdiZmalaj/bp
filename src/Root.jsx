@@ -117,6 +117,7 @@ class Root extends React.Component {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");
     const isMobile = this.props.screenWidth <= 1025;
+    const profile = get(this.props.accountInfo, "profile");
     // console.log("test", process.env, process.env.TEST_T);
     return (
       <React.Fragment>
@@ -127,7 +128,11 @@ class Root extends React.Component {
               path="/"
               render={() =>
                 role === "support" || role === "main_admin" ? (
-                  <Redirect to={`/back-office/utenti`} />
+                  profile.username === "support_prenotazioni" ? (
+                    <Redirect to={`/back-office/prenotazioni`} />
+                  ) : (
+                    <Redirect to={`/back-office/utenti`} />
+                  )
                 ) : (
                   <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
                 )
@@ -317,6 +322,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
+              profile={profile}
             />
             <PrivateRoute
               path="/back-office/movimenti"
@@ -324,6 +330,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
+              profile={profile}
             />
             <PrivateRoute
               path="/back-office/prenotazioni"
@@ -331,6 +338,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
+              profile={profile}
             />
             <PrivateRoute
               path="/back-office/servizzi"
@@ -338,6 +346,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin", "support"]}
               role={role}
+              profile={profile}
             />
             <PrivateRoute
               path="/back-office/support"
@@ -345,6 +354,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["support", "main_admin"]}
               role={role}
+              profile={profile}
             />
             <PrivateRoute
               path="/back-office/CreateSkin"
@@ -352,6 +362,7 @@ class Root extends React.Component {
               isLoggedin={isLoggedin}
               allowedRoles={["main_admin"]}
               role={role}
+              profile={profile}
             />
           </Switch>
         </HashRouter>

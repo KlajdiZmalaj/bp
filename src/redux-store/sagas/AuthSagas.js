@@ -239,7 +239,30 @@ export function* getPayments(params) {
   yield put(AuthActions.setPaymentsLoading(false));
   // console.log("response payments", response);
 }
+export function* getRefills({ page_number, limit }) {
+  yield put(AuthActions.setPaymentsLoading(true));
+  const response = yield call(AuthRequest.fetchRefills, page_number, limit);
+  if (response?.status === 200) {
+    if (response?.data) {
+      yield put(AuthActions.setPayments(response?.data.transactions));
+      yield put(
+        AuthActions.setPaymentsPages({
+          total_pages: response?.data.total_pages,
+          total_records: response?.data.total_records,
+        })
+      );
 
+      if (response?.data.usernames) {
+        yield put(AuthActions.setUsernames(response?.data.usernames));
+      }
+      if (response?.data.balance) {
+        yield put(MainActions.setOverviewDashboard(response?.data.balance));
+      }
+    }
+  }
+  yield put(AuthActions.setPaymentsLoading(false));
+  console.log("response", response);
+}
 export function* getRechargeMobile(params) {
   const response = yield call(
     AuthRequest.fetchRechargeMobile,

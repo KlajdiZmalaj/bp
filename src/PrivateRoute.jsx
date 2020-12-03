@@ -2,6 +2,7 @@ import React from "react";
 // import { azioni } from "config";
 import { Redirect, Route } from "react-router-dom";
 import { includes } from "lodash";
+import AdminPanelPrenotazioni from "./routes/views/adminPanelPrenotazioni";
 
 const PrivateRoute = ({
   component: Component,
@@ -9,6 +10,7 @@ const PrivateRoute = ({
   role,
   allowedRoles,
   path,
+  profile,
   ...rest
 }) => {
   // console.log(
@@ -18,13 +20,18 @@ const PrivateRoute = ({
   //   allowedRoles,
   //   role
   // );
+  //profile.username === "support_prenotazioni"
   return (
     <Route
       path={`${path}`}
       {...rest}
       render={(props) =>
         isLoggedin && includes(allowedRoles, role) ? (
-          <Component {...props} />
+          profile.username === "support_prenotazioni" ? (
+            <AdminPanelPrenotazioni {...props} />
+          ) : (
+            <Component {...props} />
+          )
         ) : (
           <Redirect
             to={{ pathname: "/login", state: { from: props.location } }}

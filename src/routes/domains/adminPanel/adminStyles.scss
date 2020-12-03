@@ -239,6 +239,12 @@
             }
           }
         }
+        &.refills {
+          tbody td:nth-child(3) {
+            max-width: 128px !important;
+            min-width: 0 !important;
+          }
+        }
       }
       & ::-webkit-scrollbar-thumb {
         background: #353d45;
@@ -770,16 +776,17 @@ div.Center--Big {
       }
       & .filterBtn {
         position: relative;
-        height: 36px;
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 100px;
+        border-radius: 5px;
         width: 114px;
         font-size: 14px;
         color: #ffffff;
         font-weight: 500;
         background-color: #0078ff;
+        width: 100px;
         & i {
           padding-right: 8px;
         }

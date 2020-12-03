@@ -6,6 +6,8 @@ import * as MainGenerators from "./MainSagas";
 export default function* root() {
   yield all([
     // AUTH
+
+    takeLatest("GET_REFILLS", AuthGenerators.getRefills),
     takeLatest("CHANGE_AGENT_SKIN", AuthGenerators.changeAgentSkin),
     takeLatest("PAGO_TICKET", AuthGenerators.pagoTicket),
     takeLatest("CREATE_USER_BGAME", AuthGenerators.createUserBgame),

@@ -147,6 +147,11 @@ export const fetchPayments = (
     })
     .catch((error) => ({ error }));
 };
+export const fetchRefills = (page_number, limit) => {
+  return instanceAxios.get("/providerRefills", {
+    params: { page_number, limit, ...skin },
+  });
+};
 export const fetchRechargeMobile = (service_id, tel_no) =>
   instanceAxios
     .post(`/test/recharge`, {

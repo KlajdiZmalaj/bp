@@ -178,6 +178,12 @@
 .filterBtn {
   border-bottom: 0 !important;
   height: 100%;
+  opacity: 0.7;
+
+  &.active,
+  &:hover {
+    opacity: 1;
+  }
 }
 .ant-select-selection--single {
   width: 200px;

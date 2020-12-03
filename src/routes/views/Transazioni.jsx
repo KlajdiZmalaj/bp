@@ -53,6 +53,8 @@ class Transazioni extends React.Component {
       },
     ],
     isCalendarOpen: false,
+    //1 for movimenti , 2 for refills
+    tableType: 1,
   };
   // (new Date()).setMonth(new Date().getMonth()-1)
   fromFilterTop = (val) => {
@@ -196,23 +198,35 @@ class Transazioni extends React.Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e, refills) => {
     const { username, to, from, perPage } = this.state;
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        this.props.forAdmin
-          ? this.props.getPayments(
-              username,
-              from || "",
-              to || "",
-              1,
-              perPage,
-              this.props.activeSkinId
-            )
-          : this.props.getPayments(username, from || "", to || "", 1, perPage);
-      }
-    });
+    if (refills) {
+      await this.setState({ tableType: 2 });
+      this.props.getRefills(1, perPage);
+    } else {
+      await this.setState({ tableType: 1 });
+      this.props.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+          this.props.forAdmin
+            ? this.props.getPayments(
+                username,
+                from || "",
+                to || "",
+                1,
+                perPage,
+                this.props.activeSkinId
+              )
+            : this.props.getPayments(
+                username,
+                from || "",
+                to || "",
+                1,
+                perPage
+              );
+        }
+      });
+    }
   };
 
   changeSelected = (filter) => {
@@ -369,6 +383,7 @@ class Transazioni extends React.Component {
       perPage,
       visible,
       modalDetails,
+      tableType,
     } = this.state;
     const formItemLayout = {
       labelCol: {
@@ -676,21 +691,41 @@ class Transazioni extends React.Component {
                 </div>
                 {!this.props.forAdmin ? (
                   <button
-                    className="filterBtn"
+                    className={"filterBtn" + (tableType === 1 ? " active" : "")}
                     htmltype="submit"
                     onClick={this.handleSubmit}
                   >
                     Filter
                   </button>
                 ) : (
-                  <button
-                    className="filterBtn"
-                    htmltype="submit"
-                    onClick={this.handleSubmit}
-                  >
-                    <i className="fas fa-filter"></i>
-                    Filter
-                  </button>
+                  <>
+                    <button
+                      className={
+                        "filterBtn" + (tableType === 1 ? " active" : "")
+                      }
+                      htmltype="submit"
+                      onClick={(e) => {
+                        this.handleSubmit(e);
+                      }}
+                    >
+                      <i className="fas fa-filter"></i>
+                      Filter
+                    </button>
+                    {accountInfo.profile.role.name === "main_admin" && (
+                      <button
+                        className={
+                          "filterBtn" + (tableType === 2 ? " active" : "")
+                        }
+                        htmltype="submit"
+                        onClick={(e) => {
+                          this.handleSubmit(e, true);
+                        }}
+                      >
+                        <i className="fad fa-coins"></i>
+                        ENTRATE
+                      </button>
+                    )}
+                  </>
                 )}
               </div>
               {!this.props.forAdmin ? (
@@ -766,7 +801,12 @@ class Transazioni extends React.Component {
                 {loadingPayments &&
                   (forAdmin ? <div className="loaderAdmin"></div> : <Loader />)}
                 {!loadingPayments && (
-                  <table className="transTable Movimenti">
+                  <table
+                    className={
+                      "transTable Movimenti" +
+                      (tableType === 2 ? " refills" : "")
+                    }
+                  >
                     <thead>
                       <tr>
                         <td className="wsNwp">Date / Ora</td>
@@ -956,22 +996,26 @@ class Transazioni extends React.Component {
                 <Pagination
                   onChange={(e) => {
                     // console.log("ca ka pagination", e);
-                    forAdmin
-                      ? this.props.getPayments(
-                          username !== "" ? username : "",
-                          from || "",
-                          to || "",
-                          e,
-                          perPage,
-                          this.props.activeSkinId
-                        )
-                      : getPayments(
-                          username !== "" ? username : "",
-                          from || "",
-                          to || "",
-                          e,
-                          perPage
-                        );
+                    if (tableType === 1) {
+                      forAdmin
+                        ? this.props.getPayments(
+                            username !== "" ? username : "",
+                            from || "",
+                            to || "",
+                            e,
+                            perPage,
+                            this.props.activeSkinId
+                          )
+                        : getPayments(
+                            username !== "" ? username : "",
+                            from || "",
+                            to || "",
+                            e,
+                            perPage
+                          );
+                    } else {
+                      this.props.getRefills(e, perPage);
+                    }
                   }}
                   total={
                     Object.keys(paymentsPages).length === 0
@@ -983,22 +1027,26 @@ class Transazioni extends React.Component {
                   defaultValue={25}
                   onChange={(e) => {
                     this.setState({ perPage: parseInt(e) });
-                    forAdmin
-                      ? getPayments(
-                          username !== "" ? username : "",
-                          from || "",
-                          to || "",
-                          1,
-                          e,
-                          this.props.activeSkinId
-                        )
-                      : getPayments(
-                          username !== "" ? username : "",
-                          from || "",
-                          to || "",
-                          1,
-                          e
-                        );
+                    if (tableType === 1) {
+                      forAdmin
+                        ? getPayments(
+                            username !== "" ? username : "",
+                            from || "",
+                            to || "",
+                            1,
+                            e,
+                            this.props.activeSkinId
+                          )
+                        : getPayments(
+                            username !== "" ? username : "",
+                            from || "",
+                            to || "",
+                            1,
+                            e
+                          );
+                    } else {
+                      this.props.getRefills(1, e);
+                    }
                   }}
                 >
                   <Option value={10}>10 / Pagina</Option>

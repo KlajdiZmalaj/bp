@@ -44,7 +44,7 @@ const { Types, Creators } = createActions({
   setBolletiniPremercati: ["bolletiniPremercati"],
   setServiceId: ["service_id"],
   setServiceS: ["service_s"],
-
+  getRefills: ["page_number", "limit"],
   getPayments: [
     "username",
     "from",
