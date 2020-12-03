@@ -1,4 +1,5 @@
 {
+  "editor.defaultFormatter": "svipas.prettier-plus",
   "liveSassCompile.settings.formats": [
     {
       "format": "compressed",
