@@ -11,5 +11,12 @@
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
     }
+  ],
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": null
+    }
   ]
 }

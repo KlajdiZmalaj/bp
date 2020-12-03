@@ -304,7 +304,8 @@ class ModulePopUp4 extends React.Component {
             {(service_s.id === "BGAM" || service_s.id === "BBET") && (
               <div className="infoRicariche">
                 <i className="fal fa-info-circle"></i>
-                Ricariche solo conti utenti
+                Voucher generato è valido solo per la <br />
+                ricarica ai conti dei utenti
               </div>
             )}
 
