@@ -486,6 +486,11 @@ export function* changeAgent(data) {
   // console.log("response changeAgent", data, response);
 }
 export function* changeAgentSkin({ agent_id, new_skin_id }) {
+  notification["info"]({
+    key: "changeAgentSkin",
+    duration: 0,
+    message: "Attendere, il cambiamento in corso",
+  });
   const response = yield call(
     AuthRequest.changeAgentSkinReq,
     agent_id,
@@ -496,6 +501,7 @@ export function* changeAgentSkin({ agent_id, new_skin_id }) {
       notification["success"]({
         message: response.data.message,
       });
+      notification.close("changeAgentSkin");
       yield put(AuthActions.setUserDetail({}));
       yield put(MainActions.setActiveSkinId(new_skin_id));
     }

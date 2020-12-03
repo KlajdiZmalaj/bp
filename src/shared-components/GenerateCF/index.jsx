@@ -160,7 +160,7 @@ const Generate = ({ setCF, closeBox, color1, color2 }) => {
                 sigla: country.sigla,
               }))}
               onChange={(e) => {
-                console.log("ca ka e", e);
+                // console.log("ca ka e", e);
                 setForm({
                   ...form,
                   luogo_di_nascita: e?.value,
