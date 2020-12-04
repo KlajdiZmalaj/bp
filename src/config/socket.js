@@ -97,6 +97,19 @@ export const subscribeSocketSupport = (props) => {
         var audio = new Audio("notification_sound.mp3");
         audio.play();
         props.addTicket(e.instance);
+      } else if (
+        e.instance.nome_agenzia !== "luce-gas" &&
+        window.store.getState().auth.accountInfo.profile.username !==
+          "support_prenotazioni"
+      ) {
+        notification.open({
+          message: "Hai ricevuto una notifica",
+          description: e.data.title,
+          icon: <i className="fal fa-smile-beam"></i>,
+        });
+        var audio = new Audio("notification_sound.mp3");
+        audio.play();
+        props.addTicket(e.instance);
       }
     }
     if (e.type === "notification_visure") {
