@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { switchUserStatus, transferMoney } from "services/auth.js";
 import { message } from "antd";
-import { numberWithCommas } from "utils/HelperFunc";
+// import { numberWithCommas } from "utils/HelperFunc";
 class SingleUser extends Component {
   constructor(props) {
     super(props);

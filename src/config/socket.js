@@ -1,7 +1,7 @@
 import Echo from "laravel-echo";
 import { notification } from "antd";
 import React from "react";
-
+var audio = new Audio("notification_sound.mp3");
 export const socket = () => {
   window.io = require("socket.io-client");
   window["echo"] = new Echo({
@@ -24,7 +24,6 @@ export const subscribeSocketUser = (userID, props) => {
         icon: <i className="fal fa-smile-beam"></i>,
       });
 
-      var audio = new Audio("notification_sound.mp3");
       audio.play();
     }
     if (e.type === "popup") {
@@ -94,7 +93,7 @@ export const subscribeSocketSupport = (props) => {
           description: e.data.title,
           icon: <i className="fal fa-smile-beam"></i>,
         });
-        var audio = new Audio("notification_sound.mp3");
+
         audio.play();
         props.addTicket(e.instance);
       } else if (
@@ -107,7 +106,7 @@ export const subscribeSocketSupport = (props) => {
           description: e.data.title,
           icon: <i className="fal fa-smile-beam"></i>,
         });
-        var audio = new Audio("notification_sound.mp3");
+
         audio.play();
         props.addTicket(e.instance);
       }

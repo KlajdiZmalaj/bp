@@ -511,7 +511,7 @@ class AdminPanelDom extends React.Component {
             <Time />
             <div className="wallets-carusel">
               <div className="wallets-carusel-wrapper">
-                {Object.keys(accountInfo?.profile?.supplier_wallets).map(
+                {Object.keys(accountInfo?.profile?.supplier_wallets || {}).map(
                   (wallet) => {
                     return (
                       <div>
