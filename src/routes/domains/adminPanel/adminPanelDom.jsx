@@ -509,6 +509,20 @@ class AdminPanelDom extends React.Component {
           )}
           <div className="TopHeader">
             <Time />
+            <div className="wallets-carusel">
+              {Object.keys(accountInfo?.profile?.supplier_wallets).map(
+                (wallet) => {
+                  return (
+                    <div>
+                      <span>{wallet}</span>
+                      <span>
+                        {accountInfo?.profile?.supplier_wallets?.[wallet]}&euro;
+                      </span>
+                    </div>
+                  );
+                }
+              )}
+            </div>
             <span className="creditoD">
               Credito : {accountInfo?.profile?.wallet}€{" "}
             </span>
