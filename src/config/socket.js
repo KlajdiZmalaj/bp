@@ -1,6 +1,7 @@
 import Echo from "laravel-echo";
 import { notification } from "antd";
 import React from "react";
+
 export const socket = () => {
   window.io = require("socket.io-client");
   window["echo"] = new Echo({
@@ -10,7 +11,6 @@ export const socket = () => {
     transports: ["websocket", "polling", "flashsocket"],
   });
 };
-
 export const subscribeSocketUser = (userID, props) => {
   window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
     // console.log("subscribed listening...", userID, props, e);
@@ -81,7 +81,6 @@ export const subscribeSocketUser = (userID, props) => {
     }
   });
 };
-
 export const subscribeSocketSupport = (props) => {
   window["echo"].channel(`bpoint_cache_support`).listen(".support", (e) => {
     if (e.type === "notification") {
@@ -95,7 +94,6 @@ export const subscribeSocketSupport = (props) => {
           description: e.data.title,
           icon: <i className="fal fa-smile-beam"></i>,
         });
-
         var audio = new Audio("notification_sound.mp3");
         audio.play();
         props.addTicket(e.instance);
@@ -114,7 +112,6 @@ export const subscribeSocketSupport = (props) => {
     }
   });
 };
-
 export const unSubscribeSocketUser = (userID) => {
   window["echo"].leaveChannel(`bpoint_cache_${userID}`);
 };
