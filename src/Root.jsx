@@ -257,13 +257,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin"]}
               role={role}
             />
-            {/* <PrivateRoute
-              path="/login-admin"
-              component={loginAdmin}
-              isLoggedin={isLoggedin}
-              allowedRoles={["super_admin", "user", "agency", "support"]}
-              role={role}
-            /> */}
+
             <PrivateRoute
               path="/back-office/utenti"
               component={DesktopView.AdminPanelListaUtenti}

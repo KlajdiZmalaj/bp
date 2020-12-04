@@ -85,15 +85,21 @@ export const subscribeSocketUser = (userID, props) => {
 export const subscribeSocketSupport = (props) => {
   window["echo"].channel(`bpoint_cache_support`).listen(".support", (e) => {
     if (e.type === "notification") {
-      notification.open({
-        message: "Hai ricevuto una notifica",
-        description: e.data.title,
-        icon: <i className="fal fa-smile-beam"></i>,
-      });
+      if (
+        e.instance.nome_agenzia === "luce-gas" &&
+        window.store.getState().auth.accountInfo.profile.username ===
+          "support_prenotazioni"
+      ) {
+        notification.open({
+          message: "Hai ricevuto una notifica",
+          description: e.data.title,
+          icon: <i className="fal fa-smile-beam"></i>,
+        });
 
-      var audio = new Audio("notification_sound.mp3");
-      audio.play();
-      props.addTicket(e.instance);
+        var audio = new Audio("notification_sound.mp3");
+        audio.play();
+        props.addTicket(e.instance);
+      }
     }
     if (e.type === "notification_visure") {
       notification.open({
