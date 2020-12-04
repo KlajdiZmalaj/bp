@@ -92,7 +92,7 @@ const DepositoModal = ({
                   // api
                   await transferMoney(
                     id,
-                    amount,
+                    parseFloat(amount.replace(",", ".")),
                     type,
                     () => {},
                     role,
@@ -106,7 +106,8 @@ const DepositoModal = ({
                         skin_id: 1,
                       },
                       25,
-                      1
+                      1,
+                      "LOAD_FALSE"
                     );
                   } else {
                     await getUsers(
@@ -116,7 +117,8 @@ const DepositoModal = ({
                         backoffice: true,
                       },
                       25,
-                      1
+                      1,
+                      "LOAD_FALSE"
                     );
                   }
                   if (SecondClose) {

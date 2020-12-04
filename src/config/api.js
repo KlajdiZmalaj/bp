@@ -45,7 +45,7 @@ export const handleError = (error) => {
   } else if (hasCode(error, 403)) {
     //forbiden , kryesisht > prenotazione
     notification["warning"]({
-      message: `Azione completata una volta`,
+      message: `Forbidden`,
     });
   } else {
     notification["error"]({

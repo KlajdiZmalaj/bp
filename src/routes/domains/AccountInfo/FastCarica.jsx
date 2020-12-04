@@ -110,7 +110,12 @@ class FastCarica extends Component {
               }}
               confirmTranzacionModal={confirmTranzacionModal}
               confirmation={() => {
-                transferMoney(userId, amountVal, type, this.transferCallback);
+                transferMoney(
+                  userId,
+                  parseFloat(amountVal.replace(",", ".")),
+                  type,
+                  this.transferCallback
+                );
               }}
             />
             <div

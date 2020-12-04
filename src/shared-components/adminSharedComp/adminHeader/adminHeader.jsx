@@ -33,7 +33,10 @@ class AdminHeader extends React.Component {
             <a href="/#/back-office/utenti">
               <span>
                 {this.props.accountInfo.profile.role.name === "support"
-                  ? "Support"
+                  ? this.props.accountInfo.profile.username ===
+                    "support_prenotazioni"
+                    ? "Luce&Gas"
+                    : "Support"
                   : "Admin"}
               </span>
               <span> Panel</span>
