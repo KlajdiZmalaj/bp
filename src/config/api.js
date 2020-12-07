@@ -1,6 +1,7 @@
 import $ from "jquery";
 import { notification } from "antd";
 import { unSubscribeSocketUser, unSubscribeSocketSupport } from "config/socket";
+import React from "react";
 export const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
 export const getToken = () => {
@@ -21,7 +22,8 @@ const hasCode = (error, status) => {
   }
 };
 export const handleError = (error) => {
-  // console.log("error handler", error, error.response, error.error);
+  // console.log("error handler", error, { error });
+
   if (hasCode(error, 401)) {
     //loged out
     unSubscribeSocketUser(
@@ -35,6 +37,13 @@ export const handleError = (error) => {
     }
     localStorage.setItem("accountDataB", null);
     window.store.dispatch({ type: "SET_UNAUTHORIZATION" });
+  } else if (error?.message === "Network Error") {
+    notification["error"]({
+      key: "networkErr",
+      message: `Non connesso a Internet`,
+      icon: <i className="fal fa-wifi-slash"></i>,
+      duration: 0,
+    });
   } else if (hasCode(error, 445)) {
     //skin id wrong
   } else if (hasCode(error, 440)) {

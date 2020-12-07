@@ -7,7 +7,7 @@ import PublicRoute from "./PublicRoute";
 import { get } from "lodash";
 import * as DesktopView from "routes";
 import * as MobileViews from "routesMobile";
-
+import AdminTopHeader from "shared-components/adminSharedComp/AdminTopHeader";
 import {
   subscribeSocketUser,
   socket,
@@ -65,6 +65,7 @@ class Root extends React.Component {
     // console.log("test", process.env, process.env.TEST_T);
     return (
       <React.Fragment>
+        {(role === "support" || role === "main_admin") && <AdminTopHeader />}
         <HashRouter>
           <Switch>
             <Route
