@@ -515,7 +515,7 @@ class AdminPanelDom extends React.Component {
                   (wallet) => {
                     return (
                       <div>
-                        <span>{wallet}</span>
+                        <span>{wallet} : </span>
                         <span>
                           {accountInfo?.profile?.supplier_wallets?.[wallet]}
                           &euro;
