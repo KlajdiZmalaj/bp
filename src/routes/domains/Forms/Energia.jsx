@@ -117,17 +117,17 @@ class Energia extends Component {
           personali a terzi`,
         status: true,
       },
-      //corrispondenza  === 2
-      corrispondenza_comune: "null",
-      corrispondenza_indirizzo: "null",
-      corrispondenza_civico: "null",
-      corrispondenza_cap: "null",
+      //corrispondenza  === 2 -> false
+      corrispondenza_comune: "corrispondenza_comune",
+      corrispondenza_indirizzo: "corrispondenza_indirizzo",
+      corrispondenza_civico: "corrispondenza_civico",
+      corrispondenza_cap: "corrispondenza_cap",
       //
-      //fornitura ===2
-      fornitura_comune: "null",
-      fornitura_indirizzo: "null",
-      fornitura_civico: "null",
-      fornitura_cap: "null",
+      //fornitura ===2 -> false
+      fornitura_comune: "fornitura_comune",
+      fornitura_indirizzo: "fornitura_indirizzo",
+      fornitura_civico: "fornitura_civico",
+      fornitura_cap: "fornitura_cap",
     });
   };
   resetState = () => {};
@@ -164,17 +164,17 @@ class Energia extends Component {
         residenza_cap: s.cap,
         corrispondenza: s.corrispondenza.status ? 1 : 2,
         //corrispondenza  === 2
-        corrispondenza_comune: "null",
-        corrispondenza_indirizzo: "null",
-        corrispondenza_civico: "null",
-        corrispondenza_cap: "null",
+        corrispondenza_comune: s.corrispondenza_comune,
+        corrispondenza_indirizzo: s.corrispondenza_indirizzo,
+        corrispondenza_civico: s.corrispondenza_civico,
+        corrispondenza_cap: s.corrispondenza_cap,
         //
         fornitura: s.fornitura.status ? 1 : 2,
         //fornitura ===2
-        fornitura_comune: "null",
-        fornitura_indirizzo: "null",
-        fornitura_civico: "null",
-        fornitura_cap: "null",
+        fornitura_comune: s.fornitura_comune,
+        fornitura_indirizzo: s.fornitura_indirizzo,
+        fornitura_civico: s.fornitura_civico,
+        fornitura_cap: s.fornitura_cap,
         //
         confermo_fornitura: s.fornituraCon.status.toString(),
         confermo_econimoche: s.economicCon.status.toString(),
@@ -219,6 +219,14 @@ class Energia extends Component {
       civico,
       nome_cognome_consulento,
       codice_consulento,
+      corrispondenza_comune,
+      corrispondenza_indirizzo,
+      corrispondenza_civico,
+      corrispondenza_cap,
+      fornitura_comune,
+      fornitura_indirizzo,
+      fornitura_civico,
+      fornitura_cap,
     } = this.state;
     return (
       <div className="formsContainer--body animated fadeIn auto">
@@ -506,6 +514,42 @@ class Energia extends Component {
                 });
               }}
             />
+            {!corrispondenza.status && (
+              <>
+                <Item
+                  label="Corrispondenza comune"
+                  value={corrispondenza_comune}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_comune: e });
+                  }}
+                />
+                <Item
+                  label="Corrispondenza indirizzo"
+                  value={corrispondenza_indirizzo}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_indirizzo: e });
+                  }}
+                />
+                <Item
+                  label="Corrispondenza civico"
+                  value={corrispondenza_civico}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_civico: e });
+                  }}
+                />
+                <Item
+                  label="Corrispondenza cap"
+                  value={corrispondenza_cap}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_cap: e });
+                  }}
+                />
+              </>
+            )}
             <SubTitle title="INDIRIZZO DI FORNITURA" color={color} />
             <TrueFalse
               item={fornitura}
@@ -518,6 +562,42 @@ class Energia extends Component {
                 });
               }}
             />
+            {!fornitura.status && (
+              <>
+                <Item
+                  label="Fornitura comune"
+                  value={fornitura_comune}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_comune: e });
+                  }}
+                />
+                <Item
+                  label="Fornitura indirizzo"
+                  value={fornitura_indirizzo}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_indirizzo: e });
+                  }}
+                />
+                <Item
+                  label="Fornitura civico"
+                  value={fornitura_civico}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_civico: e });
+                  }}
+                />
+                <Item
+                  label="Fornitura cap"
+                  value={fornitura_cap}
+                  Icon={() => null}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_cap: e });
+                  }}
+                />
+              </>
+            )}
             <SubTitle
               title="DOCUMENTI CONTRATTUALI DA SCARICARE"
               color={color}

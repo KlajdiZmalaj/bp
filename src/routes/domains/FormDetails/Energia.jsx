@@ -75,12 +75,7 @@ class Energia extends Component {
     );
   };
   render() {
-    const {
-      editable,
-      TicketByTcketId,
-      accountInfo,
-      getDataFormDetails,
-    } = this.props;
+    const { TicketByTcketId, accountInfo, getDataFormDetails } = this.props;
     const {
       tipologia_persona,
       tipologia_contratto,
@@ -106,17 +101,16 @@ class Energia extends Component {
       residenza_cap,
       corrispondenza,
       //corrispondenza  === 2
-      // corrispondenza_comune,
-      // corrispondenza_indirizzo,
-      // corrispondenza_civico,
-      // corrispondenza_cap,
-      // //
-      // fornitura,
+      corrispondenza_comune,
+      corrispondenza_indirizzo,
+      corrispondenza_civico,
+      corrispondenza_cap,
+      fornitura,
       // //fornitura ===2
-      // fornitura_comune,
-      // fornitura_indirizzo,
-      // fornitura_civico,
-      // fornitura_cap,
+      fornitura_comune,
+      fornitura_indirizzo,
+      fornitura_civico,
+      fornitura_cap,
       //
       confermo_fornitura,
       confermo_econimoche,
@@ -125,6 +119,7 @@ class Energia extends Component {
       marketing,
       dati_personali,
     } = this.state;
+    const editable = false;
     // console.log("TicketByTcketId", TicketByTcketId);
     const isAdmOrSuport =
       accountInfo?.profile?.role?.name === "support" ||
@@ -159,7 +154,7 @@ class Energia extends Component {
                     tipologia_persona: e,
                   });
                 }}
-                value={tipologia_persona}
+                value={(tipologia_persona || 0).toString()}
               >
                 <Option value={"1"}>Persona</Option>
                 <Option value={"2"}>Business</Option>
@@ -173,7 +168,7 @@ class Energia extends Component {
                     tipologia_contratto: e,
                   });
                 }}
-                value={tipologia_contratto}
+                value={(tipologia_contratto || 0).toString()}
               >
                 <Option value={"1"}>Luce</Option>
                 <Option value={"2"}>Gas</Option>
@@ -341,12 +336,109 @@ class Energia extends Component {
                     corrispondenza: e,
                   });
                 }}
-                value={corrispondenza}
+                value={(corrispondenza || 0).toString()}
               >
                 <Option value={"1"}>Si</Option>
                 <Option value={"2"}>No</Option>
               </Select>
             </div>
+            {parseInt(corrispondenza || "0") === 2 && (
+              <>
+                <MyInput
+                  labelName={"Corrispondenza comune"}
+                  type={"text"}
+                  editable={editable}
+                  value={corrispondenza_comune}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_comune: e.target.value });
+                  }}
+                />
+                <MyInput
+                  labelName={"Corrispondenza indirizzo"}
+                  type={"text"}
+                  editable={editable}
+                  value={corrispondenza_indirizzo}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_indirizzo: e.target.value });
+                  }}
+                />
+                <MyInput
+                  labelName={"Corrispondenza civico"}
+                  type={"text"}
+                  editable={editable}
+                  value={corrispondenza_civico}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_civico: e.target.value });
+                  }}
+                />
+                <MyInput
+                  labelName={"Corrispondenza cap"}
+                  type={"text"}
+                  editable={editable}
+                  value={corrispondenza_cap}
+                  handleChange={(e) => {
+                    this.setState({ corrispondenza_cap: e.target.value });
+                  }}
+                />
+              </>
+            )}
+            <div className="itemCol full luceCheck">
+              <label className="inputLabel">
+                L’indirizzo di fornitura coincide con la sede di residenza?
+              </label>
+              <Select
+                onChange={(e) => {
+                  this.setState({
+                    fornitura: e,
+                  });
+                }}
+                value={(fornitura || 0).toString()}
+              >
+                <Option value={"1"}>Si</Option>
+                <Option value={"2"}>No</Option>
+              </Select>
+            </div>
+            {parseInt(fornitura || "0") === 2 && (
+              <>
+                <MyInput
+                  labelName={"Fornitura comune"}
+                  type={"text"}
+                  editable={editable}
+                  value={fornitura_comune}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_comune: e.target.value });
+                  }}
+                />
+                <MyInput
+                  labelName={"Fornitura indirizzo"}
+                  type={"text"}
+                  editable={editable}
+                  value={fornitura_indirizzo}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_indirizzo: e.target.value });
+                  }}
+                />
+                <MyInput
+                  labelName={"Fornitura civico"}
+                  type={"text"}
+                  editable={editable}
+                  value={fornitura_civico}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_civico: e.target.value });
+                  }}
+                />
+                <MyInput
+                  labelName={"Fornitura cap"}
+                  type={"text"}
+                  editable={editable}
+                  value={fornitura_cap}
+                  handleChange={(e) => {
+                    this.setState({ fornitura_cap: e.target.value });
+                  }}
+                />
+              </>
+            )}
+
             <div className="itemCol full luceCheck">
               <label className="inputLabel">Condizioni di fornitura</label>
               <Select
