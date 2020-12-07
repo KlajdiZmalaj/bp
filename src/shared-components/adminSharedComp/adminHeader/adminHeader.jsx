@@ -10,7 +10,7 @@ class AdminHeader extends React.Component {
     chat: false,
   };
   render() {
-    const { small } = this.props;
+    const { small, accountInfo } = this.props;
 
     return (
       <div className="AdminHeader">
@@ -45,60 +45,71 @@ class AdminHeader extends React.Component {
         )}
 
         <div className="AdminHeader--Box">
-          <div
-            className={`AdminHeader--Category ${
-              this.props.location.pathname.includes("support") ? "active" : ""
-            }`}
-            onClick={() => {
-              this.props.history.push("/back-office/support");
-            }}
-          >
-            <div>
-              <i className="fal fa-exclamation-circle"></i>
-              <span>ERRORI</span>
+          {accountInfo?.profile?.username !== "support_prenotazioni" && (
+            <div
+              className={`AdminHeader--Category ${
+                this.props.location.pathname.includes("support") ? "active" : ""
+              }`}
+              onClick={() => {
+                this.props.history.push("/back-office/support");
+              }}
+            >
+              <div>
+                <i className="fal fa-exclamation-circle"></i>
+                <span>ERRORI</span>
+              </div>
             </div>
-          </div>
-          <div
-            className={`AdminHeader--Category ${
-              this.props.location.pathname.includes("utenti") ? "active" : ""
-            }`}
-            onClick={() => {
-              this.props.history.push("/back-office/utenti");
-            }}
-          >
-            <div>
-              <i className="fal fa-user-circle"></i>
-              <span>UTENTI</span>
+          )}
+          {accountInfo?.profile?.username !== "support_prenotazioni" && (
+            <div
+              className={`AdminHeader--Category ${
+                this.props.location.pathname.includes("utenti") ? "active" : ""
+              }`}
+              onClick={() => {
+                this.props.history.push("/back-office/utenti");
+              }}
+            >
+              <div>
+                <i className="fal fa-user-circle"></i>
+                <span>UTENTI</span>
+              </div>
             </div>
-          </div>
+          )}
+          {accountInfo?.profile?.username !== "support_prenotazioni" && (
+            <div
+              className={`AdminHeader--Category ${
+                this.props.location.pathname.includes("movimenti")
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                this.props.history.push("/back-office/movimenti");
+              }}
+            >
+              <div>
+                <i className="fal fa-wallet"></i>
+                <span>MOVIMENTI</span>
+              </div>
+            </div>
+          )}
+          {accountInfo?.profile?.username !== "support_prenotazioni" && (
+            <div
+              className={`AdminHeader--Category ${
+                this.props.location.pathname.includes("servizzi")
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                this.props.history.push("/back-office/servizzi");
+              }}
+            >
+              <div>
+                <i className="far fa-briefcase"></i>
+                <span>SERVIZI</span>
+              </div>
+            </div>
+          )}
 
-          <div
-            className={`AdminHeader--Category ${
-              this.props.location.pathname.includes("movimenti") ? "active" : ""
-            }`}
-            onClick={() => {
-              this.props.history.push("/back-office/movimenti");
-            }}
-          >
-            <div>
-              <i className="fal fa-wallet"></i>
-              <span>MOVIMENTI</span>
-            </div>
-          </div>
-
-          <div
-            className={`AdminHeader--Category ${
-              this.props.location.pathname.includes("servizzi") ? "active" : ""
-            }`}
-            onClick={() => {
-              this.props.history.push("/back-office/servizzi");
-            }}
-          >
-            <div>
-              <i className="far fa-briefcase"></i>
-              <span>SERVIZI</span>
-            </div>
-          </div>
           <div
             className={`AdminHeader--Category--Prenotazioni ${
               this.props.location.pathname.includes("prenotazioni")

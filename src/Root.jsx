@@ -72,7 +72,11 @@ class Root extends React.Component {
               path="/"
               render={() =>
                 role === "support" || role === "main_admin" ? (
-                  <Redirect to={`/back-office/utenti`} />
+                  profile?.username === "support_prenotazioni" ? (
+                    <Redirect to={`/back-office/prenotazioni`} />
+                  ) : (
+                    <Redirect to={`/back-office/utenti`} />
+                  )
                 ) : (
                   <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
                 )
@@ -92,6 +96,7 @@ class Root extends React.Component {
               }
               isLoggedin={isLoggedin}
               role={role}
+              profile={profile}
             />
             <PublicRoute
               path="/verify?token="

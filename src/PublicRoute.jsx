@@ -2,7 +2,13 @@ import React from "react";
 
 import { Redirect, Route } from "react-router-dom";
 
-const PrivateRoute = ({ component: Component, isLoggedin, role, ...rest }) => {
+const PublicRoute = ({
+  component: Component,
+  isLoggedin,
+  role,
+  profile,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
@@ -19,7 +25,11 @@ const PrivateRoute = ({ component: Component, isLoggedin, role, ...rest }) => {
         ) : role === "support" ? (
           <Redirect
             to={{
-              pathname: "/back-office/support",
+              pathname: `/back-office/${
+                profile?.username === "support_prenotazioni"
+                  ? "prenotazioni"
+                  : "support"
+              }`,
               state: { from: props.location },
             }}
           />
@@ -36,4 +46,4 @@ const PrivateRoute = ({ component: Component, isLoggedin, role, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+export default PublicRoute;
