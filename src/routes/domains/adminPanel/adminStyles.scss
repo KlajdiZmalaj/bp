@@ -2231,24 +2231,24 @@ body.bodyAdmin,
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 100%;
-    transform: translateX(50%);
-    animation: 50s slideLeft infinite linear;
+    width: 50%;
+    transform: translateX(110%);
+    animation: 40s slideLeft infinite linear;
     > div {
       display: flex;
       width: auto;
       align-items: center;
-      margin-right: 30px;
+      margin-right: 100px;
     }
   }
 }
 @keyframes slideLeft {
   0% {
-    transform: translateX(50%);
+    transform: translateX(110%);
   }
 
   100% {
-    transform: translateX(-110%);
+    transform: translateX(-190%);
   }
 }
 .bodyAdmin .TopHeader span.timeH {
