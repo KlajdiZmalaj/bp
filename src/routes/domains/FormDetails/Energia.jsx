@@ -593,7 +593,7 @@ class Energia extends Component {
                   : ""
               }`}
             >
-              Provviggione Approvato <span></span>
+              Provvigione Approvato <span></span>
             </div>
           </div>
           {isAdmOrSuport && (

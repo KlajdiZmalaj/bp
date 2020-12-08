@@ -97,8 +97,8 @@ export class DetailRow extends Component {
                   aria-hidden="true"
                 ></i>
                 {TicketByTcketId && TicketByTcketId.id === ticket.id
-                  ? "Close"
-                  : "View"}
+                  ? "Chiudi"
+                  : "Dettagli"}
               </div>
             </span>
           </div>
