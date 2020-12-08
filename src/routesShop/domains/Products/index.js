@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import AuthActions from "redux-store/models/auth";
-import { connect } from "react-redux";
 import images from "themes/images";
 import "./style.css";
 
@@ -44,7 +42,5 @@ class Products extends Component {
     );
   }
 }
-const mpStP = (state) => ({
-  accountInfo: state.auth.accountInfo,
-});
-export default connect(mpStP, AuthActions)(Products);
+
+export default Products;

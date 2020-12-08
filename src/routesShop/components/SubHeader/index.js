@@ -18,7 +18,7 @@ class SubHeader extends Component {
         icon: "fal fa-gem",
       },
       {
-        name: "Mobilia",
+        name: "Mobili",
         icon: "fal fa-lamp",
       },
     ];

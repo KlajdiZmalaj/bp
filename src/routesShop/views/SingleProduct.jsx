@@ -4,12 +4,17 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import "./style.css";
 
-import AllProducts from "routesShop/domains/Products/index.js";
+import Product from "routesShop/domains/SingleProduct/index.js";
 import SubHeader from "routesShop/components/SubHeader/index.js";
 
-class Products extends Component {
+class SingleProduct extends Component {
   componentDidMount() {
-    this.props.getProductsList();
+    if (
+      this.props.productsList &&
+      Object.keys(this.props.productsList).length < 1
+    ) {
+      this.props.getProductsList();
+    }
   }
 
   render() {
@@ -17,12 +22,16 @@ class Products extends Component {
       <div className="products">
         <Header></Header>
         <SubHeader></SubHeader>
-        <AllProducts prodList={this.props.productsList}></AllProducts>
+        <Product
+          prodList={this.props.productsList}
+          className="openedProduct"
+        ></Product>
       </div>
     );
   }
 }
+
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
 });
-export default connect(mpStP, ShopActions)(Products);
+export default connect(mpStP, ShopActions)(SingleProduct);
