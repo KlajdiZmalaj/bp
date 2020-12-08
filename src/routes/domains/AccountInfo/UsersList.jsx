@@ -201,7 +201,7 @@ class UsersList extends Component {
                   onClick={() => {
                     transferMoney(
                       DepositoPopup.data.id,
-                      valueInput,
+                      parseFloat(valueInput.replace(",", ".")),
                       DepositoPopup.val,
                       this.switchCallBack,
                       role

@@ -244,7 +244,7 @@ class SingleUser2 extends Component {
                   onClick={() => {
                     transferMoney(
                       user.id,
-                      valueInput,
+                      parseFloat(valueInput.replace(",", ".")),
                       val,
                       this.transferCallback,
                       role

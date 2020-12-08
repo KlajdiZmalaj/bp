@@ -291,6 +291,7 @@
       height: 100%;
       display: flex;
       align-items: center;
+      flex-shrink: 0;
       &.logOutBtn {
         border-radius: 0;
         margin-right: 0;
@@ -2219,4 +2220,41 @@ body.bodyAdmin,
     align-items: center;
     top: calc(100vh - 85px) !important;
   }
+}
+.wallets-carusel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  overflow: hidden;
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    transform: translateX(110%);
+    animation: 40s slideLeft infinite linear;
+    > div {
+      display: flex;
+      width: auto;
+      align-items: center;
+      margin-right: 100px;
+    }
+  }
+}
+@keyframes slideLeft {
+  0% {
+    transform: translateX(110%);
+  }
+
+  100% {
+    transform: translateX(-190%);
+  }
+}
+.bodyAdmin .TopHeader span.timeH {
+  background: #353d45;
+  z-index: 1;
+  margin-left: 0 !important;
+  padding-left: 15px;
+  padding-right: 15px;
 }

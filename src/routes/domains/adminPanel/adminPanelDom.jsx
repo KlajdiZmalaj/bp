@@ -15,7 +15,7 @@ import AgentComp from "../AccountInfo/AgetnComp";
 import UserComp from "../AccountInfo/UserComp";
 import { Select } from "antd";
 import MainActions from "redux-store/models/main";
-import { Time } from "shared-components";
+import { Time, MainAdminCarousel } from "shared-components";
 import { message } from "antd";
 import "./adminStyles.css";
 import { numberWithCommas } from "utils/HelperFunc";
@@ -507,21 +507,6 @@ class AdminPanelDom extends React.Component {
               Close={editDepModal}
             />
           )}
-          <div className="TopHeader">
-            <Time />
-            <span className="creditoD">
-              Credito : {accountInfo?.profile?.wallet}€{" "}
-            </span>
-            <span
-              className="logOutBtn"
-              onClick={() => {
-                this.props.logOut();
-                this.props.history.push("/login");
-              }}
-            >
-              Log OUT
-            </span>
-          </div>
 
           <AdminHeader
             handleClick={() => {

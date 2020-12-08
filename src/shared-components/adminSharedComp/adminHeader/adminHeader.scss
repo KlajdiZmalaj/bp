@@ -15,10 +15,11 @@
     width: 39.333%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: row;
     cursor: pointer;
+
     @media (max-width: 550px) {
       height: 60px;
     }

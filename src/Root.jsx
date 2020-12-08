@@ -10,6 +10,7 @@ import * as MobileViews from "routesMobile";
 
 import * as ShopView from "routesShop";
 
+import AdminTopHeader from "shared-components/adminSharedComp/AdminTopHeader";
 import {
   subscribeSocketUser,
   socket,
@@ -67,6 +68,7 @@ class Root extends React.Component {
     // console.log("test", process.env, process.env.TEST_T);
     return (
       <React.Fragment>
+        {(role === "support" || role === "main_admin") && <AdminTopHeader />}
         <HashRouter>
           <Switch>
             <Route
@@ -74,7 +76,11 @@ class Root extends React.Component {
               path="/"
               render={() =>
                 role === "support" || role === "main_admin" ? (
-                  <Redirect to={`/back-office/utenti`} />
+                  profile?.username === "support_prenotazioni" ? (
+                    <Redirect to={`/back-office/prenotazioni`} />
+                  ) : (
+                    <Redirect to={`/back-office/utenti`} />
+                  )
                 ) : (
                   <Redirect to={`/dashboard/${!isMobile ? "ricariche" : ""}`} />
                 )
@@ -94,6 +100,7 @@ class Root extends React.Component {
               }
               isLoggedin={isLoggedin}
               role={role}
+              profile={profile}
             />
             <PublicRoute
               path="/verify?token="
@@ -259,13 +266,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin"]}
               role={role}
             />
-            {/* <PrivateRoute
-              path="/login-admin"
-              component={loginAdmin}
-              isLoggedin={isLoggedin}
-              allowedRoles={["super_admin", "user", "agency", "support"]}
-              role={role}
-            /> */}
+
             <PrivateRoute
               path="/back-office/utenti"
               component={DesktopView.AdminPanelListaUtenti}

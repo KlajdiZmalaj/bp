@@ -379,12 +379,15 @@ textarea {
       white-space: nowrap;
       align-items: center;
       border: 0;
-
+      .ant-select-selection--single {
+        width: 100%;
+      }
       .inputLabel {
         margin: 0;
         width: 50%;
         font-weight: 400;
         color: #5c5c5c;
+        flex-shrink: 0;
       }
       .ant-input,
       .ant-calendar-picker {

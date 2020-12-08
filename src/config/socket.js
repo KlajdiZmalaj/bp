@@ -1,6 +1,7 @@
 import Echo from "laravel-echo";
 import { notification } from "antd";
 import React from "react";
+var audio = new Audio("notification_sound.mp3");
 export const socket = () => {
   window.io = require("socket.io-client");
   window["echo"] = new Echo({
@@ -10,7 +11,6 @@ export const socket = () => {
     transports: ["websocket", "polling", "flashsocket"],
   });
 };
-
 export const subscribeSocketUser = (userID, props) => {
   window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
     // console.log("subscribed listening...", userID, props, e);
@@ -24,7 +24,6 @@ export const subscribeSocketUser = (userID, props) => {
         icon: <i className="fal fa-smile-beam"></i>,
       });
 
-      var audio = new Audio("notification_sound.mp3");
       audio.play();
     }
     if (e.type === "popup") {
@@ -81,34 +80,39 @@ export const subscribeSocketUser = (userID, props) => {
     }
   });
 };
-
 export const subscribeSocketSupport = (props) => {
   window["echo"].channel(`bpoint_cache_support`).listen(".support", (e) => {
-    if (e.type === "notification") {
-      notification.open({
-        message: "Hai ricevuto una notifica",
-        description: e.data.title,
-        icon: <i className="fal fa-smile-beam"></i>,
-      });
+    if (e.type === "notification" || e.type === "notification_visure") {
+      if (
+        e.instance.nome_agenzia === "luce-gas" &&
+        window.store.getState().auth.accountInfo.profile.username ===
+          "support_prenotazioni"
+      ) {
+        notification.open({
+          message: "Hai ricevuto una notifica",
+          description: e.data.title,
+          icon: <i className="fal fa-smile-beam"></i>,
+        });
 
-      var audio = new Audio("notification_sound.mp3");
-      audio.play();
-      props.addTicket(e.instance);
-    }
-    if (e.type === "notification_visure") {
-      notification.open({
-        message: "Hai ricevuto una notifica",
-        description: e.data.title,
-        icon: <i className="fal fa-smile-beam"></i>,
-      });
+        audio.play();
+        props.addTicket(e.instance);
+      } else if (
+        e.instance.nome_agenzia !== "luce-gas" &&
+        window.store.getState().auth.accountInfo.profile.username !==
+          "support_prenotazioni"
+      ) {
+        notification.open({
+          message: "Hai ricevuto una notifica",
+          description: e.data.title,
+          icon: <i className="fal fa-smile-beam"></i>,
+        });
 
-      audio = new Audio("notification_sound.mp3");
-      audio.play();
-      props.addTicket(e.instance);
+        audio.play();
+        props.addTicket(e.instance);
+      }
     }
   });
 };
-
 export const unSubscribeSocketUser = (userID) => {
   window["echo"].leaveChannel(`bpoint_cache_${userID}`);
 };

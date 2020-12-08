@@ -3,7 +3,6 @@ import SupportBody from "../domains/SupportBody/SupportBody";
 import AdminPanelDom from "../domains/adminPanel/adminPanelDom";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
-
 class AdminPanelListaUtenti extends React.Component {
   componentDidMount() {
     this.props.setActiveSkinId(1);
@@ -15,12 +14,17 @@ class AdminPanelListaUtenti extends React.Component {
   }
   render() {
     return (
-      <AdminPanelDom
-        component={
-          <SupportBody forAdmin={true} activeSkinId={this.props.activeSkinId} />
-        }
-        {...this.props}
-      />
+      <>
+        <AdminPanelDom
+          component={
+            <SupportBody
+              forAdmin={true}
+              activeSkinId={this.props.activeSkinId}
+            />
+          }
+          {...this.props}
+        />
+      </>
     );
   }
 }

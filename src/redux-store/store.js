@@ -13,25 +13,13 @@ const rootReducer = combineReducers({
 });
 
 export function configureStore() {
-  const loggerMiddleware = (store) => (next) => (action) => {
-    const returnValue = next(action);
-    // if (console.group) {
-    //   console.group(action.type);
-    //   console.log("%c action", "color: #03A9F4", action);
-    //   console.log("%c newState", "color: #03A9F4", store.getState());
-    //   console.groupEnd();
-    // }
-    return returnValue;
-  };
   const sagaMiddleware = createSagaMiddleware();
-
-  const middlewares = [sagaMiddleware, loggerMiddleware];
+  //redux extension logger
   const composeEnhancers =
     typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
       : compose;
-
-  const enhancer = composeEnhancers(applyMiddleware(...middlewares));
+  const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
   return {
     ...createStore(rootReducer, enhancer),
     runSaga: sagaMiddleware.run,

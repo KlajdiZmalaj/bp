@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { switchUserStatus, transferMoney } from "services/auth.js";
 import { message } from "antd";
-
+// import { numberWithCommas } from "utils/HelperFunc";
 class SingleUser extends Component {
   constructor(props) {
     super(props);
@@ -139,7 +139,7 @@ class SingleUser extends Component {
               <div className="inpgr">
                 <div className="inplabel">Amount</div>
                 <input
-                  type="number"
+                  type="text"
                   placeholder="0.00€"
                   onChange={(e) => {
                     this.inpHandler(e);
@@ -153,7 +153,7 @@ class SingleUser extends Component {
                   onClick={() => {
                     transferMoney(
                       user.id,
-                      valueInput,
+                      parseFloat(valueInput.replace(",", ".")),
                       val,
                       this.transferCallback
                     );
@@ -170,7 +170,7 @@ class SingleUser extends Component {
                   <i class="fa fa-times"></i> Cancel
                 </button>
               </div>
-              {user.status !== 2 && (
+              {user.status === 2 && (
                 <p className="info">
                   <i className="fad fa-info-circle"></i> User is locked
                 </p>
