@@ -8,6 +8,8 @@ import { get } from "lodash";
 import * as DesktopView from "routes";
 import * as MobileViews from "routesMobile";
 
+import * as ShopView from "routesShop";
+
 import {
   subscribeSocketUser,
   socket,
@@ -313,6 +315,13 @@ class Root extends React.Component {
               profile={profile}
             />
           </Switch>
+          {/* routes for shop */}
+          <PublicRoute
+            path="/products"
+            component={ShopView.Products}
+            isLoggedin={false}
+            role={role}
+          />
         </HashRouter>
 
         {this.state.top && (
