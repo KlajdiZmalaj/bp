@@ -316,12 +316,15 @@ class Root extends React.Component {
               profile={profile}
             />
           </Switch>
+
           {/* routes for shop */}
-          <PublicRoute
+
+          <PrivateRoute
             path="/products"
             component={ShopView.Products}
-            isLoggedin={false}
+            isLoggedin={isLoggedin}
             role={role}
+            allowedRoles={["super_admin", "agency", "agent", "user"]}
           />
         </HashRouter>
 
