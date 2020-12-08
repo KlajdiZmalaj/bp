@@ -596,29 +596,25 @@ class Energia extends Component {
               Provvigione Approvata <span></span>
             </div>
           </div>
-          {isAdmOrSuport && (
-            <div
-              className={
-                "formSubmit--button -c" +
-                (TicketByTcketId.status_num === 1 ||
-                TicketByTcketId.status_num === 3
-                  ? " "
-                  : " dissableBtn")
-              }
-              onClick={() => {
-                userConfirmation(
-                  () => {},
-                  TicketByTcketId.id,
-                  5,
-                  () => {},
-                  getDataFormDetails,
-                  null
-                );
-              }}
-            >
-              <span>ANNULLATO</span>
-            </div>
-          )}
+          {isAdmOrSuport &&
+            (TicketByTcketId.status_num === 1 ||
+              TicketByTcketId.status_num === 3) && (
+              <div
+                className={"formSubmit--button -c"}
+                onClick={() => {
+                  userConfirmation(
+                    () => {},
+                    TicketByTcketId.id,
+                    5,
+                    () => {},
+                    getDataFormDetails,
+                    null
+                  );
+                }}
+              >
+                <span>ANNULLATO</span>
+              </div>
+            )}
         </div>
       </React.Fragment>
     );
