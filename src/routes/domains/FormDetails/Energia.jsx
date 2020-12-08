@@ -562,7 +562,7 @@ class Energia extends Component {
                   : ""
               }`}
             >
-              Contratto Creato <span></span>
+              Contratto Attivato <span></span>
             </div>
             <div
               onClick={() => {
@@ -584,7 +584,7 @@ class Energia extends Component {
                   : ""
               }`}
             >
-              Pagamento Completato <span></span>
+              Pagamento Eseguito <span></span>
             </div>
             <div
               className={`formStatus--btns__item${
@@ -593,7 +593,7 @@ class Energia extends Component {
                   : ""
               }`}
             >
-              Provvigione Approvato <span></span>
+              Provvigione Approvata <span></span>
             </div>
           </div>
           {isAdmOrSuport && (
