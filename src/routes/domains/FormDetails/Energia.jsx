@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MyInput from "./Input";
-import { Select } from "antd";
+import { Select, Popconfirm, message } from "antd";
 import { connect } from "react-redux";
 import {
   userConfirmation,
@@ -547,25 +547,36 @@ class Energia extends Component {
               {isAdmOrSuport ? "Nuova Richiesta" : "In Attesa"}
               <span></span>
             </div>
-
-            <div
-              onClick={() => {
+            <Popconfirm
+              placement="top"
+              title="Vuoi attivare il contratto?"
+              onConfirm={() => {
                 if (TicketByTcketId.status_num === 1) {
                   this.submitData();
+                } else {
+                  message.error("Contratto e Attivato 1 volta");
                 }
               }}
-              className={`formStatus--btns__item${
-                TicketByTcketId.status_num === 3 ||
-                (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
-                (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
-                  ? " active"
-                  : ""
-              }`}
+              onCancel={() => {}}
+              okText="Si"
+              cancelText="No"
             >
-              Contratto Attivato <span></span>
-            </div>
-            <div
-              onClick={() => {
+              <div
+                className={`formStatus--btns__item${
+                  TicketByTcketId.status_num === 3 ||
+                  (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
+                  (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
+                    ? " active"
+                    : ""
+                }`}
+              >
+                Contratto Attivato <span></span>
+              </div>
+            </Popconfirm>
+            <Popconfirm
+              placement="top"
+              title="Pagamento Eseguito?"
+              onConfirm={() => {
                 if (TicketByTcketId.status_num === 3) {
                   userConfirmation(
                     () => {},
@@ -575,17 +586,26 @@ class Energia extends Component {
                     getDataFormDetails,
                     null
                   );
+                } else {
+                  message.error("Pagamento Eseguito 1 volta");
                 }
               }}
-              className={`formStatus--btns__item${
-                (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
-                (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
-                  ? " active"
-                  : ""
-              }`}
+              onCancel={() => {}}
+              okText="Si"
+              cancelText="No"
             >
-              Pagamento Eseguito <span></span>
-            </div>
+              <div
+                className={`formStatus--btns__item${
+                  (TicketByTcketId.status_num === 4 && !TicketByTcketId.paid) ||
+                  (TicketByTcketId.status_num === 4 && TicketByTcketId.paid)
+                    ? " active"
+                    : ""
+                }`}
+              >
+                Pagamento Eseguito <span></span>
+              </div>
+            </Popconfirm>
+
             <div
               className={`formStatus--btns__item${
                 TicketByTcketId.status_num === 4 && TicketByTcketId.paid

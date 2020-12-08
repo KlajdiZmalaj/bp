@@ -964,3 +964,17 @@ input[value="Visualizzare i dati"] {
     }
   }
 }
+html {
+  .ant-btn-primary,
+  .ant-btn-primary:hover,
+  .ant-btn-primary:focus {
+    color: var(--accent-txt);
+    background-color: var(--accent-bg);
+    border-color: var(--accent-bg);
+  }
+  .ant-pagination-item-active,
+  .ant-pagination-item-active:focus,
+  .ant-pagination-item-active:hover {
+    border-color: var(--accent-bg);
+  }
+}
