@@ -144,6 +144,7 @@ textarea {
       margin-right: 5px;
     }
     .options {
+      position: relative;
       > span:not(.toggler) {
         width: 25px;
         height: 25px;
@@ -238,17 +239,16 @@ textarea {
     }
     .toggler {
       position: absolute;
-      right: 0;
-      border: 1px solid #ebeced;
-      border-right: 0;
+      right: 50%;
+      border: 1px solid #b6b6b6;
       padding: 0 10px;
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
-      text-transform: uppercase;
+      border-radius: 20px;
+      text-transform: capitalize;
       font-weight: 300;
       cursor: pointer;
-      color: #b5b5b5;
-      font-size: 13px;
+      color: #353535;
+      font-size: 12px;
+      transform: translateX(30%);
       @media (max-width: 768px) {
         font-size: 12px;
         text-transform: capitalize;
@@ -962,5 +962,19 @@ input[value="Visualizzare i dati"] {
         }
       }
     }
+  }
+}
+html {
+  .ant-btn-primary,
+  .ant-btn-primary:hover,
+  .ant-btn-primary:focus {
+    color: var(--accent-txt);
+    background-color: var(--accent-bg);
+    border-color: var(--accent-bg);
+  }
+  .ant-pagination-item-active,
+  .ant-pagination-item-active:focus,
+  .ant-pagination-item-active:hover {
+    border-color: var(--accent-bg);
   }
 }
