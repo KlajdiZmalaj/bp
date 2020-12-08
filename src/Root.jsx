@@ -52,11 +52,31 @@ class Root extends React.Component {
         subscribeSocketSupport(this.props);
       }
     }
+    if (this.props.accountInfo.token_id) {
+      //api once
+      this.props.getAds();
+      if (!window.location.hash.includes("back-office")) {
+        this.props.getStatisticheMain();
+      }
+    }
   }
   componentWillUnmount() {
     unSubscribeSocketUser(get(this.props.accountInfo, "profile.id"));
     unSubscribeSocketSupport();
   }
+  componentDidUpdate(prevProps) {
+    //login & logout
+    if (
+      this.props.accountInfo.token_id &&
+      this.props.accountInfo.token_id !== prevProps.accountInfo.token_id
+    ) {
+      this.props.getAds();
+      if (!window.location.hash.includes("back-office")) {
+        this.props.getStatisticheMain();
+      }
+    }
+  }
+
   render() {
     let isLoggedin = get(this.props.accountInfo, "profile") ? true : false;
     const role = get(this.props.accountInfo, "profile.role.name");

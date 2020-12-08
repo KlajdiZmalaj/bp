@@ -4,9 +4,15 @@ import SimpleGraph from "shared-components/Graph/SimpleGraph";
 import AuthAction from "redux-store/models/auth";
 import { connect } from "react-redux";
 class Statistiche extends React.Component {
-  componentDidMount() {
-    this.props.getStatisticheMain();
+  // componentDidMount() {
+  //   this.props.getStatisticheMain();
+  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.ReportisticaDet !== prevProps.ReportisticaDet) {
+      this.props.getStatisticheMain();
+    }
   }
+
   render() {
     const { userRole, StatisticheMain, ReportisticaDet } = this.props;
     return (

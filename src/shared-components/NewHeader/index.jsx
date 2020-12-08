@@ -30,9 +30,7 @@ class Header extends Component {
   toggleMobileMeu = () => {
     this.setState({ isMobMenu: !this.state.isMobMenu });
   };
-  componentDidMount() {
-    this.props.getAds();
-  }
+
   render() {
     const { accountInfo, screenWidth, ads, privMsg, skinExtras } = this.props;
     const { isDDopem } = this.state;
@@ -58,106 +56,114 @@ class Header extends Component {
                 <Chat />
               </div>
               <div className="icons">
-                <div>
-                  <i onClick={this.toggleAds} className="fas fa-bell"></i>
-                  <span>{ads && ads.length}</span>
-                  {this.state.ads ? (
-                    <ClickOut
-                      onClickOut={() => {
-                        this.setState({ ads: false });
+                {accountInfo?.profile?.role && (
+                  <>
+                    <div>
+                      <i onClick={this.toggleAds} className="fas fa-bell"></i>
+                      <span>{ads && ads.length}</span>
+                      {this.state.ads ? (
+                        <ClickOut
+                          onClickOut={() => {
+                            this.setState({ ads: false });
+                          }}
+                        >
+                          <div
+                            className={"ads" + (this.state.ads ? " viz" : "")}
+                          >
+                            {ads.slice(0, 10).map((add) => {
+                              return (
+                                <div
+                                  key={add.id}
+                                  onClick={() => {
+                                    this.toggleAds();
+                                    this.props.history.push("/annunci");
+                                  }}
+                                >
+                                  {add.title}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </ClickOut>
+                      ) : (
+                        <div className={"ads" + (this.state.ads ? " viz" : "")}>
+                          {ads.slice(0, 10).map((add) => {
+                            return (
+                              <div
+                                key={add.id}
+                                onClick={() => {
+                                  this.toggleAds();
+                                  this.props.history.push("/annunci");
+                                }}
+                              >
+                                {add.title}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <i
+                        onClick={this.toggleprivMsgs}
+                        className="fas fa-envelope"
+                      ></i>
+                      <span
+                        className={`${
+                          privMsg && privMsg.length > 0 ? "pulse" : ""
+                        }`}
+                      >
+                        {privMsg && privMsg.length}
+                      </span>
+                      {this.state.msg ? (
+                        <ClickOut
+                          onClickOut={() => {
+                            this.setState({ msg: false });
+                          }}
+                        >
+                          <div
+                            className={"ads" + (this.state.msg ? " viz" : "")}
+                          >
+                            {privMsg.slice(0, 10).map((add) => {
+                              return (
+                                <div
+                                  key={add.id}
+                                  onClick={() => {
+                                    this.toggleprivMsgs();
+                                  }}
+                                >
+                                  {add.title}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </ClickOut>
+                      ) : (
+                        <div className={"ads" + (this.state.msg ? " viz" : "")}>
+                          {privMsg.slice(0, 10).map((add, index) => {
+                            return (
+                              <div
+                                key={`${add.id}${index}`}
+                                onClick={() => {
+                                  this.toggleprivMsgs();
+                                }}
+                              >
+                                {add.title}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                    <div
+                      onClick={() => {
+                        this.props.history.push("/configura");
                       }}
                     >
-                      <div className={"ads" + (this.state.ads ? " viz" : "")}>
-                        {ads.slice(0, 10).map((add) => {
-                          return (
-                            <div
-                              key={add.id}
-                              onClick={() => {
-                                this.toggleAds();
-                                this.props.history.push("/annunci");
-                              }}
-                            >
-                              {add.title}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </ClickOut>
-                  ) : (
-                    <div className={"ads" + (this.state.ads ? " viz" : "")}>
-                      {ads.slice(0, 10).map((add) => {
-                        return (
-                          <div
-                            key={add.id}
-                            onClick={() => {
-                              this.toggleAds();
-                              this.props.history.push("/annunci");
-                            }}
-                          >
-                            {add.title}
-                          </div>
-                        );
-                      })}
+                      <i className="fas fa-cog"></i>
                     </div>
-                  )}
-                </div>
-                <div>
-                  <i
-                    onClick={this.toggleprivMsgs}
-                    className="fas fa-envelope"
-                  ></i>
-                  <span
-                    className={`${
-                      privMsg && privMsg.length > 0 ? "pulse" : ""
-                    }`}
-                  >
-                    {privMsg && privMsg.length}
-                  </span>
-                  {this.state.msg ? (
-                    <ClickOut
-                      onClickOut={() => {
-                        this.setState({ msg: false });
-                      }}
-                    >
-                      <div className={"ads" + (this.state.msg ? " viz" : "")}>
-                        {privMsg.slice(0, 10).map((add) => {
-                          return (
-                            <div
-                              key={add.id}
-                              onClick={() => {
-                                this.toggleprivMsgs();
-                              }}
-                            >
-                              {add.title}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </ClickOut>
-                  ) : (
-                    <div className={"ads" + (this.state.msg ? " viz" : "")}>
-                      {privMsg.slice(0, 10).map((add, index) => {
-                        return (
-                          <div
-                            key={`${add.id}${index}`}
-                            onClick={() => {
-                              this.toggleprivMsgs();
-                            }}
-                          >
-                            {add.title}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-                <div
-                  onClick={() => {
-                    this.props.history.push("/configura");
-                  }}
-                >
-                  <i className="fas fa-cog"></i>
-                </div>
+                  </>
+                )}
               </div>
               <div className="userinfo">
                 {get(accountInfo, "profile.role.name") === "agent" && (
@@ -284,85 +290,6 @@ class Header extends Component {
         </nav>
       </header>
     ) : (
-      // <header className="mobHeader">
-      //   <div className="top">
-      //     <button onClick={this.toggleMobileMeu}>
-      //       <i className="fal fa-bars"></i>
-      //     </button>
-      //     <div
-      //       className="logo"
-      //       onClick={() => {
-      //         this.props.history.push("/dashboard");
-      //       }}
-      //     >
-      //       <img src={images.logo} alt="" />
-      //     </div>
-      //     <button
-      //       onClick={() => {
-      //         this.props.history.push("/configura");
-      //       }}
-      //     >
-      //       <i className="fal fa-user-circle" aria-hidden="true"></i>
-      //     </button>
-      //   </div>
-      //   <div className={"bottom" + (isMobMenu ? " opened" : "")}>
-      //     <div className="userinfo">
-      //       <div className="name">{get(accountInfo, "profile.name")}</div>
-      //       <div className="money">{get(accountInfo, "profile.wallet")}€</div>
-      //     </div>
-      //     <div className="navLinks">
-      //       <div className="item">
-      //         <a href={skinExtras.link1}>azienda</a>
-      //       </div>
-      //       <div className="item">
-      //         <a href={skinExtras.link2}>servizi</a>
-      //       </div>
-      //       <div className="item">
-      //         <a href={skinExtras.link3}>area riservata</a>
-      //       </div>
-      //       <div className="item">
-      //         {" "}
-      //         <a href={skinExtras.link4}>contatti</a>{" "}
-      //       </div>
-      //       <div className="item">
-      //         {" "}
-      //         <a href={skinExtras.link5}>affilia la tua attivita</a>{" "}
-      //       </div>
-      //       <button
-      //         onClick={() => {
-      //           this.props.logOut();
-      //           if (!isLoggedin) {
-      //             this.props.history.push("/login");
-      //           }
-      //         }}
-      //       >
-      //         {isLoggedin ? "LOGOUT" : "LOGIN"}
-      //       </button>
-      //     </div>
-      //     <div className="icons">
-      //       <div>
-      //         <i
-      //           onClick={() => {
-      //             this.props.history.push("/annunci");
-      //           }}
-      //           className="fas fa-bell"
-      //         ></i>
-      //         <span>{ads && ads.length}</span>
-      //       </div>
-      //       <div>
-      //         <i className="fas fa-envelope"></i>
-      //       </div>
-      //       <div>
-      //         <i
-      //           onClick={() => {
-      //             this.props.history.push("/configura");
-      //           }}
-      //           className="fas fa-cog"
-      //         ></i>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </header>
       <HeaderMob />
     );
   }
