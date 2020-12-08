@@ -33,7 +33,7 @@ class SubHeader extends Component {
             );
           })}
         </div>
-        <div className="cart">cart</div>
+        <div className="cart"></div>
       </div>
     );
   }
