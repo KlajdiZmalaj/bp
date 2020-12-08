@@ -243,11 +243,11 @@ textarea {
       border: 1px solid #b6b6b6;
       padding: 0 10px;
       border-radius: 20px;
-      text-transform: uppercase;
+      text-transform: capitalize;
       font-weight: 300;
       cursor: pointer;
       color: #353535;
-      font-size: 13px;
+      font-size: 12px;
       transform: translateX(30%);
       @media (max-width: 768px) {
         font-size: 12px;

@@ -78,7 +78,9 @@ class DetailRowVisure extends Component {
                   }`}
                   aria-hidden="true"
                 ></i>
-                {VisureById && VisureById.id === Visure.id ? "Close" : "View"}
+                {VisureById && VisureById.id === Visure.id
+                  ? "Chiudi"
+                  : "Dettagli"}
               </div>
             </span>
           </div>
