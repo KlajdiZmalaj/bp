@@ -2,6 +2,7 @@ import { takeLatest, all } from "redux-saga/effects";
 /* ------------- SAGA GENERATORS ------------- */
 import * as AuthGenerators from "./AuthSagas";
 import * as MainGenerators from "./MainSagas";
+import * as ShopGenerators from "./ShopSagas";
 
 export default function* root() {
   yield all([
@@ -100,5 +101,7 @@ export default function* root() {
       takeLatest("GET_FAVORITES", MainGenerators.getFavorites),
       takeLatest("SEND_PRENOTAZIONE", MainGenerators.sendPrenotazione),
     ],
+    //SHOP
+    ...[takeLatest("GET_PRODUCTS_LIST", ShopGenerators.getProductsList)],
   ]);
 }

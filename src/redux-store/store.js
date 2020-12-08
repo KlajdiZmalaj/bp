@@ -3,11 +3,13 @@ import createSagaMiddleware from "redux-saga";
 
 import { reducer as AuthReducer } from "./models/auth";
 import { reducer as MainReducer } from "./models/main";
+import { reducer as ShopReducer } from "./models/shop";
 import rootSaga from "./sagas";
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
   main: MainReducer,
+  shop: ShopReducer,
 });
 
 export function configureStore() {

@@ -7,6 +7,9 @@ import PublicRoute from "./PublicRoute";
 import { get } from "lodash";
 import * as DesktopView from "routes";
 import * as MobileViews from "routesMobile";
+
+import * as ShopView from "routesShop";
+
 import AdminTopHeader from "shared-components/adminSharedComp/AdminTopHeader";
 import {
   subscribeSocketUser,
@@ -333,6 +336,16 @@ class Root extends React.Component {
               profile={profile}
             />
           </Switch>
+
+          {/* routes for shop */}
+
+          <PrivateRoute
+            path="/products"
+            component={ShopView.Products}
+            isLoggedin={isLoggedin}
+            role={role}
+            allowedRoles={["super_admin", "agency", "agent", "user"]}
+          />
         </HashRouter>
 
         {this.state.top && (

@@ -156,8 +156,8 @@ export const newAzioni = [
   {
     id: 3,
     name: "SHOP",
-    link: `underDevelopment`,
-    active: "underDevelopment",
+    link: `products`,
+    active: "products",
     i: "fal fa-store",
     displayRole: ["super_admin", "agency", "agent", "user"],
   },
@@ -979,12 +979,12 @@ export const resetUserStateChangeFields = {
 //
 
 export const autoConfig = {
-  "0": {
+  0: {
     name: "Fiat",
     models: ["Fiat 500", "Fiat500X", "Fiat124"],
     colors: ["Tech House Grey", "Glam Coral", "Pasodoble Red", "Epic Blue"],
   },
-  "1": {
+  1: {
     name: "Citroen",
     models: ["c1", "c2", "c4"],
     colors: ["red", "green", "blue"],
