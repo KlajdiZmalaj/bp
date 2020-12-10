@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, Checkbox, notification } from "antd";
+import { Form, Checkbox, notification, Modal } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
 import "./newStyl.css";
@@ -22,8 +22,11 @@ class Bolletino extends React.Component {
     condizioniShow: false,
   };
   setbarcodeInp = (e) => {
-    this.setState({ barcodeInput: e });
-    document.getElementById("barcodeInp").focus();
+    this.setState({ barcodeInput: e }, () => {
+      setTimeout(() => {
+        document.getElementById("barcodeInp").focus();
+      }, 500);
+    });
   };
   clearFields = () => {
     this.props.form.resetFields();
@@ -203,9 +206,18 @@ class Bolletino extends React.Component {
         </div>
         <div className="Bolletini-Form">
           <Form>
-            <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
+            <Modal
+              title="Scan Barcode"
+              visible={barcodeInput}
+              onOk={() => {
+                this.setState({ barcodeInput: false });
+              }}
+              onCancel={() => {
+                this.setState({ barcodeInput: false });
+              }}
+            >
               <input
-                onBlur={(e) => {
+                onChange={(e) => {
                   let bartcode = e.target.value;
                   const counter1 = bartcode.substring(0, 2); //2shifror
                   const codiceIdf = bartcode.substring(
@@ -230,12 +242,16 @@ class Bolletino extends React.Component {
                     numero_conto_corrente: sulCC,
                     tipologia: tipologia,
                   });
+                  if (e.target.value.length > 35) {
+                    this.setState({ barcodeInput: false });
+                  }
                 }}
                 type="text"
                 id="barcodeInp"
                 placeholder="barcode"
               />
-            </div>
+            </Modal>
+
             <div
               className={`Left ${
                 service_id === "BOL006"

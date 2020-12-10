@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, Modal } from "antd";
 import Condizioni from "./Condizioni";
 import images from "themes/images";
 import { Select } from "antd";
@@ -17,8 +17,11 @@ class Bolletino extends React.Component {
     data: {},
   };
   setbarcodeInp = (e) => {
-    this.setState({ barcodeInput: e });
-    document.getElementById("barcodeInp").focus();
+    this.setState({ barcodeInput: e }, () => {
+      setTimeout(() => {
+        document.getElementById("barcodeInp").focus();
+      }, 500);
+    });
   };
   callback = (data) => {
     this.setState({ data });
@@ -193,18 +196,24 @@ class Bolletino extends React.Component {
               </div>
             </div>
             <div className="row no-gutters _modulePopUP__body">
-              <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
+              <Modal
+                title="Scan Barcode"
+                visible={barcodeInput}
+                onOk={() => {
+                  this.setState({ barcodeInput: false });
+                }}
+                onCancel={() => {
+                  this.setState({ barcodeInput: false });
+                }}
+              >
                 <input
-                  onBlur={(e) => {
-                    // this.BinputHandler(e);
+                  onChange={(e) => {
                     let bartcode = e.target.value;
-
                     const counter1 = bartcode.substring(0, 2); //2shifror
                     const codiceIdf = bartcode.substring(
                       2,
                       2 + parseInt(counter1)
                     );
-
                     const counter2 = bartcode.substring(20, 22); //2shifror
                     const sulCC = bartcode.substring(
                       22,
@@ -216,7 +225,6 @@ class Bolletino extends React.Component {
                       36,
                       36 + parseInt(counter3)
                     );
-
                     const counter4 = bartcode.substring(46, 47); //1shifror
                     const tipologia = bartcode.substring(
                       47,
@@ -230,20 +238,16 @@ class Bolletino extends React.Component {
                       numero_conto_corrente: sulCC,
                       tipologia: tipologia,
                     });
-                    // console.log(
-                    //   "ca ka barcode",
-                    //   bartcode,
-                    //   codiceIdf,
-                    //   sulCC,
-                    //   shuma,
-                    //   tipologia
-                    // );
+                    if (e.target.value.length > 35) {
+                      this.setState({ barcodeInput: false });
+                    }
                   }}
                   type="text"
                   id="barcodeInp"
                   placeholder="barcode"
                 />
-              </div>
+              </Modal>
+
               <div className="col-12 col-lg-9 ">
                 <h2>CONTI CORRENTI POSTALI - Ricevuta di Accredito</h2>
               </div>
