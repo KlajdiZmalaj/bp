@@ -21,7 +21,7 @@ class ModulePopUp1 extends React.Component {
       accountInfo?.profile?.role?.name === "agency" &&
       accountInfo?.profile?.role?.id === 11;
     const isSepaUser =
-      accountInfo?.profile?.username === "sepa_agency" ||
+      accountInfo?.profile?.username === "sepaagency" ||
       accountInfo?.profile?.username === "sepa_user";
     return (
       <div

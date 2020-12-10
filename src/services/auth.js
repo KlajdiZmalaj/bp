@@ -140,8 +140,8 @@ export const fetchPayments = (
       ...(username ? { username } : null),
       ...(from ? { from } : null),
       ...(to ? { to } : null),
-      page_number,
-      limit,
+      ...(page_number ? { page_number } : null),
+      ...(limit ? { limit } : null),
       ...(skin_id ? { skin_id } : { ...skin }),
       ...(excel === "special" ? { excel } : {}),
     })

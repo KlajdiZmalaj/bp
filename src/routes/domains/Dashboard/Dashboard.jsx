@@ -269,7 +269,7 @@ class DashboardDom extends React.Component {
     } = this.state;
     const { accountInfo } = this.props;
     const isSepaUser =
-      accountInfo.profile.username === "sepa_agency" ||
+      accountInfo.profile.username === "sepaagency" ||
       accountInfo.profile.username === "sepa_user";
     const isTestAcc =
       accountInfo.profile.username === "mynewagency" &&
