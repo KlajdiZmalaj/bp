@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import images from "themes/images";
+import { withRouter } from "react-router-dom";
 
 class BestSeller extends Component {
   render() {
@@ -42,6 +43,7 @@ class BestSeller extends Component {
       },
     ];
     const { prodList } = this.props;
+    // Product_id
     return (
       <div className="bestSeller maxWidth paddingBottom">
         <div className="title">Best Sellers</div>
@@ -50,7 +52,15 @@ class BestSeller extends Component {
             prodList.data &&
             Object.keys(prodList.data).map((item, index) => {
               return (
-                <div className="products__item" key={index}>
+                <div
+                  className="products__item"
+                  key={index}
+                  onClick={(id) => {
+                    this.props.history.push(
+                      `/product/${prodList.data[item].Product_id}`
+                    );
+                  }}
+                >
                   <img src={prodList.data[item].Product_Image_1} alt=""></img>
                   <div className="name">{prodList.data[item].Product_Name}</div>
                   <div className="price">
@@ -65,4 +75,4 @@ class BestSeller extends Component {
   }
 }
 
-export default BestSeller;
+export default withRouter(BestSeller);
