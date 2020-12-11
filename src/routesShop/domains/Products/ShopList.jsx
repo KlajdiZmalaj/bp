@@ -24,7 +24,10 @@ class ShopList extends Component {
       <div className="shopList maxWidth">
         <div
           className={"shopList__item" + (isSelected === 999 ? " active" : "")}
-          onClick={() => this.selectBrand(999)}
+          onClick={() => {
+            this.props.getProductsList(null, null);
+            this.selectBrand(999);
+          }}
         >
           Tutti
         </div>
