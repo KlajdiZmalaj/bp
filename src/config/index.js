@@ -130,7 +130,7 @@ export const newAzioniSubmenu = {
     },
     {
       id: 5,
-      name: "Fatture",
+      name: "Rendi Conto",
       link: "fatture",
       displayRole: ["super_admin", "agency"],
     },
