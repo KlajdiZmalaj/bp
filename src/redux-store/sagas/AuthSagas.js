@@ -589,8 +589,8 @@ export function* updateUserDetail(data) {
     yield put(AuthActions.updateUserDetailMsg(""));
   }
 }
-export function* getSkinExtras() {
-  const response = yield call(AuthRequest.fetchSkinExtras);
+export function* getSkinExtras({ activeSkinId }) {
+  const response = yield call(AuthRequest.fetchSkinExtras, activeSkinId);
   if (response?.data) {
     if (response?.status === 200) {
       yield put(AuthActions.setSkinExtras(response?.data.skin));

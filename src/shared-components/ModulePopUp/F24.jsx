@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { Form, Checkbox, notification } from "antd";
+import { Form, Checkbox, notification, Modal } from "antd";
 import Condizioni from "./Condizioni";
 import moment from "moment";
 import images from "themes/images";
@@ -32,8 +32,11 @@ class F24 extends React.Component {
     classNameUfficio: null,
   };
   setbarcodeInp = (e) => {
-    this.setState({ barcodeInput: e });
-    document.getElementById("barcodeInp").focus();
+    this.setState({ barcodeInput: e }, () => {
+      setTimeout(() => {
+        document.getElementById("barcodeInp").focus();
+      }, 500);
+    });
   };
   clearFields = () => {
     this.props.form.resetFields();
@@ -158,9 +161,18 @@ class F24 extends React.Component {
         </div>
         <div className="F24-Form">
           <Form>
-            <div className={"inpPopUp" + (barcodeInput ? " active" : "")}>
+            <Modal
+              title="Scan Barcode"
+              visible={barcodeInput}
+              onOk={() => {
+                this.setState({ barcodeInput: false });
+              }}
+              onCancel={() => {
+                this.setState({ barcodeInput: false });
+              }}
+            >
               <input
-                onBlur={(e) => {
+                onChange={(e) => {
                   let bartcode = e.target.value;
                   const counter1 = bartcode.substring(0, 2); //2shifror
                   const codiceIdf = bartcode.substring(
@@ -177,7 +189,7 @@ class F24 extends React.Component {
                     47,
                     47 + parseInt(counter4)
                   );
-                  setFieldsValue({
+                  this.props.form.setFieldsValue({
                     codice_identificativo: codiceIdf,
                     importo: (parseFloat(shuma.toString()) / 100)
                       .toString()
@@ -185,12 +197,16 @@ class F24 extends React.Component {
                     numero_conto_corrente: sulCC,
                     tipologia: tipologia,
                   });
+                  if (e.target.value.length > 35) {
+                    this.setState({ barcodeInput: false });
+                  }
                 }}
                 type="text"
                 id="barcodeInp"
                 placeholder="barcode"
               />
-            </div>
+            </Modal>
+
             <div className="F24--Top">
               <div className="Left">
                 <F24LeftForm
