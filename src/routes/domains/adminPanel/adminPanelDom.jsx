@@ -192,7 +192,8 @@ class AdminPanelDom extends React.Component {
                     <i className="fal fa-times" aria-hidden="true"></i>
                   </div>
                 </div>
-                {accountInfo?.profile?.role?.name === "main_admin" ? (
+                {accountInfo?.profile?.role?.name === "main_admin" &&
+                activeSkinId === -1 ? (
                   <SkinExtraComp
                     activeSkinId={activeSkinId}
                     userDetail={userDetail}
