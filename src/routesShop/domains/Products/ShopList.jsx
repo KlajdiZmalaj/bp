@@ -25,7 +25,7 @@ class ShopList extends Component {
         <div
           className={"shopList__item" + (isSelected === 999 ? " active" : "")}
           onClick={() => {
-            this.props.getProductsList(null, null);
+            this.props.getProductsList();
             this.selectBrand(999);
           }}
         >
