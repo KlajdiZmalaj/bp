@@ -175,7 +175,8 @@ class AdminPanelDom extends React.Component {
                 }
               >
                 <div className="newReg--header">
-                  {accountInfo?.profile?.role?.name === "main_admin"
+                  {accountInfo?.profile?.role?.name === "main_admin" &&
+                  activeSkinId === -1
                     ? "Skin Detaggli"
                     : userDetail.username}
                   <div
