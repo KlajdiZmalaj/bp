@@ -500,11 +500,12 @@ export const updateUsers = (
     })
     .catch((error) => ({ error }));
 };
-export const fetchSkinExtras = () => {
+export const fetchSkinExtras = (skin_id) => {
   return instanceAxios
     .get(`/skin/extra`, {
       params: {
         ...skin,
+        ...(skin_id ? { skin_id: skin_id } : {}),
       },
     })
     .catch((error) => ({ error }));

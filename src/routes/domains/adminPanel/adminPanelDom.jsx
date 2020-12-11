@@ -13,9 +13,10 @@ import DepositoModal from "shared-components/adminSharedComp/DepositoModal/Depos
 import AdminComp from "../AccountInfo/AdminComp";
 import AgentComp from "../AccountInfo/AgetnComp";
 import UserComp from "../AccountInfo/UserComp";
+import SkinExtraComp from "../AccountInfo/SkinExtraComp";
 import { Select } from "antd";
 import MainActions from "redux-store/models/main";
-import { Time, MainAdminCarousel } from "shared-components";
+// import { Time, MainAdminCarousel } from "shared-components";
 import { message } from "antd";
 import "./adminStyles.css";
 import { numberWithCommas } from "utils/HelperFunc";
@@ -160,6 +161,7 @@ class AdminPanelDom extends React.Component {
       accountInfo,
       activeSkinId,
     } = this.props;
+    console.log("userDetail", userDetail);
     return (
       <React.Fragment>
         <div className="Admin-Panel">
@@ -173,7 +175,9 @@ class AdminPanelDom extends React.Component {
                 }
               >
                 <div className="newReg--header">
-                  {userDetail.username}
+                  {accountInfo?.profile?.role?.name === "main_admin"
+                    ? "Skin Detaggli"
+                    : userDetail.username}
                   <div
                     className="closeBtn"
                     onClick={() => {
@@ -188,7 +192,12 @@ class AdminPanelDom extends React.Component {
                     <i className="fal fa-times" aria-hidden="true"></i>
                   </div>
                 </div>
-                {userDetail?.role === "agent" ? (
+                {accountInfo?.profile?.role?.name === "main_admin" ? (
+                  <SkinExtraComp
+                    activeSkinId={activeSkinId}
+                    userDetail={userDetail}
+                  />
+                ) : userDetail?.role === "agent" ? (
                   <AgentComp
                     changeAgentSkin={this.props.changeAgentSkin}
                     skinList={this.props.skinList}
@@ -220,7 +229,9 @@ class AdminPanelDom extends React.Component {
                   />
                 )}
                 <div className="newReg--row lastRow">
-                  {userDetail.role !== "agent" && userDetail.role !== "user" ? (
+                  {userDetail.role !== "agent" &&
+                  userDetail.role !== "user" &&
+                  accountInfo?.profile?.role?.name !== "main_admin" ? (
                     <React.Fragment>
                       <div className="newReg--row__col">Cambia Agente</div>
                       <div className="newReg--row__col checkCol">

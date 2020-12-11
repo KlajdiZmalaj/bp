@@ -180,7 +180,7 @@ const { Types, Creators } = createActions({
   updateUserDetailMsg: ["updateMsg"],
   setPrivateMsg: ["privMsg"],
   addPrivateMsg: ["privMsg"],
-  getSkinExtras: [""],
+  getSkinExtras: ["activeSkinId"],
   setSkinExtras: ["skinExtras"],
   getErrors: ["limit", "page_number", "DONT_LOAD"],
   setErrorsLoading: ["ErrLoading"],

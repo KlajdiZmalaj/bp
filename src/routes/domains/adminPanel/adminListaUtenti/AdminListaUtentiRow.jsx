@@ -303,14 +303,21 @@ class AdminListaUtentiRow extends React.Component {
             ></i>
             <i
               onClick={(e) => {
-                this.props.getAgents(this.props.activeSkinId);
                 e.preventDefault();
                 e.stopPropagation();
-                itemList && itemList.role === "user"
-                  ? this.props.getUserByUserId(itemList.id, activeSkinId)
-                  : itemList.role === "agent"
-                  ? this.props.getAgentByUserId(itemList.id, activeSkinId)
-                  : this.props.getUserDetail(itemList.id, activeSkinId);
+                this.props.getAgents(this.props.activeSkinId);
+                if (activeSkinId === -1) {
+                  this.props.setUserDetail({
+                    username: "extra",
+                    id: itemList.id,
+                  });
+                } else {
+                  itemList && itemList.role === "user"
+                    ? this.props.getUserByUserId(itemList.id, activeSkinId)
+                    : itemList.role === "agent"
+                    ? this.props.getAgentByUserId(itemList.id, activeSkinId)
+                    : this.props.getUserDetail(itemList.id, activeSkinId);
+                }
               }}
               className={`fal fa-eye${
                 this.state.eyeClicked === true ? "-slash active" : ""
