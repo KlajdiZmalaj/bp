@@ -27,9 +27,20 @@ instanceAxios.interceptors.response.use(
   (error) => handleError(error)
 );
 
-export const fetchProducts = () =>
+export const fetchProducts = (page_number, brand) =>
   instanceAxios
     .get(`/shop/products`, {
+      params: {
+        ...skin,
+        ...(page_number ? { page_number } : {}),
+        ...(brand ? { Product_Manufacturer: brand.toString() } : {}),
+        // page_number: 3,
+      },
+    })
+    .catch((error) => ({ error }));
+export const fetchBrands = () =>
+  instanceAxios
+    .get(`/shop/brands`, {
       params: {
         ...skin,
       },

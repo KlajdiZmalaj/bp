@@ -120,18 +120,25 @@ class SingleProduct extends Component {
                       );
                     })}
                 </div>
-                {/* <div className="buy pb-3">
-                  <span>ttt</span>
-                  <div className="adjustContainer">
-                    <div className="minus" onClick={this.decreasevalue}>
-                      <span>-</span>
+                <div className="buy pb-3 text-uppercase">
+                  <div className="addItem">
+                    <div className="adjustContainer">
+                      <div className="minus" onClick={this.decreasevalue}>
+                        <i className="fal fa-chevron-left"></i>
+                      </div>
+                      <div className="amount">{orderQuanity}</div>
+                      <div className="plus" onClick={this.increasevalue}>
+                        <i className="fal fa-chevron-right"></i>
+                      </div>
                     </div>
-                    <div className="amount">{orderQuanity}</div>
-                    <div className="plus" onClick={this.increasevalue}>
-                      <span>+</span>
+                    <div className="addTobag">
+                      Add to bag <i className="fal fa-shopping-bag"></i>
                     </div>
                   </div>
-                </div> */}
+                  <div className="buyNow">
+                    Buy now <i className="far fa-shopping-cart"></i>
+                  </div>
+                </div>
                 <div className="availibillity">
                   Quantità Disponibili: <span>{product.Product_Quantity}</span>
                 </div>
