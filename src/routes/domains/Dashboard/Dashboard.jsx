@@ -7,7 +7,7 @@ import images from "themes/images";
 import { withRouter } from "react-router-dom";
 import { message } from "antd";
 import CompaniesCheck from "./CompaniesCheck";
-
+import { flatten } from "lodash";
 class DashboardDom extends React.Component {
   state = {
     Companies: [],
@@ -41,7 +41,7 @@ class DashboardDom extends React.Component {
     window.addEventListener("scroll", this.handleScroll);
   }
   async componentDidUpdate(nextProps) {
-    const { services, favorites } = await this.props;
+    const { services, favorites, match } = await this.props;
     if (favorites !== nextProps.favorites) {
       const CategoriesFav = await this.FindArrayOfServicesByValue(
         favorites,
@@ -56,13 +56,11 @@ class DashboardDom extends React.Component {
         CompaniesFav: CompaniesFav,
       });
     }
-    if (
-      services !== nextProps.services ||
-      this.props.match !== nextProps.match
-    ) {
+
+    if (services !== nextProps.services || match.url !== nextProps.match.url) {
       let Categories = await this.FindArrayOfServicesByValue(
         services,
-        this.props.match.params.id
+        match.params.id
       );
 
       let Companies = {};
@@ -211,25 +209,33 @@ class DashboardDom extends React.Component {
     }
     return response;
   };
-  FindArrayOfServicesByValue = (object, value = "ricariche") => {
+  FindArrayOfServicesByValue = (object, value = "ricariche", isSearching) => {
     if (!this.props.accountInfo?.profile?.role) {
       if (value !== "ricariche") {
         this.props.history.push("/dashboard/ricariche");
         message.info("Per favore fai prima il log in.");
       }
     }
-    return (
-      Object.keys(object) &&
-      Array.isArray(Object.keys(object)) &&
-      Object.keys(object)
-        .filter((key) =>
-          this.SplitAndCheckIfIncludes(
-            object[key]?.group?.toLowerCase(),
-            value.toLowerCase()
+    if (isSearching) {
+      return (
+        Object.keys(object) &&
+        Array.isArray(Object.keys(object)) &&
+        Object.keys(object).map((key) => ({ ...object[key], key }))
+      );
+    } else {
+      return (
+        Object.keys(object) &&
+        Array.isArray(Object.keys(object)) &&
+        Object.keys(object)
+          .filter((key) =>
+            this.SplitAndCheckIfIncludes(
+              object[key]?.group?.toLowerCase(),
+              value.toLowerCase()
+            )
           )
-        )
-        .map((key) => ({ ...object[key], key }))
-    );
+          .map((key) => ({ ...object[key], key }))
+      );
+    }
   };
   FindServ = (Categories, Companies) => {
     Object.keys(Categories).forEach((id) => {
@@ -252,6 +258,7 @@ class DashboardDom extends React.Component {
     return Companies;
   };
   ChangeCompanies = (CategoryName, CategoryType) => {
+    // console.log("CategoryName", CategoryName, CategoryType);
     this.setState((state) => ({
       Companies: this.FindServ(state.Categories, state.Companies)[CategoryName],
       categoriesTypeSelected: CategoryType,
@@ -275,6 +282,7 @@ class DashboardDom extends React.Component {
       accountInfo.profile.username === "mynewagency" &&
       accountInfo.profile.role.name === "agency" &&
       accountInfo.profile.role.id === 11;
+    // console.log("Companies", Companies);
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}>
@@ -376,6 +384,22 @@ class DashboardDom extends React.Component {
                   type="text"
                   value={search}
                   placeholder="Search Here"
+                  onFocus={() => {
+                    this.setState({
+                      Companies: flatten(
+                        Object.values(
+                          this.FindServ(
+                            this.FindArrayOfServicesByValue(
+                              this.props.services,
+                              "",
+                              true
+                            ),
+                            {}
+                          )
+                        )
+                      ),
+                    });
+                  }}
                   onChange={(e) => {
                     this.setState({
                       search: e.target.value,
