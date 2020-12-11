@@ -283,7 +283,7 @@ class Root extends React.Component {
               path="/fatture"
               component={DesktopView.Fatura}
               isLoggedin={isLoggedin}
-              allowedRoles={["super_admin"]}
+              allowedRoles={["super_admin", "agency"]}
               role={role}
             />
 
