@@ -1,52 +1,57 @@
 import React, { Component } from "react";
-import images from "themes/images";
 import { withRouter } from "react-router-dom";
+import { Pagination } from "antd";
+import ShopActions from "redux-store/models/shop";
+import { connect } from "react-redux";
 
 class BestSeller extends Component {
   render() {
-    const prod = [
-      {
-        id: 1,
-        name: "Stowell Hood Fleece",
-        price: "200,00",
-        img: images.product2,
-      },
-      {
-        id: 2,
-        name: "Stowell Hood Fleece",
-        price: "200,00",
-        img: images.product,
-      },
-      {
-        id: 3,
-        name: "Stowell Hood Fleece",
-        price: "200,00",
-        img: images.product2,
-      },
-      {
-        id: 4,
-        name: "Stowell Hood Fleece",
-        price: "200,00",
-        img: images.product,
-      },
-      {
-        id: 5,
-        name: "Stowell Hood Fleece",
-        price: "200,00",
-        img: images.product2,
-      },
-      {
-        id: 6,
-        name: "Stowell Hood Fleece",
-        price: "200,00",
-        img: images.product,
-      },
-    ];
+    // const prod = [
+    //   {
+    //     id: 1,
+    //     name: "Stowell Hood Fleece",
+    //     price: "200,00",
+    //     img: images.product2,
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "Stowell Hood Fleece",
+    //     price: "200,00",
+    //     img: images.product,
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "Stowell Hood Fleece",
+    //     price: "200,00",
+    //     img: images.product2,
+    //   },
+    //   {
+    //     id: 4,
+    //     name: "Stowell Hood Fleece",
+    //     price: "200,00",
+    //     img: images.product,
+    //   },
+    //   {
+    //     id: 5,
+    //     name: "Stowell Hood Fleece",
+    //     price: "200,00",
+    //     img: images.product2,
+    //   },
+    //   {
+    //     id: 6,
+    //     name: "Stowell Hood Fleece",
+    //     price: "200,00",
+    //     img: images.product,
+    //   },
+    // ];
     const { prodList } = this.props;
+
+    const total_pages = prodList.total_pages;
+
     // Product_id
     return (
       <div className="bestSeller maxWidth paddingBottom">
-        <div className="title">Best Sellers</div>
+        <div className="title">New arivals</div>
         <div className="products">
           {prodList &&
             prodList.data &&
@@ -70,9 +75,22 @@ class BestSeller extends Component {
               );
             })}
         </div>
+        <div className="paginationWrapper">
+          <Pagination
+            onChange={(e) => {
+              this.setState({ page_number: e });
+              this.props.getProductsList(e);
+            }}
+            total={total_pages ? total_pages * 10 : 10}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default withRouter(BestSeller);
+const mpStP = (state) => ({
+  productsList: state.shop.productsList,
+});
+
+export default withRouter(connect(mpStP, ShopActions)(BestSeller));

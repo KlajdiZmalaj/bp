@@ -10,6 +10,7 @@ import SubHeader from "routesShop/components/SubHeader/index.js";
 class Products extends Component {
   componentDidMount() {
     this.props.getProductsList();
+    this.props.getBrands();
   }
 
   render() {
@@ -17,12 +18,16 @@ class Products extends Component {
       <div className="products">
         <Header></Header>
         <SubHeader></SubHeader>
-        <AllProducts prodList={this.props.productsList}></AllProducts>
+        <AllProducts
+          prodList={this.props.productsList}
+          brands={this.props.brands}
+        ></AllProducts>
       </div>
     );
   }
 }
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
+  brands: state.shop.brands,
 });
 export default connect(mpStP, ShopActions)(Products);

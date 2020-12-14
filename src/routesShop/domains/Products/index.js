@@ -11,7 +11,8 @@ import FlashDeals from "./FlashDeals";
 
 class Products extends Component {
   render() {
-    const { prodList } = this.props;
+    const { prodList, brands } = this.props;
+
     return (
       <div className="shopProd">
         <div className="mainBanner marginBottom">
@@ -32,7 +33,7 @@ class Products extends Component {
           </div>
         </div>
 
-        <ShopList></ShopList>
+        <ShopList brands={brands}></ShopList>
         <BestSeller prodList={prodList}></BestSeller>
         <PromotionTop></PromotionTop>
         <FlashDeals></FlashDeals>

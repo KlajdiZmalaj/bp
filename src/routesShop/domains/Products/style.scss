@@ -71,15 +71,32 @@
   .shopList {
     text-align: center;
     margin: 10px auto;
+    display: flex;
+    overflow: auto;
+    align-items: center;
     &__item {
-      display: inline-block;
       border: 1px solid #ebebeb;
       border-radius: 6px;
       margin: 5px;
       height: 70px;
-      line-height: 70px;
+      line-height: normal;
       justify-content: center;
-      min-width: 150px;
+      min-width: 100px;
+      width: auto;
+      padding: 0 5px;
+      align-items: center;
+      display: flex;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+      &.active {
+        border: 1px solid #f26521;
+        color: #f26521;
+      }
+    }
+    &::-webkit-scrollbar {
+      height: 4px;
     }
   }
   .bestSeller {

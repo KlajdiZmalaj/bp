@@ -102,6 +102,9 @@ export default function* root() {
       takeLatest("SEND_PRENOTAZIONE", MainGenerators.sendPrenotazione),
     ],
     //SHOP
-    ...[takeLatest("GET_PRODUCTS_LIST", ShopGenerators.getProductsList)],
+    ...[
+      takeLatest("GET_PRODUCTS_LIST", ShopGenerators.getProductsList),
+      takeLatest("GET_BRANDS", ShopGenerators.getBrands),
+    ],
   ]);
 }
