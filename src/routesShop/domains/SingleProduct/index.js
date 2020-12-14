@@ -9,8 +9,11 @@ class SingleProduct extends Component {
   state = {
     id: null,
     orderQuanity: 1,
+    bigproduct: null,
   };
-
+  changeBigProduct = (src) => {
+    this.setState({ bigproduct: src });
+  };
   componentDidMount() {
     this.setState({ id: this.props.match.params.id });
   }
@@ -24,7 +27,7 @@ class SingleProduct extends Component {
   };
   render() {
     const { prodList } = this.props;
-    const { id, orderQuanity } = this.state;
+    const { id, orderQuanity, bigproduct } = this.state;
 
     let product = {};
     product = find(prodList && prodList.data, function (o) {
@@ -34,22 +37,58 @@ class SingleProduct extends Component {
     return (
       <div className="prod">
         <div className="single maxWidth">
+          <p className="gobackBtns">
+            <a href="#">Home</a> <i className="far fa-chevron-right"></i>{" "}
+            <a href="#/products"> {product && product.Product_Manufacturer}</a>
+            <i className="far fa-chevron-right"></i>{" "}
+            {product && product.Product_Name}
+          </p>
+
           {product && Object.keys(product).length > 0 && (
             <div className="detailsP">
               <div className="images">
                 <div className="images__other">
-                  <div>
+                  <div
+                    onClick={() => {
+                      this.changeBigProduct(product.Product_Image_1);
+                    }}
+                  >
                     <img src={product.Product_Image_1} alt="" />
                   </div>
-                  <div>
-                    <img src={product.Product_Image_1} alt="" />
+                  <div
+                    onClick={() => {
+                      this.changeBigProduct(product.Product_Image_2);
+                    }}
+                  >
+                    <img src={product.Product_Image_2} alt="" />
                   </div>
                   <div>
-                    <img src={product.Product_Image_1} alt="" />
+                    {product.Product_Image_3 &&
+                    product.Product_Image_3.length > 0 ? (
+                      <img
+                        src={product.Product_Image_3}
+                        alt=""
+                        onClick={() => {
+                          this.changeBigProduct(product.Product_Image_3);
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={product.Product_Image_1}
+                        alt=""
+                        onClick={() => {
+                          this.changeBigProduct(product.Product_Image_1);
+                        }}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="images__big">
-                  <img src={product.Product_Image_1} alt="" />
+                  {!bigproduct ? (
+                    <img src={product.Product_Image_1} alt="" />
+                  ) : (
+                    <img src={bigproduct} alt="" />
+                  )}
                 </div>
               </div>
               <div className="description">
