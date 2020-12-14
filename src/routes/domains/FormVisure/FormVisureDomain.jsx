@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
 import AziendaOImpresaForm from "./AziendaOImpresaForm";
 import PersonaFisicaForm from "./PersonaFisicaForm";
-import { servicesVisure } from "config";
+import servicesVisure from "config/visure.json";
 
 const Item = ({
   service,

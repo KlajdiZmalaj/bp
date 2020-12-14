@@ -64,9 +64,11 @@ class Snow extends Component {
   render() {
     const date = new Date().getMonth();
     return (
-      <div className="snowContainer">
-        {date === 11 || date === 0 || date === 1 ? <Snowf max={30} /> : null}
-      </div>
+      (date === 11 || date === 0 || date === 1) && (
+        <div className="snowContainer">
+          <Snowf max={30} />
+        </div>
+      )
     );
   }
 }

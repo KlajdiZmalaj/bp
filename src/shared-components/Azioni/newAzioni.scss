@@ -136,3 +136,74 @@
     }
   }
 }
+
+.MenuC {
+  i {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+    }
+  }
+  i.fal.fa-list-alt:after {
+    background: url(../../assets/xmas/ice4.png);
+    width: 101%;
+    height: 20px;
+    top: -10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 0;
+  }
+  i.fal.fa-user-headset:after {
+    background: url(../../assets/xmas/ice1.png);
+    width: 75%;
+    height: 20px;
+    top: -4px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 2px;
+  }
+  i.fal.fa-store:after {
+    background: url(../../assets/xmas/ice3.png);
+    width: 103%;
+    height: 26px;
+    top: -8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 1px;
+  }
+  i.fal.fa-wallet:after {
+    background: url(../../assets/xmas/ice2.png);
+    width: 100%;
+    height: 21px;
+    top: -6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 0px;
+  }
+  i.fal.fa-analytics:after {
+    background: url(../../assets/xmas/ice6.png);
+    width: 100%;
+    height: 21px;
+    top: -10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: -9px;
+  }
+  i.fal.fa-download:after {
+    background: url(../../assets/xmas/ice5.png);
+    width: 100%;
+    height: 21px;
+    top: -14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: -1px;
+    transform: rotate(180deg);
+  }
+}
