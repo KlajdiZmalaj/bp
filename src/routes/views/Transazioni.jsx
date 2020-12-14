@@ -22,6 +22,8 @@ import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
 import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 import { Document, Page, pdfjs } from "react-pdf";
+import { b64toBlob } from "utils";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const { Option } = Select;
@@ -111,31 +113,6 @@ class Transazioni extends React.Component {
   };
   printPdfReceipt = (data, type) => {
     if (data.receipt_type === "base64") {
-      const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
-        const byteCharacters = atob(b64Data);
-        const byteArrays = [];
-
-        for (
-          let offset = 0;
-          offset < byteCharacters.length;
-          offset += sliceSize
-        ) {
-          const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-          const byteNumbers = new Array(slice.length);
-          for (let i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-          }
-
-          const byteArray = new Uint8Array(byteNumbers);
-          byteArrays.push(byteArray);
-        }
-
-        const blob = new Blob(byteArrays, {
-          type: contentType,
-        });
-        return blob;
-      };
       var myBlob = b64toBlob(data.receipt, "application/pdf");
       var blobUrl = URL.createObjectURL(myBlob);
       if (type === "print") {

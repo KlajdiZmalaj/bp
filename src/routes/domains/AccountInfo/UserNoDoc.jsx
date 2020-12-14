@@ -34,9 +34,8 @@ class UserDoc extends Component {
     this.props.getUsers(null, null, 25, this.props.page_number);
   };
   render() {
-    const { user } = this.props;
+    const { user, photoLoading } = this.props;
     const { isPopUpOpen, imageUrl, imageUrl2 } = this.state;
-    // console.log("ca jan img", imageUrl, imageUrl2);
     // const uploadButton = (
     //   <div>
     //     <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -159,4 +158,11 @@ class UserDoc extends Component {
   }
 }
 
-export default connect(null, { ...MainActions })(UserDoc);
+export default connect(
+  ({ main: photoLoading }) => {
+    return {
+      photoLoading,
+    };
+  },
+  { ...MainActions }
+)(UserDoc);

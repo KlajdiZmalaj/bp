@@ -22,6 +22,7 @@ const { Types, Creators } = createActions({
   setActiveSkinId: ["activeSkinId"],
   setLoaderForAdminUtenti: ["LoaderAU"],
   getUserPhotos: ["id"],
+  setPhotoLoading: ["photoLoading"],
   setUserPhotos: ["userPhotos"],
   getSearchedUsers: ["search_user"],
   sendPrenotazione: ["objectData", "resetState"],
@@ -32,6 +33,7 @@ export const MainTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  photoLoading: false,
   userPhotos: {},
   favorites: [],
   services: {},
@@ -49,6 +51,12 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  SET_PHOTO_LOADING: (state, payload) => {
+    return {
+      ...state,
+      photoLoading: payload.photoLoading,
+    };
+  },
   SET_USER_PHOTOS: (state, { userPhotos }) => ({
     ...state,
     userPhotos,

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 import { deleteImages } from "services/main.js";
+import { Loader } from "shared-components";
+
 class UserDoc extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,8 @@ class UserDoc extends Component {
   };
 
   render() {
-    const { user, userPhotos } = this.props;
+    const { user, userPhotos, photoLoading } = this.props;
+    console.log("photoLoading", photoLoading);
     const { isPopUpOpen } = this.state;
     return (
       <React.Fragment>
@@ -51,32 +54,47 @@ class UserDoc extends Component {
               }}
             ></i>
             <div className="title">Images</div>
-            {user.document_front && (
-              <img
-                src={userPhotos.front}
-                onClick={() => {
-                  window.open(
-                    "https://services-api.bpoint.store/storage/users/" +
-                      user.document_front,
-                    "_blank"
-                  );
-                }}
-                alt={user.document_front}
-              />
+            {photoLoading ? (
+              <Loader />
+            ) : (
+              <>
+                {user.document_front && (
+                  <img
+                    src={userPhotos.front}
+                    onClick={() => {
+                      fetch(userPhotos.front)
+                        .then((res) => {
+                          console.log("ca ka blob", res);
+                          return res.blob();
+                        })
+                        .then((blob) => {
+                          // console.log("ca ka blob", blob);
+                          window.open(URL.createObjectURL(blob), "_blank");
+                        });
+                    }}
+                    alt={user.document_front}
+                  />
+                )}
+                {user.document_back && (
+                  <img
+                    onClick={() => {
+                      fetch(userPhotos.back)
+                        .then((res) => {
+                          console.log("ca ka blob", res);
+                          return res.blob();
+                        })
+                        .then((blob) => {
+                          // console.log("ca ka blob", blob);
+                          window.open(URL.createObjectURL(blob), "_blank");
+                        });
+                    }}
+                    src={userPhotos.back}
+                    alt={user.document_back}
+                  />
+                )}
+              </>
             )}
-            {user.document_back && (
-              <img
-                onClick={() => {
-                  window.open(
-                    "https://services-api.bpoint.store/storage/users/" +
-                      user.document_back,
-                    "_blank"
-                  );
-                }}
-                src={userPhotos.back}
-                alt={user.document_back}
-              />
-            )}
+
             <div
               className="deleteDiv"
               onClick={() => {
@@ -104,5 +122,6 @@ class UserDoc extends Component {
 }
 const m = (state) => ({
   userPhotos: state.main.userPhotos,
+  photoLoading: state.main.photoLoading,
 });
 export default connect(m, { ...MainActions })(UserDoc);

@@ -8,40 +8,50 @@
     <meta id="tabTheme" name="theme-color" content="#f36520" />
 
     <script>
+      var _window$localStorage$;
+
       window.log1 = "color: lime;font-size: 20px;background: #222";
       window.log2 = "color: red;font-size: 20px;background: #222";
       window.log3 = "color: lightblue;font-size: 20px;background: #222";
-      if (localStorage.getItem("accountDataB")?.includes("object")) {
-        localStorage.setItem("accountDataB", null);
+
+      if (
+        (_window$localStorage$ = window.localStorage.getItem(
+          "accountDataB"
+        )) !== null &&
+        _window$localStorage$ !== void 0 &&
+        _window$localStorage$.includes("object")
+      ) {
+        window.localStorage.setItem("accountDataB", null);
       }
+
       var LOCATION_URL = window.location.href;
       var SITE_STYLES = document.getElementById("lnk");
       var root = document.getElementsByTagName("html")[0];
-
       root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
       if (
-        LOCATION_URL.includes("oint.st") ||
-        LOCATION_URL.includes("local") ||
-        LOCATION_URL.includes("192.168")
+        window.LOCATION_URL.includes("oint.st") ||
+        window.LOCATION_URL.includes("local") ||
+        window.LOCATION_URL.includes("192.168")
       ) {
         SITE_STYLES.setAttribute("href", `var1.css`);
-      } else if (LOCATION_URL.includes("es.gf")) {
+      } else if (window.LOCATION_URL.includes("es.gf")) {
         document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
         SITE_STYLES.setAttribute("href", "./var5.css");
-      } else if (LOCATION_URL.includes("planet")) {
+      } else if (window.LOCATION_URL.includes("planet")) {
         document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
         SITE_STYLES.setAttribute("href", "./var4.css");
       } else if (
-        LOCATION_URL.includes("mperia") ||
-        LOCATION_URL.includes("irpa")
+        window.LOCATION_URL.includes("mperia") ||
+        window.LOCATION_URL.includes("irpa")
       ) {
         document.querySelector("#tabTheme").setAttribute("content", "#222");
         SITE_STYLES.setAttribute("href", "./var6.css");
-      } else if (LOCATION_URL.includes("derby")) {
+      } else if (window.LOCATION_URL.includes("derby")) {
         document.querySelector("#tabTheme").setAttribute("content", "#0da90f");
         SITE_STYLES.setAttribute("href", "./var3.css");
       }
+
       if (window.location.host.split(".")[1]) {
         document.title =
           window.location.host.split(".")[1].toUpperCase() +

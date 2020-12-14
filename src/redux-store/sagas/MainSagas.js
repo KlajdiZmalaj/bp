@@ -124,8 +124,10 @@ export function* getOverviewDashboard(data) {
 }
 
 export function* getUserPhotos({ id }) {
+  yield put(MainActions.setPhotoLoading(true));
   const response = yield call(MainRequest.fetchphotos, id);
   if (response.data) {
     yield put(MainActions.setUserPhotos(response.data));
+    yield put(MainActions.setPhotoLoading(false));
   }
 }
