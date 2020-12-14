@@ -7,9 +7,7 @@ import PublicRoute from "./PublicRoute";
 import { get } from "lodash";
 import * as DesktopView from "routes";
 import * as MobileViews from "routesMobile";
-
 import * as ShopView from "routesShop";
-
 import AdminTopHeader from "shared-components/adminSharedComp/AdminTopHeader";
 import {
   subscribeSocketUser,
@@ -21,6 +19,7 @@ import {
 import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
+import { Snow } from "shared-components";
 
 moment.updateLocale("it", {
   week: {
@@ -88,6 +87,7 @@ class Root extends React.Component {
     // console.log("test", process.env, process.env.TEST_T);
     return (
       <React.Fragment>
+        <Snow />
         {(role === "support" || role === "main_admin") && <AdminTopHeader />}
         <HashRouter>
           <Switch>
@@ -243,7 +243,7 @@ class Root extends React.Component {
               allowedRoles={["support", "main_admin"]}
               role={role}
             />
-            <Route
+            <PrivateRoute
               path="/forms/:id?/"
               component={
                 isMobile ? MobileViews.PrenotazioneMobile : DesktopView.Forms

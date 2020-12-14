@@ -1,0 +1,109 @@
+.snowContainer {
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: calc(100vh + 50px);
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+@keyframes snowamin {
+  0% {
+    transform: rotate(0) translateY(0);
+  }
+  50% {
+    transform: rotate(0) translateX(-109px) translateY(50vh);
+  }
+  100% {
+    transform: rotate(0) translateX(-109px) translateY(95vh);
+  }
+}
+
+.snowamin {
+  animation: snowamin 4s infinite 0s linear;
+  color: #fff;
+}
+
+@keyframes snowamin2 {
+  0% {
+    transform: rotate(0) translateY(0);
+  }
+  50% {
+    transform: rotate(0) translateX(109px) translateY(50vh);
+  }
+  100% {
+    transform: rotate(0) translateX(-309px) translateY(95vh);
+  }
+}
+
+.snowamin2 {
+  animation: snowamin2 7s infinite 0s linear;
+  color: #fff;
+}
+
+@keyframes snowamin3 {
+  0% {
+    transform: rotate(0) translateY(0);
+  }
+  50% {
+    transform: rotate(0) translateX(9px) translateY(50vh);
+  }
+  100% {
+    transform: rotate(0) translateX(-9px) translateY(95vh);
+  }
+}
+
+.snowamin3 {
+  animation: snowamin3 10s infinite 0s linear;
+  color: #fff;
+}
+
+@keyframes snowamin4 {
+  0% {
+    transform: rotate(0) translateY(0);
+  }
+  50% {
+    transform: rotate(0) translateX(29px) translateY(50vh);
+  }
+  100% {
+    transform: rotate(0) translateX(-69px) translateY(95vh);
+  }
+}
+.snowamin4 {
+  animation: snowamin4 9s infinite 0s linear;
+  color: #fff;
+}
+
+@keyframes snowamin5 {
+  0% {
+    transform: rotate(0) translateY(0);
+  }
+  50% {
+    transform: rotate(0) translateX(129px) translateY(50vh);
+  }
+  100% {
+    transform: rotate(0) translateX(229px) translateY(95vh);
+  }
+}
+
+.snowamin5 {
+  animation: snowamin5 5s infinite 0s linear;
+  color: #fff;
+}
+
+/* .snowPattern:before {
+    content: " ";
+    padding: 20px 0;
+    background-image: url(https://gradm-api.pcluster.info/api/skin/63/image/f197725972f6c9d3e4fc428f1f969956.png);
+    background-size: 140%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+  } */

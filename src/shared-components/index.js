@@ -14,3 +14,4 @@ export { default as NewBarcodeScanner } from "./NewBarcodeScanner";
 export { default as Font } from "./Font";
 export { default as GenerateCF } from "./GenerateCF/index.jsx";
 export { default as MainAdminCarousel } from "./MainAdminCarousel";
+export { default as Snow } from "./Snow";
