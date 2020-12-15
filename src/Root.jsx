@@ -16,6 +16,7 @@ import {
   subscribeSocketSupport,
   unSubscribeSocketSupport,
 } from "config/socket";
+import { isWinter } from "config";
 import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
@@ -29,6 +30,7 @@ moment.updateLocale("it", {
 class Root extends React.Component {
   state = { top: false };
   componentDidMount() {
+    if (isWinter) document.body.classList.add("winterMode");
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
     });
