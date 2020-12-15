@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 const SkinExtraComp = ({ getSkinExtras, userDetail, skinExtras = {} }) => {
   React.useEffect(() => {
     getSkinExtras(userDetail?.id);
-  }, []);
+  }, [getSkinExtras]);
   return (
     <div className="newReg--row usercomp">
       <div className="newReg--row__col">

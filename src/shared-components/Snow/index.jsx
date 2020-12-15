@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./snow.css";
+import { isWinter } from "config";
 const Snowf = (props) => {
   //   console.log(props);
   const max = props.max;
@@ -62,9 +63,8 @@ class Snow extends Component {
     return false;
   }
   render() {
-    const date = new Date().getMonth();
     return (
-      (date === 11 || date === 0 || date === 1) && (
+      isWinter && (
         <div className="snowContainer">
           <Snowf max={30} />
         </div>

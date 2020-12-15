@@ -1,3 +1,4 @@
+import { isWinter } from "config";
 let skin = "";
 //
 if (
@@ -17,6 +18,7 @@ if (
 } else if (window.location.href.includes("imperialpay")) {
   skin = 7;
 }
+console.log("req", require(`../assets/images/boloAuto-form.svg`));
 export default {
   //pagamanti logo
   BOLO_AUTO: require(`../assets/images/boloAuto-form.svg`),
@@ -50,7 +52,9 @@ export default {
   //*//
   servizi_banner: require(`../assets/images/servizi_banner.png`),
   loader: require(`../assets/images/loader.gif`),
-  logo: require(`../assets/images${skin}/logo.svg`),
+  logo: require(`../assets/images${skin}/${
+    isWinter ? "logoWinter" : "logo"
+  }.svg`),
   logoFooter: require(`../assets/images${skin}/logoFooter.svg`),
   leftLogin: require(`../assets/images${skin}/login.png`),
   customFav: require(`../assets/images${skin}/favicon-32x32.svg`),

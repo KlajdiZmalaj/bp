@@ -115,7 +115,7 @@ class F24 extends React.Component {
       accountInfo,
       setServiceId,
     } = this.props;
-    const { getFieldDecorator, getFieldValue, setFieldsValue } = form;
+    const { getFieldDecorator, getFieldValue } = form;
 
     const {
       barcodeInput,

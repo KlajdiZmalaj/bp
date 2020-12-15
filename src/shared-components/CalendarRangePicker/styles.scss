@@ -50,10 +50,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    & .rdrInputRange:nth-child(1) {
+    & .rdrInputRange:nth-child(2) {
       display: none;
     }
-    & .rdrInputRange:nth-child(2) {
+    & .rdrInputRange:nth-child(1) {
       padding: 0;
       width: 100%;
       display: flex;

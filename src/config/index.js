@@ -420,3 +420,6 @@ export const autoConfig = {
     colors: ["red", "green", "blue"],
   },
 };
+
+const date = new Date().getMonth();
+export const isWinter = date === 11 || date === 0 || date === 1;

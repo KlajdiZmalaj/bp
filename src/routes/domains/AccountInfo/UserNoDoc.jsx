@@ -34,7 +34,7 @@ class UserDoc extends Component {
     this.props.getUsers(null, null, 25, this.props.page_number);
   };
   render() {
-    const { user, photoLoading } = this.props;
+    const { user } = this.props;
     const { isPopUpOpen, imageUrl, imageUrl2 } = this.state;
     // const uploadButton = (
     //   <div>
@@ -158,11 +158,4 @@ class UserDoc extends Component {
   }
 }
 
-export default connect(
-  ({ main: photoLoading }) => {
-    return {
-      photoLoading,
-    };
-  },
-  { ...MainActions }
-)(UserDoc);
+export default connect(null, { ...MainActions })(UserDoc);
