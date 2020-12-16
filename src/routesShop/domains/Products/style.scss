@@ -113,11 +113,17 @@
       column-gap: 5px;
       width: 100%;
       &__item {
-        img {
-          width: 100%;
+        .pBorder {
           border: 1px solid #ebebeb;
+          width: 100%;
           border-radius: 6px;
+          img {
+            height: auto;
+            max-height: 184px;
+            width: auto;
+          }
         }
+
         .name {
           font-size: 14px;
           padding-top: 10px;

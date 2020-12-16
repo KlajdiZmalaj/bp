@@ -38,7 +38,7 @@ class Products extends Component {
         <PromotionTop></PromotionTop>
         <FlashDeals></FlashDeals>
         <PromotionBottom></PromotionBottom>
-        <BestSeller prodList={prodList}></BestSeller>
+        <FlashDeals></FlashDeals>
       </div>
     );
   }

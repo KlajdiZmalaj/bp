@@ -72,7 +72,10 @@ class FlashDeals extends Component {
           {prod.map((item, index) => {
             return (
               <div className="products__item" key={index}>
-                <img src={item.img} alt=""></img>
+                <div className="pBorder">
+                  <img src={item.img} alt=""></img>
+                </div>
+
                 <div className="name">{item.name}</div>
                 <div className="price"> €{item.price}</div>
               </div>

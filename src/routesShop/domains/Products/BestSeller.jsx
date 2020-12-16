@@ -6,49 +6,10 @@ import { connect } from "react-redux";
 
 class BestSeller extends Component {
   render() {
-    // const prod = [
-    //   {
-    //     id: 1,
-    //     name: "Stowell Hood Fleece",
-    //     price: "200,00",
-    //     img: images.product2,
-    //   },
-    //   {
-    //     id: 2,
-    //     name: "Stowell Hood Fleece",
-    //     price: "200,00",
-    //     img: images.product,
-    //   },
-    //   {
-    //     id: 3,
-    //     name: "Stowell Hood Fleece",
-    //     price: "200,00",
-    //     img: images.product2,
-    //   },
-    //   {
-    //     id: 4,
-    //     name: "Stowell Hood Fleece",
-    //     price: "200,00",
-    //     img: images.product,
-    //   },
-    //   {
-    //     id: 5,
-    //     name: "Stowell Hood Fleece",
-    //     price: "200,00",
-    //     img: images.product2,
-    //   },
-    //   {
-    //     id: 6,
-    //     name: "Stowell Hood Fleece",
-    //     price: "200,00",
-    //     img: images.product,
-    //   },
-    // ];
-    const { prodList } = this.props;
+    const { prodList, isSelected } = this.props;
 
     const total_pages = prodList.total_pages;
 
-    // Product_id
     return (
       <div className="bestSeller maxWidth paddingBottom">
         <div className="title">New arivals</div>
@@ -60,13 +21,15 @@ class BestSeller extends Component {
                 <div
                   className="products__item"
                   key={index}
-                  onClick={(id) => {
+                  onClick={() => {
                     this.props.history.push(
                       `/product/${prodList.data[item].Product_id}`
                     );
                   }}
                 >
-                  <img src={prodList.data[item].Product_Image_1} alt=""></img>
+                  <div className="pBorder">
+                    <img src={prodList.data[item].Product_Image_1} alt=""></img>
+                  </div>
                   <div className="name">{prodList.data[item].Product_Name}</div>
                   <div className="price">
                     €{prodList.data[item].Product_Price}
@@ -79,7 +42,7 @@ class BestSeller extends Component {
           <Pagination
             onChange={(e) => {
               this.setState({ page_number: e });
-              this.props.getProductsList(e);
+              this.props.getProductsList(e, isSelected);
             }}
             total={total_pages ? total_pages * 10 : 10}
           />
@@ -91,6 +54,7 @@ class BestSeller extends Component {
 
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
+  isSelected: state.shop.isSelectedManufacturer,
 });
 
 export default withRouter(connect(mpStP, ShopActions)(BestSeller));
