@@ -31,6 +31,13 @@ const Item = ({ name, activeService, setService, priorityName }) => (
 const Prenotazione = ({ match: { params } }) => {
   const { id } = params;
   const [activeService, setService] = useState(id || "expedia");
+
+  React.useEffect(() => {
+    document.querySelector(".wrapperServices").scrollLeft =
+      document.querySelector(".prenotation--services__item.active").offsetLeft -
+      //padding right 18
+      18;
+  }, [id, activeService]);
   return (
     <div className="mobileWrapper prenotation">
       <div className="prenotation--services">

@@ -11,20 +11,10 @@ const PrivateRoute = ({
   allowedRoles,
   path,
   profile,
-  ...rest
 }) => {
-  // console.log(
-  //   "includes(allowedRoles, role)",
-  //   isLoggedin,
-  //   includes(allowedRoles, role),
-  //   allowedRoles,
-  //   role
-  // );
-  //profile.username === "support_prenotazioni"
   return (
     <Route
       path={`${path}`}
-      {...rest}
       render={(props) =>
         isLoggedin && includes(allowedRoles, role) ? (
           profile?.username === "support_prenotazioni" ? (

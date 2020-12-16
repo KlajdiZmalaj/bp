@@ -197,7 +197,7 @@ const Servizi = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [panelOpen, setPanelOpen] = useState(null);
-  console.log("services", services);
+  // console.log("services", services);
   return (
     <div className="mobileServices">
       {serviceSearched.length > 0 ? (
