@@ -3,6 +3,20 @@ import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
 import { capitalize } from "lodash";
 import images from "themes/images";
+const PrenotazioniItem = ({ src, link, name }) => {
+  return (
+    <div className="mobileServices--body__item">
+      <img
+        src={src}
+        alt=""
+        onClick={() => {
+          window.location.hash = `/forms/${link}`;
+        }}
+      />
+      <span>{name}</span>
+    </div>
+  );
+};
 const OneTab = ({
   serviceCategory,
   services,
@@ -211,79 +225,52 @@ const Servizi = ({
             <i className="fal fa-chevron-down" aria-hidden="true"></i>
           </div>
           <div className="mobileServices--body animated fadeIn">
-            <div className="mobileServices--body__item">
-              <img
-                src={images["expedia-mobile"]}
-                alt=""
-                onClick={() => {
-                  window.location.hash = "/forms/expedia";
-                }}
-              />
-              <span>Expedia</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/flixbus";
-              }}
-            >
-              <img src={images["flixbus-mobile"]} alt="" />
-              <span>Flixbus</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/trenitalia";
-              }}
-            >
-              <img src={images["trenitalia-mobile"]} alt="" />
-              <span>Trenitalia</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/vivaticket";
-              }}
-            >
-              <img src={images["vivaticket-mobile"]} alt="" />
-              <span>vivaticket</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/ticketone";
-              }}
-            >
-              <img src={images["ticketone-mobile"]} alt="" />
-              <span>ticketone</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/stubhub";
-              }}
-            >
-              <img src={images["stubhub-mobile"]} alt="" />
-              <span>stubhub</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/shop-online";
-              }}
-            >
-              <img src={images["shop-online-mobile"]} alt="" />
-              <span>Online Shop</span>
-            </div>
-            <div
-              className="mobileServices--body__item"
-              onClick={() => {
-                window.location.hash = "/forms/bgame";
-              }}
-            >
-              <img src={images["bgame-mobile"]} alt="" />
-              <span>Registrazione</span>
-            </div>
+            <PrenotazioniItem
+              src={images["expedia-mobile"]}
+              name="Expedia"
+              link="expedia"
+            />
+            <PrenotazioniItem
+              src={images["flixbus-mobile"]}
+              name="Flixbus"
+              link="flixbus"
+            />
+            <PrenotazioniItem
+              src={images["trenitalia-mobile"]}
+              name="Trenitalia"
+              link="trenitalia"
+            />
+            <PrenotazioniItem
+              src={images["vivaticket-mobile"]}
+              name="Vivaticket"
+              link="vivaticket"
+            />
+            <PrenotazioniItem
+              src={images["ticketone-mobile"]}
+              name="Ticketone"
+              link="ticketone"
+            />
+            <PrenotazioniItem
+              src={images["stubhub-mobile"]}
+              name="Stubhub"
+              link="stubhub"
+            />
+            <PrenotazioniItem
+              src={images["shop-online-mobile"]}
+              name="Online Shop"
+              link="shop-online"
+            />
+
+            <PrenotazioniItem
+              src={images["bgame-mobile"]}
+              name="Registrazione"
+              link="bgame"
+            />
+            {/* <PrenotazioniItem
+              src={images["energia-mobile"]}
+              name="Luce - Gas"
+              link="energia"
+            /> */}
           </div>
         </div>
       )}

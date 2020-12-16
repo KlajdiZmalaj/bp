@@ -1,4 +1,5 @@
-import { isWinter } from "config";
+const date = new Date().getMonth();
+const isWinter = date === 11 || date === 0 || date === 1;
 let skin = "";
 //
 if (
@@ -180,6 +181,8 @@ export default {
   "assicurazioni-logo": require(`../assets/images/prenotazioni/assicurazioni-logo.svg`),
   "assicurazioni-card": require(`../assets/images/prenotazioni/assicurazioni-card.jpg`),
   "energia-logo": require(`../assets/images/prenotazioni/energia-logo.svg`),
+  "energia-mobile": require(`../assets/images/prenotazioni/energia-logo.svg`),
+
   "energia-card": require(`../assets/images/prenotazioni/energia-card.png`),
 
   "expedia-logo": require(`../assets/images/prenotazioni/expedia.svg`),
