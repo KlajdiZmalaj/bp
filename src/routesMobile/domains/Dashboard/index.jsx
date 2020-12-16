@@ -41,6 +41,7 @@ const Dashboard = ({
   const [activeCategory, setCategory] = useState(null);
   const [activeService, setService] = useState(null);
 
+  console.log("actives", activeCategory, activeService);
   return (
     <div className="mobileWrapper">
       <UserInfoBar />
