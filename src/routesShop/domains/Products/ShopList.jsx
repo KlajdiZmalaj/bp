@@ -2,31 +2,16 @@ import React, { Component } from "react";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 class ShopList extends Component {
-  state = {
-    isSelected: 999,
-  };
-  selectBrand = (id) => {
-    this.setState({ isSelected: id });
-  };
   render() {
-    // const shop = [
-    //   images.adidas,
-    //   images.zara,
-    //   images.nike,
-    //   images.lacoste,
-    //   images.calvinClein,
-    //   images.philipPlein,
-    // ];
-    const { isSelected } = this.state;
-    const { brands } = this.props;
+    const { brands, isSelected } = this.props;
 
     return (
       <div className="shopList maxWidth">
         <div
-          className={"shopList__item" + (isSelected === 999 ? " active" : "")}
+          className={"shopList__item" + (isSelected === null ? " active" : "")}
           onClick={() => {
             this.props.getProductsList();
-            this.selectBrand(999);
+            this.props.setManufacturer(null);
           }}
         >
           Tutti
@@ -37,11 +22,12 @@ class ShopList extends Component {
               <div
                 key={index}
                 className={
-                  "shopList__item" + (isSelected === index ? " active" : "")
+                  "shopList__item" +
+                  (isSelected === brands[item] ? " active" : "")
                 }
                 onClick={() => {
                   this.props.getProductsList(null, brands[item]);
-                  this.selectBrand(index);
+                  this.props.setManufacturer(brands[item]);
                 }}
               >
                 {brands[item]}
@@ -62,6 +48,7 @@ class ShopList extends Component {
 
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
+  isSelected: state.shop.isSelectedManufacturer,
 });
 
 export default connect(mpStP, ShopActions)(ShopList);
