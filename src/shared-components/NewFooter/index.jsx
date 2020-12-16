@@ -62,7 +62,7 @@ class Footer extends Component {
         <div className="bottom">
           <div className="maxWFooter">
             {" "}
-            <p>© Design by Altechsolutions - 2020</p>
+            <p>© Design by Altechsolutions - {new Date().getFullYear()}</p>
             <img src={images.footerBottom} alt="" />
             <div className="socials">
               <i className="fab fa-instagram"></i>

@@ -132,7 +132,7 @@ export const newAzioniSubmenu = {
       id: 5,
       name: "Rendi Conto",
       link: "fatture",
-      displayRole: ["super_admin", "agency"],
+      displayRole: ["super_admin", "agency", "agent"],
     },
   ],
 };

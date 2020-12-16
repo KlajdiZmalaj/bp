@@ -12,6 +12,7 @@ const PrenotazioniItem = ({ src, link, name }) => {
         onClick={() => {
           window.location.hash = `/forms/${link}`;
         }}
+        alt={link}
       />
       <span>{name}</span>
     </div>
@@ -196,108 +197,140 @@ const Servizi = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [panelOpen, setPanelOpen] = useState(null);
+  console.log("services", services);
   return (
     <div className="mobileServices">
-      {Object.keys(services).map((serviceCategory) => {
-        return (
-          services[serviceCategory].name
-            .toLowerCase()
-            .includes(serviceSearched.toLowerCase()) &&
-          (tab === "0" || tab.includes(serviceCategory)) && (
-            <OneTab
-              setService={setService}
-              panelOpen={panelOpen}
-              setPanelOpen={setPanelOpen}
-              key={serviceCategory}
-              serviceCategory={serviceCategory}
-              services={services}
-              setCategory={setCategory}
-              accountInfo={accountInfo}
-            />
-          )
-        );
-      })}
-
-      {tab === "4" && (
-        <div className="mobileServices--panel">
-          <div id="PRNOT" className="mobileServices--header active">
-            <span>Prenotazioni</span>{" "}
-            <i className="fal fa-chevron-down" aria-hidden="true"></i>
-          </div>
-          <div className="mobileServices--body animated fadeIn">
-            <PrenotazioniItem
-              src={images["expedia-mobile"]}
-              name="Expedia"
-              link="expedia"
-            />
-            <PrenotazioniItem
-              src={images["flixbus-mobile"]}
-              name="Flixbus"
-              link="flixbus"
-            />
-            <PrenotazioniItem
-              src={images["trenitalia-mobile"]}
-              name="Trenitalia"
-              link="trenitalia"
-            />
-            <PrenotazioniItem
-              src={images["vivaticket-mobile"]}
-              name="Vivaticket"
-              link="vivaticket"
-            />
-            <PrenotazioniItem
-              src={images["ticketone-mobile"]}
-              name="Ticketone"
-              link="ticketone"
-            />
-            <PrenotazioniItem
-              src={images["stubhub-mobile"]}
-              name="Stubhub"
-              link="stubhub"
-            />
-            <PrenotazioniItem
-              src={images["shop-online-mobile"]}
-              name="Online Shop"
-              link="shop-online"
-            />
-
-            <PrenotazioniItem
-              src={images["bgame-mobile"]}
-              name="Registrazione"
-              link="bgame"
-            />
-            {/* <PrenotazioniItem
-              src={images["energia-mobile"]}
-              name="Luce - Gas"
-              link="energia"
-            /> */}
-          </div>
+      {serviceSearched.length > 0 ? (
+        <div className="searchContainer">
+          {/*search servizi*/}
+          {Object.keys(services).map((types) => {
+            if (types !== "name" && types !== "group") {
+              return Object.keys(services[types]).map((companies) => {
+                return (services?.[types]?.[companies]?.services || []).map(
+                  (service) => {
+                    return (
+                      service.name
+                        .toLowerCase()
+                        .includes(serviceSearched.toLowerCase()) && (
+                        <div className="mobileServices--body__item">
+                          <img
+                            src={images[service.id] || images[companies]}
+                            alt=""
+                          />
+                          <span>{service.name}</span>
+                        </div>
+                      )
+                    );
+                  }
+                );
+              });
+            }
+          })}
         </div>
-      )}
-
-      {favorites && (
-        <div className="mobileServices--favorites">
-          {Object.keys(favorites).map((serviceCategory) => {
+      ) : (
+        <>
+          {Object.keys(services).map((serviceCategory) => {
             return (
-              favorites[serviceCategory].name
+              services[serviceCategory].name
                 .toLowerCase()
                 .includes(serviceSearched.toLowerCase()) &&
-              tab === "fav" && (
+              (tab === "0" || tab.includes(serviceCategory)) && (
                 <OneTab
                   setService={setService}
                   panelOpen={panelOpen}
                   setPanelOpen={setPanelOpen}
                   key={serviceCategory}
                   serviceCategory={serviceCategory}
-                  services={favorites}
+                  services={services}
                   setCategory={setCategory}
                   accountInfo={accountInfo}
-                  isFav
                 />
               )
             );
           })}
-        </div>
+
+          {tab === "4" && (
+            <div className="mobileServices--panel">
+              <div id="PRNOT" className="mobileServices--header active">
+                <span>Prenotazioni</span>{" "}
+                <i className="fal fa-chevron-down" aria-hidden="true"></i>
+              </div>
+              <div className="mobileServices--body animated fadeIn">
+                <PrenotazioniItem
+                  src={images["expedia-mobile"]}
+                  name="Expedia"
+                  link="expedia"
+                />
+                <PrenotazioniItem
+                  src={images["flixbus-mobile"]}
+                  name="Flixbus"
+                  link="flixbus"
+                />
+                <PrenotazioniItem
+                  src={images["trenitalia-mobile"]}
+                  name="Trenitalia"
+                  link="trenitalia"
+                />
+                <PrenotazioniItem
+                  src={images["vivaticket-mobile"]}
+                  name="Vivaticket"
+                  link="vivaticket"
+                />
+                <PrenotazioniItem
+                  src={images["ticketone-mobile"]}
+                  name="Ticketone"
+                  link="ticketone"
+                />
+                <PrenotazioniItem
+                  src={images["stubhub-mobile"]}
+                  name="Stubhub"
+                  link="stubhub"
+                />
+                <PrenotazioniItem
+                  src={images["shop-online-mobile"]}
+                  name="Online Shop"
+                  link="shop-online"
+                />
+
+                <PrenotazioniItem
+                  src={images["bgame-mobile"]}
+                  name="Registrazione"
+                  link="bgame"
+                />
+                <PrenotazioniItem
+                  src={images["energia-mobile"]}
+                  name="Luce - Gas"
+                  link="luce-gas"
+                />
+              </div>
+            </div>
+          )}
+
+          {favorites && (
+            <div className="mobileServices--favorites">
+              {Object.keys(favorites).map((serviceCategory) => {
+                return (
+                  favorites[serviceCategory].name
+                    .toLowerCase()
+                    .includes(serviceSearched.toLowerCase()) &&
+                  tab === "fav" && (
+                    <OneTab
+                      setService={setService}
+                      panelOpen={panelOpen}
+                      setPanelOpen={setPanelOpen}
+                      key={serviceCategory}
+                      serviceCategory={serviceCategory}
+                      services={favorites}
+                      setCategory={setCategory}
+                      accountInfo={accountInfo}
+                      isFav
+                    />
+                  )
+                );
+              })}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

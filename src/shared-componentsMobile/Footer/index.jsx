@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const Footer = ({ skinExtras }) => (
   <footer className="footerMob">
-    ©{skinExtras.name} 2020. All rights reserved. (New Mobile v1.0)
+    ©{skinExtras.name} {new Date().getFullYear()}. All rights reserved.
   </footer>
 );
 export default connect(({ auth: { skinExtras } }) => ({

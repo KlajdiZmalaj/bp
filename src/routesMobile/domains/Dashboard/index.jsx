@@ -6,9 +6,10 @@ import { isEqual } from "lodash";
 import MainActions from "redux-store/models/main";
 import { connect } from "react-redux";
 import ServicesForms from "./ServicesForms";
-const Card = ({ setTab, tab, id, name, icon }) => (
+const Card = ({ setTab, tab, id, name, icon, setSearch }) => (
   <div
     onClick={() => {
+      setSearch("");
       setTab(id);
       if (id !== "0" && id.includes("PRDPST")) {
         const el = document.querySelector("#PRDPST");
@@ -57,6 +58,7 @@ const Dashboard = ({
             </div>
             <div className="serviziFilter--cards">
               <Card
+                setSearch={setSearch}
                 id={"fav"}
                 icon="fa-star"
                 tab={tab}
@@ -65,6 +67,7 @@ const Dashboard = ({
               />
               <Card
                 id={"0"}
+                setSearch={setSearch}
                 icon="fa-file-alt"
                 tab={tab}
                 setTab={setTab}
@@ -72,6 +75,7 @@ const Dashboard = ({
               />
               <Card
                 id={["PRDPST"]}
+                setSearch={setSearch}
                 icon="fa-file-alt"
                 tab={tab}
                 setTab={setTab}
@@ -79,6 +83,7 @@ const Dashboard = ({
               />
               <Card
                 id={["RTELC", "RTELD", "RTELI"]}
+                setSearch={setSearch}
                 icon="fa-mobile"
                 tab={tab}
                 setTab={setTab}
@@ -86,6 +91,7 @@ const Dashboard = ({
               />
               <Card
                 id={["RTVD"]}
+                setSearch={setSearch}
                 icon="fa-tv"
                 tab={tab}
                 setTab={setTab}
@@ -93,6 +99,7 @@ const Dashboard = ({
               />
               <Card
                 id={["SCMS"]}
+                setSearch={setSearch}
                 icon="icon-scomese"
                 tab={tab}
                 setTab={setTab}
@@ -101,6 +108,7 @@ const Dashboard = ({
               <Card
                 icon="fa-user-headset"
                 id={"4"}
+                setSearch={setSearch}
                 tab={tab}
                 setTab={setTab}
                 name="Servizi su Prenotazione"
@@ -113,6 +121,7 @@ const Dashboard = ({
             serviceSearched={serviceSearched}
             tab={tab}
             favorites={favorites}
+            setSearch={setSearch}
           />
         </React.Fragment>
       ) : (
