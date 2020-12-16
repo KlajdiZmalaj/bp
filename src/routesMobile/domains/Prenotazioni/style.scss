@@ -46,6 +46,9 @@
         object-fit: contain;
         position: relative;
         bottom: 10px;
+        &.luce-gas {
+          filter: grayscale(1) brightness(0.3);
+        }
         &.flixbus {
           width: 70px;
         }
@@ -193,5 +196,27 @@
   .formsContainer--body__item .label {
     font-size: 16px;
     font-weight: 500;
+  }
+}
+@media (max-width: 1024px) {
+  .rightForm--subtitle,
+  .rightForm--categories {
+    padding: 0 18px;
+  }
+  .formsContainer--body__checks,
+  .download-bar,
+  .formsContainer--body__checks2 {
+    margin: 0 18px;
+  }
+  .genCF {
+    right: 18px;
+  }
+  .PrenotazioniMob {
+    .inputI {
+      right: 18px;
+    }
+  }
+  .generateCodiceFiscale {
+    width: 90%;
   }
 }

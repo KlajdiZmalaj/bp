@@ -6,6 +6,7 @@ import Treni from "routes/domains/Forms/Treni";
 import Eventi from "routes/domains/Forms/Eventi";
 import OnlineShop from "routes/domains/Forms/OnlineShop";
 import Bgame from "routes/domains/Forms/Bgame";
+import Energia from "routes/domains/Forms/Energia";
 
 import { withRouter } from "react-router-dom";
 import "./style.css";
@@ -18,7 +19,11 @@ const Item = ({ name, activeService, setService, priorityName }) => (
       "prenotation--services__item" + (activeService === name ? " active" : "")
     }
   >
-    <img className={name} src={images[`${name}-mobile`]} alt="" />
+    <img
+      className={name}
+      src={images[`${name}-mobile`]}
+      alt={`${name}-mobile`}
+    />
     <span>{priorityName ? priorityName : capitalize(name)}</span>
   </div>
 );
@@ -72,6 +77,12 @@ const Prenotazione = ({ match: { params } }) => {
             name="bgame"
             priorityName="Registrazione"
           />
+          <Item
+            activeService={activeService}
+            setService={setService}
+            name="luce-gas"
+            priorityName="Luce - Gas"
+          />
         </div>
       </div>
       <div className="prenotation--view">
@@ -113,6 +124,14 @@ const Prenotazione = ({ match: { params } }) => {
           <Bgame
             nome_agenzia={"bgame"}
             typee={5}
+            isMobile
+            activeService={activeService}
+          />
+        )}
+        {activeService === "luce-gas" && (
+          <Energia
+            nome_agenzia={"luce-gas"}
+            typee={8}
             isMobile
             activeService={activeService}
           />

@@ -182,7 +182,7 @@ export default {
   "assicurazioni-card": require(`../assets/images/prenotazioni/assicurazioni-card.jpg`),
   "energia-logo": require(`../assets/images/prenotazioni/energia-logo.svg`),
   "energia-mobile": require(`../assets/images/prenotazioni/energia-logo.svg`),
-
+  "luce-gas-mobile": require(`../assets/images/prenotazioni/energia-logo.svg`),
   "energia-card": require(`../assets/images/prenotazioni/energia-card.png`),
 
   "expedia-logo": require(`../assets/images/prenotazioni/expedia.svg`),
