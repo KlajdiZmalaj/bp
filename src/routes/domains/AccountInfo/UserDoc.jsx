@@ -21,8 +21,9 @@ class UserDoc extends Component {
 
   render() {
     const { user, userPhotos, photoLoading } = this.props;
-    console.log("photoLoading", photoLoading);
     const { isPopUpOpen } = this.state;
+    //console.log("photoLoading", photoLoading);
+
     return (
       <React.Fragment>
         <div className="userList--Doc__user">

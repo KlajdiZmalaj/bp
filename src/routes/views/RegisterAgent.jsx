@@ -50,19 +50,7 @@ class RegisterEndUser extends React.Component {
     recieve_emails: false,
     privacy_policy: false,
   };
-  componentDidMount() {
-    fetch("https://ipapi.co/json")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          locationData: data,
-          cordinateReq: `${data.latitude},${data.longitude}`,
-        });
-        this.props.form.setFieldsValue({
-          cordinate: `${data.latitude},${data.longitude}`,
-        });
-      });
-  }
+
   nextStep = () => {
     let { step } = this.state;
     step += 1;

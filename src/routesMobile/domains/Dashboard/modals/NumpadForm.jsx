@@ -100,7 +100,7 @@ const Numpad = ({
 
   const printT = useRef();
   useEffect(() => {
-    console.log("ca ka", services, activeService, activeCategory, selectedCost);
+    //console.log("ca ka", services, activeService, activeCategory, selectedCost);
     if (!selectedCost) {
       if (activeService === "BGAM") {
         setCost(BgameServices[0]);

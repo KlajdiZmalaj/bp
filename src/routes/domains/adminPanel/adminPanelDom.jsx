@@ -161,7 +161,7 @@ class AdminPanelDom extends React.Component {
       accountInfo,
       activeSkinId,
     } = this.props;
-    console.log("userDetail", userDetail);
+    //console.log("userDetail", userDetail);
     return (
       <React.Fragment>
         <div className="Admin-Panel">

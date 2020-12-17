@@ -261,8 +261,9 @@ try {
     bg2: require(`../assets/shop/Bg2.svg`),
     bg3: require(`../assets/shop/Bg3.svg`),
     bg4: require(`../assets/shop/Bg4.svg`),
+    placeholder: require(`../assets/images/placeholder.jpg`),
   };
 } catch (err) {
-  console.log("error", err);
+  console.error("error", err);
 }
 export default imgObj;

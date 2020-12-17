@@ -8,7 +8,6 @@ const PrenotazioniItem = ({ src, link, name }) => {
     <div className="mobileServices--body__item">
       <img
         src={src}
-        alt=""
         onClick={() => {
           window.location.hash = `/forms/${link}`;
         }}
@@ -194,6 +193,7 @@ const Servizi = ({
 }) => {
   useEffect(() => {
     getServices();
+    return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [panelOpen, setPanelOpen] = useState(null);
@@ -239,6 +239,8 @@ const Servizi = ({
                   }
                 );
               });
+            } else {
+              return null;
             }
           })}
         </div>

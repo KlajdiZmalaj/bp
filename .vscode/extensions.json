@@ -2,6 +2,7 @@
   "recommendations": [
     "ritwickdey.live-sass",
     "akamud.vscode-theme-onedark",
-    "svipas.prettier-plus"
+    "svipas.prettier-plus",
+    "syler.sass-indented"
   ]
 }
