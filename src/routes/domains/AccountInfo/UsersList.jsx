@@ -408,7 +408,9 @@ class UsersList extends Component {
               )}
 
               <div className="newReg--row lastRow">
-                {userDetail.role !== "agent" && userDetail.role !== "user" ? (
+                {userDetail.role !== "agent" &&
+                userDetail.role !== "user" &&
+                userDetail.role !== "agency" ? (
                   <React.Fragment>
                     <div className="newReg--row__col">Cambia Agente</div>
                     <div className="newReg--row__col checkCol">
