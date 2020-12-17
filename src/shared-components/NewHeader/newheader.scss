@@ -122,10 +122,11 @@ header.header {
     .icons {
       display: flex;
       .ads {
+        box-shadow: 0px 5px 8px 0px #222;
         position: absolute;
         background: var(--accent-bg);
         z-index: 3;
-        top: 26px;
+        top: 23px;
         white-space: nowrap;
         display: flex;
         flex-flow: column;
