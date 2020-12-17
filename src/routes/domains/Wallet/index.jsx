@@ -22,7 +22,7 @@ class index extends Component {
               <div className="header">
                 <span>User Id</span>
                 <span>Username</span>
-                <span style={{ width: "17%" }}>Nome</span>
+                <span>Nome</span>
                 <span className="text-right">Credito</span>
                 <span>Totale speso</span>
                 <span>Ultimo Deposit</span>

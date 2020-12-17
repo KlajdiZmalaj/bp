@@ -111,7 +111,6 @@
     flex-flow: row;
     span {
       width: auto;
-      padding: 5px 10px;
       border-left: 1px solid #fff;
       font-weight: 500;
       color: #32424e;
@@ -120,21 +119,18 @@
       font-size: 14px;
       text-transform: capitalize;
       flex-shrink: 0;
+      padding: 4px 10px;
 
       &:nth-child(1) {
-        width: 60%;
         width: 8%;
       }
       &:nth-child(2) {
-        width: 120%;
         width: 13%;
       }
       &:nth-child(3) {
-        width: 150%;
-        width: 20%;
+        width: 16%;
       }
       &:nth-child(4) {
-        width: 60%;
         width: 8%;
       }
       &:nth-child(5) {
@@ -145,17 +141,16 @@
         width: 14%;
       }
       &:last-child:not(.seeMore) {
-        width: 90%;
         width: auto;
         flex-grow: 1;
       }
       &:last-child.seeMore {
-        width: 45%;
         width: auto;
         flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
       }
-      text-transform: capitalize;
-      padding: 5px 2px;
+
       @media (max-width: 1024px) {
         &:nth-child(1) {
           width: 20%;
@@ -237,7 +232,7 @@
             width: 13%;
           }
           &:nth-child(3) {
-            width: 20%;
+            width: 16%;
           }
           &:nth-child(4) {
             width: 8%;
@@ -253,6 +248,8 @@
           &:last-child.seeMore {
             width: auto;
             flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
           }
           &:last-child:not(.seeMore) {
             width: auto;
@@ -348,11 +345,14 @@
     margin-left: -188px;
     text-align: center;
     padding-bottom: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
     transition: 0.3s;
     animation: fromDown 0.5s ease-out forwards;
     display: flex;
     flex-flow: column;
+    &::-webkit-scrollbar {
+      width: 4px !important;
+    }
     > input {
       display: none;
     }
