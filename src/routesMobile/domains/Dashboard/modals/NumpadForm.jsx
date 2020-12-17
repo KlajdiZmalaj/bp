@@ -100,7 +100,7 @@ const Numpad = ({
 
   const printT = useRef();
   useEffect(() => {
-    // console.log("ca ka", services, activeService, activeCategory, selectedCost);
+    console.log("ca ka", services, activeService, activeCategory, selectedCost);
     if (!selectedCost) {
       if (activeService === "BGAM") {
         setCost(BgameServices[0]);
@@ -299,7 +299,7 @@ const Numpad = ({
             <div onClick={() => setVal(`${inpVal}${0}`)}>0</div>
           </div>
         </>
-      ) : (
+      ) : activeCategory === "SCMS" ? (
         <div
           className="GamingBanner mobile"
           style={{
@@ -321,6 +321,10 @@ const Numpad = ({
             />
             <span>{selectedCost?.cost}€</span>
           </div>
+        </div>
+      ) : (
+        <div className="OtherBanner">
+          <img src={images[activeService] || images[activeCategory]} alt="" />
         </div>
       )}
 

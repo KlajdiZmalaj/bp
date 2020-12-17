@@ -99,6 +99,8 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
                       elem.click();
                       elem.scrollIntoView({
                         behavior: "smooth",
+                        block: "center",
+                        inline: "nearest",
                       });
                     }, 100);
                   }
