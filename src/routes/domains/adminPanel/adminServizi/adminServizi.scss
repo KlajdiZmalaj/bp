@@ -225,3 +225,24 @@ div.Center--Big {
     }
   }
 }
+.AdminServiziCategories {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+  &__item {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-right: 1px solid #ebeced;
+
+    &.active {
+      background: #0078ff;
+      color: #fff;
+    }
+  }
+}

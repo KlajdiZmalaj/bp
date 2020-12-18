@@ -29,6 +29,7 @@ const AdminServiziItem = ({
         e.target.src = images["placeholder"];
       }}
       alt=""
+      loading="lazy"
     />
     <div className="AdminServiziItem--ButtonWrapper">
       <div>
