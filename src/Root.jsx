@@ -21,7 +21,14 @@ import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
 import { Snow } from "shared-components";
-
+// import { debounce } from "lodash";
+// const handleOrientation = (event) => {
+//   var absolute = event.absolute;
+//   var alpha = event.alpha;
+//   var beta = event.beta;
+//   var gamma = event.gamma;
+//   console.log("orient", absolute, alpha, beta, gamma);
+// };
 moment.updateLocale("it", {
   week: {
     dow: 1,
@@ -63,6 +70,14 @@ class Root extends React.Component {
         this.props.getStatisticheMain();
       }
     }
+
+    // window.addEventListener(
+    //   "deviceorientation",
+    //   debounce((e) => {
+    //     handleOrientation(e);
+    //   }, 500),
+    //   true
+    // );
   }
   componentWillUnmount() {
     unSubscribeSocketUser(get(this.props.accountInfo, "profile.id"));
