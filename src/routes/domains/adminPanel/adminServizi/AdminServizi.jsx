@@ -48,6 +48,7 @@ class AdminServizi extends React.Component {
               </div>
               {(allServices?.categories || []).map((category) => (
                 <div
+                  key={category.number_id}
                   className={
                     "AdminServiziCategories__item" +
                     (activeCategory === category.number_id ? " active" : "")
