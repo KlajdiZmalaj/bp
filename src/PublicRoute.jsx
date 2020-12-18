@@ -2,16 +2,9 @@ import React from "react";
 
 import { Redirect, Route } from "react-router-dom";
 
-const PublicRoute = ({
-  component: Component,
-  isLoggedin,
-  role,
-  profile,
-  ...rest
-}) => {
+const PublicRoute = ({ component: Component, isLoggedin, role, profile }) => {
   return (
     <Route
-      {...rest}
       render={(props) =>
         !isLoggedin ? (
           <Component {...props} />

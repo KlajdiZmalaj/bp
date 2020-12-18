@@ -87,6 +87,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
       {(Object.keys(services) || []).map((categoryKey) =>
         !services[categoryKey]?.name.includes("TELEFONICHE ") ? (
           <div
+            key={categoryKey}
             className="tabBody--item"
             onClick={() => {
               setMenu("out");
@@ -99,6 +100,8 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
                       elem.click();
                       elem.scrollIntoView({
                         behavior: "smooth",
+                        block: "center",
+                        inline: "nearest",
                       });
                     }, 100);
                   }
@@ -130,6 +133,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           </div>
         ) : (
           <div
+            key={categoryKey}
             className="tabBody--item tel"
             onClick={() => {
               setMenu("out");

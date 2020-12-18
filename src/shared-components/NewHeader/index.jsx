@@ -131,6 +131,7 @@ class Header extends Component {
                                   onClick={() => {
                                     this.toggleprivMsgs();
                                   }}
+                                  data-id={add.id}
                                 >
                                   {add.title}
                                 </div>

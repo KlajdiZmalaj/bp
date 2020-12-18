@@ -31,17 +31,21 @@ class CaricaConto extends React.Component {
                   09.00 alle h. 13.00
                 </span>
                 <p>
-                  Ricarica tramite bonifico bancario: <span>UniCredit</span>
+                  Ricarica tramite bonifico bancario:{" "}
+                  <span>{skinExtras.bank_name}</span>
                 </p>
                 <br />
-                <p>MAPE DI HRISTOVA MARIYA HRISTOVA E C. SAS</p>
-                <p>via Costantino Bagli, 27 Rimini</p>
+                <p>{skinExtras.account_name}</p>
+                <p>{skinExtras.address}</p>
                 <p>
-                  Iban: <span>IT24J0200824203000100898936</span>
+                  Iban: <span>{skinExtras.iban}</span>
                 </p>
-                <p>numero c/c 000100898936</p>
-                <p>BIC/SWIFT UNCRITM1SR2</p>
-                <p>Indicare causale: “Ricarica Borsellino di User {accountInfo.profile.username} .”</p>
+                {/* <p>numero c/c 000100898936</p>
+                <p>BIC/SWIFT UNCRITM1SR2</p> */}
+                <p>
+                  Indicare causale: “Ricarica Borsellino di User{" "}
+                  {accountInfo.profile.username} .”
+                </p>
                 <p>
                   Una volta effettuato il bonifico si prega di inviare la
                   distinta al nostro indirizzo e-mail:
@@ -62,7 +66,7 @@ class CaricaConto extends React.Component {
 const a = (s) => {
   return {
     skinExtras: s.auth.skinExtras,
-    accountInfo: s.auth.accountInfo
+    accountInfo: s.auth.accountInfo,
   };
 };
 export default connect(a, null)(CaricaConto);

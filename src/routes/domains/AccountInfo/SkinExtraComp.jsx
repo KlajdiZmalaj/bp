@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 const SkinExtraComp = ({ getSkinExtras, userDetail, skinExtras = {} }) => {
   React.useEffect(() => {
     getSkinExtras(userDetail?.id);
+    //eslint-disable-next-line
   }, [getSkinExtras]);
   return (
     <div className="newReg--row usercomp">

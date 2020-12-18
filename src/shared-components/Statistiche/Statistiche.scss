@@ -208,7 +208,7 @@
                     top: -12%;
                     position: relative;
                     &:nth-child(1) {
-                      width: 45%;
+                      width: 25%;
                     }
                     &:nth-child(2) {
                       width: 55%;
@@ -324,9 +324,27 @@
         &--Element {
           background: #ffffff33;
           width: 2.11%;
+          position: relative;
           &:hover,
           &:focus {
-            background: #f26521;
+            background: var(--accent-bg);
+          }
+          &:after {
+            content: "";
+            height: 80px;
+            width: 100%;
+            background: #fff;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.01;
+            z-index: 0;
+            cursor: pointer;
+          }
+          &:hover:after {
+            opacity: 0.1;
           }
         }
       }

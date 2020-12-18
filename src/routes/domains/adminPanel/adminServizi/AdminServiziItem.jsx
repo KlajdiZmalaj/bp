@@ -1,5 +1,6 @@
 import React from "react";
 import { notification } from "antd";
+import images from "themes/images";
 const AdminServiziItem = ({
   category_full_name,
   full_name,
@@ -19,9 +20,16 @@ const AdminServiziItem = ({
       <div className="AdminServiziItem--Header--Title">{full_name}</div>
     </div>
     {/* eslint-disable-next-line jsx-a11y/alt-text */}
+
     <img
       src={`http://www.perdemo.it/ricaricheSPS/${category}.png`}
       className="AdminServiziItem--Image"
+      onError={(e) => {
+        //console.log("ca ka error", e, images.placeholder);
+        e.target.src = images["placeholder"];
+      }}
+      alt=""
+      loading="lazy"
     />
     <div className="AdminServiziItem--ButtonWrapper">
       <div>

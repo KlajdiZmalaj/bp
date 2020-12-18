@@ -261,7 +261,7 @@ export function* getRefills({ page_number, limit }) {
     }
   }
   yield put(AuthActions.setPaymentsLoading(false));
-  console.log("response", response);
+  //console.log("response", response);
 }
 export function* getRechargeMobile(params) {
   const response = yield call(

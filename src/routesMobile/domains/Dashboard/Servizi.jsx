@@ -8,7 +8,6 @@ const PrenotazioniItem = ({ src, link, name }) => {
     <div className="mobileServices--body__item">
       <img
         src={src}
-        alt=""
         onClick={() => {
           window.location.hash = `/forms/${link}`;
         }}
@@ -194,10 +193,11 @@ const Servizi = ({
 }) => {
   useEffect(() => {
     getServices();
+    return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [panelOpen, setPanelOpen] = useState(null);
-  console.log("services", services);
+  // console.log("services", services);
   return (
     <div className="mobileServices">
       {serviceSearched.length > 0 ? (
@@ -205,16 +205,31 @@ const Servizi = ({
           {/*search servizi*/}
           {Object.keys(services).map((types) => {
             if (types !== "name" && types !== "group") {
-              return Object.keys(services[types]).map((companies) => {
-                return (services?.[types]?.[companies]?.services || []).map(
+              return Object.keys(services[types]).map((company) => {
+                return (services?.[types]?.[company]?.services || []).map(
                   (service) => {
                     return (
                       service.name
                         .toLowerCase()
                         .includes(serviceSearched.toLowerCase()) && (
-                        <div className="mobileServices--body__item">
+                        <div
+                          onClick={() => {
+                            // console.log(
+                            //   "clicked",
+                            //   types,
+                            //   company,
+                            //   service.service_id
+                            // );
+
+                            setService(company);
+                            setCategory(types);
+                          }}
+                          className={`mobileServices--body__item`}
+                          key={service.service_id}
+                          alt={`${company} -> ${service.service_id}`}
+                        >
                           <img
-                            src={images[service.id] || images[companies]}
+                            src={images[service.service_id] || images[company]}
                             alt=""
                           />
                           <span>{service.name}</span>
@@ -224,6 +239,8 @@ const Servizi = ({
                   }
                 );
               });
+            } else {
+              return null;
             }
           })}
         </div>

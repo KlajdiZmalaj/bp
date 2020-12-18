@@ -161,7 +161,7 @@ class AdminPanelDom extends React.Component {
       accountInfo,
       activeSkinId,
     } = this.props;
-    console.log("userDetail", userDetail);
+    //console.log("userDetail", userDetail);
     return (
       <React.Fragment>
         <div className="Admin-Panel">
@@ -233,7 +233,8 @@ class AdminPanelDom extends React.Component {
                 <div className="newReg--row lastRow">
                   {userDetail.role !== "agent" &&
                   userDetail.role !== "user" &&
-                  accountInfo?.profile?.role?.name !== "main_admin" ? (
+                  (accountInfo?.profile?.role?.name === "main_admin" ||
+                    accountInfo?.profile?.role?.name === "support") ? (
                     <React.Fragment>
                       <div className="newReg--row__col">Cambia Agente</div>
                       <div className="newReg--row__col checkCol">
