@@ -27,7 +27,7 @@ instanceAxios.interceptors.response.use(
   (error) => handleError(error)
 );
 
-export const fetchProducts = (page_number, brand, category) =>
+export const fetchProducts = (page_number, brand, category, order) =>
   instanceAxios
     .get(`/shop/products`, {
       params: {
@@ -35,6 +35,7 @@ export const fetchProducts = (page_number, brand, category) =>
         ...(page_number ? { page_number } : {}),
         ...(brand ? { Product_Manufacturer: brand.toString() } : {}),
         ...(category ? { Product_MainCategory: category.toString() } : {}),
+        ...(order ? { sort_price: order } : {}),
 
         // page_number: 3,
       },
