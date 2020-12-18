@@ -208,7 +208,7 @@
                     top: -12%;
                     position: relative;
                     &:nth-child(1) {
-                      width: 45%;
+                      width: 25%;
                     }
                     &:nth-child(2) {
                       width: 55%;
@@ -324,6 +324,7 @@
         &--Element {
           background: #ffffff33;
           width: 2.11%;
+          position: relative;
           &:hover,
           &:focus {
             background: var(--accent-bg);
