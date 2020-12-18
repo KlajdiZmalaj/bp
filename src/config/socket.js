@@ -12,6 +12,19 @@ export const socket = () => {
   });
 };
 export const subscribeSocketUser = (userID, props) => {
+  const USER_NAME =
+    props?.accountInfo?.profile?.name?.toUpperCase?.() ||
+    JSON.parse(
+      localStorage.getItem("accountDataB")
+    )?.profile?.name?.toUpperCase?.();
+  var docTitle = document.title;
+  document.title = `👋 Benvenuto ${USER_NAME}`;
+
+  setTimeout(() => {
+    document.title = docTitle;
+  }, 3000);
+
+  //console.log("props", props.accountInfo);
   window["echo"].channel(`bpoint_cache_${userID}`).listen(".user", (e) => {
     // console.log("subscribed listening...", userID, props, e);
     if (e.type === "payment") {

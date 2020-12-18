@@ -744,11 +744,11 @@ div.Center--Big {
         font-weight: 400;
         color: #5c5c5c;
         justify-content: flex-start;
-        padding: 15px 40px;
+        padding: 15px 20px;
         border: none;
         border-right: 1px solid #ebeced;
         border-radius: 0;
-        min-width: 270px;
+        min-width: 160px;
         box-sizing: border-box;
       }
       & .filesBtns {
@@ -816,7 +816,7 @@ div.Center--Big {
           height: 100%;
           align-items: center;
           display: flex;
-          width: 270px;
+          // width: 270px;
         }
         &.calendar {
           position: relative;

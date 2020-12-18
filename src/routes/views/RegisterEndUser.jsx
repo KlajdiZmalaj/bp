@@ -345,7 +345,7 @@ class RegisterEndUser extends React.Component {
           };
         });
     }
-    const dateFormat = "DD/MM/YYYY";
+    // const dateFormat = "DD/MM/YYYY";
     const number_prefix = getFieldDecorator("number_prefix", {
       initialValue: "0039",
     })(<Input style={{ width: 70 }}></Input>);

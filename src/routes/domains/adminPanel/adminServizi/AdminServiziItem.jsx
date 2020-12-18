@@ -25,7 +25,7 @@ const AdminServiziItem = ({
       src={`http://www.perdemo.it/ricaricheSPS/${category}.png`}
       className="AdminServiziItem--Image"
       onError={(e) => {
-        console.log("ca ka error", e, images.placeholder);
+        //console.log("ca ka error", e, images.placeholder);
         e.target.src = images["placeholder"];
       }}
       alt=""

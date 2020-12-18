@@ -287,7 +287,6 @@ export const azioni = [
     displayRole: ["super_admin"],
   },
 ];
-
 export const administrazioni = [
   {
     id: 1,
@@ -310,7 +309,6 @@ export const administrazioni = [
     link: "impostazioni",
   },
 ];
-
 export const BgameServices = [
   {
     cost: "10.00",
@@ -337,7 +335,6 @@ export const BgameServices = [
     type: "1",
   },
 ];
-
 export const BbetServices = [
   {
     cost: "10.00",
@@ -364,7 +361,6 @@ export const BbetServices = [
     type: "1",
   },
 ];
-
 //http://prntscr.com/vmqp68  reset state so next popup states are cleaned
 export const resetUserStateChangeFields = {
   changedphone: "",
@@ -405,9 +401,7 @@ export const resetUserStateChangeFields = {
   cap: "",
   comune_code: "",
 };
-
 //
-
 export const autoConfig = {
   0: {
     name: "Fiat",
@@ -420,6 +414,5 @@ export const autoConfig = {
     colors: ["red", "green", "blue"],
   },
 };
-
 const date = new Date().getMonth();
 export const isWinter = date === 11 || date === 0 || date === 1;
