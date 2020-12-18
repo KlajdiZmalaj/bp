@@ -3,20 +3,42 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { find } from "lodash";
 
+import ShopActions from "redux-store/models/shop";
+import { connect } from "react-redux";
+
 import "./style.css";
 
 class SingleProduct extends Component {
   state = {
     id: null,
+    supp: null,
     orderQuanity: 1,
     bigproduct: null,
+    product: {},
   };
   changeBigProduct = (src) => {
     this.setState({ bigproduct: src });
   };
+
   componentDidMount() {
-    this.setState({ id: this.props.match.params.id });
+    const idProduct = this.props.match.params.id;
+    const suppProduct = this.props.match.params.supp;
+    this.setState({ id: idProduct });
+    this.setState({ supp: suppProduct });
+
+    let product = {};
+
+    product = find(
+      this.props.prodList && this.props.prodList.data,
+      function (o) {
+        return o.Product_id.toString() === idProduct.toString();
+      }
+    );
+
+    this.props.getProductDetails(idProduct, suppProduct);
+    this.setState({ product: product });
   }
+
   decreasevalue = () => {
     if (this.state.orderQuanity > 1) {
       this.setState({ orderQuanity: this.state.orderQuanity - 1 });
@@ -26,19 +48,14 @@ class SingleProduct extends Component {
     this.setState({ orderQuanity: this.state.orderQuanity + 1 });
   };
   render() {
-    const { prodList } = this.props;
-    const { id, orderQuanity, bigproduct } = this.state;
-
-    let product = {};
-    product = find(prodList && prodList.data, function (o) {
-      return parseInt(o.Product_id) === parseInt(id);
-    });
+    const { product } = this.props;
+    const { orderQuanity, bigproduct } = this.state;
 
     return (
       <div className="prod">
         <div className="single maxWidth">
           <p className="gobackBtns">
-            <a href="#">Home</a> <i className="far fa-chevron-right"></i>{" "}
+            <a href="/#">Home</a> <i className="far fa-chevron-right"></i>{" "}
             <a href="#/products"> {product && product.Product_Manufacturer}</a>
             <i className="far fa-chevron-right"></i>{" "}
             {product && product.Product_Name}
@@ -48,44 +65,22 @@ class SingleProduct extends Component {
             <div className="detailsP">
               <div className="images">
                 <div className="images__other">
-                  <div
-                    onClick={() => {
-                      this.changeBigProduct(product.Product_Image_1);
-                    }}
-                  >
-                    <img src={product.Product_Image_1} alt="" />
-                  </div>
-                  <div
-                    onClick={() => {
-                      this.changeBigProduct(product.Product_Image_2);
-                    }}
-                  >
-                    <img src={product.Product_Image_2} alt="" />
-                  </div>
-                  <div>
-                    {product.Product_Image_3 &&
-                    product.Product_Image_3.length > 0 ? (
-                      <img
-                        src={product.Product_Image_3}
-                        alt=""
+                  {Object.keys(product.Photos).map((photo, index) => {
+                    return (
+                      <div
+                        key={index}
                         onClick={() => {
-                          this.changeBigProduct(product.Product_Image_3);
+                          this.changeBigProduct(product.Photos[photo]);
                         }}
-                      />
-                    ) : (
-                      <img
-                        src={product.Product_Image_1}
-                        alt=""
-                        onClick={() => {
-                          this.changeBigProduct(product.Product_Image_1);
-                        }}
-                      />
-                    )}
-                  </div>
+                      >
+                        <img src={product.Photos[photo]} alt="" />
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className="images__big">
                   {!bigproduct ? (
-                    <img src={product.Product_Image_1} alt="" />
+                    <img src={product.Photos["Product_Image_1"]} alt="" />
                   ) : (
                     <img src={bigproduct} alt="" />
                   )}
@@ -109,56 +104,75 @@ class SingleProduct extends Component {
                 <div className="properties marginBottom">
                   <div className="prop1">
                     <p>
-                      <span className="label">Categoria:</span>
+                      <span className="label">Categoria: </span>
                       {product.Product_MainCategory}
                     </p>
                     <p>
-                      {" "}
                       <span className="label">SubCategoria: </span>
-                      {product.Product_SubCategory}
+                      {product.Product_Category}
                     </p>
-                    <p>
-                      <span className="label">Peso: </span>
-                      {product.Product_Weight}
-                    </p>
+                    {product.Product_Weight && (
+                      <p>
+                        <span className="label">Peso: </span>
+                        {product.Product_Weight}
+                      </p>
+                    )}
                   </div>
+
                   <div className="prop2">
-                    <p>
-                      <span className="label">Made in: </span>
-                      {product.Product_MadeIn}
-                    </p>
-                    <p>
-                      <span className="label">Stagione:</span>
-                      {product.Product_Season}
-                    </p>
-                    <p>
-                      <span className="label">Tipo: </span>
-                      {product.Product_Model}
-                    </p>
+                    {product.Product_MadeIn && (
+                      <p>
+                        <span className="label">Made in: </span>
+                        {product.Product_MadeIn}
+                      </p>
+                    )}
+                    {product.Product_Season && (
+                      <p>
+                        <span className="label">Stagione:</span>
+                        {product.Product_Season}
+                      </p>
+                    )}
+                    {product.Product_Model && (
+                      <p>
+                        <span className="label">Tipo: </span>
+                        {product.Product_Model}
+                      </p>
+                    )}
                   </div>
                 </div>
-                <div className="color text-uppercase pb-3">
-                  Colour:
-                  <select
-                  // value={this.state.selectValue}
-                  // onChange={this.handleChange}
-                  >
-                    <option value={product.Product_Colour}>
-                      {product.Product_Colour}
-                    </option>
-                  </select>
-                </div>
-                <div className="size text-uppercase pb-3">
-                  <div> Size:</div>
-                  {product.Models &&
-                    product.Models.map((model, index) => {
+                {product.Models["colore"] && (
+                  <div className="color text-uppercase pb-3">
+                    Colour:
+                    <select
+                    // value={this.state.selectValue}
+                    // onChange={this.handleChange}
+                    >
+                      {product.Models["colore"] &&
+                        product.Models["colore"].map((item, index) => {
+                          return (
+                            <option value={item.value} key={index}>
+                              {item.value}
+                            </option>
+                          );
+                        })}
+                    </select>
+                  </div>
+                )}
+
+                {product.Models["taglia"] && (
+                  <div className="size text-uppercase pb-3">
+                    <div> Size:</div>
+
+                    {product.Models["taglia"].map((item, index) => {
                       return (
                         <div key={index} className="size__items">
-                          {model.size}
+                          {item.value}
                         </div>
                       );
                     })}
-                </div>
+                  </div>
+                )}
+
                 <div className="buy pb-3 text-uppercase">
                   <div className="addItem">
                     <div className="adjustContainer">
@@ -190,4 +204,8 @@ class SingleProduct extends Component {
   }
 }
 
-export default withRouter(SingleProduct);
+const mpStP = (state) => ({
+  productsList: state.shop.productsList,
+  product: state.shop.productD,
+});
+export default withRouter(connect(mpStP, ShopActions)(SingleProduct));

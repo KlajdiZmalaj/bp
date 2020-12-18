@@ -68,7 +68,7 @@
         .color {
           select {
             display: block;
-            width: 250px;
+            width: calc(55% - 10px);
             padding: 10px;
             option {
               text-transform: uppercase;
