@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 class ShopList extends Component {
   render() {
     const { brands, isSelected } = this.props;
-
+    console.log("brands", brands);
     return (
       <div className="shopList maxWidth">
         <div
@@ -23,14 +23,19 @@ class ShopList extends Component {
                 key={index}
                 className={
                   "shopList__item" +
-                  (isSelected === brands[item] ? " active" : "")
+                  (isSelected === brands[item].name ? " active" : "")
                 }
                 onClick={() => {
-                  this.props.getProductsList(null, brands[item]);
-                  this.props.setManufacturer(brands[item]);
+                  this.props.getProductsList(null, brands[item].name);
+                  this.props.setManufacturer(brands[item].name);
                 }}
               >
-                {brands[item]}
+                <img
+                  src={brands[item].image}
+                  alt={brands[item].name}
+                  // onError="this.onerror=null; this.src=''"
+                ></img>
+                {/* {brands[item].name} */}
               </div>
             );
           })}

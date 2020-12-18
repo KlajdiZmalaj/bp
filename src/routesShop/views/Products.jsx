@@ -11,16 +11,18 @@ class Products extends Component {
   componentDidMount() {
     this.props.getProductsList();
     this.props.getBrands();
+    this.props.getCategories();
   }
 
   render() {
     return (
       <div className="products">
         <Header></Header>
-        <SubHeader></SubHeader>
+        <SubHeader cat={this.props.categories}></SubHeader>
         <AllProducts
           prodList={this.props.productsList}
           brands={this.props.brands}
+          categories={this.props.categories}
         ></AllProducts>
       </div>
     );
@@ -29,5 +31,6 @@ class Products extends Component {
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
   brands: state.shop.brands,
+  categories: state.shop.categories,
 });
 export default connect(mpStP, ShopActions)(Products);

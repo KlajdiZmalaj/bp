@@ -349,7 +349,7 @@ class Root extends React.Component {
             allowedRoles={["super_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
-            path="/product/:id?/"
+            path="/product/:id?/:supp?/"
             component={ShopView.SingleProduct}
             isLoggedin={isLoggedin}
             role={role}

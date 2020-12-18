@@ -23,7 +23,7 @@ class BestSeller extends Component {
                   key={index}
                   onClick={() => {
                     this.props.history.push(
-                      `/product/${prodList.data[item].Product_id}`
+                      `/product/${prodList.data[item].Product_id}/${prodList.data[item].prd_supp}`
                     );
                   }}
                 >

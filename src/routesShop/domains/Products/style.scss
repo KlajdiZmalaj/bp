@@ -17,17 +17,53 @@
   align-items: center;
 
   .categories {
+    margin-left: -15px;
     &__category {
       display: inline-block;
-      padding: 0 15px;
+      padding: 0 15px 0 0px;
       font-size: 16px;
       text-transform: uppercase;
       border-right: 1px solid #efefef;
-      &:first-child {
-        padding-left: 0;
-      }
+      margin: 0 0px 0 15px;
+      cursor: pointer;
       &:last-child {
         border-right: none;
+      }
+      &.active {
+        color: #f26521;
+      }
+      .casa:after {
+        content: "\f015";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .cucina:after {
+        content: "\f86b";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .sport:after {
+        content: "\f70c";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .salute:after,
+      .profumeria:after {
+        content: "\f3a5";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .moda:after {
+        content: "\f553";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .giochi:after {
+        content: "\f8bc";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .informatica:after {
+        content: "\f10b";
+        font-family: "Font Awesome 5 Pro";
+      }
+      .outlet:after {
+        content: "\f02c";
+        font-family: "Font Awesome 5 Pro";
       }
     }
   }
