@@ -164,7 +164,7 @@ class AdminPanelDom extends React.Component {
     //console.log("userDetail", userDetail);
     return (
       <React.Fragment>
-        <div className="Admin-Panel">
+        <section className="Admin-Panel">
           {userDetail && Object.keys(userDetail).length > 0 && (
             <React.Fragment>
               <div
@@ -613,7 +613,7 @@ class AdminPanelDom extends React.Component {
             </div>
             <AdminRightForm leUltimeTransazioniDet={leUltimeTransazioniDet} />
           </div>
-        </div>
+        </section>
       </React.Fragment>
     );
   }

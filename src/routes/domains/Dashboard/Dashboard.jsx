@@ -290,7 +290,7 @@ class DashboardDom extends React.Component {
           <img src={images["baner_servizi_header"]} />
         </div>
         <div className={`Dashboard ${menuClassName}`}>
-          <div className={`Categories ${menuClassName}`}>
+          <aside className={`Categories ${menuClassName}`}>
             <div className="First">SERVIZI</div>
             {Categories &&
               Array.isArray(Categories) &&
@@ -310,7 +310,7 @@ class DashboardDom extends React.Component {
               {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img src={images["servizi_banner"]} />
             </div>
-          </div>
+          </aside>
           <div className={`CompaniesAndOther ${menuClassName}`}>
             {this.props.accountInfo?.profile?.role && (
               <div className="Favorites">

@@ -463,7 +463,7 @@ class ModulePopUp4 extends React.Component {
                   <div className="headerModal">
                     <img className="logo" src={images.logo} alt="" />
                     <span className="superSmall text-bold">
-                      MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
+                      <span> {this.props.skinExtras.account_name} </span>
                     </span>
                     <span className="superSmall">
                       {this.props.skinExtras.address}
