@@ -130,6 +130,13 @@ class Header extends Component {
                                   key={add.id}
                                   onClick={() => {
                                     this.toggleprivMsgs();
+                                    if (add.ticket_id) {
+                                      window.location.hash =
+                                        "dettagli-prenotazioni";
+                                      // this.props.getTicketByTicketId(
+                                      //   add.ticket_id
+                                      // );
+                                    }
                                   }}
                                   data-id={add.id}
                                 >
