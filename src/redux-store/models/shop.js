@@ -24,7 +24,7 @@ const INITIAL_STATE = {
   categories: {},
   isSelectedManufacturer: null,
   isSelectedCategory: null,
-  orderVal: null,
+  orderVal: "",
 };
 
 export const reducer = createReducer(INITIAL_STATE, {

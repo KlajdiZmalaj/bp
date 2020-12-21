@@ -17,7 +17,7 @@ class BestSeller extends Component {
 
   render() {
     const { prodList, isSelected, isSelectedC, orderVal } = this.props;
-    console.log("orderValorderVal", orderVal);
+
     const total_pages = prodList.total_pages;
 
     return (
@@ -25,7 +25,7 @@ class BestSeller extends Component {
         <div className="title">New arrivals </div>
         <div className="order">
           <select
-            class="collection-layout__sort-order"
+            className="collection-layout__sort-order"
             value={orderVal}
             onChange={this.handleChange}
           >

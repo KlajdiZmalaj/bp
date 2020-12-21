@@ -32,6 +32,7 @@ class SubHeader extends Component {
                   onClick={() => {
                     this.props.getProductsList(null, null, cat[item]);
                     this.props.setCategory(cat[item]);
+                    this.props.setOrderVal("");
                   }}
                 >
                   <span className={cat[item].toLowerCase()}></span> {cat[item]}

@@ -142,6 +142,15 @@
       font-weight: 600;
       text-transform: uppercase;
       padding: 5px 0;
+      display: inline-block;
+    }
+    .order {
+      display: inline-block;
+      float: right;
+      padding: 5px 0;
+      select {
+        border: 1px solid #ebebeb;
+      }
     }
     .products {
       display: inline-grid;
