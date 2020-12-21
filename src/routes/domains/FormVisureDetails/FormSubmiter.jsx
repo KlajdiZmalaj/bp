@@ -36,9 +36,14 @@ export class FormSubmiter extends Component {
   };
 
   render() {
-    const { enableButtons, VisureByVisureId, getDataFormDetails } = this.props;
-    return JSON.parse(localStorage.accountDataB).profile.role.name ===
-      "support" ? (
+    const {
+      enableButtons,
+      VisureByVisureId,
+      getDataFormDetails,
+      accountInfo,
+    } = this.props;
+
+    return accountInfo.profile?.role?.name === "support" ? (
       <div className="formSubmit">
         <div
           className={
@@ -192,43 +197,56 @@ export class FormSubmiter extends Component {
           <span>Annulla</span>
         </div>
       </div>
-    ) : (
-      VisureByVisureId.status === "Nuova Offerta" && (
-        <div className="formSubmit">
-          <div
-            onClick={() => {
-              userConfirmation(
-                this.props.setButtonsSupport,
-                this.props.VisureByVisureId.id,
-                3,
-                () => {},
-                getDataFormDetails,
-                this.state.base64 && this.state.base64,
-                true
-              );
-            }}
-            className={"formSubmit--button -s"}
-          >
-            <span>Esegui</span>
-          </div>
-          <div
-            onClick={() => {
-              userConfirmation(
-                this.props.setButtonsSupport,
-                this.props.VisureByVisureId.id,
-                5,
-                () => {},
-                getDataFormDetails,
-                this.state.base64 && this.state.base64,
-                true
-              );
-            }}
-            className={"formSubmit--button -c"}
-          >
-            <span>Annulla</span>
-          </div>
+    ) : VisureByVisureId.status === "Nuova Offerta" ? (
+      <div className="formSubmit">
+        <div
+          onClick={() => {
+            userConfirmation(
+              this.props.setButtonsSupport,
+              this.props.VisureByVisureId.id,
+              3,
+              () => {},
+              getDataFormDetails,
+              this.state.base64 && this.state.base64,
+              true
+            );
+          }}
+          className={"formSubmit--button -s"}
+        >
+          <span>Esegui</span>
         </div>
-      )
+        <div
+          onClick={() => {
+            userConfirmation(
+              this.props.setButtonsSupport,
+              this.props.VisureByVisureId.id,
+              5,
+              () => {},
+              getDataFormDetails,
+              this.state.base64 && this.state.base64,
+              true
+            );
+          }}
+          className={"formSubmit--button -c"}
+        >
+          <span>Annulla</span>
+        </div>
+      </div>
+    ) : (
+      <div className="formSubmit">
+        {VisureByVisureId.document && (
+          <div
+            onClick={() => {
+              downloadFile(VisureByVisureId.document);
+            }}
+            className="formSubmit--download"
+            data-file={VisureByVisureId.document}
+          >
+            <i className="fal fa-download" aria-hidden="true"></i>
+            Download Documenti
+          </div>
+        )}
+      </div>
     );
   }
 }
@@ -236,6 +254,7 @@ const mstp = (state) => {
   return {
     enableButtons: state.auth.enableButtons,
     VisureByVisureId: state.auth.VisureByVisureId,
+    accountInfo: state.auth.accountInfo,
   };
 };
 export default connect(mstp, AuthActions)(FormSubmiter);
