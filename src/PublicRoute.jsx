@@ -1,10 +1,19 @@
+import { rest } from "lodash";
 import React from "react";
 
 import { Redirect, Route } from "react-router-dom";
 
-const PublicRoute = ({ component: Component, isLoggedin, role, profile }) => {
+const PublicRoute = ({
+  component: Component,
+  isLoggedin,
+  role,
+  profile,
+  ...rest
+}) => {
+  console.log("rest", rest);
   return (
     <Route
+      {...rest}
       render={(props) =>
         !isLoggedin ? (
           <Component {...props} />

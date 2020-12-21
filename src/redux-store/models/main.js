@@ -27,6 +27,7 @@ const { Types, Creators } = createActions({
   getSearchedUsers: ["search_user"],
   sendPrenotazione: ["objectData", "resetState"],
   forgotPassword: ["email"],
+  setAdminMessagesModal: ["adminMessagesModal"],
 });
 
 export const MainTypes = Types;
@@ -48,9 +49,14 @@ const INITIAL_STATE = {
   activeSkinId: -1,
   screenWidth: window.innerWidth,
   LoaderAU: false,
+  adminMessagesModal: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  SET_ADMIN_MESSAGES_MODAL: (state) => ({
+    ...state,
+    adminMessagesModal: !state.adminMessagesModal,
+  }),
   SET_PHOTO_LOADING: (state, payload) => {
     return {
       ...state,

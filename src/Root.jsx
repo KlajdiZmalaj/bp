@@ -21,6 +21,7 @@ import { PopUpConfirmation, PopUpConfirmationVisure } from "shared-components";
 import "moment/locale/it";
 import moment from "moment";
 import { Snow } from "shared-components";
+import { notification } from "antd";
 // import { debounce } from "lodash";
 // const handleOrientation = (event) => {
 //   var absolute = event.absolute;
@@ -78,6 +79,13 @@ class Root extends React.Component {
     //   }, 500),
     //   true
     // );
+    if (navigator?.connection?.downlink < 0.5) {
+      notification["warning"]({
+        key: "slowNet",
+        message: "Connessione internet lenta",
+        placement: "topRight",
+      });
+    }
   }
   componentWillUnmount() {
     unSubscribeSocketUser(get(this.props.accountInfo, "profile.id"));
