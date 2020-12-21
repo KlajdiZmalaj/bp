@@ -3,8 +3,8 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 class ShopList extends Component {
   render() {
-    const { brands, isSelected } = this.props;
-    console.log("brands", brands);
+    const { brands, isSelected, orderVal } = this.props;
+
     return (
       <div className="shopList maxWidth">
         <div
@@ -26,14 +26,22 @@ class ShopList extends Component {
                   (isSelected === brands[item].name ? " active" : "")
                 }
                 onClick={() => {
-                  this.props.getProductsList(null, brands[item].name);
+                  this.props.getProductsList(
+                    null,
+                    brands[item].name,
+                    null,
+                    orderVal
+                  );
                   this.props.setManufacturer(brands[item].name);
                 }}
               >
                 <img
                   src={brands[item].image}
                   alt={brands[item].name}
-                  // onError="this.onerror=null; this.src=''"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "";
+                  }}
                 ></img>
                 {/* {brands[item].name} */}
               </div>
@@ -54,6 +62,7 @@ class ShopList extends Component {
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
   isSelected: state.shop.isSelectedManufacturer,
+  orderVal: state.shop.orderVal,
 });
 
 export default connect(mpStP, ShopActions)(ShopList);

@@ -5,14 +5,35 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
 class BestSeller extends Component {
+  handleChange = (event) => {
+    this.props.setOrderVal(event.target.value);
+    this.props.getProductsList(
+      null,
+      this.props.isSelected,
+      this.props.isSelectedC,
+      event.target.value
+    );
+  };
+
   render() {
-    const { prodList, isSelected } = this.props;
+    const { prodList, isSelected, isSelectedC, orderVal } = this.props;
 
     const total_pages = prodList.total_pages;
 
     return (
       <div className="bestSeller maxWidth paddingBottom">
-        <div className="title">New arivals</div>
+        <div className="title">New arrivals </div>
+        <div className="order">
+          <select
+            className="collection-layout__sort-order"
+            value={orderVal}
+            onChange={this.handleChange}
+          >
+            <option value="">Newest Arrivals</option>
+            <option value="2">Price: High to Low</option>
+            <option value="1">Price: Low to High</option>
+          </select>
+        </div>
         <div className="products">
           {prodList &&
             prodList.data &&
@@ -42,7 +63,7 @@ class BestSeller extends Component {
           <Pagination
             onChange={(e) => {
               this.setState({ page_number: e });
-              this.props.getProductsList(e, isSelected);
+              this.props.getProductsList(e, isSelected, isSelectedC);
             }}
             total={total_pages ? total_pages * 10 : 10}
           />
@@ -55,6 +76,8 @@ class BestSeller extends Component {
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
   isSelected: state.shop.isSelectedManufacturer,
+  isSelectedC: state.shop.isSelectedCategory,
+  orderVal: state.shop.orderVal,
 });
 
 export default withRouter(connect(mpStP, ShopActions)(BestSeller));

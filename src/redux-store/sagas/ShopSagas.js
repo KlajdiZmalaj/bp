@@ -7,7 +7,8 @@ export function* getProductsList(params) {
     ShopRequest.fetchProducts,
     params.page,
     params.brand,
-    params.category
+    params.category,
+    params.order
   );
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));

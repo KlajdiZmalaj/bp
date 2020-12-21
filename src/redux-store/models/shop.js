@@ -1,7 +1,7 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-  getProductsList: ["page", "brand", "category"],
+  getProductsList: ["page", "brand", "category", "order"],
   setProductsList: ["productsList"],
   getProductDetails: ["Product_id", "prd_supp"],
   setProductDetails: ["productD"],
@@ -11,6 +11,7 @@ const { Types, Creators } = createActions({
   setCategories: ["categories"],
   setManufacturer: ["isSelectedManufacturer"],
   setCategory: ["isSelectedCategory"],
+  setOrderVal: ["orderVal"],
 });
 
 export const ShopTypes = Types;
@@ -23,6 +24,7 @@ const INITIAL_STATE = {
   categories: {},
   isSelectedManufacturer: null,
   isSelectedCategory: null,
+  orderVal: "",
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -49,5 +51,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_CATEGORY: (state, { isSelectedCategory }) => ({
     ...state,
     isSelectedCategory,
+  }),
+  SET_ORDER_VAL: (state, { orderVal }) => ({
+    ...state,
+    orderVal,
   }),
 });
