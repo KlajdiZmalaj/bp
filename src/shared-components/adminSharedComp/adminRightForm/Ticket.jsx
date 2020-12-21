@@ -77,7 +77,7 @@ class Ticket extends React.Component {
             <div className="headerModal">
               <img className="logo" src={images.logo} alt="" />
               <span className="superSmall text-bold">
-                MAPE <span>di Hristova Mariya Hristova e C.s.a.s.</span>
+                <span> {skinExtras.account_name} </span>
               </span>
               <span className="superSmall">{skinExtras.address}</span>
               <span className="superSmall link">{skinExtras.email}</span>

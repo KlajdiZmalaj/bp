@@ -43,7 +43,7 @@ const Dashboard = ({
 
   // console.log("actives", activeCategory, activeService);
   return (
-    <div className="mobileWrapper">
+    <section className="mobileWrapper">
       <UserInfoBar />
       {!activeService ? (
         <React.Fragment>
@@ -135,7 +135,7 @@ const Dashboard = ({
           accountInfo={accountInfo}
         />
       )}
-    </div>
+    </section>
   );
 };
 const mstp = ({ main: { favorites }, auth: { accountInfo } }) => ({
