@@ -7,8 +7,12 @@ import images from "themes/images";
 import { withRouter } from "react-router-dom";
 import { message } from "antd";
 import CompaniesCheck from "./CompaniesCheck";
-import { flatten } from "lodash";
+import { debounce, flatten } from "lodash";
 class DashboardDom extends React.Component {
+  constructor(props) {
+    super(props);
+    this.searchRef = React.createRef();
+  }
   state = {
     Companies: [],
     search: "",
@@ -283,6 +287,16 @@ class DashboardDom extends React.Component {
       accountInfo.profile.role.name === "agency" &&
       accountInfo.profile.role.id === 11;
     // console.log("Companies", Companies);
+    const debounceSearch = debounce(async (e) => {
+      await this.setState({
+        search: this.searchRef?.current?.value,
+      });
+      console.log(
+        "debounce search",
+        this.searchRef,
+        this.searchRef?.current?.value
+      );
+    }, 300);
     return (
       <div className="DContainer">
         <div className={`Image  ${menuClassName}`}>
@@ -382,8 +396,8 @@ class DashboardDom extends React.Component {
               <div className="Search">
                 <input
                   type="text"
-                  value={search}
                   placeholder="Search Here"
+                  ref={this.searchRef}
                   onFocus={() => {
                     this.setState({
                       Companies: flatten(
@@ -400,11 +414,7 @@ class DashboardDom extends React.Component {
                       ),
                     });
                   }}
-                  onChange={(e) => {
-                    this.setState({
-                      search: e.target.value,
-                    });
-                  }}
+                  onChange={debounceSearch}
                 />
                 <i className="fal fa-search" />
               </div>
