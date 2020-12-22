@@ -14,11 +14,11 @@ class SubCategories extends Component {
         onClick={() => {
           this.props.getProductsList(
             null,
-            this.props.isSelected,
+            null,
             this.props.isSelectedC,
             item.name,
             this.props.orderVal,
-            this.props.sliderVal
+            null
           );
           this.props.setSubCategory(item.name);
         }}

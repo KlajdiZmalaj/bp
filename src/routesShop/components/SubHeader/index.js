@@ -39,9 +39,6 @@ class SubHeader extends Component {
                   }
                   key={index}
                   onClick={() => {
-                    // this.props.getProductsList(null, null, cat[item]);
-                    // this.props.setCategory(cat[item]);
-                    // this.props.setOrderVal("");
                     this.props.getProductsList(null, null, cat[item]);
                     this.props.setCategory(cat[item]);
                     this.props.history.push(

@@ -121,7 +121,7 @@ class ProdBycategory extends Component {
                           key={index}
                           className={
                             "brands__item" +
-                            (brandSelected === index ? " active" : "")
+                            (brandSelected === item ? " active" : "")
                           }
                           onClick={() => {
                             this.props.getProductsList(
@@ -133,7 +133,7 @@ class ProdBycategory extends Component {
                               this.props.sliderVal
                             );
                             this.props.setManufacturer(brands[item].name);
-                            this.setState({ brandSelected: index });
+                            this.setState({ brandSelected: item });
                           }}
                         >
                           <img
