@@ -11,7 +11,6 @@ class SubCategories extends Component {
         className={
           "subCategories" + (isSelectedSC === item.name ? " active" : "")
         }
-        onClick={() => this.props.setSubCategory(item.name)}
         onClick={() => {
           this.props.getProductsList(
             null,
