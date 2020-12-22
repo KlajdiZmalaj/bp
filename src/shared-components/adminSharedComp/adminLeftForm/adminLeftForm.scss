@@ -258,7 +258,7 @@
           width: 100%;
           font-size: 14px;
           font-weight: 400;
-          padding: 0 27px;
+          padding: 0;
           min-height: 42px;
           cursor: pointer;
           & div {
@@ -281,6 +281,74 @@
           }
         }
       }
+    }
+  }
+}
+.AdminLeftForm--Messages {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  transform: translateX(100%);
+  background-color: #272c31;
+  z-index: 1;
+  width: 300px;
+  height: auto;
+  color: #fff;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  display: flex;
+  flex-flow: column;
+  height: 500px;
+  overflow-y: auto;
+  &::-webkit-scrollbar-thumb {
+    background: #1878ff !important;
+  }
+  &2 {
+    transform: translateX(200%);
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    background-color: #272c31;
+    z-index: 1;
+    width: 300px;
+    height: auto;
+    color: #fff;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    height: 500px;
+    overflow-y: auto;
+    .date {
+      color: #1878ff;
+      width: 100%;
+      padding: 5px 15px;
+      font-size: 15px;
+    }
+    .desc {
+      font-size: 13px;
+      padding: 5px 15px;
+    }
+  }
+  &__item {
+    text-align: left;
+    padding: 5px 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #222;
+    width: 100%;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.3s;
+    i {
+      margin-right: 10px;
+      width: 10px;
+    }
+    &:hover,
+    &.active {
+      color: #1878ff;
     }
   }
 }
@@ -345,4 +413,39 @@
       padding-right: 4px;
     }
   }
+}
+div#messageBtn {
+  position: relative;
+  transition: 0.3s;
+  &.active {
+    background: #1878ff;
+  }
+}
+
+div#messageBtn.active:after {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #272c31;
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+}
+#messageBtn .count {
+  font-style: normal;
+  width: 13px;
+  height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: red;
+  color: #fff;
+  font-size: 9px;
+  position: absolute;
+  left: 20px;
+  top: 7px;
 }

@@ -192,47 +192,60 @@ export class FormSubmiter extends Component {
           <span>Annulla</span>
         </div>
       </div>
-    ) : (
-      TicketByTcketId.status === "Nuova Offerta" && (
-        <div className="formSubmit">
-          <div
-            onClick={() => {
-              userConfirmation(
-                this.props.setButtonsSupport,
-                this.props.TicketByTcketId.id,
-                3,
-                () => {},
-                getDataFormDetails
-              );
-            }}
-            className={"formSubmit--button -s"}
-          >
-            <span>{`${
-              this.props.accountInfo.profile.role.name !== "support"
-                ? "Conferma"
-                : "Eseguito"
-            }`}</span>
-          </div>
-          <div
-            onClick={() => {
-              userConfirmation(
-                this.props.setButtonsSupport,
-                this.props.TicketByTcketId.id,
-                5,
-                () => {},
-                getDataFormDetails
-              );
-            }}
-            className={"formSubmit--button -c"}
-          >
-            <span>
-              {this.props.accountInfo.profile.role.name !== "support"
-                ? "Rifiuta"
-                : "Annullato"}
-            </span>
-          </div>
+    ) : TicketByTcketId.status === "Nuova Offerta" ? (
+      <div className="formSubmit">
+        <div
+          onClick={() => {
+            userConfirmation(
+              this.props.setButtonsSupport,
+              this.props.TicketByTcketId.id,
+              3,
+              () => {},
+              getDataFormDetails
+            );
+          }}
+          className={"formSubmit--button -s"}
+        >
+          <span>{`${
+            this.props.accountInfo.profile.role.name !== "support"
+              ? "Conferma"
+              : "Eseguito"
+          }`}</span>
         </div>
-      )
+        <div
+          onClick={() => {
+            userConfirmation(
+              this.props.setButtonsSupport,
+              this.props.TicketByTcketId.id,
+              5,
+              () => {},
+              getDataFormDetails
+            );
+          }}
+          className={"formSubmit--button -c"}
+        >
+          <span>
+            {this.props.accountInfo.profile.role.name !== "support"
+              ? "Rifiuta"
+              : "Annullato"}
+          </span>
+        </div>
+      </div>
+    ) : (
+      <div className="formSubmit">
+        {TicketByTcketId.document && (
+          <div
+            onClick={() => {
+              downloadFile(TicketByTcketId.document);
+            }}
+            className="formSubmit--download"
+            data-file={TicketByTcketId.document}
+          >
+            <i className="fal fa-download" aria-hidden="true"></i>
+            Download Documenti
+          </div>
+        )}
+      </div>
     );
   }
 }

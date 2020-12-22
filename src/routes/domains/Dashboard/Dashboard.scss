@@ -291,6 +291,24 @@
               margin-bottom: 10px;
               margin-top: 10px;
               object-fit: contain;
+              &[alt="ZALAND"],
+              &[alt="BITN"],
+              &[alt="SPOTI"],
+              &[alt="TOTOWB"],
+              &[alt="PARTYP"],
+              &[alt="MUCHB"],
+              &[alt="STCS"],
+              &[alt="EUROSP"] {
+                width: 110px;
+              }
+              &[alt="NINT"] {
+                width: 80px;
+                object-fit: cover;
+              }
+              &[alt="WISHC"] {
+                object-fit: contain;
+                width: 120px;
+              }
             }
           }
         }

@@ -12,7 +12,7 @@ const AdminServiziItem = ({
   name,
   active,
 }) => (
-  <div className="AdminServiziItem">
+  <div className="AdminServiziItem animated fadeIn">
     <div className="AdminServiziItem--Header">
       <div className="AdminServiziItem--Header--Prenotazione">
         {category_full_name.toUpperCase()}

@@ -433,7 +433,8 @@
     top: 101px;
     background-color: #353d45;
     transition: 0.5s;
-    overflow-x: hidden;
+    z-index: 1;
+    // overflow-x: hidden;
 
     &--Min {
       width: 50px;
@@ -443,7 +444,8 @@
       top: 101px;
       background-color: #353d45;
       transition: 0.5s;
-      overflow-x: hidden;
+      //overflow-x: hidden;
+      z-index: 1;
     }
   }
 }
