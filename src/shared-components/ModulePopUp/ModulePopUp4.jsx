@@ -116,14 +116,11 @@ class ModulePopUp4 extends React.Component {
   }
   render() {
     const { service_s, rechargeMobile, service } = this.props;
-    // const {serviceType}=this.props;
-    console.log("service", service, rechargeMobile, service_s);
     const { serviceMobile, tel_no, toPrint, changeInput } = this.state;
-    console.log(
-      "service",
 
-      serviceMobile
-    );
+    // const {serviceType}=this.props;
+    // console.log("service", service, rechargeMobile, service_s);
+
     // const {confermaMsg}=this.state
     // const arr = {
     //   message: "User transactions fetched successfully",
