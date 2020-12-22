@@ -287,15 +287,10 @@ class DashboardDom extends React.Component {
       accountInfo.profile.role.name === "agency" &&
       accountInfo.profile.role.id === 11;
     // console.log("Companies", Companies);
-    const debounceSearch = debounce(async (e) => {
+    const debounceSearch = debounce(async () => {
       await this.setState({
         search: this.searchRef?.current?.value,
       });
-      console.log(
-        "debounce search",
-        this.searchRef,
-        this.searchRef?.current?.value
-      );
     }, 300);
     return (
       <div className="DContainer">
