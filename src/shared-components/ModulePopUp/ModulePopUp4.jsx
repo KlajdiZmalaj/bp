@@ -117,14 +117,12 @@ class ModulePopUp4 extends React.Component {
   render() {
     const { service_s, rechargeMobile, service } = this.props;
     // const {serviceType}=this.props;
-    // console.log("rechargeMobile", rechargeMobile.wallet, service_s);
+    console.log("service", service, rechargeMobile, service_s);
     const { serviceMobile, tel_no, toPrint, changeInput } = this.state;
     console.log(
       "service",
-      service_s,
-      service,
-      serviceMobile,
-      this.props.serviceType
+
+      serviceMobile
     );
     // const {confermaMsg}=this.state
     // const arr = {
@@ -212,6 +210,7 @@ class ModulePopUp4 extends React.Component {
                   <h5>SELEZIONA LE RICARICHE IN BASSO ED ESEGUI</h5>
                 )
               )}
+              <h5>{serviceMobile.name}</h5>
             </div>
             {(service.type.toString() === "1" &&
               service_s.id !== "BGAM" &&
