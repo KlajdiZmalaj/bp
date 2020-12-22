@@ -259,7 +259,7 @@ class AdminLeftForm extends React.Component {
               }
               id="messageBtn"
               onClick={() => {
-                this.CloseWindowOnClick();
+                //this.CloseWindowOnClick();
                 this.props.setAdminMessagesModal();
               }}
             >
@@ -291,7 +291,6 @@ class AdminLeftForm extends React.Component {
                   }}
                   className="AdminLeftForm--Messages"
                 >
-                  {console.log("privMsg", privMsg, ads)}
                   {ads.map((ad) => {
                     return (
                       <div
@@ -311,10 +310,10 @@ class AdminLeftForm extends React.Component {
                       </div>
                     );
                   })}
-                  {privMsg.map((ad) => {
+                  {privMsg.map((ad, ind) => {
                     return (
                       <div
-                        key={ad.id}
+                        key={ind}
                         className={
                           "AdminLeftForm--Messages__item" +
                           (activeAdd.id && activeAdd.id === ad.id

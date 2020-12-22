@@ -10,7 +10,7 @@ const PublicRoute = ({
   profile,
   ...rest
 }) => {
-  console.log("rest", rest);
+  //console.log("rest", rest);
   return (
     <Route
       {...rest}
