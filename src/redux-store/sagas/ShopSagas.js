@@ -8,21 +8,27 @@ export function* getProductsList(params) {
     params.page,
     params.brand,
     params.category,
-    params.order
+    params.subCategory,
+    params.order,
+    params.slider,
+    params.search
   );
+  console.log("params", params);
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));
   }
 }
 
 export function* getProductDetails(params) {
-  const response = yield call(
-    ShopRequest.fetchProductD,
-    params.Product_id,
-    params.prd_supp
-  );
-  if (response.data) {
-    yield put(ShopActions.setProductDetails(response.data.data));
+  if (params.Product_id && params.prd_supp) {
+    const response = yield call(
+      ShopRequest.fetchProductD,
+      params.Product_id,
+      params.prd_supp
+    );
+    if (response.data) {
+      yield put(ShopActions.setProductDetails(response.data.data));
+    }
   }
 }
 

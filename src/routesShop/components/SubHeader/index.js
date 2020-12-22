@@ -2,7 +2,16 @@ import React, { Component } from "react";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
+import { withRouter } from "react-router-dom";
+
 class SubHeader extends Component {
+  componentDidMount() {
+    const catProduct = this.props.match.params.cat;
+    if (catProduct) {
+      this.props.setCategory(catProduct.replace("__", " | "));
+    }
+  }
+
   render() {
     const { cat, isSelected } = this.props;
 
@@ -14,7 +23,7 @@ class SubHeader extends Component {
               "categories__category" + (isSelected === null ? " active" : "")
             }
             onClick={() => {
-              this.props.getProductsList();
+              this.props.history.push("/products");
               this.props.setCategory(null);
             }}
           >
@@ -30,12 +39,19 @@ class SubHeader extends Component {
                   }
                   key={index}
                   onClick={() => {
+                    // this.props.getProductsList(null, null, cat[item]);
+                    // this.props.setCategory(cat[item]);
+                    // this.props.setOrderVal("");
                     this.props.getProductsList(null, null, cat[item]);
                     this.props.setCategory(cat[item]);
-                    this.props.setOrderVal("");
+                    this.props.history.push(
+                      `/product-filtered/${cat[item].split(" | ")[0]}__${
+                        cat[item].split(" | ")[1]
+                      }`
+                    );
                   }}
                 >
-                  <span className={cat[item].toLowerCase()}></span> {cat[item]}
+                  <div className={cat[item].toLowerCase()}></div> {cat[item]}
                 </div>
               );
             })}
@@ -48,4 +64,4 @@ class SubHeader extends Component {
 const mpStP = (state) => ({
   isSelected: state.shop.isSelectedCategory,
 });
-export default connect(mpStP, ShopActions)(SubHeader);
+export default withRouter(connect(mpStP, ShopActions)(SubHeader));

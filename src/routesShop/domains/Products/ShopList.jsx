@@ -30,6 +30,7 @@ class ShopList extends Component {
                     null,
                     brands[item].name,
                     null,
+                    null,
                     orderVal
                   );
                   this.props.setManufacturer(brands[item].name);

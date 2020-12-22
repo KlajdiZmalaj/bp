@@ -34,7 +34,7 @@ class Products extends Component {
         </div>
 
         <ShopList brands={brands}></ShopList>
-        <BestSeller prodList={prodList}></BestSeller>
+        <BestSeller prodList={prodList} title="New arrivals"></BestSeller>
         <PromotionTop></PromotionTop>
         <FlashDeals></FlashDeals>
         <PromotionBottom></PromotionBottom>

@@ -364,6 +364,13 @@ class Root extends React.Component {
             allowedRoles={["super_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
+            path="/product-filtered/:cat?/"
+            component={ShopView.ProdBycategory}
+            isLoggedin={isLoggedin}
+            role={role}
+            allowedRoles={["super_admin", "agency", "agent", "user"]}
+          />
+          <PrivateRoute
             path="/product/:id?/:supp?/"
             component={ShopView.SingleProduct}
             isLoggedin={isLoggedin}

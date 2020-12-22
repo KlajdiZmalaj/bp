@@ -12,20 +12,20 @@
 
 .subheader {
   display: flex;
-  height: 60px;
+  min-height: 60px;
   justify-content: space-between;
   align-items: center;
-
+  background: #f9f9f9;
   .categories {
-    margin-left: -15px;
     &__category {
       display: inline-block;
-      padding: 0 15px 0 0px;
-      font-size: 16px;
-      text-transform: uppercase;
+      padding: 0 6px 0 0px;
+      font-size: 14px;
+      text-transform: capitalize;
       border-right: 1px solid #efefef;
-      margin: 0 0px 0 15px;
+      margin: 0 0px 0 6px;
       cursor: pointer;
+      text-align: center;
       &:last-child {
         border-right: none;
       }
@@ -35,35 +35,43 @@
       .casa:after {
         content: "\f015";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .cucina:after {
         content: "\f86b";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .sport:after {
         content: "\f70c";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .salute:after,
       .profumeria:after {
         content: "\f3a5";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .moda:after {
         content: "\f553";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .giochi:after {
         content: "\f8bc";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .informatica:after {
         content: "\f10b";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
       .outlet:after {
         content: "\f02c";
         font-family: "Font Awesome 5 Pro";
+        font-size: 16px;
       }
     }
   }
@@ -144,14 +152,24 @@
       padding: 5px 0;
       display: inline-block;
     }
-    .order {
-      display: inline-block;
+    .filtersCateg {
+      padding: 5px 0px;
+    }
+
+    .right {
       float: right;
-      padding: 5px 0;
-      select {
+      display: flex;
+      height: 40px;
+      align-items: center;
+      .order {
         border: 1px solid #ebebeb;
+        select {
+          border: none;
+          height: 100%;
+        }
       }
     }
+
     .products {
       display: inline-grid;
       grid-template-columns: repeat(6, calc(100% / 6 - 5px));
@@ -162,10 +180,12 @@
           border: 1px solid #ebebeb;
           width: 100%;
           border-radius: 6px;
+          text-align: center;
           img {
             height: auto;
             max-height: 184px;
             width: auto;
+            border-radius: 6px;
           }
         }
 

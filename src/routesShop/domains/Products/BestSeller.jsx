@@ -11,29 +11,53 @@ class BestSeller extends Component {
       null,
       this.props.isSelected,
       this.props.isSelectedC,
+      null,
       event.target.value
     );
   };
 
   render() {
-    const { prodList, isSelected, isSelectedC, orderVal } = this.props;
+    const {
+      title,
+      prodList,
+      isSelected,
+      isSelectedC,
+      isSelectedSC,
+      orderVal,
+      sliderVal,
+      type,
+    } = this.props;
 
     const total_pages = prodList.total_pages;
-
+    const total_records = prodList.total_records;
     return (
       <div className="bestSeller maxWidth paddingBottom">
-        <div className="title">New arrivals </div>
-        <div className="order">
-          <select
-            className="collection-layout__sort-order"
-            value={orderVal}
-            onChange={this.handleChange}
-          >
-            <option value="">Newest Arrivals</option>
-            <option value="2">Price: High to Low</option>
-            <option value="1">Price: Low to High</option>
-          </select>
+        <div className="filtersCateg">
+          <div className="title">{title}</div>
+
+          {isSelectedC && type === "categories" && (
+            <span>
+              {total_records} products in{" "}
+              <span className="text-uppercase"> {isSelectedC}</span>
+            </span>
+          )}
+          {type !== "categories" && (
+            <div className="right">
+              <div className="order">
+                <select
+                  className="collection-layout__sort-order"
+                  value={orderVal}
+                  onChange={this.handleChange}
+                >
+                  <option value="">Newest Arrivals</option>
+                  <option value="2">Price: High to Low</option>
+                  <option value="1">Price: Low to High</option>
+                </select>
+              </div>
+            </div>
+          )}
         </div>
+
         <div className="products">
           {prodList &&
             prodList.data &&
@@ -63,7 +87,14 @@ class BestSeller extends Component {
           <Pagination
             onChange={(e) => {
               this.setState({ page_number: e });
-              this.props.getProductsList(e, isSelected, isSelectedC);
+              this.props.getProductsList(
+                e,
+                isSelected,
+                isSelectedC,
+                isSelectedSC,
+                orderVal,
+                sliderVal
+              );
             }}
             total={total_pages ? total_pages * 10 : 10}
           />
@@ -77,7 +108,9 @@ const mpStP = (state) => ({
   productsList: state.shop.productsList,
   isSelected: state.shop.isSelectedManufacturer,
   isSelectedC: state.shop.isSelectedCategory,
+  isSelectedSC: state.shop.isSelectedSubCategory,
   orderVal: state.shop.orderVal,
+  sliderVal: state.shop.sliderVal,
 });
 
 export default withRouter(connect(mpStP, ShopActions)(BestSeller));

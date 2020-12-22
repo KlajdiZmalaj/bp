@@ -4,16 +4,12 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import "./style.css";
 
-import AllProducts from "routesShop/domains/Products/index.js";
+import AllProducts from "routesShop/domains/ProdBycategory/index.js";
 import SubHeader from "routesShop/components/SubHeader/index.js";
 
-class Products extends Component {
+class ProdBycategory extends Component {
   componentDidMount() {
-    this.props.getProductsList();
-    this.props.getBrands();
     this.props.getCategories();
-    this.props.setCategory(null);
-    this.props.setManufacturer(null);
   }
 
   render() {
@@ -21,6 +17,7 @@ class Products extends Component {
       <div className="products">
         <Header></Header>
         <SubHeader cat={this.props.categories}></SubHeader>
+
         <AllProducts
           prodList={this.props.productsList}
           brands={this.props.brands}
@@ -35,4 +32,4 @@ const mpStP = (state) => ({
   brands: state.shop.brands,
   categories: state.shop.categories,
 });
-export default connect(mpStP, ShopActions)(Products);
+export default connect(mpStP, ShopActions)(ProdBycategory);
