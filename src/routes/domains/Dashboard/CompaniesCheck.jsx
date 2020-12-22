@@ -1,72 +1,37 @@
-import React from "react";
-import images from "themes/images";
-import { message } from "antd";
-// import { keys } from "lodash";
-
-const CompaniesCheck = ({
-  Key,
-  changeServce,
-  role,
-  togglePopUp,
-  setState,
-  Companie,
-  toggleFavorite,
-  getServices,
-  favourite,
-  image,
-  editClass,
-}) => {
-  return (
-    <div
-      onClick={() => {
-        if (!role) {
-          message.info("Per favore fai prima il log in.");
-        } else {
-          changeServce();
-          togglePopUp(true);
-          setState();
-        }
-      }}
-      className={editClass ? editClass : ""}
-    >
-      <img
-        src={
-          image
-            ? images[image]
-            : images[
-                Key === "BOLMR" || Key === "PPA" ? "BOLL-Black-Mobile" : Key
-              ]
-        }
-        alt={image || Key}
-      />
-      <span> {Companie.name}</span>
-      <i
-        onMouseEnter={() => {
-          // console.log(document.querySelectorAll(`.${Key}comp`));
-
-          document
-            .querySelectorAll(`.${Key}comp`)
-            .forEach((ClassN) => ClassN.classList.add("hover"));
-        }}
-        onMouseLeave={() => {
-          // console.log(document.querySelectorAll(`.${Key}comp`));
-          document
-            .querySelectorAll(`.${Key}comp`)
-            .forEach((ClassN) => ClassN?.classList?.remove("hover"));
-        }}
-        onClick={async (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          await (favourite
-            ? toggleFavorite(Key, "remove")
-            : toggleFavorite(Key, "set"));
-          await setTimeout(() => {
-            getServices();
-          }, 200);
-        }}
-        className={`${Key}comp fal fa-star ${favourite ? "favourite" : ""}`}
-      ></i>
-    </div>
-  );
-};
-export default CompaniesCheck;
+export const graphData = [
+  { height: 50, price: "235 $" },
+  { height: 10, price: "235 $" },
+  { height: 90, price: "235 $" },
+  { height: 35, price: "235 $" },
+  { height: 20 },
+  { height: 70 },
+  { height: 50 },
+  { height: 40 },
+  { height: 20 },
+  { height: 10 },
+  { height: 40 },
+  { height: 20 },
+  { height: 40, price: "235 $" },
+  { height: 30 },
+  { height: 40 },
+  { height: 60 },
+  { height: 90 },
+  { height: 40 },
+  { height: 90 },
+  { height: 40 },
+  { height: 40 },
+  { height: 40 },
+  { height: 40 },
+  { height: 100 },
+  { height: 40 },
+  { height: 40 },
+  { height: 10 },
+  { height: 40 },
+  { height: 20 },
+  { height: 40 },
+  { height: 70 },
+  { height: 40 },
+];
+export const Tranzacioni = "0";
+export const Commisione = "0";
+export const Proviggioni = "0";
