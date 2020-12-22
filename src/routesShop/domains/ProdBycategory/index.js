@@ -189,15 +189,17 @@ class ProdBycategory extends Component {
         <div className="catProd">
           <div className="catProd__categories">
             <div className="title">Categorie</div>
-            {subcategories &&
-              Object.keys(subcategories).map((item, index) => {
-                return (
-                  <Categories
-                    key={index}
-                    cat={subcategories[item]}
-                  ></Categories>
-                );
-              })}
+            <div className="catItems">
+              {subcategories &&
+                Object.keys(subcategories).map((item, index) => {
+                  return (
+                    <Categories
+                      key={index}
+                      cat={subcategories[item]}
+                    ></Categories>
+                  );
+                })}
+            </div>
           </div>
           <BestSeller prodList={prodList} type="categories"></BestSeller>
         </div>

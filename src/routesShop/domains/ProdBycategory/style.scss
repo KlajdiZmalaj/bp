@@ -105,6 +105,8 @@
   .catProd {
     &__categories {
       min-width: 280px;
+      margin-right: 10px;
+
       > .title {
         padding: 5px 0;
         text-transform: uppercase;
@@ -124,6 +126,12 @@
             background-color: #ebebeb;
           }
         }
+      }
+      > .catItems {
+        background-color: #f2f2f2;
+        border-radius: 6px;
+        height: 100%;
+        padding: 10px;
       }
     }
     .bestSeller {
