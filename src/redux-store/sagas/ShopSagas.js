@@ -13,7 +13,6 @@ export function* getProductsList(params) {
     params.slider,
     params.search
   );
-  console.log("params", params);
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));
   }
