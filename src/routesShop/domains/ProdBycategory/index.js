@@ -94,7 +94,21 @@ class ProdBycategory extends Component {
           {subcategories &&
             Object.keys(subcategories).map((item, index) => {
               return (
-                <div key={index}>
+                <div
+                  key={index}
+                  onClick={() => {
+                    this.props.getProductsList(
+                      null,
+                      null,
+                      this.props.isSelectedC,
+                      null,
+                      this.props.orderVal,
+                      null,
+                      null,
+                      subcategories[item].name
+                    );
+                  }}
+                >
                   <span>{subcategories[item].name}</span>
                   <img src={subcategories[item].image}></img>
                 </div>
