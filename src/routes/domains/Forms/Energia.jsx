@@ -315,11 +315,11 @@ class Energia extends Component {
                 offerta={this.state.offerta}
                 category={3}
                 desc={[
-                  <>
+                  <div key="1">
                     0,0765€/kWh
                     <br />
                     0,25€/Smc
-                  </>,
+                  </div>,
                 ]}
                 name={"LUCE+GAS"}
                 svg="fire-bulb"
