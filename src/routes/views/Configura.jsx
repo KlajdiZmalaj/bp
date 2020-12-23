@@ -49,7 +49,11 @@ class Configura extends React.Component {
       }
     });
     return (
-      <div className="Container">
+      <div
+        className={
+          "Container" + (this.props.isMobile ? " mobileConfigura" : "")
+        }
+      >
         {!this.props.isMobile && <Header />}
 
         <div className="container-fluid overview ">
