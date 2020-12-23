@@ -25,6 +25,8 @@ class Products extends Component {
           prodList={this.props.productsList}
           brands={this.props.brands}
           categories={this.props.categories}
+          getProductsList={this.props.getProductsList}
+          setCategory={this.props.setCategory}
         ></AllProducts>
       </div>
     );

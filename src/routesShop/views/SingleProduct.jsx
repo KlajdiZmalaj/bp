@@ -15,13 +15,17 @@ class SingleProduct extends Component {
     ) {
       this.props.getProductsList();
     }
+
+    if (this.props.categories && Object.keys(this.props.categories).length < 1)
+      this.props.getCategories();
   }
 
   render() {
+    console.log("categories", this.props.categories);
     return (
       <div className="products">
         <Header></Header>
-        <SubHeader></SubHeader>
+        <SubHeader cat={this.props.categories}></SubHeader>
         <Product
           prodList={this.props.productsList}
           className="openedProduct"
@@ -33,5 +37,6 @@ class SingleProduct extends Component {
 
 const mpStP = (state) => ({
   productsList: state.shop.productsList,
+  categories: state.shop.categories,
 });
 export default connect(mpStP, ShopActions)(SingleProduct);

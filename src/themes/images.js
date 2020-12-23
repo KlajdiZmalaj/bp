@@ -273,6 +273,17 @@ try {
     bg2: require(`../assets/shop/Bg2.svg`),
     bg3: require(`../assets/shop/Bg3.svg`),
     bg4: require(`../assets/shop/Bg4.svg`),
+    informaticaelettronica: require(`../assets/shop/informaticaelettronica.svg`),
+    sportfitness: require(`../assets/shop/sportfitness.svg`),
+
+    casagiardino: require(`../assets/shop/casagiardino.jpg`),
+    cucinagourmet: require(`../assets/shop/cucinagourmet.jpg`),
+    giochibambini: require(`../assets/shop/giochibambini.jpg`),
+    modaaccessori: require(`../assets/shop/salutebellezza.jpg`),
+    outletofferte: require(`../assets/shop/Bg2.svg`),
+    profumeriacosmesi: require(`../assets/shop/profumeriacosmesi.jpg`),
+    salutebellezza: require(`../assets/shop/salutebellezza.jpg`),
+
     placeholder: require(`../assets/images/placeholder.jpg`),
   };
 } catch (err) {

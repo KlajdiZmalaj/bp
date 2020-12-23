@@ -14,6 +14,11 @@ class SubHeader extends Component {
 
   render() {
     const { cat, isSelected } = this.props;
+    let cartItems = 0;
+
+    if (localStorage.getItem("shopProducts") !== null) {
+      cartItems = localStorage.getItem("shopProducts").length();
+    }
 
     return (
       <div className="subheader maxWidth">
@@ -48,12 +53,17 @@ class SubHeader extends Component {
                     );
                   }}
                 >
-                  <div className={cat[item].toLowerCase()}></div> {cat[item]}
+                  <div className={cat[item].toLowerCase()}></div>
+                  {cat[item].split("|")[0]}
+                  <p> {cat[item].split("|")[1]}</p>
                 </div>
               );
             })}
         </div>
-        <div className="cart"></div>
+        <div className="cart">
+          Cart: {cartItems}
+          <i className="fal fa-shopping-cart"></i>
+        </div>
       </div>
     );
   }
