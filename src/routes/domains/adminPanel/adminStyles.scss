@@ -2236,7 +2236,7 @@ body.bodyAdmin,
     align-items: center;
     justify-content: flex-end;
     width: 50%;
-    transform: translateX(110%);
+    // transform: translateX(110%);
     animation: 40s slideLeft infinite linear;
     > div {
       display: flex;
@@ -2248,7 +2248,7 @@ body.bodyAdmin,
 }
 @keyframes slideLeft {
   0% {
-    transform: translateX(110%);
+    transform: translateX(170%);
   }
 
   100% {

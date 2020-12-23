@@ -284,8 +284,9 @@ class AdminLeftForm extends React.Component {
                   style={{
                     bottom: `${
                       window.innerHeight -
-                      document.querySelector("#messageBtn").getClientRects()[0]
-                        .y +
+                      document
+                        .querySelector("#messageBtn")
+                        ?.getClientRects?.()?.[0].y +
                       -42
                     }px`,
                   }}
@@ -336,8 +337,9 @@ class AdminLeftForm extends React.Component {
                   style={{
                     bottom: `${
                       window.innerHeight -
-                      document.querySelector("#messageBtn").getClientRects()[0]
-                        .y +
+                      document
+                        .querySelector("#messageBtn")
+                        ?.getClientRects?.()?.[0].y +
                       -42
                     }px`,
                   }}
