@@ -30,9 +30,11 @@ const Dashboard = ({
   favorites,
   toggleFavorite,
   accountInfo,
+  getServices,
 }) => {
   useEffect(() => {
     getFavorites();
+    getServices();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

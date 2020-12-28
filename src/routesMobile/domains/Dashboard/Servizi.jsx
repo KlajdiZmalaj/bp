@@ -183,7 +183,7 @@ const OneTab = ({
 };
 const Servizi = ({
   services,
-  getServices,
+
   serviceSearched,
   tab,
   setService,
@@ -191,11 +191,6 @@ const Servizi = ({
   accountInfo,
   favorites,
 }) => {
-  useEffect(() => {
-    getServices();
-    return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const [panelOpen, setPanelOpen] = useState(null);
   // console.log("services", services);
   return (
@@ -206,37 +201,29 @@ const Servizi = ({
           {Object.keys(services).map((types) => {
             if (types !== "name" && types !== "group") {
               return Object.keys(services[types]).map((company) => {
-                return (services?.[types]?.[company]?.services || []).map(
-                  (service) => {
-                    return (
-                      service.name
-                        .toLowerCase()
-                        .includes(serviceSearched.toLowerCase()) && (
-                        <div
-                          onClick={() => {
-                            // console.log(
-                            //   "clicked",
-                            //   types,
-                            //   company,
-                            //   service.service_id
-                            // );
-
-                            setService(company);
-                            setCategory(types);
-                          }}
-                          className={`mobileServices--body__item`}
-                          key={service.service_id}
-                          alt={`${company} -> ${service.service_id}`}
-                        >
-                          <img
-                            src={images[service.service_id] || images[company]}
-                            alt=""
-                          />
-                          <span>{service.name}</span>
-                        </div>
-                      )
-                    );
-                  }
+                return (
+                  services[types][company]?.name
+                    ?.toLowerCase?.()
+                    ?.includes?.(serviceSearched.toLowerCase()) && (
+                    <div
+                      onClick={() => {
+                        // console.log(
+                        //   "clicked",
+                        //   types,
+                        //   company,
+                        //   service.service_id
+                        // );
+                        setService(company);
+                        setCategory(types);
+                      }}
+                      className={`mobileServices--body__item`}
+                      key={company}
+                      alt={`${company}`}
+                    >
+                      <img src={images[company]} alt="" />
+                      <span>{services[types][company]?.name}</span>
+                    </div>
+                  )
                 );
               });
             } else {

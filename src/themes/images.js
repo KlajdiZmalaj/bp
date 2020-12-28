@@ -174,7 +174,7 @@ try {
     BITN: require(`../assets/images/BITN.svg`),
     SPOTI: require(`../assets/images/SPOTIFY.svg`),
     VOLAGR: require(`../assets/images/VOLAGR.png`),
-
+    SND000: require(`../assets/images/BOLL-Black.svg`),
     // COOPV: require(`../assets/images${skin}/bill-dark.svg`),
     // DKENA: require(`../assets/images${skin}/bill-dark.svg`),
     // HOX: require(`../assets/images${skin}/bill-dark.svg`),

@@ -10,6 +10,7 @@ import PagoPa from "./modals/PagoPa";
 import MavRav from "./modals/MavRav";
 import F24 from "./modals/F24";
 import Freccia from "./modals/Freccia";
+import { connect } from "react-redux";
 const ServicesForms = ({
   activeService,
   activeCategory,
@@ -17,6 +18,7 @@ const ServicesForms = ({
   favorites,
   toggleFavorite,
   accountInfo,
+  services,
 }) => {
   const isTestAcc =
     accountInfo.profile.username === "mynewagency" &&
@@ -32,9 +34,22 @@ const ServicesForms = ({
     });
   });
 
+  let serviceObj = {};
+  Object.keys(services).forEach((category) => {
+    Object.keys(services[category]).forEach((serviceKey) => {
+      if (serviceKey === activeService) {
+        serviceObj = services[category][serviceKey];
+      }
+    });
+  });
+  //console.log("serviceObj", serviceObj);
+  const ValidService =
+    serviceObj?.services?.[0].type?.toString?.() === "0" ||
+    serviceObj?.services?.[0].type?.toString?.() === "1";
   return (
     <div className="servicesForms">
-      {activeCategory === "RTELD" || activeCategory === "RTELC" ? (
+      {(activeCategory === "RTELD" || activeCategory === "RTELC") &&
+      ValidService ? (
         <NumpadForm
           setService={setService}
           activeCategory={activeCategory}
@@ -42,12 +57,13 @@ const ServicesForms = ({
           toggleFavorite={toggleFavorite}
           allFavServices={allFavServices}
         />
-      ) : activeCategory === "GIFT" ||
-        activeCategory === "SND000" ||
-        activeCategory === "RTELI" ||
-        activeCategory === "RTVD" ||
-        activeCategory === "CCARD" ||
-        activeCategory === "SCMS" ? (
+      ) : (activeCategory === "GIFT" ||
+          activeCategory === "SND000" ||
+          activeCategory === "RTELI" ||
+          activeCategory === "RTVD" ||
+          activeCategory === "CCARD" ||
+          activeCategory === "SCMS") &&
+        ValidService ? (
         <NumpadForm
           noNumbers={true}
           setService={setService}
@@ -153,4 +169,9 @@ const RedirectDashboard = ({ setService, activeService }) => {
     </div>
   );
 };
-export default ServicesForms;
+const mstp = ({ main: { services } }) => {
+  return {
+    services,
+  };
+};
+export default connect(mstp)(ServicesForms);
