@@ -8,6 +8,10 @@ import { connect } from "react-redux";
 
 import "./style.css";
 
+import { Select } from "antd";
+
+const { Option } = Select;
+
 class SingleProduct extends Component {
   state = {
     id: null,
@@ -15,6 +19,7 @@ class SingleProduct extends Component {
     orderQuanity: 1,
     bigproduct: null,
     product: {},
+    selectedColor: null,
   };
   changeBigProduct = (src) => {
     this.setState({ bigproduct: src });
@@ -47,6 +52,11 @@ class SingleProduct extends Component {
   increasevalue = () => {
     this.setState({ orderQuanity: this.state.orderQuanity + 1 });
   };
+
+  handleChangeColour = (e) => {
+    this.setState({ selectedColor: e });
+  };
+
   render() {
     const { product } = this.props;
     const { orderQuanity, bigproduct } = this.state;
@@ -143,19 +153,40 @@ class SingleProduct extends Component {
                 {product.Models["colore"] && (
                   <div className="color text-uppercase pb-3">
                     Colour:
-                    <select
-                    // value={this.state.selectValue}
-                    // onChange={this.handleChange}
+                    <Select
+                      placeholder="Scegli un colore"
+                      onChange={this.handleChangeColour}
                     >
+                      <option value="" disabled selected>
+                        Select your option
+                      </option>
                       {product.Models["colore"] &&
                         product.Models["colore"].map((item, index) => {
                           return (
-                            <option value={item.value} key={index}>
+                            <Option value={item.value} key={index}>
                               {item.value}
-                            </option>
+                            </Option>
                           );
                         })}
-                    </select>
+                    </Select>
+                  </div>
+                )}
+                {product.Models["design"] && (
+                  <div className="color text-uppercase pb-3">
+                    Colour:
+                    <Select
+                      // value={this.state.selectValue}
+                      onChange={this.handleChangeColour}
+                    >
+                      {product.Models["design"] &&
+                        product.Models["design"].map((item, index) => {
+                          return (
+                            <Option value={item.value} key={index}>
+                              {item.value}
+                            </Option>
+                          );
+                        })}
+                    </Select>
                   </div>
                 )}
 
@@ -172,7 +203,6 @@ class SingleProduct extends Component {
                     })}
                   </div>
                 )}
-
                 <div className="buy pb-3 text-uppercase">
                   <div className="addItem">
                     <div className="adjustContainer">

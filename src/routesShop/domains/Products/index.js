@@ -9,9 +9,11 @@ import PromotionTop from "./PromotionTop";
 
 import FlashDeals from "./FlashDeals";
 
+import { withRouter } from "react-router-dom";
+
 class Products extends Component {
   render() {
-    const { prodList, brands } = this.props;
+    const { prodList, brands, categories } = this.props;
 
     return (
       <div className="shopProd">
@@ -19,18 +21,31 @@ class Products extends Component {
           <img src={images.mainBanner} className="maxWidth" alt=""></img>
         </div>
         <div className="banners maxWidth">
-          <div>
-            <img src={images.bg1} alt=""></img>
-          </div>
-          <div>
-            <img src={images.bg2} alt=""></img>
-          </div>
-          <div>
-            <img src={images.bg3} alt=""></img>
-          </div>
-          <div>
-            <img src={images.bg4} alt=""></img>
-          </div>
+          {categories &&
+            Object.keys(categories).map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`categoriesP  ${item}`}
+                  onClick={() => {
+                    this.props.getProductsList(null, null, categories[item]);
+                    this.props.setCategory(categories[item]);
+                    this.props.history.push(
+                      `/product-filtered/${categories[item].split(" | ")[0]}__${
+                        categories[item].split(" | ")[1]
+                      }`
+                    );
+                  }}
+                >
+                  <div className="text">
+                    {categories[item].split(" | ")[0]}
+                    <b>{categories[item].split(" | ")[1]}</b>
+                  </div>
+
+                  <img src={images[item]} alt=""></img>
+                </div>
+              );
+            })}
         </div>
 
         <ShopList brands={brands}></ShopList>
@@ -44,4 +59,4 @@ class Products extends Component {
   }
 }
 
-export default Products;
+export default withRouter(Products);

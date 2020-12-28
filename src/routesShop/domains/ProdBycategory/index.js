@@ -28,7 +28,9 @@ class ProdBycategory extends Component {
       catProduct && catProduct.replace("__", " | ")
     );
   }
-
+  onChange = (a, b, c) => {
+    console.log(a, b, c);
+  };
   handleChange = (event) => {
     this.props.setOrderVal(event.target.value);
     this.props.getProductsList(
@@ -88,6 +90,31 @@ class ProdBycategory extends Component {
 
     return (
       <div className="shopProd">
+        <div className="catgItems">
+          {subcategories &&
+            Object.keys(subcategories).map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={() => {
+                    this.props.getProductsList(
+                      null,
+                      null,
+                      this.props.isSelectedC,
+                      null,
+                      this.props.orderVal,
+                      null,
+                      null,
+                      subcategories[item].name
+                    );
+                  }}
+                >
+                  <span>{subcategories[item].name}</span>
+                  <img src={subcategories[item].image}></img>
+                </div>
+              );
+            })}
+        </div>
         <div className="filters">
           <div className="filters__items">
             <div className="search">
@@ -185,7 +212,6 @@ class ProdBycategory extends Component {
             </div>
           </div>
         </div>
-
         <div className="catProd">
           <div className="catProd__categories">
             <div className="title">Categorie</div>

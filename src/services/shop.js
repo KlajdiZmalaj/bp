@@ -34,7 +34,8 @@ export const fetchProducts = (
   subCategory,
   order,
   slider,
-  search
+  search,
+  subCategoryI
 ) =>
   instanceAxios
     .get(`/shop/products`, {
@@ -48,6 +49,7 @@ export const fetchProducts = (
         ...(slider ? { min_price: slider[0] } : {}),
         ...(slider ? { max_price: slider[1] } : {}),
         ...(search ? { Product_Name: search } : {}),
+        ...(subCategoryI ? { Product_SubCategory: subCategoryI } : {}),
 
         // page_number: 3,
       },

@@ -66,6 +66,17 @@
           }
         }
         .color {
+          .ant-select {
+            display: block;
+          }
+          .ant-select-selection--single {
+            border: 1px solid;
+            border-radius: 0;
+          }
+          .ant-select-selection__placeholder {
+            color: inherit;
+          }
+
           select {
             display: block;
             width: calc(55% - 10px);
@@ -148,4 +159,7 @@
 
 .borderB {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ant-select-dropdown-menu-item.ant-select-dropdown-menu-item-disabled {
+  display: none;
 }
