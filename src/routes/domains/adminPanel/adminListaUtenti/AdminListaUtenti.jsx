@@ -206,7 +206,7 @@ class AdminListaUtenti extends React.Component {
               !Special && screenWidth <= 850
                 ? { justifyContent: "center", left: 0, display: "none" }
                 : Special
-                ? { width: "13%", justifyContent: "center", marginRight: "1%" }
+                ? { width: "18%", justifyContent: "center", marginRight: "1%" }
                 : { width: "13%", justifyContent: "center", left: 0 }
             }
           >

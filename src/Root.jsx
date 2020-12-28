@@ -36,8 +36,20 @@ moment.updateLocale("it", {
   },
 });
 class Root extends React.Component {
-  state = { top: false };
+  state = { top: false, isAdminPanel: false };
   componentDidMount() {
+    if (window.location.hash.includes("back-office")) {
+      this.setState({ isAdminPanel: true });
+    } else {
+      this.setState({ isAdminPanel: false });
+    }
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash.includes("back-office")) {
+        this.setState({ isAdminPanel: true });
+      } else {
+        this.setState({ isAdminPanel: false });
+      }
+    });
     if (isWinter) document.body.classList.add("winterMode");
     window.addEventListener("resize", () => {
       this.props.setScreenW(window.innerWidth);
@@ -113,7 +125,9 @@ class Root extends React.Component {
     return (
       <React.Fragment>
         <Snow />
-        {(role === "support" || role === "main_admin") && <AdminTopHeader />}
+        {(role === "support" || role === "main_admin") &&
+          window.location.hash.includes("back-office") &&
+          this.state.isAdminPanel && <AdminTopHeader />}
         <HashRouter>
           <Switch>
             <Route
@@ -215,7 +229,7 @@ class Root extends React.Component {
               }
               isLoggedin={isLoggedin}
               role={role}
-              allowedRoles={["super_admin", "agency", "agent", "user"]}
+              allowedRoles={["agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/configura"

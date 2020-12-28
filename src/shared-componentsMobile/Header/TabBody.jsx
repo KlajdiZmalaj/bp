@@ -18,7 +18,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           <span>{accountInfo?.profile?.wallet}€</span>
         </div>
       ) : (
-        <div className="tabBody--item active">
+        <div className="tabBody--item">
           <i className="fal fa-store"></i>
           Servizi
         </div>

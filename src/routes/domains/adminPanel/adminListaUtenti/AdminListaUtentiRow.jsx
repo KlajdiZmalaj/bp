@@ -99,18 +99,22 @@ class AdminListaUtentiRow extends React.Component {
           {Special ? (
             <span>
               <div></div>
-              <a
+              <span
+                onClick={() => {
+                  this.props.setActiveSkinId(itemList.id);
+                }}
                 style={{
                   display: "flex",
                   alignItems: "center",
                   paddingLeft: "10%",
                   width: "100%",
                   height: "100%",
+                  cursor: "pointer",
                 }}
-                href={itemList.link}
+                alt={itemList.link}
               >
                 {itemList.username}
-              </a>
+              </span>
             </span>
           ) : (
             <React.Fragment>
@@ -197,7 +201,7 @@ class AdminListaUtentiRow extends React.Component {
           <span
             style={
               Special
-                ? { width: "13%", justifyContent: "center", left: 0 }
+                ? { width: "18%", justifyContent: "center", left: 0 }
                 : { width: "13%", justifyContent: "center", left: 0 }
             }
             className={`${

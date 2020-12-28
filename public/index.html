@@ -43,11 +43,7 @@
       ) {
         document.querySelector("#tabTheme").setAttribute("content", "#222");
         SITE_STYLES.setAttribute("href", "./var6.css");
-      } else if (
-        window.LOCATION_URL.includes("derby") ||
-        window.LOCATION_URL.includes("local") ||
-        window.LOCATION_URL.includes("192.168")
-      ) {
+      } else if (window.LOCATION_URL.match(/derby|localhost|192\.168/g)) {
         document.querySelector("#tabTheme").setAttribute("content", "#0da90f");
         SITE_STYLES.setAttribute("href", "./var3.css");
       }

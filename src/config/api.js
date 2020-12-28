@@ -72,11 +72,7 @@ export let skin = {
   skin_id: 0,
 };
 window.apiUrl = apiUrl;
-if (
-  window.location.href.includes("bpoint") ||
-  window.location.href.includes("localhost") ||
-  window.location.href.includes("192.168")
-) {
+if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
   skin = {
     ...skin,
     skin_id: 1,

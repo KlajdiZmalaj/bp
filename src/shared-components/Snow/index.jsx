@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./snow.css";
 import { isWinter } from "config";
-const Snowf = (props) => {
-  //   console.log(props);
-  const max = props.max;
+const Snowf = ({ max }) => {
   let snowflakes = [];
   let size = [10, 15, 20];
   let opacity = [0.5, 0.8, 1];
@@ -53,12 +51,6 @@ const Snowf = (props) => {
   return snowflakes;
 };
 class Snow extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stopSnow: false,
-    };
-  }
   shouldComponentUpdate() {
     return false;
   }
