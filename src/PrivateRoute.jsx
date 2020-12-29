@@ -11,6 +11,7 @@ const PrivateRoute = ({
   allowedRoles,
   path,
   profile,
+
   ...rest
 }) => {
   return (

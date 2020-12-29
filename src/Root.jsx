@@ -383,21 +383,29 @@ class Root extends React.Component {
             component={ShopView.Products}
             isLoggedin={isLoggedin}
             role={role}
-            allowedRoles={["super_admin", "agency", "agent", "user"]}
+            allowedRoles={["main_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
             path="/product-filtered/:cat?/"
             component={ShopView.ProdBycategory}
             isLoggedin={isLoggedin}
             role={role}
-            allowedRoles={["super_admin", "agency", "agent", "user"]}
+            allowedRoles={["main_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
             path="/product/:id?/:supp?/"
             component={ShopView.SingleProduct}
             isLoggedin={isLoggedin}
             role={role}
-            allowedRoles={["super_admin", "agency", "agent", "user"]}
+            allowedRoles={["main_admin", "agency", "agent", "user"]}
+          />
+          <PrivateRoute
+            path="/product-checkout"
+            exact
+            component={ShopView.CheckOut}
+            isLoggedin={isLoggedin}
+            role={role}
+            allowedRoles={["main_admin", "agency", "agent", "user"]}
           />
         </HashRouter>
 

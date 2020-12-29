@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap");
+.products.checkout {
+  background-color: #f5f5f5;
+}
+.domTitle {
+  height: 75px;
+  font-size: 22px;
+  font-weight: 300;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  background-color: #f5f5f5;
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  border-bottom: 1px solid #dadada;
+  i {
+    color: var(--accent-bg);
+    margin-right: 5px;
+  }
+}
+.shopCheckout {
+  font-family: "Poppins", sans-serif;
+  .titleTop {
+    height: 69px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 18px;
+    font-weight: 300;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  &--form {
+    margin-top: 30px;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 60px;
+    > div {
+      display: flex;
+      flex-flow: column;
+    }
+    &__left {
+      flex-grow: 1;
+      background-color: #fff;
+      color: #000;
+      margin-right: 20px;
+    }
+    &__right {
+      width: 380px;
+      flex-shrink: 0;
+      background-color: #fff;
+      color: #000;
+    }
+  }
+  .formContainer {
+    padding: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: 1px dotted #dadada;
+    margin-bottom: 10px;
+    input,
+    .inpGr {
+      height: 50px;
+      border: 1px solid #707070;
+      color: #000;
+      background-color: #fff;
+      flex-shrink: 0;
+      width: calc(100% / 2 - 5px);
+      margin-bottom: 10px;
+      padding: 0 20px;
+      font-weight: 300;
+      font-size: 14px;
+      &::placeholder {
+        color: #000;
+        font-weight: 500;
+      }
+    }
+    .inpGr {
+      display: flex;
+      input {
+        border: 0;
+        height: 100%;
+        margin: 0;
+        &:nth-child(1) {
+          width: 60%;
+        }
+        &:nth-child(2) {
+          width: 40%;
+          border-left: 1px solid #707070;
+        }
+      }
+    }
+  }
+  .checkContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    font-size: 14px;
+    &.right {
+      flex-flow: row wrap;
+      label {
+        width: 50%;
+        white-space: nowrap;
+        text-align: left;
+        justify-content: flex-start;
+        margin-top: 10px;
+        div {
+          flex-shrink: 0;
+        }
+      }
+    }
+    &.bottom {
+      height: 50px;
+      border-top: 1px dotted #dadada;
+      display: flex;
+      align-items: center;
+      flex-flow: row;
+      margin-top: 20px;
+    }
+    span {
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: 300;
+      span {
+        font-weight: 500;
+      }
+    }
+    label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      div {
+        width: 21px;
+        height: 21px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 21px;
+        transition: 0.3s;
+      }
+      i {
+        display: none;
+        font-size: 11px;
+      }
+    }
+    input {
+      display: none;
+      &:checked {
+        + label {
+          div {
+            background-color: var(--accent-bg);
+            color: var(--accent-txt);
+          }
+          i {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .infos {
+    display: flex;
+    flex-flow: column;
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+      width: calc(100% - 60px);
+      height: 50px;
+      border-bottom: 1px dotted #dadada;
+      > div:nth-child(1) {
+        color: #7f7f7f;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      > div:nth-child(2) {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        span {
+          color: var(--accent-bg);
+        }
+      }
+      &.total {
+        border-bottom: 0;
+        > div:nth-child(1) {
+          color: #000;
+        }
+        > div:nth-child(2) {
+          color: var(--accent-bg);
+          font-weight: 300;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .pagaBtn {
+    background-color: var(--accent-bg);
+    color: var(--accent-txt);
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    height: 50px;
+    text-transform: uppercase;
+    border: 0;
+    margin: 8px 30px;
+    transition: 0.3s;
+    &:hover {
+      border: 1px solid var(--accent-bg);
+      background-color: transparent;
+      color: var(--accent-bg);
+    }
+  }
+}
