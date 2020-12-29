@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
-
+import "./style.css";
 import { withRouter } from "react-router-dom";
 
 class SubHeader extends Component {
@@ -61,8 +61,8 @@ class SubHeader extends Component {
             })}
         </div>
         <div className="cart">
-          Cart: {cartItems}
-          <i className="fal fa-shopping-cart"></i>
+          Cart: <span className="cart__nr">{cartItems}</span>
+          <i className="far fa-shopping-cart"></i>
         </div>
       </div>
     );

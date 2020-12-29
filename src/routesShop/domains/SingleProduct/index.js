@@ -22,6 +22,7 @@ class SingleProduct extends Component {
     bigproduct: null,
     product: {},
     selectedColor: null,
+    selectedSize: null,
   };
   changeBigProduct = (src) => {
     this.setState({ bigproduct: src });
@@ -56,12 +57,23 @@ class SingleProduct extends Component {
   };
 
   handleChangeColour = (e) => {
+    console.log("ee", e);
     this.setState({ selectedColor: e });
   };
+  handleChangeSize = (e) => {
+    this.setState({ selectedSize: e });
+  };
 
+  addTocart = () => {};
   render() {
     const { product } = this.props;
-    const { orderQuanity, bigproduct } = this.state;
+    const {
+      orderQuanity,
+      bigproduct,
+      selectedColor,
+      selectedSize,
+    } = this.state;
+
     const settings = {
       dots: false,
       infinite: true,
@@ -71,6 +83,7 @@ class SingleProduct extends Component {
       vertical: true,
       verticalSwiping: true,
     };
+    console.log("selectedSize", selectedSize);
     return (
       <div className="prod">
         <div className="single maxWidth">
@@ -136,7 +149,7 @@ class SingleProduct extends Component {
                     </p>
                     <p>
                       <span className="label">SubCategoria: </span>
-                      {product.Product_Category}
+                      {product.Product_SubCategory}
                     </p>
                     {product.Product_Weight && (
                       <p>
@@ -170,17 +183,18 @@ class SingleProduct extends Component {
                 {product.Models["colore"] && (
                   <div className="color text-uppercase pb-3">
                     Colour:
-                    <Select
-                      placeholder="Scegli un colore"
-                      onChange={this.handleChangeColour}
-                    >
+                    <Select placeholder="Scegli un colore">
                       <option value="" disabled selected>
                         Select your option
                       </option>
                       {product.Models["colore"] &&
                         product.Models["colore"].map((item, index) => {
                           return (
-                            <Option value={item.value} key={index}>
+                            <Option
+                              value={item.value}
+                              key={index}
+                              onClick={() => this.handleChangeColour(item)}
+                            >
                               {item.value}
                             </Option>
                           );
@@ -191,14 +205,15 @@ class SingleProduct extends Component {
                 {product.Models["design"] && (
                   <div className="color text-uppercase pb-3">
                     Colour:
-                    <Select
-                      // value={this.state.selectValue}
-                      onChange={this.handleChangeColour}
-                    >
+                    <Select>
                       {product.Models["design"] &&
                         product.Models["design"].map((item, index) => {
                           return (
-                            <Option value={item.value} key={index}>
+                            <Option
+                              value={item.value}
+                              key={index}
+                              onClick={() => this.handleChangeColour(item)}
+                            >
                               {item.value}
                             </Option>
                           );
@@ -211,13 +226,37 @@ class SingleProduct extends Component {
                   <div className="size text-uppercase pb-3">
                     <div> Size:</div>
 
-                    {product.Models["taglia"].map((item, index) => {
-                      return (
-                        <div key={index} className="size__items">
-                          {item.value}
-                        </div>
-                      );
-                    })}
+                    {selectedColor
+                      ? product.Models["taglia"]
+                          .filter((item) => item.parent_model === selectedColor)
+                          .map((item, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className={
+                                  "size__items" +
+                                  (item === selectedSize ? " active" : "")
+                                }
+                                onClick={() => this.handleChangeSize(item)}
+                              >
+                                {item.value}
+                              </div>
+                            );
+                          })
+                      : product.Models["taglia"].map((item, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className={
+                                "size__items" +
+                                (item === selectedSize ? " active" : "")
+                              }
+                              onClick={() => this.handleChangeSize(item)}
+                            >
+                              {item.value}
+                            </div>
+                          );
+                        })}
                   </div>
                 )}
                 <div className="buy pb-3 text-uppercase">
@@ -231,7 +270,7 @@ class SingleProduct extends Component {
                         <i className="fal fa-chevron-right"></i>
                       </div>
                     </div>
-                    <div className="addTobag">
+                    <div className="addTobag" onClick={this.addTocart}>
                       Add to bag <i className="fal fa-shopping-bag"></i>
                     </div>
                   </div>
