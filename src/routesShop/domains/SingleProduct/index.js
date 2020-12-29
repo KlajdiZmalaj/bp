@@ -23,6 +23,7 @@ class SingleProduct extends Component {
     product: {},
     selectedColor: null,
     selectedSize: null,
+    itemSelected: null,
   };
   changeBigProduct = (src) => {
     this.setState({ bigproduct: src });
@@ -52,19 +53,37 @@ class SingleProduct extends Component {
       this.setState({ orderQuanity: this.state.orderQuanity - 1 });
     }
   };
+
   increasevalue = () => {
     this.setState({ orderQuanity: this.state.orderQuanity + 1 });
   };
 
   handleChangeColour = (e) => {
-    console.log("ee", e);
     this.setState({ selectedColor: e });
   };
+
   handleChangeSize = (e) => {
     this.setState({ selectedSize: e });
   };
 
-  addTocart = () => {};
+  handleProduct = (item) => {
+    this.setState({ itemSelected: item });
+  };
+
+  addTocart = () => {
+    let products =
+      JSON.parse(localStorage.getItem("shopProducts")) !== null
+        ? JSON.parse(localStorage.getItem("shopProducts"))
+        : [];
+
+    products.push({
+      product_id: this.state.itemSelected.id,
+      product_quantity: this.state.orderQuanity,
+    });
+    localStorage.setItem("shopProducts", JSON.stringify(products));
+    this.props.setCart(products);
+  };
+
   render() {
     const { product } = this.props;
     const {
@@ -83,7 +102,7 @@ class SingleProduct extends Component {
       vertical: true,
       verticalSwiping: true,
     };
-    console.log("selectedSize", selectedSize);
+
     return (
       <div className="prod">
         <div className="single maxWidth">
@@ -183,7 +202,10 @@ class SingleProduct extends Component {
                 {product.Models["colore"] && (
                   <div className="color text-uppercase pb-3">
                     Colour:
-                    <Select placeholder="Scegli un colore">
+                    <Select
+                      placeholder="Scegli un colore"
+                      onChange={this.handleChangeColour}
+                    >
                       <option value="" disabled selected>
                         Select your option
                       </option>
@@ -193,7 +215,7 @@ class SingleProduct extends Component {
                             <Option
                               value={item.value}
                               key={index}
-                              onClick={() => this.handleChangeColour(item)}
+                              onClick={() => this.handleProduct(item)}
                             >
                               {item.value}
                             </Option>
@@ -205,14 +227,17 @@ class SingleProduct extends Component {
                 {product.Models["design"] && (
                   <div className="color text-uppercase pb-3">
                     Colour:
-                    <Select>
+                    <Select
+                      onChange={this.handleChangeColour}
+                      placeholder="Scegli un colore"
+                    >
                       {product.Models["design"] &&
                         product.Models["design"].map((item, index) => {
                           return (
                             <Option
                               value={item.value}
                               key={index}
-                              onClick={() => this.handleChangeColour(item)}
+                              onClick={() => this.handleProduct(item)}
                             >
                               {item.value}
                             </Option>
@@ -235,9 +260,12 @@ class SingleProduct extends Component {
                                 key={index}
                                 className={
                                   "size__items" +
-                                  (item === selectedSize ? " active" : "")
+                                  (item.value === selectedSize ? " active" : "")
                                 }
-                                onClick={() => this.handleChangeSize(item)}
+                                onClick={() => {
+                                  this.handleChangeSize(item.value);
+                                  this.handleProduct(item);
+                                }}
                               >
                                 {item.value}
                               </div>
@@ -249,9 +277,12 @@ class SingleProduct extends Component {
                               key={index}
                               className={
                                 "size__items" +
-                                (item === selectedSize ? " active" : "")
+                                (item.value === selectedSize ? " active" : "")
                               }
-                              onClick={() => this.handleChangeSize(item)}
+                              onClick={() => {
+                                this.handleChangeSize(item.value);
+                                this.handleProduct(item);
+                              }}
                             >
                               {item.value}
                             </div>

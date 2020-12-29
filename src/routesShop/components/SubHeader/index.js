@@ -13,12 +13,9 @@ class SubHeader extends Component {
   }
 
   render() {
-    const { cat, isSelected } = this.props;
-    let cartItems = 0;
+    const { cat, isSelected, products } = this.props;
 
-    // if (localStorage.getItem("shopProducts") !== null) {
-    //   cartItems = localStorage.getItem("shopProducts").length();
-    // }
+    let cartItems = products.length;
 
     return (
       <div className="subheader maxWidth">
@@ -70,5 +67,6 @@ class SubHeader extends Component {
 }
 const mpStP = (state) => ({
   isSelected: state.shop.isSelectedCategory,
+  products: state.shop.cartItems,
 });
 export default withRouter(connect(mpStP, ShopActions)(SubHeader));

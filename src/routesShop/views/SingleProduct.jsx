@@ -21,7 +21,6 @@ class SingleProduct extends Component {
   }
 
   render() {
-    console.log("categories", this.props.categories);
     return (
       <div className="products">
         <Header></Header>
