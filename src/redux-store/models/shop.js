@@ -24,6 +24,7 @@ const { Types, Creators } = createActions({
   setOrderVal: ["orderVal"],
   setSliderVal: ["sliderVal"],
   setCart: ["cartItems"],
+  checkOut: ["formData", "resetFields"],
 });
 
 export const ShopTypes = Types;

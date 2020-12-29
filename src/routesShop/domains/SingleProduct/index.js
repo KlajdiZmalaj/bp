@@ -85,7 +85,7 @@ class SingleProduct extends Component {
   };
 
   render() {
-    const { product } = this.props;
+    const { product, match } = this.props;
     const {
       orderQuanity,
       bigproduct,
@@ -305,7 +305,12 @@ class SingleProduct extends Component {
                       Add to bag <i className="fal fa-shopping-bag"></i>
                     </div>
                   </div>
-                  <div className="buyNow">
+                  <div
+                    className="buyNow"
+                    onClick={() => {
+                      window.location.hash = `product-checkout/${match.params.id}/${match.params.supp}`;
+                    }}
+                  >
                     Buy now <i className="far fa-shopping-cart"></i>
                   </div>
                 </div>

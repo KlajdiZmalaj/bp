@@ -55,7 +55,7 @@ export const fetchProducts = (
       },
     })
     .catch((error) => ({ error }));
-
+//
 export const fetchProductD = (Product_id, prd_supp) =>
   instanceAxios
     .post(`/shop/getProduct`, {
