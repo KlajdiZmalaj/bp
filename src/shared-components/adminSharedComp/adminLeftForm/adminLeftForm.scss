@@ -300,7 +300,7 @@
   display: flex;
   flex-flow: column;
   height: 500px;
-  overflow-y: auto;
+  overflow-y: scroll;
   &::-webkit-scrollbar-thumb {
     background: #1878ff !important;
   }
