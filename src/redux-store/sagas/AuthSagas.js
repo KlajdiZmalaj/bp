@@ -224,6 +224,18 @@ export function* getPayments(params) {
             total_records: response?.data.total_records,
           })
         );
+        const stats = yield select((state) => state.auth.StatisticheMain);
+
+        yield put(
+          AuthActions.setStatisticheMain({
+            ...stats,
+            total: {
+              commissioni: response?.data?.balance?.commissione,
+              proviggioni: response?.data?.balance?.proviggioni,
+              transazioni: response?.data?.balance?.saldo,
+            },
+          })
+        );
 
         if (response?.data.usernames) {
           yield put(AuthActions.setUsernames(response?.data.usernames));

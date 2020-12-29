@@ -353,7 +353,7 @@ div.Center--Big {
             padding-left: 0.7%;
           }
           &:nth-child(2) {
-            width: calc(14% + 15px);
+            width: calc(14% + 3px);
             > i {
               font-size: 13px;
               padding-right: 10px;
@@ -459,7 +459,7 @@ div.Center--Big {
       }
       &:nth-child(2) {
         width: calc(14% + 10px);
-        left: 29px;
+        left: 21px;
       }
       &:nth-child(3) {
         position: relative;
@@ -473,6 +473,7 @@ div.Center--Big {
       &:nth-child(5) {
         width: 7%;
         justify-content: flex-start;
+        padding-left: 3px;
       }
       &:nth-child(6) {
         width: 13%;
@@ -622,9 +623,9 @@ div.AdminColumns {
           & span:nth-child(2) {
             & div {
               position: absolute;
-              width: 5%;
-              left: -6px;
-              top: 17px;
+              width: 10px;
+              left: -8px;
+              top: 18px;
               border-top: 1px dotted #0078ff;
             }
           }
@@ -673,20 +674,19 @@ div.AdminColumns {
               &:before {
                 content: "";
                 width: 100%;
-                top: -140%;
+                top: -20px;
                 left: -28px;
                 background-color: transparent;
-                height: 215%;
+                height: 40px;
                 position: absolute;
                 border-left: 1px dotted #0078ff;
-
                 border-collapse: collapse;
               }
               & .Link {
                 position: absolute;
-                width: 5%;
-                left: -6px;
-                top: 18px;
+                width: 10px;
+                left: -8px;
+                top: 19px;
                 border-top: 1px dotted #0078ff;
               }
               margin-left: 60px;
@@ -707,13 +707,14 @@ div.AdminColumns {
             &:after {
               content: "";
               width: 100%;
-              top: -87%;
+              top: -22px;
               left: -8px;
               background-color: transparent;
-              height: 160%;
+              height: 40px;
               position: absolute;
               border-left: 1px dotted #0078ff;
             }
+
             width: calc(14% + 20px);
             margin-left: 40px;
           }

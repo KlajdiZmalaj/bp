@@ -126,22 +126,23 @@ class AdminRightFormWalletDetails extends React.Component {
     }
   }
   returnAllUsers = (users) => {
-    let allUsers = users && [...users];
-    users.forEach((user) => {
-      if (user?.children && user?.children.length >= 0) {
-        user.children.forEach((child) => {
-          allUsers.push(child);
-          if (child?.children && child?.children.length >= 0) {
-            let arrayToGet = this.checkIfHaveMoreUsers(child.children);
-            if (arrayToGet.length >= 0) {
-              arrayToGet.forEach((element) => {
-                allUsers.push(element);
-              });
+    let allUsers = Array.isArray(users) && [...users];
+    Array.isArray(users) &&
+      users.forEach((user) => {
+        if (user?.children && user?.children.length >= 0) {
+          user.children.forEach((child) => {
+            allUsers.push(child);
+            if (child?.children && child?.children.length >= 0) {
+              let arrayToGet = this.checkIfHaveMoreUsers(child.children);
+              if (arrayToGet.length >= 0) {
+                arrayToGet.forEach((element) => {
+                  allUsers.push(element);
+                });
+              }
             }
-          }
-        });
-      }
-    });
+          });
+        }
+      });
     return allUsers;
   };
 
@@ -212,7 +213,7 @@ class AdminRightFormWalletDetails extends React.Component {
   }
   render() {
     const { userList } = this.props;
-    const UsersToSearch = userList
+    const UsersToSearch = Array.isArray(userList)
       ? [...new Set(this.returnAllUsers(userList))]
       : [];
     const {

@@ -192,7 +192,7 @@ class AdminListaUtenti extends React.Component {
             style={
               Special
                 ? { width: "13%", justifyContent: "center", left: 0 }
-                : { width: "13%", justifyContent: "center", left: 0 }
+                : { width: "12%", justifyContent: "center", left: 0 }
             }
             className={`${
               Special && screenWidth < 1024 ? "SpecSm" : Special ? "none" : ""

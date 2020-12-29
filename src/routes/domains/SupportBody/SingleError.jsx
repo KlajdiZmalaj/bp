@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-
+import { Tooltip } from "antd";
 const SingleError = ({
   error,
   deleteError,
@@ -26,29 +26,28 @@ const SingleError = ({
 
         <span> {error.title}</span>
         <span className="description">
-          <div className="descriptionErrorMsg">
-            {error.description.length <= 52
-              ? formatString(error.description)
-              : formatString(error.description.substring(0, 51) + "...")}
-          </div>
+          <Tooltip title={error.description}>
+            <div className="descriptionErrorMsg">{error.description}</div>
+          </Tooltip>
+
           <div className="ErrorAdd">
             {" "}
-            <i
+            {/* <i
               onClick={() => {
                 setHover(!isHover);
               }}
               style={{ cursor: "pointer" }}
               className={`fal fa-${isHover ? "minus" : "plus"}-circle`}
-            ></i>
+            ></i> */}
           </div>
         </span>
         <span onClick={() => setPopUp(true)} className="deleteError">
           <i className="fal fa-trash-alt"></i>
         </span>
       </div>
-      {isHover && (
+      {/* {isHover && (
         <div className="info animated fadeIn"> {error.description}</div>
-      )}
+      )} */}
       {hasPopup && (
         <Fragment>
           <div

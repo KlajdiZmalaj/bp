@@ -588,6 +588,8 @@ class AdminPanelDom extends React.Component {
                   : screenWidth > 1024
                   ? "Center--Big"
                   : "Center--Big"
+              }${
+                window.location.hash.match(/\/support/) ? " errorsCenter" : ""
               }`}
             >
               {adminDepModal?.depositoModalVis && (
@@ -611,7 +613,9 @@ class AdminPanelDom extends React.Component {
               )}
               {this.props.component}
             </div>
-            <AdminRightForm leUltimeTransazioniDet={leUltimeTransazioniDet} />
+            {!window.location.hash.match(/\/support/g) && (
+              <AdminRightForm leUltimeTransazioniDet={leUltimeTransazioniDet} />
+            )}
           </div>
         </section>
       </React.Fragment>
