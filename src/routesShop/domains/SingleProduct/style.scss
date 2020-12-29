@@ -18,23 +18,41 @@
       display: flex;
       .images {
         display: grid;
-        grid-template-columns: auto 74%;
+        grid-template-columns: auto 81.5%;
         grid-gap: 5px;
         column-gap: 5px;
         row-gap: 5px;
         width: 50%;
         margin-right: 10px;
         &__big {
-          background-color: #fff;
         }
         &__other {
           > div {
             margin-bottom: 5px;
-            background-color: #fff;
+
             &:last-child {
               margin-bottom: 0px;
             }
           }
+        }
+        .slick-next {
+          right: -40%;
+          top: auto;
+          bottom: 0;
+          transform: rotate(90deg);
+          position: relative;
+        }
+        .slick-prev {
+          left: 40%;
+          top: 0px;
+          transform: rotate(90deg);
+          bottom: auto;
+          position: relative;
+        }
+
+        .slick-prev:before,
+        .slick-next:before {
+          color: #000;
         }
       }
       .description {

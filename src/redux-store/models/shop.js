@@ -23,6 +23,7 @@ const { Types, Creators } = createActions({
   setSubCategory: ["isSelectedSubCategory"],
   setOrderVal: ["orderVal"],
   setSliderVal: ["sliderVal"],
+  checkOut: ["formData", "resetFields"],
 });
 
 export const ShopTypes = Types;

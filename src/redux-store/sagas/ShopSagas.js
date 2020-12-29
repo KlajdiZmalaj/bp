@@ -2,6 +2,14 @@ import { put, call } from "redux-saga/effects";
 import ShopActions from "../models/shop";
 import * as ShopRequest from "services/shop";
 
+export function* checkOut({ formData, resetFields }) {
+  console.log("formData", formData);
+  //const response = yield call(req , formData);
+  // if(response) {
+  //   resetFields?.()
+  // }
+}
+
 export function* getProductsList(params) {
   const response = yield call(
     ShopRequest.fetchProducts,

@@ -1,42 +1,169 @@
-import React from "react";
+import React, { useState } from "react";
+import ShopActions from "redux-store/models/shop";
 import "./style.css";
-const CheckOutDom = () => {
+import { connect } from "react-redux";
+const FORM_DATA = {
+  name: "",
+  last_name: "",
+  fiscal_code: "",
+  nome_societa: "",
+  paese: "",
+  via_nr: "",
+  email: "",
+  tel: "",
+  citty: "",
+  province: "",
+  cap: "",
+  indirizzo_diff: true,
+  punto_vendia: false,
+  payment: 1,
+  paymentBtnLabel: "BPoint Wallet",
+  terms: false,
+};
+
+const InpCheck = ({ id, label1, label2, handler, checked }) => (
+  <>
+    <input id={id} type="checkbox" checked={checked} onChange={handler} />
+    <label htmlFor={id}>
+      <div>
+        <i className="fal fa-check" aria-hidden="true"></i>
+      </div>
+      {label2 ? (
+        <span>
+          {label1} <span>{label2}</span>{" "}
+        </span>
+      ) : (
+        label1
+      )}
+    </label>
+  </>
+);
+
+const CheckOutDom = (props) => {
+  const [formData, setData] = useState(FORM_DATA);
+
   return (
     <div className="shopCheckout maxWidth">
       <div className="shopCheckout--form">
         <div className="shopCheckout--form__left">
           <div className="titleTop">Dettagli di fatturazione</div>
           <div className="formContainer">
-            <input type="text" placeholder="Nome" />
-            <input type="text" placeholder="Cognome" />
-            <input type="text" placeholder="Codice Fiscale/P.Iva" />
-            <input type="text" placeholder="Nome della società (opzionale)" />
-            <input type="text" placeholder="Paese/regione" />
-            <input type="text" placeholder="Via e numero" />
-            <input type="text" placeholder="Indirizzo email" />
-            <input type="text" placeholder="Telefono" />
-            <input type="text" placeholder="Città" />
+            <input
+              type="text"
+              placeholder="Nome"
+              value={formData.name}
+              onChange={(e) => {
+                setData({ ...formData, name: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.last_name}
+              placeholder="Cognome"
+              onChange={(e) => {
+                setData({ ...formData, last_name: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.fiscal_code}
+              placeholder="Codice Fiscale/P.Iva"
+              onChange={(e) => {
+                setData({ ...formData, fiscal_code: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.nome_societa}
+              placeholder="Nome della società (opzionale)"
+              onChange={(e) => {
+                setData({ ...formData, nome_societa: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.paese}
+              placeholder="Paese/regione"
+              onChange={(e) => {
+                setData({ ...formData, paese: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.via_nr}
+              placeholder="Via e numero"
+              onChange={(e) => {
+                setData({ ...formData, via_nr: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.email}
+              placeholder="Indirizzo email"
+              onChange={(e) => {
+                setData({ ...formData, email: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.tel}
+              placeholder="Telefono"
+              onChange={(e) => {
+                setData({ ...formData, tel: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              value={formData.citty}
+              placeholder="Città"
+              onChange={(e) => {
+                setData({ ...formData, citty: e.target.value });
+              }}
+            />
             <div className="inpGr">
-              <input type="text" placeholder="Provincia" className="w-60" />
-              <input type="text" placeholder="C.A.P." className="w-40" />
+              <input
+                type="text"
+                value={formData.province}
+                placeholder="Provincia"
+                className="w-60"
+                onChange={(e) => {
+                  setData({ ...formData, province: e.target.value });
+                }}
+              />
+              <input
+                type="text"
+                value={formData.cap}
+                placeholder="C.A.P."
+                className="w-40"
+                onChange={(e) => {
+                  setData({ ...formData, cap: e.target.value });
+                }}
+              />
             </div>
           </div>
           <div className="checkContainer">
-            <input id="check1" type="checkbox" />
-            <label htmlFor="check1">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              Spedire ad un indirizzo differente?
-            </label>
-
-            <input id="check2" type="checkbox" />
-            <label htmlFor="check2">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              Ritiro presso il punto vendita
-            </label>
+            <InpCheck
+              id="check1"
+              label1="Spedire ad un indirizzo differente?"
+              checked={formData.indirizzo_diff}
+              handler={(e) => {
+                setData({
+                  ...formData,
+                  indirizzo_diff: e.target.checked,
+                });
+              }}
+            />
+            <InpCheck
+              id="check2"
+              label1="Ritiro presso il punto vendita"
+              checked={formData.punto_vendia}
+              handler={(e) => {
+                setData({
+                  ...formData,
+                  punto_vendia: e.target.checked,
+                });
+              }}
+            />
           </div>
         </div>
         <div className="shopCheckout--form__right">
@@ -59,51 +186,82 @@ const CheckOutDom = () => {
           </div>
           <div className="titleTop">Payments:</div>
           <div className="checkContainer right">
-            <input id="pwall" type="checkbox" />
-            <label htmlFor="pwall">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              BPoint Wallet
-            </label>
-
-            <input id="scrill" type="checkbox" />
-            <label htmlFor="scrill">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              Skrill
-            </label>
-            <input id="sp" type="checkbox" />
-            <label htmlFor="sp">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              Satispay
-            </label>
-            <input id="pp" type="checkbox" />
-            <label htmlFor="pp">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              Paypal
-            </label>
+            <InpCheck
+              id="pwall"
+              label1="BPoint Wallet"
+              checked={formData.payment === 1}
+              handler={() => {
+                setData({
+                  ...formData,
+                  payment: 1,
+                  paymentBtnLabel: "BPoint Wallet",
+                });
+              }}
+            />
+            <InpCheck
+              id="scrill"
+              label1="Skrill"
+              checked={formData.payment === 2}
+              handler={() => {
+                setData({
+                  ...formData,
+                  payment: 2,
+                  paymentBtnLabel: "Skrill",
+                });
+              }}
+            />
+            <InpCheck
+              id="Satispay"
+              label1="Satispay"
+              checked={formData.payment === 3}
+              handler={() => {
+                setData({
+                  ...formData,
+                  payment: 3,
+                  paymentBtnLabel: "Satispay",
+                });
+              }}
+            />
+            <InpCheck
+              id="Paypal"
+              label1="Paypal"
+              checked={formData.payment === 4}
+              handler={() => {
+                setData({
+                  ...formData,
+                  payment: 4,
+                  paymentBtnLabel: "Paypal",
+                });
+              }}
+            />
           </div>
           <div className="checkContainer bottom">
-            <input id="termi" type="checkbox" />
-            <label htmlFor="termi">
-              <div>
-                <i className="fal fa-check" aria-hidden="true"></i>
-              </div>
-              <span>
-                Ho letto e accetto <span>termini e condizioni*</span>
-              </span>
-            </label>
+            <InpCheck
+              id="termi"
+              label1="Ho letto e accetto"
+              label2="termini e condizioni*"
+              checked={formData.terms}
+              handler={(e) => {
+                setData({
+                  ...formData,
+                  terms: e.target.checked,
+                });
+              }}
+            />
           </div>
-          <button className="pagaBtn">PAGA CON BPOINT WALLET</button>
+          <button
+            className="pagaBtn"
+            onClick={() => {
+              props.checkOut(formData, () => {
+                setData(FORM_DATA);
+              });
+            }}
+          >
+            PAGA CON {formData.paymentBtnLabel}
+          </button>
         </div>
       </div>
     </div>
   );
 };
-export default CheckOutDom;
+export default connect(null, ShopActions)(CheckOutDom);
