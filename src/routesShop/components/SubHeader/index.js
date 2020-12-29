@@ -16,9 +16,9 @@ class SubHeader extends Component {
     const { cat, isSelected } = this.props;
     let cartItems = 0;
 
-    if (localStorage.getItem("shopProducts") !== null) {
-      cartItems = localStorage.getItem("shopProducts").length();
-    }
+    // if (localStorage.getItem("shopProducts") !== null) {
+    //   cartItems = localStorage.getItem("shopProducts").length();
+    // }
 
     return (
       <div className="subheader maxWidth">

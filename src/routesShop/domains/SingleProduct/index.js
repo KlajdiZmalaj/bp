@@ -2,12 +2,14 @@ import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
 import { find } from "lodash";
+import Slider from "react-slick";
 
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
 import "./style.css";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Select } from "antd";
 
 const { Option } = Select;
@@ -60,7 +62,15 @@ class SingleProduct extends Component {
   render() {
     const { product } = this.props;
     const { orderQuanity, bigproduct } = this.state;
-
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      vertical: true,
+      verticalSwiping: true,
+    };
     return (
       <div className="prod">
         <div className="single maxWidth">
@@ -75,19 +85,22 @@ class SingleProduct extends Component {
             <div className="detailsP">
               <div className="images">
                 <div className="images__other">
-                  {Object.keys(product.Photos).map((photo, index) => {
-                    return (
-                      <div
-                        key={index}
-                        onClick={() => {
-                          this.changeBigProduct(product.Photos[photo]);
-                        }}
-                      >
-                        <img src={product.Photos[photo]} alt="" />
-                      </div>
-                    );
-                  })}
+                  <Slider {...settings}>
+                    {Object.keys(product.Photos).map((photo, index) => {
+                      return (
+                        <div
+                          key={index}
+                          onClick={() => {
+                            this.changeBigProduct(product.Photos[photo]);
+                          }}
+                        >
+                          <img src={product.Photos[photo]} alt="" />
+                        </div>
+                      );
+                    })}
+                  </Slider>
                 </div>
+
                 <div className="images__big">
                   {!bigproduct ? (
                     <img src={product.Photos["Product_Image_1"]} alt="" />
@@ -108,7 +121,11 @@ class SingleProduct extends Component {
                 <div className="borderB marginBottom"></div>
                 <div className="description__text marginBottom">
                   <div className="label pb-1"> descrizione</div>
-                  {product.Product_Description}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: product.Product_Description,
+                    }}
+                  ></div>
                 </div>
                 <div className="borderB marginBottom"></div>
                 <div className="properties marginBottom">
