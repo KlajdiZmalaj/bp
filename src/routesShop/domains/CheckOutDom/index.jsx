@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ShopActions from "redux-store/models/shop";
 import "./style.css";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 const FORM_DATA = {
   name: "",
   last_name: "",
@@ -39,9 +40,19 @@ const InpCheck = ({ id, label1, label2, handler, checked }) => (
   </>
 );
 
-const CheckOutDom = (props) => {
+const CheckOutDom = ({
+  getCategories,
+  getProductDetails,
+  checkOut,
+  match,
+  productD,
+}) => {
+  useEffect(() => {
+    getProductDetails(match.params.id, match.params.supp);
+    getCategories();
+  }, [match.params.id, getProductDetails, getCategories]);
   const [formData, setData] = useState(FORM_DATA);
-
+  console.log("props", match, productD);
   return (
     <div className="shopCheckout maxWidth">
       <div className="shopCheckout--form">
@@ -181,7 +192,7 @@ const CheckOutDom = (props) => {
             </div>
             <div className="total">
               <div>Totale:</div>
-              <div>475,00 €</div>
+              <div>{productD?.productD?.Product_Price || 0} €</div>
             </div>
           </div>
           <div className="titleTop">Payments:</div>
@@ -252,7 +263,7 @@ const CheckOutDom = (props) => {
           <button
             className="pagaBtn"
             onClick={() => {
-              props.checkOut(formData, () => {
+              checkOut(formData, () => {
                 setData(FORM_DATA);
               });
             }}
@@ -264,4 +275,7 @@ const CheckOutDom = (props) => {
     </div>
   );
 };
-export default connect(null, ShopActions)(CheckOutDom);
+const mstp = ({ shop: productD }) => ({
+  productD,
+});
+export default withRouter(connect(mstp, ShopActions)(CheckOutDom));

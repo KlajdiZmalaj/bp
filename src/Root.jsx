@@ -400,7 +400,8 @@ class Root extends React.Component {
             allowedRoles={["main_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
-            path="/product-checkout"
+            exact
+            path="/product-checkout/:id?/:supp?/"
             exact
             component={ShopView.CheckOut}
             isLoggedin={isLoggedin}
