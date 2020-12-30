@@ -106,7 +106,7 @@ class SingleProduct extends Component {
     } = this.state;
 
     const settings = {
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 4,

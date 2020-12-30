@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
 import { Tooltip, Select } from "antd";
+
+import ShopActions from "redux-store/models/shop";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { get } from "lodash";
 
 const { Option } = Select;
 const RelatedProduct = ({ title, imgSrc, price }) => {
@@ -13,7 +18,7 @@ const RelatedProduct = ({ title, imgSrc, price }) => {
     </div>
   );
 };
-const RowItem = ({ imgSrc, title, color, size, price, qnt = 0 }) => (
+const RowItem = ({ imgSrc, title, color, size, price, qnt }) => (
   <div className="cartItem">
     <img src={imgSrc || images["placeholder"]} alt="" />
     <div className="cartItem__details">
@@ -43,31 +48,28 @@ const RowItem = ({ imgSrc, title, color, size, price, qnt = 0 }) => (
   </div>
 );
 
-const ShopCartDom = () => {
+const ShopCartDom = ({ getItemsCart, itemsCart }) => {
+  useEffect(() => {
+    getItemsCart();
+  }, []);
+
+  const cartprod = get(itemsCart, "cart", {});
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
-        <RowItem
-          imgSrc={""}
-          title="OVERSIZED CONTRAST HALF JUMPER - Maglione"
-          color="black"
-          size="M"
-          price="475,00 €"
-        />
-        <RowItem
-          imgSrc={""}
-          title="OVERSIZED CONTRAST HALF JUMPER - Maglione"
-          color="black"
-          size="M"
-          price="475,00 €"
-        />
-        <RowItem
-          imgSrc={""}
-          title="OVERSIZED CONTRAST HALF JUMPER - Maglione"
-          color="black"
-          size="M"
-          price="475,00 €"
-        />
+        {Object.keys(cartprod).map((item) => {
+          return (
+            <RowItem
+              key={item}
+              imgSrc={cartprod[item].Product_Image_1}
+              title={cartprod[item].Product_Name}
+              color="black"
+              size="M"
+              price={`${cartprod[item].Product_Price} €`}
+              qnt={cartprod[item].quantity}
+            />
+          );
+        })}
         <div className="shopCartContainer--left__related">
           <h2>related products</h2>
           <div className="containerRealted">
@@ -123,4 +125,7 @@ const ShopCartDom = () => {
   );
 };
 
-export default ShopCartDom;
+const mstp = (state) => ({
+  itemsCart: state.shop.itemsCart,
+});
+export default withRouter(connect(mstp, ShopActions)(ShopCartDom));
