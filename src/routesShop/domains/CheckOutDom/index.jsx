@@ -51,9 +51,9 @@ const CheckOutDom = ({
   useEffect(() => {
     getProductDetails(match.params.id, match.params.supp);
     getCategories();
-  }, [match.params.id, getProductDetails, getCategories]);
+  }, [match.params.id, match.params.supp, getProductDetails, getCategories]);
   const [formData, setData] = useState(FORM_DATA);
-  console.log("props", accountInfo);
+  //console.log("props", accountInfo);
   return (
     <div className="shopCheckout maxWidth">
       <div className="shopCheckout--form">

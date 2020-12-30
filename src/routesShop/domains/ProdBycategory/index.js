@@ -110,7 +110,7 @@ class ProdBycategory extends Component {
                   }}
                 >
                   <span>{subcategories[item].name}</span>
-                  <img src={subcategories[item].image}></img>
+                  <img src={subcategories[item].image} alt=""></img>
                 </div>
               );
             })}
