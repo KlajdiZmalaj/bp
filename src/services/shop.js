@@ -82,3 +82,51 @@ export const fetchCategories = () =>
       },
     })
     .catch((error) => ({ error }));
+
+export const fetchToCart = (prd_supp, Product_id, list, quantity) =>
+  instanceAxios
+    .post(`/shop/addToList`, {
+      ...skin,
+      ...(prd_supp ? { prd_supp } : {}),
+      ...(Product_id ? { Product_id } : {}),
+      ...(list ? { list } : {}),
+      ...(quantity ? { quantity } : {}),
+    })
+    .catch((error) => ({ error }));
+
+export const fetchItemsCart = () =>
+  instanceAxios
+    .get(`/shop/lists`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+
+export const fetchOrder = (
+  products_array,
+  iso_code,
+  postcode,
+  carrier,
+  first_name,
+  last_name,
+  city,
+  address,
+  phone,
+  email
+) =>
+  instanceAxios
+    .post(`/shop/submitOrder`, {
+      ...skin,
+      ...(products_array ? { products_array } : {}),
+      ...(iso_code ? { iso_code } : {}),
+      ...(postcode ? { postcode } : {}),
+      ...(carrier ? { carrier } : {}),
+      ...(first_name ? { first_name } : {}),
+      ...(last_name ? { last_name } : {}),
+      ...(city ? { city } : {}),
+      ...(address ? { address } : {}),
+      ...(phone ? { phone } : {}),
+      ...(email ? { email } : {}),
+    })
+    .catch((error) => ({ error }));

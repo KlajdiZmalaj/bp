@@ -16,8 +16,6 @@ const { Option } = Select;
 
 class SingleProduct extends Component {
   state = {
-    id: null,
-    supp: null,
     orderQuanity: 1,
     bigproduct: null,
     product: {},
@@ -32,8 +30,6 @@ class SingleProduct extends Component {
   componentDidMount() {
     const idProduct = this.props.match.params.id;
     const suppProduct = this.props.match.params.supp;
-    this.setState({ id: idProduct });
-    this.setState({ supp: suppProduct });
 
     let product = {};
 
@@ -46,6 +42,7 @@ class SingleProduct extends Component {
 
     this.props.getProductDetails(idProduct, suppProduct);
     this.setState({ product: product });
+    this.setState({ itemSelected: product });
   }
 
   decreasevalue = () => {
@@ -71,17 +68,32 @@ class SingleProduct extends Component {
   };
 
   addTocart = () => {
+    let idProd = this.props.product.Product_id;
+    if (
+      this.props.product.Models &&
+      Object.keys(this.props.product.Models).length > 0
+    ) {
+      idProd = this.state.itemSelected.id;
+    }
+
     let products =
       JSON.parse(localStorage.getItem("shopProducts")) !== null
         ? JSON.parse(localStorage.getItem("shopProducts"))
         : [];
 
     products.push({
-      product_id: this.state.itemSelected.id,
+      product_id: idProd,
       product_quantity: this.state.orderQuanity,
     });
+
     localStorage.setItem("shopProducts", JSON.stringify(products));
     this.props.setCart(products);
+    this.props.getToCart(
+      this.props.product.prd_supp,
+      idProd,
+      "cart",
+      this.state.orderQuanity
+    );
   };
 
   render() {
@@ -94,7 +106,7 @@ class SingleProduct extends Component {
     } = this.state;
 
     const settings = {
-      dots: false,
+      // dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 4,
@@ -117,7 +129,7 @@ class SingleProduct extends Component {
             <div className="detailsP">
               <div className="images">
                 <div className="images__other">
-                  <Slider {...settings}>
+                  <Slider {...settings} slidesToShow={4} arrows={true}>
                     {Object.keys(product.Photos).map((photo, index) => {
                       return (
                         <div

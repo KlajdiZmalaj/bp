@@ -108,6 +108,9 @@ export default function* root() {
       takeLatest("GET_BRANDS", ShopGenerators.getBrands),
       takeLatest("GET_CATEGORIES", ShopGenerators.getCategories),
       takeLatest("CHECK_OUT", ShopGenerators.checkOut),
+      takeLatest("GET_TO_CART", ShopGenerators.getToCart),
+      takeLatest("GET_ITEMS_CART", ShopGenerators.getItemsCart),
+      takeLatest("GET_ORDER", ShopGenerators.getOrder),
     ],
   ]);
 }

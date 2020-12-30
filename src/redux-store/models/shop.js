@@ -25,6 +25,26 @@ const { Types, Creators } = createActions({
   setSliderVal: ["sliderVal"],
   setCart: ["cartItems"],
   checkOut: ["formData", "resetFields"],
+
+  getToCart: ["prd_supp", "Product_id", "list", "quantity"],
+  setToCart: ["productCart"],
+
+  getItemsCart: [],
+  setItemsCart: ["itemsCart"],
+
+  getOrder: [
+    "products_array",
+    "iso_code",
+    "postcode",
+    "carrier",
+    "first_name",
+    "last_name",
+    "city",
+    "address",
+    "phone",
+    "email",
+  ],
+  setOrder: ["orders"],
 });
 
 export const ShopTypes = Types;
@@ -44,6 +64,9 @@ const INITIAL_STATE = {
     JSON.parse(localStorage.getItem("shopProducts")) !== null
       ? JSON.parse(localStorage.getItem("shopProducts"))
       : [],
+  productCart: {},
+  itemsCart: {},
+  orders: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -86,5 +109,18 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_CART: (state, { cartItems }) => ({
     ...state,
     cartItems,
+  }),
+
+  SET_TO_CART: (state, { productCart }) => ({
+    ...state,
+    productCart,
+  }),
+  SET_ITEMS_CART: (state, { itemsCart }) => ({
+    ...state,
+    itemsCart,
+  }),
+  SET_ORDER: (state, { orders }) => ({
+    ...state,
+    orders,
   }),
 });
