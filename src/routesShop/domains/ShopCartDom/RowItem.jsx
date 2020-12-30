@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import images from "themes/images";
 import "./style.css";
-import { Tooltip, Select } from "antd";
+import { Tooltip } from "antd";
 
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { get } from "lodash";
 
 const RowItem = ({
   imgSrc,
@@ -17,15 +16,8 @@ const RowItem = ({
   qnt,
   id,
   prd_supp,
-  itemsCart,
   getRemoveToCart,
 }) => {
-  useEffect(() => {
-    // getItemsCart();
-    // getProductsList();
-  }, []);
-
-  const cartprod = get(itemsCart, "cart", {});
   const [qnty, setQnt] = useState(qnt);
 
   return (
@@ -75,8 +67,5 @@ const RowItem = ({
   );
 };
 
-const mstp = (state) => ({
-  itemsCart: state.shop.itemsCart,
-  productsList: state.shop.productsList,
-});
+const mstp = () => ({});
 export default withRouter(connect(mstp, ShopActions)(RowItem));
