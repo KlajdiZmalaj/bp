@@ -352,7 +352,7 @@
       transition: 0.5s;
     }
     .accountInfo .contentAcc.supportContent .header {
-      width: calc(100% - 200px );
+      width: calc(100% - 200px);
     }
     &--Big {
       position: relative;
@@ -371,6 +371,12 @@
       background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
       margin-bottom: 41px;
+      &.errorsCenter {
+        width: calc(100% - 51px);
+        .accountInfo .contentAcc.supportContent .header {
+          width: calc(100% - 51px);
+        }
+      }
       &::-webkit-scrollbar-thumb {
         background: #212529;
       }

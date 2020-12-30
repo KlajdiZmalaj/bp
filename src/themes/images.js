@@ -285,6 +285,11 @@ try {
     salutebellezza: require(`../assets/shop/salutebellezza.jpg`),
 
     placeholder: require(`../assets/images/placeholder.jpg`),
+    getLogoBySkinId: (e) => {
+      return require(`../assets/images${
+        e === 8 ? 6 : e === 51 ? 7 : e === 2 ? 1 : e
+      }/logo.svg`);
+    },
   };
 } catch (err) {
   console.error("error", err);
