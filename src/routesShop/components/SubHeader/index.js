@@ -19,7 +19,7 @@ class SubHeader extends Component {
     // if (localStorage.getItem("shopProducts") !== null) {
     //   cartItems = localStorage.getItem("shopProducts").length();
     // }
-
+    console.log("catcat", cat);
     return (
       <div className="subheader">
         <div className="maxWidth">

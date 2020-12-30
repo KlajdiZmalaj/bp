@@ -344,13 +344,15 @@
       width: calc(100% - 200px);
     }
     & .AdminListaUtenti--Header,
-    .accountInfo .contentAcc.supportContent .header,
     .col-md-12,
     .paginationWrapper,
     .AdminListaUtentiRow,
     .transTable.Movimenti thead tr {
       width: calc(100% - 200px - 400px);
       transition: 0.5s;
+    }
+    .accountInfo .contentAcc.supportContent .header {
+      width: calc(100% - 200px );
     }
     &--Big {
       position: relative;

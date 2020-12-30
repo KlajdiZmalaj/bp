@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Tooltip } from "antd";
+import { getCopy } from "utils";
 const SingleError = ({
   error,
   deleteError,
@@ -26,6 +27,13 @@ const SingleError = ({
 
         <span> {error.title}</span>
         <span className="description">
+          <i
+            className="fal fa-clipboard mr-2"
+            onClick={() => {
+              getCopy(error.description || "");
+            }}
+            aria-hidden="true"
+          ></i>
           <Tooltip title={error.description}>
             <div className="descriptionErrorMsg">{error.description}</div>
           </Tooltip>
