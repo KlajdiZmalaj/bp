@@ -60,7 +60,10 @@ class SubHeader extends Component {
                 );
               })}
           </div>
-          <div className="cart">
+          <div
+            className="cart"
+            onClick={() => this.props.history.push("/shop-cart")}
+          >
             Cart: <span className="cart__nr">{cartItems}</span>
             <i className="fal fa-shopping-cart"></i>
           </div>
