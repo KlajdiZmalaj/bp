@@ -106,7 +106,7 @@ class SingleProduct extends Component {
     } = this.state;
 
     const settings = {
-      // dots: false,
+      dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 4,
@@ -129,7 +129,7 @@ class SingleProduct extends Component {
             <div className="detailsP">
               <div className="images">
                 <div className="images__other">
-                  <Slider {...settings} slidesToShow={4} arrows={true}>
+                  <Slider {...settings}>
                     {Object.keys(product.Photos).map((photo, index) => {
                       return (
                         <div

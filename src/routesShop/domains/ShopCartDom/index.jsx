@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
 import { Tooltip, Select } from "antd";
+
+import ShopActions from "redux-store/models/shop";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { get } from "lodash";
+
+import RowItem from "./RowItem";
 
 const { Option } = Select;
 const RelatedProduct = ({ title, imgSrc, price }) => {
@@ -13,84 +20,54 @@ const RelatedProduct = ({ title, imgSrc, price }) => {
     </div>
   );
 };
-const RowItem = ({ imgSrc, title, color, size, price, qnt = 0 }) => (
-  <div className="cartItem">
-    <img src={imgSrc || images["placeholder"]} alt="" />
-    <div className="cartItem__details">
-      <Tooltip title={title}>
-        <h3>{title}</h3>
-      </Tooltip>
-      <div>
-        <span>
-          COLOUR: <span>{color}</span>
-        </span>
-        <span>
-          SIZE : <span>{size}</span>
-        </span>
-      </div>
-      <div className="price">{price}</div>
-    </div>
-    <div className="cartItem__actions">
-      <div>
-        <i className="fal fa-chevron-left" aria-hidden="true"></i>
-        <span>{qnt}</span>
-        <i className="fal fa-chevron-right" aria-hidden="true"></i>
-      </div>
-      <div>
-        <i className="fal fa-times" aria-hidden="true"></i>
-      </div>
-    </div>
-  </div>
-);
 
-const ShopCartDom = () => {
+const ShopCartDom = ({
+  getItemsCart,
+  itemsCart,
+  getProductsList,
+  productsList,
+}) => {
+  useEffect(() => {
+    getItemsCart();
+    getProductsList();
+  }, []);
+
+  const cartprod = get(itemsCart, "cart", {});
+
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
-        <RowItem
-          imgSrc={""}
-          title="OVERSIZED CONTRAST HALF JUMPER - Maglione"
-          color="black"
-          size="M"
-          price="475,00 €"
-        />
-        <RowItem
-          imgSrc={""}
-          title="OVERSIZED CONTRAST HALF JUMPER - Maglione"
-          color="black"
-          size="M"
-          price="475,00 €"
-        />
-        <RowItem
-          imgSrc={""}
-          title="OVERSIZED CONTRAST HALF JUMPER - Maglione"
-          color="black"
-          size="M"
-          price="475,00 €"
-        />
+        {Object.keys(cartprod).map((item) => {
+          return (
+            <RowItem
+              key={item}
+              imgSrc={cartprod[item].Product_Image_1}
+              title={cartprod[item].Product_Name}
+              color="black"
+              size="M"
+              price={`${cartprod[item].Product_Price} €`}
+              qnt={cartprod[item].quantity}
+              id={cartprod[item].Product_id}
+              prd_supp={cartprod[item].prd_supp}
+            />
+          );
+        })}
         <div className="shopCartContainer--left__related">
           <h2>related products</h2>
           <div className="containerRealted">
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
+            {productsList.data &&
+              productsList.data
+                .filter((item, index) => index < 6)
+                .map((item, index) => {
+                  return (
+                    <RelatedProduct
+                      imgSrc={item.Product_Image_1}
+                      title={item.Product_Name}
+                      price={`€ ${item.Product_Price}`}
+                      key={index}
+                    />
+                  );
+                })}
           </div>
         </div>
       </div>
@@ -123,4 +100,8 @@ const ShopCartDom = () => {
   );
 };
 
-export default ShopCartDom;
+const mstp = (state) => ({
+  itemsCart: state.shop.itemsCart,
+  productsList: state.shop.productsList,
+});
+export default withRouter(connect(mstp, ShopActions)(ShopCartDom));

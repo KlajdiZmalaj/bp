@@ -92,3 +92,16 @@ export function* getOrder(params) {
     yield put(ShopActions.setOrder(response.data.data));
   }
 }
+
+export function* getRemoveToCart(params) {
+  const response = yield call(
+    ShopRequest.fetchRemoveToCart,
+    params.prd_supp,
+    params.Product_id,
+    params.quantity,
+    params.list
+  );
+  if (response.data) {
+    yield put(ShopActions.setRemoveToCart(response.data.data));
+  }
+}

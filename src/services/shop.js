@@ -130,3 +130,14 @@ export const fetchOrder = (
       ...(email ? { email } : {}),
     })
     .catch((error) => ({ error }));
+
+export const fetchRemoveToCart = (prd_supp, Product_id, quantity, list) =>
+  instanceAxios
+    .post(`/shop/removeFromList`, {
+      ...skin,
+      ...(prd_supp ? { prd_supp } : {}),
+      ...(Product_id ? { Product_id } : {}),
+      ...(quantity ? { quantity } : {}),
+      ...(list ? { list } : {}),
+    })
+    .catch((error) => ({ error }));

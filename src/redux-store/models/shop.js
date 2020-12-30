@@ -45,6 +45,9 @@ const { Types, Creators } = createActions({
     "email",
   ],
   setOrder: ["orders"],
+
+  getRemoveToCart: ["prd_supp", "Product_id", "quantity", "list"],
+  setRemoveToCart: ["productRemovedCart"],
 });
 
 export const ShopTypes = Types;
@@ -67,6 +70,7 @@ const INITIAL_STATE = {
   productCart: {},
   itemsCart: {},
   orders: {},
+  productRemovedCart: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -122,5 +126,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_ORDER: (state, { orders }) => ({
     ...state,
     orders,
+  }),
+  SET_REMOVE_TO_CART: (state, { productRemovedCart }) => ({
+    ...state,
+    productRemovedCart,
   }),
 });
