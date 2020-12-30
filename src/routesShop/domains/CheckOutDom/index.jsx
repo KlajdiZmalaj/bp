@@ -46,13 +46,14 @@ const CheckOutDom = ({
   checkOut,
   match,
   productD,
+  accountInfo,
 }) => {
   useEffect(() => {
     getProductDetails(match.params.id, match.params.supp);
     getCategories();
   }, [match.params.id, getProductDetails, getCategories]);
   const [formData, setData] = useState(FORM_DATA);
-  console.log("props", match, productD);
+  console.log("props", accountInfo);
   return (
     <div className="shopCheckout maxWidth">
       <div className="shopCheckout--form">
@@ -62,14 +63,19 @@ const CheckOutDom = ({
             <input
               type="text"
               placeholder="Nome"
-              value={formData.name}
+              value={
+                formData.name || accountInfo?.profile?.name?.split?.(" ")?.[0]
+              }
               onChange={(e) => {
                 setData({ ...formData, name: e.target.value });
               }}
             />
             <input
               type="text"
-              value={formData.last_name}
+              value={
+                formData.last_name ||
+                accountInfo?.profile?.name?.split?.(" ")?.[1]
+              }
               placeholder="Cognome"
               onChange={(e) => {
                 setData({ ...formData, last_name: e.target.value });
@@ -109,7 +115,7 @@ const CheckOutDom = ({
             />
             <input
               type="text"
-              value={formData.email}
+              value={formData.email || accountInfo?.profile?.email}
               placeholder="Indirizzo email"
               onChange={(e) => {
                 setData({ ...formData, email: e.target.value });
@@ -192,7 +198,7 @@ const CheckOutDom = ({
             </div>
             <div className="total">
               <div>Totale:</div>
-              <div>{productD?.productD?.Product_Price || 0} €</div>
+              <div>{productD?.Product_Price || 0} €</div>
             </div>
           </div>
           <div className="titleTop">Payments:</div>
@@ -275,7 +281,8 @@ const CheckOutDom = ({
     </div>
   );
 };
-const mstp = ({ shop: productD }) => ({
+const mstp = ({ shop: { productD }, auth: { accountInfo } }) => ({
   productD,
+  accountInfo,
 });
 export default withRouter(connect(mstp, ShopActions)(CheckOutDom));
