@@ -48,12 +48,19 @@ const RowItem = ({ imgSrc, title, color, size, price, qnt }) => (
   </div>
 );
 
-const ShopCartDom = ({ getItemsCart, itemsCart }) => {
+const ShopCartDom = ({
+  getItemsCart,
+  itemsCart,
+  getProductsList,
+  productsList,
+}) => {
   useEffect(() => {
     getItemsCart();
+    getProductsList();
   }, []);
 
   const cartprod = get(itemsCart, "cart", {});
+  console.log(productsList);
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
@@ -73,26 +80,19 @@ const ShopCartDom = ({ getItemsCart, itemsCart }) => {
         <div className="shopCartContainer--left__related">
           <h2>related products</h2>
           <div className="containerRealted">
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
-            <RelatedProduct
-              imgSrc=""
-              title="Stowell Hood Fleece"
-              price="€200,00"
-            />
+            {productsList.data &&
+              productsList.data
+                .filter((item, index) => index < 6)
+                .map((item, index) => {
+                  return (
+                    <RelatedProduct
+                      imgSrc={item.Product_Image_1}
+                      title={item.Product_Name}
+                      price={`€ ${item.Product_Price}`}
+                      key={index}
+                    />
+                  );
+                })}
           </div>
         </div>
       </div>
@@ -127,5 +127,6 @@ const ShopCartDom = ({ getItemsCart, itemsCart }) => {
 
 const mstp = (state) => ({
   itemsCart: state.shop.itemsCart,
+  productsList: state.shop.productsList,
 });
 export default withRouter(connect(mstp, ShopActions)(ShopCartDom));
