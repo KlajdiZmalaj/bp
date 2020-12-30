@@ -67,8 +67,8 @@ export function* getToCart(params) {
   }
 }
 
-export function* getItemsCart() {
-  const response = yield call(ShopRequest.fetchItemsCart);
+export function* getItemsCart(params) {
+  const response = yield call(ShopRequest.fetchItemsCart, params.checkout);
   if (response.data) {
     yield put(ShopActions.setItemsCart(response.data.data));
   }

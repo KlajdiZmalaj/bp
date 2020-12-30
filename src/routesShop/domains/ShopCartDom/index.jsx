@@ -28,11 +28,12 @@ const ShopCartDom = ({
   productsList,
 }) => {
   useEffect(() => {
-    getItemsCart();
+    getItemsCart(true);
     getProductsList();
   }, []);
 
   const cartprod = get(itemsCart, "cart", {});
+  const user_data = get(itemsCart, "user_data", {});
 
   return (
     <section className="maxWidth shopCartContainer">

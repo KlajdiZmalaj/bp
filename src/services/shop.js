@@ -94,11 +94,12 @@ export const fetchToCart = (prd_supp, Product_id, list, quantity) =>
     })
     .catch((error) => ({ error }));
 
-export const fetchItemsCart = () =>
+export const fetchItemsCart = (checkout) =>
   instanceAxios
     .get(`/shop/lists`, {
       params: {
         ...skin,
+        ...(checkout ? { checkout } : {}),
       },
     })
     .catch((error) => ({ error }));

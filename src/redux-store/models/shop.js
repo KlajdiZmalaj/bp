@@ -29,7 +29,7 @@ const { Types, Creators } = createActions({
   getToCart: ["prd_supp", "Product_id", "list", "quantity"],
   setToCart: ["productCart"],
 
-  getItemsCart: [],
+  getItemsCart: ["checkout"],
   setItemsCart: ["itemsCart"],
 
   getOrder: [

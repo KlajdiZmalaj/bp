@@ -3,6 +3,7 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import "./style.css";
 import { withRouter } from "react-router-dom";
+import { get } from "lodash";
 
 class SubHeader extends Component {
   componentDidMount() {
@@ -10,13 +11,14 @@ class SubHeader extends Component {
     if (catProduct) {
       this.props.setCategory(catProduct.replace("__", " | "));
     }
+    this.props.getItemsCart();
   }
 
   render() {
-    const { cat, isSelected, products } = this.props;
-
-    let cartItems = products.length;
-
+    const { cat, isSelected, products, itemsCart } = this.props;
+    let cartItems = 0;
+    let cart = get(itemsCart, "cart", {});
+    cartItems = Object.keys(cart).length;
     return (
       <div className="subheader">
         <div className="maxWidth">
@@ -70,5 +72,6 @@ class SubHeader extends Component {
 const mpStP = (state) => ({
   isSelected: state.shop.isSelectedCategory,
   products: state.shop.cartItems,
+  itemsCart: state.shop.itemsCart,
 });
 export default withRouter(connect(mpStP, ShopActions)(SubHeader));
