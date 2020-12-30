@@ -22,6 +22,8 @@ class SingleProduct extends Component {
     bigproduct: null,
     product: {},
     selectedColor: null,
+    selectedSize: null,
+    itemSelected: null,
   };
   changeBigProduct = (src) => {
     this.setState({ bigproduct: src });
@@ -35,11 +37,12 @@ class SingleProduct extends Component {
 
     let product = {};
 
-    product = find(this.props.prodList && this.props.prodList.data, function (
-      o
-    ) {
-      return o.Product_id.toString() === idProduct.toString();
-    });
+    product = find(
+      this.props.prodList && this.props.prodList.data,
+      function (o) {
+        return o.Product_id.toString() === idProduct.toString();
+      }
+    );
 
     this.props.getProductDetails(idProduct, suppProduct);
     this.setState({ product: product });
@@ -50,6 +53,7 @@ class SingleProduct extends Component {
       this.setState({ orderQuanity: this.state.orderQuanity - 1 });
     }
   };
+
   increasevalue = () => {
     this.setState({ orderQuanity: this.state.orderQuanity + 1 });
   };
@@ -58,9 +62,37 @@ class SingleProduct extends Component {
     this.setState({ selectedColor: e });
   };
 
+  handleChangeSize = (e) => {
+    this.setState({ selectedSize: e });
+  };
+
+  handleProduct = (item) => {
+    this.setState({ itemSelected: item });
+  };
+
+  addTocart = () => {
+    let products =
+      JSON.parse(localStorage.getItem("shopProducts")) !== null
+        ? JSON.parse(localStorage.getItem("shopProducts"))
+        : [];
+
+    products.push({
+      product_id: this.state.itemSelected.id,
+      product_quantity: this.state.orderQuanity,
+    });
+    localStorage.setItem("shopProducts", JSON.stringify(products));
+    this.props.setCart(products);
+  };
+
   render() {
     const { product, match } = this.props;
-    const { orderQuanity, bigproduct } = this.state;
+    const {
+      orderQuanity,
+      bigproduct,
+      selectedColor,
+      selectedSize,
+    } = this.state;
+
     const settings = {
       dots: false,
       infinite: true,
@@ -70,6 +102,7 @@ class SingleProduct extends Component {
       vertical: true,
       verticalSwiping: true,
     };
+
     return (
       <div className="prod">
         <div className="single maxWidth">
@@ -135,7 +168,7 @@ class SingleProduct extends Component {
                     </p>
                     <p>
                       <span className="label">SubCategoria: </span>
-                      {product.Product_Category}
+                      {product.Product_SubCategory}
                     </p>
                     {product.Product_Weight && (
                       <p>
@@ -179,7 +212,11 @@ class SingleProduct extends Component {
                       {product.Models["colore"] &&
                         product.Models["colore"].map((item, index) => {
                           return (
-                            <Option value={item.value} key={index}>
+                            <Option
+                              value={item.value}
+                              key={index}
+                              onClick={() => this.handleProduct(item)}
+                            >
                               {item.value}
                             </Option>
                           );
@@ -191,13 +228,17 @@ class SingleProduct extends Component {
                   <div className="color text-uppercase pb-3">
                     Colour:
                     <Select
-                      // value={this.state.selectValue}
                       onChange={this.handleChangeColour}
+                      placeholder="Scegli un colore"
                     >
                       {product.Models["design"] &&
                         product.Models["design"].map((item, index) => {
                           return (
-                            <Option value={item.value} key={index}>
+                            <Option
+                              value={item.value}
+                              key={index}
+                              onClick={() => this.handleProduct(item)}
+                            >
                               {item.value}
                             </Option>
                           );
@@ -210,13 +251,43 @@ class SingleProduct extends Component {
                   <div className="size text-uppercase pb-3">
                     <div> Size:</div>
 
-                    {product.Models["taglia"].map((item, index) => {
-                      return (
-                        <div key={index} className="size__items">
-                          {item.value}
-                        </div>
-                      );
-                    })}
+                    {selectedColor
+                      ? product.Models["taglia"]
+                          .filter((item) => item.parent_model === selectedColor)
+                          .map((item, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className={
+                                  "size__items" +
+                                  (item.value === selectedSize ? " active" : "")
+                                }
+                                onClick={() => {
+                                  this.handleChangeSize(item.value);
+                                  this.handleProduct(item);
+                                }}
+                              >
+                                {item.value}
+                              </div>
+                            );
+                          })
+                      : product.Models["taglia"].map((item, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className={
+                                "size__items" +
+                                (item.value === selectedSize ? " active" : "")
+                              }
+                              onClick={() => {
+                                this.handleChangeSize(item.value);
+                                this.handleProduct(item);
+                              }}
+                            >
+                              {item.value}
+                            </div>
+                          );
+                        })}
                   </div>
                 )}
                 <div className="buy pb-3 text-uppercase">
@@ -230,7 +301,7 @@ class SingleProduct extends Component {
                         <i className="fal fa-chevron-right"></i>
                       </div>
                     </div>
-                    <div className="addTobag">
+                    <div className="addTobag" onClick={this.addTocart}>
                       Add to bag <i className="fal fa-shopping-bag"></i>
                     </div>
                   </div>

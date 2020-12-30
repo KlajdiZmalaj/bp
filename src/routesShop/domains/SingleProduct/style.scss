@@ -111,6 +111,10 @@
             margin-right: 5px;
             padding: 9px 15px;
             width: fit-content;
+            cursor: pointer;
+            &.active {
+              border: 1px solid #f26521;
+            }
           }
         }
         .buy {

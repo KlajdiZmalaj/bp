@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
-
+import "./style.css";
 import { withRouter } from "react-router-dom";
 
 class SubHeader extends Component {
@@ -13,13 +13,10 @@ class SubHeader extends Component {
   }
 
   render() {
-    const { cat, isSelected } = this.props;
-    let cartItems = 0;
+    const { cat, isSelected, products } = this.props;
 
-    // if (localStorage.getItem("shopProducts") !== null) {
-    //   cartItems = localStorage.getItem("shopProducts").length();
-    // }
-    console.log("catcat", cat);
+    let cartItems = products.length;
+
     return (
       <div className="subheader">
         <div className="maxWidth">
@@ -62,7 +59,7 @@ class SubHeader extends Component {
               })}
           </div>
           <div className="cart">
-            Cart: {cartItems}
+            Cart: <span className="cart__nr">{cartItems}</span>
             <i className="fal fa-shopping-cart"></i>
           </div>
         </div>
@@ -72,5 +69,6 @@ class SubHeader extends Component {
 }
 const mpStP = (state) => ({
   isSelected: state.shop.isSelectedCategory,
+  products: state.shop.cartItems,
 });
 export default withRouter(connect(mpStP, ShopActions)(SubHeader));
