@@ -3,7 +3,7 @@ import SupportBody from "../domains/SupportBody/SupportBody";
 import AdminPanelDom from "../domains/adminPanel/adminPanelDom";
 import { connect } from "react-redux";
 import MainActions from "redux-store/models/main";
-import AdminTopHeader from "shared-components/adminSharedComp/AdminTopHeader";
+//import AdminTopHeader from "shared-components/adminSharedComp/AdminTopHeader";
 
 class AdminPanelListaUtenti extends React.Component {
   componentDidMount() {

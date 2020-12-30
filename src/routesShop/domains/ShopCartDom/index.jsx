@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
-import { Tooltip, Select } from "antd";
+import { Select } from "antd";
 
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
@@ -30,7 +30,7 @@ const ShopCartDom = ({
   useEffect(() => {
     getItemsCart(true);
     getProductsList();
-  }, []);
+  }, [getItemsCart, getProductsList]);
 
   const cartprod = get(itemsCart, "cart", {});
   const user_data = get(itemsCart, "user_data", {});

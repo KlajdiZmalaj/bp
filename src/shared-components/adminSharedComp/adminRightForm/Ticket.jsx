@@ -2,7 +2,7 @@ import React from "react";
 import images from "themes/images";
 import ReactToPrint from "react-to-print";
 import { connect } from "react-redux";
-import { AuthActions } from "redux-store/models";
+import { AuthActions, MainActions } from "redux-store/models";
 import { Document, Page, pdfjs } from "react-pdf";
 import { b64toBlob } from "utils";
 
@@ -58,6 +58,11 @@ class Ticket extends React.Component {
       openModalForAdmin,
       ModalDetails,
     } = this.props;
+    console.log(
+      "getLogoBySkinId",
+      images.getLogoBySkinId,
+      this.props.activeSkinId
+    );
     return (
       <React.Fragment>
         <div
@@ -75,7 +80,11 @@ class Ticket extends React.Component {
         >
           <div className="ContainerOfData">
             <div className="headerModal">
-              <img className="logo" src={images.logo} alt="" />
+              <img
+                className="logo"
+                src={images.getLogoBySkinId(this.props.activeSkinId)}
+                alt={skinExtras.name}
+              />
               <span className="superSmall text-bold">
                 <span> {skinExtras.account_name} </span>
               </span>
@@ -183,5 +192,8 @@ const mapsStateToProps = (state) => ({
   skinExtras: state.auth.skinExtras,
   paymentsFromCode: state.auth.paymentsFromCode,
   ModalDetails: state.auth.ModalDetails,
+  activeSkinId: state.main.activeSkinId,
 });
-export default connect(mapsStateToProps, { ...AuthActions })(Ticket);
+export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
+  Ticket
+);

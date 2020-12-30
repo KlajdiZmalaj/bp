@@ -8,7 +8,7 @@ const SingleError = ({
   perPage,
   page_number,
 }) => {
-  const [isHover, setHover] = useState(false);
+  // const [isHover, setHover] = useState(false);
   const [hasPopup, setPopUp] = useState(false);
   const formatString = (string) => {
     return (

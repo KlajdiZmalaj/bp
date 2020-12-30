@@ -9,7 +9,7 @@ import DomTitle from "../domains/DomTitle";
 const CheckOut = ({ getCategories, categories }) => {
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [getCategories]);
   return (
     <div className="products checkout">
       <Header />

@@ -97,6 +97,7 @@ class AdminPanelDom extends React.Component {
     this.props.getSkins();
     this.props.getStatistiche(this.props.activeSkinId);
     this.props.getWidgetPayments(this.props.activeSkinId);
+
     document.body.classList.add("bodyAdmin");
     if (this.props.screenWidth <= 550) {
       this.setState({ menuSkinVisible: true });
@@ -109,6 +110,12 @@ class AdminPanelDom extends React.Component {
     document.body.classList.remove("bodyAdmin");
   }
   componentDidUpdate(prevProps, prevState) {
+    if (this.props.activeSkinId !== prevProps.activeSkinId) {
+      if (!this.props.activeSkinId.toString().match(/-1|2/g)) {
+        this.props.getSkinExtras(this.props.activeSkinId);
+        this.props.openModalForAdmin(false);
+      }
+    }
     if (
       this.state.menuSkinVisible === true &&
       this.props.screenWidth < 1024 &&

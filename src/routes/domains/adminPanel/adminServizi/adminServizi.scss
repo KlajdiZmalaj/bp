@@ -231,7 +231,11 @@ div.Center--Big {
   flex-flow: row;
   overflow-x: auto;
   &::-webkit-scrollbar {
-    height: 0;
+    height: 4px;
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #353d45;
   }
   &__item {
     flex-shrink: 0;
