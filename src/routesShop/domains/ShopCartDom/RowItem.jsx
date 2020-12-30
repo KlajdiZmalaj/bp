@@ -67,7 +67,5 @@ const RowItem = ({
   );
 };
 
-const mstp = (state) => ({
-  productsList: state.shop.productsList,
-});
+const mstp = () => ({});
 export default withRouter(connect(mstp, ShopActions)(RowItem));
