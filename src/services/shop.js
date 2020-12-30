@@ -82,3 +82,14 @@ export const fetchCategories = () =>
       },
     })
     .catch((error) => ({ error }));
+
+export const fetchToCart = (prd_supp, Product_id, list, quantity) =>
+  instanceAxios
+    .post(`/shop/addToList`, {
+      ...skin,
+      ...(prd_supp ? { prd_supp } : {}),
+      ...(Product_id ? { Product_id } : {}),
+      ...(list ? { list } : {}),
+      ...(quantity ? { quantity } : {}),
+    })
+    .catch((error) => ({ error }));

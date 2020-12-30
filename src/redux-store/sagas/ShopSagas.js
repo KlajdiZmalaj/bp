@@ -53,3 +53,16 @@ export function* getCategories() {
     yield put(ShopActions.setCategories(response.data.data));
   }
 }
+
+export function* getToCart(params) {
+  const response = yield call(
+    ShopRequest.fetchToCart,
+    params.prd_supp,
+    params.Product_id,
+    params.list,
+    params.quantity
+  );
+  if (response.data) {
+    yield put(ShopActions.setToCart(response.data.data));
+  }
+}
