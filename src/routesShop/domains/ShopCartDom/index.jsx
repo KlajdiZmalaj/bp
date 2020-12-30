@@ -60,7 +60,7 @@ const ShopCartDom = ({
   }, []);
 
   const cartprod = get(itemsCart, "cart", {});
-  console.log(productsList);
+
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
