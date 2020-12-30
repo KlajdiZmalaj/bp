@@ -401,6 +401,15 @@ class Root extends React.Component {
           />
           <PrivateRoute
             exact
+            path="/shop-cart"
+            exact
+            component={ShopView.ShopCart}
+            isLoggedin={isLoggedin}
+            role={role}
+            allowedRoles={["main_admin", "agency", "agent", "user"]}
+          />
+          <PrivateRoute
+            exact
             path="/product-checkout/:id?/:supp?/"
             exact
             component={ShopView.CheckOut}
