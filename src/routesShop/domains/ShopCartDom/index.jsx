@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
 
+import RowItem from "./RowItem";
+
 const { Option } = Select;
 const RelatedProduct = ({ title, imgSrc, price }) => {
   return (
@@ -18,35 +20,6 @@ const RelatedProduct = ({ title, imgSrc, price }) => {
     </div>
   );
 };
-const RowItem = ({ imgSrc, title, color, size, price, qnt }) => (
-  <div className="cartItem">
-    <img src={imgSrc || images["placeholder"]} alt="" />
-    <div className="cartItem__details">
-      <Tooltip title={title}>
-        <h3>{title}</h3>
-      </Tooltip>
-      <div>
-        <span>
-          COLOUR: <span>{color}</span>
-        </span>
-        <span>
-          SIZE : <span>{size}</span>
-        </span>
-      </div>
-      <div className="price">{price}</div>
-    </div>
-    <div className="cartItem__actions">
-      <div>
-        <i className="fal fa-chevron-left" aria-hidden="true"></i>
-        <span>{qnt}</span>
-        <i className="fal fa-chevron-right" aria-hidden="true"></i>
-      </div>
-      <div>
-        <i className="fal fa-times" aria-hidden="true"></i>
-      </div>
-    </div>
-  </div>
-);
 
 const ShopCartDom = ({
   getItemsCart,
@@ -74,6 +47,8 @@ const ShopCartDom = ({
               size="M"
               price={`${cartprod[item].Product_Price} €`}
               qnt={cartprod[item].quantity}
+              id={cartprod[item].Product_id}
+              prd_supp={cartprod[item].prd_supp}
             />
           );
         })}
