@@ -142,3 +142,12 @@ export const fetchRemoveToCart = (prd_supp, Product_id, quantity, list) =>
       ...(list ? { list } : {}),
     })
     .catch((error) => ({ error }));
+
+export const fetchCarries = (iso_code, postcode) =>
+  instanceAxios
+    .post(`/shop/getCarriers`, {
+      ...skin,
+      ...(iso_code ? { iso_code } : {}),
+      ...(postcode ? { postcode } : {}),
+    })
+    .catch((error) => ({ error }));

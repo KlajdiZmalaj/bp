@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import images from "themes/images";
 import "./style.css";
-import { Select } from "antd";
+import { Select, Radio } from "antd";
 
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
@@ -26,15 +26,26 @@ const ShopCartDom = ({
   itemsCart,
   getProductsList,
   productsList,
+  getCarries,
 }) => {
   useEffect(() => {
     getItemsCart(true);
     getProductsList();
+    // getCarries(get(itemsCart, "user_data", {}).postcode);
   }, [getItemsCart, getProductsList]);
 
   const cartprod = get(itemsCart, "cart", {});
   const user_data = get(itemsCart, "user_data", {});
+  const carriers = get(itemsCart, "carriers", []);
 
+  // const [carr, setCarrierss] = useState("");
+  const [value, setValue] = React.useState(1);
+
+  const onChange = (e) => {
+    console.log("radio checked", e.target.value);
+    setValue(e.target.value);
+  };
+  console.log("carriers", carriers);
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
@@ -96,6 +107,29 @@ const ShopCartDom = ({
           </div>
         </div>
         <div className="titleTop">Calcola spedizione</div>
+        <div className="shipping">
+          <div className="subTot">
+            <div>Subtotale</div>
+          </div>
+          <div className="title">Shipping:</div>
+          <Radio.Group onChange={onChange} value={value}>
+            {carriers &&
+              carriers.map((item, index) => {
+                return (
+                  <Radio value={1} key={index}>
+                    <span>{item.shippingService.serviceName}</span>
+
+                    <div className="radioServ">
+                      Delay: <span>{item.shippingService.delay}</span>
+                    </div>
+                    <div className="radioServ">
+                      Cost: <span>{item.cost}</span>
+                    </div>
+                  </Radio>
+                );
+              })}
+          </Radio.Group>
+        </div>
       </div>
     </section>
   );
@@ -104,5 +138,6 @@ const ShopCartDom = ({
 const mstp = (state) => ({
   itemsCart: state.shop.itemsCart,
   productsList: state.shop.productsList,
+  carries: state.shop.carries,
 });
 export default withRouter(connect(mstp, ShopActions)(ShopCartDom));

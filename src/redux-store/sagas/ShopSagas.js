@@ -106,3 +106,15 @@ export function* getRemoveToCart(params) {
     yield put(ShopActions.setRemoveToCart(response.data.data));
   }
 }
+
+export function* getCarries(params) {
+  console.log("params", params);
+  const response = yield call(
+    ShopRequest.fetchCarries,
+    params.iso_code,
+    params.postcode
+  );
+  if (response.data) {
+    yield put(ShopActions.setCaries(response.data.data));
+  }
+}
