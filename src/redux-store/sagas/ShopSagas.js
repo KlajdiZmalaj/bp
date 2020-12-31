@@ -4,7 +4,31 @@ import * as ShopRequest from "services/shop";
 
 export function* checkOut({ formData, resetFields }) {
   console.log("formData", formData);
-  yield setTimeout(() => {}, 1000);
+  // yield setTimeout(() => {}, 1000);
+
+  const response = yield call(
+    ShopRequest.fetchOrder,
+    formData.cap,
+    formData.citty,
+    formData.email,
+    formData.fiscal_code,
+    formData.indirizzo_diff,
+    formData.last_name,
+    formData.name,
+    formData.nome_societa,
+    formData.paese,
+    formData.payment,
+    formData.paymentBtnLabel,
+    formData.province,
+    formData.punto_vendia,
+    formData.tel,
+    formData.terms,
+    formData.via_nr
+  );
+  if (response.data) {
+    // yield put(ShopActions.setProductsList(response.data));
+  }
+
   //const response = yield call(req , formData);
   // if(response) {
   //   resetFields?.()
