@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
-import { Select, Radio } from "antd";
-
+import { Select } from "antd";
+import Slider from "react-slick";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
+import countriesArray from "config/countryArr";
+import VirtualizedSelect from "react-virtualized-select";
 
 import RowItem from "./RowItem";
-
 const { Option } = Select;
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+};
 const RelatedProduct = ({ title, imgSrc, price }) => {
   return (
     <div className="relatedProduct">
@@ -39,12 +47,9 @@ const ShopCartDom = ({
   const carriers = get(itemsCart, "carriers", []);
 
   // const [carr, setCarrierss] = useState("");
-  const [value, setValue] = React.useState(1);
 
-  const onChange = (e) => {
-    console.log("radio checked", e.target.value);
-    setValue(e.target.value);
-  };
+  const [selectedCity, setCity] = React.useState("");
+
   console.log("carriers", carriers);
   return (
     <section className="maxWidth shopCartContainer">
@@ -67,19 +72,21 @@ const ShopCartDom = ({
         <div className="shopCartContainer--left__related">
           <h2>related products</h2>
           <div className="containerRealted">
-            {productsList.data &&
-              productsList.data
-                .filter((item, index) => index < 6)
-                .map((item, index) => {
-                  return (
-                    <RelatedProduct
-                      imgSrc={item.Product_Image_1}
-                      title={item.Product_Name}
-                      price={`€ ${item.Product_Price}`}
-                      key={index}
-                    />
-                  );
-                })}
+            <Slider {...settings}>
+              {productsList.data &&
+                productsList.data
+                  .filter((item, index) => index < 6)
+                  .map((item, index) => {
+                    return (
+                      <RelatedProduct
+                        imgSrc={item.Product_Image_1}
+                        title={item.Product_Name}
+                        price={`€ ${item.Product_Price}`}
+                        key={index}
+                      />
+                    );
+                  })}
+            </Slider>
           </div>
         </div>
       </div>
@@ -93,15 +100,26 @@ const ShopCartDom = ({
             lun 28 dic - lun 4 gen
           </div>
           <div className="spedizoneContainer--form">
-            <Select defaultValue={"italia"}>
-              <Option key="ita">Italia</Option>
-              <Option key="al">Albania</Option>
+            <Select defaultValue={"Italia"}>
+              <Option key="Italia">Italia</Option>
             </Select>
-            <Select defaultValue={"italia"}>
-              <Option key="br">Bari</Option>
-              <Option key="tr">Tirana</Option>
-            </Select>
-            <input type="text" placeholder="Citta" />
+            <VirtualizedSelect
+              options={countriesArray
+                .filter((obj) => obj.nazione === "ITALIA")
+                .map((country) => ({
+                  label: `${country.provincia} (${country.sigla}) (${country.nazione})`,
+                  value: country.provincia,
+                  sigla: country.sigla,
+                }))}
+              onChange={(e) => {
+                //console.log("ca ka e", e);
+                setCity(e?.value);
+              }}
+              value={selectedCity}
+              maxHeight={100}
+              placeholder={"Citta"}
+            />
+
             <input type="text" placeholder="C.A.P" />
             <button>AGGIORNA</button>
           </div>
@@ -111,24 +129,6 @@ const ShopCartDom = ({
           <div className="subTot">
             <div>Subtotale</div> <div>5,98 € </div>
           </div>
-          <div className="title">Shipping:</div>
-          <Radio.Group onChange={onChange} value={value}>
-            {carriers &&
-              carriers.map((item, index) => {
-                return (
-                  <Radio value={item.shippingService.serviceName} key={index}>
-                    <span>{item.shippingService.serviceName}</span>
-
-                    <div className="radioServ">
-                      Delay: <span>{item.shippingService.delay}</span>
-                    </div>
-                    <div className="radioServ">
-                      Cost: <span>{item.cost}</span>
-                    </div>
-                  </Radio>
-                );
-              })}
-          </Radio.Group>
         </div>
       </div>
     </section>

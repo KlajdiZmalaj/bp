@@ -3,6 +3,7 @@ import ShopActions from "redux-store/models/shop";
 import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { Select, Radio } from "antd";
 const FORM_DATA = {
   name: "",
   last_name: "",
@@ -47,12 +48,21 @@ const CheckOutDom = ({
   match,
   productD,
   accountInfo,
+  itemsCart,
+  getItemsCart,
 }) => {
   useEffect(() => {
+    getItemsCart(true);
     getProductDetails(match.params.id, match.params.supp);
     getCategories();
   }, [match.params.id, match.params.supp, getProductDetails, getCategories]);
   const [formData, setData] = useState(FORM_DATA);
+  const carriers = itemsCart?.carriers || [];
+  const [value, setValue] = React.useState(1);
+  const onChange = (e) => {
+    console.log("itemsCart", itemsCart);
+    setValue(e.target.value);
+  };
   //console.log("props", accountInfo);
   return (
     <div className="shopCheckout maxWidth">
@@ -195,7 +205,28 @@ const CheckOutDom = ({
               <div>
                 Tariffa unica: <span>€5,00</span>
               </div>
+              <Radio.Group onChange={onChange} value={value}>
+                {carriers &&
+                  carriers.map((item, index) => {
+                    return (
+                      <Radio
+                        value={item.shippingService.serviceName}
+                        key={index}
+                      >
+                        <span>{item.shippingService.serviceName}</span>
+
+                        <div className="radioServ">
+                          Delay: <span>{item.shippingService.delay}</span>
+                        </div>
+                        <div className="radioServ">
+                          Cost: <span>{item.cost}</span>
+                        </div>
+                      </Radio>
+                    );
+                  })}
+              </Radio.Group>
             </div>
+
             <div className="total">
               <div>Totale:</div>
               <div>{productD?.Product_Price || 0} €</div>
@@ -281,8 +312,9 @@ const CheckOutDom = ({
     </div>
   );
 };
-const mstp = ({ shop: { productD }, auth: { accountInfo } }) => ({
+const mstp = ({ shop: { productD, itemsCart }, auth: { accountInfo } }) => ({
   productD,
   accountInfo,
+  itemsCart,
 });
 export default withRouter(connect(mstp, ShopActions)(CheckOutDom));
