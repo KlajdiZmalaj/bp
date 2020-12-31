@@ -19,6 +19,7 @@ class Header extends Component {
       ads: false,
       regType: 1,
       msg: false,
+      visibleMoney: false,
     };
   }
   toggleprivMsgs = () => {
@@ -33,7 +34,7 @@ class Header extends Component {
 
   render() {
     const { accountInfo, screenWidth, ads, privMsg, skinExtras } = this.props;
-    const { isDDopem } = this.state;
+    const { isDDopem, visibleMoney } = this.state;
     let isLoggedin = false;
     if (accountInfo.token) {
       isLoggedin = true;
@@ -245,7 +246,25 @@ class Header extends Component {
                 <div className="name">{get(accountInfo, "profile.name")}</div>
                 {isLoggedin && (
                   <div className="money">
-                    {numberWithCommas(get(accountInfo, "profile.wallet"))}€
+                    {visibleMoney ? (
+                      <>
+                        {" "}
+                        <i
+                          style={{ cursor: "pointer" }}
+                          onClick={() => this.setState({ visibleMoney: false })}
+                          className="fal fa-eye-slash"
+                          aria-hidden="true"
+                        ></i>
+                        {numberWithCommas(get(accountInfo, "profile.wallet"))}€{" "}
+                      </>
+                    ) : (
+                      <i
+                        style={{ cursor: "pointer" }}
+                        onClick={() => this.setState({ visibleMoney: true })}
+                        className="fal fa-eye"
+                        aria-hidden="true"
+                      ></i>
+                    )}
                   </div>
                 )}
               </div>
