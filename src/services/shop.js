@@ -105,30 +105,34 @@ export const fetchItemsCart = (checkout) =>
     .catch((error) => ({ error }));
 
 export const fetchOrder = (
-  products_array,
-  iso_code,
-  postcode,
-  carrier,
-  first_name,
+  cap,
+  citty,
+  email,
+  fiscal_code,
+  indirizzo_diff,
   last_name,
-  city,
-  address,
-  phone,
-  email
+  name,
+  nome_societa,
+  paese,
+  payment,
+  paymentBtnLabel,
+  province,
+  punto_vendia,
+  tel,
+  terms,
+  via_nr
 ) =>
   instanceAxios
-    .post(`/shop/submitOrder`, {
+    .post("/shop/submitOrder", {
       ...skin,
-      ...(products_array ? { products_array } : {}),
-      ...(iso_code ? { iso_code } : {}),
-      ...(postcode ? { postcode } : {}),
-      ...(carrier ? { carrier } : {}),
-      ...(first_name ? { first_name } : {}),
-      ...(last_name ? { last_name } : {}),
-      ...(city ? { city } : {}),
-      ...(address ? { address } : {}),
-      ...(phone ? { phone } : {}),
-      ...(email ? { email } : {}),
+      iso_code: "it",
+      // postcode: cap,
+      first_name: name,
+      last_name: last_name,
+      city: citty,
+      address: via_nr,
+      phone: tel,
+      email: email,
     })
     .catch((error) => ({ error }));
 

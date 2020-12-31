@@ -9,7 +9,7 @@ const FORM_DATA = {
   last_name: "",
   fiscal_code: "",
   nome_societa: "",
-  paese: "",
+  paese: "Italia",
   via_nr: "",
   email: "",
   tel: "",
@@ -47,15 +47,26 @@ const CheckOutDom = ({
   checkOut,
   match,
   productD,
-  accountInfo,
   itemsCart,
+  accountInfo,
   getItemsCart,
 }) => {
   useEffect(() => {
-    getItemsCart(true);
     getProductDetails(match.params.id, match.params.supp);
-    getCategories();
-  }, [match.params.id, match.params.supp, getProductDetails, getCategories]);
+    getItemsCart(true);
+    setData({
+      ...formData,
+      name: accountInfo?.profile?.name?.split?.(" ")?.[0],
+      last_name: accountInfo?.profile?.name?.split?.(" ")?.[1],
+      email: accountInfo?.profile?.email,
+    });
+  }, [
+    match.params.id,
+    match.params.supp,
+    getProductDetails,
+    getCategories,
+    getItemsCart,
+  ]);
   const [formData, setData] = useState(FORM_DATA);
   const carriers = itemsCart?.carriers || [];
   const [value, setValue] = React.useState(1);
@@ -109,11 +120,12 @@ const CheckOutDom = ({
             />
             <input
               type="text"
+              readonly="readonly"
               value={formData.paese}
               placeholder="Paese/regione"
-              onChange={(e) => {
-                setData({ ...formData, paese: e.target.value });
-              }}
+              // onChange={(e) => {
+              //   setData({ ...formData, paese: e.target.value });
+              // }}
             />
             <input
               type="text"
@@ -132,6 +144,7 @@ const CheckOutDom = ({
               }}
             />
             <input
+              required
               type="text"
               value={formData.tel}
               placeholder="Telefono"
@@ -232,7 +245,7 @@ const CheckOutDom = ({
               <div>{productD?.Product_Price || 0} €</div>
             </div>
           </div>
-          <div className="titleTop">Payments:</div>
+          {/* <div className="titleTop">Payments:</div>
           <div className="checkContainer right">
             <InpCheck
               id="pwall"
@@ -282,7 +295,7 @@ const CheckOutDom = ({
                 });
               }}
             />
-          </div>
+          </div> */}
           <div className="checkContainer bottom">
             <InpCheck
               id="termi"
@@ -305,7 +318,8 @@ const CheckOutDom = ({
               });
             }}
           >
-            PAGA CON {formData.paymentBtnLabel}
+            Paga
+            {/* PAGA CON {formData.paymentBtnLabel} */}
           </button>
         </div>
       </div>
@@ -314,6 +328,7 @@ const CheckOutDom = ({
 };
 const mstp = ({ shop: { productD, itemsCart }, auth: { accountInfo } }) => ({
   productD,
+  itemsCart,
   accountInfo,
   itemsCart,
 });
