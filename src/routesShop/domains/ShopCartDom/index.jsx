@@ -109,14 +109,14 @@ const ShopCartDom = ({
         <div className="titleTop">Calcola spedizione</div>
         <div className="shipping">
           <div className="subTot">
-            <div>Subtotale</div>
+            <div>Subtotale</div> <div>5,98 € </div>
           </div>
           <div className="title">Shipping:</div>
           <Radio.Group onChange={onChange} value={value}>
             {carriers &&
               carriers.map((item, index) => {
                 return (
-                  <Radio value={1} key={index}>
+                  <Radio value={item.shippingService.serviceName} key={index}>
                     <span>{item.shippingService.serviceName}</span>
 
                     <div className="radioServ">
