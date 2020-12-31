@@ -68,8 +68,8 @@ export function* getToCart(params) {
   }
 }
 
-export function* getItemsCart() {
-  const response = yield call(ShopRequest.fetchItemsCart);
+export function* getItemsCart(params) {
+  const response = yield call(ShopRequest.fetchItemsCart, params.checkout);
   if (response.data) {
     yield put(ShopActions.setItemsCart(response.data.data));
   }
@@ -104,5 +104,17 @@ export function* getRemoveToCart(params) {
   );
   if (response.data) {
     yield put(ShopActions.setRemoveToCart(response.data.data));
+  }
+}
+
+export function* getCarries(params) {
+  console.log("params", params);
+  const response = yield call(
+    ShopRequest.fetchCarries,
+    params.iso_code,
+    params.postcode
+  );
+  if (response.data) {
+    yield put(ShopActions.setCaries(response.data.data));
   }
 }
