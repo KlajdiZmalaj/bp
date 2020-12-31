@@ -3,6 +3,7 @@ import ShopActions from "redux-store/models/shop";
 import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { get } from "lodash";
 const FORM_DATA = {
   name: "",
   last_name: "",
@@ -67,7 +68,8 @@ const CheckOutDom = ({
     getItemsCart,
   ]);
   const [formData, setData] = useState(FORM_DATA);
-  console.log("itemsCart", itemsCart && itemsCart.user_data);
+  let cart = get(itemsCart, "cart", {});
+
   return (
     <div className="shopCheckout maxWidth">
       <div className="shopCheckout--form">

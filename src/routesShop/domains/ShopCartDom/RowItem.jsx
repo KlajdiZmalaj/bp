@@ -61,7 +61,7 @@ const RowItem = ({
           <i
             className="fal fa-times"
             aria-hidden="true"
-            onClick={() => getRemoveToCart(prd_supp, id, 0, "cart")}
+            onClick={() => getRemoveToCart(prd_supp, id, "0", "cart")}
           ></i>
         </div>
       </div>
