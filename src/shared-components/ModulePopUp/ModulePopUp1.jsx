@@ -34,8 +34,17 @@ class ModulePopUp1 extends React.Component {
             ? "test flex"
             : ""
         }`}
+        onClick={() => {
+          this.props.togglePopUp(false);
+        }}
       >
-        <div className="module container-fluid max-width_modulePopUP">
+        <div
+          className="module container-fluid max-width_modulePopUP"
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+          }}
+        >
           <div className="row">
             {service.service_id === "PAGF24" ? (
               <F24 service_id={service.service_id} />

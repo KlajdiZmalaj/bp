@@ -398,7 +398,7 @@ class Bolletino extends React.Component {
                   }}
                 >
                   <h3>barcode</h3>
-                  <p>Scansione del barcode</p>
+                  <i className="fas fa-barcode"></i>
                 </div>
                 <div className="Actions--Item">
                   <h3>stampa</h3>

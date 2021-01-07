@@ -130,8 +130,15 @@ class ModulePopUp4 extends React.Component {
     //   wallet: "983.00",
     // };
     return (
-      <div className="modulePopUP modulePopUP1 telRechanrge">
+      <div
+        className="modulePopUP modulePopUP1 telRechanrge"
+        onClick={() => this.props.togglePopUp(false)}
+      >
         <div
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
           className={`leftCol_Module Popup4 ${
             this.props.serviceType === "SCMS"
               ? "game"
