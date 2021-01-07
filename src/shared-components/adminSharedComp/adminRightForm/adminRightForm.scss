@@ -55,7 +55,7 @@
     padding-top: 50px;
     box-sizing: border-box;
     background-color: #272c31;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: flex-end;
     position: relative;
     width: 281px;
@@ -64,9 +64,10 @@
       background-color: #ffffff;
       opacity: 0.2;
       margin: 0;
-      width: calc(100% / 30 - 2px);
+      width: 8px;
       flex-grow: 0;
       flex-shrink: 0;
+      margin-right: 1px;
       &:hover {
         background-color: #0578fc;
         opacity: 1;

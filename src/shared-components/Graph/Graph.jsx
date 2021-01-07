@@ -49,9 +49,20 @@ const Graph = ({
                   );
                 }}
                 onClick={() => {
+                  console.log("month", month, day);
                   if (window.location.href.includes("movimenti")) {
                     const date = moment(
-                      `${month}-${day}-${new Date().getFullYear()}`
+                      `${new Date(
+                        `${month}-${day}-${
+                          new Date()
+                            .getMonth()
+                            .toString()
+                            .match(/0|1|2|3|4|5/g) &&
+                          month.toString().match(/7|8|9|10|11|12/g)
+                            ? new Date().getFullYear() - 1
+                            : new Date().getFullYear()
+                        }`
+                      )}`
                     ).format("YYYY-MM-DD");
                     getPayments("", date, date, 1, 25, activeSkinId);
                     setFromDateToDate(date);
