@@ -1,6 +1,8 @@
-import { put, call } from "redux-saga/effects";
+import { put, call, delay } from "redux-saga/effects";
 import ShopActions from "../models/shop";
 import * as ShopRequest from "services/shop";
+import { get } from "lodash";
+import { notification } from "antd";
 
 export function* checkOut({ formData, resetFields }) {
   console.log("formData", formData);
@@ -88,7 +90,13 @@ export function* getToCart(params) {
     params.quantity
   );
   if (response.data) {
-    yield put(ShopActions.setToCart(response.data.data));
+    yield put(ShopActions.setToCart("aggiunto"));
+    yield call(getItemsCart, false);
+    notification["success"]({
+      message: response?.data?.message,
+    });
+    yield delay(4000);
+    yield put(ShopActions.setToCart(""));
   }
 }
 
@@ -96,6 +104,9 @@ export function* getItemsCart(params) {
   const response = yield call(ShopRequest.fetchItemsCart, params.checkout);
   if (response.data) {
     yield put(ShopActions.setItemsCart(response.data.data));
+    let carriers = get(response.data.data, "carriers", []);
+    yield put(ShopActions.setItemsCart(response.data.data));
+    yield put(ShopActions.setCarries(carriers));
   }
 }
 
@@ -128,17 +139,23 @@ export function* getRemoveToCart(params) {
   );
   if (response.data) {
     yield put(ShopActions.setRemoveToCart(response.data.data));
+    yield call(getItemsCart, false);
+    notification["success"]({
+      message: response?.data?.message,
+    });
   }
 }
 
 export function* getCarries(params) {
-  console.log("params", params);
   const response = yield call(
     ShopRequest.fetchCarries,
     params.iso_code,
     params.postcode
   );
   if (response.data) {
-    yield put(ShopActions.setCaries(response.data.data));
+    yield put(ShopActions.setCarries(response.data.data));
+    notification["success"]({
+      message: response?.data?.message,
+    });
   }
 }

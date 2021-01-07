@@ -18,36 +18,26 @@
       display: flex;
       .images {
         display: grid;
-        grid-template-columns: auto 81.5%;
+        grid-template-columns: auto 80%;
         grid-gap: 5px;
-        column-gap: 5px;
-        row-gap: 5px;
         width: 50%;
         margin-right: 10px;
-        &__big {
-        }
-        &__other {
-          > div {
-            margin-bottom: 5px;
 
-            &:last-child {
-              margin-bottom: 0px;
-            }
-          }
-        }
         .slick-next {
-          right: -40%;
+          right: 40%;
           top: auto;
-          bottom: 0;
+          bottom: 6px;
           transform: rotate(90deg);
-          position: relative;
+          // position: relative;
+          z-index: 1;
         }
         .slick-prev {
           left: 40%;
           top: 0px;
           transform: rotate(90deg);
           bottom: auto;
-          position: relative;
+          z-index: 1;
+          // position: relative;
         }
 
         .slick-prev:before,
@@ -113,7 +103,12 @@
             width: fit-content;
             cursor: pointer;
             &.active {
-              border: 1px solid #f26521;
+              color: var(--accent-bg);
+              border: 1px solid var(--accent-bg);
+            }
+            &:hover {
+              color: var(--accent-bg);
+              border: 1px solid var(--accent-bg);
             }
           }
         }
@@ -136,6 +131,12 @@
               padding: 0 5px;
               > div {
                 padding: 0 10px;
+                font-size: 16px;
+                i {
+                  &:hover {
+                    color: var(--accent-bg);
+                  }
+                }
               }
             }
             .addTobag {
@@ -146,6 +147,14 @@
               justify-content: space-between;
               padding: 0 10px;
               cursor: pointer;
+              &:hover {
+                background-color: var(--accent-bg);
+                color: var(--accent-txt);
+              }
+              &.active {
+                background-color: var(--accent-bg);
+                color: var(--accent-txt);
+              }
               i {
                 padding: 0 10px 0 30px;
               }
