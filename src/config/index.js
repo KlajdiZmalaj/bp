@@ -414,5 +414,8 @@ export const autoConfig = {
     colors: ["red", "green", "blue"],
   },
 };
-const date = new Date().getMonth();
-export const isWinter = date === 11 || date === 0 || date === 1;
+const month = new Date().getMonth();
+const day = new Date().getDay();
+export const isWinter =
+  (month === 11 && day.toString().match(/24|25|26|27|28|29|30|31/g)) ||
+  (month === 0 && day.toString().match(/1|2|3|4|5/g));

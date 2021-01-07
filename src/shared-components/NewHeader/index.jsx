@@ -252,7 +252,7 @@ class Header extends Component {
                         <i
                           style={{ cursor: "pointer" }}
                           onClick={() => this.setState({ visibleMoney: false })}
-                          className="fal fa-eye-slash"
+                          className="fal fa-eye-slash mr-1"
                           aria-hidden="true"
                         ></i>
                         {numberWithCommas(get(accountInfo, "profile.wallet"))}€{" "}
