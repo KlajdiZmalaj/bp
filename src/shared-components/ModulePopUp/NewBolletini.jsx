@@ -164,6 +164,7 @@ class Bolletino extends React.Component {
                         <img src={images.checkSymbol} alt="" />
                       </td>
                       <td
+                        className="barcodeTd"
                         onClick={() => {
                           if (barcodeInput) {
                             this.setbarcodeInp(false);
@@ -173,9 +174,7 @@ class Bolletino extends React.Component {
                         }}
                       >
                         <h3>barcode</h3>
-                        <p>
-                          pagemento <br /> differito
-                        </p>
+                        <i className="fas fa-barcode"></i>
                       </td>
                       <td className="stampCup">
                         <h3>stampa</h3>
