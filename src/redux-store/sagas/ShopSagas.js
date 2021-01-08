@@ -5,30 +5,25 @@ import { get } from "lodash";
 import { notification } from "antd";
 
 export function* checkOut({ formData, resetFields }) {
-  console.log("formData", formData);
   // yield setTimeout(() => {}, 1000);
 
   const response = yield call(
     ShopRequest.fetchOrder,
     formData.cap,
-    formData.citty,
-    formData.email,
-    formData.fiscal_code,
-    formData.indirizzo_diff,
-    formData.last_name,
+    formData.carrier,
     formData.name,
-    formData.nome_societa,
-    formData.paese,
-    formData.payment,
-    formData.paymentBtnLabel,
-    formData.province,
-    formData.punto_vendia,
+    formData.last_name,
+    formData.citty,
+    formData.via_nr,
     formData.tel,
-    formData.terms,
-    formData.via_nr
+    formData.email,
+    formData.comment
   );
   if (response.data) {
     // yield put(ShopActions.setProductsList(response.data));
+    notification["success"]({
+      message: response?.data?.message,
+    });
   }
 
   //const response = yield call(req , formData);
@@ -105,6 +100,7 @@ export function* getItemsCart(params) {
   if (response.data) {
     yield put(ShopActions.setItemsCart(response.data.data));
     let carriers = get(response.data.data, "carriers", []);
+
     yield put(ShopActions.setItemsCart(response.data.data));
     yield put(ShopActions.setCarries(carriers));
   }

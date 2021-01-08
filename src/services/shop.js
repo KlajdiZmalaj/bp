@@ -106,33 +106,28 @@ export const fetchItemsCart = (checkout) =>
 
 export const fetchOrder = (
   cap,
-  citty,
-  email,
-  fiscal_code,
-  indirizzo_diff,
-  last_name,
+  carrier,
   name,
-  nome_societa,
-  paese,
-  payment,
-  paymentBtnLabel,
-  province,
-  punto_vendia,
+  last_name,
+  citty,
+  via_nr,
   tel,
-  terms,
-  via_nr
+  email,
+  comment
 ) =>
   instanceAxios
     .post("/shop/submitOrder", {
       ...skin,
       iso_code: "it",
-      // postcode: cap,
+      postcode: cap,
       first_name: name,
       last_name: last_name,
       city: citty,
       address: via_nr,
       phone: tel,
       email: email,
+      carrier: carrier,
+      comment: comment,
     })
     .catch((error) => ({ error }));
 

@@ -291,6 +291,19 @@
         color: #7f7f7f;
       }
     }
+
+    .procedi {
+      margin-top: 10px;
+      button {
+        width: 100%;
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
+        border: none;
+        height: 50px;
+        text-transform: uppercase;
+      }
+    }
+
     .ant-radio {
       height: 16px;
     }

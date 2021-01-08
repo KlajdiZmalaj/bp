@@ -200,6 +200,14 @@ const ShopCartDom = ({
           <div className="subTot">
             <div>Totale</div> <div>€ {sumTot}€</div>
           </div>
+          <div
+            className="procedi"
+            onClick={() => {
+              window.location.hash = `product-checkout`;
+            }}
+          >
+            <button>Procedi con l'ordine</button>
+          </div>
         </div>
       </div>
     </section>
