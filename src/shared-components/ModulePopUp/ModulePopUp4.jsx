@@ -408,7 +408,12 @@ class ModulePopUp4 extends React.Component {
               </React.Fragment>
             </div>
 
-            <div className="Confimation Buttons">
+            <div
+              className="Confimation Buttons"
+              onClick={() => {
+                this.setPrint(true);
+              }}
+            >
               <span className="stampCup">
                 <h3>stampa</h3>
                 <i className="fal fa-print" />
@@ -454,9 +459,15 @@ class ModulePopUp4 extends React.Component {
             )}
           </div>
         </div>
-
+        {console.log("rechargeMobile", rechargeMobile, toPrint)}
         {rechargeMobile.receipt && toPrint && (
-          <div className="col-5 rightCol_Module">
+          <div
+            className="col-5 rightCol_Module"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
             <div className=" no-gutters">
               <div className="">
                 <div
