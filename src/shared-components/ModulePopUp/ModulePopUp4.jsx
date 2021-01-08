@@ -459,7 +459,7 @@ class ModulePopUp4 extends React.Component {
             )}
           </div>
         </div>
-        {console.log("rechargeMobile", rechargeMobile, toPrint)}
+        {/* {console.log("rechargeMobile", rechargeMobile, toPrint)} */}
         {rechargeMobile.receipt && toPrint && (
           <div
             className="col-5 rightCol_Module"
