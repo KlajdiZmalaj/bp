@@ -581,13 +581,7 @@ const INITIAL_STATE = {
   payments: [],
   usernames: [],
   service_s: [],
-  rechargeMobile: {
-    agency_name: "PUNTA ANCORA DI GALASSI GABRIELE",
-    agency_address: "VIA DEL LAVORO, 29 - IMOLA",
-    agency_phone: "335398618",
-    receipt:
-      "\nData di scadenza: 2022-05-31\n* Copia cliente *\nBETFEV100\nTXN ID\nIT016546324303\nepay TXN ID: EP0130001007343657\nData POS: 08/01/2021\nOra POS: 13:59:09\nPIN\n8461749341\nNumero seriale\n100000165062\nScadenza: 31/05/2022\nImporto: 100.00 EURO\nRICARICA BETFLAG\nValore (euro) 100\nNON RIMBORSABILE\nNON PRELEVABILE\nFuori Campo IVA art.2 c.3\nlett.a D.P.R. 633/72\nPer ricaricare vai sul sito\nwww.betflag.it\nInfo: www.betflag.it\nOppure 800 900 333\n\n",
-  },
+  rechargeMobile: {},
   postePay: {},
   postePayLoading: false,
   ads: [],
