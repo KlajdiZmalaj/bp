@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import "./style.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Select } from "antd";
+import { Select, Form } from "antd";
 
 const { Option } = Select;
 
@@ -52,7 +52,9 @@ class SingleProduct extends Component {
   };
 
   increasevalue = () => {
-    this.setState({ orderQuanity: this.state.orderQuanity + 1 });
+    if (this.state.orderQuanity < this.props.product.Product_Quantity) {
+      this.setState({ orderQuanity: this.state.orderQuanity + 1 });
+    }
   };
 
   handleChangeColour = (e) => {
@@ -83,9 +85,19 @@ class SingleProduct extends Component {
       this.state.orderQuanity
     );
   };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        this.addTocart();
+      }
+    });
+  };
 
   render() {
+    const { getFieldDecorator } = this.props.form;
     const { product, match, productCart } = this.props;
+
     const {
       orderQuanity,
       bigproduct,
@@ -105,7 +117,9 @@ class SingleProduct extends Component {
       vertical: true,
       verticalSwiping: true,
     };
-
+    const onFinish = (values) => {
+      console.log("Success:", values);
+    };
     return (
       product && (
         <div className="prod">
@@ -215,136 +229,167 @@ class SingleProduct extends Component {
                       )}
                     </div>
                   </div>
-                  {product.Models["colore"] && (
-                    <div className="color text-uppercase pb-3">
-                      Colour:
-                      <Select
-                        placeholder="Scegli un colore"
-                        onChange={this.handleChangeColour}
-                      >
-                        <option value="" disabled selected>
-                          Select your option
-                        </option>
-                        {product.Models["colore"] &&
-                          product.Models["colore"].map((item, index) => {
-                            return (
-                              <Option
-                                value={item.value}
-                                key={index}
-                                onClick={() => this.handleProduct(item)}
-                              >
-                                {item.value}
-                              </Option>
-                            );
-                          })}
-                      </Select>
-                    </div>
-                  )}
-                  {product.Models["design"] && (
-                    <div className="color text-uppercase pb-3">
-                      Colour:
-                      <Select
-                        onChange={this.handleChangeColour}
-                        placeholder="Scegli un colore"
-                      >
-                        {product.Models["design"] &&
-                          product.Models["design"].map((item, index) => {
-                            return (
-                              <Option
-                                value={item.value}
-                                key={index}
-                                onClick={() => this.handleProduct(item)}
-                              >
-                                {item.value}
-                              </Option>
-                            );
-                          })}
-                      </Select>
-                    </div>
-                  )}
-
-                  {product.Models["taglia"] && (
-                    <div className="size text-uppercase pb-3">
-                      <div> Size:</div>
-
-                      {selectedColor
-                        ? product.Models["taglia"]
-                            .filter(
-                              (item) => item.parent_model === selectedColor
-                            )
-                            .map((item, index) => {
+                  <Form onSubmit={this.handleSubmit}>
+                    {product.Models["colore"] && (
+                      <Form.Item>
+                        {getFieldDecorator("Colour:", {
+                          rules: [
+                            {
+                              required: true,
+                              message: "Scegli un colore",
+                            },
+                          ],
+                        })(
+                          <div className="color text-uppercase pb-3">
+                            Colour:
+                            <Select
+                              placeholder="Scegli un colore"
+                              onChange={this.handleChangeColour}
+                            >
+                              <option value="" disabled selected>
+                                Select your option
+                              </option>
+                              {product.Models["colore"] &&
+                                product.Models["colore"].map((item, index) => {
+                                  return (
+                                    <Option
+                                      value={item.value}
+                                      key={index}
+                                      onClick={() => this.handleProduct(item)}
+                                    >
+                                      {item.value}
+                                    </Option>
+                                  );
+                                })}
+                            </Select>
+                          </div>
+                        )}
+                      </Form.Item>
+                    )}
+                    {product.Models["design"] && (
+                      <div className="color text-uppercase pb-3">
+                        Colour:
+                        <Select
+                          onChange={this.handleChangeColour}
+                          placeholder="Scegli un colore"
+                        >
+                          {product.Models["design"] &&
+                            product.Models["design"].map((item, index) => {
                               return (
-                                <div
+                                <Option
+                                  value={item.value}
                                   key={index}
-                                  className={
-                                    "size__items" +
-                                    (item.value === selectedSize
-                                      ? " active"
-                                      : "")
-                                  }
-                                  onClick={() => {
-                                    this.handleChangeSize(item.value);
-                                    this.handleProduct(item);
-                                  }}
+                                  onClick={() => this.handleProduct(item)}
                                 >
                                   {item.value}
-                                </div>
+                                </Option>
                               );
-                            })
-                        : product.Models["taglia"].map((item, index) => {
-                            return (
-                              <div
-                                key={index}
-                                className={
-                                  "size__items" +
-                                  (item.value === selectedSize ? " active" : "")
-                                }
-                                onClick={() => {
-                                  this.handleChangeSize(item.value);
-                                  this.handleProduct(item);
-                                }}
-                              >
-                                {item.value}
-                              </div>
-                            );
-                          })}
-                    </div>
-                  )}
-                  <div className="buy pb-3 text-uppercase">
-                    <div className="addItem">
-                      <div className="adjustContainer">
-                        <div className="minus" onClick={this.decreasevalue}>
-                          <i className="fal fa-chevron-left"></i>
-                        </div>
-                        <div className="amount">{orderQuanity}</div>
-                        <div className="plus" onClick={this.increasevalue}>
-                          <i className="fal fa-chevron-right"></i>
-                        </div>
+                            })}
+                        </Select>
                       </div>
+                    )}
 
-                      {productCart === "" ? (
-                        <div className="addTobag" onClick={this.addTocart}>
-                          Add to bag <i className="fal fa-shopping-bag"></i>
+                    {product.Models["taglia"] && (
+                      <Form.Item>
+                        {getFieldDecorator("Taglia:", {
+                          rules: [
+                            {
+                              required: true,
+                              message: "Scegli una taglia",
+                            },
+                          ],
+                        })(
+                          <div className="size text-uppercase pb-3">
+                            <div> Taglia:</div>
+
+                            {selectedColor
+                              ? product.Models["taglia"]
+                                  .filter(
+                                    (item) =>
+                                      item.parent_model === selectedColor
+                                  )
+                                  .map((item, index) => {
+                                    return (
+                                      <div
+                                        key={index}
+                                        className={
+                                          "size__items" +
+                                          (item.value === selectedSize
+                                            ? " active"
+                                            : "")
+                                        }
+                                        onClick={() => {
+                                          this.handleChangeSize(item.value);
+                                          this.handleProduct(item);
+                                        }}
+                                      >
+                                        {item.value}
+                                      </div>
+                                    );
+                                  })
+                              : product.Models["taglia"].map((item, index) => {
+                                  return (
+                                    <div
+                                      key={index}
+                                      className={
+                                        "size__items" +
+                                        (item.value === selectedSize
+                                          ? " active"
+                                          : "")
+                                      }
+                                      onClick={() => {
+                                        this.handleChangeSize(item.value);
+                                        this.handleProduct(item);
+                                      }}
+                                    >
+                                      {item.value}
+                                    </div>
+                                  );
+                                })}
+                          </div>
+                        )}
+                      </Form.Item>
+                    )}
+                    {/* <Button type="primary" htmlType="submit">
+                      submit
+                    </Button> */}
+                    <div className="buy pb-3 text-uppercase">
+                      <div className="addItem">
+                        <div className="adjustContainer">
+                          <div className="minus" onClick={this.decreasevalue}>
+                            <i className="fal fa-chevron-left"></i>
+                          </div>
+                          <div className="amount">{orderQuanity}</div>
+                          <div className="plus" onClick={this.increasevalue}>
+                            <i className="fal fa-chevron-right"></i>
+                          </div>
                         </div>
-                      ) : (
-                        <div className="addTobag active">
-                          {productCart} <i className="fal fa-shopping-bag"></i>
-                        </div>
-                      )}
+
+                        {productCart === "" ? (
+                          <button className="addTobag" htmlType="submit">
+                            Add to bag <i className="fal fa-shopping-bag"></i>
+                          </button>
+                        ) : (
+                          <div className="addTobag active">
+                            {productCart}{" "}
+                            <i className="fal fa-shopping-bag"></i>
+                          </div>
+                        )}
+                      </div>
+                      <div
+                        className="buyNow"
+                        onClick={() => {
+                          window.location.hash = `product-checkout/${match.params.id}/${match.params.supp}`;
+                        }}
+                      >
+                        Buy now <i className="far fa-shopping-cart"></i>
+                      </div>
                     </div>
-                    <div
-                      className="buyNow"
-                      onClick={() => {
-                        window.location.hash = `product-checkout/${match.params.id}/${match.params.supp}`;
-                      }}
-                    >
-                      Buy now <i className="far fa-shopping-cart"></i>
+                    <div className="availibillity">
+                      Quantità Disponibili:{" "}
+                      <span>{product.Product_Quantity}</span>
                     </div>
-                  </div>
-                  <div className="availibillity">
-                    Quantità Disponibili:{" "}
-                    <span>{product.Product_Quantity}</span>
-                  </div>
+                  </Form>
                 </div>
               </div>
             )}
@@ -355,9 +400,12 @@ class SingleProduct extends Component {
   }
 }
 
-const mpStP = (state) => ({
+const mapsStateToProps = (state) => ({
   productsList: state.shop.productsList,
   product: state.shop.productD,
   productCart: state.shop.productCart,
 });
-export default withRouter(connect(mpStP, ShopActions)(SingleProduct));
+
+export default withRouter(
+  connect(mapsStateToProps, { ...ShopActions })(Form.create()(SingleProduct))
+);

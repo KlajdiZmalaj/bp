@@ -141,6 +141,7 @@ const CheckOutDom = ({
                 // }}
               />
               <input
+                required
                 type="text"
                 value={formData.via_nr}
                 placeholder="Via e numero"
