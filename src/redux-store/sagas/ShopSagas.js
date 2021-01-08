@@ -24,6 +24,7 @@ export function* checkOut({ formData, resetFields }) {
     notification["success"]({
       message: response?.data?.message,
     });
+    yield call(getItemsCart, true);
   }
 
   //const response = yield call(req , formData);

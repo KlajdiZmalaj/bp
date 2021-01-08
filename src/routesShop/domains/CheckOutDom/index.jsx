@@ -23,11 +23,11 @@ const FORM_DATA = {
   tel: "",
   citty: "",
   cap: "",
-  indirizzo_diff: true,
-  punto_vendia: false,
+  // indirizzo_diff: true,
+  // punto_vendia: false,
   // payment: 1,
   // paymentBtnLabel: "BPoint Wallet",
-  terms: false,
+  // terms: false,
   carrier: "",
   comment: "",
 };
@@ -324,7 +324,7 @@ const CheckOutDom = ({
               />
             </div> */}
             <div className="checkContainer bottom">
-              <InpCheck
+              {/* <InpCheck
                 id="termi"
                 label1="Ho letto e accetto"
                 label2="termini e condizioni*"
@@ -335,7 +335,7 @@ const CheckOutDom = ({
                     terms: e.target.checked,
                   });
                 }}
-              />
+              /> */}
             </div>
             <button
               className="pagaBtn"

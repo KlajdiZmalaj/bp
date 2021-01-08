@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
-import { Select, Radio } from "antd";
+import { Radio } from "antd";
 import Slider from "react-slick";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
