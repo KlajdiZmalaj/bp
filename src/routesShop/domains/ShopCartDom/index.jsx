@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
-import { Select } from "antd";
+import { Radio } from "antd";
 import Slider from "react-slick";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
@@ -11,7 +11,12 @@ import countriesArray from "config/countryArr";
 import VirtualizedSelect from "react-virtualized-select";
 
 import RowItem from "./RowItem";
-const { Option } = Select;
+
+export let removeComma = (str) => {
+  return Number(str.replace(/,/g, "."));
+};
+
+// const { Option } = Select;
 const settings = {
   dots: false,
   infinite: true,
@@ -35,33 +40,53 @@ const ShopCartDom = ({
   getProductsList,
   productsList,
   getCarries,
+  carriers,
 }) => {
   useEffect(() => {
     getItemsCart(true);
     getProductsList();
-    // getCarries(get(itemsCart, "user_data", {}).postcode);
   }, [getItemsCart, getProductsList]);
 
   const cartprod = get(itemsCart, "cart", {});
   const user_data = get(itemsCart, "user_data", {});
-  const carriers = get(itemsCart, "carriers", []);
 
-  // const [carr, setCarrierss] = useState("");
+  let sum = 0.0;
+
+  Object.keys(cartprod).map((item, index) => {
+    sum = (
+      parseFloat(sum) +
+      parseFloat(
+        removeComma(cartprod[item].Product_Price) * cartprod[item].quantity
+      )
+    ).toFixed(2);
+    return sum;
+  });
 
   const [selectedCity, setCity] = React.useState("");
+  const [selectedCap, setCap] = React.useState("");
 
-  console.log("carriers", carriers);
+  const [value, setValue] = React.useState("");
+  const [cost, setCost] = React.useState("");
+  const onChange = (e) => {
+    setValue(e.target.value);
+    setCost(e.target.cost);
+  };
+
+  let sumTot = (parseFloat(sum) + parseFloat(removeComma(cost))).toFixed(2);
+
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
         {Object.keys(cartprod).map((item) => {
+          let colore = get(cartprod[item].model_details, "colore", "");
+          let size = get(cartprod[item].model_details, "taglia", "");
           return (
             <RowItem
               key={item}
               imgSrc={cartprod[item].Product_Image_1}
               title={cartprod[item].Product_Name}
-              color="black"
-              size="M"
+              color={colore}
+              size={size}
               price={`${cartprod[item].Product_Price} €`}
               qnt={cartprod[item].quantity}
               id={cartprod[item].Product_id}
@@ -93,16 +118,16 @@ const ShopCartDom = ({
       <div className="shopCartContainer--right">
         <div className="titleTop">Calcola spedizione</div>
         <div className="spedizoneContainer">
-          <div className="label">Spedizione a BARI.</div>
-          <div className="deliveryDate">
-            {" "}
+          <div className="label">Spedizione a {user_data.city}</div>
+          {/* <div className="deliveryDate">
             <i className="fa fa-truck" aria-hidden="true"></i>
             lun 28 dic - lun 4 gen
-          </div>
+          </div> */}
           <div className="spedizoneContainer--form">
-            <Select defaultValue={"Italia"}>
+            <input type="text" value="Italia"></input>
+            {/* <Select defaultValue={"Italia"}>
               <Option key="Italia">Italia</Option>
-            </Select>
+            </Select> */}
             <VirtualizedSelect
               options={countriesArray
                 .filter((obj) => obj.nazione === "ITALIA")
@@ -112,7 +137,6 @@ const ShopCartDom = ({
                   sigla: country.sigla,
                 }))}
               onChange={(e) => {
-                //console.log("ca ka e", e);
                 setCity(e?.value);
               }}
               value={selectedCity}
@@ -120,14 +144,69 @@ const ShopCartDom = ({
               placeholder={"Citta"}
             />
 
-            <input type="text" placeholder="C.A.P" />
-            <button>AGGIORNA</button>
+            <input
+              type="text"
+              placeholder="C.A.P"
+              value={selectedCap}
+              onChange={(e) => {
+                setCap(e.target.value);
+              }}
+            />
+
+            <button
+              onClick={() => {
+                getCarries("it", selectedCap);
+                setCost("");
+                setValue("");
+              }}
+            >
+              AGGIORNA
+            </button>
           </div>
         </div>
         <div className="titleTop">Calcola spedizione</div>
         <div className="shipping">
           <div className="subTot">
-            <div>Subtotale</div> <div>5,98 € </div>
+            <div>Subtotale</div> <div>{sum} €</div>
+          </div>
+          <div className="dashedBorder"></div>
+          <div className="subTot">
+            <div>Shipping:</div>
+          </div>
+
+          <Radio.Group onChange={onChange} value={value}>
+            {carriers &&
+              carriers.map((item, index) => {
+                return (
+                  <Radio
+                    // value={item.shippingService.serviceName}
+                    key={index}
+                    cost={item.cost}
+                    value={item.shippingService.serviceName}
+                  >
+                    <span>{item.shippingService.serviceName}</span>
+
+                    <div className="radioServ">
+                      Delay: <span>{item.shippingService.delay}</span>
+                    </div>
+                    <div className="radioServ">
+                      Cost: <span>{item.cost}</span>
+                    </div>
+                  </Radio>
+                );
+              })}
+          </Radio.Group>
+
+          <div className="subTot">
+            <div>Totale</div> <div>€ {sumTot}€</div>
+          </div>
+          <div
+            className="procedi"
+            onClick={() => {
+              window.location.hash = `product-checkout`;
+            }}
+          >
+            <button>Procedi con l'ordine</button>
           </div>
         </div>
       </div>
@@ -138,6 +217,6 @@ const ShopCartDom = ({
 const mstp = (state) => ({
   itemsCart: state.shop.itemsCart,
   productsList: state.shop.productsList,
-  carries: state.shop.carries,
+  carriers: state.shop.carries,
 });
 export default withRouter(connect(mstp, ShopActions)(ShopCartDom));

@@ -1,32 +1,30 @@
-import { put, call } from "redux-saga/effects";
+import { put, call, delay } from "redux-saga/effects";
 import ShopActions from "../models/shop";
 import * as ShopRequest from "services/shop";
+import { get } from "lodash";
+import { notification } from "antd";
 
 export function* checkOut({ formData, resetFields }) {
-  console.log("formData", formData);
   // yield setTimeout(() => {}, 1000);
 
   const response = yield call(
     ShopRequest.fetchOrder,
     formData.cap,
-    formData.citty,
-    formData.email,
-    formData.fiscal_code,
-    formData.indirizzo_diff,
-    formData.last_name,
+    formData.carrier,
     formData.name,
-    formData.nome_societa,
-    formData.paese,
-    formData.payment,
-    formData.paymentBtnLabel,
-    formData.province,
-    formData.punto_vendia,
+    formData.last_name,
+    formData.citty,
+    formData.via_nr,
     formData.tel,
-    formData.terms,
-    formData.via_nr
+    formData.email,
+    formData.comment
   );
   if (response.data) {
     // yield put(ShopActions.setProductsList(response.data));
+    notification["success"]({
+      message: response?.data?.message,
+    });
+    yield call(getItemsCart, true);
   }
 
   //const response = yield call(req , formData);
@@ -88,7 +86,13 @@ export function* getToCart(params) {
     params.quantity
   );
   if (response.data) {
-    yield put(ShopActions.setToCart(response.data.data));
+    yield put(ShopActions.setToCart("aggiunto"));
+    yield call(getItemsCart, false);
+    notification["success"]({
+      message: response?.data?.message,
+    });
+    yield delay(4000);
+    yield put(ShopActions.setToCart(""));
   }
 }
 
@@ -96,6 +100,10 @@ export function* getItemsCart(params) {
   const response = yield call(ShopRequest.fetchItemsCart, params.checkout);
   if (response.data) {
     yield put(ShopActions.setItemsCart(response.data.data));
+    let carriers = get(response.data.data, "carriers", []);
+
+    yield put(ShopActions.setItemsCart(response.data.data));
+    yield put(ShopActions.setCarries(carriers));
   }
 }
 
@@ -128,17 +136,23 @@ export function* getRemoveToCart(params) {
   );
   if (response.data) {
     yield put(ShopActions.setRemoveToCart(response.data.data));
+    yield call(getItemsCart, false);
+    notification["success"]({
+      message: response?.data?.message,
+    });
   }
 }
 
 export function* getCarries(params) {
-  console.log("params", params);
   const response = yield call(
     ShopRequest.fetchCarries,
     params.iso_code,
     params.postcode
   );
   if (response.data) {
-    yield put(ShopActions.setCaries(response.data.data));
+    yield put(ShopActions.setCarries(response.data.data));
+    notification["success"]({
+      message: response?.data?.message,
+    });
   }
 }

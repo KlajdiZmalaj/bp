@@ -81,16 +81,29 @@
     }
     .inpGr {
       display: flex;
+      padding-right: 0;
       input {
         border: 0;
         height: 100%;
         margin: 0;
         &:nth-child(1) {
           width: 60%;
+          padding: 0;
         }
         &:nth-child(2) {
           width: 40%;
           border-left: 1px solid #707070;
+        }
+      }
+      button {
+        width: auto;
+        border: none;
+        background-color: var(--accent-bg);
+        color: var(--accent-txt);
+        line-height: 14px;
+        text-transform: uppercase;
+        &:disabled {
+          opacity: 0.6;
         }
       }
     }
@@ -120,7 +133,6 @@
       display: flex;
       align-items: center;
       flex-flow: row;
-      margin-top: 20px;
     }
     span {
       white-space: nowrap;
@@ -137,6 +149,7 @@
       padding: 0 30px;
       font-size: 16px;
       font-weight: 500;
+      margin-bottom: 0;
       cursor: pointer;
       div {
         width: 21px;
@@ -215,7 +228,7 @@
     height: 50px;
     text-transform: uppercase;
     border: 0;
-    margin: 8px 30px;
+    margin: 0px 30px;
     transition: 0.3s;
     &:hover {
       border: 1px solid var(--accent-bg);

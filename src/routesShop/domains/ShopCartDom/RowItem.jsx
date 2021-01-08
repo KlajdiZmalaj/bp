@@ -28,12 +28,16 @@ const RowItem = ({
           <h3>{title}</h3>
         </Tooltip>
         <div>
-          <span>
-            COLOUR: <span>{color}</span>
-          </span>
-          <span>
-            SIZE : <span>{size}</span>
-          </span>
+          {color.length > 0 && (
+            <span>
+              COLOUR: <span>{color}</span>
+            </span>
+          )}
+          {size.length > 0 && (
+            <span>
+              SIZE : <span>{size}</span>
+            </span>
+          )}
         </div>
         <div className="price">{price}</div>
       </div>

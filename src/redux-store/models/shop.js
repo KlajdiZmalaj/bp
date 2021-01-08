@@ -23,7 +23,6 @@ const { Types, Creators } = createActions({
   setSubCategory: ["isSelectedSubCategory"],
   setOrderVal: ["orderVal"],
   setSliderVal: ["sliderVal"],
-  setCart: ["cartItems"],
   checkOut: ["formData", "resetFields"],
 
   getToCart: ["prd_supp", "Product_id", "list", "quantity"],
@@ -66,15 +65,11 @@ const INITIAL_STATE = {
   isSelectedSubCategory: null,
   orderVal: "",
   sliderVal: [],
-  cartItems:
-    JSON.parse(localStorage.getItem("shopProducts")) !== null
-      ? JSON.parse(localStorage.getItem("shopProducts"))
-      : [],
-  productCart: {},
+  productCart: "",
   itemsCart: {},
   orders: {},
   productRemovedCart: {},
-  carries: {},
+  carries: [],
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -113,10 +108,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_SLIDER_VAL: (state, { sliderVal }) => ({
     ...state,
     sliderVal,
-  }),
-  SET_CART: (state, { cartItems }) => ({
-    ...state,
-    cartItems,
   }),
 
   SET_TO_CART: (state, { productCart }) => ({
