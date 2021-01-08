@@ -10,7 +10,7 @@ import "./style.css";
 class ModulePopUp extends React.Component {
   render() {
     const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
-    const service_id = service && service?.service_id;
+    const service_id = service?.service_id;
 
     // const arr = [
     //   {
@@ -40,20 +40,20 @@ class ModulePopUp extends React.Component {
           ></ModulePopUp1>
         )}
 
-        {service.service_id.toString() === "RPP001" && (
+        {service?.service_id?.toString() === "RPP001" && (
           <ModulePopUp3 service_id={service_id}></ModulePopUp3>
         )}
 
-        {(serviceType.toString() === "RTELD" ||
-          serviceType.toString() === "RTELI" ||
-          serviceType.toString() === "SCMS" ||
-          serviceType.toString() === "SND000" ||
-          serviceType.toString() === "CCARD" ||
-          serviceType.toString() === "RTVD" ||
-          serviceType.toString() === "GIFT" ||
-          serviceType.toString() === "RTELC") &&
-          (service.type.toString() === "1" ||
-            service.type.toString() === "0") && (
+        {(serviceType?.toString() === "RTELD" ||
+          serviceType?.toString() === "RTELI" ||
+          serviceType?.toString() === "SCMS" ||
+          serviceType?.toString() === "SND000" ||
+          serviceType?.toString() === "CCARD" ||
+          serviceType?.toString() === "RTVD" ||
+          serviceType?.toString() === "GIFT" ||
+          serviceType?.toString() === "RTELC") &&
+          (service?.type?.toString() === "1" ||
+            service?.type?.toString() === "0") && (
             <ModulePopUp4
               service_id={service_id}
               bolletiniBianchi={bolletiniBianchi}

@@ -577,7 +577,7 @@ const INITIAL_STATE = {
   accountInfo: JSON.parse(localStorage.getItem("accountDataB") || "{}") || {},
   bolletiniBianchi: {},
   bolletiniPremercati: {},
-  service_id: null,
+  service_id: {},
   payments: [],
   usernames: [],
   service_s: [],
@@ -626,6 +626,7 @@ const INITIAL_STATE = {
   loadingRechargeMobile: false,
   StatisticheMain: null,
   ReportisticaDet: false,
+  serviceType: "",
 };
 
 export const reducer = createReducer(INITIAL_STATE, {

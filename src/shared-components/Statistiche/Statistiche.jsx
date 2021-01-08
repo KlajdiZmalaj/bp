@@ -23,24 +23,24 @@ class Statistiche extends React.Component {
         >
           <div className={`data Categories ${ReportisticaDet ? "min" : ""}`}>
             <SimpleGraph
-              graphicData={StatisticheMain.data.transazioni}
+              graphicData={StatisticheMain?.data?.transazioni}
               handleMouseEntering={() => {}}
               handleClick={() => {}}
               AdditionalComp={
                 <Fragment>
-                  <div>{StatisticheMain.total.transazioni + "€"}</div>
+                  <div>{StatisticheMain?.total.transazioni + "€"}</div>
                   <div>TRANSAZIONI TOTALI</div>
                 </Fragment>
               }
               className={`${ReportisticaDet ? "min" : ""}`}
             />
             <SimpleGraph
-              graphicData={StatisticheMain.data.commissioni}
+              graphicData={StatisticheMain?.data?.commissioni}
               handleMouseEntering={() => {}}
               handleClick={() => {}}
               AdditionalComp={
                 <Fragment>
-                  <div>{StatisticheMain.total.commissioni + "€"}</div>
+                  <div>{StatisticheMain?.total?.commissioni + "€"}</div>
                   <div>Commisioni</div>
                 </Fragment>
               }
@@ -48,13 +48,13 @@ class Statistiche extends React.Component {
             />
             {userRole !== "user" && (
               <SimpleGraph
-                graphicData={StatisticheMain.data.proviggioni}
+                graphicData={StatisticheMain?.data?.proviggioni}
                 handleMouseEntering={() => {}}
                 handleClick={() => {}}
                 className={`${ReportisticaDet ? "min" : ""}`}
                 AdditionalComp={
                   <Fragment>
-                    <div>{StatisticheMain.total.proviggioni + "€"}</div>
+                    <div>{StatisticheMain?.total?.proviggioni + "€"}</div>
                     <div>Proviggioni</div>
                   </Fragment>
                 }
@@ -65,13 +65,13 @@ class Statistiche extends React.Component {
                 className={`Additinal Statist ${ReportisticaDet ? "min" : ""}`}
               >
                 <div className="saldoRete">
-                  <span>{StatisticheMain.rete.saldo_rete + "€"}</span>
+                  <span>{StatisticheMain?.rete?.saldo_rete + "€"}</span>
                   <span>Saldo Rete</span>
                 </div>
 
                 <div>
                   <div className="agenti">
-                    <span>{StatisticheMain.rete.agenti}</span>
+                    <span>{StatisticheMain?.rete?.agenti}</span>
                     <span>
                       <span>
                         <i className="fal fa-user-tie" />
@@ -80,7 +80,7 @@ class Statistiche extends React.Component {
                     </span>
                   </div>
                   <div className="agenzie">
-                    <span>{StatisticheMain.rete.agencie}</span>
+                    <span>{StatisticheMain?.rete?.agencie}</span>
                     <span>
                       <span>
                         <i className="fal fa-store" />
@@ -89,7 +89,7 @@ class Statistiche extends React.Component {
                     </span>
                   </div>
                   <div className="utenti">
-                    <span>{StatisticheMain.rete.utenti}</span>
+                    <span>{StatisticheMain?.rete?.utenti}</span>
                     <span>
                       <span>
                         <i className="fal fa-user " />
