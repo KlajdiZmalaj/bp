@@ -22,6 +22,10 @@
     .ant-form-item {
       margin-bottom: 10px;
     }
+    .ant-radio-button-wrapper:not(:first-child)::before {
+      display: none;
+      content: "";
+    }
     .detailsP {
       display: flex;
       .images {
@@ -118,12 +122,19 @@
             display: inline-block;
             border: 1px solid #707070;
             margin-right: 5px;
-            padding: 5px 20px;
+            padding: 10px 20px;
             width: fit-content;
             cursor: pointer;
+            border-radius: 0;
+            height: 50px;
+            width: 50px;
+            padding: 0;
+            line-height: 50px;
+            text-align: center;
             &.active {
               color: var(--accent-bg);
               border: 1px solid var(--accent-bg);
+              box-shadow: none;
             }
             &:hover {
               color: var(--accent-bg);
@@ -148,6 +159,7 @@
               justify-content: space-between;
               align-items: center;
               padding: 0 5px;
+              flex: 1 1;
               > div {
                 padding: 0 10px;
                 font-size: 16px;

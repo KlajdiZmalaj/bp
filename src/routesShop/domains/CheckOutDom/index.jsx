@@ -22,7 +22,7 @@ const FORM_DATA = {
   email: "",
   tel: "",
   citty: "",
-  cap: "",
+  cap: "12",
   // indirizzo_diff: true,
   // punto_vendia: false,
   // payment: 1,
@@ -76,7 +76,8 @@ const CheckOutDom = ({
     match.params.supp,
     getProductDetails,
     getCategories,
-    getItemsCart,
+    // itemsCart,
+    // getItemsCart,
   ]);
   const [formData, setData] = useState(FORM_DATA);
 
@@ -185,7 +186,7 @@ const CheckOutDom = ({
                     setData({ ...formData, cap: e.target.value });
                   }}
                 />
-                {formData.cap && formData.cap.length == 5 ? (
+                {formData.cap && formData.cap.length === 5 ? (
                   <button
                     className="w-20 recal"
                     onClick={() => {

@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import "./style.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Select, Form } from "antd";
+import { Select, Radio, Form } from "antd";
 
 const { Option } = Select;
 
@@ -107,19 +107,12 @@ class SingleProduct extends Component {
 
     const settings = {
       dots: false,
-      // infinite: true,
       speed: 500,
-      // slidesToShow:
-      //   product && Object.keys(product).length < 4
-      //     ? product && Object.keys(product).length
-      //     : 4,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
     };
-    const onFinish = (values) => {
-      console.log("Success:", values);
-    };
+
     return (
       product && (
         <div className="prod">
@@ -232,23 +225,20 @@ class SingleProduct extends Component {
                   <Form onSubmit={this.handleSubmit}>
                     {product.Models["colore"] && (
                       <Form.Item>
-                        {getFieldDecorator("Colour:", {
-                          rules: [
-                            {
-                              required: true,
-                              message: "Scegli un colore",
-                            },
-                          ],
-                        })(
-                          <div className="color text-uppercase pb-3">
-                            Colour:
+                        <div className="color text-uppercase pb-3">
+                          Colour:
+                          {getFieldDecorator("selectedColor", {
+                            rules: [
+                              {
+                                required: true,
+                                message: "Scegli un colore",
+                              },
+                            ],
+                          })(
                             <Select
                               placeholder="Scegli un colore"
                               onChange={this.handleChangeColour}
                             >
-                              <option value="" disabled selected>
-                                Select your option
-                              </option>
                               {product.Models["colore"] &&
                                 product.Models["colore"].map((item, index) => {
                                   return (
@@ -262,8 +252,8 @@ class SingleProduct extends Component {
                                   );
                                 })}
                             </Select>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </Form.Item>
                     )}
                     {product.Models["design"] && (
@@ -291,63 +281,68 @@ class SingleProduct extends Component {
 
                     {product.Models["taglia"] && (
                       <Form.Item>
-                        {getFieldDecorator("Taglia:", {
-                          rules: [
-                            {
-                              required: true,
-                              message: "Scegli una taglia",
-                            },
-                          ],
-                        })(
-                          <div className="size text-uppercase pb-3">
-                            <div> Taglia:</div>
-
-                            {selectedColor
-                              ? product.Models["taglia"]
-                                  .filter(
-                                    (item) =>
-                                      item.parent_model === selectedColor
-                                  )
-                                  .map((item, index) => {
-                                    return (
-                                      <div
-                                        key={index}
-                                        className={
-                                          "size__items" +
-                                          (item.value === selectedSize
-                                            ? " active"
-                                            : "")
-                                        }
-                                        onClick={() => {
-                                          this.handleChangeSize(item.value);
-                                          this.handleProduct(item);
-                                        }}
-                                      >
-                                        {item.value}
-                                      </div>
-                                    );
-                                  })
-                              : product.Models["taglia"].map((item, index) => {
-                                  return (
-                                    <div
-                                      key={index}
-                                      className={
-                                        "size__items" +
-                                        (item.value === selectedSize
-                                          ? " active"
-                                          : "")
-                                      }
-                                      onClick={() => {
-                                        this.handleChangeSize(item.value);
-                                        this.handleProduct(item);
-                                      }}
-                                    >
-                                      {item.value}
-                                    </div>
-                                  );
-                                })}
-                          </div>
-                        )}
+                        <div className="size text-uppercase pb-3">
+                          <div> Taglia:</div>
+                          {getFieldDecorator("Taglia", {
+                            rules: [
+                              {
+                                required: true,
+                                message: "Scegli una taglia",
+                              },
+                            ],
+                          })(
+                            <Radio.Group>
+                              {selectedColor
+                                ? product.Models["taglia"]
+                                    .filter(
+                                      (item) =>
+                                        item.parent_model === selectedColor
+                                    )
+                                    .map((item, index) => {
+                                      return (
+                                        <Radio.Button
+                                          value={item.value}
+                                          className={
+                                            "size__items" +
+                                            (item.value === selectedSize
+                                              ? " active"
+                                              : "")
+                                          }
+                                          onClick={() => {
+                                            this.handleChangeSize(item.value);
+                                            this.handleProduct(item);
+                                          }}
+                                          key={index}
+                                        >
+                                          {item.value}
+                                        </Radio.Button>
+                                      );
+                                    })
+                                : product.Models["taglia"].map(
+                                    (item, index) => {
+                                      return (
+                                        <Radio.Button
+                                          key={index}
+                                          value={item.value}
+                                          className={
+                                            "size__items" +
+                                            (item.value === selectedSize
+                                              ? " active"
+                                              : "")
+                                          }
+                                          onClick={() => {
+                                            this.handleChangeSize(item.value);
+                                            this.handleProduct(item);
+                                          }}
+                                        >
+                                          {item.value}
+                                        </Radio.Button>
+                                      );
+                                    }
+                                  )}
+                            </Radio.Group>
+                          )}
+                        </div>
                       </Form.Item>
                     )}
                     {/* <Button type="primary" htmlType="submit">
