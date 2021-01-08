@@ -22,7 +22,7 @@ const FORM_DATA = {
   email: "",
   tel: "",
   citty: "",
-  cap: "12",
+  cap: "",
   // indirizzo_diff: true,
   // punto_vendia: false,
   // payment: 1,
@@ -77,7 +77,8 @@ const CheckOutDom = ({
     getProductDetails,
     getCategories,
     // itemsCart,
-    // getItemsCart,
+    getItemsCart,
+    itemsCart?.user_data?.postcode,
   ]);
   const [formData, setData] = useState(FORM_DATA);
 
