@@ -153,7 +153,7 @@ class Root extends React.Component {
             />
             {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
-              path="/login"
+              path="/login/:link2?/"
               component={
                 isMobile ? MobileViews.DashboardMobile : DesktopView.Login
               }
