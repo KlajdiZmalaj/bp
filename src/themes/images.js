@@ -287,6 +287,14 @@ try {
     profumeriacosmesi: require(`../assets/shop/profumeriacosmesi.jpg`),
     salutebellezza: require(`../assets/shop/salutebellezza.jpg`),
 
+    tnt: require(`../assets/shop/tnt.png`),
+    ups: require(`../assets/shop/ups.png`),
+    ups_aereo: require(`../assets/shop/ups.png`),
+    posteitaliane: require(`../assets/shop/posteitaliane.png`),
+    gls: require(`../assets/shop/gls.png`),
+    seur: require(`../assets/shop/seur.png`),
+    dhl: require(`../assets/shop/dhl.png`),
+
     placeholder: require(`../assets/images/placeholder.jpg`),
     getLogoBySkinId: (e) => {
       return require(`../assets/images${

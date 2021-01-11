@@ -94,7 +94,7 @@ const ShopCartDom = ({
             />
           );
         })}
-        <div className="shopCartContainer--left__related">
+        {/* <div className="shopCartContainer--left__related">
           <h2>related products</h2>
           <div className="containerRealted">
             <Slider {...settings}>
@@ -113,7 +113,7 @@ const ShopCartDom = ({
                   })}
             </Slider>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="shopCartContainer--right">
         <div className="titleTop">Calcola spedizione</div>
@@ -164,14 +164,14 @@ const ShopCartDom = ({
             </button>
           </div>
         </div>
-        <div className="titleTop">Calcola spedizione</div>
+        <div className="titleTop">Spedizione</div>
         <div className="shipping">
           <div className="subTot">
             <div>Subtotale</div> <div>{sum} €</div>
           </div>
           <div className="dashedBorder"></div>
           <div className="subTot">
-            <div>Shipping:</div>
+            <div>Shipping:</div> {cost && <div>{cost} €</div>}
           </div>
 
           <Radio.Group onChange={onChange} value={value}>
@@ -184,20 +184,37 @@ const ShopCartDom = ({
                     cost={item.cost}
                     value={item.shippingService.serviceName}
                   >
-                    <span>{item.shippingService.serviceName}</span>
+                    <img
+                      src={
+                        images[
+                          get(item.shippingService, "serviceName").toLowerCase()
+                        ]
+                      }
+                      alt={get(
+                        item.shippingService,
+                        "serviceName"
+                      ).toLowerCase()}
+                    ></img>
 
-                    <div className="radioServ">
-                      Delay: <span>{item.shippingService.delay}</span>
-                    </div>
-                    <div className="radioServ">
-                      Cost: <span>{item.cost}</span>
+                    <div className="detailsServices">
+                      <div className="radioServ">
+                        {item.shippingService.transportMethod === "van" ? (
+                          <i className="fas fa-truck"></i>
+                        ) : (
+                          <i className="fas fa-plane"></i>
+                        )}{" "}
+                        Consegna: <b>{item.shippingService.delay}</b>
+                      </div>
+                      <div className="radioServ">
+                        Cost: <b>{item.cost}</b>
+                      </div>
                     </div>
                   </Radio>
                 );
               })}
           </Radio.Group>
 
-          <div className="subTot">
+          <div className="totale">
             <div>Totale</div> <div>€ {sumTot}€</div>
           </div>
           <div

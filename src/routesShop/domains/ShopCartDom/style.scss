@@ -275,12 +275,19 @@
       margin-bottom: 20px;
       .ant-radio-wrapper {
         width: 100%;
-        .radioServ {
-          width: 100%;
-          padding-left: 25px;
-          span {
-            color: var(--accent-bg);
+        .detailsServices {
+          display: flex;
+          justify-content: space-between;
+          .radioServ {
+            span {
+              color: var(--accent-bg);
+            }
           }
+        }
+        span.ant-radio + * {
+          padding-right: 0px;
+          padding-left: 8px;
+          width: 100%;
         }
       }
     }
@@ -291,7 +298,17 @@
         color: #7f7f7f;
       }
     }
-
+    .totale {
+      display: flex;
+      justify-content: space-between;
+      > div:first-child {
+        color: #000;
+      }
+      > div:last-child {
+        font-size: 24px;
+        color: var(--accent-bg);
+      }
+    }
     .procedi {
       margin-top: 10px;
       button {
@@ -323,23 +340,9 @@
       display: flex;
       justify-content: flex-start;
       width: 100%;
-      border: 1px solid #f1f1f1;
+      border-top: 1px solid #f1f1f1;
       margin-top: 5px;
       padding: 5px;
-      > span:last-child {
-        display: flex;
-        flex-flow: row wrap;
-        span:first-child {
-          width: 100%;
-        }
-        .radioServ {
-          width: auto;
-          padding: 0;
-          &:last-child {
-            padding-left: 10px;
-          }
-        }
-      }
     }
   }
 }

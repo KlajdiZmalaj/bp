@@ -6,7 +6,7 @@ import { notification } from "antd";
 
 export function* checkOut({ formData, resetFields }) {
   // yield setTimeout(() => {}, 1000);
-
+  console.log("formData", formData, resetFields);
   const response = yield call(
     ShopRequest.fetchOrder,
     formData.cap,
@@ -25,11 +25,12 @@ export function* checkOut({ formData, resetFields }) {
       message: response?.data?.message,
     });
     yield call(getItemsCart, true);
+    resetFields();
   }
 
   //const response = yield call(req , formData);
-  // if(response) {
-  //   resetFields?.()
+  // if (response) {
+  //   resetFields?.();
   // }
 }
 
