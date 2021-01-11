@@ -45,7 +45,7 @@ class Login extends React.Component {
   render() {
     const { isForgot } = this.state;
     const { loginMsg } = this.props;
-    console.log("this.props.match", this.props?.match?.params?.["link2"]);
+    //console.log("this.props.match", this.props?.match?.params?.["link2"]);
     return (
       <React.Fragment>
         <div className="leftLogin animated fadeIn">
