@@ -111,7 +111,7 @@ class AdminPanelDom extends React.Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.props.activeSkinId !== prevProps.activeSkinId) {
-      if (!this.props.activeSkinId.toString().match(/-1|2/g)) {
+      if (!this.props.activeSkinId.toString().match(/^(-1|2)$/g)) {
         this.props.getSkinExtras(this.props.activeSkinId);
         this.props.openModalForAdmin(false);
       }
