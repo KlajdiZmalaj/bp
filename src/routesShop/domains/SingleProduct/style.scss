@@ -195,7 +195,7 @@
           }
 
           .buyNow {
-            background-color: #f26521;
+            background-color: var(--accent-bg);
             color: #fff;
             height: 50px;
             display: flex;
@@ -210,7 +210,7 @@
         }
         .availibillity {
           > span {
-            color: #f26521;
+            color: var(--accent-bg);
             font-weight: 600;
           }
         }

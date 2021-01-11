@@ -47,8 +47,8 @@ const RowItem = ({
             className="fal fa-chevron-left"
             aria-hidden="true"
             onClick={() => {
-              setQnt(qnty - 1);
-              getRemoveToCart(prd_supp, id, qnty - 1, "cart");
+              qnty > 1 && setQnt(qnty - 1);
+              qnty > 1 && getRemoveToCart(prd_supp, id, qnty - 1, "cart");
             }}
           ></i>
           <span>{qnty}</span>

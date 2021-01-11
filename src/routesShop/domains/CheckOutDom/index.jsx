@@ -6,7 +6,7 @@ import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-import { Radio } from "antd";
+import { Radio, Form } from "antd";
 
 import images from "themes/images";
 
@@ -29,9 +29,10 @@ const FORM_DATA = {
   // punto_vendia: false,
   // payment: 1,
   // paymentBtnLabel: "BPoint Wallet",
-  // terms: false,
+  terms: false,
   carrier: "",
   comment: "",
+  isClicked: false,
 };
 
 const InpCheck = ({ id, label1, label2, handler, checked }) => (
@@ -53,19 +54,15 @@ const InpCheck = ({ id, label1, label2, handler, checked }) => (
 );
 
 const CheckOutDom = ({
-  getCategories,
-  getProductDetails,
   checkOut,
-  match,
-  itemsCart,
+  // match,
   accountInfo,
-  getItemsCart,
+  itemsCart,
   getCarries,
   carriers,
+  form,
 }) => {
   useEffect(() => {
-    getProductDetails(match.params.id, match.params.supp);
-    getItemsCart(true);
     setData({
       ...formData,
       name: accountInfo?.profile?.name?.split?.(" ")?.[0],
@@ -74,49 +71,245 @@ const CheckOutDom = ({
       cap: itemsCart?.user_data?.postcode,
     });
   }, [
-    match.params.id,
-    match.params.supp,
-    getProductDetails,
-    getCategories,
-    // itemsCart,
-    // itemsCart?.user_data?.postcode,
+    accountInfo,
+    // match.params.id,
+    // match.params.supp,
   ]);
   const [formData, setData] = useState(FORM_DATA);
 
   const cartprod = get(itemsCart, "cart", {});
-  const user_data = get(itemsCart, "user_data", {});
 
-  const [cost, setCost] = React.useState(0);
+  const [cost, setCost] = useState(0);
 
   const onChange = (e) => {
     setCost(e.target.cost);
-
     setData({ ...formData, carrier: e.target.value });
   };
 
   let sum = 0.0;
 
-  Object.keys(cartprod).map((item, index) => {
-    sum = (
-      parseFloat(sum) +
+  sum = Object.keys(cartprod).reduce(function (sumT, item) {
+    return (
+      parseFloat(sumT) +
       parseFloat(
         removeComma(cartprod[item].Product_Price) * cartprod[item].quantity
       )
     ).toFixed(2);
-    return sum;
-  });
+  }, 0.0);
 
   let sumTot = (parseFloat(sum) + parseFloat(removeComma(cost))).toFixed(2);
 
+  const { getFieldDecorator } = form;
+
+  const handleSubmit = (e) => {
+    setData({ ...formData, isClicked: true });
+    form.validateFields().then((values) => {
+      if (formData.terms && formData.carrier.length > 0) {
+        checkOut(formData, () => {
+          setData(FORM_DATA);
+        });
+      }
+    });
+  };
   return (
     itemsCart &&
     Object.keys(itemsCart).length > 0 && (
       <div className="shopCheckout maxWidth">
         <div className="shopCheckout--form">
           <div className="shopCheckout--form__left">
-            <div className="titleTop">Dettagli di fatturazione</div>
+            <div className="titleTop">Dettagli di fatturazione </div>
+
             <div className="formContainer">
-              <input
+              <Form onSubmit={handleSubmit}>
+                <Form.Item>
+                  {getFieldDecorator("name", {
+                    initialValue: formData.name,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli un nome",
+                      },
+                    ],
+                  })(
+                    <input
+                      type="text"
+                      placeholder="Nome"
+                      onChange={(e) => {
+                        setData({ ...formData, name: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+                <Form.Item>
+                  {getFieldDecorator("cognome", {
+                    initialValue: formData.last_name,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli un cognome",
+                      },
+                    ],
+                  })(
+                    <input
+                      type="text"
+                      placeholder="Cognome"
+                      onChange={(e) => {
+                        setData({ ...formData, last_name: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+
+                <Form.Item>
+                  {getFieldDecorator("paese", {
+                    initialValue: formData.paese,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli un paese",
+                      },
+                    ],
+                  })(
+                    <input type="text" readOnly placeholder="Paese/regione" />
+                  )}
+                </Form.Item>
+                <Form.Item>
+                  {getFieldDecorator("via", {
+                    initialValue: formData.via_nr,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli una via",
+                      },
+                    ],
+                  })(
+                    <input
+                      type="text"
+                      placeholder="Via e numero"
+                      onChange={(e) => {
+                        setData({ ...formData, via_nr: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+
+                <Form.Item>
+                  {getFieldDecorator("email", {
+                    initialValue: formData.email,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli una email",
+                      },
+                    ],
+                  })(
+                    <input
+                      type="text"
+                      placeholder="Indirizzo email"
+                      onChange={(e) => {
+                        setData({ ...formData, email: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+                <Form.Item>
+                  {getFieldDecorator("tel", {
+                    initialValue: formData.tel,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli un nr telefono",
+                      },
+                    ],
+                  })(
+                    <input
+                      required
+                      type="text"
+                      placeholder="Telefono"
+                      onChange={(e) => {
+                        setData({ ...formData, tel: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+
+                <Form.Item>
+                  {getFieldDecorator("citty", {
+                    initialValue: formData.citty,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Scegli una citta",
+                      },
+                    ],
+                  })(
+                    <input
+                      type="text"
+                      placeholder="Città"
+                      onChange={(e) => {
+                        setData({ ...formData, citty: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+                <Form.Item>
+                  <div className="inpGr">
+                    {getFieldDecorator("cap", {
+                      initialValue: formData.cap,
+                      rules: [
+                        {
+                          required: true,
+                          message: "Scegli una cap",
+                        },
+                        { min: 5, message: "Cap dovrebbe essere 5 characteri" },
+                      ],
+                    })(
+                      <input
+                        type="text"
+                        placeholder="C.A.P."
+                        className="w-40"
+                        onChange={(e) => {
+                          setData({ ...formData, cap: e.target.value });
+                          e.target.value.length === 5 &&
+                            getCarries("it", formData.cap);
+                          setCost(0);
+                          setData({ ...formData, carrier: "" });
+                        }}
+                      />
+                    )}
+                    {formData.cap && formData.cap.length === 5 ? (
+                      <button
+                        className="w-20 recal"
+                        onClick={() => {
+                          getCarries("it", formData.cap);
+                          setCost(0);
+                          setData({ ...formData, carrier: "" });
+                        }}
+                      >
+                        Ricalcola spedizione
+                      </button>
+                    ) : (
+                      <button disabled> Ricalcola spedizione</button>
+                    )}
+                  </div>
+                </Form.Item>
+                <Form.Item>
+                  {getFieldDecorator("comment", {
+                    initialValue: formData.comment,
+                  })(
+                    <input
+                      type="text"
+                      placeholder="Comment"
+                      className="w-100"
+                      onChange={(e) => {
+                        setData({ ...formData, comment: e.target.value });
+                      }}
+                    />
+                  )}
+                </Form.Item>
+              </Form>
+
+              {/* <input
                 type="text"
                 placeholder="Nome"
                 value={formData.name}
@@ -139,9 +332,6 @@ const CheckOutDom = ({
                 readOnly
                 value={formData.paese}
                 placeholder="Paese/regione"
-                // onChange={(e) => {
-                //   setData({ ...formData, paese: e.target.value });
-                // }}
               />
               <input
                 required
@@ -181,7 +371,7 @@ const CheckOutDom = ({
               <div className="inpGr">
                 <input
                   type="text"
-                  value={formData.cap || user_data.postcode}
+                  value={formData.cap}
                   placeholder="C.A.P."
                   className="w-40"
                   onChange={(e) => {
@@ -211,7 +401,7 @@ const CheckOutDom = ({
                 onChange={(e) => {
                   setData({ ...formData, comment: e.target.value });
                 }}
-              />
+              /> */}
             </div>
             {/* <div className="checkContainer">
               <InpCheck
@@ -247,7 +437,7 @@ const CheckOutDom = ({
               </div>
               <div className="subTotal">
                 <div>Shipping:</div>
-                <div>€ {cost}</div>
+                {cost && <div>€ {cost}</div>}
               </div>
               <div className="subTotal">
                 <div>Totale:</div>
@@ -258,7 +448,16 @@ const CheckOutDom = ({
                 <div>{sumTot} €</div>
               </div> */}
               <div className="shipping">
-                <div className="titleTop">Spedizione:</div>
+                <div
+                  className={
+                    "titleTop" +
+                    (formData.isClicked && formData.carrier.length === 0
+                      ? " error"
+                      : "")
+                  }
+                >
+                  Scegli un tipo di Spedizione:
+                </div>
 
                 <Radio.Group onChange={onChange} value={formData.carrier}>
                   {carriers &&
@@ -355,7 +554,12 @@ const CheckOutDom = ({
                 }}
               />
             </div> */}
-            {/* <div className="checkContainer bottom">
+            <div
+              className={
+                "checkContainer bottom" +
+                (formData.isClicked && !formData.terms ? " error" : "")
+              }
+            >
               <InpCheck
                 id="termi"
                 label1="Ho letto e accetto"
@@ -368,14 +572,16 @@ const CheckOutDom = ({
                   });
                 }}
               />
-            </div> */}
+            </div>
+
             <button
               className="pagaBtn"
-              onClick={() => {
-                checkOut(formData, () => {
-                  setData(FORM_DATA);
-                });
-              }}
+              onClick={() => handleSubmit()}
+              // onClick={() => {
+              //   checkOut(formData, () => {
+              //     setData(FORM_DATA);
+              //   });
+              // }}
             >
               Paga
               {/* PAGA CON {formData.paymentBtnLabel} */}
@@ -388,10 +594,10 @@ const CheckOutDom = ({
 };
 
 const mstp = (state) => ({
-  itemsCart: state.shop.itemsCart,
   carriers: state.shop.carries,
   accountInfo: state.auth.accountInfo,
 });
+
 export default withRouter(
-  connect(mstp, { ...ShopActions, AuthActions })(CheckOutDom)
+  connect(mstp, { ...ShopActions, AuthActions })(Form.create()(CheckOutDom))
 );

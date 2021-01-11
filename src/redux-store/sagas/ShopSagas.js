@@ -19,6 +19,7 @@ export function* checkOut({ formData, resetFields }) {
     formData.email,
     formData.comment
   );
+  console.log("response", response);
   if (response.data) {
     // yield put(ShopActions.setProductsList(response.data));
     notification["success"]({

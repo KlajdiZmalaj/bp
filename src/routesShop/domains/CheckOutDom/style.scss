@@ -132,6 +132,14 @@
       align-items: center;
       flex-flow: row;
     }
+    &.error {
+      span {
+        color: red;
+        span {
+          color: red;
+        }
+      }
+    }
     span {
       white-space: nowrap;
       font-size: 14px;
@@ -260,6 +268,9 @@
       color: #000 !important;
       font-size: 18px !important;
       width: 100%;
+      &.error {
+        color: red !important;
+      }
     }
     .title {
       padding: 5px 0;
@@ -336,6 +347,26 @@
       span.ant-radio + * {
         padding-right: 0px;
         padding-left: 8px;
+        width: 100%;
+      }
+    }
+  }
+  .ant-form {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    .ant-form-item {
+      display: inline-block;
+      width: calc(100% / 2 - 5px);
+      margin-bottom: 0;
+      &:last-child {
+        width: 100%;
+      }
+      input {
+        width: 100%;
+      }
+      .inpGr {
         width: 100%;
       }
     }

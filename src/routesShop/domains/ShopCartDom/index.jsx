@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
 import { Radio } from "antd";
-import Slider from "react-slick";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -38,7 +37,6 @@ const ShopCartDom = ({
   getItemsCart,
   itemsCart,
   getProductsList,
-  productsList,
   getCarries,
   carriers,
 }) => {
@@ -52,15 +50,14 @@ const ShopCartDom = ({
 
   let sum = 0.0;
 
-  Object.keys(cartprod).map((item, index) => {
-    sum = (
-      parseFloat(sum) +
+  sum = Object.keys(cartprod).reduce(function (sumT, item) {
+    return (
+      parseFloat(sumT) +
       parseFloat(
         removeComma(cartprod[item].Product_Price) * cartprod[item].quantity
       )
     ).toFixed(2);
-    return sum;
-  });
+  }, 0.0);
 
   const [selectedCity, setCity] = React.useState("");
   const [selectedCap, setCap] = React.useState("");

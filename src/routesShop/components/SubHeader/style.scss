@@ -3,11 +3,11 @@
     cursor: pointer;
     text-transform: uppercase;
     i {
-      color: #f26521;
+      color: var(--accent-bg);
       font-size: 14px;
     }
     &__nr {
-      color: #f26521;
+      color: var(--accent-bg);
       font-weight: 500;
       font-size: 16px;
     }
