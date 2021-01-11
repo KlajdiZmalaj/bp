@@ -8,6 +8,8 @@ import { withRouter } from "react-router-dom";
 import { get } from "lodash";
 import { Radio } from "antd";
 
+import images from "themes/images";
+
 export let removeComma = (str) => {
   if (str) {
     return Number(str.replace(/,/g, "."));
@@ -77,8 +79,7 @@ const CheckOutDom = ({
     getProductDetails,
     getCategories,
     // itemsCart,
-    getItemsCart,
-    itemsCart?.user_data?.postcode,
+    // itemsCart?.user_data?.postcode,
   ]);
   const [formData, setData] = useState(FORM_DATA);
 
@@ -244,8 +245,20 @@ const CheckOutDom = ({
                 <div>Subtotale:</div>
                 <div>€ {sum}</div>
               </div>
-              <div className="shipping">
+              <div className="subTotal">
                 <div>Shipping:</div>
+                <div>€ {cost}</div>
+              </div>
+              <div className="subTotal">
+                <div>Totale:</div>
+                <div>€ {sumTot}</div>
+              </div>
+              {/* <div className="total">
+                <div>Totale:</div>
+                <div>{sumTot} €</div>
+              </div> */}
+              <div className="shipping">
+                <div className="titleTop">Spedizione:</div>
 
                 <Radio.Group onChange={onChange} value={formData.carrier}>
                   {carriers &&
@@ -256,23 +269,39 @@ const CheckOutDom = ({
                           cost={item.cost}
                           key={index}
                         >
-                          <span>{item.shippingService.serviceName}</span>
+                          <img
+                            src={
+                              images[
+                                get(
+                                  item.shippingService,
+                                  "serviceName"
+                                ).toLowerCase()
+                              ]
+                            }
+                            alt={get(
+                              item.shippingService,
+                              "serviceName"
+                            ).toLowerCase()}
+                          ></img>
 
-                          <div className="radioServ">
-                            Delay: <span>{item.shippingService.delay}</span>
-                          </div>
-                          <div className="radioServ">
-                            Cost: <span>{item.cost}</span>
+                          <div className="detailsServices">
+                            <div className="radioServ">
+                              {item.shippingService.transportMethod ===
+                              "van" ? (
+                                <i className="fas fa-truck"></i>
+                              ) : (
+                                <i className="fas fa-plane"></i>
+                              )}{" "}
+                              Consegna: <b>{item.shippingService.delay}</b>
+                            </div>
+                            <div className="radioServ">
+                              Cost: <b>{item.cost}</b>
+                            </div>
                           </div>
                         </Radio>
                       );
                     })}
                 </Radio.Group>
-              </div>
-
-              <div className="total">
-                <div>Totale:</div>
-                <div>{sumTot} €</div>
               </div>
             </div>
             {/* <div className="titleTop">Payments:</div>
@@ -326,8 +355,8 @@ const CheckOutDom = ({
                 }}
               />
             </div> */}
-            <div className="checkContainer bottom">
-              {/* <InpCheck
+            {/* <div className="checkContainer bottom">
+              <InpCheck
                 id="termi"
                 label1="Ho letto e accetto"
                 label2="termini e condizioni*"
@@ -338,8 +367,8 @@ const CheckOutDom = ({
                     terms: e.target.checked,
                   });
                 }}
-              /> */}
-            </div>
+              />
+            </div> */}
             <button
               className="pagaBtn"
               onClick={() => {

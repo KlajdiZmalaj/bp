@@ -60,8 +60,6 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    border-bottom: 1px dotted #dadada;
-    margin-bottom: 10px;
     input,
     .inpGr {
       height: 50px;
@@ -185,6 +183,9 @@
   .infos {
     display: flex;
     flex-flow: column;
+    .subTotal:nth-child(3) {
+      border-bottom: 0;
+    }
     > div {
       display: flex;
       justify-content: space-between;
@@ -196,16 +197,13 @@
       > div:nth-child(1) {
         color: #7f7f7f;
         font-size: 14px;
-        font-weight: 500;
       }
       > div:nth-child(2) {
         color: #000;
         font-size: 16px;
         font-weight: 500;
-        span {
-          color: var(--accent-bg);
-        }
       }
+
       &.total {
         border-bottom: 0;
         > div:nth-child(1) {
@@ -215,6 +213,18 @@
           color: var(--accent-bg);
           font-weight: 300;
           font-size: 24px;
+        }
+      }
+      &.subTotal {
+        &:nth-child(3) {
+          > div:nth-child(1) {
+            color: #000;
+          }
+          > div:nth-child(2) {
+            color: var(--accent-bg);
+            font-size: 24px;
+            font-weight: 300;
+          }
         }
       }
     }
@@ -243,6 +253,14 @@
     flex-flow: column;
     height: auto !important;
     width: 100% !important;
+    border-top: 5px solid #f5f5f5;
+    border-bottom: none;
+    > div:first-child {
+      margin-right: auto;
+      color: #000 !important;
+      font-size: 18px !important;
+      width: 100%;
+    }
     .title {
       padding: 5px 0;
       border-top: 1px dotted #f5f5f5;
@@ -291,13 +309,15 @@
     .ant-radio-wrapper {
       display: flex;
       justify-content: flex-start;
+      align-items: center;
       width: 100%;
-      border: 1px solid #f1f1f1;
+      border-top: 1px solid #f1f1f1;
       margin-top: 5px;
       padding: 5px;
+      &:first-child {
+        border-top: none;
+      }
       > span:last-child {
-        display: flex;
-        flex-flow: row wrap;
         span:first-child {
           width: 100%;
         }
@@ -308,6 +328,15 @@
             padding-left: 10px;
           }
         }
+      }
+      .detailsServices {
+        display: flex;
+        justify-content: space-between;
+      }
+      span.ant-radio + * {
+        padding-right: 0px;
+        padding-left: 8px;
+        width: 100%;
       }
     }
   }
