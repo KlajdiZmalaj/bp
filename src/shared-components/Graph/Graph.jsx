@@ -49,7 +49,7 @@ const Graph = ({
                   );
                 }}
                 onClick={() => {
-                  console.log("month", month, day);
+                  //console.log("month", month, day);
                   if (window.location.href.includes("movimenti")) {
                     const date = moment(
                       `${new Date(

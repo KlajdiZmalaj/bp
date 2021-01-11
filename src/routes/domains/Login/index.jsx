@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import images from "themes/images";
 import { AuthActions, MainActions } from "redux-store/models";
 import { subscribeSocketUser, subscribeSocketSupport } from "config/socket.js";
-
+import { withRouter } from "react-router-dom";
 import "./login.css";
 
 class Login extends React.Component {
@@ -27,20 +27,25 @@ class Login extends React.Component {
       subscribeSocketSupport(this.props);
     }
   };
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const { userName, password, email, isForgot } = this.state;
     if (isForgot) {
       this.props.forgotPassword(email);
     } else {
-      this.props.signInByEmail(userName, password, this.socketCall);
+      await this.props.signInByEmail(userName, password, this.socketCall);
+      if (this.props.match) {
+        window.location.hash = `dashboard/${
+          this.props?.match?.params?.["link2"] || "ricariche"
+        }`;
+      }
     }
   };
 
   render() {
     const { isForgot } = this.state;
     const { loginMsg } = this.props;
-    // console.log("loginMsg", loginMsg);
+    console.log("this.props.match", this.props?.match?.params?.["link2"]);
     return (
       <React.Fragment>
         <div className="leftLogin animated fadeIn">
@@ -131,6 +136,6 @@ const mapsStateToProps = (state) => {
   };
 };
 
-export default connect(mapsStateToProps, { ...AuthActions, ...MainActions })(
-  Login
+export default withRouter(
+  connect(mapsStateToProps, { ...AuthActions, ...MainActions })(Login)
 );
