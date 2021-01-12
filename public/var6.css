@@ -143,6 +143,7 @@ body:not(.bodyAdmin)
   input,
 body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Search {
   background: #222;
+  color: #fff;
 }
 body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Search i {
   color: #fff;
@@ -387,4 +388,38 @@ html .Menu div.active div,
 html .Menu label.active div,
 html .Menu a.active div {
   background: rgba(var(--statItems), 0.2);
+}
+
+img[alt="PSSTO"],
+img[alt="EUROSP"] {
+  filter: invert(1) grayscale(1) brightness(1);
+}
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i {
+  color: #ffeb3b !important;
+}
+.login ul li .loginBtn + span {
+  color: #fff !important;
+}
+/* 
+
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div img {
+  filter: invert(1) grayscale(1) brightness(1);
+}
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
+  transition: 0.3s; 
+}
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:hover {
+  background: #fff !important;
+  color: #222 !important;
+}
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:hover img {
+  filter: none;
+}
+.DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:hover i {
+  color: #222 !important;
+} */
+
+.paginationWrapper {
+  background: #222 !important;
+  border: 0 !important;
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./fontAwesome/css/all.min.css" />
     <link id="lnk" rel="stylesheet" href="./default.css" />
-    
+
     <meta id="tabTheme" name="theme-color" content="#f36520" />
 
     <script>
@@ -39,12 +39,11 @@
         document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
         SITE_STYLES.setAttribute("href", "./var4.css");
       } else if (
-        window.LOCATION_URL.includes("mperia") ||
-        window.LOCATION_URL.includes("irpa")
+        window.LOCATION_URL.match(/mperia|irpa |localhost|192\.168/g)
       ) {
         document.querySelector("#tabTheme").setAttribute("content", "#222");
         SITE_STYLES.setAttribute("href", "./var6.css");
-      } else if (window.LOCATION_URL.match(/derby|localhost|192\.168/g)) {
+      } else if (window.LOCATION_URL.match(/derby/g)) {
         document.querySelector("#tabTheme").setAttribute("content", "#0da90f");
         SITE_STYLES.setAttribute("href", "./var3.css");
       }
