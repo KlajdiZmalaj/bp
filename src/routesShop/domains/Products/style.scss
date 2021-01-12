@@ -58,6 +58,7 @@
         left: 0px;
         top: 5px;
       }
+
       .casa:after {
         content: "\f80c";
         font-family: "Font Awesome 5 Pro";
@@ -183,12 +184,18 @@
           left: 20px;
         }
       }
-      &:nth-child(5) {
+      &.profumeriacosmesi {
         grid-row-start: 2;
         grid-row-end: 4;
         grid-column-start: 1;
         grid-column-end: 3;
       }
+      // &.salutebellezza {
+      //   grid-row-start: 2;
+      //   grid-row-end: 4;
+      //   grid-column-start: 1;
+      //   grid-column-end: 3;
+      // }
       &.cucinagourmet {
         order: 7;
         grid-row-start: 3;
@@ -201,10 +208,17 @@
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 5;
-        grid-column-end: 9;
+        grid-column-end: 7;
       }
       &.giochibambini {
         order: 9;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 7;
+        grid-column-end: 9;
+      }
+      &.relaxtempolibero {
+        order: 10;
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 9;

@@ -20,7 +20,7 @@ class Products extends Component {
         <div className="mainBanner marginBottom">
           <img src={images.mainBanner} className="maxWidth" alt=""></img>
         </div>
-        <div className="title maxWidth">catgorie</div>
+        <div className="title maxWidth">categorie</div>
         <div className="banners maxWidth">
           {categories &&
             Object.keys(categories).map((item, index) => {

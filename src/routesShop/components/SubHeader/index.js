@@ -26,7 +26,8 @@ class SubHeader extends Component {
           <div className="categories">
             <div
               className={
-                "categories__category" + (isSelected === null ? " active" : "")
+                "categories__category tutti" +
+                (isSelected === null ? " active" : "")
               }
               onClick={() => {
                 this.props.history.push("/products");
