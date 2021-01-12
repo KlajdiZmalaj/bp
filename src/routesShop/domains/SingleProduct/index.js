@@ -166,7 +166,7 @@ class SingleProduct extends Component {
                     - {product.Product_SubCategory}
                   </div>
                   <div className="price marginBottom">
-                    {product.Product_Price} €
+                    {product.Product_Price_Special} €
                   </div>
                   <div className="borderB marginBottom"></div>
                   <div className="description__text marginBottom">

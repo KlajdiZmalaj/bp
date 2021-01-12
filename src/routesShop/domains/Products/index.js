@@ -7,8 +7,6 @@ import BestSeller from "./BestSeller";
 import PromotionBottom from "./PromotionBottom";
 import PromotionTop from "./PromotionTop";
 
-import FlashDeals from "./FlashDeals";
-
 import { withRouter } from "react-router-dom";
 
 class Products extends Component {
@@ -50,11 +48,14 @@ class Products extends Component {
         </div>
 
         <ShopList brands={brands}></ShopList>
-        <BestSeller prodList={prodList} title="New arrivals"></BestSeller>
+        <div className="maxWidth">
+          <BestSeller prodList={prodList} title="New arrivals"></BestSeller>
+        </div>
+
         <PromotionTop></PromotionTop>
-        <FlashDeals></FlashDeals>
+        {/* <FlashDeals></FlashDeals> */}
         <PromotionBottom></PromotionBottom>
-        <FlashDeals></FlashDeals>
+        {/* <FlashDeals></FlashDeals> */}
       </div>
     );
   }

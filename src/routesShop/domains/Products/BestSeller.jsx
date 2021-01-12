@@ -31,7 +31,7 @@ class BestSeller extends Component {
     const total_pages = prodList.total_pages;
     const total_records = prodList.total_records;
     return (
-      <div className="bestSeller maxWidth paddingBottom">
+      <div className="bestSeller paddingBottom">
         <div className="filtersCateg">
           <div className="title">{title}</div>
 

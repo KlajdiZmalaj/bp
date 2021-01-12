@@ -29,23 +29,37 @@
   .categories {
     &__category {
       display: inline-block;
-      padding: 0 6px 0 0px;
-      font-size: 14px;
+      padding: 0 15px 0 0px;
+      font-size: 13px;
       text-transform: capitalize;
       border-right: 1px solid #efefef;
-      margin: 0 0px 0 6px;
-      padding-left: 25px;
+      margin: 0 0px 0 5px;
       cursor: pointer;
       text-align: center;
       position: relative;
-      line-height: 10px;
+      line-height: normal;
       text-align: left;
+
+      &.tutti {
+        padding: 0 5px 0 0px;
+        i {
+          font-size: 16px;
+          position: relative;
+          vertical-align: super;
+          top: 0;
+        }
+      }
+      i {
+        font-size: 11px;
+        position: absolute;
+        right: 2px;
+        top: 10px;
+      }
+
       &:first-child {
         padding-left: 0px;
       }
-      &:last-child {
-        border-right: none;
-      }
+
       &.active {
         color: var(--accent-bg);
       }
@@ -306,7 +320,8 @@
       display: inline-block;
     }
     .filtersCateg {
-      padding: 5px 0px;
+      padding: 15px 0px;
+      font-size: 14px;
     }
 
     .right {
@@ -325,10 +340,11 @@
 
     .products {
       display: inline-grid;
-      grid-template-columns: repeat(6, calc(100% / 6 - 5px));
-      column-gap: 5px;
+      grid-template-columns: repeat(6, calc(100% / 6 - 10px));
+      column-gap: 10px;
       width: 100%;
       &__item {
+        margin-bottom: 15px;
         .pBorder {
           border: 1px solid #ebebeb;
           width: 100%;

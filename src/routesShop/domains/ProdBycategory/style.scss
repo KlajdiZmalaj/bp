@@ -1,7 +1,6 @@
 .shopProd {
   .catgItems {
     background-color: #f2f2f2;
-    height: 140px;
     .slick-prev:before {
       content: "\f053";
       font-family: "Font Awesome 5 Pro";
@@ -17,11 +16,10 @@
     }
     .slick-slider {
       width: 100%;
-      max-width: 1135px;
-      margin: 0 auto;
+      padding: 0 15px;
     }
     .slick-list {
-      padding: 15px 0px;
+      padding: 20px 0px;
       .slick-track {
         display: flex;
         justify-content: center;
@@ -30,7 +28,7 @@
     }
     .slick-slide {
       cursor: pointer;
-      max-width: calc(100% / 6) !important;
+
       div {
         margin: 0 5px;
         background-color: #fff;
@@ -59,25 +57,29 @@
   .catProd {
     display: flex;
     width: 100%;
-    max-width: 1135px;
-    margin: 0 auto;
+    // max-width: 1135px;
+    // margin: 0 auto;
+    padding: 0 15px;
   }
   .filters {
     border-bottom: 2px solid #f26521;
     &__items {
       width: 100%;
-      max-width: 1135px;
-      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-left: 1px solid #ebebeb;
       border-right: 1px solid #ebebeb;
+      padding: 0 15px;
       .search {
         border-right: 1px solid #ebebeb;
-        padding: 0 5px;
+        padding: 0 5px 0 0px;
         height: 50px;
         background-color: #fff;
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         input {
           border: none;
           height: 50px;
@@ -90,7 +92,7 @@
         .itemFilter {
           position: relative;
           background-color: #fff;
-          width: 160px;
+          width: 200px;
           height: 50px;
           border-left: 1px solid #ebebeb;
           .price {
@@ -98,7 +100,7 @@
             align-items: center;
             display: flex;
             padding: 0 5px;
-            width: 160px;
+            width: 200px;
             justify-content: space-between;
             i {
               font-size: 14px;
@@ -130,7 +132,7 @@
             }
           }
           .brands {
-            width: 300px;
+            width: 400px;
             &__item {
               width: 92px;
               display: inline-block;
@@ -149,11 +151,39 @@
         .order {
           border-left: 1px solid #ebebeb;
           height: 50px;
-          width: 160px;
+          width: 200px;
           background-color: #fff;
           select {
             border: none;
             height: 100%;
+            width: 100%;
+          }
+          .ant-select {
+            color: inherit;
+            font-size: 16px;
+            line-height: normal;
+            height: 100%;
+            .ant-select-selection--single {
+              width: 200px;
+              border: none;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .ant-select-selection__rendered {
+                margin-right: 0px;
+                width: 200px;
+                .ant-select-selection__placeholder,
+                .ant-select-search__field__placeholder {
+                  color: inherit;
+                  font-size: 16px;
+                }
+              }
+              .ant-select-arrow {
+                color: inherit;
+                font-size: 16px;
+              }
+            }
           }
         }
       }
@@ -161,24 +191,33 @@
   }
   .catProd {
     &__categories {
-      min-width: 280px;
-      margin-right: 10px;
+      min-width: 300px;
+      margin-right: 1.5%;
 
       > .title {
-        padding: 5px 0;
+        padding: 15px 0;
         text-transform: uppercase;
+        font-size: 14px;
+        color: var(--header-bg);
+        font-weight: normal;
       }
       .category {
         margin-bottom: 5px;
         .title {
           cursor: pointer;
           font-weight: 700;
+          font-size: 14px;
           i {
             padding-right: 3px;
           }
         }
         .subCategories {
           padding-left: 10px;
+          font-size: 13px;
+          text-transform: lowercase;
+          &::first-letter {
+            text-transform: capitalize;
+          }
           cursor: pointer;
           &.active {
             background-color: #ebebeb;
@@ -189,14 +228,16 @@
         background-color: #f2f2f2;
         border-radius: 6px;
         height: 100%;
-        padding: 10px;
+        padding: 15px;
       }
     }
     .bestSeller {
       .products {
-        grid-template-columns: repeat(5, calc(100% / 5 - 5px));
+        grid-template-columns: repeat(7, calc(100% / 7 - 10px));
         &__item .pBorder img {
-          max-height: 160px;
+          // max-height: 160px;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
     }

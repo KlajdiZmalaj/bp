@@ -8,14 +8,14 @@ import { withRouter } from "react-router-dom";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
-import { Slider } from "antd";
+import { Slider, Select } from "antd";
 import { get } from "lodash";
 
 import Categories from "./Categories";
 import Slider2 from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+const { Option } = Select;
 class ProdBycategory extends Component {
   state = {
     isOpenSlide: false,
@@ -35,13 +35,14 @@ class ProdBycategory extends Component {
     console.log(a, b, c);
   };
   handleChange = (event) => {
-    this.props.setOrderVal(event.target.value);
+    console.log(event);
+    this.props.setOrderVal(event);
     this.props.getProductsList(
       null,
       this.props.isSelected,
       this.props.isSelectedC,
       this.props.isSelectedSC,
-      event.target.value,
+      event,
       this.props.sliderVal
     );
   };
@@ -71,6 +72,15 @@ class ProdBycategory extends Component {
 
   search = (event) => {
     if (event.target.value.length > 2 || event.target.value.length === 0) {
+      // this.props.getProductsList(
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   event.target.value
+      // );
       this.props.getProductsList(
         null,
         null,
@@ -84,7 +94,7 @@ class ProdBycategory extends Component {
   };
 
   render() {
-    const { prodList, orderVal } = this.props;
+    const { prodList } = this.props;
     const { isOpenSlide, isOpenBrands, brandSelected } = this.state;
 
     const brands = get(prodList, "category_info.brands");
@@ -95,20 +105,13 @@ class ProdBycategory extends Component {
       speed: 500,
       infinite: false,
       slidesToScroll: 1,
-      // slidesToShow: 6,
+      slidesToShow: 10,
     };
     return (
       <div className="shopProd">
         <div className="catgItems">
           {subcategories && (
-            <Slider2
-              {...settings}
-              slidesToShow={
-                Object.keys(subcategories).length < 6
-                  ? Object.keys(subcategories).length
-                  : 6
-              }
-            >
+            <Slider2 {...settings}>
               {Object.keys(subcategories).map((item, index) => {
                 return (
                   <div
@@ -242,7 +245,17 @@ class ProdBycategory extends Component {
                 </div>
               </div>
               <div className="order">
-                <select
+                <Select
+                  placeholder="Newest Arrivals"
+                  className="collection-layout__sort-order"
+                  // value={orderVal}
+                  onChange={this.handleChange}
+                >
+                  <Option value="">Newest Arrivals</Option>
+                  <Option value="2">Price: High to Low</Option>
+                  <Option value="1">Price: Low to High</Option>
+                </Select>
+                {/* <select
                   className="collection-layout__sort-order"
                   value={orderVal}
                   onChange={this.handleChange}
@@ -250,7 +263,7 @@ class ProdBycategory extends Component {
                   <option value="">Newest Arrivals</option>
                   <option value="2">Price: High to Low</option>
                   <option value="1">Price: Low to High</option>
-                </select>
+                </select> */}
               </div>
             </div>
           </div>
@@ -270,6 +283,7 @@ class ProdBycategory extends Component {
                 })}
             </div>
           </div>
+
           <BestSeller prodList={prodList} type="categories"></BestSeller>
         </div>
       </div>

@@ -10,6 +10,36 @@
       color: var(--accent-bg);
       font-weight: 500;
       font-size: 16px;
+      padding: 0 2px;
+    }
+    > span:first-child {
+      padding-right: 15px;
+    }
+  }
+  .categOpened {
+    position: absolute;
+    top: 60px;
+    background-color: var(--header-bg);
+    width: 100%;
+    .categories {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: #fff;
+      width: 100%;
+      padding: 15px;
+      display: block;
+      &__category {
+        display: block;
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 5px 0;
+        > div {
+          padding-left: 25px;
+          &:after {
+            color: var(--accent-bg);
+          }
+        }
+      }
     }
   }
 }
