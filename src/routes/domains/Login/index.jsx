@@ -34,7 +34,8 @@ class Login extends React.Component {
       this.props.forgotPassword(email);
     } else {
       await this.props.signInByEmail(userName, password, this.socketCall);
-      if (this.props.match) {
+      console.log("this.props.match.params", this.props.match.params);
+      if (this.props.match.params["link2"]) {
         window.location.hash = `dashboard/${
           this.props?.match?.params?.["link2"] || "ricariche"
         }`;
