@@ -12,6 +12,9 @@ import { Slider } from "antd";
 import { get } from "lodash";
 
 import Categories from "./Categories";
+import Slider2 from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class ProdBycategory extends Component {
   state = {
@@ -87,11 +90,51 @@ class ProdBycategory extends Component {
     const brands = get(prodList, "category_info.brands");
 
     const subcategories = get(prodList, "category_info.subcategories");
-
+    const settings = {
+      dots: false,
+      speed: 500,
+      infinite: false,
+      slidesToScroll: 1,
+      // slidesToShow: 6,
+    };
     return (
       <div className="shopProd">
         <div className="catgItems">
-          {subcategories &&
+          {subcategories && (
+            <Slider2
+              {...settings}
+              slidesToShow={
+                Object.keys(subcategories).length < 6
+                  ? Object.keys(subcategories).length
+                  : 6
+              }
+            >
+              {Object.keys(subcategories).map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      this.props.getProductsList(
+                        null,
+                        null,
+                        this.props.isSelectedC,
+                        null,
+                        this.props.orderVal,
+                        null,
+                        null,
+                        subcategories[item].name
+                      );
+                    }}
+                  >
+                    <span>{subcategories[item].name}</span>
+                    <img src={subcategories[item].image} alt=""></img>
+                  </div>
+                );
+              })}
+            </Slider2>
+          )}
+
+          {/* {subcategories &&
             Object.keys(subcategories).map((item, index) => {
               return (
                 <div
@@ -113,7 +156,7 @@ class ProdBycategory extends Component {
                   <img src={subcategories[item].image} alt=""></img>
                 </div>
               );
-            })}
+            })} */}
         </div>
         <div className="filters">
           <div className="filters__items">

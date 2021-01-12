@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
-import { find } from "lodash";
+import { find, isObject } from "lodash";
 import Slider from "react-slick";
 
 import ShopActions from "redux-store/models/shop";
@@ -59,6 +59,8 @@ class SingleProduct extends Component {
 
   handleChangeColour = (e) => {
     this.setState({ selectedColor: e });
+    this.setState({ selectedSize: null });
+    this.props.form.resetFields();
   };
 
   handleChangeSize = (e) => {
@@ -77,13 +79,6 @@ class SingleProduct extends Component {
     ) {
       idProd = this.state.itemSelected.id;
     }
-
-    this.props.getToCart(
-      this.props.product.prd_supp,
-      idProd,
-      "cart",
-      this.state.orderQuanity
-    );
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -223,7 +218,51 @@ class SingleProduct extends Component {
                     </div>
                   </div>
                   <Form onSubmit={this.handleSubmit}>
-                    {product.Models["colore"] && (
+                    {product.Models &&
+                      isObject(product.Models) &&
+                      Object.keys(product.Models)
+                        .filter((item) => item.toLowerCase() !== "taglia")
+                        .map((item, index) => {
+                          return (
+                            <Form.Item key={index}>
+                              <div className="color text-uppercase pb-3">
+                                {item}:
+                                {getFieldDecorator(item, {
+                                  rules: [
+                                    {
+                                      required: true,
+                                      message: `Scegli un ${item}`,
+                                    },
+                                  ],
+                                })(
+                                  <Select
+                                    placeholder={`Scegli un ${item}`}
+                                    onChange={this.handleChangeColour}
+                                  >
+                                    {product.Models[item] &&
+                                      product.Models[item].map(
+                                        (item, index) => {
+                                          return (
+                                            <Option
+                                              value={item.value}
+                                              key={index}
+                                              onClick={() =>
+                                                this.handleProduct(item)
+                                              }
+                                            >
+                                              {item.value}
+                                            </Option>
+                                          );
+                                        }
+                                      )}
+                                  </Select>
+                                )}
+                              </div>
+                            </Form.Item>
+                          );
+                        })}
+
+                    {/* {product.Models["colore"] && (
                       <Form.Item>
                         <div className="color text-uppercase pb-3">
                           Colour:
@@ -277,7 +316,7 @@ class SingleProduct extends Component {
                             })}
                         </Select>
                       </div>
-                    )}
+                    )} */}
 
                     {product.Models["taglia"] && (
                       <Form.Item>
@@ -345,9 +384,7 @@ class SingleProduct extends Component {
                         </div>
                       </Form.Item>
                     )}
-                    {/* <Button type="primary" htmlType="submit">
-                      submit
-                    </Button> */}
+
                     <div className="buy pb-3 text-uppercase">
                       <div className="addItem">
                         <div className="adjustContainer">
@@ -361,7 +398,7 @@ class SingleProduct extends Component {
                         </div>
 
                         {productCart === "" ? (
-                          <button className="addTobag" htmlType="submit">
+                          <button className="addTobag" htmltype="submit">
                             Add to bag <i className="fal fa-shopping-bag"></i>
                           </button>
                         ) : (
