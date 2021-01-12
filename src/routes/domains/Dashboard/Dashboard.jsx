@@ -364,7 +364,7 @@ class DashboardDom extends React.Component {
                                 }
                               }}
                             >
-                              <img src={images[id]} alt="" />
+                              <img src={images[id]} alt={id} />
                               <span> {comp.companies[key][id].name}</span>
                               <i
                                 id={`${id}`}

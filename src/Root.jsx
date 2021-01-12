@@ -221,15 +221,14 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "agency", "agent", "user"]}
             />
             {/* // :id?/ , me ?/ qe te beje dhe /dashboard render */}
-            <Route
+            <PublicRoute
               path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
               // component={Dashboard}
               component={
                 isMobile ? MobileViews.DashboardMobile : DesktopView.Dashboard
               }
-              isLoggedin={isLoggedin}
+              isLoggedin={false}
               role={role}
-              allowedRoles={["agency", "agent", "user"]}
             />
             <PrivateRoute
               path="/configura"

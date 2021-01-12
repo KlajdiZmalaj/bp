@@ -9,12 +9,12 @@ const PublicRoute = ({
   profile,
   ...rest
 }) => {
-  //console.log("rest", rest);
+  //console.log("role", role, isLoggedin);
   return (
     <Route
       {...rest}
       render={(props) =>
-        !isLoggedin ? (
+        !isLoggedin && role !== "main_admin" && role !== "support" ? (
           <Component {...props} />
         ) : role === "main_admin" ? (
           <Redirect
