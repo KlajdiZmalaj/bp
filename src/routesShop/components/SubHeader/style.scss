@@ -27,6 +27,7 @@
       margin-bottom: 10px;
       justify-content: normal;
       background-color: #fff;
+      align-items: normal;
       .categories {
         width: auto;
         padding: 15px 15px 15px 15px;
@@ -38,11 +39,14 @@
           display: block;
           font-size: 16px;
           text-transform: uppercase;
-          padding: 5px 0;
+          padding: 10px 0;
           margin: 5px 0;
 
           > div {
             max-width: 100%;
+            &:after {
+              top: 10px;
+            }
           }
           &:hover {
             color: var(--accent-bg);
@@ -63,9 +67,12 @@
         align-items: center;
         border-left: 3px solid var(--header-bg);
         margin-left: -3px;
+        flex: 1 1;
         .subCategory {
+          z-index: 1;
           &__item {
-            padding: 2px 15px;
+            padding: 4px 15px;
+            cursor: pointer;
             i {
               opacity: 0.3;
               padding-right: 5px;
@@ -74,7 +81,8 @@
           }
         }
         img {
-          height: 80%;
+          z-index: 0;
+          height: 100%;
           width: auto;
           position: absolute;
           right: 0;
@@ -82,6 +90,37 @@
       }
       .brands {
         width: 25%;
+        max-width: 300px;
+        background-color: #f2f2f2;
+        .slick-slider {
+          width: calc(100% - 60px);
+          text-align: center;
+          left: 30px;
+          .slick-prev:before,
+          .slick-next:before {
+            color: var(--accent-bg);
+            .slick-slide img {
+              text-align: center;
+              display: inline-block;
+            }
+          }
+        }
+        &__title {
+          padding: 10px 0px 10px 30px;
+          text-transform: uppercase;
+        }
+        &__item {
+          background-color: #fff;
+          padding: 5px;
+          height: 50px;
+          margin: 2px;
+          width: calc(50% - 4px) !important;
+          float: left;
+          text-align: center;
+          // img {
+          //   display: flex;
+          // }
+        }
       }
     }
   }

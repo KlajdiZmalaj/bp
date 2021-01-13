@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import "./style.css";
 import { withRouter } from "react-router-dom";
 import { get, isObject } from "lodash";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class SubHeader extends Component {
   state = {
@@ -34,6 +37,14 @@ class SubHeader extends Component {
     cartItems = Object.keys(cart).length;
 
     if (itemS === null) itemS = Object.keys(cat)[0];
+
+    const settings = {
+      infinite: false,
+      slidesToShow: 1,
+      speed: 500,
+      rows: 8,
+      slidesPerRow: 2,
+    };
 
     return (
       <div className="subheader" onMouseLeave={() => this.setIsShown(false)}>
@@ -77,7 +88,28 @@ class SubHeader extends Component {
                       (subitem, subIndex) => {
                         let sub = cat[itemS].subcategories;
                         return (
-                          <div key={subIndex} className="subCategory__item">
+                          <div
+                            key={subIndex}
+                            className="subCategory__item"
+                            onClick={() => {
+                              this.props.getProductsList(
+                                null,
+                                null,
+                                cat[itemS].name,
+                                null,
+                                null,
+                                null,
+                                null,
+                                sub[subitem].name
+                              );
+                              this.setIsShown(false);
+                              this.props.history.push(
+                                `/product-filtered/${
+                                  cat[itemS].name.split(" | ")[0]
+                                }__${cat[itemS].name.split(" | ")[1]}`
+                              );
+                            }}
+                          >
                             <i className="far fa-chevron-right"></i>
                             {sub[subitem].name}
                           </div>
@@ -87,17 +119,45 @@ class SubHeader extends Component {
                 </div>
                 <img src={cat[itemS]?.url}></img>
               </div>
-              <div className="brands">brands</div>
+              <div className="brands">
+                <div className="brands__title">Brands</div>
+
+                <Slider {...settings}>
+                  {cat[itemS] &&
+                    Object.keys(cat[itemS].brands).map((brand, index) => {
+                      let brandi = cat[itemS].brands;
+                      return (
+                        <div
+                          key={index}
+                          className="brands__item"
+                          onClick={() => {
+                            this.props.getProductsList(
+                              null,
+                              brandi[brand].name,
+                              cat[itemS].name
+                            );
+                            this.setIsShown(false);
+                            this.props.history.push(
+                              `/product-filtered/${
+                                cat[itemS].name.split(" | ")[0]
+                              }__${cat[itemS].name.split(" | ")[1]}`
+                            );
+                          }}
+                        >
+                          <img
+                            src={brandi[brand]?.url}
+                            alt={brandi[brand]?.name}
+                          ></img>
+                        </div>
+                      );
+                    })}
+                </Slider>
+              </div>
             </div>
           </div>
         )}
 
         <div className="maxWidth">
-          {/* <div className="opencategories">
-            <i className="fas fa-bars"></i>
-            Categories:
-          </div> */}
-
           <div className="categories">
             <div
               className={
@@ -140,31 +200,6 @@ class SubHeader extends Component {
                   </div>
                 );
               })}
-            {/* {cat &&
-              Object.keys(cat).map((item, index) => {
-                return (
-                  <div
-                    className={
-                      "categories__category" +
-                      (isSelected === cat[item] ? " active" : "")
-                    }
-                    key={index}
-                    onClick={() => {
-                      this.props.getProductsList(null, null, cat[item]);
-                      this.props.setCategory(cat[item]);
-                      this.props.history.push(
-                        `/product-filtered/${cat[item].split(" | ")[0]}__${
-                          cat[item].split(" | ")[1]
-                        }`
-                      );
-                    }}
-                  >
-                    <div className={cat[item].toLowerCase()}></div>
-                    {cat[item].split("|")[0]}
-                    <p> {cat[item].split("|")[1]}</p>
-                  </div>
-                );
-              })} */}
           </div>
 
           <div
