@@ -35,7 +35,6 @@ class SubHeader extends Component {
 
     if (itemS === null) itemS = Object.keys(cat)[0];
 
-    console.log("itemS", itemS);
     return (
       <div className="subheader" onMouseLeave={() => this.setIsShown(false)}>
         {this.state.isOpenCat && (
