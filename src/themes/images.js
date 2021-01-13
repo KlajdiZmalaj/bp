@@ -278,15 +278,21 @@ try {
     bg4: require(`../assets/shop/Bg4.svg`),
     informaticaelettronica: require(`../assets/shop/informaticaelettronica.svg`),
     sportfitness: require(`../assets/shop/sportfitness.svg`),
+    sportrelax: require(`../assets/shop/sportfitness.svg`),
 
     casagiardino: require(`../assets/shop/casagiardino.jpg`),
     cucinagourmet: require(`../assets/shop/cucinagourmet.jpg`),
     giochibambini: require(`../assets/shop/giochibambini.jpg`),
-    modaaccessori: require(`../assets/shop/salutebellezza.jpg`),
+    giocattolicostumi: require(`../assets/shop/giochibambini.jpg`),
+    modaaccessori: require(`../assets/shop/modaaccessori.jpg`),
     outletofferte: require(`../assets/shop/Bg2.svg`),
+    offerterefurbished: require(`../assets/shop/Bg2.svg`),
     profumeriacosmesi: require(`../assets/shop/profumeriacosmesi.jpg`),
     salutebellezza: require(`../assets/shop/salutebellezza.jpg`),
     relaxtempolibero: require(`../assets/shop/relaxtempolibero.jpg`),
+
+    regalioriginali: require(`../assets/shop/relaxtempolibero.jpg`),
+    sexyshoperotico: require(`../assets/shop/sexyshoperotico.jpg`),
 
     tnt: require(`../assets/shop/tnt.png`),
     ups: require(`../assets/shop/ups.png`),

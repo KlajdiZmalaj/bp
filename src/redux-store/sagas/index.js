@@ -113,6 +113,7 @@ export default function* root() {
       takeLatest("GET_ORDER", ShopGenerators.getOrder),
       takeLatest("GET_REMOVE_TO_CART", ShopGenerators.getRemoveToCart),
       takeLatest("GET_CARRIES", ShopGenerators.getCarries),
+      takeLatest("GET_PROD_CAT", ShopGenerators.getProdCat),
     ],
   ]);
 }

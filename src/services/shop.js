@@ -150,3 +150,14 @@ export const fetchCarries = (iso_code, postcode) =>
       ...(postcode ? { postcode } : {}),
     })
     .catch((error) => ({ error }));
+
+export const fetchProdCat = (category, subCategory) =>
+  instanceAxios
+    .get(`/shop/products`, {
+      params: {
+        ...skin,
+        ...(category ? { Product_MainCategory: category } : {}),
+        ...(subCategory ? { Product_Category: subCategory } : {}),
+      },
+    })
+    .catch((error) => ({ error }));

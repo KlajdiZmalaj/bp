@@ -12,7 +12,7 @@ import { withRouter } from "react-router-dom";
 class Products extends Component {
   render() {
     const { prodList, brands, categories } = this.props;
-
+    console.log("categories", categories);
     return (
       <div className="shopProd">
         <div className="mainBanner marginBottom">
@@ -30,15 +30,15 @@ class Products extends Component {
                     this.props.getProductsList(null, null, categories[item]);
                     this.props.setCategory(categories[item]);
                     this.props.history.push(
-                      `/product-filtered/${categories[item].split(" | ")[0]}__${
-                        categories[item].split(" | ")[1]
-                      }`
+                      `/product-filtered/${
+                        categories[item]?.name?.split(" | ")[0]
+                      }__${categories[item]?.name?.split(" | ")[1]}`
                     );
                   }}
                 >
                   <div className="text">
-                    {categories[item].split(" | ")[0]}
-                    <b>{categories[item].split(" | ")[1]}</b>
+                    {categories[item]?.name?.split(" | ")[0]}
+                    <b>{categories[item]?.name?.split(" | ")[1]}</b>
                   </div>
 
                   <img src={images[item]} alt=""></img>

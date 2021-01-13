@@ -158,3 +158,15 @@ export function* getCarries(params) {
     });
   }
 }
+
+export function* getProdCat(params) {
+  console.log("params", params);
+  const response = yield call(
+    ShopRequest.fetchProdCat,
+    params.category,
+    params.subCategory
+  );
+  if (response.data) {
+    yield put(ShopActions.setProdCat(response.data));
+  }
+}

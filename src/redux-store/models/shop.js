@@ -50,6 +50,8 @@ const { Types, Creators } = createActions({
 
   getCarries: ["iso_code", "postcode"],
   setCarries: ["carries"],
+  getProdCat: ["category", "subCategory"],
+  setProdCat: ["prodCat"],
 });
 
 export const ShopTypes = Types;
@@ -70,6 +72,7 @@ const INITIAL_STATE = {
   orders: {},
   productRemovedCart: {},
   carries: [],
+  prodCat: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -129,5 +132,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_CARRIES: (state, { carries }) => ({
     ...state,
     carries,
+  }),
+  SET_PROD_CAT: (state, { prodCat }) => ({
+    ...state,
+    prodCat,
   }),
 });

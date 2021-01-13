@@ -21,24 +21,41 @@
     top: 60px;
     background-color: var(--header-bg);
     width: 100%;
-    .categories {
+    .maxWidth {
+      background-color: #fff;
       margin-top: 10px;
       margin-bottom: 10px;
-      background-color: #fff;
-      width: 100%;
-      padding: 15px;
-      display: block;
-      &__category {
+
+      .categories {
+        width: auto;
+        padding: 15px 15px 15px 15px;
         display: block;
-        font-size: 16px;
-        text-transform: uppercase;
-        padding: 5px 0;
-        > div {
-          padding-left: 25px;
-          &:after {
+        border-right: 3px solid var(--header-bg);
+
+        &__category {
+          border-left: 0;
+          display: block;
+          font-size: 16px;
+          text-transform: uppercase;
+          padding: 5px 0;
+          margin: 5px 0;
+
+          > div {
+            max-width: 100%;
+          }
+          &:hover {
             color: var(--accent-bg);
           }
+          > div {
+            padding-left: 25px;
+            &:after {
+              color: var(--accent-bg);
+            }
+          }
         }
+      }
+      .subCatgegories {
+        width: 50%;
       }
     }
   }
