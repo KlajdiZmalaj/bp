@@ -286,6 +286,7 @@ try {
     outletofferte: require(`../assets/shop/Bg2.svg`),
     profumeriacosmesi: require(`../assets/shop/profumeriacosmesi.jpg`),
     salutebellezza: require(`../assets/shop/salutebellezza.jpg`),
+    relaxtempolibero: require(`../assets/shop/relaxtempolibero.jpg`),
 
     tnt: require(`../assets/shop/tnt.png`),
     ups: require(`../assets/shop/ups.png`),
