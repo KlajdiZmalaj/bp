@@ -8,6 +8,7 @@ import { get, isObject } from "lodash";
 class SubHeader extends Component {
   state = {
     isOpenCat: false,
+    itemS: null,
   };
   componentDidMount() {
     const catProduct = this.props.match.params.cat;
@@ -15,6 +16,7 @@ class SubHeader extends Component {
       this.props.setCategory(catProduct.replace("__", " | "));
     }
     this.props.getItemsCart();
+    console.log("this.props", this.props.cat);
   }
   setIsShown = (n) => {
     this.setState({ isOpenCat: n });
@@ -25,13 +27,15 @@ class SubHeader extends Component {
   // };
   render() {
     const { cat, isSelected, itemsCart, prodCat } = this.props;
+    let { itemS } = this.state;
 
     let cartItems = 0;
     let cart = get(itemsCart, "cart", {});
     cartItems = Object.keys(cart).length;
 
-    console.log("cat", cat);
+    if (itemS === null) itemS = Object.keys(cat)[0];
 
+    console.log("itemS", itemS);
     return (
       <div className="subheader" onMouseLeave={() => this.setIsShown(false)}>
         {this.state.isOpenCat && (
@@ -48,7 +52,7 @@ class SubHeader extends Component {
                           (isSelected === cat[item].name ? " active" : "")
                         }
                         key={index}
-                        onMouseEnter={() => this.props.getProdCat(cat[item])}
+                        onMouseEnter={() => this.setState({ itemS: item })}
                         onClick={() => {
                           this.props.getProductsList(null, null, cat[item]);
                           this.props.setCategory(cat[item].name);
@@ -59,13 +63,32 @@ class SubHeader extends Component {
                           );
                         }}
                       >
-                        <div>{cat[item]?.name}</div>
-                        {/* <div>{cat[item]}</div> */}
+                        <div className={cat[item]?.name.toLowerCase()}>
+                          {cat[item]?.name}
+                        </div>
                       </div>
                     );
                   })}
               </div>
-              <div className="subCatgegories">subCatgegories</div>
+
+              <div className="subCatgegories">
+                <div className="subCategory">
+                  {cat[itemS] &&
+                    Object.keys(cat[itemS].subcategories).map(
+                      (subitem, subIndex) => {
+                        let sub = cat[itemS].subcategories;
+                        return (
+                          <div key={subIndex} className="subCategory__item">
+                            <i className="far fa-chevron-right"></i>
+                            {sub[subitem].name}
+                          </div>
+                        );
+                      }
+                    )}
+                </div>
+                <img src={cat[itemS]?.url}></img>
+              </div>
+              <div className="brands">brands</div>
             </div>
           </div>
         )}

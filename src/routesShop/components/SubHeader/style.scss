@@ -21,17 +21,18 @@
     top: 60px;
     background-color: var(--header-bg);
     width: 100%;
+
     .maxWidth {
-      background-color: #fff;
       margin-top: 10px;
       margin-bottom: 10px;
-
+      justify-content: normal;
+      background-color: #fff;
       .categories {
         width: auto;
         padding: 15px 15px 15px 15px;
         display: block;
         border-right: 3px solid var(--header-bg);
-
+        width: 25%;
         &__category {
           border-left: 0;
           display: block;
@@ -56,6 +57,31 @@
       }
       .subCatgegories {
         width: 50%;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        align-items: center;
+        border-left: 3px solid var(--header-bg);
+        margin-left: -3px;
+        .subCategory {
+          &__item {
+            padding: 2px 15px;
+            i {
+              opacity: 0.3;
+              padding-right: 5px;
+              font-size: 11px;
+            }
+          }
+        }
+        img {
+          height: 80%;
+          width: auto;
+          position: absolute;
+          right: 0;
+        }
+      }
+      .brands {
+        width: 25%;
       }
     }
   }

@@ -79,9 +79,16 @@ class SingleProduct extends Component {
     ) {
       idProd = this.state.itemSelected.id;
     }
+    this.props.getToCart(
+      this.props.product.prd_supp,
+      idProd,
+      "cart",
+      this.state.orderQuanity
+    );
   };
   handleSubmit = (e) => {
     e.preventDefault();
+
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         this.addTocart();
