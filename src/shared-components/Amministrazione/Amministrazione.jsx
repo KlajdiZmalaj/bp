@@ -8,7 +8,7 @@ class Azioni extends Component {
     const { active } = this.props;
     return (
       <React.Fragment>
-        <div className="row max-width mt-3">
+        <div className="row maxWidth mt-3">
           <div className="col pl-3 p-lg-0">
             <a href="/#" className="overview-btn">
               <img src={images.admAZZ} alt="imageAdm" /> Amministrazione
@@ -17,8 +17,8 @@ class Azioni extends Component {
         </div>
         <hr className="overviw-line" />
 
-        <div className="row max-width mt-2 azioni">
-          {administrazioni.map(item => {
+        <div className="row maxWidth mt-2 azioni">
+          {administrazioni.map((item) => {
             return (
               <div className="col-6 col-lg-2 p-0 pl-lg-2">
                 <a href={"#/" + item.link}>

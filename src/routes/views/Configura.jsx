@@ -62,7 +62,7 @@ class Configura extends React.Component {
           )}
 
           <div className="panels-container">
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="col-md-12 configura">
                 <div className="titleConf">
                   <i className="fas fa-dot-circle"></i>

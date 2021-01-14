@@ -163,7 +163,7 @@ class FormDetailsDomain extends Component {
 
     return (
       <React.Fragment>
-        <div className="ticketDetails">
+        <div className="ticketDetails maxWidth">
           <div className="ticketDetails--filters">
             <div className="ticketDetails--filters__byTicket">
               <Switch

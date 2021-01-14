@@ -30,7 +30,7 @@
       var root = document.getElementsByTagName("html")[0];
       root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-      if (window.LOCATION_URL.includes("oint.st")) {
+      if (window.LOCATION_URL.match(/oint\.st|localhost|192\.168/g)) {
         SITE_STYLES.setAttribute("href", `var1.css`);
       } else if (window.LOCATION_URL.includes("es.gf")) {
         document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
@@ -38,7 +38,7 @@
       } else if (window.LOCATION_URL.includes("planet")) {
         document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
         SITE_STYLES.setAttribute("href", "./var4.css");
-      } else if (window.LOCATION_URL.match(/mperia|irpa|localhost|192\.168/g)) {
+      } else if (window.LOCATION_URL.match(/mperia|irpa/g)) {
         document.querySelector("#tabTheme").setAttribute("content", "#222");
         SITE_STYLES.setAttribute("href", "./var6.css");
       } else if (window.LOCATION_URL.match(/derby/g)) {

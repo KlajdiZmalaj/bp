@@ -12,7 +12,7 @@ class Content extends Component {
     const { activeAccount } = this.props;
 
     return (
-      <div className="contentAcc">
+      <div className="contentAcc maxWidth">
         {activeAccount === 1 && <Profile />}
         {activeAccount === 2 && <UsersList />}
       </div>

@@ -134,7 +134,7 @@ class Dashboard extends React.Component {
                 }}
               />
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div
                 className={`col-md-${
                   serviceSelected ? "9" : "4"

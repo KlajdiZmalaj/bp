@@ -51,7 +51,7 @@ class Azioni extends Component {
           <Statistiche userRole={userRole} />
           <div className="MenuC">
             <div
-              className="Menu"
+              className="Menu maxWidth"
               style={userRole === "noUser" ? { display: "none" } : {}}
             >
               {newAzioni &&
@@ -95,7 +95,7 @@ class Azioni extends Component {
           </div>
           {submenu !== "noSubmenu" && (
             <div className="Submenu">
-              <div className="MenuS">
+              <div className="MenuS maxWidth">
                 {newAzioniSubmenu[activeMain]?.map((item) => {
                   return (
                     includes(item.displayRole, userRole) && (

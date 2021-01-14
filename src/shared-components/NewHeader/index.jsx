@@ -41,7 +41,7 @@ class Header extends Component {
     }
     return screenWidth > 1024 ? (
       <header className="header">
-        <div className="headermaxW">
+        <div className="headermaxW maxWidth">
           <div className="topNav">
             <div className="left">
               <div>
@@ -285,7 +285,7 @@ class Header extends Component {
           </div>
         </div>
         <nav>
-          <div className="headermaxW">
+          <div className="headermaxW maxWidth">
             <div
               className="logo"
               onClick={() => {

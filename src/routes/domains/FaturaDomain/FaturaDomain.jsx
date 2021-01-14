@@ -72,7 +72,7 @@ class FaturaDomain extends React.Component {
       <div className="Container">
         <div className="FaturaDomain">
           <div className="panels-container">
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="FauturaFilter">
                 {calendarVis && (
                   <DatePicker
@@ -208,7 +208,7 @@ class FaturaDomain extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               {!this.props.fattura_loading ? (
                 <div className="FaturaTable">
                   <table className="transTable">

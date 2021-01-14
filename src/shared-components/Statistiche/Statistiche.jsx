@@ -21,7 +21,11 @@ class Statistiche extends React.Component {
           id="SpecStatistich"
           className={`Statist ${ReportisticaDet ? "min" : ""}`}
         >
-          <div className={`data Categories ${ReportisticaDet ? "min" : ""}`}>
+          <div
+            className={`maxWidth data Categories ${
+              ReportisticaDet ? "min" : ""
+            }`}
+          >
             <SimpleGraph
               graphicData={StatisticheMain?.data?.transazioni}
               handleMouseEntering={() => {}}

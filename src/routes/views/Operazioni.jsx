@@ -10,10 +10,10 @@ class Operazioni extends React.Component {
           <Amministrazione active="operazioni"></Amministrazione>
 
           <div className="panels-container">
-            <div className="sort-annunci sort-trasazioni max-width border-0">
+            <div className="sort-annunci sort-trasazioni maxWidth border-0">
               <h1 className="heading-tab ">Elenco Transazioni Sospese</h1>
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="col-md-12">
                 <table className="transTable">
                   <tbody>

@@ -119,7 +119,7 @@ class Overview extends Component {
         </div>
         <div
           className={
-            " row max-width no-gutters p-2 pl-md-4 wigs-overview " +
+            " row maxWidth no-gutters p-2 pl-md-4 wigs-overview " +
             (showOverview ? "" : "hideWig")
           }
         >

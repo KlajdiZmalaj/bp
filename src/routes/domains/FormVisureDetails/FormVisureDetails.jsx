@@ -77,7 +77,7 @@ class FormDetailsDomain extends Component {
     // console.log("formDetailsActives", formDetailsActives);
     const { my_visure, visure } = Visure;
     return (
-      <div className="ticketDetails">
+      <div className="ticketDetails maxWidth">
         <div className="ticketDetails--filters">
           <div className="ticketDetails--filters__byTicket">
             <div>
