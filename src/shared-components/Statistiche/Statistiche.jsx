@@ -45,7 +45,7 @@ class Statistiche extends React.Component {
               AdditionalComp={
                 <Fragment>
                   <div>{StatisticheMain?.total?.commissioni + "€"}</div>
-                  <div>Commisioni</div>
+                  <div>Commissioni</div>
                 </Fragment>
               }
               className={`${ReportisticaDet ? "min" : ""}`}

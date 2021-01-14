@@ -39,6 +39,7 @@ class AdminListaUtenti extends React.Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.activeSkinId !== prevProps.activeSkinId) {
+      this.setState({ page_number: 1 });
       const Special =
         this.props.activeSkinId === -1 &&
         this.props.accountInfo?.profile?.role?.name !== "support";
@@ -242,6 +243,7 @@ class AdminListaUtenti extends React.Component {
         </div>
         <div className="paginationWrapper">
           <Pagination
+            current={this.state.page_number || 1}
             onChange={(e) => {
               this.setState({ page_number: e });
               this.props.getUsers(

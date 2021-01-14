@@ -2,7 +2,7 @@ import { put, call, delay, select } from "redux-saga/effects";
 import AuthActions from "../models/auth";
 import MainActions from "../models/main";
 import * as AuthRequest from "services/auth";
-import { fetchUsers } from "services/main";
+//import { fetchUsers } from "services/main";
 import { notification } from "antd";
 export function* signInByEmail(credencials) {
   const response = yield call(
@@ -509,13 +509,11 @@ export function* changeAgent(data) {
   }
   if (response) {
     if (response?.status === 200) {
-      yield put(
-        AuthActions.setUserDetail({ ...response?.data.user, role: "agent" })
-      );
-      const ress = yield call(fetchUsers);
-      if (ress.data) {
-        yield put(MainActions.setUsers(ress.data.users));
-      }
+      yield put(AuthActions.setUserDetail({}));
+      // const ress = yield call(fetchUsers);
+      // if (ress.data) {
+      //   yield put(MainActions.setUsers(ress.data.users));
+      // }
     }
   }
   // console.log("response changeAgent", data, response);

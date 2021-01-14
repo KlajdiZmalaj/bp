@@ -16,7 +16,7 @@ const AdminRightFormStatisticheDetailsHelper = ({
           <span>Transazioni</span> <span>{`${Tranzacioni} `} &euro;</span>{" "}
         </div>
         <div>
-          <span>Commisioni</span> <span>{`${Commisione} `} &euro;</span>{" "}
+          <span>Commissioni</span> <span>{`${Commisione} `} &euro;</span>{" "}
         </div>
         <div>
           <span>Proviggioni</span> <span>{`${Proviggioni} `} &euro;</span>
