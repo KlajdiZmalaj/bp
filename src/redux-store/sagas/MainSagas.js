@@ -54,6 +54,7 @@ export function* toggleFavorite(params) {
   }
 }
 export function* getUsers(params) {
+  //console.log("params", params);
   if (params.LOAD_FALSE) {
     //dont load
   } else {

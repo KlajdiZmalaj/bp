@@ -141,6 +141,7 @@ class UsersList extends Component {
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
     const role = get(this.props.accountInfo, "profile.role.name");
+    console.log("userList", userList);
     return (
       <div className="userList">
         {DepositoPopup?.visibility === true ? (
@@ -406,11 +407,13 @@ class UsersList extends Component {
                   }}
                 />
               )}
-
-              <div className="newReg--row lastRow">
-                {userDetail.role !== "agent" &&
-                userDetail.role !== "user" &&
-                userDetail.role !== "agency" ? (
+              {console.log("userDetail", userDetail)}
+              <div className="newReg--row lastRow ww">
+                {(userDetail.role !== "agent" &&
+                  userDetail.role !== "user" &&
+                  userDetail.role !== "agency") ||
+                (get(accountInfo, "profile.role.name") === "super_admin" &&
+                  userDetail.role === "agency") ? (
                   <React.Fragment>
                     <div className="newReg--row__col">Cambia Agente</div>
                     <div className="newReg--row__col checkCol">
@@ -430,10 +433,17 @@ class UsersList extends Component {
                             ))}
                           </Select>
                           <button
-                            onClick={() => {
-                              this.props.changeAgent(
+                            onClick={async () => {
+                              await this.props.changeAgent(
                                 this.state.agentSelected,
                                 userDetail.id
+                              );
+                              this.props.getUsers(
+                                null,
+                                null,
+                                25,
+                                this.state.page_number,
+                                "LOAD_FALSE"
                               );
                             }}
                           >

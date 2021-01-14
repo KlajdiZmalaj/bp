@@ -261,12 +261,16 @@ class AdminPanelDom extends React.Component {
                               ))}
                             </Select>
                             <button
-                              onClick={() => {
-                                this.props.changeAgent(
+                              onClick={async () => {
+                                const skinId = this.props.activeSkinId;
+                                await this.props.changeAgent(
                                   this.state.agentSelected,
                                   userDetail.id,
-                                  this.props.activeSkinId
+                                  skinId
                                 );
+
+                                this.props.setActiveSkinId(-1);
+                                this.props.setActiveSkinId(skinId);
                               }}
                             >
                               <i

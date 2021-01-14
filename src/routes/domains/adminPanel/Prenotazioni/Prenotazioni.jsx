@@ -234,7 +234,7 @@ class Prenotazioni extends React.Component {
               price={numberWithCommas(Tranzacioni)}
             />
             <TranCommProv
-              title={"COMMISIONI"}
+              title={"COMMISSIONI"}
               price={numberWithCommas(Commisione)}
             />
             <TranCommProv
