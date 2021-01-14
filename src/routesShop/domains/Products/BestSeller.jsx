@@ -31,6 +31,7 @@ class BestSeller extends Component {
       isSelected,
       isSelectedC,
       isSelectedSC,
+      isSelectedSSC,
       orderVal,
       sliderVal,
       type,
@@ -107,9 +108,11 @@ class BestSeller extends Component {
                 e,
                 isSelected,
                 isSelectedC,
-                isSelectedSC,
+                isSelectedSSC,
                 orderVal,
-                sliderVal
+                sliderVal,
+                null,
+                isSelectedSC
               );
             }}
             total={total_pages ? total_pages * 10 : 10}
@@ -125,6 +128,7 @@ const mpStP = (state) => ({
   isSelected: state.shop.isSelectedManufacturer,
   isSelectedC: state.shop.isSelectedCategory,
   isSelectedSC: state.shop.isSelectedSubCategory,
+  isSelectedSSC: state.shop.isSelectedSubSubCategory,
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,
 });

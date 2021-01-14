@@ -5,22 +5,13 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
 class SubCategories extends Component {
-  state = {
-    isSelected: null,
-  };
-
-  selSubSub = (val) => {
-    this.setState({ isSelected: val });
-  };
-
   render() {
-    const { item, catg, subcatg } = this.props;
-    const { isSelected } = this.state;
+    const { item, catg, subcatg, isSelectedSSC } = this.props;
 
     return (
       <div
         className={
-          "subCategories" + (isSelected === item.name ? " active" : "")
+          "subCategories" + (isSelectedSSC === item.name ? " active" : "")
         }
         onClick={() => {
           this.props.getProductsList(
@@ -33,7 +24,7 @@ class SubCategories extends Component {
             null,
             subcatg
           );
-          this.selSubSub(item.name);
+          this.props.setSubSubCategory(item.name);
         }}
       >
         {item.name}
@@ -46,6 +37,7 @@ const mpStP = (state) => ({
   product: state.shop.productD,
   isSelected: state.shop.isSelectedManufacturer,
   isSelectedSC: state.shop.isSelectedSubCategory,
+  isSelectedSSC: state.shop.isSelectedSubSubCategory,
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,
 });

@@ -21,6 +21,7 @@ const { Types, Creators } = createActions({
   setManufacturer: ["isSelectedManufacturer"],
   setCategory: ["isSelectedCategory"],
   setSubCategory: ["isSelectedSubCategory"],
+  setSubSubCategory: ["isSelectedSubSubCategory"],
   setOrderVal: ["orderVal"],
   setSliderVal: ["sliderVal"],
   checkOut: ["formData", "resetFields"],
@@ -65,6 +66,7 @@ const INITIAL_STATE = {
   isSelectedManufacturer: null,
   isSelectedCategory: null,
   isSelectedSubCategory: null,
+  isSelectedSubSubCategory: null,
   orderVal: "",
   sliderVal: [],
   productCart: "",
@@ -103,6 +105,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_SUB_CATEGORY: (state, { isSelectedSubCategory }) => ({
     ...state,
     isSelectedSubCategory,
+  }),
+  SET_SUB_SUB_CATEGORY: (state, { isSelectedSubSubCategory }) => ({
+    ...state,
+    isSelectedSubSubCategory,
   }),
   SET_ORDER_VAL: (state, { orderVal }) => ({
     ...state,
