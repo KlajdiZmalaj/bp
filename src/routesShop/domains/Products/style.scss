@@ -7,7 +7,7 @@
 
 .subheader {
   display: flex;
-  min-height: 60px;
+  min-height: 50px;
   background: #f9f9f9;
   position: sticky;
   z-index: 4;
@@ -24,7 +24,7 @@
   .categories {
     &__category {
       display: inline-block;
-      padding: 0 5px 0 5px;
+      padding: 0 15px 0 10px;
       font-size: 13px;
       text-transform: capitalize;
       border-left: 1px solid #efefef;
@@ -34,23 +34,24 @@
       line-height: normal;
       text-align: left;
       > div {
-        max-width: 70px;
+        max-width: 75px;
         padding-left: 9px;
       }
       &.tutti {
-        padding: 0 5px 0 0px;
+        padding: 0 12px 0 0px;
         border-left: 0;
         i {
           font-size: 16px;
           position: relative;
           vertical-align: super;
           top: 0;
+          left: 0;
         }
       }
       i {
         font-size: 11px;
         position: absolute;
-        left: 2px;
+        left: 5px;
         top: 10px;
       }
 

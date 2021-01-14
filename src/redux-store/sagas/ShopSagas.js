@@ -53,6 +53,7 @@ export function* getProductsList(params) {
 }
 
 export function* getProductDetails(params) {
+  yield put(ShopActions.setProductDetails({}));
   if (params.Product_id && params.prd_supp) {
     const response = yield call(
       ShopRequest.fetchProductD,

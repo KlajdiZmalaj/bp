@@ -3,22 +3,40 @@
     cursor: pointer;
     text-transform: uppercase;
     i {
-      color: var(--accent-bg);
-      font-size: 14px;
+      font-size: 24px;
+      &.red {
+        color: red;
+      }
+    }
+    > span {
+      position: relative;
     }
     &__nr {
-      color: var(--accent-bg);
-      font-weight: 500;
-      font-size: 16px;
-      padding: 0 2px;
+      font-weight: 900;
+      font-size: 15px;
+      position: absolute;
+      width: 90%;
+      height: 85%;
+      right: 1px;
+      text-align: center;
+      bottom: 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--header-txt);
+      &.red {
+        background: red;
+        color: #fff;
+      }
     }
+
     > span:first-child {
       padding-right: 15px;
     }
   }
   .categOpened {
     position: absolute;
-    top: 60px;
+    top: 50px;
     background-color: var(--header-bg);
     width: 100%;
 
@@ -64,15 +82,18 @@
         display: flex;
         justify-content: space-between;
         position: relative;
-        align-items: center;
         border-left: 3px solid var(--header-bg);
         margin-left: -3px;
         flex: 1 1;
         .subCategory {
           z-index: 1;
+          padding: 15px;
           &__item {
-            padding: 4px 15px;
+            padding: 4px 0;
             cursor: pointer;
+            &:hover {
+              color: var(--accent-bg);
+            }
             i {
               opacity: 0.3;
               padding-right: 5px;
@@ -90,8 +111,11 @@
       }
       .brands {
         width: 25%;
-        max-width: 300px;
+        max-width: 280px;
         background-color: #f2f2f2;
+        max-height: 520px;
+        overflow: auto;
+        padding: 0px 15px;
         .slick-slider {
           width: calc(100% - 60px);
           text-align: center;
@@ -111,15 +135,20 @@
         }
         &__item {
           background-color: #fff;
-          padding: 5px;
+          padding: 3px;
           height: 50px;
           margin: 2px;
           width: calc(50% - 4px) !important;
           float: left;
           text-align: center;
+          opacity: 0.6;
+          border: 1px solid;
           // img {
           //   display: flex;
           // }
+          &:hover {
+            opacity: 1;
+          }
         }
       }
     }

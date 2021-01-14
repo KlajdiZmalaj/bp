@@ -94,7 +94,7 @@ class ProdBycategory extends Component {
   };
 
   render() {
-    const { prodList } = this.props;
+    const { prodList, categories } = this.props;
     const { isOpenSlide, isOpenBrands, brandSelected } = this.state;
 
     const brands = get(prodList, "category_info.brands");
@@ -105,13 +105,14 @@ class ProdBycategory extends Component {
       speed: 500,
       infinite: false,
       slidesToScroll: 1,
-      slidesToShow: 10,
+      slidesToShow: 7,
     };
+
     return (
       <div className="shopProd">
         <div className="catgItems">
           {subcategories && (
-            <Slider2 {...settings}>
+            <Slider2 {...settings} className="maxWidth">
               {Object.keys(subcategories).map((item, index) => {
                 return (
                   <div
@@ -136,32 +137,8 @@ class ProdBycategory extends Component {
               })}
             </Slider2>
           )}
-
-          {/* {subcategories &&
-            Object.keys(subcategories).map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    this.props.getProductsList(
-                      null,
-                      null,
-                      this.props.isSelectedC,
-                      null,
-                      this.props.orderVal,
-                      null,
-                      null,
-                      subcategories[item].name
-                    );
-                  }}
-                >
-                  <span>{subcategories[item].name}</span>
-                  <img src={subcategories[item].image} alt=""></img>
-                </div>
-              );
-            })} */}
         </div>
-        <div className="filters">
+        <div className="filters maxWidth">
           <div className="filters__items">
             <div className="search">
               <input
@@ -268,16 +245,17 @@ class ProdBycategory extends Component {
             </div>
           </div>
         </div>
-        <div className="catProd">
+        <div className="catProd maxWidth">
           <div className="catProd__categories">
             <div className="title">Categorie</div>
             <div className="catItems">
-              {subcategories &&
-                Object.keys(subcategories).map((item, index) => {
+              {categories &&
+                Object.keys(categories).map((item, index) => {
                   return (
                     <Categories
                       key={index}
-                      cat={subcategories[item]}
+                      cat={categories[item]}
+                      isSelectedC={this.props.isSelectedC}
                     ></Categories>
                   );
                 })}
@@ -299,5 +277,6 @@ const mpStP = (state) => ({
   isSelectedSC: state.shop.isSelectedSubCategory,
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,
+  categories: state.shop.categories,
 });
 export default withRouter(connect(mpStP, ShopActions)(ProdBycategory));
