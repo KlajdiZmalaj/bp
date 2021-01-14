@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import "./style.css";
 import { withRouter } from "react-router-dom";
 import { get, isObject } from "lodash";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 class SubHeader extends Component {
   state = {
@@ -19,17 +16,13 @@ class SubHeader extends Component {
       this.props.setCategory(catProduct.replace("__", " | "));
     }
     this.props.getItemsCart();
-    console.log("this.props", this.props.cat);
   }
   setIsShown = (n) => {
     this.setState({ isOpenCat: n });
   };
-  // getProdCat = (cat) => {
-  //   this.props.getProdCat(cat);
-  //   console.log("cat", cat);
-  // };
+
   render() {
-    const { cat, isSelected, itemsCart, prodCat } = this.props;
+    const { cat, isSelected, itemsCart } = this.props;
     let { itemS } = this.state;
 
     let cartItems = 0;
@@ -38,19 +31,14 @@ class SubHeader extends Component {
 
     if (itemS === null) itemS = Object.keys(cat)[0];
 
-    const settings = {
-      infinite: false,
-      slidesToShow: 1,
-      speed: 500,
-      rows: 8,
-      slidesPerRow: 2,
-    };
-
     return (
-      <div className="subheader" onMouseLeave={() => this.setIsShown(false)}>
+      <div className="subheader">
         {this.state.isOpenCat && (
           <div className="categOpened">
-            <div className="maxWidth">
+            <div
+              className="maxWidth"
+              onMouseLeave={() => this.setIsShown(false)}
+            >
               <div className="categories">
                 {cat &&
                   isObject(cat) &&
@@ -126,36 +114,34 @@ class SubHeader extends Component {
               <div className="brands">
                 <div className="brands__title">Brands</div>
 
-                <Slider {...settings}>
-                  {cat[itemS] &&
-                    Object.keys(cat[itemS].brands).map((brand, index) => {
-                      let brandi = cat[itemS].brands;
-                      return (
-                        <div
-                          key={index}
-                          className="brands__item"
-                          onClick={() => {
-                            this.props.getProductsList(
-                              null,
-                              brandi[brand].name,
-                              cat[itemS].name
-                            );
-                            this.setIsShown(false);
-                            this.props.history.push(
-                              `/product-filtered/${
-                                cat[itemS].name.split(" | ")[0]
-                              }__${cat[itemS].name.split(" | ")[1]}`
-                            );
-                          }}
-                        >
-                          <img
-                            src={brandi[brand]?.url}
-                            alt={brandi[brand]?.name}
-                          ></img>
-                        </div>
-                      );
-                    })}
-                </Slider>
+                {cat[itemS] &&
+                  Object.keys(cat[itemS].brands).map((brand, index) => {
+                    let brandi = cat[itemS].brands;
+                    return (
+                      <div
+                        key={index}
+                        className="brands__item"
+                        onClick={() => {
+                          this.props.getProductsList(
+                            null,
+                            brandi[brand].name,
+                            cat[itemS].name
+                          );
+                          this.setIsShown(false);
+                          this.props.history.push(
+                            `/product-filtered/${
+                              cat[itemS].name.split(" | ")[0]
+                            }__${cat[itemS].name.split(" | ")[1]}`
+                          );
+                        }}
+                      >
+                        <img
+                          src={brandi[brand]?.url}
+                          alt={brandi[brand]?.name}
+                        ></img>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>
@@ -184,9 +170,14 @@ class SubHeader extends Component {
                       (isSelected === cat[item].name ? " active" : "")
                     }
                     key={index}
-                    onMouseEnter={() => this.setIsShown(true)}
-                    // onMouseLeave={() => this.setIsShown(false)}
+                    onMouseEnter={() => {
+                      this.setIsShown(true);
+                      this.setState({ itemS: item });
+                      this.props.setCategory(cat[item].name);
+                    }}
                     onClick={() => {
+                      this.props.setProductsList({});
+                      this.setIsShown(false);
                       this.props.getProductsList(null, null, cat[item].name);
                       this.props.setCategory(cat[item].name);
                       this.props.history.push(
@@ -211,12 +202,18 @@ class SubHeader extends Component {
             onClick={() => this.props.history.push("/shop-cart")}
           >
             <span>
-              Preferiti: <span className="cart__nr">0</span>
-              <i className="fal fa-heart"></i>
+              {/* <span className="cart__nr">0</span> */}
+              <i className="fas fa-heart"></i>
             </span>
             <span onClick={() => this.props.history.push("/shop-cart")}>
-              Cart: <span className="cart__nr">{cartItems}</span>
-              <i className="fal fa-shopping-cart"></i>
+              <span className={"cart__nr" + (cartItems > 0 ? " red" : "")}>
+                {cartItems}
+              </span>
+              <i
+                className={
+                  "fas fa-shopping-bag" + (cartItems > 0 ? " red" : "")
+                }
+              ></i>
             </span>
           </div>
         </div>
@@ -227,6 +224,5 @@ class SubHeader extends Component {
 const mpStP = (state) => ({
   isSelected: state.shop.isSelectedCategory,
   itemsCart: state.shop.itemsCart,
-  prodCat: state.shop.prodCat,
 });
 export default withRouter(connect(mpStP, ShopActions)(SubHeader));

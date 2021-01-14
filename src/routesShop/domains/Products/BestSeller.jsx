@@ -3,8 +3,16 @@ import { withRouter } from "react-router-dom";
 import { Pagination } from "antd";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
+import images from "themes/images";
 
 class BestSeller extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page_number: 1,
+    };
+  }
+
   handleChange = (event) => {
     this.props.setOrderVal(event.target.value);
     this.props.getProductsList(
@@ -27,7 +35,7 @@ class BestSeller extends Component {
       sliderVal,
       type,
     } = this.props;
-
+    const { page_number } = this.state;
     const total_pages = prodList.total_pages;
     const total_records = prodList.total_records;
 
@@ -59,10 +67,8 @@ class BestSeller extends Component {
             </div>
           )}
         </div>
-
         <div className="products">
-          {prodList &&
-            prodList.data &&
+          {prodList?.data ? (
             Object.keys(prodList.data).map((item, index) => {
               return (
                 <div
@@ -83,8 +89,16 @@ class BestSeller extends Component {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="products__item">
+              <div className="pBorder">
+                <img src={images.placeholder} alt=""></img>
+              </div>
+            </div>
+          )}
         </div>
+
         <div className="paginationWrapper">
           <Pagination
             onChange={(e) => {
