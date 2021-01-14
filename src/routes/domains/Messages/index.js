@@ -8,7 +8,7 @@ class Messages extends React.Component {
   render() {
     const { messages } = this.props;
     return (
-      <div className="row no-gutters max-width">
+      <div className="row no-gutters maxWidth">
         {messages.map((msg, index) => {
           return <Message key={index} msg={msg}></Message>;
         })}

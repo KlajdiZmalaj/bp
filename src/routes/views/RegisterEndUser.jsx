@@ -354,7 +354,7 @@ class RegisterEndUser extends React.Component {
       <Fragment>
         <Header></Header>
 
-        <Form className="newReg" onSubmit={this.handleSubmit}>
+        <Form className="newReg maxWidth" onSubmit={this.handleSubmit}>
           <div className="newReg--header">Register User</div>
 
           <div className="newReg--row">

@@ -12,7 +12,7 @@ const AreaDownload = ({ link6 }) => {
         onLoadCapture={() => {
           setShowIframe(true);
         }}
-        className={`${showIframe ? "" : "HiddenFrame"}`}
+        className={`${showIframe ? "" : "HiddenFrame"} maxWidth`}
         frameBorder="0"
         src={
           link6

@@ -14,7 +14,7 @@ class AnnunciAdmin extends React.Component {
           <Amministrazione active="annunci-admin"></Amministrazione>
 
           <div className="panels-container">
-            <div className="sort-annunci max-width">
+            <div className="sort-annunci maxWidth">
               <h1 className="heading-tab mr-auto">Annunci</h1>
               <ul className="m-0 p-0">
                 <li>
@@ -44,7 +44,7 @@ class AnnunciAdmin extends React.Component {
                 </li>
               </ul>
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="col-md-12">
                 <div
                   className="panel-tab"

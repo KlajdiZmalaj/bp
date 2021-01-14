@@ -63,7 +63,7 @@ class Annunci extends React.Component {
         <div className="container-fluid overview ">
           <Azioni activeMain="support" active="annunci"></Azioni>
           <div className="panels-container">
-            <div className="sort-annunci max-width">
+            <div className="sort-annunci maxWidth">
               <h1 className="heading-tab mr-auto">Annunci</h1>
               <ul className="m-0 p-0">
                 <li
@@ -113,7 +113,7 @@ class Annunci extends React.Component {
                 )}
               </ul>
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="col-md-12">
                 {ads_loading ? (
                   <Loader />

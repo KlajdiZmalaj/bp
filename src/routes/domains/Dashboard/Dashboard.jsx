@@ -293,7 +293,7 @@ class DashboardDom extends React.Component {
       });
     }, 300);
     return (
-      <div className="DContainer">
+      <div className="DContainer maxWidth">
         <div className={`Image  ${menuClassName}`}>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
           <img src={images["baner_servizi_header"]} />

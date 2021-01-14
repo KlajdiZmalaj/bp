@@ -18,7 +18,7 @@ class Messages extends React.Component {
           <Azioni activeMain="support" active="annunci"></Azioni>
 
           <div className="panels-container">
-            <div className="sort-annunci max-width">
+            <div className="sort-annunci maxWidth">
               <h1 className="heading-tab mr-auto">Messages</h1>
               <ul className="m-0 p-0">
                 <li>

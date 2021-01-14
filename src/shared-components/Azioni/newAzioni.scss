@@ -78,19 +78,14 @@
   z-index: 2;
   overflow: auto;
   .MenuS {
-    width: 1135px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     height: 50px;
-    max-width: 1136px;
     text-transform: uppercase;
     margin: 0 auto;
     align-items: center;
     background: var(--accent-bg);
-    @media (max-width: 1135px) {
-      max-width: 100%;
-    }
   }
   div,
   label,

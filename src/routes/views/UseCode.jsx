@@ -45,12 +45,12 @@ class UseCode extends React.Component {
       <div className="Container">
         <div className="container-fluid overview ">
           <div className="panels-container">
-            <div className="sort-annunci max-width border-0 mb-0">
+            <div className="sort-annunci  maxWidth border-0 mb-0">
               <h1 className="heading-tab mx-auto mb-0">
                 Utilizza codice VPTPlus
               </h1>
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="col-md-12 carica-conto">
                 <p className="text-center">
                   Scrivi il codice o leggilo con apposito lettore

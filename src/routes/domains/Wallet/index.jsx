@@ -15,7 +15,7 @@ class index extends Component {
     // console.log("userListSimple", userListSimple);
     return (
       <div className="accountInfo">
-        <div className="contentAcc">
+        <div className="contentAcc maxWidth">
           <div className="userList">
             <div className="userList--AllUsers">
               <div className="title">Users</div>

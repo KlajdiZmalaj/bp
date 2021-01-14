@@ -11,10 +11,10 @@ class CaricaConto extends React.Component {
         <div className="container-fluid overview ">
           <Azioni activeMain="contabilita" active="carica-conto"></Azioni>
           <div className="panels-container">
-            <div className="sort-annunci max-width">
+            <div className="sort-annunci maxWidth">
               <h1 className="heading-tab mr-auto">Carica Conto</h1>
             </div>
-            <div className="row no-gutters max-width">
+            <div className="row no-gutters maxWidth">
               <div className="col-md-12 carica-conto">
                 <h3>PROCEDURA PER LA RICARICA DEL BORSELLINO ELETTRONICO</h3>
                 <p>

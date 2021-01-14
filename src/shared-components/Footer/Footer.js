@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className="container-fluid">
-        <div className="row max-width">
+        <div className="row maxWidth">
           <div className="col-md-10">
             <h6> Copyright © 2013-2019 BPOINT Company. All rights reserved.</h6>
           </div>

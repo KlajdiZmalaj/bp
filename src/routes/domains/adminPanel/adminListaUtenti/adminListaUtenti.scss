@@ -193,7 +193,8 @@ div.Center--Big {
           width: auto !important;
           position: relative !important;
           left: -7px;
-          max-width: 62% !important;
+          max-width: 52% !important;
+          overflow: hidden;
           margin: 0 !important;
           height: 51px;
           max-height: 51px;
@@ -717,6 +718,7 @@ div.AdminColumns {
 
             width: calc(14% + 20px);
             margin-left: 40px;
+            margin-right: -57px;
           }
         }
       }
