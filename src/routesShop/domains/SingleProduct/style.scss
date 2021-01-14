@@ -122,13 +122,13 @@
             display: inline-block;
             border: 1px solid #707070;
             margin-right: 5px;
-            padding: 10px 20px;
             width: fit-content;
             cursor: pointer;
             border-radius: 0;
             height: 50px;
-            width: 50px;
-            padding: 0;
+            min-width: 50px;
+            width: auto;
+            padding: 0 5px;
             line-height: 50px;
             text-align: center;
             &.active {
