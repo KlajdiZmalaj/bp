@@ -12,7 +12,7 @@ import { withRouter } from "react-router-dom";
 class Products extends Component {
   render() {
     const { prodList, brands, categories } = this.props;
-    console.log("categories", categories);
+
     return (
       <div className="shopProd">
         <div className="mainBanner marginBottom">
@@ -27,8 +27,12 @@ class Products extends Component {
                   key={index}
                   className={`categoriesP  ${item}`}
                   onClick={() => {
-                    this.props.getProductsList(null, null, categories[item]);
-                    this.props.setCategory(categories[item]);
+                    this.props.getProductsList(
+                      null,
+                      null,
+                      categories[item].name
+                    );
+                    this.props.setCategory(categories[item].name);
                     this.props.history.push(
                       `/product-filtered/${
                         categories[item]?.name?.split(" | ")[0]
@@ -49,7 +53,7 @@ class Products extends Component {
 
         <ShopList brands={brands}></ShopList>
         <div className="maxWidth">
-          <BestSeller prodList={prodList} title="New arrivals"></BestSeller>
+          <BestSeller prodList={prodList} title="Offerte"></BestSeller>
         </div>
 
         <PromotionTop></PromotionTop>

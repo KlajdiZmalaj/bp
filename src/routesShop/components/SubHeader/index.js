@@ -64,7 +64,11 @@ class SubHeader extends Component {
                         key={index}
                         onMouseEnter={() => this.setState({ itemS: item })}
                         onClick={() => {
-                          this.props.getProductsList(null, null, cat[item]);
+                          this.props.getProductsList(
+                            null,
+                            null,
+                            cat[item].name
+                          );
                           this.props.setCategory(cat[item].name);
                           this.props.history.push(
                             `/product-filtered/${

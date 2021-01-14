@@ -30,17 +30,19 @@ class BestSeller extends Component {
 
     const total_pages = prodList.total_pages;
     const total_records = prodList.total_records;
+
     return (
       <div className="bestSeller paddingBottom">
         <div className="filtersCateg">
           <div className="title">{title}</div>
 
-          {isSelectedC && type === "categories" && (
+          {isSelectedC && type && type === "categories" && (
             <span>
               {total_records} products in{" "}
               <span className="text-uppercase"> {isSelectedC}</span>
             </span>
           )}
+
           {type !== "categories" && (
             <div className="right">
               <div className="order">
