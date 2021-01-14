@@ -21,10 +21,6 @@
     transition: 0.5s;
   }
   div.Categories {
-    max-width: 1135px;
-    @media (max-width: 1135px) {
-      max-width: 100%;
-    }
     margin: 0 auto;
     &.Filters {
       height: 64px;
