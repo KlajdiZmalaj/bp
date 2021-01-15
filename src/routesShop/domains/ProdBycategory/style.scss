@@ -5,14 +5,14 @@
       content: "\f053";
       font-family: "Font Awesome 5 Pro";
       font-weight: 900;
-      color: var(--header-bg);
+      color: inherit;
     }
 
     .slick-next:before {
       content: "\f054";
       font-family: "Font Awesome 5 Pro";
       font-weight: 900;
-      color: var(--header-bg);
+      color: inherit;
     }
     .slick-slider {
       width: 100%;
@@ -28,9 +28,11 @@
     }
     .slick-prev {
       left: 0;
+      color: inherit;
     }
     .slick-next {
       right: 0;
+      color: inherit;
     }
     .slick-slide {
       cursor: pointer;
@@ -77,7 +79,6 @@
       justify-content: space-between;
       border-left: 1px solid #ebebeb;
       border-right: 1px solid #ebebeb;
-      padding: 0 15px;
       .search {
         border-right: 1px solid #ebebeb;
         padding: 0 5px 0 0px;
@@ -119,7 +120,7 @@
             z-index: 5;
             background-color: #ebebeb;
             padding: 5px;
-            width: 200px;
+            width: 67%;
             right: 0;
             text-align: center;
             &.hidden {
@@ -208,7 +209,6 @@
         padding: 15px 0;
         text-transform: uppercase;
         font-size: 14px;
-        color: var(--header-bg);
         font-weight: normal;
       }
       .category {

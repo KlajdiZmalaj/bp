@@ -9,7 +9,7 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
 import { Slider, Select } from "antd";
-import { get } from "lodash";
+import { filter, head } from "lodash";
 
 import Categories from "./Categories";
 import Slider2 from "react-slick";
@@ -72,15 +72,6 @@ class ProdBycategory extends Component {
 
   search = (event) => {
     if (event.target.value.length > 2 || event.target.value.length === 0) {
-      // this.props.getProductsList(
-      //   null,
-      //   null,
-      //   null,
-      //   null,
-      //   null,
-      //   null,
-      //   event.target.value
-      // );
       this.props.getProductsList(
         null,
         null,
@@ -94,12 +85,9 @@ class ProdBycategory extends Component {
   };
 
   render() {
-    const { prodList, categories } = this.props;
+    const { prodList, categories, isSelectedC } = this.props;
     const { isOpenSlide, isOpenBrands, brandSelected } = this.state;
 
-    const brands = get(prodList, "category_info.brands");
-
-    const subcategories = get(prodList, "category_info.subcategories");
     const settings = {
       dots: false,
       speed: 500,
@@ -107,6 +95,10 @@ class ProdBycategory extends Component {
       slidesToScroll: 1,
       slidesToShow: 7,
     };
+
+    let filterCat = filter(categories, { name: isSelectedC });
+    let brands = head(filterCat)?.brands;
+    const subcategories = head(filterCat)?.subcategories;
 
     return (
       <div className="shopProd">
@@ -131,7 +123,7 @@ class ProdBycategory extends Component {
                     }}
                   >
                     <span>{subcategories[item].name}</span>
-                    <img src={subcategories[item].image} alt=""></img>
+                    <img src={subcategories[item].url} alt=""></img>
                   </div>
                 );
               })}
@@ -187,7 +179,7 @@ class ProdBycategory extends Component {
                           }}
                         >
                           <img
-                            src={brands[item].image}
+                            src={brands[item].url}
                             alt={brands[item].name}
                             onError={(e) => {
                               e.target.onerror = null;
@@ -225,22 +217,12 @@ class ProdBycategory extends Component {
                 <Select
                   placeholder="Newest Arrivals"
                   className="collection-layout__sort-order"
-                  // value={orderVal}
                   onChange={this.handleChange}
                 >
                   <Option value="">Newest Arrivals</Option>
                   <Option value="2">Price: High to Low</Option>
                   <Option value="1">Price: Low to High</Option>
                 </Select>
-                {/* <select
-                  className="collection-layout__sort-order"
-                  value={orderVal}
-                  onChange={this.handleChange}
-                >
-                  <option value="">Newest Arrivals</option>
-                  <option value="2">Price: High to Low</option>
-                  <option value="1">Price: Low to High</option>
-                </select> */}
               </div>
             </div>
           </div>

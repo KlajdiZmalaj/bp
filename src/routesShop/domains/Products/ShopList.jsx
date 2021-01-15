@@ -20,7 +20,6 @@ class ShopList extends Component {
               "shopList__item" + (isSelected === null ? " active" : "")
             }
             onClick={() => {
-              this.props.getProductsList();
               this.props.setManufacturer(null);
             }}
           >

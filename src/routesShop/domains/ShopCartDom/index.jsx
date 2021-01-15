@@ -15,35 +15,27 @@ export let removeComma = (str) => {
   return Number(str.replace(/,/g, "."));
 };
 
-// const { Option } = Select;
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-};
-const RelatedProduct = ({ title, imgSrc, price }) => {
-  return (
-    <div className="relatedProduct">
-      <img src={imgSrc || images["placeholder"]} alt="" />
-      <div>{title}</div>
-      <span>{price}</span>
-    </div>
-  );
-};
+// const settings = {
+//   dots: false,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 3,
+//   slidesToScroll: 3,
+// };
+// const RelatedProduct = ({ title, imgSrc, price }) => {
+//   return (
+//     <div className="relatedProduct">
+//       <img src={imgSrc || images["placeholder"]} alt="" />
+//       <div>{title}</div>
+//       <span>{price}</span>
+//     </div>
+//   );
+// };
 
-const ShopCartDom = ({
-  getItemsCart,
-  itemsCart,
-  getProductsList,
-  getCarries,
-  carriers,
-}) => {
+const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
   useEffect(() => {
     getItemsCart(true);
-    getProductsList();
-  }, [getItemsCart, getProductsList]);
+  }, [getItemsCart]);
 
   const cartprod = get(itemsCart, "cart", {});
   const user_data = get(itemsCart, "user_data", {});
@@ -88,29 +80,10 @@ const ShopCartDom = ({
               qnt={cartprod[item].quantity}
               id={cartprod[item].Product_id}
               prd_supp={cartprod[item].prd_supp}
+              main_id={cartprod[item].main_id}
             />
           );
         })}
-        {/* <div className="shopCartContainer--left__related">
-          <h2>related products</h2>
-          <div className="containerRealted">
-            <Slider {...settings}>
-              {productsList.data &&
-                productsList.data
-                  .filter((item, index) => index < 6)
-                  .map((item, index) => {
-                    return (
-                      <RelatedProduct
-                        imgSrc={item.Product_Image_1}
-                        title={item.Product_Name}
-                        price={`€ ${item.Product_Price}`}
-                        key={index}
-                      />
-                    );
-                  })}
-            </Slider>
-          </div>
-        </div> */}
       </div>
       <div className="shopCartContainer--right">
         <div className="titleTop">Calcola spedizione</div>
@@ -230,7 +203,6 @@ const ShopCartDom = ({
 
 const mstp = (state) => ({
   itemsCart: state.shop.itemsCart,
-  productsList: state.shop.productsList,
   carriers: state.shop.carries,
 });
 export default withRouter(connect(mstp, ShopActions)(ShopCartDom));

@@ -16,7 +16,9 @@ const RowItem = ({
   qnt,
   id,
   prd_supp,
+  main_id,
   getRemoveToCart,
+  history,
 }) => {
   const [qnty, setQnt] = useState(qnt);
 
@@ -24,7 +26,12 @@ const RowItem = ({
     <div className="cartItem">
       <img src={imgSrc || images["placeholder"]} alt="" />
       <div className="cartItem__details">
-        <Tooltip title={title}>
+        <Tooltip
+          title={title}
+          onClick={() => {
+            history.push(`/product/${main_id}/${prd_supp}`);
+          }}
+        >
           <h3>{title}</h3>
         </Tooltip>
         <div>

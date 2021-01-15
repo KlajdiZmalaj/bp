@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import images from "themes/images";
 import "./style.css";
 
-import ShopList from "./ShopList";
-import BestSeller from "./BestSeller";
+// import ShopList from "./ShopList";
+// import BestSeller from "./BestSeller";
 import PromotionBottom from "./PromotionBottom";
 import PromotionTop from "./PromotionTop";
 
 import { withRouter } from "react-router-dom";
 
+import ProductItem from "./ProductItem";
+
 class Products extends Component {
   render() {
-    const { prodList, brands, categories } = this.props;
+    const { defaultProducts, categories } = this.props;
 
     return (
       <div className="shopProd">
@@ -51,9 +53,45 @@ class Products extends Component {
             })}
         </div>
 
-        <ShopList brands={brands}></ShopList>
+        {/* <ShopList brands={brands}></ShopList> */}
         <div className="maxWidth">
-          <BestSeller prodList={prodList} title="Offerte"></BestSeller>
+          <div className="bestSeller paddingBottom">
+            {Object.keys(defaultProducts).map((item) => {
+              const prod = defaultProducts[item];
+              return (
+                <div className="homeProd" key={item}>
+                  <div className="filtersCateg text-uppercase">
+                    {categories[item]?.name}
+                  </div>
+                  <div className="products">
+                    {prod.map((subItem, index) => {
+                      return (
+                        <ProductItem item={subItem} key={index}></ProductItem>
+                      );
+                    })}
+                  </div>
+                  <div
+                    className="viewMore"
+                    onClick={() => {
+                      this.props.getProductsList(
+                        null,
+                        null,
+                        categories[item]?.name
+                      );
+                      this.props.setCategory(categories[item]?.name);
+                      this.props.history.push(
+                        `/product-filtered/${
+                          categories[item]?.name?.split(" | ")[0]
+                        }__${categories[item]?.name?.split(" | ")[1]}`
+                      );
+                    }}
+                  >
+                    Vedi tutti
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <PromotionTop></PromotionTop>
