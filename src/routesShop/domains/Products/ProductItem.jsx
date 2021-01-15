@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import images from "themes/images";
-import "./style.css";
 
-// import ShopList from "./ShopList";
-import BestSeller from "./BestSeller";
-import PromotionBottom from "./PromotionBottom";
-import PromotionTop from "./PromotionTop";
+import "./style.css";
 
 import { withRouter } from "react-router-dom";
 

@@ -15,23 +15,22 @@ export let removeComma = (str) => {
   return Number(str.replace(/,/g, "."));
 };
 
-// const { Option } = Select;
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-};
-const RelatedProduct = ({ title, imgSrc, price }) => {
-  return (
-    <div className="relatedProduct">
-      <img src={imgSrc || images["placeholder"]} alt="" />
-      <div>{title}</div>
-      <span>{price}</span>
-    </div>
-  );
-};
+// const settings = {
+//   dots: false,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 3,
+//   slidesToScroll: 3,
+// };
+// const RelatedProduct = ({ title, imgSrc, price }) => {
+//   return (
+//     <div className="relatedProduct">
+//       <img src={imgSrc || images["placeholder"]} alt="" />
+//       <div>{title}</div>
+//       <span>{price}</span>
+//     </div>
+//   );
+// };
 
 const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
   useEffect(() => {

@@ -14,8 +14,7 @@ import ProductItem from "./ProductItem";
 class Products extends Component {
   render() {
     const { defaultProducts, categories } = this.props;
-    console.log("defaultProducts", defaultProducts);
-    console.log("categories", categories);
+
     return (
       <div className="shopProd">
         <div className="mainBanner marginBottom">
@@ -60,7 +59,7 @@ class Products extends Component {
             {Object.keys(defaultProducts).map((item) => {
               const prod = defaultProducts[item];
               return (
-                <div className="homeProd">
+                <div className="homeProd" key={item}>
                   <div className="filtersCateg text-uppercase">
                     {categories[item]?.name}
                   </div>
@@ -87,7 +86,7 @@ class Products extends Component {
                       );
                     }}
                   >
-                    Vedi tutto
+                    Vedi tutti
                   </div>
                 </div>
               );

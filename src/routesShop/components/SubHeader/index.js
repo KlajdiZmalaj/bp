@@ -109,7 +109,7 @@ class SubHeader extends Component {
                       }
                     )}
                 </div>
-                <img src={cat[itemS]?.url}></img>
+                <img src={cat[itemS]?.url} alt={cat[itemS]?.name}></img>
               </div>
               <div className="brands">
                 <div className="brands__title">Brands</div>
