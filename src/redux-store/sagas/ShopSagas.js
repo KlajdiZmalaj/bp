@@ -72,6 +72,12 @@ export function* getBrands() {
     yield put(ShopActions.setBrands(response.data.data));
   }
 }
+export function* getDefaultProducts() {
+  const response = yield call(ShopRequest.fetchDefaultProducts);
+  if (response.data) {
+    yield put(ShopActions.setDefaultProducts(response.data.data));
+  }
+}
 
 export function* getCategories() {
   const response = yield call(ShopRequest.fetchCategories);

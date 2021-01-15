@@ -269,62 +269,6 @@ class SingleProduct extends Component {
                           );
                         })}
 
-                    {/* {product.Models["colore"] && (
-                      <Form.Item>
-                        <div className="color text-uppercase pb-3">
-                          Colour:
-                          {getFieldDecorator("selectedColor", {
-                            rules: [
-                              {
-                                required: true,
-                                message: "Scegli un colore",
-                              },
-                            ],
-                          })(
-                            <Select
-                              placeholder="Scegli un colore"
-                              onChange={this.handleChangeColour}
-                            >
-                              {product.Models["colore"] &&
-                                product.Models["colore"].map((item, index) => {
-                                  return (
-                                    <Option
-                                      value={item.value}
-                                      key={index}
-                                      onClick={() => this.handleProduct(item)}
-                                    >
-                                      {item.value}
-                                    </Option>
-                                  );
-                                })}
-                            </Select>
-                          )}
-                        </div>
-                      </Form.Item>
-                    )}
-                    {product.Models["design"] && (
-                      <div className="color text-uppercase pb-3">
-                        Colour:
-                        <Select
-                          onChange={this.handleChangeColour}
-                          placeholder="Scegli un colore"
-                        >
-                          {product.Models["design"] &&
-                            product.Models["design"].map((item, index) => {
-                              return (
-                                <Option
-                                  value={item.value}
-                                  key={index}
-                                  onClick={() => this.handleProduct(item)}
-                                >
-                                  {item.value}
-                                </Option>
-                              );
-                            })}
-                        </Select>
-                      </div>
-                    )} */}
-
                     {product.Models["taglia"] && (
                       <Form.Item>
                         <div className="size text-uppercase pb-3">
@@ -440,7 +384,6 @@ class SingleProduct extends Component {
 }
 
 const mapsStateToProps = (state) => ({
-  productsList: state.shop.productsList,
   product: state.shop.productD,
   productCart: state.shop.productCart,
 });

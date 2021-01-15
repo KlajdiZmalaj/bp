@@ -9,11 +9,12 @@ import SubHeader from "routesShop/components/SubHeader/index.js";
 
 class Products extends Component {
   componentDidMount() {
-    this.props.getProductsList(null, null, "Offerte | Refurbished");
-    this.props.getBrands();
+    // this.props.getProductsList(null, null, "Offerte | Refurbished");
+    // this.props.getBrands();
     this.props.getCategories();
     this.props.setCategory(null);
     this.props.setManufacturer(null);
+    this.props.getDefaultProducts();
   }
 
   render() {
@@ -22,8 +23,8 @@ class Products extends Component {
         <Header></Header>
         <SubHeader cat={this.props.categories}></SubHeader>
         <AllProducts
-          prodList={this.props.productsList}
           brands={this.props.brands}
+          defaultProducts={this.props.defaultProducts}
           categories={this.props.categories}
           getProductsList={this.props.getProductsList}
           setCategory={this.props.setCategory}
@@ -36,5 +37,6 @@ const mpStP = (state) => ({
   productsList: state.shop.productsList,
   brands: state.shop.brands,
   categories: state.shop.categories,
+  defaultProducts: state.shop.defaultProducts,
 });
 export default connect(mpStP, ShopActions)(Products);

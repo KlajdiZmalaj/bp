@@ -106,6 +106,7 @@ export default function* root() {
       takeLatest("GET_PRODUCTS_LIST", ShopGenerators.getProductsList),
       takeLatest("GET_PRODUCT_DETAILS", ShopGenerators.getProductDetails),
       takeLatest("GET_BRANDS", ShopGenerators.getBrands),
+      takeLatest("GET_DEFAULT_PRODUCTS", ShopGenerators.getDefaultProducts),
       takeLatest("GET_CATEGORIES", ShopGenerators.getCategories),
       takeLatest("CHECK_OUT", ShopGenerators.checkOut),
       takeLatest("GET_TO_CART", ShopGenerators.getToCart),

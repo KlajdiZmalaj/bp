@@ -33,17 +33,10 @@ const RelatedProduct = ({ title, imgSrc, price }) => {
   );
 };
 
-const ShopCartDom = ({
-  getItemsCart,
-  itemsCart,
-  getProductsList,
-  getCarries,
-  carriers,
-}) => {
+const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
   useEffect(() => {
     getItemsCart(true);
-    getProductsList();
-  }, [getItemsCart, getProductsList]);
+  }, [getItemsCart]);
 
   const cartprod = get(itemsCart, "cart", {});
   const user_data = get(itemsCart, "user_data", {});
@@ -91,26 +84,6 @@ const ShopCartDom = ({
             />
           );
         })}
-        {/* <div className="shopCartContainer--left__related">
-          <h2>related products</h2>
-          <div className="containerRealted">
-            <Slider {...settings}>
-              {productsList.data &&
-                productsList.data
-                  .filter((item, index) => index < 6)
-                  .map((item, index) => {
-                    return (
-                      <RelatedProduct
-                        imgSrc={item.Product_Image_1}
-                        title={item.Product_Name}
-                        price={`€ ${item.Product_Price}`}
-                        key={index}
-                      />
-                    );
-                  })}
-            </Slider>
-          </div>
-        </div> */}
       </div>
       <div className="shopCartContainer--right">
         <div className="titleTop">Calcola spedizione</div>
@@ -230,7 +203,6 @@ const ShopCartDom = ({
 
 const mstp = (state) => ({
   itemsCart: state.shop.itemsCart,
-  productsList: state.shop.productsList,
   carriers: state.shop.carries,
 });
 export default withRouter(connect(mstp, ShopActions)(ShopCartDom));

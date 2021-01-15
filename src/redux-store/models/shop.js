@@ -16,6 +16,8 @@ const { Types, Creators } = createActions({
   setProductDetails: ["productD"],
   getBrands: [],
   setBrands: ["brands"],
+  getDefaultProducts: [],
+  setDefaultProducts: ["defaultProducts"],
   getCategories: [],
   setCategories: ["categories"],
   setManufacturer: ["isSelectedManufacturer"],
@@ -62,6 +64,7 @@ const INITIAL_STATE = {
   productsList: {},
   productD: {},
   brands: {},
+  defaultProducts: {},
   categories: {},
   isSelectedManufacturer: null,
   isSelectedCategory: null,
@@ -89,6 +92,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_BRANDS: (state, { brands }) => ({
     ...state,
     brands,
+  }),
+  SET_DEFAULT_PRODUCTS: (state, { defaultProducts }) => ({
+    ...state,
+    defaultProducts,
   }),
   SET_CATEGORIES: (state, { categories }) => ({
     ...state,

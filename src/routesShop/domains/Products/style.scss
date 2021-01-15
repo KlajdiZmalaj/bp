@@ -368,7 +368,10 @@
         }
       }
     }
-
+    .homeProd {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
     .products {
       display: inline-grid;
       grid-template-columns: repeat(6, calc(100% / 6 - 10px));
@@ -401,6 +404,15 @@
           line-height: normal;
         }
       }
+    }
+    .viewMore {
+      color: var(--accent-bg);
+      border: 1px solid;
+      width: 150px;
+      padding: 5px 0px;
+      margin: 0 auto;
+      text-align: center;
+      cursor: pointer;
     }
   }
   .promotionTop {

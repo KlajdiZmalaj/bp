@@ -74,6 +74,15 @@ export const fetchBrands = () =>
     })
     .catch((error) => ({ error }));
 
+export const fetchDefaultProducts = () =>
+  instanceAxios
+    .get(`/shop/homeProducts`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+
 export const fetchCategories = () =>
   instanceAxios
     .get(`/shop/categories`, {
