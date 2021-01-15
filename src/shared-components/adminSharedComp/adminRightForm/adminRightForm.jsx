@@ -98,13 +98,28 @@ class AdminRightForm extends React.Component {
       switchRightFormWide,
     } = this.props;
     return (
-      <div className={"AdminRightForm" + (!rightFormWide ? " smallForm" : "")}>
+      <div
+        className={"AdminRightForm" + (!rightFormWide ? " smallForm" : "")}
+        style={
+          !rightFormWide
+            ? {
+                top: `${this.state.top - 25}px`,
+                left: `${this.state.left - 25}px`,
+              }
+            : {}
+        }
+      >
         {/* <PrenotazioneBiglietti /> */}
         {!rightFormWide && (
           <button
             className="setWide"
             onClick={() => {
               switchRightFormWide(true);
+            }}
+            draggable
+            onDragEnd={(e) => {
+              console.log("ca ka e", e, e.clientX, e.clientY);
+              this.setState({ top: e.clientY, left: e.clientX });
             }}
           >
             <i className="fal fa-bars" aria-hidden="true"></i>

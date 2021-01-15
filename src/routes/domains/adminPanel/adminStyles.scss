@@ -367,13 +367,13 @@
       width: calc(100% - 200px);
     }
     &.WideForm {
-      width: calc(100% - 50px - 200px);
+      width: calc(100% - 200px);
       .AdminListaUtenti--Header,
       .col-md-12,
       .paginationWrapper,
       .AdminListaUtentiRow,
       .transTable.Movimenti thead tr {
-        width: calc(100% - 50px - 200px);
+        width: calc(100% - 200px);
       }
     }
     &--Big {
@@ -394,13 +394,13 @@
       min-height: 550px;
       margin-bottom: 41px;
       &.WideForm {
-        width: calc(100% - 50px - 51px);
+        width: calc(100% - 51px);
         .AdminListaUtenti--Header,
         .col-md-12,
         .paginationWrapper,
         .AdminListaUtentiRow,
         .transTable.Movimenti thead tr {
-          width: calc(100% - 50px - 51px);
+          width: calc(100% - 51px);
         }
       }
       &.errorsCenter {
@@ -1897,4 +1897,12 @@ body.bodyAdmin,
   margin-left: 0 !important;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.AdminColumns .transTable td {
+  &:nth-child(2),
+  &:nth-child(3),
+  &:nth-child(4) {
+    border-left: 1px solid #e7e7e7 !important;
+  }
 }

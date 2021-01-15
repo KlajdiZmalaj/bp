@@ -161,7 +161,6 @@ class AdminListaUtenti extends React.Component {
                     width: "4%",
                     justifyContent: "flex-end",
                     marginRight: "1.5%",
-                    left: "1%",
                   }
                 : screenWidth <= 400 && Special
                 ? { paddingLeft: "8%" }
