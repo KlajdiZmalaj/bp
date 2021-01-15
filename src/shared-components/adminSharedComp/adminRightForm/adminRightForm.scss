@@ -9,7 +9,7 @@
   overflow: auto;
   &.smallForm {
     width: 50px;
-    * {
+    > * {
       display: none;
     }
     .setWide {
@@ -184,6 +184,7 @@
     height: 98vh;
     border: 1px solid #ebeced;
     padding-right: 10px;
+    box-shadow: -7px 0px 20px 0px #353d455e;
     & i {
       font-size: 14px;
       font-weight: 300;
