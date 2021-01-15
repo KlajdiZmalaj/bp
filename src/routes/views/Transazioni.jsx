@@ -501,7 +501,7 @@ class Transazioni extends React.Component {
           )}
 
           <div className="panels-container">
-            <div className="sort-annunci sort-trasazioni maxWidth border-0">
+            <div className="sort-annunci sort-trasazioni max-width border-0">
               {isCalendarOpen && (
                 <CalendarRangePicker
                   setStateFunc={(item) => {
@@ -767,7 +767,7 @@ class Transazioni extends React.Component {
                 </React.Fragment>
               )}
             </div>
-            <div className="row no-gutters maxWidth">
+            <div className="row no-gutters max-width">
               <div className="col-md-12">
                 {payments?.message && (
                   <div className="alert alert-danger text-center">
