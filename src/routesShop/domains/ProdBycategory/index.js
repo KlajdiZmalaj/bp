@@ -9,7 +9,7 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
 import { Slider, Select } from "antd";
-import { get, filter, head } from "lodash";
+import { filter, head } from "lodash";
 
 import Categories from "./Categories";
 import Slider2 from "react-slick";
