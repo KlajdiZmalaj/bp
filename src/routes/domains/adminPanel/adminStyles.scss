@@ -1906,3 +1906,23 @@ body.bodyAdmin,
     border-left: 1px solid #e7e7e7 !important;
   }
 }
+body.elFocus:before {
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  top: 0%;
+  left: 0;
+  z-index: 100;
+  background: #000c;
+  display: block;
+  position: fixed;
+}
+
+body.bodyAdmin.elFocus:after {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 101;
+  content: "Trascina il pulsante intorno ↴";
+  color: #fff;
+}

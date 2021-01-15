@@ -115,11 +115,13 @@ class AdminRightForm extends React.Component {
             className="setWide"
             onClick={() => {
               switchRightFormWide(true);
+              document.body.classList.remove("elFocus");
             }}
             draggable
             onDragEnd={(e) => {
               console.log("ca ka e", e, e.clientX, e.clientY);
               this.setState({ top: e.clientY, left: e.clientX });
+              document.body.classList.remove("elFocus");
             }}
           >
             <i className="fal fa-bars" aria-hidden="true"></i>
@@ -135,6 +137,14 @@ class AdminRightForm extends React.Component {
                     style={{ cursor: "pointer" }}
                     onClick={() => {
                       switchRightFormWide(false);
+                      if (!window.localStorage.getItem("gragBtn")) {
+                        document.body.classList.add("elFocus");
+                        window.localStorage.setItem("gragBtn", true);
+                      }
+
+                      // setTimeout(() => {
+                      //   document.body.classList.remove("elFocus");
+                      // }, 2000);
                     }}
                     className="fal fa-bars"
                     aria-hidden="true"
