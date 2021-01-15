@@ -29,6 +29,7 @@ const INITIAL_STATE = {
   depositoActiveVisibility: true,
   addebitoActiveVisibility: false,
   ...resetUserStateChangeFields,
+  rightFormWide: true,
 };
 
 class AdminPanelDom extends React.Component {
@@ -93,6 +94,9 @@ class AdminPanelDom extends React.Component {
       }
     );
   };
+  switchRightFormWide = (rightFormWide) => {
+    this.setState({ rightFormWide });
+  };
   componentDidMount() {
     this.props.getSkins();
     this.props.getStatistiche(this.props.activeSkinId);
@@ -138,10 +142,16 @@ class AdminPanelDom extends React.Component {
       this.props.screenWidth !== prevProps.screenWidth
     ) {
       !this.state.menuSkinVisible && this.props.screenWidth >= 1024
-        ? this.props.setAdminPanelClass("Center")
+        ? this.props.setAdminPanelClass(
+            !this.state.rightFormWide ? "Center WideForm" : "Center"
+          )
         : this.props.screenWidth > 1024
-        ? this.props.setAdminPanelClass("Center--Big")
-        : this.props.setAdminPanelClass("Center--Big");
+        ? this.props.setAdminPanelClass(
+            !this.state.rightFormWide ? "Center--Big WideForm" : "Center--Big"
+          )
+        : this.props.setAdminPanelClass(
+            !this.state.rightFormWide ? "Center--Big WideForm" : "Center--Big"
+          );
     }
   }
   render() {
@@ -149,6 +159,7 @@ class AdminPanelDom extends React.Component {
       menuSkinVisible,
       depositoActiveVisibility,
       addebitoActiveVisibility,
+      rightFormWide,
     } = this.state;
     // console.log("ca ngel state", this.state);
     const {
@@ -595,9 +606,13 @@ class AdminPanelDom extends React.Component {
             <div
               className={`${
                 !menuSkinVisible && screenWidth >= 1024
-                  ? "Center"
+                  ? `Center${!rightFormWide ? " WideForm" : ""}`
                   : screenWidth > 1024
-                  ? "Center--Big"
+                  ? !rightFormWide
+                    ? "Center--Big WideForm"
+                    : "Center--Big"
+                  : !rightFormWide
+                  ? "Center--Big WideForm"
                   : "Center--Big"
               }${
                 window.location.hash.match(/\/support/) ? " errorsCenter" : ""
@@ -625,7 +640,11 @@ class AdminPanelDom extends React.Component {
               {this.props.component}
             </div>
             {!window.location.hash.match(/\/support/g) && (
-              <AdminRightForm leUltimeTransazioniDet={leUltimeTransazioniDet} />
+              <AdminRightForm
+                rightFormWide={rightFormWide}
+                leUltimeTransazioniDet={leUltimeTransazioniDet}
+                switchRightFormWide={this.switchRightFormWide}
+              />
             )}
           </div>
         </section>

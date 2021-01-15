@@ -366,6 +366,16 @@
     .accountInfo .contentAcc.supportContent .header {
       width: calc(100% - 200px);
     }
+    &.WideForm {
+      width: calc(100% - 50px - 200px);
+      .AdminListaUtenti--Header,
+      .col-md-12,
+      .paginationWrapper,
+      .AdminListaUtentiRow,
+      .transTable.Movimenti thead tr {
+        width: calc(100% - 50px - 200px);
+      }
+    }
     &--Big {
       position: relative;
       width: calc(100% - 51px - 400px);
@@ -383,6 +393,16 @@
       background-color: rgba(0, 0, 0, 0.031);
       min-height: 550px;
       margin-bottom: 41px;
+      &.WideForm {
+        width: calc(100% - 50px - 51px);
+        .AdminListaUtenti--Header,
+        .col-md-12,
+        .paginationWrapper,
+        .AdminListaUtentiRow,
+        .transTable.Movimenti thead tr {
+          width: calc(100% - 50px - 51px);
+        }
+      }
       &.errorsCenter {
         width: calc(100% - 51px);
         .accountInfo .contentAcc.supportContent .header {
