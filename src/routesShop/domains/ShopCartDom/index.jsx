@@ -80,6 +80,7 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
               qnt={cartprod[item].quantity}
               id={cartprod[item].Product_id}
               prd_supp={cartprod[item].prd_supp}
+              main_id={cartprod[item].main_id}
             />
           );
         })}
