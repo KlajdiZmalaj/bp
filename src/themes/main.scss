@@ -30,7 +30,12 @@ body {
   margin-left: auto !important;
   margin-right: auto !important;
 }
-
+body:not(.bodyAdmin) .panels-container .max-width {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 button,
 input,
 select,
