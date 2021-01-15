@@ -7,6 +7,26 @@
   min-height: calc(100vh - 101px);
   background-color: #272c31;
   overflow: auto;
+  &.smallForm {
+    width: 50px;
+    > * {
+      display: none;
+    }
+    .setWide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      color: #fff;
+      border: 0;
+      background: transparent;
+      i {
+        display: block;
+        font-size: 20px;
+      }
+    }
+  }
   &::-webkit-scrollbar-thumb {
     background: #353d45;
   }
@@ -164,6 +184,7 @@
     height: 98vh;
     border: 1px solid #ebeced;
     padding-right: 10px;
+    box-shadow: -7px 0px 20px 0px #353d455e;
     & i {
       font-size: 14px;
       font-weight: 300;

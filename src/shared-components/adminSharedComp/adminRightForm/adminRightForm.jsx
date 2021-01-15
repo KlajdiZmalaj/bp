@@ -94,16 +94,36 @@ class AdminRightForm extends React.Component {
       accountInfo,
       Statistiche,
       TrCoPro,
+      rightFormWide,
+      switchRightFormWide,
     } = this.props;
     return (
-      <div className="AdminRightForm">
+      <div className={"AdminRightForm" + (!rightFormWide ? " smallForm" : "")}>
         {/* <PrenotazioneBiglietti /> */}
+        {!rightFormWide && (
+          <button
+            className="setWide"
+            onClick={() => {
+              switchRightFormWide(true);
+            }}
+          >
+            <i className="fal fa-bars" aria-hidden="true"></i>
+          </button>
+        )}
         {screenWidth > 1024 &&
           (openAdminModal === false ? (
             <React.Fragment>
               {" "}
               <div className="AdminRightForm--Box">
                 <div className="AdminRightForm--Box--Statistic">
+                  <i
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      switchRightFormWide(false);
+                    }}
+                    className="fal fa-bars"
+                    aria-hidden="true"
+                  ></i>
                   <i className="fal fa-analytics"></i>
                   <span>STATISTICHE</span>
                 </div>
