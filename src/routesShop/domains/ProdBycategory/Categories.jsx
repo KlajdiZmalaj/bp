@@ -22,6 +22,9 @@ class Categories extends Component {
             this.props.setProductsList({});
             this.props.getProductsList(null, null, cat.name);
             this.props.setCategory(cat.name);
+            this.props.setSubCategory(null);
+            this.props.setSubSubCategory(null);
+            this.props.setManufacturer(null);
             this.props.history.push(
               `/product-filtered/${cat?.name?.split(" | ")[0]}__${
                 cat?.name?.split(" | ")[1]

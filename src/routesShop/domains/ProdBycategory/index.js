@@ -35,12 +35,14 @@ class ProdBycategory extends Component {
   handleChange = (event) => {
     this.props.setOrderVal(event);
     this.props.getProductsList(
-      null,
-      this.props.isSelected,
-      this.props.isSelectedC,
-      this.props.isSelectedSC,
-      event,
-      this.props.sliderVal
+      null, //page
+      this.props.isSelected, //brand
+      this.props.isSelectedC, //category
+      this.props.isSelectedSSC, //subcategory
+      event, //order
+      this.props.sliderVal, //slider
+      null, //search
+      this.props.isSelectedSC //subcategory
     );
     this.state.isOpenBrands && this.setState({ isOpenBrands: false });
     this.state.isOpenSlide && this.setState({ isOpenSlide: false });
@@ -65,22 +67,25 @@ class ProdBycategory extends Component {
       null,
       this.props.isSelected,
       this.props.isSelectedC,
-      this.props.isSelectedSC,
+      this.props.isSelectedSSC,
       this.props.orderVal,
-      this.props.sliderVal
+      this.props.sliderVal,
+      null,
+      this.props.isSelectedSC
     );
   };
 
   search = (event) => {
     if (event.target.value.length > 2 || event.target.value.length === 0) {
       this.props.getProductsList(
-        null,
-        null,
-        this.props.isSelectedC,
-        this.props.isSelectedSC,
-        this.props.orderVal,
-        this.props.sliderVal,
-        event.target.value
+        null, //page
+        this.props.isSelected, //brand
+        this.props.isSelectedC, //category
+        this.props.isSelectedSSC, //subcategory
+        this.props.orderVal, //order
+        this.props.sliderVal, //slider
+        event.target.value, //search
+        this.props.isSelectedSC //subcategory
       );
     }
   };
@@ -111,6 +116,8 @@ class ProdBycategory extends Component {
                   <div
                     key={index}
                     onClick={() => {
+                      this.props.setSubCategory(subcategories[item].name);
+                      this.props.setSubSubCategory(null);
                       this.props.getProductsList(
                         null,
                         null,
@@ -157,6 +164,24 @@ class ProdBycategory extends Component {
                     "price_Options brands" + (!isOpenBrands ? " hidden" : "")
                   }
                 >
+                  <div
+                    onClick={() => {
+                      this.props.setManufacturer(null);
+                      this.props.getProductsList(
+                        null,
+                        null,
+                        this.props.isSelectedC,
+                        this.props.isSelectedSSC,
+                        this.props.orderVal,
+                        this.props.sliderVal,
+                        null,
+                        this.props.isSelectedSC
+                      );
+                    }}
+                    className="tutti"
+                  >
+                    Tutti Brands
+                  </div>
                   {brands &&
                     Object.keys(brands).map((item, index) => {
                       return (
@@ -186,11 +211,22 @@ class ProdBycategory extends Component {
                 >
                   <Slider
                     min={0}
-                    max={prodList && Math.ceil(prodList.highest_price)}
+                    max={prodList.highest_price}
                     range
+                    defaultValue={[0, prodList.highest_price]}
+                    disabled={false}
                     onChange={this.handleChangeSlider}
                   />
-                  <button onClick={this.filterByRange}>Filter</button>
+                  {/* <Slider
+                    min={0}
+                    max={prodList && Math.ceil(prodList.highest_price)}
+                    range
+                    disabled={false}
+                    marks={[0, Math.ceil(prodList.highest_price)]}
+                    defaultValue={[0, Math.ceil(prodList.highest_price)]}
+                    onChange={this.handleChangeSlider}
+                  /> */}
+                  <button onClick={this.filterByRange}>Filterrr</button>
                 </div>
               </div>
               <div className="order">
@@ -241,6 +277,7 @@ const mpStP = (state) => ({
   isSelected: state.shop.isSelectedManufacturer,
   isSelectedC: state.shop.isSelectedCategory,
   isSelectedSC: state.shop.isSelectedSubCategory,
+  isSelectedSSC: state.shop.isSelectedSubSubCategory,
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,
   categories: state.shop.categories,

@@ -66,6 +66,21 @@
         .title {
           font-size: 18px;
           color: #272c31;
+          display: inline-block;
+          width: calc(100% - 50px);
+        }
+        .addToFav {
+          display: inline-block;
+          width: 50px;
+          float: right;
+          padding: 3px;
+          opacity: 0.6;
+          i {
+            font-size: 20px;
+            border: 1px solid;
+            border-radius: 50%;
+            padding: 12px;
+          }
         }
         .price {
           font-size: 24px;

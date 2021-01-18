@@ -10,27 +10,32 @@ const Brand = ({
   setManufacturer,
   brands,
   item,
+  isSelected,
   isSelectedC,
   isSelectedSC,
+  isSelectedSSC,
   orderVal,
   sliderVal,
 }) => {
   const [isImage, setIsImage] = useState(false);
-  const [brandSelected, setbrandSelected] = useState(null);
+
   return (
     <div
-      className={"brands__item" + (brandSelected === item ? " active" : "")}
+      className={
+        "brands__item" + (isSelected === brands[item].name ? " active" : "")
+      }
       onClick={() => {
         getProductsList(
           null,
           brands[item].name,
           isSelectedC,
-          isSelectedSC,
+          isSelectedSSC,
           orderVal,
-          sliderVal
+          sliderVal,
+          null,
+          isSelectedSC
         );
         setManufacturer(brands[item].name);
-        setbrandSelected(item);
       }}
     >
       <img
@@ -51,6 +56,7 @@ const mstp = (state) => ({
   isSelected: state.shop.isSelectedManufacturer,
   isSelectedC: state.shop.isSelectedCategory,
   isSelectedSC: state.shop.isSelectedSubCategory,
+  isSelectedSSC: state.shop.isSelectedSubSubCategory,
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,
 });

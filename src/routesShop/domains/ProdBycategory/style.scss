@@ -104,6 +104,14 @@
           width: 200px;
           height: 50px;
           border-left: 1px solid #ebebeb;
+          text-align: center;
+          .tutti {
+            cursor: pointer;
+            background-color: #fff;
+            padding: 5px 0px;
+            width: 30%;
+            margin: 0px auto 2px auto;
+          }
           .price {
             min-height: 50px;
             align-items: center;

@@ -172,6 +172,9 @@ class SingleProduct extends Component {
                     </span>
                     - {product.Product_SubCategory}
                   </div>
+                  <div className="addToFav">
+                    <i className="fas fa-heart"></i>
+                  </div>
                   <div className="price marginBottom">
                     {product.Product_Price_Special} €
                   </div>
