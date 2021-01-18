@@ -172,9 +172,12 @@
           text-align: center;
           opacity: 0.6;
           border: 1px solid;
-          // img {
-          //   display: flex;
-          // }
+          line-height: normal;
+          img {
+            &.hidden {
+              display: none;
+            }
+          }
           &:hover {
             opacity: 1;
           }

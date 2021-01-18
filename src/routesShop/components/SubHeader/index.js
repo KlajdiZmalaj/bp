@@ -5,6 +5,7 @@ import "./style.css";
 import { withRouter } from "react-router-dom";
 import { get, isObject } from "lodash";
 import images from "themes/images";
+import Brand from "./Brand";
 
 class SubHeader extends Component {
   state = {
@@ -39,7 +40,7 @@ class SubHeader extends Component {
         className={"subheader " + (this.state.isOpenCat ? "blur" : "")}
         onMouseLeave={() => this.setIsShown(false)}
       >
-        {this.state.isOpenCat && (
+        {!this.state.isOpenCat && (
           <div className="categOpened">
             <div
               className="maxWidth"
@@ -125,34 +126,13 @@ class SubHeader extends Component {
                     Object.keys(cat[itemS].brands).map((brand, index) => {
                       let brandi = cat[itemS].brands;
                       return (
-                        <div
+                        <Brand
                           key={index}
-                          className="brands__item"
-                          onClick={() => {
-                            this.props.getProductsList(
-                              null,
-                              brandi[brand].name,
-                              cat[itemS].name
-                            );
-                            this.setIsShown(false);
-                            this.props.history.push(
-                              `/product-filtered/${
-                                cat[itemS].name.split(" | ")[0]
-                              }__${cat[itemS].name.split(" | ")[1]}`
-                            );
-                          }}
-                        >
-                          <img
-                            src={brandi[brand]?.url || images["placeholder"]}
-                            alt={brandi[brand]?.name}
-                            border="0"
-                            // onError={(e) => {
-                            //   e.target.onerror = null;
-                            //   e.target.src = images["placeholder"];
-                            //   this.cl(e);
-                            // }}
-                          />
-                        </div>
+                          getProductsList={this.props.getProductsList}
+                          brand={brandi[brand]}
+                          cat={cat}
+                          itemS={itemS}
+                        ></Brand>
                       );
                     })}
                 </div>
