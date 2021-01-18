@@ -9,7 +9,7 @@ class BestSeller extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page_number: 1,
+      page_number: this.props.pageNumber,
     };
   }
 
@@ -23,6 +23,16 @@ class BestSeller extends Component {
       event.target.value
     );
   };
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.isSelectedC !== this.props.isSelectedC ||
+      prevProps.isSelectedSC !== this.props.isSelectedSC ||
+      prevProps.isSelectedSSC !== this.props.isSelectedSSC
+    ) {
+      this.setState({ page_number: 1 });
+    }
+  }
 
   render() {
     const {
@@ -99,9 +109,9 @@ class BestSeller extends Component {
             </div>
           )}
         </div>
-
         <div className="paginationWrapper">
           <Pagination
+            current={page_number}
             onChange={(e) => {
               this.setState({ page_number: e });
               this.props.getProductsList(
@@ -124,7 +134,6 @@ class BestSeller extends Component {
 }
 
 const mpStP = (state) => ({
-  productsList: state.shop.productsList,
   isSelected: state.shop.isSelectedManufacturer,
   isSelectedC: state.shop.isSelectedCategory,
   isSelectedSC: state.shop.isSelectedSubCategory,

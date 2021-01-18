@@ -24,7 +24,7 @@ const Brand = ({ getProductsList, history, brand, cat, itemS }) => {
       <img
         src={brand?.url}
         alt=""
-        className={cost && "hidden"}
+        className={cost ? "hidden" : ""}
         onError={(e) => {
           e.target.onerror = null;
           setCost(true);
