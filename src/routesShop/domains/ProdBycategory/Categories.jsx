@@ -15,16 +15,10 @@ class Categories extends Component {
       <div
         className={"category" + (isSelectedC === cat?.name ? " active" : "")}
       >
-        {isOpen && (
-          <i
-            className="fas fa-caret-down"
-            onClick={() => this.setState({ isOpen: !this.state.isOpen })}
-          ></i>
-        )}
+        {isOpen && <i className="fas fa-caret-down"></i>}
         <div
           className="title"
           onClick={() => {
-            // this.setState({ isOpen: !this.state.isOpen });
             this.props.setProductsList({});
             this.props.getProductsList(null, null, cat.name);
             this.props.setCategory(cat.name);
