@@ -231,6 +231,7 @@ class ProdBycategory extends Component {
           <div className="catProd__categories">
             <div className="title">Categorie</div>
             <div className="catItems">
+              {this.props.isSelectedC}
               {categories &&
                 Object.keys(categories).map((item, index) => {
                   return (
