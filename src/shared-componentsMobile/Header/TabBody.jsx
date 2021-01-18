@@ -44,15 +44,14 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
         );
       })}
       <div className="tabBody--a">
-        <div
+        <a
+          href="https://tawk.to/chat/5d443c5f7d27204601c8f6b8/default"
+          target="_blank"
           className="tabBody--a__b"
-          onClick={() => {
-            open(window.innerWidth, window.innerHeight);
-          }}
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
-        </div>
+        </a>
         {accountInfo?.profile ? (
           <div onClick={() => logOut()} className="tabBody--a__b">
             LOGOUT <i className="fal fa-sign-out"></i>
@@ -163,15 +162,14 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
         )
       )}
       <div className="tabBody--a">
-        <div
+        <a
+          href="https://tawk.to/chat/5d443c5f7d27204601c8f6b8/default"
+          target="_blank"
           className="tabBody--a__b"
-          onClick={() => {
-            open(window.innerWidth, window.innerHeight);
-          }}
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
-        </div>
+        </a>
         {accountInfo?.profile ? (
           <div onClick={() => logOut()} className="tabBody--a__b">
             LOGOUT <i className="fal fa-sign-out"></i>
