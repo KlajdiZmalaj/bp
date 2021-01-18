@@ -22,9 +22,7 @@ class SubHeader extends Component {
   setIsShown = (n) => {
     this.setState({ isOpenCat: n });
   };
-  cl = (e) => {
-    console.log(e.target);
-  };
+
   render() {
     const { cat, isSelected, itemsCart } = this.props;
     let { itemS } = this.state;
@@ -40,7 +38,7 @@ class SubHeader extends Component {
         className={"subheader " + (this.state.isOpenCat ? "blur" : "")}
         onMouseLeave={() => this.setIsShown(false)}
       >
-        {!this.state.isOpenCat && (
+        {this.state.isOpenCat && (
           <div className="categOpened">
             <div
               className="maxWidth"
