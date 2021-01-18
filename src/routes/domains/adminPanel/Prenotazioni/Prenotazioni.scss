@@ -546,7 +546,7 @@ div.Prenotazioni {
     margin: 0 auto;
     width: 100%;
     padding-bottom: 76px;
-    max-width: 100%;
+    max-width: 100% !important;
     height: calc(100vh - 232px);
     overflow-y: auto;
   }
