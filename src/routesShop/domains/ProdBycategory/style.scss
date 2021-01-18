@@ -147,13 +147,20 @@
             &__item {
               width: 92px;
               height: 50px;
-              display: inline-block;
               margin: 2px;
               background: #fff;
               float: left;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              line-height: normal;
+              cursor: pointer;
               img {
                 max-width: 100%;
                 max-height: 100%;
+                &.hidden {
+                  display: none;
+                }
               }
               &.active {
                 border: 1px solid #f26521;

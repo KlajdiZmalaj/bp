@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 const Brand = ({ getProductsList, history, brand, cat, itemS }) => {
-  const [cost, setCost] = useState(false);
+  const [isImage, setIsImage] = useState(false);
 
   return (
     <div
@@ -24,13 +24,13 @@ const Brand = ({ getProductsList, history, brand, cat, itemS }) => {
       <img
         src={brand?.url}
         alt=""
-        className={cost ? "hidden" : ""}
+        className={isImage ? "hidden" : ""}
         onError={(e) => {
           e.target.onerror = null;
-          setCost(true);
+          setIsImage(true);
         }}
       />
-      {cost && brand?.name}
+      {isImage && brand?.name}
     </div>
   );
 };

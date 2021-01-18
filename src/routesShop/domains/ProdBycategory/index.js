@@ -12,6 +12,7 @@ import { Slider, Select } from "antd";
 import { filter, head } from "lodash";
 
 import Categories from "./Categories";
+import Brand from "./Brand";
 import Slider2 from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,7 +21,6 @@ class ProdBycategory extends Component {
   state = {
     isOpenSlide: false,
     isOpenBrands: false,
-    brandSelected: null,
   };
 
   componentDidMount() {
@@ -31,11 +31,8 @@ class ProdBycategory extends Component {
       catProduct && catProduct.replace("__", " | ")
     );
   }
-  onChange = (a, b, c) => {
-    console.log(a, b, c);
-  };
+
   handleChange = (event) => {
-    console.log(event);
     this.props.setOrderVal(event);
     this.props.getProductsList(
       null,
@@ -45,14 +42,18 @@ class ProdBycategory extends Component {
       event,
       this.props.sliderVal
     );
+    this.state.isOpenBrands && this.setState({ isOpenBrands: false });
+    this.state.isOpenSlide && this.setState({ isOpenSlide: false });
   };
 
   openSlide = () => {
     this.setState({ isOpenSlide: !this.state.isOpenSlide });
+    this.state.isOpenBrands && this.setState({ isOpenBrands: false });
   };
 
   openBrands = () => {
     this.setState({ isOpenBrands: !this.state.isOpenBrands });
+    this.state.isOpenSlide && this.setState({ isOpenSlide: false });
   };
 
   handleChangeSlider = (event) => {
@@ -86,7 +87,7 @@ class ProdBycategory extends Component {
 
   render() {
     const { prodList, categories, isSelectedC } = this.props;
-    const { isOpenSlide, isOpenBrands, brandSelected } = this.state;
+    const { isOpenSlide, isOpenBrands } = this.state;
 
     const settings = {
       dots: false,
@@ -159,34 +160,13 @@ class ProdBycategory extends Component {
                   {brands &&
                     Object.keys(brands).map((item, index) => {
                       return (
-                        <div
+                        <Brand
                           key={index}
-                          className={
-                            "brands__item" +
-                            (brandSelected === item ? " active" : "")
-                          }
-                          onClick={() => {
-                            this.props.getProductsList(
-                              null,
-                              brands[item].name,
-                              this.props.isSelectedC,
-                              this.props.isSelectedSC,
-                              this.props.orderVal,
-                              this.props.sliderVal
-                            );
-                            this.props.setManufacturer(brands[item].name);
-                            this.setState({ brandSelected: item });
-                          }}
-                        >
-                          <img
-                            src={brands[item].url}
-                            alt={brands[item].name}
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = "";
-                            }}
-                          ></img>
-                        </div>
+                          getProductsList={this.props.getProductsList}
+                          setManufacturer={this.props.setManufacturer}
+                          brands={brands}
+                          item={item}
+                        ></Brand>
                       );
                     })}
                 </div>
