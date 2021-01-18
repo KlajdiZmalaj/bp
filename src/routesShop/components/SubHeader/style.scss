@@ -1,11 +1,33 @@
 .subheader {
+  &.blur {
+    &:after {
+      content: "";
+      display: block;
+      position: fixed;
+      z-index: 1;
+      top: 160px;
+      left: 0;
+      background: rgba(0, 0, 0, 0.45);
+      width: 100%;
+      height: 100%;
+      -webkit-animation: show 0.6s ease-in-out 0.1s both;
+      animation: show 0.6s ease-in-out 0.1s both;
+    }
+    .categories {
+      &__category {
+        &.hovered {
+          color: var(--accent-bg);
+        }
+      }
+    }
+  }
   .cart {
     cursor: pointer;
     text-transform: uppercase;
     i {
-      font-size: 24px;
+      font-size: 25px;
       &.red {
-        color: red;
+        // color: red;
       }
     }
     > span {
@@ -23,7 +45,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: var(--header-txt);
+      background: red;
+      color: #fff;
+
+      border-radius: 50%;
+      width: 19px;
+      height: 19px;
+      right: -8px;
+      bottom: -7px;
+      font-size: 13px;
       &.red {
         background: red;
         color: #fff;
@@ -37,8 +67,10 @@
   .categOpened {
     position: absolute;
     top: 50px;
-    background-color: var(--header-bg);
+    background-color: #585858;
+    // background-color: var(--header-bg);
     width: 100%;
+    z-index: 2;
 
     .maxWidth {
       margin-top: 10px;
@@ -57,7 +89,7 @@
           display: block;
           font-size: 16px;
           text-transform: uppercase;
-          padding: 10px 0;
+          padding: 8px 0;
           margin: 5px 0;
 
           > div {
@@ -111,11 +143,16 @@
       }
       .brands {
         width: 25%;
-        max-width: 280px;
+        max-width: 230px;
         background-color: #f2f2f2;
-        max-height: 520px;
-        overflow: auto;
+        max-height: 475px;
         padding: 0px 15px;
+        padding-bottom: 15px;
+        > div {
+          max-height: 460px;
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
         .slick-slider {
           width: calc(100% - 60px);
           text-align: center;
@@ -135,7 +172,7 @@
         }
         &__item {
           background-color: #fff;
-          padding: 3px;
+          padding: 3px 0px;
           height: 50px;
           margin: 2px;
           width: calc(50% - 4px) !important;
@@ -143,9 +180,16 @@
           text-align: center;
           opacity: 0.6;
           border: 1px solid;
-          // img {
-          //   display: flex;
-          // }
+          line-height: normal;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          img {
+            &.hidden {
+              display: none;
+            }
+          }
           &:hover {
             opacity: 1;
           }

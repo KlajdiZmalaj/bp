@@ -25,6 +25,7 @@ class SubCategories extends Component {
             subcatg
           );
           this.props.setSubSubCategory(item.name);
+          this.props.setManufacturer(null);
         }}
       >
         {item.name}
@@ -36,7 +37,6 @@ const mpStP = (state) => ({
   productsList: state.shop.productsList,
   product: state.shop.productD,
   isSelected: state.shop.isSelectedManufacturer,
-  isSelectedSC: state.shop.isSelectedSubCategory,
   isSelectedSSC: state.shop.isSelectedSubSubCategory,
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,

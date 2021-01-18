@@ -6,37 +6,25 @@ import { connect } from "react-redux";
 import SubCategories from "./SubCategories";
 
 class Categories extends Component {
-  state = {
-    isOpen: this.props.isSelectedC === this.props.cat.name ? true : false,
-  };
   render() {
     const { cat, isSelectedC } = this.props;
-    const { isOpen } = this.state;
+
+    let isOpen = this.props.isSelectedC === this.props.cat.name ? true : false;
+
     return (
       <div
         className={"category" + (isSelectedC === cat?.name ? " active" : "")}
       >
-        {/* {isOpen ? (
-          <i
-            className="fas fa-caret-down"
-            onClick={() => this.setState({ isOpen: !this.state.isOpen })}
-          ></i>
-        ) : (
-          <i className="fas fa-caret-right"></i>
-        )} */}
-        {isOpen && (
-          <i
-            className="fas fa-caret-down"
-            onClick={() => this.setState({ isOpen: !this.state.isOpen })}
-          ></i>
-        )}
+        {isOpen && <i className="fas fa-caret-down"></i>}
         <div
           className="title"
           onClick={() => {
-            this.setState({ isOpen: !this.state.isOpen });
             this.props.setProductsList({});
             this.props.getProductsList(null, null, cat.name);
             this.props.setCategory(cat.name);
+            this.props.setSubCategory(null);
+            this.props.setSubSubCategory(null);
+            this.props.setManufacturer(null);
             this.props.history.push(
               `/product-filtered/${cat?.name?.split(" | ")[0]}__${
                 cat?.name?.split(" | ")[1]

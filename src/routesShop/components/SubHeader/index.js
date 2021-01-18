@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import "./style.css";
 import { withRouter } from "react-router-dom";
 import { get, isObject } from "lodash";
+import images from "themes/images";
+import Brand from "./Brand";
 
 class SubHeader extends Component {
   state = {
@@ -32,7 +34,10 @@ class SubHeader extends Component {
     if (itemS === null) itemS = Object.keys(cat)[0];
 
     return (
-      <div className="subheader" onMouseLeave={() => this.setIsShown(false)}>
+      <div
+        className={"subheader " + (this.state.isOpenCat ? "blur" : "")}
+        onMouseLeave={() => this.setIsShown(false)}
+      >
         {this.state.isOpenCat && (
           <div className="categOpened">
             <div
@@ -112,36 +117,23 @@ class SubHeader extends Component {
                 <img src={cat[itemS]?.url} alt={cat[itemS]?.name}></img>
               </div>
               <div className="brands">
-                <div className="brands__title">Brands</div>
+                <div>
+                  <div className="brands__title">Brands</div>
 
-                {cat[itemS] &&
-                  Object.keys(cat[itemS].brands).map((brand, index) => {
-                    let brandi = cat[itemS].brands;
-                    return (
-                      <div
-                        key={index}
-                        className="brands__item"
-                        onClick={() => {
-                          this.props.getProductsList(
-                            null,
-                            brandi[brand].name,
-                            cat[itemS].name
-                          );
-                          this.setIsShown(false);
-                          this.props.history.push(
-                            `/product-filtered/${
-                              cat[itemS].name.split(" | ")[0]
-                            }__${cat[itemS].name.split(" | ")[1]}`
-                          );
-                        }}
-                      >
-                        <img
-                          src={brandi[brand]?.url}
-                          alt={brandi[brand]?.name}
-                        ></img>
-                      </div>
-                    );
-                  })}
+                  {cat[itemS] &&
+                    Object.keys(cat[itemS].brands).map((brand, index) => {
+                      let brandi = cat[itemS].brands;
+                      return (
+                        <Brand
+                          key={index}
+                          getProductsList={this.props.getProductsList}
+                          brand={brandi[brand]}
+                          cat={cat}
+                          itemS={itemS}
+                        ></Brand>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>
@@ -167,13 +159,13 @@ class SubHeader extends Component {
                   <div
                     className={
                       "categories__category" +
-                      (isSelected === cat[item].name ? " active" : "")
+                      (isSelected === cat[item].name ? " active" : "") +
+                      (itemS === item ? " hovered" : "")
                     }
                     key={index}
                     onMouseEnter={() => {
                       this.setIsShown(true);
                       this.setState({ itemS: item });
-                      this.props.setCategory(cat[item].name);
                     }}
                     onClick={() => {
                       this.props.setProductsList({});
@@ -203,7 +195,7 @@ class SubHeader extends Component {
           >
             <span>
               {/* <span className="cart__nr">0</span> */}
-              <i className="fas fa-heart"></i>
+              <i className="fal fa-heart"></i>
             </span>
             <span onClick={() => this.props.history.push("/shop-cart")}>
               <span className={"cart__nr" + (cartItems > 0 ? " red" : "")}>
@@ -211,7 +203,7 @@ class SubHeader extends Component {
               </span>
               <i
                 className={
-                  "fas fa-shopping-bag" + (cartItems > 0 ? " red" : "")
+                  "fal fa-shopping-bag" + (cartItems > 0 ? " red" : "")
                 }
               ></i>
             </span>
