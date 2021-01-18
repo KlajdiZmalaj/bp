@@ -25,9 +25,9 @@
     cursor: pointer;
     text-transform: uppercase;
     i {
-      font-size: 24px;
+      font-size: 25px;
       &.red {
-        color: red;
+        // color: red;
       }
     }
     > span {
@@ -45,7 +45,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: var(--header-txt);
+      background: red;
+      color: #fff;
+
+      border-radius: 50%;
+      width: 19px;
+      height: 19px;
+      right: -8px;
+      bottom: -7px;
+      font-size: 13px;
       &.red {
         background: red;
         color: #fff;
@@ -173,6 +181,10 @@
           opacity: 0.6;
           border: 1px solid;
           line-height: normal;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
           img {
             &.hidden {
               display: none;

@@ -195,7 +195,7 @@ class SubHeader extends Component {
           >
             <span>
               {/* <span className="cart__nr">0</span> */}
-              <i className="fas fa-heart"></i>
+              <i className="fal fa-heart"></i>
             </span>
             <span onClick={() => this.props.history.push("/shop-cart")}>
               <span className={"cart__nr" + (cartItems > 0 ? " red" : "")}>
@@ -203,7 +203,7 @@ class SubHeader extends Component {
               </span>
               <i
                 className={
-                  "fas fa-shopping-bag" + (cartItems > 0 ? " red" : "")
+                  "fal fa-shopping-bag" + (cartItems > 0 ? " red" : "")
                 }
               ></i>
             </span>
