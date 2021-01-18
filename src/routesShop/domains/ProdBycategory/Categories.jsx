@@ -24,7 +24,7 @@ class Categories extends Component {
         <div
           className="title"
           onClick={() => {
-            this.setState({ isOpen: !this.state.isOpen });
+            // this.setState({ isOpen: !this.state.isOpen });
             this.props.setProductsList({});
             this.props.getProductsList(null, null, cat.name);
             this.props.setCategory(cat.name);
