@@ -86,12 +86,14 @@ class SingleProduct extends Component {
       this.state.orderQuanity
     );
   };
-  handleSubmit = (e) => {
+  handleSubmit = (e, buyNow) => {
     e.preventDefault();
-
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         this.addTocart();
+        if (buyNow) {
+          this.props.history.push("/shop-cart");
+        }
       }
     });
   };
@@ -364,8 +366,9 @@ class SingleProduct extends Component {
                       </div>
                       <div
                         className="buyNow"
-                        onClick={() => {
-                          window.location.hash = `product-checkout/${match.params.id}/${match.params.supp}`;
+                        onClick={(e) => {
+                          this.handleSubmit(e, "buyNow");
+                          // window.location.hash = `product-checkout/${match.params.id}/${match.params.supp}`;
                         }}
                       >
                         Buy now <i className="far fa-shopping-cart"></i>

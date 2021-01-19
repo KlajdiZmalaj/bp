@@ -5,6 +5,8 @@ import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import images from "themes/images";
 
+import ProductItem from "./ProductItem";
+
 class BestSeller extends Component {
   constructor(props) {
     super(props);
@@ -82,23 +84,10 @@ class BestSeller extends Component {
           {prodList?.data ? (
             Object.keys(prodList.data).map((item, index) => {
               return (
-                <div
-                  className="products__item"
+                <ProductItem
+                  item={prodList.data[item]}
                   key={index}
-                  onClick={() => {
-                    this.props.history.push(
-                      `/product/${prodList.data[item].Product_id}/${prodList.data[item].prd_supp}`
-                    );
-                  }}
-                >
-                  <div className="pBorder">
-                    <img src={prodList.data[item].Product_Image_1} alt=""></img>
-                  </div>
-                  <div className="name">{prodList.data[item].Product_Name}</div>
-                  <div className="price">
-                    €{prodList.data[item].Product_Price}
-                  </div>
-                </div>
+                ></ProductItem>
               );
             })
           ) : (

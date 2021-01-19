@@ -93,7 +93,7 @@ class ProdBycategory extends Component {
   render() {
     const { prodList, categories, isSelectedC } = this.props;
     const { isOpenSlide, isOpenBrands } = this.state;
-
+    console.log("this.props.sliderVal", this.props.sliderVal);
     const settings = {
       dots: false,
       speed: 500,
@@ -105,7 +105,7 @@ class ProdBycategory extends Component {
     let filterCat = filter(categories, { name: isSelectedC });
     let brands = head(filterCat)?.brands;
     const subcategories = head(filterCat)?.subcategories;
-
+    const highP = Math.ceil(prodList && prodList.highest_price);
     return (
       <div className="shopProd">
         <div className="catgItems">
@@ -209,24 +209,38 @@ class ProdBycategory extends Component {
                 <div
                   className={"price_Options" + (!isOpenSlide ? " hidden" : "")}
                 >
-                  <Slider
-                    min={0}
-                    max={prodList.highest_price}
-                    range
-                    defaultValue={[0, prodList.highest_price]}
-                    disabled={false}
-                    onChange={this.handleChangeSlider}
-                  />
-                  {/* <Slider
-                    min={0}
-                    max={prodList && Math.ceil(prodList.highest_price)}
-                    range
-                    disabled={false}
-                    marks={[0, Math.ceil(prodList.highest_price)]}
-                    defaultValue={[0, Math.ceil(prodList.highest_price)]}
-                    onChange={this.handleChangeSlider}
-                  /> */}
-                  <button onClick={this.filterByRange}>Filterrr</button>
+                  <div>
+                    <div className="range">
+                      {this.props.sliderVal.length === 0 ? (
+                        <p>
+                          Price range Selected:
+                          <span> €0 - €{highP}</span>
+                        </p>
+                      ) : (
+                        <p>
+                          Price range Selected:
+                          <span>
+                            €{this.props.sliderVal[0]} - €
+                            {this.props.sliderVal[1]}
+                          </span>
+                        </p>
+                      )}
+                      <button onClick={this.filterByRange}>Filter</button>
+                    </div>
+
+                    {highP && (
+                      <Slider
+                        min={0}
+                        max={highP}
+                        range
+                        marks={{ 0: "0€", 1: `${highP}€` }}
+                        defaultValue={[0, highP]}
+                        disabled={false}
+                        onChange={this.handleChangeSlider}
+                        included={true}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="order">

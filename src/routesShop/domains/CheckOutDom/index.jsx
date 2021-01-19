@@ -69,6 +69,9 @@ const CheckOutDom = ({
       last_name: accountInfo?.profile?.name?.split?.(" ")?.[1],
       email: accountInfo?.profile?.email,
       cap: itemsCart?.user_data?.postcode,
+      citty: itemsCart?.user_data?.city,
+      via_nr: itemsCart?.user_data?.address,
+      tel: itemsCart?.user_data?.phone,
     });
   }, [
     accountInfo,
