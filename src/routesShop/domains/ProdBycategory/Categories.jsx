@@ -8,7 +8,7 @@ import SubCategories from "./SubCategories";
 class Categories extends Component {
   render() {
     const { cat, isSelectedC } = this.props;
-    console.log("cat", cat?.name?.split(" | ")[1]);
+
     let isOpen = this.props.isSelectedC === this.props.cat.name ? true : false;
 
     return (

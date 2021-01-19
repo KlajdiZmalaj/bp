@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
-import { Slider, Select } from "antd";
+import { Slider, Select, Dropdown, Menu } from "antd";
 import { filter, head } from "lodash";
 
 import Categories from "./Categories";
@@ -19,8 +19,9 @@ import "slick-carousel/slick/slick-theme.css";
 const { Option } = Select;
 class ProdBycategory extends Component {
   state = {
-    isOpenSlide: false,
-    isOpenBrands: false,
+    highP: this.props.prodList.highest_price
+      ? Math.ceil(this.props.prodList.highest_price)
+      : null,
   };
 
   componentDidMount() {
@@ -31,7 +32,11 @@ class ProdBycategory extends Component {
       catProduct && catProduct.replace("__", " | ")
     );
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.prodList !== this.props.prodList) {
+      this.setState({ highP: Math.ceil(this.props.prodList.highest_price) });
+    }
+  }
   handleChange = (event) => {
     this.props.setOrderVal(event);
     this.props.getProductsList(
@@ -44,18 +49,6 @@ class ProdBycategory extends Component {
       null, //search
       this.props.isSelectedSC //subcategory
     );
-    this.state.isOpenBrands && this.setState({ isOpenBrands: false });
-    this.state.isOpenSlide && this.setState({ isOpenSlide: false });
-  };
-
-  openSlide = () => {
-    this.setState({ isOpenSlide: !this.state.isOpenSlide });
-    this.state.isOpenBrands && this.setState({ isOpenBrands: false });
-  };
-
-  openBrands = () => {
-    this.setState({ isOpenBrands: !this.state.isOpenBrands });
-    this.state.isOpenSlide && this.setState({ isOpenSlide: false });
   };
 
   handleChangeSlider = (event) => {
@@ -92,8 +85,8 @@ class ProdBycategory extends Component {
 
   render() {
     const { prodList, categories, isSelectedC } = this.props;
-    const { isOpenSlide, isOpenBrands } = this.state;
-    console.log("this.props.sliderVal", this.props.sliderVal);
+    const { highP } = this.state;
+
     const settings = {
       dots: false,
       speed: 500,
@@ -105,7 +98,81 @@ class ProdBycategory extends Component {
     let filterCat = filter(categories, { name: isSelectedC });
     let brands = head(filterCat)?.brands;
     const subcategories = head(filterCat)?.subcategories;
-    const highP = Math.ceil(prodList && prodList.highest_price);
+
+    const menu = (
+      <Menu className={"price_Options"}>
+        <div>
+          {highP && (
+            <div className="range">
+              {this.props.sliderVal.length === 0 ? (
+                <p>
+                  Price range Selected:
+                  <span> €0 - €{highP}</span>
+                </p>
+              ) : (
+                <p>
+                  Price range Selected:
+                  <span>
+                    €{this.props.sliderVal[0]} - €{this.props.sliderVal[1]}
+                  </span>
+                </p>
+              )}
+              <button onClick={this.filterByRange}>Filter</button>
+            </div>
+          )}
+
+          {highP && (
+            <Slider
+              min={0}
+              max={highP}
+              range={true}
+              marks={{ 0: "0€", 1: `${highP}€` }}
+              value={[this.props.sliderVal[0], this.props.sliderVal[1]]}
+              defaultValue={[0, highP]}
+              disabled={false}
+              onChange={this.handleChangeSlider}
+              included={true}
+            />
+          )}
+        </div>
+      </Menu>
+    );
+
+    const menuBrands = (
+      <Menu className={"price_Options brands"}>
+        <div
+          onClick={() => {
+            this.props.setManufacturer(null);
+            this.props.getProductsList(
+              null,
+              null,
+              this.props.isSelectedC,
+              this.props.isSelectedSSC,
+              this.props.orderVal,
+              this.props.sliderVal,
+              null,
+              this.props.isSelectedSC
+            );
+          }}
+          className="tutti"
+        >
+          Tutti Brands
+        </div>
+        {brands &&
+          Object.keys(brands).map((item, index) => {
+            return (
+              <Brand
+                key={index}
+                getProductsList={this.props.getProductsList}
+                setManufacturer={this.props.setManufacturer}
+                brands={brands}
+                item={item}
+              ></Brand>
+            );
+          })}
+      </Menu>
+    );
+
     return (
       <div className="shopProd">
         <div className="catgItems">
@@ -150,99 +217,27 @@ class ProdBycategory extends Component {
             </div>
 
             <div className="right">
-              <div className="itemFilter">
-                <div className="price" onClick={this.openBrands}>
-                  Brands
-                  {!isOpenBrands ? (
-                    <i className="fas fa-chevron-down"></i>
-                  ) : (
-                    <i className="fas fa-chevron-up"></i>
-                  )}
-                </div>
-                <div
-                  className={
-                    "price_Options brands" + (!isOpenBrands ? " hidden" : "")
-                  }
-                >
-                  <div
-                    onClick={() => {
-                      this.props.setManufacturer(null);
-                      this.props.getProductsList(
-                        null,
-                        null,
-                        this.props.isSelectedC,
-                        this.props.isSelectedSSC,
-                        this.props.orderVal,
-                        this.props.sliderVal,
-                        null,
-                        this.props.isSelectedSC
-                      );
-                    }}
-                    className="tutti"
-                  >
-                    Tutti Brands
-                  </div>
-                  {brands &&
-                    Object.keys(brands).map((item, index) => {
-                      return (
-                        <Brand
-                          key={index}
-                          getProductsList={this.props.getProductsList}
-                          setManufacturer={this.props.setManufacturer}
-                          brands={brands}
-                          item={item}
-                        ></Brand>
-                      );
-                    })}
-                </div>
-              </div>
+              <Dropdown
+                overlay={menu}
+                trigger={["click"]}
+                className="itemFilter"
+              >
+                <a className="price" onClick={(e) => e.preventDefault()}>
+                  Price <i className="fas fa-chevron-down"></i>
+                </a>
+              </Dropdown>
 
-              <div className="itemFilter">
-                <div className="price" onClick={this.openSlide}>
-                  Price
-                  {!isOpenSlide ? (
-                    <i className="fas fa-chevron-down"></i>
-                  ) : (
-                    <i className="fas fa-chevron-up"></i>
-                  )}
-                </div>
-                <div
-                  className={"price_Options" + (!isOpenSlide ? " hidden" : "")}
-                >
-                  <div>
-                    <div className="range">
-                      {this.props.sliderVal.length === 0 ? (
-                        <p>
-                          Price range Selected:
-                          <span> €0 - €{highP}</span>
-                        </p>
-                      ) : (
-                        <p>
-                          Price range Selected:
-                          <span>
-                            €{this.props.sliderVal[0]} - €
-                            {this.props.sliderVal[1]}
-                          </span>
-                        </p>
-                      )}
-                      <button onClick={this.filterByRange}>Filter</button>
-                    </div>
+              <Dropdown
+                overlay={menuBrands}
+                trigger={["click"]}
+                className="itemFilter"
+              >
+                <a className="price" onClick={(e) => e.preventDefault()}>
+                  {this.props.isSelected ? this.props.isSelected : "Brands"}{" "}
+                  <i className="fas fa-chevron-down"></i>
+                </a>
+              </Dropdown>
 
-                    {highP && (
-                      <Slider
-                        min={0}
-                        max={highP}
-                        range
-                        marks={{ 0: "0€", 1: `${highP}€` }}
-                        defaultValue={[0, highP]}
-                        disabled={false}
-                        onChange={this.handleChangeSlider}
-                        included={true}
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
               <div className="order">
                 <Select
                   placeholder="Newest Arrivals"

@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import "./style.css";
 import { withRouter } from "react-router-dom";
 import { get, isObject } from "lodash";
-import images from "themes/images";
 import Brand from "./Brand";
 
 class SubHeader extends Component {
@@ -63,10 +62,17 @@ class SubHeader extends Component {
                             cat[item].name
                           );
                           this.props.setCategory(cat[item].name);
+                          this.props.setSubCategory(null);
+                          this.props.setSubSubCategory(null);
+                          this.props.setManufacturer(null);
                           this.props.history.push(
                             `/product-filtered/${
                               cat[item].name.split(" | ")[0]
-                            }__${cat[item].name.split(" | ")[1]}`
+                            }__${
+                              cat[item].name.split(" | ")[1]
+                                ? cat[itemS].name.split(" | ")[1]
+                                : ""
+                            }`
                           );
                         }}
                       >
@@ -99,11 +105,20 @@ class SubHeader extends Component {
                                 null,
                                 sub[subitem].name
                               );
+                              this.props.setCategory(cat[itemS].name);
+                              this.props.setSubCategory(sub[subitem].name);
+                              this.props.setSubSubCategory(null);
+                              this.props.setManufacturer(null);
+
                               this.setIsShown(false);
                               this.props.history.push(
                                 `/product-filtered/${
                                   cat[itemS].name.split(" | ")[0]
-                                }__${cat[itemS].name.split(" | ")[1]}`
+                                }__${
+                                  cat[itemS].name.split(" | ")[1]
+                                    ? cat[itemS].name.split(" | ")[1]
+                                    : ""
+                                }`
                               );
                             }}
                           >
@@ -130,6 +145,7 @@ class SubHeader extends Component {
                           brand={brandi[brand]}
                           cat={cat}
                           itemS={itemS}
+                          setIsShown={this.setIsShown}
                         ></Brand>
                       );
                     })}
@@ -175,7 +191,11 @@ class SubHeader extends Component {
                       this.props.history.push(
                         `/product-filtered/${
                           cat[item]?.name?.split(" | ")[0]
-                        }__${cat[item]?.name?.split(" | ")[1]}`
+                        }__${
+                          cat[item]?.name?.split(" | ")[1]
+                            ? cat[itemS].name.split(" | ")[1]
+                            : ""
+                        }`
                       );
                     }}
                   >
@@ -183,7 +203,8 @@ class SubHeader extends Component {
                       {cat[item]?.name?.split("|")[0]}
                       <p> {cat[item]?.name?.split("|")[1]}</p>
                     </div>
-                    <i className="fas fa-chevron-down"></i>
+
+                    <i className="fas fa-caret-down"></i>
                   </div>
                 );
               })}

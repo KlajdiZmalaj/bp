@@ -38,7 +38,11 @@ class Products extends Component {
                     this.props.history.push(
                       `/product-filtered/${
                         categories[item]?.name?.split(" | ")[0]
-                      }__${categories[item]?.name?.split(" | ")[1]}`
+                      }__${
+                        categories[item]?.name?.split(" | ")[1]
+                          ? categories[item].name.split(" | ")[1]
+                          : ""
+                      }`
                     );
                   }}
                 >
@@ -82,7 +86,11 @@ class Products extends Component {
                       this.props.history.push(
                         `/product-filtered/${
                           categories[item]?.name?.split(" | ")[0]
-                        }__${categories[item]?.name?.split(" | ")[1]}`
+                        }__${
+                          categories[item]?.name?.split(" | ")[1]
+                            ? categories[item].name.split(" | ")[1]
+                            : ""
+                        }`
                       );
                     }}
                   >

@@ -49,6 +49,7 @@ export function* getProductsList(params) {
   );
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));
+    yield put(ShopActions.setSliderVal([0, response.data.highest_price]));
   }
 }
 

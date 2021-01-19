@@ -20,10 +20,11 @@ class SubCategories extends Component {
             catg,
             item.name,
             this.props.orderVal,
-            this.props.sliderVal,
+            null,
             null,
             subcatg
           );
+          this.props.setSubCategory(subcatg);
           this.props.setSubSubCategory(item.name);
           this.props.setManufacturer(null);
         }}
