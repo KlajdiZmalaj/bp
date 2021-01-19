@@ -14,7 +14,7 @@ class Footer extends Component {
     return screenWidth > 1024 ? (
       <footer>
         <div className="top">
-          <div className="maxWFooter">
+          <div className="maxWFooter maxWidth">
             <h2>Vuoi diventare un Punto {skinExtras.name}?</h2>
             <button
               onClick={() => {
@@ -34,7 +34,7 @@ class Footer extends Component {
           </div>
         </div>
         <div className="mid">
-          <div className="maxWFooter">
+          <div className="maxWFooter maxWidth">
             <div className="colf">
               <img src={images.logoFooter} alt="" />
             </div>
@@ -60,15 +60,23 @@ class Footer extends Component {
           </div>
         </div>
         <div className="bottom">
-          <div className="maxWFooter">
+          <div className="maxWFooter maxWidth">
             {" "}
             <p>© Design by Altechsolutions - {new Date().getFullYear()}</p>
             <img src={images.footerBottom} alt="" />
-            <div className="socials">
-              <i className="fab fa-instagram"></i>
-              <i className="fab fa-pinterest"></i>
-              <i className="fab fa-youtube"></i>
-            </div>
+            {/*  */}
+            {window.location.host.match(/point\.st|local/g) ? (
+              <p>
+                MAPE di Hristova Mariya Hristova e C. S.A.S. | P.IVA: IT
+                03852290406 | N.REA: RN - 311209
+              </p>
+            ) : (
+              <div className="socials">
+                <i className="fab fa-instagram"></i>
+                <i className="fab fa-pinterest"></i>
+                <i className="fab fa-youtube"></i>
+              </div>
+            )}
           </div>
         </div>
       </footer>

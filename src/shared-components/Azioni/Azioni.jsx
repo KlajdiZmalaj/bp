@@ -65,6 +65,7 @@ class Azioni extends Component {
                           azioni.active === activeMain ? "active" : "none"
                         }`}
                       >
+                        {azioni.new && <span className="newAz">new</span>}
                         {azioni.type === "span" ? (
                           <a
                             href={window.location.hash}
