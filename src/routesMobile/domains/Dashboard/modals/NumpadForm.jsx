@@ -112,13 +112,13 @@ const Numpad = ({
     }
   }, [services, activeService, activeCategory, setCost, selectedCost]);
 
-  useEffect(() => {
-    if (Object.values(rechargeMobile).length > 0)
-      notification[rechargeMobile.errors ? "error" : "success"]({
-        message: rechargeMobile.message,
-        description: Object.values(rechargeMobile.errors || {}),
-      });
-  }, [rechargeMobile]);
+  // useEffect(() => {
+  //   if (Object.values(rechargeMobile).length > 0)
+  //     notification[rechargeMobile.errors ? "error" : "success"]({
+  //       message: rechargeMobile.message,
+  //       description: Object.values(rechargeMobile.errors || {}),
+  //     });
+  // }, [rechargeMobile]);
   useEffect(() => {
     if (
       selectedCost?.service_id === "BGM005" ||

@@ -110,6 +110,7 @@ try {
     WIND: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
     WINO: require(`../assets/images${skin}/wind-logo-svg-vector.svg`),
     LMAX: require(`../assets/images${skin}/linkeln.svg`),
+    LINKEM: require(`../assets/images${skin}/linkeln.svg`),
     BSTC: require(`../assets/images/Best_card.svg`),
     NNET: require(`../assets/images/on_net.svg`),
     IDTB: require(`../assets/images/IDTB.svg`),

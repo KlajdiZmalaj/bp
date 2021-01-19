@@ -39,6 +39,12 @@ const Dashboard = ({
   }, []);
 
   const [tab, setTab] = useState("0");
+  useEffect(() => {
+    const el = document.querySelector(
+      ".mobileServices--panel .mobileServices--header"
+    );
+    if (el) el.click();
+  }, [tab]);
   const [serviceSearched, setSearch] = useState("");
   const [activeCategory, setCategory] = useState(null);
   const [activeService, setService] = useState(null);
