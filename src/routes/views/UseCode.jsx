@@ -67,7 +67,7 @@ class UseCode extends React.Component {
           />
           <i className="fal fa-barcode" aria-hidden="true"></i>
         </div>
-        <div
+        {/* <div
           className="latestBarcodes animated slideInUp"
           onClick={(e) => {
             e.preventDefault();
@@ -89,7 +89,7 @@ class UseCode extends React.Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </>
     );
   }
