@@ -16,6 +16,7 @@ class ProductItem extends Component {
             `/product/${item.Product_id}/${item.prd_supp}`
           );
         }}
+        href={`/product/${item.Product_id}/${item.prd_supp}`}
       >
         <div className="pBorder">
           <img src={item.Product_Image_1} alt=""></img>

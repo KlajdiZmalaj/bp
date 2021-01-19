@@ -179,7 +179,7 @@ class SubHeader extends Component {
                       );
                     }}
                   >
-                    <div>
+                    <div className={cat[item]?.name}>
                       {cat[item]?.name?.split("|")[0]}
                       <p> {cat[item]?.name?.split("|")[1]}</p>
                     </div>

@@ -35,6 +35,9 @@
       text-align: left;
       > div {
         padding-left: 10px;
+        &.Regali {
+          max-width: 60px;
+        }
       }
       &.tutti {
         padding: 0 12px 0 0px;

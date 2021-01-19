@@ -108,9 +108,9 @@
           .tutti {
             cursor: pointer;
             background-color: #fff;
-            padding: 5px 0px;
+            padding: 5px 0px !important;
             width: 30%;
-            margin: 0px auto 2px auto;
+            margin: 0px auto 2px auto !important;
           }
           .price {
             min-height: 50px;
@@ -131,6 +131,26 @@
             width: 67%;
             right: 0;
             text-align: center;
+            > div {
+              background-color: #fff;
+              border-radius: 8px;
+              margin: 5px;
+              padding: 5px;
+              .range {
+                display: flex;
+                justify-content: space-between;
+                text-transform: capitalize;
+                p {
+                  margin-bottom: 0;
+                  font-size: 13px;
+                  span {
+                    opacity: 0.7;
+                    padding-left: 3px;
+                    font-weight: 600;
+                  }
+                }
+              }
+            }
             &.hidden {
               display: none;
             }
@@ -138,20 +158,33 @@
               border: none;
               text-align: center;
               font-size: 12px;
-              background-color: #f26521;
+              background-color: var(--accent-bg);
               color: #fff;
+              text-transform: uppercase;
+            }
+            .ant-slider-with-marks {
+              margin-bottom: 20px;
             }
             .ant-slider-handle {
-              border: solid 2px #f26521;
+              border: solid 2px var(--accent-bg);
             }
             .ant-slider-track {
-              background-color: #f26521;
+              background-color: var(--accent-bg);
+            }
+            .ant-slider-mark {
+              .ant-slider-mark-text-active:last-child {
+                left: 96% !important;
+              }
             }
           }
           .brands {
             overflow: auto;
             max-height: 400px;
             width: 100%;
+            > div {
+              margin: 2px;
+              padding: 0px;
+            }
             &__item {
               width: 92px;
               height: 50px;
@@ -289,7 +322,6 @@
         &__item .pBorder img {
           // max-height: 160px;
           max-width: 100%;
-          max-height: 100%;
         }
       }
     }
