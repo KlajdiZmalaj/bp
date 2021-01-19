@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
-import { isEqual } from "lodash";
+import { isEqual, debounce } from "lodash";
 import { notification } from "antd";
 class UseCode extends React.Component {
   state = {
@@ -21,7 +21,7 @@ class UseCode extends React.Component {
     }
   };
   componentDidMount() {
-    let input = document.querySelector(".form-control");
+    let input = document.querySelector(".inpT");
     input.focus();
   }
   componentDidUpdate(prevProp) {
@@ -40,55 +40,57 @@ class UseCode extends React.Component {
     }
   }
   render() {
-    const { inputVal } = this.state;
+    const { paymentsO } = this.props;
+    console.log("paymentsO", paymentsO);
     return (
-      <div className="Container">
-        <div className="container-fluid overview ">
-          <div className="panels-container">
-            <div className="sort-annunci  maxWidth border-0 mb-0">
-              <h1 className="heading-tab mx-auto mb-0">
-                Utilizza codice VPTPlus
-              </h1>
-            </div>
-            <div className="row no-gutters maxWidth">
-              <div className="col-md-12 carica-conto">
-                <p className="text-center">
-                  Scrivi il codice o leggilo con apposito lettore
-                </p>
-                <div className="input-group mb-3">
-                  <input
-                    type="text"
-                    onChange={(e) => {
-                      this.inputHandler(e);
-                    }}
-                    onKeyPress={this.handleKeyPress}
-                    className="form-control"
-                  />
-                  <div
-                    className="input-group-append"
-                    onClick={() => {
-                      this.props.getCodiceTicket(inputVal, "omeLale");
-
-                      // this.togglePopUp(true);
-                    }}
-                  >
-                    <span className="input-group-text">
-                      <i className="fal fa-check"></i>Esegui
-                    </span>
-                  </div>
-                </div>
-                <a href="/#" className="mx-auto d-block mt-5">
-                  <img
-                    className="mx-auto d-block"
-                    src="img/redCancek.svg"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
+      <>
+        <div
+          className="vptCont"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+        >
+          <input
+            type="text"
+            onChange={debounce(() => {
+              if (document.querySelector("#inpVal").value.length > 0) {
+                this.props.getCodiceTicket(
+                  document.querySelector("#inpVal").value,
+                  "omeLale"
+                );
+              }
+            }, 400)}
+            onKeyPress={this.handleKeyPress}
+            id={"inpVal"}
+            className="inpT animated slideInTop"
+          />
+          <i className="fal fa-barcode" aria-hidden="true"></i>
         </div>
-      </div>
+        <div
+          className="latestBarcodes animated slideInUp"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+        >
+          {(paymentsO || []).slice(0, 5).map((item) => {
+            return (
+              <div
+                key={item.barcode}
+                className="latestBarcodes__item"
+                onClick={() => {
+                  this.props.getCodiceTicket(item.barcode, "omeLale");
+                }}
+              >
+                <i className="fal fa-barcode" aria-hidden="true"></i>
+                <span>{item.barcode}</span>
+                <span>{item.service_name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </>
     );
   }
 }
