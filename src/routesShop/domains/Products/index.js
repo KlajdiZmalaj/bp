@@ -23,6 +23,15 @@ class Products extends Component {
         <div className="title maxWidth">categorie</div>
         <div className="banners maxWidth">
           {categories &&
+          categories.hasOwnProperty("offerterefurbished") ? null : (
+            <div className="categoriesP offerterefurbished">
+              <div className="text">
+                Outlet<b>Oferte</b>
+              </div>
+              <img src={images["offerterefurbished"]} alt="" />
+            </div>
+          )}
+          {categories &&
             Object.keys(categories).map((item, index) => {
               return (
                 <div
