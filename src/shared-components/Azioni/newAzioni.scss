@@ -33,6 +33,7 @@
     background: #3c4349;
     color: rgba(255, 255, 255, 0.602);
     cursor: pointer;
+    position: relative;
     label,
     a {
       border-left: 1px solid #272c31;
@@ -201,4 +202,17 @@
     left: -1px;
     transform: rotate(180deg);
   }
+}
+span.newAz {
+  right: 50%;
+  position: absolute;
+  top: 14%;
+  transform: translateX(37px);
+  background: #e91e35;
+  color: #fff;
+  font-size: 12px !important;
+  padding: 0 4px;
+  border-radius: 10px;
+  z-index: 1;
+  text-transform: capitalize;
 }

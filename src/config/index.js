@@ -160,6 +160,7 @@ export const newAzioni = [
     active: "products",
     i: "fal fa-store",
     displayRole: ["super_admin", "agency", "agent", "user"],
+    new: true,
   },
   {
     id: 4,
