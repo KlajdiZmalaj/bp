@@ -37,7 +37,7 @@ class SubHeader extends Component {
         className={"subheader " + (this.state.isOpenCat ? "blur" : "")}
         onMouseLeave={() => this.setIsShown(false)}
       >
-        {!this.state.isOpenCat && (
+        {this.state.isOpenCat && (
           <div className="categOpened">
             <div
               className="maxWidth"
