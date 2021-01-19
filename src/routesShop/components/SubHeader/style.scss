@@ -148,8 +148,8 @@
         max-height: 475px;
         padding: 0px 15px;
         padding-bottom: 15px;
-        > div {
-          max-height: 460px;
+        &__body {
+          max-height: 410px;
           overflow-y: auto;
           overflow-x: hidden;
         }
