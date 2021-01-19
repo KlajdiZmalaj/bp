@@ -494,3 +494,76 @@ html body > div > iframe:nth-child(2) {
 // .react-pdf__Page image {
 //   display: none !important;
 // }
+.vptCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  animation: widthK 0.6s forwards;
+  margin: auto;
+  i {
+    color: #fff;
+    position: relative;
+    left: -49px;
+    font-size: 30px;
+  }
+  input {
+    background: #2d2d2d99;
+    border: 0;
+    height: 48px;
+    border-radius: 0;
+    border: 1px solid #757575;
+    backdrop-filter: blur(3px);
+    color: #fff;
+    border-radius: 30px;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 0 20px;
+    position: relative;
+    padding-right: 50px;
+  }
+}
+
+@keyframes widthK {
+  0% {
+    transform: rotate(0) scale(1) translateX(0) translateY(200px) skewX(0)
+      skewY(0);
+    width: 57px;
+  }
+
+  67% {
+    transform: rotate(0) scale(1) translateX(0) translateY(0) skewX(0) skewY(0);
+    width: 57px;
+  }
+
+  to {
+    transform: rotate(0) translateX(0) translateY(0);
+    width: 20%;
+  }
+}
+.latestBarcodes {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  color: #fff;
+  height: 100px;
+  background: #00000026;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-flow: row;
+
+  &__item {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-right: 1px solid #636363;
+    cursor: pointer;
+    i {
+      font-size: 20px;
+    }
+  }
+}

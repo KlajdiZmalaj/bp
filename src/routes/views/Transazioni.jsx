@@ -18,7 +18,7 @@ import { numberWithCommas } from "utils/HelperFunc";
 import ModalRow from "shared-components/ModalResponsiveForTables/ModalRow";
 import Excel from "./Excel";
 import UseCode from "routes/views/UseCode";
-import ClickOut from "react-onclickout";
+//import ClickOut from "react-onclickout";
 import Pdf from "./Pdf";
 import { Form, Modal, Select, Tooltip, Pagination } from "antd";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -1156,18 +1156,18 @@ class Transazioni extends React.Component {
           <img src="img/chatSticky.svg" alt="" />
         </div>
         {this.state.hasVPT && (
-          <ClickOut
-            onClickOut={() => {
+          <div
+            className="backDrop"
+            onClick={() => {
               this.setState({ hasVPT: false });
             }}
           >
-            <div className="useCodePopUp">
-              <UseCode
-                getCodiceTicket={getCodiceTicket}
-                showModal={this.showModal}
-              />
-            </div>
-          </ClickOut>
+            <UseCode
+              paymentsO={paymentsO}
+              getCodiceTicket={getCodiceTicket}
+              showModal={this.showModal}
+            />
+          </div>
         )}
       </div>
     );

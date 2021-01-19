@@ -29,29 +29,29 @@ class Energia extends Component {
     },
     fornituraCon: {
       title: `Condizioni di fornitura*`,
-      status: true,
+      status: false,
     },
     economicCon: {
       title: `Condizioni economiche*`,
-      status: true,
+      status: false,
     },
     notaInfo: {
       title: `Nota informativa e info`,
-      status: true,
+      status: false,
     },
     personalData: {
       title: `Conferma presa visione informativa tutela dati personali`,
-      status: true,
+      status: false,
     },
     marketingCon: {
       title: `Acconsento al trattamento dati per
         attività di marketing`,
-      status: true,
+      status: false,
     },
     terziCon: {
       title: `Acconsento alla comunicazione di dati
         personali a terzi`,
-      status: true,
+      status: false,
     },
   };
 
