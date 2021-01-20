@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import images from "themes/images";
+import images from "../ShopFavDom/node_modules/themes/images";
 import "./style.css";
 
 // import ShopList from "./ShopList";

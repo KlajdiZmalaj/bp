@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { find, isObject } from "lodash";
 import Slider from "react-slick";
 
-import ShopActions from "redux-store/models/shop";
+import ShopActions from "../ShopFavDom/node_modules/redux-store/models/shop";
 import { connect } from "react-redux";
 
 import "./style.css";
@@ -72,7 +72,7 @@ class SingleProduct extends Component {
     this.setState({ itemSelected: item });
   };
 
-  addTocart = () => {
+  addTocart = (cart) => {
     let idProd = this.props.product.Product_id;
     if (
       this.props.product.Models &&
@@ -83,7 +83,7 @@ class SingleProduct extends Component {
     this.props.getToCart(
       this.props.product.prd_supp,
       idProd,
-      "cart",
+      cart,
       this.state.orderQuanity
     );
   };
@@ -91,9 +91,14 @@ class SingleProduct extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        this.addTocart();
-        if (buyNow) {
+        if (buyNow === "buyNow") {
           this.props.history.push("/shop-cart");
+        }
+        if (buyNow === "addFav") {
+          this.addTocart("wish");
+        }
+        if (!buyNow) {
+          this.addTocart("cart");
         }
       }
     });
@@ -177,7 +182,12 @@ class SingleProduct extends Component {
                     </span>
                     - {product.Product_SubCategory}
                   </div>
-                  <div className="addToFav">
+                  <div
+                    className="addToFav"
+                    onClick={(e) => {
+                      this.handleSubmit(e, "addFav");
+                    }}
+                  >
                     <i className="fas fa-heart"></i>
                   </div>
                   <div className="price marginBottom">

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Header } from "shared-components";
-import ShopActions from "redux-store/models/shop";
+import ShopActions from "../domains/ShopFavDom/node_modules/redux-store/models/shop";
 import { connect } from "react-redux";
 import "./style.css";
 
