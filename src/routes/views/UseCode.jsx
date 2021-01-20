@@ -40,8 +40,8 @@ class UseCode extends React.Component {
     }
   }
   render() {
-    const { paymentsO } = this.props;
-    console.log("paymentsO", paymentsO);
+    //const { paymentsO } = this.props;
+    //console.log("paymentsO", paymentsO);
     return (
       <>
         <div

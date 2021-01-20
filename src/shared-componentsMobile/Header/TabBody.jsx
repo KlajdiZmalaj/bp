@@ -2,7 +2,6 @@ import React from "react";
 import { azioni } from "config";
 import { capitalize, get, includes } from "lodash";
 import { Tooltip } from "antd";
-import { open } from "shared-components/Chat/Chat";
 export default ({ tab, accountInfo, logOut, services, setMenu }) => {
   // console.log("services", services);
   return tab === 1 ? (
@@ -48,6 +47,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           href="https://tawk.to/chat/5d443c5f7d27204601c8f6b8/default"
           target="_blank"
           className="tabBody--a__b"
+          rel="noopener noreferrer"
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk
@@ -166,6 +166,7 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           href="https://tawk.to/chat/5d443c5f7d27204601c8f6b8/default"
           target="_blank"
           className="tabBody--a__b"
+          rel="noopener noreferrer"
         >
           <i className="fal fa-cog" aria-hidden="true"></i>
           Helpdesk

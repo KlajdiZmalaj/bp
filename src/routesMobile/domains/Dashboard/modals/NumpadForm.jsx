@@ -338,7 +338,7 @@ const Numpad = ({
               selectedCost?.service_id.includes("BGM00") ||
               selectedCost?.service_id.includes("BBT00")
             ) {
-              console.log("inpVal", inpVal, selectedCost);
+              //("inpVal", inpVal, selectedCost);
               getCustomVoucherReq(
                 selectedCost?.service_id.includes("BGM00")
                   ? "BGM001"

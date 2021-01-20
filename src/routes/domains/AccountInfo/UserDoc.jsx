@@ -65,7 +65,6 @@ class UserDoc extends Component {
                     onClick={() => {
                       fetch(userPhotos.front)
                         .then((res) => {
-                          console.log("ca ka blob", res);
                           return res.blob();
                         })
                         .then((blob) => {
@@ -81,7 +80,6 @@ class UserDoc extends Component {
                     onClick={() => {
                       fetch(userPhotos.back)
                         .then((res) => {
-                          console.log("ca ka blob", res);
                           return res.blob();
                         })
                         .then((blob) => {
