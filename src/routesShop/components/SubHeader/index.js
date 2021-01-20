@@ -202,11 +202,8 @@ class SubHeader extends Component {
               })}
           </div>
 
-          <div
-            className="cart"
-            onClick={() => this.props.history.push("/shop-cart")}
-          >
-            <span>
+          <div className="cart">
+            <span onClick={() => this.props.history.push("/shop-fav")}>
               {/* <span className="cart__nr">0</span> */}
               <i className="fal fa-heart"></i>
             </span>
