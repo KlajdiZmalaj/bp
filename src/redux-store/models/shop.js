@@ -105,17 +105,21 @@ export const reducer = createReducer(INITIAL_STATE, {
     ...state,
     isSelectedManufacturer,
   }),
+
   SET_CATEGORY: (state, { isSelectedCategory }) => ({
     ...state,
     isSelectedCategory,
+    sliderVal: [],
   }),
   SET_SUB_CATEGORY: (state, { isSelectedSubCategory }) => ({
     ...state,
     isSelectedSubCategory,
+    sliderVal: [],
   }),
   SET_SUB_SUB_CATEGORY: (state, { isSelectedSubSubCategory }) => ({
     ...state,
     isSelectedSubSubCategory,
+    sliderVal: [],
   }),
   SET_ORDER_VAL: (state, { orderVal }) => ({
     ...state,

@@ -23,7 +23,21 @@ class Products extends Component {
         <div className="title maxWidth">categorie</div>
         <div className="banners maxWidth">
           {categories &&
+          categories.hasOwnProperty("offerterefurbished") ? null : (
+            <div className="categoriesP offerterefurbished">
+              <div className="text">
+                Outlet<b>Oferte</b>
+              </div>
+              <img src={images["offerterefurbished"]} alt="" />
+            </div>
+          )}
+          {categories &&
             Object.keys(categories).map((item, index) => {
+              let url =
+                categories[item]?.name.split(" | ")[0] +
+                (categories[item]?.name.split(" | ")[1]
+                  ? "__" + categories[item]?.name.split(" | ")[1]
+                  : "");
               return (
                 <div
                   key={index}
@@ -35,11 +49,7 @@ class Products extends Component {
                       categories[item].name
                     );
                     this.props.setCategory(categories[item].name);
-                    this.props.history.push(
-                      `/product-filtered/${
-                        categories[item]?.name?.split(" | ")[0]
-                      }__${categories[item]?.name?.split(" | ")[1]}`
-                    );
+                    this.props.history.push(`/product-filtered/${url}`);
                   }}
                 >
                   <div className="text">
@@ -58,6 +68,11 @@ class Products extends Component {
           <div className="bestSeller paddingBottom">
             {Object.keys(defaultProducts).map((item) => {
               const prod = defaultProducts[item];
+              let url =
+                categories[item]?.name.split(" | ")[0] +
+                (categories[item]?.name.split(" | ")[1]
+                  ? "__" + categories[item]?.name.split(" | ")[1]
+                  : "");
               return (
                 <div className="homeProd" key={item}>
                   <div className="filtersCateg text-uppercase">
@@ -79,11 +94,7 @@ class Products extends Component {
                         categories[item]?.name
                       );
                       this.props.setCategory(categories[item]?.name);
-                      this.props.history.push(
-                        `/product-filtered/${
-                          categories[item]?.name?.split(" | ")[0]
-                        }__${categories[item]?.name?.split(" | ")[1]}`
-                      );
+                      this.props.history.push(`/product-filtered/${url}`);
                     }}
                   >
                     Vedi tutti

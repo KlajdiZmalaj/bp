@@ -24,23 +24,21 @@
   .categories {
     &__category {
       display: inline-block;
-      padding: 0 15px 0 10px;
+      padding: 0 20px 0 20px;
       font-size: 13px;
       text-transform: capitalize;
-      border-left: 1px solid #efefef;
       cursor: pointer;
       text-align: center;
       position: relative;
       line-height: normal;
       text-align: left;
       > div {
-        padding-left: 10px;
         &.Regali {
           max-width: 60px;
         }
       }
       &.tutti {
-        padding: 0 12px 0 0px;
+        padding: 0 20px 0 0px;
         border-left: 0;
         i {
           font-size: 16px;
@@ -51,7 +49,7 @@
         }
       }
       i {
-        font-size: 11px;
+        font-size: 13px;
         position: absolute;
         left: 5px;
         top: 10px;

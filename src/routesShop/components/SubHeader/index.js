@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import "./style.css";
 import { withRouter } from "react-router-dom";
 import { get, isObject } from "lodash";
-import images from "themes/images";
 import Brand from "./Brand";
 
 class SubHeader extends Component {
@@ -48,6 +47,11 @@ class SubHeader extends Component {
                 {cat &&
                   isObject(cat) &&
                   Object.keys(cat).map((item, index) => {
+                    let url =
+                      cat[item]?.name.split(" | ")[0] +
+                      (cat[item]?.name.split(" | ")[1]
+                        ? "__" + cat[item]?.name.split(" | ")[1]
+                        : "");
                     return (
                       <div
                         className={
@@ -63,11 +67,10 @@ class SubHeader extends Component {
                             cat[item].name
                           );
                           this.props.setCategory(cat[item].name);
-                          this.props.history.push(
-                            `/product-filtered/${
-                              cat[item].name.split(" | ")[0]
-                            }__${cat[item].name.split(" | ")[1]}`
-                          );
+                          this.props.setSubCategory(null);
+                          this.props.setSubSubCategory(null);
+                          this.props.setManufacturer(null);
+                          this.props.history.push(`/product-filtered/${url}`);
                         }}
                       >
                         <div className={cat[item]?.name.toLowerCase()}>
@@ -84,6 +87,11 @@ class SubHeader extends Component {
                     Object.keys(cat[itemS].subcategories).map(
                       (subitem, subIndex) => {
                         let sub = cat[itemS].subcategories;
+                        let url =
+                          cat[itemS]?.name.split(" | ")[0] +
+                          (cat[itemS]?.name.split(" | ")[1]
+                            ? "__" + cat[itemS]?.name.split(" | ")[1]
+                            : "");
                         return (
                           <div
                             key={subIndex}
@@ -99,11 +107,14 @@ class SubHeader extends Component {
                                 null,
                                 sub[subitem].name
                               );
+                              this.props.setCategory(cat[itemS].name);
+                              this.props.setSubCategory(sub[subitem].name);
+                              this.props.setSubSubCategory(null);
+                              this.props.setManufacturer(null);
+
                               this.setIsShown(false);
                               this.props.history.push(
-                                `/product-filtered/${
-                                  cat[itemS].name.split(" | ")[0]
-                                }__${cat[itemS].name.split(" | ")[1]}`
+                                `/product-filtered/${url}`
                               );
                             }}
                           >
@@ -117,9 +128,8 @@ class SubHeader extends Component {
                 <img src={cat[itemS]?.url} alt={cat[itemS]?.name}></img>
               </div>
               <div className="brands">
-                <div>
-                  <div className="brands__title">Brands</div>
-
+                <div className="brands__title">Brands</div>
+                <div className="brands__body">
                   {cat[itemS] &&
                     Object.keys(cat[itemS].brands).map((brand, index) => {
                       let brandi = cat[itemS].brands;
@@ -130,6 +140,7 @@ class SubHeader extends Component {
                           brand={brandi[brand]}
                           cat={cat}
                           itemS={itemS}
+                          setIsShown={this.setIsShown}
                         ></Brand>
                       );
                     })}
@@ -155,6 +166,11 @@ class SubHeader extends Component {
             </div>
             {cat &&
               Object.keys(cat).map((item, index) => {
+                let url =
+                  cat[item]?.name.split(" | ")[0] +
+                  (cat[item]?.name.split(" | ")[1]
+                    ? "__" + cat[item]?.name.split(" | ")[1]
+                    : "");
                 return (
                   <div
                     className={
@@ -170,20 +186,17 @@ class SubHeader extends Component {
                     onClick={() => {
                       this.props.setProductsList({});
                       this.setIsShown(false);
-                      this.props.getProductsList(null, null, cat[item].name);
-                      this.props.setCategory(cat[item].name);
-                      this.props.history.push(
-                        `/product-filtered/${
-                          cat[item]?.name?.split(" | ")[0]
-                        }__${cat[item]?.name?.split(" | ")[1]}`
-                      );
+                      this.props.getProductsList(null, null, cat[item]?.name);
+                      this.props.setCategory(cat[item]?.name);
+                      this.props.history.push(`/product-filtered/${url}`);
                     }}
                   >
                     <div className={cat[item]?.name}>
                       {cat[item]?.name?.split("|")[0]}
                       <p> {cat[item]?.name?.split("|")[1]}</p>
                     </div>
-                    <i className="fas fa-chevron-down"></i>
+
+                    <i className="fas fa-caret-down"></i>
                   </div>
                 );
               })}
