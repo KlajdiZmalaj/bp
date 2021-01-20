@@ -320,28 +320,40 @@
   justify-content: center;
 }
 .fal {
-  &.PRDPST,
+  // &.PRDPST,
   &.SND000 {
     &:before {
       content: "\f543";
     }
   }
-  &.RTELD:before,
-  &.RTELC:before,
-  &.RTELI:before {
+  &.PRDPST {
+    &:before {
+      content: "\f09d";
+    }
+  }
+  &.RTELD:before {
     content: "\f10b";
   }
+  &.RTELI:before {
+    content: "\f7a2";
+  }
+  &.RTELC:before {
+    content: "\f7c4";
+  }
   &.CCARD:before {
-    content: "\f09d";
+    content: "\f38a";
+  }
+  &.INDACO:before {
+    content: "\f847";
   }
   &.SCMS:before {
-    content: "\f389";
+    content: "\f1e3";
   }
   &.RTVD:before {
     content: "\f26c";
   }
   &.GIFT:before {
-    content: "\f06b";
+    content: "\f663";
   }
   &.ALTRI:before {
     content: "\f217";
