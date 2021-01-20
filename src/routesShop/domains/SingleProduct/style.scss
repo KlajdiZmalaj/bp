@@ -63,18 +63,26 @@
         background-color: #fff;
         margin-left: 10px;
         font-size: 14px;
+        &__brand {
+          font-size: 11px;
+        }
         .title {
           font-size: 18px;
           color: #272c31;
           display: inline-block;
           width: calc(100% - 50px);
+          line-height: normal;
         }
         .addToFav {
           display: inline-block;
           width: 50px;
           float: right;
           padding: 3px;
-          opacity: 0.6;
+          opacity: 0.4;
+          &:hover {
+            opacity: 1;
+            color: var(--accent-bg);
+          }
           i {
             font-size: 20px;
             border: 1px solid;
@@ -87,8 +95,8 @@
           font-weight: 300;
         }
         .label {
-          color: #696969;
           text-transform: capitalize;
+          opacity: 0.6;
         }
         .properties {
           display: flex;

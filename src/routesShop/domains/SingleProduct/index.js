@@ -68,6 +68,7 @@ class SingleProduct extends Component {
   };
 
   handleProduct = (item) => {
+    console.log("item", item);
     this.setState({ itemSelected: item });
   };
 
@@ -100,7 +101,7 @@ class SingleProduct extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { product, match, productCart } = this.props;
+    const { product, productCart } = this.props;
 
     const {
       orderQuanity,
@@ -167,7 +168,9 @@ class SingleProduct extends Component {
                   </div>
                 </div>
                 <div className="description">
-                  {product.Product_Manufacturer}
+                  <div className="description__brand">
+                    {product.Product_Manufacturer}
+                  </div>
                   <div className="title">
                     <span className="text-uppercase">
                       {product.Product_Name}
@@ -178,7 +181,12 @@ class SingleProduct extends Component {
                     <i className="fas fa-heart"></i>
                   </div>
                   <div className="price marginBottom">
-                    {product.Product_Price_Special} €
+                    {this.props.product.Models &&
+                    Object.keys(this.props.product.Models).length > 0 &&
+                    this.state.itemSelected
+                      ? this.state.itemSelected.price
+                      : product.Product_Price_Special}
+                    €
                   </div>
                   <div className="borderB marginBottom"></div>
                   <div className="description__text marginBottom">

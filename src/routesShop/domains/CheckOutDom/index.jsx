@@ -436,7 +436,7 @@ const CheckOutDom = ({
             <div className="infos">
               <div className="subTotal">
                 <div>Subtotale:</div>
-                <div>€ {sum}</div>
+                <div>€ {sum.replace(/\./g, ",")}</div>
               </div>
               <div className="subTotal">
                 <div>Shipping:</div>
@@ -444,7 +444,7 @@ const CheckOutDom = ({
               </div>
               <div className="subTotal">
                 <div>Totale:</div>
-                <div>€ {sumTot}</div>
+                <div>€ {sumTot.replace(/\./g, ",")}</div>
               </div>
               {/* <div className="total">
                 <div>Totale:</div>
