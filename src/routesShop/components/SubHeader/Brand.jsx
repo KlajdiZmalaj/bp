@@ -16,7 +16,11 @@ const Brand = ({
   setCategory,
 }) => {
   const [isImage, setIsImage] = useState(false);
-
+  let url =
+    cat[itemS]?.name.split(" | ")[0] +
+    (cat[itemS]?.name.split(" | ")[1]
+      ? "__" + cat[itemS]?.name.split(" | ")[1]
+      : "");
   return (
     <div
       className="brands__item"
@@ -25,13 +29,7 @@ const Brand = ({
         setManufacturer(brand.name);
         setCategory(cat[itemS].name);
         setIsShown(false);
-        history.push(
-          `/product-filtered/${cat[itemS].name.split(" | ")[0]}__${
-            cat[itemS].name.split(" | ")[1]
-              ? cat[itemS].name.split(" | ")[1]
-              : ""
-          }`
-        );
+        history.push(`/product-filtered/${url}`);
       }}
     >
       <img

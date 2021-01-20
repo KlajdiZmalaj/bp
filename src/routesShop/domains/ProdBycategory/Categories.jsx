@@ -11,6 +11,10 @@ class Categories extends Component {
 
     let isOpen = this.props.isSelectedC === this.props.cat.name ? true : false;
 
+    let url =
+      cat?.name.split(" | ")[0] +
+      (cat?.name.split(" | ")[1] ? "__" + cat?.name.split(" | ")[1] : "");
+
     return (
       <div
         className={"category" + (isSelectedC === cat?.name ? " active" : "")}
@@ -25,11 +29,7 @@ class Categories extends Component {
             this.props.setSubCategory(null);
             this.props.setSubSubCategory(null);
             this.props.setManufacturer(null);
-            this.props.history.push(
-              `/product-filtered/${cat?.name?.split(" | ")[0]}__${
-                cat?.name?.split(" | ")[1] ? cat?.name?.split(" | ")[1] : ""
-              }`
-            );
+            this.props.history.push(`/product-filtered/${url}`);
           }}
         >
           {!isOpen && <i className="fas fa-caret-right"></i>}

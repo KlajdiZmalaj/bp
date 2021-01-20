@@ -47,6 +47,11 @@ class SubHeader extends Component {
                 {cat &&
                   isObject(cat) &&
                   Object.keys(cat).map((item, index) => {
+                    let url =
+                      cat[item]?.name.split(" | ")[0] +
+                      (cat[item]?.name.split(" | ")[1]
+                        ? "__" + cat[item]?.name.split(" | ")[1]
+                        : "");
                     return (
                       <div
                         className={
@@ -65,15 +70,7 @@ class SubHeader extends Component {
                           this.props.setSubCategory(null);
                           this.props.setSubSubCategory(null);
                           this.props.setManufacturer(null);
-                          this.props.history.push(
-                            `/product-filtered/${
-                              cat[item].name.split(" | ")[0]
-                            }__${
-                              cat[item].name.split(" | ")[1]
-                                ? cat[itemS].name.split(" | ")[1]
-                                : ""
-                            }`
-                          );
+                          this.props.history.push(`/product-filtered/${url}`);
                         }}
                       >
                         <div className={cat[item]?.name.toLowerCase()}>
@@ -90,6 +87,11 @@ class SubHeader extends Component {
                     Object.keys(cat[itemS].subcategories).map(
                       (subitem, subIndex) => {
                         let sub = cat[itemS].subcategories;
+                        let url =
+                          cat[itemS]?.name.split(" | ")[0] +
+                          (cat[itemS]?.name.split(" | ")[1]
+                            ? "__" + cat[itemS]?.name.split(" | ")[1]
+                            : "");
                         return (
                           <div
                             key={subIndex}
@@ -112,13 +114,7 @@ class SubHeader extends Component {
 
                               this.setIsShown(false);
                               this.props.history.push(
-                                `/product-filtered/${
-                                  cat[itemS].name.split(" | ")[0]
-                                }__${
-                                  cat[itemS].name.split(" | ")[1]
-                                    ? cat[itemS].name.split(" | ")[1]
-                                    : ""
-                                }`
+                                `/product-filtered/${url}`
                               );
                             }}
                           >
@@ -170,6 +166,11 @@ class SubHeader extends Component {
             </div>
             {cat &&
               Object.keys(cat).map((item, index) => {
+                let url =
+                  cat[item]?.name.split(" | ")[0] +
+                  (cat[item]?.name.split(" | ")[1]
+                    ? "__" + cat[item]?.name.split(" | ")[1]
+                    : "");
                 return (
                   <div
                     className={
@@ -185,17 +186,9 @@ class SubHeader extends Component {
                     onClick={() => {
                       this.props.setProductsList({});
                       this.setIsShown(false);
-                      this.props.getProductsList(null, null, cat[item].name);
-                      this.props.setCategory(cat[item].name);
-                      this.props.history.push(
-                        `/product-filtered/${
-                          cat[item]?.name?.split(" | ")[0]
-                        }__${
-                          cat[item]?.name?.split(" | ")[1]
-                            ? cat[itemS].name.split(" | ")[1]
-                            : ""
-                        }`
-                      );
+                      this.props.getProductsList(null, null, cat[item]?.name);
+                      this.props.setCategory(cat[item]?.name);
+                      this.props.history.push(`/product-filtered/${url}`);
                     }}
                   >
                     <div className={cat[item]?.name}>
