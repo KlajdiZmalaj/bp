@@ -103,6 +103,17 @@ export function* getToCart(params) {
     notification["success"]({
       message: response?.data?.message,
     });
+
+    let paramsToRemove = {
+      prd_supp: params.prd_supp,
+      Product_id: params.Product_id,
+      quantity: "0",
+      list: "wish",
+    };
+
+    if (params.from === "wish") {
+      yield call(getRemoveToCart, paramsToRemove);
+    }
     yield delay(4000);
     yield put(ShopActions.setToCart(""));
   }
@@ -139,6 +150,7 @@ export function* getOrder(params) {
 }
 
 export function* getRemoveToCart(params) {
+  console.log("quantity", params);
   const response = yield call(
     ShopRequest.fetchRemoveToCart,
     params.prd_supp,

@@ -28,7 +28,7 @@ const { Types, Creators } = createActions({
   setSliderVal: ["sliderVal"],
   checkOut: ["formData", "resetFields"],
 
-  getToCart: ["prd_supp", "Product_id", "list", "quantity"],
+  getToCart: ["prd_supp", "Product_id", "list", "quantity", "from"],
   setToCart: ["productCart"],
 
   getItemsCart: ["checkout"],

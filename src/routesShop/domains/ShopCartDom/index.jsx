@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import images from "../ShopFavDom/node_modules/themes/images";
+import images from "themes/images";
 import "./style.css";
 import { Radio } from "antd";
-import ShopActions from "../ShopFavDom/node_modules/redux-store/models/shop";
+import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-import countriesArray from "../ShopFavDom/node_modules/config/countryArr";
+import countriesArray from "config/countryArr";
 import VirtualizedSelect from "react-virtualized-select";
 
 import RowItem from "./RowItem";

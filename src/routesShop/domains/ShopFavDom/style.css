@@ -1,0 +1,2 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap");.favCartContainer .shopCartContainer--left{width:100%}.favCartContainer .cartItem{padding:0 20px}.favCartContainer .cartItem__actions>div:nth-child(3){width:140px;margin-left:15px;transition:0.3s;cursor:pointer;font-size:17px}.favCartContainer .cartItem__actions>div:nth-child(3) button{border:none;width:100%;background-color:transparent}.favCartContainer .cartItem__actions>div:nth-child(3):hover{border-color:var(--accent-bg);color:var(--accent-bg)}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap");
+
+.favCartContainer {
+  .shopCartContainer--left {
+    width: 100%;
+  }
+  .cartItem {
+    padding: 0 20px;
+    &__actions {
+      > div:nth-child(3) {
+        width: 140px;
+        margin-left: 15px;
+        transition: 0.3s;
+        cursor: pointer;
+        font-size: 17px;
+        button {
+          border: none;
+          width: 100%;
+          background-color: transparent;
+        }
+        &:hover {
+          border-color: var(--accent-bg);
+          color: var(--accent-bg);
+        }
+      }
+    }
+  }
+}

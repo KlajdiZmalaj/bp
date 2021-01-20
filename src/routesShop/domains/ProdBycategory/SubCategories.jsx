@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import ShopActions from "../ShopFavDom/node_modules/redux-store/models/shop";
+import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import SubSubCategories from "./SubSubCategories";
 

@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { find, isObject } from "lodash";
 import Slider from "react-slick";
 
-import ShopActions from "../ShopFavDom/node_modules/redux-store/models/shop";
+import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 
 import "./style.css";
