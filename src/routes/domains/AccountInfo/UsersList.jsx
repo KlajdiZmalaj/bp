@@ -141,7 +141,7 @@ class UsersList extends Component {
     const userWithPhoto = userList && userList.photo;
     const userNoPhoto = userList && userList.no_photo;
     const role = get(this.props.accountInfo, "profile.role.name");
-    console.log("userList", userList);
+    // console.log("userList", userList);
     return (
       <div className="userList">
         {DepositoPopup?.visibility === true ? (
@@ -407,7 +407,6 @@ class UsersList extends Component {
                   }}
                 />
               )}
-              {console.log("userDetail", userDetail)}
               <div className="newReg--row lastRow ww">
                 {(userDetail.role !== "agent" &&
                   userDetail.role !== "user" &&

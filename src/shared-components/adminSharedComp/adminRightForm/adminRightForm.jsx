@@ -119,7 +119,7 @@ class AdminRightForm extends React.Component {
             }}
             draggable
             onDragEnd={(e) => {
-              console.log("ca ka e", e, e.clientX, e.clientY);
+              //console.log("ca ka e", e, e.clientX, e.clientY);
               this.setState({ top: e.clientY, left: e.clientX });
               document.body.classList.remove("elFocus");
             }}

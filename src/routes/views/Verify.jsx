@@ -47,7 +47,7 @@ class Verify extends Component {
             }, 2000);
           },
           (error) => {
-            console.log("response", error);
+            //console.log("response", error);
             notification["error"]({
               message: Object.values(error.response.data.errors),
             });

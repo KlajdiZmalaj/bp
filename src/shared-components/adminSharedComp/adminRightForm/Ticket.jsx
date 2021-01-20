@@ -58,11 +58,7 @@ class Ticket extends React.Component {
       openModalForAdmin,
       ModalDetails,
     } = this.props;
-    console.log(
-      "getLogoBySkinId",
-      images.getLogoBySkinId,
-      this.props.activeSkinId
-    );
+
     return (
       <React.Fragment>
         <div

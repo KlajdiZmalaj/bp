@@ -8,7 +8,7 @@ export function* sendPrenotazione({ objectData }, resetState) {
     if (resetState) {
       resetState();
     }
-    console.log("got response ", response, objectData);
+    //console.log("got response ", response, objectData);
     notification["success"]({
       message: response.data.message,
     });

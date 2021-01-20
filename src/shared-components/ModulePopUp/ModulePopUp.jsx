@@ -20,10 +20,8 @@ class ModulePopUp extends React.Component {
       id: this.props.match.params.c2,
     });
     this.props.togglePopUp(true);
-    console.log("set", SID);
   };
   componentDidUpdate(prevProps) {
-    console.log("upd");
     const _ = this;
 
     if (this.props.services !== prevProps.services) {
@@ -39,13 +37,7 @@ class ModulePopUp extends React.Component {
   }
 
   render() {
-    const {
-      isShowing,
-      service,
-      bolletiniBianchi,
-      serviceType,
-      service_s,
-    } = this.props;
+    const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
     const service_id = service?.service_id;
 
     // const arr = [
@@ -57,7 +49,7 @@ class ModulePopUp extends React.Component {
     //   },
     // ];
 
-    console.log("service_id", serviceType, service_s.id);
+    //console.log("service_id", serviceType, service_s.id);
     const module1 = [
       "BOL001",
       "BOL002",
