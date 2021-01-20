@@ -137,7 +137,8 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
         <div className="titleTop">Spedizione</div>
         <div className="shipping">
           <div className="subTot">
-            <div>Subtotale</div> <div>{sum} €</div>
+            <div>Subtotale</div>{" "}
+            <div>{sum.toString().replace(/\./g, ",")} €</div>
           </div>
           <div className="dashedBorder"></div>
           <div className="subTot">
@@ -185,7 +186,7 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
           </Radio.Group>
 
           <div className="totale">
-            <div>Totale</div> <div>€ {sumTot}€</div>
+            <div>Totale</div> <div>{sumTot.replace(/\./g, ",")} €</div>
           </div>
           <div
             className="procedi"
