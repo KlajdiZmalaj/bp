@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { Font, Footer, ModulePopUp } from "./shared-components";
+import { Font, Footer } from "./shared-components";
 import images from "themes/images";
 import Root from "./Root";
 import { store } from "redux-store/store";
@@ -24,7 +24,7 @@ class App extends React.Component {
         <Font />
         <Root />
         <Footer />
-        <ModulePopUp></ModulePopUp>
+
         <input id="write" />
       </Provider>
     );

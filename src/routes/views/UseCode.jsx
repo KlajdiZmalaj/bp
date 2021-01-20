@@ -51,6 +51,7 @@ class UseCode extends React.Component {
             e.stopPropagation();
           }}
         >
+          <i className="fal fa-scanner" aria-hidden="true"></i>
           <input
             type="text"
             onChange={debounce(() => {
@@ -65,7 +66,7 @@ class UseCode extends React.Component {
             id={"inpVal"}
             className="inpT animated slideInTop"
           />
-          <i className="fal fa-barcode" aria-hidden="true"></i>
+          <i className="fal fa-search" aria-hidden="true"></i>
         </div>
         {/* <div
           className="latestBarcodes animated slideInUp"

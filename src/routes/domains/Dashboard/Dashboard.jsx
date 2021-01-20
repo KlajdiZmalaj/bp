@@ -311,6 +311,7 @@ class DashboardDom extends React.Component {
                     this.setState({ categoryActive: cat.key });
                   }}
                   key={cat?.key}
+                  data-cat={`${cat.key}`}
                 >
                   {cat.name}
                 </div>

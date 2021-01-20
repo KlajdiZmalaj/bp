@@ -153,7 +153,7 @@ class Root extends React.Component {
             />
             {/* <Route path="/register/:id" component={Register} /> */}
             <PublicRoute
-              path="/login/:link2?/"
+              path="/login/:link2?/:c1?/:c2?/"
               component={
                 isMobile ? MobileViews.DashboardMobile : DesktopView.Login
               }
@@ -222,7 +222,7 @@ class Root extends React.Component {
             />
             {/* // :id?/ , me ?/ qe te beje dhe /dashboard render */}
             <PublicRoute
-              path={`/dashboard${!isMobile ? "/:id?/" : ""}`}
+              path={`/dashboard${!isMobile ? "/:id?/:c1?/:c2?" : ""}`}
               // component={Dashboard}
               component={
                 isMobile ? MobileViews.DashboardMobile : DesktopView.Dashboard
@@ -230,6 +230,7 @@ class Root extends React.Component {
               isLoggedin={false}
               role={role}
             />
+
             <PrivateRoute
               path="/configura"
               component={
@@ -324,7 +325,6 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "agency", "agent"]}
               role={role}
             />
-
             <PrivateRoute
               path="/back-office/utenti"
               component={DesktopView.AdminPanelListaUtenti}

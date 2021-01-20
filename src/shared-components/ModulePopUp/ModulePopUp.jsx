@@ -5,11 +5,47 @@ import { MainActions, AuthActions } from "redux-store/models";
 import ModulePopUp1 from "./ModulePopUp1";
 import ModulePopUp3 from "./ModulePopUp3";
 import ModulePopUp4 from "./ModulePopUp4";
+import { withRouter } from "react-router-dom";
 import "./style.css";
 
 class ModulePopUp extends React.Component {
+  setFromUrl = () => {
+    const SID = this.props.services?.[this.props.match.params.c1]?.[
+      this.props.match.params.c2
+    ];
+    this.props.setServiceType(this.props.match.params.c1);
+    this.props.setServiceId(SID?.services?.[0]);
+    this.props.setServiceS({
+      ...SID,
+      id: this.props.match.params.c2,
+    });
+    this.props.togglePopUp(true);
+    console.log("set", SID);
+  };
+  componentDidUpdate(prevProps) {
+    console.log("upd");
+    const _ = this;
+
+    if (this.props.services !== prevProps.services) {
+      _.setFromUrl();
+    }
+
+    if (
+      this.props.match.params.c1 !== prevProps.match.params.c1 ||
+      this.props.match.params.c2 !== prevProps.match.params.c2
+    ) {
+      _.setFromUrl();
+    }
+  }
+
   render() {
-    const { isShowing, service, bolletiniBianchi, serviceType } = this.props;
+    const {
+      isShowing,
+      service,
+      bolletiniBianchi,
+      serviceType,
+      service_s,
+    } = this.props;
     const service_id = service?.service_id;
 
     // const arr = [
@@ -21,6 +57,7 @@ class ModulePopUp extends React.Component {
     //   },
     // ];
 
+    console.log("service_id", serviceType, service_s.id);
     const module1 = [
       "BOL001",
       "BOL002",
@@ -31,6 +68,14 @@ class ModulePopUp extends React.Component {
       "BOL003",
       "PAGF24",
     ];
+
+    // console.log(
+    //   "sid",
+    //   this.props.match.params.c1,
+    //   this.props.match.params.c2,
+    //   SID,
+    //   this.props.services
+    // );
     return isShowing ? (
       <Fragment>
         {module1.includes(service_id) && (
@@ -72,8 +117,10 @@ const mapsStateToProps = (state) => ({
   service: state.auth.service_id,
   bolletiniBianchi: state.auth.bolletiniBianchi,
   serviceType: state.auth.serviceType,
+  services: state.main.services,
+  service_s: state.auth.service_s,
 });
 
-export default connect(mapsStateToProps, { ...MainActions, ...AuthActions })(
-  ModulePopUp
+export default withRouter(
+  connect(mapsStateToProps, { ...MainActions, ...AuthActions })(ModulePopUp)
 );
