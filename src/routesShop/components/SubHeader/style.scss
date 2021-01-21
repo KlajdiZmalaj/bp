@@ -1,5 +1,5 @@
 .subheader {
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--accent-bg);
   &.blur {
     &:after {
       content: "";
@@ -27,7 +27,7 @@
     cursor: pointer;
     text-transform: uppercase;
     i {
-      font-size: 25px;
+      font-size: 22px;
       &.red {
         // color: red;
       }

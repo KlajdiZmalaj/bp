@@ -24,7 +24,7 @@
       font-size: 30px;
     }
     .slick-slider {
-      width: 100%;
+      width: calc(100% - 10px);
     }
     .slick-list {
       padding: 0px 0px 20px 0px;
@@ -387,7 +387,7 @@
     }
     &__items {
       display: grid;
-      grid-template-columns: repeat(6, calc(100% / 6 - 5px));
+      grid-template-columns: repeat(6, calc(100% / 6 - 7px));
       grid-gap: 5px;
       padding: 0px;
       .subCatgGroup {
