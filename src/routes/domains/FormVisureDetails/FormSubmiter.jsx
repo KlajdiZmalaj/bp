@@ -44,7 +44,10 @@ export class FormSubmiter extends Component {
     } = this.props;
 
     return accountInfo.profile?.role?.name === "support" ? (
-      <div className="formSubmit">
+      <div
+        className="formSubmit"
+        data-item={this.props.VisureByVisureId.status}
+      >
         <div
           className={
             "formSubmit--price" +
@@ -95,7 +98,8 @@ export class FormSubmiter extends Component {
               "formSubmit--download" +
               (this.props.VisureByVisureId.status === "Eseguibile" ||
               this.props.VisureByVisureId.status === "Completato" ||
-              enableButtons
+              (enableButtons.status &&
+                VisureByVisureId.id.includes(enableButtons.instance))
                 ? " "
                 : " dissableBtn") +
               (this.state.base64
@@ -165,7 +169,8 @@ export class FormSubmiter extends Component {
           }}
           className={
             "formSubmit--button -s" +
-            (enableButtons ||
+            ((enableButtons.status &&
+              VisureByVisureId.id.includes(enableButtons.instance)) ||
             this.props.VisureByVisureId.status === "Eseguibile"
               ? ""
               : " dissableBtn")
@@ -188,7 +193,8 @@ export class FormSubmiter extends Component {
           }}
           className={
             "formSubmit--button -c" +
-            (enableButtons ||
+            ((enableButtons.status &&
+              VisureByVisureId.id.includes(enableButtons.instance)) ||
             this.props.VisureByVisureId.status === "Eseguibile"
               ? ""
               : " dissableBtn")
