@@ -44,6 +44,7 @@ class SubCategories extends Component {
             this.props.setSubCategory(item.name);
             this.props.setSubSubCategory(null);
             this.props.setManufacturer(null);
+            this.props.openProducts(true);
           }}
         >
           {item.name}
