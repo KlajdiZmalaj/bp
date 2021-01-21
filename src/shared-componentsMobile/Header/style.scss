@@ -226,7 +226,7 @@
       padding-bottom: 43px;
     }
   }
-  + div:not(.mobileWrapper) {
+  + div:not(.mobileWrapper):not(.rowPopUp) {
     padding-top: 69px;
     padding-bottom: 43px;
     .download-overview {

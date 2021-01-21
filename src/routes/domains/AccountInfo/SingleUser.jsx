@@ -133,9 +133,12 @@ class SingleUser extends Component {
                   }
                 ></i>
               )}
-              {user.username}
+
+              <div className="w-100 d-block"> {user.username}</div>
             </span>
-            <span>{capitalize(user.rag_soc)}</span>
+            <span>
+              <div className="w-100 d-block">{capitalize(user.rag_soc)}</div>
+            </span>
             <span className="text-right justify-content-end">
               {numberWithCommas(user.wallet)}€
             </span>

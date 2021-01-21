@@ -354,6 +354,11 @@
     }
     &.errorsCenter {
       width: calc(100% - 200px);
+      .userList .header span,
+      .userList--noDoc__user .body span,
+      .userList--Doc__user .body span {
+        border-right: 0;
+      }
     }
     & .AdminListaUtenti--Header,
     .col-md-12,
