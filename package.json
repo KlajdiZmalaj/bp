@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "codice-fiscale-js": "^2.3.6",
     "date-fns": "^2.16.1",
+    "firebase": "^8.2.3",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "laravel-echo": "^1.8.0",

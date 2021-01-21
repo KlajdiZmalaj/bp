@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import { isEqual, debounce } from "lodash";
-import { notification } from "antd";
+// import { notification } from "antd";
 class UseCode extends React.Component {
   state = {
     inputVal: "",
