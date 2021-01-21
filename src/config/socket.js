@@ -2,6 +2,13 @@ import Echo from "laravel-echo";
 import { notification } from "antd";
 import React from "react";
 var audio = new Audio("notification_sound.mp3");
+audio.loop = true;
+
+const stopAudio = () => {
+  audio.pause();
+  audio.currentTime = 0;
+};
+window.stopAudio = stopAudio;
 export const socket = () => {
   window.io = require("socket.io-client");
   window["echo"] = new Echo({
@@ -35,8 +42,11 @@ export const subscribeSocketUser = (userID, props) => {
         message: "Hai ricevuto una notifica",
         description: e.data.title,
         icon: <i className="fal fa-smile-beam"></i>,
+        duration: 0,
+        onClose: () => {
+          stopAudio();
+        },
       });
-
       audio.play();
     }
     if (e.type === "popup") {
@@ -105,6 +115,10 @@ export const subscribeSocketSupport = (props) => {
           message: "Hai ricevuto una notifica",
           description: e.data.title,
           icon: <i className="fal fa-smile-beam"></i>,
+          duration: 0,
+          onClose: () => {
+            stopAudio();
+          },
         });
 
         audio.play();
@@ -118,6 +132,10 @@ export const subscribeSocketSupport = (props) => {
           message: "Hai ricevuto una notifica",
           description: e.data.title,
           icon: <i className="fal fa-smile-beam"></i>,
+          duration: 0,
+          onClose: () => {
+            stopAudio();
+          },
         });
 
         audio.play();

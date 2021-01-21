@@ -351,7 +351,7 @@ const Numpad = ({
             } else {
               getRechargeMobile(
                 selectedCost?.service_id,
-                `39${inpVal}`,
+                `${inpVal}`,
                 setLoadingRecharge
               );
             }

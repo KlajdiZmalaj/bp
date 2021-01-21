@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { MainActions, AuthActions } from "redux-store/models";
 import { isEqual, debounce } from "lodash";
-import { notification } from "antd";
+// import { notification } from "antd";
 class UseCode extends React.Component {
   state = {
     inputVal: "",
@@ -27,17 +27,22 @@ class UseCode extends React.Component {
   componentDidUpdate(prevProp) {
     if (
       !isEqual(prevProp.paymentsFromCode, this.props.paymentsFromCode) &&
-      !this.props.paymentsFromCode.errors &&
       this.props.paymentsFromCode.agency_name
     ) {
-      this.props.showModal("", this.state.inputVal);
+      this.props.showModal(
+        1,
+        document.querySelector("#inpVal").value,
+        "",
+        "",
+        ""
+      );
     }
-    if (this.props.paymentsFromCode.errors) {
-      notification["error"]({
-        message: this.props.paymentsFromCode.message,
-        description: Object.values(this.props.paymentsFromCode.errors),
-      });
-    }
+    // if (this.props.paymentsFromCode.errors) {
+    //   notification["error"]({
+    //     message: this.props.paymentsFromCode.message,
+    //     description: Object.values(this.props.paymentsFromCode.errors) + "test",
+    //   });
+    // }
   }
   render() {
     //const { paymentsO } = this.props;

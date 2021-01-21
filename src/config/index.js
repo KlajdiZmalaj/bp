@@ -1,3 +1,18 @@
+// import firebase from "firebase";
+
+// var firebaseConfig = {
+//   apiKey: "AIzaSyDMHqopkqlG962b6QbE9TWlu0EW0JZI0I8",
+//   authDomain: "bpoint-92398.firebaseapp.com",
+//   projectId: "bpoint-92398",
+//   storageBucket: "bpoint-92398.appspot.com",
+//   messagingSenderId: "449464517232",
+//   appId: "1:449464517232:web:9da256e50be6c296e56ab5",
+//   measurementId: "G-32SM7G7JGM",
+// };
+// // Initialize Firebase
+// var app = firebase.initializeApp(firebaseConfig);
+// export var db = firebase.firestore(app);
+
 export const allRoles = {
   user: "fal fa-user",
   agency: "fas fa-store",

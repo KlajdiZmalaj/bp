@@ -61,7 +61,10 @@ class PrintTicketSerap extends React.Component {
       >
         {bolletiniBianchi &&
           (bolletiniBianchi?.receipt ? (
-            <div className="printModal" ref={(el) => (this.componentRef = el)}>
+            <div
+              className="printModal aaa"
+              ref={(el) => (this.componentRef = el)}
+            >
               <div className="headerModal">
                 <img className="logo" src={images.logo} alt="" />
                 <span className="superSmall text-bold">

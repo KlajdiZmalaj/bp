@@ -48,8 +48,7 @@ const ServicesForms = ({
     serviceObj?.services?.[0].type?.toString?.() === "1";
   return (
     <div className="servicesForms">
-      {(activeCategory === "RTELD" || activeCategory === "RTELC") &&
-      ValidService ? (
+      {activeCategory === "RTELD" && ValidService ? (
         <NumpadForm
           setService={setService}
           activeCategory={activeCategory}
@@ -62,6 +61,7 @@ const ServicesForms = ({
           activeCategory === "RTELI" ||
           activeCategory === "RTVD" ||
           activeCategory === "CCARD" ||
+          activeCategory === "RTELC" ||
           activeCategory === "SCMS") &&
         ValidService ? (
         <NumpadForm

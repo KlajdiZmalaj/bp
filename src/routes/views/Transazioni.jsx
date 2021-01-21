@@ -1042,7 +1042,7 @@ class Transazioni extends React.Component {
           >
             {paymentsFromCode && (
               <div
-                className="printModal"
+                className="printModal aaaa"
                 ref={(el) => (this.componentRef = el)}
               >
                 <div className="headerModal">
@@ -1138,7 +1138,9 @@ class Transazioni extends React.Component {
                 />
                 <img
                   className="barcodeModal"
-                  src={`https://barcode.tec-it.com/barcode.ashx?data=${barcode}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
+                  src={`https://barcode.tec-it.com/barcode.ashx?data=${
+                    barcode || 0
+                  }&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`}
                   alt=""
                 />
                 <ReactToPrint

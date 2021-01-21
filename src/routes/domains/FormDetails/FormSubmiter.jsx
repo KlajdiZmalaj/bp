@@ -40,7 +40,7 @@ export class FormSubmiter extends Component {
     const { enableButtons, TicketByTcketId, getDataFormDetails } = this.props;
     return JSON.parse(localStorage.accountDataB)?.profile?.role?.name ===
       "support" ? (
-      <div className="formSubmit">
+      <div className="formSubmit" data-item={this.props.TicketByTcketId.status}>
         <div
           className={
             "formSubmit--price" +

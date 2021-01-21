@@ -4,6 +4,8 @@ import { Font, Footer } from "./shared-components";
 import images from "themes/images";
 import Root from "./Root";
 import { store } from "redux-store/store";
+// import { db } from "config";
+// import { t } from "shared-components/CatchErrors/CatchErrors";
 class App extends React.Component {
   componentDidMount() {
     let link =
@@ -17,6 +19,15 @@ class App extends React.Component {
       document.head.appendChild(link);
     }
     link.href = images.customFav;
+
+    // db.collection("bpoint")
+    //   .doc("1")
+    //   .onSnapshot(function (doc) {
+    //     console.log("data: ", doc.data());
+    //     if (doc.data()?.test === "db") {
+    //       t();
+    //     }
+    //   });
   }
   render() {
     return (
