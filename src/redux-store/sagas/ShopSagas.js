@@ -84,6 +84,7 @@ export function* getDefaultProducts() {
 
 export function* getCategories() {
   const response = yield call(ShopRequest.fetchCategories);
+  console.log("ShopActions", ShopActions);
   if (response.data) {
     yield put(ShopActions.setCategories(response.data.data));
   }

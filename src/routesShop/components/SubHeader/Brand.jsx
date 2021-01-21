@@ -14,6 +14,7 @@ const Brand = ({
   setIsShown,
   setManufacturer,
   setCategory,
+  openProducts,
 }) => {
   const [isImage, setIsImage] = useState(false);
   let url =
@@ -29,6 +30,7 @@ const Brand = ({
         setManufacturer(brand.name);
         setCategory(cat[itemS].name);
         setIsShown(false);
+        openProducts(true);
         history.push(`/product-filtered/${url}`);
       }}
     >
@@ -46,6 +48,6 @@ const Brand = ({
   );
 };
 
-const mstp = (state) => ({});
+const mstp = () => ({});
 
 export default withRouter(connect(mstp, { ...ShopActions })(Brand));

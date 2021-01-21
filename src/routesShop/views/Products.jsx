@@ -9,12 +9,11 @@ import SubHeader from "routesShop/components/SubHeader/index.js";
 
 class Products extends Component {
   componentDidMount() {
-    // this.props.getProductsList(null, null, "Offerte | Refurbished");
-    // this.props.getBrands();
     this.props.getCategories();
     this.props.setCategory(null);
     this.props.setManufacturer(null);
     this.props.getDefaultProducts();
+    this.props.openProducts(false);
   }
 
   render() {

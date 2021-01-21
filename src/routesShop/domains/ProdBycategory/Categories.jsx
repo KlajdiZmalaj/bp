@@ -30,6 +30,7 @@ class Categories extends Component {
             this.props.setSubSubCategory(null);
             this.props.setManufacturer(null);
             this.props.history.push(`/product-filtered/${url}`);
+            this.props.openProducts(false);
           }}
         >
           {!isOpen && <i className="fas fa-caret-right"></i>}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./style.css";
 import BestSeller from "routesShop/domains/Products/BestSeller";
+import CatItems from "./CatItems";
 
 import { withRouter } from "react-router-dom";
 
@@ -13,24 +14,24 @@ import { filter, head } from "lodash";
 
 import Categories from "./Categories";
 import Brand from "./Brand";
-import Slider2 from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 const { Option } = Select;
 class ProdBycategory extends Component {
   state = {
     highP: this.props.prodList.highest_price
       ? Math.ceil(this.props.prodList.highest_price)
       : null,
+    areOpenProducts: false,
   };
 
   componentDidMount() {
     const catProduct = this.props.match.params.cat;
     this.props.getProductsList(
       null,
-      null,
+      this.props.isSelected,
       catProduct && catProduct.replace("__", " | ")
     );
+    console.log("productsList", this.props.productsList, this.props.isSelected);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.prodList !== this.props.prodList) {
@@ -84,16 +85,8 @@ class ProdBycategory extends Component {
   };
 
   render() {
-    const { prodList, categories, isSelectedC } = this.props;
+    const { prodList, categories, isSelectedC, areOpenProducts } = this.props;
     const { highP } = this.state;
-
-    const settings = {
-      dots: false,
-      speed: 500,
-      infinite: false,
-      slidesToScroll: 1,
-      slidesToShow: 7,
-    };
 
     let filterCat = filter(categories, { name: isSelectedC });
     let brands = head(filterCat)?.brands;
@@ -175,86 +168,62 @@ class ProdBycategory extends Component {
 
     return (
       <div className="shopProd">
-        <div className="catgItems">
-          {subcategories && (
-            <Slider2 {...settings} className="maxWidth">
-              {Object.keys(subcategories).map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      this.props.setSubCategory(subcategories[item].name);
-                      this.props.setSubSubCategory(null);
-                      this.props.getProductsList(
-                        null,
-                        null,
-                        this.props.isSelectedC,
-                        null,
-                        this.props.orderVal,
-                        null,
-                        null,
-                        subcategories[item].name
-                      );
-                    }}
-                  >
-                    <span>{subcategories[item].name}</span>
-                    <img src={subcategories[item].url} alt=""></img>
-                  </div>
-                );
-              })}
-            </Slider2>
-          )}
-        </div>
-        <div className="filters maxWidth">
-          <div className="filters__items">
-            <div className="search">
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={this.search}
-              ></input>
-              <i className="far fa-search"></i>
-            </div>
+        {areOpenProducts && (
+          <div className="filters maxWidth">
+            <div className="filters__items">
+              <div className="search">
+                <input
+                  type="text"
+                  placeholder="Cerca in categoria"
+                  onChange={this.search}
+                ></input>
+                <i className="far fa-search"></i>
+              </div>
 
-            <div className="right">
-              <Dropdown
-                overlay={menu}
-                trigger={["click"]}
-                className="itemFilter"
-              >
-                <a className="price" onClick={(e) => e.preventDefault()}>
-                  Price <i className="fas fa-chevron-down"></i>
-                </a>
-              </Dropdown>
-
-              <Dropdown
-                overlay={menuBrands}
-                trigger={["click"]}
-                className="itemFilter"
-              >
-                <a className="price" onClick={(e) => e.preventDefault()}>
-                  {this.props.isSelected ? this.props.isSelected : "Brands"}{" "}
-                  <i className="fas fa-chevron-down"></i>
-                </a>
-              </Dropdown>
-
-              <div className="order">
-                <Select
-                  placeholder="Newest Arrivals"
-                  className="collection-layout__sort-order"
-                  onChange={this.handleChange}
+              <div className="right">
+                <Dropdown
+                  overlay={menu}
+                  trigger={["click"]}
+                  className="itemFilter"
                 >
-                  <Option value="">Newest Arrivals</Option>
-                  <Option value="2">Price: High to Low</Option>
-                  <Option value="1">Price: Low to High</Option>
-                </Select>
+                  <a className="price" onClick={(e) => e.preventDefault()}>
+                    Prezzo <i className="fas fa-chevron-down"></i>
+                  </a>
+                </Dropdown>
+
+                <Dropdown
+                  overlay={menuBrands}
+                  trigger={["click"]}
+                  className="itemFilter"
+                >
+                  <a className="price" onClick={(e) => e.preventDefault()}>
+                    {this.props.isSelected ? this.props.isSelected : "Brands"}{" "}
+                    <i className="fas fa-chevron-down"></i>
+                  </a>
+                </Dropdown>
+
+                <div className="order">
+                  <Select
+                    placeholder="Nuovi arrivi"
+                    className="collection-layout__sort-order"
+                    onChange={this.handleChange}
+                  >
+                    <Option value="">Nuovi arrivi</Option>
+                    <Option value="2">Prezzo decrescente</Option>
+                    <Option value="1">Prezzo crescente</Option>
+                  </Select>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="catProd maxWidth">
           <div className="catProd__categories">
-            <div className="title">Categorie</div>
+            <div className="title">
+              Home <span aria-hidden="true">›</span> {this.props.isSelectedC}{" "}
+              {this.props.isSelectedSC && <span aria-hidden="true">›</span>}{" "}
+              {this.props.isSelectedSC}
+            </div>
             <div className="catItems">
               {categories &&
                 Object.keys(categories).map((item, index) => {
@@ -268,12 +237,20 @@ class ProdBycategory extends Component {
                 })}
             </div>
           </div>
+          {subcategories && !areOpenProducts && (
+            <CatItems
+              subcategories={subcategories}
+              total_records={prodList.total_records}
+            ></CatItems>
+          )}
 
-          <BestSeller
-            prodList={prodList}
-            type="categories"
-            pageNumber={1}
-          ></BestSeller>
+          {areOpenProducts && (
+            <BestSeller
+              prodList={prodList}
+              type="categories"
+              pageNumber={1}
+            ></BestSeller>
+          )}
         </div>
       </div>
     );
@@ -290,5 +267,6 @@ const mpStP = (state) => ({
   orderVal: state.shop.orderVal,
   sliderVal: state.shop.sliderVal,
   categories: state.shop.categories,
+  areOpenProducts: state.shop.areOpenProducts,
 });
 export default withRouter(connect(mpStP, ShopActions)(ProdBycategory));

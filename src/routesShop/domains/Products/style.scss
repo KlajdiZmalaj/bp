@@ -8,7 +8,7 @@
 .subheader {
   display: flex;
   min-height: 50px;
-  background: #f9f9f9;
+  background: rgba(0, 0, 0, 0.7);
   position: sticky;
   z-index: 4;
   top: 100px;
@@ -22,6 +22,18 @@
   justify-content: space-between;
   align-items: center;
   .categories {
+    .openC {
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      i {
+        position: relative;
+        left: 0;
+        top: 0;
+        padding-right: 5px;
+        font-size: 16px;
+      }
+    }
     &__category {
       display: inline-block;
       padding: 0 20px 0 20px;
@@ -38,14 +50,13 @@
         }
       }
       &.tutti {
-        padding: 0 20px 0 0px;
+        color: #fff;
+        padding: 0;
         border-left: 0;
         i {
-          font-size: 16px;
+          font-size: 22px;
           position: relative;
-          vertical-align: super;
           top: 0;
-          left: 0;
         }
       }
       i {
@@ -379,6 +390,9 @@
       width: 100%;
       &__item {
         margin-bottom: 15px;
+        a {
+          color: inherit;
+        }
         .pBorder {
           border: 1px solid #ebebeb;
           width: 100%;
@@ -393,15 +407,28 @@
         }
 
         .name {
-          font-size: 14px;
+          font-size: 12px;
           padding-top: 10px;
           line-height: normal;
+          overflow: hidden;
+          height: 38px;
+          position: relative;
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 4em;
+            height: 16px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff);
+            right: 0;
+          }
         }
         .price {
-          color: #0578fc;
+          color: var(--accent-bg);
           font-size: 13px;
           font-weight: 500;
           line-height: normal;
+          padding: 5px 0;
         }
       }
     }

@@ -55,6 +55,7 @@ const { Types, Creators } = createActions({
   setCarries: ["carries"],
   getProdCat: ["category", "subCategory"],
   setProdCat: ["prodCat"],
+  openProducts: ["areOpenProducts"],
 });
 
 export const ShopTypes = Types;
@@ -78,6 +79,7 @@ const INITIAL_STATE = {
   productRemovedCart: {},
   carries: [],
   prodCat: {},
+  areOpenProducts: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -153,5 +155,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   SET_PROD_CAT: (state, { prodCat }) => ({
     ...state,
     prodCat,
+  }),
+  OPEN_PRODUCTS: (state, { areOpenProducts }) => ({
+    ...state,
+    areOpenProducts,
   }),
 });

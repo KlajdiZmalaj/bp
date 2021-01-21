@@ -71,6 +71,7 @@ class SubHeader extends Component {
                           this.props.setSubSubCategory(null);
                           this.props.setManufacturer(null);
                           this.props.history.push(`/product-filtered/${url}`);
+                          this.props.openProducts(false);
                         }}
                       >
                         <div className={cat[item]?.name.toLowerCase()}>
@@ -164,42 +165,15 @@ class SubHeader extends Component {
             >
               <i className="fas fa-home"></i>
             </div>
-            {cat &&
-              Object.keys(cat).map((item, index) => {
-                let url =
-                  cat[item]?.name.split(" | ")[0] +
-                  (cat[item]?.name.split(" | ")[1]
-                    ? "__" + cat[item]?.name.split(" | ")[1]
-                    : "");
-                return (
-                  <div
-                    className={
-                      "categories__category" +
-                      (isSelected === cat[item].name ? " active" : "") +
-                      (itemS === item ? " hovered" : "")
-                    }
-                    key={index}
-                    onMouseEnter={() => {
-                      this.setIsShown(true);
-                      this.setState({ itemS: item });
-                    }}
-                    onClick={() => {
-                      this.props.setProductsList({});
-                      this.setIsShown(false);
-                      this.props.getProductsList(null, null, cat[item]?.name);
-                      this.props.setCategory(cat[item]?.name);
-                      this.props.history.push(`/product-filtered/${url}`);
-                    }}
-                  >
-                    <div className={cat[item]?.name}>
-                      {cat[item]?.name?.split("|")[0]}
-                      <p> {cat[item]?.name?.split("|")[1]}</p>
-                    </div>
-
-                    <i className="fas fa-caret-down"></i>
-                  </div>
-                );
-              })}
+            <span
+              className="categories__category openC"
+              onMouseEnter={() => {
+                this.setIsShown(true);
+              }}
+            >
+              <i className="far fa-bars"></i>
+              Categories
+            </span>
           </div>
 
           <div className="cart">

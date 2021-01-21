@@ -59,8 +59,9 @@ class BestSeller extends Component {
 
           {isSelectedC && type && type === "categories" && (
             <span>
-              {total_records} products in{" "}
-              <span className="text-uppercase"> {isSelectedC}</span>
+              Trovati {total_records} prodotti
+              {/* {total_records} prodotti in{" "}
+              <b className="text-uppercase"> {isSelectedC}</b> */}
             </span>
           )}
 
@@ -72,9 +73,9 @@ class BestSeller extends Component {
                   value={orderVal}
                   onChange={this.handleChange}
                 >
-                  <option value="">Newest Arrivals</option>
-                  <option value="2">Price: High to Low</option>
-                  <option value="1">Price: Low to High</option>
+                  <option value="">Nuovi arrivi</option>
+                  <option value="2">Prezzo decrescente</option>
+                  <option value="1">Prezzo crescente</option>
                 </select>
               </div>
             </div>
