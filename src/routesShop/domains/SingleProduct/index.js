@@ -214,7 +214,7 @@ class SingleProduct extends Component {
                         {product.Product_SubCategory}
                       </p>
                       <p>
-                        <span className="label">SubCategoria: </span>
+                        <span className="label">Sub Categoria: </span>
                         {product.Product_Category}
                       </p>
                       {product.Product_Weight && (
