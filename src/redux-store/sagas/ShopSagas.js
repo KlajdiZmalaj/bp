@@ -1,7 +1,7 @@
 import { put, call, delay } from "redux-saga/effects";
 import ShopActions from "../models/shop";
 import * as ShopRequest from "services/shop";
-import { get } from "lodash";
+import { get, isObject } from "lodash";
 import { notification } from "antd";
 
 export function* checkOut({ formData, resetFields }) {
@@ -49,9 +49,6 @@ export function* getProductsList(params) {
   );
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));
-    yield put(
-      ShopActions.setSliderVal([0, Math.ceil(response.data.highest_price)])
-    );
   }
 }
 
@@ -151,7 +148,6 @@ export function* getOrder(params) {
 }
 
 export function* getRemoveToCart(params) {
-  console.log("quantity", params);
   const response = yield call(
     ShopRequest.fetchRemoveToCart,
     params.prd_supp,

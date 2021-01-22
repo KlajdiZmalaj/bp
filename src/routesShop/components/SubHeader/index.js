@@ -153,6 +153,15 @@ class SubHeader extends Component {
 
         <div className="maxWidth">
           <div className="categories">
+            <span
+              className="categories__category openC"
+              onMouseEnter={() => {
+                this.setIsShown(true);
+              }}
+            >
+              <i className="far fa-bars"></i>
+              Categories
+            </span>
             <div
               className={
                 "categories__category tutti" +
@@ -163,17 +172,20 @@ class SubHeader extends Component {
                 this.props.setCategory(null);
               }}
             >
-              <i className="fas fa-home"></i>
+              Back to shop
             </div>
-            <span
-              className="categories__category openC"
-              onMouseEnter={() => {
-                this.setIsShown(true);
+            <div
+              className={
+                "categories__category tutti" +
+                (isSelected === null ? " active" : "")
+              }
+              onClick={() => {
+                this.props.history.push("/dashboard");
+                this.props.setCategory(null);
               }}
             >
-              <i className="far fa-bars"></i>
-              Categories
-            </span>
+              Back to services
+            </div>
           </div>
 
           <div className="cart">

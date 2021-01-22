@@ -31,7 +31,6 @@ class ProdBycategory extends Component {
       this.props.isSelected,
       catProduct && catProduct.replace("__", " | ")
     );
-    console.log("productsList", this.props.productsList, this.props.isSelected);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.prodList !== this.props.prodList) {
@@ -85,12 +84,38 @@ class ProdBycategory extends Component {
   };
 
   render() {
-    const { prodList, categories, isSelectedC, areOpenProducts } = this.props;
+    const {
+      prodList,
+      categories,
+      isSelectedC,
+      isSelectedSC,
+      isSelectedSSC,
+      areOpenProducts,
+    } = this.props;
     const { highP } = this.state;
 
     let filterCat = filter(categories, { name: isSelectedC });
+
     let brands = head(filterCat)?.brands;
+
     const subcategories = head(filterCat)?.subcategories;
+
+    let subcategories1 = filter(subcategories, function (o) {
+      return o.name === isSelectedSC;
+    });
+    let subcategories2 = filter(
+      head(subcategories1)?.subcategories,
+      function (o) {
+        return o.name === isSelectedSSC;
+      }
+    );
+
+    if (subcategories1.length > 0) {
+      brands = head(subcategories1)?.brands;
+    }
+    if (subcategories2.length > 0) {
+      brands = head(subcategories2)?.brands;
+    }
 
     const menu = (
       <Menu className={"price_Options"}>
@@ -120,7 +145,11 @@ class ProdBycategory extends Component {
               max={highP}
               range={true}
               marks={{ 0: "0€", 1: `${highP}€` }}
-              value={[this.props.sliderVal[0], this.props.sliderVal[1]]}
+              value={
+                this.props.sliderVal.length === 0
+                  ? [0, highP]
+                  : [this.props.sliderVal[0], this.props.sliderVal[1]]
+              }
               defaultValue={[0, highP]}
               disabled={false}
               onChange={this.handleChangeSlider}
@@ -220,9 +249,8 @@ class ProdBycategory extends Component {
         <div className="catProd maxWidth">
           <div className="catProd__categories">
             <div className="title">
-              Home <span aria-hidden="true">›</span> {this.props.isSelectedC}{" "}
-              {this.props.isSelectedSC && <span aria-hidden="true">›</span>}{" "}
-              {this.props.isSelectedSC}
+              Home <span aria-hidden="true">›</span>{" "}
+              <b>{this.props.isSelectedC}</b>
             </div>
             <div className="catItems">
               {categories &&
