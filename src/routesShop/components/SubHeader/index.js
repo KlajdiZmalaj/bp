@@ -160,7 +160,7 @@ class SubHeader extends Component {
               }}
             >
               <i className="far fa-bars"></i>
-              Categories
+              Categorie
             </span>
             <div
               className={

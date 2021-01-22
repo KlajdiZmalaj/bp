@@ -38,7 +38,11 @@ const RowItem = ({
             Object.keys(models).map((item, index) => {
               return (
                 <span key={index}>
-                  {item.replace(/__/g, " ")}:
+                  {item
+                    .replace(/__/g, " ")
+                    .replace("selezionare", "")
+                    .replace("scegli", "")}
+                  :
                   <span>
                     <span>{models[item]}</span>
                   </span>
