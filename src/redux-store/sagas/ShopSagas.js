@@ -1,4 +1,4 @@
-import { put, call, delay } from "redux-saga/effects";
+import { put, call, delay, select } from "redux-saga/effects";
 import ShopActions from "../models/shop";
 import * as ShopRequest from "services/shop";
 import { get } from "lodash";
@@ -81,10 +81,12 @@ export function* getDefaultProducts() {
 }
 
 export function* getCategories() {
-  const response = yield call(ShopRequest.fetchCategories);
-
-  if (response.data) {
-    yield put(ShopActions.setCategories(response.data.data));
+  const state = yield select();
+  if (Object.keys(state.shop.categories) < 1) {
+    const response = yield call(ShopRequest.fetchCategories);
+    if (response.data) {
+      yield put(ShopActions.setCategories(response.data.data));
+    }
   }
 }
 

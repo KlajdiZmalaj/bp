@@ -10,7 +10,7 @@ import RowItem from "./RowItem";
 
 const ShopFavDom = ({ getItemsCart, itemsCart }) => {
   useEffect(() => {
-    getItemsCart(true);
+    getItemsCart();
   }, [getItemsCart]);
 
   const cartprod = get(itemsCart, "wish", {});
