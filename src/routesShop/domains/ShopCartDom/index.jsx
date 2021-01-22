@@ -67,20 +67,18 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">
         {Object.keys(cartprod).map((item) => {
-          let colore = get(cartprod[item].model_details, "colore", "");
-          let size = get(cartprod[item].model_details, "taglia", "");
+          let models = cartprod[item].model_details;
           return (
             <RowItem
               key={item}
               imgSrc={cartprod[item].Product_Image_1}
               title={cartprod[item].Product_Name}
-              color={colore}
-              size={size}
               price={`${cartprod[item].Product_Price} €`}
               qnt={cartprod[item].quantity}
               id={cartprod[item].Product_id}
               prd_supp={cartprod[item].prd_supp}
               main_id={cartprod[item].main_id}
+              models={models}
             />
           );
         })}

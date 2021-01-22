@@ -36,6 +36,7 @@ export function* checkOut({ formData, resetFields }) {
 }
 
 export function* getProductsList(params) {
+  yield put(ShopActions.setProductsList({}));
   const response = yield call(
     ShopRequest.fetchProducts,
     params.page,

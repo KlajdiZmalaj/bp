@@ -28,24 +28,18 @@
     }
     .detailsP {
       display: flex;
-      input[type="checkbox"] {
-        display: none;
-      }
 
-      input[type="checkbox"]:checked ~ label > img {
-        transform: scale(2);
-        cursor: zoom-out;
-      }
       .images {
         display: grid;
         grid-template-columns: auto 80%;
         grid-gap: 5px;
         width: 50%;
         margin-right: 10px;
+        max-height: 650px;
+        overflow: hidden;
         &__big {
           img {
             transition: transform 0.25s ease;
-            cursor: zoom-in;
           }
         }
         .slick-next {
@@ -76,6 +70,7 @@
         background-color: #fff;
         margin-left: 10px;
         font-size: 14px;
+        margin-bottom: 20px;
         &__brand {
           font-size: 11px;
         }

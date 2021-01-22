@@ -10,8 +10,6 @@ import { withRouter } from "react-router-dom";
 const RowItem = ({
   imgSrc,
   title,
-  color,
-  size,
   price,
   qnt,
   id,
@@ -20,6 +18,7 @@ const RowItem = ({
   getRemoveToCart,
   history,
   getToCart,
+  models,
 }) => {
   const [qnty, setQnt] = useState(qnt);
 
@@ -36,16 +35,17 @@ const RowItem = ({
           <h3>{title}</h3>
         </Tooltip>
         <div>
-          {color.length > 0 && (
-            <span>
-              COLOUR: <span>{color}</span>
-            </span>
-          )}
-          {size.length > 0 && (
-            <span>
-              SIZE : <span>{size}</span>
-            </span>
-          )}
+          {models &&
+            Object.keys(models).map((item, index) => {
+              return (
+                <span key={index}>
+                  {item.replace(/__/g, " ")}:
+                  <span>
+                    <span>{models[item]}</span>
+                  </span>
+                </span>
+              );
+            })}
         </div>
         <div className="price">{price}</div>
       </div>

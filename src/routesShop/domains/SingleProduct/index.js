@@ -68,7 +68,6 @@ class SingleProduct extends Component {
   };
 
   handleProduct = (item) => {
-    console.log("item", item);
     this.setState({ itemSelected: item });
   };
 
@@ -163,12 +162,10 @@ class SingleProduct extends Component {
                       })}
                     </Slider>
                   </div>
-                  <input type="checkbox" id="zoomCheck" />
+
                   <div className="images__big">
                     {!bigproduct ? (
-                      <label for="zoomCheck">
-                        <img src={product.Photos["Product_Image_1"]} alt="" />
-                      </label>
+                      <img src={product.Photos["Product_Image_1"]} alt="" />
                     ) : (
                       <img src={bigproduct} alt="" />
                     )}
@@ -267,7 +264,7 @@ class SingleProduct extends Component {
                           return (
                             <Form.Item key={index}>
                               <div className="color text-uppercase pb-3">
-                                {item}:
+                                {item.replace(/__/g, " ")}:
                                 {getFieldDecorator(item, {
                                   rules: [
                                     {
