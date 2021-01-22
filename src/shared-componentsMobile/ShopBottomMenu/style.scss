@@ -1,0 +1,41 @@
+//
+.shopBottomMenu {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+  z-index: 1;
+  display: flex;
+  &--item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 5);
+    font-size: 20px;
+    font-weight: 300;
+    border-right: 2px solid #00000042;
+    position: relative;
+    &.active {
+      background: #00000042;
+      border-right: 2px solid transparent;
+      &:before {
+        content: "";
+        border-left: 1px;
+        border: 10px solid transparent !important;
+        border-top: 10px solid #fff !important;
+        width: 1px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        top: 0;
+      }
+    }
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}

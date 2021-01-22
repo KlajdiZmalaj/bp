@@ -1,3 +1,9 @@
 export { default as DashboardMobile } from "./views/DashboardMobile";
 export { default as ConfiguraMobile } from "./views/ConfiguraMobile";
 export { default as PrenotazioneMobile } from "./views/PrenotazioneMobile";
+export { default as Shop } from "./views/Shop";
+export { default as ProductsByCategory } from "./views/ProductsByCategory";
+export { default as SingleProduct } from "./views/SingleProduct";
+export { default as ShopFav } from "./views/ShopFav";
+export { default as CheckOut } from "./views/CheckOut";
+export { default as ShopCart } from "./views/ShopCart";

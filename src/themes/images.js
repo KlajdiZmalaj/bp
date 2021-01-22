@@ -287,6 +287,7 @@ try {
     giocattolicostumi: require(`../assets/shop/giochibambini.jpg`),
     modaaccessori: require(`../assets/shop/modaaccessori.jpg`),
     outletofferte: require(`../assets/shop/Bg2.svg`),
+    outletofferteMob: require(`../assets/shop/shopBannerMob.png`),
     offerterefurbished: require(`../assets/shop/Bg2.svg`),
     profumeriacosmesi: require(`../assets/shop/profumeriacosmesi.jpg`),
     salutebellezza: require(`../assets/shop/salutebellezza.jpg`),
