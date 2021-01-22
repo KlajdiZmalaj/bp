@@ -26,7 +26,6 @@ class ProdBycategory extends Component {
 
   componentDidMount() {
     const catProduct = this.props.match.params.cat;
-    console.log("catProduct", catProduct);
     this.props.getProductsList(
       null,
       this.props.isSelected,
@@ -105,11 +104,12 @@ class ProdBycategory extends Component {
     let subcategories1 = filter(subcategories, function (o) {
       return o.name === isSelectedSC;
     });
-    let subcategories2 = filter(head(subcategories1)?.subcategories, function (
-      o
-    ) {
-      return o.name === isSelectedSSC;
-    });
+    let subcategories2 = filter(
+      head(subcategories1)?.subcategories,
+      function (o) {
+        return o.name === isSelectedSSC;
+      }
+    );
 
     if (subcategories1.length > 0) {
       brands = head(subcategories1)?.brands;
