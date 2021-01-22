@@ -23,7 +23,7 @@ class SubHeader extends Component {
   };
 
   render() {
-    const { cat, isSelected, itemsCart } = this.props;
+    const { cat, itemsCart } = this.props;
     let { itemS } = this.state;
 
     let cartItems = 0;
@@ -31,7 +31,7 @@ class SubHeader extends Component {
     cartItems = Object.keys(cart).length;
 
     if (itemS === null) itemS = Object.keys(cat)[0];
-
+    console.log("itemS", itemS);
     return (
       <div
         className={"subheader " + (this.state.isOpenCat ? "blur" : "")}
@@ -56,7 +56,7 @@ class SubHeader extends Component {
                       <div
                         className={
                           "categories__category" +
-                          (isSelected === cat[item].name ? " active" : "")
+                          (itemS === item ? " active" : "")
                         }
                         key={index}
                         onMouseEnter={() => this.setState({ itemS: item })}
@@ -163,10 +163,7 @@ class SubHeader extends Component {
               Categorie
             </span>
             <div
-              className={
-                "categories__category tutti" +
-                (isSelected === null ? " active" : "")
-              }
+              className="categories__category tutti"
               onClick={() => {
                 this.props.history.push("/products");
                 this.props.setCategory(null);
@@ -175,10 +172,7 @@ class SubHeader extends Component {
               Back to shop
             </div>
             <div
-              className={
-                "categories__category tutti" +
-                (isSelected === null ? " active" : "")
-              }
+              className="categories__category tutti"
               onClick={() => {
                 this.props.history.push("/dashboard");
                 this.props.setCategory(null);
