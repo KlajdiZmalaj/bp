@@ -31,7 +31,7 @@ class SubHeader extends Component {
     cartItems = Object.keys(cart).length;
 
     if (itemS === null) itemS = Object.keys(cat)[0];
-    console.log("itemS", itemS);
+
     return (
       <div
         className={"subheader " + (this.state.isOpenCat ? "blur" : "")}
