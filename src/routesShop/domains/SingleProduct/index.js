@@ -43,6 +43,11 @@ class SingleProduct extends Component {
     this.props.getProductDetails(idProduct, suppProduct);
     this.setState({ product: product });
     this.setState({ itemSelected: product });
+
+    this.props.setCategory(null);
+    this.props.setSubCategory(null);
+    this.props.setSubSubCategory(null);
+    this.props.setManufacturer(null);
   }
 
   decreasevalue = () => {
