@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.css";
 
 import ShopActions from "redux-store/models/shop";
@@ -8,11 +8,7 @@ import { get } from "lodash";
 
 import RowItem from "./RowItem";
 
-const ShopFavDom = ({ getItemsCart, itemsCart }) => {
-  useEffect(() => {
-    getItemsCart(true);
-  }, [getItemsCart]);
-
+const ShopFavDom = ({ itemsCart }) => {
   const cartprod = get(itemsCart, "wish", {});
 
   return (
