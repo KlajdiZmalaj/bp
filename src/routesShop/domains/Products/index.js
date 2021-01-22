@@ -13,12 +13,16 @@ import ProductItem from "./ProductItem";
 
 class Products extends Component {
   render() {
-    const { defaultProducts, categories } = this.props;
+    const { defaultProducts, categories, isMobile } = this.props;
 
     return (
       <div className="shopProd">
         <div className="mainBanner marginBottom">
-          <img src={images.mainBanner} className="maxWidth" alt=""></img>
+          <img
+            src={!isMobile ? images.mainBanner : images["outletofferteMob"]}
+            className="maxWidth"
+            alt=""
+          ></img>
         </div>
         <div className="title maxWidth">categorie</div>
         <div className="banners maxWidth">

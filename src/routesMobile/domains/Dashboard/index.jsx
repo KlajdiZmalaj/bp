@@ -74,6 +74,15 @@ const Dashboard = ({
                 setTab={setTab}
                 name="Servizi Preferiti"
               />
+              <div
+                onClick={() => {
+                  window.location.hash = "products";
+                }}
+                className={"serviziFilter--cards__item"}
+              >
+                <i className={`fal fa-shopping-cart`}></i>
+                <span>Shop</span>
+              </div>
               <Card
                 id={"0"}
                 setSearch={setSearch}

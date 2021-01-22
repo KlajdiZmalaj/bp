@@ -18,14 +18,15 @@ const CatItems = ({
   setManufacturer,
   isSelectedC,
   orderVal,
+  isMobile,
   openProducts,
 }) => {
   const settings = {
     dots: false,
     speed: 500,
     infinite: false,
-    slidesToScroll: 1,
-    slidesToShow: 5,
+    slidesToScroll: isMobile ? 2 : 1,
+    slidesToShow: isMobile ? 2 : 5,
   };
 
   return (

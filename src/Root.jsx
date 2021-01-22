@@ -379,21 +379,27 @@ class Root extends React.Component {
 
           <PrivateRoute
             path="/products"
-            component={ShopView.Products}
+            component={!isMobile ? ShopView.Products : MobileViews.Shop}
             isLoggedin={isLoggedin}
             role={role}
             allowedRoles={["super_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
             path="/product-filtered/:cat?/"
-            component={ShopView.ProdBycategory}
+            component={
+              !isMobile
+                ? ShopView.ProdBycategory
+                : MobileViews.ProductsByCategory
+            }
             isLoggedin={isLoggedin}
             role={role}
             allowedRoles={["super_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
             path="/product/:id?/:supp?/"
-            component={ShopView.SingleProduct}
+            component={
+              !isMobile ? ShopView.SingleProduct : MobileViews.SingleProduct
+            }
             isLoggedin={isLoggedin}
             role={role}
             allowedRoles={["super_admin", "agency", "agent", "user"]}
@@ -401,7 +407,7 @@ class Root extends React.Component {
           <PrivateRoute
             exact
             path="/shop-cart"
-            component={ShopView.ShopCart}
+            component={!isMobile ? ShopView.ShopCart : MobileViews.ShopCart}
             isLoggedin={isLoggedin}
             role={role}
             allowedRoles={["super_admin", "agency", "agent", "user"]}
@@ -409,7 +415,7 @@ class Root extends React.Component {
           <PrivateRoute
             exact
             path="/shop-fav"
-            component={ShopView.ShopFav}
+            component={!isMobile ? ShopView.ShopFav : MobileViews.ShopFav}
             isLoggedin={isLoggedin}
             role={role}
             allowedRoles={["super_admin", "agency", "agent", "user"]}
@@ -417,7 +423,7 @@ class Root extends React.Component {
           <PrivateRoute
             exact
             path="/product-checkout/:id?/:supp?/"
-            component={ShopView.CheckOut}
+            component={!isMobile ? ShopView.CheckOut : MobileViews.CheckOut}
             isLoggedin={isLoggedin}
             role={role}
             allowedRoles={["super_admin", "agency", "agent", "user"]}

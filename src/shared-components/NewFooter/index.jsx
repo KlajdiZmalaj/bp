@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import images from "themes/images";
 import { connect } from "react-redux";
-import { Footer as FooterMob } from "shared-componentsMobile";
+//import { Footer as FooterMob } from "shared-componentsMobile";
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -81,7 +81,7 @@ class Footer extends Component {
         </div>
       </footer>
     ) : (
-      <FooterMob />
+      <></>
     );
   }
 }

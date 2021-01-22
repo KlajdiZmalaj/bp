@@ -56,6 +56,7 @@ const { Types, Creators } = createActions({
   getProdCat: ["category", "subCategory"],
   setProdCat: ["prodCat"],
   openProducts: ["areOpenProducts"],
+  setShopLeftMenuMob: ["shopLeftMenuMob"],
 });
 
 export const ShopTypes = Types;
@@ -80,9 +81,14 @@ const INITIAL_STATE = {
   carries: [],
   prodCat: {},
   areOpenProducts: false,
+  shopLeftMenuMob: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  SET_SHOP_LEFT_MENU_MOB: (state, { shopLeftMenuMob }) => ({
+    ...state,
+    shopLeftMenuMob,
+  }),
   SET_PRODUCTS_LIST: (state, { productsList }) => ({
     ...state,
     productsList,

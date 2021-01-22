@@ -26,6 +26,7 @@ class ProdBycategory extends Component {
 
   componentDidMount() {
     const catProduct = this.props.match.params.cat;
+    console.log("catProduct", catProduct);
     this.props.getProductsList(
       null,
       this.props.isSelected,
@@ -91,6 +92,7 @@ class ProdBycategory extends Component {
       isSelectedSC,
       isSelectedSSC,
       areOpenProducts,
+      isMobile,
     } = this.props;
     const { highP } = this.state;
 
@@ -103,12 +105,11 @@ class ProdBycategory extends Component {
     let subcategories1 = filter(subcategories, function (o) {
       return o.name === isSelectedSC;
     });
-    let subcategories2 = filter(
-      head(subcategories1)?.subcategories,
-      function (o) {
-        return o.name === isSelectedSSC;
-      }
-    );
+    let subcategories2 = filter(head(subcategories1)?.subcategories, function (
+      o
+    ) {
+      return o.name === isSelectedSSC;
+    });
 
     if (subcategories1.length > 0) {
       brands = head(subcategories1)?.brands;
@@ -247,28 +248,32 @@ class ProdBycategory extends Component {
           </div>
         )}
         <div className="catProd maxWidth">
-          <div className="catProd__categories">
-            <div className="title">
-              Home <span aria-hidden="true">›</span>{" "}
-              <b>{this.props.isSelectedC}</b>
+          {!this.props.isMobile && (
+            <div className="catProd__categories">
+              <div className="title">
+                Home <span aria-hidden="true">›</span>{" "}
+                <b>{this.props.isSelectedC}</b>
+              </div>
+              <div className="catItems">
+                {categories &&
+                  Object.keys(categories).map((item, index) => {
+                    return (
+                      <Categories
+                        key={index}
+                        cat={categories[item]}
+                        isSelectedC={this.props.isSelectedC}
+                      ></Categories>
+                    );
+                  })}
+              </div>
             </div>
-            <div className="catItems">
-              {categories &&
-                Object.keys(categories).map((item, index) => {
-                  return (
-                    <Categories
-                      key={index}
-                      cat={categories[item]}
-                      isSelectedC={this.props.isSelectedC}
-                    ></Categories>
-                  );
-                })}
-            </div>
-          </div>
+          )}
+
           {subcategories && !areOpenProducts && (
             <CatItems
               subcategories={subcategories}
               total_records={prodList.total_records}
+              isMobile={isMobile}
             ></CatItems>
           )}
 
@@ -277,6 +282,7 @@ class ProdBycategory extends Component {
               prodList={prodList}
               type="categories"
               pageNumber={1}
+              isMobile={isMobile}
             ></BestSeller>
           )}
         </div>
