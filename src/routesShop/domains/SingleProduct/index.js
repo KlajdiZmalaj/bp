@@ -68,7 +68,6 @@ class SingleProduct extends Component {
   };
 
   handleProduct = (item) => {
-    console.log("item", item);
     this.setState({ itemSelected: item });
   };
 
@@ -212,11 +211,11 @@ class SingleProduct extends Component {
                     <div className="prop1">
                       <p>
                         <span className="label">Categoria: </span>
-                        {product.Product_MainCategory}
+                        {product.Product_SubCategory}
                       </p>
                       <p>
-                        <span className="label">SubCategoria: </span>
-                        {product.Product_SubCategory}
+                        <span className="label">Sub Categoria: </span>
+                        {product.Product_Category}
                       </p>
                       {product.Product_Weight && (
                         <p>
@@ -227,12 +226,21 @@ class SingleProduct extends Component {
                     </div>
 
                     <div className="prop2">
-                      {product.Product_MadeIn && (
-                        <p>
-                          <span className="label">Made in: </span>
-                          {product.Product_MadeIn}
+                      {product.Product_Extra_Information && (
+                        <p className="extra">
+                          <span className="label">Peso: </span>
+                          {product.Product_Extra_Information?.peso} kg
                         </p>
                       )}
+                      {product.Product_Extra_Information && (
+                        <p className="extra">
+                          <span className="label cm">Misure (cm): </span>
+                          {product.Product_Extra_Information?.larghezza} x{" "}
+                          {product.Product_Extra_Information?.altezza} x{" "}
+                          {product.Product_Extra_Information?.profondita}
+                        </p>
+                      )}
+
                       {product.Product_Season && (
                         <p>
                           <span className="label">Stagione:</span>
@@ -256,7 +264,7 @@ class SingleProduct extends Component {
                           return (
                             <Form.Item key={index}>
                               <div className="color text-uppercase pb-3">
-                                {item}:
+                                {item.replace(/__/g, " ")}:
                                 {getFieldDecorator(item, {
                                   rules: [
                                     {

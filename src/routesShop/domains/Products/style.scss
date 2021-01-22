@@ -24,7 +24,7 @@
   .categories {
     .openC {
       color: #fff;
-      font-size: 16px;
+      font-size: 14px;
       text-transform: uppercase;
       i {
         position: relative;
@@ -51,13 +51,10 @@
       }
       &.tutti {
         color: #fff;
-        padding: 0;
-        border-left: 0;
-        i {
-          font-size: 18px;
-          position: relative;
-          top: 0;
-        }
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 0 10px 0 10px;
+        border-left: 1px solid;
       }
       i {
         font-size: 13px;
@@ -70,9 +67,6 @@
         padding-left: 0px;
       }
 
-      &.active {
-        color: var(--accent-bg);
-      }
       p {
         margin-bottom: 0;
         line-height: normal;
@@ -398,9 +392,13 @@
           width: 100%;
           border-radius: 6px;
           text-align: center;
+          height: 182px;
+          justify-content: center;
+          display: flex;
+          align-items: center;
           img {
             height: auto;
-            max-height: 184px;
+            max-height: 180px;
             width: auto;
             border-radius: 6px;
           }

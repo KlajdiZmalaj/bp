@@ -19,7 +19,7 @@ export function* checkOut({ formData, resetFields }) {
     formData.email,
     formData.comment
   );
-  console.log("response", response);
+
   if (response.data) {
     // yield put(ShopActions.setProductsList(response.data));
     notification["success"]({
@@ -36,6 +36,7 @@ export function* checkOut({ formData, resetFields }) {
 }
 
 export function* getProductsList(params) {
+  yield put(ShopActions.setProductsList({}));
   const response = yield call(
     ShopRequest.fetchProducts,
     params.page,
@@ -49,9 +50,6 @@ export function* getProductsList(params) {
   );
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));
-    yield put(
-      ShopActions.setSliderVal([0, Math.ceil(response.data.highest_price)])
-    );
   }
 }
 
@@ -151,7 +149,6 @@ export function* getOrder(params) {
 }
 
 export function* getRemoveToCart(params) {
-  console.log("quantity", params);
   const response = yield call(
     ShopRequest.fetchRemoveToCart,
     params.prd_supp,

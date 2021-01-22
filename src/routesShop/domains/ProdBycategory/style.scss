@@ -23,9 +23,9 @@
       color: inherit;
       font-size: 30px;
     }
-    .slick-slider {
-      width: calc(100% - 10px);
-    }
+    // .slick-slider {
+    //   width: calc(100% - 5px);
+    // }
     .slick-list {
       padding: 0px 0px 20px 0px;
       .slick-track {
@@ -55,12 +55,19 @@
     }
     .slick-slide {
       cursor: pointer;
-      border: 1px solid #e6e6e6;
-      margin: 0 5px;
+      // margin: 0 5px;
       border-radius: 6px;
       height: auto;
-      background-color: #fff;
+
+      &.slick-active {
+        padding-left: 10px;
+        &.slick-current {
+          padding-left: 0px;
+        }
+      }
       > div {
+        background-color: #fff;
+        border: 1px solid #e6e6e6;
         border-radius: 6px;
         height: inherit;
         transition: transform 0.2s;
@@ -148,6 +155,11 @@
           height: 40px;
           border: 1px solid #ebebeb;
           text-align: center;
+          &.ant-dropdown-open {
+            .fa-caret-down:before {
+              content: "\f0d8";
+            }
+          }
           .tutti {
             cursor: pointer;
             background-color: #fff;
@@ -210,6 +222,7 @@
             }
             .ant-slider-handle {
               border: solid 2px var(--accent-bg);
+              background-color: solid 2px var(--accent-bg);
             }
             .ant-slider-track {
               background-color: var(--accent-bg);
@@ -260,6 +273,10 @@
           height: 40px;
           width: 200px;
           background-color: #fff;
+          .ant-select-open .ant-select-selection {
+            box-shadow: none;
+          }
+
           select {
             border: none;
             height: 100%;
@@ -270,6 +287,11 @@
             font-size: 16px;
             line-height: normal;
             height: 100%;
+            &.ant-select-open {
+              .ant-select-selection--single .ant-select-arrow::after {
+                content: "\f0d8";
+              }
+            }
             .ant-select-selection--single {
               width: 198px;
               border: none;
@@ -287,6 +309,14 @@
                 }
               }
               .ant-select-arrow {
+                font-family: "Font Awesome 5 Pro";
+                font-weight: 900;
+                i {
+                  display: none;
+                }
+                &::after {
+                  content: "\f0d7";
+                }
                 color: inherit;
                 font-size: 16px;
               }
@@ -359,7 +389,7 @@
         }
       }
       > .catItems {
-        background-color: #e6e6e6;
+        background-color: #f3f3f3;
         border-radius: 6px;
         height: 100%;
         padding: 15px;
@@ -378,20 +408,24 @@
   }
   .catgGroup {
     margin-bottom: 10px;
+    background: #f3f3f3;
+    border-radius: 6px;
+    padding: 10px;
     &__title {
       color: var(--accent-bg);
       font-size: 14px;
       text-transform: uppercase;
-      padding: 10px 0;
+      padding-bottom: 5px;
       font-weight: 500;
     }
     &__items {
       display: grid;
-      grid-template-columns: repeat(6, calc(100% / 6 - 7px));
+      grid-template-columns: repeat(6, calc(100% / 6 - 4px));
       grid-gap: 5px;
       padding: 0px;
       .subCatgGroup {
         padding: 5px;
+        background-color: #fff;
         border: 1px solid #e6e6e6;
         border-radius: 6px;
         display: flex;
@@ -530,4 +564,20 @@
       border: 1px solid #f26521;
     }
   }
+}
+
+.ant-select-dropdown-menu-item-active:not(.ant-select-dropdown-menu-item-disabled),
+.ant-select-dropdown-menu-item:hover:not(.ant-select-dropdown-menu-item-disabled) {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+}
+
+.ant-select-dropdown-menu-item-selected {
+  background-color: var(--accent-bg);
+  color: var(--accent-txt);
+}
+.ant-select-focused .ant-select-selection,
+.ant-select-selection:focus,
+.ant-select-selection:active {
+  box-shadow: none;
 }
