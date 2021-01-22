@@ -163,10 +163,12 @@ class SingleProduct extends Component {
                       })}
                     </Slider>
                   </div>
-
+                  <input type="checkbox" id="zoomCheck" />
                   <div className="images__big">
                     {!bigproduct ? (
-                      <img src={product.Photos["Product_Image_1"]} alt="" />
+                      <label for="zoomCheck">
+                        <img src={product.Photos["Product_Image_1"]} alt="" />
+                      </label>
                     ) : (
                       <img src={bigproduct} alt="" />
                     )}
@@ -212,11 +214,11 @@ class SingleProduct extends Component {
                     <div className="prop1">
                       <p>
                         <span className="label">Categoria: </span>
-                        {product.Product_MainCategory}
+                        {product.Product_SubCategory}
                       </p>
                       <p>
                         <span className="label">SubCategoria: </span>
-                        {product.Product_SubCategory}
+                        {product.Product_Category}
                       </p>
                       {product.Product_Weight && (
                         <p>
@@ -227,12 +229,21 @@ class SingleProduct extends Component {
                     </div>
 
                     <div className="prop2">
-                      {product.Product_MadeIn && (
-                        <p>
-                          <span className="label">Made in: </span>
-                          {product.Product_MadeIn}
+                      {product.Product_Extra_Information && (
+                        <p className="extra">
+                          <span className="label">Peso: </span>
+                          {product.Product_Extra_Information?.peso} kg
                         </p>
                       )}
+                      {product.Product_Extra_Information && (
+                        <p className="extra">
+                          <span className="label cm">Misure (cm): </span>
+                          {product.Product_Extra_Information?.larghezza} x{" "}
+                          {product.Product_Extra_Information?.altezza} x{" "}
+                          {product.Product_Extra_Information?.profondita}
+                        </p>
+                      )}
+
                       {product.Product_Season && (
                         <p>
                           <span className="label">Stagione:</span>

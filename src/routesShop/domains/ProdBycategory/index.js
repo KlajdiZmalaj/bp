@@ -216,7 +216,7 @@ class ProdBycategory extends Component {
                   className="itemFilter"
                 >
                   <a className="price" onClick={(e) => e.preventDefault()}>
-                    Prezzo <i className="fas fa-chevron-down"></i>
+                    Prezzo <i className="fas fa-caret-down"></i>
                   </a>
                 </Dropdown>
 
@@ -227,7 +227,7 @@ class ProdBycategory extends Component {
                 >
                   <a className="price" onClick={(e) => e.preventDefault()}>
                     {this.props.isSelected ? this.props.isSelected : "Brands"}{" "}
-                    <i className="fas fa-chevron-down"></i>
+                    <i className="fas fa-caret-down"></i>
                   </a>
                 </Dropdown>
 

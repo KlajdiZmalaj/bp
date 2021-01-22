@@ -1,7 +1,7 @@
 import { put, call, delay } from "redux-saga/effects";
 import ShopActions from "../models/shop";
 import * as ShopRequest from "services/shop";
-import { get, isObject } from "lodash";
+import { get } from "lodash";
 import { notification } from "antd";
 
 export function* checkOut({ formData, resetFields }) {
@@ -19,7 +19,7 @@ export function* checkOut({ formData, resetFields }) {
     formData.email,
     formData.comment
   );
-  console.log("response", response);
+
   if (response.data) {
     // yield put(ShopActions.setProductsList(response.data));
     notification["success"]({
