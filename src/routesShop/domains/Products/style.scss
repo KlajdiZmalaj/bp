@@ -227,6 +227,9 @@
           left: 20px;
         }
       }
+      &.regalioriginali {
+        order: 11;
+      }
       &.modaaccessori {
         grid-column-start: 8;
         grid-column-end: 10;

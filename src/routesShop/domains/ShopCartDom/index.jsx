@@ -141,7 +141,7 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
           </div>
           <div className="dashedBorder"></div>
           <div className="subTot">
-            <div>Shipping:</div> {cost && <div>{cost} €</div>}
+            <div>Spedizione:</div> {cost && <div>{cost} €</div>}
           </div>
 
           <Radio.Group onChange={onChange} value={value}>

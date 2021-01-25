@@ -106,6 +106,7 @@ const CheckOutDom = ({
   const { getFieldDecorator } = form;
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     setData({ ...formData, isClicked: true });
     form.validateFields().then((values) => {
       if (formData.terms && formData.carrier.length > 0) {
@@ -284,7 +285,8 @@ const CheckOutDom = ({
                     {formData.cap && formData.cap.length === 5 ? (
                       <button
                         className="w-20 recal"
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault();
                           getCarries("it", formData.cap);
                           setCost(0);
                           setData({ ...formData, carrier: "" });
@@ -293,8 +295,9 @@ const CheckOutDom = ({
                         Ricalcola spedizione
                       </button>
                     ) : (
-                      <button disabled> Ricalcola spedizione</button>
+                      <button disabled> Ricalcolaa spedizione</button>
                     )}
+                    {formData.cap.length}
                   </div>
                 </Form.Item>
                 <Form.Item>
@@ -440,7 +443,7 @@ const CheckOutDom = ({
                 <div>€ {sum.replace(/\./g, ",")}</div>
               </div>
               <div className="subTotal">
-                <div>Shipping:</div>
+                <div>Spedizione:</div>
                 {cost && <div>€ {cost}</div>}
               </div>
               <div className="subTotal">
