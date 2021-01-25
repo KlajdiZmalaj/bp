@@ -81,7 +81,7 @@ const RowItem = ({
             className="addTobag"
             onClick={() => getToCart(prd_supp, id, "cart", qnty, "wish")}
           >
-            Move to bag
+            Acquista
           </button>
         </div>
       </div>

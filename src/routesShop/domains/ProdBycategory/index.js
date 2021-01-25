@@ -216,9 +216,9 @@ class ProdBycategory extends Component {
                   trigger={["click"]}
                   className="itemFilter"
                 >
-                  <a className="price" onClick={(e) => e.preventDefault()}>
+                  <div className="price" onClick={(e) => e.preventDefault()}>
                     Prezzo <i className="fas fa-caret-down"></i>
-                  </a>
+                  </div>
                 </Dropdown>
 
                 <Dropdown
@@ -226,10 +226,10 @@ class ProdBycategory extends Component {
                   trigger={["click"]}
                   className="itemFilter"
                 >
-                  <a className="price" onClick={(e) => e.preventDefault()}>
+                  <div className="price" onClick={(e) => e.preventDefault()}>
                     {this.props.isSelected ? this.props.isSelected : "Brands"}{" "}
                     <i className="fas fa-caret-down"></i>
-                  </a>
+                  </div>
                 </Dropdown>
 
                 <div className="order">

@@ -32,9 +32,7 @@ const CatItems = ({
   return (
     <div className="catgItems">
       <div className="catgItems__title">
-        Trovati {total_records} prodotti
-        {/* {total_records} prodotti in
-        <b className="text-uppercase"> {isSelectedC}</b> */}
+        Trovati {total_records ? `${total_records} prodotti` : "..."}
       </div>
 
       <Slider2 {...settings} className="catgItems__items">
@@ -42,6 +40,7 @@ const CatItems = ({
           return (
             <div
               key={index}
+              className="testt"
               onClick={() => {
                 setSubCategory(subcategories[item].name);
                 setSubSubCategory(null);

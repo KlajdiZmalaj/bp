@@ -169,7 +169,7 @@ class SubHeader extends Component {
                 this.props.setCategory(null);
               }}
             >
-              Back to shop
+              Torna su home
             </div>
             <div
               className="categories__category tutti"
@@ -178,7 +178,7 @@ class SubHeader extends Component {
                 this.props.setCategory(null);
               }}
             >
-              Back to services
+              Torna su servizi
             </div>
           </div>
 

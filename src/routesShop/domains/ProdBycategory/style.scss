@@ -60,9 +60,9 @@
       height: auto;
 
       &.slick-active {
-        padding-left: 10px;
+        margin-left: 10px;
         &.slick-current {
-          padding-left: 0px;
+          margin-left: 0px;
         }
       }
       > div {

@@ -126,19 +126,34 @@ class SingleProduct extends Component {
       vertical: true,
       verticalSwiping: true,
     };
-
+    let url =
+      product?.Product_MainCategory?.split(" | ")[0] +
+      (product?.Product_MainCategory?.split(" | ")[1]
+        ? "__" + product?.Product_MainCategory?.split(" | ")[1]
+        : "");
     return (
       product && (
         <div className="prod">
           <div className="single maxWidth">
             <p className="gobackBtns">
               <a href="/#">Home</a> <i className="far fa-chevron-right"></i>{" "}
-              <a href="#/products">
-                {" "}
-                {product && product.Product_Manufacturer}
+              <a
+                onClick={() => {
+                  this.props.getProductsList(
+                    null,
+                    null,
+                    product?.Product_MainCategory
+                  );
+                  this.props.setSubCategory(product?.Product_SubCategory);
+                  this.props.setSubSubCategory(null);
+                  this.props.setManufacturer(null);
+                  this.props.openProducts(true);
+                }}
+                href={`#/product-filtered/${url}`}
+              >
+                {product?.Product_MainCategory}
               </a>
-              <i className="far fa-chevron-right"></i>{" "}
-              {product && product.Product_Name}
+              <i className="far fa-chevron-right"></i> {product?.Product_Name}
             </p>
 
             {product && Object.keys(product).length > 0 && (
