@@ -95,7 +95,8 @@ const CheckOutDom = ({
     return (
       parseFloat(sumT) +
       parseFloat(
-        removeComma(cartprod[item].Product_Price) * cartprod[item].quantity
+        removeComma(cartprod[item].Product_Price.replace(".", "")) *
+          cartprod[item].quantity
       )
     ).toFixed(2);
   }, 0.0);
