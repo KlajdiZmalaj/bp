@@ -72,7 +72,7 @@ export let skin = {
   skin_id: 0,
 };
 window.apiUrl = apiUrl;
-if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
+if (window.location.href.match(/bpoint/g)) {
   skin = {
     ...skin,
     skin_id: 1,
@@ -131,6 +131,11 @@ if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
   skin = {
     ...skin,
     skin_id: 51,
+  };
+} else if (window.location.href.match(/bullpay|localhost|192\.168/g)) {
+  skin = {
+    ...skin,
+    skin_id: 52,
   };
 }
 export default {

@@ -5,11 +5,7 @@ export const isWinter =
   (month === 0 && day.toString().match(/^(1|2|3|4|5)$/g));
 let skin = "";
 
-if (
-  window.location.href.includes("bpoint") ||
-  window.location.href.includes("192.168") ||
-  window.location.href.includes("localhost")
-) {
+if (window.location.href.includes("bpoint")) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;
@@ -21,10 +17,16 @@ if (
   skin = 6;
 } else if (window.location.href.includes("imperialpay")) {
   skin = 7;
-} else if (window.location.href.includes("bullpay")) {
+} else if (
+  window.location.href.includes("bullpay") ||
+  window.location.href.includes("192.168") ||
+  window.location.href.includes("localhost")
+) {
+  //
   skin = 52;
 }
 let imgObj = {};
+console.log("skin", skin);
 try {
   imgObj = {
     //pagamanti logo
