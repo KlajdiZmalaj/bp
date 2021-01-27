@@ -162,15 +162,18 @@ class SubHeader extends Component {
               <i className="far fa-bars"></i>
               Categorie
             </span>
-            <div
-              className="categories__category tutti"
-              onClick={() => {
-                this.props.history.push("/products");
-                this.props.setCategory(null);
-              }}
-            >
-              Back to shop
-            </div>
+            {this.props.match.path !== "/products" && (
+              <div
+                className="categories__category tutti"
+                onClick={() => {
+                  this.props.history.push("/products");
+                  this.props.setCategory(null);
+                }}
+              >
+                Torna su home
+              </div>
+            )}
+
             <div
               className="categories__category tutti"
               onClick={() => {
@@ -178,7 +181,7 @@ class SubHeader extends Component {
                 this.props.setCategory(null);
               }}
             >
-              Back to services
+              Torna su servizi
             </div>
           </div>
 

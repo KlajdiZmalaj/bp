@@ -227,6 +227,9 @@
           left: 20px;
         }
       }
+      &.regalioriginali {
+        order: 11;
+      }
       &.modaaccessori {
         grid-column-start: 8;
         grid-column-end: 10;
@@ -399,6 +402,7 @@
           img {
             height: auto;
             max-height: 180px;
+            max-width: 180px;
             width: auto;
             border-radius: 6px;
           }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ShopActions from "redux-store/models/shop";
 
 import "./style.css";
@@ -32,85 +32,90 @@ const CatItems = ({
   return (
     <div className="catgItems">
       <div className="catgItems__title">
-        Trovati {total_records} prodotti
-        {/* {total_records} prodotti in
-        <b className="text-uppercase"> {isSelectedC}</b> */}
+        Trovati {total_records ? `${total_records} prodotti` : "..."}
       </div>
 
       <Slider2 {...settings} className="catgItems__items">
-        {Object.keys(subcategories).map((item, index) => {
-          return (
-            <div
-              key={index}
-              onClick={() => {
-                setSubCategory(subcategories[item].name);
-                setSubSubCategory(null);
-                getProductsList(
-                  null,
-                  null,
-                  isSelectedC,
-                  null,
-                  orderVal,
-                  null,
-                  null,
-                  subcategories[item].name
-                );
-                openProducts(true);
-              }}
-            >
-              <div className="descr">
-                <span>{subcategories[item].name}</span>
-                <div>View tutti</div>
-              </div>
+        {subcategories &&
+          Object.keys(subcategories).map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="testt"
+                onClick={() => {
+                  setSubCategory(subcategories[item].name);
+                  setSubSubCategory(null);
+                  getProductsList(
+                    null,
+                    null,
+                    isSelectedC,
+                    null,
+                    orderVal,
+                    null,
+                    null,
+                    subcategories[item].name
+                  );
+                  openProducts(true);
+                }}
+              >
+                <div className="descr">
+                  <span>{subcategories[item].name}</span>
+                  <div>View tutti</div>
+                </div>
 
-              <img src={subcategories[item].url} alt=""></img>
-            </div>
-          );
-        })}
+                <img src={subcategories[item].url} alt=""></img>
+              </div>
+            );
+          })}
       </Slider2>
 
-      {Object.keys(subcategories)
-        .filter((item) => subcategories[item].subcategories.length !== 0)
-        .map((item, index) => {
-          const sub = subcategories[item];
+      {subcategories &&
+        Object.keys(subcategories)
+          .filter((item) => subcategories[item]?.subcategories?.length !== 0)
+          .map((item, index) => {
+            const sub = subcategories[item];
 
-          return (
-            <div key={index} className="catgGroup">
-              <div className="catgGroup__title">{sub.name}</div>
-              <div className="catgGroup__items">
-                {Object.keys(sub.subcategories).map((subitem, i) => {
-                  return (
-                    <div
-                      key={i}
-                      className="subCatgGroup"
-                      onClick={() => {
-                        getProductsList(
-                          null,
-                          null,
-                          isSelectedC,
-                          sub.subcategories[subitem].name,
-                          null,
-                          null,
-                          null,
-                          sub.name
-                        );
-                        setSubCategory(sub.name);
-                        setSubSubCategory(sub.subcategories[subitem].name);
-                        setManufacturer(null);
-                        openProducts(true);
-                      }}
-                    >
-                      <div className="subCatgGroup__title">
-                        {sub.subcategories[subitem].name}
-                      </div>
-                      <img src={sub.subcategories[subitem].url} alt=""></img>
-                    </div>
-                  );
-                })}
+            return (
+              <div key={index} className="catgGroup">
+                <div className="catgGroup__title">{sub.name}</div>
+                <div className="catgGroup__items">
+                  {sub.subcategories &&
+                    Object.keys(sub.subcategories).map((subitem, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="subCatgGroup"
+                          onClick={() => {
+                            getProductsList(
+                              null,
+                              null,
+                              isSelectedC,
+                              sub.subcategories[subitem]?.name,
+                              null,
+                              null,
+                              null,
+                              sub.name
+                            );
+                            setSubCategory(sub.name);
+                            setSubSubCategory(sub.subcategories[subitem]?.name);
+                            setManufacturer(null);
+                            openProducts(true);
+                          }}
+                        >
+                          <div className="subCatgGroup__title">
+                            {sub.subcategories[subitem]?.name}
+                          </div>
+                          <img
+                            src={sub.subcategories[subitem]?.url}
+                            alt=""
+                          ></img>
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
     </div>
   );
 };

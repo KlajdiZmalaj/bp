@@ -46,7 +46,8 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
     return (
       parseFloat(sumT) +
       parseFloat(
-        removeComma(cartprod[item].Product_Price) * cartprod[item].quantity
+        removeComma(cartprod[item].Product_Price.replace(".", "")) *
+          cartprod[item].quantity
       )
     ).toFixed(2);
   }, 0.0);
@@ -135,12 +136,12 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
         <div className="titleTop">Spedizione</div>
         <div className="shipping">
           <div className="subTot">
-            <div>Subtotale</div>{" "}
+            <div>Subtotale</div>
             <div>{sum.toString().replace(/\./g, ",")} €</div>
           </div>
           <div className="dashedBorder"></div>
           <div className="subTot">
-            <div>Shipping:</div> {cost && <div>{cost} €</div>}
+            <div>Spedizione:</div> {cost && <div>{cost} €</div>}
           </div>
 
           <Radio.Group onChange={onChange} value={value}>

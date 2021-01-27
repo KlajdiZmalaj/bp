@@ -6,10 +6,12 @@ import { connect } from "react-redux";
 import SubCategories from "./SubCategories";
 
 class Categories extends Component {
+  state = {
+    isOpen: this.props.isSelectedC === this.props.cat.name ? true : false,
+  };
   render() {
     const { cat, isSelectedC } = this.props;
-
-    let isOpen = this.props.isSelectedC === this.props.cat.name ? true : false;
+    const { isOpen } = this.state;
 
     let url =
       cat?.name.split(" | ")[0] +
@@ -19,7 +21,12 @@ class Categories extends Component {
       <div
         className={"category" + (isSelectedC === cat?.name ? " active" : "")}
       >
-        {isOpen && <i className="fas fa-caret-down"></i>}
+        {isOpen && (
+          <i
+            className="fas fa-caret-down"
+            onClick={() => this.setState({ isOpen: false })}
+          ></i>
+        )}
         <div
           className="title"
           onClick={() => {
@@ -33,7 +40,12 @@ class Categories extends Component {
             this.props.openProducts(false);
           }}
         >
-          {!isOpen && <i className="fas fa-caret-right"></i>}
+          {!isOpen && (
+            <i
+              className="fas fa-caret-right"
+              onClick={() => this.setState({ isOpen: true })}
+            ></i>
+          )}
           <span>{cat.name}</span>
         </div>
         {isOpen &&

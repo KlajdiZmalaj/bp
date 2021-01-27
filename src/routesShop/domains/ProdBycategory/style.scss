@@ -60,9 +60,9 @@
       height: auto;
 
       &.slick-active {
-        padding-left: 10px;
+        margin-left: 10px;
         &.slick-current {
-          padding-left: 0px;
+          margin-left: 0px;
         }
       }
       > div {
@@ -401,7 +401,7 @@
         grid-template-columns: repeat(5, calc(100% / 5 - 10px));
         &__item .pBorder img {
           // max-height: 160px;
-          max-width: 100%;
+          // max-width: 100%;
         }
       }
     }
