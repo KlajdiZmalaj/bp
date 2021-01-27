@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import images from "themes/images";
 import "./style.css";
 import { Tooltip } from "antd";
@@ -20,7 +20,10 @@ const RowItem = ({
   getToCart,
   models,
 }) => {
-  const [qnty, setQnt] = useState(qnt);
+  let [qnty, setQnt] = useState(qnt);
+  useEffect(() => {
+    setQnt(qnt);
+  }, [qnt]);
 
   return (
     <div className="cartItem">
