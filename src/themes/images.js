@@ -21,6 +21,8 @@ if (
   skin = 6;
 } else if (window.location.href.includes("imperialpay")) {
   skin = 7;
+} else if (window.location.href.includes("bullpay")) {
+  skin = 52;
 }
 let imgObj = {};
 try {
