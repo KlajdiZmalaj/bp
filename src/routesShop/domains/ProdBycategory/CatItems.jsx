@@ -28,7 +28,7 @@ const CatItems = ({
     slidesToScroll: isMobile ? 2 : 1,
     slidesToShow: isMobile ? 2 : 5,
   };
-  console.log("subcategories", subcategories);
+
   return (
     <div className="catgItems">
       <div className="catgItems__title">
