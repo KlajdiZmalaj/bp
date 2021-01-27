@@ -19,7 +19,7 @@ const RowItem = ({
   history,
   models,
 }) => {
-  const [qnty, setQnt] = useState(qnt);
+  let [qnty, setQnt] = useState(qnt);
 
   return (
     <div className="cartItem">

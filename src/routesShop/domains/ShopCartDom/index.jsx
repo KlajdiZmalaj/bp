@@ -63,7 +63,7 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
   };
 
   let sumTot = (parseFloat(sum) + parseFloat(removeComma(cost))).toFixed(2);
-
+  console.log("cartprod", cartprod);
   return (
     <section className="maxWidth shopCartContainer">
       <div className="shopCartContainer--left">

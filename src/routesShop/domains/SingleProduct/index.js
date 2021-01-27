@@ -96,6 +96,7 @@ class SingleProduct extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         if (buyNow === "buyNow") {
+          this.addTocart("cart");
           this.props.history.push("/shop-cart");
         }
         if (buyNow === "addFav") {
