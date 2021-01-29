@@ -2,7 +2,8 @@
   margin: 10px auto;
   margin-bottom: 20px;
   img {
-    pointer-events: none;
+    cursor: pointer;
+    // pointer-events: none;
   }
   @media (max-width: 1135px) {
     max-width: 100%;

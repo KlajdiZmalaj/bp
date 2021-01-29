@@ -317,8 +317,12 @@ class DashboardDom extends React.Component {
                 </div>
               ))}
             <div className="Last">
-              {/* eslint-disable-next-line jsx-a11y/alt-text */}
-              <img src={images["servizi_banner"]} />
+              <img
+                src={images["servizi_banner"]}
+                onClick={() => {
+                  window.location.hash = "products";
+                }}
+              />
             </div>
           </aside>
           <div className={`CompaniesAndOther ${menuClassName}`}>

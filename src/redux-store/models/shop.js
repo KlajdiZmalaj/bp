@@ -1,6 +1,7 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+  getProductsByTag: ["tag"],
   getProductsList: [
     "page",
     "brand",

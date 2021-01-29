@@ -103,6 +103,7 @@ export default function* root() {
     ],
     //SHOP
     ...[
+      takeLatest("GET_PRODUCTS_BY_TAG", ShopGenerators.getProductsByTag),
       takeLatest("GET_PRODUCTS_LIST", ShopGenerators.getProductsList),
       takeLatest("GET_PRODUCT_DETAILS", ShopGenerators.getProductDetails),
       takeLatest("GET_BRANDS", ShopGenerators.getBrands),

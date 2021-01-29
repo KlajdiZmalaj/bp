@@ -38,9 +38,9 @@ class Products extends Component {
           {categories &&
             Object.keys(categories).map((item, index) => {
               let url =
-                categories[item]?.name.split(" | ")[0] +
-                (categories[item]?.name.split(" | ")[1]
-                  ? "__" + categories[item]?.name.split(" | ")[1]
+                categories[item]?.name?.split(" | ")?.[0] +
+                (categories[item]?.name?.split(" | ")?.[1]
+                  ? "__" + categories[item]?.name?.split(" | ")?.[1]
                   : "");
               return (
                 <div
@@ -73,9 +73,9 @@ class Products extends Component {
             {Object.keys(defaultProducts).map((item) => {
               const prod = defaultProducts[item];
               let url =
-                categories[item]?.name.split(" | ")[0] +
-                (categories[item]?.name.split(" | ")[1]
-                  ? "__" + categories[item]?.name.split(" | ")[1]
+                categories[item]?.name?.split(" | ")?.[0] +
+                (categories[item]?.name?.split(" | ")?.[1]
+                  ? "__" + categories[item]?.name?.split(" | ")?.[1]
                   : "");
               return (
                 <div className="homeProd" key={item}>
