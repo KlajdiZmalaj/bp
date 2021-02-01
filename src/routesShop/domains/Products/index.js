@@ -129,9 +129,9 @@ class Products extends Component {
           </div>
         </div>
 
-        <PromotionTop></PromotionTop>
+        {/* <PromotionTop></PromotionTop> */}
         {/* <FlashDeals></FlashDeals> */}
-        <PromotionBottom></PromotionBottom>
+        {/* <PromotionBottom></PromotionBottom> */}
         {/* <FlashDeals></FlashDeals> */}
       </div>
     );

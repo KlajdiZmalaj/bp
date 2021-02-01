@@ -38,6 +38,7 @@ class Categories extends Component {
             this.props.setManufacturer(null);
             this.props.history.push(`/product-filtered/${url}`);
             this.props.openProducts(false);
+            this.setState({ isOpen: true });
           }}
         >
           {!isOpen && (
