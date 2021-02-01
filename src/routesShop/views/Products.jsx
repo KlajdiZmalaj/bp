@@ -10,7 +10,7 @@ import { withRouter } from "react-router-dom";
 class Products extends Component {
   componentDidUpdate(prevProp) {
     const tag = this.props.match.params.tag;
-    if (prevProp.match.params.tag !== tag)
+    if (tag && prevProp.match.params.tag !== tag)
       this.props.getProductsByTag(tag.toLowerCase());
   }
   componentDidMount() {
