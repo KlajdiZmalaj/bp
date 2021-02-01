@@ -26,15 +26,40 @@ class ProdBycategory extends Component {
 
   componentDidMount() {
     const catProduct = this.props.match.params.cat;
+    const tag = this.props.match.params.tag;
     this.props.getProductsList(
       null,
       this.props.isSelected,
-      catProduct && catProduct.replace("__", " | ")
+      catProduct && catProduct.replace("__", " | "),
+      null,
+      null,
+      null,
+      null,
+      null,
+      tag
     );
+
+    if (tag) {
+      this.props.openProducts(true);
+    }
   }
   componentDidUpdate(prevProps) {
+    const tag = this.props.match.params.tag;
     if (prevProps.prodList !== this.props.prodList) {
       this.setState({ highP: Math.ceil(this.props.prodList.highest_price) });
+    }
+    if (tag && prevProps.match.params.tag !== tag) {
+      this.props.getProductsList(
+        null, //page
+        this.props.isSelected, //brand
+        this.props.isSelectedC, //category
+        this.props.isSelectedSSC, //subcategory
+        this.props.orderVal, //order
+        this.props.sliderVal, //slider
+        null, //search
+        this.props.isSelectedSC, //subcategory
+        tag
+      );
     }
   }
   handleChange = (event) => {
@@ -47,7 +72,8 @@ class ProdBycategory extends Component {
       event, //order
       this.props.sliderVal, //slider
       null, //search
-      this.props.isSelectedSC //subcategory
+      this.props.isSelectedSC, //subcategory
+      this.props.match.params.tag
     );
   };
 
@@ -64,7 +90,8 @@ class ProdBycategory extends Component {
       this.props.orderVal,
       this.props.sliderVal,
       null,
-      this.props.isSelectedSC
+      this.props.isSelectedSC,
+      this.props.match.params.tag
     );
   };
 
@@ -100,6 +127,7 @@ class ProdBycategory extends Component {
     let brands = head(filterCat)?.brands;
 
     const subcategories = head(filterCat)?.subcategories;
+    let tags = head(filterCat)?.tags;
 
     let subcategories1 = filter(subcategories, function (o) {
       return o.name === isSelectedSC;
@@ -113,9 +141,11 @@ class ProdBycategory extends Component {
 
     if (subcategories1.length > 0) {
       brands = head(subcategories1)?.brands;
+      tags = head(subcategories1)?.tags;
     }
     if (subcategories2.length > 0) {
       brands = head(subcategories2)?.brands;
+      tags = head(subcategories2)?.tags;
     }
 
     const menu = (
@@ -174,7 +204,8 @@ class ProdBycategory extends Component {
               this.props.orderVal,
               this.props.sliderVal,
               null,
-              this.props.isSelectedSC
+              this.props.isSelectedSC,
+              this.props.match.params.tag
             );
           }}
           className="tutti"
@@ -274,6 +305,8 @@ class ProdBycategory extends Component {
               subcategories={subcategories}
               total_records={prodList.total_records}
               isMobile={isMobile}
+              tags={tags}
+              catParam={this.props.match.params.cat}
             ></CatItems>
           )}
 
@@ -283,6 +316,9 @@ class ProdBycategory extends Component {
               type="categories"
               pageNumber={1}
               isMobile={isMobile}
+              tags={tags}
+              catParam={this.props.match.params.cat}
+              tagParam={this.props.match.params.tag}
             ></BestSeller>
           )}
         </div>

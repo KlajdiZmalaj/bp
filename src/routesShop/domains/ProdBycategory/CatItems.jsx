@@ -20,6 +20,8 @@ const CatItems = ({
   orderVal,
   isMobile,
   openProducts,
+  tags,
+  catParam,
 }) => {
   const settings = {
     dots: false,
@@ -116,6 +118,25 @@ const CatItems = ({
               </div>
             );
           })}
+
+      <div className="shopTags">
+        {tags &&
+          Object.keys(tags).map((tagKey) => {
+            return (
+              <span
+                key={tagKey}
+                // className={tagSelected === tagKey ? "active" : ""}
+                onClick={() => {
+                  window.location.hash = `product-filtered/${catParam}/${tags[tagKey]}`;
+                  // this.setState({ tagSelected: tagKey });
+                  openProducts(true);
+                }}
+              >
+                {tags[tagKey]}
+              </span>
+            );
+          })}
+      </div>
     </div>
   );
 };

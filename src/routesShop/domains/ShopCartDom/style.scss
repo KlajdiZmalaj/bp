@@ -276,6 +276,7 @@
         .detailsServices {
           display: flex;
           justify-content: space-between;
+          font-size: 12px;
           .radioServ {
             span {
               color: var(--accent-bg);
@@ -286,6 +287,9 @@
           padding-right: 0px;
           padding-left: 8px;
           width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
       }
     }

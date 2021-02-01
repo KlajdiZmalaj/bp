@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 class SubCategories extends Component {
   render() {
-    const { item, catg, subcatg, isSelectedSSC } = this.props;
+    const { item, catg, subcatg, isSelectedSSC, catParam } = this.props;
 
     return (
       <div
@@ -28,6 +28,7 @@ class SubCategories extends Component {
           this.props.setSubSubCategory(item.name);
           this.props.setManufacturer(null);
           this.props.openProducts(true);
+          window.location.hash = `product-filtered/${catParam}`;
         }}
       >
         {item.name}

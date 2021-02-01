@@ -12,6 +12,7 @@ const { Types, Creators } = createActions({
     "slider",
     "search",
     "subCategoryI",
+    "tag",
   ],
   setProductsList: ["productsList"],
   getProductDetails: ["Product_id", "prd_supp"],

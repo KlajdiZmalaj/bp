@@ -570,6 +570,7 @@
       }
     }
   }
+
   .shopProd .bestSeller .filtersCateg,
   .shopProd .bestSeller .products {
     padding: 15px;
@@ -748,12 +749,17 @@
   display: flex;
   flex-flow: row wrap;
   font-size: 12px;
+  padding-top: 20px;
   > span {
-    background-color: var(--accent-bg);
-    color: var(--accent-txt);
+    border: 1px solid var(--accent-bg);
     margin: 2px;
     border-radius: 5px;
-    padding: 2px;
+    padding: 1px 5px;
     cursor: pointer;
+    text-transform: capitalize;
+    &.active {
+      background-color: var(--accent-bg);
+      color: var(--accent-txt);
+    }
   }
 }

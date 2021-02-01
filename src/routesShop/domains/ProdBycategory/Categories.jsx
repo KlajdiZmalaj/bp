@@ -38,6 +38,7 @@ class Categories extends Component {
             this.props.setManufacturer(null);
             this.props.history.push(`/product-filtered/${url}`);
             this.props.openProducts(false);
+            this.setState({ isOpen: true });
           }}
         >
           {!isOpen && (
@@ -55,6 +56,7 @@ class Categories extends Component {
                 key={i}
                 item={cat.subcategories[sub]}
                 catg={cat.name}
+                catParam={this.props.match.params.cat}
               ></SubCategories>
             );
           })}

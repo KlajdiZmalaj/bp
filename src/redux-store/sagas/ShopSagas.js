@@ -5,6 +5,7 @@ import { get } from "lodash";
 import { notification } from "antd";
 
 export function* getProductsByTag({ tag }) {
+  yield put(ShopActions.setDefaultProducts({}));
   const response = yield call(ShopRequest.fetchProductsByTag, tag);
   var obj = response?.data?.data;
   if (obj) {
@@ -27,7 +28,8 @@ export function* checkOut({ formData, resetFields }) {
     formData.via_nr,
     formData.tel,
     formData.email,
-    formData.comment
+    formData.comment,
+    formData.carrier_cost
   );
 
   if (response.data) {
@@ -56,7 +58,8 @@ export function* getProductsList(params) {
     params.order,
     params.slider,
     params.search,
-    params.subCategoryI
+    params.subCategoryI,
+    params.tag
   );
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));
@@ -156,7 +159,8 @@ export function* getOrder(params) {
     params.city,
     params.address,
     params.phone,
-    params.email
+    params.email,
+    params.carrier_cost
   );
   if (response.data) {
     yield put(ShopActions.setOrder(response.data.data));

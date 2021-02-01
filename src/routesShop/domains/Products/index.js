@@ -12,9 +12,13 @@ import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import { connect } from "react-redux";
 class Products extends Component {
+  state = {
+    tagSelected: "",
+  };
   render() {
     const { defaultProducts, categories, isMobile, shopTags } = this.props;
-    console.log("shopTags", shopTags);
+    const { tagSelected } = this.state;
+
     return (
       <div className="shopProd a">
         <div className="mainBanner marginBottom">
@@ -23,18 +27,6 @@ class Products extends Component {
             className="maxWidth"
             alt=""
           ></img>
-        </div>
-        <div className="shopTags maxWidth">
-          {Object.keys(shopTags).map((tagKey) => (
-            <span
-              key={tagKey}
-              onClick={() => {
-                window.location.hash = `products/${shopTags[tagKey]}`;
-              }}
-            >
-              #{tagKey}
-            </span>
-          ))}
         </div>
 
         <div className="title maxWidth">categorie</div>
@@ -79,7 +71,20 @@ class Products extends Component {
               );
             })}
         </div>
-
+        <div className="shopTags maxWidth">
+          {Object.keys(shopTags).map((tagKey) => (
+            <span
+              key={tagKey}
+              className={tagSelected === tagKey ? "active" : ""}
+              onClick={() => {
+                window.location.hash = `products/${shopTags[tagKey]}`;
+                this.setState({ tagSelected: tagKey });
+              }}
+            >
+              {shopTags[tagKey]}
+            </span>
+          ))}
+        </div>
         {/* <ShopList brands={brands}></ShopList> */}
         <div className="maxWidth">
           <div className="bestSeller paddingBottom">
@@ -111,7 +116,9 @@ class Products extends Component {
                         categories[item]?.name
                       );
                       this.props.setCategory(categories[item]?.name);
-                      this.props.history.push(`/product-filtered/${url}`);
+                      this.props.history.push(
+                        `/product-filtered/${url}/${this.props.match.params.tag}`
+                      );
                     }}
                   >
                     Vedi tutti
@@ -122,9 +129,9 @@ class Products extends Component {
           </div>
         </div>
 
-        <PromotionTop></PromotionTop>
+        {/* <PromotionTop></PromotionTop> */}
         {/* <FlashDeals></FlashDeals> */}
-        <PromotionBottom></PromotionBottom>
+        {/* <PromotionBottom></PromotionBottom> */}
         {/* <FlashDeals></FlashDeals> */}
       </div>
     );

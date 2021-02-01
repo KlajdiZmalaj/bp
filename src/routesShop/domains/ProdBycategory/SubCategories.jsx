@@ -10,7 +10,7 @@ class SubCategories extends Component {
   };
 
   render() {
-    const { item, isSelectedSC, catg } = this.props;
+    const { item, isSelectedSC, catg, catParam } = this.props;
     const { isOpen } = this.state;
     return (
       <div
@@ -45,6 +45,7 @@ class SubCategories extends Component {
             this.props.setSubSubCategory(null);
             this.props.setManufacturer(null);
             this.props.openProducts(true);
+            window.location.hash = `product-filtered/${catParam}`;
           }}
         >
           {item.name}
@@ -59,6 +60,7 @@ class SubCategories extends Component {
                 item={item.subcategories[subitem]}
                 catg={catg}
                 subcatg={item.name}
+                catParam={catParam}
               ></SubSubCategories>
             );
           })}

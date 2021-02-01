@@ -12,6 +12,7 @@ class BestSeller extends Component {
     super(props);
     this.state = {
       page_number: this.props.pageNumber,
+      tagParam: this.props.tagParam,
     };
   }
 
@@ -47,7 +48,11 @@ class BestSeller extends Component {
       orderVal,
       sliderVal,
       type,
+      tags,
+      catParam,
+      tagParam,
     } = this.props;
+
     const { page_number } = this.state;
     const total_pages = prodList.total_pages;
     const total_records = prodList.total_records;
@@ -117,6 +122,23 @@ class BestSeller extends Component {
             }}
             total={total_pages ? total_pages * 10 : 10}
           />
+        </div>
+        <div className="shopTags">
+          {tags &&
+            Object.keys(tags).map((tagKey) => {
+              return (
+                <span
+                  key={tagKey}
+                  className={tagParam === tags[tagKey] ? "active" : ""}
+                  onClick={() => {
+                    window.location.hash = `product-filtered/${catParam}/${tags[tagKey]}`;
+                    // this.setState({ tagSelected: tagKey });
+                  }}
+                >
+                  {tags[tagKey]}
+                </span>
+              );
+            })}
         </div>
       </div>
     );
