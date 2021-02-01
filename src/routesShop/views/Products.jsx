@@ -6,13 +6,24 @@ import "./style.css";
 
 import AllProducts from "routesShop/domains/Products/index.js";
 import SubHeader from "routesShop/components/SubHeader/index.js";
-
+import { withRouter } from "react-router-dom";
 class Products extends Component {
+  componentDidUpdate(prevProp) {
+    const tag = this.props.match.params.tag;
+    if (prevProp.match.params.tag !== tag)
+      this.props.getProductsByTag(tag.toLowerCase());
+  }
   componentDidMount() {
+    const tag = this.props.match.params.tag;
     this.props.getCategories();
     this.props.setCategory(null);
     this.props.setManufacturer(null);
-    this.props.getDefaultProducts();
+
+    if (tag) {
+      this.props.getProductsByTag(tag.toLowerCase());
+    } else {
+      this.props.getDefaultProducts();
+    }
     this.props.openProducts(false);
   }
 
@@ -38,4 +49,4 @@ const mpStP = (state) => ({
   categories: state.shop.categories,
   defaultProducts: state.shop.defaultProducts,
 });
-export default connect(mpStP, ShopActions)(Products);
+export default withRouter(connect(mpStP, ShopActions)(Products));

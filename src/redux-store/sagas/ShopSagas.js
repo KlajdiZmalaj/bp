@@ -6,8 +6,12 @@ import { notification } from "antd";
 
 export function* getProductsByTag({ tag }) {
   const response = yield call(ShopRequest.fetchProductsByTag, tag);
-  if (response.data) {
-    // yield put(ShopActions.setProductsList(Object.values(response.data)));
+  var obj = response?.data?.data;
+  if (obj) {
+    yield Object.keys(obj).forEach((key) => {
+      obj[key] = Object.values(obj[key]);
+    });
+    yield put(ShopActions.setDefaultProducts(obj));
   }
 }
 export function* checkOut({ formData, resetFields }) {
@@ -55,7 +59,6 @@ export function* getProductsList(params) {
     params.subCategoryI
   );
   if (response.data) {
-    console.log("products normal", response.data);
     yield put(ShopActions.setProductsList(response.data));
   }
 }
@@ -92,6 +95,9 @@ export function* getCategories() {
   if (Object.keys(state.shop.categories) < 1) {
     const response = yield call(ShopRequest.fetchCategories);
     if (response.data) {
+      yield put(
+        ShopActions.setShopTags(Object.values(response.data.data)[0].tags)
+      );
       yield put(ShopActions.setCategories(response.data.data));
     }
   }
@@ -189,7 +195,6 @@ export function* getCarries(params) {
 }
 
 export function* getProdCat(params) {
-  console.log("params", params);
   const response = yield call(
     ShopRequest.fetchProdCat,
     params.category,

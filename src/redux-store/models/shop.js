@@ -1,6 +1,7 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+  setShopTags: ["shopTags"],
   getProductsByTag: ["tag"],
   getProductsList: [
     "page",
@@ -64,6 +65,7 @@ export const ShopTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  shopTags: {},
   productsList: {},
   productD: {},
   brands: {},
@@ -86,6 +88,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  SET_SHOP_TAGS: (state, { shopTags }) => ({
+    ...state,
+    shopTags,
+  }),
   SET_SHOP_LEFT_MENU_MOB: (state, { shopLeftMenuMob }) => ({
     ...state,
     shopLeftMenuMob,
