@@ -49,7 +49,6 @@ class ProdBycategory extends Component {
       this.setState({ highP: Math.ceil(this.props.prodList.highest_price) });
     }
     if (tag && prevProps.match.params.tag !== tag) {
-      console.log("taggg", tag);
       this.props.getProductsList(
         null, //page
         this.props.isSelected, //brand
