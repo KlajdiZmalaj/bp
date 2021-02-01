@@ -297,7 +297,7 @@ const CheckOutDom = ({
                     ) : (
                       <button disabled> Ricalcolaa spedizione</button>
                     )}
-                    {formData.cap.length}
+                    {formData.cap}
                   </div>
                 </Form.Item>
                 <Form.Item>
