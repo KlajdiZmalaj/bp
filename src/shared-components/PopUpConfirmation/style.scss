@@ -36,6 +36,11 @@
               position: relative;
               width: 55%;
               height: 100%;
+              max-width: 220px;
+              overflow: hidden;
+              white-space: nowrap;
+              display: block;
+              text-overflow: ellipsis;
             }
           }
         }
@@ -67,6 +72,11 @@
               position: relative;
               width: 55%;
               height: 100%;
+              max-width: 220px;
+              overflow: hidden;
+              white-space: nowrap;
+              display: block;
+              text-overflow: ellipsis;
             }
           }
         }
