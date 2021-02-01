@@ -385,7 +385,7 @@ class Root extends React.Component {
             allowedRoles={["super_admin", "agency", "agent", "user"]}
           />
           <PrivateRoute
-            path="/product-filtered/:cat?/"
+            path="/product-filtered/:cat?/:tag?/"
             component={
               !isMobile
                 ? ShopView.ProdBycategory

@@ -58,7 +58,8 @@ export function* getProductsList(params) {
     params.order,
     params.slider,
     params.search,
-    params.subCategoryI
+    params.subCategoryI,
+    params.tag
   );
   if (response.data) {
     yield put(ShopActions.setProductsList(response.data));

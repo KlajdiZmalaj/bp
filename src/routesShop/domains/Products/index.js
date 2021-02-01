@@ -116,7 +116,9 @@ class Products extends Component {
                         categories[item]?.name
                       );
                       this.props.setCategory(categories[item]?.name);
-                      this.props.history.push(`/product-filtered/${url}`);
+                      this.props.history.push(
+                        `/product-filtered/${url}/${this.props.match.params.tag}`
+                      );
                     }}
                   >
                     Vedi tutti

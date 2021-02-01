@@ -55,6 +55,7 @@ class Categories extends Component {
                 key={i}
                 item={cat.subcategories[sub]}
                 catg={cat.name}
+                catParam={this.props.match.params.cat}
               ></SubCategories>
             );
           })}
