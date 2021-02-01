@@ -378,7 +378,7 @@ class Root extends React.Component {
           {/* routes for shop */}
 
           <PrivateRoute
-            path="/products"
+            path="/products/:tag?/"
             component={!isMobile ? ShopView.Products : MobileViews.Shop}
             isLoggedin={isLoggedin}
             role={role}

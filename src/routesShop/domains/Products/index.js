@@ -10,13 +10,13 @@ import PromotionTop from "./PromotionTop";
 import { withRouter } from "react-router-dom";
 
 import ProductItem from "./ProductItem";
-
+import { connect } from "react-redux";
 class Products extends Component {
   render() {
-    const { defaultProducts, categories, isMobile } = this.props;
-
+    const { defaultProducts, categories, isMobile, shopTags } = this.props;
+    console.log("shopTags", shopTags);
     return (
-      <div className="shopProd">
+      <div className="shopProd a">
         <div className="mainBanner marginBottom">
           <img
             src={!isMobile ? images.mainBanner : images["outletofferteMob"]}
@@ -24,6 +24,19 @@ class Products extends Component {
             alt=""
           ></img>
         </div>
+        <div className="shopTags maxWidth">
+          {Object.keys(shopTags).map((tagKey) => (
+            <span
+              key={tagKey}
+              onClick={() => {
+                window.location.hash = `products/${shopTags[tagKey]}`;
+              }}
+            >
+              #{tagKey}
+            </span>
+          ))}
+        </div>
+
         <div className="title maxWidth">categorie</div>
         <div className="banners maxWidth">
           {categories &&
@@ -118,4 +131,8 @@ class Products extends Component {
   }
 }
 
-export default withRouter(Products);
+export default withRouter(
+  connect(({ shop: { shopTags } }) => ({
+    shopTags,
+  }))(Products)
+);
