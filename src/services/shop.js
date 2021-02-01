@@ -27,6 +27,18 @@ instanceAxios.interceptors.response.use(
   (error) => handleError(error)
 );
 
+export const fetchProductsByTag = (tag) => {
+  return instanceAxios
+    .get(`/shop/productsByTag`, {
+      params: {
+        ...skin,
+        ...(tag ? { tag } : {}),
+        // page_number: 3,
+      },
+    })
+    .catch((error) => ({ error }));
+};
+
 export const fetchProducts = (
   page_number,
   brand,

@@ -14,8 +14,8 @@ class Categories extends Component {
     const { isOpen } = this.state;
 
     let url =
-      cat?.name.split(" | ")[0] +
-      (cat?.name.split(" | ")[1] ? "__" + cat?.name.split(" | ")[1] : "");
+      cat?.name.split(" | ")?.[0] +
+      (cat?.name.split(" | ")?.[1] ? "__" + cat?.name.split(" | ")?.[1] : "");
 
     return (
       <div

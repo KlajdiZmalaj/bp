@@ -1,0 +1,11 @@
+<svg id="ethereum" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <circle id="Ellipse_15" data-name="Ellipse 15" cx="20" cy="20" r="20" fill="#627eea"/>
+  <g id="Group_185" data-name="Group 185" transform="translate(11.25 5)">
+    <path id="Path_178" data-name="Path 178" d="M16.5,4V15.087l9.371,4.188Z" transform="translate(-7.126 -4)" fill="rgba(255,255,255,0.6)"/>
+    <path id="Path_179" data-name="Path 179" d="M18.372,4,9,19.275l9.373-4.188Z" transform="translate(-9 -4)" fill="#fff"/>
+    <path id="Path_180" data-name="Path 180" d="M16.5,23.056V30.59l9.378-12.974Z" transform="translate(-7.126 -0.596)" fill="rgba(255,255,255,0.6)"/>
+    <path id="Path_181" data-name="Path 181" d="M18.372,30.59V23.055L9,17.616Z" transform="translate(-9 -0.596)" fill="#fff"/>
+    <path id="Path_182" data-name="Path 182" d="M16.5,22.5l9.371-5.441L16.5,12.872Z" transform="translate(-7.126 -1.782)" fill="rgba(255,255,255,0.2)"/>
+    <path id="Path_183" data-name="Path 183" d="M9,17.057,18.373,22.5V12.872Z" transform="translate(-9 -1.782)" fill="rgba(255,255,255,0.6)"/>
+  </g>
+</svg>

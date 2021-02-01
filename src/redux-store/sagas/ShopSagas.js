@@ -4,9 +4,15 @@ import * as ShopRequest from "services/shop";
 import { get } from "lodash";
 import { notification } from "antd";
 
+export function* getProductsByTag({ tag }) {
+  const response = yield call(ShopRequest.fetchProductsByTag, tag);
+  if (response.data) {
+    // yield put(ShopActions.setProductsList(Object.values(response.data)));
+  }
+}
 export function* checkOut({ formData, resetFields }) {
   // yield setTimeout(() => {}, 1000);
-  console.log("formData", formData, resetFields);
+  //console.log("formData", formData, resetFields);
   const response = yield call(
     ShopRequest.fetchOrder,
     formData.cap,
@@ -49,6 +55,7 @@ export function* getProductsList(params) {
     params.subCategoryI
   );
   if (response.data) {
+    console.log("products normal", response.data);
     yield put(ShopActions.setProductsList(response.data));
   }
 }

@@ -132,6 +132,11 @@ if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
     ...skin,
     skin_id: 51,
   };
+} else if (window.location.href.match(/bullpay/g)) {
+  skin = {
+    ...skin,
+    skin_id: 52,
+  };
 }
 export default {
   endpoint,
