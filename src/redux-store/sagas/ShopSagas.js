@@ -5,6 +5,7 @@ import { get } from "lodash";
 import { notification } from "antd";
 
 export function* getProductsByTag({ tag }) {
+  yield put(ShopActions.setDefaultProducts({}));
   const response = yield call(ShopRequest.fetchProductsByTag, tag);
   var obj = response?.data?.data;
   if (obj) {

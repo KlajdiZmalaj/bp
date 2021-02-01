@@ -300,7 +300,7 @@ const CheckOutDom = ({
                       />
                     )}
 
-                    {formData.cap && formData.cap.length === 5 ? (
+                    {/* {formData.cap && formData.cap.length === 5 ? (
                       <button
                         className="w-20 recal"
                         onClick={(e) => {
@@ -314,7 +314,7 @@ const CheckOutDom = ({
                       </button>
                     ) : (
                       <button disabled> Ricalcolaa spedizione</button>
-                    )}
+                    )} */}
                   </div>
                 </Form.Item>
                 <Form.Item>
