@@ -23,7 +23,8 @@ export function* checkOut({ formData, resetFields }) {
     formData.via_nr,
     formData.tel,
     formData.email,
-    formData.comment
+    formData.comment,
+    formData.carrier_cost
   );
 
   if (response.data) {
@@ -150,7 +151,8 @@ export function* getOrder(params) {
     params.city,
     params.address,
     params.phone,
-    params.email
+    params.email,
+    params.carrier_cost
   );
   if (response.data) {
     yield put(ShopActions.setOrder(response.data.data));

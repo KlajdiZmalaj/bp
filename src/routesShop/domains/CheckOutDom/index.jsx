@@ -33,6 +33,7 @@ const FORM_DATA = {
   carrier: "",
   comment: "",
   isClicked: false,
+  carrier_cost: 0,
 };
 
 const InpCheck = ({ id, label1, label2, handler, checked }) => (
@@ -86,7 +87,11 @@ const CheckOutDom = ({
 
   const onChange = (e) => {
     setCost(e.target.cost);
-    setData({ ...formData, carrier: e.target.value });
+    setData({
+      ...formData,
+      carrier: e.target.value,
+      carrier_cost: e.target.number_cost,
+    });
   };
 
   let sum = 0.0;
@@ -116,6 +121,7 @@ const CheckOutDom = ({
       }
     });
   };
+
   return (
     itemsCart &&
     Object.keys(itemsCart).length > 0 && (
@@ -274,14 +280,26 @@ const CheckOutDom = ({
                         placeholder="C.A.P."
                         className="w-40"
                         onChange={(e) => {
-                          setData({ ...formData, cap: e.target.value });
+                          setData({
+                            ...formData,
+                            cap: e.target.value,
+                            carrier: "",
+                          });
                           e.target.value.length === 5 &&
-                            getCarries("it", formData.cap);
+                            getCarries("it", e.target.value);
                           setCost(0);
-                          setData({ ...formData, carrier: "" });
+                          //setData({ ...formData, carrier: "" });
                         }}
+                        // onChange={(e) => {
+                        //   setData({ ...formData, cap: e.target.value });
+                        //   e.target.value.length === 5 &&
+                        //     getCarries("it", formData.cap);
+                        //   setCost(0);
+                        //   setData({ ...formData, carrier: "" });
+                        // }}
                       />
                     )}
+
                     {formData.cap && formData.cap.length === 5 ? (
                       <button
                         className="w-20 recal"
@@ -297,7 +315,6 @@ const CheckOutDom = ({
                     ) : (
                       <button disabled> Ricalcolaa spedizione</button>
                     )}
-                    {formData.cap}
                   </div>
                 </Form.Item>
                 <Form.Item>
@@ -473,6 +490,7 @@ const CheckOutDom = ({
                         <Radio
                           value={item.shippingService.serviceName}
                           cost={item.cost}
+                          number_cost={item.number_cost}
                           key={index}
                         >
                           <img
@@ -583,7 +601,7 @@ const CheckOutDom = ({
 
             <button
               className="pagaBtn"
-              onClick={() => handleSubmit()}
+              onClick={(e) => handleSubmit(e)}
               // onClick={() => {
               //   checkOut(formData, () => {
               //     setData(FORM_DATA);
