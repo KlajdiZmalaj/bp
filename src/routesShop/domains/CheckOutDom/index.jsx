@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ShopActions from "redux-store/models/shop";
 import AuthActions from "redux-store/models/auth";
-
+import { Loader } from "shared-components";
 import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -62,6 +62,7 @@ const CheckOutDom = ({
   getCarries,
   carriers,
   form,
+  hasLoader,
 }) => {
   useEffect(() => {
     setData({
@@ -126,6 +127,7 @@ const CheckOutDom = ({
     itemsCart &&
     Object.keys(itemsCart).length > 0 && (
       <div className="shopCheckout maxWidth">
+        {hasLoader && <Loader></Loader>}
         <div className="shopCheckout--form">
           <div className="shopCheckout--form__left">
             <div className="titleTop">Dettagli di fatturazione </div>
@@ -621,6 +623,7 @@ const CheckOutDom = ({
 const mstp = (state) => ({
   carriers: state.shop.carries,
   accountInfo: state.auth.accountInfo,
+  hasLoader: state.shop.hasLoader,
 });
 
 export default withRouter(

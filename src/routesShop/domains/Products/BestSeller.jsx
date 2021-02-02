@@ -4,7 +4,7 @@ import { Pagination } from "antd";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
 import images from "themes/images";
-
+import { Loader } from "shared-components";
 import ProductItem from "./ProductItem";
 
 class BestSeller extends Component {
@@ -97,11 +97,14 @@ class BestSeller extends Component {
               );
             })
           ) : (
-            <div className="products__item">
-              <div className="pBorder">
-                <img src={images.placeholder} alt=""></img>
+            <React.Fragment>
+              <div className="products__item">
+                <div className="pBorder">
+                  <img src={images.placeholder} alt=""></img>
+                </div>
               </div>
-            </div>
+              <Loader></Loader>
+            </React.Fragment>
           )}
         </div>
         <div className="paginationWrapper">

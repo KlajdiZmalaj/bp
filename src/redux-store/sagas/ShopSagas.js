@@ -18,6 +18,7 @@ export function* getProductsByTag({ tag }) {
 export function* checkOut({ formData, resetFields }) {
   // yield setTimeout(() => {}, 1000);
   //console.log("formData", formData, resetFields);
+  yield put(ShopActions.showLoader(true));
   const response = yield call(
     ShopRequest.fetchOrder,
     formData.cap,
@@ -32,6 +33,9 @@ export function* checkOut({ formData, resetFields }) {
     formData.carrier_cost
   );
 
+  if (response) {
+    yield put(ShopActions.showLoader(false));
+  }
   if (response.data) {
     // yield put(ShopActions.setProductsList(response.data));
     notification["success"]({

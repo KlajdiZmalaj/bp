@@ -60,6 +60,7 @@ const { Types, Creators } = createActions({
   setProdCat: ["prodCat"],
   openProducts: ["areOpenProducts"],
   setShopLeftMenuMob: ["shopLeftMenuMob"],
+  showLoader: ["hasLoader"],
 });
 
 export const ShopTypes = Types;
@@ -86,6 +87,7 @@ const INITIAL_STATE = {
   prodCat: {},
   areOpenProducts: false,
   shopLeftMenuMob: false,
+  hasLoader: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -173,5 +175,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   OPEN_PRODUCTS: (state, { areOpenProducts }) => ({
     ...state,
     areOpenProducts,
+  }),
+  SHOW_LOADER: (state, { hasLoader }) => ({
+    ...state,
+    hasLoader,
   }),
 });
