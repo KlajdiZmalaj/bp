@@ -18,6 +18,7 @@ class Products extends Component {
   render() {
     const { defaultProducts, categories, isMobile, shopTags } = this.props;
     const { tagSelected } = this.state;
+    const tagParam = this.props.match.params.tag;
 
     return (
       <div className="shopProd a">
@@ -117,7 +118,7 @@ class Products extends Component {
                       );
                       this.props.setCategory(categories[item]?.name);
                       this.props.history.push(
-                        `/product-filtered/${url}/${this.props.match.params.tag}`
+                        `/product-filtered/${url}/${tagParam ? tagParam : ""}`
                       );
                     }}
                   >
