@@ -88,9 +88,10 @@ const CheckOutDom = ({
 
   const onChange = (e) => {
     setCost(e.target.cost);
+
     setData({
       ...formData,
-      carrier: e.target.value,
+      carrier: e.target.serviceName,
       carrier_cost: e.target.number_cost,
     });
   };
@@ -134,7 +135,7 @@ const CheckOutDom = ({
 
             <div className="formContainer">
               <Form onSubmit={handleSubmit}>
-                <Form.Item>
+                <Form.Item label="Nome">
                   {getFieldDecorator("name", {
                     initialValue: formData.name,
                     rules: [
@@ -153,7 +154,7 @@ const CheckOutDom = ({
                     />
                   )}
                 </Form.Item>
-                <Form.Item>
+                <Form.Item label="Cognome">
                   {getFieldDecorator("cognome", {
                     initialValue: formData.last_name,
                     rules: [
@@ -173,7 +174,7 @@ const CheckOutDom = ({
                   )}
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item label="Paese">
                   {getFieldDecorator("paese", {
                     initialValue: formData.paese,
                     rules: [
@@ -186,7 +187,7 @@ const CheckOutDom = ({
                     <input type="text" readOnly placeholder="Paese/regione" />
                   )}
                 </Form.Item>
-                <Form.Item>
+                <Form.Item label="Via">
                   {getFieldDecorator("via", {
                     initialValue: formData.via_nr,
                     rules: [
@@ -206,7 +207,7 @@ const CheckOutDom = ({
                   )}
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item label="Email">
                   {getFieldDecorator("email", {
                     initialValue: formData.email,
                     rules: [
@@ -225,7 +226,7 @@ const CheckOutDom = ({
                     />
                   )}
                 </Form.Item>
-                <Form.Item>
+                <Form.Item label="Tel">
                   {getFieldDecorator("tel", {
                     initialValue: formData.tel,
                     rules: [
@@ -246,7 +247,7 @@ const CheckOutDom = ({
                   )}
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item label="Citta">
                   {getFieldDecorator("citty", {
                     initialValue: formData.citty,
                     rules: [
@@ -265,7 +266,7 @@ const CheckOutDom = ({
                     />
                   )}
                 </Form.Item>
-                <Form.Item>
+                <Form.Item label="Cap">
                   <div className="inpGr">
                     {getFieldDecorator("cap", {
                       initialValue: formData.cap,
@@ -485,15 +486,20 @@ const CheckOutDom = ({
                   Scegli un tipo di Spedizione:
                 </div>
 
-                <Radio.Group onChange={onChange} value={formData.carrier}>
+                <Radio.Group onChange={onChange} serviceName={formData.carrier}>
                   {carriers &&
                     carriers.map((item, index) => {
                       return (
                         <Radio
-                          value={item.shippingService.serviceName}
+                          // value={item.shippingService.serviceName}
                           cost={item.cost}
                           number_cost={item.number_cost}
                           key={index}
+                          serviceName={item.shippingService.serviceName}
+                          value={
+                            item.shippingService.serviceName +
+                            item.shippingService.name
+                          }
                         >
                           <img
                             src={

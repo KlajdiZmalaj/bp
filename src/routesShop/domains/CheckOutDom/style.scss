@@ -70,6 +70,14 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    .ant-form-item-label {
+      line-height: normal;
+      label {
+        margin-bottom: 0;
+        color: inherit;
+        font-weight: normal;
+      }
+    }
     input,
     .inpGr {
       height: 50px;

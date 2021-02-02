@@ -152,7 +152,11 @@ const ShopCartDom = ({ getItemsCart, itemsCart, getCarries, carriers }) => {
                     // value={item.shippingService.serviceName}
                     key={index}
                     cost={item.cost}
-                    value={item.shippingService.serviceName}
+                    serviceName={item.shippingService.serviceName}
+                    value={
+                      item.shippingService.serviceName +
+                      item.shippingService.name
+                    }
                   >
                     <img
                       src={
