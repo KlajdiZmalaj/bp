@@ -44,11 +44,6 @@ export function* checkOut({ formData, resetFields }) {
     yield call(getItemsCart, true);
     resetFields();
   }
-
-  //const response = yield call(req , formData);
-  // if (response) {
-  //   resetFields?.();
-  // }
 }
 
 export function* getProductsList(params) {

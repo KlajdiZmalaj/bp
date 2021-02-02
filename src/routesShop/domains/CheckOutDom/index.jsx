@@ -115,6 +115,7 @@ const CheckOutDom = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     setData({ ...formData, isClicked: true });
+
     form.validateFields().then((values) => {
       if (formData.terms && formData.carrier.length > 0) {
         checkOut(formData, () => {
@@ -460,7 +461,7 @@ const CheckOutDom = ({
             <div className="infos">
               <div className="subTotal">
                 <div>Subtotale:</div>
-                <div>€ {sum.replace(/\./g, ",")}</div>
+                <div>€ {sum && sum.replace(/\./g, ",")}</div>
               </div>
               <div className="subTotal">
                 <div>Spedizione:</div>
@@ -468,7 +469,7 @@ const CheckOutDom = ({
               </div>
               <div className="subTotal">
                 <div>Totale:</div>
-                <div>€ {sumTot.replace(/\./g, ",")}</div>
+                <div>€ {sumTot && sumTot.replace(/\./g, ",")}</div>
               </div>
               {/* <div className="total">
                 <div>Totale:</div>
