@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AuthActions } from "redux-store/models";
+import { withRouter } from "react-router-dom";
 import Voli from "./Voli";
 import Treni from "./Treni";
 import Eventi from "./Eventi";
@@ -43,6 +44,15 @@ const Card = ({
 };
 
 export class FormsBody extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.isSelected &&
+      this.props.match.params.id !== prevProps.match.params.id &&
+      !this.props.match.params.id
+    ) {
+      this.setState({ isSelected: false, typee: 0 });
+    }
+  }
   state = {
     isSelected: false,
     typee: 0,
@@ -50,6 +60,7 @@ export class FormsBody extends Component {
     nome_agenzia: "",
     color: "",
   };
+
   render() {
     const { accountInfo } = this.props;
     const { typee, isSelected, nome_agenzia, color } = this.state;
@@ -61,84 +72,90 @@ export class FormsBody extends Component {
           {!isSelected && (
             <div className="formsContainer--cards">
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/1`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "expedia",
                     typee: 1,
                     color: "#11375dad",
-                  })
-                }
+                  });
+                }}
                 title="expedia"
                 icon={"fal fa-plane"}
                 color="#11375dad"
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/2`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "flixbus",
                     typee: 2,
                     color: "#588a17a3",
-                  })
-                }
+                  });
+                }}
                 title="flixbus"
                 icon={"fal fa-bus"}
                 color="#588a17a3"
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/3`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "trenitalia",
                     typee: 2,
                     color: "#bf0013b3",
-                  })
-                }
+                  });
+                }}
                 title="trenitalia"
                 icon={"fal fa-subway"}
                 color="#bf0013b3"
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/3`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "vivaticket",
                     typee: 3,
                     color: "#151515c4",
-                  })
-                }
+                  });
+                }}
                 title="vivaticket"
                 icon={"fal fa-ticket-alt"}
                 color="#151515c4"
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/3`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "ticketing",
                     typee: 3,
                     color: "#edbf00bf",
-                  })
-                }
+                  });
+                }}
                 title="ticketing"
                 icon={"fal fa-ticket-alt"}
                 color="#edbf00bf"
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/3`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "stubhub",
                     typee: 3,
                     color: "#3f1d74b5",
-                  })
-                }
+                  });
+                }}
                 title="stubhub"
                 icon={"fal fa-ticket-alt"}
                 color="#3f1d74b5"
@@ -152,28 +169,30 @@ export class FormsBody extends Component {
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/4`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "shop-online",
                     typee: 4,
                     color: "#F26521",
-                  })
-                }
+                  });
+                }}
                 title="shop-online"
                 icon={"fal fa-shopping-cart"}
                 color="#F26521"
                 accountInfo={accountInfo}
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/5`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "bgame",
                     typee: 5,
                     color: "#F26521",
-                  })
-                }
+                  });
+                }}
                 title="bgame"
                 icon={"fal fa-futbol"}
                 color="#F26521"
@@ -181,14 +200,15 @@ export class FormsBody extends Component {
                 name="REGISTRAZIONE CONTI GIOCO ONLINE"
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/6`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "auto",
                     typee: 6,
                     color: "#22A094",
-                  })
-                }
+                  });
+                }}
                 title="auto"
                 icon={"fal fa-car"}
                 color="#22A094"
@@ -197,14 +217,15 @@ export class FormsBody extends Component {
                 prestoOnline
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/7`;
                   this.setState({
                     isSelected: false,
                     nome_agenzia: "assicurazioni",
                     typee: 7,
                     color: "#22A094",
-                  })
-                }
+                  });
+                }}
                 title="assicurazioni"
                 icon={"fal fa-file-alt"}
                 accountInfo={accountInfo}
@@ -212,14 +233,15 @@ export class FormsBody extends Component {
                 prestoOnline
               />
               <Card
-                clickHandler={() =>
+                clickHandler={() => {
+                  window.location.hash = `forms/8`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "energia",
                     typee: 8,
                     color: "#18819B",
-                  })
-                }
+                  });
+                }}
                 title="energia"
                 icon={"fal fa-lightbulb-on"}
                 accountInfo={accountInfo}
@@ -308,5 +330,5 @@ const mstp = (state) => {
     accountInfo: state.auth.accountInfo,
   };
 };
-export default connect(mstp, AuthActions)(FormsBody);
+export default withRouter(connect(mstp, AuthActions)(FormsBody));
 //
