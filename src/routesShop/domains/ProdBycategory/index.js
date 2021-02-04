@@ -99,13 +99,13 @@ class ProdBycategory extends Component {
     if (event.target.value.length > 2 || event.target.value.length === 0) {
       this.props.getProductsList(
         null, //page
-        this.props.isSelected, //brand
-        this.props.isSelectedC, //category
-        this.props.isSelectedSSC, //subcategory
-        this.props.orderVal, //order
-        this.props.sliderVal, //slider
+        null, // this.props.isSelected, //brand
+        null, //this.props.isSelectedC, //category
+        null, //this.props.isSelectedSSC, //subcategory
+        null, // this.props.orderVal, //order
+        null, //this.props.sliderVal, //slider
         event.target.value, //search
-        this.props.isSelectedSC //subcategory
+        null //this.props.isSelectedSC //subcategory
       );
     }
   };

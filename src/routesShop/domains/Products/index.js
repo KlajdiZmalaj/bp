@@ -24,7 +24,8 @@ class Products extends Component {
       <div className="shopProd a">
         <div className="mainBanner marginBottom">
           <img
-            src={!isMobile ? images.mainBanner : images["outletofferteMob"]}
+            // src={!isMobile ? images.mainBanner : images["outletofferteMob"]}
+            src={images.mainBanner}
             className="maxWidth"
             alt=""
           ></img>
