@@ -91,6 +91,7 @@ class Voli extends Component {
     //     el: ".swiper-pagination",
     //   },
     // };
+    console.log("voliiiii");
     return (
       <div className="formsContainer--body animated fadeIn voli">
         {!isMobile && (

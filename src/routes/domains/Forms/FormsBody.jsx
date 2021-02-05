@@ -43,7 +43,75 @@ const Card = ({
   );
 };
 
+const prenot = {
+  1: {
+    nome_agenzia: "expedia",
+    typee: 1,
+    color: "#11375dad",
+  },
+  2: {
+    nome_agenzia: "flixbus",
+    typee: 2,
+    color: "#588a17a3",
+  },
+  3: {
+    nome_agenzia: "trenitalia",
+    typee: 2,
+    color: "#bf0013b3",
+  },
+  31: {
+    nome_agenzia: "vivaticket",
+    typee: 3,
+    color: "#151515c4",
+  },
+  32: {
+    nome_agenzia: "ticketing",
+    typee: 3,
+    color: "#edbf00bf",
+  },
+  33: {
+    nome_agenzia: "stubhub",
+    typee: 3,
+    color: "#3f1d74b5",
+  },
+  4: {
+    nome_agenzia: "shop-online",
+    typee: 4,
+    color: "#F26521",
+  },
+  5: {
+    nome_agenzia: "bgame",
+    typee: 5,
+    color: "#F26521",
+  },
+  6: {
+    nome_agenzia: "auto",
+    typee: 6,
+    color: "#22A094",
+  },
+  7: {
+    nome_agenzia: "assicurazioni",
+    typee: 7,
+    color: "#22A094",
+  },
+  8: {
+    nome_agenzia: "energia",
+    typee: 8,
+    color: "#18819B",
+  },
+};
 export class FormsBody extends Component {
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      this.setState({
+        typee: prenot[this.props.match.params.id]?.typee,
+        isSelected: true,
+        nome_agenzia: prenot[this.props.match.params.id]?.nome_agenzia,
+        color: prenot[this.props.match.params.id]?.color,
+      });
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (
       prevState.isSelected &&
@@ -64,11 +132,11 @@ export class FormsBody extends Component {
   render() {
     const { accountInfo } = this.props;
     const { typee, isSelected, nome_agenzia, color } = this.state;
+
     return (
       <div className="forms--body">
         <div className="formsContainer">
           {!isSelected && <h1>Prenotazione</h1>}
-
           {!isSelected && (
             <div className="formsContainer--cards">
               <Card
@@ -118,7 +186,7 @@ export class FormsBody extends Component {
               />
               <Card
                 clickHandler={() => {
-                  window.location.hash = `forms/3`;
+                  window.location.hash = `forms/31`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "vivaticket",
@@ -133,7 +201,7 @@ export class FormsBody extends Component {
               />
               <Card
                 clickHandler={() => {
-                  window.location.hash = `forms/3`;
+                  window.location.hash = `forms/32`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "ticketing",
@@ -148,7 +216,7 @@ export class FormsBody extends Component {
               />
               <Card
                 clickHandler={() => {
-                  window.location.hash = `forms/3`;
+                  window.location.hash = `forms/33`;
                   this.setState({
                     isSelected: true,
                     nome_agenzia: "stubhub",
@@ -250,7 +318,7 @@ export class FormsBody extends Component {
             </div>
           )}
 
-          {isSelected && typee === 1 && (
+          {isSelected && parseInt(typee) === 1 && (
             <Voli
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
@@ -260,7 +328,7 @@ export class FormsBody extends Component {
               accountInfo={accountInfo}
             />
           )}
-          {isSelected && typee === 2 && (
+          {isSelected && parseInt(typee) === 2 && (
             <Treni
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
@@ -270,7 +338,7 @@ export class FormsBody extends Component {
               accountInfo={accountInfo}
             />
           )}
-          {isSelected && typee === 3 && (
+          {isSelected && parseInt(typee) === 3 && (
             <Eventi
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
@@ -280,7 +348,7 @@ export class FormsBody extends Component {
               accountInfo={accountInfo}
             />
           )}
-          {isSelected && typee === 4 && (
+          {isSelected && parseInt(typee) === 4 && (
             <OnlineShop
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
@@ -290,7 +358,7 @@ export class FormsBody extends Component {
               accountInfo={accountInfo}
             />
           )}
-          {isSelected && typee === 5 && (
+          {isSelected && parseInt(typee) === 5 && (
             <Bgame
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
@@ -300,7 +368,7 @@ export class FormsBody extends Component {
               accountInfo={accountInfo}
             />
           )}
-          {isSelected && typee === 6 && (
+          {isSelected && parseInt(typee) === 6 && (
             <Auto
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
@@ -310,7 +378,7 @@ export class FormsBody extends Component {
               accountInfo={accountInfo}
             />
           )}
-          {isSelected && typee === 8 && (
+          {isSelected && parseInt(typee) === 8 && (
             <Energia
               goBack={() => this.setState({ isSelected: false })}
               nome_agenzia={nome_agenzia}
