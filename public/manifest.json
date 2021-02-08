@@ -1,0 +1,17 @@
+{
+  "name": "BPOINT STORE",
+  "short_name": "Bpoint",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#f36520",
+
+  "description": "Tutto con un click!",
+  "icons": [
+    {
+      "src": "images/touch/favicon-32x32.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    }
+  ]
+}
