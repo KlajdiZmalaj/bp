@@ -296,7 +296,12 @@ class DashboardDom extends React.Component {
       <div className="DContainer maxWidth">
         <div className={`Image  ${menuClassName}`}>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <img src={images["baner_servizi_header"]} />
+          <img
+            src={images["baner_servizi_header"]}
+            onClick={() => {
+              window.location.hash = "products/Valentinovo";
+            }}
+          />
         </div>
         <div className={`Dashboard ${menuClassName}`}>
           <aside className={`Categories ${menuClassName}`}>
