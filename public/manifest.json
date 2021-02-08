@@ -12,6 +12,11 @@
       "src": "images/favicon-32x32.png",
       "sizes": "60x60",
       "type": "image/png"
+    },
+    {
+      "src": "images/favicon-32x32_144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
     }
   ]
 }
