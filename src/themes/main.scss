@@ -36,6 +36,24 @@ body:not(.bodyAdmin) .panels-container .max-width {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+#PWA {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: var(--accent-bg);
+  color: var(--accent-txt);
+  padding: 10px;
+  border-radius: 4px;
+  p {
+    margin: 0;
+  }
+  button {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border: 1px solid var(--accent-txt);
+  }
+}
 button,
 input,
 select,
