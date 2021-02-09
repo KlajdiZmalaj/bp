@@ -20,7 +20,7 @@ class Categories extends Component {
     let url =
       cat?.name.split(" | ")?.[0] +
       (cat?.name.split(" | ")?.[1] ? "__" + cat?.name.split(" | ")?.[1] : "");
-    console.log("this.props.cat", this.props.cat);
+
     return (
       <div
         className={"category" + (isSelectedC === cat?.name ? " active" : "")}
