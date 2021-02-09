@@ -100,7 +100,7 @@ class ProdBycategory extends Component {
       this.props.getProductsList(
         null, //page
         null, // this.props.isSelected, //brand
-        null, //this.props.isSelectedC, //category
+        this.props.isSelectedC, //this.props.isSelectedC, //category
         null, //this.props.isSelectedSSC, //subcategory
         null, // this.props.orderVal, //order
         null, //this.props.sliderVal, //slider

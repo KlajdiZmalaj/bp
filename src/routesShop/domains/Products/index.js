@@ -76,7 +76,7 @@ class Products extends Component {
           categories.hasOwnProperty("offerterefurbished") ? null : (
             <div className="categoriesP offerterefurbished">
               <div className="text">
-                Outlet<b>Oferte</b>
+                Outlet<b>Offerte</b>
               </div>
               <img src={images["offerterefurbished"]} alt="" />
             </div>
