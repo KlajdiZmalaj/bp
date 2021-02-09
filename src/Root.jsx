@@ -98,6 +98,36 @@ class Root extends React.Component {
         placement: "topRight",
       });
     }
+    var divInstall = document.getElementById("PWA");
+    window.addEventListener("beforeinstallprompt", (event) => {
+      console.log("👍", "beforeinstallprompt", event);
+      window.deferredPrompt = event;
+
+      divInstall.classList.toggle("hidden", false);
+    });
+    divInstall.addEventListener("click", () => {
+      console.log("👍", "butInstall-clicked");
+      const promptEvent = window.deferredPrompt;
+      if (!promptEvent) {
+        return;
+      }
+      promptEvent.prompt();
+      promptEvent.userChoice.then((result) => {
+        console.log("👍", "userChoice", result);
+        if (result) {
+          document.body.classList.add(`pwa-${result.platform}`);
+        }
+        window.deferredPrompt = null;
+        divInstall.classList.toggle("hidden", true);
+      });
+    });
+    window.addEventListener("appinstalled", (event) => {
+      console.log("👍", "appinstalled", event);
+      notification["success"]({
+        message: "l'applicazione è stato installato",
+        placement: "bottomLeft",
+      });
+    });
   }
   componentWillUnmount() {
     unSubscribeSocketUser(get(this.props.accountInfo, "profile.id"));
