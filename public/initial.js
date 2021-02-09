@@ -17,6 +17,7 @@ var LOCATION_URL = window.location.href;
 var SITE_STYLES = document.getElementById("lnk");
 var root = document.getElementsByTagName("html")[0];
 var mainifest = document.getElementById("manifest");
+var iosIcon = document.getElementById("iosIcon");
 root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
 if (window.LOCATION_URL.match(/oint\.st/g)) {
@@ -42,6 +43,7 @@ if (window.LOCATION_URL.match(/oint\.st/g)) {
   document.querySelector("#tabTheme2").setAttribute("content", "#0da90f");
   SITE_STYLES.setAttribute("href", "./var3.css");
   mainifest.href = "./manifest3.json";
+  iosIcon.href = "images3/apple-icon-180x180.png";
 } else if (window.LOCATION_URL.match(/bullpay|localhost|192\.168/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#f00");
   document.querySelector("#tabTheme2").setAttribute("content", "#f00");
