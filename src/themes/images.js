@@ -264,7 +264,8 @@ try {
     // shop
 
     mainBanner: require(`../assets/shop/banner.jpg`),
-
+    mainBanner2: require(`../assets/shop/banner2.jpg`),
+    mainBanner3: require(`../assets/shop/banner3.jpg`),
     adidas: require(`../assets/shop/adidas.svg`),
     zara: require(`../assets/shop/zara.svg`),
     lacoste: require(`../assets/shop/lacoste.svg`),

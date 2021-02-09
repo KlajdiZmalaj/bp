@@ -8,12 +8,21 @@ import { Loader } from "shared-components";
 // import PromotionTop from "./PromotionTop";
 
 import { withRouter } from "react-router-dom";
-
+import Slider from "react-slick";
 import ProductItem from "./ProductItem";
 import { connect } from "react-redux";
 class Products extends Component {
   state = {
     tagSelected: "",
+  };
+  clickBannerHandler = (id) => {
+    window.location.hash = `products/${id}`;
+    let el = document.querySelector(".homeProd");
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
   };
   render() {
     const { defaultProducts, categories, isMobile, shopTags } = this.props;
@@ -21,14 +30,44 @@ class Products extends Component {
     const tagParam = this.props.match.params.tag;
 
     return (
-      <div className="shopProd a">
+      <div className="shopProd">
         <div className="mainBanner marginBottom">
-          <img
-            // src={!isMobile ? images.mainBanner : images["outletofferteMob"]}
-            src={images.mainBanner}
-            className="maxWidth"
-            alt=""
-          ></img>
+          <Slider
+            {...{
+              dots: true,
+              speed: 500,
+              infinite: true,
+              autoplay: true,
+              slidesToScroll: 1,
+              draggable: false,
+            }}
+            className="catgItems__items maxWidth"
+          >
+            <img
+              onClick={(e) => {
+                e.preventDefault();
+                this.clickBannerHandler("Valentinovo");
+              }}
+              src={images.mainBanner}
+              alt=""
+            ></img>
+            <img
+              onClick={(e) => {
+                e.preventDefault();
+                this.clickBannerHandler("sportivi%20/%20in%20forma");
+              }}
+              src={images.mainBanner2}
+              alt=""
+            ></img>
+            <img
+              onClick={(e) => {
+                e.preventDefault();
+                this.clickBannerHandler("comodità%20/%20essere%20comodi");
+              }}
+              src={images.mainBanner3}
+              alt=""
+            ></img>
+          </Slider>
         </div>
 
         <div className="title maxWidth">categorie</div>

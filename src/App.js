@@ -17,6 +17,12 @@ class App extends React.Component {
       link.id = "favicon";
       link.rel = "shortcut icon";
       document.head.appendChild(link);
+
+      var link2 = document.createElement("link");
+      link2.id = "favicon";
+      link2.rel = "apple-touch-icon";
+      document.head.appendChild(link2);
+      link2.href = images.customFav;
     }
     link.href = images.customFav;
 
