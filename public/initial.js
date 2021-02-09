@@ -16,31 +16,37 @@ if (
 var LOCATION_URL = window.location.href;
 var SITE_STYLES = document.getElementById("lnk");
 var root = document.getElementsByTagName("html")[0];
+var mainifest = document.getElementById("manifest");
 root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
 if (window.LOCATION_URL.match(/oint\.st/g)) {
   SITE_STYLES.setAttribute("href", `var1.css`);
+  mainifest.href = "./manifest1.json";
 } else if (window.LOCATION_URL.includes("es.gf")) {
   document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
   document.querySelector("#tabTheme2").setAttribute("content", "#fdaf18");
   SITE_STYLES.setAttribute("href", "./var5.css");
+  mainifest.href = "./manifest5.json";
 } else if (window.LOCATION_URL.includes("planet")) {
   document.querySelector("#tabTheme").setAttribute("content", "#fdaf18");
   document.querySelector("#tabTheme2").setAttribute("content", "#fdaf18");
   SITE_STYLES.setAttribute("href", "./var4.css");
+  mainifest.href = "./manifest4.json";
 } else if (window.LOCATION_URL.match(/mperia|irpa/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#222");
   document.querySelector("#tabTheme2").setAttribute("content", "#222");
   SITE_STYLES.setAttribute("href", "./var6.css");
+  mainifest.href = "./manifest6.json";
 } else if (window.LOCATION_URL.match(/derby/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#0da90f");
   document.querySelector("#tabTheme2").setAttribute("content", "#0da90f");
-
   SITE_STYLES.setAttribute("href", "./var3.css");
+  mainifest.href = "./manifest3.json";
 } else if (window.LOCATION_URL.match(/bullpay|localhost|192\.168/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#f00");
   document.querySelector("#tabTheme2").setAttribute("content", "#f00");
   SITE_STYLES.setAttribute("href", "./var52.css");
+  mainifest.href = "./manifest52.json";
 }
 
 if (window.location.host.split(".")[1]) {

@@ -26,7 +26,6 @@ if (window.location.href.includes("bpoint")) {
   skin = 52;
 }
 let imgObj = {};
-console.log("skin", skin);
 try {
   imgObj = {
     //pagamanti logo

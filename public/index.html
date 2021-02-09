@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./fontAwesome/css/all.min.css" />
     <link id="lnk" rel="stylesheet" href="./default.css" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" id="manifest" href="%PUBLIC_URL%/manifest.json" />
     <meta id="tabTheme" name="theme-color" content="#f36520" />
+    <link
+      id="iosIcon"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images1/apple-icon-180x180.png"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Tuto con un click!" />
     <meta
       id="tabTheme2"
       name="apple-mobile-web-app-status-bar-style"
@@ -15,6 +23,11 @@
     <style>
       .hidden {
         display: none;
+      }
+      @media (max-width: 1024px) {
+        #PWA {
+          display: none;
+        }
       }
     </style>
     <script src="%PUBLIC_URL%/initial.js"></script>
