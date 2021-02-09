@@ -156,6 +156,22 @@ class AgentComp extends React.Component {
               title={"Personal Number"}
               value={state.personal_number || userDetail.personal_number}
             />
+            <ItemFull
+              Class="full"
+              readOnly={!isMainAdm}
+              handleChange={handleChange}
+              changeValue={"password"}
+              title={"Password"}
+              value={state.password || userDetail.password}
+            />
+            <ItemFull
+              Class="full"
+              readOnly={!isMainAdm}
+              handleChange={handleChange}
+              changeValue={"confirm_password"}
+              title={"Confirm Password"}
+              value={state.confirm_password || userDetail.confirm_password}
+            />
 
             <ItemFull
               Class="full"

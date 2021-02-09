@@ -161,7 +161,7 @@ class AdminPanelDom extends React.Component {
       addebitoActiveVisibility,
       rightFormWide,
     } = this.state;
-    // console.log("ca ngel state", this.state);
+    // console.log("ca ngel state", this.state, this.state.password);
     const {
       statModal,
       ultModal,
