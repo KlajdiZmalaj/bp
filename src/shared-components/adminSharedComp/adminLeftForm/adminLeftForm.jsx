@@ -61,6 +61,16 @@ class AdminLeftForm extends React.Component {
       this.props.setVisible(!this.props.visible);
     }
   };
+  returnIcon = (id) => {
+    var skinId = id === 8 ? 6 : id === 51 ? 7 : id;
+    var url = "";
+    try {
+      url = require(`../../../assets/images${skinId}/favicon-32x32.svg`);
+    } catch (err) {
+      url = require(`../../../assets/images${1}/favicon-32x32.svg`);
+    }
+    return url;
+  };
   render() {
     const {
       setActiveSkinId,
@@ -95,22 +105,7 @@ class AdminLeftForm extends React.Component {
                   key={skin.id}
                 >
                   <div className="AdminLeftForm--FirstBox--Box--Skinsvg">
-                    <img
-                      src={
-                        skin.id === 1 ||
-                        skin.id === 3 ||
-                        skin.id === 4 ||
-                        skin.id === 5 ||
-                        skin.id === 6 ||
-                        skin.id === 8 ||
-                        skin.id === 51
-                          ? require(`../../../assets/images${
-                              skin.id === 8 ? 6 : skin.id === 51 ? 7 : skin.id
-                            }/favicon-32x32.svg`)
-                          : require(`../../../assets/images${1}/favicon-32x32.svg`)
-                      }
-                      alt=""
-                    />
+                    <img src={this.returnIcon(skin.id)} alt="" />
                     <span>{skin.username.toUpperCase()}</span>
                   </div>
                 </div>
