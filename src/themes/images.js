@@ -192,7 +192,7 @@ try {
     MEDIAW: require(`../assets/images/MEDIAW.svg`),
     MUSEM: require(`../assets/images/MUSEM.svg`),
     NESPRE: require(`../assets/images/NESPRE.svg`),
-    NIKE: require(`../assets/images/NIKE.svg`),
+    NIKE: require(`../assets/images/nike2.svg`),
     PANORA: require(`../assets/images/PANORA.svg`),
     PRENAT: require(`../assets/images/PRENAT.svg`),
     Q8: require(`../assets/images/Q8.svg`),
