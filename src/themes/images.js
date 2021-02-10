@@ -199,6 +199,11 @@ try {
     TIGOTA: require(`../assets/images/TIGOTA.svg`),
     UNES: require(`../assets/images/UNES.svg`),
     VIAGGI: require(`../assets/images/VIAGGI.svg`),
+    FLIGHT: require(`../assets/images/flightgift.svg`),
+    FLYKUB: require(`../assets/images/flykube.svg`),
+    GROUPA: require(`../assets/images/groupalia.svg`),
+    HOTELG: require(`../assets/images/hotelgift.svg`),
+    NATURP: require(`../assets/images/naturplus.svg`),
 
     // COOPV: require(`../assets/images${skin}/bill-dark.svg`),
     // DKENA: require(`../assets/images${skin}/bill-dark.svg`),
