@@ -13,15 +13,15 @@ if (window.location.href.includes("bpoint")) {
   skin = 3;
 } else if (window.location.href.includes("planet")) {
   skin = 4;
-} else if (window.location.href.includes("sirpay")) {
-  skin = 6;
-} else if (window.location.href.includes("imperialpay")) {
-  skin = 7;
 } else if (
-  window.location.href.includes("bullpay") ||
+  window.location.href.includes("sirpay") ||
   window.location.href.includes("192.168") ||
   window.location.href.includes("localhost")
 ) {
+  skin = 6;
+} else if (window.location.href.includes("imperialpay")) {
+  skin = 7;
+} else if (window.location.href.includes("bullpay")) {
   //
   skin = 52;
 }
@@ -266,7 +266,8 @@ try {
     "shop-online-card": require(`../assets/images/prenotazioni/shop-online-card.png`),
     "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
     "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
-
+    visure: require(`../assets/images/prenotazioni/visure-logo.svg`),
+    "visure-mobile": require(`../assets/images/prenotazioni/visure-logo.svg`),
     "energia-bg": require(`../assets/images/prenotazioni/energia.png`),
 
     ServiceDefault: require(`../assets/images/ServiceDefault.jpg`),

@@ -33,7 +33,7 @@ if (window.LOCATION_URL.match(/oint\.st/g)) {
   document.querySelector("#tabTheme2").setAttribute("content", "#fdaf18");
   SITE_STYLES.setAttribute("href", "./var4.css");
   mainifest.href = "./manifest4.json";
-} else if (window.LOCATION_URL.match(/mperia|irpa/g)) {
+} else if (window.LOCATION_URL.match(/mperia|irpa|localhost|192\.168/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#222");
   document.querySelector("#tabTheme2").setAttribute("content", "#222");
   SITE_STYLES.setAttribute("href", "./var6.css");
@@ -44,7 +44,7 @@ if (window.LOCATION_URL.match(/oint\.st/g)) {
   SITE_STYLES.setAttribute("href", "./var3.css");
   mainifest.href = "./manifest3.json";
   iosIcon.href = "images3/apple-icon-180x180.png";
-} else if (window.LOCATION_URL.match(/bullpay|localhost|192\.168/g)) {
+} else if (window.LOCATION_URL.match(/bullpay/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#f00");
   document.querySelector("#tabTheme2").setAttribute("content", "#f00");
   SITE_STYLES.setAttribute("href", "./var52.css");

@@ -18,11 +18,11 @@ body:not(.bodyAdmin) .accountInfo {
   background: #3c3c3c !important;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .panel-tab {
   background: #585858;
   border-bottom: 1px solid #313131;
   color: #fff;
-  -webkit-box-shadow: inset 0px 1px #767676;
   box-shadow: inset 0px 1px #767676;
 }
 body:not(.bodyAdmin) .panel-tab h4 {
@@ -53,6 +53,7 @@ body:not(.bodyAdmin) .sort-annunci .heading-tab {
 }
 body:not(.bodyAdmin) .sort-annunci {
   border-bottom: 1px solid #000000;
+
   background-color: #545454;
   color: #fff;
 }
@@ -80,10 +81,11 @@ body:not(.bodyAdmin) .formsContainer > h1 {
 body:not(.bodyAdmin) .panel-services {
   background: #e3e4e5 !important;
 }
+
 body:not(.bodyAdmin) .panel-services td {
   border: 1px solid #8f8f8f;
-  -webkit-box-shadow: inset 0 0 0 1px #ffffff;
   box-shadow: inset 0 0 0 1px #ffffff;
+  /* margin-top: 10px; */
 }
 body:not(.bodyAdmin) .tab-content > .tab-pane {
   padding-top: 9px !important;
@@ -130,7 +132,6 @@ body:not(.bodyAdmin)
   div {
   background: #2d2d2d;
   color: #fff;
-  -webkit-box-shadow: inset 0px 0px 1px 1px #363636;
   box-shadow: inset 0px 0px 1px 1px #363636;
 }
 body:not(.bodyAdmin)
@@ -160,12 +161,15 @@ body:not(.bodyAdmin) .ticketDetails--row .toggler {
 body:not(.bodyAdmin) .ticketDetails--header > span {
   color: #fff;
 }
+
 body:not(.bodyAdmin) .ticketDetails--infos {
   background-color: #272727;
 }
+
 body:not(.bodyAdmin) .ticketDetails--row > span:nth-child(2) div:not(.new) {
   color: #e5ca1b;
 }
+
 html body:not(.bodyAdmin) div.Container .panels-container {
   background: #272727 !important;
 }
@@ -183,6 +187,7 @@ body:not(.bodyAdmin) .newReg--header,
 body:not(.bodyAdmin) .ant-checkbox-wrapper {
   color: #fff;
 }
+
 body:not(.bodyAdmin) .newReg .ant-input,
 body:not(.bodyAdmin) .newReg .ant-select-selection,
 body:not(.bodyAdmin) .newReg .Select-control,
@@ -205,6 +210,7 @@ body:not(.bodyAdmin) .configura {
 body:not(.bodyAdmin) .inputsConf label {
   color: inherit;
 }
+
 body:not(.bodyAdmin) .inputsConf input[disabled] {
   border: 1px solid #404040;
   color: #c6c6c6;
@@ -228,7 +234,6 @@ body:not(.bodyAdmin) div.forms--body > div > div > div > div.titleCard {
 }
 body:not(.bodyAdmin) .Companies .Pagamenti img,
 body:not(.bodyAdmin) .Favorites .Pagamenti img {
-  -webkit-filter: invert(1) brightness(10);
   filter: invert(1) brightness(10);
 }
 .headerMob nav .tabBody--item.active,
@@ -245,6 +250,7 @@ body:not(.bodyAdmin) .Favorites .Pagamenti img {
   border-color: #fff !important;
   color: #fff !important;
 }
+
 .Statist div.Categories.data .Graph--Element:hover,
 .Statist div.Categories.data .Graph--Element:focus {
   background: #bbbbbb !important;
@@ -292,6 +298,7 @@ body .transTable tbody tr:hover {
   background: #272727 !important;
   color: #fff !important;
 }
+
 body .fastCarica .switchGr,
 body .fastCarica .switchGr > span.or {
   border-color: #3c4349 !important;
@@ -328,7 +335,6 @@ body .mpIcon {
 }
 .fastCarica .amountGr,
 .fastCarica .searchUser {
-  -webkit-filter: invert(1) grayscale(1);
   filter: invert(1) grayscale(1);
   color: #222;
 }
@@ -355,15 +361,14 @@ body .filterBtn {
   border-left: 2px solid #656565 !important;
 }
 .ant-pagination {
-  -webkit-filter: grayscale(1) invert(0.8);
   filter: grayscale(1) invert(0.8);
 }
+
 .Companies div img[alt="pago_pa"],
 .Companies div img[alt="mav_rav"],
 .Companies div img[alt="f24"],
 .Companies div img[alt="freccia"],
 .Companies div img[alt="bolo_auto"] {
-  -webkit-filter: brightness(0) grayscale(1) invert(1);
   filter: brightness(0) grayscale(1) invert(1);
 }
 html .Statist {
@@ -373,6 +378,7 @@ html .Statist div.Categories.data .Graph,
 html .Statist div.Categories.data .Additinal.Statist {
   background: rgba(var(--statItems), 0.1);
 }
+
 html .MenuC {
   background: rgba(var(--statItems), 0.2);
 }
@@ -386,9 +392,9 @@ html .Menu label.active div,
 html .Menu a.active div {
   background: rgba(var(--statItems), 0.2);
 }
+
 img[alt="PSSTO"],
 img[alt="EUROSP"] {
-  -webkit-filter: invert(1) grayscale(1) brightness(1);
   filter: invert(1) grayscale(1) brightness(1);
 }
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i {
@@ -397,12 +403,29 @@ img[alt="EUROSP"] {
 .login ul li .loginBtn + span {
   color: #fff !important;
 }
+/* 
+  
+  .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div img {
+    filter: invert(1) grayscale(1) brightness(1);
+  }
+  .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
+    transition: 0.3s; 
+  }
+  .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:hover {
+    background: #fff !important;
+    color: #222 !important;
+  }
+  .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:hover img {
+    filter: none;
+  }
+  .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div:hover i {
+    color: #222 !important;
+  } */
+
 .paginationWrapper {
   background: #222 !important;
   border: 0 !important;
 }
 .headerModal img {
-  -webkit-filter: grayscale(1) brightness(0.5);
   filter: grayscale(1) brightness(0.5);
 }
-/*# sourceMappingURL=var6.css.map */

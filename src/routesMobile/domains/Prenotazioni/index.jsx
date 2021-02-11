@@ -7,7 +7,7 @@ import Eventi from "routes/domains/Forms/Eventi";
 import OnlineShop from "routes/domains/Forms/OnlineShop";
 import Bgame from "routes/domains/Forms/Bgame";
 import Energia from "routes/domains/Forms/Energia";
-
+import FormVisureDomain from "routes/domains/FormVisure/FormVisureDomain";
 import { withRouter } from "react-router-dom";
 import "./style.css";
 const Item = ({ name, activeService, setService, priorityName }) => (
@@ -90,6 +90,12 @@ const Prenotazione = ({ match: { params } }) => {
             name="luce-gas"
             priorityName="Luce - Gas"
           />
+          <Item
+            activeService={activeService}
+            setService={setService}
+            name="visure"
+            priorityName="Visure"
+          />
         </div>
       </div>
       <div className="prenotation--view">
@@ -139,6 +145,15 @@ const Prenotazione = ({ match: { params } }) => {
           <Energia
             nome_agenzia={"luce-gas"}
             typee={8}
+            isMobile
+            activeService={activeService}
+          />
+        )}
+
+        {activeService === "visure" && (
+          <FormVisureDomain
+            nome_agenzia={"visure"}
+            typee={9}
             isMobile
             activeService={activeService}
           />

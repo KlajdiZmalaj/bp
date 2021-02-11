@@ -15,3 +15,4 @@ export { default as Font } from "./Font";
 export { default as GenerateCF } from "./GenerateCF/index.jsx";
 export { default as MainAdminCarousel } from "./MainAdminCarousel";
 export { default as Snow } from "./Snow";
+export { default as AnimatedMenu } from "./AnimatedMenu";

@@ -306,6 +306,11 @@ const Servizi = ({
                   name="Luce - Gas"
                   link="luce-gas"
                 />
+                <PrenotazioniItem
+                  src={images["visure"]}
+                  name="Visure"
+                  link="visure"
+                />
               </div>
             </div>
           )}
