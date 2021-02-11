@@ -297,7 +297,7 @@ class DashboardDom extends React.Component {
         <div className={`Image  ${menuClassName}`}>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
           <img
-            src={images["baner_servizi_header"]}
+            src={images["baner_servizi_header2"]}
             onClick={() => {
               window.location.hash = "products/Valentinovo";
             }}

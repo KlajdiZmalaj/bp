@@ -101,6 +101,19 @@ export const subscribeSocketUser = (userID, props) => {
       localStorage.setItem("accountDataB", null);
       props.setUnauthorization();
     }
+    if (e.type === "money") {
+      const accountInfo = window.store.getState().auth["accountInfo"];
+      let profile = accountInfo["profile"];
+      const newProfile = {
+        ...profile,
+        wallet: e.data.wallet,
+      };
+
+      window.store.dispatch({
+        type: "SET_ACCOUNT_INFO",
+        accountInfo: { ...accountInfo, profile: newProfile },
+      });
+    }
   });
 };
 export const subscribeSocketSupport = (props) => {

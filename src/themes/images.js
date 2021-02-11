@@ -43,7 +43,7 @@ try {
     "PAGF24-Black-Mobile": require(`../assets/images/PAGF24-Black.svg`),
     "BOLL-Black-Mobile": require(`../assets/images/BOLL-Black.svg`),
 
-    baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
+    baner_servizi_header2: require(`../assets/images/baner_servizi_header.png`),
     //Static home page images
     SER_POS: require(`../assets/images/servizi_postali.png`),
     RIC_CEL: require(`../assets/images/richariche_cellulari.png`),
