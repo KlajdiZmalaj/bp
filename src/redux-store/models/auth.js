@@ -137,6 +137,7 @@ const { Types, Creators } = createActions({
     "privacy_policy",
     "recieve_emails",
     "percentage",
+    "register_token",
   ],
   setRegister: ["register"],
   setAds: ["ads"],

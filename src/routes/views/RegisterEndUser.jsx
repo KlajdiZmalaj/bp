@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { docType } from "config";
-
+import { getCopy } from "utils";
+import { skin } from "config/api";
 import {
   Form,
   Input,
@@ -16,7 +17,7 @@ import moment from "moment";
 import uniqBy from "lodash/uniqBy";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import AuthActions from "redux-store/models/auth";
+import { AuthActions, MainActions } from "redux-store/models";
 
 import "../../themes/css-register/register.css";
 import countriesArray from "config/countryArr";
@@ -54,7 +55,7 @@ class RegisterEndUser extends React.Component {
     nazioneDiResidenca: "",
     residence_province: "",
     residence_city: "",
-
+    shareIcons: false,
     tipoDocumento: "",
     fileType: 0,
     cardView: 0,
@@ -65,7 +66,21 @@ class RegisterEndUser extends React.Component {
     loading: false,
     privacy_policy: false,
     recieve_emails: false,
+    token: "",
   };
+  setToken = (token) => {
+    this.setState({ token });
+  };
+  componentDidMount() {
+    if (this.props.match.params.token) {
+      this.setState({ token: this.props.match.params.token });
+    } else {
+      this.props.getRegisterToken(
+        this.props.accountInfo.profile.account_id,
+        this.setToken
+      );
+    }
+  }
 
   handleChangeBack = (info) => {
     if (info.file.status === "uploading") {
@@ -157,14 +172,9 @@ class RegisterEndUser extends React.Component {
           "",
           "",
           this.state.privacy_policy,
-          this.state.recieve_emails
-          //   values.self_limit_period,
-          //   values.promo,
-          //   values.parent,
-          //   values.contract,
-          //   values.terms,
-          //   values.privacy,
-          //   values.newsletter
+          this.state.recieve_emails,
+          "", //percentage
+          this.props.match.params.token //register_token from url
         );
 
         var that = this;
@@ -447,7 +457,7 @@ class RegisterEndUser extends React.Component {
                 </Form.Item>
               </div>
               <div className="itemCol full">
-                <span className="inputLabel">email</span>
+                <span className="inputLabel">Email</span>
                 <Form.Item>
                   {getFieldDecorator("email", {
                     rules: [
@@ -851,7 +861,7 @@ class RegisterEndUser extends React.Component {
                   this.setState({ privacy_policy: e.target.checked });
                 }}
               >
-                Accetto l`informativa sul trattamento dei dati personali e sulla
+                Accetto l'informativa sul trattamento dei dati personali e sulla
                 Privacy Policy
               </Checkbox>
             </div>
@@ -868,6 +878,58 @@ class RegisterEndUser extends React.Component {
               <Button type="primary" className="SubmitButton" htmlType="submit">
                 Registrati
               </Button>
+              {!this.props.match.params.token && (
+                <div className="shareRegister">
+                  <div
+                    onClick={() => {
+                      this.setState({ shareIcons: !this.state.shareIcons });
+                    }}
+                  >
+                    <i className="fal fa-share" aria-hidden="true"></i>
+                    Condividere
+                  </div>
+                  {this.state.shareIcons && (
+                    <div className="options">
+                      <i
+                        className="fal fa-copy"
+                        onClick={() => {
+                          getCopy(
+                            `${window.location.href}Token/${this.state.token.register_token}`
+                          );
+                        }}
+                      ></i>{" "}
+                      <a
+                        href={`https://api.whatsapp.com/send?phone=whatsappphonenumber&text=${encodeURIComponent(
+                          `${window.location.href}Token/${this.state.token.register_token}`
+                        )}`}
+                        className="fab fa-whatsapp"
+                        aria-hidden="true"
+                        target="_blank"
+                      ></a>
+                      <a
+                        href={`mailto:?subject=${encodeURIComponent(
+                          `${window.location.href}Token/${this.state.token.register_token}`
+                        )}`}
+                        className="fal fa-envelope"
+                        target="_blank"
+                      ></a>
+                      <a
+                        href={`http://www.sharethis.com/share?url=${encodeURIComponent(
+                          `${window.location.href}Token/${this.state.token.register_token}`
+                        )}&title=${encodeURIComponent(
+                          "Condividi il link del registro"
+                        )}&img=${encodeURIComponent(
+                          `${window.location.origin}/images${skin.skin_id}/icon-512x512.png`
+                        )}&pageInfo=%7B%22Servizi%22%3A%22${
+                          window.location.host
+                        }%22%2C%22publisher%22%3A%22${"altech"}%22%7D`}
+                        className="fal fa-plus"
+                        target="_blank"
+                      ></a>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </Form>
@@ -885,5 +947,5 @@ const mapsStateToProps = ({ auth }) => ({
 });
 
 export default withRouter(
-  connect(mapsStateToProps, { ...AuthActions })(InfoUser)
+  connect(mapsStateToProps, { ...AuthActions, ...MainActions })(InfoUser)
 );

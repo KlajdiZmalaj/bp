@@ -291,6 +291,13 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["agency"]}
             />
+            <PublicRoute
+              exact
+              path="/registerUserToken/:token?/"
+              component={DesktopView.RegisterEndUser}
+              isLoggedin={isLoggedin}
+              role={role}
+            />
             <PrivateRoute
               path="/registerAgency"
               component={DesktopView.RegisterAgency}

@@ -36,6 +36,16 @@ instanceAxios.interceptors.response.use(
   },
   (error) => handleError(error)
 );
+
+export const registerTokenReq = (agency_id) => {
+  return instanceAxios
+    .get(`/agency/register-token/${agency_id}`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+};
 export const forgotPasswordReq = (email) => {
   return instanceAxios
     .post("/users/forgotPassword", {

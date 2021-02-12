@@ -254,10 +254,11 @@ export const fetchRegisterAllInfo = (
   rent,
   privacy_policy,
   recieve_emails,
-  percentage
+  percentage,
+  register_token
 ) =>
   instanceAxios
-    .post(`/users/create`, {
+    .post(`${register_token ? "/users/register/loged-out" : "/users/create"}`, {
       first_name,
       last_name,
       username: nickname,
@@ -300,6 +301,7 @@ export const fetchRegisterAllInfo = (
       privacy_policy,
       recieve_emails,
       percentage,
+      ...(register_token ? { register_token } : {}),
       ...skin,
     })
     .catch((error) => ({ data: error.response.data }));
