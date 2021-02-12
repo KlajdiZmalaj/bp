@@ -888,8 +888,12 @@ class RegisterEndUser extends React.Component {
                     <i className="fal fa-share" aria-hidden="true"></i>
                     Condividere
                   </div>
-                  {this.state.shareIcons && (
-                    <div className="options">
+                  {
+                    <div
+                      className={
+                        "options" + (this.state.shareIcons ? "" : " d-none")
+                      }
+                    >
                       <i
                         className="fal fa-copy"
                         onClick={() => {
@@ -898,7 +902,7 @@ class RegisterEndUser extends React.Component {
                           );
                         }}
                       ></i>{" "}
-                      <a
+                      {/* <a
                         href={`https://api.whatsapp.com/send?phone=whatsappphonenumber&text=${encodeURIComponent(
                           `${window.location.href}Token/${this.state.token.register_token}`
                         )}`}
@@ -912,8 +916,8 @@ class RegisterEndUser extends React.Component {
                         )}`}
                         className="fal fa-envelope"
                         target="_blank"
-                      ></a>
-                      <a
+                      ></a> */}
+                      {/* <a
                         href={`http://www.sharethis.com/share?url=${encodeURIComponent(
                           `${window.location.href}Token/${this.state.token.register_token}`
                         )}&title=${encodeURIComponent(
@@ -925,14 +929,28 @@ class RegisterEndUser extends React.Component {
                         }%22%2C%22publisher%22%3A%22${"altech"}%22%7D`}
                         className="fal fa-plus"
                         target="_blank"
-                      ></a>
+                      ></a> */}
+                      <div
+                        // className="sharethis-sticky-share-buttons"
+                        className="sharethis-inline-share-buttons"
+                        data-image={`${window.location.origin}/images${skin.skin_id}/icon-512x512.png`}
+                        data-title="Condividi il link del registro"
+                        data-url={`${window.location.href}Token/${this.state.token.register_token}`}
+                      ></div>
                     </div>
-                  )}
+                  }
                 </div>
               )}
             </div>
           </div>
         </Form>
+        {/* <div
+          className="sharethis-sticky-share-buttons"
+          // className="sharethis-inline-share-buttons"
+          data-image={`${window.location.origin}/images${skin.skin_id}/icon-512x512.png`}
+          data-title="Condividi il link del registro"
+          data-url={`${window.location.href}Token/${this.state.token.register_token}`}
+        ></div> */}
       </Fragment>
     );
   }
