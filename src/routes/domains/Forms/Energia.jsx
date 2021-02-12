@@ -608,7 +608,7 @@ class Energia extends Component {
             <Download title={"Condizioni Tecnico Economiche"} link={"#"} />
             <Download title={"Nota informativa e info"} link={"#"} />
             <SubTitle
-              title="CONFERME PRESA VISIONE"
+              title="CONFERMA PRESA VISIONE"
               color={color}
               right={"CONFERMO"}
               down={"Dichiaro Di Aver Preso Visione Dei Seguenti Allegati:"}

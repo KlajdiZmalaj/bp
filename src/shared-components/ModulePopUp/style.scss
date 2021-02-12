@@ -242,6 +242,11 @@
     width: 90%;
   }
 }
+.modulePopUP3 {
+  .ant-select-selection--single {
+    width: 100%;
+  }
+}
 ._modulePopUP__body {
   position: relative;
 }
@@ -804,4 +809,9 @@
   background: #f4f4f4;
   color: #222;
   text-transform: uppercase;
+}
+.errorField {
+  color: #c02020;
+  text-align: right;
+  padding: 0px 15px !important;
 }

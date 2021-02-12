@@ -41,7 +41,13 @@ export const subscribeSocketUser = (userID, props) => {
       notification.open({
         message: "Hai ricevuto una notifica",
         description: e.data.title,
-        icon: <i className="fal fa-smile-beam"></i>,
+        icon: (
+          <i
+            className={`fal ${
+              e.resul === "FAILED" ? "fa-sad-tear" : "fa-smile-beam"
+            } `}
+          ></i>
+        ),
         duration: 0,
         onClose: () => {
           stopAudio();

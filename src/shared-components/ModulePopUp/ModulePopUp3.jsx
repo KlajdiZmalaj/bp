@@ -4,7 +4,6 @@ import { MainActions, AuthActions } from "redux-store/models";
 import images from "themes/images";
 import { Form, Select, Upload, Icon, message } from "antd";
 import { docType } from "config";
-
 const { Option } = Select;
 
 function getBase64(img, callback) {
@@ -40,12 +39,20 @@ class ModulePopUp3 extends React.Component {
     codice_fiscale_ordinante: "",
     numero_postepay: "",
     showUpload: false,
-
     cardView: 0,
     imageUrl: "",
     imageUrl2: "",
     loading: false,
     document_type: 0,
+    checkValidations: false,
+    validations: {
+      intestazione: false,
+      importo: false,
+      codice_fiscale_intestatario: false,
+      ordinante: false,
+      codice_fiscale_ordinante: false,
+      numero_postepay: false,
+    },
   };
 
   onChangeCardView = (value) => {
@@ -82,6 +89,15 @@ class ModulePopUp3 extends React.Component {
   handleChangeImporto(event) {
     // console.log("evvev", event.target.value);
     this.setState({ importo: event.target.value });
+    if (event.target.value && event.target.value.length > 0) {
+      this.setState({
+        validations: { ...this.state.validations, importo: true },
+      });
+    } else {
+      this.setState({
+        validations: { ...this.state.validations, importo: false },
+      });
+    }
   }
 
   handleChangeIntestazione(event) {
@@ -90,18 +106,59 @@ class ModulePopUp3 extends React.Component {
 
   handleChangeCfIntestazione(event) {
     this.setState({ codice_fiscale_intestatario: event.target.value });
+    if (event.target.value && event.target.value.length >= 16) {
+      this.setState({
+        validations: {
+          ...this.state.validations,
+          codice_fiscale_intestatario: true,
+        },
+      });
+    }
   }
 
   handleChangeOrdinante(event) {
     this.setState({ ordinante: event.target.value });
+    if (event.target.value && event.target.value.length > 0) {
+      this.setState({
+        validations: { ...this.state.validations, ordinante: true },
+      });
+    } else {
+      this.setState({
+        validations: { ...this.state.validations, ordinante: false },
+      });
+    }
   }
 
   handleChangeCfOrdinante(event) {
     this.setState({ codice_fiscale_ordinante: event.target.value });
+    if (event.target.value && event.target.value.length > 0) {
+      this.setState({
+        validations: {
+          ...this.state.validations,
+          codice_fiscale_ordinante: true,
+        },
+      });
+    } else {
+      this.setState({
+        validations: {
+          ...this.state.validations,
+          codice_fiscale_ordinante: false,
+        },
+      });
+    }
   }
 
   handleChangeNrPostepay(event) {
     this.setState({ numero_postepay: event.target.value });
+    if (event.target.value && event.target.value.length > 0) {
+      this.setState({
+        validations: { ...this.state.validations, numero_postepay: true },
+      });
+    } else {
+      this.setState({
+        validations: { ...this.state.validations, numero_postepay: false },
+      });
+    }
   }
 
   hideAlert = () => {
@@ -121,8 +178,14 @@ class ModulePopUp3 extends React.Component {
         this.setState({ showUpload: true });
         this.setState({ intestazione: value });
         this.setState({ user_id: "" });
+        this.setState({
+          validations: { ...this.state.validations, intestazione: true },
+        });
       } else {
         this.setState({ showUpload: false });
+        this.setState({
+          validations: { ...this.state.validations, intestazione: false },
+        });
       }
     }
   };
@@ -137,11 +200,27 @@ class ModulePopUp3 extends React.Component {
     if (Object.keys(ev)[0] === "photo") {
       this.setState({ showUpload: false });
     }
-    this.setState({ intestazione: `${user.first_name} ${user.last_name}` });
-    this.setState({
-      codice_fiscale_intestatario: user.codice_fiscale_ordinante,
-    });
-    this.setState({ user_id: user.id });
+
+    if (user.first_name && user.last_name) {
+      this.setState({ intestazione: `${user.first_name} ${user.last_name}` });
+      this.setState({
+        codice_fiscale_intestatario: user.codice_fiscale_ordinante,
+        validations: {
+          ...this.state.validations,
+          codice_fiscale_intestatario: true,
+          intestazione: true,
+        },
+        user_id: user.id,
+      });
+    } else {
+      this.setState({
+        validations: {
+          ...this.state.validations,
+          intestazione: false,
+          codice_fiscale_intestatario: false,
+        },
+      });
+    }
   }
   clearFields = () => {
     this.setState({
@@ -155,6 +234,15 @@ class ModulePopUp3 extends React.Component {
       document_type: "",
       imageUrl: "",
       imageUrl2: "",
+      checkValidations: false,
+      validations: {
+        intestazione: false,
+        importo: false,
+        codice_fiscale_intestatario: false,
+        ordinante: false,
+        codice_fiscale_ordinante: false,
+        numero_postepay: false,
+      },
     });
   };
   handleSubmit = (service_id) => {
@@ -212,8 +300,10 @@ class ModulePopUp3 extends React.Component {
       imageUrl,
       cardView,
       imageUrl2,
+      validations,
+      checkValidations,
     } = this.state;
-
+    //console.log("validations", validations, checkValidations);
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -277,12 +367,16 @@ class ModulePopUp3 extends React.Component {
                     <tbody>
                       <tr>
                         <td
-                          onClick={() => {
-                            if (this.props.accountInfo?.token) {
+                          onClick={async () => {
+                            await this.setState({ checkValidations: true });
+                            let valid = true;
+                            Object.values(validations).forEach((validEl) => {
+                              if (!validEl) {
+                                valid = false;
+                              }
+                            });
+                            if (valid) {
                               this.handleSubmit(service_id);
-                            } else {
-                              window.location.hash = "login";
-                              this.props.togglePopUp(false);
                             }
                           }}
                         >
@@ -350,6 +444,12 @@ class ModulePopUp3 extends React.Component {
                     </Select>
                   </div>
                 </div>
+                {!validations.intestazione && checkValidations && (
+                  <div className="col-12 errorField">
+                    INTESTATARIO è obbligatorio
+                  </div>
+                )}
+
                 {showUpload && (
                   <div className="col-12 document">
                     {
@@ -448,7 +548,11 @@ class ModulePopUp3 extends React.Component {
                     />
                   </div>
                 </div>
-
+                {!validations.importo && checkValidations && (
+                  <div className="col-12 errorField">
+                    Importo è obbligatorio
+                  </div>
+                )}
                 {/* <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">INTESTATARIO</span>
@@ -478,7 +582,12 @@ class ModulePopUp3 extends React.Component {
                     />
                   </div>
                 </div>
-
+                {!validations.codice_fiscale_intestatario &&
+                  checkValidations && (
+                    <div className="col-12 errorField">
+                      COD FISC INTESTATARIO è obbligatorio
+                    </div>
+                  )}
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">ORDINANTE</span>
@@ -493,7 +602,11 @@ class ModulePopUp3 extends React.Component {
                     />
                   </div>
                 </div>
-
+                {!validations.ordinante && checkValidations && (
+                  <div className="col-12 errorField">
+                    Ordinante è obbligatorio
+                  </div>
+                )}
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">COD FISC ORDINANTE</span>
@@ -508,6 +621,11 @@ class ModulePopUp3 extends React.Component {
                     />
                   </div>
                 </div>
+                {!validations.codice_fiscale_ordinante && checkValidations && (
+                  <div className="col-12 errorField">
+                    COD FISC ORDINANTE è obbligatorio
+                  </div>
+                )}
                 <div className="col-5 pt-2">
                   <div className="euroboll ">
                     <span className="pr-5">Numero Postepay</span>
@@ -522,7 +640,11 @@ class ModulePopUp3 extends React.Component {
                     />
                   </div>
                 </div>
-
+                {!validations.numero_postepay && checkValidations && (
+                  <div className="col-12 errorField">
+                    Numero Postepay è obbligatorio
+                  </div>
+                )}
                 <div className="col-12 mt-4">
                   <div className="euroboll">
                     <span>CONDIZIONI</span>

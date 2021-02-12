@@ -20,7 +20,7 @@ var mainifest = document.getElementById("manifest");
 var iosIcon = document.getElementById("iosIcon");
 root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-if (window.LOCATION_URL.match(/oint\.st/g)) {
+if (window.LOCATION_URL.match(/oint\.st|localhost|192\.168/g)) {
   SITE_STYLES.setAttribute("href", `var1.css`);
   mainifest.href = "./manifest1.json";
 } else if (window.LOCATION_URL.includes("es.gf")) {
@@ -33,7 +33,7 @@ if (window.LOCATION_URL.match(/oint\.st/g)) {
   document.querySelector("#tabTheme2").setAttribute("content", "#fdaf18");
   SITE_STYLES.setAttribute("href", "./var4.css");
   mainifest.href = "./manifest4.json";
-} else if (window.LOCATION_URL.match(/mperia|irpa|localhost|192\.168/g)) {
+} else if (window.LOCATION_URL.match(/mperia|irpa/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#222");
   document.querySelector("#tabTheme2").setAttribute("content", "#222");
   SITE_STYLES.setAttribute("href", "./var6.css");

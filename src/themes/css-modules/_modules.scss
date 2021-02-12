@@ -207,6 +207,11 @@
     font-size: 14px;
     font-weight: bold;
     border-radius: 0;
+    height: 25px;
+  }
+  .ant-select-selection__rendered,
+  .ant-form-item-control {
+    line-height: 23px;
   }
 }
 .contitions-boll {
@@ -519,13 +524,13 @@
   }
 }
 .messages {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   background: #ffffff8f;
   width: 70%;
   height: 60%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-flow: column;
   -webkit-backdrop-filter: blur(11px);
@@ -534,6 +539,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding-top: 70px;
+  overflow: auto;
   .errorM,
   .infoM {
     text-transform: capitalize;

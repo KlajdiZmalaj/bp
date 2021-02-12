@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
-import { notification, message, Upload, Icon } from "antd";
+import { message, Upload, Icon } from "antd";
 import TopWrapper from "./TopWrapper";
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -52,6 +52,12 @@ const PostePay = ({
     importo: 0,
     codiceInt: "",
   });
+  const clearData = () => {
+    setFormData({
+      importo: 0,
+      codiceInt: "",
+    });
+  };
   const uploadButton = (
     <div>
       <Icon type={img1.loading ? "loading" : "plus"} />
@@ -73,13 +79,7 @@ const PostePay = ({
       );
     }
   };
-  useEffect(() => {
-    if (Object.values(postePay).length > 0)
-      notification[postePay.errors ? "error" : "success"]({
-        message: postePay.message,
-        description: Object.values(postePay.errors || {}),
-      });
-  }, [postePay]);
+
   return (
     <div className="postepay">
       <div className="postepay--services">
@@ -315,10 +315,11 @@ const PostePay = ({
           className={`${postePayLoading ? "disable" : ""}`}
           onClick={() => {
             setPostePayLoading(true);
+            //console.log("selectedUser", selectedUser, formData);
             getPostePay(
               "RPP001",
               formData.importo,
-              selectedUser.id,
+              selectedUser.user.id,
               intestatario,
               formData.codiceInt,
               formData.ordinanted,
@@ -327,7 +328,7 @@ const PostePay = ({
               formData.document_type,
               img1.imageUrl,
               img2.imageUrl,
-              () => {},
+              clearData,
               setPostePayLoading
             );
           }}
