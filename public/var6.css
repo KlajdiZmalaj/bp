@@ -8,9 +8,11 @@ html {
   --statBg: 60, 60, 60;
   --statItems: 255, 255, 255;
 }
+
 body:not(.bodyAdmin) .logo img {
   width: 160px;
 }
+
 body:not(.bodyAdmin) .panels-container,
 body:not(.bodyAdmin) .favorites,
 body:not(.bodyAdmin) .chatSticky,
@@ -25,59 +27,75 @@ body:not(.bodyAdmin) .panel-tab {
   color: #fff;
   box-shadow: inset 0px 1px #767676;
 }
+
 body:not(.bodyAdmin) .panel-tab h4 {
   color: #fff;
 }
+
 body:not(.bodyAdmin) .panel-tab:hover {
   background-color: #000000;
 }
+
 body:not(.bodyAdmin) .favorites .title {
   color: #fff;
 }
+
 body:not(.bodyAdmin) {
   background: #3c3c3c !important;
 }
+
 body:not(.bodyAdmin) .panel-services td p {
   color: #222;
 }
+
 body:not(.bodyAdmin) .login .title i,
 body:not(.bodyAdmin) .login .title div,
 body:not(.bodyAdmin).login ul li .loginBtn {
   color: #fff !important;
 }
+
 body:not(.bodyAdmin) .carica-conto h3 {
   color: #fff !important;
 }
+
 body:not(.bodyAdmin) .sort-annunci .heading-tab {
   color: #fff;
 }
+
 body:not(.bodyAdmin) .sort-annunci {
   border-bottom: 1px solid #000000;
 
   background-color: #545454;
   color: #fff;
 }
+
 body:not(.bodyAdmin).inputsConf label {
   color: #222;
 }
+
 body:not(.bodyAdmin) .panel-tab .date-pane,
 body:not(.bodyAdmin) .sort-annunci li span {
   color: #fff !important;
 }
+
 body:not(.bodyAdmin).panel-content-annunci {
   border-color: #222 !important;
 }
+
 body:not(.bodyAdmin) .contentAcc {
   color: #222;
 }
+
 body:not(.bodyAdmin) .transTable,
 body:not(.bodyAdmin).rdrStaticRangeLabel {
   color: #222;
 }
+
 body:not(.bodyAdmin) .sort-annunci .dal,
-body:not(.bodyAdmin) .formsContainer > h1 {
+body:not(.bodyAdmin) .formsContainer>h1 {
   color: #fff !important;
 }
+
 body:not(.bodyAdmin) .panel-services {
   background: #e3e4e5 !important;
 }
@@ -87,78 +105,75 @@ body:not(.bodyAdmin) .panel-services td {
   box-shadow: inset 0 0 0 1px #ffffff;
   /* margin-top: 10px; */
 }
-body:not(.bodyAdmin) .tab-content > .tab-pane {
+
+body:not(.bodyAdmin) .tab-content>.tab-pane {
   padding-top: 9px !important;
 }
+
 body:not(.bodyAdmin) .servicesContainer:hover::-webkit-scrollbar-thumb {
   border: 0 !important;
 }
+
 footer .mid img {
   width: 130px !important;
 }
+
 body:not(.bodyAdmin) .SDHome--Header span:first-child span:nth-child(2),
 body:not(.bodyAdmin) .SDHome--Header span:first-child span:first-child,
 body:not(.bodyAdmin) .SDHome--Cards--Card h2 {
   color: #fff !important;
 }
+
 body:not(.bodyAdmin) .DContainer .Categories div.First {
   background: #222;
   border-color: #4f4f4f;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .DContainer .Categories div {
   border-top: 1px solid #424242;
   background: #2d2d2d;
   color: #a0a0a0 !important;
 }
+
 body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Favorites div {
   background: #1d1d1d;
   color: #fff;
 }
-body:not(.bodyAdmin)
-  .DContainer
-  .Dashboard
-  .CompaniesAndOther
-  .Comp
-  .Companies {
+
+body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Companies {
   background: #494949;
 }
-body:not(.bodyAdmin)
-  .DContainer
-  .Dashboard
-  .CompaniesAndOther
-  .Comp
-  .Companies
-  div {
+
+body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div {
   background: #2d2d2d;
   color: #fff;
   box-shadow: inset 0px 0px 1px 1px #363636;
 }
-body:not(.bodyAdmin)
-  .DContainer
-  .Dashboard
-  .CompaniesAndOther
-  .Comp
-  .Search
-  input,
+
+body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Search input,
 body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Search {
   background: #222;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .DContainer .Dashboard .CompaniesAndOther .Comp .Search i {
   color: #fff;
 }
+
 body:not(.bodyAdmin) .ticketDetails {
   background-color: #383838;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .ticketDetails--row,
 body:not(.bodyAdmin) .ticketDetails--header,
-body:not(.bodyAdmin) .ticketDetails--row .options > span:not(.toggler),
+body:not(.bodyAdmin) .ticketDetails--row .options>span:not(.toggler),
 body:not(.bodyAdmin) .ticketDetails--row .toggler {
   border-color: #595959;
 }
-body:not(.bodyAdmin) .ticketDetails--header > span {
+
+body:not(.bodyAdmin) .ticketDetails--header>span {
   color: #fff;
 }
 
@@ -166,23 +181,27 @@ body:not(.bodyAdmin) .ticketDetails--infos {
   background-color: #272727;
 }
 
-body:not(.bodyAdmin) .ticketDetails--row > span:nth-child(2) div:not(.new) {
+body:not(.bodyAdmin) .ticketDetails--row>span:nth-child(2) div:not(.new) {
   color: #e5ca1b;
 }
 
 html body:not(.bodyAdmin) div.Container .panels-container {
   background: #272727 !important;
 }
+
 body:not(.bodyAdmin) .FaturaDomain .FauturaFilter--Header {
   color: #fff;
 }
+
 body:not(.bodyAdmin) .newReg {
   background-color: #272727;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .newReg .inputLabel {
   color: #cacaca;
 }
+
 body:not(.bodyAdmin) .newReg--header,
 body:not(.bodyAdmin) .ant-checkbox-wrapper {
   color: #fff;
@@ -194,19 +213,22 @@ body:not(.bodyAdmin) .newReg .Select-control,
 body:not(.bodyAdmin) .inpssWrapper,
 body:not(.bodyAdmin) .Select-clear-zone,
 body:not(.bodyAdmin) .Select-input,
-body:not(.bodyAdmin) .Select.is-focused:not(.is-open) > .Select-control,
+body:not(.bodyAdmin) .Select.is-focused:not(.is-open)>.Select-control,
 body:not(.bodyAdmin) .newReg .piva .ant-form-item-children {
   background-color: #181818 !important;
   border: 1px solid #343434 !important;
   color: #fff !important;
 }
+
 body:not(.bodyAdmin) .newReg--row {
   border-bottom: 1px solid #000000;
 }
+
 body:not(.bodyAdmin) .configura {
   background: #313131;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .inputsConf label {
   color: inherit;
 }
@@ -216,28 +238,34 @@ body:not(.bodyAdmin) .inputsConf input[disabled] {
   color: #c6c6c6;
   background: #212121;
 }
+
 body:not(.bodyAdmin) .titleConf {
   background: #212121;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .titleConf h5,
 body:not(.bodyAdmin) .titleConf i {
   color: inherit !important;
 }
+
 body:not(.bodyAdmin) .ticketDetails--filters__byTicket input {
   background: #222;
   color: #fff;
 }
-body:not(.bodyAdmin) div.forms--body > div > div > div > div.titleCard {
+
+body:not(.bodyAdmin) div.forms--body>div>div>div>div.titleCard {
   background: #2d2d2d;
   color: #fff;
 }
+
 body:not(.bodyAdmin) .Companies .Pagamenti img,
 body:not(.bodyAdmin) .Favorites .Pagamenti img {
   filter: invert(1) brightness(10);
 }
+
 .headerMob nav .tabBody--item.active,
-.headerMob nav .tabs > div.active,
+.headerMob nav .tabs>div.active,
 .serviziFilter--cards__item.active,
 .mobileServices--header.active,
 .headerMob nav .tabBody--a__b:nth-child(2) {
@@ -246,6 +274,7 @@ body:not(.bodyAdmin) .Favorites .Pagamenti img {
   color: #212121 !important;
   border-color: transparent #212121;
 }
+
 .login ul li .loginBtn {
   border-color: #fff !important;
   color: #fff !important;
@@ -255,58 +284,71 @@ body:not(.bodyAdmin) .Favorites .Pagamenti img {
 .Statist div.Categories.data .Graph--Element:focus {
   background: #bbbbbb !important;
 }
+
 .logoMob {
   width: 200px;
 }
-.userBar div > span {
+
+.userBar div>span {
   color: #fff !important;
 }
+
 body .transTable thead tr td {
   color: #ffffff;
   background: #545454;
   border-color: #3c4349 !important;
 }
+
 body .transTable tr:nth-child(even) {
   background: #535353;
   color: #fff;
 }
+
 body .transTable tr:nth-child(odd) {
   background: #414141;
   color: #fff;
 }
+
 .transTable th,
 .transTable td {
   border-color: #767e85 !important;
 }
+
 body .transTable tbody tr:hover {
   color: #fff !important;
 }
-.filesBtns .exportPDF > div,
+
+.filesBtns .exportPDF>div,
 .filesBtns .ExportToExel,
 .filesBtns div i,
 .filesBtns .ExportToExel i {
   color: #fff !important;
 }
+
 .filesBtns .exportPDF,
 .filesBtns .ExportToExel {
   border-color: #fff !important;
 }
+
 .sort-annunci .MoviFirst .DateUtent {
   border-right: 0 !important;
 }
+
 .contentAcc {
   background: #272727 !important;
   color: #fff !important;
 }
 
 body .fastCarica .switchGr,
-body .fastCarica .switchGr > span.or {
+body .fastCarica .switchGr>span.or {
   border-color: #3c4349 !important;
   background-color: #212121;
 }
-.fastCarica .switchGr > span:first-child {
+
+.fastCarica .switchGr>span:first-child {
   border-color: #3c4349 !important;
 }
+
 .userList .title {
   color: inherit !important;
   padding-left: 15px;
@@ -315,48 +357,71 @@ body .fastCarica .switchGr > span.or {
   position: relative;
   z-index: 1;
 }
+
 body .userList .header span {
   border-left: 1px solid #3c4349;
   color: #ffffff;
   background-color: #3c3c3c;
 }
+
 .userList--noDoc__user,
 .userList--Doc__user {
   background-color: #4f4f4f !important;
   border-bottom: 1px solid #3c3c3c !important;
 }
+
 .userList--noDoc__user:nth-child(even),
 .userList--Doc__user:nth-child(even) {
   background-color: #626262 !important;
 }
+
 body .mpIcon {
   background: transparent;
   color: #ffffff;
 }
+
 .fastCarica .amountGr,
-.fastCarica .searchUser {
+.fastCarica .searchUser input {
+  -webkit-filter: invert(1) grayscale(1);
   filter: invert(1) grayscale(1);
   color: #222;
 }
+
+.fastCarica .searchUser {
+  background-color: #000000 !important;
+  border: none !important;
+}
+
+.fastCarica .searchUser .ddUsers {
+  -webkit-filter: invert(1) grayscale(1);
+  filter: invert(1) grayscale(1);
+  color: #222;
+}
+
 .userList .popUp {
   color: #222;
   filter: grayscale(1) invert(0.9);
 }
+
 .FaturaDomain div.FaturaTable table.transTable .wsNwp i {
   color: #fff !important;
 }
+
 .datepics {
   border: 2px solid #656565 !important;
 }
+
 body .ant-select-selection--single,
 body .barcodeBtn,
 body .filterBtn {
   background: #363636;
   color: white;
 }
+
 .sort-annunci .dal.calendar {
   border-left: 2px solid #656565 !important;
 }
+
 .ant-pagination {
   filter: grayscale(1) invert(0.8);
 }
@@ -368,9 +433,11 @@ body .filterBtn {
 .Companies div img[alt="bolo_auto"] {
   filter: brightness(0) grayscale(1) invert(1);
 }
+
 html .Statist {
   background: rgba(var(--statBg), 1);
 }
+
 html .Statist div.Categories.data .Graph,
 html .Statist div.Categories.data .Additinal.Statist {
   background: rgba(var(--statItems), 0.1);
@@ -379,11 +446,13 @@ html .Statist div.Categories.data .Additinal.Statist {
 html .MenuC {
   background: rgba(var(--statItems), 0.2);
 }
+
 html .Menu div,
 html .Menu label,
 html .Menu a {
   background: rgba(var(--statItems), 0.04);
 }
+
 html .Menu div.active div,
 html .Menu label.active div,
 html .Menu a.active div {
@@ -394,12 +463,15 @@ img[alt="PSSTO"],
 img[alt="EUROSP"] {
   filter: invert(1) grayscale(1) brightness(1);
 }
+
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div i {
   color: #ffeb3b !important;
 }
-.login ul li .loginBtn + span {
+
+.login ul li .loginBtn+span {
   color: #fff !important;
 }
+
 /* 
 
 .DContainer .Dashboard .CompaniesAndOther .Comp .Companies div img {
