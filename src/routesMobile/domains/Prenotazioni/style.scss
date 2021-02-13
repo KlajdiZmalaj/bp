@@ -197,6 +197,44 @@
     font-size: 16px;
     font-weight: 500;
   }
+  .formsContainer--body__item button.Genere {
+    top: 19px;
+  }
+  .formsContainer--body__item.hasInfo:before {
+    left: 25px;
+    top: 32px;
+  }
+  .formsContainer > h1 {
+    margin: 0;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--accent-bg);
+    color: var(--accent-txt);
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 0 15px;
+  }
+  .visureHeader > div {
+    width: 50%;
+    white-space: nowrap;
+  }
+  .visureHeader > div:nth-child(1) {
+    display: none;
+  }
+  .visures {
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    .itemWrapper {
+      height: auto;
+    }
+    &--services,
+    &--form {
+      width: 100%;
+    }
+  }
 }
 @media (max-width: 1024px) {
   .rightForm--subtitle,
@@ -222,4 +260,7 @@
   .generateCodiceFiscale {
     width: 90%;
   }
+}
+img[alt="visure-mobile"] {
+  filter: grayscale(1) invert(1);
 }

@@ -6,7 +6,6 @@ import { AuthActions, MainActions } from "redux-store/models";
 import { connect } from "react-redux";
 import images from "themes/images";
 import StaticDefaultHomePage from "routes/domains/StaticDefaultHomePage/StaticDefaultHomePage";
-
 const Dashboard = (props) => {
   const [username, handleChangeUsername] = useState("");
   const [password, handleChangePassword] = useState("");

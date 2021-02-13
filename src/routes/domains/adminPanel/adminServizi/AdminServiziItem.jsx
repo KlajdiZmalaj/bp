@@ -22,13 +22,9 @@ const AdminServiziItem = ({
     {/* eslint-disable-next-line jsx-a11y/alt-text */}
 
     <img
-      src={`http://www.perdemo.it/ricaricheSPS/${category}.png`}
+      src={images[name] || images["placeholder"]}
       className="AdminServiziItem--Image"
-      onError={(e) => {
-        //console.log("ca ka error", e, images.placeholder);
-        e.target.src = images["placeholder"];
-      }}
-      alt=""
+      alt={category}
       loading="lazy"
     />
     <div className="AdminServiziItem--ButtonWrapper">

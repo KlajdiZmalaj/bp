@@ -420,7 +420,8 @@ export function* getRegister(params) {
     params.rent,
     params.privacy_policy,
     params.recieve_emails,
-    params.percentage
+    params.percentage,
+    params.register_token
   );
 
   if (response?.data) {

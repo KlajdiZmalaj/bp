@@ -59,7 +59,7 @@ class UserDoc extends Component {
                 this.setPopUp();
               }}
             >
-              <i class="fal fa-plus"></i>
+              <i className="fal fa-plus"></i>
             </span>
           </div>
         </div>
@@ -141,7 +141,7 @@ class UserDoc extends Component {
                 }, 500);
               }}
             >
-              Upload <i class="fas fa-upload"></i>
+              Upload <i className="fas fa-upload"></i>
             </button>
           </div>
         )}

@@ -5,7 +5,11 @@ export const isWinter =
   (month === 0 && day.toString().match(/^(1|2|3|4|5)$/g));
 let skin = "";
 
-if (window.location.href.includes("bpoint")) {
+if (
+  window.location.href.includes("bpoint") ||
+  window.location.href.includes("192.168") ||
+  window.location.href.includes("localhost")
+) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;
@@ -17,11 +21,7 @@ if (window.location.href.includes("bpoint")) {
   skin = 6;
 } else if (window.location.href.includes("imperialpay")) {
   skin = 7;
-} else if (
-  window.location.href.includes("bullpay") ||
-  window.location.href.includes("192.168") ||
-  window.location.href.includes("localhost")
-) {
+} else if (window.location.href.includes("bullpay")) {
   //
   skin = 52;
 }
@@ -43,7 +43,7 @@ try {
     "PAGF24-Black-Mobile": require(`../assets/images/PAGF24-Black.svg`),
     "BOLL-Black-Mobile": require(`../assets/images/BOLL-Black.svg`),
 
-    baner_servizi_header: require(`../assets/images/baner_servizi_header.png`),
+    baner_servizi_header2: require(`../assets/images/baner_servizi_header.png`),
     //Static home page images
     SER_POS: require(`../assets/images/servizi_postali.png`),
     RIC_CEL: require(`../assets/images/richariche_cellulari.png`),
@@ -192,13 +192,18 @@ try {
     MEDIAW: require(`../assets/images/MEDIAW.svg`),
     MUSEM: require(`../assets/images/MUSEM.svg`),
     NESPRE: require(`../assets/images/NESPRE.svg`),
-    NIKE: require(`../assets/images/NIKE.svg`),
+    NIKE: require(`../assets/images/nike2.svg`),
     PANORA: require(`../assets/images/PANORA.svg`),
     PRENAT: require(`../assets/images/PRENAT.svg`),
     Q8: require(`../assets/images/Q8.svg`),
     TIGOTA: require(`../assets/images/TIGOTA.svg`),
     UNES: require(`../assets/images/UNES.svg`),
     VIAGGI: require(`../assets/images/VIAGGI.svg`),
+    FLIGHT: require(`../assets/images/flightgift.svg`),
+    FLYKUB: require(`../assets/images/flykube.svg`),
+    GROUPA: require(`../assets/images/groupalia.svg`),
+    HOTELG: require(`../assets/images/hotelgift.svg`),
+    NATURP: require(`../assets/images/naturplus.svg`),
 
     // COOPV: require(`../assets/images${skin}/bill-dark.svg`),
     // DKENA: require(`../assets/images${skin}/bill-dark.svg`),
@@ -261,7 +266,8 @@ try {
     "shop-online-card": require(`../assets/images/prenotazioni/shop-online-card.png`),
     "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
     "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
-
+    visure: require(`../assets/images/prenotazioni/visure-logo.svg`),
+    "visure-mobile": require(`../assets/images/prenotazioni/visure-logo.svg`),
     "energia-bg": require(`../assets/images/prenotazioni/energia.png`),
 
     ServiceDefault: require(`../assets/images/ServiceDefault.jpg`),

@@ -20,7 +20,7 @@ var mainifest = document.getElementById("manifest");
 var iosIcon = document.getElementById("iosIcon");
 root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-if (window.LOCATION_URL.match(/oint\.st/g)) {
+if (window.LOCATION_URL.match(/oint\.st|localhost|192\.168/g)) {
   SITE_STYLES.setAttribute("href", `var1.css`);
   mainifest.href = "./manifest1.json";
 } else if (window.LOCATION_URL.includes("es.gf")) {
@@ -44,7 +44,7 @@ if (window.LOCATION_URL.match(/oint\.st/g)) {
   SITE_STYLES.setAttribute("href", "./var3.css");
   mainifest.href = "./manifest3.json";
   iosIcon.href = "images3/apple-icon-180x180.png";
-} else if (window.LOCATION_URL.match(/bullpay|localhost|192\.168/g)) {
+} else if (window.LOCATION_URL.match(/bullpay/g)) {
   document.querySelector("#tabTheme").setAttribute("content", "#f00");
   document.querySelector("#tabTheme2").setAttribute("content", "#f00");
   SITE_STYLES.setAttribute("href", "./var52.css");

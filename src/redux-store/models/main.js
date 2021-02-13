@@ -28,6 +28,7 @@ const { Types, Creators } = createActions({
   sendPrenotazione: ["objectData", "resetState"],
   forgotPassword: ["email"],
   setAdminMessagesModal: ["adminMessagesModal"],
+  getRegisterToken: ["agency_id", "callBack"],
 });
 
 export const MainTypes = Types;

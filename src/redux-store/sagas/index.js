@@ -88,6 +88,7 @@ export default function* root() {
     ],
     //MAIN Generators
     ...[
+      takeLatest("GET_REGISTER_TOKEN", MainGenerators.getRegisterToken),
       takeLatest("FORGOT_PASSWORD", MainGenerators.forgotPassword),
       takeLatest("GET_SEARCHED_USERS", MainGenerators.getSearchedUsers),
       takeLatest("GET_USER_PHOTOS", MainGenerators.getUserPhotos),
