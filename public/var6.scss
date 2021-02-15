@@ -334,7 +334,18 @@ body .mpIcon {
   color: #ffffff;
 }
 .fastCarica .amountGr,
+.fastCarica .searchUser input {
+  filter: invert(1) grayscale(1);
+  color: #222;
+}
+
 .fastCarica .searchUser {
+  background-color: #000000 !important;
+  border: none !important;
+}
+
+.fastCarica .searchUser .ddUsers {
+  -webkit-filter: invert(1) grayscale(1);
   filter: invert(1) grayscale(1);
   color: #222;
 }
