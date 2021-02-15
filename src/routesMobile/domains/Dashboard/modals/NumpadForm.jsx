@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
 import { notification } from "antd";
 import { BannerColors } from "config/index";
 import { getScale } from "utils/HelperFunc";
 import PrintTicketMob from "./PrintTicketMob";
+import { TransactionModal } from "shared-componentsMobile";
+import images from "themes/images";
+
 const range = (start, end) => {
   var array = [];
   for (var i = start; i <= end; i++) {
@@ -92,6 +94,8 @@ const Numpad = ({
   allFavServices,
   toggleFavorite,
   noNumbers,
+  transactionModal,
+  setTransactionModal,
 }) => {
   const [selectedCost, setCost] = useState(null);
   const [inpVal, setVal] = useState("");
@@ -111,7 +115,14 @@ const Numpad = ({
       }
     }
   }, [services, activeService, activeCategory, setCost, selectedCost]);
-
+  useEffect(() => {
+    console.log("changed rece", rechargeMobile.receipt);
+    if (rechargeMobile.receipt) {
+      setTransactionModal(true);
+    } else {
+      setTransactionModal(false);
+    }
+  }, [rechargeMobile.receipt]);
   // useEffect(() => {
   //   if (Object.values(rechargeMobile).length > 0)
   //     notification[rechargeMobile.errors ? "error" : "success"]({
@@ -130,12 +141,6 @@ const Numpad = ({
     }
   }, [bgamePad, selectedCost, setBgamePad]);
 
-  useEffect(() => {
-    if (loadingRechargeMobile)
-      notification["info"]({
-        message: "Transazione di caricamento...",
-      });
-  }, [loadingRechargeMobile]);
   useEffect(() => {
     getScale(".img.Page", ".GamingBanner.mobile");
   }, [bgamePad]);
@@ -360,6 +365,7 @@ const Numpad = ({
           Esegui <i className="fal fa-check" aria-hidden="true"></i>
         </button>
         <button
+          className={!rechargeMobile.receipt ? "disable" : ""}
           onClick={() => {
             if (!rechargeMobile.receipt) {
               notification["warning"]({
@@ -390,18 +396,30 @@ const Numpad = ({
           />
         </div>
       )}
+      {transactionModal && (
+        <TransactionModal
+          ok={() => {
+            setPrint(true);
+          }}
+          cancel={() => {
+            setTransactionModal(false);
+          }}
+          msg={rechargeMobile.msg || "Grazie. Il tuo ordine e stato ricevuta!"}
+        />
+      )}
     </div>
   );
 };
 const mstp = ({
   main: { services },
-  auth: { rechargeMobile, loadingRechargeMobile, skinExtras },
+  auth: { rechargeMobile, loadingRechargeMobile, skinExtras, transactionModal },
 }) => {
   return {
     services,
     rechargeMobile,
     loadingRechargeMobile,
     skinExtras,
+    transactionModal,
   };
 };
 export default connect(mstp, AuthActions)(Numpad);

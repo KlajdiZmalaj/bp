@@ -552,6 +552,7 @@ const { Types, Creators } = createActions({
     "answer",
   ],
   pagoTicket: ["barcode"],
+  setTransactionModal: ["transactionModal"],
 });
 
 export const AuthTypes = Types;
@@ -628,9 +629,14 @@ const INITIAL_STATE = {
   StatisticheMain: null,
   ReportisticaDet: false,
   serviceType: "",
+  transactionModal: false,
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  SET_TRANSACTION_MODAL: (state, { transactionModal }) => ({
+    ...state,
+    transactionModal,
+  }),
   SET_REGISTRAZIONE_DATA: (state, { SelectData }) => ({
     ...state,
     SelectData,

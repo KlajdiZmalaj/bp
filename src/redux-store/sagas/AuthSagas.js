@@ -77,10 +77,9 @@ export function* getBolletiniBianchi(params) {
         );
       }
     }
-
-    if (params.callBack) {
-      params.callBack(false);
-    }
+  }
+  if (response && params.callBack) {
+    params.callBack(false);
   }
 }
 export function* addTicket({ ticket }) {
@@ -298,7 +297,12 @@ export function* getRechargeMobile(params) {
         localStorage.setItem("accountDataB", JSON.stringify(d));
         yield put(AuthActions.setAccountInfo(d));
       }
-      yield put(AuthActions.setRechargeMobile(response?.data));
+      yield put(
+        AuthActions.setRechargeMobile({
+          ...response?.data,
+          msg: response?.data?.message,
+        })
+      );
     } else if (response?.error) {
       yield put(AuthActions.setRechargeMobile(response?.error.response?.data));
     }
@@ -1112,7 +1116,12 @@ export function* getCustomVoucherReq(params) {
         localStorage.setItem("accountDataB", JSON.stringify(d));
         yield put(AuthActions.setAccountInfo(d));
       }
-      yield put(AuthActions.setRechargeMobile(response?.data));
+      yield put(
+        AuthActions.setRechargeMobile({
+          ...response?.data,
+          msg: response?.data?.message,
+        })
+      );
     } else if (response?.error) {
       yield put(AuthActions.setRechargeMobile(response?.error?.response?.data));
     }

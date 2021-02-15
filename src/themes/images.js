@@ -283,7 +283,7 @@ try {
 
     faturaBackground: require(`../assets/images/FaturaBackground.png`),
     mobileLoginGirl: require(`../assets/images/Banner Avvocato for Servizi Mobile.jpg`),
-
+    transactionModalImg: require(`../assets/images/transactionModal.svg`),
     // shop
 
     mainBanner: require(`../assets/shop/banner.jpg`),

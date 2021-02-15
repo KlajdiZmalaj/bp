@@ -34,7 +34,7 @@ const BolletiniPremercati = ({
   activeService,
   services,
   getBolletiniPremercati,
-  bolletiniPremercati,
+  //bolletiniPremercati,
   setBolletiniLoading,
   bolletiniLoading,
   setBolletiniPremercati,
@@ -75,20 +75,13 @@ const BolletiniPremercati = ({
     tipologia: tipologiaB,
   };
 
-  useEffect(() => {
-    if (Object.values(bolletiniPremercati).length > 0)
-      notification[bolletiniPremercati.errors ? "error" : "success"]({
-        message: bolletiniPremercati.message,
-        description: Object.values(bolletiniPremercati.errors || {}),
-      });
-  }, [bolletiniPremercati]);
-  useEffect(() => {
-    if (bolletiniLoading) {
-      notification["info"]({
-        message: "Transazione di caricamento...",
-      });
-    }
-  }, [bolletiniLoading]);
+  // useEffect(() => {
+  //   if (bolletiniLoading) {
+  //     notification["info"]({
+  //       message: "Transazione di caricamento...",
+  //     });
+  //   }
+  // }, [bolletiniLoading]);
 
   return (
     <div className="bolletini premercati">

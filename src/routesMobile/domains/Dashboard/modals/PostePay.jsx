@@ -319,7 +319,7 @@ const PostePay = ({
             getPostePay(
               "RPP001",
               formData.importo,
-              selectedUser.user.id,
+              selectedUser?.user?.id,
               intestatario,
               formData.codiceInt,
               formData.ordinanted,

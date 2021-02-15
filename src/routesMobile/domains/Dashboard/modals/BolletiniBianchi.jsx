@@ -82,13 +82,13 @@ const BolletiniBianchi = ({
         description: Object.values(bolletiniBianchi.errors || {}),
       });
   }, [bolletiniBianchi]);
-  useEffect(() => {
-    if (bolletiniLoading) {
-      notification["info"]({
-        message: "Transazione di caricamento...",
-      });
-    }
-  }, [bolletiniLoading]);
+  // useEffect(() => {
+  //   if (bolletiniLoading) {
+  //     notification["info"]({
+  //       message: "Transazione di caricamento...",
+  //     });
+  //   }
+  // }, [bolletiniLoading]);
   return (
     <div className="bolletini bianchi">
       <div className="bolletini--services">

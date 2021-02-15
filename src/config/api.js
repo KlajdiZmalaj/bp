@@ -61,7 +61,7 @@ export const handleError = (error) => {
       description:
         error?.response?.data?.errors &&
         Object.values(error.response.data.errors),
-      placement: "bottomRight",
+      placement: window.innerWidth <= 1024 ? "topRight" : "bottomRight",
       duration: 4,
     });
   }
