@@ -142,9 +142,9 @@ class Header extends Component {
                                       window.location.hash = "account-info";
 
                                       this.props.getUserByUserId(
-                                        add.text.match(
-                                          /(?<=ID: )(.*)(?=\n)/g
-                                        )?.[0]
+                                        add.text
+                                          .split("ID:")[1]
+                                          .split("Username")[0]
                                       );
                                     }
                                   }}
@@ -152,7 +152,7 @@ class Header extends Component {
                                 >
                                   {add.title}{" "}
                                   {add?.text?.includes("ID:") &&
-                                    add.text.match(/(?<=Username: )(.*)(?=)/g)}
+                                    add.text.split("Username:")[1]}
                                 </div>
                               );
                             })}
