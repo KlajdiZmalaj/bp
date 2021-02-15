@@ -282,7 +282,7 @@ try {
     // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 
     faturaBackground: require(`../assets/images/FaturaBackground.png`),
-    mobileLoginGirl: require(`../assets/images/Banner Avvocato for Servizi Mobile.jpg`),
+    mobileLoginGirl: require(`../assets/images/OnlineShop.jpg`),
     transactionModalImg: require(`../assets/images/transactionModal.svg`),
     // shop
 
