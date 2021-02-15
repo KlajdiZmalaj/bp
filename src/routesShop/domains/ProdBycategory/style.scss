@@ -583,14 +583,38 @@
 }
 
 .shopProd .filters__items .search {
+  > span {
+    width: 100%;
+    font-size: 15px;
+    color: #7b7b7b;
+  }
   position: relative;
-
+  .ant-slider:hover .ant-slider-track,
+  .ant-slider-track {
+    background: var(--accent-bg) !important;
+  }
+  .ant-slider-handle.ant-tooltip-open {
+    border-color: var(--accent-bg);
+  }
   .dropdown {
     position: absolute;
     width: 100%;
     z-index: 2;
-    background: #b9b9b9;
+    background: #ffffff;
     top: 40px;
     left: 0;
+    padding: 5px;
+    border: 1px solid #cdcdcd;
+    .ant-slider-mark {
+      display: none;
+    }
+    button {
+      background-color: var(--accent-bg);
+      color: var(--accent-txt);
+      border: 0;
+      width: 100%;
+      height: 40px;
+      text-transform: capitalize;
+    }
   }
 }

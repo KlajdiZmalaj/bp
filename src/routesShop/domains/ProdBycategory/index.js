@@ -22,6 +22,7 @@ class ProdBycategory extends Component {
       ? Math.ceil(this.props.prodList.highest_price)
       : null,
     areOpenProducts: false,
+    ddMobile: false,
   };
 
   componentDidMount() {
@@ -254,20 +255,69 @@ class ProdBycategory extends Component {
                       Prezzo <i className="fas fa-caret-down"></i>
                     </div>
                   </Dropdown>
-                ) : // <div className="search">
-                //   <span>Prezzo</span>
-                //   <div className="dropdown">
-                //     <Slider
-                //       min={0}
-                //       max={20}
-                //       range={true}
-                //       marks={{ 0: "0€", 1: `${20}€` }}
-                //       disabled={false}
-                //       included={true}
-                //     />
-                //   </div>
-                // </div>
-                null}
+                ) : (
+                  <div className="search">
+                    <span
+                      onClick={() => {
+                        this.setState({ ddMobile: !this.state.ddMobile });
+                      }}
+                    >
+                      Prezzo
+                    </span>
+                    {this.state.ddMobile && (
+                      <div className="dropdown">
+                        {highP && (
+                          <Slider
+                            min={0}
+                            max={highP}
+                            range={true}
+                            marks={{ 0: "0€", 1: `${highP}€` }}
+                            value={
+                              this.props.sliderVal.length === 0
+                                ? [0, highP]
+                                : [
+                                    this.props.sliderVal[0],
+                                    this.props.sliderVal[1],
+                                  ]
+                            }
+                            defaultValue={[0, highP]}
+                            disabled={false}
+                            onChange={this.handleChangeSlider}
+                            included={true}
+                          />
+                        )}
+                        {highP && (
+                          <div className="range">
+                            {this.props.sliderVal.length === 0 ? (
+                              <p>
+                                Fascia di prezzo Selezionato:
+                                <span> €0 - €{highP}</span>
+                              </p>
+                            ) : (
+                              <p>
+                                Fascia di prezzo Selezionato:
+                                <span>
+                                  €{this.props.sliderVal[0]} - €
+                                  {this.props.sliderVal[1]}
+                                </span>
+                              </p>
+                            )}
+                            <button
+                              onClick={() => {
+                                this.filterByRange();
+                                this.setState({
+                                  ddMobile: !this.state.ddMobile,
+                                });
+                              }}
+                            >
+                              Filtro
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 <Dropdown
                   overlay={menuBrands}

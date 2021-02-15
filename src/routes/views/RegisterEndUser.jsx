@@ -67,6 +67,7 @@ class RegisterEndUser extends React.Component {
     privacy_policy: false,
     recieve_emails: false,
     token: "",
+    loaded: false,
   };
   setToken = (token) => {
     this.setState({ token });
@@ -80,6 +81,21 @@ class RegisterEndUser extends React.Component {
         this.setToken
       );
     }
+
+    //   <script
+    //   type="text/javascript"
+    //   src="https://platform-api.sharethis.com/js/sharethis.js#property=6026b8281f03dd0011f25adb&product=inline-share-buttons"
+    //   async="async"
+    // ></script>
+    let _ = this;
+    var script = document.createElement("script");
+    script.onload = function () {
+      _.setState({ loaded: true });
+    };
+    script.async = "async";
+    script.src =
+      "https://platform-api.sharethis.com/js/sharethis.js#property=6026b8281f03dd0011f25adb&product=inline-share-buttons";
+    document.getElementsByTagName("head")[0].appendChild(script);
   }
 
   handleChangeBack = (info) => {
@@ -904,7 +920,7 @@ class RegisterEndUser extends React.Component {
                       ></i>{" "}
                       {/* <a
                         href={`https://api.whatsapp.com/send?phone=whatsappphonenumber&text=${encodeURIComponent(
-                          `${window.location.href}Token/${this.state.token.register_token}`
+                          `${window.location.href}t/${this.state.token.register_token}`
                         )}`}
                         className="fab fa-whatsapp"
                         aria-hidden="true"
@@ -912,14 +928,14 @@ class RegisterEndUser extends React.Component {
                       ></a>
                       <a
                         href={`mailto:?subject=${encodeURIComponent(
-                          `${window.location.href}Token/${this.state.token.register_token}`
+                          `${window.location.href}t/${this.state.token.register_token}`
                         )}`}
                         className="fal fa-envelope"
                         target="_blank"
                       ></a> */}
                       {/* <a
                         href={`http://www.sharethis.com/share?url=${encodeURIComponent(
-                          `${window.location.href}Token/${this.state.token.register_token}`
+                          `${window.location.href}t/${this.state.token.register_token}`
                         )}&title=${encodeURIComponent(
                           "Condividi il link del registro"
                         )}&img=${encodeURIComponent(
@@ -935,7 +951,7 @@ class RegisterEndUser extends React.Component {
                         className="sharethis-inline-share-buttons"
                         data-image={`${window.location.origin}/images${skin.skin_id}/icon-512x512.png`}
                         data-title="Condividi il link del registro"
-                        data-url={`${window.location.href}Token/${this.state.token.register_token}`}
+                        data-url={`${window.location.href}t/${this.state.token.register_token}`}
                       ></div>
                     </div>
                   }
@@ -949,7 +965,7 @@ class RegisterEndUser extends React.Component {
           // className="sharethis-inline-share-buttons"
           data-image={`${window.location.origin}/images${skin.skin_id}/icon-512x512.png`}
           data-title="Condividi il link del registro"
-          data-url={`${window.location.href}Token/${this.state.token.register_token}`}
+          data-url={`${window.location.href}t/${this.state.token.register_token}`}
         ></div> */}
       </Fragment>
     );
