@@ -1017,6 +1017,33 @@ html {
   }
 }
 @media (max-width: 1024px) {
+  body {
+    .shareRegister .options {
+      transform: translateY(-71px) translateX(99px);
+    }
+    .shareRegister {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  }
+
+  .newReg--row:nth-child(3) .newReg--row__col:nth-child(1),
+  .newReg--row:nth-child(3) .newReg--row__col:nth-child(2) {
+    width: 50% !important;
+  }
+  .newReg--row:nth-child(3) .newReg--row__col:nth-child(3) {
+    width: 100% !important;
+    padding: 10px;
+    button {
+      width: 100%;
+    }
+  }
+  .newReg--row:nth-child(3) {
+    flex-flow: row wrap;
+  }
+  .newReg--header {
+    margin-top: 20px;
+  }
   .userList {
     .header {
       span {

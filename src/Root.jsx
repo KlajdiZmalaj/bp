@@ -285,7 +285,7 @@ class Root extends React.Component {
               allowedRoles={["super_admin", "agency", "user"]}
             />
             <PrivateRoute
-              path="/registerUser"
+              path="/ru"
               component={DesktopView.RegisterEndUser}
               isLoggedin={isLoggedin}
               role={role}
@@ -293,7 +293,7 @@ class Root extends React.Component {
             />
             <PublicRoute
               exact
-              path="/registerUserToken/:token?/"
+              path="/rut/:token?/"
               component={DesktopView.RegisterEndUser}
               isLoggedin={isLoggedin}
               role={role}

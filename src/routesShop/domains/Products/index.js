@@ -46,14 +46,6 @@ class Products extends Component {
             <img
               onClick={(e) => {
                 e.preventDefault();
-                this.clickBannerHandler("Valentinovo");
-              }}
-              src={images.mainBanner}
-              alt=""
-            ></img>
-            <img
-              onClick={(e) => {
-                e.preventDefault();
                 this.clickBannerHandler("sportivi%20/%20in%20forma");
               }}
               src={images.mainBanner2}

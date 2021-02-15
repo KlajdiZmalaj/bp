@@ -299,7 +299,7 @@ class DashboardDom extends React.Component {
           <img
             src={images["baner_servizi_header2"]}
             onClick={() => {
-              window.location.hash = "products/Valentinovo";
+              window.location.hash = "products/comodità%20/%20essere%20comodi";
             }}
           />
         </div>

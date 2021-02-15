@@ -132,12 +132,11 @@ class ProdBycategory extends Component {
     let subcategories1 = filter(subcategories, function (o) {
       return o.name === isSelectedSC;
     });
-    let subcategories2 = filter(
-      head(subcategories1)?.subcategories,
-      function (o) {
-        return o.name === isSelectedSSC;
-      }
-    );
+    let subcategories2 = filter(head(subcategories1)?.subcategories, function (
+      o
+    ) {
+      return o.name === isSelectedSSC;
+    });
 
     if (subcategories1.length > 0) {
       brands = head(subcategories1)?.brands;
@@ -242,15 +241,33 @@ class ProdBycategory extends Component {
               </div>
 
               <div className="right">
-                <Dropdown
-                  overlay={menu}
-                  trigger={["click"]}
-                  className="itemFilter"
-                >
-                  <div className="price" onClick={(e) => e.preventDefault()}>
-                    Prezzo <i className="fas fa-caret-down"></i>
-                  </div>
-                </Dropdown>
+                {!this.props.isMobile ? (
+                  <Dropdown
+                    overlay={menu}
+                    trigger={["click"]}
+                    className="itemFilter"
+                  >
+                    <div
+                      className="price"
+                      //  onClick={(e) => e.preventDefault()}
+                    >
+                      Prezzo <i className="fas fa-caret-down"></i>
+                    </div>
+                  </Dropdown>
+                ) : // <div className="search">
+                //   <span>Prezzo</span>
+                //   <div className="dropdown">
+                //     <Slider
+                //       min={0}
+                //       max={20}
+                //       range={true}
+                //       marks={{ 0: "0€", 1: `${20}€` }}
+                //       disabled={false}
+                //       included={true}
+                //     />
+                //   </div>
+                // </div>
+                null}
 
                 <Dropdown
                   overlay={menuBrands}

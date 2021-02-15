@@ -189,10 +189,10 @@ class Header extends Component {
                   <div
                     className="register"
                     onClick={() => {
-                      this.props.history.push("/registerUser");
+                      this.props.history.push("/ru");
                     }}
                   >
-                    Register User
+                    Registra Nuovi Utenti
                   </div>
                 )}
                 {get(accountInfo, "profile.role.name") === "super_admin" && (

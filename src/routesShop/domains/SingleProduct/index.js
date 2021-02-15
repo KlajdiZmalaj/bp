@@ -33,12 +33,11 @@ class SingleProduct extends Component {
 
     let product = {};
 
-    product = find(
-      this.props.prodList && this.props.prodList.data,
-      function (o) {
-        return o.Product_id.toString() === idProduct.toString();
-      }
-    );
+    product = find(this.props.prodList && this.props.prodList.data, function (
+      o
+    ) {
+      return o.Product_id.toString() === idProduct.toString();
+    });
 
     this.props.getProductDetails(idProduct, suppProduct);
     this.setState({ product: product });
@@ -402,7 +401,8 @@ class SingleProduct extends Component {
 
                         {productCart === "" ? (
                           <button className="addTobag" htmltype="submit">
-                            Add to bag <i className="fal fa-shopping-bag"></i>
+                            Aggiungi al carrello{" "}
+                            <i className="fal fa-shopping-bag"></i>
                           </button>
                         ) : (
                           <div className="addTobag active">
@@ -418,7 +418,7 @@ class SingleProduct extends Component {
                           // window.location.hash = `product-checkout/${match.params.id}/${match.params.supp}`;
                         }}
                       >
-                        Buy now <i className="far fa-shopping-cart"></i>
+                        Acquista <i className="far fa-shopping-cart"></i>
                       </div>
                     </div>
                     <div className="availibillity">

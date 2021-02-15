@@ -365,7 +365,7 @@ class RegisterEndUser extends React.Component {
         <Header></Header>
 
         <Form className="newReg maxWidth" onSubmit={this.handleSubmit}>
-          <div className="newReg--header">Register User</div>
+          <div className="newReg--header">Registra Nuovi Utenti</div>
 
           <div className="newReg--row">
             <div className="newReg--row__col">
@@ -898,7 +898,7 @@ class RegisterEndUser extends React.Component {
                         className="fal fa-copy"
                         onClick={() => {
                           getCopy(
-                            `${window.location.href}Token/${this.state.token.register_token}`
+                            `${window.location.href}t/${this.state.token.register_token}`
                           );
                         }}
                       ></i>{" "}

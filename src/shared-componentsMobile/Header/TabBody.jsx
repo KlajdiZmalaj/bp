@@ -6,6 +6,40 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
   // console.log("services", services);
   return tab === 1 ? (
     <div className="tabBody body1">
+      {accountInfo?.profile?.role?.name === "super_admin" && (
+        <div
+          className="tabBody--item"
+          onClick={() => {
+            window.location.hash = "registerAgent";
+          }}
+        >
+          <i className="fal fa-user"></i>
+          Register Agent
+        </div>
+      )}
+      {(accountInfo?.profile?.role?.name === "agent" ||
+        accountInfo?.profile?.role?.name === "super_admin") && (
+        <div
+          className="tabBody--item"
+          onClick={() => {
+            window.location.hash = "registerAgency";
+          }}
+        >
+          <i className="fal fa-user"></i>
+          Registra Agenzia
+        </div>
+      )}
+      {accountInfo?.profile?.role?.name === "agency" && (
+        <div
+          className="tabBody--item"
+          onClick={() => {
+            window.location.hash = "ru";
+          }}
+        >
+          <i className="fal fa-user"></i>
+          Registra Nuovi Utenti
+        </div>
+      )}
       {accountInfo?.profile ? (
         <div className="tabBody--item">
           <i className="fal fa-user-circle" aria-hidden="true"></i>
@@ -17,10 +51,12 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           <span>{accountInfo?.profile?.wallet}€</span>
         </div>
       ) : (
-        <div className="tabBody--item">
-          <i className="fal fa-store"></i>
-          Servizi
-        </div>
+        <>
+          <div className="tabBody--item">
+            <i className="fal fa-store"></i>
+            Servizi
+          </div>
+        </>
       )}
 
       {azioni.map((tab) => {
