@@ -125,7 +125,7 @@ class Header extends Component {
                           <div
                             className={"ads" + (this.state.msg ? " viz" : "")}
                           >
-                            {privMsg.slice(0, 10).map((add) => {
+                            {privMsg.map((add) => {
                               return (
                                 <div
                                   key={add.id}
@@ -138,10 +138,21 @@ class Header extends Component {
                                       //   add.ticket_id
                                       // );
                                     }
+                                    if (add?.text?.includes("ID:")) {
+                                      window.location.hash = "account-info";
+
+                                      this.props.getUserByUserId(
+                                        add.text.match(
+                                          /(?<=ID: )(.*)(?=\n)/g
+                                        )?.[0]
+                                      );
+                                    }
                                   }}
                                   data-id={add.id}
                                 >
-                                  {add.title}
+                                  {add.title}{" "}
+                                  {add?.text?.includes("ID:") &&
+                                    add.text.match(/(?<=Username: )(.*)(?=)/g)}
                                 </div>
                               );
                             })}
