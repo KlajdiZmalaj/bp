@@ -10,7 +10,7 @@ import { numberWithCommas } from "utils/HelperFunc";
 import Chat from "shared-components/Chat/Chat";
 import { Header as HeaderMob } from "shared-componentsMobile";
 import ClickOut from "react-onclickout";
-
+//
 class Header extends Component {
   constructor(props) {
     super(props);
