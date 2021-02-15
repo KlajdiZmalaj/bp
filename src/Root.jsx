@@ -38,6 +38,14 @@ moment.updateLocale("it", {
 class Root extends React.Component {
   state = { top: false, isAdminPanel: false };
   componentDidMount() {
+    if (navigator?.serviceWorker) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+
     if (window.location.hash.includes("back-office")) {
       this.setState({ isAdminPanel: true });
     } else {
@@ -135,6 +143,7 @@ class Root extends React.Component {
   }
   componentDidUpdate(prevProps) {
     //login & logout
+    //
     if (
       this.props.accountInfo.token_id &&
       this.props.accountInfo.token_id !== prevProps.accountInfo.token_id
@@ -284,6 +293,7 @@ class Root extends React.Component {
               role={role}
               allowedRoles={["super_admin", "agency", "user"]}
             />
+
             <PrivateRoute
               path="/ru"
               component={DesktopView.RegisterEndUser}

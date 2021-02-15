@@ -46,6 +46,7 @@ try {
     baner_servizi_header2: require(`../assets/images/baner_servizi_header.png`),
     //Static home page images
     SER_POS: require(`../assets/images/servizi_postali.png`),
+    //
     RIC_CEL: require(`../assets/images/richariche_cellulari.png`),
     RIC_PVR: require(`../assets/images/richariche_pvr.png`),
     PRE_VOL: require(`../assets/images/prenotazione_biglietti_voli.png`),

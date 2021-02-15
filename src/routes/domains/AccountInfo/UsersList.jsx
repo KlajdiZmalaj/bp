@@ -253,7 +253,7 @@ class UsersList extends Component {
                   <span>Name</span>
                   <span>codice fiscale</span>
                   <span>creato da</span>
-                  <span>city</span>
+                  <span>Città</span>
                   <span>comune code</span>
                   <span className="seeMore">Documenti</span>
                 </div>
@@ -307,7 +307,7 @@ class UsersList extends Component {
               <span>Username</span>
               <span>Rag.Sociale</span>
               <span className="text-right">Credito</span>
-              <span className="text-left">City</span>
+              <span className="text-left">Città</span>
               <span>Ultimo Deposit</span>
               <span>Ultimo Login</span>
               <span>Azioni</span>
