@@ -533,7 +533,10 @@
   margin-bottom: 50px;
   background-color: #fff;
   max-width: 1135px;
-
+  .ant-select,
+  .ant-cascader-picker {
+    height: 35px;
+  }
   &--header {
     background-color: var(--accent-bg);
     color: #212529;
@@ -565,7 +568,7 @@
       padding: 20px 5px;
       display: flex;
       flex-flow: row wrap;
-      align-items: flex-end;
+      // align-items: flex-end;
       justify-content: flex-end;
       height: 100%;
       &:last-child {

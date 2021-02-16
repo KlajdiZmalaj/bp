@@ -1,4 +1,5 @@
 import { skin, endpoint, handleError } from "config/api";
+import { removeItalianChar } from "config";
 import { notification } from "antd";
 import { message } from "antd";
 import axios from "axios";

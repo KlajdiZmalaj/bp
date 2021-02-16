@@ -206,7 +206,7 @@ class RegisterEndUser extends React.Component {
     });
     let codFisInps = "";
     inpArr.forEach((inp) => {
-      codFisInps += inp.value || " ";
+      codFisInps += inp.value.toUpperCase() || " ";
     });
     this.setState({
       codFisInps,

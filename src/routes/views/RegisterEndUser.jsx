@@ -31,6 +31,7 @@ function getBase64(img, callback) {
   reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
 }
+const dateFormat = "DD/MM/YYYY";
 
 function beforeUpload(file) {
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
@@ -68,6 +69,7 @@ class RegisterEndUser extends React.Component {
     recieve_emails: false,
     token: "",
     loaded: false,
+    codFisInps: "",
   };
   setToken = (token) => {
     this.setState({ token });
@@ -152,7 +154,7 @@ class RegisterEndUser extends React.Component {
           values.nickname, // for username
           values.email,
           values.gender,
-          values.personal_number,
+          this.state.codFisInps,
           moment(values.birthday).format("YYYY-MM-DD"),
           this.state.nazione,
           this.state.province_of_birth,
@@ -208,8 +210,20 @@ class RegisterEndUser extends React.Component {
     }
   };
 
-  validateCodiceFiscale = (e) => {
-    const str = e.target.value;
+  validateCodiceFiscale = () => {
+    const inpArr = [...new Array(16)].map((inp, k) => {
+      return document.getElementById("inp" + k);
+    });
+    let codFisInps = "";
+    inpArr.forEach((inp) => {
+      codFisInps += inp.value.toUpperCase() || " ";
+    });
+    this.setState({
+      codFisInps,
+    });
+
+    const str = codFisInps.toUpperCase();
+    console.log("str", str);
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
     const sexKey = str.substring(9, 11);
 
@@ -247,12 +261,19 @@ class RegisterEndUser extends React.Component {
     }
 
     if (sexKey > 40) {
-      this.setState({ sesso: "F" });
+      // this.setState({ sesso: "F" });
+      this.props.form.setFieldsValue({
+        gender: "F",
+      });
     } else {
-      this.setState({ sesso: "M" });
+      // this.setState({ sesso: "M" });
+      this.props.form.setFieldsValue({
+        gender: "M",
+      });
     }
-
-    this.setState({ nascita: `${day}-${parseInt(month)}-${year}` });
+    this.props.form.setFieldsValue({
+      birthday: moment(`${day}-${parseInt(month)}-${year}`, dateFormat),
+    });
 
     countriesArray
       .filter(
@@ -260,7 +281,7 @@ class RegisterEndUser extends React.Component {
       )
       .map((comune) => {
         this.setState({
-          // comuniSelected: comune,
+          comuniSelected: comune,
           nazione: comune.nazione,
           province_of_birth: comune.sigla,
           city_of_birth: comune.provincia,
@@ -275,7 +296,7 @@ class RegisterEndUser extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
-    const { imageUrl, cardView, imageUrl2 } = this.state;
+    const { imageUrl, cardView, imageUrl2, codFisInps } = this.state;
 
     const uploadButton = (
       <div>
@@ -371,7 +392,6 @@ class RegisterEndUser extends React.Component {
           };
         });
     }
-    // const dateFormat = "DD/MM/YYYY";
     const number_prefix = getFieldDecorator("number_prefix", {
       initialValue: "0039",
     })(<Input style={{ width: 70 }}></Input>);
@@ -389,7 +409,95 @@ class RegisterEndUser extends React.Component {
                 <div className="inputLabel">
                   Codice Fiscale <span>*</span>
                 </div>
-                <Form.Item>
+
+                <div className={"inpssWrapper"}>
+                  {[...new Array(16)].map((input, key) => {
+                    return (
+                      <input
+                        key={key}
+                        maxLength="1"
+                        id={`inp${key}`}
+                        type="text"
+                        onKeyDown={(e) => {
+                          // console.log("keydown", e.keyCode || e.charCode);
+                          const previnp = document.getElementById(
+                            `inp${key - 1}`
+                          );
+                          const inp = document.getElementById(`inp${key}`);
+                          const nextinp = document.getElementById(
+                            `inp${key + 1}`
+                          );
+                          var keyy = e.keyCode || e.charCode;
+                          if (keyy !== 8 && keyy !== 9) {
+                            inp.value = String.fromCharCode(keyy);
+
+                            if (nextinp && !nextinp.value) {
+                              nextinp.focus();
+                            }
+                            if (previnp && !previnp.value) {
+                              inp.value = "";
+                              previnp.focus();
+                            } else {
+                              if (inp.value && inp.value.length > 0) {
+                                nextinp && nextinp.focus();
+                              }
+                            }
+                          }
+                          if (keyy === 8) {
+                            inp.value = "";
+                            if (previnp) {
+                              previnp.focus();
+                            }
+                          }
+                          this.validateCodiceFiscale();
+                        }}
+                        className={`inputCodice`}
+                        onPaste={() => {
+                          navigator.clipboard
+                            .readText()
+                            .then((codFisInps) => {
+                              this.setState({ codFisInps });
+                            })
+                            .catch((err) => {
+                              console.error(
+                                "Failed to read clipboard contents: ",
+                                err
+                              );
+                            });
+                        }}
+                        value={this.state.codFisInps.split("")[key]}
+                      />
+                    );
+                  })}
+                  <i
+                    onClick={() => {
+                      navigator.clipboard
+                        .readText()
+                        .then((codFisInps) => {
+                          this.setState({ codFisInps });
+                          this.validateCodiceFiscale();
+                        })
+                        .catch((err) => {
+                          console.error(
+                            "Failed to read clipboard contents: ",
+                            err
+                          );
+                        });
+                    }}
+                    className="fal fa-paste"
+                  ></i>
+                  {codFisInps.length > 0 &&
+                    codFisInps.length === 16 &&
+                    !codFisInps.includes(" ") && (
+                      <i className="fas fa-check-circle"></i>
+                    )}
+                  {((codFisInps.length > 0 && codFisInps.length < 16) ||
+                    codFisInps.includes(" ")) && (
+                    <i className="fas fa-times-circle"></i>
+                  )}
+                </div>
+
+                {/* <Form.Item>
                   {getFieldDecorator("personal_number", {
                     rules: [
                       {
@@ -404,7 +512,7 @@ class RegisterEndUser extends React.Component {
                       onInput={(e) => this.inputlength(e)}
                     />
                   )}
-                </Form.Item>
+                </Form.Item> */}
               </div>
               <div className="itemCol semi">
                 <Form.Item>
@@ -486,23 +594,32 @@ class RegisterEndUser extends React.Component {
                         message: "Inserire E-mail!",
                       },
                     ],
-                  })(<Input />)}
+                  })(
+                    <Input
+                      onMouseEnter={() => {
+                        document
+                          .getElementById("infoUser_email")
+                          .removeAttribute("readonly");
+                      }}
+                      readOnly
+                    />
+                  )}
                 </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Password<span>*</span>
-                  <Form.Item hasFeedback>
-                    {getFieldDecorator("password", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Inserire password!",
-                        },
-                      ],
-                    })(<Input.Password type="password" />)}
-                  </Form.Item>
                 </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("password", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire password!",
+                      },
+                    ],
+                  })(<Input.Password type="password" />)}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
@@ -784,61 +901,61 @@ class RegisterEndUser extends React.Component {
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Rilasciato da<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("rilasciato_da", {
-                      rules: [
-                        {
-                          required: true,
-                          whitespace: true,
-                        },
-                      ],
-                    })(
-                      <Select>
-                        <Option value="1">Comune</Option>
-                        <Option value="10">Motorizzazione</Option>
-                        <Option value="13">Questura</Option>
-                        <Option value="14">Polizia</Option>
-                        <Option value="16">Commissariato</Option>
-                        <Option value="19">Altro</Option>
-                      </Select>
-                    )}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("rilasciato_da", {
+                    rules: [
+                      {
+                        required: true,
+                        whitespace: true,
+                      },
+                    ],
+                  })(
+                    <Select>
+                      <Option value="1">Comune</Option>
+                      <Option value="10">Motorizzazione</Option>
+                      <Option value="13">Questura</Option>
+                      <Option value="14">Polizia</Option>
+                      <Option value="16">Commissariato</Option>
+                      <Option value="19">Altro</Option>
+                    </Select>
+                  )}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Luogo di rilascio<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("luogo_di_rilascio", {
-                      rules: [
-                        {
-                          required: true,
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("luogo_di_rilascio", {
+                    rules: [
+                      {
+                        required: true,
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Data di rilascio<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("data_di_rilascio", {
-                      rules: [{ required: true }],
-                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("data_di_rilascio", {
+                    rules: [{ required: true }],
+                  })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Data di scadenza<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("data_di_scadenza", {
-                      rules: [{ required: true }],
-                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("data_di_scadenza", {
+                    rules: [{ required: true }],
+                  })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                </Form.Item>
               </div>
 
               <div className="itemCol full">

@@ -22,6 +22,7 @@ function getBase64(img, callback) {
   reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
 }
+const dateFormat = "DD/MM/YYYY";
 
 class RegisterEndUser extends React.Component {
   state = {
@@ -184,13 +185,14 @@ class RegisterEndUser extends React.Component {
     });
     let codFisInps = "";
     inpArr.forEach((inp) => {
-      codFisInps += inp.value || " ";
+      codFisInps += inp.value.toUpperCase() || " ";
     });
     this.setState({
       codFisInps,
     });
 
     const str = codFisInps;
+    console.log("str", str);
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
     const sexKey = str.substring(9, 11);
 
@@ -239,8 +241,10 @@ class RegisterEndUser extends React.Component {
       });
     }
 
-    this.setState({ nascita: `${day}-${parseInt(month)}-${year}` });
-
+    //this.setState({ nascita: `${day}-${parseInt(month)}-${year}` });
+    this.props.form.setFieldsValue({
+      birthday: moment(`${day}-${parseInt(month)}-${year}`, dateFormat),
+    });
     countriesArray
       .filter(
         (comune) => comune.codeKey.toString() === fiscalCodeKey.toString()
@@ -339,7 +343,6 @@ class RegisterEndUser extends React.Component {
           };
         });
     }
-    const dateFormat = "DD/MM/YYYY";
     const number_prefix = getFieldDecorator("number_prefix", {
       initialValue: "+39",
     })(<Input style={{ width: 70 }}></Input>);
@@ -347,7 +350,7 @@ class RegisterEndUser extends React.Component {
       <Fragment>
         <Header></Header>
 
-        <Form className="newReg" onSubmit={this.handleSubmit}>
+        <Form className="newReg maxWidth" onSubmit={this.handleSubmit}>
           <div className="newReg--header">Registra Agente</div>
           <div className="newReg--row">
             <div className="newReg--row__col">
@@ -951,17 +954,17 @@ class RegisterEndUser extends React.Component {
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Password<span>*</span>
-                  <Form.Item hasFeedback>
-                    {getFieldDecorator("password", {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Inserire password!",
-                        },
-                      ],
-                    })(<Input.Password type="password" />)}
-                  </Form.Item>
                 </div>
+                <Form.Item hasFeedback>
+                  {getFieldDecorator("password", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Inserire password!",
+                      },
+                    ],
+                  })(<Input.Password type="password" />)}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
@@ -1050,73 +1053,73 @@ class RegisterEndUser extends React.Component {
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Rilasciato da<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("rilasciato_da", {
-                      rules: [
-                        {
-                          required: true,
-                          whitespace: true,
-                        },
-                      ],
-                    })(
-                      <Select>
-                        <Option value="1">Comune</Option>
-                        <Option value="10">Motorizzazione</Option>
-                        <Option value="13">Questura</Option>
-                        <Option value="14">Polizia</Option>
-                        <Option value="16">Commissariato</Option>
-                        <Option value="19">Altro</Option>
-                      </Select>
-                    )}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("rilasciato_da", {
+                    rules: [
+                      {
+                        required: true,
+                        whitespace: true,
+                      },
+                    ],
+                  })(
+                    <Select>
+                      <Option value="1">Comune</Option>
+                      <Option value="10">Motorizzazione</Option>
+                      <Option value="13">Questura</Option>
+                      <Option value="14">Polizia</Option>
+                      <Option value="16">Commissariato</Option>
+                      <Option value="19">Altro</Option>
+                    </Select>
+                  )}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Luogo di rilascio<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("luogo_di_rilascio", {
-                      rules: [
-                        {
-                          required: true,
-                          whitespace: true,
-                        },
-                      ],
-                    })(<Input />)}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("luogo_di_rilascio", {
+                    rules: [
+                      {
+                        required: true,
+                        whitespace: true,
+                      },
+                    ],
+                  })(<Input />)}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Data di rilascio<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("data_di_rilascio", {
-                      initialValue: moment(
-                        this.state.nascita,
-                        dateFormat
-                      ).isValid()
-                        ? moment(this.state.nascita, dateFormat)
-                        : null,
-                      rules: [{ required: true }],
-                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("data_di_rilascio", {
+                    initialValue: moment(
+                      this.state.nascita,
+                      dateFormat
+                    ).isValid()
+                      ? moment(this.state.nascita, dateFormat)
+                      : null,
+                    rules: [{ required: true }],
+                  })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                </Form.Item>
               </div>
               <div className="itemCol semi">
                 <div className="inputLabel">
                   Data di scadenza<span>*</span>
-                  <Form.Item>
-                    {getFieldDecorator("data_di_scadenza", {
-                      initialValue: moment(
-                        this.state.nascita,
-                        dateFormat
-                      ).isValid()
-                        ? moment(this.state.nascita, dateFormat)
-                        : null,
-                      rules: [{ required: true }],
-                    })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
-                  </Form.Item>
                 </div>
+                <Form.Item>
+                  {getFieldDecorator("data_di_scadenza", {
+                    initialValue: moment(
+                      this.state.nascita,
+                      dateFormat
+                    ).isValid()
+                      ? moment(this.state.nascita, dateFormat)
+                      : null,
+                    rules: [{ required: true }],
+                  })(<DatePicker format={("DD/MM/YYYY", "DD/MM/YYYY")} />)}
+                </Form.Item>
               </div>
 
               <div className="itemCol full">

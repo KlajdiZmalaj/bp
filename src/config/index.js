@@ -435,3 +435,36 @@ const day = new Date().getDate();
 export const isWinter =
   (month === 11 && day.toString().match(/^(24|25|26|27|28|29|30|31)$/g)) ||
   (month === 0 && day.toString().match(/^(1|2|3|4|5)$/g));
+
+const italianChars = {
+  À: "A",
+  Á: "A",
+  È: "E",
+  Ì: "I",
+  Í: "I",
+  Î: "I",
+  Ò: "O",
+  Ó: "O",
+  Ù: "U",
+  Ú: "U",
+  à: "a",
+  á: "a",
+  è: "e",
+  é: "e",
+  ì: "i",
+  í: "i",
+  î: "i",
+  ò: "o",
+  ó: "o",
+  ù: "u",
+  ú: "u",
+};
+export const removeItalianChar = (word) => {
+  let newTXT = word;
+  Object.keys(italianChars).forEach((key) => {
+    if (word.includes(key)) {
+      newTXT = newTXT.replace(key, italianChars[key]);
+    }
+  });
+  return newTXT;
+};
