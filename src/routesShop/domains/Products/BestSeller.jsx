@@ -51,6 +51,7 @@ class BestSeller extends Component {
       tags,
       catParam,
       tagParam,
+      isMobile,
     } = this.props;
 
     const { page_number } = this.state;
@@ -59,6 +60,23 @@ class BestSeller extends Component {
 
     return (
       <div className="bestSeller paddingBottom">
+        {isMobile && tags && (
+          <div className="shopTags mob">
+            {Object.keys(tags).map((tagKey) => {
+              return (
+                <span
+                  key={tagKey}
+                  className={tagParam === tags[tagKey] ? "active" : ""}
+                  onClick={() => {
+                    window.location.hash = `product-filtered/${catParam}/${tags[tagKey]}`;
+                  }}
+                >
+                  {tags[tagKey]}
+                </span>
+              );
+            })}
+          </div>
+        )}
         <div className="filtersCateg">
           <div className="title">{title}</div>
 
@@ -127,7 +145,8 @@ class BestSeller extends Component {
           />
         </div>
         <div className="shopTags">
-          {tags &&
+          {!isMobile &&
+            tags &&
             Object.keys(tags).map((tagKey) => {
               return (
                 <span
