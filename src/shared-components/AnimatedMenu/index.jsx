@@ -61,7 +61,6 @@ export class AnimatedMenu extends Component {
     }`;
   };
   render() {
-    console.log("rerendermenu");
     return (
       <div className="animatedMenu">
         <div
