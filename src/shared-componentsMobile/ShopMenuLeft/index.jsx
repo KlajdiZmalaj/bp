@@ -46,11 +46,11 @@ const Menu = ({
     shopLeftMenuMob && (
       <div className="shopMenuLeft animated slideInLeft">
         <div className="shopMenuLeft--categories">
-          {Object.keys(categories).map((catKey) => {
+          {Object.keys(categories).map((catKey, ind) => {
             return (
               <>
                 <div
-                  key={catKey}
+                  key={catKey + ind}
                   className={
                     "shopMenuLeft--categories__item" +
                     (activeCat === catKey ? " active" : "")
@@ -89,7 +89,7 @@ const Menu = ({
                   ></i>
                 </div>
                 {activeCat === catKey && (
-                  <div className="childrensCat ">
+                  <div className="childrensCat " key={catKey}>
                     {Object.keys(categories?.[catKey]?.subcategories || [])
                       .length > 0 ? (
                       Object.keys(
