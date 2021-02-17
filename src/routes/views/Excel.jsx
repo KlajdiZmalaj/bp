@@ -60,7 +60,7 @@ class Excel extends React.Component {
                   price1000: numberWithCommas(pay.price1000 / 1000) + `  €`,
                   commissione: pay.commissione + `  €`,
                   percentage: pay.percentage + `  €`,
-                  saldo: pay.saldo + `  €`,
+                  saldo: pay.saldo,
                 };
               })),
           ]

@@ -7,6 +7,7 @@ import {
 } from "shared-componentsMobile";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
+import { AnimatedMenu } from "shared-components";
 
 import Product from "routesShop/domains/SingleProduct/index.js";
 
@@ -19,7 +20,7 @@ class SingleProduct extends React.Component {
   render() {
     return (
       <div className="shopMobile">
-        <ShopBottomMenu active="" />
+        <AnimatedMenu activeM={5} />
         <ShopMenuLeft />
 
         <Product className="openedProduct"></Product>

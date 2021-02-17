@@ -20,8 +20,8 @@ class Shop extends React.Component {
   render() {
     return (
       <div className="shopMobile">
-        {/* <AnimatedMenu /> */}
-        <ShopBottomMenu active="" />
+        <AnimatedMenu activeM={5} />
+        {/* <ShopBottomMenu active="" /> */}
         <ShopMenuLeft />
         <AllProducts
           isMobile={true}
