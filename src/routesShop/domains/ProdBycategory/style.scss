@@ -287,6 +287,7 @@
             font-size: 16px;
             line-height: normal;
             height: 100%;
+            width: 100%;
             &.ant-select-open {
               .ant-select-selection--single .ant-select-arrow::after {
                 content: "\f0d8";
@@ -302,6 +303,7 @@
               .ant-select-selection__rendered {
                 margin-right: 0px;
                 width: 200px;
+                margin-left: 5px;
                 .ant-select-selection__placeholder,
                 .ant-select-search__field__placeholder {
                   color: inherit;
@@ -311,6 +313,7 @@
               .ant-select-arrow {
                 font-family: "Font Awesome 5 Pro";
                 font-weight: 900;
+                right: 5px;
                 i {
                   display: none;
                 }

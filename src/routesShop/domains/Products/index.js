@@ -31,36 +31,38 @@ class Products extends Component {
 
     return (
       <div className="shopProd">
-        <div className="mainBanner marginBottom">
-          <Slider
-            {...{
-              dots: true,
-              speed: 500,
-              infinite: true,
-              autoplay: true,
-              slidesToScroll: 1,
-              draggable: false,
-            }}
-            className="catgItems__items maxWidth"
-          >
-            <img
-              onClick={(e) => {
-                e.preventDefault();
-                this.clickBannerHandler("sportivi%20/%20in%20forma");
+        {!isMobile && (
+          <div className="mainBanner marginBottom">
+            <Slider
+              {...{
+                dots: true,
+                speed: 500,
+                infinite: true,
+                autoplay: true,
+                slidesToScroll: 1,
+                draggable: false,
               }}
-              src={images.mainBanner2}
-              alt=""
-            ></img>
-            <img
-              onClick={(e) => {
-                e.preventDefault();
-                this.clickBannerHandler("comodità%20/%20essere%20comodi");
-              }}
-              src={images.mainBanner3}
-              alt=""
-            ></img>
-          </Slider>
-        </div>
+              className="catgItems__items maxWidth"
+            >
+              <img
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.clickBannerHandler("sportivi%20/%20in%20forma");
+                }}
+                src={images.mainBanner2}
+                alt=""
+              ></img>
+              <img
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.clickBannerHandler("comodità%20/%20essere%20comodi");
+                }}
+                src={images.mainBanner3}
+                alt=""
+              ></img>
+            </Slider>
+          </div>
+        )}
 
         <div className="title maxWidth">categorie</div>
         <div className="banners maxWidth">
@@ -104,20 +106,23 @@ class Products extends Component {
               );
             })}
         </div>
-        <div className="shopTags maxWidth">
-          {Object.keys(shopTags).map((tagKey) => (
-            <span
-              key={tagKey}
-              className={tagSelected === tagKey ? "active" : ""}
-              onClick={() => {
-                window.location.hash = `products/${shopTags[tagKey]}`;
-                this.setState({ tagSelected: tagKey });
-              }}
-            >
-              {shopTags[tagKey]}
-            </span>
-          ))}
-        </div>
+        {!isMobile && (
+          <div className="shopTags maxWidth">
+            {Object.keys(shopTags).map((tagKey) => (
+              <span
+                key={tagKey}
+                className={tagSelected === tagKey ? "active" : ""}
+                onClick={() => {
+                  window.location.hash = `products/${shopTags[tagKey]}`;
+                  this.setState({ tagSelected: tagKey });
+                }}
+              >
+                {shopTags[tagKey]}
+              </span>
+            ))}
+          </div>
+        )}
+
         {/* <ShopList brands={brands}></ShopList> */}
         <div className="maxWidth">
           <div className="bestSeller paddingBottom">
