@@ -30,6 +30,7 @@ const { Types, Creators } = createActions({
   setOrderVal: ["orderVal"],
   setSliderVal: ["sliderVal"],
   checkOut: ["formData", "resetFields"],
+  setOrderDetails: ["orderD"],
 
   getToCart: ["prd_supp", "Product_id", "list", "quantity", "from"],
   setToCart: ["productCart"],
@@ -88,6 +89,7 @@ const INITIAL_STATE = {
   areOpenProducts: false,
   shopLeftMenuMob: false,
   hasLoader: false,
+  orderD: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -179,5 +181,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   SHOW_LOADER: (state, { hasLoader }) => ({
     ...state,
     hasLoader,
+  }),
+  SET_ORDER_DETAILS: (state, { orderD }) => ({
+    ...state,
+    orderD,
   }),
 });

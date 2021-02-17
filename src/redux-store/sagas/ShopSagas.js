@@ -16,8 +16,6 @@ export function* getProductsByTag({ tag }) {
   }
 }
 export function* checkOut({ formData, resetFields }) {
-  // yield setTimeout(() => {}, 1000);
-  //console.log("formData", formData, resetFields);
   yield put(ShopActions.showLoader(true));
   const response = yield call(
     ShopRequest.fetchOrder,
@@ -37,10 +35,11 @@ export function* checkOut({ formData, resetFields }) {
     yield put(ShopActions.showLoader(false));
   }
   if (response.data) {
-    // yield put(ShopActions.setProductsList(response.data));
-    notification["success"]({
-      message: response?.data?.message,
-    });
+    // notification["success"]({
+    //   message: response?.data?.message,
+    // });
+    yield put(ShopActions.setOrderDetails(response?.data));
+
     yield call(getItemsCart, true);
     resetFields();
   }
