@@ -14,7 +14,7 @@ const Menu = ({
   isSelectedSubCategory,
   isSelectedSubSubCategory,
 }) => {
-  console.log("categories", shopLeftMenuMob, categories);
+  //console.log("categories", shopLeftMenuMob, categories);
   const [activeCat, setCat] = useState("");
   const [activeSubCat, setSubCat] = useState("");
 
@@ -57,7 +57,7 @@ const Menu = ({
                   }
                 >
                   <i
-                    class={
+                    className={
                       "fal" + ` ${categories?.[catKey].name.toLowerCase()}`
                     }
                     aria-hidden="true"
@@ -79,7 +79,7 @@ const Menu = ({
                     {categories?.[catKey].name}
                   </span>
                   <i
-                    class={`fal fa-chevron-${
+                    className={`fal fa-chevron-${
                       activeCat === catKey ? "up" : "down"
                     }`}
                     aria-hidden="true"
@@ -123,7 +123,7 @@ const Menu = ({
                                 }
                               </span>
                               <i
-                                class={`fal fa-chevron-${
+                                className={`fal fa-chevron-${
                                   activeSubCat === subKey ? "up" : "down"
                                 }`}
                                 aria-hidden="true"
