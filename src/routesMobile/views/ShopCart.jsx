@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 
 import ShopCartDom from "routesShop/domains/ShopCartDom";
 import DomTitle from "routesShop/domains/DomTitle";
+
+import { AnimatedMenu } from "shared-components";
 class ShopCart extends React.Component {
   componentDidMount() {
     this.props.getCategories();
@@ -18,7 +20,7 @@ class ShopCart extends React.Component {
   render() {
     return (
       <div className="shopMobile">
-        <ShopBottomMenu active="cart" />
+        <AnimatedMenu activeM={3} />
         <ShopMenuLeft />
 
         <DomTitle

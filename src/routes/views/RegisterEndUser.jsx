@@ -74,6 +74,24 @@ class RegisterEndUser extends React.Component {
   setToken = (token) => {
     this.setState({ token });
   };
+  renderScript = () => {
+    if (!document.querySelector("#sharescript")) {
+      let _ = this;
+      var script = document.createElement("script");
+      script.onload = function () {
+        console.log("loaded");
+        // _.setState({ loaded: true });
+      };
+      script.id = "sharescript";
+      script.async = true;
+      script.src =
+        "https://platform-api.sharethis.com/js/sharethis.js#property=6026b8281f03dd0011f25adb&product=inline-share-buttons";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    }
+  };
+  componentWillMount() {
+    this.renderScript();
+  }
   componentDidMount() {
     if (this.props.match.params.token) {
       this.setState({ token: this.props.match.params.token });
@@ -83,21 +101,6 @@ class RegisterEndUser extends React.Component {
         this.setToken
       );
     }
-
-    //   <script
-    //   type="text/javascript"
-    //   src="https://platform-api.sharethis.com/js/sharethis.js#property=6026b8281f03dd0011f25adb&product=inline-share-buttons"
-    //   async="async"
-    // ></script>
-    let _ = this;
-    var script = document.createElement("script");
-    script.onload = function () {
-      _.setState({ loaded: true });
-    };
-    script.async = "async";
-    script.src =
-      "https://platform-api.sharethis.com/js/sharethis.js#property=6026b8281f03dd0011f25adb&product=inline-share-buttons";
-    document.getElementsByTagName("head")[0].appendChild(script);
   }
 
   handleChangeBack = (info) => {
@@ -297,7 +300,6 @@ class RegisterEndUser extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { register } = this.props;
     const { imageUrl, cardView, imageUrl2, codFisInps } = this.state;
-
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
-import { ShopBottomMenu, ShopMenuLeft, Header } from "shared-componentsMobile";
+import { ShopMenuLeft, Header } from "shared-componentsMobile";
 import CheckOutDom from "routesShop/domains/CheckOutDom";
 import DomTitle from "routesShop/domains/DomTitle";
-
+import { AnimatedMenu } from "shared-components";
 const CheckOut = ({ getCategories, categories, getItemsCart, itemsCart }) => {
   useEffect(() => {
     getItemsCart(true);
@@ -12,7 +12,7 @@ const CheckOut = ({ getCategories, categories, getItemsCart, itemsCart }) => {
   }, [getCategories, getItemsCart]);
   return (
     <div className="shopMobile">
-      <ShopBottomMenu active="" />
+      <AnimatedMenu activeM={3} />
       <ShopMenuLeft />
       <DomTitle
         title={"Checkout"}

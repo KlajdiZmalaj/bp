@@ -7,6 +7,7 @@ import {
 } from "shared-componentsMobile";
 import ShopActions from "redux-store/models/shop";
 import { connect } from "react-redux";
+import { AnimatedMenu } from "shared-components";
 
 import ShopFavDom from "routesShop/domains/ShopFavDom";
 import DomTitle from "routesShop/domains/DomTitle";
@@ -19,7 +20,7 @@ class ShopFav extends React.Component {
   render() {
     return (
       <div className="shopMobile">
-        <ShopBottomMenu active="heart" />
+        <AnimatedMenu activeM={2} />
         <ShopMenuLeft />
 
         <DomTitle
