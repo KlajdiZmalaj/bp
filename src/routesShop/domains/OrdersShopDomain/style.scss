@@ -1,0 +1,115 @@
+//testing
+.ordersShop {
+  .userList {
+    padding-bottom: 0;
+  }
+  .ordersDiv {
+    border: 1px solid #c2cad1;
+    border-top: none;
+    width: 50%;
+    display: inline-block;
+    float: left;
+  }
+  &__row {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    border-top: 1px solid #c2cad1;
+    font-size: 14px;
+    background-color: #fff;
+    > div {
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+    .oid {
+      padding-left: 15px;
+
+      span {
+        color: var(--accent-bg);
+        font-weight: 700;
+      }
+    }
+    .odata {
+      padding-right: 15px;
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+    .osubTot {
+      padding-right: 15px;
+      padding-left: 15px;
+      border-left: 1px solid #c2cad1;
+      border-right: 1px solid #c2cad1;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      span {
+        color: var(--accent-bg);
+        font-weight: 700;
+      }
+    }
+    .showD {
+      padding-right: 15px;
+      padding-left: 15px;
+      opacity: 0.3;
+      font-size: 22px;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      width: 50px;
+      justify-content: center;
+      &.active {
+        border-right: 3px solid var(--accent-bg);
+        opacity: 1;
+      }
+    }
+  }
+  .orderDetails {
+    width: 50%;
+    display: inline-block;
+    padding-left: 15px;
+    .title {
+      text-transform: uppercase;
+      font-size: 14px;
+      p {
+        color: var(--accent-bg);
+        font-weight: 700;
+        line-height: 12px;
+      }
+    }
+    &__row {
+      height: 120px;
+      display: flex;
+      background-color: #fff;
+      margin-bottom: 1px;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        height: 100%;
+        width: auto;
+        padding: 5px 15px;
+      }
+      .odDetails {
+        flex: 1 1;
+        .name {
+          font-size: 15px;
+        }
+        .price {
+          font-size: 24px;
+          color: var(--accent-bg);
+          width: 30px;
+        }
+      }
+      .odCount {
+        padding: 0 15px;
+        border-left: 1px solid #ebeced;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

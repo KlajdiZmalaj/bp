@@ -206,3 +206,18 @@ export function* getProdCat(params) {
     yield put(ShopActions.setProdCat(response.data));
   }
 }
+
+export function* getOrders() {
+  console.log("test");
+  const response = yield call(ShopRequest.fetchOrders);
+  if (response.data) {
+    yield put(ShopActions.setOrders(response.data.data));
+  }
+}
+
+export function* getOrderData(params) {
+  const response = yield call(ShopRequest.fetchOrderData, params.order_id);
+  if (response.data) {
+    yield put(ShopActions.setOrderData(response.data.data));
+  }
+}

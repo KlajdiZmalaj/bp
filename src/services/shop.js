@@ -186,3 +186,22 @@ export const fetchProdCat = (category, subCategory) =>
       },
     })
     .catch((error) => ({ error }));
+
+export const fetchOrders = () =>
+  instanceAxios
+    .get(`/shop/orders`, {
+      params: {
+        ...skin,
+      },
+    })
+    .catch((error) => ({ error }));
+
+export const fetchOrderData = (order_id) =>
+  instanceAxios
+    .get(`/shop/orderData`, {
+      params: {
+        ...skin,
+        ...(order_id ? { order_id: order_id } : {}),
+      },
+    })
+    .catch((error) => ({ error }));
