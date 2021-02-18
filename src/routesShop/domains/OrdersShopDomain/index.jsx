@@ -19,14 +19,13 @@ const OrdersShopDomain = ({
 }) => {
   useEffect(() => {
     getOrders();
-    console.log("t");
   }, [accountInfo]);
 
   const [isOpened, openDetails] = useState(null);
   const openDetail = (id) => {
     getOrderData(id);
   };
-  console.log("isOpened", isOpened);
+
   return (
     <div className="accountInfo ordersShop">
       <div className="contentAcc maxWidth">
