@@ -14,7 +14,7 @@ const Menu = ({
   isSelectedSubCategory,
   isSelectedSubSubCategory,
 }) => {
-  console.log("categories", shopLeftMenuMob, categories);
+  //console.log("categories", shopLeftMenuMob, categories);
   const [activeCat, setCat] = useState("");
   const [activeSubCat, setSubCat] = useState("");
 
@@ -46,18 +46,18 @@ const Menu = ({
     shopLeftMenuMob && (
       <div className="shopMenuLeft animated slideInLeft">
         <div className="shopMenuLeft--categories">
-          {Object.keys(categories).map((catKey) => {
+          {Object.keys(categories).map((catKey, ind) => {
             return (
               <>
                 <div
-                  key={catKey}
+                  key={catKey + ind}
                   className={
                     "shopMenuLeft--categories__item" +
                     (activeCat === catKey ? " active" : "")
                   }
                 >
                   <i
-                    class={
+                    className={
                       "fal" + ` ${categories?.[catKey].name.toLowerCase()}`
                     }
                     aria-hidden="true"
@@ -79,7 +79,7 @@ const Menu = ({
                     {categories?.[catKey].name}
                   </span>
                   <i
-                    class={`fal fa-chevron-${
+                    className={`fal fa-chevron-${
                       activeCat === catKey ? "up" : "down"
                     }`}
                     aria-hidden="true"
@@ -89,7 +89,7 @@ const Menu = ({
                   ></i>
                 </div>
                 {activeCat === catKey && (
-                  <div className="childrensCat ">
+                  <div className="childrensCat " key={catKey}>
                     {Object.keys(categories?.[catKey]?.subcategories || [])
                       .length > 0 ? (
                       Object.keys(
@@ -123,7 +123,7 @@ const Menu = ({
                                 }
                               </span>
                               <i
-                                class={`fal fa-chevron-${
+                                className={`fal fa-chevron-${
                                   activeSubCat === subKey ? "up" : "down"
                                 }`}
                                 aria-hidden="true"

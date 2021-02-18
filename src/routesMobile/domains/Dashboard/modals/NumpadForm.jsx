@@ -116,7 +116,7 @@ const Numpad = ({
     }
   }, [services, activeService, activeCategory, setCost, selectedCost]);
   useEffect(() => {
-    console.log("changed rece", rechargeMobile.receipt);
+    //console.log("changed rece", rechargeMobile.receipt);
     if (rechargeMobile.receipt) {
       setTransactionModal(true);
     } else {
