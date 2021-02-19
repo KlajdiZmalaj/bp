@@ -147,6 +147,10 @@
           flex-direction: column;
           border: 2px solid #ebeced;
           cursor: pointer;
+          &[data-disable="disable"] {
+            pointer-events: none;
+            background-color: #ccc;
+          }
           &:first-child {
             border-bottom: 2px solid #00b850;
           }

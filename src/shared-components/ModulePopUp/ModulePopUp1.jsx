@@ -5,16 +5,23 @@ import PrintTicket from "./PrintTicket";
 import PrintTicketSerap from "./PrintTicketSerap";
 import F24 from "./F24";
 import Bolletino from "./Bolletino";
-import NewBolletino from "./NewBolletini";
+//import NewBolletino from "./NewBolletini";
 
 class ModulePopUp1 extends React.Component {
+  state = {
+    helper: false,
+  };
   componentDidMount() {
     document.body.style.overflow = "hidden";
+    if (this.props.service.service_id === "BOL001") {
+      this.setState({ helper: true });
+    }
   }
   componentWillUnmount() {
     document.body.style.removeProperty("overflow");
   }
   render() {
+    const { helper } = this.state;
     const { bolletiniBianchi, service, accountInfo } = this.props;
     const isTestAcc =
       accountInfo?.profile?.username === "mynewagency" &&
@@ -46,19 +53,26 @@ class ModulePopUp1 extends React.Component {
           }}
         >
           <div className="row">
-            {service.service_id === "PAGF24" ? (
-              <F24 service_id={service.service_id} />
-            ) : isSepaUser || isTestAcc ? (
-              <Bolletino
-                service={service}
-                service_id={service.service_id}
-              ></Bolletino>
-            ) : (
-              <NewBolletino
-                service={service}
-                service_id={service.service_id}
-              ></NewBolletino>
-            )}
+            {
+              service.service_id === "PAGF24" ? (
+                <F24 service_id={service.service_id} />
+              ) : (
+                // isSepaUser || isTestAcc ?
+                <Bolletino
+                  isTestAcc={isSepaUser || isTestAcc}
+                  service={service}
+                  service_id={service.service_id}
+                  helper={helper}
+                ></Bolletino>
+              )
+              //  : (
+
+              //   <NewBolletino
+              //     service={service}
+              //     service_id={service.service_id}
+              //   ></NewBolletino>
+              // )
+            }
             {bolletiniBianchi &&
               JSON.stringify(bolletiniBianchi) !== JSON.stringify({}) && (
                 <Fragment>
