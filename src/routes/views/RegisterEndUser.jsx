@@ -226,7 +226,7 @@ class RegisterEndUser extends React.Component {
     });
 
     const str = codFisInps.toUpperCase();
-    console.log("str", str);
+
     const fiscalCodeKey = str.substring(str.length - 5, str.length - 1);
     const sexKey = str.substring(9, 11);
 
@@ -325,7 +325,11 @@ class RegisterEndUser extends React.Component {
     if (allNazione && allNazione.length > 0) {
       for (let i = 0; i < allNazione.length; i++) {
         nazioneList.push(
-          <Option key={allNazione[i].nazione} value={allNazione[i].nazione}>
+          <Option
+            key={allNazione[i].nazione}
+            value={allNazione[i].nazione}
+            onClick={() => this.setState({ nazione: allNazione[i].nazione })}
+          >
             {allNazione[i].nazione}
           </Option>
         );
@@ -345,6 +349,7 @@ class RegisterEndUser extends React.Component {
     }
 
     let province_of_birthOptions = [];
+
     if (countriesArray) {
       province_of_birthOptions = countriesArray
         .filter((items) => items.nazione === nazione.toUpperCase())

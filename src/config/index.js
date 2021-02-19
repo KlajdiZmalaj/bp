@@ -149,6 +149,12 @@ export const newAzioniSubmenu = {
       link: "fatture",
       displayRole: ["super_admin", "agency", "agent"],
     },
+    {
+      id: 6,
+      name: "Ordine shop",
+      link: "orders-shop",
+      displayRole: ["super_admin", "agency", "agent"],
+    },
   ],
 };
 export const newAzioni = [

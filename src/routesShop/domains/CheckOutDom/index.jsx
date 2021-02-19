@@ -6,7 +6,7 @@ import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-import { Radio, Form } from "antd";
+import { Radio, Form, Modal, Button } from "antd";
 
 import images from "themes/images";
 
@@ -63,6 +63,8 @@ const CheckOutDom = ({
   carriers,
   form,
   hasLoader,
+  orderD,
+  setOrderDetails,
 }) => {
   useEffect(() => {
     setData({
@@ -129,6 +131,23 @@ const CheckOutDom = ({
     itemsCart &&
     Object.keys(itemsCart).length > 0 && (
       <div className="shopCheckout maxWidth">
+        <Modal
+          title={null}
+          visible={Object.keys(orderD).length > 0}
+          onCancel={() => setOrderDetails({})}
+          footer={null}
+        >
+          <div className="orderD">
+            <div className="orderD__header">
+              <div>
+                <label>Order id:</label>
+                <b>{orderD?.order_id}</b>
+                <p>{orderD?.message}</p>
+              </div>
+            </div>
+          </div>
+        </Modal>
+
         {hasLoader && <Loader></Loader>}
         <div className="shopCheckout--form">
           <div className="shopCheckout--form__left">
@@ -631,6 +650,7 @@ const mstp = (state) => ({
   carriers: state.shop.carries,
   accountInfo: state.auth.accountInfo,
   hasLoader: state.shop.hasLoader,
+  orderD: state.shop.orderD,
 });
 
 export default withRouter(

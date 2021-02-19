@@ -30,6 +30,7 @@ const { Types, Creators } = createActions({
   setOrderVal: ["orderVal"],
   setSliderVal: ["sliderVal"],
   checkOut: ["formData", "resetFields"],
+  setOrderDetails: ["orderD"],
 
   getToCart: ["prd_supp", "Product_id", "list", "quantity", "from"],
   setToCart: ["productCart"],
@@ -61,6 +62,10 @@ const { Types, Creators } = createActions({
   openProducts: ["areOpenProducts"],
   setShopLeftMenuMob: ["shopLeftMenuMob"],
   showLoader: ["hasLoader"],
+  getOrders: [],
+  setOrders: ["ordersShop"],
+  getOrderData: ["order_id"],
+  setOrderData: ["orderData"],
 });
 
 export const ShopTypes = Types;
@@ -88,6 +93,9 @@ const INITIAL_STATE = {
   areOpenProducts: false,
   shopLeftMenuMob: false,
   hasLoader: false,
+  orderD: {},
+  ordersShop: [],
+  orderData: {},
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -179,5 +187,18 @@ export const reducer = createReducer(INITIAL_STATE, {
   SHOW_LOADER: (state, { hasLoader }) => ({
     ...state,
     hasLoader,
+  }),
+  SET_ORDER_DETAILS: (state, { orderD }) => ({
+    ...state,
+    orderD,
+  }),
+
+  SET_ORDERS: (state, { ordersShop }) => ({
+    ...state,
+    ordersShop,
+  }),
+  SET_ORDER_DATA: (state, { orderData }) => ({
+    ...state,
+    orderData,
   }),
 });

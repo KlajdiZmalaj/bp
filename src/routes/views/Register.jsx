@@ -168,6 +168,7 @@ class Register extends React.Component {
     }
 
     let province_of_birthOptions = [];
+
     if (countriesArray) {
       province_of_birthOptions = countriesArray
         .filter((items) => items.nazione === nazione.toUpperCase())
