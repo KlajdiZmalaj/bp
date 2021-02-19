@@ -83,7 +83,7 @@ const OrdersShopAdminDomain = ({
                             openDetails(true);
                           }}
                         >
-                          <span className="detail">Detagli</span>
+                          <span className="detail">Dettagli</span>
                         </td>
                       </tr>
                     );
