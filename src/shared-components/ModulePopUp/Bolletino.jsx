@@ -120,64 +120,111 @@ class Bolletino extends React.Component {
           );
         } else {
           if (this.props.service_id === "BOL001") {
-            this.props.fetchBolletini(
-              service_id,
-              values.person_type.toString(),
-              values.via_piazza,
-              values.cap,
-              values.citta,
-              values.provincia,
-              values.importo.toString(),
-              values.tipologia,
-              values.numero_conto_corrente,
-              values.causale,
-              values.nome,
-              values.cognome,
-              values.codice_fiscale,
-              values.denominazione,
-              values.partita_iva,
-              values.email,
-              values.phone_number,
-              null,
-              this.clearFields
-            );
+            if (this.props.isTestAcc) {
+              this.props.fetchBolletini(
+                service_id,
+                values.person_type.toString(),
+                values.via_piazza,
+                values.cap,
+                values.citta,
+                values.provincia,
+                values.importo.toString(),
+                values.tipologia,
+                values.numero_conto_corrente,
+                values.causale,
+                values.nome,
+                values.cognome,
+                values.codice_fiscale,
+                values.denominazione,
+                values.partita_iva,
+                values.email,
+                values.phone_number,
+                null,
+                this.clearFields
+              );
+            } else {
+              this.props.setBolletiniLoading(true);
+              this.props.getBolletiniBianchi(
+                service_id,
+                values.numero_conto_corrente.toString(),
+                values.importo,
+                values.intestato_a,
+                values.causale,
+                values.eseguito_da?.replace(/\//g, "-"),
+                values.via_piazza,
+                values.cap,
+                values.citta,
+                values.provincia,
+                this.clearFields,
+                this.props.setBolletiniLoading
+              );
+            }
           }
           if (this.props.service_id === "BOL002") {
-            this.props.fetchBolletini(
-              service_id,
-              values.person_type.toString(),
-              values.via_piazza,
-              values.cap,
-              values.citta,
-              values.provincia,
-              values.importo.toString(),
-              values.tipologia,
-              values.numero_conto_corrente,
-              values.causale,
-              values.nome,
-              values.cognome,
-              values.codice_fiscale,
-              values.denominazione,
-              values.partita_iva,
-              values.email,
-              values.phone_number,
-              values.codice_identificativo,
-              this.clearFields
-            );
+            if (this.props.isTestAcc) {
+              this.props.fetchBolletini(
+                service_id,
+                values.person_type.toString(),
+                values.via_piazza,
+                values.cap,
+                values.citta,
+                values.provincia,
+                values.importo.toString(),
+                values.tipologia,
+                values.numero_conto_corrente,
+                values.causale,
+                values.nome,
+                values.cognome,
+                values.codice_fiscale,
+                values.denominazione,
+                values.partita_iva,
+                values.email,
+                values.phone_number,
+                values.codice_identificativo,
+                this.clearFields
+              );
+            } else {
+              this.props.setBolletiniLoading(true);
+              this.props.getBolletiniPremercati(
+                service_id,
+                values.numero_conto_corrente.toString(),
+                values.importo,
+                values.codice_identificativo.toString(),
+                parseInt(values.tipologia),
+                values.eseguito_da?.replace(/\//g, "-"),
+                values.via_piazza,
+                values.cap,
+                values.citta,
+                values.provincia,
+                this.clearFields,
+                this.props.setBolletiniLoading
+              );
+            }
           }
         }
       } else {
         notification["error"]({
           message: "Ops...",
-          description: "Controlla le tue caselle vuote o accetta le condizioni",
+          description: "Controlla le tue caselle vuote / accetta le condizioni",
         });
       }
     });
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { barcodeData, service_id, service_s } = this.props;
-    const { barcodeInput, condizioniShow, condizioniAgreement } = this.state;
+    const {
+      barcodeData,
+      service_id,
+      service_s,
+      isTestAcc,
+      bolletiniLoading,
+    } = this.props;
+    const {
+      barcodeInput,
+      condizioniShow,
+      condizioniAgreement,
+      helper,
+    } = this.state;
     // console.log("service_s", service_s);
     let imageLogo =
       service_id === "PPA001"
@@ -293,6 +340,7 @@ class Bolletino extends React.Component {
                   getFieldDecorator={getFieldDecorator}
                   getFieldValue={this.props.form.getFieldValue}
                   service_id={service_id}
+                  isTestAcc={isTestAcc}
                 />
               )}
             </div>
@@ -336,6 +384,7 @@ class Bolletino extends React.Component {
                     getFieldDecorator={getFieldDecorator}
                     getFieldValue={this.props.form.getFieldValue}
                     service_id={service_id}
+                    isTestAcc={isTestAcc}
                   />
                 )}
               </div>
@@ -374,6 +423,7 @@ class Bolletino extends React.Component {
               <div className="Actions">
                 <div
                   className="Actions--Item"
+                  data-disable={bolletiniLoading ? "disable" : "enable"}
                   onClick={(e) => {
                     if (this.props.accountInfo?.token) {
                       this.handleSubmit(e);
@@ -400,7 +450,8 @@ class Bolletino extends React.Component {
                   <h3>barcode</h3>
                   <i className="fas fa-barcode"></i>
                 </div>
-                <div className="Actions--Item">
+                {helper && <div className="helper" />}
+                <div className="Actions--Item" data-disable={"disable"}>
                   <h3>stampa</h3>
                   <p>
                     pre <br /> scontrino
