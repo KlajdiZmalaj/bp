@@ -52,18 +52,35 @@
       }
     }
     .showD {
-      padding-right: 15px;
-      padding-left: 15px;
-      opacity: 0.3;
       font-size: 22px;
       display: flex;
       height: 100%;
       align-items: center;
       width: 50px;
       justify-content: center;
+      i {
+        opacity: 0.3;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       &.active {
         border-right: 3px solid var(--accent-bg);
-        opacity: 1;
+        position: relative;
+        &:before {
+          content: "";
+          border-left: 1px;
+          border: 10px solid transparent !important;
+          border-right: 10px solid var(--accent-bg) !important;
+          width: 1px;
+          position: absolute;
+          top: calc(50% - 10px);
+          right: -10px;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
       }
     }
   }
@@ -109,6 +126,60 @@
         height: 100%;
         display: flex;
         align-items: center;
+      }
+    }
+    &__pay {
+      background-color: #fff;
+      padding: 15px;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-bottom: 1px;
+      .subt {
+        display: flex;
+        justify-content: space-between;
+        &:first-child {
+          span {
+            color: var(--accent-bg);
+          }
+        }
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+    &__customer {
+      background-color: #fff;
+      padding: 15px;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-bottom: 1px;
+      .title {
+        color: var(--accent-bg);
+        font-weight: 500;
+      }
+      .subt {
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+    &__shipping {
+      background-color: #fff;
+      padding: 15px;
+      text-transform: uppercase;
+      font-size: 14px;
+      .title {
+        color: var(--accent-bg);
+        font-weight: 500;
+      }
+      .subt {
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-weight: 700;
+        }
       }
     }
   }
