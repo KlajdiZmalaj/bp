@@ -91,6 +91,27 @@
     .title {
       text-transform: uppercase;
       font-size: 14px;
+      .tracking {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        span {
+          color: var(--accent-bg);
+          font-weight: 700;
+          a {
+            background-color: var(--accent-bg);
+            color: #fff;
+            padding: 5px 10px;
+            font-weight: 700;
+            position: relative;
+
+            &:after {
+              content: "\f0a6";
+              font-family: "Font Awesome 5 Pro";
+            }
+          }
+        }
+      }
       p {
         color: var(--accent-bg);
         font-weight: 700;
