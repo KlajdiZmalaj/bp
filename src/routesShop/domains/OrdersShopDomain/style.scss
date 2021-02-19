@@ -184,3 +184,50 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .ordersShop {
+    .ordersDiv,
+    .orderDetails {
+      width: 100%;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+    &__row {
+      font-size: 13px;
+      .oid {
+        padding-left: 5px;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .odata {
+        padding-right: 5px;
+      }
+      .osubTot {
+        padding-right: 5px;
+        padding-left: 5px;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .showD {
+        width: 40px;
+      }
+    }
+    .orderDetails {
+      &__row {
+        img {
+          padding: 5px;
+        }
+        .odDetails {
+          .name {
+            font-size: 13px;
+            line-height: normal;
+          }
+          .price {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
