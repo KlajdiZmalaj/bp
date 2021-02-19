@@ -36,7 +36,7 @@ const OrdersShopAdminDomain = ({
                 <tr>
                   <td className="wsNwp">Date / Ora</td>
                   <td className="wsNwp">Supplier</td>
-                  <td className="wsNwp">Agenzia</td>
+                  {/* <td className="wsNwp">Agenzia</td> */}
                   <td className="wsNwp">Id</td>
                   <td className="wsNwp">Order</td>
                   <td className="wsNwp">Stato</td>
@@ -58,10 +58,10 @@ const OrdersShopAdminDomain = ({
                         <td className="wsNwp">
                           <div className="bc">{order?.supplier}</div>
                         </td>
-                        <td className="wsNwp">
+                        {/* <td className="wsNwp">
                           <i className="fal fa-store" aria-hidden="true"></i>{" "}
                           <span className="nomeTd">Bpoint</span>
-                        </td>
+                        </td> */}
                         <td className="wsNwp">{order?.id}</td>
                         <td className="wsNwp">{order?.order_name}</td>
                         <td className={`wsNwp st_${order?.status}`}>
