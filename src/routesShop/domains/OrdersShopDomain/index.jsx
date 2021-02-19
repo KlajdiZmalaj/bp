@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ShopActions from "redux-store/models/shop";
 import AuthActions from "redux-store/models/auth";
-import { Loader } from "shared-components";
+// import { Loader } from "shared-components";
 import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
