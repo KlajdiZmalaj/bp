@@ -418,64 +418,78 @@ class RegisterEndUser extends React.Component {
                 </div>
 
                 <div className={"inpssWrapper"}>
-                  {[...new Array(16)].map((input, key) => {
-                    return (
-                      <input
-                        key={key}
-                        maxLength="1"
-                        id={`inp${key}`}
-                        type="text"
-                        onKeyDown={(e) => {
-                          // console.log("keydown", e.keyCode || e.charCode);
-                          const previnp = document.getElementById(
-                            `inp${key - 1}`
-                          );
-                          const inp = document.getElementById(`inp${key}`);
-                          const nextinp = document.getElementById(
-                            `inp${key + 1}`
-                          );
-                          var keyy = e.keyCode || e.charCode;
-                          if (keyy !== 8 && keyy !== 9) {
-                            inp.value = String.fromCharCode(keyy);
+                  {this.props.screenWidth > 1024 ? (
+                    [...new Array(16)].map((input, key) => {
+                      return (
+                        <input
+                          key={key}
+                          maxLength="1"
+                          id={`inp${key}`}
+                          type="text"
+                          onKeyDown={(e) => {
+                            // console.log("keydown", e.keyCode || e.charCode);
+                            const previnp = document.getElementById(
+                              `inp${key - 1}`
+                            );
+                            const inp = document.getElementById(`inp${key}`);
+                            const nextinp = document.getElementById(
+                              `inp${key + 1}`
+                            );
+                            var keyy = e.keyCode || e.charCode;
+                            if (keyy !== 8 && keyy !== 9) {
+                              inp.value = String.fromCharCode(keyy);
 
-                            if (nextinp && !nextinp.value) {
-                              nextinp.focus();
-                            }
-                            if (previnp && !previnp.value) {
-                              inp.value = "";
-                              previnp.focus();
-                            } else {
-                              if (inp.value && inp.value.length > 0) {
-                                nextinp && nextinp.focus();
+                              if (nextinp && !nextinp.value) {
+                                nextinp.focus();
+                              }
+                              if (previnp && !previnp.value) {
+                                inp.value = "";
+                                previnp.focus();
+                              } else {
+                                if (inp.value && inp.value.length > 0) {
+                                  nextinp && nextinp.focus();
+                                }
                               }
                             }
-                          }
-                          if (keyy === 8) {
-                            inp.value = "";
-                            if (previnp) {
-                              previnp.focus();
+                            if (keyy === 8) {
+                              inp.value = "";
+                              if (previnp) {
+                                previnp.focus();
+                              }
                             }
-                          }
-                          this.validateCodiceFiscale();
+                            this.validateCodiceFiscale();
+                          }}
+                          className={`inputCodice`}
+                          onPaste={() => {
+                            navigator.clipboard
+                              .readText()
+                              .then((codFisInps) => {
+                                this.setState({ codFisInps });
+                              })
+                              .catch((err) => {
+                                console.error(
+                                  "Failed to read clipboard contents: ",
+                                  err
+                                );
+                              });
+                          }}
+                          value={this.state.codFisInps.split("")[key]}
+                        />
+                      );
+                    })
+                  ) : (
+                    <>
+                      <input
+                        className="inputCodice text-left"
+                        style={{ borderRight: 0 }}
+                        type="text"
+                        value={this.state.codFisInps}
+                        onChange={(e) => {
+                          this.setState({ codFisInps: e.target.value });
                         }}
-                        className={`inputCodice`}
-                        onPaste={() => {
-                          navigator.clipboard
-                            .readText()
-                            .then((codFisInps) => {
-                              this.setState({ codFisInps });
-                            })
-                            .catch((err) => {
-                              console.error(
-                                "Failed to read clipboard contents: ",
-                                err
-                              );
-                            });
-                        }}
-                        value={this.state.codFisInps.split("")[key]}
                       />
-                    );
-                  })}
+                    </>
+                  )}
                   <i
                     onClick={() => {
                       navigator.clipboard
@@ -1098,10 +1112,11 @@ class RegisterEndUser extends React.Component {
 
 const InfoUser = Form.create({ name: "infoUser" })(RegisterEndUser);
 
-const mapsStateToProps = ({ auth }) => ({
+const mapsStateToProps = ({ auth, main }) => ({
   personalInfo: auth.personalInfo,
   register: auth.register,
   accountInfo: auth.accountInfo,
+  screenWidth: main.screenWidth,
 });
 
 export default withRouter(
