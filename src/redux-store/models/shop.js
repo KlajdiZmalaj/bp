@@ -62,7 +62,7 @@ const { Types, Creators } = createActions({
   openProducts: ["areOpenProducts"],
   setShopLeftMenuMob: ["shopLeftMenuMob"],
   showLoader: ["hasLoader"],
-  getOrders: [],
+  getOrders: ["skinId"],
   setOrders: ["ordersShop"],
   getOrderData: ["order_id"],
   setOrderData: ["orderData"],

@@ -616,6 +616,10 @@ class AdminPanelDom extends React.Component {
                   : "Center--Big"
               }${
                 window.location.hash.match(/\/support/) ? " errorsCenter" : ""
+              }${
+                window.location.hash.match(/\/ordine-shop/)
+                  ? " ordine-shop"
+                  : ""
               }`}
             >
               {adminDepModal?.depositoModalVis && (
@@ -639,13 +643,14 @@ class AdminPanelDom extends React.Component {
               )}
               {this.props.component}
             </div>
-            {!window.location.hash.match(/\/support/g) && (
-              <AdminRightForm
-                rightFormWide={rightFormWide}
-                leUltimeTransazioniDet={leUltimeTransazioniDet}
-                switchRightFormWide={this.switchRightFormWide}
-              />
-            )}
+            {!window.location.hash.match(/\/support/g) &&
+              !window.location.hash.match(/\/ordine-shop/g) && (
+                <AdminRightForm
+                  rightFormWide={rightFormWide}
+                  leUltimeTransazioniDet={leUltimeTransazioniDet}
+                  switchRightFormWide={this.switchRightFormWide}
+                />
+              )}
           </div>
         </section>
       </React.Fragment>

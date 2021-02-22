@@ -187,11 +187,11 @@ export const fetchProdCat = (category, subCategory) =>
     })
     .catch((error) => ({ error }));
 
-export const fetchOrders = () =>
+export const fetchOrders = (skinId) =>
   instanceAxios
     .get(`/shop/orders`, {
       params: {
-        ...skin,
+        ...(skinId ? { skin_id: skinId } : skin),
       },
     })
     .catch((error) => ({ error }));

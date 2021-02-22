@@ -389,6 +389,14 @@ class Root extends React.Component {
               profile={profile}
             />
             <PrivateRoute
+              path="/back-office/ordine-shop"
+              component={ShopView.OrdersShopAdmin}
+              isLoggedin={isLoggedin}
+              allowedRoles={["main_admin", "support"]}
+              role={role}
+              profile={profile}
+            />
+            <PrivateRoute
               path="/back-office/prenotazioni"
               component={DesktopView.AdminPanelPrenotazioni}
               isLoggedin={isLoggedin}

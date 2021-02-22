@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ShopActions from "redux-store/models/shop";
 import AuthActions from "redux-store/models/auth";
-import { Loader } from "shared-components";
+// import { Loader } from "shared-components";
 import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -45,7 +45,7 @@ const OrdersShopDomain = ({
                   <div>
                     <span className="odata">{order.data}</span>
                     <span className="osubTot">
-                      Subtotal: <span>{order.importo} € </span>
+                      Total: <span>{order.importo} € </span>
                     </span>
                     <span
                       className={
@@ -80,6 +80,76 @@ const OrdersShopDomain = ({
             <div className="title">
               Order id
               <p>{orderData?.order_id}</p>
+              tracking number
+              <p>{orderData?.tracking_number}</p>
+              <div className="tracking">
+                <div>
+                  metodo di spedizione: <span>{orderData?.carrier}</span>
+                </div>
+                <div>
+                  monitorare il tuo ordine:
+                  <span>
+                    {orderData?.carrier?.toLowerCase() === "seur" && (
+                      <a href="https://www.seur.com/livetracking/pages/seguimiento-online-busqueda.do?faces-redirect=true&segOnlineIdioma=en">
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "chrono" && (
+                      <a href="https://www.chronopost.fr/en/private/track-your-parcel">
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "gls" && (
+                      <a href="https://gls-group.eu/GROUP/en/parcel-tracking">
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "tnt" && (
+                      <a
+                        href={`https://www.tnt.com/express/en_us/site/tracking.html?searchType=con&cons=${orderData?.tracking_number}`}
+                      >
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "ups" && (
+                      <a href="https://www.ups.com/track?loc=en_US&requester=ST/">
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "dachser" && (
+                      <a
+                        href={`https://www.trackingmore.com/dachser-tracking.html?number=${orderData?.tracking_number}`}
+                      >
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() ===
+                      "correos international" && (
+                      <a
+                        href={`https://www.trackingmore.com/correos-spain-tracking.html?number=${orderData?.tracking_number}`}
+                      >
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() ===
+                      "pallet delivery" && (
+                      <a
+                        href={`https://www.nationalpallets.co.uk/tracking/${orderData?.tracking_number}`}
+                      >
+                        {orderData?.carrier}
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "dhl freight" && (
+                      <a href="https://www.dhl.com/en/logistics/customer_resource_area/freight_tracking_and_applications/tracking.html#.YC_MoWhKiUl">
+                        Vedi
+                      </a>
+                    )}
+                    {orderData?.carrier?.toLowerCase() === "postal service" && (
+                      <a href="https://www.usps.com/manage/">Vedi</a>
+                    )}
+                  </span>
+                </div>
+              </div>
             </div>
 
             {orderData?.products?.map((prod, index) => {

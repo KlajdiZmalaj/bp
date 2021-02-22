@@ -1,0 +1,100 @@
+.Center .ordersShop {
+  .detail {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 6px;
+  }
+  .wsNwp.st_5 {
+    background-color: #0ea84f;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    text-align: center;
+  }
+  .wsNwp.st_1 {
+    background-color: #ff9300;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    text-align: center;
+  }
+  .col-md-12 {
+    width: calc(100% - 200px);
+  }
+  .orderDetails {
+    min-height: 98vh;
+    height: 100%;
+    padding: 10px 10px;
+    position: fixed;
+    top: 101px;
+    right: 0;
+    width: 500px;
+    flex-direction: column;
+    align-items: center;
+    height: 98vh;
+    border: 1px solid #ebeced;
+    padding-right: 10px;
+    box-shadow: -7px 0px 20px 0px #353d455e;
+    background-color: #f5f5f5;
+    .title p,
+    .price {
+      color: #0078ff !important;
+    }
+    > .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      > div {
+        display: flex;
+        flex: 1 1;
+        > div {
+          padding-right: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          i {
+            background: #e8e8e8;
+            padding: 5px;
+            border-radius: 8px;
+            margin-right: 5px;
+          }
+        }
+        &:last-child {
+          flex: none;
+          text-align: right;
+          margin-left: 15px;
+          i {
+            padding: 10px;
+            border: 1px solid var(--accent-bg);
+            border-radius: 6px;
+            color: var(--accent-bg);
+          }
+        }
+      }
+    }
+
+    &__pay .subt:first-child span,
+    &__shipping .title,
+    &__customer .title {
+      color: #0078ff;
+    }
+    &__footer {
+      display: flex;
+      background-color: #fff;
+      margin-top: 1px;
+      border-top: 2px solid #0078ff;
+      justify-content: space-between;
+      padding: 10px 15px;
+      text-transform: uppercase;
+      font-size: 14px;
+      p {
+        color: #0078ff;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

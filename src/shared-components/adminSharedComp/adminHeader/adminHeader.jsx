@@ -95,6 +95,21 @@ class AdminHeader extends React.Component {
           {accountInfo?.profile?.username !== "support_prenotazioni" && (
             <div
               className={`AdminHeader--Category ${
+                this.props.location.pathname.includes("shop") ? "active" : ""
+              }`}
+              onClick={() => {
+                this.props.history.push("/back-office/ordine-shop");
+              }}
+            >
+              <div>
+                <i className="fal fa-wallet"></i>
+                <span>SHOP</span>
+              </div>
+            </div>
+          )}
+          {accountInfo?.profile?.username !== "support_prenotazioni" && (
+            <div
+              className={`AdminHeader--Category ${
                 this.props.location.pathname.includes("servizzi")
                   ? "active"
                   : ""
