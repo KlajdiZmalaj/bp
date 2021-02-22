@@ -10,14 +10,14 @@ export const BolletiniRightForm = ({
     <ReturnFormItem
       descName="Provincia"
       name="provincia"
-      message="Please input your Provincia!"
+      message="Per favore inserisci il tuo Provincia!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
     <ReturnFormItem
       descName="Città"
       name="citta"
-      message="Please input your citta!"
+      message="Per favore inserisci il tuo citta!"
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
@@ -26,14 +26,14 @@ export const BolletiniRightForm = ({
         <ReturnFormItem
           descName="Email"
           name="email"
-          message="Please input your email!"
+          message="Per favore inserisci il tuo email!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
         <ReturnFormItem
           descName="Telefono"
           name="phone_number"
-          message="Please input your telefono!"
+          message="Per favore inserisci il tuo telefono!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
@@ -43,14 +43,14 @@ export const BolletiniRightForm = ({
         <ReturnFormItem
           descName="Intestato a"
           name="intestato_a"
-          message="Please input your intestato a!"
+          message="Per favore inserisci il tuo intestato a!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
         <ReturnFormItem
           descName="Eseguito Da"
           name="eseguito_da"
-          message="Please input your Eseguito da!"
+          message="Per favore inserisci il tuo Eseguito da!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
@@ -93,7 +93,7 @@ export const BolletiniLeftForm = ({
       <ReturnFormItem
         descName="Numero Conto Corrente"
         name="numero_conto_corrente"
-        message="Please input your Numero Conto!"
+        message="Per favore inserisci il tuo Numero Conto!"
         barcodeData={barcodeData}
         getFieldDecorator={getFieldDecorator}
         icon={<i className="fal fa-search" />}
@@ -102,7 +102,7 @@ export const BolletiniLeftForm = ({
         <ReturnFormItem
           descName="Codice Identificativo"
           name="codice_identificativo"
-          message="Please input your Codice Identificativo!"
+          message="Per favore inserisci il tuo Codice Identificativo!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
         />
@@ -110,7 +110,7 @@ export const BolletiniLeftForm = ({
       <ReturnFormItem
         descName="Importo"
         name="importo"
-        message="Please input your Importo!"
+        message="Per favore inserisci il tuo Importo!"
         placeholder="00,00"
         barcodeData={barcodeData}
         getFieldDecorator={getFieldDecorator}
@@ -118,7 +118,7 @@ export const BolletiniLeftForm = ({
       <ReturnFormItem
         descName="Causale"
         name="causale"
-        message="Please input your Causale!"
+        message="Per favore inserisci il tuo Causale!"
         barcodeData={barcodeData}
         getFieldDecorator={getFieldDecorator}
       />
@@ -128,7 +128,7 @@ export const BolletiniLeftForm = ({
         <ReturnFormItem
           descName="Persona"
           name="person_type"
-          message="Please input your persona tipo!"
+          message="Per favore inserisci il tuo persona tipo!"
           barcodeData={barcodeData}
           getFieldDecorator={getFieldDecorator}
           defaultValue="F"
@@ -149,21 +149,21 @@ export const BolletiniLeftForm = ({
               <ReturnFormItem
                 descName="Nome "
                 name="nome"
-                message="Please input your Nome!"
+                message="Per favore inserisci il tuo Nome!"
                 barcodeData={barcodeData}
                 getFieldDecorator={getFieldDecorator}
               />
               <ReturnFormItem
                 descName="Cognome "
                 name="cognome"
-                message="Please input your Cognome!"
+                message="Per favore inserisci il tuo Cognome!"
                 barcodeData={barcodeData}
                 getFieldDecorator={getFieldDecorator}
               />
               <ReturnFormItem
                 descName="Codice Fiscale"
                 name="codice_fiscale"
-                message="Please input your Codice Fiscale!"
+                message="Per favore inserisci il tuo Codice Fiscale!"
                 barcodeData={barcodeData}
                 getFieldDecorator={getFieldDecorator}
                 icon={<i className="fal fa-question-circle" />}
@@ -177,7 +177,7 @@ export const BolletiniLeftForm = ({
             <ReturnFormItem
               descName="Denominazione"
               name="denominazione"
-              message="Please input your Denominazione!"
+              message="Per favore inserisci il tuo Denominazione!"
               barcodeData={barcodeData}
               getFieldDecorator={getFieldDecorator}
             />
@@ -186,7 +186,7 @@ export const BolletiniLeftForm = ({
             <ReturnFormItem
               descName="Partita Iva"
               name="partita_iva"
-              message="Please input your Partita Iva!"
+              message="Per favore inserisci il tuo Partita Iva!"
               barcodeData={barcodeData}
               getFieldDecorator={getFieldDecorator}
             />
@@ -197,14 +197,14 @@ export const BolletiniLeftForm = ({
         descName="Indirizzo"
         name="via_piazza"
         placeholder="Indirizzo"
-        message="Please input your indirizzo!"
+        message="Per favore inserisci il tuo indirizzo!"
         barcodeData={barcodeData}
         getFieldDecorator={getFieldDecorator}
       />
       <ReturnFormItem
         descName="Cap"
         name="cap"
-        message="Please input your Cap!"
+        message="Per favore inserisci il tuo Cap!"
         barcodeData={barcodeData}
         getFieldDecorator={getFieldDecorator}
       />

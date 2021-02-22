@@ -242,12 +242,15 @@
           margin-bottom: 18px;
         }
         span:first-child {
-          font-size: 12px;
+          font-size: 10px;
           font-weight: 400;
           font-family: "Roboto";
           height: 18px;
+          color: #5c5c5c;
           .Red {
             color: #f26521;
+            font-size: 14px;
+            line-height: 0;
           }
         }
         i:not(.ant-select-arrow-icon) {
@@ -296,6 +299,7 @@
           padding-left: 10px;
           color: #5c5c5c;
           border-radius: 0;
+          border: 0;
         }
         .ant-select-selection--single {
           width: 100%;

@@ -39,7 +39,7 @@ class PrintTicket extends React.Component {
     const { arr, skinExtras } = this.props;
     const barcode = Array.isArray(arr) ? arr[0]?.barcode : arr?.barcode || 1;
     const receipt = Array.isArray(arr) ? arr[0]?.receipt : arr?.receipt;
-    console.log("ca ka tickettt", barcode, receipt, arr);
+    //console.log("ca ka tickettt", barcode, receipt, arr);
     return barcode && receipt ? (
       <Modal
         title={null}
