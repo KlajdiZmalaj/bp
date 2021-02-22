@@ -22,6 +22,7 @@ import "moment/locale/it";
 import moment from "moment";
 import { Snow } from "shared-components";
 import { notification } from "antd";
+import PrintTicket from "shared-components/ModulePopUp/PrintTicket";
 // import { debounce } from "lodash";
 // const handleOrientation = (event) => {
 //   var absolute = event.absolute;
@@ -164,6 +165,10 @@ class Root extends React.Component {
     return (
       <React.Fragment>
         <Snow />
+        {Object.keys(this.props.socketReceipt).length > 0 && (
+          <PrintTicket arr={this.props.socketReceipt} />
+        )}
+
         {(role === "support" || role === "main_admin") &&
           window.location.hash.includes("back-office") &&
           this.state.isAdminPanel && <AdminTopHeader />}
@@ -531,6 +536,7 @@ const mapsStateToProps = (state) => ({
   popUpDataVisure: state.auth.popUpDataVisure,
   TicketByTcketId: state.auth.TicketByTcketId,
   VisureByVisureId: state.auth.VisureByVisureId,
+  socketReceipt: state.auth.socketReceipt,
 });
 
 export default connect(mapsStateToProps, {

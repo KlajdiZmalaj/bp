@@ -48,12 +48,19 @@ export const subscribeSocketUser = (userID, props) => {
             } `}
           ></i>
         ),
-        duration: 0,
+        duration: !e.ticket ? 0 : 4,
         onClose: () => {
           stopAudio();
         },
       });
-      audio.play();
+      if (!e.ticket) {
+        audio.play();
+      } else {
+        props.setSocketReceipt({
+          barcode: e.instance_id,
+          receipt: e.ticket,
+        });
+      }
     }
     if (e.type === "popup") {
       props.bigliettoPopUp({

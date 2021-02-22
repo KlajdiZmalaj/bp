@@ -67,7 +67,7 @@ class RegisterEndUser extends React.Component {
     loading: false,
     privacy_policy: false,
     recieve_emails: false,
-    token: "",
+    token: {},
     loaded: false,
     codFisInps: "",
     renderHtml: false,
@@ -92,7 +92,6 @@ class RegisterEndUser extends React.Component {
     }
     if (el) {
       el.remove();
-      document.querySelector('[src*="tons-config.sharethis.com"]').remove();
       write();
     } else {
       write();

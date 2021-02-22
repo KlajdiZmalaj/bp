@@ -553,12 +553,14 @@ const { Types, Creators } = createActions({
   ],
   pagoTicket: ["barcode"],
   setTransactionModal: ["transactionModal"],
+  setSocketReceipt: ["socketReceipt"],
 });
 
 export const AuthTypes = Types;
 export default Creators;
 
 const INITIAL_STATE = {
+  socketReceipt: {},
   SelectData: null,
   ErrLoading: false,
   fattura_loading: false,
@@ -633,6 +635,10 @@ const INITIAL_STATE = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
+  SET_SOCKET_RECEIPT: (state, { socketReceipt }) => ({
+    ...state,
+    socketReceipt,
+  }),
   SET_TRANSACTION_MODAL: (state, { transactionModal }) => ({
     ...state,
     transactionModal,
