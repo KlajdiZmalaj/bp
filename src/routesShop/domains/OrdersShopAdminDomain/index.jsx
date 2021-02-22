@@ -127,7 +127,7 @@ const OrdersShopAdminDomain = ({
           {orderData?.products?.map((prod, index) => {
             return (
               <div className="orderDetails__row" key={index}>
-                <img src={prod?.imgSrc || images["placeholder"]} alt="" />
+                <img src={prod?.image || images["placeholder"]} alt="" />
                 <div className="odDetails">
                   <div className="name">{prod?.name}</div>
                   <div className="price">{prod?.price}€</div>
