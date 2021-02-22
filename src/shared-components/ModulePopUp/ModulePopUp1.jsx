@@ -42,7 +42,7 @@ class ModulePopUp1 extends React.Component {
             : ""
         }`}
         onClick={() => {
-          this.props.togglePopUp(false);
+          // this.props.togglePopUp(false);
         }}
       >
         <div
