@@ -484,7 +484,9 @@ export function* getConfigura(data) {
 export function* getCodiceTicket({ barcode, service }) {
   const response = yield call(AuthRequest.fetchCodice, barcode, service);
   if (response?.status === 200) {
-    yield put(AuthActions.setPaymentsFromCode(response?.data.payment));
+    yield put(
+      AuthActions.setPaymentsFromCode({ ...response?.data.payment, barcode })
+    );
   }
   if (response?.error) {
     yield put(AuthActions.setPaymentsFromCode(response?.error.response?.data));

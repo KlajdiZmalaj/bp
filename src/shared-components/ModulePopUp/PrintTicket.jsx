@@ -37,22 +37,23 @@ class PrintTicket extends React.Component {
   };
   render() {
     const { arr, skinExtras } = this.props;
-    const barcode = Array.isArray(arr) ? arr[0]?.barcode : arr?.barcode;
+    const barcode = Array.isArray(arr) ? arr[0]?.barcode : arr?.barcode || 1;
     const receipt = Array.isArray(arr) ? arr[0]?.receipt : arr?.receipt;
-    console.log("ca ka tickettt", barcode, receipt);
+    console.log("ca ka tickettt", barcode, receipt, arr);
     return barcode && receipt ? (
       <Modal
         title={null}
         visible={true}
         onOk={this.handleOk}
         onCancel={() => {
-          this.props.setSocketReceipt({});
+          this.props.setPaymentsFromCode({});
+          //this.props.setSocketReceipt({});
         }}
         footer={null}
       >
         {
           <div
-            className="printModal aaaa"
+            className="printModal rootTicket"
             ref={(el) => (this.componentRef = el)}
           >
             <div className="headerModal">

@@ -56,10 +56,11 @@ export const subscribeSocketUser = (userID, props) => {
       if (!e.ticket) {
         audio.play();
       } else {
-        props.setSocketReceipt({
-          barcode: e.instance_id,
-          receipt: e.ticket,
-        });
+        // props.setSocketReceipt({
+        //   barcode: e.instance_id,
+        //   receipt: e.ticket,
+        // });
+        props.getCodiceTicket(e.instance_id, "omeLale");
       }
     }
     if (e.type === "popup") {

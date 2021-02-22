@@ -165,9 +165,10 @@ class Root extends React.Component {
     return (
       <React.Fragment>
         <Snow />
-        {Object.keys(this.props.socketReceipt).length > 0 && (
-          <PrintTicket arr={this.props.socketReceipt} />
-        )}
+        {Object.keys(this.props.paymentsFromCode).length > 0 &&
+          !window.location.href.includes("back-office") && (
+            <PrintTicket arr={this.props.paymentsFromCode} />
+          )}
 
         {(role === "support" || role === "main_admin") &&
           window.location.hash.includes("back-office") &&
@@ -536,7 +537,7 @@ const mapsStateToProps = (state) => ({
   popUpDataVisure: state.auth.popUpDataVisure,
   TicketByTcketId: state.auth.TicketByTcketId,
   VisureByVisureId: state.auth.VisureByVisureId,
-  socketReceipt: state.auth.socketReceipt,
+  paymentsFromCode: state.auth.paymentsFromCode,
 });
 
 export default connect(mapsStateToProps, {
