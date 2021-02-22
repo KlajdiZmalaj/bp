@@ -746,6 +746,9 @@
   text-align: center;
   padding: 7px;
   border-radius: 2px;
+  @media (max-width: 1024px) {
+    display: none;
+  }
   &.S {
     background-color: #01cc67;
     color: #222;

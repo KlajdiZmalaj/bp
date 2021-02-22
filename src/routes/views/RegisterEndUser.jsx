@@ -980,7 +980,7 @@ class RegisterEndUser extends React.Component {
               </div>
 
               <div className="itemCol full">
-                {register.message && (
+                {(register.message || true) && (
                   <React.Fragment>
                     {register.role ? (
                       <React.Fragment>
