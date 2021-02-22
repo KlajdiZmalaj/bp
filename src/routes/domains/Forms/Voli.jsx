@@ -41,7 +41,6 @@ class Voli extends Component {
     const { link, bagaglio, bagaglio_stiva } = this.state;
     this.props.sendDataForm(
       this.state.prezzo,
-
       this.props.typee,
       link,
       this.props.nome_agenzia,

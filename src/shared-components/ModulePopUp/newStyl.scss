@@ -48,6 +48,7 @@
     form {
       width: 100%;
       height: calc(100vh - 237px);
+      max-height: 730px;
       display: flex;
       flex-direction: row;
       position: relative;
@@ -102,8 +103,7 @@
           }
         }
         .col-12 {
-          height: 145px;
-          min-height: 145px;
+          height: 100%;
           max-height: 145px;
           overflow: auto;
           border: 1px solid #ebeced;
@@ -140,6 +140,7 @@
         width: 100%;
         height: 80px;
         margin-bottom: 18px;
+        margin-top: auto;
         .Actions--Item {
           width: 25%;
           height: 99%;
@@ -224,15 +225,15 @@
             align-items: center;
             padding: 0 10px;
             .ant-radio-checked .ant-radio-inner {
-              border-color: #11375d !important ;
+              border-color: #588a17 !important ;
             }
 
             .ant-radio-checked .ant-radio-inner:after {
-              background-color: #11375d;
+              background-color: #588a17;
             }
 
             .ant-radio:hover .ant-radio-inner {
-              border-color: #11375d;
+              border-color: #588a17;
             }
           }
         }
@@ -264,7 +265,7 @@
           width: 100%;
           display: flex;
           flex-direction: row;
-          height: 32px;
+          height: 35px;
           background: #ebeced;
           align-items: center;
           justify-content: center;
@@ -275,34 +276,35 @@
           align-items: center;
         }
         .ant-form-explain {
-          top: -6px;
+          top: -2px;
           position: relative;
           font-size: 13px;
+          left: 0;
         }
         .ant-select.ant-select-enabled {
-          top: -3px;
           height: 31px;
-          border-radius: 4px;
+          border-radius: 0;
           div {
-            border-radius: 4px;
+            border-radius: 0;
           }
         }
         input {
-          height: 31px;
+          height: 35px;
           background: #ebeced;
           padding-right: 35px;
-          top: -3px;
+          top: 0px;
           padding-left: 10px;
           color: #5c5c5c;
+          border-radius: 0;
         }
         .ant-select-selection--single {
           width: 100%;
-          height: 32px;
-          line-height: 32px;
+          height: 35px;
+          line-height: 35px;
         }
         .ant-select-selection__rendered {
-          height: 32px;
-          line-height: 32px;
+          height: 35px;
+          line-height: 35px;
           background: #ebeced;
           padding-right: 35px;
           padding-left: 10px;
@@ -315,14 +317,14 @@
             margin: 0;
             height: 100%;
             padding: 0;
-            height: 32px;
-            line-height: 32px;
+            height: 35px;
+            line-height: 35px;
           }
         }
       }
       .Right {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         &.BA {
           .InputItem {
             margin-bottom: 25px;

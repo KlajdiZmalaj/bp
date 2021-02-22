@@ -1,12 +1,16 @@
 .modulePopUP {
-  background: #0000006b;
+  background: #ebeced;
   overflow-y: scroll;
   position: fixed;
-  top: 0;
+  top: 100px;
   z-index: 3;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 100px);
   backdrop-filter: blur(9px);
+  &.telRechanrge {
+    backdrop-filter: blur(0);
+    background: #000000b3;
+  }
   img {
     pointer-events: none;
   }

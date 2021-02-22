@@ -18,7 +18,7 @@ class Bolletino extends React.Component {
     BinpVal: "",
     codInd: "",
     data: {},
-    condizioniAgreement: true,
+    condizioniAgreement: false,
     condizioniShow: false,
   };
   setbarcodeInp = (e) => {
@@ -410,11 +410,11 @@ class Bolletino extends React.Component {
                 {condizioniShow && <Condizioni></Condizioni>}
                 <Checkbox
                   onChange={(e) => {
+                    //console.log("ca ka e", e, e.checked, e.target.checked);
                     this.setState({
                       condizioniAgreement: e.target.checked,
                     });
                   }}
-                  checked={condizioniAgreement}
                 >
                   La persona che hai di fronte non è il intestatario del
                   pagamento del bollo
