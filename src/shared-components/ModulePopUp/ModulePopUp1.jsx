@@ -35,10 +35,10 @@ class ModulePopUp1 extends React.Component {
         className={`modulePopUP modulePopUP1 ${
           service.service_id === "PAGF24"
             ? isSepaUser || isTestAcc
-              ? "test"
+              ? "sepa f24"
               : ""
             : isSepaUser || isTestAcc
-            ? "test flex"
+            ? "flex"
             : ""
         }`}
         onClick={() => {

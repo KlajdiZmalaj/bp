@@ -9,6 +9,9 @@
   backdrop-filter: blur(9px);
   display: flex;
   align-items: center;
+  &.f24 {
+    align-items: flex-start;
+  }
   &.telRechanrge {
     backdrop-filter: blur(0);
     background: #000000b3;
