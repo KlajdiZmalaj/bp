@@ -19,7 +19,7 @@ class Bolletino extends React.Component {
     codInd: "",
     data: {},
     condizioniAgreement: false,
-    condizioniShow: false,
+    condizioniShow: true,
   };
   setbarcodeInp = (e) => {
     this.setState({ barcodeInput: e }, () => {
@@ -289,9 +289,11 @@ class Bolletino extends React.Component {
                     numero_conto_corrente: sulCC,
                     tipologia: tipologia,
                   });
-                  if (e.target.value.length > 35) {
-                    this.setState({ barcodeInput: false });
-                  }
+                  // if (e.target.value.length >= 51) {
+                  //   this.setState({ barcodeInput: false });
+                  // } else {
+                  //   this.setState({ barcodeInput: true });
+                  // }
                 }}
                 type="text"
                 id="barcodeInp"

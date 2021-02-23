@@ -166,9 +166,13 @@ class Root extends React.Component {
       <React.Fragment>
         <Snow />
         {Object.keys(this.props.paymentsFromCode).length > 0 &&
-          !window.location.href.includes("back-office") && (
+          (window.location.href.includes("back-office") ? (
+            this.props.screenWidth < 1320 && (
+              <PrintTicket arr={this.props.paymentsFromCode} />
+            )
+          ) : (
             <PrintTicket arr={this.props.paymentsFromCode} />
-          )}
+          ))}
 
         {(role === "support" || role === "main_admin") &&
           window.location.hash.includes("back-office") &&

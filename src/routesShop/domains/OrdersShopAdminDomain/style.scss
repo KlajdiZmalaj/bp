@@ -98,3 +98,25 @@
     }
   }
 }
+@media (max-width: 1300px) {
+  .ordersShop .transTable {
+    td {
+      &:nth-child(3),
+      &:nth-child(4) {
+        display: none !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .ordersShop .transTable {
+    td {
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8) {
+        display: none !important;
+      }
+    }
+  }
+}

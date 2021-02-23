@@ -7,6 +7,8 @@
   width: 100%;
   height: calc(100vh - 100px);
   backdrop-filter: blur(9px);
+  display: flex;
+  align-items: center;
   &.telRechanrge {
     backdrop-filter: blur(0);
     background: #000000b3;
@@ -29,7 +31,7 @@
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
-  padding-top: 7%;
+  //padding-top: 7%;
   > .row {
     display: flex;
     justify-content: center;

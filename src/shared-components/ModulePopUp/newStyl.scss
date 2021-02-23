@@ -14,7 +14,7 @@
   background: #fff;
   display: flex;
   flex-direction: column;
-
+  flex-shrink: 0;
   &-Header {
     display: flex;
     height: 68px;
@@ -141,6 +141,9 @@
         height: 80px;
         margin-bottom: 18px;
         margin-top: auto;
+        position: sticky;
+        bottom: 0;
+        background: #fff;
         .Actions--Item {
           width: 25%;
           height: 99%;
