@@ -21,7 +21,7 @@ export const BolletiniRightForm = ({
       barcodeData={barcodeData}
       getFieldDecorator={getFieldDecorator}
     />
-    {isTestAcc ? (
+    {isTestAcc && (
       <>
         <ReturnFormItem
           descName="Email"
@@ -38,24 +38,22 @@ export const BolletiniRightForm = ({
           getFieldDecorator={getFieldDecorator}
         />
       </>
-    ) : (
-      <>
-        <ReturnFormItem
-          descName="Intestato a"
-          name="intestato_a"
-          message="Per favore inserisci il tuo intestato a!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
-        <ReturnFormItem
-          descName="Eseguito Da"
-          name="eseguito_da"
-          message="Per favore inserisci il tuo Eseguito da!"
-          barcodeData={barcodeData}
-          getFieldDecorator={getFieldDecorator}
-        />
-      </>
     )}
+    <ReturnFormItem
+      descName="Indirizzo"
+      name="via_piazza"
+      placeholder="Indirizzo"
+      message="Per favore inserisci il tuo indirizzo!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
+    <ReturnFormItem
+      descName="Cap"
+      name="cap"
+      message="Per favore inserisci il tuo Cap!"
+      barcodeData={barcodeData}
+      getFieldDecorator={getFieldDecorator}
+    />
   </Fragment>
 );
 export const BolletiniLeftForm = ({
@@ -193,21 +191,25 @@ export const BolletiniLeftForm = ({
           )}
         </Fragment>
       )}
-      <ReturnFormItem
-        descName="Indirizzo"
-        name="via_piazza"
-        placeholder="Indirizzo"
-        message="Per favore inserisci il tuo indirizzo!"
-        barcodeData={barcodeData}
-        getFieldDecorator={getFieldDecorator}
-      />
-      <ReturnFormItem
-        descName="Cap"
-        name="cap"
-        message="Per favore inserisci il tuo Cap!"
-        barcodeData={barcodeData}
-        getFieldDecorator={getFieldDecorator}
-      />
+
+      {!isTestAcc && (
+        <>
+          <ReturnFormItem
+            descName="Intestato a"
+            name="intestato_a"
+            message="Per favore inserisci il tuo intestato a!"
+            barcodeData={barcodeData}
+            getFieldDecorator={getFieldDecorator}
+          />
+          <ReturnFormItem
+            descName="Eseguito Da"
+            name="eseguito_da"
+            message="Per favore inserisci il tuo Eseguito da!"
+            barcodeData={barcodeData}
+            getFieldDecorator={getFieldDecorator}
+          />
+        </>
+      )}
     </Fragment>
   );
 };
