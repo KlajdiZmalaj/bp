@@ -21,6 +21,7 @@ class ModulePopUp extends React.Component {
     });
     this.props.togglePopUp(true);
   };
+
   componentDidUpdate(prevProps) {
     const _ = this;
 

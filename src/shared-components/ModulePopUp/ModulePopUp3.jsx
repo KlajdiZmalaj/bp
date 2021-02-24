@@ -54,6 +54,12 @@ class ModulePopUp3 extends React.Component {
       numero_postepay: false,
     },
   };
+  componentDidMount() {
+    document.body.classList.add("overflow-hidden");
+  }
+  componentWillUnmount() {
+    document.body.classList.remove("overflow-hidden");
+  }
 
   onChangeCardView = (value) => {
     this.setState({ cardView: value });
