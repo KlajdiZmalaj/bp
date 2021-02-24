@@ -3,12 +3,14 @@ import ShopActions from "redux-store/models/shop";
 import AuthActions from "redux-store/models/auth";
 import MainActions from "redux-store/models/main";
 
+import { Tooltip } from "antd";
+
 // import { Loader } from "shared-components";
 import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Form } from "antd";
-
+import get from "lodash/get";
 import images from "themes/images";
 
 const OrdersShopAdminDomain = ({
@@ -30,7 +32,11 @@ const OrdersShopAdminDomain = ({
   };
 
   return (
-    <div className="container-fluid overview ordersShop">
+    <div
+      className={
+        "container-fluid overview ordersShop " + (isOpened ? "active" : "")
+      }
+    >
       <div className="panels-container">
         <div className="row no-gutters max-width">
           <div className="col-md-12">
@@ -39,12 +45,12 @@ const OrdersShopAdminDomain = ({
                 <tr>
                   <td className="wsNwp">Date / Ora</td>
                   <td className="wsNwp">Supplier</td>
-                  {/* <td className="wsNwp">Agenzia</td> */}
+                  <td className="wsNwp">Agenzia</td>
                   <td className="wsNwp">Id</td>
                   <td className="wsNwp">Order</td>
                   <td className="wsNwp">Stato</td>
                   <td className="wsNwp">Tracker id</td>
-                  <td className="wsNwp right">Spedizione</td>
+                  <td className="wsNwp">Spedizione</td>
                   <td className="wsNwp right">Importo</td>
                   <td className="wsNwp right">Utile</td>
                   <td className="wsNwp right">Proviggione</td>
@@ -58,23 +64,42 @@ const OrdersShopAdminDomain = ({
                     return (
                       <tr key={index}>
                         <td className="wsNwp">{order?.data}</td>
-                        <td className="wsNwp">
-                          <div className="bc">{order?.supplier}</div>
+                        <td className="wsNwp supp">
+                          {order?.supplier === "bigbuy" && (
+                            <img src={images.bigbuy}></img>
+                          )}
+                          {order?.supplier}
                         </td>
-                        {/* <td className="wsNwp">
-                          <i className="fal fa-store" aria-hidden="true"></i>{" "}
-                          <span className="nomeTd">Bpoint</span>
-                        </td> */}
+                        <td className="wsNwp">
+                          {order?.agency && (
+                            <i className="fal fa-store" aria-hidden="true"></i>
+                          )}
+                          <span className="nomeTd">{order?.agency}</span>
+                        </td>
                         <td className="wsNwp">{order?.id}</td>
                         <td className="wsNwp">{order?.order_name}</td>
-                        <td className={`wsNwp st_${order?.status}`}>
-                          {order?.status_description}
+                        <td className={`stato wsNwp st_${order?.status}`}>
+                          <Tooltip title={order?.status_description}>
+                            {order?.status_description}
+                          </Tooltip>
                         </td>
-                        <td className="wsNwp">{order?.tracking_number}</td>
-                        <td className="wsNwp right">{order?.spedizione}€</td>
-                        <td className="wsNwp right">{order?.importo}€</td>
+                        <td className="wsNwp carr">
+                          <img
+                            src={images[get(order, "carrier").toLowerCase()]}
+                            alt={get(order, "carrier").toLowerCase()}
+                          ></img>
+
+                          {order?.carrier}
+                          {order?.tracking_number}
+                        </td>
+                        <td className="wsNwp">{order?.spedizione}€</td>
+                        <td className="wsNwp right">
+                          <b>{order?.importo}€</b>
+                        </td>
                         <td className="wsNwp right">{order?.utile}€</td>
-                        <td className="wsNwp right">{order?.proviggione}€</td>
+                        <td className="wsNwp right">
+                          <b>{order?.proviggione}€</b>
+                        </td>
                         <td className="wsNwp right">{order?.saldo}€</td>
                         <td
                           className="wsNwp"
@@ -107,7 +132,7 @@ const OrdersShopAdminDomain = ({
               <div>
                 <i className="far fa-truck"></i>
                 <span>
-                  tracking number
+                  tracker id
                   <p>{orderData?.tracking_number}</p>
                 </span>
               </div>

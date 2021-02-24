@@ -1,6 +1,67 @@
 .Center .ordersShop {
+  &.active {
+    &:after {
+      content: "";
+      background-color: #00000099;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+  }
+
+  thead {
+    .wsNwp {
+      text-transform: uppercase;
+      width: auto !important;
+    }
+  }
+  tbody {
+    .wsNwp {
+      text-transform: uppercase;
+      width: auto !important;
+      &.right {
+        width: auto !important;
+      }
+      .nomeTd {
+        text-transform: uppercase !important;
+      }
+      &.supp {
+        text-transform: uppercase;
+        border-left: none !important;
+
+        img {
+          width: 22px;
+          margin-right: 3px;
+        }
+      }
+      &.carr {
+        img {
+          max-width: 26px;
+          max-height: 26px;
+          margin-right: 3px;
+        }
+      }
+      &.stato {
+        max-width: 140px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      &:nth-child(4) {
+        color: #5c5c5c;
+      }
+      &:nth-child(5) {
+        color: #0078ff;
+        text-transform: uppercase;
+      }
+    }
+  }
+
   .detail {
-    border: 1px solid;
+    border: 1px solid #ebeced;
     border-radius: 4px;
     padding: 6px;
   }
@@ -24,6 +85,7 @@
     width: calc(100% - 200px);
   }
   .orderDetails {
+    z-index: 2;
     min-height: 98vh;
     height: 100%;
     padding: 10px 10px;
@@ -38,6 +100,12 @@
     padding-right: 10px;
     box-shadow: -7px 0px 20px 0px #353d455e;
     background-color: #f5f5f5;
+    &__row {
+      height: 100px;
+      .odCount {
+        border-left: 1px solid #f5f5f5;
+      }
+    }
     .title p,
     .price {
       color: #0078ff !important;
@@ -71,6 +139,9 @@
             border: 1px solid var(--accent-bg);
             border-radius: 6px;
             color: var(--accent-bg);
+            width: 34px;
+            height: 34px;
+            text-align: center;
           }
         }
       }
@@ -98,16 +169,16 @@
     }
   }
 }
-@media (max-width: 1300px) {
-  .ordersShop .transTable {
-    td {
-      &:nth-child(3),
-      &:nth-child(4) {
-        display: none !important;
-      }
-    }
-  }
-}
+// @media (max-width: 1300px) {
+//   .ordersShop .transTable {
+//     td {
+//       &:nth-child(3),
+//       &:nth-child(4) {
+//         display: none !important;
+//       }
+//     }
+//   }
+// }
 
 @media (max-width: 1120px) {
   .ordersShop .transTable {
@@ -118,5 +189,49 @@
         display: none !important;
       }
     }
+  }
+}
+
+div.Center.ordine-shop
+  .container-fluid.overview
+  .row.no-gutters.max-width
+  .col-md-12
+  .transTable
+  td.right,
+div.Center.ordine-shop
+  .panels-container
+  .row.no-gutters.max-width
+  .col-md-12
+  .transTable
+  td.right {
+  width: auto !important;
+  padding: 2px 4px;
+}
+
+.bodyAdmin
+  .ordine-shop
+  .container-fluid.overview
+  .row.no-gutters.max-width
+  .col-md-12
+  .transTable.Movimenti
+  thead
+  > tr
+  > td {
+  padding: 8px 5px;
+}
+
+.AdminColumns .ordersShop .transTable td:nth-child(2),
+.AdminColumns .ordersShop .transTable td:nth-child(3),
+.AdminColumns .ordersShop .transTable td:nth-child(4) {
+  border-left: none !important;
+}
+
+@media (max-width: 1500px) {
+  .ordersShop .transTable td {
+    font-size: 12px;
+  }
+  .ordersShop .transTable td.wsNwp:nth-child(2),
+  .ordersShop .transTable td.wsNwp:nth-child(6) {
+    display: none !important;
   }
 }

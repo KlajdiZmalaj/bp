@@ -276,6 +276,7 @@ try {
     "shop-online-card": require(`../assets/images/prenotazioni/shop-online-card.png`),
     "shop-online-logo": require(`../assets/images/prenotazioni/shop-online-logo.svg`),
     "shop-online-bg": require(`../assets/images/prenotazioni/shop-online-bg.png`),
+
     visure: require(`../assets/images/prenotazioni/visure-logo.svg`),
     "visure-mobile": require(`../assets/images/prenotazioni/visure-logo.svg`),
     "energia-bg": require(`../assets/images/prenotazioni/energia.png`),
@@ -296,6 +297,7 @@ try {
     transactionModalImg: require(`../assets/images/transactionModal.svg`),
     // shop
 
+    bigbuy: require(`../assets/shop/bigbuy.svg`),
     mainBanner: require(`../assets/shop/banner.jpg`),
     mainBanner2: require(`../assets/shop/banner2.jpg`),
     mainBanner3: require(`../assets/shop/banner3.jpg`),
