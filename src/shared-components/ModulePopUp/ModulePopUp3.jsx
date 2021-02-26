@@ -13,11 +13,12 @@ function getBase64(img, callback) {
 }
 
 function beforeUpload(file) {
+  console.log("file.type", file.type);
   const isJpgOrPng =
     file.type === "image/jpg" ||
     file.type === "image/jpeg" ||
     file.type === "image/png" ||
-    file.type === "aplication/pdf";
+    file.type === "application/pdf";
   if (!isJpgOrPng) {
     message.error("Solo JPG/PNG/PDF file!");
   }
