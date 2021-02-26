@@ -1004,3 +1004,10 @@
 .st-btn {
   display: inline-block !important;
 }
+.ant-modal-confirm-body {
+  display: flex;
+  align-items: center;
+}
+.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
+  border-color: var(--accent-bg);
+}

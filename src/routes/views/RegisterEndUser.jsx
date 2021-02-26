@@ -24,7 +24,7 @@ import countriesArray from "config/countryArr";
 
 import VirtualizedSelect from "react-virtualized-select";
 import { Header } from "shared-components";
-
+import { Modal } from "antd";
 const { Option } = Select;
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -100,6 +100,16 @@ class RegisterEndUser extends React.Component {
   componentWillMount() {
     this.renderScript();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.register && prevProps.register !== this.props.register) {
+      if (this.props.register?.role) {
+        Modal.success({
+          content: this.props.register.message,
+        });
+      }
+    }
+  }
+
   componentDidMount() {
     if (this.props.match.params.token) {
       this.setState({ token: this.props.match.params.token });
@@ -306,7 +316,6 @@ class RegisterEndUser extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { register } = this.props;
     const { imageUrl, cardView, imageUrl2, codFisInps } = this.state;
     const uploadButton = (
       <div>
@@ -720,7 +729,7 @@ class RegisterEndUser extends React.Component {
                 </Form.Item>
               </div>
               <div className="itemCol full">
-                <span className="inputLabel">provincia di nascita</span>
+                <span className="inputLabel">Provincia di nascita</span>
                 <Form.Item>
                   <VirtualizedSelect
                     options={province_of_birthOptions}
@@ -763,7 +772,7 @@ class RegisterEndUser extends React.Component {
                 </Form.Item>
               </div>
               <div className="itemCol full">
-                <span className="inputLabel">provincia di residenza</span>
+                <span className="inputLabel">Provincia di residenza</span>
                 <Form.Item>
                   <VirtualizedSelect
                     options={provincaDiResidencaProvinciaOptions}
@@ -779,7 +788,7 @@ class RegisterEndUser extends React.Component {
                 </Form.Item>
               </div>
               <div className="itemCol full">
-                <span className="inputLabel">comune di residenza</span>
+                <span className="inputLabel">Comune di residenza</span>
 
                 <Form.Item>
                   <VirtualizedSelect
@@ -796,7 +805,7 @@ class RegisterEndUser extends React.Component {
                 </Form.Item>
               </div>
               <div className="itemCol full">
-                <span className="inputLabel">indirizzo di residenza</span>
+                <span className="inputLabel">Indirizzo di residenza</span>
 
                 <Form.Item>
                   {getFieldDecorator("address", {
@@ -988,7 +997,7 @@ class RegisterEndUser extends React.Component {
               </div>
 
               <div className="itemCol full">
-                {register.message && (
+                {/* {(register.message || true) && (
                   <React.Fragment>
                     {register.role ? (
                       <React.Fragment>
@@ -1002,17 +1011,11 @@ class RegisterEndUser extends React.Component {
                       </React.Fragment>
                     ) : (
                       <React.Fragment>
-                        <div className="Nmessage E">
-                          <i
-                            className="fas fa-times-circle"
-                            aria-hidden="true"
-                          ></i>
-                          {register.message}
-                        </div>
+                        {}
                       </React.Fragment>
                     )}
                   </React.Fragment>
-                )}
+                )} */}
               </div>
             </div>
           </div>
