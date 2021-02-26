@@ -149,6 +149,7 @@ class Root extends React.Component {
       this.props.accountInfo.token_id &&
       this.props.accountInfo.token_id !== prevProps.accountInfo.token_id
     ) {
+      this.props.getSkinExtras();
       this.props.getAds();
       if (!window.location.hash.includes("back-office")) {
         this.props.getStatisticheMain();
