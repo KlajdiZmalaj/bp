@@ -26,6 +26,12 @@ const OrdersShopDomain = ({
     getOrderData(id);
   };
 
+  useEffect(() => {
+    if (ordersShop[0]) {
+      openDetails(ordersShop[0].id);
+      openDetail(ordersShop[0].id);
+    }
+  }, [ordersShop]);
   return (
     <div className="accountInfo ordersShop">
       <div className="contentAcc maxWidth">
