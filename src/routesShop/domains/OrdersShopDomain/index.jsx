@@ -16,6 +16,7 @@ const OrdersShopDomain = ({
   getOrderData,
   orderData,
   setOrderData,
+  screenWidth,
 }) => {
   useEffect(() => {
     getOrders();
@@ -81,6 +82,9 @@ const OrdersShopDomain = ({
               );
             })}
         </div>
+        {screenWidth <= 1024 &&
+          orderData &&
+          Object.keys(orderData).length > 0 && <div className="backDrop"></div>}
         {orderData && Object.keys(orderData).length > 0 && (
           <div className="orderDetails">
             <div className="title">
@@ -156,6 +160,15 @@ const OrdersShopDomain = ({
                   </span>
                 </div>
               </div>
+              {screenWidth <= 1024 && (
+                <i
+                  onClick={() => {
+                    setOrderData({});
+                  }}
+                  className="fal fa-times"
+                  aria-hidden="true"
+                ></i>
+              )}
             </div>
 
             {orderData?.products?.map((prod, index) => {
@@ -227,6 +240,7 @@ const mstp = (state) => ({
   orderD: state.shop.orderD,
   ordersShop: state.shop.ordersShop,
   orderData: state.shop.orderData,
+  screenWidth: state.main.screenWidth,
 });
 
 export default withRouter(

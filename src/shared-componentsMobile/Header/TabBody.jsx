@@ -6,6 +6,24 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
   // console.log("services", services);
   return tab === 1 ? (
     <div className="tabBody body1">
+      {accountInfo?.profile ? (
+        <div className="tabBody--item">
+          <i className="fal fa-user-circle" aria-hidden="true"></i>
+
+          <Tooltip title={accountInfo?.profile?.name}>
+            <div className="nameUser">{accountInfo?.profile?.name}</div>
+          </Tooltip>
+
+          <span>{accountInfo?.profile?.wallet}€</span>
+        </div>
+      ) : (
+        <>
+          <div className="tabBody--item">
+            <i className="fal fa-store"></i>
+            Servizi
+          </div>
+        </>
+      )}
       {accountInfo?.profile?.role?.name === "super_admin" && (
         <div
           className="tabBody--item"
@@ -41,7 +59,10 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
         </div>
       )}
       <div
-        className="tabBody--item"
+        className={
+          "tabBody--item" +
+          (window.location.hash.includes("products") ? " active" : "")
+        }
         onClick={() => {
           window.location.hash = "products";
         }}
@@ -49,24 +70,18 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
         <i className="fal fa-shopping-cart"></i>
         Shop
       </div>
-      {accountInfo?.profile ? (
-        <div className="tabBody--item">
-          <i className="fal fa-user-circle" aria-hidden="true"></i>
-
-          <Tooltip title={accountInfo?.profile?.name}>
-            <div className="nameUser">{accountInfo?.profile?.name}</div>
-          </Tooltip>
-
-          <span>{accountInfo?.profile?.wallet}€</span>
-        </div>
-      ) : (
-        <>
-          <div className="tabBody--item">
-            <i className="fal fa-store"></i>
-            Servizi
-          </div>
-        </>
-      )}
+      <div
+        className={
+          "tabBody--item" +
+          (window.location.hash.includes("orders-shop") ? " active" : "")
+        }
+        onClick={() => {
+          window.location.hash = "orders-shop";
+        }}
+      >
+        <i className="fal fa-shopping-cart"></i>
+        Ordine Shop
+      </div>
 
       {azioni.map((tab) => {
         return (
