@@ -634,13 +634,17 @@ class Transazioni extends React.Component {
                   </Select>
                 </div>
                 {!this.props.forAdmin ? (
-                  <button
-                    className={"filterBtn" + (tableType === 1 ? " active" : "")}
-                    htmltype="submit"
-                    onClick={this.handleSubmit}
-                  >
-                    Filter
-                  </button>
+                  screenWidth > 1024 && (
+                    <button
+                      className={
+                        "filterBtn" + (tableType === 1 ? " active" : "")
+                      }
+                      htmltype="submit"
+                      onClick={this.handleSubmit}
+                    >
+                      Filter
+                    </button>
+                  )
                 ) : (
                   <>
                     <button
@@ -701,6 +705,17 @@ class Transazioni extends React.Component {
                       />
                     </div>
                   </div>
+                  {!forAdmin && screenWidth < 1024 && (
+                    <button
+                      className={
+                        "filterBtn" + (tableType === 1 ? " active" : "")
+                      }
+                      htmltype="submit"
+                      onClick={this.handleSubmit}
+                    >
+                      Filter
+                    </button>
+                  )}
                 </React.Fragment>
               ) : (
                 <React.Fragment>

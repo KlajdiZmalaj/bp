@@ -1,11 +1,6 @@
 @media (max-width: 1024px) {
   body:not(.bodyAdmin) .transTable.Movimenti .wsNwp div {
-    max-width: 110px;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
-    text-align: center;
-    vertical-align: middle;
+    white-space: pre-wrap;
   }
 }
 

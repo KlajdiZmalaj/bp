@@ -40,6 +40,15 @@ export default ({ tab, accountInfo, logOut, services, setMenu }) => {
           Registra Nuovi Utenti
         </div>
       )}
+      <div
+        className="tabBody--item"
+        onClick={() => {
+          window.location.hash = "products";
+        }}
+      >
+        <i className="fal fa-shopping-cart"></i>
+        Shop
+      </div>
       {accountInfo?.profile ? (
         <div className="tabBody--item">
           <i className="fal fa-user-circle" aria-hidden="true"></i>
