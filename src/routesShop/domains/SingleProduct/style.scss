@@ -37,6 +37,30 @@
         margin-right: 10px;
         max-height: 650px;
         overflow: hidden;
+        @media (max-width: 1024px) {
+          display: flex;
+          flex-flow: column;
+        }
+        &__other {
+          @media (max-width: 1024px) {
+            order: 2;
+            max-height: 80px;
+            overflow: hidden;
+            margin-bottom: 5px;
+            .slick-list {
+              margin: 0 30px;
+            }
+            .slick-slide {
+              div {
+                height: 80px;
+                display: flex !important;
+                img {
+                  width: auto !important;
+                }
+              }
+            }
+          }
+        }
         &__big {
           img {
             transition: transform 0.25s ease;
@@ -49,6 +73,12 @@
           transform: rotate(90deg);
           // position: relative;
           z-index: 1;
+          @media (max-width: 1024px) {
+            transform: rotate(0deg);
+            position: absolute;
+            right: 0;
+            top: 30px;
+          }
         }
         .slick-prev {
           left: 40%;
@@ -57,6 +87,12 @@
           bottom: auto;
           z-index: 1;
           // position: relative;
+          @media (max-width: 1024px) {
+            transform: rotate(0deg);
+            position: absolute;
+            left: 0;
+            top: 30px;
+          }
         }
 
         .slick-prev:before,
@@ -88,7 +124,8 @@
           padding: 3px;
           opacity: 0.4;
           cursor: pointer;
-          &:hover {
+
+          &.active {
             opacity: 1;
             color: var(--accent-bg);
           }

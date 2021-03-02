@@ -110,7 +110,10 @@ class SingleProduct extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { product, productCart } = this.props;
+    const { product, productCart, screenWidth, itemsCart } = this.props;
+    const favArr = Object.values(itemsCart.wish || {}).map(
+      (item) => item.main_id
+    );
 
     const {
       orderQuanity,
@@ -123,7 +126,7 @@ class SingleProduct extends Component {
       dots: false,
       speed: 500,
       slidesToScroll: 1,
-      vertical: true,
+      vertical: screenWidth <= 1024 ? false : true,
       verticalSwiping: true,
     };
     let url =
@@ -131,6 +134,7 @@ class SingleProduct extends Component {
       (product?.Product_MainCategory?.split(" | ")[1]
         ? "__" + product?.Product_MainCategory?.split(" | ")[1]
         : "");
+    //console.log("favArr", favArr, product);
     return (
       product && (
         <div className="prod">
@@ -202,7 +206,9 @@ class SingleProduct extends Component {
                     - {product.Product_SubCategory}
                   </div>
                   <div
-                    className="addToFav"
+                    className={`addToFav${
+                      favArr.includes(product.Product_id) ? " active" : ""
+                    }`}
                     onClick={(e) => {
                       this.handleSubmit(e, "addFav");
                     }}
@@ -439,6 +445,8 @@ class SingleProduct extends Component {
 const mapsStateToProps = (state) => ({
   product: state.shop.productD,
   productCart: state.shop.productCart,
+  screenWidth: state.main.screenWidth,
+  itemsCart: state.shop.itemsCart,
 });
 
 export default withRouter(
