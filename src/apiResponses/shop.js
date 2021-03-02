@@ -64,7 +64,7 @@ const orderData = {
 //SHOP ROUTE++++++++++
 
 //s://services-api.bpoint.store/api/shop/categories?skin_id=1
-const categories = {
+export const categories = {
   message: "Categories Fetched",
   data: {
     profumeriacosmesi: {
@@ -65033,7 +65033,7 @@ const categories = {
 };
 
 //t.store/api/shop/homeProducts?skin_id=1
-const homeProducts = {
+export const homeProducts = {
   message: "Products Fetched",
   data: {
     profumeriacosmesi: [
@@ -65458,7 +65458,7 @@ const homeProducts = {
 };
 
 //produkte informatica ces-api.bpoint.store/api/shop/products?skin_id=1&Product_MainCategory=Informatica+%7C+Elettronica
-const products = {
+export const products = {
   data: {
     S0575796: {
       prd_supp: "bigbuy",
@@ -65704,7 +65704,7 @@ const products = {
 };
 
 // -api.bpoint.store/api/shop/lists?skin_id=1
-const shopLista = {
+export const shopLista = {
   message: "Lists Fetched",
   data: {
     wish: [],
@@ -65723,7 +65723,7 @@ const shopLista = {
 };
 
 //oint.store/api/shop/getProduct
-const singleProd = {
+export const singleProd = {
   message: "Product Fetched",
   data: {
     prd_supp: "bigbuy",

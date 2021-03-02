@@ -1,4 +1,4 @@
-const adminlogin = {
+export const adminlogin = {
   token:
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiZjBmNWVhNzVkMzc2ZjQzMDdiYWI1NjVhY2Q3NjhkMzY4M2VlNjNjMTM2ODI3N2FiOWQ1ODAyZTU4ZWIxZTQ4M2E3MTFhOGNiOGRiOTQ3ODgiLCJpYXQiOjE2MTQ2ODEwNjksIm5iZiI6MTYxNDY4MTA2OSwiZXhwIjoxNjE0Njg0NjY5LCJzdWIiOiI0NSIsInNjb3BlcyI6W119.pFtqQ9zcoPlBXXHe1nrevkRj3j7HhrgsSNQ9woPSfmgEU6gIxOHPg4IcHcVUfwE7MrdlPd40I2tBSgnhSl1w6GGU49Qy5vctLbqVzDB0slW9kLbgcsJwz1hIdGkARvQ9Oh7vzKZOBf-g0DmC639kMZ1jquN7HhYnxJWkqEOS0I3tejLIyUKiC5O3pezCDP5eGJEKnPHYPatXRR9nD8uiqhTy0LJ4lbYDAdjoDQMh_v0zLyLBZdd3ESYvUWj2rVaajBDT4UaVf69ENwA6PpUwOg8eIyDfdx-cuhewcQo88M9CdAGMgREg9HFBj_4bBLYDQZcXWh0hy06TOthKHr6JBpWNOr29tKaY3JCE6ozUdLHmCO7_q-TRrJNqMStI707NjctlpF1YKGaeUnzNg-xweiCSxEQn1hCBmGMGsAlMkSop7DA7z6yoweTzcIBPkIzsLr2pjXZCed3tJm40GsIbmVYFWhRyW_-nFc7PO0aYtlsuT3nLiE7ZTXKeZQ3sSUK2BI3-FB7-FQ7u1B2mb63_7ebsP7IVU_y0CYJmt9_gecvMvkn48idgWBanReDdva3zmkNTNej4fOfUM2Oq_pd_uYb1nF_Tjvu0vrR9cSyPA06kavxbrksZAkEosVeoKF6OI-dO4WUAgAF6EMOKq6U1XTW9hxBVy-4ToQqtWoDANmg",
   token_id:
@@ -59,7 +59,7 @@ const adminlogin = {
 };
 
 //point.store/api/statistiche
-const statsadmin = {
+export const statsadmin = {
   message: "Data fetched",
   total: {
     importo: "253.925,46",
@@ -100,7 +100,7 @@ const statsadmin = {
 };
 
 //api.bpoint.store/api/widgetPayments
-const widgetadmin = {
+export const widgetadmin = {
   message: "Data fetched",
   payments: [
     {
@@ -136,7 +136,7 @@ const widgetadmin = {
   ],
 };
 
-const allservices = {
+export const allservices = {
   result: {
     categories: [
       {
