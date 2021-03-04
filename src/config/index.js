@@ -399,18 +399,19 @@ export const BetBullServices = [
     type: "1",
   },
 ];
+export const firestr = firebase.firestore;
 
-var firebaseConfig = {
-  apiKey: "AIzaSyDMHqopkqlG962b6QbE9TWlu0EW0JZI0I8",
-  authDomain: "bpoint-92398.firebaseapp.com",
-  projectId: "bpoint-92398",
-  storageBucket: "bpoint-92398.appspot.com",
-  messagingSenderId: "449464517232",
-  appId: "1:449464517232:web:9da256e50be6c296e56ab5",
-  measurementId: "G-32SM7G7JGM",
-};
-var app = firebase.initializeApp(firebaseConfig);
-export var db = firebase.firestore(app);
+// var firebaseConfig = {
+//   apiKey: "AIzaSyDMHqopkqlG962b6QbE9TWlu0EW0JZI0I8",
+//   authDomain: "bpoint-92398.firebaseapp.com",
+//   projectId: "bpoint-92398",
+//   storageBucket: "bpoint-92398.appspot.com",
+//   messagingSenderId: "449464517232",
+//   appId: "1:449464517232:web:9da256e50be6c296e56ab5",
+//   measurementId: "G-32SM7G7JGM",
+// };
+// var app = firebase.initializeApp(firebaseConfig);
+// export var db = firebase.firestore(app);
 
 //http://prntscr.com/vmqp68  reset state so next popup states are cleaned
 export const resetUserStateChangeFields = {
