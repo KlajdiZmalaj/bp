@@ -71,12 +71,20 @@ class ModulePopUp4 extends React.Component {
     this.setState({ serviceMobile: service });
   };
 
+  PuntoITCheck = (service) => {
+    let bol = false;
+    if (service) {
+      if (service.match(/BGAM|BBET|BETBULL|BULL001|BBT001|BGM001/g)) {
+        bol = true;
+      } else {
+        bol = false;
+      }
+    }
+    return bol;
+  };
+
   handleSubmit(service_id, tel_no) {
-    if (
-      this.props.service_s.id === "BGAM" ||
-      this.props.service_s.id === "BBET" ||
-      this.props.service_s.id === "BETBULL"
-    ) {
+    if (this.PuntoITCheck(this.props.service_s.id)) {
       if (tel_no && tel_no < 5) {
         notification["warning"]({
           message: "Warning !",
@@ -144,9 +152,7 @@ class ModulePopUp4 extends React.Component {
             this.props.serviceType === "SCMS"
               ? "game"
               : service.type.toString() === "0" ||
-                service_s.id === "BGAM" ||
-                service_s.id === "BETBULL" ||
-                service_s.id === "BBET"
+                this.PuntoITCheck(service_s.id)
               ? "small"
               : ""
           }`}
@@ -156,9 +162,7 @@ class ModulePopUp4 extends React.Component {
               <div className="confermaMsg animated bounce">
                 <div className="info">
                   Stai eseguiendo una ricarica da €
-                  {service_s.id === "BGAM" ||
-                  service_s.id === "BBET" ||
-                  service_s.id === "BETBULL"
+                  {this.PuntoITCheck(service_s.id)
                     ? !this.state.changeInput
                       ? serviceMobile.cost
                       : tel_no
@@ -171,9 +175,7 @@ class ModulePopUp4 extends React.Component {
                       this.handleSubmit(
                         serviceMobile.service_id,
                         service.type.toString() === "1"
-                          ? (service_s.id === "BGAM" ||
-                              service_s.id === "BETBULL" ||
-                              service_s.id === "BBET") &&
+                          ? this.PuntoITCheck(service_s.id) &&
                             !this.state.changeInput
                             ? serviceMobile.cost
                             : tel_no
@@ -211,9 +213,7 @@ class ModulePopUp4 extends React.Component {
             <div className="ServiceHeader">
               <h4>{service_s.name}</h4>
               {service.type.toString() === "1" &&
-              service_s.id !== "BGAM" &&
-              service_s.id !== "BETBULL" &&
-              service_s.id !== "BBET" ? (
+              !this.PuntoITCheck(service_s.id) ? (
                 <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
               ) : (
                 this.props.serviceType === "SCMS" && (
@@ -223,9 +223,7 @@ class ModulePopUp4 extends React.Component {
               <h5>{serviceMobile.name}</h5>
             </div>
             {(service.type.toString() === "1" &&
-              service_s.id !== "BGAM" &&
-              service_s.id !== "BETBULL" &&
-              service_s.id !== "BBET") ||
+              !this.PuntoITCheck(service_s.id)) ||
             changeInput === true ? (
               <div className={`NumPadContainer ${changeInput ? "bgm" : ""}`}>
                 <div className="NumPd">
@@ -311,9 +309,7 @@ class ModulePopUp4 extends React.Component {
                 </div>
               )
             )}
-            {(service_s.id === "BGAM" ||
-              service_s.id === "BBET" ||
-              service_s.id === "BETBULL") && (
+            {this.PuntoITCheck(service_s.id) && (
               <div className="infoRicariche">
                 <i className="fal fa-info-circle"></i>
                 Voucher generato è valido solo per la <br />
@@ -332,9 +328,7 @@ class ModulePopUp4 extends React.Component {
                   : service_s.services || []
                 ).map((item, index) => {
                   return (
-                    service_s.id === "BGAM" ||
-                    service_s.id === "BBET" ||
-                    service_s.id === "BETBULL"
+                    this.PuntoITCheck(service_s.id)
                       ? parseFloat(item?.cost) ===
                         parseFloat(serviceMobile.cost)
                       : item.service_id.toString() ===
@@ -346,9 +340,7 @@ class ModulePopUp4 extends React.Component {
                         serviceMobile.cost
                       )} serv ${
                         (
-                          service_s.id === "BGAM" ||
-                          service_s.id === "BBET" ||
-                          service_s.id === "BETBULL"
+                          this.PuntoITCheck(service_s.id)
                             ? parseFloat(item?.cost) ===
                               parseFloat(serviceMobile.cost)
                             : item.service_id.toString() ===
@@ -375,9 +367,7 @@ class ModulePopUp4 extends React.Component {
                         serviceMobile.cost
                       )} serv ${
                         (
-                          service_s.id === "BGAM" ||
-                          service_s.id === "BBET" ||
-                          service_s.id === "BETBULL"
+                          this.PuntoITCheck(service_s.id)
                             ? parseFloat(item?.cost) ===
                               parseFloat(serviceMobile.cost)
                             : item.service_id.toString() ===
@@ -393,9 +383,7 @@ class ModulePopUp4 extends React.Component {
                     </div>
                   );
                 })}
-                {serviceMobile.service_id.toString() === "BGM001" ||
-                serviceMobile.service_id.toString() === "BBT001" ||
-                serviceMobile.service_id.toString() === "BULL001" ? (
+                {this.PuntoITCheck(serviceMobile.service_id.toString()) ? (
                   changeInput ? (
                     <div
                       className="serv"
