@@ -240,7 +240,7 @@ class ModulePopUp4 extends React.Component {
                   {!changeInput && <i className="fas fa-address-book"></i>}
                 </div>
                 <div className="Numbers">
-                  {service_s.id === "BGAM" || service_s.id === "BBET" ? (
+                  {this.PuntoITCheck(service_s.id) ? (
                     <Fragment>
                       {[1, 2, 3, 4, 5, 6, 7, 8, 9, ".", "0", "x"].map((num) => (
                         <span
