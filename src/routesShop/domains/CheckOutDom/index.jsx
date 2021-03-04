@@ -6,7 +6,7 @@ import "./style.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { get } from "lodash";
-import { Radio, Form, Modal, Button } from "antd";
+import { Radio, Form, Modal } from "antd";
 
 import images from "themes/images";
 
@@ -77,6 +77,7 @@ const CheckOutDom = ({
       via_nr: itemsCart?.user_data?.address,
       tel: itemsCart?.user_data?.phone,
     });
+    //eslint-disable-next-line
   }, [
     accountInfo,
     // match.params.id,

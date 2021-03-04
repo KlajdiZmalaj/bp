@@ -2,7 +2,7 @@ import React from "react";
 import {
   Header,
   // , Footer
-  ShopBottomMenu,
+  // ShopBottomMenu,
   ShopMenuLeft,
 } from "shared-componentsMobile";
 import AllProducts from "routesShop/domains/ProdBycategory/index.js";

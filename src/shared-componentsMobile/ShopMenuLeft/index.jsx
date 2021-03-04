@@ -35,7 +35,12 @@ const Menu = ({
         isSelectedSubCategory
       );
     }
-  }, [isSelectedCategory, isSelectedSubCategory, isSelectedSubSubCategory]);
+  }, [
+    isSelectedCategory,
+    isSelectedSubCategory,
+    isSelectedSubSubCategory,
+    getProductsList,
+  ]);
   // useEffect(() => {
   //   if (!activeCat && Object.keys(categories)?.[0]) {
   //     setCat(Object.keys(categories)?.[0]);
@@ -57,9 +62,7 @@ const Menu = ({
                   }
                 >
                   <i
-                    className={
-                      "fal" + ` ${categories?.[catKey].name.toLowerCase()}`
-                    }
+                    className={`fal ${categories?.[catKey].name.toLowerCase()}`}
                     aria-hidden="true"
                   ></i>
                   <span

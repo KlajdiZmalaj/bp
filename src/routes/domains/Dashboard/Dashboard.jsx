@@ -327,6 +327,7 @@ class DashboardDom extends React.Component {
                 onClick={() => {
                   window.location.hash = "products/covid19";
                 }}
+                alt=""
               />
             </div>
           </aside>

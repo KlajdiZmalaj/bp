@@ -18,7 +18,8 @@ const Menu = ({
       setCategory(catProduct.replace("__", " | "));
     }
     getItemsCart();
-  }, []);
+    //eslint-disable-next-line
+  }, [getItemsCart]);
 
   return (
     <div className="shopBottomMenu">

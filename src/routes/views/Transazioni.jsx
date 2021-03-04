@@ -316,7 +316,7 @@ class Transazioni extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { forAdmin, paymentsForExcel, screenWidth } = this.props;
     const {
-      barcode,
+      // barcode,
       picker,
       isCalendarOpen,
       fromLabel,
@@ -325,7 +325,7 @@ class Transazioni extends React.Component {
       from,
       username,
       perPage,
-      visible,
+      // visible,
       modalDetails,
       tableType,
     } = this.state;
@@ -343,11 +343,11 @@ class Transazioni extends React.Component {
       payments,
       accountInfo,
       loadingPayments,
-      paymentsFromCode,
+      // paymentsFromCode,
       paymentsPages,
       navbarSearch,
       getCodiceTicket,
-      skinExtras,
+      // skinExtras,
       getPayments,
     } = this.props;
     const filters = [

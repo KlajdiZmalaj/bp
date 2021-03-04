@@ -20,19 +20,16 @@ const OrdersShopDomain = ({
 }) => {
   useEffect(() => {
     getOrders();
-  }, [accountInfo]);
+  }, [accountInfo, getOrders]);
 
   const [isOpened, openDetails] = useState(null);
-  const openDetail = (id) => {
-    getOrderData(id);
-  };
 
   useEffect(() => {
     if (ordersShop[0]) {
       openDetails(ordersShop[0].id);
-      openDetail(ordersShop[0].id);
+      getOrderData(ordersShop[0].id);
     }
-  }, [ordersShop]);
+  }, [ordersShop, getOrderData]);
   return (
     <div className="accountInfo ordersShop">
       <div className="contentAcc maxWidth">
@@ -71,7 +68,7 @@ const OrdersShopDomain = ({
                         <i
                           className="far fa-chevron-right"
                           onClick={() => {
-                            openDetail(order.id);
+                            getOrderData(order.id);
                             openDetails(order.id);
                           }}
                         ></i>

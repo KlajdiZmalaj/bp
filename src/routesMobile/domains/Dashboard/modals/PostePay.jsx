@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { AuthActions, MainActions } from "redux-store/models";
 import { message, Upload, Icon } from "antd";
@@ -32,7 +32,7 @@ const PostePay = ({
   activeService,
   allFavServices,
   toggleFavorite,
-  postePay,
+  //postePay,
   postePayLoading,
   setPostePay,
   setPostePayLoading,

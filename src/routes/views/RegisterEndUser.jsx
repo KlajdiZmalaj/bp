@@ -77,7 +77,7 @@ class RegisterEndUser extends React.Component {
   };
   renderScript = () => {
     var el = document.getElementById("sharescript");
-    let _ = this;
+    //let _ = this;
     function write() {
       var script = document.createElement("script");
       script.onload = function () {

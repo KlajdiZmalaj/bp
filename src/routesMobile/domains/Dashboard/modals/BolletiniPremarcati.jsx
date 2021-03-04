@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import images from "themes/images";
 import AuthActions from "redux-store/models/auth";
-import { notification } from "antd";
 // import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import { NewBarcodeScanner as Scanner } from "shared-components";
 const Input = ({ label, handler, icon, value, iconHandler }) => (

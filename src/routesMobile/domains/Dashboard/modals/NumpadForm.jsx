@@ -156,7 +156,7 @@ const Numpad = ({
     } else {
       setTransactionModal(false);
     }
-  }, [rechargeMobile.receipt]);
+  }, [rechargeMobile.receipt, setTransactionModal]);
   // useEffect(() => {
   //   if (Object.values(rechargeMobile).length > 0)
   //     notification[rechargeMobile.errors ? "error" : "success"]({

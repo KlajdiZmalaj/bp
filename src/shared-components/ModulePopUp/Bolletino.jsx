@@ -222,7 +222,7 @@ class Bolletino extends React.Component {
     const {
       barcodeInput,
       condizioniShow,
-      condizioniAgreement,
+      //condizioniAgreement,
       helper,
     } = this.state;
     // console.log("service_s", service_s);

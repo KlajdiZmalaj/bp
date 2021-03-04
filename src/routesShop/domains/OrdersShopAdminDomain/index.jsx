@@ -24,7 +24,7 @@ const OrdersShopAdminDomain = ({
 }) => {
   useEffect(() => {
     getOrders();
-  }, [accountInfo]);
+  }, [accountInfo, getOrders]);
 
   const [isOpened, openDetails] = useState(null);
   const openDetail = (id) => {
@@ -66,7 +66,7 @@ const OrdersShopAdminDomain = ({
                         <td className="wsNwp">{order?.data}</td>
                         <td className="wsNwp supp">
                           {order?.supplier === "bigbuy" && (
-                            <img src={images.bigbuy}></img>
+                            <img src={images.bigbuy} alt=""></img>
                           )}
                           {order?.supplier}
                         </td>

@@ -19,8 +19,6 @@ const TransactionModal = ({ setTransactionModal, msg, ok, cancel }) => (
     <button
       onClick={() => {
         cancel();
-      }}
-      onClick={() => {
         setTransactionModal(false);
       }}
     >
