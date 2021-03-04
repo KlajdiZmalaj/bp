@@ -4,7 +4,7 @@ import { MainActions, AuthActions } from "redux-store/models";
 import { BannerColors } from "config/index";
 import images from "../../themes/images";
 import ReactToPrint from "react-to-print";
-import { BgameServices, BbetServices } from "config";
+import { BgameServices, BbetServices, BetBullServices } from "config";
 import { notification } from "antd";
 class ModulePopUp4 extends React.Component {
   constructor(props) {
@@ -74,7 +74,8 @@ class ModulePopUp4 extends React.Component {
   handleSubmit(service_id, tel_no) {
     if (
       this.props.service_s.id === "BGAM" ||
-      this.props.service_s.id === "BBET"
+      this.props.service_s.id === "BBET" ||
+      this.props.service_s.id === "BETBULL"
     ) {
       if (tel_no && tel_no < 5) {
         notification["warning"]({
@@ -144,6 +145,7 @@ class ModulePopUp4 extends React.Component {
               ? "game"
               : service.type.toString() === "0" ||
                 service_s.id === "BGAM" ||
+                service_s.id === "BETBULL" ||
                 service_s.id === "BBET"
               ? "small"
               : ""
@@ -154,7 +156,9 @@ class ModulePopUp4 extends React.Component {
               <div className="confermaMsg animated bounce">
                 <div className="info">
                   Stai eseguiendo una ricarica da €
-                  {service_s.id === "BGAM" || service_s.id === "BBET"
+                  {service_s.id === "BGAM" ||
+                  service_s.id === "BBET" ||
+                  service_s.id === "BETBULL"
                     ? !this.state.changeInput
                       ? serviceMobile.cost
                       : tel_no
@@ -168,6 +172,7 @@ class ModulePopUp4 extends React.Component {
                         serviceMobile.service_id,
                         service.type.toString() === "1"
                           ? (service_s.id === "BGAM" ||
+                              service_s.id === "BETBULL" ||
                               service_s.id === "BBET") &&
                             !this.state.changeInput
                             ? serviceMobile.cost
@@ -207,6 +212,7 @@ class ModulePopUp4 extends React.Component {
               <h4>{service_s.name}</h4>
               {service.type.toString() === "1" &&
               service_s.id !== "BGAM" &&
+              service_s.id !== "BETBULL" &&
               service_s.id !== "BBET" ? (
                 <h5>INSERIRE IL NUMERO DI TELEFONO DA RICARICARE</h5>
               ) : (
@@ -218,6 +224,7 @@ class ModulePopUp4 extends React.Component {
             </div>
             {(service.type.toString() === "1" &&
               service_s.id !== "BGAM" &&
+              service_s.id !== "BETBULL" &&
               service_s.id !== "BBET") ||
             changeInput === true ? (
               <div className={`NumPadContainer ${changeInput ? "bgm" : ""}`}>
@@ -304,7 +311,9 @@ class ModulePopUp4 extends React.Component {
                 </div>
               )
             )}
-            {(service_s.id === "BGAM" || service_s.id === "BBET") && (
+            {(service_s.id === "BGAM" ||
+              service_s.id === "BBET" ||
+              service_s.id === "BETBULL") && (
               <div className="infoRicariche">
                 <i className="fal fa-info-circle"></i>
                 Voucher generato è valido solo per la <br />
@@ -318,10 +327,14 @@ class ModulePopUp4 extends React.Component {
                   ? BgameServices
                   : service_s.id === "BBET"
                   ? BbetServices
+                  : service_s.id === "BETBULL"
+                  ? BetBullServices
                   : service_s.services || []
                 ).map((item, index) => {
                   return (
-                    service_s.id === "BGAM" || service_s.id === "BBET"
+                    service_s.id === "BGAM" ||
+                    service_s.id === "BBET" ||
+                    service_s.id === "BETBULL"
                       ? parseFloat(item?.cost) ===
                         parseFloat(serviceMobile.cost)
                       : item.service_id.toString() ===
@@ -333,7 +346,9 @@ class ModulePopUp4 extends React.Component {
                         serviceMobile.cost
                       )} serv ${
                         (
-                          service_s.id === "BGAM" || service_s.id === "BBET"
+                          service_s.id === "BGAM" ||
+                          service_s.id === "BBET" ||
+                          service_s.id === "BETBULL"
                             ? parseFloat(item?.cost) ===
                               parseFloat(serviceMobile.cost)
                             : item.service_id.toString() ===
@@ -360,7 +375,9 @@ class ModulePopUp4 extends React.Component {
                         serviceMobile.cost
                       )} serv ${
                         (
-                          service_s.id === "BGAM" || service_s.id === "BBET"
+                          service_s.id === "BGAM" ||
+                          service_s.id === "BBET" ||
+                          service_s.id === "BETBULL"
                             ? parseFloat(item?.cost) ===
                               parseFloat(serviceMobile.cost)
                             : item.service_id.toString() ===
@@ -377,7 +394,8 @@ class ModulePopUp4 extends React.Component {
                   );
                 })}
                 {serviceMobile.service_id.toString() === "BGM001" ||
-                serviceMobile.service_id.toString() === "BBT001" ? (
+                serviceMobile.service_id.toString() === "BBT001" ||
+                serviceMobile.service_id.toString() === "BULL001" ? (
                   changeInput ? (
                     <div
                       className="serv"

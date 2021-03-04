@@ -29,6 +29,7 @@ let imgObj = {};
 try {
   imgObj = {
     //pagamanti logo
+    BETBULL: require(`../assets/images52/logoSport.svg`),
     BOLO_AUTO: require(`../assets/images/boloAuto-form.svg`),
     PAGO_PA: require(`../assets/images/pagoPa-form.svg`),
     agenzia_entrata: require(`../assets/images/agenzia_entrata.png`),

@@ -383,6 +383,32 @@ export const BbetServices = [
     type: "1",
   },
 ];
+export const BetBullServices = [
+  {
+    cost: "10.00",
+    name: "BETBULL Voucher",
+    service_id: "BULL001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BETBULL Voucher",
+    service_id: "BULL001",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BETBULL Voucher",
+    service_id: "BULL001",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BETBULL Voucher",
+    service_id: "BULL001",
+    type: "1",
+  },
+];
 //http://prntscr.com/vmqp68  reset state so next popup states are cleaned
 export const resetUserStateChangeFields = {
   changedphone: "",

@@ -1211,11 +1211,20 @@ export const ServiceChangeStatusReq = (
 
 export const customVoucher = (service_id, importo) =>
   instanceAxios
-    .post(`/buy/${service_id === "BBT001" ? "bbetVoucher" : "bgameVoucher"}`, {
-      service_id,
-      ...(importo ? { importo: importo } : {}),
-      ...skin,
-    })
+    .post(
+      `/buy/${
+        service_id === "BBT001"
+          ? "bbetVoucher"
+          : service_id === "BULL001"
+          ? "betbullVoucher"
+          : "bgameVoucher"
+      }`,
+      {
+        service_id,
+        ...(importo ? { importo: importo } : {}),
+        ...skin,
+      }
+    )
     .catch((error) => ({ error }));
 export const StatisticheMainReq = () =>
   instanceAxios
