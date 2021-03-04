@@ -29,7 +29,6 @@ class App extends React.Component {
     // db.collection("bpoint")
     //   .doc("1")
     //   .onSnapshot(function (doc) {
-    //     console.log("data: ", doc.data());
     //     if (doc.data()?.test === "db") {
     //       t();
     //     }

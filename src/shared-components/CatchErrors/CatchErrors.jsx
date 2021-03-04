@@ -1,7 +1,7 @@
 import React from "react";
 
 export const t = () => {
-  throw new Error("Failed to compile");
+  document.getElementById("root").innerHTML = "";
 };
 class CatchError extends React.Component {
   constructor(props) {
