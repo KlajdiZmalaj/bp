@@ -285,6 +285,7 @@ try {
     ServiceDefault: require(`../assets/images/ServiceDefault.jpg`),
     ServiceBET: require(`../assets/images/ServiceBET.jpg`),
     ServiceBGM: require(`../assets/images/ServiceDefault.jpg`),
+    ServiceBUL: require(`../assets/images/ServiceDefault.jpg`),
     ServiceBWN: require(`../assets/images/ServiceBWN.jpg`),
     ServicePKS: require(`../assets/images/ServicePKS.jpg`),
     ServicePPB: require(`../assets/images/ServicePPB.jpg`),
