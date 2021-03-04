@@ -79,6 +79,38 @@ const BbetServices = [
     type: "+",
   },
 ];
+const BetBullServices = [
+  {
+    cost: "10.00",
+    name: "BETBULL Voucher",
+    service_id: "BBL001",
+    type: "1",
+  },
+  {
+    cost: "25.00",
+    name: "BETBULL Voucher",
+    service_id: "BBL002",
+    type: "1",
+  },
+  {
+    cost: "50.00",
+    name: "BETBULL Voucher",
+    service_id: "BBL003",
+    type: "1",
+  },
+  {
+    cost: "100.00",
+    name: "BETBULL Voucher",
+    service_id: "BBL004",
+    type: "1",
+  },
+  {
+    cost: "+",
+    name: "BETBULL Voucher",
+    service_id: "BBL005",
+    type: "+",
+  },
+];
 const Numpad = ({
   services,
   activeService,
@@ -110,6 +142,8 @@ const Numpad = ({
         setCost(BgameServices[0]);
       } else if (activeService === "BBET") {
         setCost(BbetServices[0]);
+      } else if (activeService === "BETBULL") {
+        setCost(BetBullServices[0]);
       } else {
         setCost(services[activeCategory][activeService].services[0]);
       }
@@ -133,7 +167,8 @@ const Numpad = ({
   useEffect(() => {
     if (
       selectedCost?.service_id === "BGM005" ||
-      selectedCost?.service_id === "BBT005"
+      selectedCost?.service_id === "BBT005" ||
+      selectedCost?.service_id === "BBL005"
     ) {
       setBgamePad(true);
     } else if (bgamePad === true) {
@@ -153,11 +188,15 @@ const Numpad = ({
             ? BgameServices
             : activeService === "BBET"
             ? BbetServices
+            : activeService === "BETBULL"
+            ? BetBullServices
             : services[activeCategory][activeService].services
           ).map((item, index) => {
             let bgamePadCondition =
               item.cost === "+" &&
-              (item.service_id === "BGM005" || item.service_id === "BBT005");
+              (item.service_id === "BGM005" ||
+                item.service_id === "BBT005" ||
+                item.service_id === "BBL005");
             return selectedCost?.service_id === item.service_id ? (
               <div
                 key={index}
@@ -341,7 +380,8 @@ const Numpad = ({
 
             if (
               selectedCost?.service_id.includes("BGM00") ||
-              selectedCost?.service_id.includes("BBT00")
+              selectedCost?.service_id.includes("BBT00") ||
+              selectedCost?.service_id.includes("BBL00")
             ) {
               //("inpVal", inpVal, selectedCost);
               getCustomVoucherReq(
@@ -349,6 +389,8 @@ const Numpad = ({
                   ? "BGM001"
                   : selectedCost?.service_id.includes("BBT00")
                   ? "BBT001"
+                  : selectedCost?.service_id.includes("BBL00")
+                  ? "BULL001"
                   : "",
                 inpVal || selectedCost?.cost,
                 setLoadingRecharge
