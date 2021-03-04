@@ -2,6 +2,8 @@ import $ from "jquery";
 import { notification } from "antd";
 import { unSubscribeSocketUser, unSubscribeSocketSupport } from "config/socket";
 import React from "react";
+import { isLocalHost } from "config";
+
 export const endpoint = "https://services-api.bpoint.store/api";
 const apiUrl = `${endpoint}`;
 export const getToken = () => {
@@ -49,7 +51,7 @@ export const handleError = (error) => {
     localStorage.setItem("accountDataB", null);
     window.store.dispatch({ type: "SET_UNAUTHORIZATION" });
   } else if (hasCode(error, 429)) {
-    console.log("to many request");
+    // console.log("to many request");
   } else if (hasCode(error, 403)) {
     //forbiden , kryesisht > prenotazione
     notification["warning"]({
@@ -72,7 +74,7 @@ export let skin = {
   skin_id: 0,
 };
 window.apiUrl = apiUrl;
-if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
+if (window.location.href.match(/bpoint/g) || isLocalHost) {
   skin = {
     ...skin,
     skin_id: 1,
@@ -86,7 +88,7 @@ if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
       `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172416989-1');</script>`
     );
   }
-} else if (window.location.href.includes("derby")) {
+} else if (window.location.href.match(/derby/g)) {
   skin = {
     ...skin,
     skin_id: 3,
@@ -98,7 +100,7 @@ if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
   $("head").append(
     `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172416989-6');</script>`
   );
-} else if (window.location.href.includes("planet")) {
+} else if (window.location.href.match(/planet/g)) {
   skin = {
     ...skin,
     skin_id: 4,
@@ -110,7 +112,7 @@ if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
   $("head").append(
     `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172416989-2');</script>`
   );
-} else if (window.location.href.includes("gfb")) {
+} else if (window.location.href.match(/gfb/g)) {
   skin = {
     ...skin,
     skin_id: 5,
@@ -122,12 +124,12 @@ if (window.location.href.match(/bpoint|localhost|192\.168/g)) {
   $("head").append(
     `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172416989-5');</script>`
   );
-} else if (window.location.href.includes("sirpay")) {
+} else if (window.location.href.match(/sirpay/g)) {
   skin = {
     ...skin,
     skin_id: 8,
   };
-} else if (window.location.href.includes("imperial")) {
+} else if (window.location.href.match(/imperial/g)) {
   skin = {
     ...skin,
     skin_id: 51,

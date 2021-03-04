@@ -1,3 +1,4 @@
+import { isLocalHost } from "config";
 const month = new Date().getMonth();
 const day = new Date().getDate();
 export const isWinter =
@@ -5,11 +6,7 @@ export const isWinter =
   (month === 0 && day.toString().match(/^(1|2|3|4|5)$/g));
 let skin = "";
 
-if (
-  window.location.href.includes("bpoint") ||
-  window.location.href.includes("192.168") ||
-  window.location.href.includes("localhost")
-) {
+if (window.location.href.includes("bpoint") || isLocalHost) {
   skin = 1;
 } else if (window.location.href.includes("gfb")) {
   skin = 5;

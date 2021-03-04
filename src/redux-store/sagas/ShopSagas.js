@@ -208,7 +208,7 @@ export function* getProdCat(params) {
 }
 
 export function* getOrders(param) {
-  console.log("test", param);
+  //console.log("test", param);
   const response = yield call(ShopRequest.fetchOrders, param.skinId);
   if (response.data) {
     yield put(ShopActions.setOrders(response.data.data));

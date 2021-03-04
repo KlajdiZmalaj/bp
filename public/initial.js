@@ -1,3 +1,5 @@
+const isLocalHost = window.location.href.match(/192|localhost|127/g);
+
 var _window$localStorage$;
 
 window.log1 = "color: lime;font-size: 20px;background: #222";
@@ -20,7 +22,7 @@ var mainifest = document.getElementById("manifest");
 var iosIcon = document.getElementById("iosIcon");
 root.setAttribute("class", `${window.location.host.split(".")[0]}`);
 
-if (window.LOCATION_URL.match(/oint\.st|localhost|192\.168/g)) {
+if (window.LOCATION_URL.match(/oint\.st/g) || isLocalHost) {
   SITE_STYLES.setAttribute("href", `var1.css`);
   mainifest.href = "./manifest1.json";
 } else if (window.LOCATION_URL.includes("es.gf")) {

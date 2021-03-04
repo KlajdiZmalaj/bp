@@ -13,6 +13,8 @@
 // var app = firebase.initializeApp(firebaseConfig);
 // export var db = firebase.firestore(app);
 
+export const isLocalHost = window.location.href.match(/192|localhost|127/g);
+
 export const allRoles = {
   user: "fal fa-user",
   agency: "fas fa-store",
