@@ -283,6 +283,7 @@ try {
     ServiceBET: require(`../assets/images/ServiceBET.jpg`),
     ServiceBGM: require(`../assets/images/BANNERBGAME.png`),
     ServiceBUL: require(`../assets/images/BANNERBETBULL.png`),
+    ServiceBBL: require(`../assets/images/BANNERBETBULL.png`),
     ServiceBWN: require(`../assets/images/ServiceBWN.jpg`),
     ServicePKS: require(`../assets/images/ServicePKS.jpg`),
     ServicePPB: require(`../assets/images/ServicePPB.jpg`),

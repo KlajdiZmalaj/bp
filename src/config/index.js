@@ -10,14 +10,17 @@ export const allRoles = {
 };
 export const BannerColors = {
   BET: "#042842",
-  BUL: "#042842",
+  BUL: "#3D0007",
+  BBL: "#3D0007",
   BGM: "#03312E",
-  BBT: "#ed4d1d",
+  BBT: "#ed5a12",
   BWN: "#fec90b",
   PKS: "#d70909",
   PPB: "#e44b23",
   STC: "#00bfd2",
   WHL: "#01153a",
+  STB: "#3D0007",
+  TPP: "#0B161A",
   default: "var(--accent-bg)",
 };
 export const docType = [

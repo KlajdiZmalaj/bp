@@ -357,6 +357,7 @@ const Numpad = ({
           <div className="img Page">
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img
+              alt={`Service${selectedCost?.service_id.substring(0, 3)}`}
               src={
                 images?.[
                   `Service${selectedCost?.service_id.substring(0, 3)}`
