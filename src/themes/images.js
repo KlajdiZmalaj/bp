@@ -289,6 +289,8 @@ try {
     ServiceSTC: require(`../assets/images/ServiceSTC.jpg`),
     ServiceWHL: require(`../assets/images/ServiceWHL.jpg`),
     ServiceBBT: require(`../assets/images/ServiceBGM.jpg`),
+    ServiceSTB: require(`../assets/images/ServiceDefault.jpg`),
+    ServiceTPP: require(`../assets/images/ServiceDefault.jpg`),
     // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
 
     faturaBackground: require(`../assets/images/FaturaBackground.png`),

@@ -288,6 +288,7 @@ class ModulePopUp4 extends React.Component {
                 <div className="GamingBanner">
                   <div
                     className="img"
+                    alt={serviceMobile?.service_id.substring(0, 3)}
                     style={{
                       background: `${
                         BannerColors?.[
