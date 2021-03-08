@@ -66,6 +66,9 @@ export function* getBolletiniBianchi(params) {
   if (response?.data) {
     if (response?.data) {
       yield put(AuthActions.setBolletiniBianchi(response?.data));
+      notification["info"]({
+        message: response?.data?.message,
+      });
       params.clearFields();
     } else if (response?.error) {
       if (response?.error.response?.status === 444) {
@@ -159,6 +162,11 @@ export function* getBolletiniPremercati(params) {
   if (response) {
     if (response?.data) {
       yield put(AuthActions.setBolletiniPremercati(response?.data));
+      if (response?.message) {
+        notification["info"]({
+          message: response?.data?.message,
+        });
+      }
       params.clearFields();
     } else if (response?.error) {
       if (response?.error.response?.status === 444) {
@@ -346,6 +354,9 @@ export function* getPostePay(params) {
         yield put(AuthActions.setAccountInfo(d));
       }
       yield put(AuthActions.setPostePay(response?.data));
+      notification["info"]({
+        message: response?.data?.message,
+      });
       params.clearFields();
     } else if (response?.error) {
       yield put(AuthActions.setPostePay(response?.error.response?.data));
