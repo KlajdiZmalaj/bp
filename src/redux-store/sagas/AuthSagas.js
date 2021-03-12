@@ -162,7 +162,7 @@ export function* getBolletiniPremercati(params) {
   if (response) {
     if (response?.data) {
       yield put(AuthActions.setBolletiniPremercati(response?.data));
-      if (response?.message) {
+      if (response?.data?.message) {
         notification["info"]({
           message: response?.data?.message,
         });
