@@ -157,7 +157,7 @@ export function* getBolletiniPremercati(params) {
     params.citta,
     params.provincia
   );
-  console.log("response", response);
+  // console.log("response", response);
 
   if (response) {
     if (response?.data) {
