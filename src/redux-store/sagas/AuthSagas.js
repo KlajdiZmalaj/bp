@@ -157,12 +157,12 @@ export function* getBolletiniPremercati(params) {
     params.citta,
     params.provincia
   );
-  // console.log("response", response);
+  console.log("response", response);
 
   if (response) {
     if (response?.data) {
       yield put(AuthActions.setBolletiniPremercati(response?.data));
-      if (response?.message) {
+      if (response?.data?.message) {
         notification["info"]({
           message: response?.data?.message,
         });
