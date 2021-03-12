@@ -293,7 +293,7 @@ try {
     ServiceSTB: require(`../assets/images/BANNERSTANLEYBET.png`),
     ServiceTPP: require(`../assets/images/BANNERTOTOPAY.png`),
     // "visure-logo": require(`../assets/images/prenotazioni/stubhub.svg`),
-
+    MBBT: require(`../assets/images/mideporte-blog.png`),
     faturaBackground: require(`../assets/images/FaturaBackground.png`),
     mobileLoginGirl: require(`../assets/images/OnlineShop.jpg`),
     transactionModalImg: require(`../assets/images/transactionModal.svg`),
